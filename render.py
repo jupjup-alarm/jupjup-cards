@@ -43,6 +43,9 @@ THEMES = {
     "임대알람": dict(bg="#0E5C4A", logo="#3DDC97", chip_bg="#3DDC97", chip_fg="#0B2E25", outline="#3DDC97",
                   hl="#7FF0BE", sub="#CDEBE0", ink="#FFFFFF", spark="#3DDC97",
                   accent="#0E7A5F", tint="#E8F7F1", soft="#E8F7F1", btn="#0E5C4A"),
+    "이번주청약": dict(bg="#FF5233", fg="#0F1E3D", logo="#0F1E3D", chip_bg="#0F1E3D", chip_fg="#FFFFFF", outline="#0F1E3D",
+                  chip2_fg="#0F1E3D", body="#FFFFFF", hl="#FFFFFF", sub="#0F1E3D", ink="#0F1E3D", spark="#FFFFFF",
+                  accent="#E0401F", tint="#F2F4F7", soft="#FFF1EC", btn="#0F1E3D"),
     "주거꿀팁": dict(bg="#4B2A8C", logo="#FFFFFF", chip_bg="#FFFFFF", chip_fg="#4B2A8C", outline="#FFFFFF",
                   hl="#FFD84D", sub="#E3DAFF", ink="#FFFFFF", spark="#FFD84D",
                   accent="#4B2A8C", tint="#F1ECFA", soft="#F1ECFA", btn="#4B2A8C"),
@@ -88,6 +91,8 @@ def char_svg(face, th, closing=False):
     if not closing:
         s = s.replace('fill="#FFFFFF"', f'fill="{th["ink"]}"').replace('stroke="#FFFFFF"', f'stroke="{th["ink"]}"')
         s = s.replace('stroke="#FF5233"', f'stroke="{th["spark"]}"')
+        if th.get("body"):
+            s = s.replace('fill="#FF5233"', f'fill="{th["body"]}"')
     else:
         s = s.replace('stroke="#FF5233"', f'stroke="{th["accent"]}"')
     return s
@@ -113,15 +118,16 @@ def cover(card, th, n, total):
         chip_html += f'<span class="{cls}">{esc(c)}</span>'
     main = "".join(f'<div class="fitw">{hl(l, card.get("highlight"), th["hl"])}</div>'
                    for l in lines(card.get("lines", [])))
+    fg = th.get("fg", "#FFFFFF")
     return f'''
-<div class="card cover" style="background:{th['bg']};color:#FFFFFF">
+<div class="card cover" style="background:{th['bg']};color:{fg}">
   <div class="brand big">{BELL.format(s=44, c=th['logo'])}<span>줍줍알람</span></div>
   <div class="zoom cover-main">
     <div class="chips">{chip_html}</div>
     <div class="cover-title">{main}</div>
     <div class="cover-sub" style="color:{th['sub']}">{esc(card.get('sub'))}</div>
   </div>
-  <div class="swipe"><span>넘겨서 확인하기</span>{ARROW}</div>
+  <div class="swipe"><span>넘겨서 확인하기</span>{ARROW.replace('#FFFFFF', fg)}</div>
   <div class="char">{char_svg(card.get('face'), th)}</div>
 </div>'''
 
@@ -142,6 +148,34 @@ def info(card, th, n, total):
     <div class="title">{title}</div>
     <div class="rows">{rows_html}</div>
     {f'<div class="para">{para_html}</div>' if para_html else ''}
+  </div>
+  {note_html(card)}
+  <div class="handle">@jupjup_alarm</div>
+</div>'''
+
+
+SERIES_CHIP = {"줍줍알람": ("#FF5233", "#FFFFFF"), "강남로또": ("#C9A24A", "#121212"), "내집마련": ("#1E4FD8", "#FFFFFF"),
+               "임대알람": ("#0E5C4A", "#FFFFFF"), "주거꿀팁": ("#4B2A8C", "#FFFFFF")}
+
+
+def week(card, th, n, total):
+    """주간 일정 목록: items = [{date, dow, series, name, point}] 최대 4개."""
+    items_html = ""
+    for it in (card.get("items") or [])[:4]:
+        sb, sf = SERIES_CHIP.get(str(it.get("series", "")).strip("[]"), ("#0F1E3D", "#FFFFFF"))
+        items_html += (
+            f'<div class="witem"><div class="wdate"><span class="wd">{esc(it.get("date"))}</span>'
+            f'<span class="ww">{esc(it.get("dow"))}</span></div>'
+            f'<div class="wtxt"><span class="wchip" style="background:{sb};color:{sf}">{esc(str(it.get("series", "")).strip("[]"))}</span>'
+            f'<span class="wname">{esc(it.get("name"))}</span>'
+            f'<span class="wpoint">{esc(it.get("point"))}</span></div></div>')
+    return f'''
+<div class="card light" style="background:#FFFFFF">
+  {header(n, total, th)}
+  <div class="zoom body wk">
+    <div class="eyebrow" style="color:{th['accent']}">{esc(card.get('eyebrow') or '이번 주 일정')}</div>
+    <div class="title nowrap">{esc(card.get('title'))}</div>
+    <div class="witems">{items_html}</div>
   </div>
   {note_html(card)}
   <div class="handle">@jupjup_alarm</div>
@@ -186,7 +220,7 @@ def closing(card, th, n, total):
 </div>'''
 
 
-BUILDERS = {"cover": cover, "info": info, "check": check, "closing": closing}
+BUILDERS = {"cover": cover, "info": info, "check": check, "closing": closing, "week": week}
 
 CSS = """
 @font-face{font-family:'Black Han Sans';src:url('FONTDIR/BlackHanSans-Regular.ttf')}
@@ -202,7 +236,7 @@ body{margin:0;width:1080px;height:1350px;overflow:hidden}
 .cover-main{display:flex;flex-direction:column;gap:36px;margin-top:200px;transform-origin:left top}
 .chips{display:flex;gap:16px;flex-wrap:wrap}
 .chip{font-size:36px;font-weight:900;padding:10px 26px;border-radius:12px;background:var(--chip-bg);color:var(--chip-fg)}
-.chip2{font-size:36px;font-weight:700;padding:7px 23px;border-radius:12px;border:3px solid var(--outline);color:#FFFFFF}
+.chip2{font-size:36px;font-weight:700;padding:7px 23px;border-radius:12px;border:3px solid var(--outline);color:var(--chip2-fg,#FFFFFF)}
 .cover-title{font-family:'Black Han Sans',sans-serif;font-size:150px;line-height:1.12;letter-spacing:-2px}
 .cover-title .fitw{white-space:nowrap}
 .cover-sub{font-size:42px;font-weight:500;max-width:920px}
@@ -234,6 +268,17 @@ body{margin:0;width:1080px;height:1350px;overflow:hidden}
 .btns{display:flex;gap:24px;margin-top:56px}
 .btn{display:flex;align-items:center;gap:14px;border-radius:999px;padding:24px 44px;font-size:38px;font-weight:900;color:#FFFFFF}
 .btn.ghost{background:#FFFFFF;border:3px solid;padding:21px 44px}
+.wk{margin-top:80px}
+.title.nowrap{white-space:nowrap;margin-top:16px}
+.witems{display:flex;flex-direction:column;gap:18px;margin-top:56px}
+.witem{display:flex;align-items:center;gap:32px;background:#F2F4F7;border-radius:24px;padding:30px 36px}
+.wdate{width:168px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:2px;background:#0F1E3D;color:#FFFFFF;border-radius:18px;padding:16px 0}
+.wd{font-size:44px;font-weight:900;line-height:1.1;white-space:nowrap}
+.ww{font-size:28px;font-weight:700}
+.wtxt{display:flex;flex-direction:column;gap:8px}
+.wchip{align-self:flex-start;font-size:26px;font-weight:900;padding:4px 16px;border-radius:8px}
+.wname{font-size:40px;font-weight:900;line-height:1.25}
+.wpoint{font-size:30px;font-weight:500;color:#5B6472;line-height:1.35}
 .disc{margin-top:auto;font-size:24px;font-weight:500;color:#5B6472;text-align:center;line-height:1.5;white-space:pre-line}
 """
 
@@ -267,7 +312,7 @@ FIT_JS = """
 
 def page_html(body, th, font_dir):
     css = CSS.replace("FONTDIR", font_dir)
-    vars_ = f":root{{--chip-bg:{th['chip_bg']};--chip-fg:{th['chip_fg']};--outline:{th['outline']}}}"
+    vars_ = f":root{{--chip-bg:{th['chip_bg']};--chip-fg:{th['chip_fg']};--outline:{th['outline']};--chip2-fg:{th.get('chip2_fg', '#FFFFFF')}}}"
     return f'<!doctype html><html lang="ko"><head><meta charset="utf-8"><style>{css}{vars_}</style></head><body>{body}</body></html>'
 
 
@@ -322,7 +367,7 @@ def render(spec_path):
         for i, card in enumerate(cards, 1):
             kind = card.get("type", "info")
             body = BUILDERS[kind](card, th, i, total)
-            vars_ = f'<div style="--chip-bg:{th["chip_bg"]};--chip-fg:{th["chip_fg"]};--outline:{th["outline"]};display:contents">{body}</div>'
+            vars_ = f'<div style="--chip-bg:{th["chip_bg"]};--chip-fg:{th["chip_fg"]};--outline:{th["outline"]};--chip2-fg:{th.get("chip2_fg", "#FFFFFF")};display:contents">{body}</div>'
             tmp = out / f"_tmp_{i:02d}.html"
             tmp.write_text(page_html(body, th, font_dir))
             page.goto(tmp.as_uri())
