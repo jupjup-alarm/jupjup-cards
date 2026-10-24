@@ -1,0 +1,55 @@
+{
+  "slug": "2026-10-24-siheung-hajung-a1",
+  "title": "시흥하중 A1블록 신혼희망타운 잔여세대",
+  "series": "내집마련",
+  "count": 8,
+  "urls": [
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-24-siheung-hajung-a1/01.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-24-siheung-hajung-a1/02.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-24-siheung-hajung-a1/03.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-24-siheung-hajung-a1/04.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-24-siheung-hajung-a1/05.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-24-siheung-hajung-a1/06.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-24-siheung-hajung-a1/07.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-24-siheung-hajung-a1/08.jpg"
+  ],
+  "warnings": {
+    "02": [
+      "zoom 0.97"
+    ]
+  },
+  "boards": [
+    {
+      "file": "2026-10-24-siheung-hajung-a1-01.dc.html",
+      "title": "시흥하중 A1블록 신혼희망타운 잔여세대 1/8"
+    },
+    {
+      "file": "2026-10-24-siheung-hajung-a1-02.dc.html",
+      "title": "시흥하중 A1블록 신혼희망타운 잔여세대 2/8"
+    },
+    {
+      "file": "2026-10-24-siheung-hajung-a1-03.dc.html",
+      "title": "시흥하중 A1블록 신혼희망타운 잔여세대 3/8"
+    },
+    {
+      "file": "2026-10-24-siheung-hajung-a1-04.dc.html",
+      "title": "시흥하중 A1블록 신혼희망타운 잔여세대 4/8"
+    },
+    {
+      "file": "2026-10-24-siheung-hajung-a1-05.dc.html",
+      "title": "시흥하중 A1블록 신혼희망타운 잔여세대 5/8"
+    },
+    {
+      "file": "2026-10-24-siheung-hajung-a1-06.dc.html",
+      "title": "시흥하중 A1블록 신혼희망타운 잔여세대 6/8"
+    },
+    {
+      "file": "2026-10-24-siheung-hajung-a1-07.dc.html",
+      "title": "시흥하중 A1블록 신혼희망타운 잔여세대 7/8"
+    },
+    {
+      "file": "2026-10-24-siheung-hajung-a1-08.dc.html",
+      "title": "시흥하중 A1블록 신혼희망타운 잔여세대 8/8"
+    }
+  ]
+}
