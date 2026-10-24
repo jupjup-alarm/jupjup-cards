@@ -220,7 +220,34 @@ def closing(card, th, n, total):
 </div>'''
 
 
-BUILDERS = {"cover": cover, "info": info, "check": check, "closing": closing, "week": week}
+def mapcard(card, th, n, total):
+    """위치 지도: sigungu(필수), dong(행정동, 선택), sido(선택), address(표시용 주소), rows(선택, 최대 2개)."""
+    from mapgen import make_map
+    svg, info = make_map(card.get("sigungu", ""), card.get("dong"), card.get("sido"), width=920,
+                         height=560 if card.get("rows") else 640, accent=th["accent"], tint=th["tint"],
+                         label_dong=card.get("label"))
+    MAP_INFO.append(info)
+    rows = "".join(
+        f'<div class="row" style="background:{th["tint"]}"><span class="rl" style="color:{th["accent"]}">{esc(k)}</span>'
+        f'<span class="rv">{esc(v)}</span></div>' for k, v in (card.get("rows") or [])[:2])
+    title = "".join(f"<div>{esc(t)}</div>" for t in lines(card.get("title", "")))
+    return f'''
+<div class="card light" style="background:#FFFFFF">
+  {header(n, total, th)}
+  <div class="zoom body mp">
+    <div class="eyebrow" style="color:{th['accent']}">{esc(card.get('eyebrow') or '위치')}</div>
+    <div class="title">{title}</div>
+    <div class="mapbox">{svg or '<div class="maperr">지도를 만들지 못했어요</div>'}</div>
+    <div class="addr">📍 {esc(card.get('address'))}</div>
+    {f'<div class="rows mrows">{rows}</div>' if rows else ''}
+  </div>
+  <div class="note">지도: 통계청 SGIS 행정구역 경계(2018) · 위치는 행정동 단위 표시</div>
+  <div class="handle">@jupjup_alarm</div>
+</div>'''
+
+
+MAP_INFO = []
+BUILDERS = {"cover": cover, "info": info, "check": check, "closing": closing, "week": week, "map": mapcard}
 
 CSS = """
 @font-face{font-family:'Black Han Sans';src:url('FONTDIR/BlackHanSans-Regular.ttf')}
@@ -279,6 +306,11 @@ body{margin:0;width:1080px;height:1350px;overflow:hidden}
 .wchip{align-self:flex-start;font-size:26px;font-weight:900;padding:4px 16px;border-radius:8px}
 .wname{font-size:40px;font-weight:900;line-height:1.25}
 .wpoint{font-size:30px;font-weight:500;color:#5B6472;line-height:1.35}
+.mp{margin-top:90px}
+.mapbox{margin-top:40px;border-radius:28px;overflow:hidden;line-height:0;border:2px solid #E3E7ED}
+.mapbox svg{display:block;width:100%;height:auto}
+.addr{margin-top:24px;font-size:36px;font-weight:700}
+.mrows{margin-top:24px}
 .disc{margin-top:auto;font-size:24px;font-weight:500;color:#5B6472;text-align:center;line-height:1.5;white-space:pre-line}
 """
 
@@ -366,6 +398,7 @@ def render(spec_path):
         page = browser.new_page(viewport={"width": W, "height": H})
         for i, card in enumerate(cards, 1):
             kind = card.get("type", "info")
+            MAP_INFO.clear()
             body = BUILDERS[kind](card, th, i, total)
             vars_ = f'<div style="--chip-bg:{th["chip_bg"]};--chip-fg:{th["chip_fg"]};--outline:{th["outline"]};--chip2-fg:{th.get("chip2_fg", "#FFFFFF")};display:contents">{body}</div>'
             tmp = out / f"_tmp_{i:02d}.html"
@@ -374,6 +407,11 @@ def render(spec_path):
             page.evaluate("document.fonts.ready")
             page.wait_for_timeout(150)
             w = page.evaluate(FIT_JS)
+            for mi in MAP_INFO:
+                if not mi.get("found_sigungu"):
+                    w.append("MAP: " + mi.get("error", "시군구 없음"))
+                elif kind == "map" and card.get("dong") and not mi.get("found_dong"):
+                    w.append("MAP: 행정동 '" + card["dong"] + "' 없음 → 시군구만 표시. 후보: " + ", ".join(mi["candidates"]))
             if w:
                 warnings[f"{i:02d}"] = w
             jpg = out / f"{i:02d}.jpg"
