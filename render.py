@@ -221,10 +221,25 @@ def closing(card, th, n, total):
 
 
 def mapcard(card, th, n, total):
-    """위치 지도: sigungu(필수), dong(행정동, 선택), sido(선택), address(표시용 주소), rows(선택, 최대 2개)."""
-    from mapgen import make_map
-    svg, info = make_map(card.get("sigungu", ""), card.get("dong"), card.get("sido"), width=920,
-                         height=560 if card.get("rows") else 640, accent=th["accent"], tint=th["tint"],
+    """위치 지도. image(저장소 안 경로, 예: maps/abc.png = 네이버 지도)가 있으면 그 이미지를 쓰고,
+    없으면 통계청 행정구역 경계로 그린다: sigungu(필수), dong(행정동), sido, label."""
+    img = card.get("image")
+    img_path = (ROOT / img) if img else None
+    if img_path and img_path.exists():
+        import base64
+        b64 = base64.b64encode(img_path.read_bytes()).decode()
+        mime = "image/png" if img_path.suffix.lower() == ".png" else "image/jpeg"
+        hpx = 480 if card.get("rows") else 600
+        svg = f'<img src="data:{mime};base64,{b64}" alt="" style="height:{hpx}px;object-fit:cover">'
+        info = {"found_sigungu": True, "found_dong": True, "naver": True}
+        credit = "지도: © NAVER Corp."
+    else:
+        if img:
+            MAP_INFO.append({"found_sigungu": True, "found_dong": True, "error": f"지도 이미지 {img} 없음 → 경계 지도로 대체"})
+        from mapgen import make_map
+        credit = "지도: 통계청 SGIS 행정구역 경계(2018) · 위치는 행정동 단위 표시"
+        svg, info = make_map(card.get("sigungu", ""), card.get("dong"), card.get("sido"), width=920,
+                             height=560 if card.get("rows") else 640, accent=th["accent"], tint=th["tint"],
                          label_dong=card.get("label"))
     MAP_INFO.append(info)
     rows = "".join(
@@ -241,7 +256,7 @@ def mapcard(card, th, n, total):
     <div class="addr">📍 {esc(card.get('address'))}</div>
     {f'<div class="rows mrows">{rows}</div>' if rows else ''}
   </div>
-  <div class="note">지도: 통계청 SGIS 행정구역 경계(2018) · 위치는 행정동 단위 표시</div>
+  <div class="note">{credit}</div>
   <div class="handle">@jupjup_alarm</div>
 </div>'''
 
@@ -308,7 +323,7 @@ body{margin:0;width:1080px;height:1350px;overflow:hidden}
 .wpoint{font-size:30px;font-weight:500;color:#5B6472;line-height:1.35}
 .mp{margin-top:90px}
 .mapbox{margin-top:40px;border-radius:28px;overflow:hidden;line-height:0;border:2px solid #E3E7ED}
-.mapbox svg{display:block;width:100%;height:auto}
+.mapbox svg,.mapbox img{display:block;width:100%;height:auto}
 .addr{margin-top:24px;font-size:36px;font-weight:700}
 .mrows{margin-top:24px}
 .disc{margin-top:auto;font-size:24px;font-weight:500;color:#5B6472;text-align:center;line-height:1.5;white-space:pre-line}
@@ -408,6 +423,8 @@ def render(spec_path):
             page.wait_for_timeout(150)
             w = page.evaluate(FIT_JS)
             for mi in MAP_INFO:
+                if mi.get("error") and mi.get("found_sigungu"):
+                    w.append("MAP: " + mi["error"])
                 if not mi.get("found_sigungu"):
                     w.append("MAP: " + mi.get("error", "시군구 없음"))
                 elif kind == "map" and card.get("dong") and not mi.get("found_dong"):

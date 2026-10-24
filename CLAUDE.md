@@ -10,7 +10,8 @@
 - `specs/<slug>.json` — 카드 원고
 - `templates/char_*.svg` — 종이 캐릭터 (surprise=깜짝, happy=신남, wink=윙크, closing=마무리)
 - `fonts/` — Black Han Sans, Noto Sans KR (OFL)
-- `mapgen.py`, `data/` — 위치 지도 (통계청 SGIS 2018 행정구역 경계, 공공누리 제1유형)
+- `maps/` — 시트 스크립트가 올리는 네이버 지도 이미지
+- `mapgen.py`, `data/` — 대체용 경계 지도 (통계청 SGIS 2018 행정구역 경계, 공공누리 제1유형)
 
 ## 원고(JSON) 형식
 ```json
@@ -35,7 +36,9 @@
 - check: `items` 최대 3개.
 - week (주간 일정 목록, 이번주청약용): `{"type": "week", "title": "10/27 ~ 10/29", "items": [{"date": "10/27", "dow": "월", "series": "줍줍알람", "name": "단지명", "point": "한 줄 포인트"}]}` — 한 장에 최대 4건, 넘치면 장을 나눈다. 표지는 `chips: ["이번주청약", "10/27 ~ 11/02"]`.
 - map (위치 지도): `{"type": "map", "eyebrow": "위치", "title": "어디에 있냐면요", "sido": "서울", "sigungu": "강동구", "dong": "강일동", "label": "강일동", "address": "서울 강동구 강일동 고덕강일3단지", "rows": [["가까운 역", "…"]]}`
-  - 통계청 SGIS 2018 행정구역 경계(공공누리 1유형)로 오프라인 렌더링한다. 지도 하단 출처 문구는 자동으로 들어간다.
+  - **네이버 지도 우선**: 시트 스크립트가 '청약조사' 주소로 네이버 지도(길·역 표시)를 받아 `maps/xxxx.png`로 이 저장소에 올리고, '청약조사' Y열에 그 경로를 적는다. Y열에 `maps/…png`가 있으면 카드에 `"image": "maps/…png"`를 넣어라 (출처 "© NAVER Corp."가 자동으로 들어감). 렌더링 전에 반드시 `git pull --rebase origin main`으로 최신 지도를 받아라.
+  - Y열이 비었거나 "주소 못 찾음"·"지도 실패"면 `image` 없이 아래 경계 지도로 그린다.
+  - 경계 지도: 통계청 SGIS 2018 행정구역 경계(공공누리 1유형)로 오프라인 렌더링한다. 지도 하단 출처 문구는 자동으로 들어간다.
   - `dong`은 **행정동** 이름이다. 공고문 주소의 법정동(예: 박촌동)이 행정동 목록에 없으면 렌더링 warnings에 그 시군구의 행정동 후보가 나온다. 웹 검색("○○동 행정동")으로 관할 행정동을 찾아 `dong`에 넣고, `label`에는 "박촌동 일대"처럼 사람들이 아는 이름을 쓴다.
   - 행정동을 끝내 못 정하면 `dong`을 빼라 (시군구만 강조된다).
   - 단지가 여러 곳(예: 24개 단지 모집)이거나 생활정보·주간 일정이면 지도 카드를 넣지 않는다.
@@ -53,6 +56,7 @@ python3 render.py specs/<slug>.json
 
 ## 올리기
 ```bash
+git pull --rebase origin main   # 시트 스크립트가 maps/ 에 지도를 올리므로 먼저 받기
 git add specs cards && git commit -m "cards: <slug>" && git push origin HEAD:main
 ```
 main에 푸시가 거절되면 `cards` 브랜치에 푸시하고 `CARDS_BRANCH=cards`로 다시 렌더링해 주소를 맞춘다.
