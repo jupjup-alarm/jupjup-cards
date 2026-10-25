@@ -194,6 +194,7 @@ html,body{word-break:keep-all;width:1080px;height:1920px;overflow:hidden;font-fa
 .tl{font-size:42px;font-weight:700;color:#4A4D58}
 .tv{font-size:54px;font-weight:900;letter-spacing:-1px}
 .tv.one{color:#6B6A66}
+.twins .ptitle{margin-bottom:36px}.twins .trow{padding:24px 0}.twins .hand{margin-top:30px}
 .cks{display:flex;flex-direction:column;gap:34px}
 .ck{display:flex;gap:30px;align-items:center}
 .box{width:96px;height:96px;flex-shrink:0;border:6px solid #2B3040;border-radius:20px;background:#fff;display:flex;align-items:center;justify-content:center}
@@ -339,9 +340,14 @@ FIT_JS = """
 () => { const warn=[];
   document.querySelectorAll('.scene').forEach((s,i)=>{ s.style.opacity=1; s.style.visibility='visible';
     s.querySelectorAll('.in').forEach(e=>{e.style.opacity=1;e.style.transform='none'});
-    const kids=[...s.children]; const bottom=Math.max(...kids.map(k=>k.getBoundingClientRect().bottom));
+    const kids=[...s.children];
+    const box=()=>{const r=kids.map(k=>k.getBoundingClientRect());return {top:Math.min(...r.map(x=>x.top)),bottom:Math.max(...r.map(x=>x.bottom))}};
+    // 말하는 쌍둥이(말풍선 포함) 윗선 1140px 아래로 내려가면 글을 위로 올린다 (위 260px까지)
+    let bx=box(); const over=bx.bottom-1140;
+    if(over>0){ const up=Math.min(over, Math.max(0,bx.top-260)); s.style.paddingBottom=(740+2*up)+'px'; bx=box();
+      if(bx.bottom>1140) warn.push('scene '+(i+1)+': 캐릭터와 겹침 ('+Math.round(bx.bottom)+'px) · 문구를 줄이세요'); }
     const right=Math.max(...kids.map(k=>k.getBoundingClientRect().right));
-    const b2=Math.max(...kids.map(k=>k.getBoundingClientRect().bottom));
+    const b2=bx.bottom;
     if(b2>1920-430) warn.push('scene '+(i+1)+': 아래 가림 영역 침범 ('+Math.round(b2)+'px)');
     if(right>1080-40) warn.push('scene '+(i+1)+': 오른쪽 넘침');
     s.querySelectorAll('.hline,.sline,.cline,.rv,.ct,.tv').forEach(e=>{ if(e.scrollWidth>e.clientWidth+2) warn.push('scene '+(i+1)+': 줄 넘침 '+e.textContent.slice(0,10)); });
