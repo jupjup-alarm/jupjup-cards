@@ -401,6 +401,23 @@ def main(path):
     shutil.rmtree(out / "_voice", ignore_errors=True)
     frames.mkdir(parents=True)
     page, total, tl = build(spec)
+    # 자리표시자·예시 문구가 남아 있으면 경고 (샘플 원고는 제외)
+    holders = []
+    if not slug.startswith("sample"):
+        def strings(o):
+            if isinstance(o, str):
+                yield o
+            elif isinstance(o, dict):
+                for v in o.values():
+                    yield from strings(v)
+            elif isinstance(o, list):
+                for v in o:
+                    yield from strings(v)
+        txt = "\n".join(strings(spec["scenes"]))
+        for pat in [r"○○", r"OO", r"TBD", r"\[[^\]]*(?:N|가격|금액|날짜|링크)[^\]]*\]", r"예시", r"XX", r"\?\?"]:
+            m = re.search(pat, txt)
+            if m:
+                holders.append(f"자리표시자 '{m.group(0)}' — 실제 값으로 바꾸거나 칸을 빼세요")
 
     from playwright.sync_api import sync_playwright
     n = int(round(total * FPS))
@@ -470,7 +487,7 @@ def main(path):
 
     base = f"{RAW_BASE}/2kids/reels/{slug}"
     manifest = {"slug": slug, "duration": round(total, 2), "voiced": bool(voices), "bgm": bgm.stem if bgm else None, "video": f"{base}/reel.mp4",
-                "cover": f"{base}/cover.jpg", "size_mb": round(mp4.stat().st_size / 1e6, 2), "warnings": warns}
+                "cover": f"{base}/cover.jpg", "size_mb": round(mp4.stat().st_size / 1e6, 2), "warnings": holders + warns}
     (out / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=1))
     print(json.dumps(manifest, ensure_ascii=False))
 
