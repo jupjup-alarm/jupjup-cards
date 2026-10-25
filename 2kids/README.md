@@ -27,6 +27,7 @@
 }
 ```
 카드 종류 (`type`):
+- `info` 정보 정리 (정보글의 기본 속지): `eyebrow`(예 "첫만남이용권"), `icon`(bell|tag|calc|box|clock|check), `title` 2줄, `rows` [[라벨, 값]] 2~5개(값에 **굵게**·\n 가능), `text` 한 줄(선택), `note` 출처 "출처: 기관명 · YYYY.MM.DD".
 - `cover` 표지 (항상 1장째): `chips` [시리즈 태그, 보조 태그(선택)], `lines` 메인 카피 2줄(한 줄 7자 안팎), `highlight` 강조 단어, `sub` 서브 카피 1줄(**굵게** 가능), `badge` 원형 스티커 3줄(선택, 예 ["마트 대비","반값","1팩 기준"]), `hand` 손글씨 한 줄(선택, badge와 같이 쓰지 말 것), `theme` "deal"|"note"(선택).
 - `deal` 특가 상세: `num`, `name`(\n 줄바꿈 가능), `tags` 최대 3개, `original` 정가, `price` 판매가, `percent` 할인율, `unit` 단가 환산(예 "1팩 약 **459원**"), `deadline`, `points` 1~2줄, `note` "가격은 MM/DD HH:MM 기준 · 바뀔 수 있어요".
 - `calc` 두 배 계산기: `title` 2줄, `rows` [{label, value, amount(숫자)}] 2~3개(막대 길이 = amount 비율), `result` 결론 한 줄, `hand`, `note` 계산 기준.
@@ -35,6 +36,13 @@
 - `check` 체크리스트: `eyebrow`, `title`, `items` 최대 3개, `postit` 포스트잇 손글씨(선택).
 - `photo` 실사: `name`, `badge`(예 "실사용 6개월째"), `image` "2kids/photos/<사진ID>.jpg", `text` 한 줄. **사진은행에 있는 실사용 제품만.**
 - `closing` 마무리 (항상 마지막): `lines` 2줄, `highlight`, `link` story|dm|profile, `keyword`(dm일 때), `where` 손글씨 위치 안내(예 "하이라이트 ‘오늘 특가’").
+
+## 정보 카드 구성 (기본)
+- 지원금·정책: cover → info(대상·금액·신청·기한) → info 또는 check(신청 방법·주의) → closing
+- 시즌 꿀팁: cover → list 또는 check → (compare) → closing
+- 육아뉴스: cover → info(무엇이 바뀌나·언제부터·누구) → check(우리 집 체크) → closing
+- 혜택·할인: cover → info(혜택·기간·조건) → compare(선택) → closing
+- 모든 정보 카드 note에 출처(기관·발표일). 보도 기준이면 "(보도 기준)".
 
 ## 문구 규칙 (프로젝트 규칙)
 - 숫자·가격·마감은 시트(후보 G열·N열 출처)에서 확인된 값만. 모르면 그 칸을 빼라. 자리표시자(○○, [N], TBD) 금지.

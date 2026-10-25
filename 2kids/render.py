@@ -249,6 +249,30 @@ def c_compare(c, n, total, spec):
 </div>'''
 
 
+def c_info(c, n, total, spec):
+    """정보 카드: eyebrow, title, rows [[라벨, 값]] 2~5개, text(선택), note(출처 등)."""
+    rows = ""
+    for r in (c.get("rows") or [])[:5]:
+        r = r if isinstance(r, list) else [r, ""]
+        val = esc(r[1]).replace("\\n", "<br>").replace("\n", "<br>")
+        val = re.sub(r"\*\*(.+?)\*\*", lambda m: f'<span class="mk">{m.group(1)}</span>', val)
+        rows += f'<div class="irow"><div class="ik">{esc(r[0])}</div><div class="iv">{val}</div></div>'
+    title = "".join(f"<div>{mark(x)}</div>" for x in L(c.get("title")))
+    text = f'<div class="itext">{mark(c.get("text"))}</div>' if c.get("text") else ""
+    eb = f'<div class="eyebrow">{icon(c.get("icon") or "bell", 34)}<span>{esc(c.get("eyebrow") or "핵심 정리")}</span></div>'
+    return f'''<div class="card inner">{rings()}
+  <div class="col">
+    {header(n, total)}
+    <div class="zoom">{eb}
+      <div class="title">{title}</div>
+      <div class="ibox">{tape()}{rows}</div>
+      {text}
+    </div>
+    {footer(c.get("note"))}
+  </div>
+</div>'''
+
+
 def c_check(c, n, total, spec):
     """구매 팁 체크리스트 (최대 3개) + 포스트잇."""
     items = ""
@@ -317,7 +341,7 @@ def c_closing(c, n, total, spec):
 </div>'''
 
 
-BUILDERS = {"cover": c_cover, "deal": c_deal, "calc": c_calc, "list": c_list, "compare": c_compare,
+BUILDERS = {"info": c_info, "cover": c_cover, "deal": c_deal, "calc": c_calc, "list": c_list, "compare": c_compare,
             "check": c_check, "photo": c_photo, "closing": c_closing}
 WARN = []
 
@@ -412,6 +436,12 @@ body{width:1080px;height:1350px;overflow:hidden;font-family:'Noto Sans KR',sans-
 .cmp td{font-size:38px;font-weight:700;padding:28px 18px;text-align:center;border-top:2.5px solid #E6DFD1}
 .cmp td.rh{font-size:32px;color:#55585F;font-weight:700;background:#FBF7EF}
 .cmp td.best{background:#FDF4D6;font-weight:900}
+.ibox{position:relative;margin-top:48px;background:#FFFFFF;border:3.5px solid #2B3040;border-radius:28px;padding:20px 40px;box-shadow:10px 12px 0 #2B3040}
+.irow{display:flex;gap:28px;padding:26px 0;border-top:2.5px dashed #E6DFD1;align-items:flex-start}
+.irow:first-child{border-top:none}
+.ik{width:190px;flex-shrink:0;font-size:32px;font-weight:700;color:#6B6A66;line-height:1.4;padding-top:4px}
+.iv{flex:1;font-size:40px;font-weight:900;line-height:1.38;letter-spacing:-0.02em}
+.itext{margin-top:40px;font-size:36px;font-weight:500;line-height:1.5}
 .cks{margin-top:48px;display:flex;flex-direction:column;gap:36px}
 .ck{display:flex;gap:28px;align-items:flex-start}
 .box{width:68px;height:68px;flex-shrink:0;border:4px solid #2B3040;border-radius:14px;background:#FFFFFF;display:flex;align-items:center;justify-content:center;margin-top:2px}
