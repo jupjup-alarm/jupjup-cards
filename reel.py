@@ -82,7 +82,7 @@ def scene_html(sc, th, idx, start, end):
     a = f'data-s="{start:.3f}" data-e="{end:.3f}"'
     if t == "hook":
         chips = "".join(
-            f'<span class="chip in" data-in="{start + 0.05 + i * 0.12:.2f}" '
+            f'<span class="chip" '
             f'style="background:{th["chip_bg"] if i == 0 else "transparent"};color:{th["chip_fg"] if i == 0 else th["ink"]};'
             f'border:3px solid {th["outline"]}">{esc(c)}</span>'
             for i, c in enumerate(sc.get("chips", [])))
@@ -90,17 +90,17 @@ def scene_html(sc, th, idx, start, end):
         for i, ln in enumerate(sc["lines"]):
             txt = esc(ln)
             if "{n}" in txt:
-                txt = txt.replace("{n}", f'<span class="num" data-count="{sc["count"]["to"]}" '
-                                          f'data-cs="{start + 0.5:.2f}" data-cd="1.1" style="color:{th["hl"]}">0</span>')
+                txt = txt.replace("{n}", f'<span class="num pulse" data-p="{start + 0.35:.2f}" '
+                                          f'style="display:inline-block;color:{th["hl"]}">{esc(sc["count"]["to"])}</span>')
                 txt = f'<span style="color:{th["hl"]}">{txt}</span>'
-            lines += f'<div class="hline in pop" data-in="{start + 0.2 + i * 0.22:.2f}">{txt}</div>'
+            lines += f'<div class="hline punch" data-p="{start:.2f}">{txt}</div>'
         return f'''
 <section class="scene hook" data-dark="1" {a} style="background:{th['bg']}">
   <div class="blob" style="background:{th['spark']}"></div>
   <div class="chips">{chips}</div>
   <div class="hlines" style="color:{th['ink'] if th.get('fg') is None else th['fg']}">{lines}</div>
-  <div class="hsub in" data-in="{start + 1.5:.2f}" style="color:{th['sub']}">{esc(sc.get('sub'))}</div>
-  <div class="char bounce in" data-in="{start + 0.6:.2f}">{char_svg(sc.get('face', '깜짝'))}</div>
+  <div class="hsub in" data-in="{start + 0.25:.2f}" style="color:{th['sub']}">{esc(sc.get('sub'))}</div>
+  <div class="char bounce in" data-in="{start + 0.15:.2f}">{char_svg(sc.get('face', '깜짝'))}</div>
 </section>'''
     if t == "points":
         rows = "".join(
@@ -181,7 +181,7 @@ function fmt(n){return Math.round(n).toLocaleString('ko-KR')}
 window.renderAt=function(t){
   document.querySelectorAll('.scene').forEach(s=>{
     const a=+s.dataset.s,e=+s.dataset.e;
-    const o=cl((t-a)/0.3)*(e>=TOTAL-0.01?1:cl((e-t)/0.3));
+    const o=(a<=0.001?1:cl((t-a)/0.3))*(e>=TOTAL-0.01?1:cl((e-t)/0.3));
     s.style.opacity=o; s.style.visibility=o>0?'visible':'hidden';
     const z=1+0.03*cl((t-a)/(e-a)); s.style.transform='scale('+z+')';
   });
@@ -190,6 +190,12 @@ window.renderAt=function(t){
     const k=el.classList.contains('pop')?back(p):ease(p);
     el.style.opacity=ease(p);
     el.style.transform=el.classList.contains('pop')?'translateY('+((1-k)*80)+'px) scale('+(0.85+0.15*k)+')':'translateY('+((1-k)*60)+'px)';
+  });
+  document.querySelectorAll('.punch').forEach(el=>{
+    const k=ease(cl((t-(+el.dataset.p))/0.25)); el.style.transform='scale('+(1.05-0.05*k)+')'; el.style.transformOrigin='left center';
+  });
+  document.querySelectorAll('.pulse').forEach(el=>{
+    const q=cl((t-(+el.dataset.p))/0.45); el.style.transform='scale('+(1+0.18*Math.sin(Math.PI*q))+')';
   });
   document.querySelectorAll('.bounce').forEach(el=>{
     const p=cl((t-(+el.dataset.in))/0.45);
@@ -222,6 +228,11 @@ window.renderAt=function(t){
 
 
 LEAD, TAIL = 0.35, 0.5   # 장면 시작 후 말하기까지, 말 끝난 뒤 다음 장면까지 (초)
+FIRST_LEAD = 0.05        # 첫 장면(훅)은 바로 말하기 시작 — 1초 안에 훅이 들리게
+
+
+def lead(i):
+    return FIRST_LEAD if i == 0 else LEAD
 
 
 def audio_len(path):
@@ -253,10 +264,10 @@ def timeline(spec):
     """장면별 (시작, 길이, 음성파일). 음성이 있으면 음성 길이에 맞춰 장면을 늘린다."""
     vf = voice_files(spec)
     t, out = 0.0, []
-    for sc, f in zip(spec["scenes"], vf):
+    for i, (sc, f) in enumerate(zip(spec["scenes"], vf)):
         d = float(sc.get("dur", 5))
         if f:
-            d = max(d, LEAD + audio_len(f) + TAIL)
+            d = max(d, lead(i) + audio_len(f) + TAIL)
         out.append((t, d, f))
         t += d
     return out, t
@@ -268,7 +279,7 @@ def envelope(tl, total):
     n = int(round(total * FPS))
     env = np.zeros(n)
     sr, hop = 16000, 16000 // FPS
-    for start, _, f in tl:
+    for i, (start, _, f) in enumerate(tl):
         if not f:
             continue
         raw = subprocess.run(["ffmpeg", "-v", "error", "-i", str(f), "-ac", "1", "-ar", str(sr), "-f", "s16le", "-"],
@@ -276,7 +287,7 @@ def envelope(tl, total):
         a = np.frombuffer(raw, dtype=np.int16).astype(np.float32) / 32768
         k = len(a) // hop
         rms = np.sqrt((a[:k * hop].reshape(k, hop) ** 2).mean(axis=1))
-        off = int(round((start + LEAD) * FPS))
+        off = int(round((start + lead(i)) * FPS))
         env[off:off + k] = rms[: max(0, min(k, n - off))]
     if env.max() > 0:
         env = env / (np.percentile(env[env > 0], 90) + 1e-6)
@@ -325,7 +336,7 @@ def main(path):
     starts = []
     acc = 0.0
     for t0, d, _ in tl:
-        starts.append(t0 + min(d - 0.3, 2.6))
+        starts.append(t0 + (1.0 if t0 == 0 else min(d - 0.3, 2.6)))
     with sync_playwright() as p:
         b = p.chromium.launch()
         pg = b.new_page(viewport={"width": W, "height": H})
@@ -343,13 +354,13 @@ def main(path):
         b.close()
 
     mp4 = out / "reel.mp4"
-    voices = [(t0, f) for t0, _, f in tl if f]
+    voices = [(t0 + lead(i), f) for i, (t0, _, f) in enumerate(tl) if f]
     cmd = ["ffmpeg", "-y", "-loglevel", "error", "-framerate", str(FPS), "-i", str(frames / "%05d.jpg"),
            "-f", "lavfi", "-t", f"{total:.3f}", "-i", "anullsrc=channel_layout=stereo:sample_rate=44100"]
     for _, f in voices:
         cmd += ["-i", str(f)]
     if voices:
-        fl = "".join(f"[{k + 2}:a]aformat=sample_rates=44100:channel_layouts=stereo,adelay={int((t0 + LEAD) * 1000)}:all=1[v{k}];"
+        fl = "".join(f"[{k + 2}:a]aformat=sample_rates=44100:channel_layouts=stereo,adelay={int(t0 * 1000)}:all=1[v{k}];"
                      for k, (t0, _) in enumerate(voices))
         fl += "[1:a]" + "".join(f"[v{k}]" for k in range(len(voices))) + \
               f"amix=inputs={len(voices) + 1}:normalize=0:duration=first,loudnorm=I=-15:TP=-1.5:LRA=11,aresample=44100,atrim=0:{total:.3f}[aout]"
