@@ -144,7 +144,7 @@ def scene_html(sc, idx, start, end, spec):
     if t == "twins":
         rows = "".join(
             f'<div class="trow in" {at(0.5 + i * 0.45)}><div class="tl">{esc(r[0])}</div>'
-            f'<div class="tv one">{mark(r[1])}</div><div class="tv two"><span class="mk">{esc(r[2])}</span></div></div>'
+            f'<div class="tv one">{mark(r[1])}</div><div class="tv two"><span class="mk">{esc(r[2].replace("**", ""))}</span></div></div>'
             for i, r in enumerate((sc.get("rows") or [])[:3]))
         note = f'<div class="hand in" {at(0.8 + len(sc.get("rows") or []) * 0.45)}>{esc(sc["note"])}</div>' if sc.get("note") else ""
         return (f'<section class="scene twins" {a}><div class="eyebrow in" {at(0.05)}>쌍둥이 체크</div>'
