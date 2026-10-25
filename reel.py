@@ -61,6 +61,22 @@ def char_svg(face):
     return (ROOT / "templates" / f"char_{name}.svg").read_text()
 
 
+def talk_svg(detail="#0F1E3D"):
+    """입이 움직이는 종이 (내레이터). .mouth 타원의 크기를 JS가 음성 크기에 맞춰 바꾼다."""
+    d = detail
+    return f'''<svg viewBox="0 0 200 200" width="100%" height="100%">
+  <circle cx="100" cy="34" r="10" fill="{d}"/>
+  <path d="M54 110 Q38 96 40 80" fill="none" stroke="{d}" stroke-width="7" stroke-linecap="round"/>
+  <path d="M146 110 Q162 96 160 80" fill="none" stroke="{d}" stroke-width="7" stroke-linecap="round"/>
+  <path d="M100 40 C68 40 54 66 54 96 L54 132 L40 152 L160 152 L146 132 L146 96 C146 66 132 40 100 40 Z" fill="#FF5233"/>
+  <rect x="36" y="146" width="128" height="14" rx="7" fill="{d}"/>
+  <ellipse cx="84" cy="172" rx="12" ry="8" fill="{d}"/><ellipse cx="116" cy="172" rx="12" ry="8" fill="{d}"/>
+  <ellipse class="eye" cx="84" cy="98" rx="6" ry="7" fill="#0F1E3D"/><ellipse class="eye" cx="116" cy="98" rx="6" ry="7" fill="#0F1E3D"/>
+  <ellipse cx="70" cy="116" rx="7" ry="4" fill="#FFB4A3"/><ellipse cx="130" cy="116" rx="7" ry="4" fill="#FFB4A3"/>
+  <ellipse class="mouth" cx="100" cy="120" rx="9" ry="2.5" fill="#0F1E3D"/>
+</svg>'''
+
+
 def scene_html(sc, th, idx, start, end):
     t = sc["type"]
     a = f'data-s="{start:.3f}" data-e="{end:.3f}"'
@@ -106,7 +122,7 @@ def scene_html(sc, th, idx, start, end):
                         for i, ln in enumerate(sc["lines"]))
         return f'''
 <section class="scene cta" {a} style="background:{th['soft']}">
-  <div class="cchar bounce in" data-in="{start + 0.05:.2f}">{char_svg('closing')}</div>
+  <div class="cchar bounce in" data-in="{start + 0.05:.2f}">{talk_svg() if sc.get('_voiced') else char_svg('closing')}</div>
   <div class="clines">{lines}</div>
   <div class="btns in" data-in="{start + 0.9:.2f}">
     <span class="btn" style="background:{th['btn']}">팔로우하고 알림 받기</span>
@@ -145,6 +161,15 @@ html,body{word-break:keep-all;width:1080px;height:1920px;overflow:hidden;backgro
 .btn{display:inline-block;color:#fff;font-weight:900;font-size:46px;padding:26px 54px;border-radius:999px}
 .disc{margin-top:48px;font-size:30px;color:#5B6472;line-height:1.5}
 .in{opacity:0}
+.narrator{position:absolute;right:60px;bottom:430px;width:320px;height:320px;z-index:6;opacity:0}
+.voiced .hook .char{display:none}
+.voiced .hook{padding-bottom:620px}
+.voiced .points{padding-bottom:720px;padding-top:290px}
+.voiced .ptitle{font-size:108px;margin-bottom:36px}
+.voiced .rows{gap:20px}
+.voiced .row{padding:32px 40px}
+.voiced .rv{font-size:52px}
+.voiced .ptext{font-size:42px;margin-top:32px;padding-right:300px}
 """
 
 JS = """
@@ -178,25 +203,101 @@ window.renderAt=function(t){
   document.querySelector('.brand').style.color=dark?'#FFFFFF':'#0F1E3D';
   document.querySelector('.bar').style.background=dark?'rgba(255,255,255,.2)':'rgba(15,30,61,.12)';
   document.querySelector('.bar i').style.width=(100*cl(t/TOTAL))+'%';
+  const nar=document.querySelector('.narrator');
+  if(nar){
+    const ctaS=+(document.querySelector('.cta')||{dataset:{s:1e9}}).dataset.s;
+    nar.style.opacity=cl((t-0.4)/0.4)*cl((ctaS-t)/0.3);
+    nar.style.transform='translateY('+(Math.sin(t*3.2)*8)+'px) rotate('+(Math.sin(t*2.1)*3)+'deg)';
+    nar.querySelectorAll('rect,circle,path,ellipse:not(.eye):not(.mouth)').forEach(x=>{
+      if(x.getAttribute('fill')!=='#FF5233'&&!x.getAttribute('fill')?.startsWith('#FFB4')){
+        if(x.getAttribute('fill')&&x.getAttribute('fill')!=='none')x.setAttribute('fill',dark?'#FFFFFF':'#0F1E3D');
+        if(x.getAttribute('stroke'))x.setAttribute('stroke',dark?'#FFFFFF':'#0F1E3D');}});
+  }
+  const v=MOUTH.length?(MOUTH[Math.min(MOUTH.length-1,Math.round(t*30))]||0):0;
+  document.querySelectorAll('.mouth').forEach(m=>{m.setAttribute('ry',(2.5+12*v).toFixed(2));m.setAttribute('rx',(9+4*v).toFixed(2))});
+  const blink=(t%3.7)<0.12;
+  document.querySelectorAll('.eye').forEach(e=>e.setAttribute('ry',blink?'1':'7'));
 };
 """
 
 
+LEAD, TAIL = 0.35, 0.5   # 장면 시작 후 말하기까지, 말 끝난 뒤 다음 장면까지 (초)
+
+
+def audio_len(path):
+    r = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(path)],
+                       capture_output=True, text=True, check=True)
+    return float(r.stdout.strip())
+
+
+def voice_files(spec):
+    v = str(spec.get("voice") or "").split(" ")[0].strip()
+    if not v:
+        return [None] * len(spec["scenes"])
+    d = ROOT / v
+    out = []
+    for i in range(len(spec["scenes"])):
+        f = d / f"{i + 1:02d}.mp3"
+        out.append(f if f.exists() else None)
+    return out
+
+
+def timeline(spec):
+    """장면별 (시작, 길이, 음성파일). 음성이 있으면 음성 길이에 맞춰 장면을 늘린다."""
+    vf = voice_files(spec)
+    t, out = 0.0, []
+    for sc, f in zip(spec["scenes"], vf):
+        d = float(sc.get("dur", 5))
+        if f:
+            d = max(d, LEAD + audio_len(f) + TAIL)
+        out.append((t, d, f))
+        t += d
+    return out, t
+
+
+def envelope(tl, total):
+    """음성 크기 → 프레임별 입 벌림(0~1)."""
+    import numpy as np
+    n = int(round(total * FPS))
+    env = np.zeros(n)
+    sr, hop = 16000, 16000 // FPS
+    for start, _, f in tl:
+        if not f:
+            continue
+        raw = subprocess.run(["ffmpeg", "-v", "error", "-i", str(f), "-ac", "1", "-ar", str(sr), "-f", "s16le", "-"],
+                             capture_output=True, check=True).stdout
+        a = np.frombuffer(raw, dtype=np.int16).astype(np.float32) / 32768
+        k = len(a) // hop
+        rms = np.sqrt((a[:k * hop].reshape(k, hop) ** 2).mean(axis=1))
+        off = int(round((start + LEAD) * FPS))
+        env[off:off + k] = rms[: max(0, min(k, n - off))]
+    if env.max() > 0:
+        env = env / (np.percentile(env[env > 0], 90) + 1e-6)
+    env = np.clip(env, 0, 1)
+    env[env < 0.12] = 0
+    sm = env.copy()
+    for i in range(1, n):          # 닫힐 때는 천천히
+        sm[i] = max(env[i], sm[i - 1] * 0.55)
+    return [round(float(x), 3) for x in sm]
+
+
 def build(spec):
     th = dict(THEMES.get(spec.get("series", "줍줍알람"), THEMES["줍줍알람"]))
-    t = 0.0
+    tl, total = timeline(spec)
+    voiced = any(f for _, _, f in tl)
     scenes = []
-    for i, sc in enumerate(spec["scenes"]):
-        d = float(sc.get("dur", 5))
+    for i, (sc, (t, d, f)) in enumerate(zip(spec["scenes"], tl)):
+        sc = dict(sc, _voiced=voiced)
         scenes.append(scene_html(sc, th, i, t, t + d))
-        t += d
-    total = t
-    page = f"""<!doctype html><html><head><meta charset="utf-8"><style>{font_face()}{CSS}</style></head><body>
+    mouth = envelope(tl, total) if voiced else []
+    narrator = f'<div class="narrator">{talk_svg()}</div>' if voiced else ""
+    page = f"""<!doctype html><html><head><meta charset="utf-8"><style>{font_face()}{CSS}</style></head><body class="{'voiced' if voiced else ''}">
 <div class="brand">{BELL.format(s=40, c=th['accent'])}<span>줍줍알람</span></div>
 <div class="bar"><i style="background:{th['accent']}"></i></div>
 {''.join(scenes)}
-<script>{JS.replace('__TOTAL__', f'{total:.3f}')}</script></body></html>"""
-    return page, total
+{narrator}
+<script>const MOUTH={json.dumps(mouth)};{JS.replace('__TOTAL__', f'{total:.3f}')}</script></body></html>"""
+    return page, total, tl
 
 
 def main(path):
@@ -207,17 +308,16 @@ def main(path):
     if frames.exists():
         shutil.rmtree(frames)
     frames.mkdir(parents=True)
-    page, total = build(spec)
-    (out / "reel.html").write_text(page)
+    page, total, tl = build(spec)
+    (out / "reel.html").write_text(page)  # 작업용 (저장소에 올리지 않음)
 
     from playwright.sync_api import sync_playwright
     n = int(round(total * FPS))
     stills = []
     starts = []
     acc = 0.0
-    for sc in spec["scenes"]:
-        starts.append(acc + min(float(sc.get("dur", 5)) - 0.3, 2.6))
-        acc += float(sc.get("dur", 5))
+    for t0, d, _ in tl:
+        starts.append(t0 + min(d - 0.3, 2.6))
     with sync_playwright() as p:
         b = p.chromium.launch()
         pg = b.new_page(viewport={"width": W, "height": H})
@@ -235,10 +335,22 @@ def main(path):
         b.close()
 
     mp4 = out / "reel.mp4"
-    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-framerate", str(FPS), "-i", str(frames / "%05d.jpg"),
-                    "-f", "lavfi", "-i", "anullsrc=channel_layout=stereo:sample_rate=44100",
-                    "-shortest", "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-pix_fmt", "yuv420p",
-                    "-r", str(FPS), "-c:a", "aac", "-b:a", "128k", "-movflags", "+faststart", str(mp4)], check=True)
+    voices = [(t0, f) for t0, _, f in tl if f]
+    cmd = ["ffmpeg", "-y", "-loglevel", "error", "-framerate", str(FPS), "-i", str(frames / "%05d.jpg"),
+           "-f", "lavfi", "-t", f"{total:.3f}", "-i", "anullsrc=channel_layout=stereo:sample_rate=44100"]
+    for _, f in voices:
+        cmd += ["-i", str(f)]
+    if voices:
+        fl = "".join(f"[{k + 2}:a]aformat=sample_rates=44100:channel_layouts=stereo,adelay={int((t0 + LEAD) * 1000)}:all=1[v{k}];"
+                     for k, (t0, _) in enumerate(voices))
+        fl += "[1:a]" + "".join(f"[v{k}]" for k in range(len(voices))) + \
+              f"amix=inputs={len(voices) + 1}:normalize=0:duration=first,loudnorm=I=-15:TP=-1.5:LRA=11,aresample=44100,atrim=0:{total:.3f}[aout]"
+        cmd += ["-filter_complex", fl, "-map", "0:v", "-map", "[aout]"]
+    else:
+        cmd += ["-map", "0:v", "-map", "1:a"]
+    cmd += ["-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-pix_fmt", "yuv420p", "-r", str(FPS),
+            "-c:a", "aac", "-b:a", "160k", "-shortest", "-movflags", "+faststart", str(mp4)]
+    subprocess.run(cmd, check=True)
     shutil.rmtree(frames)
 
     from PIL import Image
@@ -254,7 +366,7 @@ def main(path):
         s.unlink()
 
     base = f"{RAW_BASE}/reels/{slug}"
-    manifest = {"slug": slug, "duration": round(total, 2), "video": f"{base}/reel.mp4",
+    manifest = {"slug": slug, "duration": round(total, 2), "voiced": bool(voices), "video": f"{base}/reel.mp4",
                 "cover": f"{base}/cover.jpg", "size_mb": round(mp4.stat().st_size / 1e6, 2)}
     (out / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=1))
     print(json.dumps(manifest, ensure_ascii=False))
