@@ -319,6 +319,32 @@ def build(spec):
     return page, total, tl
 
 
+FIT_JS = """
+() => {
+  // 아래 말하는 캐릭터(왼쪽 아래, y≈1270~)·캡션 자리(아래 420px)와 겹치지 않게: 내용 맨 아래가 1250px을 넘으면 글자 크기를 6%씩 줄임 (최대 5번)
+  const voiced = document.body.classList.contains('voiced');
+  document.querySelectorAll('.scene').forEach(s => {
+    const LIMIT = (voiced && !s.classList.contains('cta')) ? 1250 : 1480;  // 마무리 장면엔 말하는 캐릭터가 없음
+    const vis = s.style.opacity, vv = s.style.visibility;
+    s.style.opacity = 1; s.style.visibility = 'visible';
+    s.querySelectorAll('.in').forEach(e => { e.dataset.o = e.style.opacity; e.style.opacity = 1; });
+    const bottom = () => Math.max(...[...s.children].filter(k => !k.classList.contains('blob') && !k.classList.contains('char'))
+                                       .map(k => k.getBoundingClientRect().bottom));
+    let k = 0;
+    while (bottom() > LIMIT && k < 5) {
+      s.querySelectorAll('.ptitle,.rv,.rl,.ptext,.hlines,.hsub,.cline,.eyebrow').forEach(e => {
+        e.style.fontSize = (parseFloat(getComputedStyle(e).fontSize) * 0.94) + 'px'; });
+      s.querySelectorAll('.row').forEach(e => { const cs = getComputedStyle(e);
+        e.style.paddingTop = e.style.paddingBottom = (parseFloat(cs.paddingTop) * 0.85) + 'px'; });
+      k++;
+    }
+    s.querySelectorAll('.in').forEach(e => { e.style.opacity = e.dataset.o || ''; });
+    s.style.opacity = vis; s.style.visibility = vv;
+  });
+}
+"""
+
+
 def main(path):
     spec = json.loads(Path(path).read_text())
     slug = spec["slug"]
@@ -343,6 +369,7 @@ def main(path):
         pg.set_content(page)
         pg.evaluate("document.fonts.ready")
         pg.wait_for_timeout(300)
+        pg.evaluate(FIT_JS)   # 내용이 아래 캐릭터·캡션 자리까지 내려가면 글자를 조금씩 줄임
         for f in range(n):
             pg.evaluate(f"renderAt({f / FPS:.4f})")
             pg.screenshot(path=str(frames / f"{f:05d}.jpg"), type="jpeg", quality=92)
