@@ -17,6 +17,7 @@
   "series": "돈 나오는 육아",              // 화면 위 태그
   "voice": "2kids/voices/<id>/",           // 시트 AA열 값(앞부분). 없으면 무음 + 기본 길이
   "voice_speed": 1.0,                      // 선택: 음성 빠르기 추가 조정
+  "bgm": "sunny",                          // 선택: sunny(밝음)|cozy(잔잔)|bounce(경쾌)|false. 생략하면 골고루 돌려씀
   "ad": false,                             // 상품을 다루면 true → 첫 장면에 "광고 · 링크 구매 시 수수료를 받아요"
   "source": "출처: 보건복지부 · 2026.10.24",
   "scenes": [
@@ -30,7 +31,8 @@
 }
 - 숫자·문구는 원고 그대로 (시트 정보조사 행과 같아야 함). **굵게** = 형광펜.
 - 인스타 가림 영역(위 250px, 아래 400px)에는 핵심 글자를 두지 않는다.
-- 음성은 장면 순서대로 voices/<id>/01.mp3, 02.mp3 … 를 붙이고, 장면 길이를 음성에 맞춰 늘린다.
+- 음성은 장면 순서대로 voices/<id>/01.mp3, 02.mp3 … 를 붙이고(앞뒤 무음은 잘라냄), 장면 길이를 음성에 맞춘다.
+  음성이 있으면 dur는 무시된다. 오래 보여줘야 하는 장면만 "min": 초.
 """
 import base64
 import html
@@ -48,7 +50,7 @@ OWNER_REPO = "jupjup-alarm/jupjup-cards"
 BRANCH = os.environ.get("CARDS_BRANCH", "main")
 RAW_BASE = f"https://raw.githubusercontent.com/{OWNER_REPO}/{BRANCH}"
 W, H, FPS = 1080, 1920, 30
-LEAD, TAIL = 0.3, 0.45
+LEAD, TAIL, END_HOLD = 0.15, 0.35, 1.2   # 음성 앞 여백, 뒤 여백, 마지막 장면 끝 여유
 
 PAPER, INK, YEL, SAGE, LINE, CORAL = "#FBF7EF", "#2B3040", "#F5C84C", "#9DBB97", "#E6DFD1", "#E8735F"
 
@@ -256,6 +258,27 @@ window.renderAt=function(t){
 """
 
 
+BGM_DIR = HERE / "bgm"
+BGM_DB = -13  # 배경음악 기본 크기 (목소리 대비). 목소리 나올 때는 덕킹으로 더 작아짐
+
+
+def pick_bgm(spec):
+    """원고 "bgm": "sunny"|"cozy"|"bounce" → 그 곡, false → 없음, 생략 → slug로 골고루 돌려씀."""
+    b = spec.get("bgm", "auto")
+    if b is False or b in ("", "none", "off"):
+        return None
+    files = sorted(BGM_DIR.glob("*.mp3"))
+    if not files:
+        return None
+    if b != "auto":
+        f = BGM_DIR / f"{b}.mp3"
+        if not f.exists():
+            raise SystemExit(f"배경음악 없음: {b} (있는 곡: {', '.join(x.stem for x in files)})")
+        return f
+    import zlib
+    return files[zlib.crc32(spec["slug"].encode()) % len(files)]
+
+
 def audio_len(path):
     r = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(path)],
                        capture_output=True, text=True, check=True)
@@ -263,31 +286,42 @@ def audio_len(path):
 
 
 def voice_files(spec):
+    """장면별 음성 파일. 앞뒤 무음을 잘라 장면 사이가 끊기지 않게 한다."""
     v = str(spec.get("voice") or "").split(" ")[0].strip()
     if not v:
         return [None] * len(spec["scenes"])
     d = ROOT / v
     speed = float(spec.get("voice_speed", 1.0))
     tmp = HERE / "reels" / spec["slug"] / "_voice"
+    tmp.mkdir(parents=True, exist_ok=True)
+    trim = ("silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.03,areverse,"
+            "silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.05,areverse")
+    if abs(speed - 1.0) > 0.01:
+        trim += f",atempo={speed}"
     out = []
     for i in range(len(spec["scenes"])):
         f = d / f"{i + 1:02d}.mp3"
-        if f.exists() and abs(speed - 1.0) > 0.01:
-            tmp.mkdir(parents=True, exist_ok=True)
-            g = tmp / f.name
-            subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", str(f), "-filter:a", f"atempo={speed}", str(g)], check=True)
-            f = g
-        out.append(f if f.exists() else None)
+        if not f.exists():
+            out.append(None)
+            continue
+        g = tmp / f"{i + 1:02d}.wav"
+        subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", str(f), "-af", trim, "-ar", "44100", str(g)], check=True)
+        out.append(g)
     return out
 
 
 def timeline(spec):
+    """음성이 있으면 장면 길이 = 음성 길이 + 짧은 여백 (원고 dur는 무시, 'min'이 있으면 최소 길이).
+    음성이 없으면 원고 dur(기본 4초)."""
     vf = voice_files(spec)
     t, out = 0.0, []
-    for sc, f in zip(spec["scenes"], vf):
-        d = float(sc.get("dur", 4))
+    for i, (sc, f) in enumerate(zip(spec["scenes"], vf)):
         if f:
-            d = max(d, LEAD + audio_len(f) + TAIL)
+            d = max(float(sc.get("min", 1.8)), LEAD + audio_len(f) + TAIL)
+        else:
+            d = float(sc.get("dur", 4))
+        if i == len(vf) - 1:
+            d += END_HOLD
         out.append((t, d, f))
         t += d
     return out, t
@@ -390,18 +424,32 @@ def main(path):
 
     mp4 = out / "reel.mp4"
     voices = [(t0, f) for t0, _, f in tl if f]
+    bgm = pick_bgm(spec)
     cmd = ["ffmpeg", "-y", "-loglevel", "error", "-framerate", str(FPS), "-i", str(frames / "%05d.jpg"),
            "-f", "lavfi", "-t", f"{total:.3f}", "-i", "anullsrc=channel_layout=stereo:sample_rate=44100"]
+    if bgm:
+        cmd += ["-stream_loop", "-1", "-i", str(bgm)]
+    first = 3 if bgm else 2
     for _, f in voices:
         cmd += ["-i", str(f)]
-    if voices:
-        fl = "".join(f"[{k + 2}:a]aformat=sample_rates=44100:channel_layouts=stereo,adelay={int((t0 + LEAD) * 1000)}:all=1[v{k}];"
-                     for k, (t0, _) in enumerate(voices))
-        fl += "[1:a]" + "".join(f"[v{k}]" for k in range(len(voices))) + \
-              f"amix=inputs={len(voices) + 1}:normalize=0:duration=first,loudnorm=I=-15:TP=-1.5:LRA=11,aresample=44100,atrim=0:{total:.3f}[aout]"
-        cmd += ["-filter_complex", fl, "-map", "0:v", "-map", "[aout]"]
+    fl = "".join(f"[{k + first}:a]aformat=sample_rates=44100:channel_layouts=stereo,adelay={int((t0 + LEAD) * 1000)}:all=1[v{k}];"
+                 for k, (t0, _) in enumerate(voices))
+    fl += "[1:a]" + "".join(f"[v{k}]" for k in range(len(voices))) + \
+          f"amix=inputs={len(voices) + 1}:normalize=0:duration=first[vox];"
+    if bgm:
+        # 배경음악: 목소리보다 한참 작게, 목소리가 나올 때는 더 줄이고(덕킹) 끝에서 서서히 사라짐
+        fo = max(0.0, total - 1.6)
+        fl += (f"[2:a]aformat=sample_rates=44100:channel_layouts=stereo,atrim=0:{total:.3f},asetpts=PTS-STARTPTS,"
+               f"volume={BGM_DB}dB,afade=t=in:d=0.4,afade=t=out:st={fo:.2f}:d=1.6[bg];")
+        if voices:
+            fl += ("[vox]asplit=2[vx][key];[bg][key]sidechaincompress=threshold=0.03:ratio=4:attack=30:release=450:makeup=1[bgd];"
+                   "[vx][bgd]amix=inputs=2:normalize=0:duration=first[mix];")
+        else:
+            fl += "[vox][bg]amix=inputs=2:normalize=0:duration=first[mix];"
     else:
-        cmd += ["-map", "0:v", "-map", "1:a"]
+        fl += "[vox]anull[mix];"
+    fl += f"[mix]loudnorm=I=-15:TP=-1.5:LRA=11,aresample=44100,atrim=0:{total:.3f}[aout]"
+    cmd += ["-filter_complex", fl, "-map", "0:v", "-map", "[aout]"]
     cmd += ["-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-pix_fmt", "yuv420p", "-r", str(FPS),
             "-c:a", "aac", "-b:a", "160k", "-shortest", "-movflags", "+faststart", str(mp4)]
     subprocess.run(cmd, check=True)
@@ -421,7 +469,7 @@ def main(path):
         s.unlink()
 
     base = f"{RAW_BASE}/2kids/reels/{slug}"
-    manifest = {"slug": slug, "duration": round(total, 2), "voiced": bool(voices), "video": f"{base}/reel.mp4",
+    manifest = {"slug": slug, "duration": round(total, 2), "voiced": bool(voices), "bgm": bgm.stem if bgm else None, "video": f"{base}/reel.mp4",
                 "cover": f"{base}/cover.jpg", "size_mb": round(mp4.stat().st_size / 1e6, 2), "warnings": warns}
     (out / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=1))
     print(json.dumps(manifest, ensure_ascii=False))
