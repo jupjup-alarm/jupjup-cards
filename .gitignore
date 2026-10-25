@@ -1,3 +1,4 @@
 reels/*/reel.html
 reels/*/_frames/
 reels/*/_voice/
+__pycache__/

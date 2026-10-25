@@ -110,7 +110,30 @@ def note_html(card):
     return f'<div class="note">{esc(note)}</div>' if note else ""
 
 
+def rgba(hex_, a):
+    h = hex_.lstrip("#")
+    r, g, b = (int(h[i:i + 2], 16) for i in (0, 2, 4))
+    return f"rgba({r},{g},{b},{a})"
+
+
+def photo_uri(path):
+    """저장소 안 사진 경로(photos/xxx.jpg) → data URI. 없으면 None."""
+    if not path:
+        return None
+    p = ROOT / path
+    if not p.exists():
+        return None
+    import base64
+    mime = {".png": "image/png", ".webp": "image/webp"}.get(p.suffix.lower(), "image/jpeg")
+    return f"data:{mime};base64,{base64.b64encode(p.read_bytes()).decode()}"
+
+
 def cover(card, th, n, total):
+    if card.get("photo"):
+        uri = photo_uri(card["photo"])
+        if uri:
+            return cover_photo(card, th, uri)
+        PHOTO_WARN.append(f"사진 {card['photo']} 없음 → 기본 표지로 대체")
     chips = card.get("chips") or []
     chip_html = ""
     for i, c in enumerate(chips[:2]):
@@ -129,6 +152,38 @@ def cover(card, th, n, total):
   </div>
   <div class="swipe"><span>넘겨서 확인하기</span>{ARROW.replace('#FFFFFF', fg)}</div>
   <div class="char">{char_svg(card.get('face'), th)}</div>
+</div>'''
+
+
+def cover_photo(card, th, uri):
+    """실사 표지: 위쪽은 단지 사진, 아래로 갈수록 시리즈 색으로 덮이고 그 위에 큰 글자.
+    photo_credit(필수 권장): 예) "이미지: LH 제공 조감도 · 실제와 다를 수 있음"
+    photo_pos(선택): CSS object-position, 예) "center 30%"."""
+    chips = card.get("chips") or []
+    chip_html = ""
+    for i, c in enumerate(chips[:2]):
+        cls = "chip" if i == 0 else "chip2"
+        chip_html += f'<span class="{cls}">{esc(c)}</span>'
+    main = "".join(f'<div class="fitw">{hl(l, card.get("highlight"), th["hl"])}</div>'
+                   for l in lines(card.get("lines", [])))
+    bg = th["bg"]
+    fg = "#FFFFFF"
+    grad = (f"linear-gradient(180deg,{rgba(bg, .4)} 0%,{rgba(bg, 0)} 14%,{rgba(bg, 0)} 34%,"
+            f"{rgba(bg, .82)} 50%,{bg} 62%,{bg} 100%)")
+    credit = card.get("photo_credit") or ""
+    return f'''
+<div class="card cover pcover" style="background:{bg};color:{fg}">
+  <img class="pimg" src="{uri}" alt="" style="object-position:{esc(card.get('photo_pos') or 'center 40%')}">
+  <div class="pshade" style="background:{grad}"></div>
+  <div class="brand big" style="position:relative">{BELL.format(s=44, c=th['logo'] if th['logo'] != th['bg'] else '#FFFFFF')}<span>줍줍알람</span></div>
+  {f'<div class="pcredit">{esc(credit)}</div>' if credit else ''}
+  <div class="zoom cover-main pmain">
+    <div class="chips">{chip_html}</div>
+    <div class="cover-title">{main}</div>
+    <div class="cover-sub" style="color:{th['sub'] if th.get('fg') is None else '#FFFFFF'}">{esc(card.get('sub'))}</div>
+  </div>
+  <div class="swipe"><span>넘겨서 확인하기</span>{ARROW}</div>
+  <div class="char pchar">{char_svg(card.get('face'), th)}</div>
 </div>'''
 
 
@@ -262,6 +317,7 @@ def mapcard(card, th, n, total):
 
 
 MAP_INFO = []
+PHOTO_WARN = []
 BUILDERS = {"cover": cover, "info": info, "check": check, "closing": closing, "week": week, "map": mapcard}
 
 CSS = """
@@ -326,6 +382,16 @@ body{margin:0;width:1080px;height:1350px;overflow:hidden}
 .mapbox svg,.mapbox img{display:block;width:100%;height:auto}
 .addr{margin-top:24px;font-size:36px;font-weight:700}
 .mrows{margin-top:24px}
+.pimg{position:absolute;left:0;top:0;width:1080px;height:900px;object-fit:cover}
+.pshade{position:absolute;inset:0}
+.pcover .brand{text-shadow:0 2px 10px rgba(0,0,0,.35)}
+.pcredit{position:absolute;right:80px;top:92px;font-size:22px;font-weight:500;color:rgba(255,255,255,.85);
+ text-shadow:0 1px 6px rgba(0,0,0,.6);max-width:640px;text-align:right}
+.pmain{margin-top:auto;margin-bottom:120px;gap:26px;position:relative}
+.pcover .cover-title{font-size:132px}
+.pcover .cover-sub{max-width:700px;font-size:40px}
+.pcover .swipe{z-index:2}
+.pchar{width:270px;height:270px;right:44px;bottom:36px}
 .disc{margin-top:auto;font-size:24px;font-weight:500;color:#5B6472;text-align:center;line-height:1.5;white-space:pre-line}
 """
 
@@ -414,6 +480,7 @@ def render(spec_path):
         for i, card in enumerate(cards, 1):
             kind = card.get("type", "info")
             MAP_INFO.clear()
+            PHOTO_WARN.clear()
             body = BUILDERS[kind](card, th, i, total)
             vars_ = f'<div style="--chip-bg:{th["chip_bg"]};--chip-fg:{th["chip_fg"]};--outline:{th["outline"]};--chip2-fg:{th.get("chip2_fg", "#FFFFFF")};display:contents">{body}</div>'
             tmp = out / f"_tmp_{i:02d}.html"
@@ -422,6 +489,7 @@ def render(spec_path):
             page.evaluate("document.fonts.ready")
             page.wait_for_timeout(150)
             w = page.evaluate(FIT_JS)
+            w += ["PHOTO: " + x for x in PHOTO_WARN]
             for mi in MAP_INFO:
                 if mi.get("error") and mi.get("found_sigungu"):
                     w.append("MAP: " + mi["error"])

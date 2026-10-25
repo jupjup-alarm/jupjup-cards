@@ -39,7 +39,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT))
-from render import THEMES, FACES, BELL, esc, hl  # noqa: E402
+from render import THEMES, FACES, BELL, esc, hl, rgba, photo_uri  # noqa: E402
+WARN = []
 
 OWNER_REPO = "jupjup-alarm/jupjup-cards"
 BRANCH = os.environ.get("CARDS_BRANCH", "main")
@@ -95,9 +96,25 @@ def scene_html(sc, th, idx, start, end):
                                           f'style="display:inline-block;color:{th["hl"]}">{esc(sc["count"]["to"])}</span>')
                 txt = f'<span style="color:{th["hl"]}">{txt}</span>'
             lines += f'<div class="hline punch" data-p="{start:.2f}">{txt}</div>'
+        uri = photo_uri(sc.get("photo"))
+        if sc.get("photo") and not uri:
+            WARN.append(f"사진 {sc['photo']} 없음 → 사진 없이 만듦")
+        if uri:
+            bg = th["bg"]
+            grad = (f"linear-gradient(180deg,{rgba(bg, .45)} 0%,{rgba(bg, .1)} 22%,{rgba(bg, .2)} 36%,"
+                    f"{rgba(bg, .86)} 50%,{bg} 62%,{bg} 100%)")
+            credit = sc.get("photo_credit") or ""
+            back = (f'<img class="hph kb" data-s="{start:.3f}" data-e="{end:.3f}" src="{uri}" alt="" '
+                    f'style="object-position:{esc(sc.get("photo_pos") or "center 40%")}">'
+                    f'<div class="hshade" style="background:{grad}"></div>'
+                    + (f'<div class="hcredit">{esc(credit)}</div>' if credit else ""))
+            cls = "scene hook photo"
+        else:
+            back = f'<div class="blob" style="background:{th["spark"]}"></div>'
+            cls = "scene hook"
         return f'''
-<section class="scene hook" data-dark="1" {a} style="background:{th['bg']}">
-  <div class="blob" style="background:{th['spark']}"></div>
+<section class="{cls}" data-dark="1" {a} style="background:{th['bg']}">
+  {back}
   <div class="chips">{chips}</div>
   <div class="hlines" style="color:{th['ink'] if th.get('fg') is None else th['fg']}">{lines}</div>
   <div class="hsub in" data-in="{start + 0.25:.2f}" style="color:{th['sub']}">{esc(sc.get('sub'))}</div>
@@ -147,6 +164,14 @@ html,body{word-break:keep-all;width:1080px;height:1920px;overflow:hidden;backgro
 .hlines{font-family:'Black Han Sans';font-size:190px;line-height:1.08;letter-spacing:-2px}
 .hsub{font-size:52px;font-weight:700;margin-top:44px;line-height:1.4;white-space:pre-line}
 .char{position:absolute;right:170px;bottom:420px;width:320px;height:320px}
+.hph{position:absolute;left:0;top:0;width:1080px;height:1250px;object-fit:cover;transform-origin:center 40%}
+.hshade{position:absolute;inset:0}
+.hcredit{position:absolute;right:84px;top:400px;font-size:26px;font-weight:500;color:rgba(255,255,255,.85);
+ text-shadow:0 1px 6px rgba(0,0,0,.6);max-width:760px;text-align:right}
+.hook.photo{justify-content:flex-end}
+.hook.photo .char{display:none}
+.hook.photo .chips,.hook.photo .hlines,.hook.photo .hsub{position:relative}
+.hook.photo .hlines{font-size:170px;text-shadow:0 4px 24px rgba(0,0,0,.25)}
 .points{justify-content:center}
 .eyebrow{font-size:50px;font-weight:900;margin-bottom:18px}
 .ptitle{white-space:pre-line;font-family:'Black Han Sans';font-size:124px;line-height:1.12;margin-bottom:56px;letter-spacing:-1px}
@@ -191,6 +216,9 @@ window.renderAt=function(t){
     const k=el.classList.contains('pop')?back(p):ease(p);
     el.style.opacity=ease(p);
     el.style.transform=el.classList.contains('pop')?'translateY('+((1-k)*80)+'px) scale('+(0.85+0.15*k)+')':'translateY('+((1-k)*60)+'px)';
+  });
+  document.querySelectorAll('.kb').forEach(el=>{
+    const a=+el.dataset.s,e=+el.dataset.e; el.style.transform='scale('+(1.0+0.10*cl((t-a)/(e-a)))+')';
   });
   document.querySelectorAll('.punch').forEach(el=>{
     const k=ease(cl((t-(+el.dataset.p))/0.25)); el.style.transform='scale('+(1.05-0.05*k)+')'; el.style.transformOrigin='left center';
@@ -328,7 +356,7 @@ FIT_JS = """
     const vis = s.style.opacity, vv = s.style.visibility;
     s.style.opacity = 1; s.style.visibility = 'visible';
     s.querySelectorAll('.in').forEach(e => { e.dataset.o = e.style.opacity; e.style.opacity = 1; });
-    const bottom = () => Math.max(...[...s.children].filter(k => !k.classList.contains('blob') && !k.classList.contains('char'))
+    const bottom = () => Math.max(...[...s.children].filter(k => !['blob','char','hph','hshade','hcredit'].some(c => k.classList.contains(c)))
                                        .map(k => k.getBoundingClientRect().bottom));
     let k = 0;
     while (bottom() > LIMIT && k < 5) {
@@ -414,7 +442,7 @@ def main(path):
 
     base = f"{RAW_BASE}/reels/{slug}"
     manifest = {"slug": slug, "duration": round(total, 2), "voiced": bool(voices), "video": f"{base}/reel.mp4",
-                "cover": f"{base}/cover.jpg", "size_mb": round(mp4.stat().st_size / 1e6, 2)}
+                "cover": f"{base}/cover.jpg", "size_mb": round(mp4.stat().st_size / 1e6, 2), "warnings": WARN}
     (out / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=1))
     print(json.dumps(manifest, ensure_ascii=False))
 

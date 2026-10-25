@@ -11,6 +11,7 @@
 - `templates/char_*.svg` — 종이 캐릭터 (surprise=깜짝, happy=신남, wink=윙크, closing=마무리)
 - `fonts/` — Black Han Sans, Noto Sans KR (OFL)
 - `maps/` — 시트 스크립트가 올리는 네이버 지도 이미지
+- `photos/` — 시트 스크립트가 올리는 단지 사진 ('청약조사' W열 이미지 주소 → AA열에 경로)
 - `mapgen.py`, `data/` — 대체용 경계 지도 (통계청 SGIS 2018 행정구역 경계, 공공누리 제1유형)
 
 ## 원고(JSON) 형식
@@ -32,6 +33,8 @@
 }
 ```
 - cover: `lines`는 2줄 권장, 한 줄 6~7자 이내 (넘치면 자동으로 글자가 줄어듦). `chips` 첫 칸은 시리즈 태그(괄호 없이), 둘째 칸은 문턱 태그(선택).
+- **실사 표지**: '청약조사' AA열에 `photos/…jpg`(png·webp)가 있으면 cover에 `"photo": "photos/…"`, `"photo_credit": "이미지: <X열 출처 기관> 제공 조감도 · 실제와 다를 수 있음"`(실사진이면 "이미지: <출처> · <라이선스>")을 넣는다. 위쪽은 사진, 아래는 시리즈 색 위에 큰 글자. 사진에서 단지가 잘리면 `"photo_pos": "center 30%"`처럼 조정. AA열이 비었거나 "없음"·"사용 불가"·"사진 실패"면 photo 없이 기본 표지. 파일이 없으면 warnings에 `PHOTO:`가 나오고 기본 표지로 대체된다.
+  - 사진 출처 우선순위(사용자 결정 2026-10-25): ① 공공누리 1유형(정책브리핑·국토부·LH 보도자료) ② 위키미디어 커먼즈 CC BY·BY-SA ③ 사업주체 공식 홍보 이미지(LH청약플러스 '단지조감도' 탭·팸플릿·분양 홈페이지 조감도). 공공누리 2·3·4유형, CC NC·ND, 네이버·카카오·구글 로드뷰·지도 캡처, 블로그·카페·부동산 앱 사진은 쓰지 않는다.
 - info: `rows`는 2~4개. 값이 길면 자동 줄바꿈되고, 원하는 곳에서 끊으려면 값에 `\n`을 넣는다. `title`은 문자열 또는 줄 배열.
 - check: `items` 최대 3개.
 - week (주간 일정 목록, 이번주청약용): `{"type": "week", "title": "10/27 ~ 10/29", "items": [{"date": "10/27", "dow": "월", "series": "줍줍알람", "name": "단지명", "point": "한 줄 포인트"}]}` — 한 장에 최대 4건, 넘치면 장을 나눈다. 표지는 `chips: ["이번주청약", "10/27 ~ 11/02"]`.
@@ -64,5 +67,6 @@ main에 푸시가 거절되면 `cards` 브랜치에 푸시하고 `CARDS_BRANCH=c
 ## 숏츠(릴스) — `reel.py`
 - 원고: `reels/specs/<slug>.json` → `python3 reel.py reels/specs/<slug>.json` → `reels/<slug>/reel.mp4`, `cover.jpg`, `preview.jpg`, `manifest.json`
 - 장면: `hook`(첫 프레임부터 훅이 보임 — 1초 룰, lines의 `{n}` 자리에 `count.to` 숫자가 강조 펄스), `points`(rows 2~4개, text 선택), `cta`. 1080×1920. 핵심 내용은 세로 가운데(피드 4:5 영역 y≈285~1635)에 모으고, 위 300px·아래 420px·오른쪽 140px(인스타 버튼 자리)는 비운다 — 2026-10-25 "너무 위로 몰림" 피드백 반영.
+- 훅 장면 실사 배경: hook에 `"photo"`, `"photo_credit"`(카드 표지와 같은 값), 선택 `"photo_pos"`를 넣으면 위쪽에 단지 사진이 천천히 확대되고 글자는 아래로 내려간다 (종이 캐릭터는 숨김). 표지 cover.jpg에도 사진이 들어간다.
 - 내레이션: 원고에 `"voice": "voices/<id>/"` (시트 '오늘의 발행 플랜' AA열 값)을 넣으면 `voices/<id>/01.mp3`… 를 장면 순서대로 붙이고, 장면 길이를 음성에 맞춰 늘리고, 종이 캐릭터 입을 음성 크기에 맞춰 움직인다. 음성은 시트 스크립트가 Z열 대본(장면마다 `---`로 구분)으로 구글 TTS를 돌려 올린다. 렌더링 전 `git pull --rebase origin main`.
 - 올리기: `git add reels && git commit -m "reels: <slug>" && git push origin HEAD:main` (`reel.html`은 올리지 않음). S열에 `manifest.json`의 video, cover 주소를 줄바꿈으로 → 시트 스크립트가 릴스로 게시.
