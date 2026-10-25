@@ -68,5 +68,8 @@ git add 2kids/specs 2kids/cards && git commit -m "2kids: <slug>" && git push ori
 - 형식은 `2kids/reel.py` 맨 위 설명과 `2kids/reels/specs/sample-reel.json` 참고. 장면: `hook`(lines에 `{n}` → 0부터 `count.to`까지 숫자 올라감), `say`(한마디 + 손글씨 note), `points`(rows 2~4), `twins`(rows [항목, 한 명, 쌍둥이]), `checks`(items 3~4), `cta`(lines + 저장·팔로우 + 출처, 상품이면 `link_note`).
 - 1080×1920, 위 250px·아래 400px엔 핵심 글자 금지 (렌더 warnings에 '가림 영역 침범'이 나오면 문구를 줄임). 오른쪽 아래는 말하는 쌍둥이 자리.
 - 내레이션: `"voice": "2kids/voices/<id>/"` (시트 발행계획 AA열 값의 앞부분). 시트 스크립트가 Z열 대본(장면마다 `---`)을 구글 TTS로 돌려 `2kids/voices/<id>/01.mp3`…를 올린다. 대본 조각 수 = 장면 수. 렌더 전 `git pull --rebase origin main`.
+- 장면 길이는 음성에 맞춰 자동 (앞뒤 무음 잘라내고 장면 사이 약 0.5초). 음성이 있으면 `dur`는 무시, 오래 보여줘야 하는 장면만 `"min": 초`.
+- 배경음악: `"bgm": "sunny"`(밝음·지원금/혜택) | `"cozy"`(잔잔·뉴스/공감) | `"bounce"`(경쾌·꿀팁/체크) | `false`. 생략하면 slug에 따라 골고루 돌려씀. 목소리가 나올 때 자동으로 작아진다(덕킹). 곡은 `2kids/bgm.py`로 직접 합성한 자체 음원이라 저작권 문제 없음.
+- 목소리 기본값: 구글 TTS `ko-KR-Chirp3-HD-Leda`, 속도 1.2 (시트 스크립트 TTS_VOICE·TTS_RATE 속성으로 변경).
 - 상품을 다루면 `"ad": true` → 첫 장면에 "광고 · 링크 구매 시 수수료를 받아요" 표시.
 - 올리기: `git add 2kids/reels/specs 2kids/reels/<slug> && git commit -m "2kids reels: <slug>" && git push origin HEAD:main`. 발행계획 R행 U열에 manifest의 video, cover 주소를 줄바꿈으로, 짝이 되는 스레드 T행 U열에는 video 주소만.
