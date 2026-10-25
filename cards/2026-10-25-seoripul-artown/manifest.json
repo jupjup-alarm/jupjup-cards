@@ -2,7 +2,7 @@
   "slug": "2026-10-25-seoripul-artown",
   "title": "서리풀 청년아트타운(청년예술인주택) 잔여세대",
   "series": "임대알람",
-  "count": 8,
+  "count": 7,
   "urls": [
     "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-25-seoripul-artown/01.jpg",
     "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-25-seoripul-artown/02.jpg",
@@ -10,42 +10,37 @@
     "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-25-seoripul-artown/04.jpg",
     "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-25-seoripul-artown/05.jpg",
     "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-25-seoripul-artown/06.jpg",
-    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-25-seoripul-artown/07.jpg",
-    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-25-seoripul-artown/08.jpg"
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-25-seoripul-artown/07.jpg"
   ],
   "warnings": {},
   "boards": [
     {
       "file": "2026-10-25-seoripul-artown-01.dc.html",
-      "title": "서리풀 청년아트타운(청년예술인주택) 잔여세대 1/8"
+      "title": "서리풀 청년아트타운(청년예술인주택) 잔여세대 1/7"
     },
     {
       "file": "2026-10-25-seoripul-artown-02.dc.html",
-      "title": "서리풀 청년아트타운(청년예술인주택) 잔여세대 2/8"
+      "title": "서리풀 청년아트타운(청년예술인주택) 잔여세대 2/7"
     },
     {
       "file": "2026-10-25-seoripul-artown-03.dc.html",
-      "title": "서리풀 청년아트타운(청년예술인주택) 잔여세대 3/8"
+      "title": "서리풀 청년아트타운(청년예술인주택) 잔여세대 3/7"
     },
     {
       "file": "2026-10-25-seoripul-artown-04.dc.html",
-      "title": "서리풀 청년아트타운(청년예술인주택) 잔여세대 4/8"
+      "title": "서리풀 청년아트타운(청년예술인주택) 잔여세대 4/7"
     },
     {
       "file": "2026-10-25-seoripul-artown-05.dc.html",
-      "title": "서리풀 청년아트타운(청년예술인주택) 잔여세대 5/8"
+      "title": "서리풀 청년아트타운(청년예술인주택) 잔여세대 5/7"
     },
     {
       "file": "2026-10-25-seoripul-artown-06.dc.html",
-      "title": "서리풀 청년아트타운(청년예술인주택) 잔여세대 6/8"
+      "title": "서리풀 청년아트타운(청년예술인주택) 잔여세대 6/7"
     },
     {
       "file": "2026-10-25-seoripul-artown-07.dc.html",
-      "title": "서리풀 청년아트타운(청년예술인주택) 잔여세대 7/8"
-    },
-    {
-      "file": "2026-10-25-seoripul-artown-08.dc.html",
-      "title": "서리풀 청년아트타운(청년예술인주택) 잔여세대 8/8"
+      "title": "서리풀 청년아트타운(청년예술인주택) 잔여세대 7/7"
     }
   ]
 }
