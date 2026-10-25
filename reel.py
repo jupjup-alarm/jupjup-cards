@@ -235,9 +235,16 @@ def voice_files(spec):
     if not v:
         return [None] * len(spec["scenes"])
     d = ROOT / v
+    speed = float(spec.get("voice_speed", 1.0))
+    tmp = ROOT / "reels" / spec["slug"] / "_voice"
     out = []
     for i in range(len(spec["scenes"])):
         f = d / f"{i + 1:02d}.mp3"
+        if f.exists() and abs(speed - 1.0) > 0.01:   # 말 빠르기 조정 (음높이 유지)
+            tmp.mkdir(parents=True, exist_ok=True)
+            g = tmp / f.name
+            subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", str(f), "-filter:a", f"atempo={speed}", str(g)], check=True)
+            f = g
         out.append(f if f.exists() else None)
     return out
 
@@ -307,6 +314,7 @@ def main(path):
     frames = out / "_frames"
     if frames.exists():
         shutil.rmtree(frames)
+    shutil.rmtree(out / "_voice", ignore_errors=True)
     frames.mkdir(parents=True)
     page, total, tl = build(spec)
     (out / "reel.html").write_text(page)  # 작업용 (저장소에 올리지 않음)
