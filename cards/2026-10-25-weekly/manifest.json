@@ -1,0 +1,48 @@
+{
+  "slug": "2026-10-25-weekly",
+  "title": "이번주 청약 일정 (10/26~11/01)",
+  "series": "이번주청약",
+  "count": 6,
+  "urls": [
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-25-weekly/01.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-25-weekly/02.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-25-weekly/03.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-25-weekly/04.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-25-weekly/05.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-25-weekly/06.jpg"
+  ],
+  "warnings": {
+    "02": [
+      "zoom 0.88"
+    ],
+    "03": [
+      "zoom 0.88"
+    ]
+  },
+  "boards": [
+    {
+      "file": "2026-10-25-weekly-01.dc.html",
+      "title": "이번주 청약 일정 (10/26~11/01) 1/6"
+    },
+    {
+      "file": "2026-10-25-weekly-02.dc.html",
+      "title": "이번주 청약 일정 (10/26~11/01) 2/6"
+    },
+    {
+      "file": "2026-10-25-weekly-03.dc.html",
+      "title": "이번주 청약 일정 (10/26~11/01) 3/6"
+    },
+    {
+      "file": "2026-10-25-weekly-04.dc.html",
+      "title": "이번주 청약 일정 (10/26~11/01) 4/6"
+    },
+    {
+      "file": "2026-10-25-weekly-05.dc.html",
+      "title": "이번주 청약 일정 (10/26~11/01) 5/6"
+    },
+    {
+      "file": "2026-10-25-weekly-06.dc.html",
+      "title": "이번주 청약 일정 (10/26~11/01) 6/6"
+    }
+  ]
+}
