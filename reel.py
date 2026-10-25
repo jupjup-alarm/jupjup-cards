@@ -24,7 +24,8 @@
 }
 - hook: lines 안의 {n} 자리에 0 → count.to 로 숫자가 올라감 (원고 숫자 그대로).
 - points: rows 2~4개. 한 줄씩 차례로 들어옴.
-- 인스타 화면 가림 영역(위 250px, 아래 400px)에는 핵심 글자를 두지 않는다.
+- 배치: 핵심 내용은 화면 세로 가운데(피드 4:5 미리보기 영역 y≈285~1635)에 모은다. 위 300px(릴스 탭·계정명),
+  아래 420px(캡션), 오른쪽 140px(좋아요·댓글 버튼, y 1000 아래)에는 글자·캐릭터를 두지 않는다.
 """
 import base64
 import html
@@ -135,18 +136,18 @@ def scene_html(sc, th, idx, start, end):
 CSS = """
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{word-break:keep-all;width:1080px;height:1920px;overflow:hidden;background:#fff;font-family:'Noto Sans KR',sans-serif;color:#0F1E3D}
-.scene{position:absolute;inset:0;opacity:0;padding:300px 84px 420px;display:flex;flex-direction:column;overflow:hidden}
-.brand{position:absolute;left:84px;top:180px;display:flex;align-items:center;gap:12px;font-weight:900;font-size:34px;z-index:5}
-.bar{position:absolute;left:84px;right:84px;top:250px;height:8px;border-radius:4px;background:rgba(15,30,61,.12);z-index:5;overflow:hidden}
+.scene{position:absolute;inset:0;opacity:0;padding:440px 84px 520px;display:flex;flex-direction:column;overflow:hidden}
+.brand{position:absolute;left:84px;top:300px;display:flex;align-items:center;gap:12px;font-weight:900;font-size:34px;z-index:5}
+.bar{position:absolute;left:84px;right:84px;top:370px;height:8px;border-radius:4px;background:rgba(15,30,61,.12);z-index:5;overflow:hidden}
 .bar i{display:block;height:100%;width:0}
-.hook{justify-content:center;padding-bottom:520px}
+.hook{justify-content:center;padding-bottom:560px}
 .blob{position:absolute;width:900px;height:900px;border-radius:50%;right:-380px;top:180px;opacity:.13}
 .chips{display:flex;gap:16px;margin-bottom:40px}
 .chip{font-weight:900;font-size:40px;padding:10px 26px;border-radius:14px}
 .hlines{font-family:'Black Han Sans';font-size:190px;line-height:1.08;letter-spacing:-2px}
 .hsub{font-size:52px;font-weight:700;margin-top:44px;line-height:1.4;white-space:pre-line}
-.char{position:absolute;right:70px;bottom:440px;width:380px;height:380px}
-.points{justify-content:center;padding-top:300px}
+.char{position:absolute;right:170px;bottom:420px;width:320px;height:320px}
+.points{justify-content:center}
 .eyebrow{font-size:50px;font-weight:900;margin-bottom:18px}
 .ptitle{white-space:pre-line;font-family:'Black Han Sans';font-size:124px;line-height:1.12;margin-bottom:56px;letter-spacing:-1px}
 .rows{display:flex;flex-direction:column;gap:26px}
@@ -154,22 +155,22 @@ html,body{word-break:keep-all;width:1080px;height:1920px;overflow:hidden;backgro
 .rl{flex:0 0 230px;font-size:44px;font-weight:900}
 .rv{font-size:58px;font-weight:800;line-height:1.3;white-space:pre-line}
 .ptext{white-space:pre-line;margin-top:48px;font-size:46px;font-weight:600;color:#5B6472;line-height:1.45}
-.cta{align-items:center;justify-content:center;text-align:center;padding-bottom:460px}
+.cta{align-items:center;justify-content:center;text-align:center;padding-top:420px;padding-bottom:460px}
 .cchar{width:380px;height:380px;margin-bottom:30px}
-.cline{font-family:'Black Han Sans';font-size:112px;line-height:1.15}
+.cline{font-family:'Black Han Sans';font-size:100px;line-height:1.15}
 .btns{margin-top:56px}
 .btn{display:inline-block;color:#fff;font-weight:900;font-size:46px;padding:26px 54px;border-radius:999px}
 .disc{margin-top:48px;font-size:30px;color:#5B6472;line-height:1.5}
 .in{opacity:0}
-.narrator{position:absolute;right:60px;bottom:430px;width:320px;height:320px;z-index:6;opacity:0}
+.narrator{position:absolute;left:60px;bottom:380px;width:270px;height:270px;z-index:6;opacity:0}
 .voiced .hook .char{display:none}
-.voiced .hook{padding-bottom:620px}
-.voiced .points{padding-bottom:720px;padding-top:290px}
+.voiced .hook{padding-bottom:640px}
+.voiced .points{padding-bottom:660px}
 .voiced .ptitle{font-size:108px;margin-bottom:36px}
 .voiced .rows{gap:20px}
 .voiced .row{padding:32px 40px}
 .voiced .rv{font-size:52px}
-.voiced .ptext{font-size:42px;margin-top:32px;padding-right:300px}
+.voiced .ptext{font-size:42px;margin-top:32px}
 """
 
 JS = """
@@ -325,7 +326,6 @@ def main(path):
     frames = out / "_frames"
     if frames.exists():
         shutil.rmtree(frames)
-    shutil.rmtree(out / "_voice", ignore_errors=True)
     frames.mkdir(parents=True)
     page, total, tl = build(spec)
     (out / "reel.html").write_text(page)  # 작업용 (저장소에 올리지 않음)
@@ -371,6 +371,7 @@ def main(path):
             "-c:a", "aac", "-b:a", "160k", "-shortest", "-movflags", "+faststart", str(mp4)]
     subprocess.run(cmd, check=True)
     shutil.rmtree(frames)
+    shutil.rmtree(out / "_voice", ignore_errors=True)
 
     from PIL import Image
     shutil.copy(stills[0], out / "cover.jpg")

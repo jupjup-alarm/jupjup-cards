@@ -63,6 +63,6 @@ main에 푸시가 거절되면 `cards` 브랜치에 푸시하고 `CARDS_BRANCH=c
 
 ## 숏츠(릴스) — `reel.py`
 - 원고: `reels/specs/<slug>.json` → `python3 reel.py reels/specs/<slug>.json` → `reels/<slug>/reel.mp4`, `cover.jpg`, `preview.jpg`, `manifest.json`
-- 장면: `hook`(첫 프레임부터 훅이 보임 — 1초 룰, lines의 `{n}` 자리에 `count.to` 숫자가 강조 펄스), `points`(rows 2~4개, text 선택), `cta`. 1080×1920, 위 250px·아래 400px엔 핵심 글자 금지.
+- 장면: `hook`(첫 프레임부터 훅이 보임 — 1초 룰, lines의 `{n}` 자리에 `count.to` 숫자가 강조 펄스), `points`(rows 2~4개, text 선택), `cta`. 1080×1920. 핵심 내용은 세로 가운데(피드 4:5 영역 y≈285~1635)에 모으고, 위 300px·아래 420px·오른쪽 140px(인스타 버튼 자리)는 비운다 — 2026-10-25 "너무 위로 몰림" 피드백 반영.
 - 내레이션: 원고에 `"voice": "voices/<id>/"` (시트 '오늘의 발행 플랜' AA열 값)을 넣으면 `voices/<id>/01.mp3`… 를 장면 순서대로 붙이고, 장면 길이를 음성에 맞춰 늘리고, 종이 캐릭터 입을 음성 크기에 맞춰 움직인다. 음성은 시트 스크립트가 Z열 대본(장면마다 `---`로 구분)으로 구글 TTS를 돌려 올린다. 렌더링 전 `git pull --rebase origin main`.
 - 올리기: `git add reels && git commit -m "reels: <slug>" && git push origin HEAD:main` (`reel.html`은 올리지 않음). S열에 `manifest.json`의 video, cover 주소를 줄바꿈으로 → 시트 스크립트가 릴스로 게시.
