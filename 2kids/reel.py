@@ -26,7 +26,7 @@
     {"type": "points", "dur": 6, "eyebrow": "핵심 정리", "title": "얼마나, 언제까지", "rows": [["대상", "2024년 이후 출생아"], ["금액", "**첫째 200만 원**"]]},
     {"type": "twins", "dur": 5, "title": "쌍둥이면 이렇게", "rows": [["바우처", "200만 원", "400만 원"]], "note": "아이마다 따로 나와요"},
     {"type": "checks", "dur": 5, "title": "신청 전 체크", "items": ["출생신고 먼저", "국민행복카드 준비", "사용 기한 확인"]},
-    {"type": "cta", "dur": 3.5, "lines": ["저장해두고", "신청 놓치지 마세요"], "highlight": "저장"}
+    {"type": "cta", "dur": 3.5, "lines": ["저장해두고", "신청 놓치지 마세요"], "highlight": "저장", "share": "출산 앞둔 친구한테 보내주세요"}
   ]
 }
 - 숫자·문구는 원고 그대로 (시트 정보조사 행과 같아야 함). **굵게** = 형광펜.
@@ -114,14 +114,17 @@ def scene_html(sc, idx, start, end, spec):
     a = f'data-s="{start:.3f}" data-e="{end:.3f}"'
     at = lambda d: f'data-in="{start + d:.2f}"'
     if t == "hook":
+        first = idx == 0
+        if first:   # 첫 프레임부터 훅이 다 보이게 (스크롤 1초 안에 판단)
+            at = lambda d: f'data-in="{start - 0.4:.2f}"' if d < 0.5 else f'data-in="{start + 0.2:.2f}"'
         chips = "".join(f'<span class="chip{" c2" if i else ""} in" {at(0.05 + i * 0.12)}>{esc(c)}</span>'
                         for i, c in enumerate(L(sc.get("chips") or [spec.get("series")])[:2]))
         lines = ""
         for i, ln in enumerate(L(sc.get("lines"))):
             txt = mark(ln, sc.get("highlight"))
             if "{n}" in txt:
-                txt = txt.replace("{n}", f'<span class="num" data-count="{sc["count"]["to"]}" data-cs="{start + 0.45:.2f}" '
-                                          f'data-cd="1.0">0</span>')
+                txt = txt.replace("{n}", f'<span class="num" data-count="{sc["count"]["to"]}" data-cs="{start + (0.0 if first else 0.45):.2f}" '
+                                          f'data-cd="{0.6 if first else 1.0}" data-from="{0.7 if first else 0}">0</span>')
                 txt = f'<span class="mk">{txt}</span>'
             lines += f'<div class="hline in pop" {at(0.15 + i * 0.2)}>{txt}</div>'
         sub = f'<div class="hsub in" {at(1.2)}>{mark(sc.get("sub"))}</div>' if sc.get("sub") else ""
@@ -155,10 +158,11 @@ def scene_html(sc, idx, start, end, spec):
     if t == "cta":
         lines = "".join(f'<div class="cline in pop" {at(0.2 + i * 0.2)}>{mark(ln, sc.get("highlight"))}</div>'
                         for i, ln in enumerate(L(sc.get("lines"))))
-        link = f'<div class="hand in" {at(0.9)}>{esc(sc["link_note"])}</div>' if sc.get("link_note") else ""
+        note = sc.get("link_note") or sc.get("share")   # share: 누구에게 보내면 좋은지 한 줄
+        link = f'<div class="hand in" {at(0.9)}>{esc(note)}</div>' if note else ""
         src = f'<div class="src in" {at(1.0)}>{esc(spec.get("source"))}</div>' if spec.get("source") else ""
         return (f'<section class="scene cta" {a}><div class="clines">{lines}</div>{link}'
-                f'<div class="btns in" {at(0.7)}><span class="btn">저장</span><span class="btn ghost">팔로우</span></div>{src}</section>')
+                f'<div class="btns in" {at(0.7)}><span class="btn">저장</span><span class="btn">공유</span><span class="btn ghost">팔로우</span></div>{src}</section>')
     raise ValueError(f"알 수 없는 장면: {t}")
 
 
@@ -202,10 +206,11 @@ html,body{word-break:keep-all;width:1080px;height:1920px;overflow:hidden;font-fa
 .box{width:96px;height:96px;flex-shrink:0;border:6px solid #2B3040;border-radius:20px;background:#fff;display:flex;align-items:center;justify-content:center}
 .ct{font-size:60px;font-weight:900;letter-spacing:-1px;line-height:1.25}
 .cta{align-items:flex-start}
+.cta .hand{margin-top:30px;font-size:66px}.cta .btns{margin-top:40px}.cta .src{margin-top:30px}
 .clines{font-size:116px;font-weight:900;line-height:1.18;letter-spacing:-4px}
-.btns{display:flex;gap:24px;margin-top:56px}
-.btn{font-size:48px;font-weight:900;padding:24px 56px;border-radius:999px;background:#2B3040;color:#FBF7EF}
-.btn.ghost{background:#fff;color:#2B3040;border:5px solid #2B3040;padding:19px 51px}
+.btns{display:flex;gap:20px;margin-top:56px}
+.btn{font-size:46px;font-weight:900;padding:24px 46px;border-radius:999px;background:#2B3040;color:#FBF7EF}
+.btn.ghost{background:#fff;color:#2B3040;border:5px solid #2B3040;padding:19px 41px}
 .src{margin-top:44px;font-size:34px;color:#6B6A66;font-weight:500}
 .narrator{position:absolute;right:60px;bottom:430px;width:540px;height:302px;z-index:6}
 .bubble{position:absolute;right:360px;bottom:745px;z-index:6;display:flex;gap:12px;opacity:0}
@@ -222,9 +227,10 @@ function fmt(n){return Math.round(n).toLocaleString('ko-KR')}
 window.renderAt=function(t){
   document.querySelectorAll('.scene').forEach(s=>{
     const a=+s.dataset.s,e=+s.dataset.e;
-    const o=cl((t-a)/0.25)*(e>=TOTAL-0.01?1:cl((e-t)/0.25));
+    const first=a<0.01;
+    const o=(first?1:cl((t-a)/0.25))*(e>=TOTAL-0.01?1:cl((e-t)/0.25));
     s.style.opacity=o; s.style.visibility=o>0?'visible':'hidden';
-    s.style.transform='translateX('+((1-ease(cl((t-a)/0.35)))*60)+'px)';
+    s.style.transform=first?'none':'translateX('+((1-ease(cl((t-a)/0.35)))*60)+'px)';
   });
   document.querySelectorAll('.in').forEach(el=>{
     const p=cl((t-(+el.dataset.in))/0.4);
@@ -239,7 +245,7 @@ window.renderAt=function(t){
   });
   document.querySelectorAll('[data-count]').forEach(el=>{
     const p=cl((t-(+el.dataset.cs))/(+el.dataset.cd));
-    el.textContent=fmt((+el.dataset.count)*ease(p));
+    const f0=+(el.dataset.from||0); el.textContent=fmt((+el.dataset.count)*(f0+(1-f0)*ease(p)));
   });
   document.querySelector('.bar i').style.width=(100*cl(t/TOTAL))+'%';
   const ad=document.querySelector('.ad'); if(ad){ad.style.opacity=cl((AD_END-t)/0.3);}

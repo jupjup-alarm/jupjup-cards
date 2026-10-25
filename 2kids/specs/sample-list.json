@@ -2,6 +2,7 @@
   "slug": "sample-list",
   "title": "샘플 · 노트형 표지 + 리스트·비교표·실사 (예시)",
   "series": "숫자 리스트",
+  "ad": true,
   "platform": "coupang",
   "cards": [
     {"type": "cover", "theme": "note", "chips": ["쟁여템 노트", "쌍둥이 기준"], "lines": ["둘이면 2배로", "닳는 것 3개"], "highlight": "2배로",

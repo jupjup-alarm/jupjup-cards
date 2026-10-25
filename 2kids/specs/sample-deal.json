@@ -2,6 +2,7 @@
   "slug": "sample-deal",
   "title": "샘플 · 물티슈 특가 (예시 숫자)",
   "series": "오늘 특가",
+  "ad": true,
   "platform": "toss",
   "cards": [
     {"type": "cover", "chips": ["오늘 특가", "밤 12시까지"], "lines": ["물티슈 1팩", "400원대"], "highlight": "400원대",

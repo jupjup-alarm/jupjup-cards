@@ -91,6 +91,7 @@ ICONS = {  # 24 그리드 선 아이콘 (직접 그림)
     "bell": '<path d="M6 16v-5a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 20a2 2 0 0 0 4 0"/>',
     "story": '<circle cx="12" cy="12" r="9" stroke-dasharray="3 2.4"/><path d="M12 8v8M8 12h8"/>',
     "bookmark": '<path d="M6 3h12v18l-6-4-6 4z"/>',
+    "send": '<path d="M21 3 3 10.5l7 2.5 2.5 7z"/><path d="M21 3 10 13"/>',
     "chat": '<path d="M4 5h16v11H9l-5 4z"/>',
     "cart": '<path d="M3 4h3l2 11h11l2-8H7"/><circle cx="10" cy="19" r="1.6"/><circle cx="17" cy="19" r="1.6"/>',
 }
@@ -119,6 +120,11 @@ def tape(cls=""):
     return f'<div class="tape {cls}"></div>'
 
 
+def is_ad(spec):
+    """상품(제휴 링크)을 다루는 카드뉴스만 광고 표시. 원고에 "ad": true가 있어야 함 (정보 카드는 생략)."""
+    return bool(spec.get("ad"))
+
+
 # ---------------------------------------------------------------- 카드 종류
 def c_cover(c, n, total, spec):
     """표지. theme: deal(잉크 배경·특가) | note(종이 배경). 대가성 문구 이미지 안에 고정."""
@@ -134,7 +140,7 @@ def c_cover(c, n, total, spec):
     hand = f'<div class="hand cover-hand">{esc(c["hand"])}</div>' if c.get("hand") else ""
     return f'''<div class="card cover {'dark' if dark else 'paper'}">
   {header(n, total, dark)}
-  <div class="disc-top">{icon('tag', 30, INK if not dark else YEL)}<span>{DISCLOSURE_SHORT}</span></div>
+  {f'<div class="disc-top">{icon("tag", 30, INK if not dark else YEL)}<span>{DISCLOSURE_SHORT}</span></div>' if is_ad(spec) else ""}
   <div class="zoom cbody">
     <div class="chips">{chips}</div>
     <div class="ctitle">{main}</div>
@@ -321,23 +327,34 @@ def c_photo(c, n, total, spec):
 
 
 def c_closing(c, n, total, spec):
-    """마무리: 링크 위치 안내 + 저장/팔로우 + 전체 대가성 문구."""
-    where = c.get("where") or "스토리 하이라이트"
-    how = {"story": ("story", "링크는 스토리 · 하이라이트에"),
-           "dm": ("chat", f'댓글에 “{c.get("keyword", "")}” 남기면 DM으로'),
-           "profile": ("bookmark", "링크는 프로필에")}.get(c.get("link", "story"))
+    """마무리. 상품 글(ad)이면 링크 위치 안내 + 대가성 문구, 정보 글이면 공유 유도.
+    share: 누구에게 보내면 좋은지 한 줄 (예: "어린이집 보내는 친구한테 보내주세요")."""
     lines = "".join(f'<div class="fitw">{mark(x, c.get("highlight"))}</div>' for x in L(c.get("lines") or ["필요할 때", "꺼내 보세요"]))
-    disc = DISCLOSURE_FULL.get(spec.get("platform", "coupang"), DISCLOSURE_FULL["coupang"])
+    btns = (f'<div class="btns"><span class="btn">{icon("bookmark", 38, PAPER)}저장</span>'
+            f'<span class="btn">{icon("send", 38, PAPER)}공유</span>'
+            f'<span class="btn ghost">{heads_icon(44)}팔로우</span></div>')
+    if is_ad(spec):
+        where = c.get("where") or "스토리 하이라이트"
+        how = {"story": ("story", "링크는 스토리 · 하이라이트에"),
+               "dm": ("chat", f'댓글에 “{c.get("keyword", "")}” 남기면 DM으로'),
+               "profile": ("bookmark", "링크는 프로필에")}.get(c.get("link", "story"))
+        disc = DISCLOSURE_FULL.get(spec.get("platform", "coupang"), DISCLOSURE_FULL["coupang"])
+        mid = f'<div class="howto">{icon(how[0], 44, INK)}<span>{esc(how[1])}</span></div><div class="where hand">{esc(where)}</div>'
+        tail = f'<div class="disc">{esc(disc)}</div>'
+    else:
+        share = c.get("share") or "필요한 친구한테 보내주세요"
+        mid = f'<div class="howto">{icon("send", 44, INK)}<span>{esc(share)}</span></div>'
+        mid += f'<div class="where hand">{esc(c["where"])}</div>' if c.get("where") else ""
+        tail = ""
     return f'''<div class="card closing paper">
   {header(n, total)}
   <div class="zoom ccol">
     <div class="ctitle2">{lines}</div>
-    <div class="howto">{icon(how[0], 44, INK)}<span>{esc(how[1])}</span></div>
-    <div class="where hand">{esc(where)}</div>
-    <div class="btns"><span class="btn">{icon("bookmark", 38, PAPER)}저장</span><span class="btn ghost">{heads_icon(44)}팔로우</span></div>
+    {mid}
+    {btns}
   </div>
   <div class="band small">{twins_svg(420)}</div>
-  <div class="disc">{esc(disc)}</div>
+  {tail}
 </div>'''
 
 
@@ -479,7 +496,7 @@ FIT_JS = """
   const z = document.querySelector('.zoom');
   const limit = () => {
     const f = card.querySelector('.foot'); if (f) return f.getBoundingClientRect().top - 8;
-    const b = card.querySelector('.badge') || card.querySelector('.band'); if (card.classList.contains('closing')) return card.querySelector('.disc').getBoundingClientRect().top - 16;
+    const b = card.querySelector('.badge') || card.querySelector('.band'); if (card.classList.contains('closing')) { const d = card.querySelector('.disc') || card.querySelector('.band'); return d.getBoundingClientRect().top - 16; }
     return card.querySelector('.band').getBoundingClientRect().top - 24;
   };
   const over = () => z.getBoundingClientRect().bottom > limit() || card.scrollHeight > 1351;

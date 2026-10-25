@@ -14,7 +14,7 @@
 ## 브랜드
 종이 #FBF7EF · 잉크 #2B3040 · 형광펜 #F5C84C · 세이지 #9DBB97 · 코랄 #E8735F.
 속지는 스프링 노트, 표지 하단엔 쌍둥이 뒷모습(1번 리본·2번 방울). 표지에는
-"광고 · 링크 구매 시 수수료를 받아요"가 자동으로 들어가고, 마무리 장에는 platform에 맞는 전체 대가성 문구가 자동으로 들어간다.
+"광고 · 링크 구매 시 수수료를 받아요"가, 마무리 장에는 platform에 맞는 전체 대가성 문구가 들어간다 — 단, 원고에 `"ad": true`가 있을 때만 (정보 카드에는 광고 표시가 없다).
 
 ## 원고(JSON) 형식
 ```json
@@ -22,7 +22,8 @@
   "slug": "2026-10-25-wipes",          // 영문 소문자·숫자·하이픈 (주소에 들어감)
   "title": "물티슈 특가",
   "series": "오늘 특가",                // 오늘 특가 → 표지 잉크(어두운) 테마, 그 외 → 종이 테마
-  "platform": "toss",                  // toss | coupang (마무리 장 대가성 문구)
+  "ad": true,                           // 상품(제휴 링크)을 다룰 때만. 없으면 광고 표시·대가성 문구 없음 (정보 카드 기본)
+  "platform": "toss",                  // ad일 때만: toss | coupang (마무리 장 대가성 문구)
   "cards": [ ... 5~7장 ... ]
 }
 ```
@@ -35,7 +36,7 @@
 - `compare` 비교표: `title`, `cols` (첫 칸 ""), `rows`, `best` 강조 열 번호(1부터), `hand`, `note`.
 - `check` 체크리스트: `eyebrow`, `title`, `items` 최대 3개, `postit` 포스트잇 손글씨(선택).
 - `photo` 실사: `name`, `badge`(예 "실사용 6개월째"), `image` "2kids/photos/<사진ID>.jpg", `text` 한 줄. **사진은행에 있는 실사용 제품만.**
-- `closing` 마무리 (항상 마지막): `lines` 2줄, `highlight`, `link` story|dm|profile, `keyword`(dm일 때), `where` 손글씨 위치 안내(예 "하이라이트 ‘오늘 특가’").
+- `closing` 마무리 (항상 마지막): `lines` 2줄, `highlight`, 버튼 저장·공유·팔로우. 정보 카드는 `share` "누구에게 보내면 좋은지" 한 줄(예 "어린이집 보내는 친구한테 보내주세요"). 상품 카드(`"ad": true`)만 `link` story|dm|profile, `keyword`(dm일 때), `where` 손글씨 위치 안내 + 대가성 문구.
 
 ## 정보 카드 구성 (기본)
 - 지원금·정책: cover → info(대상·금액·신청·기한) → info 또는 check(신청 방법·주의) → closing
