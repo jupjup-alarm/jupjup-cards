@@ -16,7 +16,7 @@
   episodes/<편>/reel_preview.jpg (장면별 정지 화면), reel_row.json (발행계획 A:L 한 행)
 
 목소리
-  - 환경변수 GOOGLE_TTS_KEY가 있으면 구글 TTS(기본 ko-KR-Chirp3-HD-Charon, TTS_VOICE·TTS_RATE로 변경)
+  - 환경변수 GOOGLE_TTS_KEY가 있으면 구글 TTS(기본 ko-KR-Chirp3-HD-Umbriel 속도 1.0 — 사용자 선택 2026-10-26, 음높이 가공은 쓰지 않음. TTS_VOICE·TTS_RATE로 변경)
   - 없으면 Cloudflare Workers AI MeloTTS 한국어(무료, CF_ACCOUNT_ID·CF_API_TOKEN)
   음성은 episodes/<편>/reel_audio/에 문장별로 저장해 두고, 문장이 바뀐 것만 다시 만든다.
 """
@@ -38,10 +38,10 @@ GAP, END_HOLD, LEAD = 0.30, 1.6, 0.12
 
 # ───────── 음성 ─────────
 def tts_google(text, key):
-    voice = os.environ.get("TTS_VOICE", "ko-KR-Chirp3-HD-Charon")
+    voice = os.environ.get("TTS_VOICE", "ko-KR-Chirp3-HD-Umbriel")
     body = {"input": {"text": text}, "voice": {"languageCode": "ko-KR", "name": voice},
             "audioConfig": {"audioEncoding": "LINEAR16", "sampleRateHertz": 48000,
-                            "speakingRate": float(os.environ.get("TTS_RATE", "1.1"))}}
+                            "speakingRate": float(os.environ.get("TTS_RATE", "1.0"))}}
     req = urllib.request.Request(f"https://texttospeech.googleapis.com/v1/text:synthesize?key={key}",
                                  data=json.dumps(body).encode(), headers={"Content-Type": "application/json"})
     return base64.b64decode(json.load(urllib.request.urlopen(req, timeout=60))["audioContent"]), 1.0
@@ -61,8 +61,8 @@ def speak(text, out, mode):
     """text → out(.wav, 48kHz mono, 앞뒤 무음 제거). 캐시 키는 문장+목소리."""
     key = os.environ.get("GOOGLE_TTS_KEY", "")
     use_google = mode == "google" or (mode == "auto" and key)
-    tag = hashlib.sha1((("g:" + os.environ.get("TTS_VOICE", "")) if use_google else "m:" + text).encode()
-                       + text.encode()).hexdigest()[:12]
+    voice_id = (os.environ.get("TTS_VOICE", "ko-KR-Chirp3-HD-Umbriel") + "@" + os.environ.get("TTS_RATE", "1.0")) if use_google else "melo"
+    tag = hashlib.sha1((voice_id + "|" + text).encode()).hexdigest()[:12]
     meta = out.with_suffix(".txt")
     if out.exists() and meta.exists() and meta.read_text() == tag:
         return
