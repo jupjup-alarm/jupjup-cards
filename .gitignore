@@ -9,3 +9,7 @@ ossak/engine/episodes/*/preview.jpg
 ossak/engine/episodes/*/rows.json
 ossak/engine/**/__pycache__/
 ossak/engine/cloudflare.env
+ossak/engine/episodes/*/reel_audio/
+ossak/engine/episodes/*/reel_work/
+ossak/engine/episodes/*/reel_preview.jpg
+ossak/engine/episodes/*/reel_row.json

@@ -2,7 +2,8 @@
  * 오싹알람 운영시트 스크립트 (Apps Script)
  *
  * 하는 일
- *  - 10분마다: 발행계획에서 시각이 된 '예약' 행을 인스타 캐러셀·스레드에 게시
+ *  - 10분마다: 발행계획에서 시각이 된 '예약' 행을 인스타 캐러셀·릴스·스레드에 게시
+ *    (릴스는 영상 처리가 길면 '처리중'으로 두고 다음 확인 때 게시)
  *  - 매시간: 성과(24시간·7일) 기록, 댓글 수집·위험 댓글 메일 알림, '답변대기' 답변 게시
  *  - 매일 08시: 팔로워 수 기록, 비축분 점검
  *  - 매주 월요일 04시: 인스타·스레드 토큰 자동 갱신 (60일 만료 방지)
@@ -113,7 +114,9 @@ function publishDue() {
     const now = new Date();
     let done = 0;
     for (let i = 0; i < vals.length && done < 2; i++) {
-      if (String(vals[i][P.status - 1]).trim() !== '예약') continue;
+      const st = String(vals[i][P.status - 1]).trim();
+      if (st === '처리중') { resumeReel_(sh, i + 2, vals[i]); done++; continue; }
+      if (st !== '예약') continue;
       const when = when_(vals[i][P.date - 1], disp[i][P.date - 1], vals[i][P.time - 1], disp[i][P.time - 1]);
       if (!when || when > now) continue;
       publishRow_(sh, i + 2, vals[i]);
@@ -147,11 +150,29 @@ function publishRow_(sh, row, v) {
       if (!urls.length) throw new Error('이미지 URL이 비어 있어요');
       if (urls.length > 20) throw new Error('캐러셀은 최대 20장이에요 (' + urls.length + '장)');
       res = publishIg_(urls, String(v[P.caption - 1]));
+    } else if (ch === '인스타 릴스') {
+      const urls = String(v[P.images - 1]).split(/\r?\n/).map(s => s.trim()).filter(Boolean);
+      if (!urls.length || !/\.mp4$/i.test(urls[0])) throw new Error('L열 첫 줄에 영상(.mp4) 주소가 필요해요');
+      res = publishReel_(urls[0], urls[1] || '', String(v[P.caption - 1]));
+      if (res.pending) {
+        sh.getRange(row, P.postId).setValue("'c:" + res.pending);
+        sh.getRange(row, P.log).setValue(stamp + ' 영상 처리 중 — 다음 확인 때 게시');
+        sh.getRange(row, P.status).setValue('처리중');
+        return;
+      }
     } else if (ch === '스레드') {
       res = publishThreads_(String(v[P.threads - 1]));
     } else {
       throw new Error('아직 지원하지 않는 채널: ' + ch);
     }
+    done_(sh, row, v, ch, res, stamp);
+  } catch (e) {
+    fail_(sh, row, v, ch, e, stamp);
+  }
+}
+
+function done_(sh, row, v, ch, res, stamp) {
+  {
     sh.getRange(row, P.postId).setValue("'" + res.id);
     sh.getRange(row, P.link).setValue(res.link || '');
     sh.getRange(row, P.postedAt).setValue("'" + Utilities.formatDate(new Date(), TZ, 'yyyy-MM-dd HH:mm'));
@@ -164,11 +185,45 @@ function publishRow_(sh, row, v) {
         ch + ' · ' + v[P.title - 1] + '\n' + (res.link || '') + '\n\n확인 후 문제가 있으면 앱에서 삭제하고, 발행계획 상태를 \'삭제\'·메모에 사유를 적어 주세요.');
       sh.getRange(row, P.alert).setValue("'" + stamp + ' 메일 보냄');
     }
-  } catch (e) {
-    sh.getRange(row, P.status).setValue('발행오류');
-    sh.getRange(row, P.log).setValue(stamp + ' 오류: ' + e.message);
-    mail_('[오싹알람] 발행 오류: ' + v[P.title - 1], ch + ' · ' + row + '행\n' + e.message);
   }
+}
+
+function fail_(sh, row, v, ch, e, stamp) {
+  sh.getRange(row, P.status).setValue('발행오류');
+  sh.getRange(row, P.log).setValue(stamp + ' 오류: ' + e.message);
+  mail_('[오싹알람] 발행 오류: ' + v[P.title - 1], ch + ' · ' + row + '행\n' + e.message);
+}
+
+/* 릴스: 컨테이너를 만들고 최대 약 2분 기다린다. 덜 끝났으면 {pending: id} */
+function publishReel_(video, cover, caption) {
+  const uid = prop_('IG_USER_ID'), t = prop_('IG_TOKEN');
+  const params = { media_type: 'REELS', video_url: video, caption: caption, share_to_feed: 'true', access_token: t };
+  if (cover) params.cover_url = cover;
+  const creation = api_('post', IG + '/' + uid + '/media', params).id;
+  if (waitIg_(creation, t, 24, 5000, true) !== 'FINISHED') return { pending: creation };
+  return igPublish_(creation, t, '릴스');
+}
+
+function resumeReel_(sh, row, v) {
+  const stamp = Utilities.formatDate(new Date(), TZ, 'MM/dd HH:mm');
+  const ch = String(v[P.ch - 1]).trim();
+  try {
+    const creation = String(v[P.postId - 1]).replace(/^'?c:/, '');
+    const t = prop_('IG_TOKEN');
+    const s = waitIg_(creation, t, 12, 5000, true);
+    if (s === 'FINISHED') { done_(sh, row, v, ch, igPublish_(creation, t, '릴스'), stamp); return; }
+    const when = when_(v[P.date - 1], '', v[P.time - 1], '');
+    if (when && (new Date() - when) > 90 * 60000) throw new Error('영상 처리가 90분 넘게 끝나지 않았어요 (' + creation + ')');
+    sh.getRange(row, P.log).setValue(stamp + ' 영상 처리 중 (' + s + ')');
+  } catch (e) { fail_(sh, row, v, ch, e, stamp); }
+}
+
+function igPublish_(creation, t, note) {
+  const uid = prop_('IG_USER_ID');
+  const id = api_('post', IG + '/' + uid + '/media_publish', { creation_id: creation, access_token: t }).id;
+  let link = '';
+  try { link = api_('get', IG + '/' + id, { fields: 'permalink', access_token: t }).permalink; } catch (e) {}
+  return { id: id, link: link, note: note };
 }
 
 function publishIg_(urls, caption) {
@@ -190,13 +245,16 @@ function publishIg_(urls, caption) {
   return { id: id, link: link, note: urls.length + '장' };
 }
 
-function waitIg_(id, t) {
-  for (let i = 0; i < 20; i++) {
-    const s = api_('get', IG + '/' + id, { fields: 'status_code', access_token: t }).status_code;
-    if (s === 'FINISHED' || s === 'PUBLISHED') return;
-    if (s === 'ERROR' || s === 'EXPIRED') throw new Error('인스타 컨테이너 ' + s + ' (' + id + ')');
-    Utilities.sleep(3000);
+function waitIg_(id, t, tries, ms, soft) {
+  let s = '';
+  for (let i = 0; i < (tries || 20); i++) {
+    const r = api_('get', IG + '/' + id, { fields: 'status_code,status', access_token: t });
+    s = r.status_code;
+    if (s === 'FINISHED' || s === 'PUBLISHED') return 'FINISHED';
+    if (s === 'ERROR' || s === 'EXPIRED') throw new Error('인스타 컨테이너 ' + s + ' (' + id + ') ' + (r.status || ''));
+    Utilities.sleep(ms || 3000);
   }
+  if (soft) return s || 'IN_PROGRESS';
   throw new Error('인스타 컨테이너 준비 시간 초과 (' + id + ')');
 }
 
@@ -240,13 +298,14 @@ function collectMetrics_() {
     .forEach(r => { have[String(r[19]) + '|' + r[7]] = true; });
   const now = new Date();
   const marks = [['24시간', 24], ['7일', 168]];
+  if (perf.getRange(1, 22).getValue() === '') perf.getRange(1, 22).setValue('릴스 평균 시청(초)');
   rows.forEach(r => {
     if (r.status !== '발행완료' || !r.postId || !r.postedAt) return;
     const hours = (now - r.postedAt) / 36e5;
     marks.forEach(([label, h]) => {
       if (hours < h || have[r.postId + '|' + label]) return;
       if (label === '24시간' && hours > 72) return; // 놓친 24시간 기록은 건너뜀
-      const m = r.ch === '스레드' ? threadInsights_(r.postId) : igInsights_(r.postId);
+      const m = r.ch === '스레드' ? threadInsights_(r.postId) : igInsights_(r.postId, r.ch === '인스타 릴스');
       const base = r.ch === '스레드' ? m.views : (m.reach || m.views);
       const pct = x => base ? Math.round(x / base * 1000) / 10 : '';
       const share = (m.shares || 0) + (r.ch === '스레드' ? (m.reposts || 0) : 0);
@@ -256,15 +315,17 @@ function collectMetrics_() {
         num_(m.views), num_(m.reach), num_(m.likes), num_(m.comments !== undefined ? m.comments : m.replies),
         share, num_(m.saved), num_(m.quotes), num_(m.follows),
         pct(m.saved || 0), pct(share), pct((m.likes || 0) + (m.comments || m.replies || 0) + share + (m.saved || 0)),
-        "'" + r.postId, r.link
+        "'" + r.postId, r.link,
+        m.ig_reels_avg_watch_time !== undefined ? Math.round(m.ig_reels_avg_watch_time / 100) / 10 : ''
       ]);
     });
   });
 }
 
-function igInsights_(id) {
+function igInsights_(id, reel) {
   const t = prop_('IG_TOKEN');
-  const sets = ['views,reach,likes,comments,shares,saved,follows', 'views,reach,likes,comments,shares,saved', 'reach,likes,comments,saved'];
+  const sets = (reel ? ['views,reach,likes,comments,shares,saved,ig_reels_avg_watch_time'] : [])
+    .concat(['views,reach,likes,comments,shares,saved,follows', 'views,reach,likes,comments,shares,saved', 'reach,likes,comments,saved']);
   for (let i = 0; i < sets.length; i++) {
     try { return parseInsights_(api_('get', IG + '/' + id + '/insights', { metric: sets[i], access_token: t })); }
     catch (e) { if (i === sets.length - 1) {
