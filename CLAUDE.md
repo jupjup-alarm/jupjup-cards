@@ -12,7 +12,6 @@
 - `fonts/` — Black Han Sans, Noto Sans KR (OFL)
 - `maps/` — 시트 스크립트가 올리는 네이버 지도 이미지
 - `photos/` — 시트 스크립트가 올리는 단지 사진 ('청약조사' W열 → AA열), 평면도 `photos/plan-…` (AB열 → AC열)
-- `notices/` — 사용자가 구글 드라이브 '줍줍 공고문' 폴더에 넣은 공고문·팸플릿 PDF (시트 스크립트가 올림, 목록은 `notices/index.json`)
 - `mapgen.py`, `data/` — 대체용 경계 지도 (통계청 SGIS 2018 행정구역 경계, 공공누리 제1유형)
 
 ## 원고(JSON) 형식
@@ -48,7 +47,7 @@
   - 단지가 여러 곳(예: 24개 단지 모집)이거나 생활정보·주간 일정이면 지도 카드를 넣지 않는다.
   - `rows`는 최대 2개 (가까운 역 등, 원고에 있는 사실만).
 - plan (평면도): `{"type": "plan", "eyebrow": "평면도", "title": "84A 이렇게 생겼어요", "image": "photos/plan-….jpg", "rows": [["공급", "일반 19·특공 53세대"], ["최고 분양가", "5억7,026만원"]], "credit": "이미지: LH 제공 평면도 · 실제와 다를 수 있음"}` — 가격 장 바로 뒤에 1~2장(주력 타입). rows 최대 2개, 값은 '청약홈API' 탭·원고 숫자 그대로.
-  - 이미지 출처: ① '청약조사' AC열 `photos/plan-…` (분양 홈페이지 평면 이미지를 시트 스크립트가 받아둔 것) ② `notices/index.json`에 그 단지 팸플릿 PDF가 있으면 직접 잘라냄: `pdfimages -list notices/x.pdf` → `pdfimages -png -f N -l N notices/x.pdf /tmp/p/img`(내장 이미지) 또는 `pdftoppm -r 150 -f N -l N -png notices/x.pdf /tmp/p/pg` 후 PIL로 해당 타입 평면도만 크롭 → `photos/plan-<slug>-84a.png`로 저장해 커밋. 평면도 페이지는 `pdftotext -f N -l N`으로 '평면'·타입명(84A 등)이 있는 쪽을 찾는다. 반드시 Read로 열어 타입명이 맞는지 확인.
+  - 이미지 출처: '청약조사' AC열 `photos/plan-…` (분양 홈페이지 평면 이미지를 시트 스크립트가 받아둔 것)만 쓴다. AC열이 비었거나 "없음"·"실패"면 평면도 카드를 **빼고** 만든다 (사용자 결정 2026-10-26: 팸플릿 PDF는 올리지 않음). 반드시 Read로 열어 타입명이 맞는지 확인.
   - credit은 X열 출처(사업주체)로: "이미지: <사업주체> 제공 평면도 · 실제와 다를 수 있음".
 - 원고의 문구·숫자는 바꾸지 말 것. 칸 배치만 정리한다.
 
