@@ -34,7 +34,10 @@
    "rows": [
     {
      "scene": "Seen from far away across a grey Atlantic sea, 1872: two faceless silhouettes on the deck of a sailing ship, one raising a brass spyglass toward a distant brigantine moving oddly on the horizon.",
-     "cap": "1872년 12월 4일, 대서양 한가운데.\n지나던 배의 선원들이 이상한 배 한 척을 봅니다."
+     "cap": {
+      "text": "1872년 12월 4일, 대서양 한가운데.\n지나던 배의 선원들이 이상한 배 한 척을 봅니다.",
+      "maxw": 0.95
+     }
     },
     {
      "scene": "Close view of an old wooden ship's wheel on an empty deck, turning freely with no one holding it, sea spray, overcast light.",
@@ -61,7 +64,10 @@
     {
      "scene": "Inside a small 19th-century captain's cabin lit by grey daylight through a porthole: folded women's dresses on a bunk, a small wooden child's toy on the floor, a small reed organ (melodeon) in the corner, everything neat and untouched.",
      "nop": true,
-     "cap": "선장실엔 옷가지와 아이 장난감이 그대로.\n선원들의 짐 상자도 옷이 가득 찬 채였습니다."
+     "cap": {
+      "text": "선장실엔 옷가지와 아이 장난감이 그대로.\n선원들의 짐 상자도 옷이 가득 찬 채였습니다.",
+      "maxw": 0.95
+     }
     },
     {
      "scene": "A dim ship's forecastle: several wooden sea chests, lids slightly open, packed full of folded clothes, hammocks hanging above.",
@@ -80,7 +86,10 @@
     {
      "scene": "The dark cargo hold of a sailing ship filled with rows of sealed red-oak barrels stacked neatly, a shaft of light from an open hatch above.",
      "nop": true,
-     "cap": "화물은 알코올 1,701통. 손댄 흔적은 없었습니다.\n술에 취한 반란이었다면, 왜 그대로였을까?",
+     "cap": {
+      "text": "화물은 알코올 1,701통. 손댄 흔적은 없었습니다.\n선원들이 술을 노린 반란이었다면, 왜 그대로였을까?",
+      "maxw": 0.95
+     },
      "h": 482
     }
    ]
@@ -90,12 +99,18 @@
     {
      "scene": "New York harbour in November 1872, a brigantine with sails unfurled leaving the busy wooden docks, grey morning, gulls.",
      "nop": true,
-     "cap": "배의 이름은 메리 셀레스트호.\n한 달 전, 뉴욕을 떠나 이탈리아로 향하던 길."
+     "cap": {
+      "text": "배의 이름은 메리 셀레스트호.\n한 달 전, 뉴욕을 떠나 이탈리아로 향하던 길.",
+      "maxw": 0.95
+     }
     },
     {
      "scene": "Night at sea, warm lamplight glowing from the portholes of a brigantine sailing calmly under stars.",
      "nop": true,
-     "cap": "선장과 가족, 선원 7명. 모두 10명이 타고 있었습니다."
+     "cap": {
+      "text": "선장과 가족, 선원 7명. 모두 10명이 타고 있었습니다.",
+      "maxw": 0.95
+     }
     }
    ]
   },
@@ -109,7 +124,10 @@
     {
      "scene": "An empty chart table in a ship's cabin, a lamp, an open drawer with nothing inside.",
      "nop": true,
-     "cap": "항해 시계, 육분의, 항해 책, 그리고 배의 서류.\n누군가 '스스로' 배를 떠났다는 뜻이었죠."
+     "cap": {
+      "text": "바다에서 길을 찾는 도구들, 그리고 배의 서류.\n끌려간 게 아니라 스스로 보트를 타고 떠났다는 뜻이었죠.",
+      "maxw": 0.95
+     }
     }
    ]
   },
@@ -118,12 +136,18 @@
     {
      "scene": "An open hatch cover lying beside a square opening into a dark ship's hold, dark water sloshing below, wet planks.",
      "nop": true,
-     "cap": "화물칸 덮개는 열려 있었고, 바닥엔 물이 1m쯤."
+     "cap": {
+      "text": "화물칸 덮개는 열려 있었고, 바닥엔 물이 1m쯤.\n가라앉을 정도는 아니었습니다.",
+      "maxw": 0.95
+     }
     },
     {
      "scene": "On wet deck planks: a ship's bilge pump taken apart, its parts laid out, and a long thin iron sounding rod lying beside it.",
      "nop": true,
-     "cap": "펌프 하나는 분해돼 있었고,\n갑판엔 물 깊이를 재는 막대가 놓여 있었습니다."
+     "cap": {
+      "text": "펌프 하나는 분해돼 있었고,\n갑판엔 물 깊이를 재는 막대가 놓여 있었습니다.",
+      "maxw": 0.95
+     }
     }
    ]
   },
@@ -137,7 +161,10 @@
     {
      "scene": "A volcanic island silhouette on the horizon at dawn seen from the deck of a sailing ship, calm sea, soft amber light.",
      "nop": true,
-     "cap": "'산타마리아섬이 약 10km 앞에 보인다.'\n육지가 눈앞이었습니다."
+     "cap": {
+      "text": "'산타마리아섬이 약 10km 앞에 보인다.'\n육지가 눈앞이었습니다.",
+      "maxw": 0.95
+     }
     }
    ]
   },
@@ -179,7 +206,10 @@
     {
      "scene": "The Rock of Gibraltar at dusk, a brigantine moored in the harbour below, lamplit windows of an old stone courthouse in the foreground.",
      "nop": true,
-     "cap": "지브롤터 법정. 검찰총장은 범죄를 의심했습니다."
+     "cap": {
+      "text": "지브롤터 법정. 검찰총장은 범죄를 의심했습니다.",
+      "maxw": 0.95
+     }
     },
     {
      "scene": "A lamplit 19th-century courtroom interior, empty wooden benches, stacks of papers and an inkwell on the judge's desk.",
@@ -211,7 +241,7 @@
       "head": "③ 그리고 수많은 소문",
       "lines": [
        "코난 도일이 이 배를 소설로 쓴 뒤,",
-       "지어낸 이야기들이 사실처럼 퍼졌습니다"
+       "소설 속 장면들이 실제 기록처럼 퍼졌습니다"
       ]
      }
     ]
@@ -221,11 +251,17 @@
    "rows": [
     {
      "scene": "A busy Italian port in 1873, dock workers' faceless silhouettes opening red-oak barrels on the quay; several barrels stand open and hollow.",
-     "cap": "몇 주 뒤, 배가 이탈리아에 도착해 술통을 엽니다.\n9개가 텅 비어 있었습니다."
+     "cap": {
+      "text": "몇 주 뒤, 배가 이탈리아에 도착해 술통을 엽니다.\n9개가 텅 비어 있었습니다.",
+      "maxw": 0.95
+     }
     },
     {
      "panel": "s05b",
-     "cap": "새는 참나무 통. 화물칸에 알코올 증기가 가득 찼다면?",
+     "cap": {
+      "text": "새는 참나무 통. 화물칸에 알코올 증기가 찼다면,\n불이 붙을까, 선장은 겁이 났을지 모릅니다.",
+      "maxw": 0.95
+     },
      "h": 482
     }
    ]
@@ -234,12 +270,18 @@
    "rows": [
     {
      "panel": "s08b",
-     "cap": "그리고 분해된 펌프. 이 배는 직전 항해에 석탄을 실었습니다.",
+     "cap": {
+      "text": "그리고 분해된 펌프. 이 배는 직전 항해에 석탄을 실었습니다.",
+      "maxw": 0.95
+     },
      "h": 560
     },
     {
      "scene": "Stormy night at sea: a faceless silhouette of a captain holding a lantern at an open hatch, peering down into the dark hold, wind and rain.",
-     "cap": "먼지로 펌프가 막혔다면, 선장은 물이 얼마나 찼는지 알 수 없었습니다.\n폭풍이 지난 아침, 섬이 보이자 그는 결정합니다.",
+     "cap": {
+      "text": "석탄 가루가 펌프를 막았다면, 물이 얼마나 찼는지\n알 수 없었죠. 그리고 섬이 보이자, 선장은 결정합니다.",
+      "maxw": 0.95
+     },
      "h": 622
     }
    ]
@@ -248,7 +290,10 @@
    "rows": [
     {
      "scene": "Dawn on the Atlantic: a small rowing boat with several faceless silhouettes being towed behind a brigantine on a long rope; the rope is snapping as the ship's sails fill with wind, the boat falling behind.",
-     "cap": "작은 보트를 밧줄로 배에 묶은 채, 잠시 피하기로.\n그런데 바람이 돛을 채운 순간, 밧줄이 끊어졌다면?",
+     "cap": {
+      "text": "작은 보트를 밧줄로 배에 묶은 채, 잠시 피하기로.\n그런데 바람이 돛을 채운 순간, 밧줄이 끊어졌다면?",
+      "maxw": 0.95
+     },
      "h": 520
     },
     {

@@ -1,0 +1,307 @@
+{
+ "id": "W-0004",
+ "series": "세계기담",
+ "title": "Wow! 신호",
+ "risk": "저",
+ "sources": [
+  "Jerry Ehman, Big Ear Wow! 신호 보고서 (bigear.org)",
+  "Méndez 외, arXiv 2024·2025",
+  "Science News (2024) · Space.com"
+ ],
+ "source_urls": [
+  "https://bigear.org/wow20th.htm",
+  "https://bigear.org/Wow30th/wow30th.htm",
+  "https://www.arxiv.org/abs/2408.08513",
+  "https://arxiv.org/abs/2508.10657v1",
+  "https://www.sciencenews.org/?p=3142756",
+  "https://www.space.com/37178-astronomers-skeptical-about-wow-signal.html"
+ ],
+ "next": "[세계기담] 12월, 외투 한 벌을 남기고 등대를 떠난 등대지기 3명",
+ "slides": [
+  {
+   "cover": {
+    "title": [
+     "아무도 없던 밤,",
+     "하늘에서 72초 동안",
+     "신호가 들어왔다"
+    ],
+    "accent_word": "72초 동안",
+    "sub": "그리고 49년 동안, 다시는 오지 않았다",
+    "size": 98
+   },
+   "scene": "A huge flat field-like radio telescope, a long tilted metal reflector wall and a flat aluminium ground plane, under a vast starry night sky in rural Ohio, 1977. A small control building beside it with one single warm amber lit window. The telescope sits in the lower half of the frame; the upper 45% of the frame is deep starry sky.",
+   "nop": true
+  },
+  {
+   "rows": [
+    {
+     "scene": "Wide night view of a giant flat radio telescope field with a long tilted reflector, fields and trees around it, starry sky, 1977.",
+     "nop": true,
+     "cap": "1977년 8월 15일 밤 11시 16분, 미국 오하이오.\n전파망원경 '빅이어'."
+    },
+    {
+     "scene": "An empty 1970s observatory control room at night: an old mainframe computer and a line printer slowly feeding out folded paper under a single desk lamp, empty chair.",
+     "nop": true,
+     "cap": "관측소엔 아무도 없었습니다.\n컴퓨터만 혼자 기록을 찍어 내고 있었죠."
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "A kitchen table in a 1970s house at night, piled with long stacks of folded computer printout paper, a lamp and a coffee mug.",
+     "nop": true,
+     "cap": "며칠 뒤, 천문학자 제리 이먼은\n집으로 배달된 기록지를 넘깁니다."
+    },
+    {
+     "scene": "Close-up of a faceless silhouette hand running a finger down columns of tiny printed characters on printout paper, characters too small to read.",
+     "cap": "늘 1, 2 같은 작은 숫자만 이어지던 칸."
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "Close-up of computer printout paper: one column where the pattern suddenly changes, a red ink circle drawn around a few characters, characters blurred and unreadable.",
+     "nop": true,
+     "cap": "그런데 한 칸에 갑자기 알파벳이 나타납니다.\n6EQUJ5."
+    },
+    {
+     "scene": "A red ballpoint pen lying on printout paper, a red ink scribble in the margin, lamp light.",
+     "nop": true,
+     "cap": "그는 빨간 펜으로 동그라미를 치고,\n여백에 이렇게 씁니다. 'Wow!'"
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "A deep night sky field of the Sagittarius region of the Milky Way, dense stars, with one small point glowing warm amber.",
+     "nop": true,
+     "cap": "신호는 궁수자리 방향에서 왔습니다."
+    },
+    {
+     "scene": "An abstract smooth wave of light rising to a bright peak and fading back down across a dark navy background, like a single breath of light.",
+     "nop": true,
+     "cap": "평소 잡음보다 30배 강했고,\n72초 동안 커졌다가 사그라들었습니다."
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "An abstract glowing hydrogen atom motif, a single bright nucleus with a soft orbit ring, floating in deep space.",
+     "nop": true,
+     "cap": "주파수는 1420MHz 근처."
+    },
+    {
+     "scene": "Faceless silhouettes of 1970s scientists in a dim office looking up at a chalkboard covered in illegible diagrams.",
+     "cap": "우주에 가장 흔한 수소가 내는 주파수.\n과학자들이 '외계인이 쓴다면 이것'이라 점찍어 둔."
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "A faceless silhouette talking on a 1970s telephone in a dark room, printout paper in hand.",
+     "cap": "이먼은 곧바로 동료들에게 알립니다."
+    },
+    {
+     "scene": "A night sky with a passing satellite streak, an airplane's blinking lights, a planet and distant radio towers on the horizon.",
+     "nop": true,
+     "cap": "행성, 인공위성, 비행기, 지상 방송까지.\n하나씩 지워 나갔지만, 맞는 게 없었습니다."
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "Two large horn-shaped radio receiver feeds side by side on a telescope at night; the left one glows with warm amber light, the right one stays completely dark.",
+     "nop": true,
+     "cap": "빅이어엔 하늘을 듣는 '귀'가 두 개 있었습니다."
+    },
+    {
+     "scene": "Close-up of a single dark horn-shaped radio receiver at night, cold and silent, frost.",
+     "nop": true,
+     "cap": "하늘에서 온 신호라면, 3분 간격으로 두 번 잡혀야 했습니다.\n그런데 신호는… 한 번뿐이었습니다."
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "An empty starry sky over the radio telescope field, a faint glowing hourglass shape among the stars, many nights blending together.",
+     "nop": true,
+     "cap": "그 뒤 60일 동안, 같은 하늘을 다시 들었습니다."
+    },
+    {
+     "scene": "A row of large radio dishes silhouetted in a desert at night under the Milky Way.",
+     "nop": true,
+     "cap": "더 큰 망원경들이 수십 년을 찾았지만,\n다시는 들리지 않았습니다."
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "panel": "s08a",
+     "cap": "단 한 번의 신호",
+     "h": 540
+    },
+    {
+     "card": {
+      "type": "evidence",
+      "badge": "이상한 점",
+      "badge_color": "#E8693A",
+      "badge_note": "이 장은 저장해 두세요",
+      "pad": 40,
+      "item_h": 380,
+      "items": [
+       {
+        "head": "72초",
+        "body": "딱 한 번, 그 뒤로 다시는 없었습니다"
+       },
+       {
+        "head": "귀 하나만",
+        "body": "두 개의 수신기 중 하나만 들었습니다"
+       },
+       {
+        "head": "수소 주파수",
+        "body": "외계 신호를 찾던 바로 그 주파수였습니다"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "A large crane dismantling a giant flat radio telescope reflector in daylight, golf course flags visible in the distance.",
+     "nop": true,
+     "cap": "1998년, 빅이어는 철거됩니다.\n그 자리엔 골프장과 주택이 들어섰죠."
+    },
+    {
+     "scene": "A quiet golf course at dusk, empty green, a single flag, starry sky beginning.",
+     "nop": true,
+     "cap": "신호를 들었던 귀도 사라졌습니다."
+    }
+   ]
+  },
+  {
+   "card": {
+    "type": "list",
+    "title": "49년 동안 나온 설명들",
+    "title_size": 56,
+    "subtitle": "어느 것도 모든 의문을 풀지 못했습니다",
+    "items": [
+     {
+      "head": "① 6EQUJ5는 외계 메시지?",
+      "lines": [
+       "아닙니다. 신호 세기를 숫자·알파벳으로 찍은 것",
+       "U는 잡음의 약 30배라는 뜻이었습니다"
+      ]
+     },
+     {
+      "head": "② 지나가던 혜성?",
+      "lines": [
+       "2017년 주장이 나왔지만, 이먼은 '설명할 수 없다'고 반박했습니다"
+      ]
+     },
+     {
+      "head": "③ 외계 문명?",
+      "lines": [
+       "이먼 자신도 '판단하기엔 자료가 너무 적다'고 했습니다"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "rows": [
+    {
+     "scene": "A gigantic spherical radio dish set into a jungle valley in Puerto Rico at dusk, a suspended receiver platform hanging above it on cables, tropical hills.",
+     "nop": true,
+     "cap": "47년 뒤인 2024년, 푸에르토리코의 연구진.",
+     "h": 480
+    },
+    {
+     "scene": "Faint cold hydrogen gas clouds drifting in deep space, glowing very softly blue among dark stars.",
+     "nop": true,
+     "cap": "아레시보 망원경의 2020년 관측 자료에서\nWow!를 닮은, 하지만 100배 약한 신호들을 찾아냅니다.",
+     "h": 702
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "Deep space: a sudden bright amber flash from a distant compact star illuminating a cold hydrogen cloud, which glows brightly in response.",
+     "nop": true,
+     "cap": "우주의 섬광이 차가운 수소 구름을 비춘 순간.",
+     "h": 520
+    },
+    {
+     "card": {
+      "type": "text",
+      "pad": 44,
+      "lines": [
+       {
+        "text": "수소 구름이\n한순간 '빛났다'?",
+        "serif": true,
+        "size": 50,
+        "color": "#F2B544",
+        "lh": 1.3,
+        "gap": 28
+       },
+       {
+        "text": "→ 마그네타 같은 천체가 순간 강한 빛을 뿜으면",
+        "size": 28,
+        "color": "#C9CEDA",
+        "gap": 14
+       },
+       {
+        "text": "→ 수소 구름이 증폭된 신호를 낼 수 있다는 가설",
+        "size": 28,
+        "color": "#C9CEDA",
+        "gap": 14
+       },
+       {
+        "text": "→ 수소 주파수, 단 한 번, 한 지점: 맞아떨어진다",
+        "size": 28,
+        "color": "#C9CEDA",
+        "gap": 26
+       },
+       {
+        "text": "아직 동료 심사 전인 가설. '본 적 없는 현상에 기댄다'는 반론도 있습니다.",
+        "size": 22,
+        "color": "#9AA3B8"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "end": {
+    "scene": "The owl Boogi sitting on a windowsill of a small observatory building at night, holding its amber lantern, looking up at a quiet starry sky above a flat radio telescope field. Boogi is in the lower left third of the frame; the upper right half is empty starry sky.",
+    "bubble": "그날 밤 누군가\n관측소에 있었다면\n어땠을까요?\n왜 두 번째 귀는\n아무것도 듣지 못했을까요?"
+   }
+  }
+ ],
+ "caption": "아무도 없던 밤, 하늘에서 72초 동안 신호가 들어왔다.\n\n1977년 미국 오하이오. 평소보다 30배 강한 신호는 단 한 번, 그 뒤로 49년 동안 다시 오지 않았습니다.\n\n당신의 가설은? 댓글로 알려주세요.\n\n출처: Jerry Ehman Big Ear 보고서, Méndez 외(arXiv 2024·2025), Science News, Space.com\n#세계기담 #와우신호",
+ "threads": [
+  "1977년 미국 전파망원경에 들어온 신호 얘기. 관측소엔 아무도 없었고, 컴퓨터만 혼자 기록을 뽑고 있었어.",
+  "며칠 뒤 천문학자가 기록지를 넘기다가 한 칸에서 갑자기 알파벳을 봐. 6EQUJ5. 빨간 펜으로 동그라미 치고 여백에 'Wow!'라고 씀.",
+  "평소 잡음보다 30배 강했고 72초 동안만 들어왔어. 그 주파수가 하필 과학자들이 '외계인이 쓴다면 이거'라고 찍어 둔 수소 주파수.",
+  "근데 이상한 게, 그 망원경엔 귀가 두 개 있었는데 하나만 들었어. 그리고 49년째 다시 안 와.",
+  "2024년에 나온 새 가설이 꽤 그럴듯해. 풀버전은 인스타에 @ossak_alarm"
+ ],
+ "reels_script": [
+  "아무도 없던 밤, 하늘에서 72초 동안 신호가 들어왔다.",
+  "1977년, 미국 오하이오.",
+  "평소보다 30배 강한 신호.",
+  "기록지를 본 천문학자는 여백에 이렇게 씁니다. 'Wow!'",
+  "그리고 49년째, 다시는 오지 않았습니다. 풀버전은 캐러셀에서."
+ ]
+}

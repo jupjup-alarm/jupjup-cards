@@ -37,7 +37,10 @@
     {
      "scene": "Wide night view of a giant flat radio telescope field with a long tilted reflector, fields and trees around it, starry sky, 1977.",
      "nop": true,
-     "cap": "1977년 8월 15일 밤 11시 16분, 미국 오하이오.\n전파망원경 '빅이어'."
+     "cap": {
+      "text": "1977년 8월 15일 밤 11시 16분, 미국 오하이오.\n전파망원경 '빅이어'.",
+      "maxw": 0.95
+     }
     },
     {
      "scene": "An empty 1970s observatory control room at night: an old mainframe computer and a line printer slowly feeding out folded paper under a single desk lamp, empty chair.",
@@ -55,7 +58,10 @@
     },
     {
      "scene": "Close-up of a faceless silhouette hand running a finger down columns of tiny printed characters on printout paper, characters too small to read.",
-     "cap": "늘 1, 2 같은 작은 숫자만 이어지던 칸."
+     "cap": {
+      "text": "늘 1, 2 같은 작은 숫자만 이어지던 칸.",
+      "maxw": 0.95
+     }
     }
    ]
   },
@@ -64,7 +70,10 @@
     {
      "scene": "Close-up of computer printout paper: one column where the pattern suddenly changes, a red ink circle drawn around a few characters, characters blurred and unreadable.",
      "nop": true,
-     "cap": "그런데 한 칸에 갑자기 알파벳이 나타납니다.\n6EQUJ5."
+     "cap": {
+      "text": "그런데 한 칸에 갑자기 알파벳이 나타납니다.\n6EQUJ5.",
+      "maxw": 0.95
+     }
     },
     {
      "scene": "A red ballpoint pen lying on printout paper, a red ink scribble in the margin, lamp light.",
@@ -96,7 +105,10 @@
     },
     {
      "scene": "Faceless silhouettes of 1970s scientists in a dim office looking up at a chalkboard covered in illegible diagrams.",
-     "cap": "우주에 가장 흔한 수소가 내는 주파수.\n과학자들이 '외계인이 쓴다면 이것'이라 점찍어 둔."
+     "cap": {
+      "text": "우주에 가장 흔한 수소가 내는 주파수.\n과학자들이 '외계인이 쓴다면 이것'이라 점찍어 둔.",
+      "maxw": 0.95
+     }
     }
    ]
   },
@@ -109,7 +121,10 @@
     {
      "scene": "A night sky with a passing satellite streak, an airplane's blinking lights, a planet and distant radio towers on the horizon.",
      "nop": true,
-     "cap": "행성, 인공위성, 비행기, 지상 방송까지.\n하나씩 지워 나갔지만, 맞는 게 없었습니다."
+     "cap": {
+      "text": "행성, 인공위성, 비행기, 지상 방송까지.\n하나씩 지워 나갔지만, 맞는 게 없었습니다.",
+      "maxw": 0.95
+     }
     }
    ]
   },
@@ -118,12 +133,18 @@
     {
      "scene": "Two large horn-shaped radio receiver feeds side by side on a telescope at night; the left one glows with warm amber light, the right one stays completely dark.",
      "nop": true,
-     "cap": "빅이어엔 하늘을 듣는 '귀'가 두 개 있었습니다."
+     "cap": {
+      "text": "빅이어엔 하늘을 듣는 '귀'가 두 개 있었습니다.",
+      "maxw": 0.95
+     }
     },
     {
      "scene": "Close-up of a single dark horn-shaped radio receiver at night, cold and silent, frost.",
      "nop": true,
-     "cap": "하늘에서 온 신호라면, 3분 간격으로 두 번 잡혀야 했습니다.\n그런데 신호는… 한 번뿐이었습니다."
+     "cap": {
+      "text": "지구가 돌면, 같은 별이 두 귀를 차례로 지나갑니다.\n하늘에서 온 신호라면 3분 간격으로 두 번.\n그런데 신호는… 한 번뿐이었습니다.",
+      "maxw": 0.95
+     }
     }
    ]
   },
@@ -132,7 +153,10 @@
     {
      "scene": "An empty starry sky over the radio telescope field, a faint glowing hourglass shape among the stars, many nights blending together.",
      "nop": true,
-     "cap": "그 뒤 60일 동안, 같은 하늘을 다시 들었습니다."
+     "cap": {
+      "text": "그 뒤 60일 동안, 같은 하늘을 다시 들었습니다.",
+      "maxw": 0.95
+     }
     },
     {
      "scene": "A row of large radio dishes silhouetted in a desert at night under the Milky Way.",
@@ -198,8 +222,8 @@
      {
       "head": "① 6EQUJ5는 외계 메시지?",
       "lines": [
-       "아닙니다. 신호 세기를 숫자·알파벳으로 찍은 것",
-       "U는 잡음의 약 30배라는 뜻이었습니다"
+       "기록지는 신호 세기를 1~9, 그 위는 A~Z로 찍었습니다",
+       "6EQUJ5는 세기가 오르내린 모양일 뿐, 메시지가 아닙니다"
       ]
      },
      {
@@ -222,13 +246,16 @@
     {
      "scene": "A gigantic spherical radio dish set into a jungle valley in Puerto Rico at dusk, a suspended receiver platform hanging above it on cables, tropical hills.",
      "nop": true,
-     "cap": "47년 뒤인 2024년, 푸에르토리코의 연구진.",
+     "cap": "2024년, 푸에르토리코의 연구진.",
      "h": 480
     },
     {
      "scene": "Faint cold hydrogen gas clouds drifting in deep space, glowing very softly blue among dark stars.",
      "nop": true,
-     "cap": "아레시보 망원경의 2020년 관측 자료에서\nWow!를 닮은, 하지만 100배 약한 신호들을 찾아냅니다.",
+     "cap": {
+      "text": "아레시보 망원경의 2020년 관측 자료에서\nWow!를 닮은, 하지만 100배 약한 신호들을 찾아냅니다.",
+      "maxw": 0.95
+     },
      "h": 702
     }
    ]
@@ -238,7 +265,10 @@
     {
      "scene": "Deep space: a sudden bright amber flash from a distant compact star illuminating a cold hydrogen cloud, which glows brightly in response.",
      "nop": true,
-     "cap": "우주의 섬광이 차가운 수소 구름을 비춘 순간.",
+     "cap": {
+      "text": "우주의 섬광이 차가운 수소 구름을 비춘 순간.",
+      "maxw": 0.95
+     },
      "h": 520
     },
     {
@@ -255,7 +285,7 @@
         "gap": 28
        },
        {
-        "text": "→ 마그네타 같은 천체가 순간 강한 빛을 뿜으면",
+        "text": "→ 아주 강한 별(마그네타 등)이 한순간 번쩍이면",
         "size": 28,
         "color": "#C9CEDA",
         "gap": 14
@@ -285,7 +315,7 @@
   {
    "end": {
     "scene": "The owl Boogi sitting on a windowsill of a small observatory building at night, holding its amber lantern, looking up at a quiet starry sky above a flat radio telescope field. Boogi is in the lower left third of the frame; the upper right half is empty starry sky.",
-    "bubble": "그날 밤 누군가\n관측소에 있었다면\n어땠을까요?\n왜 두 번째 귀는\n아무것도 듣지 못했을까요?"
+    "bubble": "그날 밤 누군가\n관측소에 있었다면\n어땠을까요?\n그 신호는 정말,\n어디에서 온 걸까요?"
    }
   }
  ],

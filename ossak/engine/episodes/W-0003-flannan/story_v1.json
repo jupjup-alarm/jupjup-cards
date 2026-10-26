@@ -1,0 +1,307 @@
+{
+ "id": "W-0003",
+ "series": "세계기담",
+ "title": "플래넌 섬 등대지기 실종",
+ "risk": "저",
+ "sources": [
+  "National Records of Scotland (2023)",
+  "Northern Lighthouse Board: Flannan Islands",
+  "Skeptoid #610"
+ ],
+ "source_urls": [
+  "https://blog.nrscotland.gov.uk/2023/12/12/flannan-isles-lighthouse-keepers-the-disappearance/",
+  "https://www.nlb.org.uk/lighthouses/flannan-islands/",
+  "https://skeptoid.com/episodes/610"
+ ],
+ "next": "[세계기담] 서울 3배 넓이의 숲이 한순간에 쓰러졌다",
+ "slides": [
+  {
+   "cover": {
+    "title": [
+     "12월, 외투 한 벌을",
+     "남기고 등대를 떠난",
+     "등대지기 3명"
+    ],
+    "accent_word": "외투 한 벌을",
+    "sub": "등불은 켤 준비가 끝나 있었다",
+    "size": 96
+   },
+   "scene": "A small stone lighthouse on a steep rocky island at stormy dusk, its lamp dark. In the lower foreground, the open wooden door of the keepers' stone cottage reveals a single heavy wool coat hanging alone on a peg inside, lit by faint warm amber light. Wild sea below. The upper 45% of the frame is dark stormy sky.",
+   "nop": true
+  },
+  {
+   "rows": [
+    {
+     "scene": "Night on a rough sea off the west of Scotland, 1900: a small steamship with lit portholes passing a rocky island whose lighthouse tower stands completely dark.",
+     "nop": true,
+     "cap": "1900년 12월 15일 밤, 스코틀랜드 서쪽 바다.\n지나던 배가 이상한 걸 봅니다."
+    },
+    {
+     "scene": "Close view of the top of a stone lighthouse at night, the lantern room glass completely dark, rain blowing.",
+     "nop": true,
+     "cap": "켜져 있어야 할 등대가 꺼져 있었습니다."
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "A small steam relief ship tossed by huge storm waves near a cliff-sided island, grey winter daylight.",
+     "nop": true,
+     "cap": "폭풍 때문에 교대선은 11일 뒤에야 섬에 닿습니다."
+    },
+    {
+     "scene": "An empty stone landing stage at the foot of island cliffs, a bare flagpole with no flag, a signal rocket arcing up into the grey sky from offshore.",
+     "nop": true,
+     "cap": "기적을 울리고 신호탄을 쏴도, 대답이 없었습니다."
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "A closed iron gate in a stone wall on a windswept island, the lighthouse tower and keepers' cottage behind it, grey afternoon.",
+     "nop": true,
+     "cap": "교대 등대지기가 홀로 섬에 오릅니다.\n문은 닫혀 있었고,"
+    },
+    {
+     "scene": "Inside a plain stone room: narrow iron bunks with blankets thrown back, empty, grey window light.",
+     "nop": true,
+     "cap": "침대는 비어 있었습니다."
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "A tidy 1900 lighthouse keepers' kitchen: clean table, plates stacked, a cold iron stove, and a wall clock whose hands have stopped.",
+     "nop": true,
+     "cap": "부엌은 깔끔했고, 시계는 멈춰 있었습니다."
+    },
+    {
+     "scene": "Inside a lighthouse lantern room: a polished glass lens and a clean oil lamp, wick trimmed, ready to be lit, grey light through the windows.",
+     "nop": true,
+     "cap": "등불은 닦여 있고, 기름도 가득.\n언제든 켤 수 있는 상태였죠."
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "By the doorway of a stone cottage: a row of wooden pegs, all empty except one where a single heavy wool coat hangs alone, faint amber light.",
+     "nop": true,
+     "cap": "그리고 문 옆에, 외투 한 벌이 걸려 있었습니다.",
+     "h": 860
+    },
+    {
+     "scene": "A storm raging outside a small cottage window, rain streaking the glass, dark sea beyond.",
+     "nop": true,
+     "cap": {
+      "text": "12월의 폭풍 속으로, 한 사람은 외투도 없이 나간 겁니다.",
+      "maxw": 0.95
+     }
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "Three small faceless silhouettes of lighthouse keepers in 1900 uniforms standing at the top of rock-cut stairs beside a lighthouse at dusk, seen from far away.",
+     "cap": "사라진 사람은 세 명.\n수석, 부등대지기, 그리고 아픈 동료 대신 온 임시 등대지기."
+    },
+    {
+     "scene": "Close-up of a slate board on a wooden desk with faint chalk lines, illegible, beside an oil lamp.",
+     "nop": true,
+     "cap": "기록은 15일 아침 9시에서 멈춰 있었습니다.\n'등 청소 완료.' 평범한 하루였습니다."
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "A wooden equipment rack in a stone corridor: two empty hooks where waterproof oilskins hung and an empty space on the floor where sea boots stood; a third hook still holds an ordinary coat.",
+     "nop": true,
+     "cap": "사라진 건 두 사람의 방수복과 장화.\n바닷가 선착장에 내려갈 때만 입던 옷이었죠."
+    },
+    {
+     "scene": "A lighthouse tower on a cliff seen from below at dusk, a single amber light in the keepers' cottage window.",
+     "nop": true,
+     "cap": "등대엔 규칙이 있었습니다.\n등을 비워 둔 채 모두가 나가선 안 된다는 것."
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "Iron railings on a wet rock path above the sea, bent and twisted out of shape, waves breaking below, grey light.",
+     "nop": true,
+     "cap": "섬 서쪽 선착장. 쇠 난간이 휘어 있었고,"
+    },
+    {
+     "scene": "An empty crevice in a wet rock face beside a narrow tramway track, where a wooden box used to sit; nothing remains.",
+     "nop": true,
+     "cap": "바위틈에 두던 밧줄 상자가 통째로 사라졌습니다."
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "panel": "s09a",
+     "cap": "서쪽 선착장에 남은 것",
+     "h": 540
+    },
+    {
+     "card": {
+      "type": "evidence",
+      "badge": "이상한 점",
+      "badge_color": "#E8693A",
+      "badge_note": "이 장은 저장해 두세요",
+      "pad": 40,
+      "item_h": 380,
+      "items": [
+       {
+        "head": "해발 33m",
+        "body": "바다 위 33m 높이에 묶어 둔 구명부표가 뜯겨 나갔습니다"
+       },
+       {
+        "head": "1톤이 넘는 돌",
+        "body": "커다란 바위가 원래 자리에서 옮겨져 있었습니다"
+       },
+       {
+        "head": "외투 한 벌",
+        "body": "세 명 중 한 명은 외투도 없이 나갔습니다"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "card": {
+    "type": "list",
+    "title": "120년 동안 나온 이야기들",
+    "title_size": 54,
+    "subtitle": "그중 상당수는 지어낸 것이었습니다",
+    "items": [
+     {
+      "head": "① 섬뜩한 마지막 일지?",
+      "lines": [
+       "'폭풍… 동료가 울고 있다… 기도했다'는 일지가 유명하지만",
+       "1920년대 잡지가 지어낸 가짜였습니다"
+      ]
+     },
+     {
+      "head": "② 바다 괴물, 유령?",
+      "lines": [
+       "당시 신문들이 쏟아낸 추측. 근거는 없었습니다"
+      ]
+     },
+     {
+      "head": "③ 몰래 섬을 떠났다?",
+      "lines": [
+       "그런 추측도 나왔지만, 확인된 건 없었습니다"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "rows": [
+    {
+     "panel": "s08a",
+     "cap": "답의 실마리는 사라진 그 옷이었습니다.",
+     "h": 520
+    },
+    {
+     "scene": "Stormy afternoon: two small faceless silhouettes in oilskins and sea boots climbing down steep wet rock-cut stairs toward a landing stage, huge grey waves below, a wooden box on a ledge.",
+     "cap": "15일 오후, 두 사람은 방수복을 입고 선착장으로.\n폭풍에 밧줄 상자가 쓸려 갈까 봐.",
+     "h": 662
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "A gigantic wave surging up a sheer island cliff, white foam exploding high into the air, dark storm sky.",
+     "nop": true,
+     "cap": "그때 예상치 못한 거대한 파도가\n절벽을 타고 올라옵니다."
+    },
+    {
+     "panel": "s06a",
+     "cap": "외투를 두고 간 세 번째 사람은\n그걸 보고 뛰쳐나갔던 걸까요."
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "A calm grey morning on a sheer island cliff high above the sea: an empty iron post where a lifebuoy once hung, a frayed broken rope dangling, foam far below.",
+     "nop": true,
+     "cap": "33m 높이까지 치솟은 파도.",
+     "h": 520
+    },
+    {
+     "card": {
+      "type": "text",
+      "pad": 44,
+      "lines": [
+       {
+        "text": "모든 흔적은\n파도를 가리키고 있었다",
+        "serif": true,
+        "size": 50,
+        "color": "#F2B544",
+        "lh": 1.3,
+        "gap": 28
+       },
+       {
+        "text": "→ 휘어진 난간, 뜯긴 부표, 옮겨진 바위: 파도의 흔적",
+        "size": 28,
+        "color": "#C9CEDA",
+        "gap": 14
+       },
+       {
+        "text": "→ 사라진 방수복 두 벌: 선착장에 내려갔다는 증거",
+        "size": 28,
+        "color": "#C9CEDA",
+        "gap": 14
+       },
+       {
+        "text": "→ 남겨진 외투: 급히 뛰쳐나간 세 번째 사람",
+        "size": 28,
+        "color": "#C9CEDA",
+        "gap": 26
+       },
+       {
+        "text": "1901년 1월, 등대 감독관의 보고서 결론. 세 사람은 끝내 돌아오지 않았습니다.",
+        "size": 22,
+        "color": "#9AA3B8"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "end": {
+    "scene": "The owl Boogi perched on the iron railing of a lighthouse gallery at night, holding up its amber lantern, looking down at a dark stormy sea. Boogi is in the lower left third of the frame; the upper right half is empty night sky with the dark lantern room.",
+    "bubble": "그때 한 사람이라도\n등대에 남아 있었다면\n어땠을까요?\n그는 무엇을 보고\n외투도 없이 뛰어나갔을까요?"
+   }
+  }
+ ],
+ "caption": "12월, 외투 한 벌을 남기고 등대를 떠난 등대지기 3명.\n\n1900년 스코틀랜드 플래넌 섬. 등불은 켤 준비가 끝나 있었고, 시계는 멈춰 있었습니다.\n\n당신의 가설은? 댓글로 알려주세요.\n\n출처: National Records of Scotland, Northern Lighthouse Board, Skeptoid\n#세계기담 #플래넌섬",
+ "threads": [
+  "1900년 스코틀랜드 외딴섬 등대 얘기. 12월에 등대지기 3명이 사라졌는데, 외투 한 벌이 문 옆에 그대로 걸려 있었어.",
+  "등불은 닦아 놓고 기름도 가득. 켜기만 하면 되는 상태였는데 그날 밤 등대는 꺼져 있었대.",
+  "부엌은 깔끔하고 시계는 멈춰 있었고, 마지막 기록은 '등 청소 완료'.",
+  "근데 섬 서쪽 선착장에 가 보니까 바다 위 33m에 묶어 둔 구명부표가 뜯겨 나가 있었어.",
+  "유명한 '섬뜩한 마지막 일지'는 가짜였고, 진짜 답은 따로 있어. 풀버전은 인스타에 @ossak_alarm"
+ ],
+ "reels_script": [
+  "12월, 외투 한 벌을 남기고 등대를 떠난 등대지기 3명.",
+  "1900년, 스코틀랜드의 외딴섬.",
+  "등불은 켤 준비가 끝나 있었고, 시계는 멈춰 있었습니다.",
+  "그리고 바다 위 33m, 뜯겨 나간 구명부표.",
+  "그날 오후, 무슨 일이 있었던 걸까요? 풀버전은 캐러셀에서."
+ ]
+}

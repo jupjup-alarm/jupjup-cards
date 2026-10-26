@@ -1,0 +1,647 @@
+{
+ "id": "W-0003",
+ "series": "세계기담",
+ "title": "플래넌 섬 등대지기 실종",
+ "accent": "#F2B544",
+ "accent_name": "amber",
+ "footer": "세계기담 · 플래넌 섬 등대지기 실종",
+ "character": "Boogi, a small round owl archivist mascot: dark slate-navy feathers, two pointed ear tufts, large glowing amber eyes behind thin round silver glasses, a small amber diamond-shaped beak, a lighter navy chevron-patterned belly, short wings, carrying a small cream notebook and a little amber lantern. Cute, simple, flat webtoon character design.",
+ "sources": [
+  "https://blog.nrscotland.gov.uk/2023/12/12/flannan-isles-lighthouse-keepers-the-disappearance/",
+  "https://www.nlb.org.uk/lighthouses/flannan-islands/",
+  "https://skeptoid.com/episodes/610"
+ ],
+ "panels": [
+  {
+   "id": "s01a",
+   "size": [
+    992,
+    1202
+   ],
+   "prompt": "A small stone lighthouse on a steep rocky island at stormy dusk, its lamp dark. In the lower foreground, the open wooden door of the keepers' stone cottage reveals a single heavy wool coat hanging alone on a peg inside, lit by faint warm amber light. Wild sea below. The upper 45% of the frame is dark stormy sky. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "s02a",
+   "size": [
+    992,
+    700
+   ],
+   "prompt": "Night on a rough sea off the west of Scotland, 1900: a small steamship with lit portholes passing a rocky island whose lighthouse tower stands completely dark. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "s02b",
+   "size": [
+    992,
+    482
+   ],
+   "prompt": "Close view of the top of a stone lighthouse at night, the lantern room glass completely dark, rain blowing. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "s03a",
+   "size": [
+    992,
+    700
+   ],
+   "prompt": "A small steam relief ship tossed by huge storm waves near a cliff-sided island, grey winter daylight. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "s03b",
+   "size": [
+    992,
+    482
+   ],
+   "prompt": "An empty stone landing stage at the foot of island cliffs, a bare flagpole with no flag, a signal rocket arcing up into the grey sky from offshore. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "s04a",
+   "size": [
+    992,
+    700
+   ],
+   "prompt": "A closed iron gate in a stone wall on a windswept island, the lighthouse tower and keepers' cottage behind it, grey afternoon. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "s04b",
+   "size": [
+    992,
+    482
+   ],
+   "prompt": "Inside a plain stone room: narrow iron bunks with blankets thrown back, empty, grey window light. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "s05a",
+   "size": [
+    992,
+    700
+   ],
+   "prompt": "A tidy 1900 lighthouse keepers' kitchen: clean table, plates stacked, a cold iron stove, and a wall clock whose hands have stopped. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "s05b",
+   "size": [
+    992,
+    482
+   ],
+   "prompt": "Inside a lighthouse lantern room: a polished glass lens and a clean oil lamp, wick trimmed, ready to be lit, grey light through the windows. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "s06a",
+   "size": [
+    992,
+    860
+   ],
+   "prompt": "By the doorway of a stone cottage: a row of wooden pegs, all empty except one where a single heavy wool coat hangs alone, faint amber light. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "s06b",
+   "size": [
+    992,
+    322
+   ],
+   "prompt": "A storm raging outside a small cottage window, rain streaking the glass, dark sea beyond. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "s07a",
+   "size": [
+    992,
+    700
+   ],
+   "prompt": "Three small faceless silhouettes of lighthouse keepers in 1900 uniforms standing at the top of rock-cut stairs beside a lighthouse at dusk, seen from far away."
+  },
+  {
+   "id": "s07b",
+   "size": [
+    992,
+    482
+   ],
+   "prompt": "Close-up of a slate board on a wooden desk with faint chalk lines, illegible, beside an oil lamp. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "s08a",
+   "size": [
+    992,
+    700
+   ],
+   "prompt": "A wooden equipment rack in a stone corridor: two empty hooks where waterproof oilskins hung and an empty space on the floor where sea boots stood; a third hook still holds an ordinary coat. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "s08b",
+   "size": [
+    992,
+    482
+   ],
+   "prompt": "A lighthouse tower on a cliff seen from below at dusk, a single amber light in the keepers' cottage window. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "s09a",
+   "size": [
+    992,
+    700
+   ],
+   "prompt": "Iron railings on a wet rock path above the sea, bent and twisted out of shape, waves breaking below, grey light. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "s09b",
+   "size": [
+    992,
+    482
+   ],
+   "prompt": "An empty crevice in a wet rock face beside a narrow tramway track, where a wooden box used to sit; nothing remains. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "s12b",
+   "size": [
+    992,
+    662
+   ],
+   "prompt": "Stormy afternoon: two small faceless silhouettes in oilskins and sea boots climbing down steep wet rock-cut stairs toward a landing stage, huge grey waves below, a wooden box on a ledge."
+  },
+  {
+   "id": "s13a",
+   "size": [
+    992,
+    700
+   ],
+   "prompt": "A gigantic wave surging up a sheer island cliff, white foam exploding high into the air, dark storm sky. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "s14a",
+   "size": [
+    992,
+    520
+   ],
+   "prompt": "A calm grey morning on a sheer island cliff high above the sea: an empty iron post where a lifebuoy once hung, a frayed broken rope dangling, foam far below. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "s15a",
+   "size": [
+    992,
+    760
+   ],
+   "prompt": "The owl Boogi perched on the iron railing of a lighthouse gallery at night, holding up its amber lantern, looking down at a dark stormy sea. Boogi is in the lower left third of the frame; the upper right half is empty night sky with the dark lantern room. The owl is the only figure in the image: no humans, no human silhouettes, no shadows of people.",
+   "with_character": true
+  }
+ ],
+ "slides": [
+  {
+   "layout": "one",
+   "footer_left": "@ossak_alarm",
+   "cells": [
+    {
+     "panel": "s01a",
+     "cover": {
+      "title": [
+       "12월, 외투 한 벌을",
+       "남기고 등대를 떠난",
+       "등대지기 3명"
+      ],
+      "accent_word": "외투 한 벌을",
+      "sub": "등불은 켤 준비가 끝나 있었다",
+      "size": 96,
+      "badge": "세계기담"
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    700,
+    482
+   ],
+   "cells": [
+    {
+     "panel": "s02a",
+     "caption": {
+      "text": "1900년 12월 15일 밤, 스코틀랜드 서쪽 바다.\n지나던 배가 이상한 걸 봅니다.",
+      "maxw": 0.95
+     }
+    },
+    {
+     "panel": "s02b",
+     "caption": {
+      "text": "켜져 있어야 할 등대가 꺼져 있었습니다."
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    700,
+    482
+   ],
+   "cells": [
+    {
+     "panel": "s03a",
+     "caption": {
+      "text": "폭풍 때문에 교대선은\n12월 26일에야 섬에 닿습니다."
+     }
+    },
+    {
+     "panel": "s03b",
+     "caption": {
+      "text": "기적을 울리고 신호탄을 쏴도, 대답이 없었습니다.",
+      "maxw": 0.95
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    700,
+    482
+   ],
+   "cells": [
+    {
+     "panel": "s04a",
+     "caption": {
+      "text": "교대 등대지기가 홀로 섬에 오릅니다.\n문은 닫혀 있었고,"
+     }
+    },
+    {
+     "panel": "s04b",
+     "caption": {
+      "text": "침대는 비어 있었습니다."
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    700,
+    482
+   ],
+   "cells": [
+    {
+     "panel": "s05a",
+     "caption": {
+      "text": "부엌은 깔끔했고, 시계는 멈춰 있었습니다.",
+      "maxw": 0.95
+     }
+    },
+    {
+     "panel": "s05b",
+     "caption": {
+      "text": "등불은 닦여 있고, 기름도 가득.\n언제든 켤 수 있는 상태였죠."
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    860,
+    322
+   ],
+   "cells": [
+    {
+     "panel": "s06a",
+     "caption": {
+      "text": "그리고 문 옆에, 외투 한 벌이 걸려 있었습니다.",
+      "maxw": 0.95
+     }
+    },
+    {
+     "panel": "s06b",
+     "caption": {
+      "text": "임시 등대지기의 외투였습니다.\n12월의 폭풍 속으로, 그는 외투도 없이 나간 겁니다.",
+      "maxw": 0.95
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    700,
+    482
+   ],
+   "cells": [
+    {
+     "panel": "s07a",
+     "caption": {
+      "text": "사라진 사람은 세 명.\n수석, 부등대지기, 그리고 아픈 동료 대신 온 임시 등대지기.",
+      "maxw": 0.95
+     }
+    },
+    {
+     "panel": "s07b",
+     "caption": {
+      "text": "기록은 15일 아침 9시에서 멈춰 있었습니다.\n'등 청소 완료.' 평범한 하루였습니다.",
+      "maxw": 0.95
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    700,
+    482
+   ],
+   "cells": [
+    {
+     "panel": "s08a",
+     "caption": {
+      "text": "사라진 건 두 사람의 방수복과 장화.\n바닷가 선착장에 내려갈 때만 입던 옷이었죠.",
+      "maxw": 0.95
+     }
+    },
+    {
+     "panel": "s08b",
+     "caption": {
+      "text": "등대엔 '모두가 함께 나가선 안 된다'는 규칙이 있었습니다.\n그런데 세 명 모두 나갔습니다. 무엇이 규칙을 깨게 했을까?",
+      "maxw": 0.95
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    700,
+    482
+   ],
+   "cells": [
+    {
+     "panel": "s09a",
+     "caption": {
+      "text": "섬 서쪽 선착장. 쇠 난간이 휘어 있었고,",
+      "maxw": 0.95
+     }
+    },
+    {
+     "panel": "s09b",
+     "caption": {
+      "text": "바위틈에 두던 밧줄 상자가 통째로 사라졌습니다.",
+      "maxw": 0.95
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    540,
+    642
+   ],
+   "cells": [
+    {
+     "panel": "s09a",
+     "caption": {
+      "text": "서쪽 선착장에 남은 것"
+     }
+    },
+    {
+     "card": {
+      "type": "evidence",
+      "badge": "이상한 점",
+      "badge_color": "#E8693A",
+      "badge_note": "이 장은 저장해 두세요",
+      "pad": 40,
+      "item_h": 380,
+      "items": [
+       {
+        "head": "해발 33m",
+        "body": "바다 위 33m 높이에 묶어 둔 구명부표가 뜯겨 나갔습니다"
+       },
+       {
+        "head": "1톤이 넘는 돌",
+        "body": "커다란 바위가 원래 자리에서 옮겨져 있었습니다"
+       },
+       {
+        "head": "외투 한 벌",
+        "body": "세 명 중 한 명은 외투도 없이 나갔습니다"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "layout": "one",
+   "cells": [
+    {
+     "card": {
+      "type": "list",
+      "title": "120년 동안 나온 이야기들",
+      "title_size": 54,
+      "subtitle": "그중 상당수는 지어낸 것이었습니다",
+      "items": [
+       {
+        "head": "① 섬뜩한 마지막 일지?",
+        "lines": [
+         "'동료가 울고 있다… 기도했다'는 일지는",
+         "1920년대 잡지가 지어낸 가짜였습니다"
+        ]
+       },
+       {
+        "head": "② 바다 괴물, 유령?",
+        "lines": [
+         "당시 신문들이 쏟아낸 추측. 근거는 없었습니다"
+        ]
+       },
+       {
+        "head": "③ 몰래 섬을 떠났다?",
+        "lines": [
+         "그런 추측도 나왔지만, 확인된 건 없었습니다"
+        ]
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    520,
+    662
+   ],
+   "cells": [
+    {
+     "panel": "s08a",
+     "caption": {
+      "text": "감독관은 남은 흔적들로 그날 오후를 되짚었습니다.\n실마리는 사라진 그 방수복.",
+      "maxw": 0.95
+     }
+    },
+    {
+     "panel": "s12b",
+     "caption": {
+      "text": "두 사람이 방수복을 입고 선착장으로 내려갑니다.\n폭풍에 밧줄 상자가 쓸려 갈까 봐.",
+      "maxw": 0.95
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    700,
+    482
+   ],
+   "cells": [
+    {
+     "panel": "s13a",
+     "caption": {
+      "text": "그때 예상치 못한 거대한 파도가\n절벽을 타고 올라옵니다."
+     }
+    },
+    {
+     "panel": "s06a",
+     "caption": {
+      "text": "등대에 남았던 임시 등대지기는\n그걸 보고 외투도 없이 뛰쳐나갔던 걸까요.",
+      "maxw": 0.95
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    520,
+    662
+   ],
+   "cells": [
+    {
+     "panel": "s14a",
+     "caption": {
+      "text": "33m 높이까지 치솟은 파도."
+     }
+    },
+    {
+     "card": {
+      "type": "text",
+      "pad": 44,
+      "lines": [
+       {
+        "text": "모든 흔적은\n파도를 가리키고 있었다",
+        "serif": true,
+        "size": 50,
+        "color": "#F2B544",
+        "lh": 1.3,
+        "gap": 28
+       },
+       {
+        "text": "→ 휘어진 난간, 뜯긴 부표, 옮겨진 바위: 파도의 흔적",
+        "size": 28,
+        "color": "#C9CEDA",
+        "gap": 14
+       },
+       {
+        "text": "→ 사라진 방수복 두 벌: 선착장에 내려갔다는 증거",
+        "size": 28,
+        "color": "#C9CEDA",
+        "gap": 14
+       },
+       {
+        "text": "→ 남겨진 외투: 급히 뛰쳐나간 임시 등대지기",
+        "size": 28,
+        "color": "#C9CEDA",
+        "gap": 26
+       },
+       {
+        "text": "1901년 1월, 등대 감독관의 보고서 결론. 세 사람은 끝내 돌아오지 않았습니다.",
+        "size": 22,
+        "color": "#9AA3B8"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "layout": "cols2_bottom",
+   "heights": [
+    760
+   ],
+   "footer_left": "@ossak_alarm",
+   "cells": [
+    {
+     "panel": "s15a",
+     "bubble": {
+      "text": "그때 한 사람이라도\n등대에 남아 있었다면\n어땠을까요?\n그는 무엇을 보고\n외투도 없이 뛰어나갔을까요?",
+      "x": 0.4,
+      "y": 0.08,
+      "maxw": 0.56,
+      "size": 42
+     }
+    },
+    {
+     "card": {
+      "type": "text",
+      "pad": 32,
+      "lines": [
+       {
+        "text": "출처",
+        "size": 24,
+        "weight": 700,
+        "color": "#9AA3B8"
+       },
+       {
+        "text": "National Records of Scotland (2023)"
+       },
+       {
+        "text": "Northern Lighthouse Board: Flannan Islands"
+       },
+       {
+        "text": "Skeptoid #610"
+       },
+       {
+        "text": "그림은 사건을 재구성한 AI 일러스트입니다",
+        "size": 18,
+        "color": "#7C86A2"
+       }
+      ]
+     }
+    },
+    {
+     "card": {
+      "type": "text",
+      "pad": 32,
+      "border": "#3FB8A8",
+      "lines": [
+       {
+        "text": "다음 편",
+        "size": 24,
+        "weight": 700,
+        "color": "#9AA3B8"
+       },
+       {
+        "text": "[세계기담] 서울 3배 넓이의 숲이 한순간에 쓰러졌다",
+        "size": 32,
+        "weight": 700,
+        "color": "#EDE6D6",
+        "lh": 1.35
+       },
+       {
+        "text": "내일 밤 9시 30분 · 팔로우하고 알림 받기",
+        "size": 22
+       }
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "caption": "12월, 외투 한 벌을 남기고 등대를 떠난 등대지기 3명.\n\n1900년 스코틀랜드 플래넌 섬. 등불은 켤 준비가 끝나 있었고, 시계는 멈춰 있었습니다.\n\n당신의 가설은? 댓글로 알려주세요.\n\n출처: National Records of Scotland, Northern Lighthouse Board, Skeptoid\n#세계기담 #플래넌섬",
+ "threads": [
+  "1900년 스코틀랜드 외딴섬 등대 얘기. 12월에 등대지기 3명이 사라졌는데, 외투 한 벌이 문 옆에 그대로 걸려 있었어.",
+  "등불은 닦아 놓고 기름도 가득. 켜기만 하면 되는 상태였는데 그날 밤 등대는 꺼져 있었대.",
+  "부엌은 깔끔하고 시계는 멈춰 있었고, 마지막 기록은 '등 청소 완료'.",
+  "근데 섬 서쪽 선착장에 가 보니까 바다 위 33m에 묶어 둔 구명부표가 뜯겨 나가 있었어.",
+  "유명한 '섬뜩한 마지막 일지'는 가짜였고, 진짜 답은 따로 있어. 풀버전은 인스타에 @ossak_alarm"
+ ],
+ "reels_script": [
+  "12월, 외투 한 벌을 남기고 등대를 떠난 등대지기 3명.",
+  "1900년, 스코틀랜드의 외딴섬.",
+  "등불은 켤 준비가 끝나 있었고, 시계는 멈춰 있었습니다.",
+  "그리고 바다 위 33m, 뜯겨 나간 구명부표.",
+  "그날 오후, 무슨 일이 있었던 걸까요? 풀버전은 캐러셀에서."
+ ],
+ "risk": "저"
+}

@@ -24,7 +24,7 @@
      "해변에서 발견된 남자"
     ],
     "accent_word": "전부 잘린 채",
-    "sub": "주머니엔 '끝났다'라고 적힌 쪽지 한 장",
+    "sub": "바지 속 숨은 주머니엔 '끝났다'라고 적힌 쪽지",
     "size": 100
    },
    "scene": "Dusk on a quiet beach: a man's 1940s jacket lying folded on a low concrete sea wall. At the collar, the spot where the maker's label should be has been neatly cut out, leaving a small rectangular gap with loose threads. Beside it, a tiny tightly rolled scrap of paper, lit by a single orange accent light. The jacket is in the lower half of the frame; the upper 45% is calm empty dusk sky over the sea.",
@@ -34,7 +34,10 @@
    "rows": [
     {
      "scene": "Evening on a long sandy beach in South Australia, 1948: a low sea wall, street lamps glowing along the esplanade, two small faceless silhouettes strolling far away.",
-     "cap": "1948년 11월 30일 저녁, 호주 애들레이드의 해변.\n방파제에 기대 누운 남자를 사람들이 봅니다."
+     "cap": {
+      "text": "1948년 11월 30일 저녁, 호주 애들레이드의 해변.\n방파제에 기대 누운 남자를 사람들이 봅니다.",
+      "maxw": 0.95
+     }
     },
     {
      "scene": "A quiet stretch of concrete sea wall on the beach in the evening, warm street lamp light, waves rolling in.",
@@ -47,12 +50,15 @@
    "rows": [
     {
      "scene": "Early morning on the same beach, soft grey light, a few faceless silhouettes standing far away near the sea wall, seen from a distance; nothing else visible.",
-     "cap": "다음 날 아침, 남자는 같은 자리에 있었습니다.\n다시는 깨어나지 않은 채."
+     "cap": {
+      "text": "다음 날 아침, 남자는 같은 자리에 있었습니다.\n다시는 깨어나지 않은 채.",
+      "maxw": 0.95
+     }
     },
     {
      "scene": "A plain wooden table in a 1940s police office under a desk lamp, empty except for a notebook, quiet.",
      "nop": true,
-     "cap": "다툰 흔적은 없었습니다."
+     "cap": "몸엔 다툰 흔적도, 상처도 없었습니다.\n그는 누구이고, 왜 숨진 걸까?"
     }
    ]
   },
@@ -61,7 +67,10 @@
     {
      "scene": "On a wooden table under a lamp: an unused railway ticket, a bus ticket, a comb, a pack of chewing gum, and an open cigarette packet with cigarettes inside, no readable text on anything.",
      "nop": true,
-     "cap": "주머니엔 쓰지 않은 기차표와 버스표.\n담뱃갑엔 다른 상표의 담배가 들어 있었죠."
+     "cap": {
+      "text": "주머니엔 쓰지 않은 기차표와 버스표.\n담뱃갑엔 다른 상표의 담배가 들어 있었죠.",
+      "maxw": 0.95
+     }
     },
     {
      "scene": "An empty space on the table where a wallet should be, a faint dust outline, lamp light.",
@@ -80,7 +89,10 @@
     {
      "scene": "A shirt and trousers laid out on a table, the label spots on each neatly cut away, lamp light.",
      "nop": true,
-     "cap": "셔츠도, 바지도. 누군가 일부러 이름을 지운 것처럼."
+     "cap": {
+      "text": "셔츠도, 바지도. 누군가 일부러 이름을 지운 것처럼.",
+      "maxw": 0.95
+     }
     }
    ]
   },
@@ -89,12 +101,18 @@
     {
      "scene": "A 1949 railway station cloakroom counter, rows of luggage on shelves, one brown leather suitcase set apart on the counter under a hanging lamp.",
      "nop": true,
-     "cap": "1949년 1월, 애들레이드역 보관소.\n주인이 찾아가지 않은 갈색 가방이 나옵니다."
+     "cap": {
+      "text": "1949년 1월, 애들레이드역 보관소.\n주인이 찾아가지 않은 갈색 가방이 나옵니다.",
+      "maxw": 0.95
+     }
     },
     {
      "scene": "An open brown suitcase with folded 1940s clothes and a spool of bright orange thread on top, lamp light.",
      "nop": true,
-     "cap": "이 가방의 옷도 상표가 잘려 있었습니다.\n남은 건 주황색 실, 그리고 몇 벌에 적힌 이름 'T. Keane'."
+     "cap": {
+      "text": "이 가방의 옷도 상표가 잘려 있었습니다.\n남은 건 주황색 실, 그리고 몇 벌에 적힌 이름 'T. Keane'.",
+      "maxw": 0.95
+     }
     }
    ]
   },
@@ -102,7 +120,10 @@
    "rows": [
     {
      "scene": "Close-up of a tiny hidden fob pocket sewn into the waistband of old trousers, a tightly rolled paper scrap being drawn out of it by faceless silhouette fingers.",
-     "cap": "몇 달 뒤, 바지 속 숨겨진 작은 주머니에서\n돌돌 말린 쪽지가 나옵니다."
+     "cap": {
+      "text": "몇 달 뒤, 바지 속 숨겨진 작은 주머니에서\n돌돌 말린 쪽지가 나옵니다.",
+      "maxw": 0.95
+     }
     },
     {
      "scene": "A small torn scrap of old printed paper lying flat under a magnifying glass, the printed words too small and blurred to read.",
@@ -116,12 +137,18 @@
     {
      "scene": "A 1940s car parked on a quiet suburban street at dusk, through the window a small old book lying on the back seat.",
      "nop": true,
-     "cap": "쪽지는 오래된 시집 '루바이야트'의 마지막 장.\n1949년 7월, 그 시집이 나타납니다."
+     "cap": {
+      "text": "쪽지는 오래된 시집 '루바이야트'의 마지막 장.\n1949년 7월, 그 시집이 나타납니다.",
+      "maxw": 0.95
+     }
     },
     {
      "scene": "An old small poetry book lying open, its last page torn out leaving a ragged edge, lamp light.",
      "nop": true,
-     "cap": "누군가 차 안에 두고 간, 마지막 장이 찢긴 책."
+     "cap": {
+      "text": "누군가 차 안에 두고 간, 마지막 장이 찢긴 책.",
+      "maxw": 0.95
+     }
     }
    ]
   },
@@ -134,7 +161,10 @@
     },
     {
      "scene": "A 1949 naval intelligence office at night, faceless silhouettes bent over papers under green desk lamps.",
-     "cap": "해군 정보부까지 나섰지만, 아무도 풀지 못했습니다."
+     "cap": {
+      "text": "단어가 아닌, 암호 같은 글자들.\n해군 정보부까지 나섰지만, 아무도 풀지 못했습니다.",
+      "maxw": 0.95
+     }
     }
    ]
   },
@@ -204,12 +234,15 @@
     {
      "scene": "A museum storage room at night: a pale plaster bust on a shelf seen strictly from behind, only the back of the head and shoulders visible, a single orange accent light.",
      "nop": true,
-     "cap": "답은 뜻밖의 곳에 있었습니다.\n그를 본떠 만든 석고 흉상."
+     "cap": {
+      "text": "답은 뜻밖의 곳에 있었습니다. 1949년,\n경찰이 신원을 찾으려 그의 얼굴을 본떠 만든 석고 흉상.",
+      "maxw": 0.95
+     }
     },
     {
      "scene": "A laboratory microscope under cool light, a single strand of hair on a glass slide.",
      "nop": true,
-     "cap": "석고에 박혀 있던 머리카락 몇 가닥."
+     "cap": "70년 뒤, 그 석고에 박혀 있던\n머리카락 몇 가닥이 단서가 됩니다."
     }
    ]
   },
@@ -218,12 +251,15 @@
     {
      "scene": "An abstract glowing family-tree network of thousands of small connected nodes spreading across a dark navy space.",
      "nop": true,
-     "cap": "연구진은 그 DNA로 족보 4,000명을 추적합니다."
+     "cap": "연구진은 그 DNA와 겹치는 친척을 찾아\n족보 4,000명을 그립니다."
     },
     {
      "scene": "The same dark network with every node dim except one single node glowing bright orange.",
      "nop": true,
-     "cap": "그중 사망 기록이 없는 사람은 단 한 명이었습니다."
+     "cap": {
+      "text": "그중 사망 기록이 없는 사람은 단 한 명이었습니다.",
+      "maxw": 0.95
+     }
     }
    ]
   },
@@ -231,7 +267,10 @@
    "rows": [
     {
      "panel": "s06b",
-     "cap": "그리고 가방 속 이름 'T. Keane'.",
+     "cap": {
+      "text": "그리고 가방 속 이름 'T. Keane'.",
+      "maxw": 0.95
+     },
      "h": 520
     },
     {
@@ -254,7 +293,7 @@
         "gap": 26
        },
        {
-        "text": "→ 2021년 무덤을 다시 열어 DNA를 확보",
+        "text": "→ 2021년, 남자의 무덤을 열어 DNA를 다시 확보",
         "size": 28,
         "color": "#C9CEDA",
         "gap": 14
@@ -266,7 +305,7 @@
         "gap": 14
        },
        {
-        "text": "→ 'T. Keane'은 웹의 매형 이름이었을 가능성",
+        "text": "→ 웹의 매형 이름은 토머스 킨, 가방 속 'T. Keane'?",
         "size": 28,
         "color": "#C9CEDA",
         "gap": 26

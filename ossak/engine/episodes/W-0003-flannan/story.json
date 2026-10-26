@@ -34,7 +34,10 @@
     {
      "scene": "Night on a rough sea off the west of Scotland, 1900: a small steamship with lit portholes passing a rocky island whose lighthouse tower stands completely dark.",
      "nop": true,
-     "cap": "1900년 12월 15일 밤, 스코틀랜드 서쪽 바다.\n지나던 배가 이상한 걸 봅니다."
+     "cap": {
+      "text": "1900년 12월 15일 밤, 스코틀랜드 서쪽 바다.\n지나던 배가 이상한 걸 봅니다.",
+      "maxw": 0.95
+     }
     },
     {
      "scene": "Close view of the top of a stone lighthouse at night, the lantern room glass completely dark, rain blowing.",
@@ -48,12 +51,15 @@
     {
      "scene": "A small steam relief ship tossed by huge storm waves near a cliff-sided island, grey winter daylight.",
      "nop": true,
-     "cap": "폭풍 때문에 교대선은 11일 뒤에야 섬에 닿습니다."
+     "cap": "폭풍 때문에 교대선은\n12월 26일에야 섬에 닿습니다."
     },
     {
      "scene": "An empty stone landing stage at the foot of island cliffs, a bare flagpole with no flag, a signal rocket arcing up into the grey sky from offshore.",
      "nop": true,
-     "cap": "기적을 울리고 신호탄을 쏴도, 대답이 없었습니다."
+     "cap": {
+      "text": "기적을 울리고 신호탄을 쏴도, 대답이 없었습니다.",
+      "maxw": 0.95
+     }
     }
    ]
   },
@@ -76,7 +82,10 @@
     {
      "scene": "A tidy 1900 lighthouse keepers' kitchen: clean table, plates stacked, a cold iron stove, and a wall clock whose hands have stopped.",
      "nop": true,
-     "cap": "부엌은 깔끔했고, 시계는 멈춰 있었습니다."
+     "cap": {
+      "text": "부엌은 깔끔했고, 시계는 멈춰 있었습니다.",
+      "maxw": 0.95
+     }
     },
     {
      "scene": "Inside a lighthouse lantern room: a polished glass lens and a clean oil lamp, wick trimmed, ready to be lit, grey light through the windows.",
@@ -90,14 +99,17 @@
     {
      "scene": "By the doorway of a stone cottage: a row of wooden pegs, all empty except one where a single heavy wool coat hangs alone, faint amber light.",
      "nop": true,
-     "cap": "그리고 문 옆에, 외투 한 벌이 걸려 있었습니다.",
+     "cap": {
+      "text": "그리고 문 옆에, 외투 한 벌이 걸려 있었습니다.",
+      "maxw": 0.95
+     },
      "h": 860
     },
     {
      "scene": "A storm raging outside a small cottage window, rain streaking the glass, dark sea beyond.",
      "nop": true,
      "cap": {
-      "text": "12월의 폭풍 속으로, 한 사람은 외투도 없이 나간 겁니다.",
+      "text": "임시 등대지기의 외투였습니다.\n12월의 폭풍 속으로, 그는 외투도 없이 나간 겁니다.",
       "maxw": 0.95
      }
     }
@@ -107,12 +119,18 @@
    "rows": [
     {
      "scene": "Three small faceless silhouettes of lighthouse keepers in 1900 uniforms standing at the top of rock-cut stairs beside a lighthouse at dusk, seen from far away.",
-     "cap": "사라진 사람은 세 명.\n수석, 부등대지기, 그리고 아픈 동료 대신 온 임시 등대지기."
+     "cap": {
+      "text": "사라진 사람은 세 명.\n수석, 부등대지기, 그리고 아픈 동료 대신 온 임시 등대지기.",
+      "maxw": 0.95
+     }
     },
     {
      "scene": "Close-up of a slate board on a wooden desk with faint chalk lines, illegible, beside an oil lamp.",
      "nop": true,
-     "cap": "기록은 15일 아침 9시에서 멈춰 있었습니다.\n'등 청소 완료.' 평범한 하루였습니다."
+     "cap": {
+      "text": "기록은 15일 아침 9시에서 멈춰 있었습니다.\n'등 청소 완료.' 평범한 하루였습니다.",
+      "maxw": 0.95
+     }
     }
    ]
   },
@@ -121,12 +139,18 @@
     {
      "scene": "A wooden equipment rack in a stone corridor: two empty hooks where waterproof oilskins hung and an empty space on the floor where sea boots stood; a third hook still holds an ordinary coat.",
      "nop": true,
-     "cap": "사라진 건 두 사람의 방수복과 장화.\n바닷가 선착장에 내려갈 때만 입던 옷이었죠."
+     "cap": {
+      "text": "사라진 건 두 사람의 방수복과 장화.\n바닷가 선착장에 내려갈 때만 입던 옷이었죠.",
+      "maxw": 0.95
+     }
     },
     {
      "scene": "A lighthouse tower on a cliff seen from below at dusk, a single amber light in the keepers' cottage window.",
      "nop": true,
-     "cap": "등대엔 규칙이 있었습니다.\n등을 비워 둔 채 모두가 나가선 안 된다는 것."
+     "cap": {
+      "text": "등대엔 '모두가 함께 나가선 안 된다'는 규칙이 있었습니다.\n그런데 세 명 모두 나갔습니다. 무엇이 규칙을 깨게 했을까?",
+      "maxw": 0.95
+     }
     }
    ]
   },
@@ -135,12 +159,18 @@
     {
      "scene": "Iron railings on a wet rock path above the sea, bent and twisted out of shape, waves breaking below, grey light.",
      "nop": true,
-     "cap": "섬 서쪽 선착장. 쇠 난간이 휘어 있었고,"
+     "cap": {
+      "text": "섬 서쪽 선착장. 쇠 난간이 휘어 있었고,",
+      "maxw": 0.95
+     }
     },
     {
      "scene": "An empty crevice in a wet rock face beside a narrow tramway track, where a wooden box used to sit; nothing remains.",
      "nop": true,
-     "cap": "바위틈에 두던 밧줄 상자가 통째로 사라졌습니다."
+     "cap": {
+      "text": "바위틈에 두던 밧줄 상자가 통째로 사라졌습니다.",
+      "maxw": 0.95
+     }
     }
    ]
   },
@@ -187,7 +217,7 @@
      {
       "head": "① 섬뜩한 마지막 일지?",
       "lines": [
-       "'폭풍… 동료가 울고 있다… 기도했다'는 일지가 유명하지만",
+       "'동료가 울고 있다… 기도했다'는 일지는",
        "1920년대 잡지가 지어낸 가짜였습니다"
       ]
      },
@@ -210,12 +240,18 @@
    "rows": [
     {
      "panel": "s08a",
-     "cap": "답의 실마리는 사라진 그 옷이었습니다.",
+     "cap": {
+      "text": "감독관은 남은 흔적들로 그날 오후를 되짚었습니다.\n실마리는 사라진 그 방수복.",
+      "maxw": 0.95
+     },
      "h": 520
     },
     {
      "scene": "Stormy afternoon: two small faceless silhouettes in oilskins and sea boots climbing down steep wet rock-cut stairs toward a landing stage, huge grey waves below, a wooden box on a ledge.",
-     "cap": "15일 오후, 두 사람은 방수복을 입고 선착장으로.\n폭풍에 밧줄 상자가 쓸려 갈까 봐.",
+     "cap": {
+      "text": "두 사람이 방수복을 입고 선착장으로 내려갑니다.\n폭풍에 밧줄 상자가 쓸려 갈까 봐.",
+      "maxw": 0.95
+     },
      "h": 662
     }
    ]
@@ -229,7 +265,10 @@
     },
     {
      "panel": "s06a",
-     "cap": "외투를 두고 간 세 번째 사람은\n그걸 보고 뛰쳐나갔던 걸까요."
+     "cap": {
+      "text": "등대에 남았던 임시 등대지기는\n그걸 보고 외투도 없이 뛰쳐나갔던 걸까요.",
+      "maxw": 0.95
+     }
     }
    ]
   },
@@ -267,7 +306,7 @@
         "gap": 14
        },
        {
-        "text": "→ 남겨진 외투: 급히 뛰쳐나간 세 번째 사람",
+        "text": "→ 남겨진 외투: 급히 뛰쳐나간 임시 등대지기",
         "size": 28,
         "color": "#C9CEDA",
         "gap": 26

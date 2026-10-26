@@ -1,0 +1,687 @@
+{
+ "id": "W-0002",
+ "series": "세계기담",
+ "title": "메리 셀레스트호",
+ "accent": "#F2B544",
+ "accent_name": "amber",
+ "footer": "세계기담 · 메리 셀레스트호",
+ "character": "Boogi, a small round owl archivist mascot: dark slate-navy feathers, two pointed ear tufts, large glowing amber eyes behind thin round silver glasses, a small amber diamond-shaped beak, a lighter navy chevron-patterned belly, short wings, carrying a small cream notebook and a little amber lantern. Cute, simple, flat webtoon character design.",
+ "sources": [
+  "https://www.smithsonianmag.com/history-archaeology/abandoned-200711.html",
+  "https://www.smithsonianmag.com/smart-news/an-abandoned-merchant-ship-was-discovered-floating-in-the-atlantic-1872-the-mystery-its-missing-crew-never-solved-180985547/",
+  "https://www.americanheritage.com/mystery-mary-celeste",
+  "https://www.history.com/news/what-happened-to-the-mary-celeste"
+ ],
+ "panels": [
+  {
+   "id": "s01a",
+   "size": [
+    992,
+    1202
+   ],
+   "prompt": "A two-masted 19th-century brigantine drifting alone on a grey Atlantic swell under a heavy overcast sky, some sails set and some torn and flapping, the deck completely empty, the ship's wheel unattended. The ship sits in the lower half of the frame; the upper 45% of the frame is calm empty grey-blue sky. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "s02a",
+   "size": [
+    992,
+    700
+   ],
+   "prompt": "Seen from far away across a grey Atlantic sea, 1872: two faceless silhouettes on the deck of a sailing ship, one raising a brass spyglass toward a distant brigantine moving oddly on the horizon."
+  },
+  {
+   "id": "s02b",
+   "size": [
+    992,
+    482
+   ],
+   "prompt": "Close view of an old wooden ship's wheel on an empty deck, turning freely with no one holding it, sea spray, overcast light. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "s03a",
+   "size": [
+    992,
+    700
+   ],
+   "prompt": "A small wooden rowing boat with three faceless silhouette sailors rowing across the swell toward a silent drifting brigantine looming above them."
+  },
+  {
+   "id": "s03b",
+   "size": [
+    992,
+    482
+   ],
+   "prompt": "The empty deck of a 19th-century brigantine: the wooden chocks where the ship's only lifeboat should rest are empty, coiled ropes, a hatch, grey light. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "s04a",
+   "size": [
+    992,
+    700
+   ],
+   "prompt": "Inside a small 19th-century captain's cabin lit by grey daylight through a porthole: folded women's dresses on a bunk, a small wooden child's toy on the floor, a small reed organ (melodeon) in the corner, everything neat and untouched. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "s04b",
+   "size": [
+    992,
+    482
+   ],
+   "prompt": "A dim ship's forecastle: several wooden sea chests, lids slightly open, packed full of folded clothes, hammocks hanging above. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "s05a",
+   "size": [
+    992,
+    700
+   ],
+   "prompt": "A ship's storeroom packed with sacks, wooden food casks and water barrels, plenty of supplies, lantern light. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "s05b",
+   "size": [
+    992,
+    482
+   ],
+   "prompt": "The dark cargo hold of a sailing ship filled with rows of sealed red-oak barrels stacked neatly, a shaft of light from an open hatch above. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "s06a",
+   "size": [
+    992,
+    700
+   ],
+   "prompt": "New York harbour in November 1872, a brigantine with sails unfurled leaving the busy wooden docks, grey morning, gulls. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "s06b",
+   "size": [
+    992,
+    482
+   ],
+   "prompt": "Night at sea, warm lamplight glowing from the portholes of a brigantine sailing calmly under stars. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "s07a",
+   "size": [
+    992,
+    700
+   ],
+   "prompt": "A wooden navigation shelf in a ship's cabin with empty brackets and an empty case where a sextant and a chronometer should sit, dust outlines left behind. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "s07b",
+   "size": [
+    992,
+    482
+   ],
+   "prompt": "An empty chart table in a ship's cabin, a lamp, an open drawer with nothing inside. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "s08a",
+   "size": [
+    992,
+    700
+   ],
+   "prompt": "An open hatch cover lying beside a square opening into a dark ship's hold, dark water sloshing below, wet planks. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "s08b",
+   "size": [
+    992,
+    482
+   ],
+   "prompt": "On wet deck planks: a ship's bilge pump taken apart, its parts laid out, and a long thin iron sounding rod lying beside it. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "s09a",
+   "size": [
+    992,
+    700
+   ],
+   "prompt": "Close-up of an old slate log board with faint chalk lines, illegible, on a wooden ledge, lantern light. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "s09b",
+   "size": [
+    992,
+    482
+   ],
+   "prompt": "A volcanic island silhouette on the horizon at dawn seen from the deck of a sailing ship, calm sea, soft amber light. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "s11a",
+   "size": [
+    992,
+    700
+   ],
+   "prompt": "The Rock of Gibraltar at dusk, a brigantine moored in the harbour below, lamplit windows of an old stone courthouse in the foreground. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "s11b",
+   "size": [
+    992,
+    482
+   ],
+   "prompt": "A lamplit 19th-century courtroom interior, empty wooden benches, stacks of papers and an inkwell on the judge's desk. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "s13a",
+   "size": [
+    992,
+    700
+   ],
+   "prompt": "A busy Italian port in 1873, dock workers' faceless silhouettes opening red-oak barrels on the quay; several barrels stand open and hollow."
+  },
+  {
+   "id": "s14b",
+   "size": [
+    992,
+    622
+   ],
+   "prompt": "Stormy night at sea: a faceless silhouette of a captain holding a lantern at an open hatch, peering down into the dark hold, wind and rain."
+  },
+  {
+   "id": "s15a",
+   "size": [
+    992,
+    520
+   ],
+   "prompt": "Dawn on the Atlantic: a small rowing boat with several faceless silhouettes being towed behind a brigantine on a long rope; the rope is snapping as the ship's sails fill with wind, the boat falling behind."
+  },
+  {
+   "id": "s16a",
+   "size": [
+    992,
+    760
+   ],
+   "prompt": "The owl Boogi perched on the rail of an old wooden sailing ship at night, holding up its amber lantern and looking out over a dark calm sea toward a faint island silhouette. Boogi is in the lower left third of the frame; the upper right half is empty night sky. The owl is the only figure in the image: no humans, no human silhouettes, no shadows of people.",
+   "with_character": true
+  }
+ ],
+ "slides": [
+  {
+   "layout": "one",
+   "footer_left": "@ossak_alarm",
+   "cells": [
+    {
+     "panel": "s01a",
+     "cover": {
+      "title": [
+       "6개월 치 식량,",
+       "짐 가방까지 두고",
+       "멀쩡한 배를 떠난 10명"
+      ],
+      "accent_word": "멀쩡한 배를",
+      "sub": "배는 혼자서 바다를 떠돌고 있었다",
+      "size": 100,
+      "badge": "세계기담"
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    700,
+    482
+   ],
+   "cells": [
+    {
+     "panel": "s02a",
+     "caption": {
+      "text": "1872년 12월 4일, 대서양 한가운데.\n지나던 배의 선원들이 이상한 배 한 척을 봅니다.",
+      "maxw": 0.95
+     }
+    },
+    {
+     "panel": "s02b",
+     "caption": {
+      "text": "키를 잡은 사람이 없었습니다.\n그런데도 배는 바다 위를 떠가고 있었죠."
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    700,
+    482
+   ],
+   "cells": [
+    {
+     "panel": "s03a",
+     "caption": {
+      "text": "선원 세 명이 작은 보트로 건너갑니다."
+     }
+    },
+    {
+     "panel": "s03b",
+     "caption": {
+      "text": "배 위엔 아무도 없었습니다.\n하나뿐인 구명보트도 사라진 채."
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    700,
+    482
+   ],
+   "cells": [
+    {
+     "panel": "s04a",
+     "caption": {
+      "text": "선장실엔 옷가지와 아이 장난감이 그대로.\n선원들의 짐 상자도 옷이 가득 찬 채였습니다.",
+      "maxw": 0.95
+     }
+    },
+    {
+     "panel": "s04b",
+     "caption": {
+      "text": "누구도 짐을 챙기지 않았습니다."
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    700,
+    482
+   ],
+   "cells": [
+    {
+     "panel": "s05a",
+     "caption": {
+      "text": "식량은 6개월 치, 물도 넉넉했습니다."
+     }
+    },
+    {
+     "panel": "s05b",
+     "caption": {
+      "text": "화물은 알코올 1,701통. 손댄 흔적은 없었습니다.\n선원들이 술을 노린 반란이었다면, 왜 그대로였을까?",
+      "maxw": 0.95
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    700,
+    482
+   ],
+   "cells": [
+    {
+     "panel": "s06a",
+     "caption": {
+      "text": "배의 이름은 메리 셀레스트호.\n한 달 전, 뉴욕을 떠나 이탈리아로 향하던 길.",
+      "maxw": 0.95
+     }
+    },
+    {
+     "panel": "s06b",
+     "caption": {
+      "text": "선장과 가족, 선원 7명. 모두 10명이 타고 있었습니다.",
+      "maxw": 0.95
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    700,
+    482
+   ],
+   "cells": [
+    {
+     "panel": "s07a",
+     "caption": {
+      "text": "그런데 사라진 물건이 있었습니다."
+     }
+    },
+    {
+     "panel": "s07b",
+     "caption": {
+      "text": "바다에서 길을 찾는 도구들, 그리고 배의 서류.\n끌려간 게 아니라 스스로 보트를 타고 떠났다는 뜻이었죠.",
+      "maxw": 0.95
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    700,
+    482
+   ],
+   "cells": [
+    {
+     "panel": "s08a",
+     "caption": {
+      "text": "화물칸 덮개는 열려 있었고, 바닥엔 물이 1m쯤.\n가라앉을 정도는 아니었습니다.",
+      "maxw": 0.95
+     }
+    },
+    {
+     "panel": "s08b",
+     "caption": {
+      "text": "펌프 하나는 분해돼 있었고,\n갑판엔 물 깊이를 재는 막대가 놓여 있었습니다.",
+      "maxw": 0.95
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    700,
+    482
+   ],
+   "cells": [
+    {
+     "panel": "s09a",
+     "caption": {
+      "text": "마지막 기록은 11월 25일 아침."
+     }
+    },
+    {
+     "panel": "s09b",
+     "caption": {
+      "text": "'산타마리아섬이 약 10km 앞에 보인다.'\n육지가 눈앞이었습니다.",
+      "maxw": 0.95
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    540,
+    642
+   ],
+   "cells": [
+    {
+     "panel": "s02b",
+     "caption": {
+      "text": "아무도 없는 배"
+     }
+    },
+    {
+     "card": {
+      "type": "evidence",
+      "badge": "이상한 점",
+      "badge_color": "#E8693A",
+      "badge_note": "이 장은 저장해 두세요",
+      "pad": 40,
+      "item_h": 380,
+      "items": [
+       {
+        "head": "9일, 약 700km",
+        "body": "마지막 기록 뒤, 배는 사람 없이 9일을 더 떠갔습니다"
+       },
+       {
+        "head": "짐은 두고, 서류만",
+        "body": "옷도 장난감도 남기고 항해 도구만 가져갔습니다"
+       },
+       {
+        "head": "육지를 코앞에",
+        "body": "섬이 보이는 곳에서 사라졌습니다"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    700,
+    482
+   ],
+   "cells": [
+    {
+     "panel": "s11a",
+     "caption": {
+      "text": "지브롤터 법정. 검찰총장은 범죄를 의심했습니다.",
+      "maxw": 0.95
+     }
+    },
+    {
+     "panel": "s11b",
+     "caption": {
+      "text": "조사 결과, 폭력의 흔적은 없었습니다.\n누구도 처벌받지 않았죠."
+     }
+    }
+   ]
+  },
+  {
+   "layout": "one",
+   "cells": [
+    {
+     "card": {
+      "type": "list",
+      "title": "150년 동안 나온 설명들",
+      "title_size": 56,
+      "subtitle": "어느 것도 모든 의문을 풀지 못했습니다",
+      "items": [
+       {
+        "head": "① 해적?",
+        "lines": [
+         "값나가는 화물과 물건이 그대로였습니다"
+        ]
+       },
+       {
+        "head": "② 선상 반란?",
+        "lines": [
+         "술통은 그대로, 다툰 흔적도 없었습니다"
+        ]
+       },
+       {
+        "head": "③ 그리고 수많은 소문",
+        "lines": [
+         "코난 도일이 이 배를 소설로 쓴 뒤,",
+         "소설 속 장면들이 실제 기록처럼 퍼졌습니다"
+        ]
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    700,
+    482
+   ],
+   "cells": [
+    {
+     "panel": "s13a",
+     "caption": {
+      "text": "몇 주 뒤, 배가 이탈리아에 도착해 술통을 엽니다.\n9개가 텅 비어 있었습니다.",
+      "maxw": 0.95
+     }
+    },
+    {
+     "panel": "s05b",
+     "caption": {
+      "text": "새는 참나무 통. 화물칸에 알코올 증기가 찼다면,\n불이 붙을까, 선장은 겁이 났을지 모릅니다.",
+      "maxw": 0.95
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    560,
+    622
+   ],
+   "cells": [
+    {
+     "panel": "s08b",
+     "caption": {
+      "text": "그리고 분해된 펌프. 이 배는 직전 항해에 석탄을 실었습니다.",
+      "maxw": 0.95
+     }
+    },
+    {
+     "panel": "s14b",
+     "caption": {
+      "text": "석탄 가루가 펌프를 막았다면, 물이 얼마나 찼는지\n알 수 없었죠. 그리고 섬이 보이자, 선장은 결정합니다.",
+      "maxw": 0.95
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    520,
+    662
+   ],
+   "cells": [
+    {
+     "panel": "s15a",
+     "caption": {
+      "text": "작은 보트를 밧줄로 배에 묶은 채, 잠시 피하기로.\n그런데 바람이 돛을 채운 순간, 밧줄이 끊어졌다면?",
+      "maxw": 0.95
+     }
+    },
+    {
+     "card": {
+      "type": "text",
+      "pad": 44,
+      "lines": [
+       {
+        "text": "'잠깐의 대피'가\n마지막 항해가 됐다",
+        "serif": true,
+        "size": 50,
+        "color": "#F2B544",
+        "lh": 1.3,
+        "gap": 28
+       },
+       {
+        "text": "→ 짐을 두고 간 이유: 곧 돌아올 생각이었다",
+        "size": 29,
+        "color": "#C9CEDA",
+        "gap": 14
+       },
+       {
+        "text": "→ 항해 도구만 챙긴 이유: 섬까지 가야 했다",
+        "size": 29,
+        "color": "#C9CEDA",
+        "gap": 14
+       },
+       {
+        "text": "→ 빈 배가 9일을 떠돈 것: 해류 분석으로 가능했다",
+        "size": 29,
+        "color": "#C9CEDA",
+        "gap": 26
+       },
+       {
+        "text": "2007년 다큐 조사팀과 해양학자 필 리처드슨의 분석. 확정된 결론은 아닙니다.",
+        "size": 22,
+        "color": "#9AA3B8"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "layout": "cols2_bottom",
+   "heights": [
+    760
+   ],
+   "footer_left": "@ossak_alarm",
+   "cells": [
+    {
+     "panel": "s16a",
+     "bubble": {
+      "text": "그때 밧줄이 끊어지지 않았다면\n어땠을까요?\n보트와 10명은 끝내\n발견되지 않았습니다.",
+      "x": 0.4,
+      "y": 0.08,
+      "maxw": 0.56,
+      "size": 42
+     }
+    },
+    {
+     "card": {
+      "type": "text",
+      "pad": 32,
+      "lines": [
+       {
+        "text": "출처",
+        "size": 24,
+        "weight": 700,
+        "color": "#9AA3B8"
+       },
+       {
+        "text": "Smithsonian Magazine (2007, 2024)"
+       },
+       {
+        "text": "American Heritage: The Mystery of the Mary Celeste"
+       },
+       {
+        "text": "History.com: What Happened to the Mary Celeste?"
+       },
+       {
+        "text": "그림은 사건을 재구성한 AI 일러스트입니다",
+        "size": 18,
+        "color": "#7C86A2"
+       }
+      ]
+     }
+    },
+    {
+     "card": {
+      "type": "text",
+      "pad": 32,
+      "border": "#3FB8A8",
+      "lines": [
+       {
+        "text": "다음 편",
+        "size": 24,
+        "weight": 700,
+        "color": "#9AA3B8"
+       },
+       {
+        "text": "[미제파일] 옷의 상표가 전부 잘린 채 해변에서 발견된 남자",
+        "size": 32,
+        "weight": 700,
+        "color": "#EDE6D6",
+        "lh": 1.35
+       },
+       {
+        "text": "내일 밤 9시 30분 · 팔로우하고 알림 받기",
+        "size": 22
+       }
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "caption": "6개월 치 식량, 짐 가방까지 두고 멀쩡한 배를 떠난 10명.\n\n1872년 대서양, 아무도 없는 배가 9일 동안 혼자 떠돌았습니다. 사라진 건 사람 10명과 구명보트, 그리고 항해 도구뿐.\n\n당신의 가설은? 댓글로 알려주세요.\n\n출처: Smithsonian Magazine(2007·2024), American Heritage, History.com\n#세계기담 #메리셀레스트",
+ "threads": [
+  "1872년 대서양에서 발견된 배 얘기 해줄게. 6개월 치 식량이랑 짐 가방까지 다 두고, 멀쩡한 배에서 10명이 사라졌어.",
+  "키 잡는 사람도 없는데 배가 혼자 떠가고 있었대. 구명보트 하나만 없어졌고.",
+  "선원 짐 상자엔 옷이 꽉 차 있고 선장실엔 아이 장난감까지 그대로. 근데 항해 시계랑 육분의, 배 서류만 딱 없어.",
+  "마지막 기록은 '섬이 10km 앞에 보인다'. 그 뒤로 배는 사람 없이 9일을 더 떠다녔어.",
+  "가장 유력한 설명은 소름 돋게 허무해. 풀버전은 인스타에 @ossak_alarm"
+ ],
+ "reels_script": [
+  "6개월 치 식량, 짐 가방까지 두고 멀쩡한 배를 떠난 10명.",
+  "1872년, 대서양 한가운데.",
+  "키를 잡은 사람도 없이 배는 혼자 떠가고 있었습니다.",
+  "옷도, 아이 장난감도 그대로. 사라진 건 항해 도구와 서류뿐.",
+  "마지막 기록, '섬이 눈앞에 보인다.'",
+  "그들은 왜, 어디로 떠났을까요? 풀버전은 캐러셀에서."
+ ],
+ "risk": "저"
+}

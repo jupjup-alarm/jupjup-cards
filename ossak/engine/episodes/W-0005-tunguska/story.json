@@ -14,7 +14,7 @@
   "https://www.britannica.com/print/article/609132",
   "https://www.scientificamerican.com/article/the-tunguska-mystery-100-years-later/"
  ],
- "next": "다음 편도 내일 밤 9시 30분에 공개됩니다",
+ "next": "[새벽괴담] 음악도 없는 거리, 한 여자가 춤을 멈추지 않자 30명이 따라 췄다",
  "slides": [
   {
    "cover": {
@@ -39,7 +39,10 @@
     {
      "scene": "Dense dark Siberian taiga forest in mist, a faint trail disappearing between trunks.",
      "nop": true,
-     "cap": "19년 전, 무언가 일어났다는 그곳을 찾아서."
+     "cap": {
+      "text": "19년 전, 무언가 일어났다는 그곳을 찾아서.",
+      "maxw": 0.95
+     }
     }
    ]
   },
@@ -53,7 +56,10 @@
     {
      "scene": "Ground-level view along rows of fallen tree trunks all lying parallel in the same direction, receding into mist.",
      "nop": true,
-     "cap": "수천만 그루가, 모두 같은 방향으로 누워 있었습니다."
+     "cap": {
+      "text": "수천만 그루가, 모두 같은 방향으로 누워 있었습니다.",
+      "maxw": 0.95
+     }
     }
    ]
   },
@@ -61,12 +67,15 @@
    "rows": [
     {
      "scene": "Small faceless silhouettes walking between fallen trunks, following the direction the trunks point from, toward a misty horizon.",
-     "cap": "쓰러진 방향을 거꾸로 따라가면, 시작점이 나올 터."
+     "cap": {
+      "text": "쓰러진 방향을 거꾸로 따라가면, 시작점이 나올 터.",
+      "maxw": 0.95
+     }
     },
     {
      "scene": "Mist over a flat marshy clearing in the taiga, nothing visible yet, a sense of anticipation.",
      "nop": true,
-     "cap": "그는 거대한 구덩이를 예상했습니다."
+     "cap": "쿨리크는 거대한 구덩이를 예상했습니다."
     }
    ]
   },
@@ -75,7 +84,10 @@
     {
      "scene": "The center of a devastated Siberian forest: tall bare trunks stripped of all branches and bark standing upright like telegraph poles in the mist, a marshy bog at their feet, no crater, eerie silence.",
      "nop": true,
-     "cap": "그런데 한가운데엔 구덩이가 없었습니다.\n나무들이 껍질과 가지만 잃은 채, 꼿꼿이 서 있었죠.",
+     "cap": {
+      "text": "그런데 한가운데엔 구덩이가 없었습니다.\n나무들이 껍질과 가지만 잃은 채, 꼿꼿이 서 있었죠.",
+      "maxw": 0.95
+     },
      "h": 860
     },
     {
@@ -90,7 +102,10 @@
     {
      "scene": "Siberian taiga at dawn, 1908, a still sky with a single amber glow on the horizon.",
      "nop": true,
-     "cap": "19년 전, 1908년 6월 30일 아침 7시 15분쯤."
+     "cap": {
+      "text": "19년 전, 1908년 6월 30일 아침 7시 15분쯤.",
+      "maxw": 0.95
+     }
     },
     {
      "scene": "A faceless silhouette on the porch of a log trading post in Siberia looking up as the sky above the forest is split by a long bright glowing seam.",
@@ -103,12 +118,18 @@
     {
      "scene": "Inside a log house: a wooden chair tipped over on the floor, a spilled bowl, and a window frame with shattered glass, harsh bright light flooding in.",
      "nop": true,
-     "cap": "뜨거운 바람에 그는 의자에서 나동그라졌습니다.\n셔츠에 불이 붙은 것 같았다고 합니다."
+     "cap": {
+      "text": "뜨거운 바람에 그는 의자에서 나동그라졌습니다.\n셔츠에 불이 붙은 것 같았다고 합니다.",
+      "maxw": 0.95
+     }
     },
     {
      "scene": "A distant fiery column of light crossing above a dark forest, seen from very far away across hills.",
      "nop": true,
-     "cap": "그 소리와 흔들림은 수백 km 밖까지 닿았습니다."
+     "cap": {
+      "text": "그 소리와 흔들림은 수백 km 밖까지 닿았습니다.",
+      "maxw": 0.95
+     }
     }
    ]
   },
@@ -116,7 +137,10 @@
    "rows": [
     {
      "scene": "A European city street at midnight in 1908, the sky glowing strangely bright, a faceless silhouette reading a newspaper outdoors under the glowing sky.",
-     "cap": "며칠 동안 유럽의 밤하늘이 이상하게 밝았습니다.\n한밤중에 밖에서 신문을 읽을 정도로."
+     "cap": {
+      "text": "며칠 동안 유럽의 밤하늘이 이상하게 밝았습니다.\n한밤중에 밖에서 신문을 읽을 정도로.",
+      "maxw": 0.95
+     }
     },
     {
      "scene": "An old seismograph drum with an ink needle tracing a sudden sharp spike on paper, lamp light.",
@@ -130,12 +154,18 @@
     {
      "scene": "Endless empty Siberian taiga from above in winter, no roads, no people.",
      "nop": true,
-     "cap": "그런데 19년 동안, 아무도 그곳에 가지 못했습니다."
+     "cap": {
+      "text": "그런데 19년 동안, 아무도 그곳에 가지 못했습니다.",
+      "maxw": 0.95
+     }
     },
     {
      "scene": "A small expedition camp abandoned in deep snow at the edge of a frozen swamp, 1921.",
      "nop": true,
-     "cap": "1921년 첫 탐사는 늪과 숲에 막혀 실패했습니다."
+     "cap": {
+      "text": "1921년 첫 탐사는 늪과 숲에 막혀 실패했습니다.",
+      "maxw": 0.95
+     }
     }
    ]
   },
@@ -192,9 +222,9 @@
       ]
      },
      {
-      "head": "③ 그리고 온갖 상상",
+      "head": "③ 땅속 가스의 폭발?",
       "lines": [
-       "어느 것도 한가운데의 나무를 설명하지 못했습니다"
+       "그런 설도 나왔지만, 어느 것도 서 있는 나무를 설명하지 못했습니다"
       ]
      }
     ]
@@ -220,12 +250,18 @@
     {
      "scene": "A cutaway view: a huge bright burst high in the sky above a forest, a dome-shaped shock wave pushing straight down; trees directly below stand upright stripped of branches while trees farther out are blown over sideways, radiating outward.",
      "nop": true,
-     "cap": "하늘 5~10km 높이에서 폭발한 겁니다."
+     "cap": {
+      "text": "하늘 5~10km 높이에서 폭발한 겁니다.",
+      "maxw": 0.95
+     }
     },
     {
      "scene": "Close side view: directly under the burst, bare trunks still standing; to both sides, trees knocked flat pointing away from the center.",
      "nop": true,
-     "cap": "바로 아래는 충격이 위에서 내리꽂혀 가지만 꺾이고,\n바깥 나무들은 옆으로 밀려 쓰러졌습니다."
+     "cap": {
+      "text": "바로 아래 나무는 충격을 머리 위에서 곧장 맞아\n가지만 꺾이고 줄기는 섰습니다.\n비스듬히 맞은 바깥 나무들은 옆으로 쓰러졌죠.",
+      "maxw": 0.95
+     }
     }
    ]
   },
@@ -234,7 +270,10 @@
     {
      "scene": "Sunrise over a snowy Russian city in winter, a long bright contrail of a fireball streaking across the sky.",
      "nop": true,
-     "cap": "2013년 러시아 첼랴빈스크의 아침.",
+     "cap": {
+      "text": "105년 뒤인 2013년, 러시아 첼랴빈스크.\n같은 일이 사람들 눈앞에서 일어납니다.",
+      "maxw": 0.95
+     },
      "h": 520
     },
     {
@@ -269,7 +308,7 @@
         "gap": 26
        },
        {
-        "text": "매년 6월 30일은 이 사건을 기억하는 유엔 '소행성의 날'입니다.",
+        "text": "지금의 정설입니다. 다만 소행성이 아니라 혜성이었다는 주장도 남아 있습니다.",
         "size": 22,
         "color": "#9AA3B8"
        }
@@ -281,7 +320,7 @@
   {
    "end": {
     "scene": "The owl Boogi perched on top of a tall bare branchless tree trunk in a misty Siberian forest at night, holding its amber lantern, looking up at a starry sky with one faint shooting star. Boogi is in the lower left third of the frame; the upper right half is empty night sky.",
-    "bubble": "그날 그 소행성이\n도시 위에서 터졌다면\n어땠을까요?\n그런데 그건 정말 소행성이었을까요,\n혜성이었을까요?"
+    "bubble": "그날 그 불덩이가\n도시 위에서 터졌다면\n어땠을까요?\n그런데 그건 소행성이었을까요,\n혜성이었을까요?"
    }
   }
  ],
