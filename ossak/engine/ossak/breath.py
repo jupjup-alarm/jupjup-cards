@@ -84,6 +84,10 @@ def analyze(wav, tts):
     for k, d in marks.items():
         if d >= 0.22 and not any(abs(ends[k] - f) < 0.07 for f in soft):
             wrong.append((ws[k]["word"].strip(), round(d, 2)))
+    for w in ws:                       # '음,' '어' 같은 군소리
+        t = norm(w["word"])
+        if t in ("음", "어", "으음", "흠") and t not in norm(tts):
+            wrong.append(("군소리:" + t, 0))
     missing = 0
     for f in hard:
         near = [d for k, d in marks.items() if abs(ends[k] - f) < 0.08]
