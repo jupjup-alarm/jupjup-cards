@@ -206,6 +206,9 @@ def main():
     cover = spec["slides"][0]["cells"][0]["cover"]
     accent = spec.get("accent", C["amber"])
     beats = reel["beats"]
+    horror = reel.get("mood") == "horror"
+    if horror and "TTS_RATE" not in os.environ:
+        os.environ["TTS_RATE"] = "0.95"
     total_chars = sum(len(b["say"]) for b in beats)
 
     if a.rows_only:
@@ -235,7 +238,7 @@ def main():
         filt.append(f"[{i}:a]adelay={ms}|{ms}[n{i}]")
     n = len(beats)
     amb = (f"anoisesrc=color=brown:amplitude=0.5:duration={total:.2f}:sample_rate=48000,"
-           f"lowpass=f=220,highpass=f=40,volume=0.07,afade=t=in:d=1.5,afade=t=out:st={max(0, total - 1.5):.2f}:d=1.5[amb]")
+           f"lowpass=f=220,highpass=f=40,volume={0.11 if horror else 0.07},afade=t=in:d=1.5,afade=t=out:st={max(0, total - 1.5):.2f}:d=1.5[amb]")
     filt.append(amb)
     filt.append("".join(f"[n{i}]" for i in range(n)) + f"amix=inputs={n}:normalize=0[nar]")
     filt.append("[nar][amb]amix=inputs=2:normalize=0,alimiter=limit=0.95[out]")
