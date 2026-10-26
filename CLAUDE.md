@@ -11,7 +11,8 @@
 - `templates/char_*.svg` — 종이 캐릭터 (surprise=깜짝, happy=신남, wink=윙크, closing=마무리)
 - `fonts/` — Black Han Sans, Noto Sans KR (OFL)
 - `maps/` — 시트 스크립트가 올리는 네이버 지도 이미지
-- `photos/` — 시트 스크립트가 올리는 단지 사진 ('청약조사' W열 이미지 주소 → AA열에 경로)
+- `photos/` — 시트 스크립트가 올리는 단지 사진 ('청약조사' W열 → AA열), 평면도 `photos/plan-…` (AB열 → AC열)
+- `notices/` — 사용자가 구글 드라이브 '줍줍 공고문' 폴더에 넣은 공고문·팸플릿 PDF (시트 스크립트가 올림, 목록은 `notices/index.json`)
 - `mapgen.py`, `data/` — 대체용 경계 지도 (통계청 SGIS 2018 행정구역 경계, 공공누리 제1유형)
 
 ## 원고(JSON) 형식
@@ -46,6 +47,9 @@
   - 행정동을 끝내 못 정하면 `dong`을 빼라 (시군구만 강조된다).
   - 단지가 여러 곳(예: 24개 단지 모집)이거나 생활정보·주간 일정이면 지도 카드를 넣지 않는다.
   - `rows`는 최대 2개 (가까운 역 등, 원고에 있는 사실만).
+- plan (평면도): `{"type": "plan", "eyebrow": "평면도", "title": "84A 이렇게 생겼어요", "image": "photos/plan-….jpg", "rows": [["공급", "일반 19·특공 53세대"], ["최고 분양가", "5억7,026만원"]], "credit": "이미지: LH 제공 평면도 · 실제와 다를 수 있음"}` — 가격 장 바로 뒤에 1~2장(주력 타입). rows 최대 2개, 값은 '청약홈API' 탭·원고 숫자 그대로.
+  - 이미지 출처: ① '청약조사' AC열 `photos/plan-…` (분양 홈페이지 평면 이미지를 시트 스크립트가 받아둔 것) ② `notices/index.json`에 그 단지 팸플릿 PDF가 있으면 직접 잘라냄: `pdfimages -list notices/x.pdf` → `pdfimages -png -f N -l N notices/x.pdf /tmp/p/img`(내장 이미지) 또는 `pdftoppm -r 150 -f N -l N -png notices/x.pdf /tmp/p/pg` 후 PIL로 해당 타입 평면도만 크롭 → `photos/plan-<slug>-84a.png`로 저장해 커밋. 평면도 페이지는 `pdftotext -f N -l N`으로 '평면'·타입명(84A 등)이 있는 쪽을 찾는다. 반드시 Read로 열어 타입명이 맞는지 확인.
+  - credit은 X열 출처(사업주체)로: "이미지: <사업주체> 제공 평면도 · 실제와 다를 수 있음".
 - 원고의 문구·숫자는 바꾸지 말 것. 칸 배치만 정리한다.
 
 ## 렌더링
@@ -68,5 +72,6 @@ main에 푸시가 거절되면 `cards` 브랜치에 푸시하고 `CARDS_BRANCH=c
 - 원고: `reels/specs/<slug>.json` → `python3 reel.py reels/specs/<slug>.json` → `reels/<slug>/reel.mp4`, `cover.jpg`, `preview.jpg`, `manifest.json`
 - 장면: `hook`(첫 프레임부터 훅이 보임 — 1초 룰, lines의 `{n}` 자리에 `count.to` 숫자가 강조 펄스), `points`(rows 2~4개, text 선택), `cta`. 1080×1920. 핵심 내용은 세로 가운데(피드 4:5 영역 y≈285~1635)에 모으고, 위 300px·아래 420px·오른쪽 140px(인스타 버튼 자리)는 비운다 — 2026-10-25 "너무 위로 몰림" 피드백 반영.
 - 훅 장면 실사 배경: hook에 `"photo"`, `"photo_credit"`(카드 표지와 같은 값), 선택 `"photo_pos"`를 넣으면 위쪽에 단지 사진이 천천히 확대되고 글자는 아래로 내려간다 (종이 캐릭터는 숨김). 표지 cover.jpg에도 사진이 들어간다.
+- 평면도 장면: `{"type": "plan", "eyebrow", "title", "image", "rows"(최대 2개, 한 줄 요약으로 표시), "credit"}` — ③ 원고에 평면도 장면이 있을 때만 (장면 수 = 대본 블록 수 유지).
 - 내레이션: 원고에 `"voice": "voices/<id>/"` (시트 '오늘의 발행 플랜' AA열 값)을 넣으면 `voices/<id>/01.mp3`… 를 장면 순서대로 붙이고, 장면 길이를 음성에 맞춰 늘리고, 종이 캐릭터 입을 음성 크기에 맞춰 움직인다. 음성은 시트 스크립트가 Z열 대본(장면마다 `---`로 구분)으로 구글 TTS를 돌려 올린다. 렌더링 전 `git pull --rebase origin main`.
 - 올리기: `git add reels && git commit -m "reels: <slug>" && git push origin HEAD:main` (`reel.html`은 올리지 않음). S열에 `manifest.json`의 video, cover 주소를 줄바꿈으로 → 시트 스크립트가 릴스로 게시.

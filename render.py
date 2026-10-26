@@ -321,9 +321,34 @@ def mapcard(card, th, n, total):
 </div>'''
 
 
+def plancard(card, th, n, total):
+    """평면도. image(저장소 안 경로, photos/plan-….jpg), title, rows(최대 2개: 공급세대·최고 분양가 등),
+    credit(예: "이미지: LH 제공 평면도 · 실제와 다를 수 있음")."""
+    uri = photo_uri(card.get("image"))
+    if not uri:
+        PHOTO_WARN.append(f"평면도 {card.get('image')} 없음")
+    rows = "".join(
+        f'<div class="row" style="background:{th["tint"]}"><span class="rl" style="color:{th["accent"]}">{esc(k)}</span>'
+        f'<span class="rv">{unit(esc(v))}</span></div>' for k, v in (card.get("rows") or [])[:2])
+    title = "".join(f"<div>{unit(esc(t))}</div>" for t in lines(card.get("title", "")))
+    img = f'<img src="{uri}" alt="">' if uri else '<div class="maperr">평면도 이미지를 찾지 못했어요</div>'
+    return f'''
+<div class="card light" style="background:#FFFFFF">
+  {header(n, total, th)}
+  <div class="zoom body mp">
+    <div class="eyebrow" style="color:{th['accent']}">{esc(card.get('eyebrow') or '평면도')}</div>
+    <div class="title">{title}</div>
+    <div class="planbox">{img}</div>
+    {f'<div class="rows mrows">{rows}</div>' if rows else ''}
+  </div>
+  <div class="note">{esc(card.get('credit') or '이미지: 사업주체 제공 평면도 · 실제와 다를 수 있음')}</div>
+  <div class="handle">@jupjup_alarm</div>
+</div>'''
+
+
 MAP_INFO = []
 PHOTO_WARN = []
-BUILDERS = {"cover": cover, "info": info, "check": check, "closing": closing, "week": week, "map": mapcard}
+BUILDERS = {"cover": cover, "info": info, "check": check, "closing": closing, "week": week, "map": mapcard, "plan": plancard}
 
 CSS = """
 @font-face{font-family:'Black Han Sans';src:url('FONTDIR/BlackHanSans-Regular.ttf')}
@@ -383,6 +408,8 @@ body{margin:0;width:1080px;height:1350px;overflow:hidden}
 .wname{font-size:40px;font-weight:900;line-height:1.25}
 .wpoint{font-size:30px;font-weight:500;color:#5B6472;line-height:1.35}
 .mp{margin-top:90px}
+.planbox{margin-top:36px;height:560px;border-radius:28px;border:2px solid #E3E7ED;background:#FFFFFF;display:flex;align-items:center;justify-content:center;padding:24px;overflow:hidden}
+.planbox img{max-width:100%;max-height:100%;object-fit:contain}
 .mapbox{margin-top:40px;border-radius:28px;overflow:hidden;line-height:0;border:2px solid #E3E7ED}
 .mapbox svg,.mapbox img{display:block;width:100%;height:auto}
 .addr{margin-top:24px;font-size:36px;font-weight:700}

@@ -135,6 +135,21 @@ def scene_html(sc, th, idx, start, end):
   <div class="rows">{rows}</div>
   {text}
 </section>'''
+    if t == "plan":
+        uri = photo_uri(sc.get("image"))
+        if not uri:
+            WARN.append(f"평면도 {sc.get('image')} 없음")
+        meta = " · ".join(f'<span style="color:{th["accent"]}">{esc(r[0])}</span> {unit(esc(r[1]))}'
+                          for r in (sc.get("rows") or [])[:2])
+        img = f'<img src="{uri}" alt="">' if uri else ''
+        return f'''
+<section class="scene points plan" {a}>
+  <div class="eyebrow in" data-in="{start + 0.1:.2f}" style="color:{th['accent']}">{esc(sc.get('eyebrow') or '평면도')}</div>
+  <div class="ptitle in" data-in="{start + 0.2:.2f}">{unit(esc(sc.get('title')))}</div>
+  <div class="planbox in pop" data-in="{start + 0.35:.2f}">{img}</div>
+  <div class="pmeta in" data-in="{start + 0.7:.2f}">{meta}</div>
+  <div class="pcred">{esc(sc.get('credit') or '이미지: 사업주체 제공 평면도 · 실제와 다를 수 있음')}</div>
+</section>'''
     if t == "cta":
         lines = "".join(f'<div class="cline in pop" data-in="{start + 0.25 + i * 0.2:.2f}">{hl(ln, sc.get("highlight"), th["accent"])}</div>'
                         for i, ln in enumerate(sc["lines"]))
@@ -175,6 +190,13 @@ html,body{word-break:keep-all;width:1080px;height:1920px;overflow:hidden;backgro
 .hook.photo .chips,.hook.photo .hlines,.hook.photo .hsub{position:relative}
 .hook.photo .hlines{font-size:170px;text-shadow:0 4px 24px rgba(0,0,0,.25)}
 .points{justify-content:center}
+.planbox{flex-shrink:0;height:640px;border-radius:32px;border:3px solid #E3E7ED;background:#fff;display:flex;align-items:center;justify-content:center;padding:24px;margin-bottom:24px;overflow:hidden}
+.plan .ptitle{font-size:92px;margin-bottom:24px}
+.pmeta{font-size:42px;font-weight:800;line-height:1.35}
+.planbox img{max-width:100%;max-height:100%;object-fit:contain}
+.pcred{font-size:26px;color:#5B6472;margin-top:18px}
+.voiced .plan .planbox{height:520px}
+.voiced .plan .ptitle{font-size:88px}
 .eyebrow{font-size:50px;font-weight:900;margin-bottom:18px}
 .ptitle{white-space:pre-line;font-family:'Black Han Sans';font-size:124px;line-height:1.12;margin-bottom:56px;letter-spacing:-1px}
 .rows{display:flex;flex-direction:column;gap:26px}
@@ -370,6 +392,7 @@ FIT_JS = """
     while (bottom() > LIMIT && k < 5) {
       s.querySelectorAll('.ptitle,.rv,.rl,.ptext,.hlines,.hsub,.cline,.eyebrow').forEach(e => {
         e.style.fontSize = (parseFloat(getComputedStyle(e).fontSize) * 0.94) + 'px'; });
+      s.querySelectorAll('.planbox').forEach(e => { e.style.height = (parseFloat(getComputedStyle(e).height) * 0.9) + 'px'; });
       s.querySelectorAll('.row').forEach(e => { const cs = getComputedStyle(e);
         e.style.paddingTop = e.style.paddingBottom = (parseFloat(cs.paddingTop) * 0.85) + 'px'; });
       k++;
