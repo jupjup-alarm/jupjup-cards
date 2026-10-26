@@ -2,3 +2,10 @@ reels/*/reel.html
 reels/*/_frames/
 reels/*/_voice/
 __pycache__/
+ossak/engine/episodes/*/panels/
+ossak/engine/episodes/*/cf_*/
+ossak/engine/episodes/*/slides/
+ossak/engine/episodes/*/preview.jpg
+ossak/engine/episodes/*/rows.json
+ossak/engine/**/__pycache__/
+ossak/engine/cloudflare.env

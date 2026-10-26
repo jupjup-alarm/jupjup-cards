@@ -1,0 +1,306 @@
+{
+ "id": "M-0001",
+ "series": "미제파일",
+ "title": "서머턴 맨",
+ "risk": "중",
+ "sources": [
+  "Smithsonian Magazine (2011, 2022)",
+  "InDaily (2021, 2022)",
+  "AP (2022)"
+ ],
+ "source_urls": [
+  "https://www.smithsonianmag.com/history/the-body-on-somerton-beach-50795611/",
+  "https://www.smithsonianmag.com/smart-news/mystery-somerton-man-finally-solved-180980540/",
+  "https://www.indailysa.com.au/news/archive/2022/07/27/somerton-mans-identity-revealed-professor-says",
+  "https://www.wsbtv.com/news/trending/dna-leads-id-australias-somerton-man-researchers-say/HUGQRNBPFJEJHDDOWEITFHH2TA/"
+ ],
+ "next": "[세계기담] 아무도 없던 밤, 하늘에서 72초 동안 들어온 신호",
+ "slides": [
+  {
+   "cover": {
+    "title": [
+     "옷의 상표가",
+     "전부 잘린 채",
+     "해변에서 발견된 남자"
+    ],
+    "accent_word": "전부 잘린 채",
+    "sub": "주머니엔 '끝났다'라고 적힌 쪽지 한 장",
+    "size": 100
+   },
+   "scene": "Dusk on a quiet beach: a man's 1940s jacket lying folded on a low concrete sea wall. At the collar, the spot where the maker's label should be has been neatly cut out, leaving a small rectangular gap with loose threads. Beside it, a tiny tightly rolled scrap of paper, lit by a single orange accent light. The jacket is in the lower half of the frame; the upper 45% is calm empty dusk sky over the sea.",
+   "nop": true
+  },
+  {
+   "rows": [
+    {
+     "scene": "Evening on a long sandy beach in South Australia, 1948: a low sea wall, street lamps glowing along the esplanade, two small faceless silhouettes strolling far away.",
+     "cap": "1948년 11월 30일 저녁, 호주 애들레이드의 해변.\n방파제에 기대 누운 남자를 사람들이 봅니다."
+    },
+    {
+     "scene": "A quiet stretch of concrete sea wall on the beach in the evening, warm street lamp light, waves rolling in.",
+     "nop": true,
+     "cap": "잠든 줄 알았습니다."
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "Early morning on the same beach, soft grey light, a few faceless silhouettes standing far away near the sea wall, seen from a distance; nothing else visible.",
+     "cap": "다음 날 아침, 남자는 같은 자리에 있었습니다.\n다시는 깨어나지 않은 채."
+    },
+    {
+     "scene": "A plain wooden table in a 1940s police office under a desk lamp, empty except for a notebook, quiet.",
+     "nop": true,
+     "cap": "다툰 흔적은 없었습니다."
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "On a wooden table under a lamp: an unused railway ticket, a bus ticket, a comb, a pack of chewing gum, and an open cigarette packet with cigarettes inside, no readable text on anything.",
+     "nop": true,
+     "cap": "주머니엔 쓰지 않은 기차표와 버스표.\n담뱃갑엔 다른 상표의 담배가 들어 있었죠."
+    },
+    {
+     "scene": "An empty space on the table where a wallet should be, a faint dust outline, lamp light.",
+     "nop": true,
+     "cap": "지갑도, 신분증도 없었습니다."
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "Close-up of the inside collar of a 1940s men's jacket where the maker's label has been cut out with scissors, loose threads around a small rectangular gap.",
+     "nop": true,
+     "cap": "그리고 옷. 상표가 있어야 할 자리가\n잘려 나가 있었습니다."
+    },
+    {
+     "scene": "A shirt and trousers laid out on a table, the label spots on each neatly cut away, lamp light.",
+     "nop": true,
+     "cap": "셔츠도, 바지도. 누군가 일부러 이름을 지운 것처럼."
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "A 1949 railway station cloakroom counter, rows of luggage on shelves, one brown leather suitcase set apart on the counter under a hanging lamp.",
+     "nop": true,
+     "cap": "1949년 1월, 애들레이드역 보관소.\n주인이 찾아가지 않은 갈색 가방이 나옵니다."
+    },
+    {
+     "scene": "An open brown suitcase with folded 1940s clothes and a spool of bright orange thread on top, lamp light.",
+     "nop": true,
+     "cap": "이 가방의 옷도 상표가 잘려 있었습니다.\n남은 건 주황색 실, 그리고 몇 벌에 적힌 이름 'T. Keane'."
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "Close-up of a tiny hidden fob pocket sewn into the waistband of old trousers, a tightly rolled paper scrap being drawn out of it by faceless silhouette fingers.",
+     "cap": "몇 달 뒤, 바지 속 숨겨진 작은 주머니에서\n돌돌 말린 쪽지가 나옵니다."
+    },
+    {
+     "scene": "A small torn scrap of old printed paper lying flat under a magnifying glass, the printed words too small and blurred to read.",
+     "nop": true,
+     "cap": "적힌 말은 'Tamám Shud.'\n페르시아어로 '끝났다'."
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "A 1940s car parked on a quiet suburban street at dusk, through the window a small old book lying on the back seat.",
+     "nop": true,
+     "cap": "쪽지는 오래된 시집 '루바이야트'의 마지막 장.\n1949년 7월, 그 시집이 나타납니다."
+    },
+    {
+     "scene": "An old small poetry book lying open, its last page torn out leaving a ragged edge, lamp light.",
+     "nop": true,
+     "cap": "누군가 차 안에 두고 간, 마지막 장이 찢긴 책."
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "The back cover of an old book under lamplight with faint pencil marks in several lines, too faint and blurred to read.",
+     "nop": true,
+     "cap": "뒤표지엔 연필로 쓴 대문자 다섯 줄."
+    },
+    {
+     "scene": "A 1949 naval intelligence office at night, faceless silhouettes bent over papers under green desk lamps.",
+     "cap": "해군 정보부까지 나섰지만, 아무도 풀지 못했습니다."
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "panel": "s05a",
+     "cap": "이름 없는 남자",
+     "h": 540
+    },
+    {
+     "card": {
+      "type": "evidence",
+      "badge": "남은 의문",
+      "badge_color": "#E8693A",
+      "badge_note": "이 장은 저장해 두세요",
+      "pad": 40,
+      "item_h": 380,
+      "items": [
+       {
+        "head": "지워진 이름",
+        "body": "상표도 신분증도 없이, 가방 속 옷까지"
+       },
+       {
+        "head": "풀리지 않는 암호",
+        "body": "시집 뒤표지의 대문자 다섯 줄"
+       },
+       {
+        "head": "사인 불명",
+        "body": "독을 의심했지만 찾지 못했습니다. 1958년 검시관도 '불명'"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "card": {
+    "type": "list",
+    "title": "70년 동안 나온 이야기들",
+    "title_size": 56,
+    "subtitle": "그를 아는 사람은 끝내 나타나지 않았습니다",
+    "items": [
+     {
+      "head": "① 냉전 시대 스파이?",
+      "lines": [
+       "소문은 무성했지만, 증거는 없었습니다"
+      ]
+     },
+     {
+      "head": "② 암호 속 비밀 메시지?",
+      "lines": [
+       "수많은 사람이 도전했지만, 아직 풀리지 않았습니다"
+      ]
+     },
+     {
+      "head": "③ 'T. Keane'이 그의 이름?",
+      "lines": [
+       "그 이름으로는 그를 찾을 수 없었습니다"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "rows": [
+    {
+     "scene": "A museum storage room at night: a pale plaster bust on a shelf seen strictly from behind, only the back of the head and shoulders visible, a single orange accent light.",
+     "nop": true,
+     "cap": "답은 뜻밖의 곳에 있었습니다.\n그를 본떠 만든 석고 흉상."
+    },
+    {
+     "scene": "A laboratory microscope under cool light, a single strand of hair on a glass slide.",
+     "nop": true,
+     "cap": "석고에 박혀 있던 머리카락 몇 가닥."
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "An abstract glowing family-tree network of thousands of small connected nodes spreading across a dark navy space.",
+     "nop": true,
+     "cap": "연구진은 그 DNA로 족보 4,000명을 추적합니다."
+    },
+    {
+     "scene": "The same dark network with every node dim except one single node glowing bright orange.",
+     "nop": true,
+     "cap": "그중 사망 기록이 없는 사람은 단 한 명이었습니다."
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "panel": "s06b",
+     "cap": "그리고 가방 속 이름 'T. Keane'.",
+     "h": 520
+    },
+    {
+     "card": {
+      "type": "text",
+      "pad": 44,
+      "lines": [
+       {
+        "text": "칼 '찰스' 웹",
+        "serif": true,
+        "size": 56,
+        "color": "#E8693A",
+        "lh": 1.3,
+        "gap": 10
+       },
+       {
+        "text": "1905년생, 계기를 만들던 전기 기술자",
+        "size": 28,
+        "color": "#EDE6D6",
+        "gap": 26
+       },
+       {
+        "text": "→ 2021년 무덤을 다시 열어 DNA를 확보",
+        "size": 28,
+        "color": "#C9CEDA",
+        "gap": 14
+       },
+       {
+        "text": "→ 2022년 애벗 교수 연구진이 신원을 밝혀냈다",
+        "size": 28,
+        "color": "#C9CEDA",
+        "gap": 14
+       },
+       {
+        "text": "→ 'T. Keane'은 웹의 매형 이름이었을 가능성",
+        "size": 28,
+        "color": "#C9CEDA",
+        "gap": 26
+       },
+       {
+        "text": "단, 경찰과 검시관의 공식 확인은 아직 발표되지 않았습니다.",
+        "size": 22,
+        "color": "#9AA3B8"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "end": {
+    "scene": "The owl Boogi standing on a low concrete sea wall on a beach at night, holding up its amber lantern, looking out at calm dark waves under a few stars. Boogi is in the lower left third of the frame; the upper right half is empty night sky.",
+    "bubble": "그때 누군가 잠든 그에게\n말을 걸었다면\n어땠을까요?\n다섯 줄의 암호는\n아직 풀리지 않았습니다."
+   }
+  }
+ ],
+ "caption": "옷의 상표가 전부 잘린 채 해변에서 발견된 남자.\n\n1948년 호주. 지갑도 신분증도 없었고, 바지 속 숨겨진 주머니엔 '끝났다'라는 쪽지 한 장. 70년 넘게 그는 '이름 없는 남자'였습니다.\n\n당신의 가설은? 댓글로 알려주세요.\n\n출처: Smithsonian Magazine(2011·2022), InDaily(2021·2022), AP(2022)\n#미제파일 #서머턴맨",
+ "threads": [
+  "1948년 호주 해변에서 발견된 남자 얘기. 옷 상표가 전부 잘려 있었고 지갑도 신분증도 없었어.",
+  "바지 안쪽에 숨겨진 작은 주머니가 있었는데, 거기서 돌돌 말린 쪽지가 나와. 적힌 말은 'Tamám Shud', 페르시아어로 '끝났다'.",
+  "그 쪽지는 시집 마지막 장을 찢은 거였고, 나중에 그 시집이 어떤 차 안에서 발견돼. 뒤표지엔 아무도 못 푼 다섯 줄 암호.",
+  "70년 동안 이름 없는 남자였는데, 답은 그를 본떠 만든 석고 흉상에 박힌 머리카락에 있었어.",
+  "근데 아직 풀리지 않은 게 남아 있어. 풀버전은 인스타에 @ossak_alarm"
+ ],
+ "reels_script": [
+  "옷의 상표가 전부 잘린 채 해변에서 발견된 남자.",
+  "1948년, 호주.",
+  "지갑도, 신분증도 없었습니다.",
+  "바지 속 숨겨진 주머니엔 쪽지 한 장. '끝났다.'",
+  "70년 동안 그는 이름 없는 남자였습니다. 풀버전은 캐러셀에서."
+ ]
+}

@@ -1,0 +1,303 @@
+{
+ "id": "W-0005",
+ "series": "세계기담",
+ "title": "퉁구스카 대폭발",
+ "risk": "저",
+ "sources": [
+  "NASA (2019·2023)",
+  "ESA Planetary Defence",
+  "Encyclopaedia Britannica · Scientific American"
+ ],
+ "source_urls": [
+  "https://www.nasa.gov/johnson/115-years-ago-the-tunguska-asteroid-impact-event",
+  "https://www.esa.int/Space_Safety/Planetary_Defence/Asteroid_Day_eight_other_key_dates_in_asteroid_history",
+  "https://www.britannica.com/print/article/609132",
+  "https://www.scientificamerican.com/article/the-tunguska-mystery-100-years-later/"
+ ],
+ "next": "다음 편도 내일 밤 9시 30분에 공개됩니다",
+ "slides": [
+  {
+   "cover": {
+    "title": [
+     "서울 3배 넓이의 숲이",
+     "한순간에 쓰러졌다.",
+     "한가운데만 빼고"
+    ],
+    "accent_word": "한가운데만 빼고",
+    "sub": "1908년 시베리아, 아무도 그 이유를 몰랐다",
+    "size": 92
+   },
+   "scene": "High aerial view at dawn over the Siberian taiga: a vast forest where millions of trees lie flattened on the ground in a radial pattern, all trunks pointing outward from a center; in the very center, a small cluster of tall bare branchless trunks still standing upright in mist, catching a warm amber light. The forest fills the lower half of the frame; the upper 45% is pale empty dawn sky.",
+   "nop": true
+  },
+  {
+   "rows": [
+    {
+     "scene": "1927, Siberian swamp: a line of small faceless silhouettes with heavy packs wading through a misty bog toward a dark forest edge.",
+     "cap": "1927년, 시베리아의 늪지대.\n과학자 쿨리크와 현지 에벤키족 안내인들."
+    },
+    {
+     "scene": "Dense dark Siberian taiga forest in mist, a faint trail disappearing between trunks.",
+     "nop": true,
+     "cap": "19년 전, 무언가 일어났다는 그곳을 찾아서."
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "A seemingly endless sea of fallen tree trunks lying on the ground in a Siberian forest, all pointing in the same direction, low grey light.",
+     "nop": true,
+     "cap": "그리고 끝없이 쓰러진 나무들."
+    },
+    {
+     "scene": "Ground-level view along rows of fallen tree trunks all lying parallel in the same direction, receding into mist.",
+     "nop": true,
+     "cap": "수천만 그루가, 모두 같은 방향으로 누워 있었습니다."
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "Small faceless silhouettes walking between fallen trunks, following the direction the trunks point from, toward a misty horizon.",
+     "cap": "쓰러진 방향을 거꾸로 따라가면, 시작점이 나올 터."
+    },
+    {
+     "scene": "Mist over a flat marshy clearing in the taiga, nothing visible yet, a sense of anticipation.",
+     "nop": true,
+     "cap": "그는 거대한 구덩이를 예상했습니다."
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "The center of a devastated Siberian forest: tall bare trunks stripped of all branches and bark standing upright like telegraph poles in the mist, a marshy bog at their feet, no crater, eerie silence.",
+     "nop": true,
+     "cap": "그런데 한가운데엔 구덩이가 없었습니다.\n나무들이 껍질과 가지만 잃은 채, 꼿꼿이 서 있었죠.",
+     "h": 860
+    },
+    {
+     "scene": "Close-up of a single bare upright trunk with no branches, mist, a faint amber light.",
+     "nop": true,
+     "cap": "왜 이 나무들만 쓰러지지 않았을까?"
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "Siberian taiga at dawn, 1908, a still sky with a single amber glow on the horizon.",
+     "nop": true,
+     "cap": "19년 전, 1908년 6월 30일 아침 7시 15분쯤."
+    },
+    {
+     "scene": "A faceless silhouette on the porch of a log trading post in Siberia looking up as the sky above the forest is split by a long bright glowing seam.",
+     "cap": "65km 떨어진 마을. 한 남자가\n하늘이 둘로 갈라지는 것을 봅니다."
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "Inside a log house: a wooden chair tipped over on the floor, a spilled bowl, and a window frame with shattered glass, harsh bright light flooding in.",
+     "nop": true,
+     "cap": "뜨거운 바람에 그는 의자에서 나동그라졌습니다.\n셔츠에 불이 붙은 것 같았다고 합니다."
+    },
+    {
+     "scene": "A distant fiery column of light crossing above a dark forest, seen from very far away across hills.",
+     "nop": true,
+     "cap": "그 소리와 흔들림은 수백 km 밖까지 닿았습니다."
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "A European city street at midnight in 1908, the sky glowing strangely bright, a faceless silhouette reading a newspaper outdoors under the glowing sky.",
+     "cap": "며칠 동안 유럽의 밤하늘이 이상하게 밝았습니다.\n한밤중에 밖에서 신문을 읽을 정도로."
+    },
+    {
+     "scene": "An old seismograph drum with an ink needle tracing a sudden sharp spike on paper, lamp light.",
+     "nop": true,
+     "cap": "영국의 기압계에도 흔적이 남았죠."
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "Endless empty Siberian taiga from above in winter, no roads, no people.",
+     "nop": true,
+     "cap": "그런데 19년 동안, 아무도 그곳에 가지 못했습니다."
+    },
+    {
+     "scene": "A small expedition camp abandoned in deep snow at the edge of a frozen swamp, 1921.",
+     "nop": true,
+     "cap": "1921년 첫 탐사는 늪과 숲에 막혀 실패했습니다."
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "panel": "s05b",
+     "cap": "구덩이 없는 폭발",
+     "h": 540
+    },
+    {
+     "card": {
+      "type": "evidence",
+      "badge": "이상한 점",
+      "badge_color": "#E8693A",
+      "badge_note": "이 장은 저장해 두세요",
+      "pad": 40,
+      "item_h": 380,
+      "items": [
+       {
+        "head": "약 2,000㎢",
+        "body": "서울 3배 넓이의 숲이 한순간에 쓰러졌습니다"
+       },
+       {
+        "head": "구덩이 없음",
+        "body": "떨어진 물체도 찾지 못했습니다"
+       },
+       {
+        "head": "서 있는 나무",
+        "body": "한가운데 나무만 쓰러지지 않았습니다"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "card": {
+    "type": "list",
+    "title": "118년 동안 나온 설명들",
+    "title_size": 56,
+    "subtitle": "'서 있는 나무'를 설명해야 했습니다",
+    "items": [
+     {
+      "head": "① 거대한 운석 충돌?",
+      "lines": [
+       "그렇다면 구덩이와 운석 조각이 있어야 했습니다"
+      ]
+     },
+     {
+      "head": "② 외계 우주선 폭발?",
+      "lines": [
+       "1946년 SF 소설에서 시작된 이야기. 증거는 없습니다"
+      ]
+     },
+     {
+      "head": "③ 그리고 온갖 상상",
+      "lines": [
+       "어느 것도 한가운데의 나무를 설명하지 못했습니다"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "rows": [
+    {
+     "panel": "s05a",
+     "cap": "답은 그 '서 있는 나무'에 있었습니다.",
+     "h": 560
+    },
+    {
+     "scene": "A starry night sky over a dark planet horizon, a small rock glowing bright amber as it enters the atmosphere, leaving a fiery trail.",
+     "nop": true,
+     "cap": "지름 50~100m의 소행성이,\n땅에 닿기 전에.",
+     "h": 622
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "A cutaway view: a huge bright burst high in the sky above a forest, a dome-shaped shock wave pushing straight down; trees directly below stand upright stripped of branches while trees farther out are blown over sideways, radiating outward.",
+     "nop": true,
+     "cap": "하늘 5~10km 높이에서 폭발한 겁니다."
+    },
+    {
+     "scene": "Close side view: directly under the burst, bare trunks still standing; to both sides, trees knocked flat pointing away from the center.",
+     "nop": true,
+     "cap": "바로 아래는 충격이 위에서 내리꽂혀 가지만 꺾이고,\n바깥 나무들은 옆으로 밀려 쓰러졌습니다."
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "Sunrise over a snowy Russian city in winter, a long bright contrail of a fireball streaking across the sky.",
+     "nop": true,
+     "cap": "2013년 러시아 첼랴빈스크의 아침.",
+     "h": 520
+    },
+    {
+     "card": {
+      "type": "text",
+      "pad": 44,
+      "lines": [
+       {
+        "text": "땅에 닿지 않았기에\n구덩이도 없었다",
+        "serif": true,
+        "size": 50,
+        "color": "#F2B544",
+        "lh": 1.3,
+        "gap": 28
+       },
+       {
+        "text": "→ 소행성은 공중에서 거의 다 타 버렸다",
+        "size": 28,
+        "color": "#C9CEDA",
+        "gap": 14
+       },
+       {
+        "text": "→ 위력은 히로시마 원자폭탄 수백 개 규모",
+        "size": 28,
+        "color": "#C9CEDA",
+        "gap": 14
+       },
+       {
+        "text": "→ 2013년 20m 소행성의 공중 폭발로 약 1,500명이 다쳤다",
+        "size": 28,
+        "color": "#C9CEDA",
+        "gap": 26
+       },
+       {
+        "text": "매년 6월 30일은 이 사건을 기억하는 유엔 '소행성의 날'입니다.",
+        "size": 22,
+        "color": "#9AA3B8"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "end": {
+    "scene": "The owl Boogi perched on top of a tall bare branchless tree trunk in a misty Siberian forest at night, holding its amber lantern, looking up at a starry sky with one faint shooting star. Boogi is in the lower left third of the frame; the upper right half is empty night sky.",
+    "bubble": "그날 그 소행성이\n도시 위에서 터졌다면\n어땠을까요?\n그런데 그건 정말 소행성이었을까요,\n혜성이었을까요?"
+   }
+  }
+ ],
+ "caption": "서울 3배 넓이의 숲이 한순간에 쓰러졌다. 한가운데만 빼고.\n\n1908년 시베리아. 나무 수천만 그루가 같은 방향으로 쓰러졌는데, 구덩이는 없었습니다.\n\n당신의 가설은? 댓글로 알려주세요.\n\n출처: NASA, ESA, Britannica, Scientific American\n#세계기담 #퉁구스카",
+ "threads": [
+  "1908년 시베리아 얘기. 서울 3배 넓이의 숲이 한순간에 다 쓰러졌어. 나무 수천만 그루가 전부 같은 방향으로.",
+  "근데 그 한가운데 나무들만 안 쓰러지고 서 있었대. 껍질이랑 가지만 다 날아간 채로.",
+  "65km 떨어진 마을 사람은 하늘이 둘로 갈라지는 걸 봤고, 뜨거운 바람에 의자에서 나동그라졌대. 셔츠에 불붙는 줄 알았다고.",
+  "19년 뒤에 과학자가 거대한 구덩이를 찾으러 갔는데, 구덩이가 없었어.",
+  "답은 그 '서 있는 나무'에 있었어. 풀버전은 인스타에 @ossak_alarm"
+ ],
+ "reels_script": [
+  "서울 3배 넓이의 숲이 한순간에 쓰러졌다. 한가운데만 빼고.",
+  "1908년, 시베리아.",
+  "나무 수천만 그루가 모두 같은 방향으로.",
+  "그런데 구덩이는 없었습니다.",
+  "한가운데 나무들만, 꼿꼿이 서 있었죠. 풀버전은 캐러셀에서."
+ ]
+}
