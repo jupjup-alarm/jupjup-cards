@@ -39,7 +39,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT))
-from render import THEMES, FACES, BELL, esc, hl, rgba, photo_uri  # noqa: E402
+from render import THEMES, FACES, BELL, esc, hl, rgba, photo_uri, unit  # noqa: E402
 WARN = []
 
 OWNER_REPO = "jupjup-alarm/jupjup-cards"
@@ -95,7 +95,7 @@ def scene_html(sc, th, idx, start, end):
                 txt = txt.replace("{n}", f'<span class="num pulse" data-p="{start + 0.35:.2f}" '
                                           f'style="display:inline-block;color:{th["hl"]}">{esc(sc["count"]["to"])}</span>')
                 txt = f'<span style="color:{th["hl"]}">{txt}</span>'
-            lines += f'<div class="hline punch" data-p="{start:.2f}">{txt}</div>'
+            lines += f'<div class="hline punch" data-p="{start:.2f}">{unit(txt)}</div>'
         uri = photo_uri(sc.get("photo"))
         if sc.get("photo") and not uri:
             WARN.append(f"사진 {sc['photo']} 없음 → 사진 없이 만듦")
@@ -131,7 +131,7 @@ def scene_html(sc, th, idx, start, end):
         return f'''
 <section class="scene points" {a}>
   <div class="eyebrow in" data-in="{start + 0.1:.2f}" style="color:{th['accent']}">{esc(sc.get('eyebrow'))}</div>
-  <div class="ptitle in" data-in="{start + 0.2:.2f}">{esc(sc.get('title'))}</div>
+  <div class="ptitle in" data-in="{start + 0.2:.2f}">{unit(esc(sc.get('title')))}</div>
   <div class="rows">{rows}</div>
   {text}
 </section>'''
@@ -162,8 +162,10 @@ html,body{word-break:keep-all;width:1080px;height:1920px;overflow:hidden;backgro
 .chips{display:flex;gap:16px;margin-bottom:40px}
 .chip{font-weight:900;font-size:40px;padding:10px 26px;border-radius:14px}
 .hlines{font-family:'Black Han Sans';font-size:190px;line-height:1.08;letter-spacing:-2px}
+.hline{white-space:nowrap}
 .hsub{font-size:52px;font-weight:700;margin-top:44px;line-height:1.4;white-space:pre-line}
 .char{position:absolute;right:170px;bottom:420px;width:320px;height:320px}
+.unit{font-family:'Noto Sans KR',sans-serif;font-weight:900;font-size:.82em;letter-spacing:0}
 .hph{position:absolute;left:0;top:0;width:1080px;height:1250px;object-fit:cover;transform-origin:center 40%}
 .hshade{position:absolute;inset:0}
 .hcredit{position:absolute;right:84px;top:400px;font-size:26px;font-weight:500;color:rgba(255,255,255,.85);
@@ -350,6 +352,12 @@ def build(spec):
 FIT_JS = """
 () => {
   // 아래 말하는 캐릭터(왼쪽 아래, y≈1270~)·캡션 자리(아래 420px)와 겹치지 않게: 내용 맨 아래가 1250px을 넘으면 글자 크기를 6%씩 줄임 (최대 5번)
+  // 훅 자막은 한 줄씩 끊기지 않게: 가장 긴 줄이 폭(912px)에 들어올 때까지 훅 글자 전체를 같이 줄임
+  document.querySelectorAll('.hlines').forEach(h => {
+    const max = 1080 - 84 * 2;
+    let fs = parseFloat(getComputedStyle(h).fontSize), n = 0;
+    while ([...h.querySelectorAll('.hline')].some(l => l.scrollWidth > max) && n < 40) { fs *= 0.96; h.style.fontSize = fs + 'px'; n++; }
+  });
   const voiced = document.body.classList.contains('voiced');
   document.querySelectorAll('.scene').forEach(s => {
     const LIMIT = (voiced && !s.classList.contains('cta')) ? 1250 : 1480;  // 마무리 장면엔 말하는 캐릭터가 없음
