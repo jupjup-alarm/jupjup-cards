@@ -1,0 +1,634 @@
+{
+ "id": "N-0002",
+ "series": "새벽괴담",
+ "title": "1518년 스트라스부르의 춤",
+ "accent": "#3FB8A8",
+ "accent_name": "teal",
+ "footer": "새벽괴담 · 1518년 스트라스부르의 춤",
+ "character": "Boogi, a small round owl archivist mascot: dark slate-navy feathers, two pointed ear tufts, large glowing amber eyes behind thin round silver glasses, a small amber diamond-shaped beak, a lighter navy chevron-patterned belly, short wings, carrying a small cream notebook and a little amber lantern. Cute, simple, flat webtoon character design.",
+ "sources": [
+  "https://www.britannica.com/event/dancing-plague-of-1518",
+  "https://publicdomainreview.org/essay/the-dancing-plague-of-1518/",
+  "https://www.historynet.com/the-dancing-plague-of-1518-historys-oddest-epidemic/",
+  "https://www.bps.org.uk/psychologist/dancing-plagues-and-mass-hysteria"
+ ],
+ "panels": [
+  {
+   "id": "s01a",
+   "size": [
+    992,
+    1202
+   ],
+   "prompt": "A narrow cobbled medieval street of tall half-timbered houses at dusk in summer, completely empty and silent; in the lower part of the frame a single faceless silhouette of a woman in a long 16th-century dress caught mid-spin dancing alone, seen from far behind, her long shadow stretching on the cobblestones. No musicians, no instruments anywhere. The street is in the lower half of the frame; the upper 45% is empty dusky sky above the rooftops."
+  },
+  {
+   "id": "s02a",
+   "size": [
+    992,
+    700
+   ],
+   "prompt": "A wide view of the medieval city of Strasbourg in July 1518 under a hot hazy summer sun: steep tiled roofs, half-timbered houses, the tall gothic cathedral spire rising above, the river in front. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "s02b",
+   "size": [
+    992,
+    482
+   ],
+   "prompt": "A faceless silhouette of a woman in a long 16th-century dress dancing alone in the middle of a narrow cobbled street, arms raised, seen from behind at a distance; the street is silent and empty, no musicians, shutters half open."
+  },
+  {
+   "id": "s03a",
+   "size": [
+    992,
+    700
+   ],
+   "prompt": "The same narrow cobbled medieval street seen from an upper window at night under moonlight, a lone small silhouette of a woman still dancing far below, lantern light on the stones."
+  },
+  {
+   "id": "s03b",
+   "size": [
+    992,
+    482
+   ],
+   "prompt": "Rows of open wooden shutters on half-timbered houses, several faceless dark silhouettes of neighbours leaning out of the windows and looking down into the street, seen from behind and in shadow."
+  },
+  {
+   "id": "s04a",
+   "size": [
+    992,
+    700
+   ],
+   "prompt": "A medieval cobbled square in daylight filled with about thirty small faceless silhouettes dancing wildly and out of rhythm, seen from a high distance, no musicians, long midday shadows."
+  },
+  {
+   "id": "s04b",
+   "size": [
+    992,
+    482
+   ],
+   "prompt": "Close on the cobblestones: many pairs of worn leather shoes and bare feet of different kinds — a noble's buckled shoe, a peasant's rough clog — all stepping and stamping at once, motion blur, no faces."
+  },
+  {
+   "id": "s05a",
+   "size": [
+    992,
+    700
+   ],
+   "prompt": "Outside a plain rough stone city gate arch with no inscriptions or carvings, a long line of thin faceless silhouettes of hungry farmers with empty sacks waiting, grey sky, bare fields behind; an empty bread stall with a few small loaves inside the gate."
+  },
+  {
+   "id": "s05b",
+   "size": [
+    992,
+    482
+   ],
+   "prompt": "Inside a dim gothic church, a carved wooden statue of a young saint on a pedestal seen from behind and below, lit by a row of flickering votive candles, the statue's face hidden in shadow. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "s06a",
+   "size": [
+    992,
+    700
+   ],
+   "prompt": "A 16th-century physicians' study: a heavy wooden table with an hourglass, glass flasks, a thick closed medical book and a blurred and unreadable handwritten page, candle light. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "s06b",
+   "size": [
+    992,
+    482
+   ],
+   "prompt": "Two faceless silhouettes of 16th-century city councillors in dark robes standing at a tall window, seen from behind, looking down at a square full of dancing silhouettes."
+  },
+  {
+   "id": "s07a",
+   "size": [
+    992,
+    700
+   ],
+   "prompt": "An empty open medieval market square in daylight with a large unfinished wooden stage frame in the centre, stacked timber planks and wooden ladders leaning on it, half-timbered houses all around, nobody present. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "s07b",
+   "size": [
+    992,
+    482
+   ],
+   "prompt": "On a wooden stage in a medieval square, faceless silhouette musicians with drums, pipes and fiddles playing, seen from behind; in front, dancing silhouettes."
+  },
+  {
+   "id": "s08a",
+   "size": [
+    992,
+    700
+   ],
+   "prompt": "A huge crowd of small faceless silhouettes dancing in a medieval market square around a wooden stage, drums beating, dust rising, the gothic cathedral spire in the distance, seen from very high above."
+  },
+  {
+   "id": "s08b",
+   "size": [
+    992,
+    482
+   ],
+   "prompt": "An old leather-bound chronicle book lying open on a desk beside a quill and an ink pot, the handwritten pages blurred and unreadable, warm candle light. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "s09a",
+   "size": [
+    992,
+    700
+   ],
+   "prompt": "The wooden stage in the medieval square being taken apart at dusk, planks stacked, a single drum left lying on its side, the square now empty. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "s09b",
+   "size": [
+    992,
+    482
+   ],
+   "prompt": "A quiet small 16th-century wedding table inside a timber-framed hall, a lute and a fiddle resting on a bench, while a drum and a tambourine sit set apart in a corner, candle light. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "s12a",
+   "size": [
+    992,
+    700
+   ],
+   "prompt": "A wooden cart carrying a few exhausted faceless silhouettes along a forest road toward a small hilltop chapel, seen from far behind, misty morning."
+  },
+  {
+   "id": "s12b",
+   "size": [
+    992,
+    482
+   ],
+   "prompt": "Close on a pair of small red leather shoes resting on the stone floor of a dim chapel, drops of holy water glistening on them, a small wooden cross beside them, candle light. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "s13b",
+   "size": [
+    992,
+    662
+   ],
+   "prompt": "A crowd of faceless silhouettes in a dark medieval square at night swaying as if in a trance, heads bowed, a single pale beam of light from the cathedral falling over them."
+  },
+  {
+   "id": "s15a",
+   "size": [
+    992,
+    760
+   ],
+   "prompt": "Night scene: in the lower left corner of the frame, a small owl Boogi sits on the tiled roof ridge of a half-timbered medieval house, holding its amber lantern; the owl is small, occupying only the lower-left third. The entire upper half and right side of the frame is empty dark starry night sky, with a distant gothic cathedral spire small on the far right horizon. The owl is the only figure in the image: no humans, no human silhouettes, no shadows of people.",
+   "with_character": true
+  }
+ ],
+ "slides": [
+  {
+   "layout": "one",
+   "footer_left": "@ossak_alarm",
+   "cells": [
+    {
+     "panel": "s01a",
+     "cover": {
+      "title": [
+       "음악도 없는 거리,",
+       "한 여자가",
+       "춤을 멈추지 않자",
+       "30명이 따라 췄다"
+      ],
+      "accent_word": "30명이",
+      "sub": "1518년 여름, 스트라스부르",
+      "size": 92,
+      "badge": "새벽괴담"
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    700,
+    482
+   ],
+   "cells": [
+    {
+     "panel": "s02a",
+     "caption": {
+      "text": "1518년 7월, 스트라스부르.\n좁은 골목에서 한 여자가 춤을 추기 시작합니다."
+     }
+    },
+    {
+     "panel": "s02b",
+     "caption": {
+      "text": "음악은 없었습니다.\n쓰러질 때까지 추고, 깨어나면 다시."
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    700,
+    482
+   ],
+   "cells": [
+    {
+     "panel": "s03a",
+     "caption": {
+      "text": "하루, 이틀…\n기록마다 나흘에서 일주일."
+     }
+    },
+    {
+     "panel": "s03b",
+     "caption": {
+      "text": "창문마다 지켜보는 사람들.\n그런데 그중 누군가가—"
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    700,
+    482
+   ],
+   "cells": [
+    {
+     "panel": "s04a",
+     "caption": {
+      "text": "일주일 만에, 30명이 넘는 사람이\n함께 춤추고 있었습니다."
+     }
+    },
+    {
+     "panel": "s04b",
+     "caption": {
+      "text": "남자도, 여자도.\n신분도 제각각이었습니다."
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    700,
+    482
+   ],
+   "cells": [
+    {
+     "panel": "s05a",
+     "caption": {
+      "text": "그해 빵값은 한 세대 만에 가장 비쌌고,\n굶주린 농민들이 성문 앞에 몰려들었습니다."
+     }
+    },
+    {
+     "panel": "s05b",
+     "caption": {
+      "text": "성당에선 한 성인의 이름이 오르내렸죠.\n성 비투스."
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    700,
+    482
+   ],
+   "cells": [
+    {
+     "panel": "s06a",
+     "caption": {
+      "text": "의사들이 진단을 내립니다.\n'피가 너무 뜨거워져서 생긴 병.'"
+     }
+    },
+    {
+     "panel": "s06b",
+     "caption": {
+      "text": "처방은 뜻밖이었습니다.\n'멈추게 하지 말고, 더 춤추게 하라.'"
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    700,
+    482
+   ],
+   "cells": [
+    {
+     "panel": "s07a",
+     "caption": {
+      "text": "시는 길드 회관을 비워 춤판을 만들고,\n시장에 무대를 세웠습니다."
+     }
+    },
+    {
+     "panel": "s07b",
+     "caption": {
+      "text": "악사를 부르고,\n함께 춤출 사람까지 고용했죠."
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    700,
+    482
+   ],
+   "cells": [
+    {
+     "panel": "s08a",
+     "caption": {
+      "text": "북소리가 울릴수록,\n춤추는 사람은 늘어만 갔습니다."
+     }
+    },
+    {
+     "panel": "s08b",
+     "caption": {
+      "text": "한 연대기는 이렇게 적었습니다.\n'한 달 만에 400명.'"
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    700,
+    482
+   ],
+   "cells": [
+    {
+     "panel": "s09a",
+     "caption": {
+      "text": "결국 시는 무대를 허물고,\n9월까지 춤과 음악을 금지합니다."
+     }
+    },
+    {
+     "panel": "s09b",
+     "caption": {
+      "text": "결혼식만 예외였습니다.\n단, 북과 탬버린은 안 되고 현악기만."
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    540,
+    642
+   ],
+   "cells": [
+    {
+     "panel": "s02b",
+     "caption": {
+      "text": "멈추지 못한 춤, 남은 의문"
+     }
+    },
+    {
+     "card": {
+      "type": "evidence",
+      "badge": "이상한 점",
+      "badge_color": "#E8693A",
+      "badge_note": "이 장은 저장해 두세요",
+      "pad": 40,
+      "item_h": 380,
+      "items": [
+       {
+        "head": "음악 없이 시작",
+        "body": "쓰러지면 쉬고, 깨면 다시 춤"
+       },
+       {
+        "head": "치료가 키운 병",
+        "body": "무대와 악사 뒤 오히려 늘어남"
+       },
+       {
+        "head": "엇갈린 기록",
+        "body": "하루 15명이 쓰러졌다? 당시 시 기록엔 죽음이 없음"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "layout": "one",
+   "cells": [
+    {
+     "card": {
+      "type": "list",
+      "title": "500년 동안 나온 설명들",
+      "title_size": 56,
+      "subtitle": "그럴듯하지만, 모두 걸리는 데가 있었습니다",
+      "items": [
+       {
+        "head": "① 곰팡이 핀 호밀빵의 독?",
+        "lines": [
+         "그 독은 팔다리 혈류를 막습니다. 며칠씩 춤출 수 없죠"
+        ]
+       },
+       {
+        "head": "② 이단 종교의 의식?",
+        "lines": [
+         "당시 사람들도 교회도 이들을 '환자'로 대했습니다"
+        ]
+       },
+       {
+        "head": "③ 정말 뜨거운 피 때문?",
+        "lines": [
+         "의사들 처방대로 춤을 시켰더니 더 퍼졌습니다"
+        ]
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    700,
+    482
+   ],
+   "cells": [
+    {
+     "panel": "s12a",
+     "caption": {
+      "text": "가장 심한 사람들은 수레에 실려\n사베른의 성 비투스 성지로 갑니다."
+     }
+    },
+    {
+     "panel": "s12b",
+     "caption": {
+      "text": "사제들은 그들의 발에 붉은 신을 신기고\n성수를 뿌렸습니다."
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    520,
+    662
+   ],
+   "cells": [
+    {
+     "panel": "s05b",
+     "caption": {
+      "text": "성 비투스. 처음부터 수군대던 그 이름."
+     }
+    },
+    {
+     "panel": "s13b",
+     "caption": {
+      "text": "성인을 노하게 하면, 춤추는 저주가 내린다.\n그 도시 사람들은 그렇게 믿었습니다.\n굶주림과 병이 몇 해째 이어지던 때였죠."
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    520,
+    662
+   ],
+   "cells": [
+    {
+     "panel": "s07b",
+     "caption": {
+      "text": "그리고 시가 연 무대가, 모두의 눈앞에서 춤을 보여 줬습니다."
+     }
+    },
+    {
+     "card": {
+      "type": "text",
+      "pad": 44,
+      "lines": [
+       {
+        "text": "두려움이 퍼뜨린 춤,\n'집단 심인성 질환'",
+        "serif": true,
+        "size": 50,
+        "color": "#3FB8A8",
+        "lh": 1.3,
+        "gap": 28
+       },
+       {
+        "text": "→ 몇 해째 흉년과 병: 극심한 스트레스",
+        "size": 28,
+        "color": "#C9CEDA",
+        "gap": 14
+       },
+       {
+        "text": "→ 성 비투스의 저주를 믿었다",
+        "size": 28,
+        "color": "#C9CEDA",
+        "gap": 14
+       },
+       {
+        "text": "→ 공개 춤판이 '전염'을 키웠다",
+        "size": 28,
+        "color": "#C9CEDA",
+        "gap": 26
+       },
+       {
+        "text": "역사학자 존 월러의 가설로 가장 널리 받아들여지지만, 확정된 답은 아닙니다.",
+        "size": 22,
+        "color": "#9AA3B8"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "layout": "cols2_bottom",
+   "heights": [
+    760
+   ],
+   "footer_left": "@ossak_alarm",
+   "cells": [
+    {
+     "panel": "s15a",
+     "bubble": {
+      "text": "그때 시가 무대 대신\n조용한 방을 내줬다면\n어땠을까요?\n그런데 왜 하필\n그 여자가 처음이었을까요?",
+      "x": 0.4,
+      "y": 0.08,
+      "maxw": 0.56,
+      "size": 42
+     }
+    },
+    {
+     "card": {
+      "type": "text",
+      "pad": 32,
+      "lines": [
+       {
+        "text": "출처",
+        "size": 24,
+        "weight": 700,
+        "color": "#9AA3B8"
+       },
+       {
+        "text": "Britannica 'Dancing plague of 1518'"
+       },
+       {
+        "text": "Public Domain Review(2018) · HistoryNet"
+       },
+       {
+        "text": "John Waller, The Lancet(2009) · The Psychologist(BPS)"
+       },
+       {
+        "text": "그림은 사건을 재구성한 AI 일러스트입니다",
+        "size": 18,
+        "color": "#7C86A2"
+       }
+      ]
+     }
+    },
+    {
+     "card": {
+      "type": "text",
+      "pad": 32,
+      "border": "#3FB8A8",
+      "lines": [
+       {
+        "text": "다음 편",
+        "size": 24,
+        "weight": 700,
+        "color": "#9AA3B8"
+       },
+       {
+        "text": "다음 편도 내일 밤 9시 30분에 공개됩니다",
+        "size": 32,
+        "weight": 700,
+        "color": "#EDE6D6",
+        "lh": 1.35
+       },
+       {
+        "text": "내일 밤 9시 30분 · 팔로우하고 알림 받기",
+        "size": 22
+       }
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "caption": "음악도 없는 거리, 한 여자가 춤을 멈추지 않자 30명이 따라 췄다.\n\n1518년 여름, 스트라스부르. 시는 춤을 멈추게 하는 대신 무대를 세우고 악사를 불렀습니다. 그 뒤로 춤추는 사람은 더 늘어났습니다.\n\n당신의 가설은? 댓글로 알려주세요.\n\n출처: Britannica, Public Domain Review(2018), John Waller(The Lancet, 2009), The Psychologist(BPS)\n#새벽괴담 #춤전염병",
+ "threads": [
+  "1518년 7월 스트라스부르. 어떤 여자가 음악도 없는 골목에서 혼자 춤을 추기 시작했어. 쓰러질 때까지 추고, 깨면 또 추고. 기록마다 나흘에서 일주일이래.",
+  "근데 일주일 만에 30명 넘게 따라 추기 시작함. 남자 여자, 신분 상관없이.",
+  "더 이상한 건 시의 대응이야. 의사들이 '피가 뜨거워진 병'이라고 하니까, 시가 길드 회관 비우고 시장에 무대 세우고 악사까지 불렀어. 더 춤춰서 털어내라고.",
+  "결과는? 북소리 울릴수록 사람이 더 늘었대. 한 연대기는 한 달 만에 400명이라고 적었고. 결국 9월까지 춤이랑 음악을 금지해 버림.",
+  "그 도시 사람들이 수군대던 이름 하나가 답의 실마리였어. 풀버전은 인스타에 @ossak_alarm"
+ ],
+ "reels_script": [
+  "음악도 없는 거리, 한 여자가 춤을 멈추지 않자 30명이 따라 췄다.",
+  "1518년 여름, 스트라스부르.",
+  "시는 춤을 멈추게 하는 대신, 무대를 세우고 악사를 불렀습니다.",
+  "북소리가 울릴수록, 춤추는 사람은 늘어만 갔습니다.",
+  "그 도시가 믿던 저주 하나. 풀버전은 캐러셀에서."
+ ],
+ "risk": "저"
+}
