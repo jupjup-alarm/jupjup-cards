@@ -137,6 +137,7 @@ def main():
     ap.add_argument("--date", help="릴스 발행일 (발행계획 행 생성)")
     ap.add_argument("--time", default="12:30")
     ap.add_argument("--voice", default="auto", choices=["auto", "google", "melo"])
+    ap.add_argument("--rows-only", action="store_true", help="영상은 그대로 두고 reel_row.json만 다시 만든다")
     a = ap.parse_args()
     ep = pathlib.Path(a.episode).resolve()
     spec = json.loads((ep / "episode.json").read_text())
@@ -148,6 +149,9 @@ def main():
     accent = spec.get("accent", C["amber"])
     beats = reel["beats"]
     total_chars = sum(len(b["say"]) for b in beats)
+
+    if a.rows_only:
+        return write_row(a, ep, spec, reel, cover)
 
     # 1) 음성
     ad = ep / "reel_audio"
@@ -253,18 +257,22 @@ def main():
     for i, s in enumerate(stills):
         sheet.paste(s.resize((tw, th)), ((i % cols) * tw, (i // cols) * th))
     sheet.save(ep / "reel_preview.jpg", quality=82)
+    write_row(a, ep, spec, reel, cover)
+    print(f"{ep.name}: {total:.1f}초, 장면 {len(beats)}개, 대본 {total_chars}자 → {video}")
+
+
+def write_row(a, ep, spec, reel, cover):
     hook = " ".join(cover["title"])
     caro = spec.get("caption", "")
-    src_line = next((l for l in caro.splitlines() if l.startswith("출처")), "")
-    tags = next((l for l in reversed(caro.splitlines()) if l.startswith("#")), f"#{spec['series']}")
-    cap = "\n\n".join(x for x in [hook, reel.get("teaser", ""), "답은 @ossak_alarm 프로필을 눌러 확인하세요.",
-                                  src_line, tags] if x)
+    src_line = reel.get("sources") or next((l for l in caro.splitlines() if l.startswith("출처")), "")
+    tags = reel.get("tags") or next((l for l in reversed(caro.splitlines()) if l.startswith("#")), f"#{spec['series']}")
+    cta = reel.get("cta", "답은 @ossak_alarm 프로필을 눌러 확인하세요.")
+    cap = "\n\n".join(x for x in [hook, reel.get("teaser", ""), cta, src_line, tags] if x)
     urls = f"{BASE}{ep.name}/reel.mp4\n{BASE}{ep.name}/reel_cover.jpg"
     if a.date:
         row = ["'" + a.date, "'" + a.time, "인스타 릴스", spec["id"], spec["series"], spec["title"], hook,
                spec.get("risk", "저"), "예약", cap, "", urls]
         (ep / "reel_row.json").write_text(json.dumps(row, ensure_ascii=False, indent=1))
-    print(f"{ep.name}: {total:.1f}초, 장면 {len(beats)}개, 대본 {total_chars}자 → {video}")
 
 
 if __name__ == "__main__":
