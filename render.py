@@ -78,7 +78,12 @@ def hl(text, word, color):
         w = esc(w)
         if w and w in t and f">{w}<" not in t:
             t = t.replace(w, f'<span style="color:{color}">{w}</span>', 1)
-    return t
+    return unit(t)
+
+
+def unit(t):
+    """㎡ 기호는 제목 글꼴(Black Han Sans)에 없어 가는 대체 글꼴로 보이므로 굵은 본문 글꼴로 맞춘다."""
+    return t.replace("㎡", '<span class="unit">㎡</span>')
 
 
 def lines(v):
@@ -245,7 +250,7 @@ def check(card, th, n, total):
         items_html += (f'<div class="item"><span class="num" style="color:{th["accent"]}">{i:02d}</span>'
                        f'<div class="itxt"><span class="ib">{esc(bold)}</span>'
                        f'{f"<span class=id>{esc(desc)}</span>" if desc else ""}</div></div>')
-    title = "".join(f"<div>{esc(t)}</div>" for t in lines(card.get("title", "")))
+    title = "".join(f"<div>{unit(esc(t))}</div>" for t in lines(card.get("title", "")))
     return f'''
 <div class="card light" style="background:#FFFFFF">
   {header(n, total, th)}
@@ -300,7 +305,7 @@ def mapcard(card, th, n, total):
     rows = "".join(
         f'<div class="row" style="background:{th["tint"]}"><span class="rl" style="color:{th["accent"]}">{esc(k)}</span>'
         f'<span class="rv">{esc(v)}</span></div>' for k, v in (card.get("rows") or [])[:2])
-    title = "".join(f"<div>{esc(t)}</div>" for t in lines(card.get("title", "")))
+    title = "".join(f"<div>{unit(esc(t))}</div>" for t in lines(card.get("title", "")))
     return f'''
 <div class="card light" style="background:#FFFFFF">
   {header(n, total, th)}
@@ -382,6 +387,7 @@ body{margin:0;width:1080px;height:1350px;overflow:hidden}
 .mapbox svg,.mapbox img{display:block;width:100%;height:auto}
 .addr{margin-top:24px;font-size:36px;font-weight:700}
 .mrows{margin-top:24px}
+.unit{font-family:'Noto Sans KR',sans-serif;font-weight:900;font-size:.82em;letter-spacing:0}
 .pimg{position:absolute;left:0;top:0;width:1080px;height:900px;object-fit:cover}
 .pshade{position:absolute;inset:0}
 .pcover .brand{text-shadow:0 2px 10px rgba(0,0,0,.35)}

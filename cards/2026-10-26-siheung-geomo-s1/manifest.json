@@ -1,0 +1,50 @@
+{
+  "slug": "2026-10-26-siheung-geomo-s1",
+  "title": "시흥거모지구 S-1블록 공공분양주택",
+  "series": "내집마련",
+  "count": 7,
+  "urls": [
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-26-siheung-geomo-s1/01.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-26-siheung-geomo-s1/02.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-26-siheung-geomo-s1/03.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-26-siheung-geomo-s1/04.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-26-siheung-geomo-s1/05.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-26-siheung-geomo-s1/06.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-26-siheung-geomo-s1/07.jpg"
+  ],
+  "warnings": {
+    "02": [
+      "zoom 0.97"
+    ]
+  },
+  "boards": [
+    {
+      "file": "2026-10-26-siheung-geomo-s1-01.dc.html",
+      "title": "시흥거모지구 S-1블록 공공분양주택 1/7"
+    },
+    {
+      "file": "2026-10-26-siheung-geomo-s1-02.dc.html",
+      "title": "시흥거모지구 S-1블록 공공분양주택 2/7"
+    },
+    {
+      "file": "2026-10-26-siheung-geomo-s1-03.dc.html",
+      "title": "시흥거모지구 S-1블록 공공분양주택 3/7"
+    },
+    {
+      "file": "2026-10-26-siheung-geomo-s1-04.dc.html",
+      "title": "시흥거모지구 S-1블록 공공분양주택 4/7"
+    },
+    {
+      "file": "2026-10-26-siheung-geomo-s1-05.dc.html",
+      "title": "시흥거모지구 S-1블록 공공분양주택 5/7"
+    },
+    {
+      "file": "2026-10-26-siheung-geomo-s1-06.dc.html",
+      "title": "시흥거모지구 S-1블록 공공분양주택 6/7"
+    },
+    {
+      "file": "2026-10-26-siheung-geomo-s1-07.dc.html",
+      "title": "시흥거모지구 S-1블록 공공분양주택 7/7"
+    }
+  ]
+}
