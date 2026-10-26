@@ -4,7 +4,8 @@
   python3 ossak/reel.py episodes/<편> [--date 2026-10-27] [--time 12:30] [--voice auto|google|melo]
 
 원고: story.json(또는 episode.json)의 "reel"
-  {"beats": [{"say": "내레이션 한 문장", "panel": "s02a", "sub": "자막이 달라야 할 때만(선택)"}, ...],
+  {"beats": [{"say": "내레이션 한 문장(자막)", "panel": "s02a", "sub": "자막이 달라야 할 때만(선택)",
+              "tts": "읽기용 표기(선택): 호흡 단위로 쉼표를 정리하고 [pause short]·[pause]로 쉼을 지정"}, ...],
    "teaser": "캡션 둘째 줄(선택)"}
   - 첫 beat = 훅(표지 훅 그대로 또는 더 짧게). 첫 프레임부터 제목과 자막이 보인다(1초 룰).
   - 마지막 beat = 남은 질문 + "답은, 프로필을 눌러 확인하세요." 부기 컷(end panel)을 쓴다.
@@ -26,6 +27,7 @@ from PIL import Image, ImageDraw, ImageFilter
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from compose import font, wrap, pill, cover_fit, split_accent, C  # noqa: E402
 from cf import load_env  # noqa: E402
+from breath import analyze  # noqa: E402
 
 ENGINE = pathlib.Path(__file__).resolve().parent.parent
 REPO_OSSAK = ENGINE.parent
@@ -37,17 +39,19 @@ GAP, END_HOLD, LEAD = 0.30, 1.6, 0.12
 
 
 # ───────── 음성 ─────────
-def tts_google(text, key):
+def tts_google(text, key, rate=None):
     voice = os.environ.get("TTS_VOICE", "ko-KR-Chirp3-HD-Umbriel")
-    body = {"input": {"text": text}, "voice": {"languageCode": "ko-KR", "name": voice},
+    inp = {"markup": text} if "[pause" in text else {"text": text}
+    body = {"input": inp, "voice": {"languageCode": "ko-KR", "name": voice},
             "audioConfig": {"audioEncoding": "LINEAR16", "sampleRateHertz": 48000,
-                            "speakingRate": float(os.environ.get("TTS_RATE", "1.0"))}}
+                            "speakingRate": rate or float(os.environ.get("TTS_RATE", "1.0"))}}
     req = urllib.request.Request(f"https://texttospeech.googleapis.com/v1/text:synthesize?key={key}",
                                  data=json.dumps(body).encode(), headers={"Content-Type": "application/json"})
     return base64.b64decode(json.load(urllib.request.urlopen(req, timeout=60))["audioContent"]), 1.0
 
 
 def tts_melo(text):
+    text = re.sub(r"\s*\[pause[^\]]*\]\s*", ", ", text)
     acc, tok = load_env()
     req = urllib.request.Request(
         f"https://api.cloudflare.com/client/v4/accounts/{acc}/ai/run/@cf/myshell-ai/melotts",
@@ -62,11 +66,40 @@ def speak(text, out, mode):
     key = os.environ.get("GOOGLE_TTS_KEY", "")
     use_google = mode == "google" or (mode == "auto" and key)
     voice_id = (os.environ.get("TTS_VOICE", "ko-KR-Chirp3-HD-Umbriel") + "@" + os.environ.get("TTS_RATE", "1.0")) if use_google else "melo"
-    tag = hashlib.sha1((voice_id + "|" + text).encode()).hexdigest()[:12]
+    tag = hashlib.sha1((voice_id + "|v5|" + text).encode()).hexdigest()[:12]
     meta = out.with_suffix(".txt")
     if out.exists() and meta.exists() and meta.read_text() == tag:
         return
-    raw, tempo = tts_google(text, key) if use_google else tts_melo(text)
+    base = float(os.environ.get("TTS_RATE", "1.0"))
+    rates = [base, base * 1.04, base * 0.96] if use_google else [None]
+    best = None
+    for n, rate in enumerate(rates):
+        raw, tempo = tts_google(text, key, rate) if use_google else tts_melo(text)
+        cand = out.with_name(out.stem + f"_try{n}.wav")
+        render_voice(raw, tempo, cand)
+        if not use_google or os.environ.get("BREATH_CHECK", "1") == "0":
+            best = (0, cand)
+            break
+        try:
+            _, wrong, missing = analyze(cand, text)
+        except Exception as e:          # 받아쓰기 실패 시 검사 없이 사용
+            print(f"  호흡 검사 생략: {e}")
+            best = (0, cand)
+            break
+        score = len(wrong) * 2 + missing
+        if score:
+            print(f"  {out.name} 시도{n + 1}: 엉뚱한 쉼 {wrong}, 빠진 쉼 {missing}")
+        if best is None or score < best[0]:
+            best = (score, cand)
+        if score == 0:
+            break
+    best[1].replace(out)
+    for c in out.parent.glob(out.stem + "_try*.wav"):
+        c.unlink()
+    meta.write_text(tag)
+
+
+def render_voice(raw, tempo, out):
     tmp = out.with_suffix(".raw")
     tmp.write_bytes(raw)
     af = ("silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.05,"
@@ -75,7 +108,32 @@ def speak(text, out, mode):
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(tmp), "-af", af, "-ar", "48000", "-ac", "1", str(out)],
                    check=True)
     tmp.unlink()
-    meta.write_text(tag)
+    cap_pauses(out)
+
+
+def cap_pauses(wav, max_pause=0.45):
+    """문장 안의 긴 쉼을 max_pause초로 줄인다 (구글 [pause]가 1초 가까이 쉬는 경우가 있어서)."""
+    import wave
+    log = subprocess.run(["ffmpeg", "-v", "info", "-i", str(wav), "-af", f"silencedetect=n=-38dB:d={max_pause}",
+                          "-f", "null", "-"], capture_output=True, text=True).stderr
+    st = [float(x) for x in re.findall(r"silence_start: ([\d.]+)", log)]
+    en = [float(x) for x in re.findall(r"silence_end: ([\d.]+)", log)]
+    if not st:
+        return
+    with wave.open(str(wav), "rb") as w:
+        params, sr, data = w.getparams(), w.getframerate(), w.readframes(w.getnframes())
+    bpf = params.sampwidth * params.nchannels
+    out, pos = bytearray(), 0
+    for s0, e0 in zip(st, en):
+        a_, b_ = int((s0 + max_pause / 2) * sr), int((e0 - max_pause / 2) * sr)
+        if b_ <= a_:
+            continue
+        out += data[pos * bpf:a_ * bpf]
+        pos = b_
+    out += data[pos * bpf:]
+    with wave.open(str(wav), "wb") as w:
+        w.setparams(params)
+        w.writeframes(bytes(out))
 
 
 def dur(p):
@@ -157,7 +215,7 @@ def main():
     ad = ep / "reel_audio"
     ad.mkdir(exist_ok=True)
     for i, b in enumerate(beats, 1):
-        speak(b["say"], ad / f"{i:02d}.wav", a.voice)
+        speak(b.get("tts", b["say"]), ad / f"{i:02d}.wav", a.voice)
     durs = [dur(ad / f"{i:02d}.wav") for i in range(1, len(beats) + 1)]
     starts, t = [], LEAD
     for i, dv in enumerate(durs):
