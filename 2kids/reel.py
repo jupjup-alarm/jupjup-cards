@@ -380,6 +380,11 @@ FIT_JS = """
 () => { const warn=[];
   document.querySelectorAll('.scene').forEach((s,i)=>{ s.style.opacity=1; s.style.visibility='visible';
     s.querySelectorAll('.in').forEach(e=>{e.style.opacity=1;e.style.transform='none'});
+    // 훅·마무리 한 줄이 넘쳐 두 줄로 접히면 글자 크기를 줄여 원고 줄 수(2줄)를 지킨다
+    s.querySelectorAll('.hlines,.clines').forEach(h=>{ const ls=[...h.querySelectorAll('.hline,.cline')]; ls.forEach(e=>e.style.whiteSpace='nowrap');
+      const need=Math.max(...ls.map(e=>e.scrollWidth)), have=Math.min(h.clientWidth, s.clientWidth-230), k=have/need*0.96;
+      if(need>have && k>=0.6){ const fs=parseFloat(getComputedStyle(h).fontSize); h.style.fontSize=Math.floor(fs*k)+'px'; }
+      else if(need>have) ls.forEach(e=>e.style.whiteSpace=''); });
     const kids=[...s.children];
     const box=()=>{const r=kids.map(k=>k.getBoundingClientRect());return {top:Math.min(...r.map(x=>x.top)),bottom:Math.max(...r.map(x=>x.bottom))}};
     // 말하는 쌍둥이(말풍선 포함) 윗선 1140px 아래로 내려가면 글을 위로 올린다 (위 260px까지)
