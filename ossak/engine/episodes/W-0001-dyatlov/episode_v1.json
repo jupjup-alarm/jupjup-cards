@@ -1,0 +1,837 @@
+{
+ "id": "W-0001",
+ "series": "세계기담",
+ "title": "디아틀로프 고개 사건",
+ "accent": "#F2B544",
+ "accent_name": "amber",
+ "footer": "세계기담 · 디아틀로프 고개 사건",
+ "character": "Boogi, a small round owl archivist mascot: dark slate-navy feathers, two pointed ear tufts, large glowing amber eyes behind thin round silver glasses, a small amber diamond-shaped beak, a lighter navy chevron-patterned belly, short wings, carrying a small cream notebook and a little amber lantern. Cute, simple, flat webtoon character design.",
+ "sources": [
+  "Gaume & Puzrin, Communications Earth & Environment (2021-01)",
+  "EPFL longread: Using science to explore a 60-year-old Russian mystery",
+  "Mental Floss: Dyatlov Pass incident",
+  "Science History Institute: The Russian Roswell"
+ ],
+ "panels": [
+  {
+   "id": "p00",
+   "size": [
+    1024,
+    1024
+   ],
+   "prompt": "Character design sheet of Boogi, a small round owl archivist mascot: dark slate-navy feathers, two pointed ear tufts, large glowing amber eyes behind thin round silver glasses, a small amber diamond-shaped beak, a lighter navy chevron-patterned belly, short wings, carrying a small cream notebook and a little amber lantern. Three poses side by side on a plain dark navy background: front view, three-quarter view, and holding the lantern up. Consistent proportions, clean outlines, cute and simple."
+  },
+  {
+   "id": "p01",
+   "size": [
+    992,
+    1202
+   ],
+   "prompt": "Night on a snowy mountain slope in the northern Ural mountains, 1959. A lone canvas tent in the lower half of the frame; its side wall is slashed open from the inside with a long jagged cut, the torn edges flaring outward, warm amber lantern light spilling out through the cut onto the snow. Blowing snow, dark distant peaks, faint crescent moon. No people. The upper 45% of the frame is calm empty dark sky. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "p02",
+   "size": [
+    992,
+    700
+   ],
+   "prompt": "Wide landscape: ten small hikers with large backpacks walking in a single-file line along a snowy ridge in the northern Ural mountains in winter, 1959, cold blue dusk, vast snowy peaks around them, the figures tiny in the frame."
+  },
+  {
+   "id": "p03",
+   "size": [
+    992,
+    482
+   ],
+   "prompt": "A lone hiker with a backpack walking away to the left across a snowy plain, while a small group of nine hikers continues far away on the right toward the mountains, a quiet parting moment, overcast winter light."
+  },
+  {
+   "id": "p04",
+   "size": [
+    992,
+    760
+   ],
+   "prompt": "Dusk on a bare snowy mountain slope: a group of nine hikers setting up a long canvas tent dug into the snow, skis planted upright in the snow nearby, a thin warm amber glow on the horizon, dark peaks behind."
+  },
+  {
+   "id": "p05",
+   "size": [
+    992,
+    422
+   ],
+   "with_character": true,
+   "prompt": "A cozy dark archive room at night with tall shelves of old case files and a warm desk lamp. The owl Boogi stands on the desk in the left third of the frame, explaining calmly with one wing raised and the notebook open. The right half of the frame is calm, empty dark wall. The owl is the only figure in the image: no humans, no human silhouettes, no shadows of people."
+  },
+  {
+   "id": "p06",
+   "size": [
+    992,
+    600
+   ],
+   "prompt": "Night blizzard on a snowy mountain slope: a single snow-covered canvas tent alone in the dark, strong wind driving snow sideways. No people anywhere, ominous and empty. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "p07",
+   "size": [
+    992,
+    582
+   ],
+   "prompt": "Overcast pale daylight on a snowy mountain slope: a search party of four people on skis with poles, seen from behind, approaching a half-collapsed snow-covered tent in the distance."
+  },
+  {
+   "id": "p08",
+   "size": [
+    486,
+    560
+   ],
+   "prompt": "Extreme close-up of the inside wall of a dark, empty canvas tent: the fabric has several long ragged cuts made from the inside, torn edges pushed outward, cold blue night and falling snow visible through the slits, faint warm amber lantern light on the inner fabric. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "p09",
+   "size": [
+    486,
+    560
+   ],
+   "prompt": "Close-up inside an abandoned canvas tent: a row of heavy leather winter boots and folded coats left neatly on the floor beside backpacks, a small amber lantern, eerie stillness. Nobody inside. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "p10",
+   "size": [
+    992,
+    622
+   ],
+   "prompt": "High angle view of a snowy slope at night: a long trail of footprints made by feet in socks leading from a small tent at the top right down the slope toward a dark forest edge at the bottom left. No people visible. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "p11",
+   "size": [
+    992,
+    700
+   ],
+   "prompt": "Night at the edge of a dark pine forest below a snowy slope: one tall old Siberian pine tree; at its base the small remains of a burnt-out campfire, charred branches and a few faint embers in the snow. No people, quiet and eerie. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "p12",
+   "size": [
+    992,
+    482
+   ],
+   "with_character": true,
+   "prompt": "The same dark archive room. The owl Boogi stands in the left third of the frame with a doubtful, suspicious expression, one eye narrowed, holding the notebook. The right half of the frame is empty dark wall. The owl is the only figure in the image: no humans, no human silhouettes, no shadows of people."
+  },
+  {
+   "id": "p13",
+   "size": [
+    992,
+    540
+   ],
+   "prompt": "A deep snow-filled ravine in a forest valley, a dark stream barely visible under the snow at the bottom, early spring snowmelt, silent and empty. No people. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "p14",
+   "size": [
+    992,
+    622
+   ],
+   "with_character": true,
+   "prompt": "The owl Boogi sits by a window at night in the archive, looking down sadly at an open case file, the lantern dimmed. The owl is in the left third of the frame; the right half is empty dark wall. The owl is the only figure in the image: no humans, no human silhouettes, no shadows of people."
+  },
+  {
+   "id": "p15",
+   "size": [
+    992,
+    760
+   ],
+   "with_character": true,
+   "prompt": "The owl Boogi stands in the lower center of the frame holding up its amber lantern, head tilted curiously, looking at the viewer as if asking a question. The upper 45% of the frame is empty dark space. The owl is the only figure in the image: no humans, no human silhouettes, no shadows of people."
+  },
+  {
+   "id": "q02",
+   "size": [
+    992,
+    760
+   ],
+   "prompt": "Winter 1959 in a small snowy Soviet Ural town at dusk: ten young hikers seen from behind, standing together in a loose group with skis on their shoulders and large canvas backpacks, looking toward distant snowy mountains; the leader stands one step ahead pointing at the mountains. Only their backs are visible, no faces. Warm light from a wooden building's windows on the left."
+  },
+  {
+   "id": "q03",
+   "size": [
+    992,
+    422
+   ],
+   "prompt": "A row of 1959 hiking gear leaning against a snowy wooden wall: wooden skis, ski poles, big canvas backpacks, an ice axe and a rolled tent, warm lamp light. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "q04",
+   "size": [
+    992,
+    482
+   ],
+   "prompt": "An old hand-drawn paper expedition map of snowy mountains spread on a wooden table with a compass, a pencil and a small amber lantern, a dotted route line crossing the mountains. The map has no readable words or letters. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "q05",
+   "size": [
+    992,
+    700
+   ],
+   "prompt": "A remote snowy village of dark wooden houses at the edge of the taiga forest at winter dawn, chimney smoke rising, a line of small hikers on skis leaving the village toward distant mountains."
+  },
+  {
+   "id": "q06",
+   "size": [
+    992,
+    700
+   ],
+   "prompt": "Inside a canvas tent lit by a lantern: an open handwritten diary, an old 1950s film camera, a tin mug and a few scattered black-and-white photo prints on a wool blanket. Cozy and ordinary. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "q07",
+   "size": [
+    992,
+    482
+   ],
+   "prompt": "Hikers in heavy winter clothing digging a long hollow into deep snow with shovels on a bare mountain slope at dusk, preparing to pitch a tent inside it, skis stuck upright nearby."
+  },
+  {
+   "id": "q08",
+   "size": [
+    992,
+    582
+   ],
+   "prompt": "A dim 1959 Soviet office at night: a wooden desk with an old black rotary telephone, a wall calendar with no readable text, an empty chair, a window showing heavy snowfall outside. Uneasy waiting mood. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "q09",
+   "size": [
+    992,
+    482
+   ],
+   "prompt": "Overcast daylight, close view of a half-collapsed canvas tent half-buried in snow on a mountain slope, skis and ski poles planted in the snow beside it, eerie silence. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "q10",
+   "size": [
+    992,
+    382
+   ],
+   "prompt": "The owl Boogi in the dark archive room, wide-eyed and startled with wings raised, standing in the left third of the frame; the right half of the frame is empty dark wall. The owl is the only figure in the image: no humans, no human silhouettes, no shadows of people.",
+   "with_character": true
+  },
+  {
+   "id": "q11",
+   "size": [
+    486,
+    560
+   ],
+   "prompt": "Inside an abandoned canvas tent: food supplies, bread, tin cans, a cooking pot and enamel mugs left untouched beside folded blankets, faintly lit by a small amber lantern. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "q13",
+   "size": [
+    992,
+    422
+   ],
+   "prompt": "Close-up of bare footprints in snow on a moonlit slope, the toe shapes clearly visible, leading downhill into darkness. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "q14",
+   "size": [
+    992,
+    482
+   ],
+   "prompt": "Close-up of the burnt-out remains of a small campfire in the snow at the foot of a large pine tree at night: charred branches, ash and two or three faint embers. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "q15",
+   "size": [
+    992,
+    700
+   ],
+   "prompt": "Night: a vast snowy slope between the dark forest edge at the bottom and a tiny tent far up near the top, faint tracks leading uphill toward the tent. Lonely and silent. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "q16",
+   "size": [
+    992,
+    482
+   ],
+   "prompt": "The owl Boogi stands on a snowy windowsill at night in the left third of the frame, serious and solemn, holding its lantern low; the right half of the frame is empty dark night sky. The owl is the only figure in the image: no humans, no human silhouettes, no shadows of people.",
+   "with_character": true
+  },
+  {
+   "id": "q17",
+   "size": [
+    992,
+    422
+   ],
+   "prompt": "Close-up at night of three faint lines of footprints in the snow going uphill toward a tiny distant tent near the top of a dark slope, wind blowing loose snow across them. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "q18",
+   "size": [
+    992,
+    622
+   ],
+   "prompt": "An old closed case file folder tied with string, lying on a dark wooden desk next to a dim amber lantern and a stack of yellowed papers, night, quiet and final mood. No readable text. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "q19",
+   "size": [
+    992,
+    760
+   ],
+   "with_character": true,
+   "prompt": "The owl Boogi stands on a snowy rock at the edge of a dark pine forest at night, holding up its amber lantern and looking up toward a distant snowy mountain slope, thoughtful and calm. Boogi is in the lower left third of the frame; the upper right half is empty dark night sky. The owl is the only figure in the image: no humans, no human silhouettes, no shadows of people."
+  },
+  {
+   "id": "q20",
+   "size": [
+    992,
+    322
+   ],
+   "prompt": "Close-up seen from outside at night: the ragged edges of a long cut in a canvas tent wall curling outward, snow blowing into the dark opening, faint amber light inside. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "q21",
+   "size": [
+    992,
+    622
+   ],
+   "prompt": "Wide view inside an abandoned canvas tent at night: coats, boots, open bags and blankets left scattered as if everyone left in a hurry, the entrance flap blown open to a blizzard outside, a fallen lantern still glowing faintly. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "q22",
+   "size": [
+    992,
+    700
+   ],
+   "prompt": "Night on a snowy mountain slope: a thick slab of snow breaking loose just above a canvas tent pitched in a hollow dug into the slope, heavy chunks of snow sliding down onto the tent roof, dramatic and silent. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "q23",
+   "size": [
+    992,
+    482
+   ],
+   "prompt": "A dark research lab at night: a large computer monitor glowing with a 3D simulation of white snow particles sliding down a slope onto a small tent-shaped object, cold blue light on an empty desk. No readable text on screen. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "p01b",
+   "size": [
+    992,
+    1202
+   ],
+   "prompt": "Night on a bare snowy mountain slope in the northern Ural mountains, 1959. A single intact canvas tent sits in the lower half of the frame, its entrance flap open and a warm amber lantern still glowing inside, but nobody is there. Skis stuck upright in the snow beside it, blowing snow, dark distant peaks, faint crescent moon. The tent is undamaged. Eerie, silent, abandoned. The upper 45% of the frame is calm empty dark sky. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  },
+  {
+   "id": "p01c",
+   "size": [
+    992,
+    1202
+   ],
+   "prompt": "Night on a bare snowy mountain slope, 1959. In the lower part of the frame, a canvas tent with its entrance flap open; just inside the entrance, several pairs of heavy winter boots are neatly lined up, clearly lit by a faint amber lantern hanging inside the empty tent. Outside, a trail of footprints in the snow leads away from the tent and disappears into the darkness downhill. Blowing snow, unsettling stillness. The upper 45% of the frame is calm empty dark night sky. Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+  }
+ ],
+ "slides": [
+  {
+   "layout": "one",
+   "footer_left": "@ossak_alarm",
+   "cells": [
+    {
+     "panel": "p01c",
+     "cover": {
+      "badge": "세계기담",
+      "title": [
+       "한겨울,",
+       "신발을 두고",
+       "텐트를 떠난 9명"
+      ],
+      "accent_word": "신발을 두고",
+      "sub": "그리고 아무도 돌아오지 않았다",
+      "size": 104
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    700,
+    482
+   ],
+   "cells": [
+    {
+     "panel": "p07",
+     "caption": {
+      "text": "1959년 2월 26일, 우랄산맥.\n수색대가 반쯤 눈에 묻힌 텐트를 찾아냅니다."
+     }
+    },
+    {
+     "panel": "q09",
+     "caption": {
+      "text": "안은… 텅 비어 있었습니다."
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    860,
+    322
+   ],
+   "cells": [
+    {
+     "panel": "p08",
+     "caption": {
+      "text": "그런데 텐트를 살펴보던 수색대가\n이상한 점을 발견합니다."
+     }
+    },
+    {
+     "panel": "q20",
+     "caption": {
+      "text": "찢긴 자국은 바깥이 아니라 안쪽에서 낸 것.\n누가, 왜 자기 텐트를 찢고 나간 걸까?",
+      "maxw": 0.92
+     }
+    }
+   ]
+  },
+  {
+   "layout": "top2",
+   "cells": [
+    {
+     "panel": "p09",
+     "caption": {
+      "text": "신발은 그대로.",
+      "size": 32,
+      "maxw": 0.95
+     }
+    },
+    {
+     "panel": "q11",
+     "caption": {
+      "text": "식량도 그대로.",
+      "size": 32,
+      "maxw": 0.95
+     }
+    },
+    {
+     "panel": "q21",
+     "caption": {
+      "text": "영하의 한밤중.\n그들은 무엇을 피해 이렇게 서둘러 나간 걸까?"
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    760,
+    422
+   ],
+   "cells": [
+    {
+     "panel": "p10",
+     "caption": {
+      "text": "눈 위에 남은 발자국.\n숲 쪽으로 곧장 이어져 있었습니다."
+     }
+    },
+    {
+     "panel": "q13",
+     "caption": {
+      "text": "그런데 그중 일부는… 맨발이었습니다.",
+      "maxw": 0.9
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    700,
+    482
+   ],
+   "cells": [
+    {
+     "panel": "q05",
+     "caption": {
+      "text": "이들은 누구였을까요?"
+     }
+    },
+    {
+     "panel": "q02",
+     "caption": {
+      "text": "23세 공대생 이고르 디아틀로프와 동료들.\n모두 숙련된 겨울 산행가였습니다.",
+      "maxw": 0.9
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    700,
+    482
+   ],
+   "cells": [
+    {
+     "panel": "p02",
+     "caption": {
+      "text": "1959년 1월 27일, 열 명이 산으로 떠납니다."
+     }
+    },
+    {
+     "panel": "p03",
+     "caption": {
+      "text": "다음 날, 발길을 돌린 한 명. 그는 유일한 생존자가 됩니다.\n그가 떠난 뒤, 남은 아홉 명에게 무슨 일이 일어난 걸까?",
+      "maxw": 0.95,
+      "size": 32
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    760,
+    422
+   ],
+   "cells": [
+    {
+     "panel": "q06",
+     "caption": {
+      "text": "남겨진 일기와 사진.\n이상한 점은 하나도 없었습니다."
+     }
+    },
+    {
+     "panel": "q04",
+     "caption": {
+      "text": "2월 1일, 그날까지는."
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    700,
+    482
+   ],
+   "cells": [
+    {
+     "panel": "p04",
+     "caption": {
+      "text": "그날 그들은 숲에서 1.5km 떨어진,\n바람 부는 경사면에 텐트를 칩니다."
+     }
+    },
+    {
+     "panel": "q07",
+     "caption": {
+      "text": "눈을 파고 자리를 만들면서.\n이 선택이 모든 걸 바꿔놓습니다.",
+      "maxw": 0.9
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    700,
+    482
+   ],
+   "cells": [
+    {
+     "panel": "p06",
+     "caption": {
+      "text": "그리고 그 밤."
+     }
+    },
+    {
+     "panel": "q08",
+     "caption": {
+      "text": "약속한 날이 지나도\n아무도 돌아오지 않았습니다."
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    700,
+    482
+   ],
+   "cells": [
+    {
+     "panel": "p11",
+     "caption": {
+      "text": "발자국을 따라간 수색대.\n숲 가장자리 큰 나무 아래에서 2명을 발견합니다."
+     }
+    },
+    {
+     "panel": "q14",
+     "caption": {
+      "text": "곁에는 꺼진 모닥불. 그들은 살아서 불을 피웠습니다.\n그런데 왜, 텐트로 돌아가지 않았을까?",
+      "maxw": 0.95,
+      "size": 32
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    760,
+    422
+   ],
+   "cells": [
+    {
+     "panel": "q15",
+     "caption": {
+      "text": "나무와 텐트 사이에서 3명이 더.\n그중에는 리더 디아틀로프도 있었습니다."
+     }
+    },
+    {
+     "panel": "q17",
+     "caption": {
+      "text": "셋 모두 텐트 쪽을 향하고 있었습니다.\n돌아가려다… 끝내 닿지 못한 걸까?",
+      "maxw": 0.9
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    540,
+    642
+   ],
+   "cells": [
+    {
+     "panel": "p13",
+     "caption": {
+      "text": "그리고 5월. 눈이 녹은 골짜기에서\n마지막 4명이 발견됩니다.",
+      "maxw": 0.85
+     }
+    },
+    {
+     "card": {
+      "type": "evidence",
+      "badge": "남은 의문",
+      "badge_color": "#E8693A",
+      "badge_note": "이 장은 저장해 두세요",
+      "pad": 40,
+      "item_h": 380,
+      "items": [
+       {
+        "head": "겉은 멀쩡한데",
+        "body": "몇몇은 큰 외상 없이 갈비뼈와 두개골이 부러져 있었습니다"
+       },
+       {
+        "head": "왜 동료의 옷을?",
+        "body": "몇몇은 먼저 숨진 동료의 옷을 입고 있었습니다"
+       },
+       {
+        "head": "방사능?",
+        "body": "일부 옷에서 약한 방사능이 검출됐습니다"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "layout": "one",
+   "cells": [
+    {
+     "card": {
+      "type": "list",
+      "title": "61년 동안 나온 설명들",
+      "title_size": 60,
+      "subtitle": "어느 것도 모든 의문을 풀지 못했습니다",
+      "items": [
+       {
+        "head": "① 비밀 군사 시험?",
+        "lines": [
+         "옷의 방사능, 하늘에서 불빛을 봤다는 목격담이 있었다는 설",
+         "하지만 이를 뒷받침하는 기록은 없었습니다"
+        ]
+       },
+       {
+        "head": "② 들리지 않는 소리?",
+        "lines": [
+         "산을 타고 내려온 강풍이나 초저주파가 공포를 불렀다는 설",
+         "직접적인 증거는 없었습니다"
+        ]
+       },
+       {
+        "head": "③ 그리고 수많은 소문",
+        "lines": [
+         "설인, 외부인의 습격까지…",
+         "무엇 하나 확인되지 않았습니다"
+        ]
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    760,
+    422
+   ],
+   "cells": [
+    {
+     "panel": "q22",
+     "caption": {
+      "text": "61년 뒤, 스위스의 두 과학자가 답을 내놓습니다.\n범인은… '눈'이었습니다."
+     }
+    },
+    {
+     "panel": "q07",
+     "caption": {
+      "text": "텐트를 치려고 판 바로 그 경사면. 그 위로 쌓인 눈덩어리가\n몇 시간 뒤 텐트를 덮쳤다는 겁니다.",
+      "maxw": 0.95,
+      "size": 32
+     }
+    }
+   ]
+  },
+  {
+   "layout": "rows",
+   "heights": [
+    600,
+    582
+   ],
+   "cells": [
+    {
+     "panel": "q23",
+     "caption": {
+      "text": "그리고 이걸 증명한 도구는…"
+     }
+    },
+    {
+     "card": {
+      "type": "text",
+      "pad": 44,
+      "lines": [
+       {
+        "text": "디즈니 '겨울왕국'의\n눈 시뮬레이션 기술이었습니다.",
+        "serif": true,
+        "size": 50,
+        "color": "#F2B544",
+        "lh": 1.3,
+        "gap": 28
+       },
+       {
+        "text": "영화 속 눈을 만든 기술로 그날 밤을 재현하자, 남은 의문들이 하나씩 풀렸습니다.",
+        "size": 28,
+        "color": "#EDE6D6",
+        "lh": 1.55,
+        "gap": 26
+       },
+       {
+        "text": "→ 입구가 눈에 막혀, 텐트를 안에서 찢고 나왔다",
+        "size": 29,
+        "color": "#C9CEDA",
+        "gap": 14
+       },
+       {
+        "text": "→ 더 무너질까 봐 신발도 못 신고 숲으로 피했다",
+        "size": 29,
+        "color": "#C9CEDA",
+        "gap": 14
+       },
+       {
+        "text": "→ 자동차보다 작은 눈덩어리로도 그 골절이 생길 수 있었다",
+        "size": 29,
+        "color": "#C9CEDA",
+        "gap": 26
+       },
+       {
+        "text": "2020년, 러시아 당국도 눈사태로 결론 내렸습니다.",
+        "size": 24,
+        "color": "#9AA3B8"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "layout": "cols2_bottom",
+   "heights": [
+    760
+   ],
+   "footer_left": "@ossak_alarm",
+   "cells": [
+    {
+     "panel": "q19",
+     "bubble": {
+      "text": "그런데… 정말 그게 전부였을까요?\n옷의 방사능은요?\n당신의 생각을 들려주세요.",
+      "x": 0.4,
+      "y": 0.08,
+      "maxw": 0.56,
+      "size": 42
+     }
+    },
+    {
+     "card": {
+      "type": "text",
+      "pad": 32,
+      "lines": [
+       {
+        "text": "출처",
+        "size": 24,
+        "weight": 700,
+        "color": "#9AA3B8"
+       },
+       {
+        "text": "Gaume·Puzrin, Communications Earth & Environment (2021.1)"
+       },
+       {
+        "text": "EPFL 연구 소개 기사 · Science History Institute"
+       },
+       {
+        "text": "Mental Floss 사건 정리 기사"
+       },
+       {
+        "text": "그림은 사건을 재구성한 AI 일러스트입니다",
+        "size": 18,
+        "color": "#7C86A2"
+       }
+      ]
+     }
+    },
+    {
+     "card": {
+      "type": "text",
+      "pad": 32,
+      "border": "#3FB8A8",
+      "lines": [
+       {
+        "text": "다음 편",
+        "size": 24,
+        "weight": 700,
+        "color": "#9AA3B8"
+       },
+       {
+        "text": "[새벽괴담] 1609년 조선, 마당 처마 밑에서 둥근 빛이 떠올랐다",
+        "size": 30,
+        "weight": 700,
+        "color": "#EDE6D6",
+        "lh": 1.35
+       },
+       {
+        "text": "내일 밤 9시 30분 · 팔로우하고 알림 받기",
+        "size": 24
+       }
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}
