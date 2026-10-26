@@ -1,0 +1,408 @@
+{
+ "id": "N-0003",
+ "series": "새벽괴담",
+ "title": "1486년 한양, 한 관리의 집",
+ "risk": "저",
+ "sources": [
+  "조선왕조실록 성종실록 197권, 성종 17년(1486) 11월 10일",
+  "조선왕조실록 성종실록 197권, 성종 17년(1486) 11월 25일"
+ ],
+ "source_urls": [
+  "https://sillok.history.go.kr/id/kia_11711010_002",
+  "https://sillok.history.go.kr/id/kia_11711025_004"
+ ],
+ "next": "다음 편도 내일 밤 9시 30분에 공개됩니다",
+ "slides": [
+  {
+   "cover": {
+    "title": [
+     "대낮에 나타나",
+     "음식을 먹는 여자 귀신.",
+     "임금이 물었다",
+     "\"아직도 있느냐\""
+    ],
+    "accent_word": "\"아직도 있느냐\"",
+    "sub": "조선왕조실록 · 1486년 한양, 한 관리의 집",
+    "size": 86
+   },
+   "scene": "Inside a dark traditional Joseon-era Korean room at night, seen from floor level beside a folded sleeping mat: a closed wooden lattice sliding door covered with white hanji paper, one paper square of the lattice torn open into a black hole of darkness. A single small oil lamp on the floor gives the only warm light. Under the bottom edge of the door a thin strip of faint cold pale light. Deep shadows, single light source, unsettling empty space, nothing explicit. The door is in the lower half of the frame; the upper 45% is dark empty wooden ceiling and wall.",
+   "nop": true
+  },
+  {
+   "rows": [
+    {
+     "scene": "Hanyang, the Joseon capital, in late autumn 1486 seen from a hill at dusk: rows of dark curved tiled roofs inside the old stone city wall, bare trees, mountains behind, smoke from chimneys, cold blue light.",
+     "cap": {
+      "text": "1486년 음력 11월, 조선의 수도 한양.\n임금 앞에서 한 장관이 들은 이야기를 꺼냅니다.",
+      "maxw": 0.95
+     },
+     "nop": true
+    },
+    {
+     "scene": "A Korean house courtyard in bright daylight, utterly empty and silent: a low wooden dining table set on the wooden veranda floor with a few bowls, nobody sitting there, the paper doors behind half open into darkness, long shadows.",
+     "cap": {
+      "text": "\"한 하급 관리의 집에 여자 귀신이 있습니다.\n대낮에 나타나 말을 하고, 음식까지 먹습니다.\"",
+      "maxw": 0.95
+     },
+     "nop": true
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "Inside the dim study of a grand Joseon-era nobleman's house at night: a low writing desk, a brass candle holder and a porcelain vase standing slightly out of place on the floor in the middle of the room, as if moved, empty room, single candle light, deep shadows.",
+     "cap": {
+      "text": "한 정승의 집에선 물건이 저절로 옮겨진다고도 했죠.\n장관은 제사를 지내고, 대포로라도 쫓자고 청합니다.",
+      "maxw": 0.95
+     },
+     "nop": true
+    },
+    {
+     "scene": "A Joseon royal palace hall interior seen from far behind: a row of faceless silhouettes of officials in dark robes and black hats kneeling in two lines before a raised empty throne platform under a painted screen, dim lantern light, silence.",
+     "cap": "임금은 대답하지 않았습니다."
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "A faceless silhouette of a Joseon court official in a dark robe and black gauze hat kneeling and speaking, seen from behind at a distance, in a dim palace hall with lattice windows, a single lantern.",
+     "cap": {
+      "text": "한 신하가 말합니다. \"괴이하게 여기지 않으면 재앙도 없습니다.\n그 정승도 집을 떠나지 않고 버텼고, 아무 일 없었습니다.\"",
+      "maxw": 0.95
+     }
+    },
+    {
+     "scene": "A small dark owl perched on a bare twisted pine branch in a Joseon royal palace garden at night, seen in silhouette against a cold full moon, curved palace roof eaves below, frost, deep shadows, single cold light source.",
+     "cap": {
+      "text": "임금이 덧붙입니다. \"사람들이 꺼리는 부엉이도 궁궐 나무에서 늘 운다.\n괴이한 것은 오래되면 저절로 사라진다.\"",
+      "maxw": 0.95
+     },
+     "nop": true
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "A Joseon palace corridor at night: a long wooden veranda with closed paper doors glowing faintly, one faceless silhouette of a messenger official in a dark robe walking away hurriedly with a paper lantern, seen from far behind, cold mist.",
+     "cap": {
+      "text": "그런데 15일 뒤, 넘겼던 임금이 먼저 명합니다.\n그 집을 알아보고 아뢰라고.",
+      "maxw": 0.95
+     }
+    },
+    {
+     "scene": "The closed wooden gate of a modest Joseon tiled-roof house on a narrow alley at night, a single paper lantern hanging beside it, thin wisps of mist, the gate slightly ajar showing only darkness, deep shadows, unsettling empty space.",
+     "cap": "\"이두의 집에 그것이,\n아직도 있느냐?\"",
+     "nop": true
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "A faceless silhouette of a thin Joseon-era junior official in a plain robe sitting stiffly on a wooden floor in a dim room, seen from behind, facing a closed paper door, a single oil lamp beside him.",
+     "cap": {
+      "text": "집주인 이두가 대답합니다.\n\"9월부터였습니다. 나타났다가 사라지고, 또 나타났습니다.\"",
+      "maxw": 0.95
+     }
+    },
+    {
+     "scene": "Close-up of a traditional Korean wooden lattice door covered with white hanji paper at night, several of the paper squares torn open, ragged paper edges hanging, pitch darkness behind the holes, a faint warm lamp light from inside the room, nothing visible beyond, deep shadows.",
+     "cap": "문종이는 찢겨 있었습니다.\n안쪽에서였을까요, 바깥에서였을까요?",
+     "nop": true
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "A dark Joseon house courtyard at night, a small pale cold glow of light floating near the edge of the eaves with no visible source, the rest of the yard in pitch darkness, deep shadows, single cold light source, nothing explicit.",
+     "cap": "어둠 속에 난데없는 불빛이 일었고,",
+     "nop": true
+    },
+    {
+     "scene": "A packed-earth courtyard of a Joseon house at night scattered with broken grey roof tiles and small stones lying on the ground and on the wooden veranda, a few roof tiles missing from the eaves above, empty, moonlight, deep shadows.",
+     "cap": {
+      "text": "기와와 돌이 날아들었습니다.\n누가 던진 걸까요?",
+      "maxw": 0.95
+     },
+     "nop": true
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "Inside a pitch-dark Joseon bedroom at night, seen from a sleeping mat on the floor looking toward the closed paper door; the oil lamp has been blown out, only faint moonlight through the paper, a thin trace of smoke from the lamp wick, unsettling empty space, nothing explicit.",
+     "cap": {
+      "text": "그런데 이두는 그것을 한 번도 보지 못했습니다.\n그가 겪은 건 단 하나.",
+      "maxw": 0.95
+     },
+     "nop": true
+    },
+    {
+     "cap": "밤에 누군가 사람을 부르는 소리.\n두 번.",
+     "panel": "s01a"
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "The servants' quarters of a Joseon house at night: a small thatched outbuilding with a dim paper window, three small faceless silhouettes of servants huddled close together inside, seen from outside across a dark yard.",
+     "cap": "종들의 말은 달랐습니다."
+    },
+    {
+     "scene": "Wide view filling the entire frame edge to edge: a Joseon house kitchen at night, an empty low wooden floor beside a cold earthen clay stove with iron pots, a single paper lantern on the floor, beside it an empty round straw mat as if someone had just been sitting there. Deep shadows, unsettling empty space, nothing explicit.",
+     "cap": {
+      "text": "그것과 말을 주고받았다고 했죠.\n주인은 보지도 못한 그것과.",
+      "maxw": 0.95
+     },
+     "nop": true
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "panel": "s06b",
+     "cap": "1486년 그 집, 세 가지 이상한 점",
+     "h": 540
+    },
+    {
+     "card": {
+      "type": "evidence",
+      "badge": "이상한 점",
+      "badge_color": "#3FB8A8",
+      "badge_note": "이 장은 저장해 두세요",
+      "pad": 40,
+      "item_h": 380,
+      "items": [
+       {
+        "head": "대낮에 나타났다",
+        "body": "말을 하고, 음식까지 먹었다고 합니다"
+       },
+       {
+        "head": "주인만 보지 못했다",
+        "body": "이두는 부르는 소리만, 종들은 대화를 나눴습니다"
+       },
+       {
+        "head": "석 달째 반복됐다",
+        "body": "9월부터 찢긴 문종이, 불빛, 날아든 기와와 돌"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "A narrow Joseon alley at dawn in winter: a small faceless family of silhouettes — a man, a woman and two small figures — walking away carrying cloth bundles, seen from far behind, cold mist, bare trees.",
+     "cap": {
+      "text": "이두는 아내와 자식들을 데리고\n다른 집으로 피합니다.",
+      "maxw": 0.95
+     }
+    },
+    {
+     "scene": "Inside a different, unfamiliar Joseon room at night: cloth bundles still tied up on the floor, a single oil lamp, and on the white paper door a fresh small tear with darkness behind it, deep shadows, single light source, unsettling empty space, nothing explicit.",
+     "cap": {
+      "text": "그런데 그 집에서도,\n그것은 수시로 나타났습니다.",
+      "maxw": 0.95
+     },
+     "nop": true
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "panel": "s07b",
+     "cap": {
+      "text": "이런 설명도 있습니다.\n하지만 기록이 말하지 않는 것들이 있죠.",
+      "maxw": 0.95
+     },
+     "h": 490
+    },
+    {
+     "card": {
+      "type": "list",
+      "pad": 36,
+      "items": [
+       {
+        "head": "① 누군가의 장난?",
+        "lines": [
+         "돌·기와·문종이는 사람 손으로도 됩니다"
+        ]
+       },
+       {
+        "head": "② 그렇다면 누가?",
+        "lines": [
+         "범인도, 붙잡혔다는 말도 없습니다"
+        ]
+       },
+       {
+        "head": "③ 왜 따라왔을까?",
+        "lines": [
+         "다른 집까지 따라온 이유는 없습니다"
+        ]
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "Full-bleed wide view filling the frame edge to edge with no border: the modest Joseon tiled-roof house with its wooden gate wide open in pale winter morning light, the courtyard swept and completely empty and still, frost on the ground, unsettling empty space.",
+     "cap": {
+      "text": "피해도 소용이 없자, 이두는 원래 집으로 돌아옵니다.\n그것은, 없었습니다.",
+      "maxw": 0.95
+     },
+     "nop": true
+    },
+    {
+     "panel": "s04b",
+     "cap": {
+      "text": "임금의 말처럼, 저절로 사라진 걸까요?\n떠나자 따라왔고, 돌아오자 없었습니다.",
+      "maxw": 0.95
+     }
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "An old cloth-bound book lying open on a low wooden desk by candle light, the pages covered with faint brush strokes heavily blurred and soft-focus, completely unreadable, shallow depth of field, deep shadows around.",
+     "cap": {
+      "text": "그런데 실록에는 한 줄이 더 있습니다.\n종들이 본 그것의 모습.",
+      "maxw": 0.95
+     },
+     "nop": true
+    },
+    {
+     "scene": "A long dark wooden veranda of a Joseon house at night lit only by moonlight, completely empty, the far end disappearing into pitch darkness, deep shadows, single cold light source, unsettling empty space, nothing explicit.",
+     "cap": "온몸이 보인 건 아니었습니다.",
+     "nop": true
+    }
+   ]
+  },
+  {
+   "rows": [
+    {
+     "scene": "Inside a dark traditional Joseon room at night, seen from floor level: a closed white hanji paper lattice sliding door with one torn paper square showing darkness; through the gap under the bottom edge of the door, lit by a thin strip of cold pale light, the trailing hem of a long, frayed, worn white skirt rests on the wooden floor of the veranda outside, completely still; only the white cloth is visible, no feet, no body. A single small oil lamp inside. Deep shadows, single cold light source, unsettling, nothing explicit.",
+     "cap": {
+      "text": "허리 아래만 보였습니다.\n여자의 옷차림. 해진 흰 치마.",
+      "maxw": 0.95
+     },
+     "nop": true,
+     "h": 860
+    },
+    {
+     "card": {
+      "type": "text",
+      "pad": 48,
+      "lines": [
+       {
+        "text": "그것은 왜, 허리 아래만 보였을까",
+        "serif": true,
+        "size": 52,
+        "color": "#3FB8A8",
+        "lh": 1.3,
+        "gap": 22
+       },
+       {
+        "text": "실록에 적힌 건 여기까지입니다.",
+        "size": 30,
+        "color": "#C9CEDA"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "end": {
+    "scene": "Night scene: in the lower left corner of the frame, a small owl Boogi sits on a bare twisted pine branch above the curved tiled roof of a traditional Joseon house, holding its amber lantern; the owl is small, occupying only the lower-left third. The entire upper half and right side of the frame is empty dark night sky with a cold moon, faint mountain ridges far on the right horizon.",
+    "bubble": "그때 이두가\n집을 떠나지 않았다면\n어땠을까요?\n종들과 나눈 그 말은,\n무엇이었을까요?"
+   }
+  }
+ ],
+ "caption": "대낮에 나타나 음식을 먹는 여자 귀신. 임금이 물었다, \"아직도 있느냐.\"\n\n1486년 한양, 한 하급 관리의 집. 주인은 그것을 한 번도 보지 못했고, 밤에 누군가 부르는 소리만 두 번 들었습니다. 종들은 그것과 말을 주고받았다고 했습니다.\n\n당신의 가설은? 댓글로 알려주세요.\n\n출처: 조선왕조실록 성종실록 197권, 성종 17년(1486) 11월 10일·11월 25일 기사\n#새벽괴담 #조선왕조실록",
+ "threads": [
+  "1486년 조선, 실록에 진짜 적혀 있는 얘기야. 임금 앞에서 한 장관이 이래. \"성안에 귀신이 많습니다. 한 관리 집엔 여자 귀신이 대낮에 나타나서 말도 하고 음식까지 먹습니다.\" 대포로 쫓자고까지 함.",
+  "임금 반응은 쿨했어. \"부엉이도 궁궐 나무에서 늘 운다. 괴이한 건 오래되면 저절로 사라진다.\" 근데 15일 뒤에 그 임금이 다시 물어. \"그 집에 그거, 아직도 있냐?\"",
+  "집주인 이두 대답이 소름이야. 9월부터 나타났다 사라졌다 반복. 문종이 찢기고 불빛 나고 기와랑 돌이 날아옴. 근데 정작 본인은 한 번도 못 봤대. 밤에 누가 부르는 소리만 두 번 들었고.",
+  "종들은 그거랑 말을 주고받았대. 주인은 못 보는데. 그래서 처자식 데리고 다른 집으로 피했는데, 거기서도 나타났다는 거야.",
+  "결국 집으로 돌아왔는데 그땐 없었대. 근데 실록엔 종들이 본 그 모습이 한 줄 적혀 있어. 그 한 줄은 인스타 @ossak_alarm 에서 확인해 봐."
+ ],
+ "reels_script": [],
+ "reel": {
+  "mood": "horror",
+  "beats": [
+   {
+    "say": "대낮에 음식을 먹는 여자 귀신.",
+    "panel": "s01a",
+    "tts": "대낮에 음식을 먹는 여자 귀신."
+   },
+   {
+    "say": "500여 년 전 조선. 임금께 올라온, 한 관리 집 귀신 이야기.",
+    "panel": "s02a",
+    "tts": "오백여 년 전 조선. 임금께 올라온 [pause short] 한 관리 집 귀신 이야기."
+   },
+   {
+    "say": "임금은 말했죠. \"괴이한 것은 오래되면, 저절로 사라진다.\"",
+    "panel": "s04b",
+    "tts": "임금은 말했죠. 괴이한 것은 오래되면 [pause short] 저절로 사라진다."
+   },
+   {
+    "say": "그런데 15일 뒤, 임금이 먼저 묻습니다. \"그것이, 아직도 있느냐.\"",
+    "panel": "s05b",
+    "tts": "그런데 십오 일 뒤 임금이 먼저 묻습니다. [pause short] 그것이 아직도 있느냐."
+   },
+   {
+    "say": "집주인이 답합니다. 석 달째, 창호지가 찢기고 불빛이 인다고.",
+    "panel": "s06b",
+    "tts": "집주인이 답합니다. 석 달째 [pause short] 창호지가 찢기고 불빛이 인다고."
+   },
+   {
+    "say": "기와와 돌까지 날아들었죠. 누가 던진 걸까요?",
+    "panel": "s07b",
+    "tts": "기와와 돌까지 날아들었죠. 누가 던진 걸까요?"
+   },
+   {
+    "say": "그런데 집주인은, 한 번도 못 봤습니다. 밤에 누가 부르는 소리만, 두 번 들었죠.",
+    "panel": "s08a",
+    "tts": "그런데 집주인은 한 번도 못 봤습니다. 밤에 누가 부르는 소리만 [pause short] 두 번 들었죠."
+   },
+   {
+    "say": "그 집 종들은 달랐습니다. 그것과, 말을 주고받았죠.",
+    "panel": "s09b",
+    "tts": "그 집 종들은 달랐습니다. [pause short] 그것과 말을 주고받았죠."
+   },
+   {
+    "say": "가족과 다른 집으로 피했는데, 그곳에도 나타났습니다.",
+    "panel": "s11b",
+    "tts": "가족과 다른 집으로 피했는데 [pause short] 그곳에도 나타났습니다."
+   },
+   {
+    "say": "종들이 본 그 모습은, 어땠을까요? 실록의 그 한 줄, 프로필을 눌러 확인하세요.",
+    "panel": "s16a",
+    "tts": "종들이 본 그 모습은 어땠을까요? [pause short] 실록의 그 한 줄 [pause short] 프로필을 눌러 확인하세요."
+   }
+  ],
+  "teaser": "한 장관은 임금 앞에서, 대포를 쏘아서라도 쫓아내자고 청했습니다.",
+  "cta": "종들이 본 그 모습은, @ossak_alarm 프로필을 눌러 확인하세요.",
+  "cover": {
+   "title": [
+    "대낮에 음식을 먹는 여자 귀신.",
+    "임금이 물었다",
+    "\"아직도 있느냐\""
+   ],
+   "accent_word": "\"아직도 있느냐\""
+  }
+ }
+}

@@ -204,6 +204,8 @@ def main():
     if not reel:
         raise SystemExit("원고에 reel이 없어요")
     cover = spec["slides"][0]["cells"][0]["cover"]
+    if reel.get("cover"):  # 릴스 화면 제목은 3줄까지라, 표지가 4줄이면 원고 reel.cover로 덮어쓴다
+        cover = {**cover, **reel["cover"]}
     accent = spec.get("accent", C["amber"])
     beats = reel["beats"]
     horror = reel.get("mood") == "horror"
