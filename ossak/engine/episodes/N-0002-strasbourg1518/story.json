@@ -35,12 +35,18 @@
    "rows": [
     {
      "scene": "A wide view of the medieval city of Strasbourg in July 1518 under a hot hazy summer sun: steep tiled roofs, half-timbered houses, the tall gothic cathedral spire rising above, the river in front.",
-     "cap": "1518년 7월, 지금의 프랑스 스트라스부르.",
+     "cap": {
+      "text": "1518년 7월, 지금의 프랑스 스트라스부르.",
+      "maxw": 0.95
+     },
      "nop": true
     },
     {
      "scene": "A faceless silhouette of a woman in a long 16th-century dress dancing alone in the middle of a narrow cobbled street, arms raised, seen from behind at a distance; the street is silent and empty, no musicians, shutters half open.",
-     "cap": "한 여자가 거리 한복판에서\n혼자 춤을 추기 시작합니다. 음악은 없었습니다."
+     "cap": {
+      "text": "한 여자가 거리 한복판에서\n혼자 춤을 추기 시작합니다. 음악은 없었습니다.",
+      "maxw": 0.95
+     }
     }
    ]
   },
@@ -48,11 +54,17 @@
    "rows": [
     {
      "scene": "The same narrow cobbled medieval street seen from an upper window at night under moonlight, a lone small silhouette of a woman still dancing far below, lantern light on the stones.",
-     "cap": "쓰러지면 잠깐 쉬고, 깨어나면 다시.\n기록마다 나흘에서 일주일을 그렇게 췄다고 합니다."
+     "cap": {
+      "text": "쓰러지면 잠깐 쉬고, 깨어나면 다시.\n기록마다 나흘에서 일주일을 그렇게 췄다고 합니다.",
+      "maxw": 0.95
+     }
     },
     {
      "scene": "Rows of open wooden shutters on half-timbered houses, several faceless dark silhouettes of neighbours leaning out of the windows and looking down into the street, seen from behind and in shadow.",
-     "cap": "창밖으로 지켜보던 사람들 사이에 말이 돕니다.\n'성 비투스의 벌이다.'"
+     "cap": {
+      "text": "창밖으로 지켜보던 사람들 사이에 말이 돕니다.\n'성 비투스의 벌이다.'",
+      "maxw": 0.95
+     }
     }
    ]
   },
@@ -60,7 +72,10 @@
    "rows": [
     {
      "scene": "A medieval cobbled square in daylight filled with about thirty small faceless silhouettes dancing wildly and out of rhythm, seen from a high distance, no musicians, long midday shadows.",
-     "cap": "그런데 일주일 만에,\n30명 넘는 사람이 함께 춤추고 있었습니다."
+     "cap": {
+      "text": "그런데 일주일 만에,\n30명 넘는 사람이 함께 춤추고 있었습니다.",
+      "maxw": 0.95
+     }
     },
     {
      "scene": "Close on the cobblestones: many pairs of worn leather shoes and bare feet of different kinds — a noble's buckled shoe, a peasant's rough clog — all stepping and stamping at once, motion blur, no faces.",
@@ -72,12 +87,18 @@
    "rows": [
     {
      "scene": "A 16th-century physicians' study: a heavy wooden table with an hourglass, glass flasks, a thick closed medical book and a blurred and unreadable handwritten page, candle light.",
-     "cap": "도시는 의사들을 부릅니다.\n진단은 '피가 너무 뜨거워져서 생긴 병'.",
+     "cap": {
+      "text": "도시는 의사들을 부릅니다.\n진단은 '피가 너무 뜨거워져서 생긴 병'.",
+      "maxw": 0.95
+     },
      "nop": true
     },
     {
      "scene": "Two faceless silhouettes of 16th-century city councillors in dark robes standing at a tall window, seen from behind, looking down at a square full of dancing silhouettes.",
-     "cap": "처방은 뜻밖이었습니다.\n'말리지 말고, 다 털어낼 때까지 춤추게 하라.'"
+     "cap": {
+      "text": "처방은 뜻밖이었습니다.\n'말리지 말고, 다 털어낼 때까지 춤추게 하라.'",
+      "maxw": 0.95
+     }
     }
    ]
   },
@@ -85,12 +106,15 @@
    "rows": [
     {
      "scene": "An empty open medieval market square in daylight with a large unfinished wooden stage frame in the centre, stacked timber planks and wooden ladders leaning on it, half-timbered houses all around, nobody present.",
-     "cap": "시는 길드 회관을 비우고, 시장에 무대를 세웠습니다.",
+     "cap": "시는 상인 조합의 회관을 내주고,\n시장에 무대까지 세웠습니다.",
      "nop": true
     },
     {
      "scene": "On a wooden stage in a medieval square, faceless silhouette musicians with drums, pipes and fiddles playing, seen from behind; in front, dancing silhouettes.",
-     "cap": "악사를 부르고,\n옆에서 함께 춰 줄 사람까지 돈을 주고 고용했죠."
+     "cap": {
+      "text": "악사를 부르고,\n옆에서 함께 춰 줄 사람까지 돈을 주고 고용했죠.",
+      "maxw": 0.95
+     }
     }
    ]
   },
@@ -98,11 +122,14 @@
    "rows": [
     {
      "scene": "A huge crowd of small faceless silhouettes dancing in a medieval market square around a wooden stage, drums beating, dust rising, the gothic cathedral spire in the distance, seen from very high above.",
-     "cap": "그런데 북소리가 울릴수록,\n춤추는 사람은 오히려 늘어났습니다."
+     "cap": "그런데 연주가 울릴수록,\n춤추는 사람은 오히려 늘어났습니다."
     },
     {
      "scene": "An old leather-bound chronicle book lying open on a desk beside a quill and an ink pot, the handwritten pages blurred and unreadable, warm candle light.",
-     "cap": "한 연대기는 '한 달 만에 400명'이라고 적었습니다.\n치료하려던 무대가 병을 키운 겁니다.",
+     "cap": {
+      "text": "당시 기록 하나는 '한 달 만에 400명'이라고 적었습니다.\n치료하려던 무대가 병을 키운 겁니다.",
+      "maxw": 0.95
+     },
      "nop": true
     }
    ]
@@ -111,12 +138,18 @@
    "rows": [
     {
      "scene": "The wooden stage in the medieval square being taken apart at dusk, planks stacked, a single drum left lying on its side, the square now empty.",
-     "cap": "시는 결국 방향을 바꿉니다.\n무대를 허물고, 9월까지 거리의 춤과 음악을 금지하죠.",
+     "cap": {
+      "text": "시는 결국 방향을 바꿉니다.\n무대를 허물고, 9월까지 거리의 춤과 음악을 금지하죠.",
+      "maxw": 0.95
+     },
      "nop": true
     },
     {
      "scene": "A wooden cart carrying a few exhausted faceless silhouettes along a forest road toward a small hilltop chapel, seen from far behind, misty morning.",
-     "cap": "그리고 가장 심한 사람들을 수레에 태워\n산속 성지로 보냅니다. 성 비투스의 성지였습니다."
+     "cap": {
+      "text": "그리고 가장 심한 사람들을 수레에 태워\n산속 성지로 보냅니다. 성 비투스의 성지였습니다.",
+      "maxw": 0.95
+     }
     }
    ]
   },
@@ -152,7 +185,7 @@
       "items": [
        {
         "head": "음악 없이 번졌다",
-        "body": "한 여자의 춤이 30명, 기록상 400명까지"
+        "body": "한 여자의 춤이 일주일 만에 30명으로"
        },
        {
         "head": "치료할수록 늘었다",
@@ -177,7 +210,7 @@
      {
       "head": "① 곰팡이 핀 호밀빵의 독?",
       "lines": [
-       "그 독은 팔다리 혈관을 조입니다. 그 몸으로 몇 주씩 춤추긴 어렵죠"
+       "그 독은 팔다리 혈관을 조입니다. 그 몸으로 며칠씩 춤추긴 어렵죠"
       ]
      },
      {
@@ -199,11 +232,17 @@
    "rows": [
     {
      "panel": "s03b",
-     "cap": "답의 실마리는 첫 주에 돌던 그 말이었습니다.\n'성 비투스의 벌이다.'"
+     "cap": {
+      "text": "답의 실마리는 첫 주에 돌던 그 말이었습니다.\n'성 비투스의 벌이다.'",
+      "maxw": 0.95
+     }
     },
     {
      "scene": "Inside a dim gothic church, a carved wooden statue of a young saint on a pedestal seen from behind and below, lit by a row of flickering votive candles, the statue's face hidden in shadow.",
-     "cap": "그 시절 이 지역 사람들은 믿었습니다.\n성 비투스를 노하게 하면, 멈출 수 없는 춤의 벌을 받는다고.",
+     "cap": {
+      "text": "그 시절 이 지역 사람들은 믿었습니다.\n성 비투스를 노하게 하면, 멈출 수 없는 춤의 벌을 받는다고.",
+      "maxw": 0.95
+     },
      "nop": true
     }
    ]
@@ -212,11 +251,17 @@
    "rows": [
     {
      "scene": "Outside a plain rough stone city gate arch with no inscriptions or carvings, a long line of thin faceless silhouettes of hungry farmers with empty sacks waiting, grey sky, bare fields behind; an empty bread stall with a few small loaves inside the gate.",
-     "cap": "게다가 몇 해째 흉년으로 빵값이 치솟고, 병이 돌았습니다.\n사람들은 극도로 지쳐 있었죠."
+     "cap": {
+      "text": "게다가 몇 해째 흉년으로 빵값이 치솟고, 병이 돌았습니다.\n사람들은 극도로 지쳐 있었죠.",
+      "maxw": 0.95
+     }
     },
     {
      "scene": "A crowd of faceless silhouettes in a dark medieval square at night swaying as if in a trance, heads bowed, a single pale beam of light from the cathedral falling over them.",
-     "cap": "'다음은 내 차례일지도 몰라.'\n그 공포가, 춤추는 이웃을 본 사람들의 몸을 움직였습니다."
+     "cap": {
+      "text": "'다음은 내 차례일지도 몰라.'\n그 공포가, 춤추는 이웃을 본 사람들의 몸을 움직였습니다.",
+      "maxw": 0.95
+     }
     }
    ]
   },
@@ -224,7 +269,10 @@
    "rows": [
     {
      "panel": "s09a",
-     "cap": "성 비투스의 성지에서, 성 비투스에게 올린 기도.\n그들에겐 '이제 벌을 거두셨다'는 신호였습니다.",
+     "cap": {
+      "text": "성 비투스의 성지, 붉은 신, 성수와 기도.\n그들에겐 '이제 벌을 거두셨다'는 신호였습니다.",
+      "maxw": 0.95
+     },
      "h": 520
     },
     {
@@ -247,7 +295,7 @@
         "gap": 14
        },
        {
-        "text": "→ 북소리 무대: 저주를 눈앞에 보여 준 셈이 됐다",
+        "text": "→ 음악 무대: 저주를 눈앞에 보여 준 셈이 됐다",
         "size": 27,
         "color": "#C9CEDA",
         "gap": 14
@@ -259,7 +307,7 @@
         "gap": 24
        },
        {
-        "text": "역사학자 존 월러의 설명(집단 심인성 질환). 가장 널리 받아들여지지만 확정은 아닙니다.",
+        "text": "역사학자 존 월러의 설명. 두려움이 몸으로 번지는 '집단 심인성 질환'. 가장 널리 받아들여지지만 확정은 아닙니다.",
         "size": 21,
         "color": "#9AA3B8"
        }
@@ -279,15 +327,15 @@
  "threads": [
   "1518년 7월 스트라스부르. 어떤 여자가 음악도 없는 골목에서 혼자 춤을 추기 시작했어. 쓰러질 때까지 추고, 깨면 또 추고. 기록마다 나흘에서 일주일이래.",
   "근데 일주일 만에 30명 넘게 따라 추기 시작함. 남자 여자, 신분 상관없이.",
-  "더 이상한 건 시의 대응이야. 의사들이 '피가 뜨거워진 병'이라고 하니까, 시가 길드 회관 비우고 시장에 무대 세우고 악사까지 불렀어. 더 춤춰서 털어내라고.",
-  "결과는? 북소리 울릴수록 사람이 더 늘었대. 한 연대기는 한 달 만에 400명이라고 적었고. 결국 9월까지 춤이랑 음악을 금지해 버림.",
+  "더 이상한 건 시의 대응이야. 의사들이 '피가 뜨거워진 병'이라고 하니까, 시가 상인 조합 회관 내주고 시장에 무대 세우고 악사까지 불렀어. 더 춤춰서 털어내라고.",
+  "결과는? 연주 울릴수록 사람이 더 늘었대. 당시 기록 하나는 한 달 만에 400명이라고 적었고. 결국 9월까지 춤이랑 음악을 금지해 버림.",
   "그 도시 사람들이 수군대던 이름 하나가 답의 실마리였어. 풀버전은 인스타에 @ossak_alarm"
  ],
  "reels_script": [
   "음악도 없는 거리, 한 여자가 춤을 멈추지 않자 30명이 따라 췄다.",
   "1518년 여름, 스트라스부르.",
   "시는 춤을 멈추게 하는 대신, 무대를 세우고 악사를 불렀습니다.",
-  "북소리가 울릴수록, 춤추는 사람은 늘어만 갔습니다.",
+  "연주가 울릴수록, 춤추는 사람은 늘어만 갔습니다.",
   "그 도시가 믿던 저주 하나. 풀버전은 캐러셀에서."
  ]
 }
