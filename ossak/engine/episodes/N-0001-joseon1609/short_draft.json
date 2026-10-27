@@ -1,0 +1,227 @@
+{
+ "id": "N-0001",
+ "no": 2,
+ "series": "새벽괴담",
+ "format": "story",
+ "mood": "mystery",
+ "title": "1609년 강원도의 하늘",
+ "hook": [
+  "1609년 조선,",
+  "땅에서 떠오른 빛"
+ ],
+ "accent_word": "떠오른 빛",
+ "images": [
+  {
+   "id": "w01",
+   "prompt": "A Joseon-era Korean hanok courtyard on a clear sunny afternoon, 1609: under the tiled eaves, just above the packed dirt ground, a round glowing disc of soft light about the size of a washbasin is slowly rising into the air. Paper sliding doors, a clay storage jar, wooden veranda. Quiet and eerie.",
+   "nop": true
+  },
+  {
+   "id": "w02",
+   "prompt": "Wide view of a small Joseon-era village on the Korean east coast near Yangyang, 1609: tiled and thatched roofs, pine-covered mountains behind, the sea in the distance, a perfectly clear cloudless blue afternoon sky.",
+   "nop": true
+  },
+  {
+   "id": "w03",
+   "prompt": "In a clear blue sky above Joseon hanok roofs, a floating glowing orb of light that is white on its left side, blue in the middle and red on its right side, splitting into two pieces: one piece dispersing like drifting smoke, the other hovering flat like a cushion.",
+   "nop": true
+  },
+  {
+   "id": "w04",
+   "prompt": "A Joseon-era hanok courtyard: three villagers in white hanbok seen from far behind as small faceless silhouettes, standing still and looking up at an empty perfectly clear sky, startled, as if hearing distant thunder.",
+   "seed": 4
+  },
+  {
+   "id": "w05",
+   "prompt": "Early morning over a Joseon-era coastal town by the sea (Gangneung), 1609: a red glowing light shaped like a bottle gourd falling slowly from a clear sky toward the rooftops, calm sea and pine trees.",
+   "nop": true
+  },
+  {
+   "id": "w06",
+   "prompt": "A wide river valley with rice fields and a small Joseon-era town (Wonju), clear sky: a long red glowing ribbon of light like a strip of red cloth flowing across the sky from one side to the other.",
+   "nop": true
+  },
+  {
+   "id": "w07",
+   "prompt": "A Joseon-era riverside town (Chuncheon) under a clear sky: a big fireball the size of a large earthenware jar streaking low across the sky like a flying arrow, leaving a bright trail over the river.",
+   "nop": true
+  },
+  {
+   "id": "w08",
+   "prompt": "Pine-covered hills by the east sea near a small Joseon-era town (Ganseong), morning: a pale ring of smoke shaped like a sun halo hanging in the clear sky, quiet and strange.",
+   "nop": true
+  },
+  {
+   "id": "w09",
+   "prompt": "Close view of an old hand-painted Korean map of Gangwon province on aged hanji paper on a low wooden desk, mountains and rivers drawn in ink, five small red seal marks scattered on it; all writing is blurred and unreadable. A single warm candle light.",
+   "nop": true
+  },
+  {
+   "id": "w10",
+   "prompt": "Bright daytime sky over Korean mountains: a huge fireball meteor streaking across the sky, breaking apart into two glowing pieces, leaving a long white smoke trail that lingers in the clear sky.",
+   "nop": true
+  },
+  {
+   "id": "w11",
+   "prompt": "Boogi the owl archivist sits at an old wooden desk in a dark archive room at night, holding a small amber lantern over an open old Korean bound book with yellowed pages (writing blurred and unreadable), shelves of old books behind fading into darkness. The owl looks thoughtfully at the viewer.",
+   "with_character": true
+  }
+ ],
+ "scenes": [
+  {
+   "say": "1609년 조선, 마당 땅에서 둥근 빛이 떠올랐습니다.",
+   "tts": "천육백구 년 조선 [pause short] 마당 땅에서 둥근 빛이 떠올랐습니다.",
+   "img": "w01",
+   "move": "in",
+   "focus": [
+    0.5,
+    0.6
+   ],
+   "emph": [
+    "빛이"
+   ]
+  },
+  {
+   "say": "강원도 양양, 구름 한 점 없는 맑은 오후였죠.",
+   "tts": "강원도 양양 [pause short] 구름 한 점 없는 맑은 오후였죠.",
+   "img": "w02",
+   "move": "down",
+   "emph": [
+    "맑은"
+   ]
+  },
+  {
+   "say": "세숫대야만 한 빛이, 천천히 위로 떠오릅니다.",
+   "tts": "세숫대야만 한 빛이 [pause short] 천천히 위로 떠오릅니다.",
+   "img": "w01",
+   "zoom": 1.5,
+   "focus": [
+    0.5,
+    0.62
+   ],
+   "move": "up",
+   "emph": [
+    "세숫대야만"
+   ]
+  },
+  {
+   "say": "희고, 푸르고, 붉게. 그러다 둘로 갈라집니다.",
+   "tts": "희고 푸르고 붉게. [pause short] 그러다 둘로 갈라집니다.",
+   "img": "w03",
+   "move": "in",
+   "emph": [
+    "둘로"
+   ]
+  },
+  {
+   "say": "한 조각은 연기처럼 흩어지고, 한 조각은 그 자리에 떠 있었습니다.",
+   "tts": "한 조각은 연기처럼 흩어지고 [pause short] 한 조각은 그 자리에 떠 있었습니다.",
+   "img": "w03",
+   "zoom": 1.4,
+   "focus": [
+    0.6,
+    0.5
+   ],
+   "move": "right"
+  },
+  {
+   "say": "그런데 같은 날 아침, 강릉에도 붉은 빛이 떨어집니다.",
+   "tts": "그런데 같은 날 아침 [pause short] 강릉에도 붉은 빛이 떨어집니다.",
+   "img": "w05",
+   "move": "down",
+   "emph": [
+    "강릉에도"
+   ]
+  },
+  {
+   "say": "원주에선 붉은 천 같은 빛이 길게 흘러갔고,",
+   "tts": "원주에선 붉은 천 같은 빛이 길게 흘러갔고",
+   "img": "w06",
+   "move": "left",
+   "emph": [
+    "원주에선"
+   ]
+  },
+  {
+   "say": "춘천에선 불덩이가 화살처럼 날아갔습니다.",
+   "tts": "춘천에선 불덩이가 화살처럼 날아갔습니다.",
+   "img": "w07",
+   "move": "right",
+   "emph": [
+    "춘천에선"
+   ]
+  },
+  {
+   "say": "간성에선 햇무리 같은 연기까지.",
+   "tts": "간성에선 햇무리 같은 연기까지.",
+   "img": "w08",
+   "move": "in",
+   "emph": [
+    "간성에선"
+   ]
+  },
+  {
+   "say": "같은 날, 다섯 고을. 모양도 방향도 제각각이었습니다.",
+   "tts": "같은 날 다섯 고을. [pause short] 모양도 방향도 제각각이었습니다.",
+   "img": "w09",
+   "move": "out",
+   "emph": [
+    "다섯"
+   ]
+  },
+  {
+   "say": "그리고 다섯 곳 모두… 맑은 하늘에서 천둥이 울렸습니다.",
+   "tts": "그리고 다섯 곳 모두 [pause short] 맑은 하늘에서 천둥이 울렸습니다.",
+   "img": "w04",
+   "move": "in",
+   "sfx": "hit",
+   "emph": [
+    "천둥이"
+   ]
+  },
+  {
+   "say": "가장 그럴듯한 설명은, 낮에도 보이는 거대한 유성입니다.",
+   "tts": "가장 그럴듯한 설명은 [pause short] 낮에도 보이는 거대한 유성입니다.",
+   "img": "w10",
+   "move": "in",
+   "emph": [
+    "유성"
+   ]
+  },
+  {
+   "say": "공중에서 터져 갈라지고, 연기를 남기고, 소리는 몇 분 늦게 닿죠.",
+   "tts": "공중에서 터져 갈라지고 연기를 남기고 [pause short] 소리는 몇 분 늦게 닿죠.",
+   "img": "w10",
+   "zoom": 1.35,
+   "focus": [
+    0.55,
+    0.45
+   ],
+   "move": "out"
+  },
+  {
+   "say": "다섯 고을이 본 건, 불덩이 하나의 서로 다른 얼굴이었을지도요.",
+   "tts": "다섯 고을이 본 건 [pause short] 불덩이 하나의 서로 다른 얼굴이었을지도요.",
+   "img": "w09",
+   "zoom": 1.3,
+   "move": "in"
+  },
+  {
+   "say": "그런데 왜, 양양의 빛만… 땅에서 떠올랐을까요?",
+   "tts": "그런데 왜 양양의 빛만 [pause short] 땅에서 떠올랐을까요?",
+   "img": "w11",
+   "move": "in",
+   "emph": [
+    "땅에서"
+   ]
+  }
+ ],
+ "youtube": {
+  "title": "1609년 조선, 마당 땅에서 떠오른 둥근 빛",
+  "summary": "광해군 1년, 구름 한 점 없던 날. 강원도 다섯 고을이 하늘에서 서로 다른 빛을 봤다고 조선왕조실록은 적고 있습니다. 그날 무엇이 지나갔을까요.",
+  "pinned": "같은 날 정오, 한양 하늘에도 항아리만 한 별이 소리를 내며 날아갔다고 실록은 적습니다. 당신은 무엇이었다고 생각하나요?"
+ },
+ "sources": "출처: 조선왕조실록 광해군일기(1609), 경향신문, 서울신문, 미국유성협회",
+ "tags": "#새벽괴담 #조선왕조실록",
+ "risk": "저"
+}

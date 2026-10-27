@@ -27,7 +27,7 @@ from PIL import Image, ImageDraw, ImageFilter
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from compose import font, wrap, pill, cover_fit, split_accent, C  # noqa: E402
 from cf import load_env  # noqa: E402
-from breath import analyze  # noqa: E402
+from timing import breath as local_breath  # noqa: E402
 
 ENGINE = pathlib.Path(__file__).resolve().parent.parent
 REPO_OSSAK = ENGINE.parent
@@ -61,32 +61,33 @@ def tts_melo(text):
     return base64.b64decode(d["result"]["audio"]), 1.28   # MeloTTS는 느려서 1.28배
 
 
-def speak(text, out, mode):
-    """text → out(.wav, 48kHz mono, 앞뒤 무음 제거). 캐시 키는 문장+목소리."""
+def speak(text, out, mode, max_pause=0.45, wrong_min=0.22):
+    """text → out(.wav, 48kHz mono, 앞뒤 무음 제거). 캐시 키는 문장+목소리+쉼 설정.
+    호흡 검사는 timing.breath(무음 위치 ↔ 원고 글자, API 없음)로 한다."""
     key = os.environ.get("GOOGLE_TTS_KEY", "")
     use_google = mode == "google" or (mode == "auto" and key)
     voice_id = (os.environ.get("TTS_VOICE", "ko-KR-Chirp3-HD-Umbriel") + "@" + os.environ.get("TTS_RATE", "1.0")) if use_google else "melo"
-    tag = hashlib.sha1((voice_id + "|v5|" + text).encode()).hexdigest()[:12]
+    tag = hashlib.sha1((voice_id + f"|v6|{max_pause}|{wrong_min}|" + text).encode()).hexdigest()[:12]
     meta = out.with_suffix(".txt")
     if out.exists() and meta.exists() and meta.read_text() == tag:
         return
     base = float(os.environ.get("TTS_RATE", "1.0"))
-    rates = [base, base * 1.04, base * 0.96] if use_google else [None]
+    rates = [base, base * 1.04, base * 0.96, base * 1.08] if use_google else [None]
     best = None
     for n, rate in enumerate(rates):
         raw, tempo = tts_google(text, key, rate) if use_google else tts_melo(text)
         cand = out.with_name(out.stem + f"_try{n}.wav")
-        render_voice(raw, tempo, cand)
+        render_voice(raw, tempo, cand, max_pause)
         if not use_google or os.environ.get("BREATH_CHECK", "1") == "0":
             best = (0, cand)
             break
         try:
-            _, wrong, missing = analyze(cand, text)
+            _, wrong, missing = local_breath(cand, text, wrong_min=wrong_min)
         except Exception as e:          # 받아쓰기 실패 시 검사 없이 사용
             print(f"  호흡 검사 생략: {e}")
             best = (0, cand)
             break
-        score = len(wrong) * 2 + missing
+        score = round(sum(max(d, 0.15) for _, d in wrong) * 10 + missing * 3, 2)   # 길게 엉뚱하게 쉴수록 나쁨
         if score:
             print(f"  {out.name} 시도{n + 1}: 엉뚱한 쉼 {wrong}, 빠진 쉼 {missing}")
         if best is None or score < best[0]:
@@ -99,7 +100,7 @@ def speak(text, out, mode):
     meta.write_text(tag)
 
 
-def render_voice(raw, tempo, out):
+def render_voice(raw, tempo, out, max_pause=0.45):
     tmp = out.with_suffix(".raw")
     tmp.write_bytes(raw)
     af = ("silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.05,"
@@ -108,7 +109,7 @@ def render_voice(raw, tempo, out):
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(tmp), "-af", af, "-ar", "48000", "-ac", "1", str(out)],
                    check=True)
     tmp.unlink()
-    cap_pauses(out)
+    cap_pauses(out, max_pause)
 
 
 def cap_pauses(wav, max_pause=0.45):

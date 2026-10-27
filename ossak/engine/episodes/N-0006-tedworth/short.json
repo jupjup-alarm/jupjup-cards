@@ -1,0 +1,136 @@
+{
+ "id": "N-0006",
+ "no": 3,
+ "series": "새벽괴담",
+ "format": "loop",
+ "mood": "horror",
+ "title": "1662 테드워스의 북소리",
+ "hook": [
+  "북을 빼앗은 날부터",
+  "밤마다 들린 북소리"
+ ],
+ "accent_word": "북소리",
+ "images": [
+  {
+   "id": "t01",
+   "prompt": "A dark 17th-century English manor bedroom at night lit by a single candle: an old wooden military drum with rope tension cords sits alone on a wooden chest in the corner, drumsticks crossed on top, the bedroom door slightly ajar onto blackness.",
+   "nop": true
+  },
+  {
+   "id": "t02",
+   "prompt": "Exterior of a 17th-century English stone manor house in Wiltshire at night under a cold moon, bare winter trees, one upstairs window faintly lit by a candle, everything else dark and silent.",
+   "nop": true
+  },
+  {
+   "id": "t03",
+   "prompt": "A 17th-century four-poster canopy bed in a dark bedroom, curtains half drawn, a candle on the nightstand; the space under the bed is pitch black, and faint scratch marks are visible on the wooden floorboards beside the bed.",
+   "nop": true
+  },
+  {
+   "id": "t04",
+   "prompt": "A 17th-century English clergyman in a long black coat seen from far behind as a faceless silhouette, holding a candle and bending slightly toward the dark space under a four-poster bed, listening.",
+   "seed": 44
+  },
+  {
+   "id": "t05",
+   "prompt": "Two 17th-century English gentlemen in long coats and wide hats seen from far behind as small faceless silhouettes, holding lanterns, searching a long dark wood-panelled hallway of a manor house at night.",
+   "seed": 45
+  }
+ ],
+ "scenes": [
+  {
+   "say": "북을 빼앗은 그날부터, 그 집엔 밤마다 북소리가 났습니다.",
+   "tts": "북을 빼앗은 그날부터 [pause short] 그 집엔 밤마다 북소리가 났습니다.",
+   "img": "t01",
+   "move": "in",
+   "focus": [
+    0.5,
+    0.55
+   ],
+   "emph": [
+    "북소리가"
+   ]
+  },
+  {
+   "say": "1662년 영국. 북은 그 집 방 안에 있었고, 치는 사람은 없었죠.",
+   "tts": "천육백육십이 년 영국. [pause short] 북은 그 집 방 안에 있었고 [pause short] 치는 사람은 없었죠.",
+   "img": "t02",
+   "move": "down",
+   "emph": [
+    "없었죠"
+   ]
+  },
+  {
+   "say": "잠자리에 든 지 30분, 북소리는 두 시간 가까이 이어졌습니다.",
+   "tts": "잠자리에 든 지 삼십 분 [pause short] 북소리는 두 시간 가까이 이어졌습니다.",
+   "img": "t03",
+   "move": "in",
+   "emph": [
+    "30분"
+   ]
+  },
+  {
+   "say": "일주일에 네댓 밤씩.",
+   "tts": "일주일에 네댓 밤씩.",
+   "img": "t02",
+   "zoom": 1.6,
+   "focus": [
+    0.55,
+    0.45
+   ],
+   "move": "in"
+  },
+  {
+   "say": "한 성직자가 찾아와, 침대 밑에서 긁는 소리를 들었습니다.",
+   "tts": "한 성직자가 찾아와 [pause short] 침대 밑에서 긁는 소리를 들었습니다.",
+   "img": "t04",
+   "move": "in",
+   "emph": [
+    "침대 밑에서"
+   ]
+  },
+  {
+   "say": "그가 숫자를 말하자… 소리는 꼭 그만큼 긁고 멈췄습니다.",
+   "tts": "그가 숫자를 말하자 [pause short] 소리는 꼭 그만큼 긁고 멈췄습니다.",
+   "img": "t03",
+   "zoom": 1.5,
+   "focus": [
+    0.5,
+    0.72
+   ],
+   "move": "in",
+   "sfx": "hit",
+   "emph": [
+    "그만큼"
+   ]
+  },
+  {
+   "say": "왕이 보낸 사람들도, 아무것도 찾지 못했습니다.",
+   "tts": "왕이 보낸 사람들도 [pause short] 아무것도 찾지 못했습니다.",
+   "img": "t05",
+   "move": "up"
+  },
+  {
+   "say": "그리고 다음 날 밤에도, 잠자리에 든 지 30분 뒤.",
+   "tts": "그리고 다음 날 밤에도 [pause short] 잠자리에 든 지 삼십 분 뒤.",
+   "img": "t01",
+   "zoom": 1.45,
+   "focus": [
+    0.5,
+    0.55
+   ],
+   "move": "in",
+   "emph": [
+    "30분"
+   ]
+  }
+ ],
+ "youtube": {
+  "title": "북을 빼앗은 날부터, 밤마다 들린 북소리",
+  "summary": "1662년 영국 테드워스. 떠돌이 북잡이의 북을 압수한 집에서, 그날부터 밤마다 북소리가 났다고 기록돼 있습니다.",
+  "pinned": "당신이라면 그 북을 돌려줬을까요?"
+ },
+ "sources": "출처: 조지프 글랜빌 기록(1668), 새뮤얼 피프스 일기(1667), 영국 심령연구학회 백과",
+ "tags": "#새벽괴담 #괴담",
+ "risk": "저"
+}

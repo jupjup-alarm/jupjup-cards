@@ -2,7 +2,7 @@
 """오싹알람 쇼츠 엔진 — 세로 전체화면 그림 + 내레이션 + 단어 자막으로 1080×1920 영상을 만든다.
 같은 파일을 유튜브 쇼츠와 인스타 릴스에 올린다.
 
-  python3 ossak/short.py episodes/<편> --images          # 빠진 세로 그림만 그린다 (864×1536, 장당 약 156뉴런)
+  python3 ossak/short.py episodes/<편> --images          # 빠진 세로 그림만 그린다 (기본 576×1024, SHORT_IMG=864x1536로 변경)
   python3 ossak/short.py episodes/<편> --images --only v03 --force
   python3 ossak/short.py episodes/<편> --date 2026-10-28  # 영상 + 발행 행(short_rows.json)
   python3 ossak/short.py episodes/<편> --date 2026-10-28 --rows-only
@@ -39,7 +39,11 @@ from compose import font, C  # noqa: E402
 from cf import load_env, multipart, MODELS  # noqa: E402
 from render import STYLE  # noqa: E402
 from reel import speak, dur  # noqa: E402
-from breath import words as whisper_words, norm  # noqa: E402
+from timing import word_times as tts_word_times, SKIP  # noqa: E402
+
+
+def norm(t):
+    return SKIP.sub("", re.sub(r"\[pause[^\]]*\]", "", t))
 
 ENGINE = pathlib.Path(__file__).resolve().parent.parent
 REPO_OSSAK = ENGINE.parent
@@ -73,7 +77,8 @@ def gen_image(spec, im, out):
         prompt += " The owl must look exactly like the owl character in the reference image: " + CHARACTER
         refs = {"input_image_0": ("boogi.png", (ENGINE / "refs" / "boogi_sheet.png").read_bytes(), "image/png")}
     prompt += " " + STYLE.format(accent=SERIES.get(spec["series"], ("", "amber"))[1])
-    body, ctype = multipart({"prompt": prompt, "width": 864, "height": 1536, **({"seed": im["seed"]} if im.get("seed") else {})}, refs)
+    iw, ih = (int(x) for x in os.environ.get("SHORT_IMG", "576x1024").split("x"))   # 무료 한도 때문에 작게 그려 키운다
+    body, ctype = multipart({"prompt": prompt, "width": iw, "height": ih, **({"seed": im["seed"]} if im.get("seed") else {})}, refs)
     url = f"https://api.cloudflare.com/client/v4/accounts/{acc}/ai/run/{MODELS['klein']}"
     for tries in range(4):
         try:
@@ -188,44 +193,6 @@ def write_wav(p, x):
 
 
 # ───────── 자막 시각 ─────────
-def word_times(wav, text, cache):
-    """원고 자막 어절마다 (시작, 끝) 초. Whisper 단어 시각을 글자 비율로 맞춘다."""
-    tag = str(round(dur(wav), 3))
-    ws = None
-    if cache.exists():
-        c = json.loads(cache.read_text())
-        if c.get("tag") == tag:
-            ws = c["words"]
-    if ws is None:
-        try:
-            ws = [{"word": w["word"], "start": w["start"], "end": w["end"]} for w in whisper_words(wav)]
-            cache.write_text(json.dumps({"tag": tag, "words": ws}, ensure_ascii=False))
-        except Exception as e:
-            print("  받아쓰기 실패, 글자 비율로 자막 시각 계산:", e)
-            ws = []
-    toks = text.split()
-    lens = [max(1, len(norm(t))) for t in toks]
-    tot = sum(lens)
-    D = dur(wav)
-    if not ws:
-        out, acc = [], 0
-        for L in lens:
-            out.append((acc / tot * D, (acc + L) / tot * D)); acc += L
-        return toks, out
-    wl = [max(1, len(norm(w["word"]))) for w in ws]
-    wt = sum(wl)
-    fs, ts, acc = [0.0], [ws[0]["start"]], 0
-    for w, L in zip(ws, wl):
-        acc += L
-        fs.append(acc / wt); ts.append(w["end"])
-    out, acc = [], 0
-    for L in lens:
-        a, b = acc / tot, (acc + L) / tot
-        out.append((float(np.interp(a, fs, ts)), float(np.interp(b, fs, ts))))
-        acc += L
-    return toks, out
-
-
 def chunks(toks, times, max_words=3, max_chars=11):
     """2~4어절 덩어리. 쉼표·마침표 뒤에서 끊는다."""
     res, cur = [], []
@@ -371,7 +338,7 @@ def build(ep, spec, a):
     ad = ep / "short_audio"
     ad.mkdir(exist_ok=True)
     for i, sc in enumerate(scenes, 1):
-        speak(sc.get("tts", sc["say"]), ad / f"{i:02d}.wav", a.voice)
+        speak(sc.get("tts", sc["say"]), ad / f"{i:02d}.wav", a.voice, max_pause=0.32, wrong_min=0.13)
     durs = [dur(ad / f"{i:02d}.wav") for i in range(1, len(scenes) + 1)]
 
     # 2) 시간표
@@ -402,9 +369,9 @@ def build(ep, spec, a):
     caps = []          # (시작, 끝, 글, emph)
     for i, sc in enumerate(scenes):
         text = sc.get("sub", sc["say"])
-        toks, tms = word_times(ad / f"{i + 1:02d}.wav", text, ad / f"{i + 1:02d}.words.json")
+        toks, tms = tts_word_times(ad / f"{i + 1:02d}.wav", text, sc.get("tts", sc["say"]))
         for k, (ct, c0) in enumerate(chunks(toks, tms)):
-            caps.append([nar[i] + c0, None, clean(ct), sc.get("emph", []) + ([spec["accent_word"]] if spec.get("accent_word") else [])])
+            caps.append([max(0.0, nar[i] + c0 - 0.06), None, clean(ct), sc.get("emph", []) + ([spec["accent_word"]] if spec.get("accent_word") else [])])
         for j in range(len(caps) - 1):
             if caps[j][1] is None:
                 caps[j][1] = caps[j + 1][0]
@@ -429,7 +396,11 @@ def build(ep, spec, a):
             p = ep / "vpanels" / f"{sc['img']}.jpg"
             if not p.exists():
                 raise SystemExit(f"세로 그림 없음: {p.name} — --images 먼저")
-            im = Image.open(p).convert("RGB").resize((1350, 2400), Image.LANCZOS)
+            im = Image.open(p).convert("RGB")
+            small = im.width < 800
+            im = im.resize((1350, 2400), Image.LANCZOS)
+            if small:                       # 576×1024에서 키운 그림은 윤곽을 살짝 살린다
+                im = im.filter(ImageFilter.UnsharpMask(radius=2.2, percent=70, threshold=2))
             if horror:
                 im = Image.blend(im, Image.new("RGB", im.size, (4, 8, 14)), 0.12)
             srcs[sc["img"]] = im
