@@ -173,7 +173,7 @@ def main():
     for i, s in enumerate(sc, 1):
         wav = ep / "short_audio" / f"{i:02d}.wav"
         tts = s.get("tts", s["say"])
-        line, wrong, missing = breath(wav, tts)
+        line, wrong, missing = breath(wav, tts, wrong_min=0.13)
         flag = "" if not wrong and not missing else f"   ← 엉뚱한 쉼 {wrong} / 빠진 쉼 {missing}"
         bad += bool(flag)
         print(f"{i:02d} 의도: {tts}\n   실제: {line}   ({dur(wav):.1f}s){flag}")
