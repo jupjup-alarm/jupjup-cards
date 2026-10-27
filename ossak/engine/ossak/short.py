@@ -17,7 +17,8 @@
   "scenes": [
     {"say": "자막·내레이션 문장", "tts": "읽기용 표기(선택)", "sub": "자막이 달라야 할 때(선택)",
      "img": "v01", "move": "in|out|up|down|left|right", "zoom": 1.0, "focus": [0.5, 0.5],
-     "sfx": "hit",            # 이 장면 직전 0.6초 무음 + 낮은 효과음 (반전 직전에 한 번)
+     "sfx": "hit",            # 이 장면 직전 0.6초 무음 + 낮은 효과음 (반전 직전에 한 번). 공포형은 그 앞에 긴장음이 차오른다
+                              # "knock": 말 시작 전 노크 세 번 / "heartbeat": 장면 내내 낮은 심장 소리. 여러 개면 ["knock", "hit"]
      "hold": 0.0,             # 말이 끝난 뒤 그림을 더 보여줄 초
      "emph": ["9명"]}         # 자막에서 말머리 색으로 칠할 단어
   ],
@@ -154,7 +155,47 @@ def hit_sound():
     return (0.55 * boom + 0.25 * n).astype(np.float32)
 
 
-def mix(total, placements, hits, silences, horror):
+def knock_sound():
+    """나무 문을 두드리는 둔탁한 소리 세 번."""
+    one_t = np.arange(int(SR * 0.25)) / SR
+    rng = np.random.default_rng(3)
+    click = np.convolve(rng.standard_normal(len(one_t)), np.ones(25) / 25, mode="same") * np.exp(-one_t * 60) * 2.2
+    body = np.sin(2 * np.pi * 115 * one_t) * np.exp(-one_t * 28)
+    one = (0.5 * body + 0.5 * click).astype(np.float32)
+    out = np.zeros(int(SR * 1.3), np.float32)
+    for k, a in enumerate((0.0, 0.42, 0.84)):
+        i = int(a * SR)
+        out[i:i + len(one)] += one * (1.0 if k < 2 else 0.85)
+    return out * 0.6
+
+
+def heartbeat(dur_s):
+    """낮은 심장 소리 (두-근), 0.95초 간격."""
+    t1 = np.arange(int(SR * 0.16)) / SR
+    th = (np.sin(2 * np.pi * 48 * t1) * np.exp(-t1 * 26)).astype(np.float32)
+    out = np.zeros(int(SR * dur_s) + 1, np.float32)
+    t = 0.0
+    while t < dur_s - 0.3:
+        for off, g in ((0, 1.0), (0.24, 0.7)):
+            i = int((t + off) * SR)
+            seg = th[:max(0, len(out) - i)] * g
+            out[i:i + len(seg)] += seg
+        t += 0.95
+    return out * 0.45
+
+
+def riser(dur_s=2.6):
+    """효과음 직전 서서히 차오르는 긴장음."""
+    t = np.arange(int(SR * dur_s)) / SR
+    rng = np.random.default_rng(5)
+    nz = np.convolve(rng.standard_normal(len(t)), np.ones(90) / 90, mode="same")
+    f = 55 + 30 * (t / dur_s) ** 2
+    tone = np.sin(2 * np.pi * np.cumsum(f) / SR)
+    env = (t / dur_s) ** 2.2
+    return ((0.6 * nz * 6 + 0.4 * tone) * env * 0.12).astype(np.float32)
+
+
+def mix(total, placements, hits, silences, horror, knocks=(), beats=()):
     n = int(total * SR) + 1
     out = np.zeros(n, np.float32)
     for start, wav in placements:
@@ -175,6 +216,20 @@ def mix(total, placements, hits, silences, horror):
         env[a:a + r] *= np.linspace(1, 0, r)[:len(env[a:a + r])]
         env[a + r:b] = 0
     out += amb * env
+    def put(sig, t0):
+        a = int(t0 * SR)
+        if a < 0:
+            sig, a = sig[-a:], 0
+        seg = sig[:max(0, n - a)]
+        out[a:a + len(seg)] += seg
+    for t0 in knocks:
+        put(knock_sound(), t0)
+    for b0, b1 in beats:
+        put(heartbeat(b1 - b0), b0)
+    if horror:
+        for s0, _ in silences:                # 정적 직전까지 차오르는 긴장음
+            r = riser()
+            put(r, s0 - len(r) / SR)
     hs = hit_sound()
     for t0 in hits:
         a = int(t0 * SR)
@@ -343,8 +398,16 @@ def build(ep, spec, a):
 
     # 2) 시간표
     t = LEAD
-    starts, nar, hits, sil = [], [], [], []
+    starts, nar, hits, sil, knocks, beats = [], [], [], [], [], []
     for i, sc in enumerate(scenes):
+        fx = sc.get("sfx", [])
+        fx = [fx] if isinstance(fx, str) else fx
+        sc["sfx"] = "hit" if "hit" in fx else ""
+        if "knock" in fx:                     # 노크 세 번을 먼저 듣고 말이 시작된다
+            knocks.append(t + 0.05)
+            t += 1.35
+        if "heartbeat" in fx:
+            sc["_beat"] = True
         if sc.get("sfx") == "hit" and i > 0:
             sil.append((t - GAP + 0.05, t - GAP + HIT_GAP))
             t += HIT_GAP - GAP
@@ -353,6 +416,8 @@ def build(ep, spec, a):
         n0 = t + (0.18 if sc.get("sfx") == "hit" else 0)
         nar.append(n0)
         t = n0 + durs[i] + sc.get("hold", 0)
+        if sc.get("_beat"):
+            beats.append((starts[-1], t + 0.4))
         t += (0.25 if loop else 1.3) if i == len(scenes) - 1 else GAP
     total = t
     if total > 89:
@@ -362,7 +427,8 @@ def build(ep, spec, a):
 
     work = ep / "short_work"
     work.mkdir(exist_ok=True)
-    audio = mix(total, [(nar[i], read_wav(ad / f"{i + 1:02d}.wav")) for i in range(len(scenes))], hits, sil, horror)
+    audio = mix(total, [(nar[i], read_wav(ad / f"{i + 1:02d}.wav")) for i in range(len(scenes))], hits, sil, horror,
+                knocks, beats)
     write_wav(work / "mix.wav", audio)
 
     # 3) 자막 시간표
@@ -401,9 +467,21 @@ def build(ep, spec, a):
             im = im.resize((1350, 2400), Image.LANCZOS)
             if small:                       # 576×1024에서 키운 그림은 윤곽을 살짝 살린다
                 im = im.filter(ImageFilter.UnsharpMask(radius=2.2, percent=70, threshold=2))
-            if horror:
-                im = Image.blend(im, Image.new("RGB", im.size, (4, 8, 14)), 0.12)
+            if horror:                      # 색을 빼고 차갑게, 더 어둡게
+                gray = im.convert("L").convert("RGB")
+                im = Image.blend(im, gray, 0.35)
+                im = Image.blend(im, Image.new("RGB", im.size, (6, 14, 24)), 0.18)
             srcs[sc["img"]] = im
+    grains = []
+    if horror:                                # 필름 입자 (6장 돌려 씀)
+        rng = np.random.default_rng(9)
+        for _ in range(6):
+            g = rng.integers(0, 255, (H // 2, W // 2), dtype=np.uint8)
+            gi = Image.fromarray(g, "L").resize((W, H), Image.NEAREST)
+            a = Image.new("L", (W, H), 16)
+            grains.append(Image.merge("RGBA", (gi, gi, gi, a)))
+        flick = np.random.default_rng(13).normal(0, 1, int(total * FPS) + 10)
+        flick = np.convolve(flick, np.ones(5) / 5, mode="same")
     nframes = int(round(total * FPS))
     bounds = [int(round(s * FPS)) for s in starts[1:]] + [nframes]
     bounds_start = [0] + bounds[:-1]
@@ -427,7 +505,12 @@ def build(ep, spec, a):
         fr = Image.composite(black, fr, vig)
         if dim:
             fr = Image.blend(fr, black, dim)
+        if horror:                            # 촛불처럼 아주 약하게 깜빡임
+            fl = float(np.clip(0.06 + 0.05 * flick[fi], 0, 0.16))
+            fr = Image.blend(fr, black, fl)
         fr = fr.convert("RGBA")
+        if grains:
+            fr.alpha_composite(grains[fi % len(grains)])
         fr.alpha_composite(tl)
         fr.alpha_composite(lg, (W - SAFE_R // 2 - lg.width - 10, 206))
         if fi == 0:
