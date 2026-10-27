@@ -5,18 +5,25 @@
  *  - 10분마다: 발행계획에서 시각이 된 '예약' 행을 인스타 캐러셀·릴스·스레드에 게시
  *    (릴스는 영상 처리가 길면 '처리중'으로 두고 다음 확인 때 게시)
  *  - 매시간: 성과(24시간·7일) 기록, 댓글 수집·위험 댓글 메일 알림, '답변대기' 답변 게시
- *  - 매일 08시: 팔로워 수 기록, 비축분 점검
+ *  - 매일 08시: 팔로워 수 기록, 비축분 점검, 유튜브 동기화(업로드 링크·상태·조회수·평균 시청률·구독 증가)
  *  - 매주 월요일 04시: 인스타·스레드 토큰 자동 갱신 (60일 만료 방지)
  *
  * 설치: 시트 메뉴 확장 프로그램 → Apps Script 에 이 파일 내용을 붙여넣고 저장
  *       → 시트를 새로고침 → 메뉴 '오싹알람' → '토큰 입력·연결 확인' → '자동 실행 켜기'
  * 토큰은 시트가 아니라 스크립트 속성(Script Properties)에 저장됩니다.
+ *
+ * 유튜브 동기화 (2026-10-27 추가): Apps Script 왼쪽 '서비스 +'에서 YouTube Data API v3(식별자 YouTube)와
+ *   YouTube Analytics API(식별자 YouTubeAnalytics)를 추가 → 메뉴 '오싹알람' → '유튜브 지금 동기화'를 한 번 실행해 권한 허용.
+ *   스크립트를 실행하는 구글 계정이 유튜브 채널(@ossak_alarm) 주인이어야 합니다.
  */
 
 const IG = 'https://graph.instagram.com/v26.0';
 const TH = 'https://graph.threads.net/v1.0';
 const TZ = 'Asia/Seoul';
-const SH = { plan: '발행계획', perf: '성과', fol: '팔로워', cmt: '댓글함', cfg: '설정', topic: '소재조사' };
+const SH = { plan: '발행계획', perf: '성과', fol: '팔로워', cmt: '댓글함', cfg: '설정', topic: '소재조사', yt: '유튜브' };
+// 유튜브 탭 열 번호
+const Y = { date: 1, time: 2, id: 3, kind: 4, title: 5, status: 11, link: 12, len: 13, views: 14, avgPct: 15,
+  swipe: 16, subs: 17, hook: 18, likes: 19, comments: 20, shares: 21, avgSec: 22, asOf: 23 };
 // 발행계획 열 번호 (1부터)
 const P = { date: 1, time: 2, ch: 3, id: 4, series: 5, title: 6, hook: 7, risk: 8, status: 9, caption: 10,
   threads: 11, images: 12, count: 13, postId: 14, link: 15, postedAt: 16, log: 17, alert: 18, memo: 19 };
@@ -34,6 +41,7 @@ function onOpen() {
     .addItem('선택한 행 지금 발행 (시각 무시)', 'publishSelected')
     .addItem('성과·댓글 지금 수집', 'hourlyJob')
     .addItem('팔로워 지금 기록', 'dailyJob')
+    .addItem('유튜브 지금 동기화', 'syncYouTube')
     .addItem('토큰 지금 갱신', 'refreshTokens')
     .addToUi();
 }
@@ -430,6 +438,7 @@ function postReplies_() {
 function dailyJob() {
   safe_(recordFollowers_);
   safe_(checkStock_);
+  safe_(syncYouTube);
 }
 
 function recordFollowers_() {
@@ -455,8 +464,77 @@ function checkStock_() {
   const min = Number(cfg_('비축 최소 편수')) || 0;
   if (!min) return;
   const now = new Date();
-  const n = planRows_(sheet_(SH.plan)).filter(r => r.ch === '인스타 캐러셀' && r.status === '예약' && r.when && r.when > now).length;
-  if (n < min) mail_('[오싹알람] 비축분이 ' + n + '편 남았어요', '예약된 캐러셀이 ' + n + '편이에요 (기준 ' + min + '편). 새 편 제작이 필요해요.');
+  const n = planRows_(sheet_(SH.plan)).filter(r => r.ch === '인스타 릴스' && r.status === '예약' && r.when && r.when > now).length;
+  if (n < min) mail_('[오싹알람] 비축분이 ' + n + '편 남았어요', '예약된 인스타 릴스가 ' + n + '편이에요 (기준 ' + min + '편). 새 편 제작을 확인해 주세요.');
+}
+
+/* ───────── 유튜브: 업로드 찾기 + 성과 (매일 08시, 메뉴) ───────── */
+function syncYouTube() {
+  if (typeof YouTube === 'undefined' || typeof YouTubeAnalytics === 'undefined')
+    throw new Error('Apps Script 서비스에 YouTube Data API와 YouTube Analytics API를 추가해 주세요');
+  const sh = sheet_(SH.yt);
+  const last = sh.getLastRow();
+  if (last < 2) return;
+  const ch = YouTube.Channels.list('id,contentDetails', { mine: true });
+  if (!ch.items || !ch.items.length) throw new Error('유튜브 채널을 찾을 수 없어요 — 이 스크립트를 실행한 계정이 채널 주인인지 확인하세요');
+  const uploads = ch.items[0].contentDetails.relatedPlaylists.uploads;
+
+  // 1) 채널 업로드 목록 (예약 공개 영상 포함)
+  const vids = [];
+  let token;
+  do {
+    const r = YouTube.PlaylistItems.list('snippet,contentDetails', { playlistId: uploads, maxResults: 50, pageToken: token });
+    (r.items || []).forEach(it => vids.push({ id: it.contentDetails.videoId, title: it.snippet.title }));
+    token = r.nextPageToken;
+  } while (token && vids.length < 300);
+  const info = {};
+  for (let i = 0; i < vids.length; i += 50) {
+    const r = YouTube.Videos.list('status,snippet', { id: vids.slice(i, i + 50).map(v => v.id).join(',') });
+    (r.items || []).forEach(v => { info[v.id] = v; });
+  }
+  const norm = t => String(t).replace(/【[^】]*】/g, '').replace(/#\S+/g, '').replace(/[\s,.?!…·'"“”‘’~\-]/g, '');
+
+  // 2) 탭의 각 행과 제목으로 짝짓기 → 링크·상태
+  const rows = sh.getRange(2, 1, last - 1, Y.asOf).getValues();
+  const today = Utilities.formatDate(new Date(), TZ, 'yyyy-MM-dd');
+  rows.forEach((r, i) => {
+    const row = i + 2;
+    if (String(r[Y.status - 1]).trim() === '보류') return;
+    let vid = String(r[Y.link - 1]).match(/(?:shorts\/|v=|youtu\.be\/)([\w-]{11})/);
+    vid = vid ? vid[1] : null;
+    if (!vid) {
+      const want = norm(r[Y.title - 1]);
+      const hit = vids.find(v => want && (norm(v.title) === want || norm(v.title).indexOf(want) === 0 || want.indexOf(norm(v.title)) === 0));
+      if (!hit) return;
+      vid = hit.id;
+      sh.getRange(row, Y.link).setValue('https://www.youtube.com/shorts/' + vid);
+    }
+    const v = info[vid];
+    if (!v) return;
+    const st = v.status || {};
+    const live = st.privacyStatus === 'public';
+    const state = live ? '게시됨' : (st.publishAt ? '예약완료' : String(r[Y.status - 1]));
+    if (state !== String(r[Y.status - 1])) sh.getRange(row, Y.status).setValue(state);
+    if (!live) return;
+
+    // 3) 성과: 공개일부터 7일 (분석 수치는 1~2일 늦게 들어옴)
+    const pub = new Date(v.snippet.publishedAt);
+    const start = Utilities.formatDate(pub, TZ, 'yyyy-MM-dd');
+    const endD = new Date(pub.getTime() + 6 * 864e5);
+    const end = Utilities.formatDate(endD < new Date() ? endD : new Date(), TZ, 'yyyy-MM-dd');
+    if (String(r[Y.asOf - 1]) === end && endD < new Date(Date.now() - 2 * 864e5)) return;   // 7일치 확정 뒤에는 그만
+    let rep;
+    try {
+      rep = YouTubeAnalytics.Reports.query({ ids: 'channel==MINE', startDate: start, endDate: end, filters: 'video==' + vid,
+        metrics: 'views,averageViewPercentage,averageViewDuration,subscribersGained,likes,comments,shares' });
+    } catch (e) { console.error('분석 실패 ' + vid + ': ' + e.message); return; }
+    const row0 = (rep.rows && rep.rows[0]) || [];
+    const val = k => { const ix = (rep.columnHeaders || []).findIndex(h => h.name === k); return ix >= 0 && row0.length ? row0[ix] : ''; };
+    sh.getRange(row, Y.views).setValue(val('views'));
+    sh.getRange(row, Y.avgPct).setValue(val('averageViewPercentage') === '' ? '' : Math.round(val('averageViewPercentage') * 10) / 10);
+    sh.getRange(row, Y.subs).setValue(val('subscribersGained'));
+    sh.getRange(row, Y.likes, 1, 5).setValues([[val('likes'), val('comments'), val('shares'), val('averageViewDuration'), "'" + end]]);
+  });
 }
 
 /* ───────── 공통 ───────── */
