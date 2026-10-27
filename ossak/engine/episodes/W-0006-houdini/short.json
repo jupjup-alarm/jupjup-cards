@@ -1,0 +1,220 @@
+{
+ "id": "W-0006",
+ "no": 4,
+ "series": "세계기담",
+ "format": "story",
+ "mood": "mystery",
+ "title": "후디니의 사후 암호",
+ "hook": [
+  "죽은 남편과 정한 암호",
+  "다른 남자가 말했다"
+ ],
+ "accent_word": "암호",
+ "images": [
+  {
+   "id": "h01",
+   "prompt": "A dim 1920s living room lit by a single candle on a small round table: on one side a man in a suit seen as a faceless dark silhouette sits with his head bowed as if in a deep trance, a faint pale ribbon of light drifting up from him; on the other side a woman in a 1920s dress, a faceless silhouette, sits frozen and upright.",
+   "seed": 61
+  },
+  {
+   "id": "h02",
+   "prompt": "An empty 1920s vaudeville theatre stage: a single spotlight falls on an empty wooden chair with a pair of old steel handcuffs lying on the seat, heavy red curtains, dark empty audience seats; a small jack-o'-lantern glows at the edge of the stage.",
+   "nop": true
+  },
+  {
+   "id": "h03",
+   "prompt": "A 1920s theatre dressing room: a magician and his wife, two faceless silhouettes seen from the side, sit facing each other across a small table with one candle between them, a round mirror ringed with bulbs behind them, costumes hanging.",
+   "seed": 63
+  },
+  {
+   "id": "h04",
+   "prompt": "A tall antique brass hourglass on a dark wooden table, the sand just beginning to fall, a single warm candle beside it, deep shadows, quiet and solemn.",
+   "nop": true
+  },
+  {
+   "id": "h05",
+   "prompt": "On a dark wooden stage floor: an old sheet music cover with a faded floral design (all text blurred and unreadable) and ten old playing cards fanned out in an arc next to it, lit by a soft spotlight.",
+   "nop": true
+  },
+  {
+   "id": "h06",
+   "prompt": "A 1920s living room lit by one table lamp: several faceless silhouettes of men and women seated in a circle watching, in the middle a man in a suit, a faceless silhouette, sits with his head bowed and eyes closed as if asleep, the woman of the house sits closest to him.",
+   "seed": 66
+  },
+  {
+   "id": "h07",
+   "prompt": "A dark wooden bookshelf full of old books; a single book is lit by a narrow beam of warm light and slightly pulled out from the row, everything else in darkness.",
+   "nop": true
+  },
+  {
+   "id": "h08",
+   "prompt": "A stack of 1920s newspapers falling onto a dark wooden desk, headlines blurred and unreadable; in the background a man in a suit, a faceless silhouette, stands by a tall window with his back turned.",
+   "seed": 68
+  },
+  {
+   "id": "h09",
+   "prompt": "The rooftop of a 1930s Hollywood hotel under a dark sky: rows of small faceless silhouettes of about three hundred people seated in a wide circle, in the center an empty round table with an empty chair and an old 1930s radio microphone on a stand, soft lights.",
+   "seed": 69
+  },
+  {
+   "id": "h10",
+   "prompt": "A dim 1920s living room lit by a single candle on a small round table, two empty chairs facing each other, no one there, a faint pale ribbon of smoke rising from the candle.",
+   "nop": true
+  },
+  {
+   "id": "h11",
+   "prompt": "A dark modern room on Halloween night: a round table with several lit candles and an empty chair, a carved jack-o'-lantern glowing on the windowsill, quiet and expectant.",
+   "nop": true
+  }
+ ],
+ "scenes": [
+  {
+   "say": "남편이 죽고 2년 뒤, 둘이 정한 암호를 다른 남자가 말했습니다.",
+   "tts": "남편이 죽고 이 년 뒤 [pause short] 둘이 정한 암호를 다른 남자가 말했습니다.",
+   "img": "h01",
+   "move": "in",
+   "emph": [
+    "암호를"
+   ]
+  },
+  {
+   "say": "그는 마술사 후디니. 1926년 핼러윈에 세상을 떠났죠.",
+   "tts": "그는 마술사 후디니. [pause short] 천구백이십육 년 핼러윈에 세상을 떠났죠.",
+   "img": "h02",
+   "move": "in",
+   "emph": [
+    "후디니"
+   ]
+  },
+  {
+   "say": "살아 있을 때, 그와 아내 베스는 약속했습니다. 먼저 죽는 쪽이 연락하기로.",
+   "tts": "살아 있을 때 그와 아내 베스는 약속했습니다. [pause short] 먼저 죽는 쪽이 연락하기로.",
+   "img": "h03",
+   "move": "right",
+   "emph": [
+    "연락하기로"
+   ]
+  },
+  {
+   "say": "기한은 10년. 그 안에 안 오면 끝내기로요.",
+   "tts": "기한은 십 년. [pause short] 그 안에 안 오면 끝내기로요.",
+   "img": "h04",
+   "move": "in",
+   "emph": [
+    "10년"
+   ]
+  },
+  {
+   "say": "신호도 정했습니다. 로자벨이라는 이름과, 단어 열 개.",
+   "tts": "신호도 정했습니다. [pause short] 로자벨이라는 이름과 단어 열 개.",
+   "img": "h05",
+   "move": "down",
+   "emph": [
+    "로자벨"
+   ]
+  },
+  {
+   "say": "열 단어를 글자로 바꾸면, 한 단어가 됩니다. 믿어라.",
+   "tts": "열 단어를 글자로 바꾸면 [pause short] 한 단어가 됩니다. 믿어라.",
+   "img": "h05",
+   "zoom": 1.45,
+   "focus": [
+    0.6,
+    0.62
+   ],
+   "move": "in",
+   "emph": [
+    "믿어라"
+   ]
+  },
+  {
+   "say": "1929년 1월, 죽은 이의 말을 전한다는 남자가 입을 열었습니다.",
+   "tts": "천구백이십구 년 일월 [pause short] 죽은 이의 말을 전한다는 남자가 입을 열었습니다.",
+   "img": "h06",
+   "move": "in"
+  },
+  {
+   "say": "로자벨, 믿어라. 베스는 지켜보던 사람들 앞에서 맞다고 했습니다.",
+   "tts": "로자벨 믿어라. [pause short] 베스는 지켜보던 사람들 앞에서 맞다고 했습니다.",
+   "img": "h06",
+   "zoom": 1.4,
+   "focus": [
+    0.5,
+    0.6
+   ],
+   "move": "out",
+   "emph": [
+    "맞다고"
+   ]
+  },
+  {
+   "say": "그런데 그 암호는, 몇 달 전 나온 그의 전기에 이미 실려 있었습니다.",
+   "tts": "그런데 그 암호는 [pause short] 몇 달 전 나온 그의 전기에 이미 실려 있었습니다.",
+   "img": "h07",
+   "move": "in",
+   "emph": [
+    "그런데",
+    "전기에"
+   ]
+  },
+  {
+   "say": "며칠 뒤 폭로 기사가 나왔고, 그 남자는 부인했습니다.",
+   "tts": "며칠 뒤 폭로 기사가 나왔고 [pause short] 그 남자는 부인했습니다.",
+   "img": "h08",
+   "move": "down",
+   "emph": [
+    "폭로"
+   ]
+  },
+  {
+   "say": "1936년 핼러윈, 약속한 10년이 끝나는 날. 300명쯤이 모였습니다.",
+   "tts": "천구백삼십육 년 핼러윈 [pause short] 약속한 십 년이 끝나는 날. 삼백 명쯤이 모였습니다.",
+   "img": "h09",
+   "move": "up",
+   "emph": [
+    "10년이"
+   ]
+  },
+  {
+   "say": "라디오가 중계하는 가운데, 베스가 말했습니다. 그는 오지 않았다고.",
+   "tts": "라디오가 중계하는 가운데 베스가 말했습니다. [pause short] 그는 오지 않았다고.",
+   "img": "h09",
+   "zoom": 1.5,
+   "focus": [
+    0.5,
+    0.62
+   ],
+   "move": "in",
+   "sfx": "hit",
+   "emph": [
+    "오지"
+   ]
+  },
+  {
+   "say": "올해로 100년, 그를 부르는 자리는 지금도 열립니다.",
+   "tts": "올해로 백 년 [pause short] 그를 부르는 자리는 지금도 열립니다.",
+   "img": "h11",
+   "move": "in",
+   "emph": [
+    "100년"
+   ]
+  },
+  {
+   "say": "그렇다면 그날, 둘이 정한 암호를 보낸 건 누구였을까요.",
+   "tts": "그렇다면 그날 [pause short] 둘이 정한 암호를 보낸 건 누구였을까요.",
+   "img": "h10",
+   "move": "in",
+   "emph": [
+    "누구였을까요"
+   ]
+  }
+ ],
+ "youtube": {
+  "title": "죽은 남편과 정한 암호를, 다른 남자가 말했다",
+  "summary": "1926년 핼러윈, 마술사 후디니가 세상을 떠났습니다. 그는 아내와 \"먼저 죽는 쪽이 연락하자\"는 약속과 암호를 남겼습니다. 2년 뒤, 그 암호가 한 남자의 입에서 나왔습니다. 후디니 사망 100주기, 기록으로 남은 이야기.",
+  "pinned": "당신이 베스였다면, 그날 \"맞다\"고 했을까요?"
+ },
+ "sources": "출처: 뉴욕타임스(1929.1.9), 미국 의회도서관 블로그(2020), 해럴드 켈록 『Houdini: His Life Story』(1928)",
+ "tags": "#세계기담 #후디니",
+ "risk": "저"
+}
