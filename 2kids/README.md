@@ -67,6 +67,8 @@ git add 2kids/specs 2kids/cards && git commit -m "2kids: <slug>" && git push ori
 ## 숏츠(릴스) — `2kids/reel.py`
 - 원고: `2kids/reels/specs/<slug>.json` → `python3 2kids/reel.py 2kids/reels/specs/<slug>.json` → `2kids/reels/<slug>/reel.mp4`, `cover.jpg`, `preview.jpg`, `manifest.json`
 - 형식은 `2kids/reel.py` 맨 위 설명과 `2kids/reels/specs/sample-reel.json` 참고. 장면: `hook`(lines에 `{n}` → 0부터 `count.to`까지 숫자 올라감), `say`(한마디 + 손글씨 note), `points`(rows 2~4), `twins`(rows [항목, 한 명, 쌍둥이]), `checks`(items 3~4), `cta`(lines + 저장·팔로우 + 출처, 상품이면 `link_note`).
+- **B형 루프 리스트 릴스** (2026-10-27 PD 기획): 원고에 `"loop": true`, 음성 없음(대본 Z열 비움), `"bgm"` 지정. 장면 2개 — `hook`(dur 1.5~1.8, chips 첫 칸 "(저장)") + `list`(`items` 최대 5개, 각 `["항목", "짧은 값"]`, `step` 0.9초). 6~9초. 마지막 0.4초에 표지로 돌아가 끊김 없이 반복돼요. 예시: `reels/specs/sample-loop-reel.json`.
+- **C형 15초 체크 릴스**: `hook` → `ask` 3~4개(`{"n": "1 / 3", "q": "질문 두 줄", "a": "예", "note": 선택}`, 장면마다 2.8초, 예/아니오 버튼이 눌림) → `cta`. 음성 없이 배경음악만, 또는 장면 수 = 대본 블록 수로 음성. 예시: `reels/specs/sample-check-reel.json`.
 - 1080×1920, 위 250px·아래 400px엔 핵심 글자 금지 (렌더 warnings에 '가림 영역 침범'이 나오면 문구를 줄임). 오른쪽 아래는 말하는 쌍둥이 자리.
 - 내레이션: `"voice": "2kids/voices/<id>/"` (시트 발행계획 AA열 값의 앞부분). 시트 스크립트가 Z열 대본(장면마다 `---`)을 구글 TTS로 돌려 `2kids/voices/<id>/01.mp3`…를 올린다. 대본 조각 수 = 장면 수. 렌더 전 `git pull --rebase origin main`.
 - 장면 길이는 음성에 맞춰 자동 (앞뒤 무음 잘라내고 장면 사이 약 0.5초). 음성이 있으면 `dur`는 무시, 오래 보여줘야 하는 장면만 `"min": 초`.

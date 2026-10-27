@@ -29,6 +29,9 @@
     {"type": "cta", "dur": 3.5, "lines": ["저장해두고", "신청 놓치지 마세요"], "highlight": "저장", "share": "출산 앞둔 친구한테 보내주세요"}
   ]
 }
+- B형 루프 리스트: "loop": true + 장면 hook(dur 1.6) → list({"items": [["부모급여", "월 100만×2"], …] 최대 5, "step": 0.9}).
+  음성 없이 배경음악만. 마지막 0.4초에 첫 장면으로 돌아가 반복 재생이 끊김 없이 이어짐.
+- C형 체크: ask {"n": "1 / 3", "q": "질문", "a": "예"|"아니오", "note": 선택} — 2.8초, 0.5초 뒤 답 버튼이 눌림.
 - 숫자·문구는 원고 그대로 (시트 정보조사 행과 같아야 함). **굵게** = 형광펜.
 - 인스타 가림 영역(위 250px, 아래 400px)에는 핵심 글자를 두지 않는다.
 - 음성은 장면 순서대로 voices/<id>/01.mp3, 02.mp3 … 를 붙이고(앞뒤 무음은 잘라냄), 장면 길이를 음성에 맞춘다.
@@ -163,6 +166,23 @@ def scene_html(sc, idx, start, end, spec):
         src = f'<div class="src in" {at(1.0)}>{esc(spec.get("source"))}</div>' if spec.get("source") else ""
         return (f'<section class="scene cta" {a}><div class="clines">{lines}</div>{link}'
                 f'<div class="btns in" {at(0.7)}><span class="btn">저장</span><span class="btn">공유</span><span class="btn ghost">팔로우</span></div>{src}</section>')
+    if t == "list":   # B형 루프 리스트: 항목이 step초마다 하나씩 쌓임
+        step = float(sc.get("step", 0.9))
+        items = ""
+        for i, it in enumerate(L(sc.get("items"))[:5]):
+            main_, sub = (it[0], it[1] if len(it) > 1 else "") if isinstance(it, list) else (it, "")
+            items += (f'<div class="li in pop" {at(0.35 + i * step)}><span class="no">{i + 1}</span>'
+                      f'<span class="lt">{mark(main_)}</span>{f"<span class=lv>{mark(sub)}</span>" if sub else ""}</div>')
+        eb = f'<div class="eyebrow in" {at(0.05)}>{esc(sc["eyebrow"])}</div>' if sc.get("eyebrow") else ""
+        return (f'<section class="scene list" {a}>{eb}<div class="ptitle in" {at(0.12)}>{mark(sc.get("title"))}</div>'
+                f'<div class="lis">{items}</div></section>')
+    if t == "ask":    # C형 체크 질문: 예/아니오 중 하나가 눌림
+        pick = sc.get("a", "예")
+        btn = lambda s: f'<span class="yn{" on" if s == pick else ""}" data-press="{start + float(sc.get("press", 1.3)):.2f}">{s}</span>'
+        no = f'<div class="eyebrow in" {at(0.05)}>{esc(sc["n"])}</div>' if sc.get("n") else ""
+        note = f'<div class="hand in" {at(float(sc.get("press", 1.3)) + 0.3)}>{esc(sc["note"])}</div>' if sc.get("note") else ""
+        return (f'<section class="scene ask" {a}>{no}<div class="q in pop" {at(0.12)}>{mark(sc.get("q"))}</div>'
+                f'<div class="yns in" {at(0.45)}>{btn("예")}{btn("아니오")}</div>{note}</section>')
     raise ValueError(f"알 수 없는 장면: {t}")
 
 
@@ -215,6 +235,16 @@ html,body{word-break:keep-all;width:1080px;height:1920px;overflow:hidden;font-fa
 .narrator{position:absolute;right:60px;bottom:430px;width:540px;height:302px;z-index:6}
 .bubble{position:absolute;right:360px;bottom:745px;z-index:6;display:flex;gap:12px;opacity:0}
 .bubble i{width:18px;height:18px;border-radius:50%;background:#2B3040;display:block}
+.lis{display:flex;flex-direction:column;gap:16px}
+.li{display:flex;align-items:center;gap:26px;background:#fff;border:5px solid #2B3040;border-radius:26px;padding:14px 28px;box-shadow:7px 8px 0 #2B3040}
+.no{flex:0 0 64px;height:64px;border-radius:50%;background:#2B3040;color:#F5C84C;font-size:44px;font-weight:900;display:flex;align-items:center;justify-content:center}
+.lt{font-size:50px;font-weight:900;letter-spacing:-1px;line-height:1.2}
+.lv{margin-left:auto;font-size:44px;font-weight:800;color:#E8735F;white-space:nowrap;padding-left:16px}
+.list .ptitle{font-size:80px;margin-bottom:28px}.list .eyebrow{margin-bottom:18px}
+.q{font-size:104px;font-weight:900;line-height:1.2;letter-spacing:-3px;margin-bottom:60px}
+.yns{display:flex;gap:30px}
+.yn{font-size:64px;font-weight:900;padding:26px 64px;border-radius:999px;border:6px solid #2B3040;background:#fff;color:#2B3040}
+.yn.lit{background:#2B3040;color:#F5C84C}
 .in{opacity:0}
 """
 
@@ -222,32 +252,40 @@ JS = """
 const ease=x=>1-Math.pow(1-x,3);
 const back=x=>{const c=1.70158,c3=c+1;return 1+c3*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
 const cl=x=>Math.max(0,Math.min(1,x));
-const TOTAL=__TOTAL__, AD_END=__AD__;
+const TOTAL=__TOTAL__, AD_END=__AD__, LOOP=__LOOP__;
 function fmt(n){return Math.round(n).toLocaleString('ko-KR')}
 window.renderAt=function(t){
   document.querySelectorAll('.scene').forEach(s=>{
     const a=+s.dataset.s,e=+s.dataset.e;
     const first=a<0.01;
-    const o=(first?1:cl((t-a)/0.25))*(e>=TOTAL-0.01?1:cl((e-t)/0.25));
+    // 루프 모드: 마지막 0.4초에 첫 장면(훅)으로 돌아가 영상 끝 = 처음처럼 이어짐
+    const back_=LOOP?cl((t-(TOTAL-0.45))/0.35):0;
+    let o=(first?1:cl((t-a)/0.25))*(e>=TOTAL-0.01?1:cl((e-t)/0.25));
+    if(LOOP){ if(first) o=Math.max(o,back_); else o=o*(1-back_); }
     s.style.opacity=o; s.style.visibility=o>0?'visible':'hidden';
     s.style.transform=first?'none':'translateX('+((1-ease(cl((t-a)/0.35)))*60)+'px)';
   });
+  const F0=document.querySelector('.scene');
   document.querySelectorAll('.in').forEach(el=>{
-    const p=cl((t-(+el.dataset.in))/0.4);
+    const p=(LOOP&&F0.contains(el))?1:cl((t-(+el.dataset.in))/0.4);   // 루프: 첫 장면은 처음부터 완성된 모습
     const k=el.classList.contains('pop')?back(p):ease(p);
     el.style.opacity=ease(p);
     el.style.transform=el.classList.contains('pop')?'translateY('+((1-k)*70)+'px) scale('+(0.9+0.1*k)+')':'translateY('+((1-k)*50)+'px)';
   });
   document.querySelectorAll('.mk').forEach(m=>{
     const host=m.closest('[data-in]'); const st=host?+host.dataset.in+0.35:0;
-    const p=ease(cl((t-st)/0.5));
+    const p=(LOOP&&F0.contains(m))?1:ease(cl((t-st)/0.5));
     m.style.backgroundSize=(p*100)+'% 100%'; m.style.backgroundRepeat='no-repeat';
   });
   document.querySelectorAll('[data-count]').forEach(el=>{
     const p=cl((t-(+el.dataset.cs))/(+el.dataset.cd));
     const f0=+(el.dataset.from||0); el.textContent=fmt((+el.dataset.count)*(f0+(1-f0)*ease(p)));
   });
-  document.querySelector('.bar i').style.width=(100*cl(t/TOTAL))+'%';
+  document.querySelectorAll('[data-press]').forEach(el=>{
+    const p=cl((t-(+el.dataset.press))/0.18);
+    if(el.classList.contains('on')){ el.classList.toggle('lit',p>0.5); el.style.transform='scale('+(1-0.08*Math.sin(Math.PI*p))+')'; }
+  });
+  document.querySelector('.bar').style.display=LOOP?'none':''; document.querySelector('.bar i').style.width=(100*cl(t/TOTAL))+'%';
   const ad=document.querySelector('.ad'); if(ad){ad.style.opacity=cl((AD_END-t)/0.3);}
   const v=MOUTH.length?(MOUTH[Math.min(MOUTH.length-1,Math.round(t*30))]||0):0;
   const n=document.querySelector('.narrator');
@@ -324,10 +362,16 @@ def timeline(spec):
     for i, (sc, f) in enumerate(zip(spec["scenes"], vf)):
         if f:
             d = max(float(sc.get("min", 1.8)), LEAD + audio_len(f) + TAIL)
+        elif "dur" in sc:
+            d = float(sc["dur"])
+        elif sc.get("type") == "list":
+            d = 0.35 + len(L(sc.get("items"))[:5]) * float(sc.get("step", 0.9)) + 1.3
+        elif sc.get("type") == "ask":
+            d = 2.8
         else:
-            d = float(sc.get("dur", 4))
+            d = 4.0
         if i == len(vf) - 1:
-            d += END_HOLD
+            d += 0.45 if spec.get("loop") else END_HOLD
         out.append((t, d, f))
         t += d
     return out, t
@@ -372,7 +416,7 @@ def build(spec):
 {scenes}
 <div class="bubble"><i></i><i></i><i></i></div>
 <div class="narrator">{twins_svg()}</div>
-<script>const MOUTH={json.dumps(mouth)};{JS.replace('__TOTAL__', f'{total:.3f}').replace('__AD__', f'{ad_end:.3f}')}</script></body></html>"""
+<script>const MOUTH={json.dumps(mouth)};{JS.replace('__TOTAL__', f'{total:.3f}').replace('__AD__', f'{ad_end:.3f}').replace('__LOOP__', 'true' if spec.get('loop') else 'false')}</script></body></html>"""
     return page, total, tl
 
 
@@ -395,7 +439,7 @@ FIT_JS = """
     const b2=bx.bottom;
     if(b2>1920-430) warn.push('scene '+(i+1)+': 아래 가림 영역 침범 ('+Math.round(b2)+'px)');
     if(right>1080-40) warn.push('scene '+(i+1)+': 오른쪽 넘침');
-    s.querySelectorAll('.hline,.sline,.cline,.rv,.ct,.tv').forEach(e=>{ if(e.scrollWidth>e.clientWidth+2) warn.push('scene '+(i+1)+': 줄 넘침 '+e.textContent.slice(0,10)); });
+    s.querySelectorAll('.hline,.sline,.cline,.rv,.ct,.tv,.lt,.li').forEach(e=>{ if(e.scrollWidth>e.clientWidth+2) warn.push('scene '+(i+1)+': 줄 넘침 '+e.textContent.slice(0,10)); });
     s.style.opacity=0; s.style.visibility='hidden'; s.querySelectorAll('.in').forEach(e=>{e.style.opacity='';e.style.transform=''});
   }); return warn; }
 """
@@ -444,7 +488,9 @@ def main(path):
             pg.evaluate(f"renderAt({f / FPS:.4f})")
             pg.screenshot(path=str(frames / f"{f:05d}.jpg"), type="jpeg", quality=92)
         for i, (t0, d, _) in enumerate(tl):
-            pg.evaluate(f"renderAt({t0 + min(d - 0.3, 2.8):.3f})")
+            sc = spec["scenes"][i]
+            at_ = t0 + d - (0.75 if spec.get("loop") and i == len(tl) - 1 else 0.3) if sc.get("type") in ("list", "ask") else t0 + min(d - 0.3, 2.8)
+            pg.evaluate(f"renderAt({at_:.3f})")
             fp = out / f"_still{i}.jpg"
             pg.screenshot(path=str(fp), type="jpeg", quality=90)
             stills.append(fp)
@@ -466,9 +512,11 @@ def main(path):
           f"amix=inputs={len(voices) + 1}:normalize=0:duration=first[vox];"
     if bgm:
         # 배경음악: 목소리보다 한참 작게, 목소리가 나올 때는 더 줄이고(덕킹) 끝에서 서서히 사라짐
-        fo = max(0.0, total - 1.6)
+        fd = 0.25 if spec.get("loop") else 1.6   # 루프 영상은 소리도 끊김 없이 이어지게 짧게
+        fo = max(0.0, total - fd)
+        vol = BGM_DB + (7 if not voices else 0)   # 음성 없는 영상은 배경음악이 주인공
         fl += (f"[2:a]aformat=sample_rates=44100:channel_layouts=stereo,atrim=0:{total:.3f},asetpts=PTS-STARTPTS,"
-               f"volume={BGM_DB}dB,afade=t=in:d=0.4,afade=t=out:st={fo:.2f}:d=1.6[bg];")
+               f"volume={vol}dB,afade=t=in:d={0.05 if spec.get('loop') else 0.4},afade=t=out:st={fo:.2f}:d={fd}[bg];")
         if voices:
             fl += ("[vox]asplit=2[vx][key];[bg][key]sidechaincompress=threshold=0.03:ratio=4:attack=30:release=450:makeup=1[bgd];"
                    "[vx][bgd]amix=inputs=2:normalize=0:duration=first[mix];")
