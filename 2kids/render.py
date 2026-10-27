@@ -126,8 +126,37 @@ def is_ad(spec):
 
 
 # ---------------------------------------------------------------- 카드 종류
+def c_cover_full(c, n, total, spec):
+    """꽉 찬 실사 표지 (2026-10-27, @donnamu_grow 참고 — 첫 장은 실사로 피드에서 눈에 띄게).
+    photo: 2kids/photos/mood/…jpg (Pixabay 무료·출처 표기 불필요) · photo_pos: "center 40%" 처럼 위치 조정."""
+    src = c.get("photo") or ""
+    p = Path(src) if Path(src).is_absolute() else ROOT / src
+    chips = "".join(f'<span class="fchip{" c2" if i else ""}">{esc(x)}</span>' for i, x in enumerate(L(c.get("chips"))[:2]))
+    main = "".join(f'<div class="fitw">{mark(x, c.get("highlight"), "fmk")}</div>' for x in L(c.get("lines")))
+    sub = f'<div class="fsub">{esc(c.get("sub"))}</div>' if c.get("sub") else ""
+    pos = esc(c.get("photo_pos") or "center 40%")
+    return f'''<div class="card fullphoto">
+  <img class="fbg" src="{p.as_uri()}" style="object-position:{pos}">
+  <div class="fshade"></div>
+  <div class="fhead">{header(n, total)}</div>
+  {f'<div class="disc-top fdisc">{icon("tag", 30, "#FFFFFF")}<span>{DISCLOSURE_SHORT}</span></div>' if is_ad(spec) else ""}
+  <div class="zoom fbody">
+    <div class="chips">{chips}</div>
+    <div class="ftitle">{main}</div>
+    {sub}
+    <div class="fhandle">@2kids_note</div>
+  </div>
+</div>'''
+
+
 def c_cover(c, n, total, spec):
-    """표지. theme: deal(잉크 배경·특가) | note(종이 배경). 대가성 문구 이미지 안에 고정."""
+    """표지. theme: deal(잉크 배경·특가) | note(종이 배경). 대가성 문구 이미지 안에 고정.
+    "photo_style": "full" + "photo" → 꽉 찬 실사 표지 (c_cover_full). 사진 파일이 없으면 기본 표지로."""
+    if c.get("photo_style") == "full" and c.get("photo"):
+        src = c["photo"]
+        if (Path(src) if Path(src).is_absolute() else ROOT / src).exists():
+            return c_cover_full(c, n, total, spec)
+        WARN.append("PHOTO: 파일 없음 " + src + " → 기본 표지")
     theme = c.get("theme") or ("deal" if spec.get("series") == "오늘 특가" else "note")
     dark = theme == "deal"
     chips = "".join(f'<span class="chip{" c2" if i else ""}">{esc(x)}</span>' for i, x in enumerate(L(c.get("chips"))[:2]))
@@ -404,6 +433,21 @@ body{width:1080px;height:1350px;overflow:hidden;font-family:'Noto Sans KR',sans-
 .band{position:absolute;left:0;right:0;bottom:0;height:330px;background:#F5C84C;display:flex;justify-content:center;align-items:flex-end;overflow:hidden}
 .band svg{display:block;margin-bottom:-2px}
 .band.small{height:250px}
+/* 꽉 찬 실사 표지 */
+.fullphoto{background:#2B3040;color:#FFFFFF;padding:56px 72px 0}
+.fbg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.fshade{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(20,22,30,.55) 0%,rgba(20,22,30,0) 18%,rgba(20,22,30,0) 38%,rgba(20,22,30,.62) 60%,rgba(20,22,30,.92) 100%)}
+.fhead,.fbody,.fdisc{position:relative;z-index:2}
+.fhead .brand,.fhead .pg{color:#FFFFFF}
+.fhead .brand svg circle[fill="#2B3040"]{fill:#FFFFFF}
+.fdisc{background:rgba(20,22,30,.55);border-color:#FFFFFF;color:#FFFFFF}
+.fbody{margin-top:auto;padding-bottom:78px;display:flex;flex-direction:column}
+.fchip{font-size:30px;font-weight:900;padding:8px 22px;border-radius:10px;background:#9DBB97;color:#2B3040}
+.fchip.c2{background:transparent;color:#FFFFFF;border:3px solid #FFFFFF;padding:5px 19px}
+.ftitle{margin-top:30px;font-size:104px;font-weight:900;line-height:1.2;letter-spacing:-0.035em;text-shadow:0 4px 24px rgba(0,0,0,.35)}
+.fmk{color:#F5C84C}
+.fsub{margin-top:26px;font-size:40px;font-weight:700;line-height:1.4;color:#F1ECE2;text-shadow:0 2px 12px rgba(0,0,0,.4)}
+.fhandle{margin-top:34px;font-size:28px;font-weight:700;color:rgba(255,255,255,.8)}
 /* 속지 */
 .inner{flex-direction:row}
 .rings{width:88px;flex-shrink:0;border-right:3px solid #E6DFD1;display:flex;flex-direction:column;align-items:center;justify-content:space-around;padding:56px 0;background:#F6F0E4}
@@ -497,6 +541,7 @@ FIT_JS = """
   const limit = () => {
     const f = card.querySelector('.foot'); if (f) return f.getBoundingClientRect().top - 8;
     const b = card.querySelector('.badge') || card.querySelector('.band'); if (card.classList.contains('closing')) { const d = card.querySelector('.disc') || card.querySelector('.band'); return d.getBoundingClientRect().top - 16; }
+    if (card.classList.contains('fullphoto')) return 1351;
     return card.querySelector('.band').getBoundingClientRect().top - 24;
   };
   const over = () => z.getBoundingClientRect().bottom > limit() || card.scrollHeight > 1351;

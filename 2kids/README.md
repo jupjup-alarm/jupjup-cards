@@ -44,6 +44,7 @@
 - 육아뉴스: cover → info(무엇이 바뀌나·언제부터·누구) → check(우리 집 체크) → closing
 - 혜택·할인: cover → info(혜택·기간·조건) → compare(선택) → closing
 - 모든 정보 카드 note에 출처(기관·발표일). 보도 기준이면 "(보도 기준)".
+- **꽉 찬 실사 표지** (2026-10-27 사용자 결정, @donnamu_grow 참고 — 첫 장은 실사로 피드에서 눈에 띄게): cover에 `"photo_style": "full"`, `"photo": "2kids/photos/mood/…jpg"`, 선택 `"photo_pos": "center 40%"`. 사진이 카드 전체를 채우고 아래를 어둡게 덮은 뒤 세이지색 칩 + 흰 글씨 2줄(highlight는 노란색) + sub + @2kids_note. 종이 캐릭터·badge·hand는 안 나옴. 사진은 시트 스크립트가 발행계획 AE열(③이 쓴 영어 검색어)로 **Pixabay**에서 세로 후보 최대 4장을 받아 `2kids/photos/mood/`에 올리고 AF열에 경로를 적는다 (무료·상업 이용 가능·출처 표기 불필요 → photo_credit 없음). ④는 후보를 Read로 열어 **아이 얼굴이 정면으로 보이는 사진·글자/로고가 큰 사진·제도와 어긋나는 장면은 빼고** 가장 눈에 띄는 1장을 고른다. 쓸 만한 게 없거나 AF가 '사진 없음/실패'면 기존 deal 표지. 사진 파일이 없으면 warnings에 `PHOTO:`가 나오고 기본 표지로 대체된다.
 - **A형 총정리 캐러셀** (2026-10-27 PD 기획, 매일 11:00 기본): cover(theme "deal" 남색 대비 표지, chips ["(저장)", 요일 시리즈], lines 2줄 = 개수·대상·손해·기한 중 2개 이상, sub 한 줄) → 항목마다 info 1장(eyebrow "1 / 5 · 제도명", title 2줄, rows 2~3개 — 금액을 첫 행에 **굵게**, 3번째 항목 근처 장의 text에 "다둥이 친구 있으면 태그해 주세요") → check(eyebrow "우리 집 체크", title "우리 집 / 몇 개 해당?") → closing(share 공유 대상 지목, where 화자 "두배맘" 한마디 + 댓글 키워드 안내 — 발행계획 K열 키워드). 7~10장. 예시: `specs/sample-bundle.json`.
 
 ## 문구 규칙 (프로젝트 규칙)
