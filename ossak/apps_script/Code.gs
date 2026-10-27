@@ -475,8 +475,14 @@ function syncYouTube() {
   const sh = sheet_(SH.yt);
   const last = sh.getLastRow();
   if (last < 2) return;
-  const ch = YouTube.Channels.list('id,contentDetails', { mine: true });
-  if (!ch.items || !ch.items.length) throw new Error('유튜브 채널을 찾을 수 없어요 — 이 스크립트를 실행한 계정이 채널 주인인지 확인하세요');
+  // 채널 주인 계정으로 허용했으면 분석 수치까지, 아니면(브랜드 계정 채널 등) 공개 수치(조회·좋아요·댓글)만
+  let ch = YouTube.Channels.list('id,contentDetails', { mine: true });
+  let publicOnly = false;
+  if (!ch.items || !ch.items.length) {
+    ch = YouTube.Channels.list('id,contentDetails', { forHandle: '@' + (cfg_('유튜브 핸들') || 'ossak_alarm').replace(/^@/, '') });
+    publicOnly = true;
+  }
+  if (!ch.items || !ch.items.length) throw new Error('유튜브 채널을 찾을 수 없어요');
   const uploads = ch.items[0].contentDetails.relatedPlaylists.uploads;
 
   // 1) 채널 업로드 목록 (예약 공개 영상 포함)
@@ -489,7 +495,7 @@ function syncYouTube() {
   } while (token && vids.length < 300);
   const info = {};
   for (let i = 0; i < vids.length; i += 50) {
-    const r = YouTube.Videos.list('status,snippet', { id: vids.slice(i, i + 50).map(v => v.id).join(',') });
+    const r = YouTube.Videos.list('status,snippet,statistics', { id: vids.slice(i, i + 50).map(v => v.id).join(',') });
     (r.items || []).forEach(v => { info[v.id] = v; });
   }
   const norm = t => String(t).replace(/【[^】]*】/g, '').replace(/#\S+/g, '').replace(/[\s,.?!…·'"“”‘’~\-]/g, '');
@@ -516,6 +522,13 @@ function syncYouTube() {
     const state = live ? '게시됨' : (st.publishAt ? '예약완료' : String(r[Y.status - 1]));
     if (state !== String(r[Y.status - 1])) sh.getRange(row, Y.status).setValue(state);
     if (!live) return;
+    if (publicOnly) {                       // 공개 수치만: 누적 조회·좋아요·댓글
+      const stt = v.statistics || {};
+      sh.getRange(row, Y.views).setValue(Number(stt.viewCount || 0));
+      sh.getRange(row, Y.likes, 1, 2).setValues([[Number(stt.likeCount || 0), Number(stt.commentCount || 0)]]);
+      sh.getRange(row, Y.asOf).setValue("'" + today + ' (공개 수치)');
+      return;
+    }
 
     // 3) 성과: 공개일부터 7일 (분석 수치는 1~2일 늦게 들어옴)
     const pub = new Date(v.snippet.publishedAt);
