@@ -193,7 +193,7 @@ def write_wav(p, x):
 
 
 # ───────── 자막 시각 ─────────
-def chunks(toks, times, max_words=3, max_chars=11):
+def chunks(toks, times, max_words=4, max_chars=11):
     """2~4어절 덩어리. 쉼표·마침표 뒤에서 끊는다."""
     res, cur = [], []
     for i, t in enumerate(toks):
