@@ -22,6 +22,7 @@ function dmCore_(force) {
   try {
     const ss = SpreadsheetApp.getActive();
     const log = dmSheet_(ss);
+    dmPurge_(log, new Date());   // 개인정보처리방침: 처리 기록 90일 보관 후 삭제
     const token = PropertiesService.getScriptProperties().getProperty('IG_TOKEN');
     const myName = dmMyName_(token);
     const now = new Date();
@@ -250,4 +251,15 @@ function igLinkFor_(r, comment) {
     if (sc > score) { score = sc; best = link; }
   });
   return best || 'https://www.instagram.com/2kids_note/';
+}
+
+// 'DM로그' 처리 기록 90일 지나면 삭제 (98컴퍼니 개인정보처리방침 3항)
+function dmPurge_(log, now) {
+  const n = log.getLastRow() - 1;
+  if (n < 1) return;
+  const a = log.getRange(2, 1, n, 1).getValues();
+  for (let i = n - 1; i >= 0; i--) {
+    const d = dmParse_(a[i][0]);
+    if (d && now - d > 90 * 86400000) log.deleteRow(i + 2);
+  }
 }
