@@ -231,3 +231,23 @@ function dmTest() {
   console.log(out.join('\n'));
   notify_(out.join('\n'));
 }
+
+// ===== 스레드 답글의 [인스타] 자리 (buildComment_에서 호출) =====
+// buildComment_ 안: if (/\[인스타\]/.test(c)) c = c.replace(/\[인스타\]/g, igLinkFor_(r, c));
+// 같은 날 올라간 인스타(I·R) 게시물 링크. 우선순위: 답글에 적힌 '키워드'와 K열이 같은 글 > 같은 정보ID+키워드 > 같은 정보ID > 키워드 있는 글 > 프로필
+function igLinkFor_(r, comment) {
+  const sh = SpreadsheetApp.getActive().getSheetByName(SHEET_NAME);
+  const rows = sh.getRange(2, 1, sh.getLastRow() - 1, COL.postLink).getValues();
+  const day = fmtDate_(r[COL.date - 1]), info = String(r[COL.candId - 1]).trim();
+  const kws = (String(comment || '').match(/['‘’"“”]([^'‘’"“”]{1,10})['‘’"“”]/g) || []).map(s => s.slice(1, -1).trim());
+  let best = '', score = 0;
+  rows.forEach(x => {
+    if (fmtDate_(x[COL.date - 1]) !== day || !['I', 'R'].includes(String(x[COL.channel - 1]).trim())) return;
+    const link = String(x[COL.postLink - 1]).trim();
+    if (!link || String(x[COL.status - 1]).trim() !== '발행') return;
+    const kw = String(x[COL.dmKeyword - 1]).trim(), same = String(x[COL.candId - 1]).trim() === info;
+    const sc = (kw && kws.includes(kw)) ? 4 : (same && kw) ? 3 : same ? 2 : kw ? 1 : 0;
+    if (sc > score) { score = sc; best = link; }
+  });
+  return best || 'https://www.instagram.com/2kids_note/';
+}
