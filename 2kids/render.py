@@ -292,7 +292,7 @@ def c_check(c, n, total, spec):
   <div class="col">
     {header(n, total)}
     <div class="zoom">
-      <div class="eyebrow">{icon("check", 34)}<span>{esc(c.get("eyebrow") or "사기 전에 체크")}</span></div>
+      <div class="eyebrow">{icon("check", 34)}<span>{esc(c.get("eyebrow") or "우리 집 체크")}</span></div>
       <div class="title">{title}</div>
       <div class="cks">{items}</div>
       {post}
