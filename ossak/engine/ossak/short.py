@@ -43,6 +43,15 @@ from reel import speak, dur  # noqa: E402
 from timing import word_times as tts_word_times, anchored, SKIP  # noqa: E402
 
 
+def breathe(t):
+    """읽기용 글의 쉼표·말줄임표 → [pause short] (이미 있으면 그대로)."""
+    t = re.sub(r"\s*…\s*", " [pause short] ", t.strip())
+    t = re.sub(r",\s*(?!\[pause)", " [pause short] ", t)
+    t = re.sub(r",\s*(\[pause)", r" \1", t)
+    t = re.sub(r"(\[pause short\]\s*){2,}", "[pause short] ", t)
+    return re.sub(r"\s{2,}", " ", t).strip()
+
+
 def norm(t):
     return SKIP.sub("", re.sub(r"\[pause[^\]]*\]", "", t))
 
@@ -404,8 +413,9 @@ def build(ep, spec, a):
     ad.mkdir(exist_ok=True)
     ptts, pwav, pdur, pbound = [], [], [], []
     for pi, idx in enumerate(paras, 1):
-        parts = [scenes[i].get("tts", scenes[i]["say"]).strip() for i in idx]
-        text = " ".join(parts)
+        # 구글 목소리는 쉼표를 자주 무시하고 이어 읽는다 → 쉼표·말줄임표와 장면 경계를 [pause short]로 바꾼다
+        parts = [breathe(scenes[i].get("tts", scenes[i]["say"])) for i in idx]
+        text = " ".join(p if p.endswith("]") or k == len(parts) - 1 else p + " [pause short]" for k, p in enumerate(parts))
         wav = ad / f"p{pi:02d}.wav"
         speak(text, wav, a.voice, max_pause=0.32, wrong_min=0.13)
         f, _, cum, _, _ = anchored(wav, text)

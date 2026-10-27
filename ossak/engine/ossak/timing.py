@@ -201,7 +201,9 @@ def main():
     bad = 0
     for pi, idx in enumerate(paras, 1):
         wav = ep / "short_audio" / f"p{pi:02d}.wav"
-        tts = " ".join(sc[i].get("tts", sc[i]["say"]).strip() for i in idx)
+        from short import breathe          # short.py와 똑같이 문단 읽기용 글을 만든다
+        parts = [breathe(sc[i].get("tts", sc[i]["say"])) for i in idx]
+        tts = " ".join(p if p.endswith("]") or k == len(parts) - 1 else p + " [pause short]" for k, p in enumerate(parts))
         line, wrong, missing = breath(wav, tts, wrong_min=0.13)
         flag = "" if not wrong and not missing else f"   ← 엉뚱한 쉼 {wrong} / 빠진 쉼 {missing}"
         bad += bool(flag)
