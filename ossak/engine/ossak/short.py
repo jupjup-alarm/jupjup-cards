@@ -24,7 +24,9 @@
   ],
   "youtube": {"title": "제목 15~25자", "summary": "설명란 두세 줄(답 없이)", "pinned": "고정 댓글 질문"},
   "instagram": {"caption": "첫 줄 훅 … (선택, 없으면 자동)"},
-  "sources": "출처: …", "tags": "#세계기담 #디아틀로프", "risk": "저"
+  "sources": "출처: …", "tags": "#세계기담 #디아틀로프", "risk": "저",
+  "hook_type": "권위×초자연(임금이 귀신 안부)",   # 훅 유형 — 주간 분석이 유형별 성과를 비교한다
+  "adapted": true                                   # 각색했으면 설명란 문구가 바뀐다
 }
 
 화면: 위 300px·아래 420px·오른쪽 140px에는 글자를 두지 않는다. 제목은 위(y≈310~), 자막은 가운데 아래(y≈1130),
@@ -626,7 +628,7 @@ def rows(ep, spec, a, total=None):
         ytime = a.yt_time or ("22:00" if loop else "18:00")
         out["youtube"] = ["'" + a.date, "'" + ytime, spec["id"], "루프형" if loop else "서사형", title, desc,
                           tags.replace("#", "").replace(" ", ","), yt.get("pinned", ""), video, cover, "대기", "",
-                          f"{total:.0f}초" if total else ""]
+                          f"{total:.0f}초" if total else "", "", "", "", "", spec.get("hook_type", "")]
         if not loop and not a.no_ig:
             ig = spec.get("instagram", {}).get("caption") or "\n\n".join(x for x in [
                 hook, yt.get("pinned", ""), spec.get("sources", ""), tags] if x)
