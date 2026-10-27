@@ -128,15 +128,18 @@ def is_ad(spec):
 # ---------------------------------------------------------------- 카드 종류
 def c_cover_full(c, n, total, spec):
     """꽉 찬 실사 표지 (2026-10-27, @donnamu_grow 참고 — 첫 장은 실사로 피드에서 눈에 띄게).
-    photo: 2kids/photos/mood/…jpg (Pixabay 무료·출처 표기 불필요) · photo_pos: "center 40%" 처럼 위치 조정."""
+    photo: 2kids/photos/mood/…jpg (Pixabay 무료·출처 표기 불필요) · photo_pos: "center 40%" 처럼 위치 조정
+    · photo_lift: 200 처럼 숫자(px)를 주면 사진을 키워 위로 올림 (얼굴이 아래 글자에 가릴 때)."""
     src = c.get("photo") or ""
     p = Path(src) if Path(src).is_absolute() else ROOT / src
     chips = "".join(f'<span class="fchip{" c2" if i else ""}">{esc(x)}</span>' for i, x in enumerate(L(c.get("chips"))[:2]))
     main = "".join(f'<div class="fitw">{mark(x, c.get("highlight"), "fmk")}</div>' for x in L(c.get("lines")))
     sub = f'<div class="fsub">{esc(c.get("sub"))}</div>' if c.get("sub") else ""
     pos = esc(c.get("photo_pos") or "center 40%")
+    lift = int(c.get("photo_lift") or 0)   # 사진을 위로 올리기(px): 얼굴이 아래 글자에 가릴 때 160~260
+    lift_css = f";top:-{lift}px;height:{1350 + lift}px" if lift else ""
     return f'''<div class="card fullphoto">
-  <img class="fbg" src="{p.as_uri()}" style="object-position:{pos}">
+  <img class="fbg" src="{p.as_uri()}" style="object-position:{pos}{lift_css}">
   <div class="fshade"></div>
   <div class="fhead">{header(n, total)}</div>
   {f'<div class="disc-top fdisc">{icon("tag", 30, "#FFFFFF")}<span>{DISCLOSURE_SHORT}</span></div>' if is_ad(spec) else ""}
