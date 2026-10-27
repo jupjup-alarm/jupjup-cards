@@ -75,8 +75,22 @@ def anchored(wav, tts):
     clock = Clock(wav, cum[-1])
     ends = [e for _, e, _, _ in toks]
     marks, xs, ys = {}, [0.0], [clock.segs[0][0] if clock.segs else 0.0]
+    # 긴 쉼(0.2초+)의 수가 의도한 쉼 자리(문장 끝·[pause])의 수와 같으면 순서대로 짝짓는다.
+    # 숫자를 길게 읽는 문장처럼 말 속도가 고르지 않아도 위치 추정이 틀리지 않는다.
+    longp = [(s0, e0) for s0, e0 in clock.pauses if e0 - s0 >= 0.2]
+    want = [i for i, t in enumerate(toks[:-1]) if t[3] or re.search(r"[.?!]$", t[0])]
+    paired = {}
+    if longp and len(longp) == len(want) and all(abs(ends[j] - clock.k_at(s0)) <= 5 for (s0, _), j in zip(longp, want)):
+        paired = {s0: j for (s0, _), j in zip(longp, want)}
     for s0, e0 in clock.pauses:
         k = clock.k_at(s0)
+        if s0 in paired:
+            j = paired[s0]
+            marks[j] = max(marks.get(j, 0), e0 - s0)
+            if ends[j] > xs[-1] and s0 > ys[-1]:
+                xs += [ends[j], ends[j] + 1e-6]
+                ys += [s0, e0]
+            continue
         j = min(range(len(ends)), key=lambda i: abs(ends[i] - k))
         near = [i for i in range(len(ends)) if abs(ends[i] - k) <= 2.0 and (toks[i][2] or toks[i][3])]
         if near:

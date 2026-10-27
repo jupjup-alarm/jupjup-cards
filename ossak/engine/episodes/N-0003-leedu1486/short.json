@@ -13,8 +13,9 @@
  "images": [
   {
    "id": "g01",
-   "prompt": "Joseon-dynasty Korea, 1486: inside a plain hanok room in pale daylight, a low wooden dining table with a few bowls of food. Beside the table stands a woman visible ONLY from the waist down: a tattered, worn white hanbok skirt and nothing above it — above the waist there is only empty air and the paper wall behind, clearly visible where her upper body should be. Still, silent, deeply unsettling.",
-   "nop": true
+   "prompt": "Joseon-dynasty Korea, 1486: inside a plain hanok room in pale daylight, a low wooden dining table with a few bowls of food. Beside the table stands a long tattered white hanbok skirt upright all by itself, as if worn by an invisible body: the skirt's waistband is open and EMPTY, there is no torso, no arms, no head, nothing above the waist, just the paper wall visible behind. A ghostly empty skirt, deeply unsettling, nothing explicit.",
+   "nop": true,
+   "seed": 401
   },
   {
    "id": "g02",
