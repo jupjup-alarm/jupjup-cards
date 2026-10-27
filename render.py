@@ -137,7 +137,7 @@ def cover(card, th, n, total):
     if card.get("photo"):
         uri = photo_uri(card["photo"])
         if uri:
-            return cover_photo(card, th, uri)
+            return (cover_full if card.get("photo_style") == "full" else cover_photo)(card, th, uri)
         PHOTO_WARN.append(f"사진 {card['photo']} 없음 → 기본 표지로 대체")
     chips = card.get("chips") or []
     chip_html = ""
@@ -157,6 +157,34 @@ def cover(card, th, n, total):
   </div>
   <div class="swipe"><span>넘겨서 확인하기</span>{ARROW.replace('#FFFFFF', fg)}</div>
   <div class="char">{char_svg(card.get('face'), th)}</div>
+</div>'''
+
+
+def cover_full(card, th, uri):
+    """꽉 찬 실사 표지 (photo_style "full", 2026-10-27): 사진이 카드 전체를 채우고 아래쪽만 어둡게,
+    그 위에 칩 + 흰 글씨 2줄 + 서브. 종이 캐릭터 없음. 분위기 사진(Pexels)·조감도 모두 가능."""
+    chips = card.get("chips") or []
+    chip_html = ""
+    for i, c in enumerate(chips[:2]):
+        cls = "chip" if i == 0 else "chip2"
+        chip_html += f'<span class="{cls}">{esc(c)}</span>'
+    main = "".join(f'<div class="fitw">{hl(l, card.get("highlight"), th["hl"])}</div>'
+                   for l in lines(card.get("lines", [])))
+    grad = ("linear-gradient(180deg,rgba(0,0,0,.45) 0%,rgba(0,0,0,0) 16%,rgba(0,0,0,0) 40%,"
+            "rgba(0,0,0,.55) 62%,rgba(0,0,0,.86) 84%,rgba(0,0,0,.92) 100%)")
+    credit = card.get("photo_credit") or ""
+    return f'''
+<div class="card cover pcover fcover" style="background:#111;color:#FFFFFF">
+  <img class="pimg fimg" src="{uri}" alt="" style="object-position:{esc(card.get('photo_pos') or 'center 45%')}">
+  <div class="pshade" style="background:{grad}"></div>
+  <div class="brand big" style="position:relative">{BELL.format(s=44, c='#FFFFFF')}<span>줍줍알람</span></div>
+  {f'<div class="pcredit">{esc(credit)}</div>' if credit else ''}
+  <div class="zoom cover-main pmain fmain">
+    <div class="chips">{chip_html}</div>
+    <div class="cover-title">{main}</div>
+    {f'<div class="cover-sub">{esc(card.get("sub"))}</div>' if card.get("sub") else ''}
+  </div>
+  <div class="swipe"><span>넘겨서 확인하기</span>{ARROW}</div>
 </div>'''
 
 
@@ -425,6 +453,10 @@ body{margin:0;width:1080px;height:1350px;overflow:hidden}
 .pcover .cover-sub{max-width:700px;font-size:40px}
 .pcover .swipe{z-index:2}
 .pchar{width:270px;height:270px;right:44px;bottom:36px}
+.fimg{height:1350px}
+.fmain{margin-bottom:150px;gap:24px}
+.fcover .cover-title{font-size:124px;text-shadow:0 4px 24px rgba(0,0,0,.45)}
+.fcover .cover-sub{max-width:920px;font-size:40px;color:rgba(255,255,255,.92)}
 .disc{margin-top:auto;font-size:24px;font-weight:500;color:#5B6472;text-align:center;line-height:1.5;white-space:pre-line}
 """
 
