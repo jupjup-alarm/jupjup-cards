@@ -13,12 +13,14 @@ import argparse, datetime, json, os, re, sys, urllib.error, urllib.parse, urllib
 API = "https://www.googleapis.com/youtube/v3/"
 
 
-def get(path, **q):
+def get(path, missing_ok=False, **q):
     q["key"] = os.environ.get("YOUTUBE_API_KEY") or os.environ["GOOGLE_TTS_KEY"]
     try:
         return json.load(urllib.request.urlopen(API + path + "?" + urllib.parse.urlencode(q), timeout=30))
     except urllib.error.HTTPError as e:
         msg = e.read()[:300].decode(errors="ignore")
+        if e.code == 404 and missing_ok:
+            return {}
         if "blocked" in msg:
             sys.exit("API 키가 YouTube Data API를 막고 있어요 — Google Cloud → API 및 서비스 → 사용자 인증 정보 → 그 키 → "
                      "'API 제한사항'에 YouTube Data API v3를 추가하세요")
@@ -32,7 +34,9 @@ def videos(handle="ossak_alarm"):
     up = ch[0]["contentDetails"]["relatedPlaylists"]["uploads"]
     ids, tok = [], None
     while True:
-        r = get("playlistItems", part="contentDetails", playlistId=up, maxResults=50, **({"pageToken": tok} if tok else {}))
+        # 아직 공개 영상이 하나도 없으면 업로드 목록이 없어 404 → 빈 목록
+        r = get("playlistItems", missing_ok=True, part="contentDetails", playlistId=up, maxResults=50,
+                **({"pageToken": tok} if tok else {}))
         ids += [it["contentDetails"]["videoId"] for it in r.get("items", [])]
         tok = r.get("nextPageToken")
         if not tok or len(ids) >= 300:
