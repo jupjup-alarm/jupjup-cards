@@ -590,7 +590,8 @@ def rows(ep, spec, a, total=None):
     tags = spec.get("tags", f"#{spec['series']}")
     desc = "\n\n".join(x for x in [
         yt.get("summary", ""),
-        "실제 기록을 바탕으로 한 이야기입니다. 그림과 내레이션은 AI로 재구성했습니다." if not spec.get("legend")
+        "실제 기록을 바탕으로 각색한 이야기입니다. 그림과 내레이션은 AI로 재구성했습니다." if spec.get("adapted")
+        else "실제 기록을 바탕으로 한 이야기입니다. 그림과 내레이션은 AI로 재구성했습니다." if not spec.get("legend")
         else "전해지는 이야기를 기록에 따라 옮겼습니다. 그림과 내레이션은 AI로 재구성했습니다.",
         spec.get("sources", ""), "매일 저녁 6시·밤 10시 · 인스타그램 @ossak_alarm", tags + " #shorts"] if x)
     video = f"{BASE}{ep.name}/short.mp4"

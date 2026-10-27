@@ -190,15 +190,23 @@ def breath(wav, tts, wrong_min=0.22, need_min=0.12):
 def main():
     ep = pathlib.Path(sys.argv[1])
     sc = json.loads((ep / "short.json").read_text())["scenes"]
+    paras = []                      # short.py와 같은 문단 묶기 ("cont": true)
+    for i, s in enumerate(sc):
+        fx = s.get("sfx", [])
+        fx = [fx] if isinstance(fx, str) else fx
+        if i and s.get("cont") and not ({"hit", "knock"} & set(fx)):
+            paras[-1].append(i)
+        else:
+            paras.append([i])
     bad = 0
-    for i, s in enumerate(sc, 1):
-        wav = ep / "short_audio" / f"{i:02d}.wav"
-        tts = s.get("tts", s["say"])
+    for pi, idx in enumerate(paras, 1):
+        wav = ep / "short_audio" / f"p{pi:02d}.wav"
+        tts = " ".join(sc[i].get("tts", sc[i]["say"]).strip() for i in idx)
         line, wrong, missing = breath(wav, tts, wrong_min=0.13)
         flag = "" if not wrong and not missing else f"   ← 엉뚱한 쉼 {wrong} / 빠진 쉼 {missing}"
         bad += bool(flag)
-        print(f"{i:02d} 의도: {tts}\n   실제: {line}   ({dur(wav):.1f}s){flag}")
-    print(f"문제 장면 {bad}개")
+        print(f"문단{pi:02d} 실제: {line}   ({dur(wav):.1f}s){flag}")
+    print(f"문제 문단 {bad}개")
 
 
 if __name__ == "__main__":
