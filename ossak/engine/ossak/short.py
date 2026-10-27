@@ -40,7 +40,7 @@ from compose import font, C  # noqa: E402
 from cf import load_env, multipart, MODELS  # noqa: E402
 from render import STYLE  # noqa: E402
 from reel import speak, dur  # noqa: E402
-from timing import word_times as tts_word_times, anchored, SKIP  # noqa: E402
+from timing import word_times as tts_word_times, anchored, breath, SKIP  # noqa: E402
 
 
 def breathe(t):
@@ -427,6 +427,21 @@ def build(ep, spec, a):
             bounds_t.append(f(u + 1e-5))
         ptts.append(text); pwav.append(wav); pdur.append(dur(wav)); pbound.append(bounds_t)
 
+    # 호흡 검수 (반드시 통과 — 사용자 요구 2026-10-27 "내레이션 규칙은 꼭 지켜지도록")
+    #  - 쉼표·문장 끝·장면 경계에서 쉬지 않음(빠진 쉼) / 의도하지 않은 곳에서 0.2초 넘게 쉼 → 실패
+    if len(scenes) > 8 and not any(sc.get("cont") for sc in scenes):
+        print("경고: 문단(cont)이 하나도 없어요 — 문장마다 끊겨 들립니다. 이야기 토막으로 묶으세요.")
+    fails = []
+    for pi, (text, wav) in enumerate(zip(ptts, pwav), 1):
+        line, wrong, missing = breath(wav, text, wrong_min=0.2)
+        if wrong or missing:
+            fails.append(f"문단{pi:02d}: 엉뚱한 쉼 {wrong} / 빠진 쉼 {missing}\n    {line}")
+    if fails:
+        print("호흡 검수 실패 — tts를 고쳐 다시 만드세요 (어순 바꾸기, 쉼표 위치 옮기기, 붙여 쓰기):")
+        print("\n".join(fails))
+        if not a.force_breath:
+            raise SystemExit(3)
+
     # 2) 시간표
     t = LEAD
     starts, nar, hits, sil, knocks, beats, pstart = [0.0] * len(scenes), [], [], [], [], [], []
@@ -634,6 +649,7 @@ def main():
     ap.add_argument("--no-ig", action="store_true")
     ap.add_argument("--voice", default="auto", choices=["auto", "google", "melo"])
     ap.add_argument("--rows-only", action="store_true")
+    ap.add_argument("--force-breath", action="store_true", help="호흡 검수 실패를 무시 (사용자가 직접 확인했을 때만)")
     a = ap.parse_args()
     ep = pathlib.Path(a.episode).resolve()
     spec = json.loads((ep / "short.json").read_text())
