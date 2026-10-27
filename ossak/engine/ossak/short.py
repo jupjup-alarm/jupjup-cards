@@ -467,7 +467,7 @@ def build(ep, spec, a):
                 b_end = (n0 + pbound[pi][k + 1]) if k + 1 < len(idx) else end
                 beats.append((starts[i], b_end + 0.4))
         t = end + scenes[idx[-1]].get("hold", 0)
-        t += (0.25 if loop else 1.3) if pi == len(paras) - 1 else PGAP
+        t += (1.0 if loop else 1.3) if pi == len(paras) - 1 else PGAP
     for sc in scenes:
         sc["sfx"] = "hit" if "hit" in sc["_fx"] else ""
     total = t
