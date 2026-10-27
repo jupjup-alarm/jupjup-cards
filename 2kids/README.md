@@ -74,6 +74,7 @@ git add 2kids/specs 2kids/cards && git commit -m "2kids: <slug>" && git push ori
 - 내레이션: `"voice": "2kids/voices/<id>/"` (시트 발행계획 AA열 값의 앞부분). 시트 스크립트가 Z열 대본(장면마다 `---`)을 구글 TTS로 돌려 `2kids/voices/<id>/01.mp3`…를 올린다. 대본 조각 수 = 장면 수. 렌더 전 `git pull --rebase origin main`.
 - 장면 길이는 음성에 맞춰 자동 (앞뒤 무음 잘라내고 장면 사이 약 0.5초). 음성이 있으면 `dur`는 무시, 오래 보여줘야 하는 장면만 `"min": 초`.
 - 배경음악: `"bgm": "sunny"`(밝음·지원금/혜택) | `"cozy"`(잔잔·뉴스/공감) | `"bounce"`(경쾌·꿀팁/체크) | `false`. 생략하면 slug에 따라 골고루 돌려씀. 목소리가 나올 때 자동으로 작아진다(덕킹). 곡은 `2kids/bgm.py`로 직접 합성한 자체 음원이라 저작권 문제 없음.
-- 목소리 기본값: 구글 TTS `ko-KR-Chirp3-HD-Leda`, 속도 1.2 (시트 스크립트 TTS_VOICE·TTS_RATE 속성으로 변경).
+- 목소리 기본값: 구글 TTS `ko-KR-Chirp3-HD-Leda`, 속도 1.05 (2026-10-27: 1.2는 빨라서 기계처럼 들려 낮춤. 시트 스크립트 TTS_VOICE·TTS_RATE2 속성으로 변경).
+- 호흡 (2026-10-27, 오싹알람 규칙 적용): 대본(Z열)의 쉼표·말줄임표 = '여기서 숨 쉰다'. 시트 스크립트가 [pause short]로 바꿔 읽힌다(구글 목소리는 그냥 쉼표를 자주 무시하고 이어 읽음). 원고에 `"narration": [Z열을 ---로 나눈 조각…]`을 넣으면 reel.py가 실제 쉼과 비교해 warnings에 `호흡:`을 남긴다 (영상은 만들어짐 — ③ 대본 쉼표 위치 문제).
 - 상품을 다루면 `"ad": true` → 첫 장면에 "광고 · 링크 구매 시 수수료를 받아요" 표시.
 - 올리기: `git add 2kids/reels/specs 2kids/reels/<slug> && git commit -m "2kids reels: <slug>" && git push origin HEAD:main`. 발행계획 R행 U열에 manifest의 video, cover 주소를 줄바꿈으로, 짝이 되는 스레드 T행 U열에는 video 주소만.

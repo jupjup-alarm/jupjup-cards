@@ -17,6 +17,7 @@
   "series": "돈 나오는 육아",              // 화면 위 태그
   "voice": "2kids/voices/<id>/",           // 시트 AA열 값(앞부분). 없으면 무음 + 기본 길이
   "voice_speed": 1.0,                      // 선택: 음성 빠르기 추가 조정
+  "narration": ["조각1", "조각2", …],        // 선택: 시트 Z열 대본을 ---로 나눈 조각(장면 순서). 있으면 호흡 검사
   "bgm": "sunny",                          // 선택: sunny(밝음)|cozy(잔잔)|bounce(경쾌)|false. 생략하면 골고루 돌려씀
   "ad": false,                             // 상품을 다루면 true → 첫 장면에 "광고 · 링크 구매 시 수수료를 받아요"
   "source": "출처: 보건복지부 · 2026.10.24",
@@ -36,6 +37,8 @@
 - 인스타 가림 영역(위 250px, 아래 400px)에는 핵심 글자를 두지 않는다.
 - 음성은 장면 순서대로 voices/<id>/01.mp3, 02.mp3 … 를 붙이고(앞뒤 무음은 잘라냄), 장면 길이를 음성에 맞춘다.
   음성이 있으면 dur는 무시된다. 오래 보여줘야 하는 장면만 "min": 초.
+- 호흡 검사 (2026-10-27, 오싹알람 규칙): "narration"이 있으면 대본의 쉼표·문장 끝(= 숨 쉬는 곳)과 음성의 실제 쉼을 비교해
+  안 쉰 곳·엉뚱하게 쉰 곳을 warnings에 '호흡:'으로 남긴다 (영상은 만들어짐 — ③ 대본 쉼표 위치 문제).
 """
 import base64
 import html
@@ -354,6 +357,58 @@ def voice_files(spec):
     return out
 
 
+BREATH_END = re.compile(r"[,，.?!…~]+[\"'”’)]*$")
+
+
+def speech_spans(path, min_pause=0.15):
+    """음성 파일의 말소리 구간들 [(시작, 끝)…] — 문장 안 쉼으로 나뉨."""
+    total = audio_len(path)
+    log = subprocess.run(["ffmpeg", "-v", "info", "-i", str(path), "-af", f"silencedetect=n=-38dB:d={min_pause}",
+                          "-f", "null", "-"], capture_output=True, text=True).stderr
+    sil, s0 = [], None
+    for line in log.splitlines():
+        m = re.search(r"silence_start: ([\d.]+)", line)
+        if m:
+            s0 = float(m.group(1))
+        m = re.search(r"silence_end: ([\d.]+)", line)
+        if m and s0 is not None:
+            sil.append((s0, float(m.group(1)))); s0 = None
+    if s0 is not None:
+        sil.append((s0, total))
+    spans, pos = [], 0.0
+    for a, b in sil:
+        if a - pos > 0.05:
+            spans.append((pos, a))
+        pos = b
+    if total - pos > 0.05:
+        spans.append((pos, total))
+    return spans
+
+
+def breath_marks(text):
+    """대본에서 숨 쉬는 곳(쉼표·말줄임표·문장 끝) 수 + 1 = 기대하는 말소리 구간 수."""
+    words = str(text or "").replace("[pause short]", ",").split()
+    n = sum(1 for w in words[:-1] if BREATH_END.search(w))
+    return n + 1 if words else 0
+
+
+def breath_check(spec, vf, warn):
+    narr = spec.get("narration") or []
+    for i, (txt, f) in enumerate(zip(narr, vf)):
+        if not f or not str(txt).strip():
+            continue
+        spans, want = speech_spans(f), breath_marks(txt)
+        extra = []
+        while len(spans) > want > 0:            # 대본에 없는 쉼은 가장 짧은 것부터 합쳐 봄
+            k = min(range(len(spans) - 1), key=lambda j: spans[j + 1][0] - spans[j][1])
+            extra.append(spans[k + 1][0] - spans[k][1])
+            spans[k:k + 2] = [(spans[k][0], spans[k + 1][1])]
+        if len(spans) < want:
+            warn.append(f"호흡: 장면 {i + 1} 쉼표·문장 끝에서 안 쉼 (대본 숨 {want - 1}곳 / 실제 {len(spans) - 1}곳)")
+        elif extra and max(extra) > 0.25:
+            warn.append(f"호흡: 장면 {i + 1} 대본에 없는 곳에서 {max(extra):.2f}초 쉼 (③ 대본 쉼표·어순 확인)")
+
+
 def timeline(spec):
     """음성이 있으면 장면 길이 = 음성 길이 + 짧은 여백 (원고 dur는 무시, 'min'이 있으면 최소 길이).
     음성이 없으면 원고 dur(기본 4초)."""
@@ -484,6 +539,7 @@ def main(path):
         pg.evaluate("document.fonts.ready")
         pg.wait_for_timeout(300)
         warns = pg.evaluate(FIT_JS)
+        breath_check(spec, [f for _, _, f in tl], warns)
         for f in range(n):
             pg.evaluate(f"renderAt({f / FPS:.4f})")
             pg.screenshot(path=str(frames / f"{f:05d}.jpg"), type="jpeg", quality=92)
