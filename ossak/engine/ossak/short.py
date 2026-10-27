@@ -40,7 +40,7 @@ from compose import font, C  # noqa: E402
 from cf import load_env, multipart, MODELS  # noqa: E402
 from render import STYLE  # noqa: E402
 from reel import speak, dur  # noqa: E402
-from timing import word_times as tts_word_times, SKIP  # noqa: E402
+from timing import word_times as tts_word_times, anchored, SKIP  # noqa: E402
 
 
 def norm(t):
@@ -52,7 +52,7 @@ BASE = "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/ossak/"
 W, H, FPS, SR = 1080, 1920, 30, 48000
 SAFE_R = 140                        # 오른쪽 버튼 자리
 TITLE_Y, SUB_Y, SUB_MAXW = 318, 1130, 840
-LEAD, GAP, HIT_GAP = 0.05, 0.22, 0.6
+LEAD, GAP, HIT_GAP, PGAP = 0.05, 0.22, 0.6, 0.38
 SERIES = {"세계기담": ("#F2B544", "amber"), "새벽괴담": ("#3FB8A8", "teal"), "미제파일": ("#E8693A", "orange"),
           "그날의 기록": ("#E8693A", "orange"), "그 후": ("#9AA3B8", "silver")}
 CHARACTER = ("Boogi, a small round owl archivist mascot: dark slate-navy feathers, two pointed ear tufts, large glowing "
@@ -389,59 +389,90 @@ def build(ep, spec, a):
     for i, sc in enumerate(scenes):
         sc.setdefault("move", moves[i % len(moves)])
 
-    # 1) 음성
+    # 1) 음성 — 이야기 한 토막(문단)을 한 번에 읽힌다. "cont": true인 장면은 앞 장면과 같은 문단.
+    #    문장마다 따로 만들면 억양이 매번 처음부터 시작돼 '안내 방송을 이어 붙인' 소리가 난다 (2026-10-27 피드백).
+    paras = []
+    for i, sc in enumerate(scenes):
+        fx = sc.get("sfx", [])
+        fx = [fx] if isinstance(fx, str) else list(fx)
+        sc["_fx"] = fx
+        if i and sc.get("cont") and not ({"hit", "knock"} & set(fx)):
+            paras[-1].append(i)
+        else:
+            paras.append([i])
     ad = ep / "short_audio"
     ad.mkdir(exist_ok=True)
-    for i, sc in enumerate(scenes, 1):
-        speak(sc.get("tts", sc["say"]), ad / f"{i:02d}.wav", a.voice, max_pause=0.32, wrong_min=0.13)
-    durs = [dur(ad / f"{i:02d}.wav") for i in range(1, len(scenes) + 1)]
+    ptts, pwav, pdur, pbound = [], [], [], []
+    for pi, idx in enumerate(paras, 1):
+        parts = [scenes[i].get("tts", scenes[i]["say"]).strip() for i in idx]
+        text = " ".join(parts)
+        wav = ad / f"p{pi:02d}.wav"
+        speak(text, wav, a.voice, max_pause=0.32, wrong_min=0.13)
+        f, _, cum, _, _ = anchored(wav, text)
+        # 문단 안 장면 경계 시각: 앞 장면들의 읽기 글자 수 → 시각 (쉼이 있으면 쉼이 끝난 때)
+        bounds_t, nchar = [0.0], 0
+        for prt in parts[:-1]:
+            nchar += len(norm(prt))
+            u = cum[min(nchar, len(cum) - 1)]
+            bounds_t.append(f(u + 1e-5))
+        ptts.append(text); pwav.append(wav); pdur.append(dur(wav)); pbound.append(bounds_t)
 
     # 2) 시간표
     t = LEAD
-    starts, nar, hits, sil, knocks, beats = [], [], [], [], [], []
-    for i, sc in enumerate(scenes):
-        fx = sc.get("sfx", [])
-        fx = [fx] if isinstance(fx, str) else fx
-        sc["sfx"] = "hit" if "hit" in fx else ""
+    starts, nar, hits, sil, knocks, beats, pstart = [0.0] * len(scenes), [], [], [], [], [], []
+    for pi, idx in enumerate(paras):
+        first = scenes[idx[0]]
+        fx = first["_fx"]
         if "knock" in fx:                     # 노크 세 번을 먼저 듣고 말이 시작된다
             knocks.append(t + 0.05)
             t += 1.35
-        if "heartbeat" in fx:
-            sc["_beat"] = True
-        if sc.get("sfx") == "hit" and i > 0:
-            sil.append((t - GAP + 0.05, t - GAP + HIT_GAP))
-            t += HIT_GAP - GAP
+        if "hit" in fx and pi > 0:
+            sil.append((t - PGAP + 0.05, t - PGAP + HIT_GAP))
+            t += HIT_GAP - PGAP
             hits.append(t)
-        starts.append(t)
-        n0 = t + (0.18 if sc.get("sfx") == "hit" else 0)
-        nar.append(n0)
-        t = n0 + durs[i] + sc.get("hold", 0)
-        if sc.get("_beat"):
-            beats.append((starts[-1], t + 0.4))
-        t += (0.25 if loop else 1.3) if i == len(scenes) - 1 else GAP
+        n0 = t + (0.18 if "hit" in fx else 0)
+        pstart.append(n0)
+        for k, i in enumerate(idx):
+            starts[i] = t if k == 0 else n0 + pbound[pi][k] - 0.05
+        end = n0 + pdur[pi]
+        for k, i in enumerate(idx):
+            if "heartbeat" in scenes[i]["_fx"]:
+                b_end = (n0 + pbound[pi][k + 1]) if k + 1 < len(idx) else end
+                beats.append((starts[i], b_end + 0.4))
+        t = end + scenes[idx[-1]].get("hold", 0)
+        t += (0.25 if loop else 1.3) if pi == len(paras) - 1 else PGAP
+    for sc in scenes:
+        sc["sfx"] = "hit" if "hit" in sc["_fx"] else ""
     total = t
     if total > 89:
         raise SystemExit(f"{total:.1f}초 — 90초를 넘어요. 문장을 줄이세요")
-    if not loop and total > 62:
-        print(f"주의: {total:.1f}초 — 서사형 목표 45~60초")
+    if not loop and total > 66:
+        print(f"주의: {total:.1f}초 — 서사형 목표 45~65초")
 
     work = ep / "short_work"
     work.mkdir(exist_ok=True)
-    audio = mix(total, [(nar[i], read_wav(ad / f"{i + 1:02d}.wav")) for i in range(len(scenes))], hits, sil, horror,
+    audio = mix(total, [(pstart[pi], read_wav(pwav[pi])) for pi in range(len(paras))], hits, sil, horror,
                 knocks, beats)
     write_wav(work / "mix.wav", audio)
 
-    # 3) 자막 시간표
+    # 3) 자막 시간표 — 문단 음성에서 어절 시각을 구하고, 장면 경계를 넘지 않게 덩어리를 나눈다
     caps = []          # (시작, 끝, 글, emph)
-    for i, sc in enumerate(scenes):
-        text = sc.get("sub", sc["say"])
-        toks, tms = tts_word_times(ad / f"{i + 1:02d}.wav", text, sc.get("tts", sc["say"]))
-        for k, (ct, c0) in enumerate(chunks(toks, tms)):
-            caps.append([max(0.0, nar[i] + c0 - 0.06), None, clean(ct), sc.get("emph", []) + ([spec["accent_word"]] if spec.get("accent_word") else [])])
+    for pi, idx in enumerate(paras):
+        disp = [scenes[i].get("sub", scenes[i]["say"]) for i in idx]
+        toks, tms = tts_word_times(pwav[pi], " ".join(disp), ptts[pi])
+        pos = 0
+        for i, dtext in zip(idx, disp):
+            n = len(dtext.split())
+            st, sm = toks[pos:pos + n], tms[pos:pos + n]
+            pos += n
+            sc = scenes[i]
+            for ct, c0 in chunks(st, sm):
+                caps.append([max(0.0, pstart[pi] + c0 - 0.06), None, clean(ct),
+                             sc.get("emph", []) + ([spec["accent_word"]] if spec.get("accent_word") else [])])
         for j in range(len(caps) - 1):
             if caps[j][1] is None:
                 caps[j][1] = caps[j + 1][0]
-        caps[-1][1] = nar[i] + durs[i] + 0.15
+        caps[-1][1] = pstart[pi] + pdur[pi] + 0.15
     caps[0][0] = 0.0                     # 첫 프레임부터 첫 자막
 
     # 4) 프레임

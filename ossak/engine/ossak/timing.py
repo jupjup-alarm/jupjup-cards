@@ -78,10 +78,17 @@ def anchored(wav, tts):
     # 긴 쉼(0.2초+)의 수가 의도한 쉼 자리(문장 끝·[pause])의 수와 같으면 순서대로 짝짓는다.
     # 숫자를 길게 읽는 문장처럼 말 속도가 고르지 않아도 위치 추정이 틀리지 않는다.
     longp = [(s0, e0) for s0, e0 in clock.pauses if e0 - s0 >= 0.2]
-    want = [i for i, t in enumerate(toks[:-1]) if t[3] or re.search(r"[.?!]$", t[0])]
-    paired = {}
-    if longp and len(longp) == len(want) and all(abs(ends[j] - clock.k_at(s0)) <= 5 for (s0, _), j in zip(longp, want)):
-        paired = {s0: j for (s0, _), j in zip(longp, want)}
+    want = [i for i, t in enumerate(toks[:-1]) if t[3] or re.search(r"[.?!,…]$", t[0])]
+    paired, last = {}, -1
+    # 순서를 지키며 가까운 의도한 쉼 자리에 짝짓는다 (긴 문단은 말 속도 오차가 쌓이므로 허용 폭을 넓게)
+    tol = max(5.0, cum[-1] * 0.08)
+    for s0, e0 in longp:
+        k = clock.k_at(s0)
+        cand = [j for j in want if j > last and abs(ends[j] - k) <= tol]
+        if cand:
+            j = min(cand, key=lambda x: abs(ends[x] - k))
+            paired[s0] = j
+            last = j
     for s0, e0 in clock.pauses:
         k = clock.k_at(s0)
         if s0 in paired:
