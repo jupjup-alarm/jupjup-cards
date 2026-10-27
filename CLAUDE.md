@@ -69,6 +69,7 @@ main에 푸시가 거절되면 `cards` 브랜치에 푸시하고 `CARDS_BRANCH=c
 
 ## 숏츠(릴스) — `reel.py`
 - 원고: `reels/specs/<slug>.json` → `python3 reel.py reels/specs/<slug>.json` → `reels/<slug>/reel.mp4`, `cover.jpg`, `preview.jpg`, `manifest.json`
+- ⭐ 이야기 장면 `beat` (2026-10-27 릴스 재구성 — 슬라이드형 표 대신 이야기형): `{"type": "beat", "eyebrow": "가격", "big": "4억 8,600만원", "big_sub": "43㎡ 최고가", "highlight": "4억 8,600만원", "say": "<그 장면 내레이션 대본 그대로>", "bg": "photos/…jpg 또는 maps/…png 또는 none", "bg_credit": "…", "bg_pos": "center 40%"}` — 풀화면 배경(사진은 천천히 흐름, 네이버 지도는 핀 쪽으로 확대·출처 자동) 위에 숫자·핵심어 하나를 크게(`big`, 한 줄, 넘치면 자동 축소, 줄을 나누려면 `\n`), 아래에 `say` 자막이 음성에 맞춰 단어별로 켜짐(숫자 든 단어는 강조색). 원고 맨 위에 `"bg"`·`"bg_credit"`을 주면 배경 없는 beat에 공통으로 깔림. hook도 `"bg": "maps/…png"`로 지도 확대 배경 가능. cta는 `"ask"`(댓글 질문·팔로우 한 줄) 추가 가능. 새 릴스는 hook → beat 3~4개 → cta가 기본 (points는 예전 형식 호환용).
 - 장면: `hook`(첫 프레임부터 훅이 보임 — 1초 룰, lines의 `{n}` 자리에 `count.to` 숫자가 강조 펄스), `points`(rows 2~4개, text 선택), `cta`. 1080×1920. 핵심 내용은 세로 가운데(피드 4:5 영역 y≈285~1635)에 모으고, 위 300px·아래 420px·오른쪽 140px(인스타 버튼 자리)는 비운다 — 2026-10-25 "너무 위로 몰림" 피드백 반영.
 - 훅 장면 실사 배경: hook에 `"photo"`, `"photo_credit"`(카드 표지와 같은 값), 선택 `"photo_pos"`를 넣으면 위쪽에 단지 사진이 천천히 확대되고 글자는 아래로 내려간다 (종이 캐릭터는 숨김). 표지 cover.jpg에도 사진이 들어간다.
 - 평면도 장면: `{"type": "plan", "eyebrow", "title", "image", "rows"(최대 2개, 한 줄 요약으로 표시), "credit"}` — ③ 원고에 평면도 장면이 있을 때만 (장면 수 = 대본 블록 수 유지).

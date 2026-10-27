@@ -79,6 +79,62 @@ def talk_svg(detail="#0F1E3D"):
 </svg>'''
 
 
+def say_html(text, t0, dur, th):
+    """내레이션에 맞춰 단어가 하나씩 켜지는 자막. 숫자가 든 단어는 강조색."""
+    words = str(text or "").split()
+    if not words:
+        return ""
+    weights = [len(w) + 1 for w in words]
+    tot = sum(weights)
+    acc, out = 0.0, []
+    for w, k in zip(words, weights):
+        at = t0 + dur * acc / tot
+        acc += k
+        num = any(c.isdigit() for c in w)
+        cls = "w wn" if num else "w"
+        style = f' style="--hl:{th["hl"]}"' if num else ""
+        out.append(f'<span class="{cls}" data-w="{at:.2f}"{style}>{unit(esc(w))}</span>')
+    return f'<div class="say">{" ".join(out)}</div>'
+
+
+def bg_html(src, start, end, credit=None, pos=None):
+    """풀화면 배경: 지도(maps/)는 단지 쪽으로 천천히 확대, 사진은 천천히 확대하며 옆으로 흐름."""
+    uri = photo_uri(src)
+    if src and not uri:
+        WARN.append(f"배경 {src} 없음 → 색 배경으로 만듦")
+    if not uri:
+        return "", False
+    is_map = str(src).startswith("maps/")
+    credit = credit or ("© NAVER Corp." if is_map else "")
+    return (f'<img class="bgimg {"zoom" if is_map else "pan"}" data-s="{start:.3f}" data-e="{end:.3f}" src="{uri}" alt="" '
+            f'style="object-position:{esc(pos or "center 45%")}">'
+            f'<div class="bgshade"></div>'
+            + (f'<div class="hcredit">{esc(credit)}</div>' if credit else "")), True
+
+
+def beat_html(sc, th, start, end):
+    """이야기 장면: 풀화면 배경 + 숫자(또는 핵심어) 하나 크게 + 내레이션 자막."""
+    back, has_bg = bg_html(sc.get("bg"), start, end, sc.get("bg_credit"), sc.get("bg_pos"))
+    if not has_bg:
+        back = f'<div class="blob" style="background:{th["spark"]}"></div>'
+    ink = "#FFFFFF" if has_bg else (th.get("fg") or th["ink"])
+    vs, vd = sc.get("_vs"), sc.get("_vd")
+    if vs is None:
+        vs, vd = start + 0.3, max(0.8, (end - start) - 0.9)
+    eyebrow = (f'<div class="bchip in" data-in="{start + 0.1:.2f}" style="background:{th["chip_bg"]};color:{th["chip_fg"]}">'
+               f'{esc(sc["eyebrow"])}</div>' if sc.get("eyebrow") else "")
+    big = (f'<div class="big in pop" data-in="{start + 0.25:.2f}"><span class="pulse" data-p="{start + 0.7:.2f}" '
+           f'style="display:inline-block">{hl(sc["big"], sc.get("highlight"), th["hl"])}</span></div>'
+           if sc.get("big") else "")
+    bsub = (f'<div class="bsub in" data-in="{start + 0.45:.2f}">{unit(esc(sc["big_sub"]))}</div>'
+            if sc.get("big_sub") else "")
+    return f'''
+<section class="scene beat{' onbg' if has_bg else ''}" data-dark="1" data-s="{start:.3f}" data-e="{end:.3f}" style="background:{th['bg']};color:{ink}">
+  {back}
+  <div class="bbody">{eyebrow}{big}{bsub}{say_html(sc.get("say"), vs, vd, th)}</div>
+</section>'''
+
+
 def scene_html(sc, th, idx, start, end):
     t = sc["type"]
     a = f'data-s="{start:.3f}" data-e="{end:.3f}"'
@@ -96,16 +152,18 @@ def scene_html(sc, th, idx, start, end):
                                           f'style="display:inline-block;color:{th["hl"]}">{esc(sc["count"]["to"])}</span>')
                 txt = f'<span style="color:{th["hl"]}">{txt}</span>'
             lines += f'<div class="hline punch" data-p="{start:.2f}">{unit(txt)}</div>'
-        uri = photo_uri(sc.get("photo"))
-        if sc.get("photo") and not uri:
-            WARN.append(f"사진 {sc['photo']} 없음 → 사진 없이 만듦")
+        src = sc.get("photo") or sc.get("bg")
+        uri = photo_uri(src)
+        if src and not uri:
+            WARN.append(f"사진 {src} 없음 → 사진 없이 만듦")
         if uri:
             bg = th["bg"]
             grad = (f"linear-gradient(180deg,{rgba(bg, .45)} 0%,{rgba(bg, .1)} 22%,{rgba(bg, .2)} 36%,"
                     f"{rgba(bg, .86)} 50%,{bg} 62%,{bg} 100%)")
-            credit = sc.get("photo_credit") or ""
-            back = (f'<img class="hph kb" data-s="{start:.3f}" data-e="{end:.3f}" src="{uri}" alt="" '
-                    f'style="object-position:{esc(sc.get("photo_pos") or "center 40%")}">'
+            is_map = str(src).startswith("maps/")
+            credit = sc.get("photo_credit") or sc.get("bg_credit") or ("© NAVER Corp." if is_map else "")
+            back = (f'<img class="hph {"zoom" if is_map else "kb"}" data-s="{start:.3f}" data-e="{end:.3f}" src="{uri}" alt="" '
+                    f'style="object-position:{esc(sc.get("photo_pos") or sc.get("bg_pos") or "center 40%")}">'
                     f'<div class="hshade" style="background:{grad}"></div>'
                     + (f'<div class="hcredit">{esc(credit)}</div>' if credit else ""))
             cls = "scene hook photo"
@@ -120,6 +178,8 @@ def scene_html(sc, th, idx, start, end):
   <div class="hsub in" data-in="{start + 0.25:.2f}" style="color:{th['sub']}">{esc(sc.get('sub'))}</div>
   <div class="char bounce in" data-in="{start + 0.15:.2f}">{char_svg(sc.get('face', '깜짝'))}</div>
 </section>'''
+    if t == "beat":
+        return beat_html(sc, th, start, end)
     if t == "points":
         rows = "".join(
             f'<div class="row in" data-in="{start + 0.55 + i * 0.35:.2f}" style="background:{th["tint"]}">'
@@ -157,6 +217,7 @@ def scene_html(sc, th, idx, start, end):
 <section class="scene cta" {a} style="background:{th['soft']}">
   <div class="cchar bounce in" data-in="{start + 0.05:.2f}">{talk_svg() if sc.get('_voiced') else char_svg('closing')}</div>
   <div class="clines">{lines}</div>
+  {f'<div class="cask in" data-in="{start + 0.7:.2f}" style="color:{th["accent"]}">{esc(sc["ask"])}</div>' if sc.get("ask") else ""}
   <div class="btns in" data-in="{start + 0.9:.2f}">
     <span class="btn" style="background:{th['btn']}">팔로우하고 알림 받기</span>
   </div>
@@ -211,7 +272,7 @@ html,body{word-break:keep-all;width:1080px;height:1920px;overflow:hidden;backgro
 .btn{display:inline-block;color:#fff;font-weight:900;font-size:46px;padding:26px 54px;border-radius:999px}
 .disc{margin-top:48px;font-size:30px;color:#5B6472;line-height:1.5}
 .in{opacity:0}
-.narrator{position:absolute;left:60px;bottom:380px;width:270px;height:270px;z-index:6;opacity:0}
+.narrator{position:absolute;left:60px;bottom:430px;width:210px;height:210px;z-index:6;opacity:0}
 .voiced .hook .char{display:none}
 .voiced .hook{padding-bottom:640px}
 .voiced .points{padding-bottom:660px}
@@ -220,6 +281,21 @@ html,body{word-break:keep-all;width:1080px;height:1920px;overflow:hidden;backgro
 .voiced .row{padding:32px 40px}
 .voiced .rv{font-size:52px}
 .voiced .ptext{font-size:42px;margin-top:32px}
+.beat{padding:0}
+.bgimg{position:absolute;left:0;top:0;width:1080px;height:1920px;object-fit:cover;transform-origin:center 45%}
+.bgshade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,14,30,.55) 0%,rgba(8,14,30,.05) 17%,rgba(8,14,30,.08) 27%,rgba(8,14,30,.78) 39%,rgba(8,14,30,.92) 50%,rgba(8,14,30,.95) 100%)}
+.bgimg.zoom{height:1300px;transform-origin:center center}
+.bbody{position:absolute;left:84px;right:84px;bottom:670px;display:flex;flex-direction:column;align-items:flex-start}
+.bchip{font-weight:900;font-size:44px;padding:10px 28px;border-radius:14px;margin-bottom:26px}
+.big{font-family:'Black Han Sans';font-size:176px;line-height:1.05;letter-spacing:-2px;white-space:pre;transform-origin:left center}
+.onbg .big{text-shadow:0 6px 30px rgba(0,0,0,.45)}
+.bsub{font-size:50px;font-weight:800;margin-top:18px;opacity:.9;white-space:pre-line;line-height:1.3}
+.say{margin-top:44px;font-size:54px;font-weight:800;line-height:1.42;max-width:912px}
+.say .w{opacity:.32;transition:none}
+.say .w.on{opacity:1}
+.say .wn.on{color:var(--hl)}
+.cask{margin-top:34px;font-size:54px;font-weight:900}
+.voiced .beat .bbody{bottom:680px}
 """
 
 JS = """
@@ -244,6 +320,14 @@ window.renderAt=function(t){
   document.querySelectorAll('.kb').forEach(el=>{
     const a=+el.dataset.s,e=+el.dataset.e; el.style.transform='scale('+(1.0+0.10*cl((t-a)/(e-a)))+')';
   });
+  document.querySelectorAll('.zoom').forEach(el=>{
+    const a=+el.dataset.s,e=+el.dataset.e; el.style.transform='scale('+(1.0+0.55*ease(cl((t-a)/(e-a))))+')';
+  });
+  document.querySelectorAll('.pan').forEach(el=>{
+    const a=+el.dataset.s,e=+el.dataset.e,p=cl((t-a)/(e-a));
+    el.style.transform='scale('+(1.14+0.06*p)+') translateX('+((p-0.5)*-5)+'%)';
+  });
+  document.querySelectorAll('.say .w').forEach(el=>{el.classList.toggle('on', t>=+el.dataset.w)});
   document.querySelectorAll('.punch').forEach(el=>{
     const k=ease(cl((t-(+el.dataset.p))/0.25)); el.style.transform='scale('+(1.05-0.05*k)+')'; el.style.transformOrigin='left center';
   });
@@ -359,6 +443,13 @@ def build(spec):
     scenes = []
     for i, (sc, (t, d, f)) in enumerate(zip(spec["scenes"], tl)):
         sc = dict(sc, _voiced=voiced)
+        if sc["type"] == "beat" and not sc.get("bg") and spec.get("bg"):
+            sc["bg"] = spec["bg"]                      # 장면에 배경이 없으면 원고 전체 배경(단지 사진·지도)
+            sc.setdefault("bg_credit", spec.get("bg_credit"))
+        if sc.get("bg") == "none":
+            sc["bg"] = None
+        if f:                                          # 자막 단어가 켜지는 시간 = 이 장면 음성 구간
+            sc["_vs"], sc["_vd"] = t + lead(i), audio_len(f)
         scenes.append(scene_html(sc, th, i, t, t + d))
     mouth = envelope(tl, total) if voiced else []
     narrator = f'<div class="narrator">{talk_svg()}</div>' if voiced else ""
@@ -386,11 +477,17 @@ FIT_JS = """
     const vis = s.style.opacity, vv = s.style.visibility;
     s.style.opacity = 1; s.style.visibility = 'visible';
     s.querySelectorAll('.in').forEach(e => { e.dataset.o = e.style.opacity; e.style.opacity = 1; });
-    const bottom = () => Math.max(...[...s.children].filter(k => !['blob','char','hph','hshade','hcredit'].some(c => k.classList.contains(c)))
+    const bottom = () => Math.max(...[...s.children].filter(k => !['blob','char','hph','hshade','hcredit','bgimg','bgshade'].some(c => k.classList.contains(c)))
                                        .map(k => k.getBoundingClientRect().bottom));
     let k = 0;
+    // 이야기 장면: 큰 숫자가 한 줄을 넘지 않게, 묶음 맨 위가 상단 가림 영역(420px)에 닿지 않게
+    s.querySelectorAll('.big').forEach(b => { let n = 0;
+      while (b.scrollWidth > 912 && n < 30) { b.style.fontSize = (parseFloat(getComputedStyle(b).fontSize) * 0.95) + 'px'; n++; } });
+    s.querySelectorAll('.bbody').forEach(b => { let n = 0;
+      while (b.getBoundingClientRect().top < 430 && n < 12) {
+        b.querySelectorAll('.big,.say,.bsub').forEach(e => { e.style.fontSize = (parseFloat(getComputedStyle(e).fontSize) * 0.94) + 'px'; }); n++; } });
     while (bottom() > LIMIT && k < 5) {
-      s.querySelectorAll('.ptitle,.rv,.rl,.ptext,.hlines,.hsub,.cline,.eyebrow').forEach(e => {
+      s.querySelectorAll('.ptitle,.rv,.rl,.ptext,.hlines,.hsub,.cline,.eyebrow,.cask').forEach(e => {
         e.style.fontSize = (parseFloat(getComputedStyle(e).fontSize) * 0.94) + 'px'; });
       s.querySelectorAll('.planbox').forEach(e => { e.style.height = (parseFloat(getComputedStyle(e).height) * 0.9) + 'px'; });
       s.querySelectorAll('.row').forEach(e => { const cs = getComputedStyle(e);
