@@ -1,0 +1,219 @@
+{
+ "id": "W-0001",
+ "no": 1,
+ "series": "세계기담",
+ "format": "story",
+ "mood": "mystery",
+ "title": "디아틀로프 고개",
+ "hook": [
+  "한겨울, 신발 두고",
+  "텐트를 떠난 9명"
+ ],
+ "accent_word": "9명",
+ "images": [
+  {
+   "id": "v01",
+   "prompt": "Night on a snowy mountain slope in the northern Ural mountains, 1959. A lone canvas tent in the lower third of the frame; its side wall slashed open from the inside, warm amber lantern light spilling out through the cut onto the snow. Nine pairs of boots left neatly in the snow beside the tent. Blowing snow, dark distant peaks.",
+   "nop": true
+  },
+  {
+   "id": "v02",
+   "prompt": "Grey overcast daylight on a bare windswept Ural mountain slope, February 1959. A canvas tent half buried under snow, its roof sagging. Far away at the top of the frame, a small line of five search-party figures on skis approaching, seen from far behind as tiny faceless silhouettes."
+  },
+  {
+   "id": "v03",
+   "prompt": "View from inside a dark canvas tent: the side wall has a long jagged slash cut from the inside, edges flaring outward, cold blue moonlight and snow visible through the cut. Rucksacks, folded blankets and a small cold lantern left behind on the tent floor.",
+   "nop": true
+  },
+  {
+   "id": "v04",
+   "prompt": "Close, low angle over a snowy slope at dawn: two trails of human footprints leading downhill toward a distant dark line of forest. One trail is heavy boot prints; the other is bare human feet, clearly showing a heel, arch and five toes in the snow. Long blue shadows.",
+   "nop": true
+  },
+  {
+   "id": "v05",
+   "prompt": "Bright winter daylight in the Ural taiga, 1959. A line of nine hikers on wooden skis with heavy rucksacks crossing a snowy clearing, seen from far behind as small faceless silhouettes, cheerful adventure mood, pine forest and white hills.",
+   "seed": 5
+  },
+  {
+   "id": "v06",
+   "prompt": "Night at the edge of a dark snowy pine forest, cold blue moonlight: a huge old cedar tree, and at its foot on the snow a small dark circle of black charred sticks and grey ash, completely burned out and cold, everything dark, the only warm light is a faint distant moon glow. Broken lower branches lying on the snow.",
+   "nop": true
+  },
+  {
+   "id": "v07",
+   "prompt": "Late spring in a deep mountain ravine: snow melting, a dark stream of meltwater running through the bottom, patches of old snow on the steep banks, a few bare birch trees, pale grey morning light. Empty and silent.",
+   "nop": true
+  },
+  {
+   "id": "v08",
+   "prompt": "A worn wool sweater and a torn padded jacket lying folded on old snow under a dark cedar branch, cold blue moonlight, a single faint amber light from the left. Quiet, sad, nothing else in the scene.",
+   "nop": true
+  },
+  {
+   "id": "v09",
+   "prompt": "Night on a steep snowy mountain slope: a heavy slab of snow cracking and breaking loose just above a small canvas tent dug into the slope, powder snow spilling down toward the tent. Dramatic but quiet, cold moonlight, wind.",
+   "nop": true
+  },
+  {
+   "id": "v10",
+   "prompt": "Boogi the owl archivist sits at an old wooden desk in a dark archive room at night, holding a small amber lantern over an open old notebook and a yellowed 1959 photograph of a snowy tent, shelves of record boxes behind fading into darkness. The owl looks thoughtfully at the viewer.",
+   "with_character": true
+  },
+  {
+   "id": "v11",
+   "prompt": "Night on a bare snowy mountain slope between a forest edge and a tiny distant tent high up the slope: three separate faint lines of footprints climbing uphill toward the tent and stopping short at different points, wind blowing loose snow over them, cold moonlight.",
+   "nop": true
+  }
+ ],
+ "scenes": [
+  {
+   "say": "한겨울, 신발을 두고 텐트를 떠난 아홉 명.",
+   "sub": "한겨울, 신발을 두고 텐트를 떠난 9명.",
+   "tts": "한겨울 신발을 두고 텐트를 떠난 아홉 명.",
+   "img": "v01",
+   "move": "in",
+   "focus": [
+    0.5,
+    0.62
+   ],
+   "emph": [
+    "9명"
+   ]
+  },
+  {
+   "say": "1959년 우랄산맥, 텐트는… 텅 비어 있었습니다.",
+   "tts": "천구백오십구 년 우랄산맥 [pause short] 텐트는 텅 비어 있었습니다.",
+   "img": "v02",
+   "move": "down",
+   "emph": [
+    "텅"
+   ]
+  },
+  {
+   "say": "벽은 안쪽에서 찢겨 있었고, 신발도 식량도 그대로였죠.",
+   "tts": "벽은 안쪽에서 찢겨 있었고 [pause short] 신발도 식량도 그대로였죠.",
+   "img": "v03",
+   "move": "in",
+   "emph": [
+    "안쪽에서"
+   ]
+  },
+  {
+   "say": "숲으로 향한 발자국, 몇몇은 맨발이었습니다.",
+   "tts": "숲으로 향한 발자국 [pause short] 몇몇은 맨발이었습니다.",
+   "img": "v04",
+   "move": "up",
+   "emph": [
+    "맨발"
+   ]
+  },
+  {
+   "say": "꺼진 모닥불 곁엔 두 명이, 숨진 채 있었습니다.",
+   "tts": "꺼진 모닥불 곁엔 두 명이 [pause short] 숨진 채 있었습니다.",
+   "img": "v06",
+   "move": "in",
+   "emph": [
+    "두 명"
+   ]
+  },
+  {
+   "say": "텐트로 돌아가는 비탈엔, 세 명이 더.",
+   "tts": "텐트로 돌아가는 비탈엔 [pause short] 세 명이 더.",
+   "img": "v11",
+   "move": "up",
+   "emph": [
+    "세 명"
+   ]
+  },
+  {
+   "say": "그런데 왜, 끝내 돌아가지 못했을까요?",
+   "tts": "그런데 왜 끝내 돌아가지 못했을까요?",
+   "img": "v11",
+   "zoom": 1.4,
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "move": "in",
+   "emph": [
+    "그런데"
+   ]
+  },
+  {
+   "say": "나머지 네 명은 5월, 눈이 녹은 골짜기에서 나왔습니다.",
+   "tts": "나머지 네 명은 오월 [pause short] 눈이 녹은 골짜기에서 나왔습니다.",
+   "img": "v07",
+   "move": "down",
+   "emph": [
+    "네 명"
+   ]
+  },
+  {
+   "say": "그중 몇몇은… 먼저 숨진 동료의 옷을 입고 있었습니다.",
+   "tts": "그중 몇몇은 [pause short] 먼저 숨진 동료의 옷을 입고 있었습니다.",
+   "img": "v08",
+   "move": "in",
+   "sfx": "hit",
+   "emph": [
+    "동료의",
+    "옷을"
+   ]
+  },
+  {
+   "say": "2021년, 과학자들의 답은… 눈이었습니다.",
+   "tts": "이천이십일 년 [pause short] 과학자들의 답은 [pause short] 눈이었습니다.",
+   "img": "v09",
+   "move": "in",
+   "emph": [
+    "눈이었습니다"
+   ]
+  },
+  {
+   "say": "텐트를 치려 파낸 비탈 위로, 눈덩어리가 무너진 겁니다.",
+   "tts": "텐트를 치려 파낸 비탈 위로 [pause short] 눈덩어리가 무너진 겁니다.",
+   "img": "v09",
+   "zoom": 1.35,
+   "focus": [
+    0.5,
+    0.6
+   ],
+   "move": "down"
+  },
+  {
+   "say": "입구가 막혀 벽을 찢고 나왔고, 더 무너질까 봐 숲으로 피했죠.",
+   "tts": "입구가 막혀 벽을 찢고 나왔고 [pause short] 더 무너질까 봐 숲으로 피했죠.",
+   "img": "v03",
+   "zoom": 1.2,
+   "move": "out"
+  },
+  {
+   "say": "동료의 옷까지 나눠 입었지만, 추위를 이기지 못했습니다.",
+   "tts": "동료의 옷까지 나눠 입었지만 [pause short] 추위를 이기지 못했습니다.",
+   "img": "v06",
+   "zoom": 1.25,
+   "focus": [
+    0.5,
+    0.7
+   ],
+   "move": "out"
+  },
+  {
+   "say": "그 밤, 신발을 신고 텐트 곁에 남았다면… 어땠을까요?",
+   "tts": "그 밤 [pause short] 신발을 신고 텐트 곁에 남았다면 [pause short] 어땠을까요?",
+   "img": "v10",
+   "move": "in",
+   "emph": [
+    "신발을"
+   ]
+  }
+ ],
+ "youtube": {
+  "title": "한겨울, 신발도 없이 텐트를 떠난 9명",
+  "summary": "1959년 우랄산맥. 숙련된 산행가 아홉 명이 영하의 밤, 텐트를 안에서 찢고 신발도 없이 숲으로 향했습니다. 62년 만에 나온 답은 무엇이었을까요.",
+  "pinned": "옷에서는 약한 방사능까지 검출됐습니다. 당신이라면 그 밤, 텐트 곁에 남았을까요?"
+ },
+ "sources": "출처: Gaume·Puzrin, Communications Earth & Environment(2021), EPFL",
+ "tags": "#세계기담 #디아틀로프",
+ "risk": "저"
+}

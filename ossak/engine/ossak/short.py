@@ -1,0 +1,553 @@
+#!/usr/bin/env python3
+"""오싹알람 쇼츠 엔진 — 세로 전체화면 그림 + 내레이션 + 단어 자막으로 1080×1920 영상을 만든다.
+같은 파일을 유튜브 쇼츠와 인스타 릴스에 올린다.
+
+  python3 ossak/short.py episodes/<편> --images          # 빠진 세로 그림만 그린다 (864×1536, 장당 약 156뉴런)
+  python3 ossak/short.py episodes/<편> --images --only v03 --force
+  python3 ossak/short.py episodes/<편> --date 2026-10-28  # 영상 + 발행 행(short_rows.json)
+  python3 ossak/short.py episodes/<편> --date 2026-10-28 --rows-only
+
+원고: episodes/<편>/short.json
+{
+  "id": "W-0001", "no": 1, "series": "세계기담", "format": "story" | "loop", "mood": "mystery" | "horror",
+  "title": "디아틀로프 고개",                      # 사건 이름(시트용)
+  "hook": ["한겨울, 신발 두고", "텐트를 떠난 9명"],  # 화면 위 고정 제목 2줄 (줄당 10자 안팎)
+  "accent_word": "9명",
+  "images": [{"id": "v01", "prompt": "영문 장면 묘사", "with_character": false, "nop": true}],
+  "scenes": [
+    {"say": "자막·내레이션 문장", "tts": "읽기용 표기(선택)", "sub": "자막이 달라야 할 때(선택)",
+     "img": "v01", "move": "in|out|up|down|left|right", "zoom": 1.0, "focus": [0.5, 0.5],
+     "sfx": "hit",            # 이 장면 직전 0.6초 무음 + 낮은 효과음 (반전 직전에 한 번)
+     "hold": 0.0,             # 말이 끝난 뒤 그림을 더 보여줄 초
+     "emph": ["9명"]}         # 자막에서 말머리 색으로 칠할 단어
+  ],
+  "youtube": {"title": "제목 15~25자", "summary": "설명란 두세 줄(답 없이)", "pinned": "고정 댓글 질문"},
+  "instagram": {"caption": "첫 줄 훅 … (선택, 없으면 자동)"},
+  "sources": "출처: …", "tags": "#세계기담 #디아틀로프", "risk": "저"
+}
+
+화면: 위 300px·아래 420px·오른쪽 140px에는 글자를 두지 않는다. 제목은 위(y≈310~), 자막은 가운데 아래(y≈1130),
+부기 로고는 오른쪽 위. 첫 프레임부터 제목·그림·첫 자막이 보인다(로고 인트로·페이드인 없음).
+소리: 내레이션(구글 Umbriel) + 낮은 바람 소리(공포형은 낮은 울림 추가) + sfx 장면 앞 무음과 효과음.
+"""
+import argparse, base64, datetime, json, math, os, pathlib, re, subprocess, sys, time, urllib.error, urllib.request, wave
+import numpy as np
+from PIL import Image, ImageDraw, ImageFilter
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from compose import font, C  # noqa: E402
+from cf import load_env, multipart, MODELS  # noqa: E402
+from render import STYLE  # noqa: E402
+from reel import speak, dur  # noqa: E402
+from breath import words as whisper_words, norm  # noqa: E402
+
+ENGINE = pathlib.Path(__file__).resolve().parent.parent
+REPO_OSSAK = ENGINE.parent
+BASE = "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/ossak/"
+W, H, FPS, SR = 1080, 1920, 30, 48000
+SAFE_R = 140                        # 오른쪽 버튼 자리
+TITLE_Y, SUB_Y, SUB_MAXW = 318, 1130, 840
+LEAD, GAP, HIT_GAP = 0.05, 0.22, 0.6
+SERIES = {"세계기담": ("#F2B544", "amber"), "새벽괴담": ("#3FB8A8", "teal"), "미제파일": ("#E8693A", "orange"),
+          "그날의 기록": ("#E8693A", "orange"), "그 후": ("#9AA3B8", "silver")}
+CHARACTER = ("Boogi, a small round owl archivist mascot: dark slate-navy feathers, two pointed ear tufts, large glowing "
+             "amber eyes behind thin round silver glasses, a small amber diamond-shaped beak, a lighter navy chevron-patterned "
+             "belly, short wings, carrying a small cream notebook and a little amber lantern. Cute, simple, flat webtoon character design.")
+NOP = " Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
+HORROR = " Deep shadows, a single cold light source, unsettling empty space, nothing explicit."
+VERT = (" Tall vertical 9:16 composition filling the whole frame edge to edge (no black bars, no borders): "
+        "the key subject sits in the middle of the frame, and the upper part of the picture shows open sky, ceiling or wall "
+        "continuing the scene, with no important detail at the very top.")
+
+
+# ───────── 세로 그림 ─────────
+def gen_image(spec, im, out):
+    acc, tok = load_env()
+    prompt = im["prompt"] + VERT
+    if im.get("nop"):
+        prompt += NOP
+    if spec.get("mood") == "horror":
+        prompt += HORROR
+    refs = {}
+    if im.get("with_character"):
+        prompt += " The owl must look exactly like the owl character in the reference image: " + CHARACTER
+        refs = {"input_image_0": ("boogi.png", (ENGINE / "refs" / "boogi_sheet.png").read_bytes(), "image/png")}
+    prompt += " " + STYLE.format(accent=SERIES.get(spec["series"], ("", "amber"))[1])
+    body, ctype = multipart({"prompt": prompt, "width": 864, "height": 1536, **({"seed": im["seed"]} if im.get("seed") else {})}, refs)
+    url = f"https://api.cloudflare.com/client/v4/accounts/{acc}/ai/run/{MODELS['klein']}"
+    for tries in range(4):
+        try:
+            t = time.time()
+            req = urllib.request.Request(url, data=body, method="POST",
+                                         headers={"Authorization": f"Bearer {tok}", "Content-Type": ctype})
+            data = json.loads(urllib.request.urlopen(req, timeout=170).read())
+            out.write_bytes(base64.b64decode(data["result"]["image"]))
+            print(im["id"], f"{time.time() - t:.0f}s")
+            return True
+        except urllib.error.HTTPError as e:
+            print(im["id"], "HTTP", e.code, e.read()[:200])
+            if e.code in (429, 500, 502, 503) and tries < 3:
+                time.sleep(10 * (tries + 1))
+                continue
+            return False
+    return False
+
+
+def images(ep, spec, only=None, force=False):
+    d = ep / "vpanels"
+    d.mkdir(exist_ok=True)
+    for im in spec["images"]:
+        if only and im["id"] not in only:
+            continue
+        out = d / f"{im['id']}.jpg"
+        if out.exists() and not force:
+            continue
+        gen_image(spec, im, out)
+    sheet(ep, spec)
+
+
+def sheet(ep, spec):
+    """세로 그림 축소 시트 (검수용)."""
+    ims = [ep / "vpanels" / f"{im['id']}.jpg" for im in spec["images"]]
+    ims = [p for p in ims if p.exists()]
+    if not ims:
+        return
+    tw, th, cols = 216, 384, 6
+    rows = (len(ims) + cols - 1) // cols
+    s = Image.new("RGB", (tw * cols, (th + 30) * rows), C["bg"])
+    d = ImageDraw.Draw(s)
+    for i, p in enumerate(ims):
+        x, y = (i % cols) * tw, (i // cols) * (th + 30)
+        s.paste(Image.open(p).convert("RGB").resize((tw, th)), (x, y + 30))
+        d.text((x + 6, y + 4), p.stem, font=font("sans", 20, 700), fill=C["ink"])
+    s.save(ep / "vpanels_sheet.jpg", quality=80)
+
+
+# ───────── 소리 ─────────
+def read_wav(p):
+    with wave.open(str(p), "rb") as w:
+        return np.frombuffer(w.readframes(w.getnframes()), dtype=np.int16).astype(np.float32) / 32768
+
+
+def brown(n, rng):
+    x = np.cumsum(rng.standard_normal(n).astype(np.float32))
+    k = int(SR * 0.5)                       # 느린 흐름 제거(고역 통과)
+    ma = np.convolve(x, np.ones(k, dtype=np.float32) / k, mode="same")
+    x = x - ma
+    k2 = 40                                 # 저역 통과
+    x = np.convolve(x, np.ones(k2, dtype=np.float32) / k2, mode="same")
+    return x / (np.sqrt(np.mean(x ** 2)) + 1e-9)
+
+
+def hit_sound():
+    t = np.arange(int(SR * 2.2)) / SR
+    f = 38 + 34 * np.exp(-t * 3)
+    boom = np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-t * 2.2)
+    rng = np.random.default_rng(7)
+    n = rng.standard_normal(len(t)).astype(np.float32)
+    n = np.convolve(n, np.ones(60) / 60, mode="same") * np.exp(-t * 9) * 3
+    return (0.55 * boom + 0.25 * n).astype(np.float32)
+
+
+def mix(total, placements, hits, silences, horror):
+    n = int(total * SR) + 1
+    out = np.zeros(n, np.float32)
+    for start, wav in placements:
+        a = int(start * SR)
+        out[a:a + len(wav)] += wav[:max(0, n - a)]
+    rng = np.random.default_rng(11)
+    amb = brown(n, rng) * (0.02 if horror else 0.012)
+    if horror:
+        t = np.arange(n) / SR
+        amb += (0.010 * np.sin(2 * np.pi * 55 * t) + 0.006 * np.sin(2 * np.pi * 82.4 * t)) * (0.6 + 0.4 * np.sin(2 * np.pi * 0.11 * t))
+    env = np.ones(n, np.float32)
+    fade = int(SR * 1.2)
+    env[:fade] = np.linspace(0.3, 1, fade)
+    env[-fade:] *= np.linspace(1, 0.4, fade)
+    for s, e in silences:                    # 반전 직전 무음: 바람 소리도 빠진다
+        a, b = int(s * SR), int(e * SR)
+        r = int(0.12 * SR)
+        env[a:a + r] *= np.linspace(1, 0, r)[:len(env[a:a + r])]
+        env[a + r:b] = 0
+    out += amb * env
+    hs = hit_sound()
+    for t0 in hits:
+        a = int(t0 * SR)
+        seg = hs[:max(0, n - a)]
+        out[a:a + len(seg)] += seg
+    peak = np.max(np.abs(out)) or 1
+    if peak > 0.97:
+        out *= 0.97 / peak
+    return out
+
+
+def write_wav(p, x):
+    with wave.open(str(p), "wb") as w:
+        w.setnchannels(1); w.setsampwidth(2); w.setframerate(SR)
+        w.writeframes((np.clip(x, -1, 1) * 32767).astype(np.int16).tobytes())
+
+
+# ───────── 자막 시각 ─────────
+def word_times(wav, text, cache):
+    """원고 자막 어절마다 (시작, 끝) 초. Whisper 단어 시각을 글자 비율로 맞춘다."""
+    tag = str(round(dur(wav), 3))
+    ws = None
+    if cache.exists():
+        c = json.loads(cache.read_text())
+        if c.get("tag") == tag:
+            ws = c["words"]
+    if ws is None:
+        try:
+            ws = [{"word": w["word"], "start": w["start"], "end": w["end"]} for w in whisper_words(wav)]
+            cache.write_text(json.dumps({"tag": tag, "words": ws}, ensure_ascii=False))
+        except Exception as e:
+            print("  받아쓰기 실패, 글자 비율로 자막 시각 계산:", e)
+            ws = []
+    toks = text.split()
+    lens = [max(1, len(norm(t))) for t in toks]
+    tot = sum(lens)
+    D = dur(wav)
+    if not ws:
+        out, acc = [], 0
+        for L in lens:
+            out.append((acc / tot * D, (acc + L) / tot * D)); acc += L
+        return toks, out
+    wl = [max(1, len(norm(w["word"]))) for w in ws]
+    wt = sum(wl)
+    fs, ts, acc = [0.0], [ws[0]["start"]], 0
+    for w, L in zip(ws, wl):
+        acc += L
+        fs.append(acc / wt); ts.append(w["end"])
+    out, acc = [], 0
+    for L in lens:
+        a, b = acc / tot, (acc + L) / tot
+        out.append((float(np.interp(a, fs, ts)), float(np.interp(b, fs, ts))))
+        acc += L
+    return toks, out
+
+
+def chunks(toks, times, max_words=3, max_chars=11):
+    """2~4어절 덩어리. 쉼표·마침표 뒤에서 끊는다."""
+    res, cur = [], []
+    for i, t in enumerate(toks):
+        cur.append(i)
+        chars = sum(len(norm(toks[j])) for j in cur)
+        nxt = len(norm(toks[i + 1])) if i + 1 < len(toks) else 0
+        if re.search(r"[,.?!…]$", t) or len(cur) >= max_words or chars + nxt > max_chars:
+            res.append(cur); cur = []
+    if cur:
+        if res and len(cur) == 1 and len(norm(toks[cur[0]])) <= 2:
+            res[-1] += cur
+        else:
+            res.append(cur)
+    return [(" ".join(toks[j] for j in c), times[c[0]][0]) for c in res]
+
+
+def clean(s):
+    s = re.sub(r"[,.](?=\s|$)", "", s)
+    return s.replace("…", "…").strip()
+
+
+# ───────── 그림 그리기 ─────────
+def hexrgb(h):
+    h = h.lstrip("#")
+    return tuple(int(h[i:i + 2], 16) for i in (0, 2, 4))
+
+
+def vignette():
+    y, x = np.mgrid[0:H, 0:W].astype(np.float32)
+    dx, dy = (x - W / 2) / (W / 2), (y - H / 2) / (H / 2)
+    r = np.sqrt(dx ** 2 * 0.9 + dy ** 2 * 0.55)
+    a = np.clip((r - 0.55) / 0.7, 0, 1) ** 1.6 * 150
+    top = np.clip(1 - y / 820, 0, 1) ** 1.4 * 170          # 제목 읽히게 위쪽 어둡게
+    sub = np.exp(-((y - SUB_Y - 40) / 230) ** 2) * 70       # 자막 주변
+    m = np.clip(np.maximum(a, top) + sub, 0, 215).astype(np.uint8)
+    return Image.fromarray(m, "L")
+
+
+def logo():
+    sh = Image.open(ENGINE / "refs" / "boogi_sheet.png").convert("RGB")
+    head = sh.crop((404, 318, 616, 530)).resize((64, 64), Image.LANCZOS)
+    m = Image.new("L", (64, 64), 0)
+    ImageDraw.Draw(m).ellipse((0, 0, 63, 63), fill=255)
+    f = font("serif", 30)
+    tw = int(ImageDraw.Draw(Image.new("L", (1, 1))).textlength("오싹알람", font=f))
+    lg = Image.new("RGBA", (64 + 14 + tw + 22, 64), (0, 0, 0, 0))
+    d = ImageDraw.Draw(lg)
+    d.rounded_rectangle((20, 6, lg.width - 1, 58), radius=26, fill=(8, 11, 22, 170))
+    lg.paste(head, (0, 0), m)
+    d.ellipse((0, 0, 63, 63), outline=(242, 181, 68, 230), width=2)
+    d.text((64 + 12, 32), "오싹알람", font=f, fill=(237, 230, 214, 235), anchor="lm")
+    return lg
+
+
+def title_layer(hook, accent_word, accent):
+    lay = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    d = ImageDraw.Draw(lay)
+    size = 80
+    f = font("serif", size)
+    while max(d.textlength(l, font=f) for l in hook) > W - 120 and size > 56:
+        size -= 4
+        f = font("serif", size)
+    y = TITLE_Y
+    for line in hook[:2]:
+        segs = re.split(f"({re.escape(accent_word)})", line) if accent_word else [line]
+        lw = d.textlength(line, font=f)
+        x = (W - lw) / 2
+        for seg in segs:
+            if not seg:
+                continue
+            col = accent if accent_word and seg == accent_word else (240, 234, 220)
+            d.text((x, y), seg, font=f, fill=col, stroke_width=6, stroke_fill=(5, 7, 14))
+            x += d.textlength(seg, font=f)
+        y += int(size * 1.28)
+    return lay
+
+
+def sub_image(text, emph, accent):
+    f = font("sans", 74, 800)
+    d = ImageDraw.Draw(Image.new("RGB", (1, 1)))
+    toks = text.split()
+    lines, cur = [], []
+    for t in toks:
+        if cur and d.textlength(" ".join(cur + [t]), font=f) > SUB_MAXW:
+            lines.append(cur); cur = []
+        cur.append(t)
+    lines.append(cur)
+    lh = 98
+    img = Image.new("RGBA", (SUB_MAXW + 60, lh * len(lines) + 30), (0, 0, 0, 0))
+    dd = ImageDraw.Draw(img)
+    for li, ln in enumerate(lines):
+        full = " ".join(ln)
+        x = (img.width - d.textlength(full, font=f)) / 2
+        y = 15 + li * lh
+        for k, t in enumerate(ln):
+            word = t + (" " if k < len(ln) - 1 else "")
+            hot = any(e and e in t for e in emph)
+            dd.text((x, y), t, font=f, fill=accent if hot else (250, 247, 240), stroke_width=7, stroke_fill=(0, 0, 0))
+            x += d.textlength(word, font=f)
+    return img
+
+
+def view(src, sc, p):
+    """장면 진행 p(0~1)에 따른 잘라낼 상자 (src 좌표)."""
+    sw, sh = src.size
+    z0 = sc.get("zoom", 1.0)
+    fx, fy = sc.get("focus", [0.5, 0.5])
+    mv = sc["move"]
+    e = p * p * (3 - 2 * p) * 0.35 + p * 0.65          # 살짝 부드러운 시작
+    z = z0 * (1 + 0.08 * e) if mv == "in" else z0 * (1.08 - 0.08 * e) if mv == "out" else z0 * 1.06
+    cw, ch = sw / z, sh / z
+    cx, cy = fx * sw, fy * sh
+    span = 0.05
+    if mv == "up":
+        cy += (0.5 - e) * span * 2 * sh
+    elif mv == "down":
+        cy -= (0.5 - e) * span * 2 * sh
+    elif mv == "left":
+        cx += (0.5 - e) * span * 2 * sw
+    elif mv == "right":
+        cx -= (0.5 - e) * span * 2 * sw
+    cx = min(max(cx, cw / 2), sw - cw / 2)
+    cy = min(max(cy, ch / 2), sh - ch / 2)
+    return (cx - cw / 2, cy - ch / 2, cx + cw / 2, cy + ch / 2)
+
+
+# ───────── 본체 ─────────
+def build(ep, spec, a):
+    series = spec["series"]
+    accent_hex = SERIES.get(series, ("#F2B544",))[0]
+    accent = hexrgb(accent_hex)
+    horror = spec.get("mood") == "horror"
+    loop = spec.get("format") == "loop"
+    if horror and "TTS_RATE" not in os.environ:
+        os.environ["TTS_RATE"] = "0.95"
+    scenes = spec["scenes"]
+    moves = ["in", "up", "out", "down", "in", "left", "out", "right"]
+    for i, sc in enumerate(scenes):
+        sc.setdefault("move", moves[i % len(moves)])
+
+    # 1) 음성
+    ad = ep / "short_audio"
+    ad.mkdir(exist_ok=True)
+    for i, sc in enumerate(scenes, 1):
+        speak(sc.get("tts", sc["say"]), ad / f"{i:02d}.wav", a.voice)
+    durs = [dur(ad / f"{i:02d}.wav") for i in range(1, len(scenes) + 1)]
+
+    # 2) 시간표
+    t = LEAD
+    starts, nar, hits, sil = [], [], [], []
+    for i, sc in enumerate(scenes):
+        if sc.get("sfx") == "hit" and i > 0:
+            sil.append((t - GAP + 0.05, t - GAP + HIT_GAP))
+            t += HIT_GAP - GAP
+            hits.append(t)
+        starts.append(t)
+        n0 = t + (0.18 if sc.get("sfx") == "hit" else 0)
+        nar.append(n0)
+        t = n0 + durs[i] + sc.get("hold", 0)
+        t += (0.25 if loop else 1.3) if i == len(scenes) - 1 else GAP
+    total = t
+    if total > 89:
+        raise SystemExit(f"{total:.1f}초 — 90초를 넘어요. 문장을 줄이세요")
+    if not loop and total > 62:
+        print(f"주의: {total:.1f}초 — 서사형 목표 45~60초")
+
+    work = ep / "short_work"
+    work.mkdir(exist_ok=True)
+    audio = mix(total, [(nar[i], read_wav(ad / f"{i + 1:02d}.wav")) for i in range(len(scenes))], hits, sil, horror)
+    write_wav(work / "mix.wav", audio)
+
+    # 3) 자막 시간표
+    caps = []          # (시작, 끝, 글, emph)
+    for i, sc in enumerate(scenes):
+        text = sc.get("sub", sc["say"])
+        toks, tms = word_times(ad / f"{i + 1:02d}.wav", text, ad / f"{i + 1:02d}.words.json")
+        for k, (ct, c0) in enumerate(chunks(toks, tms)):
+            caps.append([nar[i] + c0, None, clean(ct), sc.get("emph", []) + ([spec["accent_word"]] if spec.get("accent_word") else [])])
+        for j in range(len(caps) - 1):
+            if caps[j][1] is None:
+                caps[j][1] = caps[j + 1][0]
+        caps[-1][1] = nar[i] + durs[i] + 0.15
+    caps[0][0] = 0.0                     # 첫 프레임부터 첫 자막
+
+    # 4) 프레임
+    out_dir = REPO_OSSAK / ep.name
+    out_dir.mkdir(parents=True, exist_ok=True)
+    video = out_dir / "short.mp4"
+    enc = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}",
+                            "-r", str(FPS), "-i", "-", "-i", str(work / "mix.wav"), "-c:v", "libx264", "-preset", "veryfast",
+                            "-crf", "19", "-pix_fmt", "yuv420p", "-af", "loudnorm=I=-14:TP=-1.5:LRA=11", "-c:a", "aac", "-b:a", "192k", "-ac", "2", "-ar", "48000",
+                            "-movflags", "+faststart", "-shortest", str(video)], stdin=subprocess.PIPE)
+    vig = vignette()
+    black = Image.new("RGB", (W, H), (2, 3, 8))
+    tl = title_layer(spec["hook"], spec.get("accent_word"), accent)
+    lg = logo()
+    srcs = {}
+    for sc in scenes:
+        if sc["img"] not in srcs:
+            p = ep / "vpanels" / f"{sc['img']}.jpg"
+            if not p.exists():
+                raise SystemExit(f"세로 그림 없음: {p.name} — --images 먼저")
+            im = Image.open(p).convert("RGB").resize((1350, 2400), Image.LANCZOS)
+            if horror:
+                im = Image.blend(im, Image.new("RGB", im.size, (4, 8, 14)), 0.12)
+            srcs[sc["img"]] = im
+    nframes = int(round(total * FPS))
+    bounds = [int(round(s * FPS)) for s in starts[1:]] + [nframes]
+    bounds_start = [0] + bounds[:-1]
+    cap_cache, stills, prev, ci = {}, [], None, 0
+    for fi in range(nframes):
+        tsec = fi / FPS
+        si = next(k for k in range(len(scenes)) if fi < bounds[k])
+        sc = scenes[si]
+        b0, b1 = bounds_start[si], bounds[si]
+        p = (fi - b0) / max(1, b1 - b0)
+        fr = srcs[sc["img"]].resize((W, H), Image.BILINEAR, box=view(srcs[sc["img"]], sc, p))
+        if si > 0 and fi - b0 < 5 and sc.get("sfx") != "hit" and prev is not None:
+            fr = Image.blend(prev, fr, (fi - b0 + 1) / 6)
+        if fi == b1 - 1:
+            prev = fr
+        # 반전 직전 무음 구간: 화면도 살짝 어두워진다
+        dim = 0
+        for s0, e0 in sil:
+            if s0 <= tsec < e0 + 0.05:
+                dim = min(1, (tsec - s0) / 0.25) * 0.55
+        fr = Image.composite(black, fr, vig)
+        if dim:
+            fr = Image.blend(fr, black, dim)
+        fr = fr.convert("RGBA")
+        fr.alpha_composite(tl)
+        fr.alpha_composite(lg, (W - SAFE_R // 2 - lg.width - 10, 206))
+        if fi == 0:
+            fr.convert("RGB").save(out_dir / "short_cover.jpg", quality=92)   # 썸네일: 자막 없이
+        while ci + 1 < len(caps) and tsec >= caps[ci + 1][0]:
+            ci += 1
+        c0, c1, ct, emph = caps[ci]
+        if c0 <= tsec < c1 + 0.05 and ct:
+            key = (ct, tuple(emph))
+            if key not in cap_cache:
+                cap_cache[key] = sub_image(ct, emph, accent)
+            ci_img = cap_cache[key]
+            k = (tsec - c0) * FPS
+            sc_ = 0.88 + 0.12 * min(1, k / 3) if c0 > 0 else 1.0
+            if sc_ < 1:
+                ci_img = ci_img.resize((int(ci_img.width * sc_), int(ci_img.height * sc_)), Image.BILINEAR)
+            cx = (W - SAFE_R) / 2 + 20
+            fr.alpha_composite(ci_img, (int(cx - ci_img.width / 2), int(SUB_Y - ci_img.height / 2 + 40)))
+        fr = fr.convert("RGB")
+        if fi == min(b1 - 1, b0 + int(FPS * 0.9)):
+            stills.append(fr.copy())
+        enc.stdin.write(fr.tobytes())
+    enc.stdin.close()
+    enc.wait()
+    if enc.returncode:
+        raise SystemExit("ffmpeg 인코딩 실패")
+    tw, th, cols = 270, 480, 6
+    rows_n = (len(stills) + cols - 1) // cols
+    sh = Image.new("RGB", (tw * cols, th * rows_n), C["bg"])
+    for i, s in enumerate(stills):
+        sh.paste(s.resize((tw, th)), ((i % cols) * tw, (i // cols) * th))
+    sh.save(ep / "short_preview.jpg", quality=82)
+    chars = sum(len(sc["say"]) for sc in scenes)
+    print(f"{ep.name}: {total:.1f}초, 장면 {len(scenes)}개, 대본 {chars}자 → {video}")
+    return total
+
+
+def rows(ep, spec, a, total=None):
+    yt = spec.get("youtube", {})
+    hook = " ".join(spec["hook"])
+    loop = spec.get("format") == "loop"
+    no = spec.get("no")
+    title = yt.get("title", hook)
+    if no:
+        title = f"{title} 【오싹기록 #{no}】"
+    tags = spec.get("tags", f"#{spec['series']}")
+    desc = "\n\n".join(x for x in [
+        yt.get("summary", ""),
+        "실제 기록을 바탕으로 한 이야기입니다. 그림과 내레이션은 AI로 재구성했습니다." if not spec.get("legend")
+        else "전해지는 이야기를 기록에 따라 옮겼습니다. 그림과 내레이션은 AI로 재구성했습니다.",
+        spec.get("sources", ""), "매일 저녁 6시·밤 10시 · 인스타그램 @ossak_alarm", tags + " #shorts"] if x)
+    video = f"{BASE}{ep.name}/short.mp4"
+    cover = f"{BASE}{ep.name}/short_cover.jpg"
+    out = {}
+    if a.date:
+        ytime = a.yt_time or ("22:00" if loop else "18:00")
+        out["youtube"] = ["'" + a.date, "'" + ytime, spec["id"], "루프형" if loop else "서사형", title, desc,
+                          tags.replace("#", "").replace(" ", ","), yt.get("pinned", ""), video, cover, "대기", "",
+                          f"{total:.0f}초" if total else ""]
+        if not loop and not a.no_ig:
+            ig = spec.get("instagram", {}).get("caption") or "\n\n".join(x for x in [
+                hook, yt.get("pinned", ""), spec.get("sources", ""), tags] if x)
+            out["instagram"] = ["'" + (a.ig_date or a.date), "'" + a.ig_time, "인스타 릴스", spec["id"], spec["series"],
+                                spec.get("title", hook), hook, spec.get("risk", "저"), "예약", ig, "", f"{video}\n{cover}"]
+    (ep / "short_rows.json").write_text(json.dumps(out, ensure_ascii=False, indent=1))
+    return out
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("episode")
+    ap.add_argument("--images", action="store_true", help="빠진 세로 그림 그리기")
+    ap.add_argument("--only", nargs="*")
+    ap.add_argument("--force", action="store_true")
+    ap.add_argument("--date", help="유튜브 업로드일 (행 생성)")
+    ap.add_argument("--yt-time")
+    ap.add_argument("--ig-date", help="인스타 릴스 날짜 (기본 = --date)")
+    ap.add_argument("--ig-time", default="21:30")
+    ap.add_argument("--no-ig", action="store_true")
+    ap.add_argument("--voice", default="auto", choices=["auto", "google", "melo"])
+    ap.add_argument("--rows-only", action="store_true")
+    a = ap.parse_args()
+    ep = pathlib.Path(a.episode).resolve()
+    spec = json.loads((ep / "short.json").read_text())
+    if a.images:
+        return images(ep, spec, a.only, a.force)
+    if a.rows_only:
+        return rows(ep, spec, a)
+    total = build(ep, spec, a)
+    rows(ep, spec, a, total)
+
+
+if __name__ == "__main__":
+    main()

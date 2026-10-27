@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """릴스 내레이션 '호흡 지도' — 실제 음성에서 어디서 쉬었는지 문장 위에 표시하고, 의도와 맞는지 잰다.
 
-  python3 ossak/breath.py episodes/<편>
+  python3 ossak/breath.py episodes/<편> [--short]
 
 각 beat 음성(reel_audio/NN.wav)에서 0.12초 이상 조용한 구간을 찾고, Cloudflare Whisper 단어 시각으로
 가장 가까운 단어 경계에 표시한다:  /  = 짧은 쉼(0.12~0.25초),  //  = 긴 쉼(0.25초 이상).
@@ -103,11 +103,14 @@ def analyze(wav, tts):
 
 def main():
     ep = pathlib.Path(sys.argv[1])
-    src = ep / "story.json" if (ep / "story.json").exists() else ep / "episode.json"
-    beats = json.loads(src.read_text())["reel"]["beats"]
+    if "--short" in sys.argv:            # 쇼츠: short.json 장면 + short_audio/
+        beats, adir = json.loads((ep / "short.json").read_text())["scenes"], "short_audio"
+    else:
+        src = ep / "story.json" if (ep / "story.json").exists() else ep / "episode.json"
+        beats, adir = json.loads(src.read_text())["reel"]["beats"], "reel_audio"
     bad = 0
     for i, b in enumerate(beats, 1):
-        wav = ep / "reel_audio" / f"{i:02d}.wav"
+        wav = ep / adir / f"{i:02d}.wav"
         tts = b.get("tts", b["say"])
         line, wrong, missing = analyze(wav, tts)
         flag = "" if not wrong and not missing else f"   ← 엉뚱한 쉼 {wrong} / 빠진 쉼 {missing}"

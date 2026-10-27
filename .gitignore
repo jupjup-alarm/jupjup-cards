@@ -14,3 +14,9 @@ ossak/engine/episodes/*/reel_work/
 ossak/engine/episodes/*/reel_preview.jpg
 ossak/engine/episodes/*/reel_row.json
 ossak/engine/google_tts.env
+ossak/engine/episodes/*/short_audio/
+ossak/engine/episodes/*/short_work/
+ossak/engine/episodes/*/short_preview.jpg
+ossak/engine/episodes/*/short_rows.json
+ossak/engine/episodes/*/vpanels/
+ossak/engine/episodes/*/vpanels_sheet.jpg
