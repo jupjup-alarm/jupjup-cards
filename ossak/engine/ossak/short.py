@@ -450,7 +450,7 @@ def build(ep, spec, a):
     video = out_dir / "short.mp4"
     enc = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}",
                             "-r", str(FPS), "-i", "-", "-i", str(work / "mix.wav"), "-c:v", "libx264", "-preset", "veryfast",
-                            "-crf", "19", "-pix_fmt", "yuv420p", "-af", "loudnorm=I=-14:TP=-1.5:LRA=11", "-c:a", "aac", "-b:a", "192k", "-ac", "2", "-ar", "48000",
+                            "-crf", "21", "-maxrate", "3500k", "-bufsize", "7M", "-pix_fmt", "yuv420p", "-af", "loudnorm=I=-14:TP=-1.5:LRA=11", "-c:a", "aac", "-b:a", "192k", "-ac", "2", "-ar", "48000",
                             "-movflags", "+faststart", "-shortest", str(video)], stdin=subprocess.PIPE)
     vig = vignette()
     black = Image.new("RGB", (W, H), (2, 3, 8))
@@ -476,9 +476,9 @@ def build(ep, spec, a):
     if horror:                                # 필름 입자 (6장 돌려 씀)
         rng = np.random.default_rng(9)
         for _ in range(6):
-            g = rng.integers(0, 255, (H // 2, W // 2), dtype=np.uint8)
-            gi = Image.fromarray(g, "L").resize((W, H), Image.NEAREST)
-            a = Image.new("L", (W, H), 16)
+            g = rng.integers(0, 255, (H // 3, W // 3), dtype=np.uint8)
+            gi = Image.fromarray(g, "L").resize((W, H), Image.BILINEAR)
+            a = Image.new("L", (W, H), 10)
             grains.append(Image.merge("RGBA", (gi, gi, gi, a)))
         flick = np.random.default_rng(13).normal(0, 1, int(total * FPS) + 10)
         flick = np.convolve(flick, np.ones(5) / 5, mode="same")
@@ -510,7 +510,7 @@ def build(ep, spec, a):
             fr = Image.blend(fr, black, fl)
         fr = fr.convert("RGBA")
         if grains:
-            fr.alpha_composite(grains[fi % len(grains)])
+            fr.alpha_composite(grains[(fi // 3) % len(grains)])   # 3프레임마다 바뀌는 입자 (용량 절약)
         fr.alpha_composite(tl)
         fr.alpha_composite(lg, (W - SAFE_R // 2 - lg.width - 10, 206))
         if fi == 0:
