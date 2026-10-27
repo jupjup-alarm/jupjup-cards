@@ -32,6 +32,7 @@ import html
 import json
 import math
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -79,17 +80,40 @@ def talk_svg(detail="#0F1E3D"):
 </svg>'''
 
 
-def say_html(text, t0, dur, th):
-    """내레이션에 맞춰 단어가 하나씩 켜지는 자막. 숫자가 든 단어는 강조색."""
+BREATH_END = re.compile(r"[,，.?!…]+[\"'”’)]*$")
+
+
+def word_times(words, t0, dur, spans=None):
+    """단어가 켜질 시각. spans = 실제 음성에서 말소리가 나는 구간들(쉼으로 나뉨, t0 기준 상대 초).
+    대본의 숨 표시(쉼표·문장 끝) 개수와 실제 쉼 개수가 맞으면 묶음마다 그 말소리 구간에 맞춰 켠다."""
+    groups, cur = [], []
+    for w in words:
+        cur.append(w)
+        if BREATH_END.search(w):
+            groups.append(cur); cur = []
+    if cur:
+        groups.append(cur)
+    if not spans or len(spans) != len(groups):
+        spans, groups = [(0.0, dur)], [words]
+    out = []
+    for (a, b), g in zip(spans, groups):
+        weights = [len(w) + 1 for w in g]
+        tot, acc = sum(weights), 0.0
+        for k in weights:
+            out.append(t0 + a + (b - a) * acc / tot)
+            acc += k
+    return out
+
+
+def say_html(text, t0, dur, th, spans=None):
+    """내레이션에 맞춰 단어가 하나씩 켜지는 자막. 숫자가 든 단어는 강조색.
+    쉼표·문장 끝 = 숨 쉬는 곳 → 실제 음성의 쉼 위치에 맞춰 다음 묶음이 켜진다."""
     words = str(text or "").split()
     if not words:
         return ""
-    weights = [len(w) + 1 for w in words]
-    tot = sum(weights)
-    acc, out = 0.0, []
-    for w, k in zip(words, weights):
-        at = t0 + dur * acc / tot
-        acc += k
+    times = word_times(words, t0, dur, spans)
+    out = []
+    for w, at in zip(words, times):
         num = any(c.isdigit() for c in w)
         cls = "w wn" if num else "w"
         style = f' style="--hl:{th["hl"]}"' if num else ""
@@ -131,7 +155,7 @@ def beat_html(sc, th, start, end):
     return f'''
 <section class="scene beat{' onbg' if has_bg else ''}" data-dark="1" data-s="{start:.3f}" data-e="{end:.3f}" style="background:{th['bg']};color:{ink}">
   {back}
-  <div class="bbody">{eyebrow}{big}{bsub}{say_html(sc.get("say"), vs, vd, th)}</div>
+  <div class="bbody">{eyebrow}{big}{bsub}{say_html(sc.get("say"), vs, vd, th, sc.get("_vspans"))}</div>
 </section>'''
 
 
@@ -372,6 +396,38 @@ def lead(i):
     return FIRST_LEAD if i == 0 else LEAD
 
 
+def speech_spans(path, min_pause=0.15):
+    """음성 파일에서 말소리 구간들 [(시작, 끝)…] (앞뒤 무음 제외, 문장 안 쉼으로 나뉨)."""
+    total = audio_len(path)
+    log = subprocess.run(["ffmpeg", "-v", "info", "-i", str(path), "-af", f"silencedetect=n=-38dB:d={min_pause}",
+                          "-f", "null", "-"], capture_output=True, text=True).stderr
+    sil, s0 = [], None
+    for line in log.splitlines():
+        m = re.search(r"silence_start: ([\d.]+)", line)
+        if m:
+            s0 = float(m.group(1))
+        m = re.search(r"silence_end: ([\d.]+)", line)
+        if m and s0 is not None:
+            sil.append((s0, float(m.group(1)))); s0 = None
+    if s0 is not None:
+        sil.append((s0, total))
+    spans, pos = [], 0.0
+    for a, b in sil:
+        if a - pos > 0.05:
+            spans.append((pos, a))
+        pos = b
+    if total - pos > 0.05:
+        spans.append((pos, total))
+    return spans
+
+
+def breath_marks(text):
+    """대본에서 숨 쉬는 곳(쉼표·문장 끝) 수 = 기대하는 말소리 구간 수 - 1."""
+    words = str(text or "").split()
+    n = sum(1 for w in words[:-1] if BREATH_END.search(w))
+    return n + 1 if words else 0
+
+
 def audio_len(path):
     r = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(path)],
                        capture_output=True, text=True, check=True)
@@ -450,6 +506,20 @@ def build(spec):
             sc["bg"] = None
         if f:                                          # 자막 단어가 켜지는 시간 = 이 장면 음성 구간
             sc["_vs"], sc["_vd"] = t + lead(i), audio_len(f)
+            if sc.get("say"):                          # 호흡 검사: 대본의 숨 표시 vs 실제 쉼
+                spans, want = speech_spans(f), breath_marks(sc["say"])
+                extra = []
+                while len(spans) > want > 0:           # 대본에 없는 쉼은 가장 짧은 것부터 합침
+                    k = min(range(len(spans) - 1), key=lambda j: spans[j + 1][0] - spans[j][1])
+                    extra.append(spans[k + 1][0] - spans[k][1])
+                    spans[k:k + 2] = [(spans[k][0], spans[k + 1][1])]
+                if len(spans) == want:
+                    sc["_vspans"] = spans
+                if len(spans) < want:
+                    WARN.append(f"호흡: 장면 {i + 1} 쉼표에서 안 쉼 (대본 숨 {want - 1}곳 / 실제 {len(spans) - 1}곳) "
+                                f"→ 자막은 글자 수로 맞춤")
+                elif extra and max(extra) > 0.25:
+                    WARN.append(f"호흡: 장면 {i + 1} 대본에 없는 곳에서 {max(extra):.2f}초 쉼 (③ 대본 쉼표 위치 확인)")
         scenes.append(scene_html(sc, th, i, t, t + d))
     mouth = envelope(tl, total) if voiced else []
     narrator = f'<div class="narrator">{talk_svg()}</div>' if voiced else ""
