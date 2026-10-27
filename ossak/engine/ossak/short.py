@@ -2,7 +2,7 @@
 """오싹알람 쇼츠 엔진 — 세로 전체화면 그림 + 내레이션 + 단어 자막으로 1080×1920 영상을 만든다.
 같은 파일을 유튜브 쇼츠와 인스타 릴스에 올린다.
 
-  python3 ossak/short.py episodes/<편> --images          # 빠진 세로 그림만 그린다 (기본 576×1024, SHORT_IMG=864x1536로 변경)
+  python3 ossak/short.py episodes/<편> --images          # 빠진 세로 그림만 그린다 (기본 864×1536 약 156뉴런, SHORT_IMG=576x1024로 줄일 수 있음)
   python3 ossak/short.py episodes/<편> --images --only v03 --force
   python3 ossak/short.py episodes/<편> --date 2026-10-28  # 영상 + 발행 행(short_rows.json)
   python3 ossak/short.py episodes/<편> --date 2026-10-28 --rows-only
@@ -77,7 +77,7 @@ def gen_image(spec, im, out):
         prompt += " The owl must look exactly like the owl character in the reference image: " + CHARACTER
         refs = {"input_image_0": ("boogi.png", (ENGINE / "refs" / "boogi_sheet.png").read_bytes(), "image/png")}
     prompt += " " + STYLE.format(accent=SERIES.get(spec["series"], ("", "amber"))[1])
-    iw, ih = (int(x) for x in os.environ.get("SHORT_IMG", "576x1024").split("x"))   # 무료 한도 때문에 작게 그려 키운다
+    iw, ih = (int(x) for x in os.environ.get("SHORT_IMG", "864x1536").split("x"))   # 장당 약 156뉴런 (512² 칸 6개 × 26.05)
     body, ctype = multipart({"prompt": prompt, "width": iw, "height": ih, **({"seed": im["seed"]} if im.get("seed") else {})}, refs)
     url = f"https://api.cloudflare.com/client/v4/accounts/{acc}/ai/run/{MODELS['klein']}"
     for tries in range(4):
