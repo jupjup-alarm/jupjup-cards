@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "macros.html" import card, crumbs with context %}
+{% from "macros.html" import card, crumbs, cp_ad with context %}
 {% set nav = 'schedule' if page_url.startswith('/schedule') else ('region' if page_url.startswith('/region') else 'type') %}
 {% block main %}
 <main class="wrap" id="main">
@@ -16,6 +16,7 @@
       {% if lst %}<div class="cards">{% for n in lst %}{{ card(n) }}{% endfor %}</div>
       {% else %}<p class="empty">{{ empty or '공고가 없어요.' }}</p>{% endif %}
     </section>
+    {% if loop.first %}{{ cp_ad('home', 'ad-home') }}{% endif %}
     {% endfor %}
   </div>
 </main>

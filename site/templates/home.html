@@ -10,7 +10,6 @@
         <a href="/schedule/this-week/"><b>이번 주 일정</b><span>접수 시작일 순서</span></a>
         {% for k in kinds_used %}<a href="/type/{{ k }}/"><b>{{ KINDS[k][0] }}</b><span>유형별 모아보기</span></a>{% endfor %}
         {% for s in regions_used %}<a href="/region/{{ region_slug[s] }}/"><b>{{ s }}</b><span>공고 {{ sido_map[s]|length }}곳</span></a>{% endfor %}
-        {{ cp_ad('home', 'ad-quick') }}
       </div>
     </div>
     {% for label, lst in groups %}
