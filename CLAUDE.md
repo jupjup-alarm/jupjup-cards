@@ -11,7 +11,7 @@
 - `templates/char_*.svg` — 종이 캐릭터 (surprise=깜짝, happy=신남, wink=윙크, closing=마무리)
 - `fonts/` — Black Han Sans, Noto Sans KR (OFL)
 - `maps/` — 시트 스크립트가 올리는 네이버 지도 이미지
-- `photos/` — 시트 스크립트가 올리는 단지 사진 ('청약조사' W열 → AA열), 평면도 `photos/plan-…` (AB열 → AC열)
+- `photos/` — 시트 스크립트가 올리는 단지 사진 ('청약조사' W열 → AA열), 평면도 `photos/plan-…` (AB열 → AC열), 배치도 `photos/layout-…` (AD열 → AE열), 동호배치도 `photos/dongho-…` (AF열 → AG열) — 배치도·동호배치도는 사이트(jupjupalarm.com) 공고 페이지용, AH열은 공식 홈페이지 주소
 - `mapgen.py`, `data/` — 대체용 경계 지도 (통계청 SGIS 2018 행정구역 경계, 공공누리 제1유형)
 
 ## 원고(JSON) 형식
