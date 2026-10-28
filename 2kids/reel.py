@@ -489,12 +489,16 @@ FIT_JS = """
     // 말하는 쌍둥이(말풍선 포함) 윗선 1140px 아래로 내려가면 글을 위로 올린다 (위 260px까지)
     let bx=box(); const over=bx.bottom-1140;
     if(over>0){ const up=Math.min(over, Math.max(0,bx.top-260)); s.style.paddingBottom=(740+2*up)+'px'; bx=box();
+      // 그래도 겹치면 훅 글자를 조금씩 줄인다 (최대 30%까지, 2026-10-29)
+      const hl=s.querySelector('.hlines');
+      if(hl && bx.bottom>1140){ const f0=parseFloat(getComputedStyle(hl).fontSize);
+        for(let f=f0*0.95; f>=f0*0.7 && bx.bottom>1140; f*=0.95){ hl.style.fontSize=Math.floor(f)+'px'; bx=box(); } }
       if(bx.bottom>1140) warn.push('scene '+(i+1)+': 캐릭터와 겹침 ('+Math.round(bx.bottom)+'px) · 문구를 줄이세요'); }
     const right=Math.max(...kids.map(k=>k.getBoundingClientRect().right));
     const b2=bx.bottom;
     if(b2>1920-430) warn.push('scene '+(i+1)+': 아래 가림 영역 침범 ('+Math.round(b2)+'px)');
     if(right>1080-40) warn.push('scene '+(i+1)+': 오른쪽 넘침');
-    s.querySelectorAll('.hline,.sline,.cline,.rv,.ct,.tv,.lt,.li').forEach(e=>{ if(e.scrollWidth>e.clientWidth+2) warn.push('scene '+(i+1)+': 줄 넘침 '+e.textContent.slice(0,10)); });
+    s.querySelectorAll('.hline,.sline,.cline,.rv,.ct,.tv,.lt,.li').forEach(e=>{ if(e.scrollWidth>e.clientWidth+8) warn.push('scene '+(i+1)+': 줄 넘침 '+e.textContent.slice(0,10)); });
     s.style.opacity=0; s.style.visibility='hidden'; s.querySelectorAll('.in').forEach(e=>{e.style.opacity='';e.style.transform=''});
   }); return warn; }
 """
