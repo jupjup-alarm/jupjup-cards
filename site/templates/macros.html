@@ -27,6 +27,5 @@
 
 {% macro cp_ad(slot, cls='') %}{% set a = COUPANG.get(slot) %}{% if a %}
 <div class="ad {{ cls }}" data-ad="{{ slot }}">
-  <p class="ad-note"><b>광고</b> {{ COUPANG_NOTE }}</p>
   <div class="ad-box" style="height:{{ a.height }}px" data-cp="{{ a.opts|tojson|forceescape }}" data-mq="{{ a.mq }}"></div>
 </div>{% endif %}{% endmacro %}
