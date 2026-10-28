@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% from "macros.html" import card, ig_icon with context %}
+{% block main %}
+<main class="wrap" id="main">
+  <div class="lwrap">
+    <div class="home-hero">
+      <h1>오늘 볼 청약 공고</h1>
+      <p>무순위(줍줍)·민간분양·공공분양·신혼희망타운 공고를 청약홈 공식 데이터로 정리해요. 접수일, 분양가, 자격, 그리고 넣을 만한지 줍줍알람의 한마디까지 한 페이지에 담았어요.</p>
+      <div class="quick">
+        <a href="/schedule/this-week/"><b>이번 주 일정</b><span>접수 시작일 순서</span></a>
+        {% for k in kinds_used %}<a href="/type/{{ k }}/"><b>{{ KINDS[k][0] }}</b><span>유형별 모아보기</span></a>{% endfor %}
+        {% for s in regions_used %}<a href="/region/{{ region_slug[s] }}/"><b>{{ s }}</b><span>공고 {{ sido_map[s]|length }}곳</span></a>{% endfor %}
+      </div>
+    </div>
+    {% for label, lst in groups %}
+    <section class="lsec">
+      <h2>{{ label }} <small>{{ lst|length }}곳</small></h2>
+      <div class="cards">{% for n in lst %}{{ card(n) }}{% endfor %}</div>
+    </section>
+    {% endfor %}
+    <div class="follow">
+      <p><b>새 공고가 나오면 인스타그램으로 먼저 알려드려요.</b><br>카드뉴스·릴스로 1분 만에 핵심만 정리해요.</p>
+      <a class="btn" href="{{ IG }}" target="_blank" rel="noopener">{{ ig_icon() }}@jupjup_alarm 팔로우</a>
+    </div>
+  </div>
+</main>
+{% endblock %}
+{% block after %}
+<script type="application/ld+json">
+{{ {"@context": "https://schema.org", "@graph": [
+  {"@type": "WebSite", "name": "줍줍알람", "url": BASE ~ "/", "inLanguage": "ko"},
+  {"@type": "Organization", "name": "줍줍알람", "url": BASE ~ "/", "logo": BASE ~ "/icon-512.png", "sameAs": [IG, THREADS]}]}|jsonld }}
+</script>
+{% endblock %}

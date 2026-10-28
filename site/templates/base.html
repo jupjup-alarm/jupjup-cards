@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{{ title }}</title>
+{% if desc %}<meta name="description" content="{{ desc }}">
+{% endif %}
+<link rel="canonical" href="{{ BASE }}{{ page_url }}">
+{% if noindex %}<meta name="robots" content="noindex">
+{% else %}<meta name="robots" content="max-image-preview:large">
+{% endif %}
+<meta property="og:type" content="{{ og_type|default('website') }}">
+<meta property="og:site_name" content="줍줍알람">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="{{ title|replace(' · 줍줍알람', '') }}">
+{% if desc %}<meta property="og:description" content="{{ desc }}">
+{% endif %}
+<meta property="og:url" content="{{ BASE }}{{ page_url }}">
+<meta property="og:image" content="{{ BASE }}{{ og }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0F1E3D">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="alternate" type="application/rss+xml" title="줍줍알람" href="/rss.xml">
+<link rel="stylesheet" href="{{ css }}">
+{% block head %}{% endblock %}
+</head>
+<body>
+<a class="skip" href="#main">본문 바로가기</a>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="/" aria-label="줍줍알람 홈">{{ logo }}줍줍알람</a>
+    <nav class="nav" aria-label="주 메뉴">
+      <a href="/schedule/this-week/"{% if nav == 'schedule' %} aria-current="page"{% endif %}>청약 일정</a>
+      <a href="/region/"{% if nav == 'region' %} aria-current="page"{% endif %}>지역</a>
+      <a href="/type/"{% if nav == 'type' %} aria-current="page"{% endif %}>유형</a>
+    </nav>
+  </div>
+</header>
+{% block main %}{% endblock %}
+<footer>
+  <div class="wrap">
+    <span>줍줍알람 · 청약 공고를 공식 데이터로 정리해요 · 정보 제공 목적이며 투자 권유가 아니에요</span>
+    <nav aria-label="사이트 정보"><a href="/about/">소개</a><a href="/sources/">데이터 출처</a><a href="/privacy/">개인정보 처리방침</a><a href="/terms/">이용약관</a><a href="/contact/">문의</a><a href="{{ IG }}" rel="noopener">인스타그램</a></nav>
+  </div>
+</footer>
+{% block after %}{% endblock %}
+<script>
+(function(){
+  function kst(){var n=new Date(Date.now()+9*3600e3);return Date.UTC(n.getUTCFullYear(),n.getUTCMonth(),n.getUTCDate());}
+  var t=kst();
+  document.querySelectorAll('[data-dday]').forEach(function(el){
+    var p=el.getAttribute('data-dday').split('-');var d=(Date.UTC(+p[0],p[1]-1,+p[2])-t)/864e5;
+    if(d>0)el.textContent='D-'+d;else if(d===0)el.textContent='오늘';else el.hidden=true;
+  });
+  function flash(b,msg){var o=b.textContent;b.textContent=msg;setTimeout(function(){b.textContent=o},1500);}
+  function copy(text,b){if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(function(){flash(b,'복사됨')},function(){flash(b,'복사 안 됨')});}}
+  document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(){copy(b.getAttribute('data-copy'),b)})});
+  document.querySelectorAll('[data-share]').forEach(function(b){b.addEventListener('click',function(){
+    var u=document.querySelector('link[rel=canonical]').href;
+    if(navigator.share){navigator.share({title:document.title,url:u}).catch(function(){});}else{copy(u,b);}
+  })});
+  var tl=document.querySelector('.ptabs');
+  if(tl){var tabs=[].slice.call(tl.querySelectorAll('[role=tab]'));
+    function sel(tab){tabs.forEach(function(b){var on=b===tab;b.setAttribute('aria-selected',on);b.tabIndex=on?0:-1;document.getElementById(b.getAttribute('aria-controls')).hidden=!on;});}
+    tabs.forEach(function(b,i){b.addEventListener('click',function(){sel(b)});
+      b.addEventListener('keydown',function(e){var k=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;if(k){var n=tabs[(i+k+tabs.length)%tabs.length];sel(n);n.focus();}});});
+    tl.hidden=false;sel(tabs[0]);}
+  var bar=document.querySelector('.bar');
+  if(bar){var lastY=window.scrollY,ticking=false;
+    function onScroll(){var y=window.scrollY,d=y-lastY;if(y<80)bar.classList.remove('hide');else if(d>6)bar.classList.add('hide');else if(d<-6)bar.classList.remove('hide');if(Math.abs(d)>6)lastY=y;ticking=false;}
+    window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(onScroll);}},{passive:true});
+    bar.addEventListener('focusin',function(){bar.classList.remove('hide')});}
+})();
+</script>
+</body>
+</html>

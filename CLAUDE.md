@@ -77,3 +77,7 @@ main에 푸시가 거절되면 `cards` 브랜치에 푸시하고 `CARDS_BRANCH=c
 - 호흡 (2026-10-27, 오싹알람 규칙 적용): 내레이션 대본(Z열)의 쉼표·말줄임표 = '여기서 숨 쉰다'. 시트 스크립트가 [pause short]로 바꿔 Chirp3-HD 목소리로 읽히고, reel.py가 실제 쉼 위치에 맞춰 단어 자막을 켠다. 쉼이 대본과 다르면 warnings에 `호흡:`이 나온다 (영상은 만들어짐 — ③ 대본 쉼표 위치 문제).
 - 내레이션: 원고에 `"voice": "voices/<id>/"` (시트 '오늘의 발행 플랜' AA열 값)을 넣으면 `voices/<id>/01.mp3`… 를 장면 순서대로 붙이고, 장면 길이를 음성에 맞춰 늘리고, 종이 캐릭터 입을 음성 크기에 맞춰 움직인다. 음성은 시트 스크립트가 Z열 대본(장면마다 `---`로 구분)으로 구글 TTS를 돌려 올린다. 렌더링 전 `git pull --rebase origin main`.
 - 올리기: `git add reels && git commit -m "reels: <slug>" && git push origin HEAD:main` (`reel.html`은 올리지 않음). S열에 `manifest.json`의 video, cover 주소를 줄바꿈으로 → 시트 스크립트가 릴스로 게시.
+
+## 사이트 (jupjupalarm.com) — `site/`
+- `python3 site/build.py` → `site/public/` (Cloudflare Pages 배포). 데이터·규칙은 `site/README.md`.
+- 카드·릴스 작업 때 `site/`는 건드리지 않는다 (⑦ SEO 발행 담당 영역).

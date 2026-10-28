@@ -1,0 +1,26 @@
+{% macro badges(n, cls='') %}
+<div class="badges{{ cls }}">
+  <span class="badge {{ STATUS[n.status][1] }}">{{ STATUS[n.status][0] }}</span>
+  {% if n.status == 'upcoming' %}<span class="badge b-dday num" data-dday="{{ n.rcpt[0] }}">D-{{ n.dday }}</span>{% elif n.status == 'open' %}<span class="badge b-dday open num">{{ '오늘 마감' if n.rcpt[1] == today.isoformat() else '마감 ' ~ (n.rcpt[1]|d) }}</span>{% endif %}
+  <span class="badge {{ 'b-mu' if n.kind == 'mujeonwi' else 'b-type' }}">{{ n.kind_label }}</span>
+  {% for t in n.tags|default([]) %}<span class="badge b-type">{{ t }}</span>{% endfor %}
+</div>
+{% endmacro %}
+
+{% macro card(n) %}
+<a class="card" href="{{ n.url }}">
+  {{ badges(n) }}
+  <strong>{{ n.title }}</strong>
+  <span class="a">{{ n.sido }} {{ n.sigungu or '' }}{% if n.near %} · {{ n.near }}{% endif %}</span>
+  <span class="m num">{% if n.status in ('waiting', 'announced') %}{% if n.comp and n.comp.short %}<b>{{ n.comp.short }}</b> · {% else %}<b>최고 {{ n.max_price|won }}</b> · {% endif %}발표 {{ n.announce|tdate }}{% else %}<b>{{ n.price_label|replace('최고 ', '최고 ') }} {{ n.max_price|won }}</b> · {{ '{:,}'.format(n.units) }}세대 · {{ n.rcpt[0]|trange(n.rcpt[1]) }} 접수{% endif %}</span>
+  {% if n.chips %}<span class="tags">{% for c in n.chips[:2] %}<span class="{{ 'key' if c[1] else '' }}">{{ c[0] }}</span>{% endfor %}</span>{% endif %}
+  <span class="arr" aria-hidden="true">›</span>
+</a>
+{% endmacro %}
+
+{% macro crumbs(items) %}
+<nav class="crumb" aria-label="경로">{% for label, url in items %}{% if not loop.first %}<span aria-hidden="true">›</span>{% endif %}{% if url %}<a href="{{ url }}">{{ label }}</a>{% else %}<span>{{ label }}</span>{% endif %}{% endfor %}</nav>
+{% endmacro %}
+
+
+{% macro ig_icon() %}<svg class="ig" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></svg>{% endmacro %}

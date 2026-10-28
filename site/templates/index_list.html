@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% from "macros.html" import crumbs with context %}
+{% set nav = 'region' if page_url.startswith('/region') else 'type' %}
+{% block main %}
+<main class="wrap" id="main">
+  <div class="lwrap">
+    {{ crumbs(crumb) }}
+    <div class="lhead"><h1>{{ h1 }}</h1></div>
+    <div class="idx">
+    {% for label, url, total, active in entries %}
+      <a href="{{ url }}"><b>{{ label }}</b><span class="num">접수 중·예정 {{ active }}곳 · 전체 {{ total }}곳</span>{% if intros and intros[label] %}<p>{{ intros[label] }}</p>{% endif %}</a>
+    {% endfor %}
+    </div>
+  </div>
+</main>
+{% endblock %}
+{% block after %}
+<script type="application/ld+json">
+{{ {"@context": "https://schema.org", "@graph": [crumb_ld(crumb[:-1], h1, page_url)]}|jsonld }}
+</script>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% from "macros.html" import crumbs with context %}
+{% block main %}
+<main class="wrap" id="main">
+  {{ crumbs(crumb) }}
+  <article class="prose">
+    <h1>{{ h1 }}</h1>
+    {{ body }}
+  </article>
+</main>
+{% endblock %}
+{% block after %}
+<script type="application/ld+json">
+{{ {"@context": "https://schema.org", "@graph": [crumb_ld(crumb[:-1], h1, page_url)]}|jsonld }}
+</script>
+{% endblock %}

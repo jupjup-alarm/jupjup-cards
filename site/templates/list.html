@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% from "macros.html" import card, crumbs with context %}
+{% set nav = 'schedule' if page_url.startswith('/schedule') else ('region' if page_url.startswith('/region') else 'type') %}
+{% block main %}
+<main class="wrap" id="main">
+  <div class="lwrap">
+    {{ crumbs(crumb) }}
+    <div class="lhead">
+      <h1>{{ h1 }}</h1>
+      {% if intro %}<p>{{ intro }}</p>{% endif %}
+      {% if links %}<div class="llinks">{% for label, url in links %}<a href="{{ url }}">{{ label }}</a>{% endfor %}</div>{% endif %}
+    </div>
+    {% for label, lst in groups %}
+    <section class="lsec">
+      <h2>{{ label }} <small>{{ lst|length }}곳</small></h2>
+      {% if lst %}<div class="cards">{% for n in lst %}{{ card(n) }}{% endfor %}</div>
+      {% else %}<p class="empty">{{ empty or '공고가 없어요.' }}</p>{% endif %}
+    </section>
+    {% endfor %}
+  </div>
+</main>
+{% endblock %}
+{% block after %}
+<script type="application/ld+json">
+{{ {"@context": "https://schema.org", "@graph": [crumb_ld(crumb, h1, page_url),
+  {"@type": "ItemList", "name": h1, "itemListElement": items_ld(items)}]}|jsonld }}
+</script>
+{% endblock %}

@@ -1,0 +1,257 @@
+{% extends "base.html" %}
+{% from "macros.html" import badges, card, crumbs, ig_icon with context %}
+{% set og_type = 'article' %}
+{% block head %}
+{% if n.imgs.hero %}<link rel="preload" as="image" href="hero.webp" fetchpriority="high">{% endif %}
+{% endblock %}
+{% block main %}
+<main class="wrap page" id="main">
+  {{ crumbs(n.crumb) }}
+
+  {% if n.imgs.hero %}
+  <div class="hero">
+    <img class="hero-img" src="{{ n.imgs.hero.src }}" width="{{ n.imgs.hero.w }}" height="{{ n.imgs.hero.h }}" alt="{{ n.photo.alt }}" fetchpriority="high" decoding="async"{% if n.photo.pos %} style="object-position:{{ n.photo.pos }}"{% endif %}>
+    <div class="hero-txt">
+      {{ badges(n) }}
+      <h1>{{ n.title }}</h1>
+    </div>
+    <span class="hero-credit">{{ n.photo.credit }}</span>
+  </div>
+  <div class="head">
+  {% else %}
+  <div class="head plain">
+    {{ badges(n) }}
+    <h1>{{ n.title }}</h1>
+  {% endif %}
+    <p class="addr">{{ n.address }}</p>
+    <p class="oneline num"><span>{{ '{:,}'.format(n.units) }}세대</span><span>최고 {{ n.max_price|won }}</span><span>{% if n.status == 'announced' %}{{ n.announce|d }} 발표{% else %}{{ n.rcpt[0]|d }} 접수{% endif %}</span></p>
+  </div>
+
+  <aside aria-label="핵심 요약">
+    <div class="summary">
+      <dl class="facts num">
+        <div><dt>접수</dt><dd>{% if n.rcpt[0] == n.rcpt[1] %}<span class="ln">{{ n.rcpt[0]|tdate }}</span><small>{{ n.receipt_note or '하루만 받아요' }}</small>{% else %}<span class="ln">{{ n.rcpt[0]|tdate }}</span><span class="ln">~ {{ n.rcpt[1]|tdate }}</span>{% if n.receipt_note %}<small>{{ n.receipt_note }}</small>{% endif %}{% endif %}</dd></div>
+        <div><dt>{{ n.price_label }}</dt><dd>{{ n.max_price|won }}<small>{{ n.max_type }} 기준</small></dd></div>
+        <div><dt>공급</dt><dd>{{ '{:,}'.format(n.units) }}세대{% if n.units_note %}<small>{{ n.units_note }}</small>{% endif %}</dd></div>
+        {% if n.comp and n.comp.short and n.status in ('waiting', 'announced') %}
+        <div><dt>경쟁률</dt><dd>{{ n.comp.short.split(' · ')[-1] }}<small>{{ n.comp.short.split(' · ')[0] }}</small></dd></div>
+        {% else %}
+        <div><dt>청약통장</dt><dd>{{ n.account[0] }}<small>{{ n.account[1] }}</small></dd></div>
+        {% endif %}
+      </dl>
+      {% if n.chips %}<div class="chips">{% for c in n.chips %}<span class="chip{{ ' key' if c[1] }}">{{ c[0] }}</span>{% endfor %}</div>{% endif %}
+      <p class="who">{{ n.who }}</p>
+      <div class="cta">
+        <a class="btn primary" href="{{ IG }}" target="_blank" rel="noopener">{{ ig_icon() }}인스타 팔로우 · 새 공고 알림</a>
+        <button class="btn ghost" type="button" data-share>공유하기</button>
+      </div>
+    </div>
+  </aside>
+
+  <section class="take" aria-labelledby="take-h">
+    <div class="bell" aria-hidden="true"><svg viewBox="0 0 200 200"><circle cx="100" cy="34" r="10" fill="#FFFFFF"/><path d="M54 110 Q38 96 40 80" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"/><path d="M146 110 Q162 96 160 80" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"/><path d="M100 40 C68 40 54 66 54 96 L54 132 L40 152 L160 152 L146 132 L146 96 C146 66 132 40 100 40 Z" fill="#FF5233"/><rect x="36" y="146" width="128" height="14" rx="7" fill="#FFFFFF"/><path d="M76 102 Q84 92 92 102" fill="none" stroke="#0F1E3D" stroke-width="5" stroke-linecap="round"/><path d="M108 102 Q116 92 124 102" fill="none" stroke="#0F1E3D" stroke-width="5" stroke-linecap="round"/><path d="M88 114 Q100 132 112 114 Z" fill="#0F1E3D"/></svg></div>
+    <div>
+      <h2 id="take-h">줍줍알람 한마디</h2>
+      <p>{{ n.take }}</p>
+    </div>
+  </section>
+
+  {% if n.comp and n.comp.rows %}
+  <section class="sec" aria-labelledby="h-comp">
+    <h2 id="h-comp">청약 경쟁률</h2>
+    {% if n.comp.summary %}<p class="comp-sum num">{{ n.comp.summary }}</p>{% endif %}
+    <div class="tbl">
+      <table class="num fit">
+        <caption>청약홈 공식 경쟁률. △는 미달 세대 수.</caption>
+        <thead><tr><th scope="col" style="text-align:left">구분</th><th scope="col">공급</th><th scope="col">접수</th><th scope="col">경쟁률</th></tr></thead>
+        <tbody>
+        {% for r in n.comp.rows %}<tr><th scope="row">{{ r.name }}</th><td>{{ r.supply }}세대</td><td>{{ '{:,}'.format(r.apply) }}명</td><td class="max">{{ r.rate }}{% if r.rate[0].isdigit() %}대 1{% endif %}</td></tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+  {% endif %}
+
+  <section class="sec" aria-labelledby="h-sch">
+    <h2 id="h-sch">청약 일정</h2>
+    <ol class="tl num">
+    {% set ns = namespace(next=false) %}
+    {% for s in n.schedule %}
+      {% set end = s.end if s.end else (s.start if s.start else '9999') %}
+      {% set done = s.start and end < today.isoformat() %}
+      {% set is_next = (not done) and (not ns.next) and s.start %}
+      {% if is_next %}{% set ns.next = true %}{% endif %}
+      <li class="{{ 'done' if done else ('next' if is_next else '') }}"><span class="dot"></span><span class="what">{{ s.label }}{% if is_next %}<span class="now">{{ '오늘' if s.start <= today.isoformat() else '다음' }}</span>{% endif %}{% if s.note %}<small>{{ s.note }}</small>{% endif %}</span>{% if s.month %}<span class="when">{{ s.month|tmonth }}</span>{% else %}<span class="when">{{ s.start|trange(s.end) }}</span>{% endif %}</li>
+    {% endfor %}
+    </ol>
+  </section>
+
+  <section class="sec" aria-labelledby="h-price">
+    <h2 id="h-price">분양가·공급 세대</h2>
+    <div class="tbl">
+      <table class="num fit">
+        <caption>{{ n.price_label|replace('최고 ', '') }}은 주택형별 최고가 기준. 층·호별 금액은 공고문 참고.</caption>
+        <thead><tr><th scope="col" style="text-align:left">주택형</th>{% if n.areas %}<th scope="col">전용면적</th>{% endif %}{% if n.has_special %}<th scope="col">특별공급</th>{% endif %}{% if n.has_general %}<th scope="col">{{ '무순위 공급' if n.kind == 'mujeonwi' else '일반공급' }}</th>{% endif %}<th scope="col">{{ n.price_label }}</th></tr></thead>
+        <tbody>
+        {% for m in n.models %}<tr><th scope="row">{{ m.type }}</th>{% if n.areas %}<td>{% if n.areas[m.type] %}{{ n.areas[m.type].excl|m2 }}{% else %}—{% endif %}</td>{% endif %}{% if n.has_special %}<td>{{ m.special }}세대</td>{% endif %}{% if n.has_general %}<td>{{ m.general }}세대</td>{% endif %}<td class="max">{% if n.price_ranges and n.price_ranges[m.type] %}{{ n.price_ranges[m.type] }}{% else %}{{ m.max|won }}{% endif %}</td></tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% if n.rent_rows %}
+    <dl class="kv wide" style="margin-top:14px">{% for k, v in n.rent_rows %}<div><dt>{{ k }}</dt><dd class="num">{{ v }}</dd></div>{% endfor %}</dl>
+    {% endif %}
+    {% if n.rent_note %}<p class="note">{{ n.rent_note }}</p>{% endif %}
+    {% if n.sum_special and n.sum_general %}<p class="note num">특별공급 {{ '{:,}'.format(n.sum_special) }}세대 · 일반공급 {{ '{:,}'.format(n.sum_general) }}세대{% if n.sum_special + n.sum_general != n.units %} (전체 {{ '{:,}'.format(n.units) }}세대 중 이번 모집분){% endif %}</p>{% endif %}
+  </section>
+
+  {% if n.gap %}
+  <section class="sec" aria-labelledby="h-gap">
+    <h2 id="h-gap">시세와 비교하면</h2>
+    <p class="gapv">{{ n.gap.verdict }}</p>
+    <p class="gapt">{{ n.gap.text }}</p>
+    <dl class="kv wide">{% for k, v in n.gap.rows %}<div><dt>{{ k }}</dt><dd class="num">{{ v }}</dd></div>{% endfor %}</dl>
+    <p class="note">{{ n.gap.basis }} · 같은 생활권·비슷한 면적의 최근 실거래와 비교한 추정이에요. 실제 시세와 다를 수 있어요.</p>
+  </section>
+  {% endif %}
+
+  <section class="sec" aria-labelledby="h-plan">
+    <h2 id="h-plan">평면도·면적</h2>
+    {% if n.imgs.plans %}
+      {% if n.imgs.plans|length > 1 %}
+      <div class="ptabs" role="tablist" aria-label="주택형" hidden>
+        {% for p in n.imgs.plans %}<button class="ptab" type="button" role="tab" id="t-{{ p.slug }}" aria-controls="p-{{ p.slug }}" aria-selected="{{ 'true' if loop.first else 'false' }}">{{ p.type }}{% set mm = n.models|selectattr('type', 'equalto', p.type)|list %}{% if mm %}<small>{{ mm[0].general + mm[0].special }}세대</small>{% endif %}</button>
+        {% endfor %}
+      </div>
+      {% endif %}
+      <div class="plans">
+      {% for p in n.imgs.plans %}
+        {% set a = n.areas[p.type] if n.areas and n.areas[p.type] else none %}
+        {% set mm = n.models|selectattr('type', 'equalto', p.type)|list %}
+        <figure class="plan" id="p-{{ p.slug }}"{% if n.imgs.plans|length > 1 %} role="tabpanel" aria-labelledby="t-{{ p.slug }}"{% endif %}>
+          <div class="fig">
+            <img src="{{ p.src }}" width="{{ p.w }}" height="{{ p.h }}" alt="{{ p.alt }}" loading="lazy">
+            {% if a %}
+            <dl class="pmeta num">
+              <div><dt>전용</dt><dd>{{ a.excl|m2 }}<small>약 {{ a.excl|py }}평</small></dd></div>
+              <div><dt>공급</dt><dd>{% if a.supply %}{{ a.supply|m2 }}<small>약 {{ a.supply|py }}평</small>{% else %}—{% endif %}</dd></div>
+              <div><dt>{{ '타입 전체' if p.total else '이번 공급' }}</dt><dd>{% if p.total %}{{ p.total }}세대{% if mm %}<small>{{ '무순위' if n.kind == 'mujeonwi' else '이번 공급' }} {{ mm[0].general + mm[0].special }}세대</small>{% endif %}{% elif mm %}{{ mm[0].general + mm[0].special }}세대{% else %}—{% endif %}</dd></div>
+            </dl>
+            {% endif %}
+            <figcaption><span>이미지: {{ n.image_credit_owner }} 제공 평면도 · 실제와 다를 수 있음</span><a href="{{ p.src }}" target="_blank" rel="noopener">크게 보기</a></figcaption>
+          </div>
+        </figure>
+      {% endfor %}
+      </div>
+      {% if n.plan_note %}<p class="note">{{ n.plan_note }}</p>{% endif %}
+    {% endif %}
+    {% if n.areas %}
+    {% if n.imgs.plans %}<h3 class="sub3">주택형별 면적</h3>{% endif %}
+    <div class="tbl">
+      <table class="num fit">
+        <thead><tr><th scope="col" style="text-align:left">주택형</th><th scope="col">전용면적</th><th scope="col">공급면적</th></tr></thead>
+        <tbody>
+        {% for t, a in n.areas.items() %}<tr><th scope="row">{{ t }}</th><td>{{ a.excl|m2 }}<small>약 {{ a.excl|py }}평</small></td><td>{% if a.supply %}{{ a.supply|m2 }}<small>약 {{ a.supply|py }}평</small>{% else %}공고문 확인{% endif %}</td></tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+    <div class="tbl">
+      <table class="num fit">
+        <caption>주택형 숫자는 전용면적(㎡)이에요. 정확한 전용·공급면적은 공고문에서 확인하세요.</caption>
+        <thead><tr><th scope="col" style="text-align:left">주택형</th><th scope="col">전용면적(약)</th><th scope="col">전용 기준 평형</th></tr></thead>
+        <tbody>
+        {% set seen = namespace(v=[]) %}
+        {% for m in n.models %}{% set num = m.type|replace('A','')|replace('B','')|replace('C','')|replace('D','')|replace('E','')|replace('F','')|replace('G','')|replace('H','')|replace('I','')|replace('J','')|replace('K','')|replace('N','')|replace('P','') %}{% if num.isdigit() and num not in seen.v %}{% set seen.v = seen.v + [num] %}<tr><th scope="row">{{ num }}㎡ 타입</th><td>약 {{ num }}㎡</td><td>약 {{ (num|int)|py }}평</td></tr>
+        {% endif %}{% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% endif %}
+    {% if n.homepage and not n.imgs.plans %}<p class="note">주택형별 평면도는 <a href="{{ n.homepage }}" target="_blank" rel="noopener">{{ n.homepage_label or '공식 홈페이지' }}</a>에서 볼 수 있어요.</p>{% endif %}
+  </section>
+
+  <section class="sec" aria-labelledby="h-elig">
+    <h2 id="h-elig">신청 자격</h2>
+    <dl class="kv">
+    {% for row in n.eligibility %}<div><dt>{{ row[0] }}</dt><dd>{{ row[1] }}{% if row|length > 2 and row[2] %} <span class="tag">{{ row[2] }}</span>{% endif %}</dd></div>
+    {% endfor %}
+    </dl>
+  </section>
+
+  <section class="sec" aria-labelledby="h-loc">
+    <h2 id="h-loc">위치</h2>
+    {% if n.imgs.map %}
+    <figure class="fig">
+      <img src="{{ n.imgs.map.src }}" width="{{ n.imgs.map.w }}" height="{{ n.imgs.map.h }}" alt="{{ n.map_alt or (n.complex ~ ' 위치 지도') }}" loading="lazy">
+      <figcaption>© NAVER Corp.</figcaption>
+    </figure>
+    {% endif %}
+    <p class="place">{{ n.address }}{% if n.near %} ({{ n.near }}){% endif %} · <a href="https://map.naver.com/p/search/{{ (n.naver_query or n.address)|urlencode }}" target="_blank" rel="noopener">네이버 지도에서 보기</a></p>
+  </section>
+
+  <section class="sec" aria-labelledby="h-info">
+    <h2 id="h-info">공급 정보</h2>
+    <dl class="kv">
+      {% if n.developer %}<div><dt>시행</dt><dd>{{ n.developer }}</dd></div>{% endif %}
+      {% if n.builder %}<div><dt>시공</dt><dd>{{ n.builder }}</dd></div>{% endif %}
+      {% if n.phone %}<div><dt>문의</dt><dd class="num"><span>{{ n.phone }}</span><button class="copy" type="button" data-copy="{{ n.phone }}">복사</button></dd></div>{% endif %}
+      {% for k, v in n.info_extra|default([]) %}<div><dt>{{ k }}</dt><dd>{{ v }}</dd></div>{% endfor %}
+      {% if n.homepage %}<div><dt>공식 홈페이지</dt><dd><a href="{{ n.homepage }}" target="_blank" rel="noopener">{{ n.homepage_label or '분양 홈페이지' }}</a></dd></div>{% endif %}
+    </dl>
+  </section>
+
+  <section class="sec" aria-labelledby="h-official">
+    <h2 id="h-official">공식 공고문 확인</h2>
+    <p class="lead2">신청 전에 입주자모집공고 원문을 꼭 확인하세요. 세부 자격과 층·호별 분양가는 공고문에 있어요.</p>
+    <a class="btn primary wide" href="{{ n.source_url }}" target="_blank" rel="noopener">청약홈에서 공식 공고 보기</a>
+  </section>
+
+  <section class="sec" aria-labelledby="h-faq">
+    <h2 id="h-faq">자주 묻는 질문</h2>
+    <div class="faq">
+    {% for q, a in n.faq %}<details><summary>{{ q }}</summary><p>{{ a }}</p></details>
+    {% endfor %}
+    </div>
+  </section>
+
+  {% if n.related %}
+  <section class="sec" aria-labelledby="h-more">
+    <h2 id="h-more">{{ n.related_title }}</h2>
+    <div class="cards">
+    {% for r in n.related %}{{ card(r) }}{% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  <section class="sec src" aria-labelledby="h-src">
+    <h2 id="h-src">출처</h2>
+    <p>청약홈 입주자모집공고 (모집공고일 {{ n.notice_date|d }}) · 청약홈 공공데이터 {{ n.fetched_at|replace('-', '.') }} 기준</p>
+    {% for s in n.sources_extra|default([]) %}<p>{{ s }}</p>{% endfor %}
+    {% if n.imgs.map %}<p>지도 © NAVER Corp.</p>{% endif %}
+    <p>최종 수정 <time datetime="{{ n.modified[:10] }}">{{ n.modified|d }}</time> · 내용이 다르면 <a href="/contact/">오류 알려주기</a></p>
+    <p>정보 제공 목적이며 투자 권유가 아니에요. 신청 전 입주자모집공고 원문을 꼭 확인하세요.</p>
+  </section>
+</main>
+{% endblock %}
+{% block after %}
+<div class="bar">
+  <button class="btn ghost" type="button" data-share>공유하기</button>
+  <a class="btn primary" href="{{ IG }}" target="_blank" rel="noopener">{{ ig_icon() }}인스타 팔로우</a>
+</div>
+<script type="application/ld+json">
+{{ {"@context": "https://schema.org", "@graph": [crumb_ld(n.crumb, n.title, page_url), {
+  "@type": "Article", "headline": n.title, "description": desc,
+  "datePublished": n.published, "dateModified": n.modified,
+  "image": [BASE ~ og],
+  "mainEntityOfPage": BASE ~ page_url,
+  "author": {"@type": "Organization", "name": "줍줍알람", "url": BASE ~ "/"},
+  "publisher": {"@type": "Organization", "name": "줍줍알람", "url": BASE ~ "/", "logo": {"@type": "ImageObject", "url": BASE ~ "/icon-512.png"}},
+  "about": ({"@type": "ApartmentComplex", "name": n.complex, "numberOfAccommodationUnits": n.units,
+    "address": {"@type": "PostalAddress", "addressCountry": "KR", "addressRegion": n.sido, "addressLocality": n.sigungu or "", "streetAddress": n.address}}
+    | combine({"geo": {"@type": "GeoCoordinates", "latitude": n.coords[1], "longitude": n.coords[0]}} if n.coords else {}))
+}]}|jsonld }}
+</script>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% from "macros.html" import card with context %}
+{% set noindex = true %}
+{% block main %}
+<main class="wrap" id="main">
+  <div class="lwrap">
+    <div class="lhead">
+      <h1>페이지를 찾을 수 없어요</h1>
+      <p>주소가 바뀌었거나 없는 페이지예요. 대신 지금 볼 만한 공고를 모았어요.</p>
+      <div class="llinks"><a href="/">홈으로</a><a href="/schedule/this-week/">이번 주 청약 일정</a></div>
+    </div>
+    {% for label, lst in groups %}
+    <section class="lsec"><h2>{{ label }} <small>{{ lst|length }}곳</small></h2><div class="cards">{% for n in lst %}{{ card(n) }}{% endfor %}</div></section>
+    {% endfor %}
+  </div>
+</main>
+{% endblock %}
