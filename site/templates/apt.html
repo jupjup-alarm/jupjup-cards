@@ -23,14 +23,15 @@
     {{ badges(n) }}
     <h1>{{ n.title }}</h1>
   {% endif %}
+{% if n.moved %}<a class="moved" href="{{ n.moved.url }}"><b>공식 공고가 나왔어요</b><span>확정 분양가·청약 일정 보기 →</span></a>{% endif %}
     <p class="addr">{{ n.address }}</p>
-    <p class="oneline num"><span>{{ '{:,}'.format(n.units) }}세대</span>{% if n.is_pre %}<span>예상 {{ n.price_short or n.price_text }}</span><span>{{ n.rcpt[0]|d }} 접수 예정</span>{% elif n.is_rental %}{% if n.rent_summary.deposit %}<span>보증금 {{ n.rent_summary.deposit|money }}</span>{% endif %}<span>{{ n.rcpt[0]|d }} 접수</span>{% else %}<span>최고 {{ n.max_price|won }}</span><span>{% if n.status == 'announced' %}{{ n.announce|d }} 발표{% else %}{{ n.rcpt[0]|d }} 접수{% endif %}</span>{% endif %}</p>
+    <p class="oneline num"><span>{{ '{:,}'.format(n.units) }}세대</span>{% if n.is_pre %}<span>예상 {{ n.price_short or n.price_text }}</span><span>{{ '예상 접수 ' ~ (n.rcpt[0]|d) if n.moved else (n.rcpt[0]|d) ~ ' 접수 예정' }}</span>{% elif n.is_rental %}{% if n.rent_summary.deposit %}<span>보증금 {{ n.rent_summary.deposit|money }}</span>{% endif %}<span>{{ n.rcpt[0]|d }} 접수</span>{% else %}<span>최고 {{ n.max_price|won }}</span><span>{% if n.status == 'announced' %}{{ n.announce|d }} 발표{% else %}{{ n.rcpt[0]|d }} 접수{% endif %}</span>{% endif %}</p>
   </div>
 
   <aside aria-label="핵심 요약">
     <div class="summary">
       <dl class="facts num">
-        <div><dt>{{ '접수 예정' if n.is_pre else '접수' }}</dt><dd>{% if n.rcpt[0] == n.rcpt[1] %}<span class="ln">{{ n.rcpt[0]|tdate }}</span><small>{{ n.receipt_note or '하루만 받아요' }}</small>{% else %}<span class="ln">{{ n.rcpt[0]|tdate }}</span><span class="ln">~ {{ n.rcpt[1]|tdate }}</span>{% if n.receipt_note %}<small>{{ n.receipt_note }}</small>{% endif %}{% endif %}</dd></div>
+        <div><dt>{{ ('공고 전 예상 접수' if n.moved else '접수 예정') if n.is_pre else '접수' }}</dt><dd>{% if n.rcpt[0] == n.rcpt[1] %}<span class="ln">{{ n.rcpt[0]|tdate }}</span><small>{{ n.receipt_note or '하루만 받아요' }}</small>{% else %}<span class="ln">{{ n.rcpt[0]|tdate }}</span><span class="ln">~ {{ n.rcpt[1]|tdate }}</span>{% if n.receipt_note %}<small>{{ n.receipt_note }}</small>{% endif %}{% endif %}</dd></div>
         {% if n.is_pre %}
         <div><dt>예상 분양가</dt><dd>{{ n.price_short or n.price_text }}<small>{{ n.price_basis or '보도 기준' }}</small></dd></div>
         {% elif n.is_rental %}
@@ -56,6 +57,24 @@
     </div>
   </aside>
 
+  {% if n.moved %}
+  {% set m = n.moved %}
+  <section class="sec" aria-labelledby="h-vs" style="margin-top:14px">
+    <h2 id="h-vs">예상과 실제 비교</h2>
+    <div class="tbl">
+      <table class="num fit">
+        <caption>예상은 공고 전 보도 기준, 실제는 {{ m.source_name or '청약홈' }} 입주자모집공고 기준.</caption>
+        <thead><tr><th scope="col" style="text-align:left">항목</th><th scope="col">공고 전 예상</th><th scope="col">실제 공고</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">분양가</th><td style="white-space:normal">{{ n.price_short or n.price_text }}</td><td class="max">{% if m.max_price %}최고 {{ m.max_price|won }}<small>{{ m.max_type }} 기준</small>{% else %}공고문 확인{% endif %}</td></tr>
+          <tr><th scope="row">접수 시작</th><td>{{ n.rcpt[0]|tdate }}</td><td class="max">{{ m.rcpt[0]|tdate }}</td></tr>
+          <tr><th scope="row">공급</th><td>{{ '{:,}'.format(n.units) }}세대</td><td class="max">{{ '{:,}'.format(m.units) }}세대</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <a class="btn primary wide" style="margin-top:14px" href="{{ m.url }}">{{ m.title }} 공고 보기</a>
+  </section>
+  {% endif %}
   <section class="take" aria-labelledby="take-h">
     <div class="bell" aria-hidden="true"><svg viewBox="0 0 200 200"><circle cx="100" cy="34" r="10" fill="#FFFFFF"/><path d="M54 110 Q38 96 40 80" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"/><path d="M146 110 Q162 96 160 80" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"/><path d="M100 40 C68 40 54 66 54 96 L54 132 L40 152 L160 152 L146 132 L146 96 C146 66 132 40 100 40 Z" fill="#FF5233"/><rect x="36" y="146" width="128" height="14" rx="7" fill="#FFFFFF"/><path d="M76 102 Q84 92 92 102" fill="none" stroke="#0F1E3D" stroke-width="5" stroke-linecap="round"/><path d="M108 102 Q116 92 124 102" fill="none" stroke="#0F1E3D" stroke-width="5" stroke-linecap="round"/><path d="M88 114 Q100 132 112 114 Z" fill="#0F1E3D"/></svg></div>
     <div>
@@ -283,6 +302,7 @@
     <h2 id="h-src">출처</h2>
     {% if n.source_line %}<p>{{ n.source_line }}</p>{% elif not n.is_pre %}<p>청약홈 입주자모집공고 (모집공고일 {{ n.notice_date|d }}) · 청약홈 공공데이터 {{ n.fetched_at|replace('-', '.') }} 기준</p>{% endif %}
     {% for s in n.sources_extra|default([]) %}<p>{{ s }}</p>{% endfor %}
+    {% if n.pre_page %}<p>공고 전 전망과 비교: <a href="{{ n.pre_page.url }}">{{ n.pre_page.title }} 예상 vs 실제</a></p>{% endif %}
     {% if n.imgs.map %}<p>지도 © NAVER Corp.</p>{% endif %}
     <p>최종 수정 <time datetime="{{ n.modified[:10] }}">{{ n.modified|d }}</time> · 내용이 다르면 <a href="/contact/">오류 알려주기</a></p>
     <p>정보 제공 목적이며 투자 권유가 아니에요. 신청 전 입주자모집공고 원문을 꼭 확인하세요.</p>

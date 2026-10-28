@@ -50,6 +50,7 @@ STATUS = {  # 코드: (배지, 배지 class)
     "waiting": ("발표 대기", "b-wait"),
     "announced": ("발표 완료", "b-done"),
     "pre": ("공고 전", "b-pre"),
+    "released": ("공고 나옴", "b-soon"),
 }
 
 # ───────────────────────── 표기 도우미 (디자인 방향 문서 '표기 규칙') ─────────────────────────
@@ -226,8 +227,6 @@ def build_notice(e, row, regions, problems):
     if miss:
         problems.append((key, "보류 — 빈 값: " + ", ".join(miss)))
         return None
-    if e.get("moved_to"):
-        return None
     r = row or {}
     n = dict(e)
     n["url"] = f"/apt/{key}/"
@@ -349,6 +348,8 @@ def status_of(n):
     t = TODAY.isoformat()
     if n.get("status_override"):
         return n["status_override"]
+    if n.get("moved"):
+        return "released"
     if n.get("is_pre"):
         return "pre"
     a, b = n["rcpt"]
@@ -499,12 +500,19 @@ def main():
         if n:
             notices.append(n)
     byk = {n["key"]: n for n in notices}
+    # 공고 전 페이지에 공고가 나오면: 페이지는 그대로 두고(검색 순위 유지) 새 공고로 안내 + 예상 vs 실제 비교
+    for n in notices:
+        t = byk.get(n.get("moved_to") or "")
+        if n.get("is_pre") and t:
+            n["moved"] = t
+            t["pre_page"] = n
 
     # 상태·지문·공개일
     for n in notices:
         n["status"] = status_of(n)
         n["dday"] = dday(n)
-        h = content_hash({k: v for k, v in n.items() if k not in ("status", "dday")})
+        h = content_hash({k: v for k, v in n.items() if k not in ("status", "dday", "moved", "pre_page")}
+                         | {"_moved": (n.get("moved") or {}).get("key"), "_pre": (n.get("pre_page") or {}).get("key")})
         st = state.get(n["key"], {})
         if st.get("hash") != h:
             st["modified"] = now.isoformat(timespec="seconds")
@@ -529,7 +537,7 @@ def main():
     og_default(PUB / "og-default.jpg")
 
     E = env()
-    order = {"open": 0, "upcoming": 1, "pre": 2, "waiting": 3, "announced": 4}
+    order = {"open": 0, "upcoming": 1, "pre": 2, "waiting": 3, "announced": 4, "released": 5}
 
     def sort_key(n):
         return (order[n["status"]], n["rcpt"][0] if n["status"] in ("open", "upcoming") else "~" + n["announce"], n["title"])
@@ -571,7 +579,9 @@ def main():
         n["related_title"] = f"{n['sido']}에서 곧 접수하는 공고" if same else "함께 볼 공고"
         st = n["status"]
         typ = n["kind_label"]
-        if n["is_pre"]:
+        if n.get("moved"):
+            title = f"{n['title']} 예상 vs 실제 분양가 — 공고 전 전망 정리 · 줍줍알람"
+        elif n["is_pre"]:
             title = f"{n['title']} 분양 일정·예상 분양가 · 줍줍알람"
         elif n["is_rental"]:
             title = f"{n['title']} 보증금·월세·자격 · 줍줍알람"
@@ -581,7 +591,10 @@ def main():
             title = f"{n['title']} 분양가·청약 일정 · 줍줍알람"
         rc = drange(*n["rcpt"])
         rs = n.get("rent_summary") or {}
-        if n["is_pre"]:
+        if n.get("moved"):
+            m = n["moved"]
+            desc = f"공고 전 예상 {n.get('price_short') or n['price_text']} → 실제 최고 {won(m['max_price']) if m.get('max_price') else '공고문 확인'}. 보도로 알려진 전망과 실제 입주자모집공고를 비교하고, 확정 일정·분양가 페이지로 안내해요."
+        elif n["is_pre"]:
             desc = f"{n['units']:,}세대 · 예상 분양가 {n['price_text']} · {d(n['rcpt'][0])} 접수 예정(보도 기준). 공고 전 단지의 일정·분양가 전망·시세 비교를 정리. 공고가 나오면 공식 값으로 바꿔요."
         elif n["is_rental"]:
             cond = f"보증금 {money(rs['deposit'])} · 월 {money(rs['monthly'])}" if rs.get("deposit") else f"주택형 {len(n['rent_models'])}개"
@@ -751,7 +764,6 @@ def main():
     (PUB / "robots.txt").write_text(f"User-agent: *\nAllow: /\nDisallow: /data/\nDisallow: /drafts/\n\nSitemap: {BASE}/sitemap.xml\n")
     (PUB / "_headers").write_text(HEADERS)
     redirects = json.loads((DATA / "redirects.json").read_text()) if (DATA / "redirects.json").exists() else []
-    redirects += [[f"/apt/{e['key']}/", f"/apt/{e['moved_to']}/"] for e, _ in items if e.get("moved_to")]
     (PUB / "_redirects").write_text("".join(f"{a} {b} 301\n" for a, b in redirects))
 
     # 고아 공고 이미지 폴더 정리 (페이지가 없는 apt/ 폴더는 이미지뿐이면 남겨둠 — 지우지 않음)
