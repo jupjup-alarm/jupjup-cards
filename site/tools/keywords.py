@@ -68,6 +68,11 @@ def nospace(s):
     return re.sub(r"\s+", "", s).upper()
 
 
+def clean(s):
+    """키워드도구는 공백·기호가 있으면 400 → 한글·영문·숫자만."""
+    return re.sub(r"[^0-9A-Za-z가-힣]", "", s).upper()
+
+
 def num(v):
     """검색광고는 10 미만을 '< 10'으로 준다 → 5."""
     if isinstance(v, str):
@@ -82,7 +87,7 @@ def searchad(env, hints):
     sig = base64.b64encode(hmac.new(env["SEARCHAD_SECRET_KEY"].encode(), f"{ts}.GET.{uri}".encode(),
                                     hashlib.sha256).digest()).decode()
     for attempt in range(3):
-        r = requests.get(SEARCHAD + uri, params={"hintKeywords": ",".join(nospace(h) for h in hints), "showDetail": 1},
+        r = requests.get(SEARCHAD + uri, params={"hintKeywords": ",".join(clean(h) for h in hints), "showDetail": 1},
                          headers={"X-Timestamp": ts, "X-API-KEY": env["SEARCHAD_API_KEY"],
                                   "X-Customer": env["SEARCHAD_CUSTOMER_ID"], "X-Signature": sig}, timeout=20)
         if r.status_code == 429:
@@ -107,7 +112,7 @@ def blog_total(env, kw):
 def names_of(n):
     """검색에 쓰일 만한 단지 이름들. 블록·지구·괄호를 뺀 짧은 이름도 넣는다."""
     out = []
-    for s in [n.get("complex"), n.get("title")] + list(n.get("search_names") or []):
+    for s in list(n.get("search_names") or []) + [n.get("complex"), n.get("title")]:
         if not s:
             continue
         s = re.sub(r"\(.*?\)", " ", s)
@@ -116,7 +121,7 @@ def names_of(n):
             v = re.sub(r"\s+", " ", v).strip()
             if len(nospace(v)) >= 3 and v not in out:
                 out.append(v)
-    return out[:3]
+    return out[:4]
 
 
 def group_of(n):
@@ -139,9 +144,9 @@ def lookup(env, keywords, related_core=None):
         except requests.RequestException as e:
             print(f"  검색광고 오류: {str(e)[:100]}", file=sys.stderr)
             continue
-        by = {nospace(r["relKeyword"]): r for r in rows}
+        by = {clean(r["relKeyword"]): r for r in rows}
         for kw in batch:
-            r = by.get(nospace(kw))
+            r = by.get(clean(kw))
             vol[kw] = (num(r["monthlyPcQcCnt"]), num(r["monthlyMobileQcCnt"])) if r else (0, 0)
         if related_core:
             for r in rows:

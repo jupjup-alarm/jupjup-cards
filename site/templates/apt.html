@@ -25,7 +25,7 @@
   {% endif %}
 {% if n.moved %}<a class="moved" href="{{ n.moved.url }}"><b>공식 공고가 나왔어요</b><span>확정 분양가·청약 일정 보기 →</span></a>{% endif %}
     <p class="addr">{{ n.address }}</p>
-    <p class="oneline num"><span>{{ '{:,}'.format(n.units) }}세대</span>{% if n.is_pre %}<span>예상 {{ n.price_short or n.price_text }}</span><span>{{ '예상 접수 ' ~ (n.rcpt[0]|d) if n.moved else (n.rcpt[0]|d) ~ ' 접수 예정' }}</span>{% elif n.is_rental %}{% if n.rent_summary.deposit %}<span>보증금 {{ n.rent_summary.deposit|money }}</span>{% endif %}<span>{{ n.rcpt[0]|d }} 접수</span>{% else %}<span>최고 {{ n.max_price|won }}</span><span>{% if n.status == 'announced' %}{{ n.announce|d }} 발표{% else %}{{ n.rcpt[0]|d }} 접수{% endif %}</span>{% endif %}</p>
+    <p class="oneline num"><span>{{ '{:,}'.format(n.units) }}{{ n.unit_word }}</span>{% if n.is_pre %}<span>예상 {{ n.price_short or n.price_text }}</span><span>{{ '예상 접수 ' ~ (n.rcpt[0]|d) if n.moved else (n.rcpt[0]|d) ~ ' 접수 예정' }}</span>{% elif n.is_rental %}{% if n.houses and n.rent_level %}<span>{{ n.rent_level }}</span>{% elif n.rent_summary.deposit %}<span>보증금 {{ n.rent_summary.deposit|money }}</span>{% endif %}<span>{{ n.rcpt[0]|d }} 접수</span>{% else %}<span>최고 {{ n.max_price|won }}</span><span>{% if n.status == 'announced' %}{{ n.announce|d }} 발표{% else %}{{ n.rcpt[0]|d }} 접수{% endif %}</span>{% endif %}</p>
   </div>
 
   <aside aria-label="핵심 요약">
@@ -35,15 +35,15 @@
         {% if n.is_pre %}
         <div><dt>예상 분양가</dt><dd>{{ n.price_short or n.price_text }}<small>{{ n.price_basis or '보도 기준' }}</small></dd></div>
         {% elif n.is_rental %}
-        <div><dt>임대보증금</dt><dd>{% if n.rent_summary.deposit %}{{ n.rent_summary.deposit|money }}<small>{{ n.rent_summary.basis }}</small>{% else %}공고문 참조<small>주택형별로 달라요</small>{% endif %}</dd></div>
+        <div><dt>임대보증금</dt><dd>{% if n.houses and n.rent_range and n.rent_range.deposit %}{{ n.rent_range.deposit[0]|money }}~<small>최고 {{ n.rent_range.deposit[1]|money }} · 집마다 달라요</small>{% elif n.rent_summary.deposit %}{{ n.rent_summary.deposit|money }}<small>{{ n.rent_summary.basis }}</small>{% else %}공고문 참조<small>주택형별로 달라요</small>{% endif %}</dd></div>
         {% else %}
         <div><dt>{{ n.price_label }}</dt><dd>{{ n.max_price|won }}<small>{{ n.max_type }} 기준</small></dd></div>
         {% endif %}
-        <div><dt>공급</dt><dd>{{ '{:,}'.format(n.units) }}세대{% if n.units_note %}<small>{{ n.units_note }}</small>{% endif %}</dd></div>
+        <div><dt>공급</dt><dd>{{ '{:,}'.format(n.units) }}{{ n.unit_word }}{% if n.units_note %}<small>{{ n.units_note }}</small>{% endif %}</dd></div>
         {% if n.comp and n.comp.short and n.status in ('waiting', 'announced') %}
         <div><dt>경쟁률</dt><dd>{{ n.comp.short.split(' · ')[-1] }}<small>{{ n.comp.short.split(' · ')[0] }}</small></dd></div>
         {% elif n.is_rental %}
-        <div><dt>월 임대료</dt><dd>{% if n.rent_summary.monthly %}{{ n.rent_summary.monthly|money }}<small>{{ n.rent_summary.basis }}</small>{% else %}공고문 참조<small>주택형별로 달라요</small>{% endif %}</dd></div>
+        <div><dt>월 임대료</dt><dd>{% if n.houses and n.rent_range and n.rent_range.monthly %}{{ n.rent_range.monthly[0]|money }}~<small>최고 {{ n.rent_range.monthly[1]|money }}</small>{% elif n.rent_summary.monthly %}{{ n.rent_summary.monthly|money }}<small>{{ n.rent_summary.basis }}</small>{% else %}공고문 참조<small>주택형별로 달라요</small>{% endif %}</dd></div>
         {% else %}
         <div><dt>청약통장</dt><dd>{{ n.account[0] }}<small>{{ n.account[1] }}</small></dd></div>
         {% endif %}
@@ -115,11 +115,52 @@
     </ol>
   </section>
 
+
   {% if n.is_pre %}
   <section class="sec" aria-labelledby="h-price">
     <h2 id="h-price">{% if n.h2.price %}{{ n.h2.price }} {% endif %}예상 분양가·공급 규모</h2>
     <dl class="kv">{% for k, v in n.pre_rows %}<div><dt>{{ k }}</dt><dd>{{ v }}</dd></div>{% endfor %}</dl>
     <p class="note">{{ n.pre_note or '아직 입주자모집공고가 나오지 않은 단지예요. 위 값은 모두 보도 기준이고, 공고가 나오면 공식 값으로 바꿔요.' }}</p>
+  </section>
+  {% elif n.is_rental and n.houses %}
+  <section class="sec" aria-labelledby="h-price">
+    <h2 id="h-price">{% if n.h2.price %}{{ n.h2.price }} {% endif %}임대 조건</h2>
+    {% if n.rental_type %}<p class="lead2">{{ RENTAL_EXPLAIN.get(n.rental_type, '') }}</p>{% endif %}
+    <dl class="kv">
+      {% if n.rent_level %}<div><dt>임대료 수준</dt><dd><b>{{ n.rent_level }}</b></dd></div>{% endif %}
+      {% if n.rent_range and n.rent_range.deposit %}<div><dt>임대보증금</dt><dd class="num">{{ n.rent_range.deposit|mrange }}</dd></div>{% endif %}
+      {% if n.rent_range and n.rent_range.monthly %}<div><dt>월 임대료</dt><dd class="num">{{ n.rent_range.monthly|mrange }}</dd></div>{% endif %}
+      {% if n.lease %}<div><dt>임대기간</dt><dd>{{ n.lease }}</dd></div>{% endif %}
+      <div><dt>공급</dt><dd class="num">{{ n.units }}호{% if n.units_note %} · {{ n.units_note }}{% endif %}{% if n.excl_range %} · 전용 {{ n.excl_range[0]|m2 }}~{{ n.excl_range[1]|m2 }}{% endif %}</dd></div>
+    </dl>
+    {% if n.rent_range and n.rent_range.basis %}<p class="note">{{ n.rent_range.basis }}. 원하는 집의 정확한 보증금·월세는 공고에 첨부된 주택목록에서 확인하세요.</p>{% endif %}
+  </section>
+
+  <section class="sec" aria-labelledby="h-houses">
+    <h2 id="h-houses">{{ n.h2.get('houses', '어디에 있는 집인가요') }}</h2>
+    <div class="hstat">
+      <div class="bars">
+        <p class="bars-h">지역별</p>
+        {% for g, lst in n.house_groups %}<div class="hbar"><span class="bl">{{ g }}</span><span class="bt"><i style="width:{{ (lst|length * 100 / n.house_max)|round|int }}%"></i></span><b class="num">{{ lst|length }}호</b></div>
+        {% endfor %}
+      </div>
+      <div class="bars">
+        <p class="bars-h">전용면적별</p>
+        {% for lab, c in n.area_buckets %}<div class="hbar{{ ' zero' if not c }}"><span class="bl">{{ lab }}</span><span class="bt"><i style="width:{{ (c * 100 / n.bucket_max)|round|int }}%"></i></span><b class="num">{{ c }}호</b></div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="hfilter" role="group" aria-label="지역으로 거르기" data-hfilter hidden>
+      <button type="button" aria-pressed="true" data-g="">전체 {{ n.units }}</button>
+      {% for g, lst in n.house_groups %}<button type="button" aria-pressed="false" data-g="{{ g }}">{{ g.split(' ', 1)[1] if ' ' in g else g }} {{ lst|length }}</button>{% endfor %}
+    </div>
+    <ul class="hlist num">
+    {% for g, lst in n.house_groups %}{% for h in lst|sort(attribute='excl') %}
+      <li data-g="{{ g }}"><div class="hm"><b>{{ h.sigungu }} {{ h.dong }}{% if h.name %} · {{ h.name }}{% endif %}</b><span>{{ h.road_short }}</span></div><div class="hs"><b>{{ h.excl|m2 }}</b><small>{{ h.excl|py }}평 · {{ h.unit }}{% if h.floor %} · {{ h.floor }}층{% endif %}</small></div></li>
+    {% endfor %}{% endfor %}
+    </ul>
+    <button type="button" class="hmore" data-hmore hidden></button>
+    <p class="note">주소·호·층·전용면적은 LH 분양임대공고 기준이에요. 집 상태와 주변은 주택 열람 기간에 직접 확인하세요.</p>
   </section>
   {% elif n.is_rental %}
   <section class="sec" aria-labelledby="h-price">
@@ -154,6 +195,13 @@
     {% endif %}
     {% if n.rent_note %}<p class="note">{{ n.rent_note }}</p>{% endif %}
     {% if n.sum_special and n.sum_general %}<p class="note num">특별공급 {{ '{:,}'.format(n.sum_special) }}세대 · 일반공급 {{ '{:,}'.format(n.sum_general) }}세대{% if n.sum_special + n.sum_general != n.units %} (전체 {{ '{:,}'.format(n.units) }}세대 중 이번 모집분){% endif %}</p>{% endif %}
+  </section>
+  {% endif %}
+
+  {% if n.steps %}
+  <section class="sec" aria-labelledby="h-how">
+    <h2 id="h-how">{{ n.h2.get('how', '신청 방법') }}</h2>
+    <ol class="steps">{% for a, b in n.steps %}<li><b>{{ a }}</b><span>{{ b }}</span></li>{% endfor %}</ol>
   </section>
   {% endif %}
 

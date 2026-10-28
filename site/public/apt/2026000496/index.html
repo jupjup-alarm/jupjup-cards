@@ -23,7 +23,7 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="alternate" type="application/rss+xml" title="줍줍알람" href="/rss.xml">
-<link rel="stylesheet" href="/style.b3495833.css">
+<link rel="stylesheet" href="/style.eb2a92b2.css">
 </head>
 <body>
 <a class="skip" href="#main">본문 바로가기</a>
@@ -93,6 +93,7 @@
     </ol>
   </section>
 
+
   <section class="sec" aria-labelledby="h-price">
     <h2 id="h-price">분양가·공급 세대</h2>
     <div class="tbl">
@@ -110,6 +111,7 @@
       </table>
     </div>
 <p class="note num">특별공급 514세대 · 일반공급 354세대</p>  </section>
+
 
 
   <section class="sec" aria-labelledby="h-plan">
@@ -232,7 +234,7 @@
   <a class="btn primary" href="https://www.instagram.com/jupjup_alarm/" target="_blank" rel="noopener"><svg class="ig" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></svg>인스타 팔로우</a>
 </div>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","name":"홈","item":"https://jupjupalarm.com/","position":1},{"@type":"ListItem","name":"인천","item":"https://jupjupalarm.com/region/incheon/","position":2},{"@type":"ListItem","name":"청라 아크원 푸르지오","position":3}]},{"@type":"Article","headline":"청라 아크원 푸르지오","description":"접수 11.2(월) ~ 11.4(수) · 103A 최고 분양가 11억7,100만원 · 868세대 · 민간분양. 일정·분양가·자격과 공식 공고 링크를 한 번에.","datePublished":"2026-10-29T07:51:43+09:00","dateModified":"2026-10-29T07:54:43+09:00","image":["https://jupjupalarm.com/og-default.jpg"],"mainEntityOfPage":"https://jupjupalarm.com/apt/2026000496/","author":{"@type":"Organization","name":"줍줍알람","url":"https://jupjupalarm.com/"},"publisher":{"@type":"Organization","name":"줍줍알람","url":"https://jupjupalarm.com/","logo":{"@type":"ImageObject","url":"https://jupjupalarm.com/icon-512.png"}},"about":{"@type":"ApartmentComplex","name":"청라 아크원 푸르지오","numberOfAccommodationUnits":868,"address":{"@type":"PostalAddress","addressCountry":"KR","addressRegion":"인천","addressLocality":"서해구","streetAddress":"인천광역시 서해구 청라동 86-1번지 (청라국제업무단지 M5BL)"}}}]}
+{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","name":"홈","item":"https://jupjupalarm.com/","position":1},{"@type":"ListItem","name":"인천","item":"https://jupjupalarm.com/region/incheon/","position":2},{"@type":"ListItem","name":"청라 아크원 푸르지오","position":3}]},{"@type":"Article","headline":"청라 아크원 푸르지오","description":"접수 11.2(월) ~ 11.4(수) · 103A 최고 분양가 11억7,100만원 · 868세대 · 민간분양. 일정·분양가·자격과 공식 공고 링크를 한 번에.","datePublished":"2026-10-29T07:51:43+09:00","dateModified":"2026-10-29T08:10:10+09:00","image":["https://jupjupalarm.com/og-default.jpg"],"mainEntityOfPage":"https://jupjupalarm.com/apt/2026000496/","author":{"@type":"Organization","name":"줍줍알람","url":"https://jupjupalarm.com/"},"publisher":{"@type":"Organization","name":"줍줍알람","url":"https://jupjupalarm.com/","logo":{"@type":"ImageObject","url":"https://jupjupalarm.com/icon-512.png"}},"about":{"@type":"ApartmentComplex","name":"청라 아크원 푸르지오","numberOfAccommodationUnits":868,"address":{"@type":"PostalAddress","addressCountry":"KR","addressRegion":"인천","addressLocality":"서해구","streetAddress":"인천광역시 서해구 청라동 86-1번지 (청라국제업무단지 M5BL)"}}}]}
 </script>
 <script>
 (function(){
@@ -261,6 +263,14 @@
     window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(onScroll);}},{passive:true});
     bar.addEventListener('focusin',function(){bar.classList.remove('hide')});}
 
+  var hf=document.querySelector('[data-hfilter]');
+  if(hf){var hbs=[].slice.call(hf.querySelectorAll('button')),hli=[].slice.call(document.querySelectorAll('.hlist li')),hm=document.querySelector('[data-hmore]'),LIM=10,open=false;
+    function show(g){var vis=hli.filter(function(li){return !g||li.getAttribute('data-g')===g});
+      hli.forEach(function(li){li.hidden=vis.indexOf(li)<0});
+      if(!g&&!open&&vis.length>LIM+2){vis.slice(LIM).forEach(function(li){li.hidden=true});hm.textContent='나머지 '+(vis.length-LIM)+'호 더 보기';hm.hidden=false;}else{hm.hidden=true;}}
+    hbs.forEach(function(b){b.addEventListener('click',function(){hbs.forEach(function(x){x.setAttribute('aria-pressed',x===b)});show(b.getAttribute('data-g'));});});
+    hm.addEventListener('click',function(){open=true;show('');});
+    hf.hidden=false;show('');}
   var ads=[].slice.call(document.querySelectorAll('[data-cp]')).filter(function(el){return window.matchMedia(el.getAttribute('data-mq')||'all').matches;});
   if(ads.length){var go=function(){var g=document.createElement('script');g.src='https://ads-partners.coupang.com/g.js';g.async=true;
     g.onload=function(){ads.forEach(function(el){try{var o=JSON.parse(el.getAttribute('data-cp'));o.container=el;new PartnersCoupang.G(o);el.closest('.ad').classList.add('on');}catch(e){}});};

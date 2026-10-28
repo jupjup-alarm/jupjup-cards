@@ -78,6 +78,14 @@
     window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(onScroll);}},{passive:true});
     bar.addEventListener('focusin',function(){bar.classList.remove('hide')});}
 
+  var hf=document.querySelector('[data-hfilter]');
+  if(hf){var hbs=[].slice.call(hf.querySelectorAll('button')),hli=[].slice.call(document.querySelectorAll('.hlist li')),hm=document.querySelector('[data-hmore]'),LIM=10,open=false;
+    function show(g){var vis=hli.filter(function(li){return !g||li.getAttribute('data-g')===g});
+      hli.forEach(function(li){li.hidden=vis.indexOf(li)<0});
+      if(!g&&!open&&vis.length>LIM+2){vis.slice(LIM).forEach(function(li){li.hidden=true});hm.textContent='나머지 '+(vis.length-LIM)+'호 더 보기';hm.hidden=false;}else{hm.hidden=true;}}
+    hbs.forEach(function(b){b.addEventListener('click',function(){hbs.forEach(function(x){x.setAttribute('aria-pressed',x===b)});show(b.getAttribute('data-g'));});});
+    hm.addEventListener('click',function(){open=true;show('');});
+    hf.hidden=false;show('');}
   var ads=[].slice.call(document.querySelectorAll('[data-cp]')).filter(function(el){return window.matchMedia(el.getAttribute('data-mq')||'all').matches;});
   if(ads.length){var go=function(){var g=document.createElement('script');g.src='https://ads-partners.coupang.com/g.js';g.async=true;
     g.onload=function(){ads.forEach(function(el){try{var o=JSON.parse(el.getAttribute('data-cp'));o.container=el;new PartnersCoupang.G(o);el.closest('.ad').classList.add('on');}catch(e){}});};

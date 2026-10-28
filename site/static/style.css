@@ -291,3 +291,34 @@ footer nav{display:flex;flex-wrap:wrap;gap:4px 12px}
 .ad-box{width:100%;overflow:hidden}
 .ad-home{margin-top:24px}
 @media (min-width:1024px) and (max-height:920px){.page > aside{position:static}}
+
+/* 매입임대(여러 동네 다가구): 지역·면적 막대, 주택 목록, 신청 방법 */
+.hstat{display:grid;gap:18px;margin-bottom:18px}
+@media (min-width:640px){.hstat{grid-template-columns:1fr 1fr;gap:28px}}
+.bars{display:grid;gap:8px;align-content:start}
+.bars-h{margin:0 0 2px;font-size:13px;font-weight:700;color:var(--ink-sub)}
+.hbar{display:grid;grid-template-columns:minmax(0,9.5em) minmax(0,1fr) 3.2em;align-items:center;gap:10px;font-size:14px}
+.hbar .bl{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hbar .bt{height:10px;background:var(--band);border-radius:999px;overflow:hidden}
+.hbar .bt i{display:block;height:100%;background:var(--coral);border-radius:999px;min-width:4px}
+.hbar.zero .bt i{min-width:0}
+.hbar b{text-align:right;font-size:13px}
+.hbar.zero{color:var(--ink-sub)}
+.hfilter{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.hfilter button{font:inherit;font-size:13px;font-weight:600;padding:6px 11px;border-radius:999px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer}
+.hfilter button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.hlist{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.hlist li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 14px;padding:12px 0;border-bottom:1px solid var(--line);align-items:center}
+.hlist li[hidden]{display:none}
+.hm{display:grid;min-width:0}
+.hm b{font-size:15px}
+.hm span{font-size:13px;color:var(--ink-sub)}
+.hs{display:grid;text-align:right}
+.hs b{font-size:16px}
+.hs small{font-size:12px;color:var(--ink-sub)}
+.steps{list-style:none;margin:0;padding:0;counter-reset:st;display:grid;gap:12px}
+.steps li{counter-increment:st;display:grid;grid-template-columns:28px minmax(0,1fr);gap:2px 12px}
+.steps li::before{content:counter(st);grid-row:span 2;width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff;font-size:14px;font-weight:700;display:grid;place-items:center}
+.steps b{font-size:15px}
+.steps span{font-size:14px;color:var(--ink-sub)}
+.hmore{font:inherit;font-size:14px;font-weight:600;width:100%;margin-top:10px;padding:11px;border-radius:var(--r);border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer}

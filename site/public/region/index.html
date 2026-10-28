@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>지역별 청약 공고 · 줍줍알람</title>
-<meta name="description" content="시·도별 청약 공고 모음. 서울 4곳, 인천 6곳, 경기 17곳.">
+<meta name="description" content="시·도별 청약 공고 모음. 서울 4곳, 인천 7곳, 경기 18곳.">
 <link rel="canonical" href="https://jupjupalarm.com/region/">
 <meta name="robots" content="max-image-preview:large">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="줍줍알람">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:title" content="지역별 청약 공고">
-<meta property="og:description" content="시·도별 청약 공고 모음. 서울 4곳, 인천 6곳, 경기 17곳.">
+<meta property="og:description" content="시·도별 청약 공고 모음. 서울 4곳, 인천 7곳, 경기 18곳.">
 <meta property="og:url" content="https://jupjupalarm.com/region/">
 <meta property="og:image" content="https://jupjupalarm.com/og-default.jpg">
 <meta property="og:image:width" content="1200">
@@ -23,7 +23,7 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="alternate" type="application/rss+xml" title="줍줍알람" href="/rss.xml">
-<link rel="stylesheet" href="/style.b3495833.css">
+<link rel="stylesheet" href="/style.eb2a92b2.css">
 </head>
 <body>
 <a class="skip" href="#main">본문 바로가기</a>
@@ -44,8 +44,8 @@
     <div class="lhead"><h1>지역별 청약 공고</h1></div>
     <div class="idx">
       <a href="/region/seoul/"><b>서울</b><span class="num">접수 중·예정 1곳 · 전체 4곳</span></a>
-      <a href="/region/incheon/"><b>인천</b><span class="num">접수 중·예정 5곳 · 전체 6곳</span></a>
-      <a href="/region/gyeonggi/"><b>경기</b><span class="num">접수 중·예정 15곳 · 전체 17곳</span></a>
+      <a href="/region/incheon/"><b>인천</b><span class="num">접수 중·예정 6곳 · 전체 7곳</span></a>
+      <a href="/region/gyeonggi/"><b>경기</b><span class="num">접수 중·예정 16곳 · 전체 18곳</span></a>
     </div>
   </div>
 </main>
@@ -86,6 +86,14 @@
     window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(onScroll);}},{passive:true});
     bar.addEventListener('focusin',function(){bar.classList.remove('hide')});}
 
+  var hf=document.querySelector('[data-hfilter]');
+  if(hf){var hbs=[].slice.call(hf.querySelectorAll('button')),hli=[].slice.call(document.querySelectorAll('.hlist li')),hm=document.querySelector('[data-hmore]'),LIM=10,open=false;
+    function show(g){var vis=hli.filter(function(li){return !g||li.getAttribute('data-g')===g});
+      hli.forEach(function(li){li.hidden=vis.indexOf(li)<0});
+      if(!g&&!open&&vis.length>LIM+2){vis.slice(LIM).forEach(function(li){li.hidden=true});hm.textContent='나머지 '+(vis.length-LIM)+'호 더 보기';hm.hidden=false;}else{hm.hidden=true;}}
+    hbs.forEach(function(b){b.addEventListener('click',function(){hbs.forEach(function(x){x.setAttribute('aria-pressed',x===b)});show(b.getAttribute('data-g'));});});
+    hm.addEventListener('click',function(){open=true;show('');});
+    hf.hidden=false;show('');}
   var ads=[].slice.call(document.querySelectorAll('[data-cp]')).filter(function(el){return window.matchMedia(el.getAttribute('data-mq')||'all').matches;});
   if(ads.length){var go=function(){var g=document.createElement('script');g.src='https://ads-partners.coupang.com/g.js';g.async=true;
     g.onload=function(){ads.forEach(function(el){try{var o=JSON.parse(el.getAttribute('data-cp'));o.container=el;new PartnersCoupang.G(o);el.closest('.ad').classList.add('on');}catch(e){}});};

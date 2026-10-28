@@ -46,6 +46,13 @@ KINDS = {
     "newlywed": ("신혼희망타운", "신혼희망타운 청약"),
     "rental": ("공공임대", "공공임대·행복주택 모집"),
 }
+RENTAL_EXPLAIN = {
+    "일반 매입임대": "LH가 도심의 기존 다가구·다세대 주택을 사들여 무주택 저소득 가구에 시중 시세보다 낮은 임대료로 빌려주는 공공임대예요. 단지 하나가 아니라 여러 동네의 집을 한 공고로 모집해요.",
+    "청년 매입임대": "LH가 사들인 기존 주택을 무주택 청년에게 시중 시세보다 낮은 임대료로 빌려주는 공공임대예요. 여러 동네의 집을 한 공고로 모집해요.",
+    "신혼·신생아 매입임대": "LH가 사들인 기존 주택을 신혼부부·신생아 가구에 시중 시세보다 낮은 임대료로 빌려주는 공공임대예요. 여러 동네의 집을 한 공고로 모집해요.",
+    "다자녀 매입임대": "LH가 사들인 기존 주택을 다자녀 가구에 시중 시세보다 낮은 임대료로 빌려주는 공공임대예요.",
+    "든든전세": "LH가 사들인 주택을 시세보다 낮은 전세로 빌려주는 매입임대예요. 월세 없이 보증금만 내요.",
+}
 KIND_INTRO = {
     "mujeonwi": "1·2순위 청약이 끝난 뒤 남은 세대나 계약 취소분을 다시 뽑는 공고예요. 청약통장 없이 추첨으로 뽑고, 2025.2 개편 뒤로는 무주택자만 신청할 수 있어요. 거주지역 요건과 재당첨 제한은 공고마다 달라요. 임의공급(사업주체가 조건을 따로 정하는 공급)도 여기에 함께 모았어요.",
     "private": "민간 건설사가 짓는 아파트의 일반 청약이에요. 청약통장이 필요하고, 지역·면적에 따라 가점제와 추첨제 비율이 달라요.",
@@ -269,6 +276,33 @@ def build_notice(e, row, regions, problems):
         n["rent_summary"] = rs
         if not n["units"]:
             n["units"] = sum(m.get("units") or 0 for m in rms)
+    # 매입임대(여러 동네 다가구): 주택 목록 → 지역·면적 묶음
+    hs = e.get("houses") or []
+    n["houses"] = hs
+    n["unit_word"] = "호" if hs else "세대"
+    if hs:
+        if not n["units"]:
+            n["units"] = len(hs)
+        grp = {}
+        for h in hs:
+            grp.setdefault(f"{h['sido']} {h['sigungu']}".strip(), []).append(h)
+        n["house_groups"] = sorted(grp.items(), key=lambda kv: (-len(kv[1]), kv[0]))
+        bk = [("20㎡ 미만", 0, 20), ("20~40㎡", 20, 40), ("40~60㎡", 40, 60), ("60㎡ 이상", 60, 999)]
+        n["area_buckets"] = [(lab, len([h for h in hs if h.get("excl") and lo <= h["excl"] < hi])) for lab, lo, hi in bk]
+        ex = [h["excl"] for h in hs if h.get("excl")]
+        n["excl_range"] = (min(ex), max(ex)) if ex else None
+        n["house_sidos"] = sorted({h["sido"] for h in hs})
+        for h in hs:
+            h["road_short"] = " ".join(h.get("road", "").split()[1:])
+        n["house_max"] = max(len(v) for _, v in n["house_groups"])
+        n["bucket_max"] = max([c for _, c in n["area_buckets"]] + [1])
+        rr = e.get("rent_range") or {}
+        if rr and not n.get("rent_summary"):
+            n["rent_summary"] = {"deposit": rr.get("deposit", [None])[0], "monthly": (rr.get("monthly") or [None])[0],
+                                 "basis": "가장 낮은 금액 · 집마다 달라요", "range": True}
+    n["steps"] = [[fill(a), fill(b)] for a, b in (e.get("steps") or [])]
+    if n.get("lease"):
+        n["lease"] = fill(n["lease"])
     n["comp"] = parse_comp(r.get("경쟁률(청약홈 공식)"))
     n["source_url"] = e.get("source_url") or r.get("청약홈 상세(공식 공고)")
     n["homepage"] = e.get("homepage") or r.get("홈페이지") or ""
@@ -296,7 +330,7 @@ def build_notice(e, row, regions, problems):
     if n["is_pre"]:
         ok = n["rcpt"][0] and e.get("price_text") and e.get("sources_extra")
     elif n["is_rental"]:
-        ok = n["rcpt"][0] and n["source_url"] and (n["rent_models"] or n["rent_summary"])
+        ok = n["rcpt"][0] and n["source_url"] and (n["rent_models"] or n["rent_summary"] or (n["houses"] and e.get("rent_level")))
     else:
         ok = n["rcpt"][0] and n["max_price"] and n["source_url"]
     if not ok:
@@ -534,7 +568,7 @@ def notice_images(n):
 def env():
     e = Environment(loader=FileSystemLoader(SITE / "templates"), autoescape=select_autoescape(["html", "xml"]),
                     trim_blocks=True, lstrip_blocks=True)
-    e.filters.update(combine=lambda a, b: {**a, **b}, money=money, d=d, drange=drange, won=won, py=py, m2=m2, tdate=tdate, trange=trange, tmonth=tmonth,
+    e.filters.update(combine=lambda a, b: {**a, **b}, money=money, mrange=lambda r: f"{money(r[0])[:-1]}~{money(r[1])}" if r and r[0] != r[1] else money(r[0]) if r else '', d=d, drange=drange, won=won, py=py, m2=m2, tdate=tdate, trange=trange, tmonth=tmonth,
                      jsonld=lambda o: Markup(json.dumps(o, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")))
     def crumb_ld(items, last, page_url):
         el = [{"@type": "ListItem", "name": lab, "item": BASE + u} for lab, u in items if u]
@@ -544,7 +578,7 @@ def env():
         return {"@type": "BreadcrumbList", "itemListElement": el}
     def items_ld(items):
         return [{"@type": "ListItem", "position": i, "url": BASE + n["url"], "name": n["title"]} for i, n in enumerate(items, 1)]
-    e.globals.update(BASE=BASE, IG=IG, THREADS=THREADS, COUPANG=COUPANG, COUPANG_NOTE=COUPANG_NOTE, STATUS=STATUS, KINDS=KINDS, crumb_ld=crumb_ld, items_ld=items_ld,
+    e.globals.update(RENTAL_EXPLAIN=RENTAL_EXPLAIN, BASE=BASE, IG=IG, THREADS=THREADS, COUPANG=COUPANG, COUPANG_NOTE=COUPANG_NOTE, STATUS=STATUS, KINDS=KINDS, crumb_ld=crumb_ld, items_ld=items_ld,
                      logo=Markup((SITE / "static/favicon.svg").read_text().replace('<svg xmlns="http://www.w3.org/2000/svg" ', '<svg class="mark" aria-hidden="true" focusable="false" ')))
     return e
 
@@ -640,7 +674,8 @@ def main():
     # 지역 목록 구성
     sido_map = {}
     for n in notices:
-        sido_map.setdefault(n["sido"], []).append(n)
+        for sd in ([n["sido"]] + [x for x in n.get("house_sidos", []) if x != n["sido"]]):
+            sido_map.setdefault(sd, []).append(n)
     sgg_pages = {}
     for n in notices:
         if n["sgg_slug"]:
@@ -685,6 +720,13 @@ def main():
             desc = f"공고 전 예상 {n.get('price_short') or n['price_text']} → 실제 최고 {won(m['max_price']) if m.get('max_price') else '공고문 확인'}. 보도로 알려진 전망과 실제 입주자모집공고를 비교하고, 확정 일정·분양가 페이지로 안내해요."
         elif n["is_pre"]:
             desc = f"{n['units']:,}세대 · 예상 분양가 {n['price_text']} · {d(n['rcpt'][0])} 접수 예정(보도 기준). 공고 전 단지의 일정·분양가 전망·시세 비교를 정리. 공고가 나오면 공식 값으로 바꿔요."
+        elif n["is_rental"] and n["houses"]:
+            rr = n.get("rent_range") or {}
+            cond = n.get("rent_level") or ""
+            if rr.get("deposit"):
+                cond += f" · 보증금 {money(rr['deposit'][0])[:-1]}~{money(rr['deposit'][1])} · 월 {money(rr['monthly'][0])[:-1]}~{money(rr['monthly'][1])}"
+            sgs = "·".join(g for g, _ in n["house_groups"][:4])
+            desc = f"{n['units']}호({sgs}) · {cond} · 접수 {rc} {n.get('receipt_note') or ''}. 주택 목록·면적·자격·신청 방법을 한 번에."
         elif n["is_rental"]:
             cond = f"보증금 {money(rs['deposit'])} · 월 {money(rs['monthly'])}" if rs.get("deposit") else f"주택형 {len(n['rent_models'])}개"
             desc = f"접수 {rc} · {cond} · {n['units']:,}세대 · {n.get('target') or n['kind_label']}. 신청 자격·일정과 공식 공고 링크를 한 번에."
@@ -695,7 +737,7 @@ def main():
             desc = f"접수 {rc} · {n['max_type']} {n['price_label']} {won(n['max_price'])} · {n['units']:,}세대 · {typ}. 일정·분양가·자격과 공식 공고 링크를 한 번에."
         if seo and seo["words"] and not n.get("moved"):
             tail = "·".join(seo["words"][:3])
-            desc = re.sub(r"(일정·분양가·자격과 공식 공고 링크를 한 번에|신청 자격·일정과 공식 공고 링크를 한 번에)\.$",
+            desc = re.sub(r"(일정·분양가·자격과 공식 공고 링크를 한 번에|신청 자격·일정과 공식 공고 링크를 한 번에|주택 목록·면적·자격·신청 방법을 한 번에)\.$",
                           f"{n.get('complex') or n['title']} {tail}까지 공식 공고 기준으로 정리.", desc)
         n["page_title"], n["desc"] = title, desc
         n["crumb"] = crumb_for(n)
