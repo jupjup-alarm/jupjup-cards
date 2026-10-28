@@ -24,16 +24,26 @@
    "수원시": "suwon",
    "시흥시": "siheung",
    "성남시": "seongnam",
-   "구리시": "guri"
+   "구리시": "guri",
+   "이천시": "icheon",
+   "김포시": "gimpo",
+   "과천시": "gwacheon",
+   "파주시": "paju",
+   "화성특례시": "hwaseong",
+   "안성시": "anseong"
   },
   "서울": {
    "강동구": "gangdong",
    "중구": "jung",
-   "서초구": "seocho"
+   "서초구": "seocho",
+   "강서구": "gangseo"
   },
   "인천": {
    "계양구": "gyeyang",
-   "부평구": "bupyeong"
+   "부평구": "bupyeong",
+   "미추홀구": "michuhol",
+   "서해구": "seohae",
+   "연수구": "yeonsu"
   }
  }
 }
