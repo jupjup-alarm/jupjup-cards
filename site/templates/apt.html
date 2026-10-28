@@ -86,7 +86,7 @@
 
   {% if n.comp and n.comp.rows %}
   <section class="sec" aria-labelledby="h-comp">
-    <h2 id="h-comp">청약 경쟁률</h2>
+    <h2 id="h-comp">{{ n.h2.get('comp', '청약 경쟁률') }}</h2>
     {% if n.comp.summary %}<p class="comp-sum num">{{ n.comp.summary }}</p>{% endif %}
     <div class="tbl">
       <table class="num fit">
@@ -102,7 +102,7 @@
   {% endif %}
 
   <section class="sec" aria-labelledby="h-sch">
-    <h2 id="h-sch">청약 일정</h2>
+    <h2 id="h-sch">{{ n.h2.get('sch', '청약 일정') }}</h2>
     <ol class="tl num">
     {% set ns = namespace(next=false) %}
     {% for s in n.schedule %}
@@ -117,7 +117,7 @@
 
   {% if n.is_pre %}
   <section class="sec" aria-labelledby="h-price">
-    <h2 id="h-price">예상 분양가·공급 규모</h2>
+    <h2 id="h-price">{% if n.h2.price %}{{ n.h2.price }} {% endif %}예상 분양가·공급 규모</h2>
     <dl class="kv">{% for k, v in n.pre_rows %}<div><dt>{{ k }}</dt><dd>{{ v }}</dd></div>{% endfor %}</dl>
     <p class="note">{{ n.pre_note or '아직 입주자모집공고가 나오지 않은 단지예요. 위 값은 모두 보도 기준이고, 공고가 나오면 공식 값으로 바꿔요.' }}</p>
   </section>
@@ -138,7 +138,7 @@
   </section>
   {% else %}
   <section class="sec" aria-labelledby="h-price">
-    <h2 id="h-price">분양가·공급 세대</h2>
+    <h2 id="h-price">{% if n.h2.price %}{{ n.h2.price }} 분양가·공급 세대{% else %}분양가·공급 세대{% endif %}</h2>
     <div class="tbl">
       <table class="num fit">
         <caption>{{ n.price_label|replace('최고 ', '') }}은 주택형별 최고가 기준. 층·호별 금액은 공고문 참고.</caption>
@@ -169,7 +169,7 @@
 
   {% if n.areas or n.imgs.plans or (n.models and not n.is_pre) %}
   <section class="sec" aria-labelledby="h-plan">
-    <h2 id="h-plan">평면도·면적</h2>
+    <h2 id="h-plan">{{ n.h2.get('plan', '평면도·면적') }}</h2>
     {% if n.imgs.plans %}
       {% if n.imgs.plans|length > 1 %}
       <div class="ptabs" role="tablist" aria-label="주택형" hidden>
@@ -228,7 +228,7 @@
 
   {% if n.imgs.layouts %}
   <section class="sec" aria-labelledby="h-layout">
-    <h2 id="h-layout">단지 배치도</h2>
+    <h2 id="h-layout">{{ n.h2.get('layout', '단지 배치도') }}</h2>
     <div class="plans">
     {% for p in n.imgs.layouts %}
       <figure class="fig">
@@ -242,7 +242,7 @@
   {% endif %}
 
   <section class="sec" aria-labelledby="h-elig">
-    <h2 id="h-elig">신청 자격</h2>
+    <h2 id="h-elig">{{ n.h2.get('elig', '신청 자격') }}</h2>
     <dl class="kv">
     {% for row in n.eligibility %}<div><dt>{{ row[0] }}</dt><dd>{{ row[1] }}{% if row|length > 2 and row[2] %} <span class="tag">{{ row[2] }}</span>{% endif %}</dd></div>
     {% endfor %}

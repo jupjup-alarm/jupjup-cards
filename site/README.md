@@ -24,6 +24,14 @@
   - 이때 pre 파일의 take·who·faq를 '공고 전 예상은 …였고 실제 공고는 …' 식의 비교·회고 문장으로 고쳐 쓴다 (새 공고 페이지와 같은 문장을 쓰지 않기 — 검색어가 겹치지 않게 이 페이지는 '예상·전망·비교'에 집중).
 - **배치도·동호배치도**: '청약조사' AE·AG열 파일을 반드시 Read로 열어 확인한 뒤 `"layouts": [{"kind": "배치도", "image": "photos/layout-….jpg", "alt": "…"}]` (동호배치도는 kind "동호배치도"). 출처는 `image_credit_owner`. 공고당 이미지(조감도·평면도·배치도 합계) 최대 6장.
 
+## 검색 키워드 (2026-10-29 추가 — 청약노트 블로그와 같은 네이버 API)
+- 키: 구글 시트 '청약노트 블로그 운영'(id 1B20bC25MYQl5uHGCFx6_QQp2G_7AEJ-rTPTSbrM9d4E) '키' 탭 B2:B6 (NAVER_CLIENT_ID, NAVER_CLIENT_SECRET, SEARCHAD_API_KEY, SEARCHAD_SECRET_KEY, SEARCHAD_CUSTOMER_ID). 세션 임시 폴더에 `KEY=VALUE` 파일(권한 600)로 만들어 `CHEONGYAK_ENV=그 경로`로 넘긴다. **값을 출력·커밋하지 않는다.** 끝나면 파일을 지운다.
+- `python3 site/tools/keywords.py` → 키워드 파일이 없거나 7일 지난 공고만 조회해 `site/data/keywords/{key}.json`(월간 검색량 PC·모바일, 상위 8개는 블로그 문서 수, 단지명이 들어간 연관 키워드). 새 공고·고친 공고는 `python3 site/tools/keywords.py {key} …`로 바로 조회. 목록용 일반 키워드는 `--site`(월 1회).
+- 빌드가 자동으로 쓰는 곳: ① 제목 단어 — 페이지에 실제로 있는 주제(분양가·청약 일정·평면도·경쟁률·줍줍·보증금·월세 …) 중 검색량 많은 2개 (발표 후엔 경쟁률 고정, 무순위는 줍줍 검색이 많으면 '무순위(줍줍)') ② 설명 끝 문장 ③ 검색량 50 이상 주제의 소제목 앞에 단지명 (최대 3개).
+- `site/build-report.json`의 `seo_gaps` = 검색은 많은데(월 100+) 페이지에 없는 주제 (예: '고덕강일3단지 모델하우스 (2,020)'). 시트·공고문에 사실이 있으면 FAQ나 본문에 채우고, 없으면 그대로 둔다 (지어내지 않기). 모델하우스 위치는 공고문·공식 홈페이지에 있을 때만 `model_house` {"address": "…", "note": "…"}로 넣고 FAQ에 쓴다.
+- FAQ 질문은 검색량 상위 롱테일 키워드의 말투로 쓴다 (예: '충정로역자이르네 줍줍 자격은?'). 검색량이 단지명 줄임말 쪽이 크면(`names`) `aliases`·`search_names`에 넣는다.
+- 단지명 변형이 자동으로 안 잡히면(블록 번호 가운데 등) apt 파일에 `"search_names": ["시흥하중 신혼희망타운"]`을 넣고 다시 조회.
+
 ## 규칙
 - 공개한 공고 파일은 지우지 않는다. 취소된 공고는 `"status_override": "announced"` 등으로 둔다.
 - 주소를 옮길 때만 `site/data/redirects.json`에 `["/옛주소/", "/새주소/"]`를 추가 (301).

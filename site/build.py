@@ -40,7 +40,7 @@ KST = dt.timezone(dt.timedelta(hours=9))
 DOW = "월화수목금토일"
 
 KINDS = {
-    "mujeonwi": ("무순위·줍줍", "무순위 청약"),
+    "mujeonwi": ("무순위·줍줍", "무순위(줍줍) 청약"),
     "private": ("민간분양", "민간분양 청약"),
     "public": ("공공분양", "공공분양 청약"),
     "newlywed": ("신혼희망타운", "신혼희망타운 청약"),
@@ -353,6 +353,84 @@ def build_notice(e, row, regions, problems):
 DATA_FETCHED = ""
 
 
+KWDIR = DATA / "keywords"
+SEO_GAPS = {}
+
+
+def _ns(x):
+    return re.sub(r"\s+", "", x).upper()
+
+
+def seo_of(n):
+    """site/data/keywords/{key}.json(네이버 검색량)으로 제목 단어·설명 끝·소제목을 고른다.
+    페이지에 실제로 있는 내용의 단어만 쓰고, 검색은 많은데 페이지에 없는 주제는 SEO_GAPS에 남긴다."""
+    f = KWDIR / f"{n['key']}.json"
+    if not f.exists():
+        return None
+    k = json.loads(f.read_text())
+    vol = {}
+    for r in k.get("rows", []):
+        vol[_ns(r["kw"])] = max(vol.get(_ns(r["kw"]), 0), r["total"])
+    names = k.get("names") or [n.get("complex") or n["title"]]
+
+    def v(word):
+        return max([vol.get(_ns(f"{nm} {word}"), 0) for nm in names] or [0])
+
+    has = {
+        "분양가": not n["is_rental"] and bool(n.get("max_price") or n.get("price_text")),
+        "청약 일정": True, "분양 일정": n["is_pre"],
+        "경쟁률": bool(n.get("comp")), "당첨자 발표": not n["is_pre"] and bool(n.get("announce")),
+        "평면도": bool(n["imgs"].get("plans")), "배치도": bool(n["imgs"].get("layouts")),
+        "줍줍": n["kind"] == "mujeonwi", "무순위": n["kind"] == "mujeonwi",
+        "보증금": n["is_rental"] and bool((n.get("rent_summary") or {}).get("deposit")),
+        "월세": n["is_rental"] and bool((n.get("rent_summary") or {}).get("monthly")),
+        "자격": True, "입주자격": n["is_rental"], "시세": bool(n.get("gap")),
+        "모델하우스": bool(n.get("model_house")), "입주": True,
+    }
+    words = [w for w in has if has[w] and w not in ("자격", "입주") and v(w) >= 20]
+    words.sort(key=lambda w: -v(w))
+    if "줍줍" in words and "무순위" in words:
+        words.remove("무순위" if v("줍줍") >= v("무순위") else "줍줍")
+    gaps = [(f"{names[0]} {w}", v(w)) for w in has if not has[w] and v(w) >= 100]
+    gaps += [(r["kw"], r["total"]) for r in k.get("related", [])[:5] if r["total"] >= 300 and _ns(names[0]) in _ns(r["kw"])]
+    if gaps:
+        SEO_GAPS[n["key"]] = gaps
+    return {"vol": v, "words": words, "names": names, "has": has}
+
+
+def kw_title(n, seo, required=None, default=()):
+    base = n["title"]
+    words = list(seo["words"]) if seo else []
+    if "줍줍" in words and base.endswith("무순위"):
+        base += "(줍줍)"
+        words.remove("줍줍")
+    words = [w for w in words if w not in base]
+    if n["is_pre"]:
+        words = ["예상 분양가" if w == "분양가" else w for w in words]
+    pick = [required] if required else []
+    for w in words + list(default):
+        if len(pick) >= 2:
+            break
+        if w not in pick and w not in base and not (w == "청약 일정" and "분양 일정" in pick):
+            pick.append(w)
+    return f"{base} {'·'.join(pick)} · 줍줍알람"
+
+
+def kw_h2(n, seo):
+    """검색량이 있는 주제의 소제목 앞에 단지명을 붙인다 (최대 3개)."""
+    h2 = {}
+    if not seo:
+        return h2
+    nm = n.get("complex") or n["title"]
+    cand = [("sch", "청약 일정", "청약 일정"), ("price", "분양가", None), ("plan", "평면도", "평면도·면적"),
+            ("comp", "경쟁률", "청약 경쟁률"), ("elig", "자격", "신청 자격"), ("layout", "배치도", "단지 배치도")]
+    cand = [c for c in cand if seo["has"].get(c[1]) and seo["vol"](c[1]) >= 50]
+    cand.sort(key=lambda c: -seo["vol"](c[1]))
+    for sec, _, label in cand[:3]:
+        h2[sec] = f"{nm} {label}" if label else nm
+    return h2
+
+
 def status_of(n):
     t = TODAY.isoformat()
     if n.get("status_override"):
@@ -588,16 +666,18 @@ def main():
         n["related_title"] = f"{n['sido']}에서 곧 접수하는 공고" if same else "함께 볼 공고"
         st = n["status"]
         typ = n["kind_label"]
+        seo = seo_of(n)
+        n["h2"] = kw_h2(n, seo)
         if n.get("moved"):
             title = f"{n['title']} 예상 vs 실제 분양가 — 공고 전 전망 정리 · 줍줍알람"
         elif n["is_pre"]:
-            title = f"{n['title']} 분양 일정·예상 분양가 · 줍줍알람"
+            title = kw_title(n, seo, None, ("분양 일정", "예상 분양가"))
         elif n["is_rental"]:
-            title = f"{n['title']} 보증금·월세·자격 · 줍줍알람"
+            title = kw_title(n, seo, None, ("보증금", "월세", "자격"))
         elif st == "announced" or (st == "waiting" and n["comp"]):
-            title = f"{n['title']} 청약 경쟁률·당첨자 발표 · 줍줍알람"
+            title = kw_title(n, seo, "경쟁률", ("당첨자 발표",))
         else:
-            title = f"{n['title']} 분양가·청약 일정 · 줍줍알람"
+            title = kw_title(n, seo, None, ("분양가", "청약 일정"))
         rc = drange(*n["rcpt"])
         rs = n.get("rent_summary") or {}
         if n.get("moved"):
@@ -613,6 +693,10 @@ def main():
             desc = f"{n['comp']['summary'] or ''} · 당첨자 발표 {d(n['announce'])} · {n['price_label']} {won(n['max_price'])}. 일정·분양가·자격과 공식 공고 링크를 한 번에."
         else:
             desc = f"접수 {rc} · {n['max_type']} {n['price_label']} {won(n['max_price'])} · {n['units']:,}세대 · {typ}. 일정·분양가·자격과 공식 공고 링크를 한 번에."
+        if seo and seo["words"] and not n.get("moved"):
+            tail = "·".join(seo["words"][:3])
+            desc = re.sub(r"(일정·분양가·자격과 공식 공고 링크를 한 번에|신청 자격·일정과 공식 공고 링크를 한 번에)\.$",
+                          f"{n.get('complex') or n['title']} {tail}까지 공식 공고 기준으로 정리.", desc)
         n["page_title"], n["desc"] = title, desc
         n["crumb"] = crumb_for(n)
         h = apt_tpl.render(n=n, **common, page_url=n["url"], title=title, desc=desc, og=n["imgs"]["og"])
@@ -651,7 +735,7 @@ def main():
         ("최근 발표", [x for x in s if x["status"] == "announced"][:6]),
     ]
     home_groups = [g for g in home_groups if g[1]]
-    title = "줍줍알람 — 무순위·청약 일정과 분양가를 한눈에"
+    title = "줍줍알람 — 청약 일정·아파트 분양·줍줍(무순위) 한눈에"
     desc = f"오늘 볼 청약 공고 {len([x for x in s if x['status'] in ('open', 'upcoming')])}곳. 무순위(줍줍)·민간분양·공공분양·신혼희망타운의 접수일, 분양가, 자격을 공식 데이터로 정리해요."
     regions_used = sorted(sido_map, key=lambda k: list(regions["sido"]).index(k))
     h = home_tpl.render(groups=home_groups, page_url="/", title=title, desc=desc, og="/og-default.jpg",
@@ -682,8 +766,8 @@ def main():
         if i < len(mkeys) - 1:
             links.append((f"{int(mkeys[i+1][5:])}월 일정 →", f"/schedule/{mkeys[i+1]}/"))
         list_page(f"/schedule/{mk}/", f"{y}년 {m}월 청약 일정",
-                  f"{y}년 {m}월 청약 일정 — 분양·줍줍·임대 {len(lst)}곳 · 줍줍알람",
-                  f"{y}년 {m}월에 접수하는 청약 {len(lst)}곳의 접수일과 분양가를 날짜순으로 정리. " + ", ".join(sidos) + ".",
+                  f"{y}년 {m}월 청약 일정 — 아파트 분양·줍줍·임대 {len(lst)}곳 · 줍줍알람",
+                  f"{m}월 청약 일정: {y}년 {m}월에 접수하는 아파트 분양·줍줍(무순위)·임대 {len(lst)}곳의 접수일과 분양가를 날짜순으로 정리. " + ", ".join(sidos) + ".",
                   groups, intro, [("홈", "/"), ("청약 일정", "/schedule/this-week/")], links)
 
     # 이번 주
@@ -695,8 +779,8 @@ def main():
                        (f"다음 주 {d((week_end + dt.timedelta(days=1)).isoformat())} ~ {d(nxt_end.isoformat())}", next_wk)):
         groups.append((label, sorted(lst, key=lambda x: (x["rcpt"][0], x["title"]))))
     links = [(f"{int(k[5:])}월 전체 일정", f"/schedule/{k}/") for k in mkeys]
-    list_page("/schedule/this-week/", "이번 주 청약 일정", f"이번 주 청약 일정 — 접수 {len(this_wk)}곳 · 줍줍알람",
-              f"이번 주({drange(wk_start.isoformat(), week_end.isoformat())}) 접수하는 청약 {len(this_wk)}곳과 다음 주 미리보기. 접수일·분양가·자격을 한눈에.",
+    list_page("/schedule/this-week/", "이번 주 청약 일정", f"이번 주 청약 일정 — 아파트 분양·줍줍 {len(this_wk)}곳 · 줍줍알람",
+              f"이번 주({drange(wk_start.isoformat(), week_end.isoformat())}) 청약 일정과 다음 주 아파트 분양 일정 미리보기. 줍줍(무순위)·민간분양·공공분양·임대 {len(this_wk)}곳의 접수일·분양가·자격을 한눈에.",
               groups, "월요일부터 일요일까지 접수를 시작하는 공고예요. 다음 주 공고도 미리 확인하세요.",
               [("홈", "/"), ("청약 일정", None)], links, empty="이번 주에 접수를 시작하는 공고가 없어요.")
 
@@ -711,9 +795,9 @@ def main():
         intro = (f"{sido}의 청약 공고 {len(lst)}곳을 모았어요. 지금 접수 중이거나 접수 예정인 공고는 {len(open_n)}곳이에요. "
                  + "시·군·구별로는 " + ", ".join(f"{k} {v}곳" for k, v in sgg_counts.items()) + "이에요.")
         nearest = min((x["rcpt"][0] for x in open_n), default=None)
-        list_page(f"/region/{slug}/", f"{sido} 청약 공고",
-                  f"{sido} 청약 일정·분양가 — 접수 중·예정 {len(open_n)}곳 · 줍줍알람",
-                  f"{sido} 청약 공고 {len(lst)}곳 중 접수 중·예정 {len(open_n)}곳." + (f" 가장 가까운 접수일 {d(nearest)}." if nearest else "") + " 무순위·분양·신혼희망타운 일정과 분양가.",
+        list_page(f"/region/{slug}/", f"{sido} 청약 일정·분양 공고",
+                  f"{sido} 청약 일정 — 아파트 분양·줍줍 접수 중·예정 {len(open_n)}곳 · 줍줍알람",
+                  f"{sido} 청약 일정과 {sido} 아파트 분양 공고 {len(lst)}곳 중 접수 중·예정 {len(open_n)}곳." + (f" 가장 가까운 접수일 {d(nearest)}." if nearest else "") + " 줍줍(무순위)·민간분양·공공분양·신혼희망타운 분양가와 자격.",
                   grouped(lst), intro, [("홈", "/"), ("지역", "/region/")],
                   [(f"{a} 공고", f"/region/{slug}/{b}/") for a, b in sub])
     for (sido, sgg), lst in sgg_pages.items():
@@ -791,7 +875,8 @@ def main():
     # 고아 공고 이미지 폴더 정리 (페이지가 없는 apt/ 폴더는 이미지뿐이면 남겨둠 — 지우지 않음)
     errs = check(notices)
     report = {"built_at": now.isoformat(timespec="seconds"), "today": TODAY.isoformat(), "pages": len(PAGES),
-              "notices": len(notices), "problems": problems, "errors": errs}
+              "notices": len(notices), "problems": problems, "errors": errs,
+              "seo_gaps": {k: [f"{a} ({b:,})" for a, b in v] for k, v in SEO_GAPS.items()}}
     (SITE / "build-report.json").write_text(json.dumps(report, ensure_ascii=False, indent=1))
     if not a.no_state:
         (DATA / "state.json").write_text(json.dumps(state, ensure_ascii=False, indent=1, sort_keys=True))
