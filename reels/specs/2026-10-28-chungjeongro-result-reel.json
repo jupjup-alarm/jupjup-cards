@@ -1,0 +1,58 @@
+{
+ "slug": "2026-10-28-chungjeongro-result-reel",
+ "title": "충정로역자이르네(2차) 청약 결과",
+ "series": "줍줍알람",
+ "voice": "voices/7452e0cad17c/",
+ "voice_speed": 1.0,
+ "scenes": [
+  {
+   "type": "hook",
+   "chips": [
+    "줍줍알람"
+   ],
+   "lines": [
+    "9세대에",
+    "{n}명 몰렸어요"
+   ],
+   "count": {
+    "to": 158
+   },
+   "sub": "24억 서울 줍줍 결과",
+   "face": "깜짝",
+   "photo": "photos/mood/8fb8d6aaf5-2.jpg"
+  },
+  {
+   "type": "beat",
+   "eyebrow": "장소",
+   "big": "충정로역 직결 신축",
+   "big_sub": "84㎡ 최고 24억 3,300만원",
+   "bg": "maps/1f9e469256bf.png",
+   "say": "서울 충정로역 직결 신축인데요. 84㎡ 최고가가 24억 3,300만 원이었어요."
+  },
+  {
+   "type": "beat",
+   "eyebrow": "문턱",
+   "big": "통장 X · 실거주 X",
+   "big_sub": "서울 무주택세대구성원이면 OK",
+   "bg": "photos/mood/8fb8d6aaf5-1.jpg",
+   "say": "중요한 건 서울 무주택이면, 통장도 실거주의무도 없었다는 거예요."
+  },
+  {
+   "type": "beat",
+   "eyebrow": "다만",
+   "big": "재당첨제한 10년",
+   "big_sub": "주변 실거래와 비슷하거나 높음(추정)",
+   "bg": "none",
+   "say": "다만 재당첨제한이 10년이고, 주변 실거래와 비슷하거나 높다는 추정이에요."
+  },
+  {
+   "type": "cta",
+   "lines": [
+    "24억이면 넣었을까요?",
+    "댓글로 알려주세요"
+   ],
+   "highlight": "댓글",
+   "ask": "다음 줍줍은 11월 2일, 팔로우해두세요"
+  }
+ ]
+}
