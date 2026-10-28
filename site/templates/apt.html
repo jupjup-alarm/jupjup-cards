@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "macros.html" import badges, card, crumbs, ig_icon with context %}
+{% from "macros.html" import badges, card, crumbs, ig_icon, cp_ad with context %}
 {% set og_type = 'article' %}
 {% block head %}
 {% if n.imgs.hero %}<link rel="preload" as="image" href="hero.webp" fetchpriority="high">{% endif %}
@@ -55,6 +55,7 @@
         <button class="btn ghost" type="button" data-share>공유하기</button>
       </div>
     </div>
+    {{ cp_ad('pc', 'ad-pc') }}
   </aside>
 
   {% if n.moved %}

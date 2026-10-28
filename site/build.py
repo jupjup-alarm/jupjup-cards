@@ -27,6 +27,12 @@ PUB = SITE / "public"
 BASE = "https://jupjupalarm.com"
 IG = "https://www.instagram.com/jupjup_alarm/"
 THREADS = "https://www.threads.net/@jupjup_alarm"
+# 쿠팡 파트너스 다이나믹 배너 (공고 페이지). mq = 이 화면 조건일 때만 불러옴(숨긴 채 노출되지 않게)
+COUPANG = {
+    "pc": {"mq": "(min-width:1024px)", "height": 298,
+           "opts": {"id": 1044288, "template": "carousel", "trackingCode": "AF3230467", "subId": "jupjupalarm", "width": "100%", "height": "298", "tsource": ""}},
+}
+COUPANG_NOTE = "이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다."
 KST = dt.timezone(dt.timedelta(hours=9))
 DOW = "월화수목금토일"
 
@@ -457,7 +463,7 @@ def env():
         return {"@type": "BreadcrumbList", "itemListElement": el}
     def items_ld(items):
         return [{"@type": "ListItem", "position": i, "url": BASE + n["url"], "name": n["title"]} for i, n in enumerate(items, 1)]
-    e.globals.update(BASE=BASE, IG=IG, THREADS=THREADS, STATUS=STATUS, KINDS=KINDS, crumb_ld=crumb_ld, items_ld=items_ld,
+    e.globals.update(BASE=BASE, IG=IG, THREADS=THREADS, COUPANG=COUPANG, COUPANG_NOTE=COUPANG_NOTE, STATUS=STATUS, KINDS=KINDS, crumb_ld=crumb_ld, items_ld=items_ld,
                      logo=Markup((SITE / "static/favicon.svg").read_text().replace('<svg xmlns="http://www.w3.org/2000/svg" ', '<svg class="mark" aria-hidden="true" focusable="false" ')))
     return e
 

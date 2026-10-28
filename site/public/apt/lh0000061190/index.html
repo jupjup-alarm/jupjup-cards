@@ -23,7 +23,7 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="alternate" type="application/rss+xml" title="줍줍알람" href="/rss.xml">
-<link rel="stylesheet" href="/style.16113e63.css">
+<link rel="stylesheet" href="/style.a401aa70.css">
 </head>
 <body>
 <a class="skip" href="#main">본문 바로가기</a>
@@ -66,6 +66,10 @@
         <button class="btn ghost" type="button" data-share>공유하기</button>
       </div>
     </div>
+    <div class="ad ad-pc" data-ad="pc">
+  <p class="ad-note"><b>광고</b> 이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</p>
+  <div class="ad-box" style="height:298px" data-cp="{&#34;height&#34;: &#34;298&#34;, &#34;id&#34;: 1044288, &#34;subId&#34;: &#34;jupjupalarm&#34;, &#34;template&#34;: &#34;carousel&#34;, &#34;trackingCode&#34;: &#34;AF3230467&#34;, &#34;tsource&#34;: &#34;&#34;, &#34;width&#34;: &#34;100%&#34;}" data-mq="(min-width:1024px)"></div>
+</div>
   </aside>
 
   <section class="take" aria-labelledby="take-h">
@@ -250,6 +254,12 @@
     function onScroll(){var y=window.scrollY,d=y-lastY;if(y<80)bar.classList.remove('hide');else if(d>6)bar.classList.add('hide');else if(d<-6)bar.classList.remove('hide');if(Math.abs(d)>6)lastY=y;ticking=false;}
     window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(onScroll);}},{passive:true});
     bar.addEventListener('focusin',function(){bar.classList.remove('hide')});}
+
+  var ads=[].slice.call(document.querySelectorAll('[data-cp]')).filter(function(el){return window.matchMedia(el.getAttribute('data-mq')||'all').matches;});
+  if(ads.length){var go=function(){var g=document.createElement('script');g.src='https://ads-partners.coupang.com/g.js';g.async=true;
+    g.onload=function(){ads.forEach(function(el){try{var o=JSON.parse(el.getAttribute('data-cp'));o.container=el;new PartnersCoupang.G(o);el.closest('.ad').classList.add('on');}catch(e){}});};
+    document.head.appendChild(g);};
+    if(document.readyState==='complete')go();else window.addEventListener('load',go);}
 })();
 </script>
 </body>
