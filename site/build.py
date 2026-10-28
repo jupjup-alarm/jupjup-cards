@@ -31,6 +31,9 @@ THREADS = "https://www.threads.net/@jupjup_alarm"
 COUPANG = {
     "pc": {"mq": "(min-width:1024px)", "height": 298,
            "opts": {"id": 1044288, "template": "carousel", "trackingCode": "AF3230467", "subId": "jupjupalarm", "width": "100%", "height": "298", "tsource": ""}},
+    # 메인: 첫 공고 묶음 아래 가로형 (PC 배너 id를 크기만 바꿔 씀)
+    "home": {"mq": "(min-width:768px)", "height": 140,
+             "opts": {"id": 1044288, "template": "carousel", "trackingCode": "AF3230467", "subId": "jupjupalarm", "width": "100%", "height": "140", "tsource": ""}},
 }
 COUPANG_NOTE = "이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다."
 KST = dt.timezone(dt.timedelta(hours=9))
