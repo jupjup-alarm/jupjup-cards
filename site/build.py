@@ -49,6 +49,7 @@ STATUS = {  # 코드: (배지, 배지 class)
     "open": ("접수 중", "b-open"),
     "waiting": ("발표 대기", "b-wait"),
     "announced": ("발표 완료", "b-done"),
+    "pre": ("공고 전", "b-pre"),
 }
 
 # ───────────────────────── 표기 도우미 (디자인 방향 문서 '표기 규칙') ─────────────────────────
@@ -85,6 +86,22 @@ def won(n):
     if eok:
         return f"{eok}억원"
     return f"{rest:,}만원"
+
+
+def money(n):
+    """원 단위 정수 → '5,763만6,000원' (임대 보증금·월세처럼 원 단위까지 정확히)."""
+    if n is None:
+        return ""
+    eok, rest = divmod(int(n), 10**8)
+    man, w = divmod(rest, 10**4)
+    out = ""
+    if eok:
+        out += f"{eok}억"
+    if man:
+        out += f"{man:,}만"
+    if w:
+        out += f"{w:,}"
+    return (out or "0") + "원"
 
 
 def parse_won(s):
@@ -209,17 +226,41 @@ def build_notice(e, row, regions, problems):
     if miss:
         problems.append((key, "보류 — 빈 값: " + ", ".join(miss)))
         return None
+    if e.get("moved_to"):
+        return None
     r = row or {}
     n = dict(e)
     n["url"] = f"/apt/{key}/"
     n["address"] = e.get("address") or r.get("공급위치", "")
     n["units"] = int(e.get("units") or r.get("공급규모(세대)") or 0)
     n["notice_date"] = e.get("notice_date") or r.get("모집공고일")
-    n["rcpt"] = (e.get("receipt_override") or [r.get("접수 시작"), r.get("접수 종료")])
+    n["rcpt"] = (e.get("receipt_override") or e.get("rcpt") or [r.get("접수 시작"), r.get("접수 종료")])
     n["announce"] = e.get("announce") or r.get("당첨자 발표")
     n["contract"] = split_range(e.get("contract") or r.get("계약"))
     n["move_in"] = month(e.get("move_in") or r.get("입주 예정"))
     n["models"] = e.get("models") or parse_models(r.get("주택형별 공급·최고 분양가"))
+    n["is_pre"] = bool(e.get("pre"))
+    n["is_rental"] = e["kind"] == "rental"
+    n["source_name"] = e.get("source_name") or ("청약홈" if e.get("source") == "applyhome" else "")
+    # 임대: 주택형별 조건 → 면적표도 여기서 만든다
+    if n["is_rental"]:
+        rms = e.get("rent_models") or []
+        n["rent_models"] = rms
+        if rms and not e.get("areas"):
+            areas = {}
+            for m in rms:
+                if m.get("excl"):
+                    areas.setdefault(m["type"], {"excl": m["excl"], "supply": m.get("supply_area")})
+            n["areas"] = areas or None
+        rs = e.get("rent_summary") or {}
+        if not rs and rms:
+            deps = [m for m in rms if m.get("deposit")]
+            if deps:
+                lo = min(deps, key=lambda m: m["deposit"])
+                rs = {"deposit": lo["deposit"], "monthly": lo.get("monthly"), "basis": f"{lo['type']} 기준 (가장 낮은 보증금)"}
+        n["rent_summary"] = rs
+        if not n["units"]:
+            n["units"] = sum(m.get("units") or 0 for m in rms)
     n["comp"] = parse_comp(r.get("경쟁률(청약홈 공식)"))
     n["source_url"] = e.get("source_url") or r.get("청약홈 상세(공식 공고)")
     n["homepage"] = e.get("homepage") or r.get("홈페이지") or ""
@@ -244,8 +285,14 @@ def build_notice(e, row, regions, problems):
     n["has_general"] = any(m["general"] for m in n["models"])
     n["sum_general"] = sum(m["general"] for m in n["models"])
     n["sum_special"] = sum(m["special"] for m in n["models"])
-    if not (n["rcpt"][0] and n["max_price"] and n["source_url"]):
-        problems.append((key, "보류 — 접수일·가격·공식 출처 중 빈 값"))
+    if n["is_pre"]:
+        ok = n["rcpt"][0] and e.get("price_text") and e.get("sources_extra")
+    elif n["is_rental"]:
+        ok = n["rcpt"][0] and n["source_url"] and (n["rent_models"] or n["rent_summary"])
+    else:
+        ok = n["rcpt"][0] and n["max_price"] and n["source_url"]
+    if not ok:
+        problems.append((key, "보류 — 접수일·가격(임대조건)·공식 출처 중 빈 값"))
         return None
     # 일정
     if e.get("schedule"):
@@ -285,7 +332,7 @@ def build_notice(e, row, regions, problems):
             x["month"] = month(x["month"])
     n["schedule"] = sch
     # 텍스트 채우기
-    for f in ("take", "who", "receipt_note", "plan_note", "rent_note"):
+    for f in ("take", "who", "receipt_note", "plan_note", "rent_note", "pre_note"):
         if n.get(f):
             n[f] = fill(n[f])
     n["faq"] = [[q, fill(a)] for q, a in e["faq"]]
@@ -302,6 +349,8 @@ def status_of(n):
     t = TODAY.isoformat()
     if n.get("status_override"):
         return n["status_override"]
+    if n.get("is_pre"):
+        return "pre"
     a, b = n["rcpt"]
     if t < a:
         return "upcoming"
@@ -383,6 +432,12 @@ def notice_images(n):
         if sz:
             plans.append(dict(p, src=f"plan-{slug}.webp", w=sz[0], h=sz[1], slug=slug))
     imgs["plans"] = plans
+    lays = []
+    for i, p in enumerate(n.get("layouts", []), 1):
+        sz = img_out(p["image"], out / f"layout-{i}.webp", 1200, 80)
+        if sz:
+            lays.append(dict(p, src=f"layout-{i}.webp", w=sz[0], h=sz[1]))
+    imgs["layouts"] = lays
     imgs["og"] = f"/apt/{n['key']}/og.jpg" if (out / "og.jpg").exists() else "/og-default.jpg"
     return imgs
 
@@ -391,7 +446,7 @@ def notice_images(n):
 def env():
     e = Environment(loader=FileSystemLoader(SITE / "templates"), autoescape=select_autoescape(["html", "xml"]),
                     trim_blocks=True, lstrip_blocks=True)
-    e.filters.update(combine=lambda a, b: {**a, **b}, d=d, drange=drange, won=won, py=py, m2=m2, tdate=tdate, trange=trange, tmonth=tmonth,
+    e.filters.update(combine=lambda a, b: {**a, **b}, money=money, d=d, drange=drange, won=won, py=py, m2=m2, tdate=tdate, trange=trange, tmonth=tmonth,
                      jsonld=lambda o: Markup(json.dumps(o, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")))
     def crumb_ld(items, last, page_url):
         el = [{"@type": "ListItem", "name": lab, "item": BASE + u} for lab, u in items if u]
@@ -474,7 +529,7 @@ def main():
     og_default(PUB / "og-default.jpg")
 
     E = env()
-    order = {"open": 0, "upcoming": 1, "waiting": 2, "announced": 3}
+    order = {"open": 0, "upcoming": 1, "pre": 2, "waiting": 3, "announced": 4}
 
     def sort_key(n):
         return (order[n["status"]], n["rcpt"][0] if n["status"] in ("open", "upcoming") else "~" + n["announce"], n["title"])
@@ -516,12 +571,22 @@ def main():
         n["related_title"] = f"{n['sido']}에서 곧 접수하는 공고" if same else "함께 볼 공고"
         st = n["status"]
         typ = n["kind_label"]
-        if st == "announced" or (st == "waiting" and n["comp"]):
+        if n["is_pre"]:
+            title = f"{n['title']} 분양 일정·예상 분양가 · 줍줍알람"
+        elif n["is_rental"]:
+            title = f"{n['title']} 보증금·월세·자격 · 줍줍알람"
+        elif st == "announced" or (st == "waiting" and n["comp"]):
             title = f"{n['title']} 청약 경쟁률·당첨자 발표 · 줍줍알람"
         else:
             title = f"{n['title']} 분양가·청약 일정 · 줍줍알람"
         rc = drange(*n["rcpt"])
-        if n["comp"] and n["comp"]["rows"]:
+        rs = n.get("rent_summary") or {}
+        if n["is_pre"]:
+            desc = f"{n['units']:,}세대 · 예상 분양가 {n['price_text']} · {d(n['rcpt'][0])} 접수 예정(보도 기준). 공고 전 단지의 일정·분양가 전망·시세 비교를 정리. 공고가 나오면 공식 값으로 바꿔요."
+        elif n["is_rental"]:
+            cond = f"보증금 {money(rs['deposit'])} · 월 {money(rs['monthly'])}" if rs.get("deposit") else f"주택형 {len(n['rent_models'])}개"
+            desc = f"접수 {rc} · {cond} · {n['units']:,}세대 · {n.get('target') or n['kind_label']}. 신청 자격·일정과 공식 공고 링크를 한 번에."
+        elif n["comp"] and n["comp"]["rows"]:
             best = max(n["comp"]["rows"], key=lambda r: r["apply"] / max(r["supply"], 1))
             desc = f"{n['comp']['summary'] or ''} · 당첨자 발표 {d(n['announce'])} · {n['price_label']} {won(n['max_price'])}. 일정·분양가·자격과 공식 공고 링크를 한 번에."
         else:
@@ -545,6 +610,7 @@ def main():
         s = sorted_n(lst)
         g = [("지금 접수 중", [x for x in s if x["status"] == "open"]),
              ("접수 예정", [x for x in s if x["status"] == "upcoming"]),
+             ("공고 예정 (보도 기준)", [x for x in s if x["status"] == "pre"]),
              ("당첨자 발표 대기", [x for x in s if x["status"] == "waiting"]),
              ("최근 발표", [x for x in s if x["status"] == "announced"])]
         return [x for x in g if x[1]]
@@ -558,6 +624,7 @@ def main():
         ("지금 접수 중", [x for x in s if x["status"] == "open"]),
         ("이번 주 접수", [x for x in s if x["status"] == "upcoming" and x["rcpt"][0] <= week_end.isoformat()]),
         ("다가오는 접수", [x for x in s if x["status"] == "upcoming" and x["rcpt"][0] > week_end.isoformat()]),
+        ("공고 예정 (보도 기준)", [x for x in s if x["status"] == "pre"]),
         ("당첨자 발표 대기", [x for x in s if x["status"] == "waiting"]),
         ("최근 발표", [x for x in s if x["status"] == "announced"][:6]),
     ]
@@ -684,6 +751,7 @@ def main():
     (PUB / "robots.txt").write_text(f"User-agent: *\nAllow: /\nDisallow: /data/\nDisallow: /drafts/\n\nSitemap: {BASE}/sitemap.xml\n")
     (PUB / "_headers").write_text(HEADERS)
     redirects = json.loads((DATA / "redirects.json").read_text()) if (DATA / "redirects.json").exists() else []
+    redirects += [[f"/apt/{e['key']}/", f"/apt/{e['moved_to']}/"] for e, _ in items if e.get("moved_to")]
     (PUB / "_redirects").write_text("".join(f"{a} {b} 301\n" for a, b in redirects))
 
     # 고아 공고 이미지 폴더 정리 (페이지가 없는 apt/ 폴더는 이미지뿐이면 남겨둠 — 지우지 않음)
@@ -809,7 +877,7 @@ def check(notices):
     # 화면 숫자 = 데이터
     for n in notices:
         hx = PAGES[n["url"]]["html"]
-        if won(n["max_price"]) not in hx:
+        if n.get("max_price") and not n["is_pre"] and not n["is_rental"] and won(n["max_price"]) not in hx:
             errs.append(f"최고가 표시 누락: {n['url']}")
     return errs
 
