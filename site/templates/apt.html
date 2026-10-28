@@ -297,6 +297,7 @@
     </dl>
   </section>
 
+  {% if not n.houses %}
   <section class="sec" aria-labelledby="h-loc">
     <h2 id="h-loc">위치</h2>
     {% if n.imgs.map %}
@@ -307,6 +308,7 @@
     {% endif %}
     <p class="place">{{ n.address }}{% if n.near %} ({{ n.near }}){% endif %} · <a href="https://map.naver.com/p/search/{{ (n.naver_query or n.address)|urlencode }}" target="_blank" rel="noopener">네이버 지도에서 보기</a></p>
   </section>
+  {% endif %}
 
   <section class="sec" aria-labelledby="h-info">
     <h2 id="h-info">공급 정보</h2>
