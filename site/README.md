@@ -7,6 +7,7 @@
 2. '청약홈API' 탭 전체를 `site/data/applyhome.json`의 `rows`로 덮어쓰기 (열 이름 = 시트 머리글, `fetched_at` = A열 값).
 3. 새 공고마다 `site/data/apt/{주택관리번호}.json` 작성 — 형식은 기존 파일 참고. 사실은 '청약조사' 탭·청약홈API 값만.
    - 필수: `title, kind, region{sido,sigungu}, take(한마디 2줄+), who, eligibility(행 배열), faq(3개+), account`
+   - `aliases`: '청약조사' C열 단지명과 '오늘의 발행 플랜' C열 단지명이 title과 다르면 넣는다 (시트 스크립트가 스레드 링크·DM에서 이 이름으로 페이지를 찾음 — `public/links.json`).
    - 선택: `photo{image,credit,alt,pos}`(AA·X열), `map`(Y열), `coords`(Z열 [경도,위도]), `plans[{type,image,alt}]`(AC열 — 반드시 이미지를 열어 타입 확인), `areas`, `gap`(H열에 근거 단지가 있을 때만), `schedule`(자동 일정이 틀릴 때), `info_extra`, `sources_extra`, `related_extra`
    - 문장 속 날짜는 `{d:2026-11-02}` · `{r:2026-11-02:2026-11-03}`로 쓰면 '11.2(월)' 형식으로 바뀜.
    - 확인 못 한 자격은 `["항목", "공고문 기준 적용", "공고문 확인"]`.

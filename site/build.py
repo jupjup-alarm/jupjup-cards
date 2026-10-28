@@ -758,6 +758,19 @@ def main():
                                           desc="", og="/og-default.jpg", groups=home_groups[:2], **common)
     (PUB / "404.html").write_text(h)
 
+    # 단지 이름 → 페이지 주소 (시트 스크립트가 스레드 링크·DM에 씀). 공개는 되지만 사이트맵에는 넣지 않음.
+    links = []
+    for n in notices:
+        names = [n["title"], n.get("complex") or ""] + list(n.get("aliases") or [])
+        row = next((r for e_, r in items if e_["key"] == n["key"] and r), None)
+        if row:
+            names.append(row.get("주택명", ""))
+        links.append({"key": n["key"], "url": BASE + n["url"], "status": n["status"], "kind": n["kind"],
+                      "names": sorted({x for x in names if x}), "rcpt": n["rcpt"],
+                      "moved_to": (BASE + n["moved"]["url"]) if n.get("moved") else None})
+    (PUB / "links.json").write_text(json.dumps({"built_at": now.isoformat(timespec="seconds"), "links": links},
+                                               ensure_ascii=False, separators=(",", ":")))
+
     # 사이트맵·RSS·robots·헤더
     write_sitemaps(now)
     write_rss(notices, now)
@@ -800,6 +813,9 @@ HEADERS = """/*
   Cache-Control: public, max-age=604800
 /favicon.*
   Cache-Control: public, max-age=604800
+/links.json
+  Cache-Control: public, max-age=300
+  Access-Control-Allow-Origin: *
 """
 
 
