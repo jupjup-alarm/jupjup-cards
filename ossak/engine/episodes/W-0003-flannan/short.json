@@ -1,0 +1,262 @@
+{
+ "id": "W-0003",
+ "no": 6,
+ "series": "세계기담",
+ "format": "story",
+ "mood": "mystery",
+ "title": "플래넌 섬 등대지기 실종",
+ "hook": [
+  "한 명은 꼭 남는 등대",
+  "셋이 다 사라졌다"
+ ],
+ "accent_word": "셋이",
+ "images": [
+  {
+   "id": "f01",
+   "prompt": "Flannan Isles, a remote rocky island off western Scotland, December 1900, stormy night: a small stone lighthouse tower and a low stone cottage on top of a steep black cliff; the lighthouse lantern glass at the top is completely black and unlit, no beam, no glow, the cottage windows also dark; the only light is cold moonlight through storm clouds; wild black sea and white spray below.",
+   "nop": true,
+   "seed": 331
+  },
+  {
+   "id": "f02",
+   "prompt": "Flannan Isles, a remote rocky island off western Scotland, December 1900: night on a rough sea: a small steamship with warm lit portholes passing far below a black rocky island whose lighthouse tower stands completely dark against the stormy sky.",
+   "nop": true,
+   "seed": 302
+  },
+  {
+   "id": "f03",
+   "prompt": "Flannan Isles, a remote rocky island off western Scotland, December 1900: a small steam relief ship tossed by huge grey storm waves near towering island cliffs in grey winter daylight, a red signal flare arcing up into the sky above the island, a bare flagpole with no flag on the cliff top.",
+   "nop": true,
+   "seed": 303
+  },
+  {
+   "id": "f04",
+   "prompt": "Flannan Isles, a remote rocky island off western Scotland, December 1900: one lone lighthouse keeper in an oilskin coat seen from far behind as a small faceless silhouette, climbing long wet stone steps cut into the cliff toward a closed iron gate in a stone wall, the dark lighthouse above, grey windy afternoon.",
+   "seed": 304
+  },
+  {
+   "id": "f05",
+   "prompt": "Flannan Isles, a remote rocky island off western Scotland, December 1900: inside the keepers' cottage: a tidy plain kitchen with a scrubbed wooden table, plates put away, a cold stove, a wall clock whose hands have stopped, empty chairs, through an open door three neatly made empty narrow beds, cold grey window light.",
+   "nop": true,
+   "seed": 305
+  },
+  {
+   "id": "f06",
+   "prompt": "Flannan Isles, a remote rocky island off western Scotland, December 1900: the lantern room at the top of the lighthouse: a large polished glass lens gleaming, brass fittings shining, full oil cans lined up neatly, the lamp unlit, cold blue window light, stormy sea through the glass.",
+   "nop": true,
+   "seed": 306
+  },
+  {
+   "id": "f07",
+   "prompt": "Flannan Isles, a remote rocky island off western Scotland, December 1900: a stone entrance passage inside the cottage with a row of iron wall pegs for oilskins: two pegs completely empty, a pair of boot marks on the stone floor leading to the door, nothing else hanging, dim light.",
+   "nop": true,
+   "seed": 307
+  },
+  {
+   "id": "f08",
+   "prompt": "Flannan Isles, a remote rocky island off western Scotland, December 1900: the west landing on the island: a concrete landing stage and steep stone steps at the foot of sheer cliffs in a storm, the iron safety railings twisted and bent like soft metal, a high crevice in the rock face above with broken rope ends, sea spray exploding.",
+   "nop": true,
+   "seed": 308
+  },
+  {
+   "id": "f10",
+   "prompt": "Flannan Isles, a remote rocky island off western Scotland, December 1900: seen from inside a dim stone cottage: the front door wide open onto a howling storm and black sea, and beside the door a single heavy dark wool coat still hanging alone on a wall peg, swaying slightly, the only thing left.",
+   "nop": true,
+   "seed": 310
+  },
+  {
+   "id": "f11",
+   "prompt": "Flannan Isles, a remote rocky island off western Scotland, December 1900: a gigantic white wave surging up the sheer island cliff over the landing stage and the stone steps, enormous spray rising high, grey storm light, nobody there.",
+   "nop": true,
+   "seed": 311
+  },
+  {
+   "id": "f12",
+   "prompt": "Boogi the owl archivist sits at a wooden archive desk at night beside a small amber lantern, an old logbook open in front of him with a tiny sketch of a coat on a peg (any writing blurred and unreadable), a small model lighthouse on the desk, shelves of old books behind.",
+   "with_character": true,
+   "nop": true
+  }
+ ],
+ "scenes": [
+  {
+   "say": "한 명은 반드시 남아야 하는 등대에서, 셋이 사라졌습니다.",
+   "tts": "한 명은 반드시 남아야 하는 등대에서 셋이 사라졌습니다.",
+   "img": "f01",
+   "emph": [
+    "셋이"
+   ],
+   "move": "in"
+  },
+  {
+   "say": "1900년 12월, 스코틀랜드 외딴섬의 기록입니다.",
+   "tts": "천구백 년 십이월, 스코틀랜드 외딴섬의 기록입니다.",
+   "img": "f01",
+   "emph": [
+    "기록입니다"
+   ],
+   "zoom": 1.4,
+   "focus": [
+    0.5,
+    0.35
+   ],
+   "move": "out",
+   "cont": true
+  },
+  {
+   "say": "그 밤, 지나던 배가 봅니다. 등대가 꺼져 있었습니다.",
+   "tts": "그 밤 지나던 배가 봅니다. 등대가 꺼져 있었습니다.",
+   "img": "f02",
+   "emph": [
+    "꺼져"
+   ],
+   "move": "in"
+  },
+  {
+   "say": "교대선은 폭풍 때문에, 열하루 뒤에야 닿습니다.",
+   "tts": "교대선은 폭풍 때문에, 열하루 뒤에야 닿습니다.",
+   "img": "f03",
+   "emph": [
+    "열하루"
+   ],
+   "sub": "교대선은 폭풍 때문에, 11일 뒤에야 닿습니다.",
+   "move": "in",
+   "cont": true
+  },
+  {
+   "say": "대답 없는 섬에, 교대 등대지기가 혼자 오릅니다.",
+   "tts": "대답 없는 섬에, 교대 등대지기가 혼자 오릅니다.",
+   "img": "f04",
+   "emph": [
+    "혼자"
+   ],
+   "move": "up"
+  },
+  {
+   "say": "침대는 비어 있고, 시계는 멈춰 있었습니다.",
+   "tts": "침대는 비어 있고, 시계는 멈춰 있었습니다.",
+   "img": "f05",
+   "emph": [
+    "멈춰"
+   ],
+   "move": "in"
+  },
+  {
+   "say": "등불은 닦여 있었습니다. 밤이 오기 전에, 사라진 겁니다.",
+   "tts": "등불은 닦여 있었습니다. 밤이 오기 전에, 사라진 겁니다.",
+   "img": "f06",
+   "emph": [
+    "밤이"
+   ],
+   "move": "in",
+   "cont": true
+  },
+  {
+   "say": "그런데 사라진 옷은, 방수복 두 벌뿐.",
+   "tts": "그런데 사라진 옷은, 방수복두벌뿐.",
+   "img": "f07",
+   "emph": [
+    "두 벌뿐."
+   ],
+   "move": "in"
+  },
+  {
+   "say": "두 사람이 나갔다면… 남아야 했던 셋째는요?",
+   "tts": "두사람이 나갔다면, 남아야했던 셋째는요?",
+   "img": "f07",
+   "emph": [
+    "셋째는"
+   ],
+   "zoom": 1.45,
+   "focus": [
+    0.5,
+    0.7
+   ],
+   "move": "out",
+   "cont": true
+  },
+  {
+   "say": "그는 서쪽 선착장으로 내려갑니다. 쇠 난간이, 엿가락처럼 휘어 있었습니다.",
+   "tts": "그는 서쪽 선착장으로 내려갑니다. 쇠 난간이 엿가락처럼 휘어 있었습니다.",
+   "img": "f08",
+   "emph": [
+    "휘어"
+   ],
+   "move": "down"
+  },
+  {
+   "say": "파도가 닿을 리 없는 높은 바위틈의 상자도, 사라졌고요.",
+   "tts": "파도가 닿을 리 없는 높은 바위틈의 상자도, 사라졌고요.",
+   "img": "f08",
+   "emph": [
+    "높은"
+   ],
+   "zoom": 1.5,
+   "focus": [
+    0.5,
+    0.3
+   ],
+   "move": "in",
+   "cont": true
+  },
+  {
+   "say": "숙소로 돌아온 그가, 그제야 봅니다. 문 옆에 걸린 외투 한 벌. 셋째 사람의 것이었습니다.",
+   "tts": "숙소로 돌아온 그가, 그제야 봅니다. 문 옆에 걸린 외투 한 벌. 셋째 사람의 것이었습니다.",
+   "img": "f10",
+   "emph": [
+    "외투"
+   ],
+   "move": "in",
+   "sfx": "hit"
+  },
+  {
+   "say": "12월의 폭풍 속으로, 외투도 없이 나간 겁니다.",
+   "tts": "십이월의 폭풍 속으로, 외투도 없이 나간 겁니다.",
+   "img": "f10",
+   "emph": [
+    "외투도"
+   ],
+   "zoom": 1.4,
+   "focus": [
+    0.6,
+    0.5
+   ],
+   "move": "out",
+   "cont": true
+  },
+  {
+   "say": "감독관은 적었습니다. 큰 파도에 휩쓸렸을 거라고. 셋은 끝내 돌아오지 않았습니다.",
+   "tts": "감독관은 적었습니다. 큰 파도에 휩쓸렸을 거라고. 셋은 끝내 돌아오지 않았습니다.",
+   "img": "f11",
+   "emph": [
+    "돌아오지"
+   ],
+   "move": "up"
+  },
+  {
+   "say": "외투를 두고 뛰쳐나간 그는… 문밖에서, 무엇을 봤을까요?",
+   "tts": "외투를 두고 뛰쳐나간 그는, 문밖에서 무엇을 봤을까요?",
+   "img": "f12",
+   "emph": [
+    "무엇을"
+   ],
+   "move": "in"
+  }
+ ],
+ "youtube": {
+  "title": "한 명은 꼭 남는 등대에서, 셋이 사라졌다",
+  "summary": "1900년 12월, 스코틀랜드 외딴섬. 꺼진 등대에 교대선이 닿았을 때, 등불은 켤 준비가 끝나 있었고 지키던 세 사람은 없었습니다.",
+  "pinned": "외투를 두고 뛰쳐나간 그는, 문밖에서 무엇을 봤을까요?"
+ },
+ "sources": "출처: National Records of Scotland(2023), Northern Lighthouse Board, 북부등대위원회 감독관 보고서(1901)",
+ "tags": "#세계기담 #플래넌섬",
+ "risk": "저",
+ "adapted": true,
+ "hook_type": "규칙×위반(한 명은 남아야 하는데 셋 다)",
+ "threads": [
+  "1900년 스코틀랜드 외딴섬 등대 얘기. 거기엔 규칙이 있었어. 셋이 지키는데 한 명은 꼭 남아 있어야 한다는 거. 근데 12월 어느 밤, 셋이 다 사라졌어.",
+  "폭풍 때문에 교대선은 열하루 뒤에야 도착했고, 등불은 닦여 있고 기름도 가득. 켜기만 하면 되는 상태였대. 시계는 멈춰 있었고.",
+  "사라진 옷은 방수복 두 벌뿐. 선착장 내려갈 때 입는 옷. 섬 서쪽 선착장에 가 보니까 쇠 난간이 휘어 있고, 바다 위 33m 바위틈에 둔 밧줄 상자가 통째로 없어졌어.",
+  "그리고 문 옆에 외투 한 벌이 그대로 걸려 있었어. 셋째 사람 거. 12월 폭풍 속으로 외투도 없이 뛰쳐나간 거지.",
+  "그 사람이 문밖에서 뭘 봤는지는 아무도 몰라. 영상으로 보려면 인스타 @ossak_alarm 에서 봐."
+ ]
+}

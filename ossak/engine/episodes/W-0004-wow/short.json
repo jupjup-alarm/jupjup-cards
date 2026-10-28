@@ -1,0 +1,136 @@
+{
+ "id": "W-0004",
+ "no": 7,
+ "series": "세계기담",
+ "format": "loop",
+ "mood": "mystery",
+ "title": "Wow! 신호",
+ "hook": [
+  "외계인 찾던 주파수에",
+  "72초, 무언가 왔다"
+ ],
+ "accent_word": "72초,",
+ "images": [
+  {
+   "id": "w01",
+   "prompt": "Big Ear radio telescope, rural Ohio, USA, August 1977: a huge flat field-like radio telescope at night: a long tilted metal reflector wall and a vast flat aluminium ground plane gleaming faintly under a deep starry sky with the Milky Way, a small control building beside it with one single lit window, nobody around.",
+   "nop": true,
+   "seed": 401
+  },
+  {
+   "id": "w02",
+   "prompt": "Big Ear radio telescope, rural Ohio, USA, August 1977: an empty 1970s observatory control room at night: an old mainframe computer cabinet with blinking lights and a line printer slowly feeding out a long ribbon of folded printout paper onto the floor all by itself, an empty swivel chair, one desk lamp, printed characters blurred and unreadable.",
+   "nop": true,
+   "seed": 402
+  },
+  {
+   "id": "w03",
+   "prompt": "1977: close-up of folded computer printout paper on a wooden kitchen table under a lamp at night, long columns of tiny printed characters blurred and unreadable, one short vertical sequence circled boldly with red pen and a red handwritten scribble in the margin (unreadable), a red pen lying beside it.",
+   "nop": true,
+   "seed": 403
+  },
+  {
+   "id": "w04",
+   "prompt": "Big Ear radio telescope, rural Ohio, USA, August 1977: the night sky above the telescope toward the constellation Sagittarius, the dense glowing core of the Milky Way, the long dark reflector of the telescope as a silhouette along the bottom, one faint strange point of light among the stars.",
+   "nop": true,
+   "seed": 404
+  },
+  {
+   "id": "w05",
+   "prompt": "Big Ear radio telescope, rural Ohio, USA, August 1977: close view at night of two identical horn-shaped radio receiver feeds standing side by side at the focus of the telescope: the left horn glows with a faint cold light, the right horn is completely dark and silent, stars above.",
+   "nop": true,
+   "seed": 405
+  },
+  {
+   "id": "w06",
+   "prompt": "Rural Ohio today at night: an empty open grassy field with a few trees under a vast starry sky where a giant radio telescope once stood, only faint old concrete foundation marks in the grass, silent, nobody there.",
+   "nop": true,
+   "seed": 406
+  }
+ ],
+ "scenes": [
+  {
+   "say": "외계인을 찾던 주파수에, 72초 동안 무언가 들어왔습니다.",
+   "tts": "외계인을 찾던 주파수에 칠십이 초 동안 무언가 들어왔습니다.",
+   "img": "w01",
+   "emph": [
+    "72초"
+   ],
+   "move": "in"
+  },
+  {
+   "say": "1977년 미국, 사람 없는 관측소의 기록입니다.",
+   "tts": "천구백칠십칠 년 미국, 사람 없는 관측소의 기록입니다.",
+   "img": "w02",
+   "emph": [
+    "사람"
+   ],
+   "move": "in",
+   "cont": true
+  },
+  {
+   "say": "며칠 뒤 기록지를 본 천문학자는, 빨간 펜으로 적습니다. 와우.",
+   "tts": "며칠 뒤 기록지를 본 천문학자는, 빨간 펜으로 적습니다. 와우.",
+   "img": "w03",
+   "emph": [
+    "와우"
+   ],
+   "sub": "며칠 뒤 기록지를 본 천문학자는, 빨간 펜으로 적습니다. 'Wow!'",
+   "move": "in"
+  },
+  {
+   "say": "평소 잡음보다 30배 강한 신호였죠.",
+   "tts": "평소 잡음보다 삼십 배 강한 신호였죠.",
+   "img": "w04",
+   "emph": [
+    "30배"
+   ],
+   "move": "up",
+   "cont": true
+  },
+  {
+   "say": "우주에서 왔다면, 몇 분 뒤 옆 안테나에도 잡혀야 했죠. 그런데… 두 번째는 없었습니다.",
+   "tts": "우주에서 왔다면, 몇 분 뒤 옆 안테나에도 잡혀야 했죠. 그런데, 두 번째는 없었습니다.",
+   "img": "w05",
+   "emph": [
+    "없었습니다"
+   ],
+   "move": "in",
+   "sfx": "hit"
+  },
+  {
+   "say": "그 뒤 49년, 다시는 들리지 않았습니다.",
+   "tts": "그 뒤 사십구 년, 다시는 들리지 않았습니다.",
+   "img": "w06",
+   "emph": [
+    "49년"
+   ],
+   "move": "in"
+  },
+  {
+   "say": "그 72초는, 어디서 온 걸까요?",
+   "tts": "그 칠십이 초는, 어디서 온 걸까요?",
+   "img": "w01",
+   "emph": [
+    "어디서"
+   ],
+   "zoom": 1.3,
+   "focus": [
+    0.5,
+    0.55
+   ],
+   "move": "out",
+   "cont": true
+  }
+ ],
+ "youtube": {
+  "title": "외계인 찾던 주파수에, 72초 동안 무언가 왔다",
+  "summary": "1977년 미국 오하이오의 전파망원경. 아무도 없던 밤 들어온 72초의 신호는, 그 뒤 한 번도 다시 잡히지 않았습니다.",
+  "pinned": "그 72초는, 어디서 온 걸까요?"
+ },
+ "sources": "출처: Jerry Ehman, Big Ear Wow! 신호 보고서(bigear.org), Science News(2024)",
+ "tags": "#세계기담 #와우신호",
+ "risk": "저",
+ "adapted": true,
+ "hook_type": "기다리던 것이 단 한 번(외계 주파수×72초)"
+}

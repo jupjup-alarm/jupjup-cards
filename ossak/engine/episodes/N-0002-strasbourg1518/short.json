@@ -1,0 +1,254 @@
+{
+ "id": "N-0002",
+ "no": 5,
+ "series": "새벽괴담",
+ "format": "story",
+ "mood": "horror",
+ "title": "1518년 스트라스부르의 춤",
+ "hook": [
+  "의사의 처방은",
+  "“더 춤추게 하라”"
+ ],
+ "accent_word": "춤추게",
+ "images": [
+  {
+   "id": "d01",
+   "prompt": "Strasbourg, July 1518, late-medieval Alsace: an empty narrow cobbled street of tall half-timbered houses at dusk; in the middle a single faceless silhouette of a woman in a long 16th-century dress caught mid-spin, dancing alone, arms raised; in a dark doorway to the side, two tall faceless silhouettes of men in long black robes and caps stand still, watching her. No musicians, no instruments anywhere. Long shadows on the stones.",
+   "seed": 201
+  },
+  {
+   "id": "d02",
+   "prompt": "Strasbourg, July 1518, late-medieval Alsace: a wide view of the old city at a hazy summer dusk: steep tiled roofs, half-timbered houses and the tall gothic cathedral spire rising above, the river in front, warm dim light, completely quiet.",
+   "nop": true
+  },
+  {
+   "id": "d03",
+   "prompt": "Strasbourg, July 1518, late-medieval Alsace: a narrow cobbled alley with shuttered windows at night under one lantern; a lone small faceless silhouette of a woman in a long dress spins with arms raised in the middle of the alley, seen from far behind; no musicians, nobody else.",
+   "seed": 203
+  },
+  {
+   "id": "d05",
+   "prompt": "Strasbourg, July 1518, late-medieval Alsace: a cobbled street at dusk lined with half-timbered houses; several faceless dark silhouettes of ordinary townspeople, men and women in 16th-century clothes, standing in their open doorways and at the street edge, and two or three of them stepping forward onto the cobblestones as if starting to dance, seen from a distance, warm window light.",
+   "seed": 215
+  },
+  {
+   "id": "d06",
+   "prompt": "Strasbourg, July 1518, late-medieval Alsace: seen from a high window: a crowded cobbled street packed with dozens of faceless silhouettes all dancing at once, peasants and richly dressed burghers mixed together, long evening shadows, no musicians.",
+   "seed": 206
+  },
+  {
+   "id": "d07",
+   "prompt": "Strasbourg, July 1518, late-medieval Alsace: a dim study at night: a heavy wooden table with a single candle, old books and parchment (writing blurred and unreadable), two faceless silhouettes of physicians in long dark robes seen from behind, leaning over the table.",
+   "seed": 207
+  },
+  {
+   "id": "d08",
+   "prompt": "Strasbourg, July 1518, late-medieval Alsace: a wooden stage built in the middle of a market square at dusk, faceless silhouettes of musicians with fiddles, pipes and a drum standing on it, the square still empty around it, torches on poles.",
+   "seed": 208
+  },
+  {
+   "id": "d09",
+   "prompt": "Strasbourg, July 1518, late-medieval Alsace: night, the market square and the wooden stage completely filled with hundreds of faceless dark silhouettes whirling endlessly, torchlight flickering, musicians tiny on the stage, an overwhelming sea of moving figures seen from far above.",
+   "seed": 209
+  },
+  {
+   "id": "d11",
+   "prompt": "Strasbourg, 1518: a silent empty market square at night lit by one hanging lantern, the cobblestones filling the frame edge to edge; in the foreground broken wooden stage planks lie on the ground with an abandoned drum and tambourine beside them; on the far house walls only long moving shadows of dancers are cast, the dancers themselves not visible.",
+   "seed": 221
+  },
+  {
+   "id": "d12",
+   "prompt": "Strasbourg, July 1518, late-medieval Alsace: a wooden cart seen from far behind climbing a steep forest path up a hill at dusk toward a small stone chapel with warm candlelight in its doorway; faceless silhouettes sit huddled in the cart.",
+   "seed": 212
+  },
+  {
+   "id": "d13",
+   "prompt": "Boogi the owl archivist sits at a wooden archive desk at night beside a small amber lantern, an open old record book in front of him with a tiny sketch of small dancing figures (any writing blurred and unreadable), shelves of old books behind, calm and eerie.",
+   "with_character": true,
+   "nop": true
+  }
+ ],
+ "scenes": [
+  {
+   "say": "“더 춤추게 하라.” 의사들이 내린 처방이었습니다.",
+   "img": "d01",
+   "tts": "더 춤추게 하라. 의사들이 내린 처방이었습니다.",
+   "move": "in",
+   "emph": [
+    "춤추게"
+   ]
+  },
+  {
+   "say": "1518년 여름, 스트라스부르의 기록입니다.",
+   "img": "d02",
+   "tts": "천오백십팔 년 여름, 스트라스부르의 기록입니다.",
+   "move": "in",
+   "cont": true,
+   "emph": [
+    "기록입니다"
+   ]
+  },
+  {
+   "say": "한 여자가 거리에서 춤을 추기 시작합니다. 음악도 없이.",
+   "img": "d03",
+   "tts": "한 여자가 거리에서 춤을 추기 시작합니다. 음악도 없이.",
+   "move": "in",
+   "emph": [
+    "음악도"
+   ]
+  },
+  {
+   "say": "쓰러지면 잠들고, 깨면 다시. 나흘, 그리고 일주일.",
+   "img": "d03",
+   "tts": "쓰러지면 잠들고, 깨면 다시. 나흘 그리고 일주일.",
+   "zoom": 1.45,
+   "focus": [
+    0.5,
+    0.62
+   ],
+   "move": "out",
+   "cont": true,
+   "sfx": "heartbeat",
+   "emph": [
+    "일주일"
+   ]
+  },
+  {
+   "say": "지켜보던 사람들의 발이, 하나둘 움직였죠.",
+   "img": "d05",
+   "tts": "지켜보던 사람들의 발이, 하나둘 움직였죠.",
+   "move": "up",
+   "emph": [
+    "발이"
+   ]
+  },
+  {
+   "say": "그사이 따라 춘 사람만, 서른 명 넘게.",
+   "img": "d06",
+   "tts": "그사이 따라 춘 사람만, 서른 명 넘게.",
+   "sub": "그사이 따라 춘 사람만, 30명 넘게.",
+   "move": "in",
+   "cont": true,
+   "emph": [
+    "30명"
+   ]
+  },
+  {
+   "say": "의사들은 말했습니다. 말리지 말고, 다 털어낼 때까지 추게 하라.",
+   "img": "d07",
+   "tts": "의사들은 말했습니다. 말리지 말고, 다 털어낼 때까지 추게 하라.",
+   "move": "in",
+   "emph": [
+    "추게"
+   ]
+  },
+  {
+   "say": "도시는 무대를 세우고, 악사와 춤 상대까지 돈을 주고 구했죠.",
+   "img": "d08",
+   "tts": "도시는 무대를 세우고, 악사와 춤 상대까지 돈을 주고 구했죠.",
+   "move": "right",
+   "cont": true,
+   "emph": [
+    "무대를"
+   ]
+  },
+  {
+   "say": "그런데 음악이 울릴수록, 춤은 번져만 갔습니다.",
+   "img": "d09",
+   "tts": "그런데 음악이 울릴수록, 춤은 번져만 갔습니다.",
+   "move": "in",
+   "emph": [
+    "번져만"
+   ]
+  },
+  {
+   "say": "한 기록에 따르면, 한 달 만에 400명.",
+   "img": "d09",
+   "tts": "한 기록에 따르면, 한 달 만에 사백 명.",
+   "zoom": 1.4,
+   "focus": [
+    0.5,
+    0.55
+   ],
+   "move": "out",
+   "cont": true,
+   "emph": [
+    "400명"
+   ]
+  },
+  {
+   "say": "도시는 무대를 허물고, 음악을 금지합니다.",
+   "img": "d11",
+   "tts": "도시는 무대를 허물고, 음악을 금지합니다.",
+   "zoom": 1.35,
+   "focus": [
+    0.45,
+    0.7
+   ],
+   "move": "out",
+   "emph": [
+    "금지합니다"
+   ]
+  },
+  {
+   "say": "음악이 사라진 밤에도… 발소리는 멈추지 않았습니다.",
+   "img": "d11",
+   "tts": "음악이 사라진 밤에도, 발소리는 멈추지 않았습니다.",
+   "move": "in",
+   "sfx": "hit",
+   "emph": [
+    "발소리는"
+   ]
+  },
+  {
+   "say": "가장 심한 이들은 산속 성지로 실려 갔고, 9월… 춤은 조용히 잦아들었습니다.",
+   "img": "d12",
+   "tts": "가장 심한 이들은 산속 성지로 실려 갔고, 구월 춤은 조용히 잦아들었습니다.",
+   "move": "up",
+   "emph": [
+    "잦아들었습니다"
+   ]
+  },
+  {
+   "say": "흉년과 저주에 대한 공포가, 사람들을 춤추게 했다는 설도 있습니다.",
+   "img": "d12",
+   "tts": "흉년과 저주에 대한 공포가, 사람들을 춤추게 했다는 설도 있습니다.",
+   "zoom": 1.5,
+   "focus": [
+    0.6,
+    0.4
+   ],
+   "move": "in",
+   "cont": true,
+   "emph": [
+    "공포가"
+   ]
+  },
+  {
+   "say": "음악이 그친 밤에도, 그들을 춤추게 한 건… 무엇이었을까요?",
+   "img": "d13",
+   "tts": "음악이 그친 밤에도, 그들을 춤추게 한 건 무엇이었을까요?",
+   "move": "in",
+   "emph": [
+    "무엇이었을까요"
+   ]
+  }
+ ],
+ "youtube": {
+  "title": "음악 없는 춤, 의사의 처방은 “더 춰라”",
+  "summary": "1518년 여름 스트라스부르. 한 여자의 춤이 번지자, 도시는 무대를 세우고 악사를 불렀습니다. 그 뒤로 춤추는 사람은 더 늘어났습니다.",
+  "pinned": "음악이 그친 밤에도, 그들을 춤추게 한 건 무엇이었을까요?"
+ },
+ "sources": "출처: Britannica 'Dancing plague of 1518', Public Domain Review(2018), John Waller(The Lancet, 2009), The Psychologist(BPS)",
+ "tags": "#새벽괴담 #춤전염병",
+ "risk": "저",
+ "adapted": true,
+ "hook_type": "권위×기이(의사의 처방이 '더 춰라')",
+ "threads": [
+  "1518년 7월 스트라스부르. 어떤 여자가 음악도 없는 골목에서 혼자 춤을 추기 시작했어. 쓰러질 때까지 추고, 깨면 또 추고. 기록마다 나흘에서 일주일이래.",
+  "근데 일주일 만에 30명 넘게 따라 추기 시작함. 남자 여자, 신분 상관없이.",
+  "더 이상한 건 시의 대응이야. 의사들이 '피가 뜨거워진 병'이라고 하니까, 시가 상인 조합 회관 내주고 시장에 무대 세우고 악사까지 불렀어. 더 춤춰서 털어내라고.",
+  "결과는? 연주 울릴수록 사람이 더 늘었대. 당시 기록 하나는 한 달 만에 400명이라고 적었고. 결국 9월까지 춤이랑 음악을 금지해 버림.",
+  "끝은 더 기묘해. 영상으로 보려면 인스타 @ossak_alarm 에서 봐."
+ ]
+}
