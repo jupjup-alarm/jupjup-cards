@@ -8,7 +8,7 @@
 - 운영 전략 전문: Claude 문서 '오싹알람 공포 쇼츠 운영 전략' (2026-10-27).
 
 ## 구성
-- `ossak/short.py` **쇼츠 엔진** — 세로 그림 생성(`--images`) + 내레이션 + 단어 자막 → `ossak/<편>/short.mp4`, `short_cover.jpg`, `episodes/<편>/short_preview.jpg`, `short_rows.json`
+- `ossak/short.py` **쇼츠 엔진** — 세로 그림 생성(`--images`) + 내레이션 + 단어 자막 → `ossak/<편>/<편>.mp4`, `<편>_thumb.jpg`, `episodes/<편>/short_preview.jpg`, `short_rows.json`
 - `ossak/reel.py` 목소리(구글 TTS)·호흡 재시도 함수 (short.py가 가져다 씀). 예고편 릴스 렌더러는 더 쓰지 않는다.
 - `ossak/timing.py` 무음 위치 ↔ 원고 글자 맞추기: 단어 자막 시각과 호흡 검사(`python3 ossak/timing.py episodes/<편>`). API를 쓰지 않는다.
 - `ossak/breath.py` 받아쓰기(Cloudflare Whisper)로 보는 호흡 지도 — 오독 확인용 (`--short`)
@@ -87,10 +87,10 @@
    - 출력의 길이를 확인한다(서사형 45~65초, 루프형 20~30초). 벗어나면 문장을 줄이고 다시.
    - `python3 ossak/timing.py episodes/<편>`로 호흡 지도 확인(받아쓰기 API 없이 무음 위치로 계산). '문제 장면 0개'가 될 때까지 tts를 고친다. 짧은 끊김(/ 0.13초 이상)도 엉뚱한 쉼으로 본다 — 예: '찢고 / 나왔고' → tts에서 '찢고나왔고'로 붙여 쓴다.
    - **호흡 검수는 엔진이 강제한다**: 쉼표·문장 끝·장면 경계에서 쉬지 않거나, 의도하지 않은 곳에서 0.2초 넘게 쉬면 short.py가 '호흡 검수 실패'를 출력하고 멈춘다(종료 코드 3). 출력된 문단의 tts를 고쳐(쉼표 넣기/빼기, 붙여 쓰기, 어순 바꾸기) 통과할 때까지 다시 만든다. `--force-breath`는 사용자가 직접 들어 보고 괜찮다고 할 때만.
-   - `episodes/<편>/short_preview.jpg`(장면별 정지 화면)과 `ossak/<편>/short_cover.jpg`를 열어 제목·자막·로고 겹침, 자막 잘림, 그림-문장 불일치를 본다.
+   - `episodes/<편>/short_preview.jpg`(장면별 정지 화면)과 `ossak/<편>/<편>_thumb.jpg`를 열어 제목·자막·로고 겹침, 자막 잘림, 그림-문장 불일치를 본다.
    - 한도가 남아 있으면 `python3 ossak/breath.py episodes/<편> --short`(Cloudflare 받아쓰기)로 잘못 읽은 말이 없는지도 본다. 잘못 읽으면 tts를 소리 나는 대로 고친다.
 8. **자동 검수**(하나라도 걸리면 시트에 넣지 않고 소재조사 상태를 '기획'으로 두고 사유를 메모): 훅·제목 사실 A/B / 국내 피해자 실명·특정 정보 없음 / 용의자·무죄자 실명·암시 없음 / 피·시신·흉기 직접 묘사 없음 / 실존 인물 닮은 얼굴 없음 / 출처 표기 / 피해자 조롱·가해자 미화 없음 / 최근 14편과 틀 반복 없음.
-9. **올리기**: `git -C <repo> pull --rebase origin main` → `git add ossak/<편>/short.mp4 ossak/<편>/short_cover.jpg ossak/engine/episodes/<편>/short.json ossak/engine/episodes/<편>/short_brief.md` → 커밋 → `git push origin HEAD:main`. 올린 뒤 영상 주소를 `curl -sI`로 열어 200인지 확인.
+9. **올리기**: `git -C <repo> pull --rebase origin main` → `git add ossak/<편>/<편>.mp4 ossak/<편>/<편>_thumb.jpg ossak/engine/episodes/<편>/short.json ossak/engine/episodes/<편>/short_brief.md` → 커밋 → `git push origin HEAD:main`. 올린 뒤 영상 주소를 `curl -sI`로 열어 200인지 확인.
 10. **시트**: `short_rows.json`의
     - `youtube` 행 → '유튜브' 탭 마지막 행 다음 A:R (N~Q 성과 칸은 비워 둔다 — 사용자가 주 1회 스튜디오 수치를 적는다),
     - `instagram` 행(서사형만) → '발행계획' 마지막 행 다음 A:L,
@@ -153,4 +153,4 @@
 - 화면 위(y≈318)에 훅 제목 2줄이 처음부터 끝까지 고정. 오른쪽 위에 부기+오싹알람 작은 로고.
 - 자막은 실제 음성의 쉼 위치에 맞춘 어절 시각(timing.py)으로 2~3어절씩, 말보다 0.06초 먼저, 가운데 아래(y≈1130). `emph`·`accent_word` 단어는 말머리 색. 위 300px·아래 420px·오른쪽 140px에는 글자를 두지 않는다.
 - 소리: 내레이션(구글 Umbriel, 사용자 선택) + 낮은 바람 소리 + hit 앞 0.6초 무음과 낮은 효과음.
-- 첫 프레임 = `short_cover.jpg`(제목 + 첫 그림 + 첫 자막). 유튜브 썸네일로도 쓴다.
+- 첫 프레임 = `<편>_thumb.jpg`(제목 + 첫 그림 + 첫 자막). 유튜브 썸네일로도 쓴다.

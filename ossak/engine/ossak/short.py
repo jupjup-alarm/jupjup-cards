@@ -505,7 +505,7 @@ def build(ep, spec, a):
     # 4) 프레임
     out_dir = REPO_OSSAK / ep.name
     out_dir.mkdir(parents=True, exist_ok=True)
-    video = out_dir / "short.mp4"
+    video = out_dir / f"{ep.name}.mp4"          # 파일 이름으로 편 구분 (2026-10-28 사용자 요청)
     enc = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}",
                             "-r", str(FPS), "-i", "-", "-i", str(work / "mix.wav"), "-c:v", "libx264", "-preset", "veryfast",
                             "-crf", "21", "-maxrate", "3500k", "-bufsize", "7M", "-pix_fmt", "yuv420p", "-af", "loudnorm=I=-14:TP=-1.5:LRA=11", "-c:a", "aac", "-b:a", "192k", "-ac", "2", "-ar", "48000",
@@ -572,7 +572,7 @@ def build(ep, spec, a):
         fr.alpha_composite(tl)
         fr.alpha_composite(lg, (W - SAFE_R // 2 - lg.width - 10, 206))
         if fi == 0:
-            fr.convert("RGB").save(out_dir / "short_cover.jpg", quality=92)   # 썸네일: 자막 없이
+            fr.convert("RGB").save(out_dir / f"{ep.name}_thumb.jpg", quality=92)   # 썸네일: 자막 없이
         while ci + 1 < len(caps) and tsec >= caps[ci + 1][0]:
             ci += 1
         c0, c1, ct, emph = caps[ci]
@@ -621,8 +621,8 @@ def rows(ep, spec, a, total=None):
         else "실제 기록을 바탕으로 한 이야기입니다. 그림과 내레이션은 AI로 재구성했습니다." if not spec.get("legend")
         else "전해지는 이야기를 기록에 따라 옮겼습니다. 그림과 내레이션은 AI로 재구성했습니다.",
         spec.get("sources", ""), "매일 저녁 6시·밤 10시 · 인스타그램 @ossak_alarm", tags + " #shorts"] if x)
-    video = f"{BASE}{ep.name}/short.mp4"
-    cover = f"{BASE}{ep.name}/short_cover.jpg"
+    video = f"{BASE}{ep.name}/{ep.name}.mp4"
+    cover = f"{BASE}{ep.name}/{ep.name}_thumb.jpg"
     out = {}
     if a.date:
         ytime = a.yt_time or ("22:00" if loop else "18:00")
