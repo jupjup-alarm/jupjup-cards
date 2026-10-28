@@ -1,0 +1,50 @@
+{
+  "slug": "2026-10-28-guri-galmae-a1",
+  "title": "구리갈매역세권 A-1블록 신혼희망타운 행복주택",
+  "series": "임대알람",
+  "count": 7,
+  "urls": [
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-28-guri-galmae-a1/01.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-28-guri-galmae-a1/02.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-28-guri-galmae-a1/03.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-28-guri-galmae-a1/04.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-28-guri-galmae-a1/05.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-28-guri-galmae-a1/06.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-28-guri-galmae-a1/07.jpg"
+  ],
+  "warnings": {
+    "02": [
+      "zoom 0.91"
+    ]
+  },
+  "boards": [
+    {
+      "file": "2026-10-28-guri-galmae-a1-01.dc.html",
+      "title": "구리갈매역세권 A-1블록 신혼희망타운 행복주택 1/7"
+    },
+    {
+      "file": "2026-10-28-guri-galmae-a1-02.dc.html",
+      "title": "구리갈매역세권 A-1블록 신혼희망타운 행복주택 2/7"
+    },
+    {
+      "file": "2026-10-28-guri-galmae-a1-03.dc.html",
+      "title": "구리갈매역세권 A-1블록 신혼희망타운 행복주택 3/7"
+    },
+    {
+      "file": "2026-10-28-guri-galmae-a1-04.dc.html",
+      "title": "구리갈매역세권 A-1블록 신혼희망타운 행복주택 4/7"
+    },
+    {
+      "file": "2026-10-28-guri-galmae-a1-05.dc.html",
+      "title": "구리갈매역세권 A-1블록 신혼희망타운 행복주택 5/7"
+    },
+    {
+      "file": "2026-10-28-guri-galmae-a1-06.dc.html",
+      "title": "구리갈매역세권 A-1블록 신혼희망타운 행복주택 6/7"
+    },
+    {
+      "file": "2026-10-28-guri-galmae-a1-07.dc.html",
+      "title": "구리갈매역세권 A-1블록 신혼희망타운 행복주택 7/7"
+    }
+  ]
+}
