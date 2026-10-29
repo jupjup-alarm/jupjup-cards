@@ -309,11 +309,22 @@ function collectMetrics_() {
   if (perf.getRange(1, 22).getValue() === '') perf.getRange(1, 22).setValue('릴스 평균 시청(초)');
   rows.forEach(r => {
     if (r.status !== '발행완료' || !r.postId || !r.postedAt) return;
+    const memo = String(plan.getRange(r.row, P.memo).getValue());
+    if (memo.indexOf('성과 수집 중지') >= 0) return;       // 삭제됐거나 볼 수 없는 게시물
     const hours = (now - r.postedAt) / 36e5;
     marks.forEach(([label, h]) => {
       if (hours < h || have[r.postId + '|' + label]) return;
       if (label === '24시간' && hours > 72) return; // 놓친 24시간 기록은 건너뜀
-      const m = r.ch === '스레드' ? threadInsights_(r.postId) : igInsights_(r.postId, r.ch === '인스타 릴스');
+      // 한 게시물이 실패해도 나머지는 계속 기록하고, 실패 이유는 발행계획 메모(S열)에 남긴다 (2026-10-29)
+      let m;
+      try {
+        m = r.ch === '스레드' ? threadInsights_(r.postId) : igInsights_(r.postId, r.ch === '인스타 릴스');
+      } catch (e) {
+        const gone = /does not exist|cannot be loaded/i.test(e.message);
+        plan.getRange(r.row, P.memo).setValue((gone ? '성과 수집 중지 — 게시물이 없거나 볼 수 없음: ' : '성과 수집 실패: ')
+          + Utilities.formatDate(now, TZ, 'MM/dd HH:mm') + ' ' + String(e.message).slice(0, 120));
+        return;
+      }
       const base = r.ch === '스레드' ? m.views : (m.reach || m.views);
       const pct = x => base ? Math.round(x / base * 1000) / 10 : '';
       const share = (m.shares || 0) + (r.ch === '스레드' ? (m.reposts || 0) : 0);
