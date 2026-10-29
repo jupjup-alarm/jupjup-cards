@@ -23,7 +23,7 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="alternate" type="application/rss+xml" title="줍줍알람" href="/rss.xml">
-<link rel="stylesheet" href="/style.ac843434.css">
+<link rel="stylesheet" href="/style.5b36fbe7.css">
 </head>
 <body>
 <a class="skip" href="#main">본문 바로가기</a>
@@ -126,6 +126,8 @@
     </div>
 <p class="lead2">계약(2026.11)부터 입주(2027.5 예정)까지 약 6개월이라, 중도금·잔금을 짧은 기간에 마련해야 해요. 중도금 대출이 되는지는 공고문에서 꼭 확인하세요.</p>    <p class="note">동별 분양가·납부 비율은 기사 기준이에요. 정확한 금액·일정은 입주자모집공고에서 확인하세요. 금액은 만원 아래를 버린 값이에요.</p>
   </section>
+
+
 
   <section class="sec" aria-labelledby="h-odds">
     <h2 id="h-odds">얼마나 몰릴까요?</h2>
@@ -327,6 +329,20 @@
       bs.forEach(function(b){b.addEventListener('click',function(){bs.forEach(function(x){x.setAttribute('aria-pressed',x===b)});
         out.textContent=el.querySelectorAll('button[data-v="1"][aria-pressed="true"]').length;});});});
   });
+  var R=document.querySelector('[data-rent]');
+  if(R){var dep0=+R.getAttribute('data-d0'),mon0=+R.getAttribute('data-m0'),ri=R.querySelector('#rcash'),rr=R.querySelector('#rres');
+    var up=+R.getAttribute('data-up')||0,down=+R.getAttribute('data-down')||0,unit=+R.getAttribute('data-unit')||1000000;
+    function wonx(w){w=Math.round(w);var e=Math.floor(w/1e8),m=Math.floor((w%1e8)/1e4),r=w%1e4;var s=(e?e+'억':'')+(m?m.toLocaleString('ko-KR')+'만':'')+(r?r.toLocaleString('ko-KR'):'');return (s||'0')+'원';}
+    function set(b){dep0=+b.getAttribute('data-dep');mon0=+b.getAttribute('data-mon');
+      R.querySelector('[data-r="dep"]').textContent=wonx(dep0);R.querySelector('[data-r="mon"]').textContent=wonx(mon0);R.querySelector('[data-r="two"]').textContent=won(mon0*24);rc();}
+    function rc(){var v=parseFloat((ri.value||'').replace(/[^0-9.]/g,''));if(!v){rr.className='fres';rr.textContent='돈을 넣으면 보증금이 되는지'+(up?', 보증금을 바꾸면 월세가 얼마나 달라지는지':'')+' 계산해요.';return;}
+      var have=v*1e4,gap=have-dep0;
+      if(gap>=0){var add=Math.floor(gap/unit)*unit,cut=up?add*up/100/12:0;
+        rr.className='fres ok';rr.textContent='보증금 '+wonx(dep0)+'은 돼요.'+(up&&add>0?' 남는 돈 중 '+won(add)+'을 보증금으로 더 넣으면 월세가 약 '+wonx(Math.floor(cut/10)*10)+' 줄어요 (연 '+up+'% 기준, 한도는 공고문 확인).':'');}
+      else{var need=Math.ceil(-gap/unit)*unit,plus=down?need*down/100/12:0;
+        rr.className='fres no';rr.textContent='보증금까지 '+wonx(-gap)+'이 모자라요.'+(down?' 보증금을 '+won(need)+' 줄이면 월세가 약 '+wonx(Math.ceil(plus/10)*10)+' 늘어요 (연 '+down+'% 기준, 한도는 공고문 확인).':'');}}
+    var bs=R.querySelectorAll('[data-dep]');bs.forEach(function(b){b.addEventListener('click',function(){bs.forEach(function(x){x.setAttribute('aria-pressed',x===b)});set(b);});});
+        ri.addEventListener('input',rc);}
   var f=document.querySelector('[data-fund]');if(!f)return;
   var ol=f.querySelector('.ftl'),price=+ol.getAttribute('data-price0'),inp=f.querySelector('#fcash'),res=f.querySelector('#fres');
   function draw(){f.querySelectorAll('.fa').forEach(function(b){b.textContent=won(price*(+b.getAttribute('data-pct'))/100);});calc();}

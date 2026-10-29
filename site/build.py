@@ -610,8 +610,61 @@ def comp_refs(notices, kind="mujeonwi", days=45):
     return out
 
 
+def make_decide_rental(n, src):
+    """임대 판단 카드: 월 부담 · 문턱 · 거주기간 · 입주 돈 (2026-10-29 시범: 화성 동탄 행복주택)."""
+    ms = [m for m in n.get("rent_models") or [] if m.get("deposit")]
+    rs = n.get("rent_summary") or {}
+    rr = n.get("rent_range") or {}
+    mon = [m["monthly"] for m in ms if m.get("monthly")] or ([rs["monthly"]] if rs.get("monthly") else []) or (list(rr.get("monthly") or []))
+    dep = [m["deposit"] for m in ms] or ([rs["deposit"]] if rs.get("deposit") else []) or (list(rr.get("deposit") or []))
+    cards, rule = [], []
+    # ① 월 부담 — 비교 시세(gap) > 공고의 '시중시세 O% 수준' > 금액만
+    gap = n.get("gap") or {}
+    v = gap.get("verdict") or ""
+    if mon:
+        lo, hi = min(mon), max(mon)
+        head = f"월 {won_band(lo)}" if lo == hi else f"월 {won_band(lo)}~{won_band(hi)}"
+    else:
+        head = "월 임대료 공고문 확인"
+    m = re.search(r"주변 시세의 약 (\d+(?:\.\d+)?)% 수준", v)
+    pm = re.search(r"(\d+(?:\.\d+)?)%", n.get("rent_level") or "")
+    if m:
+        pct = float(m.group(1))
+        cards.append({"k": "월 부담", "sig": "g" if pct <= 60 else ("y" if pct <= 85 else "r"), "head": head, "sub": f"주변 시세의 약 {m.group(1)}% (추정)"})
+    elif re.search(r"저렴\(추정\)$", v):
+        cards.append({"k": "월 부담", "sig": "g", "head": head, "sub": "주변 시세보다 " + v[:-4].strip() + " (추정)"})
+    elif pm:
+        pct = float(pm.group(1))
+        cards.append({"k": "월 부담", "sig": "g" if pct <= 60 else ("y" if pct <= 85 else "r"), "head": head, "sub": n["rent_level"] + " (공고 기준)"})
+    else:
+        cards.append({"k": "월 부담", "sig": "n", "head": head, "sub": "주변 시세와 비교는 확인 중이에요"})
+    rule.append("월 부담: 주변 시세(또는 공고의 시중시세)의 60% 이하면 초록, 85% 이하면 노랑, 그보다 비싸면 빨강, 비교 전이면 회색")
+    d = src.get("door") or {}
+    if d.get("head"):
+        cards.append({"k": "문턱", "sig": d.get("sig", "n"), "head": d["head"], "sub": d.get("sub", "")})
+    rule.append("문턱: 무주택·계층 자격 말고 소득·자산 기준과 거주지역 제한이 없으면 초록, 하나 있으면 노랑, 둘 다 있으면 빨강")
+    st = src.get("stay") or {}
+    if st.get("head"):
+        cards.append({"k": "거주기간", "sig": st.get("sig", "n"), "head": st["head"], "sub": st.get("sub", "")})
+    rule.append("거주기간: 최장 10년 이상 살 수 있으면 초록, 4~9년이면 노랑, 그보다 짧으면 빨강")
+    if dep:
+        lo, hi = min(dep), max(dep)
+        sig = "r" if hi >= 100_000_000 else ("y" if hi >= 30_000_000 else "g")
+        cards.append({"k": "입주 돈", "sig": sig, "head": f"보증금 {won(lo)}" if lo == hi else f"보증금 {won(lo)[:-1]}~{won(hi)}",
+                      "sub": src.get("dep_sub") or "블록·주택형·계층별로 달라요"})
+    rule.append("입주 돈: 보증금이 1억원 이상이면 빨강, 3천만원 이상이면 노랑, 그보다 적으면 초록")
+    conv = src.get("conv")
+    opts = [[m["type"], m["deposit"], m.get("monthly") or 0] for m in ms]
+    return {"rental": True, "cards": cards, "rule": rule, "fit": src.get("fit"),
+            "traps": [[a, fill(b)] for a, b in src.get("traps", [])], "check": src.get("check"),
+            "rent": {"opts": opts, "conv": conv, "note": fill(src.get("rent_note", "")), "basis": src.get("rent_basis", "")},
+            "links": src.get("links") or []}
+
+
 def make_decide(n, notices):
     src = n["decide"]
+    if n.get("is_rental"):
+        return make_decide_rental(n, src)
     rcpt = n.get("rcpt") or [None, None]
     one_day = bool(rcpt[0]) and (not rcpt[1] or rcpt[0] == rcpt[1])
     cards, rule = [], []

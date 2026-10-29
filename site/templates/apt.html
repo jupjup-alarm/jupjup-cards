@@ -124,7 +124,7 @@
   </section>
   {% endif %}
 
-  {% if z.funds.opts and z.funds.steps %}
+  {% if z.funds and z.funds.opts and z.funds.steps %}
   <section class="sec" aria-labelledby="h-fund" data-fund>
     <h2 id="h-fund">당첨되면, 돈은 이렇게 나가요</h2>
     {% if z.funds.opts|length > 1 %}<div class="fopt" role="group" aria-label="분양가 고르기">{% for a, v in z.funds.opts %}<button type="button" aria-pressed="{{ 'true' if loop.first else 'false' }}" data-price="{{ v }}">{{ a }} <span class="num">{{ v|won }}</span></button>{% endfor %}</div>{% endif %}
@@ -141,6 +141,27 @@
     {% endif %}
     {% if z.funds.note %}<p class="lead2">{{ z.funds.note }}</p>{% endif %}
     <p class="note">{{ z.funds.basis }} 금액은 만원 아래를 버린 값이에요.</p>
+  </section>
+  {% endif %}
+
+
+  {% if z.rent and z.rent.opts %}
+  <section class="sec" aria-labelledby="h-rent" data-rent data-d0="{{ z.rent.opts[0][1] }}" data-m0="{{ z.rent.opts[0][2] }}"{% if z.rent.conv %} data-up="{{ z.rent.conv.up }}" data-down="{{ z.rent.conv.down }}" data-unit="{{ z.rent.conv.unit }}"{% endif %}>
+    <h2 id="h-rent">입주할 때·매달 나가는 돈</h2>
+    {% if z.rent.opts|length > 1 %}<div class="fopt" role="group" aria-label="블록·주택형 고르기">{% for a, dv, mv in z.rent.opts %}<button type="button" aria-pressed="{{ 'true' if loop.first else 'false' }}" data-dep="{{ dv }}" data-mon="{{ mv }}">{{ a }}</button>{% endfor %}</div>{% endif %}
+    <div class="rbox num">
+      <div><span>입주 때 보증금</span><b data-r="dep">{{ z.rent.opts[0][1]|money }}</b></div>
+      <div><span>매달 임대료</span><b data-r="mon">{{ z.rent.opts[0][2]|money }}</b></div>
+      <div><span>2년 계약 동안 임대료 합계</span><b data-r="two">{{ (z.rent.opts[0][2] * 24)|won }}</b></div>
+    </div>
+    <div class="fcalc">
+      <label for="rcash">지금 보증금으로 쓸 수 있는 돈</label>
+      <div class="frow"><input id="rcash" type="text" inputmode="numeric" placeholder="예: 1500" autocomplete="off" aria-describedby="rres"><span>만원</span></div>
+      <p id="rres" class="fres" aria-live="polite">돈을 넣으면 보증금이 되는지{% if z.rent.conv %}, 보증금을 바꾸면 월세가 얼마나 달라지는지{% endif %} 계산해요.</p>
+    </div>
+    {% if z.rent.note %}<p class="lead2">{{ z.rent.note }}</p>{% endif %}
+    <p class="note">{{ z.rent.basis }} 관리비는 따로예요.</p>
+    {% for l in z.links %}<a class="guide-link" href="{{ l[1] }}"><b>{{ l[0] }}</b><span>{{ l[2] }} →</span></a>{% endfor %}
   </section>
   {% endif %}
 
@@ -478,6 +499,20 @@
       bs.forEach(function(b){b.addEventListener('click',function(){bs.forEach(function(x){x.setAttribute('aria-pressed',x===b)});
         out.textContent=el.querySelectorAll('button[data-v="1"][aria-pressed="true"]').length;});});});
   });
+  var R=document.querySelector('[data-rent]');
+  if(R){var dep0=+R.getAttribute('data-d0'),mon0=+R.getAttribute('data-m0'),ri=R.querySelector('#rcash'),rr=R.querySelector('#rres');
+    var up=+R.getAttribute('data-up')||0,down=+R.getAttribute('data-down')||0,unit=+R.getAttribute('data-unit')||1000000;
+    function wonx(w){w=Math.round(w);var e=Math.floor(w/1e8),m=Math.floor((w%1e8)/1e4),r=w%1e4;var s=(e?e+'억':'')+(m?m.toLocaleString('ko-KR')+'만':'')+(r?r.toLocaleString('ko-KR'):'');return (s||'0')+'원';}
+    function set(b){dep0=+b.getAttribute('data-dep');mon0=+b.getAttribute('data-mon');
+      R.querySelector('[data-r="dep"]').textContent=wonx(dep0);R.querySelector('[data-r="mon"]').textContent=wonx(mon0);R.querySelector('[data-r="two"]').textContent=won(mon0*24);rc();}
+    function rc(){var v=parseFloat((ri.value||'').replace(/[^0-9.]/g,''));if(!v){rr.className='fres';rr.textContent='돈을 넣으면 보증금이 되는지'+(up?', 보증금을 바꾸면 월세가 얼마나 달라지는지':'')+' 계산해요.';return;}
+      var have=v*1e4,gap=have-dep0;
+      if(gap>=0){var add=Math.floor(gap/unit)*unit,cut=up?add*up/100/12:0;
+        rr.className='fres ok';rr.textContent='보증금 '+wonx(dep0)+'은 돼요.'+(up&&add>0?' 남는 돈 중 '+won(add)+'을 보증금으로 더 넣으면 월세가 약 '+wonx(Math.floor(cut/10)*10)+' 줄어요 (연 '+up+'% 기준, 한도는 공고문 확인).':'');}
+      else{var need=Math.ceil(-gap/unit)*unit,plus=down?need*down/100/12:0;
+        rr.className='fres no';rr.textContent='보증금까지 '+wonx(-gap)+'이 모자라요.'+(down?' 보증금을 '+won(need)+' 줄이면 월세가 약 '+wonx(Math.ceil(plus/10)*10)+' 늘어요 (연 '+down+'% 기준, 한도는 공고문 확인).':'');}}
+    var bs=R.querySelectorAll('[data-dep]');bs.forEach(function(b){b.addEventListener('click',function(){bs.forEach(function(x){x.setAttribute('aria-pressed',x===b)});set(b);});});
+        ri.addEventListener('input',rc);}
   var f=document.querySelector('[data-fund]');if(!f)return;
   var ol=f.querySelector('.ftl'),price=+ol.getAttribute('data-price0'),inp=f.querySelector('#fcash'),res=f.querySelector('#fres');
   function draw(){f.querySelectorAll('.fa').forEach(function(b){b.textContent=won(price*(+b.getAttribute('data-pct'))/100);});calc();}
