@@ -35,8 +35,8 @@ def _md(text):
     return markdown.markdown(text, extensions=["tables", "sane_lists"], output_format="html")
 
 
-def render_body(md_text):
-    """본문 마크다운 + ::: 상자 → (html, 목차, 쓰인 도구)."""
+def render_body(md_text, img_dir=None):
+    """본문 마크다운 + ::: 상자 → (html, 목차, 쓰인 도구). img_dir: :::image·:::gallery 그림 파일이 있는 폴더(site/data/guide/img/{slug})."""
     lines = (md_text or "").replace("\r", "").split("\n")
     out, raw, tools = [], {}, []
     i = 0
@@ -64,6 +64,25 @@ def render_body(md_text):
             j += 1
         inner = "\n".join(lines[i + 1:j])
         i = j + 1
+        if kind in ("image", "gallery"):
+            # 한 줄에 "파일명 | 설명". 파일은 site/data/guide/img/{slug}/ — 빌드가 /guide/{slug}/ 로 복사
+            figs = []
+            for x in inner.split("\n"):
+                if not x.strip():
+                    continue
+                fn, _, label = (p.strip() for p in x.partition("|"))
+                wh = ""
+                try:
+                    from PIL import Image
+                    with Image.open(Path(img_dir) / fn) as im:
+                        wh = f' width="{im.width}" height="{im.height}"'
+                except Exception:
+                    pass
+                cap = f"<figcaption>{html.escape(label)}</figcaption>" if kind == "gallery" and label else ""
+                figs.append(f'<figure><a href="{html.escape(fn)}" target="_blank" rel="noopener"><img src="{html.escape(fn)}" alt="{html.escape(label or arg)}" loading="lazy" decoding="async"{wh}></a>{cap}</figure>')
+            cls = "g-gal" if kind == "gallery" else "g-one"
+            out.append(stash(f'<div class="g-img"><div class="{cls}">{"".join(figs)}</div><p class="g-imgcap">{html.escape(arg)}</p></div>'))
+            continue
         if kind == "figure":
             svg = inner.strip()
             out.append(stash(f'<figure class="g-fig">{svg}<figcaption>{html.escape(arg)}</figcaption></figure>'))
@@ -151,8 +170,16 @@ def build(E, notices, write, common, pub, base, today, problems):
     by = {g["slug"]: g for g in guides}
     tpl = E.get_template("guide.html")
     open_n = [n for n in notices if n["status"] in ("open", "upcoming")]
+    import shutil
     for g in guides:
-        body, toc, tools = render_body(g.get("body", ""))
+        idir = GDIR / "img" / g["slug"]
+        body, toc, tools = render_body(g.get("body", ""), idir)
+        if idir.is_dir():
+            d = pub / "guide" / g["slug"]
+            d.mkdir(parents=True, exist_ok=True)
+            for f in idir.iterdir():
+                if f.is_file():
+                    shutil.copy2(f, d / f.name)
         g["html"], g["toc"], g["tools"] = body, toc, tools
         g["url"] = f"/guide/{g['slug']}/"
         g["read_min"] = read_min(g)
