@@ -571,6 +571,103 @@ def won_band(v):
     return f"{v // 10_000:,}만원{'' if v % 10_000 == 0 else '대'}"
 
 
+
+# ── 판단형 공고 페이지 (2026-10-29 사용자 요청 "넣는 게 이득인지 판단할 수 없다") ──
+# apt JSON의 "decide" 블록이 있으면: 3초 판단 카드 · 이런 분께 · 시세 막대 · 돈 흐름(계산기) · 경쟁 근거 · 다만 · 자가 체크
+def won_about(v):
+    """'약 1억7천만원' — 천만 단위 내림 (판단 카드용 어림값)."""
+    v = int(v or 0)
+    e, r = divmod(v, 10**8)
+    c = r // 10**7
+    if e:
+        return f"약 {e}억{f'{c}천' if c else ''}만원" if c else f"약 {e}억원"
+    if c:
+        return f"약 {c}천만원"
+    return f"약 {v // 10**4:,}만원"
+
+
+def comp_refs(notices, kind="mujeonwi", days=45):
+    """최근 접수 끝난 같은 유형 공고의 청약홈 공식 경쟁률 (줍줍알람이 모은 값)."""
+    out = []
+    for r in json.loads((DATA / "applyhome.json").read_text())["rows"]:
+        c = parse_comp(r.get("경쟁률(청약홈 공식)") or "")
+        if not c or not c["rows"]:
+            continue
+        if kind == "mujeonwi" and not re.search(r"무순위|임의공급", r.get("구분") or ""):
+            continue
+        end = r.get("접수 종료") or ""
+        if not end or (TODAY - dt.date.fromisoformat(end)).days > days:
+            continue
+        sup = sum(x["supply"] for x in c["rows"])
+        app = sum(x["apply"] for x in c["rows"])
+        if not sup:
+            continue
+        page = next((n for n in notices if n["key"] == r["주택관리번호"]), None)
+        loc = re.sub(r"^(서울|인천|경기)\S*\s+(\S+).*$", r"\1 \2", r.get("공급위치") or "")
+        out.append({"name": re.sub(r"\(.*?\)", "", r["주택명"]).strip(), "loc": loc, "supply": sup, "apply": app,
+                    "rate": app / sup, "end": end, "url": f"/apt/{page['key']}/" if page else None})
+    out.sort(key=lambda x: x["end"], reverse=True)
+    return out
+
+
+def make_decide(n, notices):
+    src = n["decide"]
+    rcpt = n.get("rcpt") or [None, None]
+    one_day = bool(rcpt[0]) and (not rcpt[1] or rcpt[0] == rcpt[1])
+    cards, rule = [], []
+    # ① 이득 — gap 첫 줄(시세) vs 둘째 줄(분양가)
+    gap = n.get("gap") or {}
+    rows = gap.get("rows") or []
+    mk = parse_won(rows[0][1]) if rows else None
+    pr = parse_won(rows[1][1]) if len(rows) > 1 else None
+    bars = None
+    if mk and pr and re.search(r"저렴\(추정\)$", gap.get("verdict", "")):
+        pct = round(pr * 100 / mk)
+        sig = "g" if pct <= 70 else ("y" if pct <= 90 else "r")
+        base = re.sub(r"\s*\(.*?\)\s*$", "", rows[0][0])
+        cards.append({"k": "이득", "sig": sig, "head": "시세보다 " + gap["verdict"][:-4].strip(), "sub": f"주변 시세의 {pct}% 가격 · {base} 대비 (추정)"})
+        bars = {"mk": rows[0], "pr": rows[1], "pct": pct}
+    elif gap.get("verdict"):
+        cards.append({"k": "이득", "sig": "r", "head": gap["verdict"], "sub": "근거는 아래 '시세와 비교하면'"})
+    else:
+        cards.append({"k": "이득", "sig": "n", "head": "비교 시세 확인 중", "sub": "근거 단지를 찾으면 채워요"})
+    rule.append("이득: 분양가가 주변 시세의 70% 이하면 초록, 90% 이하면 노랑, 그보다 비싸거나 차익 기대가 낮으면 빨강")
+    # ② 문턱 — 사람이 판정 (지역·소득·자산 조건 수)
+    d = src.get("door") or {}
+    cards.append({"k": "문턱", "sig": d.get("sig", "n"), "head": d.get("head", ""), "sub": d.get("sub", "")})
+    rule.append("문턱: 청약통장·소득·거주지역 조건이 없으면 초록, 하나 있으면 노랑, 둘 이상이면 빨강")
+    # ③ 경쟁 — 공급 세대 수 + 최근 같은 유형 경쟁률
+    refs = comp_refs(notices, n["kind"]) if n["kind"] == "mujeonwi" else []
+    rates = sorted(x["rate"] for x in refs)
+    med = rates[len(rates) // 2] if rates else None
+    u = n.get("units") or 0
+    sig = "r" if u <= 5 else ("y" if u <= 30 else "g")
+    head = f"{u:,}세대뿐" if u <= 30 else f"{u:,}세대"
+    if one_day:
+        head += " · 하루 접수"
+    sub = f"최근 수도권 줍줍 {len(rates)}곳 경쟁률 가운데값 {med:.1f}대 1" if med is not None else (src.get("comp_sub") or "")
+    cards.append({"k": "경쟁", "sig": sig, "head": head, "sub": sub})
+    rule.append("경쟁: 공급이 5세대 이하면 빨강, 30세대 이하면 노랑, 그보다 많으면 초록")
+    # ④ 자금 — 계약금
+    f = src.get("funds") or {}
+    price = n.get("max_price") or 0
+    dep = f.get("deposit_pct")
+    if price and dep:
+        amt = price * dep // 100
+        sig = "r" if amt >= 150_000_000 else ("y" if amt >= 50_000_000 else "g")
+        rest = price - amt
+        cards.append({"k": "자금", "sig": sig, "head": f"계약금 {won_about(amt)}", "sub": f"입주 전까지 {won_about(rest)} 더" + (f" · {f['card_tail']}" if f.get("card_tail") else "")})
+    rule.append("자금: 계약 때 필요한 현금이 1억5천만원 이상이면 빨강, 5천만원 이상이면 노랑, 그보다 적으면 초록")
+    # 돈 흐름
+    opts = f.get("price_options") or ([[n.get("max_type") or "최고가", price]] if price else [])
+    steps = [{"label": a, "when": fill(b), "pct": c} for a, b, c in f.get("steps", [])]
+    out = {"cards": cards, "rule": rule, "bars": bars, "refs": refs[:10], "med": med,
+           "fit": src.get("fit"), "traps": [[a, fill(b)] for a, b in src.get("traps", [])],
+           "check": src.get("check"), "funds": {"opts": opts, "steps": steps, "dep": dep, "basis": f.get("basis", ""), "note": fill(f.get("note", ""))},
+           "comp_note": fill(src.get("comp_note", ""))}
+    return out
+
+
 def og_price_label(n):
     """썸네일 가격 라벨: '최고 분양가' → '분양가' (사용자 요청 2026-10-29). 토지임대부 '최고 건물분양가' → '건물분양가'."""
     return re.sub(r"^최고\s*", "", n.get("price_label") or "분양가") or "분양가"
@@ -897,6 +994,10 @@ def main():
         st.setdefault("published", now.isoformat(timespec="seconds"))
         state[n["key"]] = st
         n["published"], n["modified"] = st["published"], st["modified"]
+
+    for n in notices:
+        if n.get("decide"):
+            n["dz"] = make_decide(n, notices)
 
     # 출력 폴더 정리 (이미지는 남겨 재사용)
     PUB.mkdir(exist_ok=True)

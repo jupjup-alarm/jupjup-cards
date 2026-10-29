@@ -28,6 +28,17 @@
     <p class="oneline num"><span>{{ '{:,}'.format(n.units) }}{{ n.unit_word }}</span>{% if n.is_pre %}<span>예상 {{ n.price_short or n.price_text }}</span><span>{{ '예상 접수 ' ~ (n.rcpt[0]|d) if n.moved else (n.rcpt[0]|d) ~ ' 접수 예정' }}</span>{% elif n.is_rental %}{% if n.houses and n.rent_level %}<span>{{ n.rent_level }}</span>{% elif n.rent_summary.deposit %}<span>보증금 {{ n.rent_summary.deposit|money }}</span>{% endif %}<span>{{ n.rcpt[0]|d }} 접수</span>{% else %}<span>최고 {{ n.max_price|won }}</span><span>{% if n.status == 'announced' %}{{ n.announce|d }} 발표{% else %}{{ n.rcpt[0]|d }} 접수{% endif %}</span>{% endif %}</p>
   </div>
 
+
+  {% if n.dz %}{% set z = n.dz %}
+  <section class="dz-card" aria-labelledby="h-dz">
+    <h2 id="h-dz">3초 판단</h2>
+    <ul class="dz-grid">
+    {% for c in z.cards %}<li class="dz-c s-{{ c.sig }}"><span class="dz-k"><i aria-hidden="true"></i>{{ c.k }}<span class="sr">{{ {'g':' 좋음','y':' 보통','r':' 주의','n':''}[c.sig] }}</span></span><b>{{ c.head }}</b>{% if c.sub %}<small>{{ c.sub }}</small>{% endif %}</li>
+    {% endfor %}
+    </ul>
+    <details class="dz-rule"><summary>신호색은 이렇게 정해요</summary><ul>{% for r in z.rule %}<li>{{ r }}</li>{% endfor %}</ul><p>추천이 아니라 판단 재료예요. 기준에 맞춰 기계적으로 붙이고, 숫자 근거는 아래 각 칸에 있어요.</p></details>
+  </section>
+  {% endif %}
   <aside aria-label="핵심 요약">
     <div class="summary">
       <dl class="facts num">
@@ -84,6 +95,87 @@
     </div>
   </section>
   {{ ads_slot('apt_top', 'ad-apt') }}
+
+
+  {% if n.dz %}{% set z = n.dz %}
+  {% if z.fit %}
+  <section class="sec" aria-labelledby="h-fit">
+    <h2 id="h-fit">이런 분께 맞아요</h2>
+    <div class="dfit">
+      <div class="fit-y"><p class="fit-h">이런 분이라면 볼 만해요</p><ul>{% for a, b in z.fit.yes %}<li><b>{{ a }}</b><span>{{ b }}</span></li>{% endfor %}</ul></div>
+      <div class="fit-n"><p class="fit-h">이런 분은 다시 생각해 보세요</p><ul>{% for a, b in z.fit.no %}<li><b>{{ a }}</b><span>{{ b }}</span></li>{% endfor %}</ul></div>
+    </div>
+  </section>
+  {% endif %}
+
+  {% if n.gap %}
+  <section class="sec" aria-labelledby="h-gap">
+    <h2 id="h-gap">시세와 비교하면</h2>
+    <p class="gapv">{{ n.gap.verdict }}</p>
+    {% if z.bars %}
+    <div class="vbar num" role="img" aria-label="{{ z.bars.mk[0] }} {{ z.bars.mk[1] }}, {{ z.bars.pr[0] }} {{ z.bars.pr[1] }}">
+      <div class="vb"><span class="vl">{{ z.bars.mk[0] }}</span><span class="vt"><i style="width:100%"></i></span><b>{{ z.bars.mk[1] }}</b></div>
+      <div class="vb me"><span class="vl">{{ z.bars.pr[0] }}</span><span class="vt"><i style="width:{{ z.bars.pct }}%"></i></span><b>{{ z.bars.pr[1] }}</b></div>
+      <p class="vcap">이 단지 가격은 주변 시세의 <b>{{ z.bars.pct }}%</b></p>
+    </div>
+    {% endif %}
+    <p class="gapt">{{ n.gap.text }}</p>
+    <p class="note">{{ n.gap.basis }} · 같은 생활권·비슷한 면적의 최근 실거래와 비교한 추정이에요. 실제 시세와 다를 수 있고, 차익을 보장하지 않아요.</p>
+  </section>
+  {% endif %}
+
+  {% if z.funds.opts and z.funds.steps %}
+  <section class="sec" aria-labelledby="h-fund" data-fund>
+    <h2 id="h-fund">당첨되면, 돈은 이렇게 나가요</h2>
+    {% if z.funds.opts|length > 1 %}<div class="fopt" role="group" aria-label="분양가 고르기">{% for a, v in z.funds.opts %}<button type="button" aria-pressed="{{ 'true' if loop.first else 'false' }}" data-price="{{ v }}">{{ a }} <span class="num">{{ v|won }}</span></button>{% endfor %}</div>{% endif %}
+    <ol class="ftl num" data-price0="{{ z.funds.opts[0][1] }}">
+    {% for st in z.funds.steps %}<li><span class="fdot"></span><span class="fw"><b>{{ st.label }} <small>{{ st.pct }}%</small></b><small>{{ st.when }}</small></span><b class="fa" data-pct="{{ st.pct }}">{{ (z.funds.opts[0][1] * st.pct // 100)|won }}</b></li>
+    {% endfor %}
+    </ol>
+    {% if z.funds.dep %}
+    <div class="fcalc">
+      <label for="fcash">지금 바로 쓸 수 있는 현금</label>
+      <div class="frow"><input id="fcash" type="text" inputmode="numeric" placeholder="예: 18000" autocomplete="off" aria-describedby="fres"><span>만원</span></div>
+      <p id="fres" class="fres" aria-live="polite" data-dep="{{ z.funds.dep }}">현금을 넣으면 계약금 {{ z.funds.dep }}%를 감당할 수 있는지 바로 계산해요.</p>
+    </div>
+    {% endif %}
+    {% if z.funds.note %}<p class="lead2">{{ z.funds.note }}</p>{% endif %}
+    <p class="note">{{ z.funds.basis }} 금액은 만원 아래를 버린 값이에요.</p>
+  </section>
+  {% endif %}
+
+  {% if z.refs %}
+  <section class="sec" aria-labelledby="h-odds">
+    <h2 id="h-odds">얼마나 몰릴까요?</h2>
+    {% if z.comp_note %}<p class="lead2">{{ z.comp_note }}</p>{% endif %}
+    <div class="tbl">
+      <table class="num fit">
+        <caption>최근 접수가 끝난 수도권 무순위·임의공급의 청약홈 공식 경쟁률 (줍줍알람 집계 · 가운데값 {{ '%.1f'|format(z.med) }}대 1)</caption>
+        <thead><tr><th scope="col" style="text-align:left">단지</th><th scope="col">공급</th><th scope="col">접수</th><th scope="col">경쟁률</th></tr></thead>
+        <tbody>
+        {% for r in z.refs %}<tr><th scope="row" style="white-space:normal">{% if r.url %}<a href="{{ r.url }}">{{ r.name }}</a>{% else %}{{ r.name }}{% endif %}<small>{{ r.loc }} · {{ r.end|d }} 접수</small></th><td>{{ r.supply }}세대</td><td>{{ '{:,}'.format(r.apply) }}명</td><td class="max">{{ '%.1f'|format(r.rate) }}대 1</td></tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+  {% endif %}
+
+  {% if z.traps %}
+  <section class="sec" aria-labelledby="h-trap">
+    <h2 id="h-trap">다만, 이건 알고 넣으세요</h2>
+    <ul class="traps">{% for a, b in z.traps %}<li><b>{{ a }}</b><span>{{ b }}</span></li>{% endfor %}</ul>
+  </section>
+  {% endif %}
+
+  {% if z.check %}
+  <section class="sec" aria-labelledby="h-chk">
+    <h2 id="h-chk">{{ z.check.title }}</h2>
+    <div class="g-tool g-self" data-tool="selfcheck"><ol>{% for q in z.check["items"] %}<li><span>{{ q }}</span><span class="g-yn" role="group"><button type="button" data-v="1" aria-pressed="false">예</button><button type="button" data-v="0" aria-pressed="false">아니오</button></span></li>{% endfor %}</ol>
+    <p class="g-selfres" aria-live="polite"><b data-yes>0</b> / {{ z.check["items"]|length }}개 '예'</p><p class="g-toolnote">{{ z.check.result }}</p></div>
+  </section>
+  {% endif %}
+  {% endif %}
 
   {% if n.comp and n.comp.rows %}
   <section class="sec" aria-labelledby="h-comp">
@@ -206,7 +298,7 @@
   </section>
   {% endif %}
 
-  {% if n.gap %}
+  {% if n.gap and not n.dz %}
   <section class="sec" aria-labelledby="h-gap">
     <h2 id="h-gap">시세와 비교하면</h2>
     <p class="gapv">{{ n.gap.verdict }}</p>
@@ -376,6 +468,30 @@
   <button class="btn ghost" type="button" data-share>공유하기</button>
   <a class="btn primary" href="{{ IG }}" target="_blank" rel="noopener">{{ ig_icon() }}인스타 팔로우</a>
 </div>
+{% if n.dz %}
+<script>
+(function(){
+  function won(w){var m=Math.floor(w/10000),e=Math.floor(m/10000),r=m%10000;return e?(e+'억'+(r?r.toLocaleString('ko-KR')+'만':'')+'원'):(r.toLocaleString('ko-KR')+'만원');}
+  document.querySelectorAll('[data-tool="selfcheck"]').forEach(function(el){
+    var out=el.querySelector('[data-yes]');
+    el.querySelectorAll('.g-yn').forEach(function(g){var bs=g.querySelectorAll('button');
+      bs.forEach(function(b){b.addEventListener('click',function(){bs.forEach(function(x){x.setAttribute('aria-pressed',x===b)});
+        out.textContent=el.querySelectorAll('button[data-v="1"][aria-pressed="true"]').length;});});});
+  });
+  var f=document.querySelector('[data-fund]');if(!f)return;
+  var ol=f.querySelector('.ftl'),price=+ol.getAttribute('data-price0'),inp=f.querySelector('#fcash'),res=f.querySelector('#fres');
+  function draw(){f.querySelectorAll('.fa').forEach(function(b){b.textContent=won(price*(+b.getAttribute('data-pct'))/100);});calc();}
+  function calc(){if(!inp)return;var dep=+res.getAttribute('data-dep'),need=price*dep/100,v=parseFloat((inp.value||'').replace(/[^0-9.]/g,''));
+    if(!v){res.textContent='현금을 넣으면 계약금 '+dep+'%('+won(need)+')를 감당할 수 있는지 바로 계산해요.';res.className='fres';return;}
+    var have=v*10000;
+    if(have>=need){res.textContent='계약금 '+won(need)+'은 감당돼요. 남는 '+won(have-need)+'은 중도금·잔금 계획에 보태세요.';res.className='fres ok';}
+    else{res.textContent='계약금 '+won(need)+'까지 '+won(need-have)+'이 모자라요. 계약금은 대부분 현금으로 준비해야 해요.';res.className='fres no';}}
+  f.querySelectorAll('[data-price]').forEach(function(b){b.addEventListener('click',function(){price=+b.getAttribute('data-price');
+    f.querySelectorAll('[data-price]').forEach(function(x){x.setAttribute('aria-pressed',x===b)});draw();});});
+  if(inp)inp.addEventListener('input',calc);
+})();
+</script>
+{% endif %}
 <script type="application/ld+json">
 {{ {"@context": "https://schema.org", "@graph": [crumb_ld(n.crumb, n.title, page_url), {
   "@type": "Article", "headline": n.title, "description": desc,

@@ -439,3 +439,46 @@ footer nav{display:flex;flex-wrap:wrap;gap:4px 12px}
 .g-ct{display:grid;gap:4px;min-width:0}.g-ct b{font-size:16px;line-height:1.4}.g-ct span{font-size:13.5px;color:var(--ink-sub);line-height:1.5}.g-ct small{font-size:12px;color:var(--ink-sub)}
 .guide-link{display:flex;gap:10px;align-items:center;margin-top:12px;padding:12px 14px;border-radius:12px;background:var(--band);text-decoration:none;font-size:14.5px}
 .guide-link b{color:var(--coral-strong);font-size:12.5px;flex:none}
+/* 판단형 공고 (decide) */
+.dz-card{margin-top:14px;border:1px solid var(--line);border-radius:var(--r);padding:16px;background:var(--paper)}
+.dz-card h2{font-size:13px;margin:0 0 10px;color:var(--ink-sub);font-weight:700;letter-spacing:.02em}
+.dz-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media (min-width:720px){.dz-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.dz-c{border-radius:10px;padding:12px;background:var(--band);display:grid;gap:4px;align-content:start;min-width:0}
+.dz-c b{font-size:16px;line-height:1.35;letter-spacing:-.01em}
+.dz-c small{font-size:12.5px;color:var(--ink-sub);line-height:1.45}
+.dz-k{font-size:12.5px;font-weight:700;display:flex;align-items:center;gap:6px}
+.dz-k i{width:10px;height:10px;border-radius:50%;background:var(--line);flex:none}
+.s-g .dz-k i{background:#16A34A}.s-y .dz-k i{background:#EAB308}.s-r .dz-k i{background:var(--coral)}
+.s-g{background:#EEF8F1}.s-y{background:#FEF8E6}.s-r{background:var(--coral-tint)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.dz-rule{margin-top:10px;font-size:13px;color:var(--ink-sub)}
+.dz-rule summary{cursor:pointer;font-weight:600}
+.dz-rule ul{margin:8px 0 0;padding-left:18px}.dz-rule p{margin:6px 0 0}
+.dfit{display:grid;gap:12px}@media (min-width:720px){.dfit{grid-template-columns:1fr 1fr}}
+.dfit>div{border-radius:10px;padding:14px;background:var(--band)}
+.fit-y{background:#EEF8F1!important}.fit-n{background:#F4F5F7!important}
+.fit-h{margin:0 0 8px;font-weight:700;font-size:14.5px}
+.dfit ul,.traps{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.dfit li,.traps li{display:grid;gap:2px}.dfit li span,.traps li span{font-size:14px;color:var(--ink-sub)}
+.traps li{border-left:3px solid var(--coral);padding-left:12px}
+.vbar{display:grid;gap:10px;margin:12px 0}
+.vb{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;align-items:center}
+.vl{grid-column:1/-1;font-size:13px;color:var(--ink-sub)}
+.vt{height:14px;background:var(--band);border-radius:7px;overflow:hidden}.vt i{display:block;height:100%;background:#9AA3B2;border-radius:7px}
+.vb.me .vt i{background:var(--coral)}.vb b{font-size:15px}
+.vcap{margin:0;font-size:14.5px}.vcap b{color:var(--coral-strong)}
+.fopt{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.fopt button{font:inherit;font-size:14px;padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:var(--paper);cursor:pointer}
+.fopt button[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.ftl{list-style:none;margin:0;padding:0;display:grid}
+.ftl li{display:grid;grid-template-columns:16px minmax(0,1fr) auto;gap:10px;align-items:start;padding:10px 0;border-bottom:1px solid var(--line)}
+.fdot{width:10px;height:10px;border-radius:50%;background:var(--coral);margin-top:7px}
+.fw{display:grid}.fw small{font-size:12.5px;color:var(--ink-sub)}.fw b small{color:var(--ink-sub);font-weight:600}
+.fa{font-size:16px;white-space:nowrap}
+.fcalc{margin-top:14px;background:var(--band);border-radius:10px;padding:14px;display:grid;gap:8px}
+.fcalc label{font-weight:700;font-size:14.5px}
+.frow{display:flex;align-items:center;gap:8px}.frow input{flex:1;min-width:0;font:inherit;font-size:16px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--paper)}
+.fres{margin:0;font-size:14px}.fres.ok{color:var(--green);font-weight:600}.fres.no{color:var(--coral-strong);font-weight:600}
+.tbl th small{display:block;font-size:12px;color:var(--ink-sub);font-weight:500}
+.fcalc+.lead2{margin-top:14px}
