@@ -187,7 +187,8 @@ def credit_short(c):
 
 
 def render(L, photo=None, credit=None):
-    kind, st, title, loc, big, small = L
+    kind, st, title, loc, big, small = L[:6]
+    head = L[6] if len(L) > 6 else None  # 윗줄을 지역·유형 대신 훅으로 (줍줍 '통장 없이' 등)
     th = dict(THEME["줍줍알람"])  # 시리즈 색 대신 남색 하나 (사용자 결정)
     if photo:
         im = photo_bg(photo["image"], photo.get("pos"))
@@ -219,7 +220,7 @@ def render(L, photo=None, credit=None):
         l2 = [(rows[0][1], th["hl"])]
         sub = " · ".join(x for x in (loc, small) if x)
     else:
-        l1 = [(place(loc) + " " + kind, "#FFFFFF")]
+        l1 = [(head or (place(loc) + " " + kind), "#FFFFFF")]
         l2 = [((rows[0][0] + " ") if rows[0][0] else "", "#FFFFFF"), (rows[0][1], th["hl"])]
         sub = small
     sz = 96
