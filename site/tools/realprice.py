@@ -27,6 +27,7 @@ EP = {
     "rowhouse": "RTMSDataSvcRHRent/getRTMSDataSvcRHRent",           # 연립다세대 전월세
     "house": "RTMSDataSvcSHRent/getRTMSDataSvcSHRent",              # 단독/다가구 전월세
 }
+PUBLIC = re.compile(r"LH|SH|GH|엘에이치|에스에이치|지에이치|주공|임대|영구임대|국민임대|행복주택|공공임대|매입임대|장기전세|청년주택|역세권|공공지원")
 NAME = {"trade": "aptNm", "rent": "aptNm", "offi": "offiNm", "rowhouse": "mhouseNm", "house": None}
 
 
@@ -113,13 +114,13 @@ def main():
     ap.add_argument("--area", type=float, help="전용면적 기준 ㎡ (±--tol)")
     ap.add_argument("--tol", type=float, default=10)
     ap.add_argument("--months", type=int, default=6)
-    ap.add_argument("--all", action="store_true", help="직거래도 포함 (기본은 중개거래만)")
+    ap.add_argument("--all", action="store_true", help="직거래(매매)·공공임대 단지(전월세)도 포함 — 기본은 빼요")
     ap.add_argument("--monthly-only", action="store_true", help="전월세 중 월세만")
     ap.add_argument("--jeonse-only", action="store_true", help="전월세 중 전세만")
     a = ap.parse_args()
     lawd = a.lawd
     if not re.fullmatch(r"\d{5}", lawd):
-        tbl = json.load(open(os.path.join(os.path.dirname(__file__), "..", "data", "lawd.json"), encoding="utf-8"))
+        tbl = json.load(open(os.path.join(os.path.dirname(__file__), "..", "data", "lawd.json"), encoding="utf-8"))["codes"]
         lawd = tbl.get(lawd) or sys.exit(f"data/lawd.json에 '{a.lawd}'가 없어요 — 5자리 코드를 직접 넣으세요")
     k = key()
     dongs = [x.strip() for x in (a.dong or "").split(",") if x.strip()]
@@ -131,6 +132,8 @@ def main():
                 continue
             if a.kind == "trade" and not a.all and "직거래" in (r.get("via") or ""):
                 continue
+            if a.kind != "trade" and not a.all and PUBLIC.search(r["name"] or ""):
+                continue  # 공공임대 단지 전월세는 '주변 시세' 비교에서 뺀다
             if dongs and r["dong"] not in dongs:
                 continue
             if a.name and a.name not in r["name"]:
