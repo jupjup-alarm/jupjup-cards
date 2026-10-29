@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "macros.html" import badges, card, crumbs, ig_icon, cp_ad with context %}
+{% from "macros.html" import badges, card, crumbs, ig_icon, cp_ad, ads_slot with context %}
 {% set og_type = 'article' %}
 {% block head %}
 {% if n.imgs.hero %}<link rel="preload" as="image" href="hero.webp" fetchpriority="high">{% endif %}
@@ -83,6 +83,7 @@
       <p>{{ n.take }}</p>
     </div>
   </section>
+  {{ ads_slot('apt_top', 'ad-apt') }}
 
   {% if n.comp and n.comp.rows %}
   <section class="sec" aria-labelledby="h-comp">
@@ -297,6 +298,7 @@
     </dl>
   {% if n.guide_link %}<a class="guide-link" href="{{ n.guide_link.url }}"><b>처음이라면</b><span>{{ n.guide_link.h1 }} →</span></a>{% endif %}
   </section>
+  {{ cp_ad('apt_mo', 'ad-apt') }}
 
   {% if not n.houses %}
   <section class="sec" aria-labelledby="h-loc">
@@ -340,6 +342,7 @@
     {% endfor %}
     </div>
   </section>
+  {{ cp_ad('apt_end_mo', 'ad-apt') }}
 
   {% if n.related %}
   <section class="sec" aria-labelledby="h-more">

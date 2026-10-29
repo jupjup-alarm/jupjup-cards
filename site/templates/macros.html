@@ -25,6 +25,8 @@
 
 {% macro ig_icon() %}<svg class="ig" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></svg>{% endmacro %}
 
+{% macro ads_slot(slot, cls='') %}{% set sid = ADSENSE.slots.get(slot) %}{% if ADSENSE.client and sid %}
+<div class="ad-g {{ cls }}"><ins class="adsbygoogle" style="display:block" data-ad-client="{{ ADSENSE.client }}" data-ad-slot="{{ sid }}" data-ad-format="auto" data-full-width-responsive="true"></ins></div>{% endif %}{% endmacro %}
 {% macro cp_ad(slot, cls='') %}{% set a = COUPANG.get(slot) %}{% if a %}
 <div class="ad {{ cls }}" data-ad="{{ slot }}">
   <div class="ad-box" style="height:{{ a.height }}px" data-cp="{{ a.opts|tojson|forceescape }}" data-mq="{{ a.mq }}"></div>

@@ -29,6 +29,7 @@
 <link rel="alternate" type="application/rss+xml" title="줍줍알람" href="/rss.xml">
 <link rel="stylesheet" href="{{ css }}">
 {% block head %}{% endblock %}
+{% if ADSENSE.client %}<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ ADSENSE.client }}" crossorigin="anonymous"></script>{% endif %}
 </head>
 <body>
 <a class="skip" href="#main">본문 바로가기</a>
@@ -94,5 +95,6 @@
     if(document.readyState==='complete')go();else window.addEventListener('load',go);}
 })();
 </script>
+{% if ADSENSE.client %}<script>document.querySelectorAll('ins.adsbygoogle').forEach(function(){(window.adsbygoogle=window.adsbygoogle||[]).push({});});</script>{% endif %}
 </body>
 </html>
