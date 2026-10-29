@@ -634,7 +634,6 @@ def og_card(n, dst):
             x += dr.textlength(seg, font=g)
     X = 80
     maxw = W - X - 70
-    dr.rectangle((0, 0, 14, H), fill="#FF5233")
     # 분류·상태 칩
     x, y = X, 60
     f = fn(30)
