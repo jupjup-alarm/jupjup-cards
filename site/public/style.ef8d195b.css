@@ -414,6 +414,7 @@ footer nav{display:flex;flex-wrap:wrap;gap:4px 12px}
 .g-rel-list{display:grid;gap:10px}
 @media (min-width:640px){.g-rel-list{grid-template-columns:repeat(3,1fr)}}
 .g-rel-list a{display:grid;gap:4px;border:1px solid var(--line);border-radius:12px;padding:12px 14px;text-decoration:none}
+.apt-guides a{align-content:start}
 .g-rel-list span{font-size:12px;color:var(--coral-strong);font-weight:700}.g-rel-list b{font-size:15px;line-height:1.45}
 .g-src ul{padding-left:20px;margin:0 0 10px;font-size:14.5px;line-height:1.7}
 .g-src a{color:var(--blue)}

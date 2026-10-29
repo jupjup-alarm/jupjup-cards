@@ -46,3 +46,4 @@
 ## 광고 자리 (2026-10-29)
 - 쿠팡 다이나믹 배너는 `site/build.py` COUPANG에서만 관리 (⑦은 건드리지 않음). PC: 공고·가이드 사이드바(`pc`), 메인·목록 가로형(`home`). 모바일(1023px 이하): 메인 첫 묶음 아래(`home_mo`)·목록 끝(`home_end_mo`), 공고 상세 신청 자격 아래(`apt_mo`)·FAQ 뒤(`apt_end_mo`). 모바일 배너 id 1044447.
 - 공고 상세 '한마디' 바로 아래는 애드센스 자리(`ads_slot('apt_top')`). 승인되면 build.py ADSENSE의 client(ca-pub-…)와 slots.apt_top(광고 단위 ID)만 채우면 스크립트·자리가 함께 켜진다. ads.txt도 그때 site/static에 추가.
+- 공고 상세 가이드 연결 (2026-10-29): 가장 맞는 칼럼 1편은 신청 자격 아래 '처음이라면' 링크, 다음 3편은 FAQ 뒤 '신청 전에 읽어볼 가이드' 섹션. 칼럼 JSON의 notice_match(제목·별칭·시군구에 그 말이 있으면 우선) → build.py KIND_GUIDES(공고 유형별 기본) 순으로 자동 선택, 발행된 칼럼만.

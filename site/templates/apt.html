@@ -342,6 +342,13 @@
     {% endfor %}
     </div>
   </section>
+  {% if n.guides %}
+  <section class="sec" aria-labelledby="h-guide">
+    <h2 id="h-guide">신청 전에 읽어볼 가이드</h2>
+    <div class="g-rel-list apt-guides">{% for g in n.guides %}<a href="{{ g.url }}"><span>{{ g.category }} 가이드 · {{ g.read_min }}분</span><b>{{ g.h1 }}</b></a>{% endfor %}</div>
+    <p class="note"><a href="/guide/">청약·임대·대출 가이드 전체 보기 →</a></p>
+  </section>
+  {% endif %}
   {{ cp_ad('apt_end_mo', 'ad-apt') }}
 
   {% if n.related %}

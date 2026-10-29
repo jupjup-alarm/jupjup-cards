@@ -716,6 +716,31 @@ def main():
                 if not mt or any(w in n["title"] + (n.get("kind_label") or "") + (n.get("rental_type") or "") for w in mt):
                     return {"url": f"/guide/{g['slug']}/", "h1": g["h1"]}
         return None
+
+    # 공고 상세 '신청 전에 읽어볼 가이드' (사용자 요청 2026-10-29) — 이름이 맞는 칼럼(notice_match) → 공고 유형별 기본 칼럼 순, 있는 글만 최대 3편
+    KIND_GUIDES = {
+        "mujeonwi": ["mujeonwi", "homeless-criteria", "after-winning-money", "dsr-ltv-dti"],
+        "private": ["cheongyak-gajeom", "first-priority", "dsr-ltv-dti", "after-winning-money"],
+        "public": ["homeless-criteria", "didimdol-bogeumjari", "cheongyak-gajeom", "newborn-loan"],
+        "newlywed": ["newlywed", "newborn-loan", "didimdol-bogeumjari", "homeless-criteria"],
+        "rental": ["lh-rental-types", "homeless-criteria", "youth-jeonse-loan"],  # 행복주택·청년·국민임대·매입임대 칼럼은 notice_match로 붙음
+    }
+    gby = {g["slug"]: g for g in gmeta}
+
+    def guides_for(n):
+        text = n["title"] + (n.get("kind_label") or "") + (n.get("rental_type") or "") + " ".join(n.get("aliases") or []) + (n.get("sigungu") or "")
+        picks = [g["slug"] for g in gmeta if g.get("notice_match") and (not g.get("notice_kinds") or n["kind"] in g["notice_kinds"])
+                 and any(w in text for w in g["notice_match"])]
+        picks += [s for s in KIND_GUIDES.get(n["kind"], []) if s in gby]
+        out, seen = [], set()
+        for s in picks:
+            if s in seen:
+                continue
+            seen.add(s)
+            g = gby[s]
+            out.append({"url": f"/guide/{s}/", "h1": g["h1"], "category": g.get("category", ""), "read_min": GUIDES.read_min(g)})
+        return out[:4]
+
     for n in notices:
         n["imgs"] = notice_images(n)
         same = [x for x in notices if x is not n and x["sido"] == n["sido"] and x["status"] in ("open", "upcoming")]
@@ -765,7 +790,9 @@ def main():
             desc = re.sub(r"(일정·분양가·자격과 공식 공고 링크를 한 번에|신청 자격·일정과 공식 공고 링크를 한 번에|주택 목록·면적·자격·신청 방법을 한 번에)\.$",
                           f"{n.get('complex') or n['title']} {tail}까지 공식 공고 기준으로 정리.", desc)
         n["page_title"], n["desc"] = title, desc
-        n["guide_link"] = guide_for(n)
+        gl = guides_for(n)  # 가장 맞는 칼럼은 신청 자격 아래 '처음이라면' 링크, 나머지는 FAQ 뒤 가이드 섹션
+        n["guide_link"] = gl[0] if gl else guide_for(n)
+        n["guides"] = gl[1:4]
         n["crumb"] = crumb_for(n)
         h = apt_tpl.render(n=n, **common, page_url=n["url"], title=title, desc=desc, og=n["imgs"]["og"])
         write(n["url"], h, title, desc, "apt", n["modified"])
