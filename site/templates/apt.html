@@ -212,7 +212,7 @@
     <p class="gapv">{{ n.gap.verdict }}</p>
     <p class="gapt">{{ n.gap.text }}</p>
     <dl class="kv wide">{% for k, v in n.gap.rows %}<div><dt>{{ k }}</dt><dd class="num">{{ v }}</dd></div>{% endfor %}</dl>
-    <p class="note">{{ n.gap.basis }} · 같은 생활권·비슷한 면적의 최근 실거래와 비교한 추정이에요. 실제 시세와 다를 수 있어요.</p>
+    <p class="note">{{ n.gap.basis }} · 같은 생활권·비슷한 면적의 최근 {{ "전월세 " if n.is_rental else "" }}실거래와 비교한 추정이에요. 실제 시세와 다를 수 있어요.</p>
   </section>
   {% endif %}
 

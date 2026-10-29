@@ -558,6 +558,27 @@ def og_default(dst):
     im.save(dst, "JPEG", quality=85)
 
 
+def gap_hook(n):
+    """비교 단지 시세 차이 → (큰 줄, 작은 줄). 근거 단지가 있는 '저렴(추정)'·'O% 수준(추정)'만."""
+    gap = n.get("gap") or {}
+    v = (gap.get("verdict") or "").strip()
+    base = re.sub(r"\s*\(.*?\)\s*$", "", (gap.get("rows") or [[""]])[0][0])
+    if not base:
+        return None
+    if n.get("is_rental"):
+        if re.fullmatch(r"(보증금|월세|전세|월 임대료) 약 .+ 저렴\(추정\)", v):
+            big = "주변 시세보다 " + v[:-4].strip()       # '주변 시세보다 월세 약 32만원 저렴'
+        elif re.fullmatch(r"주변 시세의 약 \d+(?:\.\d+)?% 수준\(추정\)", v):
+            big = v[:-4].strip()                           # '주변 시세의 약 35% 수준'
+        else:
+            return None
+    elif re.fullmatch(r"약 .+ 저렴\(추정\)", v):            # 토지임대부 '건물분양가 기준 …'은 제외 (단서가 썸네일에 안 들어감)
+        big = "시세보다 " + v[:-4].strip()
+    else:
+        return None
+    return big, f"(추정) {base} 대비"
+
+
 def og_lines(n):
     """사진 없는 공고의 공유 카드 문구: (분류, 상태, 단지명, 지역, 큰 줄, 작은 줄)."""
     kind = n.get("kind_label") or KINDS.get(n["kind"], ("",))[0]
@@ -587,6 +608,11 @@ def og_lines(n):
         small = " · ".join(x for x in (f"{rng} 접수" if rng else "", unit) if x)
     loc = " ".join(x for x in (n.get("sido"), n.get("sigungu")) if x)
     head = None
+    # 모든 공고(임대 포함)에 비교 단지 시세를 확보 (사용자 결정 2026-10-29) — 있으면 그 차이가 썸네일 주인공
+    gh = gap_hook(n)
+    if gh and n["kind"] != "mujeonwi" and n["status"] in ("open", "upcoming") and not n.get("is_pre"):
+        big = gh[0]
+        small = " · ".join(x for x in (gh[1], f"{rng} 접수" if rng else "") if x)
     # 줍줍(무순위·임의공급)은 분양가보다 '얼마나 싸게·언제까지'가 훅 (사용자 요청 2026-10-29, 마케터 관점)
     # 무엇인지(무순위 줍줍·임의공급 줍줍)는 항상 윗줄에 — 사용자 요청 "줍줍·분양·행복주택·매입임대처럼 어떤 건지 알려줘야"
     if n["kind"] == "mujeonwi":
@@ -594,14 +620,12 @@ def og_lines(n):
     if n["kind"] == "mujeonwi" and n["status"] in ("open", "upcoming") and not n.get("is_pre"):
         one_day = rcpt[0] and (not rcpt[1] or rcpt[0] == rcpt[1])
         when = f"{d(rcpt[0])} 하루 접수" if one_day else (f"{rng} 접수" if rng else "")
-        gap = n.get("gap") or {}
-        v = gap.get("verdict") or ""
         bucket = next((c[0] for c in n.get("chips") or [] if re.fullmatch(r"\d+(?:\.\d+)?㎡ \d+억대", c[0])), "")
         city = loc.split(" ")[-1] if loc else ""
-        if re.search(r"저렴\(추정\)$", v):  # 근거 단지가 있는 차익만 (공고 페이지 gap과 같은 문장)
-            big = "시세보다 " + re.sub(r"\(추정\)$", "", v).strip()      # '시세보다 약 10억9천만원 저렴'
-            base = re.sub(r"\s*\(.*?\)\s*$", "", (gap.get("rows") or [[""]])[0][0])
-            small = " · ".join(x for x in (f"(추정) {base} 대비" if base else "(추정)", when) if x)  # 추정 표시는 바로 아래 줄에 항상
+        gh = gap_hook(n)
+        if gh:  # 근거 단지가 있는 차익만 (공고 페이지 gap과 같은 문장)
+            big = gh[0]                                                  # '시세보다 약 10억9천만원 저렴'
+            small = " · ".join(x for x in (gh[1], when) if x)            # 추정 표시는 바로 아래 줄에 항상
         else:
             big = bucket or big
             small = " · ".join(x for x in (when, unit) if x)
