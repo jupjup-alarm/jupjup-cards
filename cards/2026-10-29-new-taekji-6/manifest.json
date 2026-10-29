@@ -1,0 +1,62 @@
+{
+  "slug": "2026-10-29-new-taekji-6",
+  "title": "수도권 신규택지 후보지 6곳 7.67만호 (국토부 2026.10.29 발표)",
+  "series": "내집마련",
+  "count": 7,
+  "urls": [
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-29-new-taekji-6/01.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-29-new-taekji-6/02.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-29-new-taekji-6/03.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-29-new-taekji-6/04.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-29-new-taekji-6/05.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-29-new-taekji-6/06.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-29-new-taekji-6/07.jpg"
+  ],
+  "warnings": {
+    "02": [
+      "zoom 0.82"
+    ],
+    "03": [
+      "zoom 0.88"
+    ],
+    "04": [
+      "zoom 0.88"
+    ],
+    "05": [
+      "zoom 0.94"
+    ],
+    "06": [
+      "zoom 0.88"
+    ]
+  },
+  "boards": [
+    {
+      "file": "2026-10-29-new-taekji-6-01.dc.html",
+      "title": "수도권 신규택지 후보지 6곳 7.67만호 (국토부 2026.10.29 발표) 1/7"
+    },
+    {
+      "file": "2026-10-29-new-taekji-6-02.dc.html",
+      "title": "수도권 신규택지 후보지 6곳 7.67만호 (국토부 2026.10.29 발표) 2/7"
+    },
+    {
+      "file": "2026-10-29-new-taekji-6-03.dc.html",
+      "title": "수도권 신규택지 후보지 6곳 7.67만호 (국토부 2026.10.29 발표) 3/7"
+    },
+    {
+      "file": "2026-10-29-new-taekji-6-04.dc.html",
+      "title": "수도권 신규택지 후보지 6곳 7.67만호 (국토부 2026.10.29 발표) 4/7"
+    },
+    {
+      "file": "2026-10-29-new-taekji-6-05.dc.html",
+      "title": "수도권 신규택지 후보지 6곳 7.67만호 (국토부 2026.10.29 발표) 5/7"
+    },
+    {
+      "file": "2026-10-29-new-taekji-6-06.dc.html",
+      "title": "수도권 신규택지 후보지 6곳 7.67만호 (국토부 2026.10.29 발표) 6/7"
+    },
+    {
+      "file": "2026-10-29-new-taekji-6-07.dc.html",
+      "title": "수도권 신규택지 후보지 6곳 7.67만호 (국토부 2026.10.29 발표) 7/7"
+    }
+  ]
+}
