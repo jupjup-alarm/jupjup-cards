@@ -96,7 +96,8 @@
    "notice_kinds": [
     "rental"
    ],
-   "status": "todo"
+   "status": "todo",
+   "hold": "2026-10-29 검수 보류: 1·2인 도시근로자 100% 금액을 120%·110% 값으로 잘못 씀 → 소득표·facts·예시 가구 2·3 결론 틀림, 국민임대·장기전세 출산 가산·10년 공공임대 맞벌이 200% 누락. 초안 _draft-lh-rental-types.json (1인 100% 3,813,363원·2인 5,866,270원으로 고쳐 다시 검산)"
   },
   {
    "day": 2,
@@ -111,7 +112,10 @@
    "notice_match": [
     "행복주택"
    ],
-   "status": "todo"
+   "status": "done",
+   "published": "2026-10-29",
+   "checked": "2026-10-29",
+   "reviewed": "1차 출처 팩트체크(별도 검수) 반영"
   },
   {
    "day": 2,
@@ -124,7 +128,10 @@
     "public",
     "private"
    ],
-   "status": "todo"
+   "status": "done",
+   "published": "2026-10-29",
+   "checked": "2026-10-29",
+   "reviewed": "1차 출처 팩트체크(별도 검수) 반영"
   },
   {
    "day": 2,
@@ -138,7 +145,10 @@
     "public",
     "newlywed"
    ],
-   "status": "todo"
+   "status": "done",
+   "published": "2026-10-29",
+   "checked": "2026-10-29",
+   "reviewed": "1차 출처 팩트체크(별도 검수) 반영"
   },
   {
    "day": 2,
@@ -155,7 +165,10 @@
    "notice_match": [
     "교산"
    ],
-   "status": "todo"
+   "status": "done",
+   "published": "2026-10-29",
+   "checked": "2026-10-29",
+   "reviewed": "1차 출처 팩트체크(별도 검수) 반영"
   },
   {
    "day": 3,
