@@ -284,13 +284,12 @@ footer nav{display:flex;flex-wrap:wrap;gap:4px 12px}
 .moved span{font-size:14px;font-weight:600}
 
 /* 쿠팡 파트너스 배너 — 요약 카드와 같은 테두리. 화면 조건(data-mq)이 맞을 때만 JS가 불러오고 .on을 붙임 */
-.ad{display:none;margin-top:16px;border:1px solid var(--line);border-radius:var(--r);background:var(--paper);overflow:hidden}
+.ad{display:none;margin-top:16px;background:var(--paper);overflow:hidden}
 .ad.on{display:block}
 .ad-note{margin:0;padding:10px 14px;font-size:11.5px;line-height:1.45;color:var(--ink-sub);border-bottom:1px solid var(--line)}
 .ad-note b{font-weight:600;margin-right:2px}
-.ad.on{padding:6px}
 .ad-box{width:100%;overflow:hidden}
-/* 쿠팡 배너 안 상품 강조 테두리(iframe 안, 우리 CSS로 못 바꿈)가 카드 둥근 모서리에 잘리지 않게 안쪽 여백을 둠 */
+/* 쿠팡 배너는 테두리·둥근 모서리 없이 (2026-10-29 사용자 결정 — 배너 안 상품 강조 파란 테두리가 둥근 모서리에 잘려 보여서) */
 .ad-home{margin-top:24px}
 .ad-apt{margin-top:28px}
 .ad-g{margin-top:28px;min-height:100px}
