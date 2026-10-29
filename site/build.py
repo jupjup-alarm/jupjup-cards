@@ -558,6 +558,130 @@ def og_default(dst):
     im.save(dst, "JPEG", quality=85)
 
 
+def og_lines(n):
+    """사진 없는 공고의 공유 카드 문구: (분류, 상태, 단지명, 지역, 큰 줄, 작은 줄)."""
+    kind = n.get("kind_label") or KINDS.get(n["kind"], ("",))[0]
+    st = STATUS.get(n["status"], ("", ""))[0]
+    unit = f"{n['units']:,}{n.get('unit_word') or '세대'}" if n.get("units") else ""
+    rcpt = n.get("rcpt") or [None, None]
+    rng = (d(rcpt[0]) if not rcpt[1] or rcpt[0] == rcpt[1] else f"{d(rcpt[0])} ~ {d(rcpt[1])}") if rcpt[0] else ""
+    rs = n.get("rent_summary") or {}
+    big, small = "", ""
+    if n.get("is_pre"):
+        big = f"예상 {n.get('price_short') or n.get('price_text') or ''}".strip()
+        small = f"{d(rcpt[0])} 접수 예정 · 보도 기준" if rcpt[0] else "보도 기준"
+    elif n.get("is_rental"):
+        if n.get("houses") and n.get("rent_level"):
+            big = n["rent_level"]
+        elif rs.get("deposit"):
+            big = f"보증금 {money(rs['deposit'])} · 월 {money(rs['monthly'])}" if rs.get("monthly") is not None else f"보증금 {money(rs['deposit'])}"
+        else:
+            big = unit
+        small = " · ".join(x for x in (f"{rng} 접수" if rng and n["status"] in ("open", "upcoming") else "", unit if big != unit else "") if x)
+    elif n["status"] in ("waiting", "announced"):
+        comp = (n.get("comp") or {}).get("short")
+        big = comp or (f"최고 {won(n['max_price'])}" if n.get("max_price") else "")
+        small = f"당첨자 발표 {d(n['announce'])}" if n.get("announce") else ""
+    else:
+        big = f"{n.get('price_label') or '최고 분양가'} {won(n['max_price'])}" if n.get("max_price") else ""
+        small = " · ".join(x for x in (f"{rng} 접수" if rng else "", unit) if x)
+    loc = " ".join(x for x in (n.get("sido"), n.get("sigungu")) if x)
+    return kind, st, n["title"], loc, big, small
+
+
+def og_card(n, dst):
+    """사진 없는 공고용 공유 썸네일 (1200×630, 남색 카드)."""
+    from PIL import Image, ImageDraw, ImageFont
+    lines = og_lines(n)
+    tag = dst.with_suffix(".key")
+    key = json.dumps(lines, ensure_ascii=False)
+    if dst.exists() and tag.exists() and tag.read_text(encoding="utf-8") == key:
+        return
+    kind, st, title, loc, big, small = lines
+    W, H = 1200, 630
+    im = Image.new("RGB", (W, H), "#0F1E3D")
+    dr = ImageDraw.Draw(im)
+    fh = lambda sz: ImageFont.truetype(str(REPO / "fonts/BlackHanSans-Regular.ttf"), sz)
+
+    def fn(sz, bold=True):
+        f = ImageFont.truetype(str(REPO / "fonts/NotoSansKR-VF.ttf"), sz)
+        try:
+            f.set_variation_by_name("Bold" if bold else "Regular")
+        except Exception:
+            pass
+        return f
+    NOGLYPH = "·・‧∙•"  # Black Han Sans에 없는 글자는 Noto로
+
+    def parts(t, f):
+        out, cur, cf = [], "", None
+        for ch in t:
+            g = fn(f.size, True) if ch in NOGLYPH else f
+            if cf is not None and (ch in NOGLYPH) != cf:
+                out.append((cur, fn(f.size, True) if cf else f)); cur = ""
+            cf = ch in NOGLYPH
+            cur += ch
+        if cur:
+            out.append((cur, fn(f.size, True) if cf else f))
+        return out
+
+    def tlen(t, f):
+        return sum(dr.textlength(x, font=g) for x, g in parts(t, f))
+
+    def tdraw(x, y, t, f, fill):
+        base = y + f.getmetrics()[0]  # 글꼴이 섞여도 같은 기준선에
+        for seg, g in parts(t, f):
+            dr.text((x, base), seg, font=g, fill=fill, anchor="ls")
+            x += dr.textlength(seg, font=g)
+    X = 80
+    maxw = W - X - 70
+    dr.rectangle((0, 0, 14, H), fill="#FF5233")
+    # 분류·상태 칩
+    x, y = X, 60
+    f = fn(30)
+    for i, t in enumerate(c for c in (kind, st) if c):
+        w = dr.textlength(t, font=f) + 44
+        if i == 0:
+            dr.rounded_rectangle((x, y, x + w, y + 54), 27, fill="#FF5233")
+        else:
+            dr.rounded_rectangle((x, y, x + w, y + 54), 27, outline="#AEB5C1", width=3)
+        dr.text((x + 22, y + 27), t, font=f, fill="#FFFFFF", anchor="lm")
+        x += w + 14
+    # 아래쪽부터: 바닥글 → 작은 줄 → 큰 줄
+    dr.text((X, H - 56), "줍줍알람 · jupjupalarm.com", font=fn(28), fill="#AEB5C1", anchor="lm")
+    yb = H - 108
+    if small:
+        fs = fn(34, False)
+        dr.text((X, yb), small, font=fs, fill="#FFFFFF", anchor="ls"); yb -= 56
+    if big:
+        fb = fn(52)
+        while dr.textlength(big, font=fb) > maxw and fb.size > 34:
+            fb = fn(fb.size - 4)
+        dr.text((X, yb), big, font=fb, fill="#FFB4A3", anchor="ls"); yb -= fb.size + 26
+    # 위쪽: 단지명(2줄까지, 넘치면 줄임) → 지역 — 큰 줄 위 공간 안에서
+    room = yb - 140
+    for sz in (84, 76, 68, 60, 54, 48):
+        ft = fh(sz)
+        rows, cur = [], ""
+        for wd in title.split(" "):
+            t2 = (cur + " " + wd).strip()
+            if tlen(t2, ft) > maxw and cur:
+                rows.append(cur); cur = wd
+            else:
+                cur = t2
+        rows.append(cur)
+        need = len(rows) * int(sz * 1.18) + (52 if loc else 0)
+        if len(rows) <= 2 and all(tlen(r, ft) <= maxw for r in rows) and need <= room:
+            break
+    y = 140
+    for r in rows[:2]:
+        tdraw(X, y, r, ft, "#FFFFFF")
+        y += int(sz * 1.18)
+    if loc:
+        dr.text((X, y + 4), loc, font=fn(32, False), fill="#AEB5C1")
+    im.save(dst, "JPEG", quality=86, optimize=True)
+    tag.write_text(key, encoding="utf-8")
+
+
 def notice_images(n):
     out = PUB / "apt" / n["key"]
     imgs = {}
@@ -583,6 +707,12 @@ def notice_images(n):
         if sz:
             lays.append(dict(p, src=f"layout-{i}.webp", w=sz[0], h=sz[1]))
     imgs["layouts"] = lays
+    if not n.get("photo") or "hero" not in imgs:
+        try:
+            out.mkdir(parents=True, exist_ok=True)
+            og_card(n, out / "og.jpg")
+        except Exception as e:  # 글꼴 문제 등 — 기본 이미지로
+            print("og_card 실패", n["key"], e, file=sys.stderr)
     imgs["og"] = f"/apt/{n['key']}/og.jpg" if (out / "og.jpg").exists() else "/og-default.jpg"
     return imgs
 
