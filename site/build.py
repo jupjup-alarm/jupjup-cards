@@ -558,6 +558,24 @@ def og_default(dst):
     im.save(dst, "JPEG", quality=85)
 
 
+def won_band(v):
+    """원 → 썸네일용 짧은 금액(내림 + '대'): 138,640 → '13만원대', 57,636,000 → '5천만원대', 143,600,000 → '1억4천만원대'."""
+    v = int(v or 0)
+    if v >= 100_000_000:
+        e, c = divmod(v, 100_000_000)
+        c //= 10_000_000
+        exact = v % 10_000_000 == 0
+        return f"{e}억{f'{c}천' if c else ''}만원{'' if exact else '대'}" if c else f"{e}억원{'' if v % 100_000_000 == 0 else '대'}"
+    if v >= 10_000_000:
+        return f"{v // 10_000_000}천만원{'' if v % 10_000_000 == 0 else '대'}"
+    return f"{v // 10_000:,}만원{'' if v % 10_000 == 0 else '대'}"
+
+
+def og_price_label(n):
+    """썸네일 가격 라벨: '최고 분양가' → '분양가' (사용자 요청 2026-10-29). 토지임대부 '최고 건물분양가' → '건물분양가'."""
+    return re.sub(r"^최고\s*", "", n.get("price_label") or "분양가") or "분양가"
+
+
 def gap_hook(n):
     """비교 단지 시세 차이 → (큰 줄, 작은 줄). 근거 단지가 있는 '저렴(추정)'·'O% 수준(추정)'만."""
     gap = n.get("gap") or {}
@@ -595,16 +613,17 @@ def og_lines(n):
         if n.get("houses") and n.get("rent_level"):
             big = n["rent_level"]
         elif rs.get("deposit"):
-            big = f"보증금 {money(rs['deposit'])} · 월 {money(rs['monthly'])}" if rs.get("monthly") is not None else f"보증금 {money(rs['deposit'])}"
+            # 썸네일은 한눈에 — 원 단위까지 쓰지 않고 '대'로 (내림이라 사실과 어긋나지 않음)
+            big = f"월 {won_band(rs['monthly'])} · 보증금 {won_band(rs['deposit'])}" if rs.get("monthly") else f"보증금 {won_band(rs['deposit'])}"
         else:
             big = unit
         small = " · ".join(x for x in (f"{rng} 접수" if rng and n["status"] in ("open", "upcoming") else "", unit if big != unit else "") if x)
     elif n["status"] in ("waiting", "announced"):
         comp = (n.get("comp") or {}).get("short")
-        big = comp or (f"{n.get('price_label') or '최고 분양가'} {won(n['max_price'])}" if n.get("max_price") else "")
+        big = comp or (f"{og_price_label(n)} {won(n['max_price'])}" if n.get("max_price") else "")
         small = f"당첨자 발표 {d(n['announce'])}" if n.get("announce") else ""
     else:
-        big = f"{n.get('price_label') or '최고 분양가'} {won(n['max_price'])}" if n.get("max_price") else ""
+        big = f"{og_price_label(n)} {won(n['max_price'])}" if n.get("max_price") else ""
         small = " · ".join(x for x in (f"{rng} 접수" if rng else "", unit) if x)
     loc = " ".join(x for x in (n.get("sido"), n.get("sigungu")) if x)
     head = None
@@ -630,13 +649,27 @@ def og_lines(n):
             big = bucket or big
             small = " · ".join(x for x in (when, unit) if x)
         head = f"{city} {kind}".strip()
-        # 상태 칩은 급한 정도로
-        if n["status"] == "open" and (rcpt[1] or rcpt[0]) == TODAY.isoformat():
-            st = "오늘 마감"
-        elif n["status"] == "upcoming" and rcpt[0]:
+    # ── 썸네일 = 훅만 (사용자 요청 2026-10-29 "핵심만, 정보 나열·의미 없는 문구 빼기") ──
+    # 작은 줄은 쓰지 않는다: 비교 단지·(추정)·세대수 같은 근거는 공고 페이지 '시세와 비교하면'에서 (훅엔 꼬리표 없이 — ③ 규칙과 같음)
+    small = ""
+    # 발표 대기·발표 완료: '{단지명}' / '경쟁률 O대 1'
+    if n["status"] in ("waiting", "announced") and not n.get("is_pre"):
+        m = re.search(r"([\d.]+)대 1", (n.get("comp") or {}).get("short") or "")
+        if m:
+            big = f"경쟁률 {float(m.group(1)):.1f}".rstrip("0").rstrip(".") + "대 1"
+            head = n.get("og_name") or re.sub(r"\s*(무순위|임의공급|잔여세대|줍줍)$", "", n["title"])  # 유형은 칩에
+    # 상태 칩 = 급한 정도 (D-day·오늘 마감·하루 접수)
+    if n["status"] in ("open", "upcoming") and rcpt[0] and not n.get("is_pre"):
+        end = rcpt[1] or rcpt[0]
+        one_day = not rcpt[1] or rcpt[0] == rcpt[1]
+        if n["status"] == "open":
+            left = (dt.date.fromisoformat(end) - TODAY).days
+            st = "오늘 마감" if left <= 0 else (f"D-{left} 마감" if left <= 7 else "접수 중")
+        else:
             left = (dt.date.fromisoformat(rcpt[0]) - TODAY).days
-            if 0 < left <= 7:
-                st = f"D-{left}"
+            st = f"D-{left}" if 0 < left <= 7 else f"{d(rcpt[0])} 접수"
+            if one_day and 0 < left <= 7:
+                st += " · 하루만 접수"
     return (kind, st, n["title"], loc, big, small) + ((head,) if head else ())
 
 
@@ -646,7 +679,7 @@ def og_make(n, dst, has_photo):
     lines = list(og_lines(n))
     ph = n.get("photo") if has_photo else None
     src = (REPO / ph["image"]) if ph else None
-    key = json.dumps({"v": "B6", "lines": lines, "photo": ph and [ph["image"], ph.get("pos"), ph.get("credit"), src.stat().st_mtime]}, ensure_ascii=False)
+    key = json.dumps({"v": "B7", "lines": lines, "photo": ph and [ph["image"], ph.get("pos"), ph.get("credit"), src.stat().st_mtime]}, ensure_ascii=False)
     ver = hashlib.sha1(key.encode()).hexdigest()[:8]
     tag = dst.with_suffix(".key")
     if dst.exists() and tag.exists() and tag.read_text(encoding="utf-8") == key:

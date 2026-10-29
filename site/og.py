@@ -211,14 +211,14 @@ def render(L, photo=None, credit=None):
         dr = ImageDraw.Draw(im)
         text(dr, W - 33, 72, ct, cf, "#FFFFFF", "r")
     kick, rows = hero(big)
-    if len(rows) == 2:  # 보증금 / 월
-        l1 = [(rows[0][0] + " ", "#FFFFFF"), (rows[0][1], th["hl"])]
-        l2 = [(rows[1][0] + " ", "#FFFFFF"), (rows[1][1], th["hl"])]
-        sub = " · ".join(x for x in (loc, small) if x)
-    elif kick:  # 경쟁률
+    if len(rows) == 2:  # 보증금 · 월 — 윗줄은 어디·무엇(훅), 아랫줄에 두 금액
+        l1 = [(head or (place(loc) + " " + kind), "#FFFFFF")]
+        l2 = [(rows[0][0] + " ", "#FFFFFF"), (rows[0][1], th["hl"]), (" · " + rows[1][0] + " ", "#FFFFFF"), (rows[1][1], th["hl"])]
+        sub = small
+    elif kick:  # 경쟁률 (예전 형식)
         l1 = [(kick, "#FFFFFF")]
         l2 = [(rows[0][1], th["hl"])]
-        sub = " · ".join(x for x in (loc, small) if x)
+        sub = small
     else:
         l1 = [(head or (place(loc) + " " + kind), "#FFFFFF")]
         l2 = [((rows[0][0] + " ") if rows[0][0] else "", "#FFFFFF"), (rows[0][1], th["hl"])]
@@ -228,17 +228,21 @@ def render(L, photo=None, credit=None):
         sz -= 4
     fs = fit(dr, sub, lambda s: noto(s, "Medium"), 34, maxw, 26)
     # 글자 묶음(칩~작은 줄)을 세로 가운데에 (사용자 요청 2026-10-29 "제목이 아래로 치우침")
-    blk = 58 + 2 * int(sz * 1.12) + 62 + 12          # 칩 + 두 줄 + 작은 줄 + 아랫부분
+    sub_h = 62 if sub else 0                         # 작은 줄이 없으면(훅만) 그만큼 묶음이 작아짐
+    blk = 58 + 2 * int(sz * 1.12) + sub_h + 12       # 칩 + 두 줄 + 작은 줄 + 아랫부분
     top = max(118, (H - blk) // 2 + 14)              # 위 로고(~90px)와 겹치지 않게, 살짝 아래로 무게
     yb = top + blk - 12
-    text(dr, X, yb, sub, fs, th["sub"]); yb -= 62
+    if sub:
+        text(dr, X, yb, sub, fs, th["sub"])
+    yb -= sub_h
     for ln in (l2, l1):
         spans(dr, X, yb, [(s, bhs(sz), c) for s, c in ln if s]); yb -= int(sz * 1.12)
     # 칩: 시리즈색 칩(분류) + 테두리 칩(상태)
     f = noto(30, "Bold")
     y = yb - 56 - 2
-    x = X + chip(dr, X, y, st if not kick and len(rows) == 1 else kind, f, 56, fill=th["chip_bg"], fg=th["chip_fg"], r=12) + 12
-    if kick or len(rows) == 2:
+    one = not kick and not (head and head != (place(loc) + " " + kind) and kind not in head)  # 윗줄에 유형이 보이면 칩은 상태 하나
+    x = X + chip(dr, X, y, st if one else kind, f, 56, fill=th["chip_bg"], fg=th["chip_fg"], r=12) + 12
+    if not one:
         chip(dr, x, y, st, f, 56, outline="#FFFFFF", fg="#FFFFFF", r=12)
     return im
 
