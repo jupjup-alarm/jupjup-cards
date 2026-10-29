@@ -580,13 +580,33 @@ def og_lines(n):
         small = " · ".join(x for x in (f"{rng} 접수" if rng and n["status"] in ("open", "upcoming") else "", unit if big != unit else "") if x)
     elif n["status"] in ("waiting", "announced"):
         comp = (n.get("comp") or {}).get("short")
-        big = comp or (f"최고 {won(n['max_price'])}" if n.get("max_price") else "")
+        big = comp or (f"{n.get('price_label') or '최고 분양가'} {won(n['max_price'])}" if n.get("max_price") else "")
         small = f"당첨자 발표 {d(n['announce'])}" if n.get("announce") else ""
     else:
         big = f"{n.get('price_label') or '최고 분양가'} {won(n['max_price'])}" if n.get("max_price") else ""
         small = " · ".join(x for x in (f"{rng} 접수" if rng else "", unit) if x)
     loc = " ".join(x for x in (n.get("sido"), n.get("sigungu")) if x)
     return kind, st, n["title"], loc, big, small
+
+
+def og_make(n, dst, has_photo):
+    """공유 썸네일 — site/og.py render() (시안 B·남색). 바뀐 게 없으면 다시 그리지 않음. 반환: 버전(내용 해시 8자)."""
+    import og as OG
+    lines = list(og_lines(n))
+    ph = n.get("photo") if has_photo else None
+    src = (REPO / ph["image"]) if ph else None
+    key = json.dumps({"v": "B2", "lines": lines, "photo": ph and [ph["image"], ph.get("pos"), ph.get("credit"), src.stat().st_mtime]}, ensure_ascii=False)
+    ver = hashlib.sha1(key.encode()).hexdigest()[:8]
+    tag = dst.with_suffix(".key")
+    if dst.exists() and tag.exists() and tag.read_text(encoding="utf-8") == key:
+        return ver
+    im = OG.render(lines, ph, ph.get("credit") if ph else None)
+    im.save(dst, "JPEG", quality=86, optimize=True, progressive=True)
+    tag.write_text(key, encoding="utf-8")
+    for old in (dst.with_suffix(".pos"),):
+        if old.exists():
+            old.unlink()
+    return ver
 
 
 def og_card(n, dst):
@@ -687,7 +707,6 @@ def notice_images(n):
     if n.get("photo"):
         sz = img_out(n["photo"]["image"], out / "hero.webp", 960)
         if sz:
-            og_from(n["photo"]["image"], out / "og.jpg", n["photo"].get("pos"))
             imgs["hero"] = {"src": "hero.webp", "w": sz[0], "h": sz[1]}
     if n.get("map"):
         sz = img_out(n["map"], out / "map.webp", 960)
@@ -706,13 +725,14 @@ def notice_images(n):
         if sz:
             lays.append(dict(p, src=f"layout-{i}.webp", w=sz[0], h=sz[1]))
     imgs["layouts"] = lays
-    if not n.get("photo") or "hero" not in imgs:
-        try:
-            out.mkdir(parents=True, exist_ok=True)
-            og_card(n, out / "og.jpg")
-        except Exception as e:  # 글꼴 문제 등 — 기본 이미지로
-            print("og_card 실패", n["key"], e, file=sys.stderr)
-    imgs["og"] = f"/apt/{n['key']}/og.jpg" if (out / "og.jpg").exists() else "/og-default.jpg"
+    og_ver = ""
+    try:
+        out.mkdir(parents=True, exist_ok=True)
+        og_ver = og_make(n, out / "og.jpg", "hero" in imgs)
+    except Exception as e:  # 글꼴 문제 등 — 기본 이미지로
+        print("og 썸네일 실패", n["key"], e, file=sys.stderr)
+    # ?v= : 카카오톡 등은 같은 주소의 썸네일을 오래 기억해서, 내용이 바뀌면 주소를 바꿔 새로 읽게 함
+    imgs["og"] = f"/apt/{n['key']}/og.jpg?v={og_ver}" if (out / "og.jpg").exists() and og_ver else "/og-default.jpg"
     return imgs
 
 
