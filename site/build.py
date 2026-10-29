@@ -587,25 +587,25 @@ def og_lines(n):
         small = " · ".join(x for x in (f"{rng} 접수" if rng else "", unit) if x)
     loc = " ".join(x for x in (n.get("sido"), n.get("sigungu")) if x)
     head = None
-    # 줍줍(무순위·임의공급)은 분양가보다 '얼마나 싸게·얼마나 쉽게·언제까지'가 훅 (사용자 요청 2026-10-29, 마케터 관점)
+    # 줍줍(무순위·임의공급)은 분양가보다 '얼마나 싸게·언제까지'가 훅 (사용자 요청 2026-10-29, 마케터 관점)
+    # 무엇인지(무순위 줍줍·임의공급 줍줍)는 항상 윗줄에 — 사용자 요청 "줍줍·분양·행복주택·매입임대처럼 어떤 건지 알려줘야"
+    if n["kind"] == "mujeonwi":
+        kind = f"{kind} 줍줍" if "줍줍" not in kind else kind
     if n["kind"] == "mujeonwi" and n["status"] in ("open", "upcoming") and not n.get("is_pre"):
         one_day = rcpt[0] and (not rcpt[1] or rcpt[0] == rcpt[1])
         when = f"{d(rcpt[0])} 하루 접수" if one_day else (f"{rng} 접수" if rng else "")
         gap = n.get("gap") or {}
         v = gap.get("verdict") or ""
-        no_acct = any("통장" in r[0] and "필요 없" in r[1] for r in n.get("eligibility") or [] if len(r) > 1)
         bucket = next((c[0] for c in n.get("chips") or [] if re.fullmatch(r"\d+(?:\.\d+)?㎡ \d+억대", c[0])), "")
         city = loc.split(" ")[-1] if loc else ""
         if re.search(r"저렴\(추정\)$", v):  # 근거 단지가 있는 차익만 (공고 페이지 gap과 같은 문장)
-            head = f"{city} {kind}, 시세보다".strip()
-            big = re.sub(r"\(추정\)$", "", v).strip()          # '약 10억9천만원 저렴' — 크게
+            big = "시세보다 " + re.sub(r"\(추정\)$", "", v).strip()      # '시세보다 약 10억9천만원 저렴'
             base = re.sub(r"\s*\(.*?\)\s*$", "", (gap.get("rows") or [[""]])[0][0])
             small = " · ".join(x for x in (f"(추정) {base} 대비" if base else "(추정)", when) if x)  # 추정 표시는 바로 아래 줄에 항상
         else:
-            if no_acct:
-                head = "청약통장 없이"
-            big = bucket and (f"{city} {bucket}" if head else bucket) or big
-            small = " · ".join(x for x in (city if head and not bucket else "", when, unit) if x)
+            big = bucket or big
+            small = " · ".join(x for x in (when, unit) if x)
+        head = f"{city} {kind}".strip()
         # 상태 칩은 급한 정도로
         if n["status"] == "open" and (rcpt[1] or rcpt[0]) == TODAY.isoformat():
             st = "오늘 마감"
@@ -622,7 +622,7 @@ def og_make(n, dst, has_photo):
     lines = list(og_lines(n))
     ph = n.get("photo") if has_photo else None
     src = (REPO / ph["image"]) if ph else None
-    key = json.dumps({"v": "B4", "lines": lines, "photo": ph and [ph["image"], ph.get("pos"), ph.get("credit"), src.stat().st_mtime]}, ensure_ascii=False)
+    key = json.dumps({"v": "B5", "lines": lines, "photo": ph and [ph["image"], ph.get("pos"), ph.get("credit"), src.stat().st_mtime]}, ensure_ascii=False)
     ver = hashlib.sha1(key.encode()).hexdigest()[:8]
     tag = dst.with_suffix(".key")
     if dst.exists() and tag.exists() and tag.read_text(encoding="utf-8") == key:
