@@ -634,7 +634,8 @@ def make_decide(n, notices):
     rule.append("이득: 분양가가 주변 시세의 70% 이하면 초록, 90% 이하면 노랑, 그보다 비싸거나 차익 기대가 낮으면 빨강")
     # ② 문턱 — 사람이 판정 (지역·소득·자산 조건 수)
     d = src.get("door") or {}
-    cards.append({"k": "문턱", "sig": d.get("sig", "n"), "head": d.get("head", ""), "sub": d.get("sub", "")})
+    if d.get("head"):
+        cards.append({"k": "문턱", "sig": d.get("sig", "n"), "head": d["head"], "sub": d.get("sub", "")})
     rule.append("문턱: 청약통장·소득·거주지역 조건이 없으면 초록, 하나 있으면 노랑, 둘 이상이면 빨강")
     # ③ 경쟁 — 공급 세대 수 + 최근 같은 유형 경쟁률
     refs = comp_refs(notices, n["kind"]) if n["kind"] == "mujeonwi" else []
