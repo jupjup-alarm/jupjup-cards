@@ -440,7 +440,7 @@ footer nav{display:flex;flex-wrap:wrap;gap:4px 12px}
 .guide-link{display:flex;gap:10px;align-items:center;margin-top:12px;padding:12px 14px;border-radius:12px;background:var(--band);text-decoration:none;font-size:14.5px}
 .guide-link b{color:var(--coral-strong);font-size:12.5px;flex:none}
 /* 판단형 공고 (decide) */
-.dz-card{margin-top:14px;border:1px solid var(--line);border-radius:var(--r);padding:16px;background:var(--paper)}
+.dz-card{margin-top:14px;margin-bottom:14px;border:1px solid var(--line);border-radius:var(--r);padding:16px;background:var(--paper)}
 .dz-card h2{font-size:13px;margin:0 0 10px;color:var(--ink-sub);font-weight:700;letter-spacing:.02em}
 .dz-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 @media (min-width:720px){.dz-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
