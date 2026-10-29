@@ -297,7 +297,7 @@ def build_notice(e, row, regions, problems):
     # 매입임대(여러 동네 다가구): 주택 목록 → 지역·면적 묶음
     hs = e.get("houses") or []
     n["houses"] = hs
-    n["unit_word"] = "호" if hs else "세대"
+    n["unit_word"] = e.get("unit_word") or ("호" if hs else "세대")
     if hs:
         if not n["units"]:
             n["units"] = len(hs)
@@ -1175,8 +1175,9 @@ def main():
             sgs = "·".join(g for g, _ in n["house_groups"][:4])
             desc = f"{n['units']}호({sgs}) · {cond} · 접수 {rc} {n.get('receipt_note') or ''}. 주택 목록·면적·자격·신청 방법을 한 번에."
         elif n["is_rental"]:
-            cond = f"보증금 {money(rs['deposit'])} · 월 {money(rs['monthly'])}" if rs.get("deposit") else f"주택형 {len(n['rent_models'])}개"
-            desc = f"접수 {rc} · {cond} · {n['units']:,}세대 · {n.get('target') or n['kind_label']}. 신청 자격·일정과 공식 공고 링크를 한 번에."
+            cond = (f"보증금 {money(rs['deposit'])}" + (f" · 월 {money(rs['monthly'])}" if rs.get("monthly") else "")) if rs.get("deposit") else f"주택형 {len(n['rent_models'])}개"
+            ucnt = f" · {n['units']:,}{n['unit_word']}" if n["units"] else ""
+            desc = f"접수 {rc} · {cond}{ucnt} · {n.get('target') or n['kind_label']}. 신청 자격·일정과 공식 공고 링크를 한 번에."
         elif n["comp"] and n["comp"]["rows"]:
             best = max(n["comp"]["rows"], key=lambda r: r["apply"] / max(r["supply"], 1))
             desc = f"{n['comp']['summary'] or ''} · 당첨자 발표 {d(n['announce'])} · {n['price_label']} {won(n['max_price'])}. 일정·분양가·자격과 공식 공고 링크를 한 번에."

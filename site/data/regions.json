@@ -30,20 +30,37 @@
    "과천시": "gwacheon",
    "파주시": "paju",
    "화성특례시": "hwaseong",
-   "안성시": "anseong"
+   "안성시": "anseong",
+   "용인시": "yongin",
+   "평택시": "pyeongtaek",
+   "부천시": "bucheon",
+   "군포시": "gunpo",
+   "의정부시": "uijeongbu",
+   "양평군": "yangpyeong",
+   "고양시": "goyang",
+   "남양주시": "namyangju",
+   "의왕시": "uiwang",
+   "안양시": "anyang"
   },
   "서울": {
    "강동구": "gangdong",
    "중구": "jung",
    "서초구": "seocho",
-   "강서구": "gangseo"
+   "강서구": "gangseo",
+   "동작구": "dongjak",
+   "강북구": "gangbuk",
+   "노원구": "nowon",
+   "양천구": "yangcheon",
+   "관악구": "gwanak",
+   "영등포구": "yeongdeungpo"
   },
   "인천": {
    "계양구": "gyeyang",
    "부평구": "bupyeong",
    "미추홀구": "michuhol",
    "서해구": "seohae",
-   "연수구": "yeonsu"
+   "연수구": "yeonsu",
+   "검단구": "geomdan"
   }
  }
 }
