@@ -192,7 +192,7 @@ def render(L, photo=None, credit=None):
     th = dict(THEME["줍줍알람"])  # 시리즈 색 대신 남색 하나 (사용자 결정)
     if photo:
         im = photo_bg(photo["image"], photo.get("pos"))
-        im = shade(im, [(0, .45), (.16, 0), (.26, 0), (.48, .62), (.72, .88), (1, .92)])
+        im = shade(im, [(0, .5), (.14, .35), (.26, .66), (.78, .74), (1, .82)])  # 가운데 글자 아래가 어둡게
         th = dict(THEME["줍줍알람"], sub="#E6EAF1")
     else:
         im = Image.new("RGB", (W, H), th["bg"])
@@ -227,7 +227,10 @@ def render(L, photo=None, credit=None):
     while sz > 60 and max(sum(tw(dr, s, bhs(sz)) for s, _ in ln) for ln in (l1, l2)) > maxw:
         sz -= 4
     fs = fit(dr, sub, lambda s: noto(s, "Medium"), 34, maxw, 26)
-    yb = 572
+    # 글자 묶음(칩~작은 줄)을 세로 가운데에 (사용자 요청 2026-10-29 "제목이 아래로 치우침")
+    blk = 58 + 2 * int(sz * 1.12) + 62 + 12          # 칩 + 두 줄 + 작은 줄 + 아랫부분
+    top = max(118, (H - blk) // 2 + 14)              # 위 로고(~90px)와 겹치지 않게, 살짝 아래로 무게
+    yb = top + blk - 12
     text(dr, X, yb, sub, fs, th["sub"]); yb -= 62
     for ln in (l2, l1):
         spans(dr, X, yb, [(s, bhs(sz), c) for s, c in ln if s]); yb -= int(sz * 1.12)

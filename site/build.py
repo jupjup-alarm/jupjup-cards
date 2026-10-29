@@ -646,7 +646,7 @@ def og_make(n, dst, has_photo):
     lines = list(og_lines(n))
     ph = n.get("photo") if has_photo else None
     src = (REPO / ph["image"]) if ph else None
-    key = json.dumps({"v": "B5", "lines": lines, "photo": ph and [ph["image"], ph.get("pos"), ph.get("credit"), src.stat().st_mtime]}, ensure_ascii=False)
+    key = json.dumps({"v": "B6", "lines": lines, "photo": ph and [ph["image"], ph.get("pos"), ph.get("credit"), src.stat().st_mtime]}, ensure_ascii=False)
     ver = hashlib.sha1(key.encode()).hexdigest()[:8]
     tag = dst.with_suffix(".key")
     if dst.exists() and tag.exists() and tag.read_text(encoding="utf-8") == key:
