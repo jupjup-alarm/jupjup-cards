@@ -17,8 +17,9 @@
       <h2>{{ label }} <small>{{ lst|length }}곳</small></h2>
       <div class="cards">{% for n in lst %}{{ card(n) }}{% endfor %}</div>
     </section>
-    {% if loop.first %}{{ cp_ad('home', 'ad-home') }}{% endif %}
+    {% if loop.first %}{{ cp_ad('home', 'ad-home') }}{{ cp_ad('home_mo', 'ad-home') }}{% endif %}
     {% endfor %}
+    {{ cp_ad('home_end_mo', 'ad-home ad-end') }}
     <div class="follow">
       <p><b>새 공고가 나오면 인스타그램으로 먼저 알려드려요.</b><br>카드뉴스·릴스로 1분 만에 핵심만 정리해요.</p>
       <a class="btn" href="{{ IG }}" target="_blank" rel="noopener">{{ ig_icon() }}@jupjup_alarm 팔로우</a>
