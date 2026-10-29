@@ -64,14 +64,14 @@ def fetch(kind, lawd, ym, k):
     rows, page = [], 1
     while True:
         q = urllib.parse.urlencode({"serviceKey": k, "LAWD_CD": lawd, "DEAL_YMD": ym, "numOfRows": "1000", "pageNo": str(page)})
-        for t in range(3):
+        for t in range(6):
             try:
                 raw = urllib.request.urlopen(BASE + EP[kind] + "?" + q, timeout=30).read()
                 break
             except Exception as ex:  # 일시 오류는 다시
-                if t == 2:
+                if t == 5:
                     raise SystemExit(f"API 요청 실패 ({kind} {lawd} {ym}): {type(ex).__name__}")
-                time.sleep(2)
+                time.sleep(2 + 3 * t)
         root = ET.fromstring(raw)
         code = root.findtext(".//resultCode") or ""
         if code not in ("00", "000"):
@@ -96,6 +96,7 @@ def norm(kind, it):
         if (it.get("cdealType") or "").strip() == "O":
             return None  # 해제된 거래
         out["price"] = (num(it.get("dealAmount")) or 0) * 10_000
+        out["via"] = it.get("dealingGbn", "")  # 중개거래·직거래 — 직거래는 가족 간 거래 등일 수 있어 비교 단지 근거로 쓰지 않는다
     else:
         out["deposit"] = (num(it.get("deposit")) or 0) * 10_000
         out["monthly"] = (num(it.get("monthlyRent")) or 0) * 10_000
@@ -112,6 +113,7 @@ def main():
     ap.add_argument("--area", type=float, help="전용면적 기준 ㎡ (±--tol)")
     ap.add_argument("--tol", type=float, default=10)
     ap.add_argument("--months", type=int, default=6)
+    ap.add_argument("--all", action="store_true", help="직거래도 포함 (기본은 중개거래만)")
     ap.add_argument("--monthly-only", action="store_true", help="전월세 중 월세만")
     ap.add_argument("--jeonse-only", action="store_true", help="전월세 중 전세만")
     a = ap.parse_args()
@@ -126,6 +128,8 @@ def main():
         for it in fetch(a.kind, lawd, ym, k):
             r = norm(a.kind, it)
             if not r:
+                continue
+            if a.kind == "trade" and not a.all and "직거래" in (r.get("via") or ""):
                 continue
             if dongs and r["dong"] not in dongs:
                 continue
