@@ -51,6 +51,8 @@ COUPANG = {
 }
 # 애드센스 (승인 전이라 비어 있음 — client에 ca-pub-…, slots에 광고 단위 ID를 넣으면 그 자리에 나옴)
 ADSENSE = {"client": "", "slots": {"apt_top": ""}}
+# 구글 애널리틱스 4 — 측정 ID(G-XXXXXXXXXX)를 넣으면 모든 페이지에 붙음 (사용자 요청 2026-10-29). 비우면 아무것도 안 붙음
+GA = {"id": ""}
 COUPANG_NOTE = "이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다."
 KST = dt.timezone(dt.timedelta(hours=9))
 DOW = "월화수목금토일"
@@ -985,7 +987,7 @@ def env():
         return {"@type": "BreadcrumbList", "itemListElement": el}
     def items_ld(items):
         return [{"@type": "ListItem", "position": i, "url": BASE + n["url"], "name": n["title"]} for i, n in enumerate(items, 1)]
-    e.globals.update(HAS_GUIDES=bool(GUIDES.load()), RENTAL_EXPLAIN=RENTAL_EXPLAIN, BASE=BASE, IG=IG, THREADS=THREADS, COUPANG=COUPANG, COUPANG_NOTE=COUPANG_NOTE, ADSENSE=ADSENSE, STATUS=STATUS, KINDS=KINDS, crumb_ld=crumb_ld, items_ld=items_ld,
+    e.globals.update(HAS_GUIDES=bool(GUIDES.load()), RENTAL_EXPLAIN=RENTAL_EXPLAIN, BASE=BASE, IG=IG, THREADS=THREADS, COUPANG=COUPANG, COUPANG_NOTE=COUPANG_NOTE, ADSENSE=ADSENSE, GA=GA, STATUS=STATUS, KINDS=KINDS, crumb_ld=crumb_ld, items_ld=items_ld,
                      logo=Markup((SITE / "static/favicon.svg").read_text().replace('<svg xmlns="http://www.w3.org/2000/svg" ', '<svg class="mark" aria-hidden="true" focusable="false" ')))
     return e
 

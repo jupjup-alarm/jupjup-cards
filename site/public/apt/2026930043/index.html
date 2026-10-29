@@ -24,6 +24,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="alternate" type="application/rss+xml" title="줍줍알람" href="/rss.xml">
 <link rel="stylesheet" href="/style.94ac134d.css">
+<script>window.jjEv=function(n,p){try{if(window.gtag)gtag('event',n,p||{});}catch(e){}};</script>
 </head>
 <body>
 <a class="skip" href="#main">본문 바로가기</a>
@@ -327,7 +328,8 @@
     var out=el.querySelector('[data-yes]');
     el.querySelectorAll('.g-yn').forEach(function(g){var bs=g.querySelectorAll('button');
       bs.forEach(function(b){b.addEventListener('click',function(){bs.forEach(function(x){x.setAttribute('aria-pressed',x===b)});
-        out.textContent=el.querySelectorAll('button[data-v="1"][aria-pressed="true"]').length;});});});
+        out.textContent=el.querySelectorAll('button[data-v="1"][aria-pressed="true"]').length;
+        if(!el.dataset.sent&&el.querySelectorAll('button[aria-pressed="true"]').length===el.querySelectorAll('.g-yn').length){el.dataset.sent=1;jjEv('selfcheck_done',{yes:+out.textContent,total:el.querySelectorAll('.g-yn').length});}});});});
   });
   var R=document.querySelector('[data-rent]');
   if(R){var dep0=+R.getAttribute('data-d0'),mon0=+R.getAttribute('data-m0'),ri=R.querySelector('#rcash'),rr=R.querySelector('#rres');
@@ -342,7 +344,7 @@
       else{var need=Math.ceil(-gap/unit)*unit,plus=down?need*down/100/12:0;
         rr.className='fres no';rr.textContent='보증금까지 '+wonx(-gap)+'이 모자라요.'+(down?' 보증금을 '+won(need)+' 줄이면 월세가 약 '+wonx(Math.ceil(plus/10)*10)+' 늘어요 (연 '+down+'% 기준, 한도는 공고문 확인).':'');}}
     var bs=R.querySelectorAll('[data-dep]');bs.forEach(function(b){b.addEventListener('click',function(){bs.forEach(function(x){x.setAttribute('aria-pressed',x===b)});set(b);});});
-        ri.addEventListener('input',rc);}
+        ri.addEventListener('input',rc);ri.addEventListener('change',function(){jjEv('calc_use',{calc:'rent'});});}
   var f=document.querySelector('[data-fund]');if(!f)return;
   var ol=f.querySelector('.ftl'),price=+ol.getAttribute('data-price0'),inp=f.querySelector('#fcash'),res=f.querySelector('#fres');
   function draw(){f.querySelectorAll('.fa').forEach(function(b){b.textContent=won(price*(+b.getAttribute('data-pct'))/100);});calc();}
@@ -353,7 +355,7 @@
     else{res.textContent='계약금 '+won(need)+'까지 '+won(need-have)+'이 모자라요. 계약금은 대부분 현금으로 준비해야 해요.';res.className='fres no';}}
   f.querySelectorAll('[data-price]').forEach(function(b){b.addEventListener('click',function(){price=+b.getAttribute('data-price');
     f.querySelectorAll('[data-price]').forEach(function(x){x.setAttribute('aria-pressed',x===b)});draw();});});
-  if(inp)inp.addEventListener('input',calc);
+  if(inp){inp.addEventListener('input',calc);inp.addEventListener('change',function(){jjEv('calc_use',{calc:'sale'});});}
 })();
 </script>
 <script type="application/ld+json">
@@ -371,9 +373,10 @@
   function copy(text,b){if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(function(){flash(b,'복사됨')},function(){flash(b,'복사 안 됨')});}}
   document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(){copy(b.getAttribute('data-copy'),b)})});
   document.querySelectorAll('[data-share]').forEach(function(b){b.addEventListener('click',function(){
-    var u=document.querySelector('link[rel=canonical]').href;
+    var u=document.querySelector('link[rel=canonical]').href;jjEv('share',{method:navigator.share?'native':'copy'});
     if(navigator.share){navigator.share({title:document.title,url:u}).catch(function(){});}else{copy(u,b);}
   })});
+  document.querySelectorAll('a[href*="instagram.com"],a[href*="threads."]').forEach(function(a){a.addEventListener('click',function(){jjEv('follow_click',{channel:a.href.indexOf('threads')>-1?'threads':'instagram'});});});
   var tl=document.querySelector('.ptabs');
   if(tl){var tabs=[].slice.call(tl.querySelectorAll('[role=tab]'));
     function sel(tab){tabs.forEach(function(b){var on=b===tab;b.setAttribute('aria-selected',on);b.tabIndex=on?0:-1;document.getElementById(b.getAttribute('aria-controls')).hidden=!on;});}

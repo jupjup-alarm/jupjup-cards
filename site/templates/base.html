@@ -29,6 +29,9 @@
 <link rel="alternate" type="application/rss+xml" title="줍줍알람" href="/rss.xml">
 <link rel="stylesheet" href="{{ css }}">
 {% block head %}{% endblock %}
+{% if GA.id %}<script async src="https://www.googletagmanager.com/gtag/js?id={{ GA.id }}"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','{{ GA.id }}');</script>{% endif %}
+<script>window.jjEv=function(n,p){try{if(window.gtag)gtag('event',n,p||{});}catch(e){}};</script>
 {% if ADSENSE.client %}<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ ADSENSE.client }}" crossorigin="anonymous"></script>{% endif %}
 </head>
 <body>
@@ -65,9 +68,10 @@
   function copy(text,b){if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(function(){flash(b,'복사됨')},function(){flash(b,'복사 안 됨')});}}
   document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(){copy(b.getAttribute('data-copy'),b)})});
   document.querySelectorAll('[data-share]').forEach(function(b){b.addEventListener('click',function(){
-    var u=document.querySelector('link[rel=canonical]').href;
+    var u=document.querySelector('link[rel=canonical]').href;jjEv('share',{method:navigator.share?'native':'copy'});
     if(navigator.share){navigator.share({title:document.title,url:u}).catch(function(){});}else{copy(u,b);}
   })});
+  document.querySelectorAll('a[href*="instagram.com"],a[href*="threads."]').forEach(function(a){a.addEventListener('click',function(){jjEv('follow_click',{channel:a.href.indexOf('threads')>-1?'threads':'instagram'});});});
   var tl=document.querySelector('.ptabs');
   if(tl){var tabs=[].slice.call(tl.querySelectorAll('[role=tab]'));
     function sel(tab){tabs.forEach(function(b){var on=b===tab;b.setAttribute('aria-selected',on);b.tabIndex=on?0:-1;document.getElementById(b.getAttribute('aria-controls')).hidden=!on;});}
