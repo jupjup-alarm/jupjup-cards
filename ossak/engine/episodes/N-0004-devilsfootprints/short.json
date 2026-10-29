@@ -1,0 +1,147 @@
+{
+ "id": "N-0004",
+ "no": 6,
+ "series": "새벽괴담",
+ "format": "loop",
+ "mood": "horror",
+ "title": "1855 데번의 발굽 자국",
+ "hook": [
+  "지붕 위로 이어진",
+  "한 줄의 발굽 자국"
+ ],
+ "accent_word": "지붕",
+ "images": [
+  {
+   "id": "d01",
+   "prompt": "Devon, England, February 1855, dawn after a heavy snowfall: the snow-covered thatched roof of an old cottage, along the ridge of the roof runs a single straight line of small horseshoe-shaped hoof prints in the fresh snow, crossing from one end to the other, cold blue dawn light, smoke-less chimney, closed wooden shutters below.",
+   "nop": true
+  },
+  {
+   "id": "d02",
+   "prompt": "Devon, England, February 1855, dawn after a heavy snowfall: a quiet village of low stone cottages by a misty river estuary seen from a distance, everything buried in white snow, all doors shut, only one window faintly lit, grey-blue sky.",
+   "nop": true
+  },
+  {
+   "id": "d03",
+   "prompt": "Devon, England, February 1855, dawn after a heavy snowfall: close view of untouched snow on the ground: a single perfectly straight line of small horseshoe-shaped hoof prints, one directly in front of the other, leading away into darkness between bare hedges.",
+   "nop": true
+  },
+  {
+   "id": "d04",
+   "prompt": "Devon, England, February 1855, dawn after a heavy snowfall: a wide snowy countryside between two distant villages, a single thin straight line of hoof prints crossing the whole white field and continuing over the next hill, bare trees, low cold light.",
+   "nop": true
+  },
+  {
+   "id": "d05",
+   "prompt": "Devon, England, February 1855, dawn after a heavy snowfall: the top of a tall old stone garden wall covered in snow, a single line of small horseshoe-shaped hoof prints running along the narrow top of the wall; behind it a frozen river and on the far bank the same line of prints continuing.",
+   "nop": true
+  },
+  {
+   "id": "d06",
+   "prompt": "Devon, England, February 1855, dawn after a heavy snowfall: close view of the round opening of a narrow clay drainpipe, only a hand's width across, half buried in snow at the bottom of a wall; a line of horseshoe-shaped hoof prints leads straight into the pipe opening and stops; the inside of the pipe is pitch black.",
+   "nop": true
+  },
+  {
+   "id": "d07",
+   "prompt": "Devon, England, February 1855, morning after a heavy snowfall: the closed, bolted wooden front door of a small stone cottage, shutters shut tight, untouched snow piled at the doorstep, a single line of small horseshoe-shaped hoof prints passing right in front of the door, cold grey light, silence.",
+   "nop": true
+  }
+ ],
+ "scenes": [
+  {
+   "say": "지붕 위를, 발굽 자국이 걸어갔습니다.",
+   "tts": "지붕 위를 발굽 자국이 걸어갔습니다.",
+   "img": "d01",
+   "move": "in",
+   "emph": [
+    "지붕",
+    "발굽"
+   ]
+  },
+  {
+   "say": "1855년 2월 영국, 폭설 뒤 아침의 기록입니다.",
+   "tts": "천팔백오십오 년 이월 영국, 폭설 뒤 아침의 기록입니다.",
+   "img": "d02",
+   "move": "in",
+   "cont": true,
+   "emph": [
+    "기록입니다"
+   ]
+  },
+  {
+   "say": "발을 하나씩만 디딘 듯, 한 줄로 똑바로.",
+   "tts": "발을 하나씩만 디딘 듯, 한 줄로 똑바로.",
+   "img": "d03",
+   "move": "up",
+   "emph": [
+    "한 줄로"
+   ]
+  },
+  {
+   "say": "그 한 줄이 하룻밤 새, 서른 곳 넘는 마을로.",
+   "tts": "그 한 줄이 하룻밤 새, 서른 곳 넘는 마을로.",
+   "img": "d04",
+   "move": "right",
+   "cont": true,
+   "emph": [
+    "서른"
+   ]
+  },
+  {
+   "say": "높은 담 위로, 얼어붙은 강 건너로. 끊기지 않고.",
+   "tts": "높은 담 위로, 얼어붙은 강 건너로. 끊기지 않고.",
+   "img": "d05",
+   "move": "in",
+   "cont": true,
+   "emph": [
+    "끊기지"
+   ]
+  },
+  {
+   "say": "그리고 지름 10cm 배수관으로 들어가더니… 반대편으로 이어졌습니다.",
+   "tts": "그리고 지름 십 센티미터 배수관으로 들어가더니 [pause short] 반대편으로 이어졌습니다.",
+   "img": "d06",
+   "move": "in",
+   "sfx": "hit",
+   "emph": [
+    "10cm",
+    "이어졌습니다"
+   ]
+  },
+  {
+   "say": "그날, 문을 열지 않은 집도 있었다고 합니다.",
+   "tts": "그날 문을 열지 않은 집도 있었다고 합니다.",
+   "img": "d07",
+   "zoom": 1.0,
+   "move": "in",
+   "cont": true,
+   "emph": [
+    "열지"
+   ]
+  },
+  {
+   "say": "그날 밤 지붕 위를 걸어간 건, 몇 개의 발이었을까요?",
+   "tts": "그날 밤 지붕 위를 걸어간 건, 몇 개의 발이었을까요?",
+   "img": "d01",
+   "zoom": 1.35,
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "move": "out",
+   "emph": [
+    "몇 개의"
+   ]
+  }
+ ],
+ "youtube": {
+  "title": "발굽 자국이, 지붕 위를 걸어갔다",
+  "summary": "1855년 2월 영국 데번. 폭설이 그친 아침, 서른 곳 넘는 마을에 한 줄로 이어진 발굽 자국이 나타났습니다. 겁에 질려 집에 틀어박힌 사람들도 있었다는 기록도 있습니다.",
+  "pinned": "그날 밤 지붕 위를 걸어간 건, 몇 개의 발이었을까요?"
+ },
+ "sources": "출처: 《타임스》(1855.2.16), 《일러스트레이티드 런던 뉴스》(1855.3.3), Mike Dash 'The Devil's Hoofmarks'(Fortean Studies, 1994)",
+ "tags": "#새벽괴담 #악마의발자국",
+ "risk": "저",
+ "adapted": true,
+ "hook_type": "흔적×있을 수 없는 자리(지붕 위 발굽)"
+}

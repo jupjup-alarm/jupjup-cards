@@ -1,0 +1,250 @@
+{
+ "id": "W-0002",
+ "no": 7,
+ "series": "세계기담",
+ "format": "story",
+ "mood": "mystery",
+ "title": "메리 셀레스트호",
+ "hook": [
+  "6개월 치 식량 두고",
+  "보트로 떠난 10명"
+ ],
+ "accent_word": "10명",
+ "images": [
+  {
+   "id": "m01",
+   "prompt": "19th-century brigantine, 1872, grey North Atlantic: a two-masted merchant brigantine drifting alone on a heavy grey swell under an overcast sky, some sails set and some torn and flapping loose, the deck completely empty, the ship's wheel unattended. The ship sits in the lower-middle of the frame, open grey sky above.",
+   "nop": true
+  },
+  {
+   "id": "m02",
+   "prompt": "19th-century brigantine, 1872, grey North Atlantic: a small wooden rowing boat with three tiny faceless silhouette sailors seen from far behind, rowing across the swell toward a silent drifting brigantine that looms above them, nobody visible on its deck."
+  },
+  {
+   "id": "m03",
+   "prompt": "19th-century brigantine, 1872, grey North Atlantic: inside a small dim ship's cabin lit by grey daylight from a porthole: neatly folded clothes on a bunk, several wooden sea chests with lids open, packed full of folded clothes, oil-skin coats on hooks, everything tidy and untouched.",
+   "nop": true
+  },
+  {
+   "id": "m04",
+   "prompt": "19th-century brigantine, 1872, grey North Atlantic: close view of an open square cargo hatch on a wet wooden deck, the heavy hatch cover lying beside it, below in the darkness dark water sloshing around stacked wooden barrels.",
+   "nop": true
+  },
+  {
+   "id": "m05",
+   "prompt": "19th-century brigantine, 1872, grey North Atlantic: on wet deck planks beside a wooden bilge-pump box, the pump has been taken apart: its round wooden pipe sections, leather valve discs and a curved pump handle laid neatly in a row, and next to them a long thin straight measuring rod marked with notches for sounding water depth, cold grey light, sea spray. Plain maintenance tools only.",
+   "nop": true
+  },
+  {
+   "id": "m06",
+   "prompt": "19th-century brigantine, 1872, grey North Atlantic: view along the empty deck of the brigantine, the ship floating upright and steady on a calm grey sea; in the middle, two empty wooden chocks where the ship's only lifeboat should rest, loose cut lashing ropes lying on the planks.",
+   "nop": true
+  },
+  {
+   "id": "m07",
+   "prompt": "19th-century brigantine, 1872, grey North Atlantic: a wooden navigation shelf above a chart table in a ship's cabin, the brass brackets and an open fitted wooden case are empty, faint dust outlines where a sextant and a chronometer used to sit, an empty open drawer.",
+   "nop": true
+  },
+  {
+   "id": "m08",
+   "prompt": "19th-century brigantine, 1872, grey North Atlantic: seen from the deck of a sailing ship at dawn, the dark silhouette of a volcanic island on the horizon across a calm sea, soft cold amber light; on a wooden ledge in the foreground a small slate board with faint chalk lines, blurred and unreadable.",
+   "nop": true
+  },
+  {
+   "id": "m09",
+   "prompt": "19th-century brigantine, 1872, grey North Atlantic: stormy dusk at sea: a single faceless silhouette of a ship's captain seen from behind, holding a lantern over an open cargo hatch and peering down into the dark hold, rain and wind, the only light is the lantern."
+  },
+  {
+   "id": "m10",
+   "prompt": "19th-century brigantine, 1872, grey North Atlantic: early morning, calm sea: a small rowing boat carrying several tiny faceless silhouettes, tied by one long rope to the stern of the brigantine and trailing behind it, a dark island silhouette far on the horizon. Seen from far away."
+  },
+  {
+   "id": "m11",
+   "prompt": "19th-century brigantine, 1872, grey North Atlantic: the moment a long tow rope snaps: the brigantine's sails suddenly fill with wind and the ship surges away, the broken rope end whipping in the air, a small rowing boat with tiny faceless silhouettes left falling behind on the swell. Seen from far away, dramatic grey light."
+  },
+  {
+   "id": "m12",
+   "prompt": "19th-century brigantine, 1872, grey North Atlantic: night: the empty brigantine sailing alone across a vast dark sea under a thin moon, sails half set, not a single light on board, no one on deck, endless empty water all around.",
+   "nop": true
+  },
+  {
+   "id": "m13",
+   "prompt": "The owl Boogi sitting at a cozy archivist's wooden desk at night beside its small amber lantern, an open old logbook in front of it and a pinned paper note with a simple drawing of a cut rope end, a ship-in-a-bottle on the shelf behind, warm single light, dark navy room.",
+   "with_character": true
+  }
+ ],
+ "scenes": [
+  {
+   "say": "6개월 치 식량을 두고, 열 명이 작은 보트로 떠났습니다.",
+   "tts": "육 개월 치 식량을 두고 열 명이 작은 보트로 떠났습니다.",
+   "img": "m01",
+   "move": "in",
+   "emph": [
+    "6개월",
+    "떠났습니다"
+   ]
+  },
+  {
+   "say": "1872년 12월, 대서양의 기록입니다.",
+   "tts": "천팔백칠십이 년 십이월, 대서양의 기록입니다.",
+   "img": "m01",
+   "zoom": 1.4,
+   "focus": [
+    0.5,
+    0.62
+   ],
+   "move": "in",
+   "cont": true,
+   "emph": [
+    "기록입니다"
+   ]
+  },
+  {
+   "say": "지나던 배의 선원들이 건너가 보니, 아무도 없었습니다.",
+   "tts": "지나던 배의 선원들이 건너가 보니, 아무도 없었습니다.",
+   "img": "m02",
+   "move": "up",
+   "emph": [
+    "아무도"
+   ]
+  },
+  {
+   "say": "옷가지도 짐 상자도 화물도, 그대로였죠.",
+   "tts": "옷가지도 짐 상자도 화물도 [pause short] 그대로였죠.",
+   "img": "m03",
+   "move": "in",
+   "cont": true,
+   "emph": [
+    "그대로였죠"
+   ]
+  },
+  {
+   "say": "화물칸 덮개는 열려 있고, 바닥엔 물이 1m쯤.",
+   "tts": "화물칸 덮개는 열려 있고, 바닥엔 물이 일 미터쯤.",
+   "img": "m04",
+   "move": "in",
+   "emph": [
+    "1m쯤"
+   ]
+  },
+  {
+   "say": "펌프는 뜯겨 있고, 물 깊이 재는 막대까지. 가라앉던 배였을까요?",
+   "tts": "펌프는 뜯겨 있고, 물 깊이 재는 막대까지. 가라앉던 배였을까요?",
+   "img": "m05",
+   "move": "left",
+   "cont": true,
+   "emph": [
+    "가라앉던"
+   ]
+  },
+  {
+   "say": "그런데 배는, 멀쩡히 떠 있었습니다.",
+   "tts": "그런데 배는 멀쩡히 떠 있었습니다.",
+   "img": "m06",
+   "move": "in",
+   "emph": [
+    "멀쩡히"
+   ]
+  },
+  {
+   "say": "없어진 건 보트와 항해 도구와 서류뿐. 스스로 떠난 겁니다.",
+   "tts": "없어진 건 보트와 항해 도구와 서류뿐. 스스로 떠난 겁니다.",
+   "img": "m07",
+   "move": "in",
+   "cont": true,
+   "emph": [
+    "스스로"
+   ]
+  },
+  {
+   "say": "마지막 기록엔 한 줄. 섬이 10km 앞에 보인다.",
+   "tts": "마지막 기록엔 한 줄. 섬이 십 킬로미터 앞에 보인다.",
+   "img": "m08",
+   "move": "in",
+   "emph": [
+    "섬이"
+   ]
+  },
+  {
+   "say": "펌프가 막혀 물을 잴 수 없었다면, 가라앉는다고 믿었을 겁니다.",
+   "tts": "펌프가 막혀 물을 잴 수 없었다면, 가라앉는다고 믿었을 겁니다.",
+   "img": "m09",
+   "move": "in",
+   "emph": [
+    "믿었을"
+   ]
+  },
+  {
+   "say": "눈앞엔 섬. 선장은 생각합니다. 보트를 묶고, 잠깐만 피하자.",
+   "tts": "눈앞엔 섬. 선장은 생각합니다. 보트를 묶고, 잠깐만 피하자.",
+   "img": "m10",
+   "move": "right",
+   "cont": true,
+   "emph": [
+    "잠깐만"
+   ]
+  },
+  {
+   "say": "그 순간, 바람이 돛을 채우고… 밧줄이 끊어졌다면.",
+   "tts": "그 순간 바람이 돛을 채우고 [pause short] 밧줄이 끊어졌다면.",
+   "img": "m11",
+   "move": "in",
+   "sfx": "hit",
+   "emph": [
+    "끊어졌다면"
+   ]
+  },
+  {
+   "say": "빈 배는 혼자 떠갑니다. 발견되기까지, 아흐레 동안.",
+   "tts": "빈 배는 혼자 떠갑니다. 발견되기까지, 아흐레 동안.",
+   "img": "m12",
+   "move": "out",
+   "cont": true,
+   "emph": [
+    "아흐레"
+   ]
+  },
+  {
+   "say": "짐을 두고 간 건, 곧 돌아올 생각이었으니까요. 열 명은, 끝내 발견되지 않았습니다.",
+   "tts": "짐을 두고 간 건, 곧 돌아올 생각이었으니까요. 열 명은 끝내 발견되지 않았습니다.",
+   "img": "m12",
+   "zoom": 1.35,
+   "focus": [
+    0.5,
+    0.55
+   ],
+   "move": "in",
+   "emph": [
+    "돌아올"
+   ]
+  },
+  {
+   "say": "섬은 바로 눈앞이었는데… 그 보트는, 어디에 있을까요?",
+   "tts": "섬은 바로 눈앞이었는데 [pause short] 그 보트는 어디에 있을까요?",
+   "img": "m13",
+   "move": "in",
+   "cont": true,
+   "emph": [
+    "어디에"
+   ]
+  }
+ ],
+ "youtube": {
+  "title": "6개월 치 식량을 두고, 멀쩡한 배를 떠난 10명",
+  "summary": "1872년 12월 대서양. 키 잡는 사람 없이 떠가던 배에 건너가 보니, 옷도 식량도 화물도 그대로인데 사람 10명과 구명보트만 없었습니다. 마지막 기록엔 '섬이 보인다'는 한 줄.",
+  "pinned": "섬이 10km 앞이었다면, 당신은 그 보트에 탔을까요?"
+ },
+ "sources": "출처: Smithsonian Magazine(2007·2024), American Heritage 'The Mystery of the Mary Celeste', History.com",
+ "tags": "#세계기담 #메리셀레스트",
+ "risk": "저",
+ "adapted": true,
+ "hook_type": "풍족×버림(식량 두고 떠남)",
+ "structure": "E 한순간 해부형",
+ "threads": [
+  "1872년 대서양 얘기 하나 해줄게. 6개월 치 식량을 그대로 두고, 멀쩡한 배에서 10명이 작은 보트로 떠났어.",
+  "키 잡는 사람도 없이 떠가던 배를 지나던 배 선원들이 발견했어. 건너가 보니 옷도 짐 상자도 술통 화물도 그대로였대.",
+  "없어진 건 구명보트랑 항해 도구, 배 서류뿐. 화물칸엔 물이 1m쯤 차 있었고 펌프 하나는 뜯겨 있었어. 근데 배는 멀쩡히 떠 있었지.",
+  "마지막 기록은 '섬이 10km 앞에 보인다'. 가장 유력한 설명은, 잠깐 피하려고 보트를 밧줄로 묶었는데 그 밧줄이 끊어졌다는 거야. 빈 배는 혼자 9일 동안 700km를 갔고, 10명은 끝내 발견되지 않았어.",
+  "영상으로 보려면 인스타 @ossak_alarm 에서 봐."
+ ]
+}
