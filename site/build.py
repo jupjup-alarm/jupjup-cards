@@ -522,17 +522,24 @@ def img_out(src_rel, dst, width, quality=78, force=False):
     return im.size
 
 
-def og_from(src_rel, dst):
+def og_from(src_rel, dst, pos=None):
+    """공유 썸네일(1200×630) = 페이지 실사(photo)를 페이지 표지와 같은 구도(photo.pos 'center 40%')로 자름."""
     from PIL import Image
     src = REPO / src_rel
-    if dst.exists() and dst.stat().st_mtime >= src.stat().st_mtime:
+    tag = dst.with_suffix(".pos")
+    if dst.exists() and dst.stat().st_mtime >= src.stat().st_mtime and tag.exists() and tag.read_text() == str(pos):
         return
     im = Image.open(src).convert("RGB")
     W, H = 1200, 630
     s = max(W / im.width, H / im.height)
     im = im.resize((round(im.width * s), round(im.height * s)), Image.LANCZOS)
-    x, y = (im.width - W) // 2, (im.height - H) // 2
+    fy = 0.5
+    m = re.search(r"(\d+(?:\.\d+)?)%\s*$", str(pos or ""))
+    if m:
+        fy = min(max(float(m.group(1)) / 100, 0), 1)
+    x, y = (im.width - W) // 2, round((im.height - H) * fy)
     im.crop((x, y, x + W, y + H)).save(dst, "JPEG", quality=82, optimize=True, progressive=True)
+    tag.write_text(str(pos))
 
 
 def og_default(dst):
@@ -557,7 +564,7 @@ def notice_images(n):
     if n.get("photo"):
         sz = img_out(n["photo"]["image"], out / "hero.webp", 960)
         if sz:
-            og_from(n["photo"]["image"], out / "og.jpg")
+            og_from(n["photo"]["image"], out / "og.jpg", n["photo"].get("pos"))
             imgs["hero"] = {"src": "hero.webp", "w": sz[0], "h": sz[1]}
     if n.get("map"):
         sz = img_out(n["map"], out / "map.webp", 960)
