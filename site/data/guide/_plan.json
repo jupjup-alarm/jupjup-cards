@@ -1,0 +1,295 @@
+{
+ "note": "가이드 칼럼 20편 계획 (2026-10-29 사용자 결정: 하루 5편, 이번 주 20편). status: todo | done. ⑧ 가이드 담당이 day 순서로 쓴다. writing = 다른 세션이 쓰는 중 (건드리지 말 것).",
+ "items": [
+  {
+   "day": 1,
+   "slug": "cheongyak-gajeom",
+   "category": "청약 자격",
+   "topic": "청약 가점 계산법 — 84점의 구조",
+   "keywords": "청약 가점 계산기 2,380 · 청약 가점 650 · 무주택 기간 470",
+   "tool": "gajeom",
+   "notice_kinds": [
+    "private",
+    "public"
+   ],
+   "status": "writing"
+  },
+  {
+   "day": 1,
+   "slug": "mujeonwi",
+   "category": "무순위",
+   "topic": "무순위(줍줍) 청약 완전 정리",
+   "keywords": "무순위 청약 3,450 · 줍줍 청약 3,230 · 줍줍 5,210",
+   "tool": "selfcheck",
+   "notice_kinds": [
+    "mujeonwi"
+   ],
+   "status": "writing"
+  },
+  {
+   "day": 1,
+   "slug": "dsr-ltv-dti",
+   "category": "대출",
+   "topic": "DSR·LTV·DTI 한 번에, 내 주담대 한도 계산",
+   "keywords": "DSR 계산기 74,800 · DSR 17,970 · LTV 9,800 · 주택담보대출 한도 7,540 · DTI 6,040 · 스트레스 DSR 2,730",
+   "tool": "dsr",
+   "notice_kinds": [
+    "private",
+    "public"
+   ],
+   "status": "writing"
+  },
+  {
+   "day": 1,
+   "slug": "newborn-loan",
+   "category": "대출",
+   "topic": "신생아 특례대출 조건·금리·한도",
+   "keywords": "신생아 특례대출 113,300 · 신생아 특례 대출 조건 11,240",
+   "tool": "selfcheck",
+   "notice_kinds": [],
+   "status": "writing"
+  },
+  {
+   "day": 1,
+   "slug": "new-town-3rd",
+   "category": "신도시",
+   "topic": "3기 신도시 총정리 (왕숙·교산·계양·창릉·대장 + 추가 지구)",
+   "keywords": "3기 신도시 16,300 · 계양신도시 10,990 · 왕숙신도시 8,750 · 창릉신도시 7,940 · 교산신도시 7,420",
+   "tool": "",
+   "notice_kinds": [
+    "public",
+    "private",
+    "newlywed"
+   ],
+   "notice_match": [
+    "계양",
+    "왕숙",
+    "교산",
+    "창릉",
+    "대장",
+    "광명시흥"
+   ],
+   "status": "writing"
+  },
+  {
+   "day": 2,
+   "slug": "lh-rental-types",
+   "category": "임대",
+   "topic": "LH 임대주택 7가지, 내게 맞는 건? (행복·국민·영구·매입·전세·장기전세·10년 공공임대)",
+   "keywords": "LH임대주택 75,600 · 임대아파트 14,600 · 공공임대주택 8,840 · 장기전세 5,910 · 영구임대 700",
+   "tool": "selfcheck",
+   "notice_kinds": [
+    "rental"
+   ],
+   "status": "todo"
+  },
+  {
+   "day": 2,
+   "slug": "happy-house",
+   "category": "임대",
+   "topic": "행복주택 자격·소득·거주기간 정리 (계층별)",
+   "keywords": "행복주택 47,500 · 행복주택 신청방법 470 · 행복주택 자격 110",
+   "tool": "selfcheck",
+   "notice_kinds": [
+    "rental"
+   ],
+   "notice_match": [
+    "행복주택"
+   ],
+   "status": "todo"
+  },
+  {
+   "day": 2,
+   "slug": "didimdol-bogeumjari",
+   "category": "대출",
+   "topic": "디딤돌대출 vs 보금자리론, 무엇이 유리할까",
+   "keywords": "보금자리론 81,000 · 디딤돌대출 67,000 · 디딤돌 대출 조건 5,180 · 생애최초 LTV 760",
+   "tool": "",
+   "notice_kinds": [
+    "public",
+    "private"
+   ],
+   "status": "todo"
+  },
+  {
+   "day": 2,
+   "slug": "homeless-criteria",
+   "category": "청약 자격",
+   "topic": "무주택자 기준과 주택 수 세는 법 (오피스텔·분양권·소형 저가주택)",
+   "keywords": "무주택자 기준 3,460 · 무주택 세대구성원 1,020 · 오피스텔 주택수 780 · 분양권 주택수 220",
+   "tool": "selfcheck",
+   "notice_kinds": [
+    "mujeonwi",
+    "public",
+    "newlywed"
+   ],
+   "status": "todo"
+  },
+  {
+   "day": 2,
+   "slug": "gyosan",
+   "category": "신도시",
+   "topic": "하남 교산 신도시 — 위치·공급·교통·청약 일정",
+   "keywords": "교산신도시 7,420 · 하남 교산 2,340",
+   "tool": "",
+   "notice_kinds": [
+    "public",
+    "private",
+    "newlywed"
+   ],
+   "notice_match": [
+    "교산"
+   ],
+   "status": "todo"
+  },
+  {
+   "day": 3,
+   "slug": "youth-rental",
+   "category": "임대",
+   "topic": "청년 임대주택, 무엇부터 넣을까 (행복주택 청년·청년 매입임대·전세임대·청년안심주택)",
+   "keywords": "청년 주택 36,500 · 청년임대주택 13,350 · 서울청년임대주택 5,460 · 청년 전세임대 2,200 · 청년 매입임대 1,240",
+   "tool": "selfcheck",
+   "notice_kinds": [
+    "rental"
+   ],
+   "notice_match": [
+    "청년"
+   ],
+   "status": "todo"
+  },
+  {
+   "day": 3,
+   "slug": "youth-jeonse-loan",
+   "category": "대출",
+   "topic": "청년·신혼 전세대출 총정리 (버팀목·청년전용·중기청 후속 등 정책 전세대출)",
+   "keywords": "청년전세대출 44,400 · 청년버팀목대출 30,500 · 전세자금대출 29,770 · 신혼부부전세대출 22,850",
+   "tool": "selfcheck",
+   "notice_kinds": [
+    "rental"
+   ],
+   "status": "todo"
+  },
+  {
+   "day": 3,
+   "slug": "first-priority",
+   "category": "청약 자격",
+   "topic": "주택청약 1순위 조건과 예치금, 한 장으로",
+   "keywords": "주택청약 1순위 조건 6,590 · 청약 1순위 조건 2,140 · 청약 예치금 850",
+   "tool": "selfcheck",
+   "notice_kinds": [
+    "private",
+    "public"
+   ],
+   "status": "todo"
+  },
+  {
+   "day": 3,
+   "slug": "new-town-1st-rebuild",
+   "category": "신도시",
+   "topic": "1기 신도시 재건축 — 분당·일산·평촌·산본·중동 선도지구와 노후계획도시 특별법",
+   "keywords": "분당 재건축 15,020 · 1기 신도시 3,480 · 일산 재건축 2,120 · 산본 재건축 1,760 · 평촌 재건축 1,610 · 노후계획도시 특별법 630",
+   "tool": "",
+   "notice_kinds": [],
+   "status": "todo"
+  },
+  {
+   "day": 3,
+   "slug": "newlywed",
+   "category": "청약 자격",
+   "topic": "신혼부부 청약 총정리 — 신혼희망타운·신혼 특공·생애최초·신생아 특공",
+   "keywords": "신혼희망타운 6,230 · 생애최초 특별공급 2,190 · 신혼부부 특별공급 2,070 · 신혼부부청약 1,780 · 신생아 특별공급 1,020",
+   "tool": "selfcheck",
+   "notice_kinds": [
+    "newlywed",
+    "public",
+    "private"
+   ],
+   "status": "todo"
+  },
+  {
+   "day": 4,
+   "slug": "national-rental",
+   "category": "임대",
+   "topic": "국민임대주택 자격과 입주 조건 (소득·자산·순위)",
+   "keywords": "국민임대주택자격 6,220 · 임대아파트입주조건 5,900 · 국민임대 3,530",
+   "tool": "selfcheck",
+   "notice_kinds": [
+    "rental"
+   ],
+   "notice_match": [
+    "국민임대"
+   ],
+   "status": "todo"
+  },
+  {
+   "day": 4,
+   "slug": "maeip-rental",
+   "category": "임대",
+   "topic": "매입임대주택 순위·신청 방법 (일반·청년·신혼, 전세임대와 차이)",
+   "keywords": "매입임대주택 3,290 · LH 매입임대 2,330 · 전세임대 1,930 · 매입임대 1,750 · 청년 매입임대 1,240",
+   "tool": "selfcheck",
+   "notice_kinds": [
+    "rental"
+   ],
+   "notice_match": [
+    "매입임대",
+    "전세임대",
+    "든든전세"
+   ],
+   "status": "todo"
+  },
+  {
+   "day": 4,
+   "slug": "after-winning-money",
+   "category": "대출",
+   "topic": "청약 당첨 후 돈 계획 — 계약금·중도금 대출·잔금 대출 순서",
+   "keywords": "중도금 대출 1,540 · 계약금 1,310 · 잔금 대출 760",
+   "tool": "dsr",
+   "notice_kinds": [
+    "private",
+    "public",
+    "mujeonwi"
+   ],
+   "status": "todo"
+  },
+  {
+   "day": 4,
+   "slug": "new-town-2nd",
+   "category": "신도시",
+   "topic": "2기 신도시 다시 보기 — 검단·위례·운정·동탄·광교·판교, 공급과 입주 이후",
+   "keywords": "검단 신도시 24,140 · 위례 신도시 20,190 · 운정 신도시 5,480 · 동탄 신도시 3,420 · 2기 신도시 2,500",
+   "tool": "",
+   "notice_kinds": [
+    "private",
+    "public"
+   ],
+   "notice_match": [
+    "검단",
+    "위례",
+    "운정",
+    "동탄",
+    "광교",
+    "판교"
+   ],
+   "status": "todo"
+  },
+  {
+   "day": 4,
+   "slug": "gwacheon",
+   "category": "신도시",
+   "topic": "과천 공공주택지구·지식정보타운 — 과거 공급과 앞으로 나올 물량",
+   "keywords": "과천 아파트 6,180 · 과천 지식정보타운 3,220 · 과천 청약 1,730 · 과천 재건축 440",
+   "tool": "",
+   "notice_kinds": [
+    "private",
+    "public",
+    "rental",
+    "mujeonwi"
+   ],
+   "notice_match": [
+    "과천"
+   ],
+   "status": "todo"
+  }
+ ]
+}

@@ -38,7 +38,8 @@
     <nav class="nav" aria-label="주 메뉴">
       <a href="/schedule/this-week/"{% if nav == 'schedule' %} aria-current="page"{% endif %}>청약 일정</a>
       <a href="/region/"{% if nav == 'region' %} aria-current="page"{% endif %}>지역</a>
-      <a href="/type/"{% if nav == 'type' %} aria-current="page"{% endif %}>유형</a>
+      <a href="/type/"{% if nav == 'type' %} aria-current="page"{% endif %}>유형</a>{% if HAS_GUIDES %}
+      <a href="/guide/"{% if nav == 'guide' %} aria-current="page"{% endif %}>가이드</a>{% endif %}
     </nav>
   </div>
 </header>

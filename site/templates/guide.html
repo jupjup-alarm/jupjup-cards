@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% from "macros.html" import card, crumbs, cp_ad with context %}
+{% block main %}
+<main class="wrap g-page" id="main">
+  <article class="g-art">
+    {{ crumbs(crumb) }}
+    <header class="g-head">
+      <span class="g-eyebrow"><i></i>{{ g.category }} 가이드</span>
+      <h1 class="g-h1">{{ g.h1 }}</h1>
+      <p class="g-dek">{{ g.dek }}</p>
+      <p class="g-meta"><b>줍줍알람 편집팀</b><span>{{ g.basis }} 기준</span><span>마지막 확인 {{ g.checked|replace('-', '.') }}</span><span>읽는 데 {{ g.read_min }}분</span></p>
+    </header>
+    {% if g.cover %}
+    <figure class="g-cover">
+      <div class="g-cover-wide">{{ g.cover.svg|safe }}</div>
+      {% if g.cover.svg_narrow %}<div class="g-cover-narrow">{{ g.cover.svg_narrow|safe }}</div>{% endif %}
+      {% if g.cover.caption %}<figcaption>{{ g.cover.caption }}</figcaption>{% endif %}
+    </figure>
+    {% endif %}
+    {% if g.answer %}
+    <section class="g-answer" aria-labelledby="g-ans"><h2 id="g-ans">먼저 결론</h2><ol>{% for a in g.answer %}<li>{{ a }}</li>{% endfor %}</ol></section>
+    {% endif %}
+    {% if g.toc %}
+    <details class="g-toc-m"><summary>이 글의 순서 · {{ g.toc|length }}개 장</summary><ol>{% for id, t in g.toc %}<li><a href="#{{ id }}">{{ '%02d'|format(loop.index) }} {{ t }}</a></li>{% endfor %}{% if g.faq %}<li><a href="#g-faq">자주 묻는 질문</a></li>{% endif %}</ol></details>
+    {% endif %}
+    <div class="g-body">
+      {{ g.html }}
+    </div>
+
+    {% if g.faq %}
+    <section class="g-faq" aria-labelledby="g-faq">
+      <h2 id="g-faq">자주 묻는 질문</h2>
+      {% for q, a in g.faq %}<details{% if loop.first %} open{% endif %}><summary>{{ q }}</summary><p>{{ a }}</p></details>
+      {% endfor %}
+    </section>
+    {% endif %}
+
+    {% if g.notices %}
+    <section class="g-now" aria-labelledby="g-now">
+      <h2 id="g-now">지금 접수 중·예정인 공고</h2>
+      <div class="cards">{% for n in g.notices %}{{ card(n) }}{% endfor %}</div>
+      <p class="note">공고는 매일 아침 새로 고쳐져요. <a href="/schedule/this-week/">이번 주 청약 일정 전체 보기 →</a></p>
+    </section>
+    {% endif %}
+
+    {% if g.rel %}
+    <section class="g-rel" aria-labelledby="g-rel">
+      <h2 id="g-rel">함께 읽을 가이드</h2>
+      <div class="g-rel-list">{% for r in g.rel %}<a href="{{ r.url }}"><span>{{ r.category }}</span><b>{{ r.h1 }}</b></a>{% endfor %}</div>
+    </section>
+    {% endif %}
+
+    <section class="g-src" aria-labelledby="g-src">
+      <h2 id="g-src">근거와 출처</h2>
+      <ul>{% for s in g.sources %}<li>{% if s.url %}<a href="{{ s.url }}" target="_blank" rel="noopener nofollow">{{ s.name }}</a>{% else %}{{ s.name }}{% endif %}{% if s.note %} — {{ s.note }}{% endif %}</li>{% endfor %}</ul>
+      <p class="note">{{ g.basis }} 기준으로 법령·공식 안내를 확인해 정리했어요 (처음 쓴 날 {{ g.published|replace('-', '.') }}, 마지막 확인 {{ g.checked|replace('-', '.') }}). 제도는 바뀔 수 있으니 신청 전에는 입주자모집공고와 해당 기관 안내를 꼭 확인하세요. 이 글은 정보 제공 목적이며 투자·대출 권유가 아니에요. 틀린 곳은 <a href="/contact/">문의</a>로 알려 주세요.</p>
+    </section>
+  </article>
+
+  {% if g.toc %}
+  <aside class="g-toc" aria-label="목차">
+    <p>이 글의 순서</p>
+    <ol>{% for id, t in g.toc %}<li><a href="#{{ id }}">{{ '%02d'|format(loop.index) }} {{ t }}</a></li>{% endfor %}{% if g.faq %}<li><a href="#g-faq">자주 묻는 질문</a></li>{% endif %}</ol>
+    {{ cp_ad('pc', 'ad-pc') }}
+  </aside>
+  {% endif %}
+</main>
+{% endblock %}
+{% block after %}
+<script type="application/ld+json">
+{{ {"@context": "https://schema.org", "@graph": [
+  crumb_ld(crumb, g.h1, page_url),
+  {"@type": "Article", "headline": g.h1, "description": desc, "inLanguage": "ko", "datePublished": g.published, "dateModified": g.checked,
+   "image": BASE ~ og, "mainEntityOfPage": BASE ~ page_url,
+   "author": {"@type": "Organization", "name": "줍줍알람 편집팀", "url": BASE ~ "/about/"},
+   "publisher": {"@type": "Organization", "name": "줍줍알람", "logo": {"@type": "ImageObject", "url": BASE ~ "/icon-512.png"}}},
+  {"@type": "FAQPage", "mainEntity": g.faq_ld}]}|jsonld }}
+</script>
+<script>
+(function(){
+  function won(v){v=Math.round(v);if(v>=10000){var e=Math.floor(v/10000),m=v%10000;return e+'억'+(m?' '+m.toLocaleString('ko-KR')+'만':'')+'원';}return v.toLocaleString('ko-KR')+'만원';}
+  /* 청약 가점 계산기 (주택공급에 관한 규칙 별표 1 점수표) */
+  document.querySelectorAll('[data-tool="gajeom"]').forEach(function(el){
+    var mu=['해당 없음 (집이 있거나 만 30세 전 미혼) · 0점','1년 미만 · 2점'],bu=[],tg=['6개월 미만 · 1점','6개월 이상 ~ 1년 미만 · 2점'];
+    for(var y=1;y<15;y++){mu.push(y+'년 이상 ~ '+(y+1)+'년 미만 · '+(2*y+2)+'점');tg.push(y+'년 이상 ~ '+(y+1)+'년 미만 · '+(y+2)+'점');}
+    mu.push('15년 이상 · 32점');tg.push('15년 이상 · 17점');
+    for(var b=0;b<=6;b++){bu.push((b===6?'6명 이상':b+'명')+' · '+(5+5*b)+'점');}
+    var muv=[0,2],tgv=[1,2];for(y=1;y<15;y++){muv.push(2*y+2);tgv.push(y+2);}muv.push(32);tgv.push(17);
+    function sel(id,opts,def){return '<label class="g-row"><span>'+id+'</span><select>'+opts.map(function(o,i){return '<option value="'+i+'"'+(i===def?' selected':'')+'>'+o+'</option>';}).join('')+'</select></label>';}
+    el.innerHTML='<h3>내 청약 가점 계산해 보기</h3>'+sel('무주택 기간',mu,8)+sel('부양가족 수 (본인 제외)',bu,2)+sel('청약통장 가입기간',tg,10)+
+      '<div class="g-res"><b data-t>0점</b><span data-d></span></div><div class="g-bar3"><i data-a></i><i data-b></i><i data-c></i></div><p class="g-toolnote">점수표는 주택공급에 관한 규칙 별표 1 기준이에요. 무주택 기간 시작일·부양가족 인정 여부에 따라 달라질 수 있으니 최종 점수는 청약홈 \'청약가점 계산하기\'와 입주자모집공고로 확인하세요.</p>';
+    var ss=el.querySelectorAll('select');
+    function run(){var a=muv[+ss[0].value],b=5+5*(+ss[1].value),c=tgv[+ss[2].value],t=a+b+c;
+      el.querySelector('[data-t]').textContent=t+'점';el.querySelector('[data-d]').textContent='/ 84점 · 무주택 '+a+' + 부양가족 '+b+' + 통장 '+c;
+      el.querySelector('[data-a]').style.width=(a/84*100)+'%';el.querySelector('[data-b]').style.width=(b/84*100)+'%';el.querySelector('[data-c]').style.width=(c/84*100)+'%';}
+    ss.forEach(function(s){s.addEventListener('change',run)});run();
+  });
+  /* DSR·LTV 한도 계산기 (원리금균등, 참고용) */
+  document.querySelectorAll('[data-tool="dsr"]').forEach(function(el){
+    function inp(label,key,val,unit,step){return '<label class="g-row"><span>'+label+'</span><span class="g-in"><input type="number" inputmode="decimal" data-k="'+key+'" value="'+val+'" step="'+(step||1)+'" min="0"><em>'+unit+'</em></span></label>';}
+    el.innerHTML='<h3>내 주택담보대출 한도 가늠해 보기</h3>'+inp('연소득 (세전)','inc',6000,'만원',100)+inp('다른 대출의 1년 원리금','oth',0,'만원',10)+inp('사려는 집 가격','price',50000,'만원',1000)+inp('LTV 한도','ltv',70,'%',5)+inp('대출 금리','rate',4.0,'%',0.1)+inp('스트레스 금리 (가산)','st',1.5,'%p',0.1)+inp('만기','yr',30,'년',5)+inp('DSR 한도','dsr',40,'%',5)+
+      '<div class="g-res"><b data-t></b><span data-d></span></div><div class="g-two"><div><span>DSR 기준</span><b data-x></b></div><div><span>LTV 기준</span><b data-y></b></div></div><p class="g-toolnote">원리금균등 상환으로 단순 계산한 참고값이에요. 실제 한도는 소득 인정 방식, 지역별 한도 상한, 은행 심사에 따라 달라요. 스트레스 금리는 한도 계산에만 더해지고 실제 이자에는 붙지 않아요.</p>';
+    function v(k){return parseFloat(el.querySelector('[data-k="'+k+'"]').value)||0;}
+    function run(){var r=(v('rate')+v('st'))/1200,n=v('yr')*12,ann=r>0?12*r/(1-Math.pow(1+r,-n)):12/n;
+      var room=v('inc')*v('dsr')/100-v('oth'),a=Math.max(0,room/ann),b=v('price')*v('ltv')/100,m=Math.min(a,b);
+      el.querySelector('[data-t]').textContent=won(m);el.querySelector('[data-d]').textContent=(a<b?'DSR':'LTV')+' 기준이 더 작아서 이 값이 한도예요';
+      el.querySelector('[data-x]').textContent=won(a);el.querySelector('[data-y]').textContent=won(b);}
+    el.querySelectorAll('input').forEach(function(i){i.addEventListener('input',run)});run();
+  });
+  /* 예/아니오 체크 */
+  document.querySelectorAll('[data-tool="selfcheck"]').forEach(function(el){
+    var out=el.querySelector('[data-yes]');
+    el.querySelectorAll('.g-yn').forEach(function(g){var bs=g.querySelectorAll('button');
+      bs.forEach(function(b){b.addEventListener('click',function(){bs.forEach(function(x){x.setAttribute('aria-pressed',x===b)});
+        out.textContent=el.querySelectorAll('button[data-v="1"][aria-pressed="true"]').length;});});});
+  });
+  /* 목차: 지금 읽는 장 */
+  var links=[].slice.call(document.querySelectorAll('.g-toc a')),secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))}).filter(Boolean);
+  if(secs.length&&'IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){a.parentNode.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id)});}});},{rootMargin:'0px 0px -70% 0px'});secs.forEach(function(s){io.observe(s)});}
+})();
+</script>
+{% endblock %}

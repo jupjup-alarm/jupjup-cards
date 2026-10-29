@@ -295,6 +295,7 @@
     {% for row in n.eligibility %}<div><dt>{{ row[0] }}</dt><dd>{{ row[1] }}{% if row|length > 2 and row[2] %} <span class="tag">{{ row[2] }}</span>{% endif %}</dd></div>
     {% endfor %}
     </dl>
+  {% if n.guide_link %}<a class="guide-link" href="{{ n.guide_link.url }}"><b>처음이라면</b><span>{{ n.guide_link.h1 }} →</span></a>{% endif %}
   </section>
 
   {% if not n.houses %}

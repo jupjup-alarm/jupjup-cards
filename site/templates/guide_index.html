@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% from "macros.html" import crumbs with context %}
+{% block main %}
+<main class="wrap" id="main">
+  <div class="lwrap">
+    {{ crumbs(crumb) }}
+    <div class="lhead">
+      <h1>청약·임대·대출 가이드</h1>
+      <p>공고를 읽기 전에 알아 두면 좋은 기준을 칼럼으로 정리했어요. 법령과 공식 안내를 근거로 쓰고, 기준이 바뀌면 고쳐요.</p>
+      <div class="llinks">{% for c, slug, lst in cats %}<a href="#{{ slug }}">{{ c }} {{ lst|length }}</a>{% endfor %}</div>
+    </div>
+    {% for c, slug, lst in cats %}
+    <section class="lsec" id="{{ slug }}">
+      <h2>{{ c }} <small>{{ lst|length }}편</small></h2>
+      <div class="g-grid">{% for g in lst %}
+        <a class="g-card" href="{{ g.url }}">
+          <span class="g-thumb" aria-hidden="true">{{ (g.cover.svg_narrow or g.cover.svg)|safe }}</span>
+          <span class="g-ct"><b>{{ g.h1 }}</b><span>{{ g.dek }}</span><small>{{ g.basis }} 기준 · 읽는 데 {{ g.read_min }}분</small></span>
+        </a>{% endfor %}
+      </div>
+    </section>
+    {% endfor %}
+  </div>
+</main>
+{% endblock %}
+{% block after %}
+<script type="application/ld+json">
+{{ {"@context": "https://schema.org", "@graph": [crumb_ld([("홈", "/")], "가이드", page_url),
+  {"@type": "ItemList", "name": "줍줍알람 가이드", "itemListElement": guides_ld}]}|jsonld }}
+</script>
+{% endblock %}

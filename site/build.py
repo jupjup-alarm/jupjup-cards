@@ -18,6 +18,8 @@ from pathlib import Path
 from xml.sax.saxutils import escape as xesc
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import guides as GUIDES
 from markupsafe import Markup
 
 SITE = Path(__file__).resolve().parent
@@ -578,7 +580,7 @@ def env():
         return {"@type": "BreadcrumbList", "itemListElement": el}
     def items_ld(items):
         return [{"@type": "ListItem", "position": i, "url": BASE + n["url"], "name": n["title"]} for i, n in enumerate(items, 1)]
-    e.globals.update(RENTAL_EXPLAIN=RENTAL_EXPLAIN, BASE=BASE, IG=IG, THREADS=THREADS, COUPANG=COUPANG, COUPANG_NOTE=COUPANG_NOTE, STATUS=STATUS, KINDS=KINDS, crumb_ld=crumb_ld, items_ld=items_ld,
+    e.globals.update(HAS_GUIDES=bool(GUIDES.load()), RENTAL_EXPLAIN=RENTAL_EXPLAIN, BASE=BASE, IG=IG, THREADS=THREADS, COUPANG=COUPANG, COUPANG_NOTE=COUPANG_NOTE, STATUS=STATUS, KINDS=KINDS, crumb_ld=crumb_ld, items_ld=items_ld,
                      logo=Markup((SITE / "static/favicon.svg").read_text().replace('<svg xmlns="http://www.w3.org/2000/svg" ', '<svg class="mark" aria-hidden="true" focusable="false" ')))
     return e
 
@@ -691,6 +693,15 @@ def main():
 
     # ── 공고 페이지
     apt_tpl = E.get_template("apt.html")
+    gmeta = GUIDES.load()
+
+    def guide_for(n):
+        for g in gmeta:
+            if n["kind"] in (g.get("notice_kinds") or []):
+                mt = g.get("notice_match") or []
+                if not mt or any(w in n["title"] + (n.get("kind_label") or "") + (n.get("rental_type") or "") for w in mt):
+                    return {"url": f"/guide/{g['slug']}/", "h1": g["h1"]}
+        return None
     for n in notices:
         n["imgs"] = notice_images(n)
         same = [x for x in notices if x is not n and x["sido"] == n["sido"] and x["status"] in ("open", "upcoming")]
@@ -740,6 +751,7 @@ def main():
             desc = re.sub(r"(일정·분양가·자격과 공식 공고 링크를 한 번에|신청 자격·일정과 공식 공고 링크를 한 번에|주택 목록·면적·자격·신청 방법을 한 번에)\.$",
                           f"{n.get('complex') or n['title']} {tail}까지 공식 공고 기준으로 정리.", desc)
         n["page_title"], n["desc"] = title, desc
+        n["guide_link"] = guide_for(n)
         n["crumb"] = crumb_for(n)
         h = apt_tpl.render(n=n, **common, page_url=n["url"], title=title, desc=desc, og=n["imgs"]["og"])
         write(n["url"], h, title, desc, "apt", n["modified"])
@@ -878,6 +890,9 @@ def main():
         intros={KINDS[k][0]: KIND_INTRO[k] for k in by_kind},
         page_url="/type/", og="/og-default.jpg", crumb=[("홈", "/"), ("유형", None)], **common)
     write("/type/", h, "유형별 청약 공고 · 줍줍알람", "", "list")
+
+    # 가이드 칼럼
+    GUIDES.build(E, notices, write, common, PUB, BASE, TODAY, problems)
 
     # 기본 페이지
     pg = E.get_template("page.html")
