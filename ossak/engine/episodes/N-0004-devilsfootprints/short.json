@@ -47,11 +47,6 @@
    "nop": true
   },
   {
-   "id": "d08",
-   "prompt": "A heavy wooden cottage door with a bar across it, a thin strip of candlelight leaking through the window shutter, in the snow in front of the door a single line of small hoof prints passing by, night, nobody visible.",
-   "nop": true
-  },
-  {
    "id": "d09",
    "prompt": "Close-up of a narrow clay drainpipe opening half-buried in snow, a single line of small hoof prints ends at the pipe mouth, and on the other side of the snowbank the same line starts again, the inside of the pipe pitch black, cold blue light.",
    "nop": true
@@ -84,8 +79,8 @@
    ]
   },
   {
-   "say": "1855년 2월, 영국 신문에 실린 기록입니다.",
-   "tts": "천팔백오십오 년 이월, 영국 신문에 실린 기록입니다.",
+   "say": "1855년 2월, 영국 데번셔. 신문에 실린 기록입니다.",
+   "tts": "천팔백오십오 년 이월, 영국 데번셔. 신문에 실린 기록입니다.",
    "img": "d02",
    "move": "in",
    "cont": true,
@@ -136,16 +131,6 @@
    "focus": [
     0.5,
     0.55
-   ]
-  },
-  {
-   "say": "문을 걸어 잠근 집도 있었다는 기록이 있습니다.",
-   "tts": "문을 걸어 잠근 집도 있었다는 기록이 있습니다.",
-   "img": "d08",
-   "move": "in",
-   "emph": [
-    "걸어",
-    "잠근"
    ]
   },
   {
