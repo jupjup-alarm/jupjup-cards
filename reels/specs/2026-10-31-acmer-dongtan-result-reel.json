@@ -1,0 +1,60 @@
+{
+ "slug": "2026-10-31-acmer-dongtan-result-reel",
+ "title": "아크메르 동탄 95·99 청약 결과",
+ "series": "줍줍알람",
+ "voice": "voices/8c53ed9641ae/",
+ "voice_speed": 1.0,
+ "scenes": [
+  {
+   "type": "hook",
+   "chips": [
+    "줍줍알람"
+   ],
+   "lines": [
+    "875세대에",
+    "{n}명 왔어요"
+   ],
+   "count": {
+    "to": 695
+   },
+   "sub": "동탄 대단지, 미달 실화?",
+   "face": "깜짝",
+   "photo": "photos/mood/9f683e1e71-2.jpg"
+  },
+  {
+   "type": "beat",
+   "eyebrow": "전체",
+   "big": "1,559세대에 1,583건",
+   "big_sub": "99블록 평균 약 0.8대 1 (계산값)",
+   "highlight": "1,583건",
+   "bg": "photos/mood/9f683e1e71-1.jpg",
+   "say": "아크메르 동탄 1순위 결과인데요, 1,559세대에 1,583건이 들어왔어요."
+  },
+  {
+   "type": "beat",
+   "eyebrow": "몰린 곳",
+   "big": "84C 34.13대 1",
+   "big_sub": "116~188㎡는 대부분 미달",
+   "highlight": "34.13대 1",
+   "bg": "photos/mood/9f683e1e71-3.jpg",
+   "say": "84C는 34.13대 1까지 몰렸는데요, 큰 평형은 대부분 미달이에요."
+  },
+  {
+   "type": "beat",
+   "eyebrow": "다만",
+   "big": "1순위 결과 기준",
+   "big_sub": "남은 세대 재공급은 아직 공지 없어요",
+   "bg": "none",
+   "say": "다만 1순위 기준이고, 남은 세대가 다시 나올지는 아직 몰라요."
+  },
+  {
+   "type": "cta",
+   "lines": [
+    "동탄 84㎡",
+    "넣을래요?"
+   ],
+   "highlight": "댓글",
+   "ask": "팔로우하면 남은 세대 소식 알려드려요"
+  }
+ ]
+}
