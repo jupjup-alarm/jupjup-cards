@@ -96,8 +96,10 @@
    "notice_kinds": [
     "rental"
    ],
-   "status": "todo",
-   "hold": "2026-10-29 검수 보류: 1·2인 도시근로자 100% 금액을 120%·110% 값으로 잘못 씀 → 소득표·facts·예시 가구 2·3 결론 틀림, 국민임대·장기전세 출산 가산·10년 공공임대 맞벌이 200% 누락. 초안 _draft-lh-rental-types.json (1인 100% 3,813,363원·2인 5,866,270원으로 고쳐 다시 검산)"
+   "status": "done",
+   "published": "2026-10-30",
+   "checked": "2026-10-30",
+   "reviewed": "1차 출처 팩트체크(별도 검수)·편집 검수 반영"
   },
   {
    "day": 2,
@@ -183,7 +185,10 @@
    "notice_match": [
     "청년"
    ],
-   "status": "todo"
+   "status": "done",
+   "published": "2026-10-30",
+   "checked": "2026-10-30",
+   "reviewed": "1차 출처 팩트체크(별도 검수)·편집 검수 반영"
   },
   {
    "day": 3,
@@ -195,7 +200,10 @@
    "notice_kinds": [
     "rental"
    ],
-   "status": "todo"
+   "status": "done",
+   "published": "2026-10-30",
+   "checked": "2026-10-30",
+   "reviewed": "1차 출처 팩트체크(별도 검수)·편집 검수 반영"
   },
   {
    "day": 3,
@@ -208,7 +216,10 @@
     "private",
     "public"
    ],
-   "status": "todo"
+   "status": "done",
+   "published": "2026-10-30",
+   "checked": "2026-10-30",
+   "reviewed": "1차 출처 팩트체크(별도 검수)·편집 검수 반영"
   },
   {
    "day": 3,
@@ -218,7 +229,10 @@
    "keywords": "분당 재건축 15,020 · 1기 신도시 3,480 · 일산 재건축 2,120 · 산본 재건축 1,760 · 평촌 재건축 1,610 · 노후계획도시 특별법 630",
    "tool": "",
    "notice_kinds": [],
-   "status": "todo"
+   "status": "done",
+   "published": "2026-10-30",
+   "checked": "2026-10-30",
+   "reviewed": "1차 출처 팩트체크(별도 검수)·편집 검수 반영"
   },
   {
    "day": 3,
