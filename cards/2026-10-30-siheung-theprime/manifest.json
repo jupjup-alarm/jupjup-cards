@@ -1,0 +1,53 @@
+{
+  "slug": "2026-10-30-siheung-theprime",
+  "title": "엘리프 시흥 더프라임",
+  "series": "내집마련",
+  "count": 7,
+  "urls": [
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-30-siheung-theprime/01.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-30-siheung-theprime/02.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-30-siheung-theprime/03.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-30-siheung-theprime/04.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-30-siheung-theprime/05.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-30-siheung-theprime/06.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-30-siheung-theprime/07.jpg"
+  ],
+  "warnings": {
+    "03": [
+      "zoom 0.94"
+    ],
+    "04": [
+      "zoom 0.91"
+    ]
+  },
+  "boards": [
+    {
+      "file": "2026-10-30-siheung-theprime-01.dc.html",
+      "title": "엘리프 시흥 더프라임 1/7"
+    },
+    {
+      "file": "2026-10-30-siheung-theprime-02.dc.html",
+      "title": "엘리프 시흥 더프라임 2/7"
+    },
+    {
+      "file": "2026-10-30-siheung-theprime-03.dc.html",
+      "title": "엘리프 시흥 더프라임 3/7"
+    },
+    {
+      "file": "2026-10-30-siheung-theprime-04.dc.html",
+      "title": "엘리프 시흥 더프라임 4/7"
+    },
+    {
+      "file": "2026-10-30-siheung-theprime-05.dc.html",
+      "title": "엘리프 시흥 더프라임 5/7"
+    },
+    {
+      "file": "2026-10-30-siheung-theprime-06.dc.html",
+      "title": "엘리프 시흥 더프라임 6/7"
+    },
+    {
+      "file": "2026-10-30-siheung-theprime-07.dc.html",
+      "title": "엘리프 시흥 더프라임 7/7"
+    }
+  ]
+}
