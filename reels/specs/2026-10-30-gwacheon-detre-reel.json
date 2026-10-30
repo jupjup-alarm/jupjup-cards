@@ -1,0 +1,58 @@
+{
+ "slug": "2026-10-30-gwacheon-detre-reel",
+ "title": "과천 디에트르 퍼스티지(S2BL) 무순위",
+ "series": "줍줍알람",
+ "voice": "voices/3239896939ea/",
+ "voice_speed": 1.0,
+ "scenes": [
+  {
+   "type": "hook",
+   "chips": [
+    "줍줍알람"
+   ],
+   "lines": [
+    "여기 진짜예요?",
+    "과천 59㎡ 2채가"
+   ],
+   "sub": "다시 나왔대요",
+   "face": "깜짝",
+   "photo": "photos/mood/4c9caf7a9c-3.jpg"
+  },
+  {
+   "type": "beat",
+   "eyebrow": "장소",
+   "big": "과천지식정보타운",
+   "big_sub": "과천 무주택 세대주 · 통장 무관",
+   "bg": "photos/mood/c94a5f86a8-1.jpg",
+   "bg_pos": "center 40%",
+   "say": "지금 과천지식정보타운에 나왔는데요. 과천 사는 무주택 세대주면 통장 없이 넣어요."
+  },
+  {
+   "type": "beat",
+   "eyebrow": "가격",
+   "big": "8억 5,715만원",
+   "big_sub": "옆 단지 실거래 대비 약 12억 9천 저렴(추정)",
+   "highlight": "8억 5,715만원",
+   "bg": "none",
+   "say": "최고가는 8억 5,715만 원인데요. 옆 단지보다 약 12억 9천 싼 추정이에요."
+  },
+  {
+   "type": "beat",
+   "eyebrow": "다만",
+   "big": "딱 2세대 추첨",
+   "big_sub": "거주의무 5년 · 재당첨 10년",
+   "highlight": "2세대",
+   "bg": "none",
+   "say": "다만 딱 2세대 추첨이고, 거주의무 5년에 재당첨 제한 10년이에요."
+  },
+  {
+   "type": "cta",
+   "lines": [
+    "과천이면",
+    "넣을래요?"
+   ],
+   "highlight": "넣을래요?",
+   "ask": "팔로우하면 마감 하루 전에 알려드려요"
+  }
+ ]
+}

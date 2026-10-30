@@ -1,0 +1,57 @@
+{
+ "slug": "2026-10-30-newlywed-jeonse-reel",
+ "title": "2026년 신혼·신생아 전세임대Ⅰ 입주자 수시모집",
+ "series": "임대알람",
+ "voice": "voices/6b147e9dac19/",
+ "voice_speed": 1.0,
+ "scenes": [
+  {
+   "type": "hook",
+   "chips": [
+    "임대알람"
+   ],
+   "lines": [
+    "이 3개 YES면",
+    "전셋집 1억4,500만원"
+   ],
+   "sub": "LH가 대신 계약해줘요",
+   "face": "윙크",
+   "photo": "photos/mood/39382c3f38-ai.jpg"
+  },
+  {
+   "type": "beat",
+   "eyebrow": "질문1",
+   "big": "집 없어요?",
+   "big_sub": "신청일 기준 무주택세대구성원",
+   "bg": "photos/mood/39382c3f38-1.jpg",
+   "bg_pos": "center 30%",
+   "say": "첫째 지금 집 없어요? 무주택세대구성원이어야 해요."
+  },
+  {
+   "type": "beat",
+   "eyebrow": "질문2",
+   "big": "신혼 · 신생아 가구?",
+   "big_sub": "질문3 소득 70% · 자산 3억4,500만원 이하?",
+   "bg": "photos/mood/39382c3f38-ai.jpg",
+   "bg_pos": "center 70%",
+   "say": "둘째 신혼이나 신생아 가구예요? 셋째 소득 70퍼센트 이하예요?"
+  },
+  {
+   "type": "beat",
+   "eyebrow": "다만",
+   "big": "집은 직접 구해요",
+   "big_sub": "선정까지 최소 10주 · 조기 중단 가능",
+   "bg": "none",
+   "say": "다만 집은 직접 구해야 하고, 선정까지 최소 10주 걸려요."
+  },
+  {
+   "type": "cta",
+   "lines": [
+    "몇 개 해당돼요?",
+    "댓글로 알려주세요"
+   ],
+   "highlight": "댓글",
+   "ask": "팔로우하면 새 공고 바로 알려드려요"
+  }
+ ]
+}
