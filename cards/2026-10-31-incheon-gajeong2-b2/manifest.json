@@ -1,0 +1,59 @@
+{
+  "slug": "2026-10-31-incheon-gajeong2-b2",
+  "title": "인천가정2 B2블록 공공분양 잔여세대 (순번추첨 동호지정)",
+  "series": "내집마련",
+  "count": 7,
+  "urls": [
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-31-incheon-gajeong2-b2/01.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-31-incheon-gajeong2-b2/02.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-31-incheon-gajeong2-b2/03.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-31-incheon-gajeong2-b2/04.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-31-incheon-gajeong2-b2/05.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-31-incheon-gajeong2-b2/06.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-10-31-incheon-gajeong2-b2/07.jpg"
+  ],
+  "warnings": {
+    "02": [
+      "zoom 0.97"
+    ],
+    "03": [
+      "zoom 0.94"
+    ],
+    "04": [
+      "zoom 0.97"
+    ],
+    "06": [
+      "zoom 0.88"
+    ]
+  },
+  "boards": [
+    {
+      "file": "2026-10-31-incheon-gajeong2-b2-01.dc.html",
+      "title": "인천가정2 B2블록 공공분양 잔여세대 (순번추첨 동호지정) 1/7"
+    },
+    {
+      "file": "2026-10-31-incheon-gajeong2-b2-02.dc.html",
+      "title": "인천가정2 B2블록 공공분양 잔여세대 (순번추첨 동호지정) 2/7"
+    },
+    {
+      "file": "2026-10-31-incheon-gajeong2-b2-03.dc.html",
+      "title": "인천가정2 B2블록 공공분양 잔여세대 (순번추첨 동호지정) 3/7"
+    },
+    {
+      "file": "2026-10-31-incheon-gajeong2-b2-04.dc.html",
+      "title": "인천가정2 B2블록 공공분양 잔여세대 (순번추첨 동호지정) 4/7"
+    },
+    {
+      "file": "2026-10-31-incheon-gajeong2-b2-05.dc.html",
+      "title": "인천가정2 B2블록 공공분양 잔여세대 (순번추첨 동호지정) 5/7"
+    },
+    {
+      "file": "2026-10-31-incheon-gajeong2-b2-06.dc.html",
+      "title": "인천가정2 B2블록 공공분양 잔여세대 (순번추첨 동호지정) 6/7"
+    },
+    {
+      "file": "2026-10-31-incheon-gajeong2-b2-07.dc.html",
+      "title": "인천가정2 B2블록 공공분양 잔여세대 (순번추첨 동호지정) 7/7"
+    }
+  ]
+}
