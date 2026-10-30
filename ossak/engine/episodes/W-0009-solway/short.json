@@ -1,0 +1,136 @@
+{
+ "id": "W-0009",
+ "no": 7,
+ "series": "세계기담",
+ "format": "loop",
+ "mood": "mystery",
+ "title": "솔웨이 퍼스의 사진",
+ "hook": [
+  "“아무도 없었다”던 들판,",
+  "현상하니 한 명 더"
+ ],
+ "accent_word": "한",
+ "images": [
+  {
+   "id": "v01",
+   "prompt": "A small child silhouette standing alone in a misty English marshland meadow, seen from behind, faceless, empty tall grass all around, low cold light, nobody else there, upper fifth of the frame is empty pale sky.",
+   "nop": true
+  },
+  {
+   "id": "v02",
+   "prompt": "1960s England: a faceless silhouette of a man holding a box camera at his waist standing on marsh grass, far behind him a parked old car, grey afternoon, wide empty moor.",
+   "nop": true
+  },
+  {
+   "id": "v03",
+   "prompt": "A dim darkroom with a red safelight, photographic prints hanging on a line, the images blurred and unreadable, a tray of developer, nobody there.",
+   "nop": true
+  },
+  {
+   "id": "v04",
+   "prompt": "An old grainy black and white photographic print held between two fingers, showing a small child silhouette standing in marsh grass and, standing close behind her, a tall pale indistinct standing figure with no face, blurred, dim darkroom red light.",
+   "nop": true
+  },
+  {
+   "id": "v06",
+   "prompt": "Extreme close-up of an old grainy black and white print: a pale standing figure shape, indistinct, with a smooth blank blur where a face would be, harsh film grain, dark vignette.",
+   "nop": true
+  }
+ ],
+ "scenes": [
+  {
+   "say": "“아무도 없었다”던 들판의 사진에, 한 명이 더 있었습니다.",
+   "tts": "아무도 없었다던 들판의 사진에 한 명이 더 있었습니다.",
+   "img": "v01",
+   "move": "in",
+   "emph": [
+    "한",
+    "명이"
+   ],
+   "focus": [
+    0.5,
+    0.6
+   ]
+  },
+  {
+   "say": "1964년 솔웨이 해안, 소방관이 딸을 찍었습니다.",
+   "tts": "천구백육십사 년 솔웨이 해안, 소방관이 딸을 찍었습니다.",
+   "img": "v02",
+   "move": "in",
+   "cont": true,
+   "emph": [
+    "소방관이"
+   ]
+  },
+  {
+   "say": "습지엔 딸과 자기뿐, 바람 소리만 났다고 합니다.",
+   "tts": "습지엔 딸과 자기뿐 바람 소리만 났다고 합니다.",
+   "img": "v03",
+   "move": "in",
+   "emph": [
+    "바람",
+    "소리만"
+   ]
+  },
+  {
+   "say": "그런데 현상하니, 딸 뒤에 흰 옷의 형체가 서 있었습니다.",
+   "tts": "그런데 현상하니, 딸 뒤에 흰 옷의 형체가 서 있었습니다.",
+   "img": "v04",
+   "move": "in",
+   "cont": true,
+   "emph": [
+    "형체가"
+   ]
+  },
+  {
+   "say": "마치 처음부터 거기 있었다는 듯이, 딸 바로 뒤에.",
+   "tts": "마치 처음부터 거기 있었다는 듯이, 딸 바로 뒤에.",
+   "img": "v04",
+   "move": "in",
+   "cont": true,
+   "emph": [
+    "처음부터"
+   ],
+   "zoom": 1.5,
+   "focus": [
+    0.5,
+    0.55
+   ]
+  },
+  {
+   "say": "그런데 셔터를 누른 사람의 눈에는, 끝내 아무도 보이지 않았습니다.",
+   "tts": "그런데 셔터를 누른 사람의 눈에는, 끝내 아무도 보이지 않았습니다.",
+   "img": "v06",
+   "move": "in",
+   "emph": [
+    "보이지",
+    "않았습니다"
+   ],
+   "sfx": "hit"
+  },
+  {
+   "say": "그 형체는 대체, 언제부터 거기 서 있었던 걸까요?",
+   "tts": "그 형체는 대체, 언제부터 거기 서 있었던 걸까요?",
+   "img": "v01",
+   "move": "out",
+   "emph": [
+    "언제부터"
+   ],
+   "zoom": 1.3,
+   "focus": [
+    0.5,
+    0.6
+   ]
+  }
+ ],
+ "youtube": {
+  "title": "“아무도 없었다”던 들판의 사진에, 한 명이 더 있었다",
+  "summary": "1964년 5월 영국 솔웨이 해안. 소방관이 딸을 찍은 사진을 현상하자, 딸 바로 뒤에 흰 옷의 형체가 서 있었습니다. 프레임 밖을 지나던 사람이 찍혔다는 설명도 있습니다.",
+  "pinned": "그 형체는 언제부터 거기 있었을까요? 지나던 사람이 찍힌 거라는 설명, 믿으시나요?"
+ },
+ "sources": "출처: Dr David Clarke, 'The Solway Firth Spaceman', Fortean Times(2013), Wikipedia 'Solway Firth Spaceman'",
+ "tags": "#세계기담 #솔웨이퍼스",
+ "risk": "저",
+ "adapted": true,
+ "hook_type": "증언×증거 불일치(아무도 없었다×사진)"
+}

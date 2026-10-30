@@ -1,0 +1,215 @@
+{
+ "id": "M-0002",
+ "no": 10,
+ "series": "미제파일",
+ "format": "story",
+ "mood": "mystery",
+ "title": "애거사 크리스티 11일 실종",
+ "hook": [
+  "불 켜진 빈 차,",
+  "주인은 추리소설의 여왕"
+ ],
+ "accent_word": "추리소설의",
+ "images": [
+  {
+   "id": "c01",
+   "prompt": "An English 1920s motor car nose-down in a hawthorn thicket on a grassy hillside slope, headlamps still glowing in pale pre-dawn mist, the door ajar and a thick fur coat lying on the seat, nobody there, upper fifth of the frame is empty misty sky.",
+   "nop": true
+  },
+  {
+   "id": "c02",
+   "prompt": "Wide view of the same abandoned 1920s car stuck in bushes on a grassy slope above a chalk quarry edge, headlamps glowing, cold winter dawn, empty countryside, nobody there.",
+   "nop": true
+  },
+  {
+   "id": "c03",
+   "prompt": "Close-up inside a 1920s car: a leather suitcase on the back seat and a driving licence card lying on the front seat (any text blurred and unreadable), a fur coat, pale dawn light through the window, nobody there.",
+   "nop": true
+  },
+  {
+   "id": "c04",
+   "prompt": "A misty English country lane at dawn, a small faceless silhouette of a woman in a thin light dress standing beside a parked car seen from behind and far away, a second faceless silhouette helping at the engine, cold grey light, no faces.",
+   "nop": true
+  },
+  {
+   "id": "c06",
+   "prompt": "A long line of faceless silhouettes carrying lanterns and torches crossing a dark moor field at dusk, seen from far away, search party, no faces, thin fog.",
+   "nop": true
+  },
+  {
+   "id": "c08",
+   "prompt": "A grand Victorian spa hotel exterior at winter evening, rows of lit windows, wet cobbled street, lamp posts, nobody visible, cold blue dusk.",
+   "nop": true
+  },
+  {
+   "id": "c10",
+   "prompt": "An open hotel guest register book on a reception desk beside an inkwell and a pen, a warm lamp, the written names are blurred and unreadable, nobody there.",
+   "nop": true
+  },
+  {
+   "id": "c11",
+   "prompt": "An old open leather book with nearly blank pages on a desk by a window in pale dawn light, a pen laid beside it, nobody there.",
+   "nop": true
+  },
+  {
+   "id": "c12",
+   "prompt": "Boogi the owl archivist sits at a wooden archive desk at night beside a small amber lantern, an old logbook open in front of him, a small toy car and a folded fur coat on the desk, shelves of old books behind (any writing blurred and unreadable).",
+   "nop": true,
+   "with_character": true
+  }
+ ],
+ "scenes": [
+  {
+   "say": "모피 코트는 차에 있었습니다. 주인만 없었습니다.",
+   "tts": "모피 코트는 차에 있었습니다. 주인만 없었습니다.",
+   "img": "c01",
+   "move": "in",
+   "emph": [
+    "주인만"
+   ],
+   "focus": [
+    0.5,
+    0.62
+   ]
+  },
+  {
+   "say": "1926년 겨울 영국, 추리소설의 여왕 애거사 크리스티의 차였습니다.",
+   "tts": "천구백이십육 년 겨울 영국, 추리소설의 여왕 애거사 크리스티의 차였습니다.",
+   "img": "c02",
+   "move": "out",
+   "cont": true,
+   "emph": [
+    "애거사",
+    "크리스티의"
+   ]
+  },
+  {
+   "say": "차는 비탈 덤불에 처박혀 있었고, 전조등은 아직 켜져 있었습니다.",
+   "tts": "차는 비탈 덤불에 처박혀 있었고, 전조등은 아직 켜져 있었습니다.",
+   "img": "c02",
+   "move": "left",
+   "emph": [
+    "전조등은"
+   ],
+   "zoom": 1.5,
+   "focus": [
+    0.55,
+    0.58
+   ]
+  },
+  {
+   "say": "옷가방과 면허증도, 좌석 위에 그대로 있었습니다.",
+   "tts": "옷가방과 면허증도 좌석 위에 그대로 있었습니다.",
+   "img": "c03",
+   "move": "right",
+   "cont": true,
+   "emph": [
+    "면허증도"
+   ]
+  },
+  {
+   "say": "그날 새벽, 근처에서 한 여자를 봤다는 사람이 있었습니다.",
+   "tts": "그날 새벽, 근처에서 한 여자를 봤다는 사람이 있었습니다.",
+   "img": "c04",
+   "move": "in",
+   "emph": [
+    "한",
+    "여자를"
+   ]
+  },
+  {
+   "say": "얇은 옷차림으로, 차 시동을 걸어 달라고 했답니다.",
+   "tts": "얇은 옷차림으로 차 시동을 걸어 달라고 했답니다.",
+   "img": "c04",
+   "move": "in",
+   "cont": true,
+   "emph": [
+    "얇은"
+   ],
+   "zoom": 1.4,
+   "focus": [
+    0.4,
+    0.62
+   ]
+  },
+  {
+   "say": "온 나라가 찾았고, 『셜록 홈즈』를 쓴 코난 도일마저 영매를 찾아갔습니다.",
+   "tts": "온 나라가 찾았고, 셜록 홈즈를 쓴 코난 도일마저 영매를 찾아갔습니다.",
+   "img": "c06",
+   "move": "right",
+   "emph": [
+    "코난",
+    "도일마저"
+   ]
+  },
+  {
+   "say": "열하루째, 해러게이트의 한 호텔에서 누군가 그녀를 알아봤습니다.",
+   "tts": "열하루째, 해러게이트의 한 호텔에서 누군가 그녀를 알아봤습니다.",
+   "img": "c08",
+   "move": "up",
+   "emph": [
+    "열하루째"
+   ]
+  },
+  {
+   "say": "숙박부에 적힌 이름은, 애거사 크리스티가 아니었습니다.",
+   "tts": "숙박부에 적힌 이름은, 애거사 크리스티가 아니었습니다.",
+   "img": "c10",
+   "move": "in",
+   "emph": [
+    "아니었습니다"
+   ],
+   "sfx": "hit"
+  },
+  {
+   "say": "남편이 만나던 다른 여자의 성, 닐이었습니다.",
+   "tts": "남편이 만나던 다른 여자의 성, 닐이었습니다.",
+   "img": "c10",
+   "move": "in",
+   "cont": true,
+   "emph": [
+    "닐이었습니다"
+   ],
+   "zoom": 1.5,
+   "focus": [
+    0.5,
+    0.55
+   ]
+  },
+  {
+   "say": "본인은 기억을 잃었다고 했습니다. 하지만 자서전에는, 그 열하루가 아예 없습니다.",
+   "tts": "본인은 기억을 잃었다고 했습니다. 하지만 자서전에는, 그 열하루가 아예 없습니다.",
+   "img": "c11",
+   "move": "in",
+   "emph": [
+    "아예"
+   ]
+  },
+  {
+   "say": "남편이 만나던 여자의 성을, 그녀는 왜 적었을까요?",
+   "tts": "남편이 만나던 여자의 성을, 그녀는 왜 적었을까요?",
+   "img": "c12",
+   "move": "in",
+   "emph": [
+    "왜"
+   ]
+  }
+ ],
+ "youtube": {
+  "title": "불 켜진 빈 차, 주인은 추리소설의 여왕이었다",
+  "summary": "1926년 12월 영국. 전조등이 켜진 채 덤불에 박힌 차에는 모피 코트와 면허증이 남아 있었습니다. 차의 주인은 열하루 뒤에야 다시 나타났습니다.",
+  "pinned": "당신이라면 그 이름을 우연이라고 하시겠어요?"
+ },
+ "threads": [
+  "1926년 영국, 추리소설의 여왕 애거사 크리스티가 사라진 얘기. 덤불에 박힌 차는 전조등이 켜진 채였고, 모피 코트랑 옷가방, 면허증이 그대로 있었어.",
+  "새벽 여섯 시쯤 얇은 옷차림의 여자가 차 시동을 도와 달라고 했다는 목격담이 경찰 서한에 남아 있어. 코트는 차에 있었는데 말이야.",
+  "온 나라가 찾았고, 『셜록 홈즈』 쓴 작가도 영매를 찾아가 행방을 물었대.",
+  "열하루째에 해러게이트의 한 호텔에서 누가 그녀를 알아봤어. 근데 숙박부엔 남편과 가까운 사람의 성이 적혀 있었대.",
+  "본인은 기억을 잃었다고 했고, 자서전에도 그 열하루는 한 줄도 없어. 영상으로 보려면 인스타 @ossak_alarm 에서 봐."
+ ],
+ "sources": "출처: 영국 국립기록원 HO 45/25904 경찰 서한, 서리 경찰 175주년 기념 기사, Countryfile",
+ "tags": "#미제파일 #애거사크리스티",
+ "risk": "저",
+ "adapted": true,
+ "hook_type": "소지품만 남기고 사라짐(코트×빈 차)"
+}

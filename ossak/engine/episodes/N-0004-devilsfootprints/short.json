@@ -1,147 +1,233 @@
 {
  "id": "N-0004",
- "no": 6,
+ "no": 9,
  "series": "새벽괴담",
- "format": "loop",
+ "format": "story",
  "mood": "horror",
- "title": "1855 데번의 발굽 자국",
+ "title": "1855 데번의 발자국",
  "hook": [
-  "지붕 위로 이어진",
-  "한 줄의 발굽 자국"
+  "하룻밤의 발굽 자국이",
+  "지붕까지 올라갔다"
  ],
- "accent_word": "지붕",
+ "accent_word": "지붕까지",
  "images": [
   {
    "id": "d01",
-   "prompt": "Devon, England, February 1855, dawn after a heavy snowfall: the snow-covered thatched roof of an old cottage, along the ridge of the roof runs a single straight line of small horseshoe-shaped hoof prints in the fresh snow, crossing from one end to the other, cold blue dawn light, smoke-less chimney, closed wooden shutters below.",
+   "prompt": "A snow-covered tiled roof of a small stone cottage in rural Devon, England, 1855, at blue pre-dawn light, one single line of small horseshoe-shaped hoof prints in the fresh snow running straight along the roof ridge, nobody there, upper fifth of the frame is empty pale sky.",
    "nop": true
   },
   {
    "id": "d02",
-   "prompt": "Devon, England, February 1855, dawn after a heavy snowfall: a quiet village of low stone cottages by a misty river estuary seen from a distance, everything buried in white snow, all doors shut, only one window faintly lit, grey-blue sky.",
+   "prompt": "A low stone village in deep snow at blue dawn seen from a distance, one window with a faint candle glow, thin mist, silence, nobody visible, upper fifth empty sky.",
    "nop": true
   },
   {
    "id": "d03",
-   "prompt": "Devon, England, February 1855, dawn after a heavy snowfall: close view of untouched snow on the ground: a single perfectly straight line of small horseshoe-shaped hoof prints, one directly in front of the other, leading away into darkness between bare hedges.",
+   "prompt": "A wooden cottage door just opened, warm light spilling onto fresh deep snow, the back of one faceless silhouette standing on the threshold, far out in the white yard a thin dark line of tracks running away, dawn.",
    "nop": true
   },
   {
    "id": "d04",
-   "prompt": "Devon, England, February 1855, dawn after a heavy snowfall: a wide snowy countryside between two distant villages, a single thin straight line of hoof prints crossing the whole white field and continuing over the next hill, bare trees, low cold light.",
+   "prompt": "Extreme close-up of fresh snow: a perfectly straight single file of small horseshoe-shaped hoof prints, one in front of the other, disappearing into blue darkness, cold light.",
    "nop": true
   },
   {
    "id": "d05",
-   "prompt": "Devon, England, February 1855, dawn after a heavy snowfall: the top of a tall old stone garden wall covered in snow, a single line of small horseshoe-shaped hoof prints running along the narrow top of the wall; behind it a frozen river and on the far bank the same line of prints continuing.",
+   "prompt": "High view over three snow-covered English villages at dawn, rooftops white, and across the empty fields between them one single thin dark line running unbroken from village to village, quiet.",
    "nop": true
   },
   {
    "id": "d06",
-   "prompt": "Devon, England, February 1855, dawn after a heavy snowfall: close view of the round opening of a narrow clay drainpipe, only a hand's width across, half buried in snow at the bottom of a wall; a line of horseshoe-shaped hoof prints leads straight into the pipe opening and stops; the inside of the pipe is pitch black.",
+   "prompt": "Early morning snowfield, two faceless silhouettes seen from behind crouched over a line of hoof prints in the snow, grey overcast dawn, a long straight line of prints stretching to the far horizon.",
    "nop": true
   },
   {
    "id": "d07",
-   "prompt": "Devon, England, February 1855, morning after a heavy snowfall: the closed, bolted wooden front door of a small stone cottage, shutters shut tight, untouched snow piled at the doorstep, a single line of small horseshoe-shaped hoof prints passing right in front of the door, cold grey light, silence.",
+   "prompt": "A long snow-capped stone garden wall at dawn, a single file of small hoof prints running along the very top of the wall, and beyond it a frozen river with the same line of prints continuing on the far bank, grey blue light, nobody there.",
    "nop": true
+  },
+  {
+   "id": "d08",
+   "prompt": "A heavy wooden cottage door with a bar across it, a thin strip of candlelight leaking through the window shutter, in the snow in front of the door a single line of small hoof prints passing by, night, nobody visible.",
+   "nop": true
+  },
+  {
+   "id": "d09",
+   "prompt": "Close-up of a narrow clay drainpipe opening half-buried in snow, a single line of small hoof prints ends at the pipe mouth, and on the other side of the snowbank the same line starts again, the inside of the pipe pitch black, cold blue light.",
+   "nop": true
+  },
+  {
+   "id": "d10",
+   "prompt": "A dim desk lit by one oil lamp, a stack of old newspapers with blurred and unreadable print, a quill pen, dark room, nobody there.",
+   "nop": true
+  },
+  {
+   "id": "d11",
+   "prompt": "Boogi the owl archivist sits at a wooden archive desk at night beside a small amber lantern, an old logbook open in front of him, through the window behind him a snowy rooftop with one faint line of tracks along its ridge (any writing blurred and unreadable), shelves of old books.",
+   "nop": true,
+   "with_character": true
   }
  ],
  "scenes": [
   {
-   "say": "지붕 위를, 발굽 자국이 걸어갔습니다.",
-   "tts": "지붕 위를 발굽 자국이 걸어갔습니다.",
+   "say": "눈 위의 발굽 자국이, 지붕 위로 이어졌습니다.",
+   "tts": "눈 위의 발굽 자국이 지붕 위로 이어졌습니다.",
    "img": "d01",
    "move": "in",
    "emph": [
     "지붕",
     "발굽"
+   ],
+   "focus": [
+    0.5,
+    0.55
    ]
   },
   {
-   "say": "1855년 2월 영국, 폭설 뒤 아침의 기록입니다.",
-   "tts": "천팔백오십오 년 이월 영국, 폭설 뒤 아침의 기록입니다.",
+   "say": "1855년 2월, 영국 신문에 실린 기록입니다.",
+   "tts": "천팔백오십오 년 이월, 영국 신문에 실린 기록입니다.",
    "img": "d02",
    "move": "in",
    "cont": true,
    "emph": [
-    "기록입니다"
+    "신문에"
    ]
   },
   {
-   "say": "발을 하나씩만 디딘 듯, 한 줄로 똑바로.",
-   "tts": "발을 하나씩만 디딘 듯, 한 줄로 똑바로.",
+   "say": "폭설이 그친 아침, 사람들은 문을 열었습니다.",
+   "tts": "폭설이 그친 아침, 사람들은 문을 열었습니다.",
    "img": "d03",
-   "move": "up",
+   "move": "in",
    "emph": [
-    "한 줄로"
+    "문을"
    ]
   },
   {
-   "say": "그 한 줄이 하룻밤 새, 서른 곳 넘는 마을로.",
-   "tts": "그 한 줄이 하룻밤 새, 서른 곳 넘는 마을로.",
+   "say": "눈 위에, 손바닥만 한 발굽 자국이 한 줄로 곧게 이어져 있었습니다.",
+   "tts": "눈 위에 손바닥만 한 발굽 자국이, 한 줄로 곧게 이어져 있었습니다.",
    "img": "d04",
+   "move": "down",
+   "cont": true,
+   "emph": [
+    "한",
+    "줄로"
+   ]
+  },
+  {
+   "say": "옆 마을에도 같은 자국이 있었습니다. 그 옆 마을에도.",
+   "tts": "옆 마을에도 같은 자국이 있었습니다. 그 옆 마을에도.",
+   "img": "d05",
+   "move": "down",
+   "emph": [
+    "같은",
+    "자국이"
+   ]
+  },
+  {
+   "say": "하룻밤 사이에 서른 곳이 넘었습니다.",
+   "tts": "하룻밤 사이에 서른 곳이 넘었습니다.",
+   "img": "d05",
    "move": "right",
    "cont": true,
    "emph": [
     "서른"
-   ]
-  },
-  {
-   "say": "높은 담 위로, 얼어붙은 강 건너로. 끊기지 않고.",
-   "tts": "높은 담 위로, 얼어붙은 강 건너로. 끊기지 않고.",
-   "img": "d05",
-   "move": "in",
-   "cont": true,
-   "emph": [
-    "끊기지"
-   ]
-  },
-  {
-   "say": "그리고 지름 10cm 배수관으로 들어가더니… 반대편으로 이어졌습니다.",
-   "tts": "그리고 지름 십 센티미터 배수관으로 들어가더니 [pause short] 반대편으로 이어졌습니다.",
-   "img": "d06",
-   "move": "in",
-   "sfx": "hit",
-   "emph": [
-    "10cm",
-    "이어졌습니다"
-   ]
-  },
-  {
-   "say": "그날, 문을 열지 않은 집도 있었다고 합니다.",
-   "tts": "그날 문을 열지 않은 집도 있었다고 합니다.",
-   "img": "d07",
-   "zoom": 1.0,
-   "move": "in",
-   "cont": true,
-   "emph": [
-    "열지"
-   ]
-  },
-  {
-   "say": "그날 밤 지붕 위를 걸어간 건, 몇 개의 발이었을까요?",
-   "tts": "그날 밤 지붕 위를 걸어간 건, 몇 개의 발이었을까요?",
-   "img": "d01",
-   "zoom": 1.35,
+   ],
+   "zoom": 1.5,
    "focus": [
     0.5,
-    0.5
-   ],
-   "move": "out",
+    0.55
+   ]
+  },
+  {
+   "say": "문을 걸어 잠근 집도 있었다는 기록이 있습니다.",
+   "tts": "문을 걸어 잠근 집도 있었다는 기록이 있습니다.",
+   "img": "d08",
+   "move": "in",
    "emph": [
-    "몇 개의"
+    "걸어",
+    "잠근"
+   ]
+  },
+  {
+   "say": "짐승이 지나간 거겠죠. 다들 그렇게 말했습니다.",
+   "tts": "짐승이 지나간 거겠죠. 다들 그렇게 말했습니다.",
+   "img": "d06",
+   "move": "in",
+   "emph": [
+    "짐승이"
+   ]
+  },
+  {
+   "say": "그런데 자국을 이어 보니, 한 줄이 수십 킬로미터나 이어져 있었습니다.",
+   "tts": "그런데 자국을 이어 보니, 한 줄이 수십 킬로미터나 이어져 있었습니다.",
+   "img": "d06",
+   "move": "up",
+   "cont": true,
+   "emph": [
+    "수십",
+    "킬로미터나"
+   ],
+   "zoom": 1.4,
+   "focus": [
+    0.5,
+    0.6
+   ]
+  },
+  {
+   "say": "한 줄은 높은 담 위로 이어졌고, 얼어붙은 강 건너편에서 다시 나타났습니다.",
+   "tts": "한 줄은 높은 담 위로 이어졌고, 얼어붙은 강 건너편에서 다시 나타났습니다.",
+   "img": "d07",
+   "move": "right",
+   "emph": [
+    "담",
+    "위로"
+   ]
+  },
+  {
+   "say": "그 줄은 지름 10cm 배수관 속으로 들어갔다가, 반대편에서 다시 나왔습니다.",
+   "tts": "그 줄은 지름 십 센티미터 배수관 속으로 들어갔다가, 반대편에서 다시 나왔습니다.",
+   "img": "d09",
+   "move": "in",
+   "emph": [
+    "10cm",
+    "배수관"
+   ],
+   "sfx": "hit"
+  },
+  {
+   "say": "오소리 탓이라는 사람도, 장난이라는 사람도 있었습니다. 하지만 배수관 앞에서, 그 말은 멈췄습니다.",
+   "tts": "오소리 탓이라는 사람도, 장난이라는 사람도 있었습니다. 하지만 배수관 앞에서, 그 말은 멈췄습니다.",
+   "img": "d10",
+   "move": "in",
+   "emph": [
+    "멈췄습니다"
+   ]
+  },
+  {
+   "say": "그 밤 지붕 위까지 걸어간 그것은, 한 줄의 끝에서 어디로 갔을까요?",
+   "tts": "그 밤 지붕 위까지 걸어간 그것은, 한 줄의 끝에서 어디로 갔을까요?",
+   "img": "d11",
+   "move": "in",
+   "emph": [
+    "어디로"
    ]
   }
  ],
  "youtube": {
-  "title": "발굽 자국이, 지붕 위를 걸어갔다",
-  "summary": "1855년 2월 영국 데번. 폭설이 그친 아침, 서른 곳 넘는 마을에 한 줄로 이어진 발굽 자국이 나타났습니다. 겁에 질려 집에 틀어박힌 사람들도 있었다는 기록도 있습니다.",
-  "pinned": "그날 밤 지붕 위를 걸어간 건, 몇 개의 발이었을까요?"
+  "title": "눈 위의 발굽 자국이, 지붕 위까지 이어졌다",
+  "summary": "1855년 2월 영국, 폭설이 그친 아침. 서른 곳이 넘는 곳에서 같은 발굽 자국이 한 줄로 발견됐습니다. 그 줄은 담과 강 건너편까지 이어졌습니다.",
+  "pinned": "서른 곳을 이은 그 한 줄, 여러분은 무엇이 남겼다고 생각하세요?"
  },
- "sources": "출처: 《타임스》(1855.2.16), 《일러스트레이티드 런던 뉴스》(1855.3.3), Mike Dash 'The Devil's Hoofmarks'(Fortean Studies, 1994)",
+ "threads": [
+  "1855년 2월 영국 얘기. 폭설이 그친 아침에 사람들이 문을 열었더니, 눈 위에 발굽 자국이 한 줄로 찍혀 있었대.",
+  "근데 한 집이 아니야. 서른 곳이 넘는 곳에서 같은 자국이 나왔고, 이어 보면 수십 킬로미터가 넘는 한 줄이었다고 해. 영국 신문에도 실렸어.",
+  "그 줄은 높은 담 위로 올라갔고, 강 건너편에서 다시 이어졌어. 집 안에 틀어박힌 사람도 있었다는 기록이 있대.",
+  "더 소름인 건 지붕 위에도 있었고, 지름 10cm 배수관 속으로 들어갔다가 나왔다는 거. 오소리 설명도 장난 설명도 나왔는데, 하룻밤에 그걸 다 설명한 사람은 없어.",
+  "영상으로 보려면 인스타 @ossak_alarm 에서 봐."
+ ],
+ "sources": "출처: 《타임스》 1855.2.16 보도, 《일러스트레이티드 런던 뉴스》 1855.3.3, 마이크 대시(1994), 'Devil's Footprints'",
  "tags": "#새벽괴담 #악마의발자국",
  "risk": "저",
  "adapted": true,
- "hook_type": "흔적×있을 수 없는 자리(지붕 위 발굽)"
+ "hook_type": "흔적×있을 수 없는 자리(지붕 위 발굽 자국)"
 }
