@@ -1726,18 +1726,32 @@ def write_sitemaps(now):
     (PUB / "sitemap.xml").write_text("\n".join(idx) + "\n")
 
 
+def rfc_dt(iso):
+    """'2026-10-29'(가이드)·'2026-11-02T20:42:02+09:00'(공고) → 시간대 있는 datetime (날짜만이면 9시 KST)"""
+    t = dt.datetime.fromisoformat(iso if "T" in iso else iso + "T09:00:00")
+    return t if t.tzinfo else t.replace(tzinfo=dt.timezone(dt.timedelta(hours=9)))
+
+
 def write_rss(notices, now):
-    items = sorted(notices, key=lambda n: n["modified"], reverse=True)[:30]
+    # 공고 최근 30건 + 가이드 칼럼 전부 (2026-11-02 — 처음엔 공고만 넣어 가이드가 빠져 있었음)
+    items = [{"title": n["page_title"], "url": n["url"], "desc": n["desc"], "date": n["modified"]}
+             for n in sorted(notices, key=lambda n: n["modified"], reverse=True)[:30]]
+    for g in GUIDES.load():
+        u = f"/guide/{g['slug']}/"
+        if u in PAGES:   # 실제로 발행된 칼럼만
+            items.append({"title": PAGES[u]["title"], "url": u, "desc": PAGES[u]["desc"], "date": g.get("published") or g.get("checked")})
+    items.sort(key=lambda x: rfc_dt(x["date"]), reverse=True)
+
     def rfc(iso):
-        return dt.datetime.fromisoformat(iso).strftime("%a, %d %b %Y %H:%M:%S %z")
+        return rfc_dt(iso).strftime("%a, %d %b %Y %H:%M:%S %z")
     out = ['<?xml version="1.0" encoding="UTF-8"?>', '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel>',
            "<title>줍줍알람</title>", f"<link>{BASE}/</link>", "<description>무순위·청약 공고를 공식 데이터로 정리해요</description>",
            "<language>ko</language>", f'<atom:link href="{BASE}/rss.xml" rel="self" type="application/rss+xml"/>',
            f"<lastBuildDate>{rfc(now.isoformat())}</lastBuildDate>"]
     for n in items:
-        out.append(f"<item><title>{xesc(n['page_title'].replace(' · 줍줍알람', ''))}</title><link>{BASE}{n['url']}</link>"
+        out.append(f"<item><title>{xesc(n['title'].replace(' · 줍줍알람', ''))}</title><link>{BASE}{n['url']}</link>"
                    f"<guid isPermaLink=\"true\">{BASE}{n['url']}</guid><description>{xesc(n['desc'])}</description>"
-                   f"<pubDate>{rfc(n['modified'])}</pubDate></item>")
+                   f"<pubDate>{rfc(n['date'])}</pubDate></item>")
     out.append("</channel></rss>")
     (PUB / "rss.xml").write_text("\n".join(out) + "\n")
 
