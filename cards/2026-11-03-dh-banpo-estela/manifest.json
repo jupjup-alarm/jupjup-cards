@@ -1,0 +1,72 @@
+{
+  "slug": "2026-11-03-dh-banpo-estela",
+  "title": "디에이치 신반포에스테라",
+  "series": "강남로또",
+  "count": 9,
+  "urls": [
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-11-03-dh-banpo-estela/01.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-11-03-dh-banpo-estela/02.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-11-03-dh-banpo-estela/03.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-11-03-dh-banpo-estela/04.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-11-03-dh-banpo-estela/05.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-11-03-dh-banpo-estela/06.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-11-03-dh-banpo-estela/07.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-11-03-dh-banpo-estela/08.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-11-03-dh-banpo-estela/09.jpg"
+  ],
+  "warnings": {
+    "02": [
+      "zoom 0.88"
+    ],
+    "04": [
+      "zoom 0.85"
+    ],
+    "05": [
+      "zoom 0.88"
+    ],
+    "06": [
+      "zoom 0.91"
+    ],
+    "08": [
+      "zoom 0.88"
+    ]
+  },
+  "boards": [
+    {
+      "file": "2026-11-03-dh-banpo-estela-01.dc.html",
+      "title": "디에이치 신반포에스테라 1/9"
+    },
+    {
+      "file": "2026-11-03-dh-banpo-estela-02.dc.html",
+      "title": "디에이치 신반포에스테라 2/9"
+    },
+    {
+      "file": "2026-11-03-dh-banpo-estela-03.dc.html",
+      "title": "디에이치 신반포에스테라 3/9"
+    },
+    {
+      "file": "2026-11-03-dh-banpo-estela-04.dc.html",
+      "title": "디에이치 신반포에스테라 4/9"
+    },
+    {
+      "file": "2026-11-03-dh-banpo-estela-05.dc.html",
+      "title": "디에이치 신반포에스테라 5/9"
+    },
+    {
+      "file": "2026-11-03-dh-banpo-estela-06.dc.html",
+      "title": "디에이치 신반포에스테라 6/9"
+    },
+    {
+      "file": "2026-11-03-dh-banpo-estela-07.dc.html",
+      "title": "디에이치 신반포에스테라 7/9"
+    },
+    {
+      "file": "2026-11-03-dh-banpo-estela-08.dc.html",
+      "title": "디에이치 신반포에스테라 8/9"
+    },
+    {
+      "file": "2026-11-03-dh-banpo-estela-09.dc.html",
+      "title": "디에이치 신반포에스테라 9/9"
+    }
+  ]
+}
