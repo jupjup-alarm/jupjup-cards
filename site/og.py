@@ -247,3 +247,36 @@ def render(L, photo=None, credit=None):
     return im
 
 
+
+
+def render_hub(chip_t, l1, l2, small, photo=None, credit=None):
+    """목록·허브 페이지 공유 썸네일 (2026-11-02 SEO 기획안 개선안 4) — 날짜·건수 없는 고정 문구만.
+    사진(단지 조감도)이 있으면 사진 위 어둡게, 없으면 남색."""
+    th = dict(THEME["줍줍알람"])
+    if photo:
+        im = photo_bg(photo["image"], photo.get("pos"))
+        im = shade(im, [(0, .55), (.2, .45), (.45, .72), (1, .86)])
+    else:
+        im = Image.new("RGB", (W, H), th["bg"])
+    dr = ImageDraw.Draw(im)
+    X = 64
+    paste_icon(im, "bell_white", X - 4, 40, 50)
+    text(dr, X + 52, 80, "줍줍알람", noto(32, "Bold"), "#FFFFFF")
+    if credit:
+        cf = noto(20, "Medium")
+        ct = credit_short(credit)
+        cw = tw(dr, ct, cf)
+        ov = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+        ImageDraw.Draw(ov).rounded_rectangle((W - 40 - cw - 14, 48, W - 26, 82), 6, fill=(15, 30, 61, 170))
+        im = Image.alpha_composite(im.convert("RGBA"), ov).convert("RGB")
+        dr = ImageDraw.Draw(im)
+        text(dr, W - 33, 72, ct, cf, "#FFFFFF", "r")
+    maxw = W - X * 2
+    chip(dr, X, 200, chip_t, noto(30, "Bold"), 56, fill=th["chip_bg"], fg=th["chip_fg"], pad=24, r=12)
+    f1 = fit(dr, l1, bhs, 104, maxw, 64)
+    text(dr, X, 370, l1, f1, "#FFFFFF")
+    f2 = fit(dr, l2, bhs, 104, maxw, 64)
+    text(dr, X, 480, l2, f2, th["hl"])
+    sf = noto(30, "Medium")
+    text(dr, X, 556, ellipsize(dr, small, sf, maxw), sf, "#E6EAF1")
+    return im

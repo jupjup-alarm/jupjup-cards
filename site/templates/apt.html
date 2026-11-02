@@ -561,6 +561,6 @@
   "about": ({"@type": "ApartmentComplex", "name": n.complex, "numberOfAccommodationUnits": n.units,
     "address": {"@type": "PostalAddress", "addressCountry": "KR", "addressRegion": n.sido, "addressLocality": n.sigungu or "", "streetAddress": n.address}}
     | combine({"geo": {"@type": "GeoCoordinates", "latitude": n.coords[1], "longitude": n.coords[0]}} if n.coords else {}))
-}]}|jsonld }}
+}] + ([n.faq_ld] if n.faq else [])}|jsonld }}
 </script>
 {% endblock %}

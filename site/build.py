@@ -398,6 +398,9 @@ def build_notice(e, row, regions, problems):
         if n.get(f):
             n[f] = fill(n[f])
     n["faq"] = [[q, fill(a)] for q, a in e["faq"]]
+    # 본문 '자주 묻는 질문'과 같은 내용을 FAQPage 구조화 데이터로 (2026-11-02 SEO 기획안)
+    n["faq_ld"] = {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {
+        "@type": "Answer", "text": re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", str(a))).strip()}} for q, a in n["faq"]]}
     if n.get("gap"):
         n["gap"] = dict(n["gap"], text=fill(n["gap"]["text"]))
     n["price_label"] = e.get("price_label", "최고 분양가")
@@ -848,6 +851,33 @@ def og_make(n, dst, has_photo):
     return ver
 
 
+HUB_OG_FILE = DATA / "hub_og.json"   # 허브별 고정 썸네일 사진 — 처음 고른 단지 사진을 계속 씀 (날마다 바뀌지 않게)
+
+
+def og_hub(url, chip_t, l1, l2, small, pool):
+    """목록·허브 페이지 고정 공유 썸네일 (2026-11-02 SEO 기획안 개선안 4). 날짜·건수 없는 문구만.
+    사진은 그 허브 공고 중 단지 사진이 있는 것을 한 번 골라 hub_og.json에 고정. 반환: 이미지 주소(?v=)."""
+    import og as OG
+    fixed = json.loads(HUB_OG_FILE.read_text()) if HUB_OG_FILE.exists() else {}
+    ph = fixed.get(url)
+    if ph and not (REPO / ph["image"]).exists():
+        ph = None
+    if not ph:
+        cand = sorted((x for x in pool if x.get("photo") and (REPO / x["photo"]["image"]).exists()), key=lambda x: x["key"])
+        if cand:   # 허브마다 다른 사진이 되도록 주소로 고름 (한 번 정하면 고정)
+            pick = cand[int(hashlib.sha1(url.encode()).hexdigest(), 16) % len(cand)]
+            ph = {k: pick["photo"].get(k) for k in ("image", "pos", "credit")}
+            fixed[url] = ph
+            HUB_OG_FILE.write_text(json.dumps(fixed, ensure_ascii=False, indent=1, sort_keys=True))
+    slug = re.sub(r"[^a-z0-9]+", "-", url.strip("/").lower()) or "home"
+    dst = PUB / "og" / f"{slug}.jpg"
+    dst.parent.mkdir(parents=True, exist_ok=True)
+    key = json.dumps({"v": "H1", "t": [chip_t, l1, l2, small], "photo": ph}, ensure_ascii=False)
+    ver = hashlib.sha1(key.encode()).hexdigest()[:8]
+    OG.render_hub(chip_t, l1, l2, small, ph, ph.get("credit") if ph else None).save(dst, "JPEG", quality=84, optimize=True, progressive=True)
+    return f"/og/{slug}.jpg?v={ver}"
+
+
 def og_card(n, dst):
     """사진 없는 공고용 공유 썸네일 (1200×630, 남색 카드)."""
     from PIL import Image, ImageDraw, ImageFont
@@ -1245,7 +1275,7 @@ def main():
     # ── 목록 공통
     list_tpl = E.get_template("list.html")
 
-    def list_page(url, h1, title, desc, groups, intro=None, crumb=None, links=None, kind="list", empty=None, tbl_label=None):
+    def list_page(url, h1, title, desc, groups, intro=None, crumb=None, links=None, kind="list", empty=None, tbl_label=None, og_t=None):
         all_n = [x for _, g in groups for x in g]
         lm = max([x["modified"] for x in all_n], default=now.isoformat(timespec="seconds"))
         # '한눈에 보기' 표 — 접수 중·예정만 최대 12곳 (2026-11-02 SEO 기획안 개선안 1)
@@ -1254,7 +1284,8 @@ def main():
         cap = (f"{tbl_label or h1} 접수 중·예정 {len(live)}곳" + (f" 중 {len(tbl)}곳" if len(live) > len(tbl) else "")
                + f" — {d(TODAY.isoformat())} 기준 · 청약홈·LH·마이홈 공식 데이터")
         h = list_tpl.render(h1=h1, groups=groups, intro=intro, crumb=crumb or [("홈", "/")], links=links, empty=empty,
-                            page_url=url, title=title, desc=desc, og="/og-default.jpg", items=all_n, tbl=tbl, tbl_cap=cap, **common)
+                            page_url=url, title=title, desc=desc, og=og_hub(url, *og_t, all_n) if og_t else "/og-default.jpg",
+                            items=all_n, tbl=tbl, tbl_cap=cap, **common)
         write(url, h, title, desc, kind, lm)
 
     def tsort(lst):
@@ -1294,7 +1325,8 @@ def main():
             + " 무순위·민간분양·공공분양·신혼희망타운·임대의 접수일, 분양가, 자격을 청약홈 공식 데이터로 정리해요.")
     regions_used = sorted(sido_map, key=lambda k: list(regions["sido"]).index(k))
     home_tbl = tsort([x for x in s if x["status"] in ("open", "upcoming")])[:12]
-    h = home_tpl.render(groups=home_groups, page_url="/", title=title, desc=desc, og="/og-default.jpg",
+    home_og = og_hub("/", "청약 공고 모음", "오늘 볼 청약 공고", "한눈에 보기", "줍줍(무순위) · 분양 · 신혼희망타운 · 임대 — 접수일 · 분양가 · 자격", s)
+    h = home_tpl.render(groups=home_groups, page_url="/", title=title, desc=desc, og=home_og,
                         regions_used=regions_used, region_slug=regions["sido"], sido_map=sido_map,
                         tbl=home_tbl, tbl_cap=f"청약 공고 접수 중·예정 {n_open + n_up}곳 중 {len(home_tbl)}곳 — {d(TODAY.isoformat())} 기준 · 청약홈·LH·마이홈 공식 데이터", **common)
     write("/", h, title, desc, "list", max(x["modified"] for x in notices))
@@ -1325,7 +1357,8 @@ def main():
         list_page(f"/schedule/{mk}/", f"{y}년 {m}월 청약 일정",
                   f"{y}년 {m}월 청약 일정 — 아파트 분양·줍줍·임대 {len(lst)}곳 · 줍줍알람",
                   f"{m}월 청약 일정: {y}년 {m}월에 접수하는 아파트 분양·줍줍(무순위)·임대 {len(lst)}곳의 접수일과 분양가를 날짜순으로 정리. " + ", ".join(sidos) + ".",
-                  groups, intro, [("홈", "/"), ("청약 일정", "/schedule/this-week/")], links)
+                  groups, intro, [("홈", "/"), ("청약 일정", "/schedule/this-week/")], links,
+                  og_t=("청약 일정", f"{y}년 {m}월", "청약 일정", "아파트 분양 · 줍줍 · 임대 — 접수 시작일 순서"))
 
     # 이번 주
     wk_start = TODAY - dt.timedelta(days=TODAY.weekday())
@@ -1339,7 +1372,8 @@ def main():
     list_page("/schedule/this-week/", "이번 주 청약 일정", f"이번 주 청약 일정 — 아파트 분양·줍줍 {len(this_wk)}곳 · 줍줍알람",
               f"이번 주({drange(wk_start.isoformat(), week_end.isoformat())}) 청약 일정과 다음 주 아파트 분양 일정 미리보기. 줍줍(무순위)·민간분양·공공분양·임대 {len(this_wk)}곳의 접수일·분양가·자격을 한눈에.",
               groups, "월요일부터 일요일까지 접수를 시작하는 공고예요. 다음 주 공고도 미리 확인하세요.",
-              [("홈", "/"), ("청약 일정", None)], links, empty="이번 주에 접수를 시작하는 공고가 없어요.", tbl_label="이번 주·다음 주")
+              [("홈", "/"), ("청약 일정", None)], links, empty="이번 주에 접수를 시작하는 공고가 없어요.", tbl_label="이번 주·다음 주",
+              og_t=("청약 일정", "이번 주", "청약 일정", "접수일 · 분양가 · 자격 한눈에"))
 
     # 지역
     for sido, lst in sido_map.items():
@@ -1355,7 +1389,7 @@ def main():
         list_page(f"/region/{slug}/", f"{sido} 청약 일정·분양 공고",
                   f"{sido} 청약 일정 — 아파트 분양·줍줍 접수 중·예정 {len(open_n)}곳 · 줍줍알람",
                   f"{sido} 청약 일정과 {sido} 아파트 분양 공고 {len(lst)}곳 중 접수 중·예정 {len(open_n)}곳." + (f" 다음 접수 시작 {d(nearest)}." if nearest else "") + " 줍줍(무순위)·민간분양·공공분양·신혼희망타운 분양가와 자격.",
-                  grouped(lst), intro, [("홈", "/"), ("지역", "/region/")], tbl_label=f"{sido} 청약 공고", links=
+                  grouped(lst), intro, [("홈", "/"), ("지역", "/region/")], tbl_label=f"{sido} 청약 공고", og_t=(sido, f"{sido} 청약 공고", "한눈에 보기", "아파트 분양 · 줍줍 · 임대 — 접수일 · 분양가 · 자격"), links=
                   [(f"{a} 공고", f"/region/{slug}/{b}/") for a, b in sub])
     for (sido, sgg), lst in sgg_pages.items():
         slug, sslug = regions["sido"][sido], regions["sigungu"][sido][sgg]
@@ -1363,7 +1397,8 @@ def main():
         list_page(f"/region/{slug}/{sslug}/", f"{sido} {sgg} 청약 공고",
                   f"{sido} {sgg} 청약 일정·분양가 — 접수 중·예정 {len(open_n)}곳 · 줍줍알람",
                   f"{sido} {sgg} 청약 공고 {len(lst)}곳의 접수일·분양가·자격.", grouped(lst),
-                  None, [("홈", "/"), ("지역", "/region/"), (sido, f"/region/{slug}/")])
+                  None, [("홈", "/"), ("지역", "/region/"), (sido, f"/region/{slug}/")],
+                  og_t=(sido, f"{sgg} 청약 공고", "한눈에 보기", "아파트 분양 · 줍줍 · 임대 — 접수일 · 분양가 · 자격"))
     # 지역 목록
     h = E.get_template("index_list.html").render(
         h1="지역별 청약 공고", title="지역별 청약 공고 · 줍줍알람",
@@ -1394,7 +1429,9 @@ def main():
             t_ = f"{kw} 일정 — 접수 중·예정 {len(open_n)}곳 · 줍줍알람"
             ds_ = f"{kw} 공고 {len(lst)}곳 중 접수 중·예정 {len(open_n)}곳" + (f"({', '.join(sidos)})" if sidos else "") + ". 접수일·분양가·자격을 공식 데이터로 정리."
         list_page(f"/type/{k}/", f"{label} 청약 공고", t_, ds_,
-                  grouped(lst), KIND_INTRO[k], [("홈", "/"), ("유형", "/type/")], tbl_label=label)
+                  grouped(lst), KIND_INTRO[k], [("홈", "/"), ("유형", "/type/")], tbl_label=label,
+                  og_t=("줍줍(무순위)", "줍줍 공고", "한눈에 보기", "청약통장 없이 추첨 · 접수일 · 분양가 · 자격") if k == "mujeonwi"
+                  else (label, f"{label} 공고", "한눈에 보기", "접수일 · 분양가 · 자격 — 공식 데이터로 정리"))
     h = E.get_template("index_list.html").render(
         h1="유형별 청약 공고", title="유형별 청약 공고 · 줍줍알람",
         desc="무순위(줍줍)·민간분양·공공분양·신혼희망타운 유형별 청약 공고 모음.",

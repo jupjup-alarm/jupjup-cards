@@ -1,0 +1,72 @@
+{
+ "/": {
+  "credit": "이미지: LH 제공 조감도 · 실제와 다를 수 있음",
+  "image": "photos/5f6df7524354.jpg",
+  "pos": "center 40%"
+ },
+ "/region/gyeonggi/": {
+  "credit": "이미지: 삼환기업 제공 투시도 · 실제와 다를 수 있음",
+  "image": "photos/99259c46de0b.jpg",
+  "pos": "center 60%"
+ },
+ "/region/gyeonggi/guri/": {
+  "credit": "이미지: LH 제공 조감도 · 실제와 다를 수 있음",
+  "image": "photos/74cac851de49.jpg",
+  "pos": "center 50%"
+ },
+ "/region/gyeonggi/hwaseong/": {
+  "credit": "이미지: LH 제공 투시도(화성동탄2 A-54블록) · 실제와 다를 수 있음",
+  "image": "photos/ccb9f972d60e.jpg",
+  "pos": "center 55%"
+ },
+ "/region/gyeonggi/siheung/": {
+  "credit": "이미지: LH 제공 조감도 · 실제와 다를 수 있음",
+  "image": "photos/5f6df7524354.jpg",
+  "pos": "center 40%"
+ },
+ "/region/gyeonggi/suwon/": {
+  "credit": "이미지: 삼환기업 제공 투시도 · 실제와 다를 수 있음",
+  "image": "photos/99259c46de0b.jpg",
+  "pos": "center 60%"
+ },
+ "/region/incheon/": {
+  "credit": "이미지: 숭의역2단지지역주택조합 제공 투시도 · 실제와 다를 수 있음",
+  "image": "photos/8c8902a87c85.png",
+  "pos": "center 60%"
+ },
+ "/region/seoul/": {
+  "credit": "이미지: 서울빌라가로주택정비사업조합 제공 조감도 · 실제와 다를 수 있음",
+  "image": "photos/f8fc2f4eb166-bldg.jpg",
+  "pos": "center 40%"
+ },
+ "/schedule/2026-10/": {
+  "credit": "이미지: 비에스한양·비에스산업 조감도 · 실제와 다를 수 있음",
+  "image": "photos/site/2026940241/birdseye.jpg",
+  "pos": "center 55%"
+ },
+ "/schedule/2026-11/": {
+  "credit": "이미지: 숭의역2단지지역주택조합 제공 투시도 · 실제와 다를 수 있음",
+  "image": "photos/8c8902a87c85.png",
+  "pos": "center 60%"
+ },
+ "/schedule/this-week/": {
+  "credit": "이미지: 숭의역2단지지역주택조합 제공 투시도 · 실제와 다를 수 있음",
+  "image": "photos/8c8902a87c85.png",
+  "pos": "center 60%"
+ },
+ "/type/mujeonwi/": {
+  "credit": "이미지: 숭의역2단지지역주택조합 제공 투시도 · 실제와 다를 수 있음",
+  "image": "photos/8c8902a87c85.png",
+  "pos": "center 60%"
+ },
+ "/type/newlywed/": {
+  "credit": "이미지: LH 제공 조감도 · 실제와 다를 수 있음",
+  "image": "photos/5f6df7524354.jpg",
+  "pos": "center 40%"
+ },
+ "/type/rental/": {
+  "credit": "이미지: LH 제공 투시도 · 실제와 다를 수 있음",
+  "image": "photos/c50495e5533b.jpg",
+  "pos": "center 55%"
+ }
+}
