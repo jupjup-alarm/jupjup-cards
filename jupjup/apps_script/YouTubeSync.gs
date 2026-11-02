@@ -84,8 +84,7 @@ function ytSync(loud) {
     }
   } catch (e) {
     if (!/cannot be found|playlistNotFound|not found/i.test(e.message)) throw e;
-    const msg = '줍줍알람 채널에 공개된 영상이 아직 없고, 허용한 계정(' + (mine ? mine.snippet.title : '채널 없음') +
-      ')이 줍줍알람 채널 주인이 아니라서 예약 영상을 볼 수 없어요. ytInstallTrigger를 다시 실행해 권한 창에서 줍줍알람 채널을 고르세요.';
+    const msg = '줍줍알람 채널에 공개된 영상이 아직 없어요 — 첫 영상이 공개되면 그때부터 링크·게시됨·공개 수치를 채워요 (허용 계정: ' + (mine ? mine.snippet.title : '채널 없음') + ', 공개 모드)';
     if (loud) throw new Error(msg);
     console.warn(msg);
     return;
