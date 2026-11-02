@@ -100,3 +100,4 @@
 - **구조화 데이터**: 홈 WebSite·Organization(sameAs 인스타·스레드·청약노트 블로그·유튜브)·ItemList, 목록 BreadcrumbList·ItemList, 공고 BreadcrumbList·Article·FAQPage(본문 '자주 묻는 질문'과 같은 내용). 청약 접수를 `Event`로 표시하지 않는다(구글 이벤트 규칙 위반 위험).
 - **IndexNow**: `static/<32자 키>.txt`(공개 키, 지우지 말 것) + `.github/workflows/indexnow.yml`이 site/public 이 바뀐 푸시마다 배포 완료를 기다렸다가 바뀐 페이지 주소를 IndexNow(네이버·빙 공유)로 보낸다. `site/tools/indexnow.py`. 따로 할 일 없음.
 - 청약노트 블로그 글 '원문 확인'에 사이트 공고 페이지·줍줍 모음 링크를 고정으로 넣는다(cheongyak-note `docs/원고_기준.md`).
+- **Cloudflare AI 봇 차단 주의 (2026-11-02 원인 확정)**: 구글 서치콘솔 사이트맵 403의 원인은 Cloudflare Managed rules "Block AI training crawlers - BOBA-199"(AI Crawl Control → Settings → Training = Block)가 진짜 Googlebot(AS15169)·BingBot까지 막은 것. Training을 Allow로 바꾼 뒤 sitemap.xml·하위 3개 모두 '성공'(140페이지). 다시 403이 나면 '일시적'으로 넘기지 말고 Cloudflare → Security → Analytics → Events(User agent: Googlebot)부터 확인. AI 학습 거부는 robots.txt(Cloudflare managed + Content-Signal ai-train=no)로만 표시.
