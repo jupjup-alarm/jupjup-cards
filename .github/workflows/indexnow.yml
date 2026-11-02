@@ -1,0 +1,22 @@
+# 사이트(site/public)가 바뀐 푸시마다 IndexNow로 네이버·빙에 바뀐 주소를 알림 (2026-11-02 SEO 기획안)
+name: indexnow
+on:
+  push:
+    branches: [main]
+    paths: ["site/public/**"]
+concurrency:
+  group: indexnow
+  cancel-in-progress: false
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 50
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: pip install -q requests
+      - run: python3 site/tools/indexnow.py "${{ github.event.before }}" "${{ github.sha }}"

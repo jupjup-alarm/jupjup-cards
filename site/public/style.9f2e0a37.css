@@ -126,6 +126,12 @@ thead th{background:var(--band);font-size:13px;font-weight:600;color:var(--ink-s
 tbody tr:last-child th,tbody tr:last-child td{border-bottom:0}
 th[scope=row]{text-align:left;font-weight:700}
 td.max{font-weight:700}
+.ntbl table{min-width:640px;font-size:14px}
+.ntbl th[scope=row]{white-space:normal;min-width:12em;max-width:20em;font-weight:600}
+.ntbl th[scope=row] a{color:var(--ink)}
+.ntbl td.l{text-align:left}
+.ntbl td,.ntbl th{padding:9px 12px}
+.tbl-more{display:flex;flex-wrap:wrap;gap:16px;margin:10px 0 0;font-size:14px;font-weight:600}
 
 /* 키-값 */
 .kv{margin:0;display:grid;border-top:1px solid var(--line)}

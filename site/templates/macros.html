@@ -31,3 +31,18 @@
 <div class="ad {{ cls }}" data-ad="{{ slot }}">
   <div class="ad-box" style="height:{{ a.height }}px" data-cp="{{ a.opts|tojson|forceescape }}" data-mq="{{ a.mq }}"></div>
 </div>{% endif %}{% endmacro %}
+
+{# 목록 맨 위 '한눈에 보기' 표 — 네이버·구글이 표 스니펫으로 쓸 수 있게 진짜 <table> (2026-11-02 SEO 기획안 개선안 1) #}
+{% macro ntable(lst, cap) %}
+<div class="tbl ntbl">
+  <table class="num">
+    <caption>{{ cap }}</caption>
+    <thead><tr><th scope="col" style="text-align:left">단지</th><th scope="col" style="text-align:left">지역</th><th scope="col">공급</th><th scope="col">접수</th><th scope="col">당첨자 발표</th><th scope="col">분양가·조건</th></tr></thead>
+    <tbody>
+    {% for n in lst %}
+      <tr><th scope="row"><a href="{{ n.url }}">{{ n.title }}</a></th><td class="l">{{ n.sido }} {{ n.sigungu or '' }}</td><td>{% if n.units %}{{ '{:,}'.format(n.units) }}{{ n.unit_word or '세대' }}{% else %}—{% endif %}</td><td>{{ n.rcpt[0]|trange(n.rcpt[1]) }}</td><td>{% if n.announce and not n.is_pre %}{{ n.announce|tdate }}{% else %}—{% endif %}</td><td>{% if n.is_pre %}예상 {{ n.price_short or n.price_text }}{% elif n.is_rental %}{% if n.houses and n.rent_level %}{{ n.rent_level }}{% elif n.rent_summary and n.rent_summary.deposit %}보증금 {{ n.rent_summary.deposit|money }}{% if n.rent_summary.monthly %} · 월 {{ n.rent_summary.monthly|money }}{% endif %}{% else %}—{% endif %}{% elif n.max_price %}최고 {{ n.max_price|won }}{% else %}—{% endif %}</td></tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endmacro %}

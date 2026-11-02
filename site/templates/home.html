@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "macros.html" import card, ig_icon, cp_ad with context %}
+{% from "macros.html" import card, ig_icon, cp_ad, ntable with context %}
 {% block main %}
 <main class="wrap" id="main">
   <div class="lwrap">
@@ -12,6 +12,13 @@
         {% for s in regions_used %}<a href="/region/{{ region_slug[s] }}/"><b>{{ s }}</b><span>공고 {{ sido_map[s]|length }}곳</span></a>{% endfor %}
       </div>
     </div>
+    {% if tbl %}
+    <section class="lsec">
+      <h2>지금 접수 중·예정 청약 공고 <small>{{ today.isoformat()|d }} 기준</small></h2>
+      {{ ntable(tbl, tbl_cap) }}
+      <p class="tbl-more"><a href="/type/mujeonwi/">줍줍(무순위) 공고만 보기 →</a> <a href="/schedule/this-week/">이번 주 일정 →</a></p>
+    </section>
+    {% endif %}
     {% for label, lst in groups %}
     <section class="lsec">
       <h2>{{ label }} <small>{{ lst|length }}곳</small></h2>
@@ -31,6 +38,7 @@
 <script type="application/ld+json">
 {{ {"@context": "https://schema.org", "@graph": [
   {"@type": "WebSite", "name": "줍줍알람", "url": BASE ~ "/", "inLanguage": "ko"},
-  {"@type": "Organization", "name": "줍줍알람", "url": BASE ~ "/", "logo": BASE ~ "/icon-512.png", "sameAs": [IG, THREADS]}]}|jsonld }}
+  {"@type": "Organization", "name": "줍줍알람", "url": BASE ~ "/", "logo": BASE ~ "/icon-512.png", "sameAs": [IG, THREADS, BLOG, YOUTUBE]},
+  {"@type": "ItemList", "name": "지금 접수 중·예정 청약 공고", "itemListElement": items_ld(tbl or [])}]}|jsonld }}
 </script>
 {% endblock %}

@@ -29,6 +29,8 @@ PUB = SITE / "public"
 BASE = "https://jupjupalarm.com"
 IG = "https://www.instagram.com/jupjup_alarm/"
 THREADS = "https://www.threads.net/@jupjup_alarm"
+BLOG = "https://blog.naver.com/jupjupalarm"          # 청약노트 네이버 블로그 (연관 채널)
+YOUTUBE = "https://www.youtube.com/channel/UCbIKC-joj_M279Tii7sLSiA"
 # 쿠팡 파트너스 다이나믹 배너 (공고 페이지). mq = 이 화면 조건일 때만 불러옴(숨긴 채 노출되지 않게)
 COUPANG = {
     "pc": {"mq": "(min-width:1024px)", "height": 298,
@@ -1032,7 +1034,7 @@ def env():
         return {"@type": "BreadcrumbList", "itemListElement": el}
     def items_ld(items):
         return [{"@type": "ListItem", "position": i, "url": BASE + n["url"], "name": n["title"]} for i, n in enumerate(items, 1)]
-    e.globals.update(HAS_GUIDES=bool(GUIDES.load()), RENTAL_EXPLAIN=RENTAL_EXPLAIN, BASE=BASE, IG=IG, THREADS=THREADS, COUPANG=COUPANG, COUPANG_NOTE=COUPANG_NOTE, ADSENSE=ADSENSE, GA=GA, STATUS=STATUS, KINDS=KINDS, crumb_ld=crumb_ld, items_ld=items_ld,
+    e.globals.update(HAS_GUIDES=bool(GUIDES.load()), RENTAL_EXPLAIN=RENTAL_EXPLAIN, BASE=BASE, IG=IG, THREADS=THREADS, BLOG=BLOG, YOUTUBE=YOUTUBE, COUPANG=COUPANG, COUPANG_NOTE=COUPANG_NOTE, ADSENSE=ADSENSE, GA=GA, STATUS=STATUS, KINDS=KINDS, crumb_ld=crumb_ld, items_ld=items_ld,
                      logo=Markup((SITE / "static/favicon.svg").read_text().replace('<svg xmlns="http://www.w3.org/2000/svg" ', '<svg class="mark" aria-hidden="true" focusable="false" ')))
     return e
 
@@ -1243,12 +1245,21 @@ def main():
     # ── 목록 공통
     list_tpl = E.get_template("list.html")
 
-    def list_page(url, h1, title, desc, groups, intro=None, crumb=None, links=None, kind="list", empty=None):
+    def list_page(url, h1, title, desc, groups, intro=None, crumb=None, links=None, kind="list", empty=None, tbl_label=None):
         all_n = [x for _, g in groups for x in g]
         lm = max([x["modified"] for x in all_n], default=now.isoformat(timespec="seconds"))
+        # '한눈에 보기' 표 — 접수 중·예정만 최대 12곳 (2026-11-02 SEO 기획안 개선안 1)
+        live = tsort({x["key"]: x for x in all_n if x["status"] in ("open", "upcoming")}.values())
+        tbl = live[:12]
+        cap = (f"{tbl_label or h1} 접수 중·예정 {len(live)}곳" + (f" 중 {len(tbl)}곳" if len(live) > len(tbl) else "")
+               + f" — {d(TODAY.isoformat())} 기준 · 청약홈·LH·마이홈 공식 데이터")
         h = list_tpl.render(h1=h1, groups=groups, intro=intro, crumb=crumb or [("홈", "/")], links=links, empty=empty,
-                            page_url=url, title=title, desc=desc, og="/og-default.jpg", items=all_n, **common)
+                            page_url=url, title=title, desc=desc, og="/og-default.jpg", items=all_n, tbl=tbl, tbl_cap=cap, **common)
         write(url, h, title, desc, kind, lm)
+
+    def tsort(lst):
+        """표 순서: 접수 중은 마감 빠른 순(수시모집처럼 오래 열린 건 뒤로), 그다음 접수 예정은 시작 빠른 순."""
+        return sorted(lst, key=lambda x: (0, x["rcpt"][1] or x["rcpt"][0], x["title"]) if x["status"] == "open" else (1, x["rcpt"][0], x["title"]))
 
     def grouped(lst):
         s = sorted_n(lst)
@@ -1273,11 +1284,19 @@ def main():
         ("최근 발표", [x for x in s if x["status"] == "announced"][:6]),
     ]
     home_groups = [g for g in home_groups if g[1]]
-    title = "줍줍알람 — 청약 일정·아파트 분양·줍줍(무순위) 한눈에"
-    desc = f"오늘 볼 청약 공고 {len([x for x in s if x['status'] in ('open', 'upcoming')])}곳. 무순위(줍줍)·민간분양·공공분양·신혼희망타운의 접수일, 분양가, 자격을 공식 데이터로 정리해요."
+    # 제목·설명: 검색어('청약 공고'·'줍줍')와 오늘 숫자를 앞에 (2026-11-02 SEO 기획안 개선안 2)
+    n_open = len([x for x in s if x["status"] == "open"])
+    n_up = len([x for x in s if x["status"] == "upcoming"])
+    mu_now = [x for x in s if x["kind"] == "mujeonwi" and x["status"] in ("open", "upcoming")]
+    title = f"줍줍알람 — 청약 공고 지금 접수 중 {n_open}곳·예정 {n_up}곳 | 줍줍(무순위)·분양 일정"
+    desc = (f"{d(TODAY.isoformat())} 기준 청약 공고 접수 중 {n_open}곳·접수 예정 {n_up}곳."
+            + ((f" 줍줍(무순위) {len(mu_now)}건: " + "·".join((x.get("complex") or x["title"]) for x in mu_now[:2]) + (" 등." if len(mu_now) > 2 else ".")) if mu_now else "")
+            + " 무순위·민간분양·공공분양·신혼희망타운·임대의 접수일, 분양가, 자격을 청약홈 공식 데이터로 정리해요.")
     regions_used = sorted(sido_map, key=lambda k: list(regions["sido"]).index(k))
+    home_tbl = tsort([x for x in s if x["status"] in ("open", "upcoming")])[:12]
     h = home_tpl.render(groups=home_groups, page_url="/", title=title, desc=desc, og="/og-default.jpg",
-                        regions_used=regions_used, region_slug=regions["sido"], sido_map=sido_map, **common)
+                        regions_used=regions_used, region_slug=regions["sido"], sido_map=sido_map,
+                        tbl=home_tbl, tbl_cap=f"청약 공고 접수 중·예정 {n_open + n_up}곳 중 {len(home_tbl)}곳 — {d(TODAY.isoformat())} 기준 · 청약홈·LH·마이홈 공식 데이터", **common)
     write("/", h, title, desc, "list", max(x["modified"] for x in notices))
 
     # 월별 일정 (접수 시작 달 기준)
@@ -1320,7 +1339,7 @@ def main():
     list_page("/schedule/this-week/", "이번 주 청약 일정", f"이번 주 청약 일정 — 아파트 분양·줍줍 {len(this_wk)}곳 · 줍줍알람",
               f"이번 주({drange(wk_start.isoformat(), week_end.isoformat())}) 청약 일정과 다음 주 아파트 분양 일정 미리보기. 줍줍(무순위)·민간분양·공공분양·임대 {len(this_wk)}곳의 접수일·분양가·자격을 한눈에.",
               groups, "월요일부터 일요일까지 접수를 시작하는 공고예요. 다음 주 공고도 미리 확인하세요.",
-              [("홈", "/"), ("청약 일정", None)], links, empty="이번 주에 접수를 시작하는 공고가 없어요.")
+              [("홈", "/"), ("청약 일정", None)], links, empty="이번 주에 접수를 시작하는 공고가 없어요.", tbl_label="이번 주·다음 주")
 
     # 지역
     for sido, lst in sido_map.items():
@@ -1332,11 +1351,11 @@ def main():
             sgg_counts[x["sigungu"] or "기타"] = sgg_counts.get(x["sigungu"] or "기타", 0) + 1
         intro = (f"{sido}의 청약 공고 {len(lst)}곳을 모았어요. 지금 접수 중이거나 접수 예정인 공고는 {len(open_n)}곳이에요. "
                  + "시·군·구별로는 " + ", ".join(f"{k} {v}곳" for k, v in sgg_counts.items()) + "이에요.")
-        nearest = min((x["rcpt"][0] for x in open_n), default=None)
+        nearest = min((x["rcpt"][0] for x in open_n if x["status"] == "upcoming"), default=None)   # 이미 접수 중인 수시모집(2월 시작 등)이 '가장 가까운 접수일'로 잡히던 문제 (2026-11-02)
         list_page(f"/region/{slug}/", f"{sido} 청약 일정·분양 공고",
                   f"{sido} 청약 일정 — 아파트 분양·줍줍 접수 중·예정 {len(open_n)}곳 · 줍줍알람",
-                  f"{sido} 청약 일정과 {sido} 아파트 분양 공고 {len(lst)}곳 중 접수 중·예정 {len(open_n)}곳." + (f" 가장 가까운 접수일 {d(nearest)}." if nearest else "") + " 줍줍(무순위)·민간분양·공공분양·신혼희망타운 분양가와 자격.",
-                  grouped(lst), intro, [("홈", "/"), ("지역", "/region/")],
+                  f"{sido} 청약 일정과 {sido} 아파트 분양 공고 {len(lst)}곳 중 접수 중·예정 {len(open_n)}곳." + (f" 다음 접수 시작 {d(nearest)}." if nearest else "") + " 줍줍(무순위)·민간분양·공공분양·신혼희망타운 분양가와 자격.",
+                  grouped(lst), intro, [("홈", "/"), ("지역", "/region/")], tbl_label=f"{sido} 청약 공고", links=
                   [(f"{a} 공고", f"/region/{slug}/{b}/") for a, b in sub])
     for (sido, sgg), lst in sgg_pages.items():
         slug, sslug = regions["sido"][sido], regions["sigungu"][sido][sgg]
@@ -1362,10 +1381,20 @@ def main():
         label, kw = KINDS[k]
         open_n = [x for x in lst if x["status"] in ("open", "upcoming")]
         sidos = sorted({x["sido"] for x in open_n}, key=lambda s_: list(regions["sido"]).index(s_))
-        list_page(f"/type/{k}/", f"{label} 청약 공고",
-                  f"{kw} 일정 — 접수 중·예정 {len(open_n)}곳 · 줍줍알람",
-                  f"{kw} 공고 {len(lst)}곳 중 접수 중·예정 {len(open_n)}곳" + (f"({', '.join(sidos)})" if sidos else "") + ". 접수일·분양가·자격을 공식 데이터로 정리.",
-                  grouped(lst), KIND_INTRO[k], [("홈", "/"), ("유형", "/type/")])
+        if k == "mujeonwi":   # '줍줍 공고' 검색어 허브 (2026-11-02 SEO 기획안 개선안 2)
+            o_ = [x for x in sorted_n(lst) if x["status"] == "open"]
+            u_ = [x for x in sorted_n(lst) if x["status"] == "upcoming"]
+            top = [(x.get("complex") or x["title"]) for x in (o_ + u_)[:2]]
+            cnt = f"지금 접수 중 {len(o_)}건" + (f"·예정 {len(u_)}건" if u_ else "") if o_ else (f"접수 예정 {len(u_)}건" if u_ else "접수 일정 모음")
+            t_ = f"줍줍(무순위) 공고 — {cnt} · 줍줍알람"
+            ds_ = (f"{d(TODAY.isoformat())} 기준 줍줍(무순위)·임의공급 공고 {cnt.replace('지금 ', '')}"
+                   + ((f": {'·'.join(top)}" + (" 등" if len(o_) + len(u_) > 2 else "")) if top else "")
+                   + ". 청약통장 없이 추첨으로 뽑는 공고의 접수일·분양가·자격을 공식 데이터로 정리.")
+        else:
+            t_ = f"{kw} 일정 — 접수 중·예정 {len(open_n)}곳 · 줍줍알람"
+            ds_ = f"{kw} 공고 {len(lst)}곳 중 접수 중·예정 {len(open_n)}곳" + (f"({', '.join(sidos)})" if sidos else "") + ". 접수일·분양가·자격을 공식 데이터로 정리."
+        list_page(f"/type/{k}/", f"{label} 청약 공고", t_, ds_,
+                  grouped(lst), KIND_INTRO[k], [("홈", "/"), ("유형", "/type/")], tbl_label=label)
     h = E.get_template("index_list.html").render(
         h1="유형별 청약 공고", title="유형별 청약 공고 · 줍줍알람",
         desc="무순위(줍줍)·민간분양·공공분양·신혼희망타운 유형별 청약 공고 모음.",

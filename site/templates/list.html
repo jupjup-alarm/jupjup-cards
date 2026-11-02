@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "macros.html" import card, crumbs, cp_ad with context %}
+{% from "macros.html" import card, crumbs, cp_ad, ntable with context %}
 {% set nav = 'schedule' if page_url.startswith('/schedule') else ('region' if page_url.startswith('/region') else 'type') %}
 {% block main %}
 <main class="wrap" id="main">
@@ -10,6 +10,12 @@
       {% if intro %}<p>{{ intro }}</p>{% endif %}
       {% if links %}<div class="llinks">{% for label, url in links %}<a href="{{ url }}">{{ label }}</a>{% endfor %}</div>{% endif %}
     </div>
+    {% if tbl %}
+    <section class="lsec">
+      <h2>한눈에 보기 <small>{{ today.isoformat()|d }} 기준</small></h2>
+      {{ ntable(tbl, tbl_cap) }}
+    </section>
+    {% endif %}
     {% for label, lst in groups %}
     <section class="lsec">
       <h2>{{ label }} <small>{{ lst|length }}곳</small></h2>
