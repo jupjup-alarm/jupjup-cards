@@ -473,8 +473,8 @@ def build(ep, spec, a):
     total = t
     if total > 89:
         raise SystemExit(f"{total:.1f}초 — 90초를 넘어요. 문장을 줄이세요")
-    if not loop and total > 46:
-        print(f"주의: {total:.1f}초 — 서사형 목표 35~45초 (2026-11-02 길이 실험, README '길이')")
+    if not loop and total > 66:
+        print(f"주의: {total:.1f}초 — 서사형 목표 45~65초")
     # 한 장면(같은 그림)이 4.5초를 넘으면 시청자가 넘긴다 (2026-11-02 사용자 결정 — 장면을 나누거나 그림을 바꿀 것)
     ends = starts[1:] + [total]
     long_sc = [(i + 1, round(e - s, 1)) for i, (s, e) in enumerate(zip(starts, ends)) if e - s > 4.5]
