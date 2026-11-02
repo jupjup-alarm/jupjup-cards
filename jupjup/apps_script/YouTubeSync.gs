@@ -30,6 +30,11 @@ function ytInstallTrigger() {
   ytSync(true);
 }
 
+/** 허용을 지우고 처음부터 다시 받기 — 실행 후 ytInstallTrigger를 실행해 줍줍알람 채널을 고름 */
+function ytResetAuth() {
+  ScriptApp.invalidateAuth();
+}
+
 /** 어떤 채널로 허용됐는지 확인 (실행 로그에 나옴) */
 function ytWhoAmI() {
   const me = YouTube.Channels.list('id,snippet', { mine: true });
