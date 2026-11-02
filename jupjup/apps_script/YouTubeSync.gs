@@ -27,10 +27,20 @@ function ytInstallTrigger() {
     .filter(t => t.getHandlerFunction() === 'ytSync')
     .forEach(t => ScriptApp.deleteTrigger(t));
   ScriptApp.newTrigger('ytSync').timeBased().everyHours(1).create();
-  ytSync();
+  ytSync(true);
 }
 
-function ytSync() {
+/** 어떤 채널로 허용됐는지 확인 (실행 로그에 나옴) */
+function ytWhoAmI() {
+  const me = YouTube.Channels.list('id,snippet', { mine: true });
+  const c = me.items && me.items[0];
+  const msg = c ? '허용된 채널: ' + c.snippet.title + ' (' + c.id + ')' + (c.id === YT_CHANNEL_ID ? ' ✅ 줍줍알람 채널 맞음' : ' ❌ 줍줍알람 채널(' + YT_CHANNEL_ID + ')이 아님')
+                : '허용한 계정에 유튜브 채널이 없음';
+  console.log(msg);
+  return msg;
+}
+
+function ytSync(loud) {
   if (typeof YouTube === 'undefined')
     throw new Error("Apps Script '서비스 +'에서 YouTube Data API v3를 추가해 주세요");
   const sh = SpreadsheetApp.getActive().getSheetByName(YT_SHEET);
@@ -39,25 +49,41 @@ function ytSync() {
   if (last < 2) return;
 
   // 채널 주인 계정이면 예약 영상·분석 수치까지, 아니면 공개 영상·공개 수치만
-  // (허용한 계정의 채널이 줍줍알람이 아니면 — 예: 오싹알람 채널로 허용 — 공개 수치만)
-  let ch = YouTube.Channels.list('id,contentDetails', { mine: true });
-  let publicOnly = false;
-  if (!ch.items || !ch.items.length || ch.items[0].id !== YT_CHANNEL_ID) {
-    if (ch.items && ch.items.length) console.warn('허용한 채널이 줍줍알람이 아님: ' + ch.items[0].id + ' → 공개 영상·공개 수치만');
-    ch = YouTube.Channels.list('id,contentDetails', { id: YT_CHANNEL_ID });
-    publicOnly = true;
-  }
-  if (!ch.items || !ch.items.length) throw new Error('유튜브 채널을 찾을 수 없어요 (' + YT_CHANNEL_ID + ')');
-  const uploads = ch.items[0].contentDetails.relatedPlaylists.uploads;
+  const me = YouTube.Channels.list('id,snippet,contentDetails', { mine: true });
+  const mine = me.items && me.items[0];
+  const owner = !!mine && mine.id === YT_CHANNEL_ID;
+  const publicOnly = !owner;
+  console.log('허용된 채널: ' + (mine ? mine.snippet.title + ' (' + mine.id + ')' : '없음') + (owner ? '' : ' → 줍줍알람 채널이 아니라 공개 영상만 봄'));
 
-  // 1) 업로드 목록
+  // 1) 업로드 목록 — 주인이면 검색(forMine, 예약·비공개 포함), 아니면 공개 업로드 목록
   const vids = [];
-  let token;
-  do {
-    const r = YouTube.PlaylistItems.list('snippet,contentDetails', { playlistId: uploads, maxResults: 50, pageToken: token });
-    (r.items || []).forEach(it => vids.push({ id: it.contentDetails.videoId, title: it.snippet.title }));
-    token = r.nextPageToken;
-  } while (token && vids.length < 300);
+  try {
+    if (owner) {
+      let token;
+      do {
+        const r = YouTube.Search.list('snippet', { forMine: true, type: 'video', maxResults: 50, pageToken: token });
+        (r.items || []).forEach(it => vids.push({ id: it.id.videoId, title: it.snippet.title }));
+        token = r.nextPageToken;
+      } while (token && vids.length < 300);
+    } else {
+      const ch = YouTube.Channels.list('contentDetails', { id: YT_CHANNEL_ID });
+      if (!ch.items || !ch.items.length) throw new Error('유튜브 채널을 찾을 수 없어요 (' + YT_CHANNEL_ID + ')');
+      let token;
+      do {
+        const r = YouTube.PlaylistItems.list('snippet,contentDetails', { playlistId: ch.items[0].contentDetails.relatedPlaylists.uploads, maxResults: 50, pageToken: token });
+        (r.items || []).forEach(it => vids.push({ id: it.contentDetails.videoId, title: it.snippet.title }));
+        token = r.nextPageToken;
+      } while (token && vids.length < 300);
+    }
+  } catch (e) {
+    if (!/cannot be found|playlistNotFound|not found/i.test(e.message)) throw e;
+    const msg = '줍줍알람 채널에 공개된 영상이 아직 없고, 허용한 계정(' + (mine ? mine.snippet.title : '채널 없음') +
+      ')이 줍줍알람 채널 주인이 아니라서 예약 영상을 볼 수 없어요. ytInstallTrigger를 다시 실행해 권한 창에서 줍줍알람 채널을 고르세요.';
+    if (loud) throw new Error(msg);
+    console.warn(msg);
+    return;
+  }
+  if (!owner && loud && !vids.length) console.warn('공개 영상이 없어서 짝지을 게 없어요');
   const info = {};
   for (let i = 0; i < vids.length; i += 50) {
     const r = YouTube.Videos.list('status,snippet,statistics,contentDetails', { id: vids.slice(i, i + 50).map(v => v.id).join(',') });
