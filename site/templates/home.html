@@ -4,12 +4,13 @@
 <main class="wrap" id="main">
   <div class="lwrap">
     <div class="home-hero">
-      <h1>오늘 볼 청약 공고</h1>
+      <h1>청약 일정·줍줍(무순위) 공고 <span class="h1-kw">지금 접수 중 {{ n_open }}곳·예정 {{ n_up }}곳</span></h1>
       <p>무순위(줍줍)·민간분양·공공분양·신혼희망타운 공고를 청약홈 공식 데이터로 정리해요. 접수일, 분양가, 자격, 그리고 넣을 만한지 줍줍알람의 한마디까지 한 페이지에 담았어요.</p>
       <div class="quick">
         <a href="/schedule/this-week/"><b>이번 주 일정</b><span>접수 시작일 순서</span></a>
         <a href="/competition/"><b>청약 경쟁률</b><span>최근 발표 단지</span></a>
-        {% for k in kinds_used %}<a href="/type/{{ k }}/"><b>{{ KINDS[k][0] }}</b><span>유형별 모아보기</span></a>{% endfor %}
+        {% for lb, u, sm in hub_quick %}<a href="{{ u }}"><b>{{ lb }}</b><span>{{ sm }}</span></a>{% endfor %}
+        {% for k in kinds_used %}<a href="/type/{{ k }}/"><b>{{ '행복주택·공공임대' if k == 'rental' else KINDS[k][0] }}</b><span>유형별 모아보기</span></a>{% endfor %}
         {% for s in regions_used %}<a href="/region/{{ region_slug[s] }}/"><b>{{ s }}</b><span>공고 {{ sido_map[s]|length }}곳</span></a>{% endfor %}
       </div>
     </div>

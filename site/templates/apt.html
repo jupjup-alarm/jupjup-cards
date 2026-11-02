@@ -13,7 +13,7 @@
     <img class="hero-img" src="{{ n.imgs.hero.src }}" width="{{ n.imgs.hero.w }}" height="{{ n.imgs.hero.h }}" alt="{{ n.photo.alt }}" fetchpriority="high" decoding="async"{% if n.photo.pos %} style="object-position:{{ n.photo.pos }}"{% endif %}>
     <div class="hero-txt">
       {{ badges(n) }}
-      <h1>{{ n.title }}</h1>
+      <h1>{{ n.h1_base or n.title }}{% if n.h1_kw %} <span class="h1-kw">{{ n.h1_kw }}</span>{% endif %}</h1>
     </div>
     <span class="hero-credit">{{ n.photo.credit }}</span>
   </div>
@@ -21,7 +21,7 @@
   {% else %}
   <div class="head plain">
     {{ badges(n) }}
-    <h1>{{ n.title }}</h1>
+    <h1>{{ n.h1_base or n.title }}{% if n.h1_kw %} <span class="h1-kw">{{ n.h1_kw }}</span>{% endif %}</h1>
   {% endif %}
 {% if n.moved %}<a class="moved" href="{{ n.moved.url }}"><b>공식 공고가 나왔어요</b><span>확정 분양가·청약 일정 보기 →</span></a>{% endif %}
     <p class="addr">{{ n.address }}</p>
@@ -31,7 +31,7 @@
 
   {% if n.dz %}{% set z = n.dz %}
   <section class="dz-card" aria-labelledby="h-dz">
-    <h2 id="h-dz">3초 판단</h2>
+    <h2 id="h-dz"><span class="dz-tag">3초 판단</span> {{ n.h2.dz }}</h2>
     <ul class="dz-grid">
     {% for c in z.cards %}<li class="dz-c s-{{ c.sig }}"><span class="dz-k"><i aria-hidden="true"></i>{{ c.k }}<span class="sr">{{ {'g':' 좋음','y':' 보통','r':' 주의','n':''}[c.sig] }}</span></span><b>{{ c.head }}</b>{% if c.sub %}<small>{{ c.sub }}</small>{% endif %}</li>
     {% endfor %}
@@ -90,7 +90,7 @@
   <section class="take" aria-labelledby="take-h">
     <div class="bell" aria-hidden="true"><svg viewBox="0 0 200 200"><circle cx="100" cy="34" r="10" fill="#FFFFFF"/><path d="M54 110 Q38 96 40 80" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"/><path d="M146 110 Q162 96 160 80" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"/><path d="M100 40 C68 40 54 66 54 96 L54 132 L40 152 L160 152 L146 132 L146 96 C146 66 132 40 100 40 Z" fill="#FF5233"/><rect x="36" y="146" width="128" height="14" rx="7" fill="#FFFFFF"/><path d="M76 102 Q84 92 92 102" fill="none" stroke="#0F1E3D" stroke-width="5" stroke-linecap="round"/><path d="M108 102 Q116 92 124 102" fill="none" stroke="#0F1E3D" stroke-width="5" stroke-linecap="round"/><path d="M88 114 Q100 132 112 114 Z" fill="#0F1E3D"/></svg></div>
     <div>
-      <h2 id="take-h">줍줍알람 한마디</h2>
+      <h2 id="take-h">{{ n.h2.take }}</h2>
       <p>{{ n.take }}</p>
     </div>
   </section>
@@ -110,7 +110,7 @@
 
   {% if n.gap %}
   <section class="sec" aria-labelledby="h-gap">
-    <h2 id="h-gap">시세와 비교하면</h2>
+    <h2 id="h-gap">{{ n.h2.gap }}</h2>
     <p class="gapv">{{ n.gap.verdict }}</p>
     {% if z.bars %}
     <div class="vbar num" role="img" aria-label="{{ z.bars.mk[0] }} {{ z.bars.mk[1] }}, {{ z.bars.pr[0] }} {{ z.bars.pr[1] }}">
@@ -167,7 +167,7 @@
 
   {% if z.refs %}
   <section class="sec" aria-labelledby="h-odds">
-    <h2 id="h-odds">얼마나 몰릴까요?</h2>
+    <h2 id="h-odds">{{ n.h2.odds }}</h2>
     {% if z.comp_note %}<p class="lead2">{{ z.comp_note }}</p>{% endif %}
     <div class="tbl">
       <table class="num fit">
@@ -184,7 +184,7 @@
 
   {% if z.traps %}
   <section class="sec" aria-labelledby="h-trap">
-    <h2 id="h-trap">다만, 이건 알고 넣으세요</h2>
+    <h2 id="h-trap">{{ n.h2.trap }}</h2>
     <ul class="traps">{% for a, b in z.traps %}<li><b>{{ a }}</b><span>{{ b }}</span></li>{% endfor %}</ul>
   </section>
   {% endif %}
@@ -321,7 +321,7 @@
 
   {% if n.gap and not n.dz %}
   <section class="sec" aria-labelledby="h-gap">
-    <h2 id="h-gap">시세와 비교하면</h2>
+    <h2 id="h-gap">{{ n.h2.gap }}</h2>
     <p class="gapv">{{ n.gap.verdict }}</p>
     <p class="gapt">{{ n.gap.text }}</p>
     <dl class="kv wide">{% for k, v in n.gap.rows %}<div><dt>{{ k }}</dt><dd class="num">{{ v }}</dd></div>{% endfor %}</dl>
@@ -437,7 +437,7 @@
 
   {% if not n.houses %}
   <section class="sec" aria-labelledby="h-loc">
-    <h2 id="h-loc">위치</h2>
+    <h2 id="h-loc">{{ n.h2.loc }}</h2>
     {% if n.imgs.map %}
     <figure class="fig">
       <img src="{{ n.imgs.map.src }}" width="{{ n.imgs.map.w }}" height="{{ n.imgs.map.h }}" alt="{{ n.map_alt or (n.complex ~ ' 위치 지도') }}" loading="lazy">
@@ -550,17 +550,24 @@
 })();
 </script>
 {% endif %}
+{# 주인공 = 청약 공고(RealEstateListing) · 단지(ApartmentComplex) · 이 글(Article) — 2026-11-02 SEO 전략 v2 #}
+{% set U = BASE ~ page_url %}
+{% set cx = {"@type": "ApartmentComplex", "@id": U ~ "#complex", "name": n.complex, "numberOfAccommodationUnits": n.units,
+    "address": {"@type": "PostalAddress", "addressCountry": "KR", "addressRegion": n.sido, "addressLocality": n.sigungu or "", "streetAddress": n.address}}
+    | combine({"geo": {"@type": "GeoCoordinates", "latitude": n.coords[1], "longitude": n.coords[0]}} if n.coords else {}) %}
+{% set offer = {"offers": {"@type": "AggregateOffer", "priceCurrency": "KRW", "highPrice": n.max_price, "offerCount": n.units,
+    "availabilityStarts": n.rcpt[0], "availabilityEnds": n.rcpt[1]}} if (n.max_price and not n.is_pre and not n.is_rental) else {} %}
+{% set listing = {"@type": "RealEstateListing", "@id": U ~ "#listing", "name": (n.h1_base or n.title) ~ (" " ~ n.h1_kw if n.h1_kw else ""),
+    "url": U, "description": desc, "image": [BASE ~ og], "datePosted": n.notice_date or n.published,
+    "about": {"@id": U ~ "#complex"}} | combine({"validThrough": n.rcpt[1]} if n.rcpt[1] and not n.is_pre else {}) | combine(offer) %}
 <script type="application/ld+json">
-{{ {"@context": "https://schema.org", "@graph": [crumb_ld(n.crumb, n.title, page_url), {
+{{ {"@context": "https://schema.org", "@graph": [crumb_ld(n.crumb, n.title, page_url), listing, cx, {
   "@type": "Article", "headline": n.title, "description": desc,
   "datePublished": n.published, "dateModified": n.modified,
   "image": [BASE ~ og],
-  "mainEntityOfPage": BASE ~ page_url,
+  "mainEntityOfPage": U, "about": {"@id": U ~ "#listing"},
   "author": {"@type": "Organization", "name": "줍줍알람", "url": BASE ~ "/"},
-  "publisher": {"@type": "Organization", "name": "줍줍알람", "url": BASE ~ "/", "logo": {"@type": "ImageObject", "url": BASE ~ "/icon-512.png"}},
-  "about": ({"@type": "ApartmentComplex", "name": n.complex, "numberOfAccommodationUnits": n.units,
-    "address": {"@type": "PostalAddress", "addressCountry": "KR", "addressRegion": n.sido, "addressLocality": n.sigungu or "", "streetAddress": n.address}}
-    | combine({"geo": {"@type": "GeoCoordinates", "latitude": n.coords[1], "longitude": n.coords[0]}} if n.coords else {}))
+  "publisher": {"@type": "Organization", "name": "줍줍알람", "url": BASE ~ "/", "logo": {"@type": "ImageObject", "url": BASE ~ "/icon-512.png"}}
 }] + ([n.faq_ld] if n.faq else [])}|jsonld }}
 </script>
 {% endblock %}

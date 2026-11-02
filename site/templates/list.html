@@ -6,7 +6,7 @@
   <div class="lwrap">
     {{ crumbs(crumb) }}
     <div class="lhead">
-      <h1>{{ h1 }}</h1>
+      <h1>{{ h1 }}{% if h1_kw %} <span class="h1-kw">{{ h1_kw }}</span>{% endif %}</h1>
       {% if intro %}<p>{{ intro }}</p>{% endif %}
       {% if links %}<div class="llinks">{% for label, url in links %}<a href="{{ url }}">{{ label }}</a>{% endfor %}</div>{% endif %}
     </div>
@@ -16,6 +16,12 @@
       {{ ntable(tbl, tbl_cap) }}
     </section>
     {% endif %}
+    {% for sec in sections if sec.top %}
+    <section class="lsec">
+      <h2>{{ sec.h2 }}{% if sec.small %} <small>{{ sec.small }}</small>{% endif %}</h2>
+      {{ sec.html }}
+    </section>
+    {% endfor %}
     {% for label, lst in groups %}
     <section class="lsec">
       <h2>{{ label }} <small>{{ lst|length }}곳</small></h2>
@@ -24,12 +30,19 @@
     </section>
     {% if loop.first %}{{ cp_ad('home', 'ad-home') }}{% endif %}
     {% endfor %}
+    {% for sec in sections if not sec.top %}
+    <section class="lsec">
+      <h2>{{ sec.h2 }}{% if sec.small %} <small>{{ sec.small }}</small>{% endif %}</h2>
+      {{ sec.html }}
+    </section>
+    {% endfor %}
   </div>
 </main>
 {% endblock %}
 {% block after %}
 <script type="application/ld+json">
 {{ {"@context": "https://schema.org", "@graph": [crumb_ld(crumb, h1, page_url),
-  {"@type": "ItemList", "name": h1, "itemListElement": items_ld(items)}]}|jsonld }}
+  {"@type": "CollectionPage", "@id": BASE ~ page_url, "url": BASE ~ page_url, "name": h1, "description": desc, "inLanguage": "ko",
+   "mainEntity": {"@type": "ItemList", "name": h1, "itemListElement": items_ld(items)}}]}|jsonld }}
 </script>
 {% endblock %}

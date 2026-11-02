@@ -74,7 +74,7 @@ RENTAL_EXPLAIN = {
     "든든전세": "LH가 사들인 주택을 시세보다 낮은 전세로 빌려주는 매입임대예요. 월세 없이 보증금만 내요.",
 }
 KIND_INTRO = {
-    "mujeonwi": "1·2순위 청약이 끝난 뒤 남은 세대나 계약 취소분을 다시 뽑는 공고예요. 청약통장 없이 추첨으로 뽑고, 2025.2 개편 뒤로는 무주택자만 신청할 수 있어요. 거주지역 요건과 재당첨 제한은 공고마다 달라요. 임의공급(사업주체가 조건을 따로 정하는 공급)도 여기에 함께 모았어요.",
+    "mujeonwi": "1·2순위 청약이 끝난 뒤 남은 세대나 계약 취소분을 다시 뽑는 공고예요. 청약통장 없이 추첨으로 뽑고, 2025년 6월 10일부터는 무주택세대구성원만 신청할 수 있어요. 거주지역 요건과 재당첨 제한은 공고마다 달라요. 임의공급(사업주체가 조건을 따로 정하는 공급)도 여기에 함께 모았어요.",
     "private": "민간 건설사가 짓는 아파트의 일반 청약이에요. 청약통장이 필요하고, 지역·면적에 따라 가점제와 추첨제 비율이 달라요.",
     "public": "LH·SH·GH 같은 공공기관이 공급하는 분양 주택이에요. 무주택세대구성원이 청약통장으로 신청하고, 소득·자산 기준과 전매 제한·거주의무가 붙는 경우가 많아요. 토지임대부도 여기에 모았어요.",
     "newlywed": "신혼부부·예비신혼부부·한부모가족에게 공급하는 공공분양이에요. 소득·자산 기준이 있고, 신혼희망타운 전용 모기지와 연계되는 경우가 많아요.",
@@ -470,21 +470,46 @@ def kw_title(n, seo, required=None, default=()):
             break
         if w not in pick and w not in base and not (w == "청약 일정" and "분양 일정" in pick):
             pick.append(w)
+    # H1도 같은 검색 문장으로 (2026-11-02 SEO 전략 v2 — 단지명 + 작은 글씨 검색어)
+    n["h1_base"], n["h1_kw"] = base, "·".join(pick)
     return f"{base} {'·'.join(pick)} · 줍줍알람"
+
+
+def brand_h2(n, h2):
+    """우리만 있는 분석 칸의 소제목을 검색어가 들어간 이름으로 (2026-11-02 SEO 전략 v2).
+    단지명은 '한눈에 보기'·'시세 비교'와 kw_h2가 고른 3개, 합쳐 5개까지만 (모든 소제목 반복은 스팸처럼 보임)."""
+    nm = n.get("complex") or n["title"]
+    h2.setdefault("dz", f"{nm} 한눈에 보기")
+    h2.setdefault("take", "넣을 만할까? 줍줍알람 한마디")
+    h2.setdefault("gap", f"{nm} {'임대료' if n['is_rental'] else '분양가'} vs 주변 시세")
+    h2.setdefault("odds", "경쟁률 예상 — 얼마나 몰릴까요?")
+    h2.setdefault("trap", "청약 전 주의점 — 이건 알고 넣으세요")
+    if n["kind"] == "mujeonwi":
+        h2.setdefault("elig", "무순위(줍줍) 신청 자격")
+    h2.setdefault("loc", "위치·교통")
+    return h2
 
 
 def kw_h2(n, seo):
     """검색량이 있는 주제의 소제목 앞에 단지명을 붙인다 (최대 3개)."""
     h2 = {}
-    if not seo:
-        return h2
     nm = n.get("complex") or n["title"]
+    if not seo:  # 키워드 파일이 없으면 검색이 가장 많은 두 주제(분양가·청약 일정)에만
+        if not n["is_rental"] and not n["is_pre"]:
+            h2["price"] = nm
+        h2["sch"] = f"{nm} 청약 일정"
+        return h2
     cand = [("sch", "청약 일정", "청약 일정"), ("price", "분양가", None), ("plan", "평면도", "평면도·면적"),
             ("comp", "경쟁률", "청약 경쟁률"), ("elig", "자격", "신청 자격"), ("layout", "배치도", "단지 배치도")]
     cand = [c for c in cand if seo["has"].get(c[1]) and seo["vol"](c[1]) >= 50]
     cand.sort(key=lambda c: -seo["vol"](c[1]))
     for sec, _, label in cand[:3]:
         h2[sec] = f"{nm} {label}" if label else nm
+    # 검색량이 작아도 제목·H1에 쓴 두 주제(분양가·청약 일정)는 단지명으로 (2026-11-02 SEO 전략 v2)
+    if len(h2) < 2 and not n["is_rental"] and not n["is_pre"]:
+        h2.setdefault("price", nm)
+    if len(h2) < 2:
+        h2.setdefault("sch", f"{nm} 청약 일정")
     return h2
 
 
@@ -1072,6 +1097,53 @@ def env():
 PAGES = {}  # url → dict(title, desc, html)
 
 
+# ── 검색어 허브용 표 (2026-11-02 SEO 전략 v2)
+def mk_table(cap, head, rows, left=2, txt=False):
+    """head: 열 이름들, rows: [[셀…]] — 첫 칸은 행 머리(th). 셀이 Markup이면 그대로, 문자열이면 escape."""
+    def c(v):
+        return v if isinstance(v, Markup) else html.escape(str(v))
+    LS, LC = ' style="text-align:left"', ' class="l"'
+    th = "".join(f'<th scope="col"{LS if i < left else ""}>{c(h)}</th>' for i, h in enumerate(head))
+    body = "".join("<tr>" + "".join((f'<th scope="row">{c(v)}</th>' if i == 0 else f'<td{LC if i < left else ""}>{c(v)}</td>')
+                                    for i, v in enumerate(r)) + "</tr>" for r in rows)
+    return Markup(f'<div class="tbl ntbl{" txt" if txt else ""}"><table class="num"><caption>{c(cap)}</caption><thead><tr>{th}</tr></thead><tbody>{body}</tbody></table></div>')
+
+
+def alink(n):
+    return Markup(f'<a href="{n["url"]}">{html.escape(n["title"])}</a>')
+
+
+def gap_won(v):
+    """'약 12억9천만원 저렴(추정)' → 1,290,000,000 (정렬용)"""
+    t = 0
+    for num, unit in re.findall(r"(\d[\d,]*)\s*(억|천|백|만)", v or ""):
+        t += int(num.replace(",", "")) * {"억": 10**8, "천": 10**7, "백": 10**6, "만": 10**4}[unit]
+    return t
+
+
+def comp_table(rows, cap):
+    return mk_table(cap, ["단지", "지역", "접수 마감", "공급", "접수", "평균 경쟁률", "최고 경쟁률"],
+                    [[alink(r["n"]), f"{r['n']['sido']} {r['n']['sigungu'] or ''}", tdate(r["n"]["rcpt"][1]), r["supply"], r["apply"], r["avg"], r["top"]] for r in rows])
+
+
+def mu_sections(crow_mu):
+    """줍줍 허브 본문 — 자격 요약(가이드 facts와 같은 근거) + 최근 경쟁률 (청약로그ON 무순위 허브 구성 참고)"""
+    rule = mk_table("무순위(줍줍) 신청 자격 — 주택공급에 관한 규칙 2026.6.15 시행본 기준", ["항목", "내용", "근거"], [
+        ["청약통장", "필요 없어요", "규칙 제26조 제5항 단서·제47조의3 (통장 요건 없음)"],
+        ["주택 소유", "무주택세대구성원 (세대원 전원 무주택, 분양권·입주권도 주택으로 셈)", "제26조 제5항 단서 제1호 · 2025.6.10 시행"],
+        ["거주지역", "시장·군수·구청장이 필요하면 추가 — 해당 지역 또는 광역권(수도권 등). 공고마다 달라요", "제26조 제5항 제2호"],
+        ["뽑는 방법", "추첨 (가점·순위 없음)", "제19조 제5항"],
+        ["당첨 뒤", "계약하지 않아도 당첨자로 관리돼 재당첨 제한이 붙을 수 있어요. 계약금은 며칠 안에", "공고문 확인"],
+    ], left=3, txt=True)
+    out = [{"h2": "무순위(줍줍) 청약 신청 자격", "small": "한눈에",
+            "html": rule + Markup('<p class="tbl-more"><a href="/guide/mujeonwi/">무순위 청약 조건·신청 방법 총정리 →</a></p>')}]
+    if crow_mu:
+        out.append({"h2": "최근 줍줍 경쟁률", "small": f"{len(crow_mu[:10])}곳",
+                    "html": comp_table(crow_mu[:10], f"최근 접수가 끝난 무순위·임의공급 {len(crow_mu[:10])}곳 — 청약홈 공식 경쟁률")
+                    + Markup('<p class="tbl-more"><a href="/competition/">청약 경쟁률 전체 보기 →</a></p>')})
+    return out
+
+
 def write(url, html_text, title, desc, kind, lastmod=None, index=True):
     PAGES[url] = {"title": title, "desc": desc, "kind": kind, "lastmod": lastmod, "index": index, "html": html_text}
     p = PUB / url.lstrip("/") / "index.html" if url.endswith("/") else PUB / url.lstrip("/")
@@ -1226,9 +1298,10 @@ def main():
         st = n["status"]
         typ = n["kind_label"]
         seo = seo_of(n)
-        n["h2"] = kw_h2(n, seo)
+        n["h2"] = brand_h2(n, kw_h2(n, seo))
         if n.get("moved"):
             title = f"{n['title']} 예상 vs 실제 분양가 — 공고 전 전망 정리 · 줍줍알람"
+            n["h1_base"], n["h1_kw"] = n["title"], "예상 vs 실제 분양가"
         elif n["is_pre"]:
             title = kw_title(n, seo, None, ("분양 일정", "예상 분양가"))
         elif n["is_rental"]:
@@ -1275,17 +1348,18 @@ def main():
     # ── 목록 공통
     list_tpl = E.get_template("list.html")
 
-    def list_page(url, h1, title, desc, groups, intro=None, crumb=None, links=None, kind="list", empty=None, tbl_label=None, og_t=None):
+    def list_page(url, h1, title, desc, groups, intro=None, crumb=None, links=None, kind="list", empty=None, tbl_label=None, og_t=None,
+                  sections=None, h1_kw=None, tbl=True):
         all_n = [x for _, g in groups for x in g]
         lm = max([x["modified"] for x in all_n], default=now.isoformat(timespec="seconds"))
         # '한눈에 보기' 표 — 접수 중·예정만 최대 12곳 (2026-11-02 SEO 기획안 개선안 1)
         live = tsort({x["key"]: x for x in all_n if x["status"] in ("open", "upcoming")}.values())
-        tbl = live[:12]
+        tbl = live[:12] if tbl else []
         cap = (f"{tbl_label or h1} 접수 중·예정 {len(live)}곳" + (f" 중 {len(tbl)}곳" if len(live) > len(tbl) else "")
                + f" — {d(TODAY.isoformat())} 기준 · 청약홈·LH·마이홈 공식 데이터")
         h = list_tpl.render(h1=h1, groups=groups, intro=intro, crumb=crumb or [("홈", "/")], links=links, empty=empty,
                             page_url=url, title=title, desc=desc, og=og_hub(url, *og_t, all_n) if og_t else "/og-default.jpg",
-                            items=all_n, tbl=tbl, tbl_cap=cap, **common)
+                            items=all_n, tbl=tbl, tbl_cap=cap, sections=sections or [], h1_kw=h1_kw, **common)
         write(url, h, title, desc, kind, lm)
 
     def tsort(lst):
@@ -1300,6 +1374,26 @@ def main():
              ("당첨자 발표 대기", [x for x in s if x["status"] == "waiting"]),
              ("최근 발표", [x for x in s if x["status"] == "announced"])]
         return [x for x in g if x[1]]
+
+    # ── 검색어 허브 (2026-11-02 SEO 전략 v2) — 행정구역·유형이 아니라 사람들이 검색하는 이름으로 묶은 목록
+    def gtxt(x):
+        return " ".join([x["title"], x.get("complex") or "", x.get("address") or "", " ".join(x.get("aliases") or [])])
+    seoul_mu = [x for x in notices if x["sido"] == "서울" and x["kind"] == "mujeonwi"]          # 서울 줍줍 1,310 · 서울 무순위 청약 760
+    dongtan = [x for x in notices if x["sido"] == "경기" and "동탄" in gtxt(x)]                   # 동탄 청약 2,410 · 동탄 분양 2,830
+    lotto = [x for x in notices if not x["is_rental"] and x.get("gap") and "저렴" in (x["gap"].get("verdict") or "")
+             and "건물분양가" not in x["gap"]["verdict"]]  # 로또 청약 2,160 · 토지임대부는 시세 훅으로 쓰지 않음(README 공유 썸네일 규칙)
+    hw = regions["sigungu"].get("경기", {}).get("화성특례시")
+    HUB_LINKS, hub_quick = {}, []
+    if seoul_mu:
+        HUB_LINKS["/region/seoul/"] = [("서울 줍줍·무순위", "/region/seoul/mujeonwi/")]
+        hub_quick.append(("서울 줍줍", "/region/seoul/mujeonwi/", f"무순위·임의공급 {len(seoul_mu)}곳"))
+    if dongtan:
+        HUB_LINKS["/region/gyeonggi/"] = [("동탄 청약", "/region/gyeonggi/dongtan/")]
+        if hw:
+            HUB_LINKS[f"/region/gyeonggi/{hw}/"] = [("동탄 청약만 보기", "/region/gyeonggi/dongtan/")]
+        hub_quick.append(("동탄 청약", "/region/gyeonggi/dongtan/", f"공고 {len(dongtan)}곳"))
+    if lotto:
+        hub_quick.append(("로또 청약", "/lotto/", "시세보다 싼 공고"))
 
     # 홈
     home_tpl = E.get_template("home.html")
@@ -1327,7 +1421,7 @@ def main():
     home_tbl = tsort([x for x in s if x["status"] in ("open", "upcoming")])[:12]
     home_og = og_hub("/", "청약 공고 모음", "오늘 볼 청약 공고", "한눈에 보기", "줍줍(무순위) · 분양 · 신혼희망타운 · 임대 — 접수일 · 분양가 · 자격", s)
     h = home_tpl.render(groups=home_groups, page_url="/", title=title, desc=desc, og=home_og,
-                        regions_used=regions_used, region_slug=regions["sido"], sido_map=sido_map,
+                        regions_used=regions_used, region_slug=regions["sido"], sido_map=sido_map, hub_quick=hub_quick, n_open=n_open, n_up=n_up,
                         tbl=home_tbl, tbl_cap=f"청약 공고 접수 중·예정 {n_open + n_up}곳 중 {len(home_tbl)}곳 — {d(TODAY.isoformat())} 기준 · 청약홈·LH·마이홈 공식 데이터", **common)
     write("/", h, title, desc, "list", max(x["modified"] for x in notices))
 
@@ -1390,14 +1484,14 @@ def main():
                   f"{sido} 청약 일정 — 아파트 분양·줍줍 접수 중·예정 {len(open_n)}곳 · 줍줍알람",
                   f"{sido} 청약 일정과 {sido} 아파트 분양 공고 {len(lst)}곳 중 접수 중·예정 {len(open_n)}곳." + (f" 다음 접수 시작 {d(nearest)}." if nearest else "") + " 줍줍(무순위)·민간분양·공공분양·신혼희망타운 분양가와 자격.",
                   grouped(lst), intro, [("홈", "/"), ("지역", "/region/")], tbl_label=f"{sido} 청약 공고", og_t=(sido, f"{sido} 청약 공고", "한눈에 보기", "아파트 분양 · 줍줍 · 임대 — 접수일 · 분양가 · 자격"), links=
-                  [(f"{a} 공고", f"/region/{slug}/{b}/") for a, b in sub])
+                  [(f"{a} 공고", f"/region/{slug}/{b}/") for a, b in sub] + HUB_LINKS.get(f"/region/{slug}/", []))
     for (sido, sgg), lst in sgg_pages.items():
         slug, sslug = regions["sido"][sido], regions["sigungu"][sido][sgg]
         open_n = [x for x in lst if x["status"] in ("open", "upcoming")]
         list_page(f"/region/{slug}/{sslug}/", f"{sido} {sgg} 청약 공고",
                   f"{sido} {sgg} 청약 일정·분양가 — 접수 중·예정 {len(open_n)}곳 · 줍줍알람",
                   f"{sido} {sgg} 청약 공고 {len(lst)}곳의 접수일·분양가·자격.", grouped(lst),
-                  None, [("홈", "/"), ("지역", "/region/"), (sido, f"/region/{slug}/")],
+                  None, [("홈", "/"), ("지역", "/region/"), (sido, f"/region/{slug}/")], links=HUB_LINKS.get(f"/region/{slug}/{sslug}/"),
                   og_t=(sido, f"{sgg} 청약 공고", "한눈에 보기", "아파트 분양 · 줍줍 · 임대 — 접수일 · 분양가 · 자격"))
     # 지역 목록
     h = E.get_template("index_list.html").render(
@@ -1408,6 +1502,15 @@ def main():
         page_url="/region/", og="/og-default.jpg", crumb=[("홈", "/"), ("지역", None)], **common)
     write("/region/", h, "지역별 청약 공고 · 줍줍알람", "", "list")
 
+    # 청약 경쟁률 표 행 (경쟁률 허브·줍줍 허브 공용)
+    crow = []
+    for n in sorted((x for x in notices if x.get("comp") and x["comp"]["rows"]), key=lambda x: (x["rcpt"][1] or x["rcpt"][0], x["title"]), reverse=True):
+        m = re.search(r"([\d,]+)세대에\s*([\d,]+)\S*\s*·\s*(?:평균\s*)?([\d.]+)대 1", n["comp"]["short"] or "")
+        rates = [float(r["rate"]) for r in n["comp"]["rows"] if re.fullmatch(r"[\d.]+", r["rate"])]
+        if not m:
+            continue
+        crow.append({"n": n, "supply": f"{m.group(1)}세대", "apply": f"{m.group(2)}건", "avg": f"{float(m.group(3)):g}대 1",
+                     "top": f"{max(rates):g}대 1" if rates else "—", "topv": max(rates) if rates else 0})
     # 유형
     by_kind = {}
     for n in notices:
@@ -1428,8 +1531,21 @@ def main():
         else:
             t_ = f"{kw} 일정 — 접수 중·예정 {len(open_n)}곳 · 줍줍알람"
             ds_ = f"{kw} 공고 {len(lst)}곳 중 접수 중·예정 {len(open_n)}곳" + (f"({', '.join(sidos)})" if sidos else "") + ". 접수일·분양가·자격을 공식 데이터로 정리."
-        list_page(f"/type/{k}/", f"{label} 청약 공고", t_, ds_,
-                  grouped(lst), KIND_INTRO[k], [("홈", "/"), ("유형", "/type/")], tbl_label=label,
+        h1_, links_, secs_, h1_kw_ = f"{label} 청약 공고", None, None, None
+        if k == "rental":   # 검색은 '행복주택'(월 47,500)으로 한다 — 이름·제목 앞에 (2026-11-02 SEO 전략 v2, 주소는 유지)
+            h1_ = "행복주택·공공임대 모집 공고"
+            t_ = f"행복주택·공공임대 모집 공고 — 접수 중·예정 {len(open_n)}곳 · 줍줍알람"
+            ds_ = (f"{d(TODAY.isoformat())} 기준 행복주택·국민임대·매입임대·전세임대 모집 공고 {len(lst)}곳 중 접수 중·예정 {len(open_n)}곳"
+                   + (f"({', '.join(sidos)})" if sidos else "") + ". 보증금·월세·자격·주변 시세 비교를 공식 공고 기준으로 정리.")
+            links_ = [(lb, u) for lb, u in (("행복주택 자격·소득 기준", "/guide/happy-house/"), ("청년 임대주택 종류 비교", "/guide/youth-rental/"),
+                                            ("LH 임대주택 유형", "/guide/lh-rental-types/")) if u.split("/")[2] in gby]
+        if k == "mujeonwi":
+            links_ = [("서울 줍줍·무순위", "/region/seoul/mujeonwi/"), ("로또 청약 (시세보다 싼 공고)", "/lotto/"),
+                      ("무순위 자격 총정리", "/guide/mujeonwi/"), ("청약 경쟁률", "/competition/")]
+            secs_ = mu_sections([r for r in crow if r["n"]["kind"] == "mujeonwi"])
+            h1_kw_ = cnt if (o_ or u_) else None
+        list_page(f"/type/{k}/", h1_, t_, ds_,
+                  grouped(lst), KIND_INTRO[k], [("홈", "/"), ("유형", "/type/")], tbl_label=label, links=links_, sections=secs_, h1_kw=h1_kw_,
                   og_t=("줍줍(무순위)", "줍줍 공고", "한눈에 보기", "청약통장 없이 추첨 · 접수일 · 분양가 · 자격") if k == "mujeonwi"
                   else (label, f"{label} 공고", "한눈에 보기", "접수일 · 분양가 · 자격 — 공식 데이터로 정리"))
     h = E.get_template("index_list.html").render(
@@ -1441,15 +1557,60 @@ def main():
         page_url="/type/", og="/og-default.jpg", crumb=[("홈", "/"), ("유형", None)], **common)
     write("/type/", h, "유형별 청약 공고 · 줍줍알람", "", "list")
 
-    # 청약 경쟁률 허브 (2026-11-02 SEO 기획안 3단계 — 네이버 '청약 경쟁률' 월 약 4,300회 검색, _site.json)
-    crow = []
-    for n in sorted((x for x in notices if x.get("comp") and x["comp"]["rows"]), key=lambda x: (x["rcpt"][1] or x["rcpt"][0], x["title"]), reverse=True):
-        m = re.search(r"([\d,]+)세대에\s*([\d,]+)\S*\s*·\s*(?:평균\s*)?([\d.]+)대 1", n["comp"]["short"] or "")
-        rates = [float(r["rate"]) for r in n["comp"]["rows"] if re.fullmatch(r"[\d.]+", r["rate"])]
-        if not m:
-            continue
-        crow.append({"n": n, "supply": f"{m.group(1)}세대", "apply": f"{m.group(2)}건", "avg": f"{float(m.group(3)):g}대 1",
-                     "top": f"{max(rates):g}대 1" if rates else "—", "topv": max(rates) if rates else 0})
+    # 검색어 허브 그리기
+    def lcnt(lst):
+        o_ = len([x for x in lst if x["status"] == "open"])
+        u_ = len([x for x in lst if x["status"] == "upcoming"])
+        return (f"지금 접수 중 {o_}건" + (f"·예정 {u_}건" if u_ else "")) if o_ else (f"접수 예정 {u_}건" if u_ else "최근 공고 모음")
+    if seoul_mu:
+        c_ = lcnt(seoul_mu)
+        cr = [r for r in crow if r["n"] in seoul_mu]
+        list_page("/region/seoul/mujeonwi/", "서울 줍줍·무순위 청약 공고", f"서울 줍줍·무순위 청약 — {c_} · 줍줍알람",
+                  f"{d(TODAY.isoformat())} 기준 서울 무순위(줍줍)·임의공급 공고 {len(seoul_mu)}곳({c_.replace('지금 ', '')}). 접수일·분양가·자격·청약홈 공식 경쟁률을 한 페이지에.",
+                  grouped(seoul_mu),
+                  f"서울에서 나온 무순위(줍줍)·임의공급 공고 {len(seoul_mu)}곳을 모았어요. 청약통장 없이 추첨으로 뽑고, 무주택세대구성원만 넣을 수 있어요. "
+                  "거주지역 요건(서울 또는 수도권 등)은 공고마다 달라요.",
+                  [("홈", "/"), ("지역", "/region/"), ("서울", "/region/seoul/"), ("줍줍·무순위", None)],
+                  [("서울 전체 청약", "/region/seoul/"), ("전국 줍줍 공고", "/type/mujeonwi/"), ("무순위 자격 총정리", "/guide/mujeonwi/")],
+                  tbl_label="서울 줍줍·무순위", h1_kw=c_,
+                  sections=[{"h2": "서울 줍줍 최근 경쟁률", "small": f"{len(cr[:10])}곳",
+                             "html": comp_table(cr[:10], f"서울 무순위·임의공급 최근 {len(cr[:10])}곳 — 청약홈 공식 경쟁률")}] if cr else None,
+                  og_t=("서울 줍줍", "서울 줍줍 공고", "한눈에 보기", "청약통장 없이 추첨 · 접수일 · 분양가 · 경쟁률"))
+    if dongtan:
+        c_ = lcnt(dongtan)
+        crumb_ = [("홈", "/"), ("지역", "/region/"), ("경기", "/region/gyeonggi/")] + ([("화성", f"/region/gyeonggi/{hw}/")] if hw else []) + [("동탄", None)]
+        list_page("/region/gyeonggi/dongtan/", "동탄 청약·분양 공고", f"동탄 청약 일정 — 아파트 분양·임대 {len(dongtan)}곳 · 줍줍알람",
+                  f"{d(TODAY.isoformat())} 기준 화성 동탄 일대 청약 공고 {len(dongtan)}곳({c_.replace('지금 ', '')}). 동탄 아파트 분양·행복주택의 접수일·분양가·보증금·자격.",
+                  grouped(dongtan),
+                  f"화성 동탄신도시 일대에서 나온 청약 공고 {len(dongtan)}곳을 모았어요. 화성시 전체 공고는 화성 페이지에 있어요.",
+                  crumb_, ([("화성 전체 청약", f"/region/gyeonggi/{hw}/")] if hw else []) + [("경기 청약", "/region/gyeonggi/")]
+                  + ([("2기 신도시 정리", "/guide/new-town-2nd/")] if "new-town-2nd" in gby else []),
+                  tbl_label="동탄", h1_kw=c_,
+                  og_t=("동탄", "동탄 청약 공고", "한눈에 보기", "아파트 분양 · 임대 — 접수일 · 분양가 · 자격"))
+    if lotto:
+        lot = sorted(lotto, key=lambda x: (x["status"] not in ("open", "upcoming", "pre"), -gap_won(x["gap"]["verdict"])))
+        live_ = [x for x in lot if x["status"] in ("open", "upcoming")]
+        rows_ = []
+        for x in lot:
+            g = x["gap"]
+            base = " · ".join(f"{k} {v}" for k, v in (g.get("rows") or [])[:1])
+            rows_.append([alink(x), f"{x['sido']} {x['sigungu'] or ''}", STATUS[x["status"]][0], g["verdict"], base or "—"])
+        tbl_ = mk_table(f"주변 실거래보다 분양가가 낮은 공고 {len(lot)}곳 — 비교 단지 실거래 기준 추정 · {d(TODAY.isoformat())}",
+                        ["단지", "지역", "상태", "시세 대비", "비교 기준 (실거래)"], rows_, left=5, txt=True)
+        top_ = live_[0] if live_ else lot[0]
+        list_page("/lotto/", "로또 청약 — 시세보다 싸게 나온 공고", f"로또 청약 — 시세보다 싸게 나온 공고 {len(lot)}곳 · 줍줍알람",
+                  f"{d(TODAY.isoformat())} 기준 주변 실거래보다 분양가가 낮은 청약 공고 {len(lot)}곳(접수 중·예정 {len(live_)}곳). "
+                  f"{top_.get('complex') or top_['title']} {top_['gap']['verdict']} 등. 비교 단지와 실거래 시점을 함께 정리.",
+                  grouped(lot),
+                  "같은 생활권·비슷한 면적 아파트의 최근 실거래가보다 분양가가 낮게 나온 공고만 모았어요. 비교 단지와 거래 시점을 표에 함께 적었고, 금액은 모두 추정이에요. "
+                  "차익이 클수록 경쟁이 몰리고, 실거주 의무·전매 제한·재당첨 제한이 붙는 경우가 많으니 공고별 '주의점'을 꼭 확인하세요.",
+                  [("홈", "/"), ("로또 청약", None)],
+                  [("줍줍 공고", "/type/mujeonwi/"), ("청약 경쟁률", "/competition/"), ("서울 줍줍", "/region/seoul/mujeonwi/")],
+                  tbl=False, h1_kw=f"접수 중·예정 {len(live_)}곳",
+                  sections=[{"h2": "시세보다 얼마나 싼가요", "small": f"{len(lot)}곳", "top": True, "html": tbl_}],
+                  og_t=("로또 청약", "시세보다 싼 공고", "한눈에 보기", "주변 실거래와 비교 · 비교 단지 · 거래 시점"))
+
+    # 청약 경쟁률 허브 (2026-11-02 SEO 기획안 3단계 — 네이버 '청약 경쟁률' 월 약 4,300회 검색, _site.json) — crow는 유형 허브 앞에서 계산
     if crow:
         best = max(crow, key=lambda r: r["topv"])
         h1 = "청약 경쟁률"
