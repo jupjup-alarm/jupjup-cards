@@ -1,0 +1,142 @@
+{
+ "key": "2026000530",
+ "images": [
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "낮 전경",
+   "file": "photos/site/2026000530/birdseye.jpg",
+   "src": "https://www.gy-bando.com/apt/image/sub/about/about_img01.jpg",
+   "crop": "",
+   "w": 1440,
+   "h": 788,
+   "md5": "2ef3f7c54af86b94b644c47e30aef451",
+   "photo": true
+  },
+  {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "AC3·AC4",
+   "file": "photos/site/2026000530/siteplan-ac3-ac4.jpg",
+   "src": "https://www.gy-bando.com/apt/image/sub/danji/design_img01.jpg",
+   "crop": "",
+   "w": 1440,
+   "h": 850,
+   "md5": "47d5464f3b28af93fa2dfacab2f236d0",
+   "photo": true
+  },
+  {
+   "cat": "dongho",
+   "kind": "동호배치도",
+   "label": "",
+   "file": "photos/site/2026000530/dongho.jpg",
+   "src": "https://www.gy-bando.com/apt/image/sub/danji/dong_img02.jpg",
+   "crop": "",
+   "w": 1440,
+   "h": 1128,
+   "md5": "5252270f7c44b74a61f4fe219d0ecd52",
+   "photo": true
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "84A",
+   "file": "photos/site/2026000530/plan-84a.jpg",
+   "src": "https://www.gy-bando.com/apt/image/sub/unit/unit_84a_img01.jpg",
+   "crop": "",
+   "w": 1440,
+   "h": 1693,
+   "md5": "cf4ad216259243488c1551aa18cfdb31",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "84B",
+   "file": "photos/site/2026000530/plan-84b.jpg",
+   "src": "https://www.gy-bando.com/apt/image/sub/unit/unit_84b_img01.jpg",
+   "crop": "",
+   "w": 1440,
+   "h": 1753,
+   "md5": "c5c86798193827ec3e08061734a8b385",
+   "photo": false
+  },
+  {
+   "cat": "community",
+   "kind": "커뮤니티",
+   "label": "평면",
+   "file": "photos/site/2026000530/community.jpg",
+   "src": "https://www.gy-bando.com/apt/image/sub/danji/community_img01.jpg",
+   "crop": "",
+   "w": 1440,
+   "h": 1033,
+   "md5": "6af37930c6ecedf96b90ab60e0d46be5",
+   "photo": false
+  },
+  {
+   "cat": "community",
+   "kind": "커뮤니티",
+   "label": "세탁실",
+   "file": "photos/site/2026000530/community-2.jpg",
+   "src": "https://www.gy-bando.com/apt/image/sub/danji/community_cont01-2.jpg",
+   "crop": "",
+   "w": 500,
+   "h": 351,
+   "md5": "0f0ba08fc90ad75afdfe1eee055664fd",
+   "photo": true
+  },
+  {
+   "cat": "community",
+   "kind": "커뮤니티",
+   "label": "골프연습장",
+   "file": "photos/site/2026000530/community-3.jpg",
+   "src": "https://www.gy-bando.com/apt/image/sub/danji/community_cont01-3.jpg",
+   "crop": "",
+   "w": 500,
+   "h": 351,
+   "md5": "5afa9998ad0b96a1796b346dce8651ed",
+   "photo": true
+  },
+  {
+   "cat": "interior",
+   "kind": "인테리어",
+   "label": "84A 거실",
+   "file": "photos/site/2026000530/interior-84a.jpg",
+   "src": "https://www.gy-bando.com/apt/image/sub/unit/living_84a.jpg",
+   "crop": "",
+   "w": 1600,
+   "h": 1066,
+   "md5": "0b1772fc869bde67a4dfff38a231bfc0",
+   "photo": true
+  },
+  {
+   "cat": "interior",
+   "kind": "인테리어",
+   "label": "84A 주방",
+   "file": "photos/site/2026000530/interior-84a-2.jpg",
+   "src": "https://www.gy-bando.com/apt/image/sub/unit/kitchen_84a.jpg",
+   "crop": "",
+   "w": 1600,
+   "h": 1066,
+   "md5": "9397af8b8b8439fa3bfd12e9d835102e",
+   "photo": true
+  }
+ ],
+ "links": [
+  {
+   "kind": "emodel",
+   "label": "E모델하우스",
+   "name": "E모델하우스",
+   "url": "https://www.gy-bando.com/apt/sub/unit/interior.html"
+  },
+  {
+   "kind": "vr",
+   "label": "84A",
+   "name": "VR",
+   "url": "https://www.gy-bando.com/apt/sub/unit/vr_84a_2.html"
+  }
+ ],
+ "homepage": "https://www.gy-bando.com",
+ "owner": "반도건설",
+ "updated": "2026-11-02 22:51"
+}
