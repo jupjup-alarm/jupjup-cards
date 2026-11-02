@@ -1,0 +1,135 @@
+{
+ "key": "2026940241",
+ "images": [
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "낮 전경",
+   "file": "photos/site/2026940241/birdseye.jpg",
+   "src": "https://www.sujain-pm2.co.kr/img/main.jpg",
+   "crop": "",
+   "w": 1600,
+   "h": 833,
+   "md5": "22e7a425d87c6a3295d52b1b4806b214",
+   "photo": true
+  },
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "사우역 방향",
+   "file": "photos/site/2026940241/birdseye-2.jpg",
+   "src": "https://www.sujain-pm2.co.kr/sub/planning.jpg",
+   "crop": "",
+   "w": 1600,
+   "h": 833,
+   "md5": "4759c12eeb5463a8f2aafaa93a1e9a9b",
+   "photo": true
+  },
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "중앙광장",
+   "file": "photos/site/2026940241/birdseye-3.jpg",
+   "src": "https://www.sujain-pm2.co.kr/sub/complex.jpg",
+   "crop": "0,0.643,0.49,0.82",
+   "w": 637,
+   "h": 309,
+   "md5": "c416c5e163b8a8cb2f9fe98ade085c35",
+   "photo": true
+  },
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "주출입구",
+   "file": "photos/site/2026940241/birdseye-4.jpg",
+   "src": "https://www.sujain-pm2.co.kr/sub/complex.jpg",
+   "crop": "0.507,0.83,1,1",
+   "w": 641,
+   "h": 297,
+   "md5": "c416c5e163b8a8cb2f9fe98ade085c35",
+   "photo": true
+  },
+  {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "",
+   "file": "photos/site/2026940241/siteplan.jpg",
+   "src": "https://www.sujain-pm2.co.kr/sub/complex.jpg",
+   "crop": "0,0.095,1,0.64",
+   "w": 1300,
+   "h": 953,
+   "md5": "c416c5e163b8a8cb2f9fe98ade085c35",
+   "photo": true
+  },
+  {
+   "cat": "dongho",
+   "kind": "동호배치도",
+   "label": "",
+   "file": "photos/site/2026940241/dongho.jpg",
+   "src": "https://www.sujain-pm2.co.kr/sub/dh.jpg",
+   "crop": "",
+   "w": 1300,
+   "h": 1803,
+   "md5": "f7791f5ba9853a3c2f1f789d23c7ccdb",
+   "photo": false
+  },
+  {
+   "cat": "community",
+   "kind": "커뮤니티",
+   "label": "평면",
+   "file": "photos/site/2026940241/community.jpg",
+   "src": "https://www.sujain-pm2.co.kr/sub/community.jpg",
+   "crop": "0,0.136,1,0.62",
+   "w": 1300,
+   "h": 890,
+   "md5": "ea08de3a0fc5462fe450fc355c8c6df4",
+   "photo": false
+  },
+  {
+   "cat": "community",
+   "kind": "커뮤니티",
+   "label": "라운지",
+   "file": "photos/site/2026940241/community-2.jpg",
+   "src": "https://www.sujain-pm2.co.kr/sub/community.jpg",
+   "crop": "0,0.752,0.322,0.848",
+   "w": 419,
+   "h": 177,
+   "md5": "ea08de3a0fc5462fe450fc355c8c6df4",
+   "photo": true
+  },
+  {
+   "cat": "community",
+   "kind": "커뮤니티",
+   "label": "피트니스",
+   "file": "photos/site/2026940241/community-3.jpg",
+   "src": "https://www.sujain-pm2.co.kr/sub/community.jpg",
+   "crop": "0,0.878,0.493,1",
+   "w": 641,
+   "h": 224,
+   "md5": "ea08de3a0fc5462fe450fc355c8c6df4",
+   "photo": true
+  },
+  {
+   "cat": "community",
+   "kind": "커뮤니티",
+   "label": "키즈라운지",
+   "file": "photos/site/2026940241/community-4.jpg",
+   "src": "https://www.sujain-pm2.co.kr/sub/community.jpg",
+   "crop": "0.507,0.878,1,1",
+   "w": 641,
+   "h": 224,
+   "md5": "ea08de3a0fc5462fe450fc355c8c6df4",
+   "photo": false
+  }
+ ],
+ "links": [
+  {
+   "kind": "emodel",
+   "label": "E모델하우스",
+   "name": "E모델하우스",
+   "url": "https://www.sujain-pm2.co.kr/vr.html"
+  }
+ ],
+ "homepage": "https://www.sujain-pm2.co.kr",
+ "updated": "2026-11-02 15:49"
+}

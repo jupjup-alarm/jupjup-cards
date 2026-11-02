@@ -938,9 +938,48 @@ def og_card(n, dst):
     tag.write_text(key, encoding="utf-8")
 
 
+def site_assets(n):
+    """분양 홈페이지 자료 (photos/site/{key}/index.json — ① 조사 담당이 고른 것을 tools/site_photos.py로 받은 것, 2026-11-02).
+    공고 json에 photo·plans·layouts가 없으면 여기서 채우고, 커뮤니티·인테리어·조감도는 '단지 둘러보기' 갤러리, E모델하우스·VR은 링크로."""
+    f = REPO / "photos" / "site" / n["key"] / "index.json"
+    if not f.exists():
+        return None
+    try:
+        idx = json.loads(f.read_text(encoding="utf-8"))
+    except ValueError:
+        return None
+    ims = [im for im in idx.get("images", []) if (REPO / im["file"]).exists()]
+    if not n.get("image_credit_owner"):
+        n["image_credit_owner"] = idx.get("owner") or "분양 홈페이지"
+    owner = n["image_credit_owner"]
+    bird = [im for im in ims if im["cat"] == "birdseye"]
+    if not n.get("photo"):
+        big = next((im for im in bird if im["w"] >= 1000), None)
+        if big:
+            n["photo"] = {"image": big["file"], "credit": f"이미지: {owner} 조감도 · 실제와 다를 수 있음",
+                          "alt": f"{n['title']} 조감도", "pos": "center 55%"}
+    if not n.get("plans"):
+        n["plans"] = [{"type": im["label"] or f"평면 {i}", "image": im["file"], "alt": f"{n['title']} {im['label']} 평면도"}
+                      for i, im in enumerate((im for im in ims if im["cat"] == "plan"), 1)][:8]
+    if not n.get("layouts"):
+        lay = [im for im in ims if im["cat"] == "siteplan"][:2] + [im for im in ims if im["cat"] == "dongho"][:2]
+        n["layouts"] = [{"kind": "동호배치도" if im["cat"] == "dongho" else "단지 배치도", "image": im["file"],
+                         "alt": f"{n['title']} {'동호배치도' if im['cat'] == 'dongho' else '단지 배치도'}{(' ' + im['label']) if im['label'] else ''}"}
+                        for im in lay]
+    hero = (n.get("photo") or {}).get("image")
+    gal = [im for im in bird if im["file"] != hero] + [im for im in ims if im["cat"] == "community"] + [im for im in ims if im["cat"] == "interior"]
+    kind_ko = {"birdseye": "단지", "community": "커뮤니티", "interior": "인테리어"}
+    n["gallery"] = [{"image": im["file"], "label": im["label"] or kind_ko[im["cat"]], "kind": kind_ko[im["cat"]],
+                     "alt": f"{n['title']} {kind_ko[im['cat']]} {im['label']}".strip(), "photo": im.get("photo", True)} for im in gal[:8]]
+    n["site_links"] = [l for l in idx.get("links", []) if l.get("kind") in ("emodel", "vr") and l.get("url", "").startswith("http")
+                       and "youtube.com/embed" not in l["url"]][:3]
+    return idx
+
+
 def notice_images(n):
     out = PUB / "apt" / n["key"]
     imgs = {}
+    site_assets(n)
     if n.get("photo"):
         sz = img_out(n["photo"]["image"], out / "hero.webp", 960)
         if sz:
@@ -962,6 +1001,12 @@ def notice_images(n):
         if sz:
             lays.append(dict(p, src=f"layout-{i}.webp", w=sz[0], h=sz[1]))
     imgs["layouts"] = lays
+    gal = []
+    for i, p in enumerate(n.get("gallery", []), 1):
+        sz = img_out(p["image"], out / f"tour-{i}.webp", 1200, 80)
+        if sz:
+            gal.append(dict(p, src=f"tour-{i}.webp", w=sz[0], h=sz[1]))
+    imgs["gallery"] = gal
     og_ver = ""
     try:
         out.mkdir(parents=True, exist_ok=True)

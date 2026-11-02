@@ -403,6 +403,28 @@
   </section>
   {% endif %}
 
+  {% if n.imgs.gallery or n.site_links %}
+  <section class="sec" aria-labelledby="h-tour">
+    <h2 id="h-tour">{{ n.h2.get('tour', '단지 둘러보기') }}</h2>
+    {% if n.imgs.gallery %}
+    <div class="gal">
+    {% for p in n.imgs.gallery %}
+      <figure class="fig{{ '' if p.photo else ' fit' }}">
+        <a href="{{ p.src }}" target="_blank" rel="noopener"><img src="{{ p.src }}" width="{{ p.w }}" height="{{ p.h }}" alt="{{ p.alt }}" loading="lazy"></a>
+        <figcaption><b>{{ p.kind }}{% if p.label != p.kind %} · {{ p.label }}{% endif %}</b> · 이미지: {{ n.image_credit_owner }} · 실제와 다를 수 있음</figcaption>
+      </figure>
+    {% endfor %}
+    </div>
+    {% endif %}
+    {% if n.site_links %}
+    <div class="tour-links">
+    {% for l in n.site_links %}<a class="tour-link" href="{{ l.url }}" target="_blank" rel="noopener">{{ '항공 VR' if l.kind == 'vr' else 'E-모델하우스' }}{% if l.label and l.label not in (l.name, 'VR', '항공VR') %} <small>{{ l.label }}</small>{% endif %} 보기 ↗</a>{% endfor %}
+    </div>
+    <p class="note">공식 분양 홈페이지에서 집 안을 360°로 둘러볼 수 있어요.</p>
+    {% endif %}
+  </section>
+  {% endif %}
+
   <section class="sec" aria-labelledby="h-elig">
     <h2 id="h-elig">{{ n.h2.get('elig', '신청 자격') }}</h2>
     <dl class="kv">

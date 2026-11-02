@@ -12,6 +12,7 @@
 - `fonts/` — Black Han Sans, Noto Sans KR (OFL)
 - `maps/` — 시트 스크립트가 올리는 네이버 지도 이미지
 - `photos/` — 시트 스크립트가 올리는 단지 사진 ('청약조사' W열 → AA열), 평면도 `photos/plan-…` (AB열 → AC열), 배치도 `photos/layout-…` (AD열 → AE열), 동호배치도 `photos/dongho-…` (AF열 → AG열) — 배치도·동호배치도는 사이트(jupjupalarm.com) 공고 페이지용, AH열은 공식 홈페이지 주소
+- `photos/site/<key>/` — 분양 홈페이지 자료 (2026-11-02): ① 조사 담당이 `tools/site_assets.py`로 홈페이지를 훑고 고른 이미지 주소를 '청약조사' AI열(홈페이지 자료, 첫 줄 `key: …`)에 적으면, ④·⑦이 `python3 tools/site_photos.py --text "<AI열>"`로 받는다 → `<분류>-….jpg`(birdseye 조감도·siteplan 단지배치·dongho 동호배치·plan 평면·community 커뮤니티·interior 인테리어), `index.json`(분류·label·w·h·photo 여부·E모델하우스 링크), `contact.jpg`(미리보기). 출처 문구 "이미지: <사업주체> 분양 홈페이지 · 실제와 다를 수 있음".
 - `mapgen.py`, `data/` — 대체용 경계 지도 (통계청 SGIS 2018 행정구역 경계, 공공누리 제1유형)
 
 ## 원고(JSON) 형식
@@ -51,6 +52,7 @@
 - plan (평면도): `{"type": "plan", "eyebrow": "평면도", "title": "84A 이렇게 생겼어요", "image": "photos/plan-….jpg", "rows": [["공급", "일반 19·특공 53세대"], ["최고 분양가", "5억7,026만원"]], "credit": "이미지: LH 제공 평면도 · 실제와 다를 수 있음"}` — 가격 장 바로 뒤에 1~2장(주력 타입). rows 최대 2개, 값은 '청약홈API' 탭·원고 숫자 그대로.
   - 이미지 출처: '청약조사' AC열 `photos/plan-…` (분양 홈페이지 평면 이미지를 시트 스크립트가 받아둔 것)만 쓴다. AC열이 비었거나 "없음"·"실패"면 평면도 카드를 **빼고** 만든다 (사용자 결정 2026-10-26: 팸플릿 PDF는 올리지 않음). 반드시 Read로 열어 타입명이 맞는지 확인.
   - credit은 X열 출처(사업주체)로: "이미지: <사업주체> 제공 평면도 · 실제와 다를 수 있음".
+- **홈페이지 사진 카드** (2026-11-02): plan 카드는 평면도 말고도 `photos/site/<key>/`의 커뮤니티·조감도·동호배치도에 쓸 수 있다. 사진(index.json `photo: true` — 커뮤니티·조감도 컷)은 `"fit": "cover"`(칸을 꽉 채움, 선택 `"pos": "center 40%"`), 그림(평면·배치·동호·커뮤니티 평면)은 fit 없이. 예: `{"type":"plan","eyebrow":"커뮤니티","title":"단지 안에 이런 게 있어요","image":"photos/site/2026940241/community-2.jpg","fit":"cover","credit":"이미지: <사업주체> 분양 홈페이지 · 실제와 다를 수 있음"}`
 - 원고의 문구·숫자는 바꾸지 말 것. 칸 배치만 정리한다.
 
 ## 렌더링

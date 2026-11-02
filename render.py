@@ -380,14 +380,19 @@ def plancard(card, th, n, total):
         f'<div class="row" style="background:{th["tint"]}"><span class="rl" style="color:{th["accent"]}">{esc(k)}</span>'
         f'<span class="rv">{unit(esc(v))}</span></div>' for k, v in (card.get("rows") or [])[:2])
     title = "".join(f"<div>{unit(esc(t))}</div>" for t in lines(card.get("title", "")))
-    img = f'<img src="{uri}" alt="">' if uri else '<div class="maperr">평면도 이미지를 찾지 못했어요</div>'
+    # fit "cover": 사진(커뮤니티·조감도 등 photos/site/…)은 칸을 꽉 채움 — 평면·배치·동호도는 기본 contain (2026-11-02)
+    cover = card.get("fit") == "cover"
+    pos = esc(card.get("pos") or "center")
+    img = (f'<img src="{uri}" alt="" style="width:100%;height:100%;object-fit:cover;object-position:{pos}">' if cover else f'<img src="{uri}" alt="">') \
+        if uri else '<div class="maperr">평면도 이미지를 찾지 못했어요</div>'
+    box = ' style="padding:0"' if cover else ""
     return f'''
 <div class="card light" style="background:#FFFFFF">
   {header(n, total, th)}
   <div class="zoom body mp">
     <div class="eyebrow" style="color:{th['accent']}">{esc(card.get('eyebrow') or '평면도')}</div>
     <div class="title">{title}</div>
-    <div class="planbox">{img}</div>
+    <div class="planbox"{box}>{img}</div>
     {f'<div class="rows mrows">{rows}</div>' if rows else ''}
   </div>
   <div class="note">{esc(card.get('credit') or '이미지: 사업주체 제공 평면도 · 실제와 다를 수 있음')}</div>
