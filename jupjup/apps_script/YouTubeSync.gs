@@ -13,7 +13,8 @@
  *  1) 줍줍알람 시트 → 확장 프로그램 → Apps Script → 왼쪽 '파일 +' → 스크립트 → 이름 YouTubeSync → 이 파일 내용을 그대로 붙여넣기 → 저장
  *  2) 왼쪽 '서비스 +' → YouTube Data API v3 (식별자 YouTube) 추가, 다시 '서비스 +' → YouTube Analytics API (식별자 YouTubeAnalytics) 추가
  *  3) 위쪽 함수 목록에서 ytInstallTrigger 선택 → 실행 → 권한 허용
- *     (유튜브 채널 주인 구글 계정으로 허용해야 예약 영상·분석 수치까지 보임. 채널이 여러 개면 줍줍알람 채널을 고르기)
+ *     (줍줍알람 채널은 브랜드 계정이라 Apps Script 권한 창에서 고를 수 없음 — '서비스를 사용할 수 없음'이 뜸.
+ *      그래서 본 계정으로 허용하고 '공개 모드'로 씀: 공개된 영상의 링크·게시됨·조회수·좋아요·댓글만 자동. 예약완료 표시와 평균 시청률 등 분석 수치는 수동)
  *     → 바로 한 번 동기화하고, 이후 1시간마다 자동으로 돌아요.
  */
 const YT_SHEET = '유튜브';
@@ -27,7 +28,8 @@ function ytInstallTrigger() {
     .filter(t => t.getHandlerFunction() === 'ytSync')
     .forEach(t => ScriptApp.deleteTrigger(t));
   ScriptApp.newTrigger('ytSync').timeBased().everyHours(1).create();
-  ytSync(true);
+  ytSync();
+  console.log('설치 완료 — 1시간마다 자동으로 돌아요');
 }
 
 /** 허용을 지우고 처음부터 다시 받기 — 실행 후 ytInstallTrigger를 실행해 줍줍알람 채널을 고름 */
