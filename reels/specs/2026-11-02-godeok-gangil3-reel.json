@@ -1,0 +1,22 @@
+{
+ "slug": "2026-11-02-godeok-gangil3-reel",
+ "title": "고덕강일3단지 토지임대부",
+ "series": "내집마련",
+ "voice": "voices/95a34b8330d8/",
+ "voice_speed": 1.0,
+ "scenes": [
+  {"type": "hook", "chips": ["내집마련"], "lines": ["이상합니다", "강동 신축 {n}억대"], "count": {"to": 3},
+   "sub": "왜 이렇게 싼 걸까요?", "face": "깜짝", "photo": "photos/mood/9192eedf14-1.jpg"},
+  {"type": "beat", "eyebrow": "장소", "big": "고덕강일3단지", "big_sub": "강동구 강일동 · SH 1,305세대",
+   "bg": "maps/30b1e4840bc6.png",
+   "say": "지금 강동구 강일동에, SH 새 아파트 1,305세대가 나왔는데요."},
+  {"type": "beat", "eyebrow": "가격", "big": "3억9,050만원", "big_sub": "59㎡ 건물값 · 약 9억 저렴(추정)", "highlight": "3억9,050만원",
+   "bg": "photos/mood/9192eedf14-2.jpg",
+   "say": "건물만 팔아서 59㎡가 3억9,050만 원, 옆 단지보다 약 9억 싸요."},
+  {"type": "beat", "eyebrow": "다만", "big": "월 51만1,500원", "big_sub": "59㎡ 땅값(토지임대료) 별도", "highlight": "월 51만1,500원",
+   "bg": "none",
+   "say": "다만 땅값으로 월 51만1,500원을 내요. 이래서 이상했던 거예요."},
+  {"type": "cta", "lines": ["월 51만원 내도", "넣으실 거예요?"], "highlight": "댓글",
+   "ask": "11월 6일 접수 마감, 팔로우하면 알려드려요"}
+ ]
+}
