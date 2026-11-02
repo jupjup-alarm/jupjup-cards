@@ -2,7 +2,7 @@
  * 줍줍알람 — 유튜브 탭 자동 동기화 (2026-11-02)
  * 오싹알람 시트의 syncYouTube를 줍줍알람 '유튜브' 탭(A~Y)에 맞게 옮긴 것. 기존 스크립트와 이름이 겹치지 않게 yt 접두어를 씀.
  *
- * 하는 일 (1시간마다):
+ * 하는 일 (10분마다 — 구글 서버에서 돌아 Claude 사용량과 무관, 유튜브 API 하루 약 600단위·한도 10,000):
  *  1) 채널 업로드 목록(예약 공개 영상 포함)에서 E열 제목과 같은 영상을 찾아 L열에 쇼츠 링크를 넣음
  *     — 제목이 조금 달라도 앞부분이 같으면 찾고, 그래도 없으면 A열 날짜에 예약·공개된 영상이 하나뿐일 때 그걸로 짝지음
  *  2) K열 상태: 예약만 걸려 있으면 "예약완료", 공개되면 "게시됨" ("보류" 행은 건드리지 않음)
@@ -15,7 +15,7 @@
  *  3) 위쪽 함수 목록에서 ytInstallTrigger 선택 → 실행 → 권한 허용
  *     (줍줍알람 채널은 브랜드 계정이라 Apps Script 권한 창에서 고를 수 없음 — '서비스를 사용할 수 없음'이 뜸.
  *      그래서 본 계정으로 허용하고 '공개 모드'로 씀: 공개된 영상의 링크·게시됨·조회수·좋아요·댓글만 자동. 예약완료 표시와 평균 시청률 등 분석 수치는 수동)
- *     → 바로 한 번 동기화하고, 이후 1시간마다 자동으로 돌아요.
+ *     → 바로 한 번 동기화하고, 이후 10분마다 자동으로 돌아요.
  */
 const YT_SHEET = '유튜브';
 const YT_CHANNEL_ID = 'UCbIKC-joj_M279Tii7sLSiA';   // 줍줍알람 유튜브 채널 (youtube.com/channel/UCbIKC-joj_M279Tii7sLSiA)
@@ -27,9 +27,9 @@ function ytInstallTrigger() {
   ScriptApp.getProjectTriggers()
     .filter(t => t.getHandlerFunction() === 'ytSync')
     .forEach(t => ScriptApp.deleteTrigger(t));
-  ScriptApp.newTrigger('ytSync').timeBased().everyHours(1).create();
+  ScriptApp.newTrigger('ytSync').timeBased().everyMinutes(10).create();
   ytSync();
-  console.log('설치 완료 — 1시간마다 자동으로 돌아요');
+  console.log('설치 완료 — 10분마다 자동으로 돌아요');
 }
 
 /** 허용을 지우고 처음부터 다시 받기 — 실행 후 ytInstallTrigger를 실행해 줍줍알람 채널을 고름 */
