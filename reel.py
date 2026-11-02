@@ -169,11 +169,14 @@ def scene_html(sc, th, idx, start, end):
             f'border:3px solid {th["outline"]}">{esc(c)}</span>'
             for i, c in enumerate(sc.get("chips", [])))
         lines = ""
+        acc = sc.get("accent_line", 2 if sc.get("basis") else None)  # 주비서식(2026-11-02): 그 줄 전체 강조색
         for i, ln in enumerate(sc["lines"]):
             txt = esc(ln)
             if "{n}" in txt:
                 txt = txt.replace("{n}", f'<span class="num pulse" data-p="{start + 0.35:.2f}" '
                                           f'style="display:inline-block;color:{th["hl"]}">{esc(sc["count"]["to"])}</span>')
+                txt = f'<span style="color:{th["hl"]}">{txt}</span>'
+            elif acc and i + 1 == int(acc):
                 txt = f'<span style="color:{th["hl"]}">{txt}</span>'
             lines += f'<div class="hline punch" data-p="{start:.2f}">{unit(txt)}</div>'
         src = sc.get("photo") or sc.get("bg")
@@ -198,6 +201,7 @@ def scene_html(sc, th, idx, start, end):
 <section class="{cls}" data-dark="1" {a} style="background:{th['bg']}">
   {back}
   <div class="chips">{chips}</div>
+  {f'<div class="hbasis" style="color:{th["sub"] if not uri else "#FFFFFF"}">{esc(sc["basis"])}</div>' if sc.get("basis") else ''}
   <div class="hlines" style="color:{th['ink'] if th.get('fg') is None else th['fg']}">{lines}</div>
   <div class="hsub in" data-in="{start + 0.25:.2f}" style="color:{th['sub']}">{esc(sc.get('sub'))}</div>
   <div class="char bounce in" data-in="{start + 0.15:.2f}">{char_svg(sc.get('face', '깜짝'))}</div>
@@ -263,6 +267,8 @@ html,body{word-break:keep-all;width:1080px;height:1920px;overflow:hidden;backgro
 .chip{font-weight:900;font-size:40px;padding:10px 26px;border-radius:14px}
 .hlines{font-family:'Black Han Sans';font-size:190px;line-height:1.08;letter-spacing:-2px}
 .hline{white-space:nowrap}
+.hbasis{font-size:44px;font-weight:700;line-height:1.35;margin:-12px 0 28px;word-break:keep-all;position:relative;max-width:850px}
+.hook.photo .hbasis{text-shadow:0 2px 12px rgba(0,0,0,.45)}
 .hsub{font-size:52px;font-weight:700;margin-top:44px;line-height:1.4;white-space:pre-line}
 .char{position:absolute;right:170px;bottom:420px;width:320px;height:320px}
 .unit{font-family:'Noto Sans KR',sans-serif;font-weight:900;font-size:.82em;letter-spacing:0}

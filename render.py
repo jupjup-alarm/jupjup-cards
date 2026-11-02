@@ -133,6 +133,27 @@ def photo_uri(path):
     return f"data:{mime};base64,{base64.b64encode(p.read_bytes()).decode()}"
 
 
+def cover_title_html(card, color):
+    """표지 메인 줄. accent_line(1부터)인 줄은 줄 전체를 강조색으로 (주비서식, 2026-11-02).
+    basis(근거 한 줄)가 있으면 accent_line 기본값은 2."""
+    acc = card.get("accent_line", 2 if card.get("basis") else None)
+    out = ""
+    for i, l in enumerate(lines(card.get("lines", []))):
+        if acc and i + 1 == int(acc):
+            out += f'<div class="fitw"><span style="color:{color}">{hl(l, None, color)}</span></div>'
+        else:
+            out += f'<div class="fitw">{hl(l, card.get("highlight"), color)}</div>'
+    return out
+
+
+def basis_html(card, color=None):
+    b = card.get("basis")
+    if not b:
+        return ""
+    st = f' style="color:{color}"' if color else ""
+    return f'<div class="cover-basis"{st}><div class="fitw">{esc(b)}</div></div>'
+
+
 def cover(card, th, n, total):
     if card.get("photo"):
         uri = photo_uri(card["photo"])
@@ -144,14 +165,14 @@ def cover(card, th, n, total):
     for i, c in enumerate(chips[:2]):
         cls = "chip" if i == 0 else "chip2"
         chip_html += f'<span class="{cls}">{esc(c)}</span>'
-    main = "".join(f'<div class="fitw">{hl(l, card.get("highlight"), th["hl"])}</div>'
-                   for l in lines(card.get("lines", [])))
+    main = cover_title_html(card, th["hl"])
     fg = th.get("fg", "#FFFFFF")
     return f'''
 <div class="card cover" style="background:{th['bg']};color:{fg}">
   <div class="brand big">{BELL.format(s=44, c=th['logo'])}<span>줍줍알람</span></div>
   <div class="zoom cover-main">
     <div class="chips">{chip_html}</div>
+    {basis_html(card, th['sub'])}
     <div class="cover-title">{main}</div>
     <div class="cover-sub" style="color:{th['sub']}">{esc(card.get('sub'))}</div>
   </div>
@@ -168,8 +189,7 @@ def cover_full(card, th, uri):
     for i, c in enumerate(chips[:2]):
         cls = "chip" if i == 0 else "chip2"
         chip_html += f'<span class="{cls}">{esc(c)}</span>'
-    main = "".join(f'<div class="fitw">{hl(l, card.get("highlight"), th["hl"])}</div>'
-                   for l in lines(card.get("lines", [])))
+    main = cover_title_html(card, th["hl"])
     grad = ("linear-gradient(180deg,rgba(0,0,0,.45) 0%,rgba(0,0,0,0) 16%,rgba(0,0,0,0) 40%,"
             "rgba(0,0,0,.55) 62%,rgba(0,0,0,.86) 84%,rgba(0,0,0,.92) 100%)")
     credit = card.get("photo_credit") or ""
@@ -181,6 +201,7 @@ def cover_full(card, th, uri):
   {f'<div class="pcredit">{esc(credit)}</div>' if credit else ''}
   <div class="zoom cover-main pmain fmain">
     <div class="chips">{chip_html}</div>
+    {basis_html(card)}
     <div class="cover-title">{main}</div>
     {f'<div class="cover-sub">{esc(card.get("sub"))}</div>' if card.get("sub") else ''}
   </div>
@@ -197,8 +218,7 @@ def cover_photo(card, th, uri):
     for i, c in enumerate(chips[:2]):
         cls = "chip" if i == 0 else "chip2"
         chip_html += f'<span class="{cls}">{esc(c)}</span>'
-    main = "".join(f'<div class="fitw">{hl(l, card.get("highlight"), th["hl"])}</div>'
-                   for l in lines(card.get("lines", [])))
+    main = cover_title_html(card, th["hl"])
     bg = th["bg"]
     fg = "#FFFFFF"
     grad = (f"linear-gradient(180deg,{rgba(bg, .4)} 0%,{rgba(bg, 0)} 14%,{rgba(bg, 0)} 34%,"
@@ -212,6 +232,7 @@ def cover_photo(card, th, uri):
   {f'<div class="pcredit">{esc(credit)}</div>' if credit else ''}
   <div class="zoom cover-main pmain">
     <div class="chips">{chip_html}</div>
+    {basis_html(card, '#FFFFFF')}
     <div class="cover-title">{main}</div>
     <div class="cover-sub" style="color:{th['sub'] if th.get('fg') is None else '#FFFFFF'}">{esc(card.get('sub'))}</div>
   </div>
@@ -396,6 +417,8 @@ body{margin:0;width:1080px;height:1350px;overflow:hidden}
 .cover-title{font-family:'Black Han Sans',sans-serif;font-size:150px;line-height:1.12;letter-spacing:-2px}
 .cover-title .fitw{white-space:nowrap}
 .cover-sub{font-size:42px;font-weight:500;max-width:920px}
+.cover-basis{font-size:38px;font-weight:700;line-height:1.35;width:920px;max-width:100%;margin-bottom:-14px}
+.cover-basis .fitw{white-space:nowrap}
 .swipe{position:absolute;left:80px;bottom:80px;display:flex;align-items:center;gap:12px;font-size:32px;font-weight:700}
 .char{position:absolute;right:50px;bottom:40px;width:340px;height:340px}
 .body{display:flex;flex-direction:column;margin-top:110px;transform-origin:left top}
@@ -457,6 +480,7 @@ body{margin:0;width:1080px;height:1350px;overflow:hidden}
 .fmain{margin-bottom:150px;gap:24px}
 .fcover .cover-title{font-size:124px;text-shadow:0 4px 24px rgba(0,0,0,.45)}
 .fcover .cover-sub{max-width:920px;font-size:40px;color:rgba(255,255,255,.92)}
+.fcover .cover-basis{color:rgba(255,255,255,.9);text-shadow:0 2px 12px rgba(0,0,0,.5)}
 .disc{margin-top:auto;font-size:24px;font-weight:500;color:#5B6472;text-align:center;line-height:1.5;white-space:pre-line}
 """
 
