@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% from "macros.html" import card, crumbs with context %}
+{% set nav = 'type' %}
+{% block main %}
+<main class="wrap" id="main">
+  <div class="lwrap">
+    {{ crumbs(crumb) }}
+    <div class="lhead">
+      <h1>{{ h1 }}</h1>
+      <p>{{ intro }}</p>
+    </div>
+    <section class="lsec">
+      <h2>최근 청약 경쟁률 <small>{{ today.isoformat()|d }} 기준</small></h2>
+      <div class="tbl ntbl">
+        <table class="num">
+          <caption>{{ tbl_cap }}</caption>
+          <thead><tr><th scope="col" style="text-align:left">단지</th><th scope="col" style="text-align:left">지역</th><th scope="col">접수 마감</th><th scope="col">공급</th><th scope="col">접수</th><th scope="col">평균 경쟁률</th><th scope="col">최고 경쟁률</th></tr></thead>
+          <tbody>
+          {% for r in rows %}
+            <tr><th scope="row"><a href="{{ r.n.url }}">{{ r.n.title }}</a></th><td class="l">{{ r.n.sido }} {{ r.n.sigungu or '' }}</td><td>{{ r.n.rcpt[1]|tdate }}</td><td>{{ r.supply }}</td><td>{{ r.apply }}</td><td class="max">{{ r.avg }}</td><td>{{ r.top }}</td></tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <section class="lsec">
+      <h2>단지별로 보기 <small>{{ rows|length }}곳</small></h2>
+      <div class="cards">{% for r in rows %}{{ card(r.n) }}{% endfor %}</div>
+    </section>
+  </div>
+</main>
+{% endblock %}
+{% block after %}
+<script type="application/ld+json">
+{{ {"@context": "https://schema.org", "@graph": [crumb_ld(crumb, h1, page_url),
+  {"@type": "ItemList", "name": h1, "itemListElement": items_ld(rows|map(attribute='n')|list)}]}|jsonld }}
+</script>
+{% endblock %}

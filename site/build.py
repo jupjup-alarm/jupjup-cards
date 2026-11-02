@@ -1441,6 +1441,30 @@ def main():
         page_url="/type/", og="/og-default.jpg", crumb=[("홈", "/"), ("유형", None)], **common)
     write("/type/", h, "유형별 청약 공고 · 줍줍알람", "", "list")
 
+    # 청약 경쟁률 허브 (2026-11-02 SEO 기획안 3단계 — 네이버 '청약 경쟁률' 월 약 4,300회 검색, _site.json)
+    crow = []
+    for n in sorted((x for x in notices if x.get("comp") and x["comp"]["rows"]), key=lambda x: (x["rcpt"][1] or x["rcpt"][0], x["title"]), reverse=True):
+        m = re.search(r"([\d,]+)세대에\s*([\d,]+)\S*\s*·\s*(?:평균\s*)?([\d.]+)대 1", n["comp"]["short"] or "")
+        rates = [float(r["rate"]) for r in n["comp"]["rows"] if re.fullmatch(r"[\d.]+", r["rate"])]
+        if not m:
+            continue
+        crow.append({"n": n, "supply": f"{m.group(1)}세대", "apply": f"{m.group(2)}건", "avg": f"{float(m.group(3)):g}대 1",
+                     "top": f"{max(rates):g}대 1" if rates else "—", "topv": max(rates) if rates else 0})
+    if crow:
+        best = max(crow, key=lambda r: r["topv"])
+        h1 = "청약 경쟁률"
+        title = f"청약 경쟁률 — 최근 청약홈 공식 경쟁률 {len(crow)}곳 · 줍줍알람"
+        desc = (f"{d(TODAY.isoformat())} 기준 최근 접수가 끝난 아파트 청약·무순위(줍줍) {len(crow)}곳의 청약홈 공식 경쟁률. "
+                f"최고 {best['n'].get('complex') or best['n']['title']} {best['top']}. 단지별 공급·접수 건수와 평균·최고 경쟁률을 한 표로.")
+        crumb = [("홈", "/"), ("청약 경쟁률", None)]
+        h = E.get_template("competition.html").render(
+            h1=h1, rows=crow, crumb=crumb, page_url="/competition/", title=title, desc=desc,
+            intro=f"최근 접수가 끝난 단지 {len(crow)}곳의 청약홈 공식 경쟁률이에요. 평균은 전체 공급 세대 대비 접수 건수, 최고는 주택형·순위별 가장 높은 경쟁률이에요.",
+            tbl_cap=f"청약홈 공식 경쟁률 {len(crow)}곳 — {d(TODAY.isoformat())} 기준 · 접수 마감이 최근인 순서",
+            og=og_hub("/competition/", "청약 경쟁률", "청약 경쟁률", "한눈에 보기", "청약홈 공식 경쟁률 — 무순위(줍줍) · 아파트 분양", [r["n"] for r in crow]),
+            **common)
+        write("/competition/", h, title, desc, "list", max(r["n"]["modified"] for r in crow))
+
     # 가이드 칼럼
     GUIDES.build(E, notices, write, common, PUB, BASE, TODAY, problems)
 
