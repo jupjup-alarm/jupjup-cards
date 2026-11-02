@@ -473,8 +473,16 @@ def build(ep, spec, a):
     total = t
     if total > 89:
         raise SystemExit(f"{total:.1f}초 — 90초를 넘어요. 문장을 줄이세요")
-    if not loop and total > 66:
-        print(f"주의: {total:.1f}초 — 서사형 목표 45~65초")
+    if not loop and total > 46:
+        print(f"주의: {total:.1f}초 — 서사형 목표 35~45초 (2026-11-02 길이 실험, README '길이')")
+    # 한 장면(같은 그림)이 4.5초를 넘으면 시청자가 넘긴다 (2026-11-02 사용자 결정 — 장면을 나누거나 그림을 바꿀 것)
+    ends = starts[1:] + [total]
+    long_sc = [(i + 1, round(e - s, 1)) for i, (s, e) in enumerate(zip(starts, ends)) if e - s > 4.5]
+    if long_sc:
+        print("장면 길이 경고(4.5초 초과 — 문장을 두 장면으로 나누고 그림·zoom·focus를 바꾸세요): "
+              + ", ".join(f"장면{i} {d}초" for i, d in long_sc))
+    (ep / "short_scene_times.json").write_text(json.dumps(
+        [round(e - s, 2) for s, e in zip(starts, ends)]))
 
     work = ep / "short_work"
     work.mkdir(exist_ok=True)
@@ -570,7 +578,7 @@ def build(ep, spec, a):
         if grains:
             fr.alpha_composite(grains[(fi // 3) % len(grains)])   # 3프레임마다 바뀌는 입자 (용량 절약)
         fr.alpha_composite(tl)
-        fr.alpha_composite(lg, (W - SAFE_R // 2 - lg.width - 10, 206))
+        fr.alpha_composite(lg, (W - SAFE_R // 2 - lg.width - 10, 240))   # 인스타 상단 가림 영역(위 230px) 아래로 (2026-11-02)
         if fi == 0:
             fr.convert("RGB").save(out_dir / f"{ep.name}_thumb.jpg", quality=92)   # 썸네일: 자막 없이
         while ci + 1 < len(caps) and tsec >= caps[ci + 1][0]:
@@ -630,8 +638,11 @@ def rows(ep, spec, a, total=None):
                           tags.replace("#", "").replace(" ", ","), yt.get("pinned", ""), video, cover, "대기", "",
                           f"{total:.0f}초" if total else "", "", "", "", "", spec.get("hook_type", "")]
         if not loop and not a.no_ig:
+            # 캡션 첫 줄(…더 보기 전 약 125자) = 댓글 질문 하나. 영상이 이미 훅을 하니 제목을 반복하지 않는다 (2026-11-02)
+            ask = yt.get("pinned", "")
             ig = spec.get("instagram", {}).get("caption") or "\n\n".join(x for x in [
-                hook, yt.get("pinned", ""), spec.get("sources", ""), tags] if x)
+                (ask + " 댓글로 남겨 주세요.") if ask else "", yt.get("summary", ""),
+                spec.get("sources", ""), tags] if x)
             out["instagram"] = ["'" + (a.ig_date or a.date), "'" + a.ig_time, "인스타 릴스", spec["id"], spec["series"],
                                 spec.get("title", hook), hook, spec.get("risk", "저"), "예약", ig, "", f"{video}\n{cover}"]
     (ep / "short_rows.json").write_text(json.dumps(out, ensure_ascii=False, indent=1))
