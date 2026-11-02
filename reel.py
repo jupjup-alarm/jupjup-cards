@@ -648,6 +648,13 @@ def main(path):
     # 내려받아도 구분되게 slug 이름 사본 (git은 같은 내용을 한 번만 저장 — 용량 그대로, 2026-11-02 유튜브 업로드용)
     shutil.copy(mp4, out / f"{slug}.mp4")
     shutil.copy(out / "cover.jpg", out / f"{slug}_thumb.jpg")
+    try:  # 유튜브·인스타 표지용 큰 글자 썸네일 (thumb.py) — 사진이 없으면 첫 프레임 사본 그대로
+        import thumb
+        td = thumb.from_reel_spec(spec)
+        if td:
+            thumb.make([td])
+    except Exception as e:
+        WARN.append(f"썸네일 실패: {e}")
     base = f"{RAW_BASE}/reels/{slug}"
     manifest = {"slug": slug, "duration": round(total, 2), "voiced": bool(voices), "video": f"{base}/{slug}.mp4",
                 "cover": f"{base}/{slug}_thumb.jpg", "size_mb": round(mp4.stat().st_size / 1e6, 2), "warnings": WARN}
