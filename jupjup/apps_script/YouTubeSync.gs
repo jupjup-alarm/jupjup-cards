@@ -17,7 +17,7 @@
  *     → 바로 한 번 동기화하고, 이후 1시간마다 자동으로 돌아요.
  */
 const YT_SHEET = '유튜브';
-const YT_HANDLE = '@jupjup_alarm';          // 줍줍알람 유튜브 핸들 (다르면 여기만 고치기)
+const YT_CHANNEL_ID = 'UCbIKC-joj_M279Tii7sLSiA';   // 줍줍알람 유튜브 채널 (youtube.com/channel/UCbIKC-joj_M279Tii7sLSiA)
 const YT_TZ = 'Asia/Seoul';
 const YT = { date: 1, time: 2, id: 3, kind: 4, title: 5, status: 11, link: 12, len: 13, views: 14, avgPct: 15,
   swipe: 16, subs: 17, hook: 18, likes: 19, comments: 20, shares: 21, avgSec: 22, asOf: 23 };
@@ -39,13 +39,15 @@ function ytSync() {
   if (last < 2) return;
 
   // 채널 주인 계정이면 예약 영상·분석 수치까지, 아니면 공개 영상·공개 수치만
+  // (허용한 계정의 채널이 줍줍알람이 아니면 — 예: 오싹알람 채널로 허용 — 공개 수치만)
   let ch = YouTube.Channels.list('id,contentDetails', { mine: true });
   let publicOnly = false;
-  if (!ch.items || !ch.items.length) {
-    ch = YouTube.Channels.list('id,contentDetails', { forHandle: YT_HANDLE });
+  if (!ch.items || !ch.items.length || ch.items[0].id !== YT_CHANNEL_ID) {
+    if (ch.items && ch.items.length) console.warn('허용한 채널이 줍줍알람이 아님: ' + ch.items[0].id + ' → 공개 영상·공개 수치만');
+    ch = YouTube.Channels.list('id,contentDetails', { id: YT_CHANNEL_ID });
     publicOnly = true;
   }
-  if (!ch.items || !ch.items.length) throw new Error('유튜브 채널을 찾을 수 없어요 (' + YT_HANDLE + ')');
+  if (!ch.items || !ch.items.length) throw new Error('유튜브 채널을 찾을 수 없어요 (' + YT_CHANNEL_ID + ')');
   const uploads = ch.items[0].contentDetails.relatedPlaylists.uploads;
 
   // 1) 업로드 목록
