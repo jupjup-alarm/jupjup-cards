@@ -7,6 +7,7 @@
 결과:
     reels/<slug>/reel.mp4        (인스타 릴스 게시용, H.264 + 무음 AAC)
     reels/<slug>/cover.jpg       (훅 장면 정지 화면)
+    reels/<slug>/<slug>.mp4, <slug>_thumb.jpg (같은 파일의 이름 붙은 사본 — manifest 주소는 이쪽)
     reels/<slug>/preview.jpg     (장면별 정지 화면 모음, 점검용)
     reels/<slug>/manifest.json   (공개 주소)
 
@@ -644,9 +645,12 @@ def main(path):
     for s in stills:
         s.unlink()
 
+    # 내려받아도 구분되게 slug 이름 사본 (git은 같은 내용을 한 번만 저장 — 용량 그대로, 2026-11-02 유튜브 업로드용)
+    shutil.copy(mp4, out / f"{slug}.mp4")
+    shutil.copy(out / "cover.jpg", out / f"{slug}_thumb.jpg")
     base = f"{RAW_BASE}/reels/{slug}"
-    manifest = {"slug": slug, "duration": round(total, 2), "voiced": bool(voices), "video": f"{base}/reel.mp4",
-                "cover": f"{base}/cover.jpg", "size_mb": round(mp4.stat().st_size / 1e6, 2), "warnings": WARN}
+    manifest = {"slug": slug, "duration": round(total, 2), "voiced": bool(voices), "video": f"{base}/{slug}.mp4",
+                "cover": f"{base}/{slug}_thumb.jpg", "size_mb": round(mp4.stat().st_size / 1e6, 2), "warnings": WARN}
     (out / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=1))
     print(json.dumps(manifest, ensure_ascii=False))
 
