@@ -90,3 +90,13 @@
 - 쿠팡 다이나믹 배너는 `site/build.py` COUPANG에서만 관리 (⑦은 건드리지 않음). PC: 공고·가이드 사이드바(`pc`), 메인·목록 가로형(`home`). 모바일(1023px 이하): 메인 첫 묶음 아래(`home_mo`)·목록 끝(`home_end_mo`), 공고 상세 신청 자격 아래(`apt_mo`)·FAQ 뒤(`apt_end_mo`). 모바일 배너 id 1044447.
 - 공고 상세 '한마디' 바로 아래는 애드센스 자리(`ads_slot('apt_top')`). 승인되면 build.py ADSENSE의 client(ca-pub-…)와 slots.apt_top(광고 단위 ID)만 채우면 스크립트·자리가 함께 켜진다. ads.txt도 그때 site/static에 추가.
 - 공고 상세 가이드 연결 (2026-10-29): 가장 맞는 칼럼 1편은 신청 자격 아래 '처음이라면' 링크, 다음 3편은 FAQ 뒤 '신청 전에 읽어볼 가이드' 섹션. 칼럼 JSON의 notice_match(제목·별칭·시군구에 그 말이 있으면 우선) → build.py KIND_GUIDES(공고 유형별 기본) 순으로 자동 선택, 발행된 칼럼만.
+
+## 검색 노출 장치 (2026-11-02 SEO 기획안 — 지우거나 되돌리지 말 것)
+기획안: https://claude.ai/artifact/H8KPL3RMQEKt7JwLZ5NTxo
+- **'한눈에 보기' 표**: 홈·유형·지역·월별·이번 주 페이지 맨 위에 접수 중·예정 공고를 진짜 HTML `<table>`(caption·thead)로 — 네이버·구글 표 스니펫용. `macros.html` `ntable`, `build.py` `tsort`(접수 중은 마감 빠른 순 → 예정은 시작 빠른 순, 최대 12행). 카드 목록은 그 아래 그대로.
+- **제목·설명**: 홈 "줍줍알람 — 청약 일정·줍줍 공고 | 지금 접수 중 N곳·예정 N곳", 무순위 허브 "줍줍·무순위 청약 공고 — 지금 접수 중 N건". 설명 첫머리에 'M.D 기준'과 오늘 단지명 2개. 검색량 근거는 `data/keywords/_site.json`.
+- **청약 경쟁률 허브** `/competition/` (`templates/competition.html`): 청약홈 공식 경쟁률이 있는 공고를 접수 마감 최근 순 표로. 네이버 '청약 경쟁률' 월 약 4,300회.
+- **공유 썸네일**: 목록·허브는 `og.py render_hub()`로 `/og/<slug>.jpg` — **날짜·건수를 넣지 않는다**(네이버·카톡이 이미지를 오래 붙잡아 숫자가 낡음). 사진은 `data/hub_og.json`에 허브별로 한 번 골라 고정(조감도 출처 문구 포함). 공고 상세 og.jpg는 기존대로.
+- **구조화 데이터**: 홈 WebSite·Organization(sameAs 인스타·스레드·청약노트 블로그·유튜브)·ItemList, 목록 BreadcrumbList·ItemList, 공고 BreadcrumbList·Article·FAQPage(본문 '자주 묻는 질문'과 같은 내용). 청약 접수를 `Event`로 표시하지 않는다(구글 이벤트 규칙 위반 위험).
+- **IndexNow**: `static/<32자 키>.txt`(공개 키, 지우지 말 것) + `.github/workflows/indexnow.yml`이 site/public 이 바뀐 푸시마다 배포 완료를 기다렸다가 바뀐 페이지 주소를 IndexNow(네이버·빙 공유)로 보낸다. `site/tools/indexnow.py`. 따로 할 일 없음.
+- 청약노트 블로그 글 '원문 확인'에 사이트 공고 페이지·줍줍 모음 링크를 고정으로 넣는다(cheongyak-note `docs/원고_기준.md`).
