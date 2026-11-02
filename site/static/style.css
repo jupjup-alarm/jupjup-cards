@@ -508,3 +508,6 @@ footer nav{display:flex;flex-wrap:wrap;gap:4px 12px}
 .h1-kw{display:block;font-size:.6em;font-weight:600;letter-spacing:-.01em;margin-top:4px;opacity:.82}
 .dz-tag{color:var(--coral-strong);margin-right:2px}
 .ntbl.txt td{white-space:normal;min-width:6em;vertical-align:top}
+/* 애드센스: 광고가 안 채워지면(승인 전·재고 없음) 자리를 접는다 (2026-11-03) */
+.ad-g:has(ins[data-ad-status="unfilled"]){display:none}
+.ad-guide{margin:28px 0}

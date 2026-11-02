@@ -181,6 +181,13 @@ def build(E, notices, write, common, pub, base, today, problems):
                 if f.is_file():
                     shutil.copy2(f, d / f.name)
         g["html"], g["toc"], g["tools"] = body, toc, tools
+        # 애드센스 '가이드 본문 중간' 자리: 소제목(h2)이 3개 이상이면 가운데 h2 바로 앞에서 나눈다 (2026-11-03)
+        hs = [m.start() for m in re.finditer(r"<h2[\s>]", str(body))]
+        if len(hs) >= 3:
+            cut = hs[len(hs) // 2]
+            g["html_a"], g["html_b"] = Markup(str(body)[:cut]), Markup(str(body)[cut:])
+        else:
+            g["html_a"], g["html_b"] = body, ""
         g["url"] = f"/guide/{g['slug']}/"
         g["read_min"] = read_min(g)
         g["cat_slug"] = CAT_SLUG.get(g.get("category"), "etc")

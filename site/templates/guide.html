@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "macros.html" import card, crumbs, cp_ad with context %}
+{% from "macros.html" import card, crumbs, cp_ad, ads_slot with context %}
 {% block main %}
 <main class="wrap g-page" id="main">
   <article class="g-art">
@@ -24,7 +24,9 @@
     <details class="g-toc-m"><summary>이 글의 순서 · {{ g.toc|length }}개 장</summary><ol>{% for id, t in g.toc %}<li><a href="#{{ id }}">{{ '%02d'|format(loop.index) }} {{ t }}</a></li>{% endfor %}{% if g.faq %}<li><a href="#g-faq">자주 묻는 질문</a></li>{% endif %}</ol></details>
     {% endif %}
     <div class="g-body">
-      {{ g.html }}
+      {{ g.html_a }}
+      {% if g.html_b %}{{ ads_slot('guide_mid', 'ad-guide') }}
+      {{ g.html_b }}{% endif %}
     </div>
 
     {% if g.faq %}

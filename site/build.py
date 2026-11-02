@@ -52,7 +52,7 @@ COUPANG = {
                    "opts": {"id": 1044447, "template": "carousel", "trackingCode": "AF3230467", "subId": "jupjupalarm", "width": "100%", "height": "300", "tsource": ""}},
 }
 # 애드센스 (승인 전이라 비어 있음 — client에 ca-pub-…, slots에 광고 단위 ID를 넣으면 그 자리에 나옴)
-ADSENSE = {"client": "ca-pub-1196853150959268", "slots": {"apt_top": ""}}  # 2026-11-03 사이트 연결 코드 (광고 단위 ID는 승인 후)
+ADSENSE = {"client": "ca-pub-1196853150959268", "slots": {"apt_top": "5439503161", "guide_mid": "5439503161"}}  # 2026-11-03 사이트 연결 + 광고 단위 '사각형_반응형' (공고 한마디 아래 · 가이드 본문 중간)
 # 구글 애널리틱스 4 — 측정 ID(G-XXXXXXXXXX)를 넣으면 모든 페이지에 붙음 (사용자 요청 2026-10-29). 비우면 아무것도 안 붙음
 GA = {"id": "G-6103BRQ0LP"}
 COUPANG_NOTE = "이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다."
