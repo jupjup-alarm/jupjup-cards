@@ -15,6 +15,8 @@
 4. 시·군·구가 `site/data/regions.json`에 없으면 로마자 슬러그를 추가 (한 번 정하면 안 바꿈).
 5. `python3 site/build.py` — 종료 코드 1이면 푸시하지 말고 `site/build-report.json`의 errors를 보고.
 6. `git add site && git commit -m "site: 새 N · 고침 N" && git push origin HEAD:main`
+   - **충돌 표시를 올리지 않기 (2026-11-03 사고)**: 7d357d1이 `git stash pop` 충돌로 생긴 `<<<<<<< Updated upstream` 표시 83곳을 site/public·build-report.json에 담은 채 푸시됐고, 다음 커밋(8acb802)이 다시 빌드해 덮었어요. site/public·build-report.json은 생성 파일이라 충돌을 손으로 풀지 말고 `git checkout --theirs`든 뭐든 받은 뒤 **빌드를 다시 돌려 덮는다**. 커밋 직전 `git grep -nE '^(<<<<<<<|=======|>>>>>>>)( |$)' -- site`가 아무것도 안 나와야 푸시한다.
+   - **배포 확인**: 푸시 뒤 라이브 확인은 GitHub 커밋의 'Cloudflare Pages' 체크(`gh api repos/jupjup-alarm/jupjup-cards/commits/<커밋>/check-runs`)가 success가 된 뒤에 한다. 2026-11-03에는 이 체크가 푸시 14분 뒤에야 끝났다(평소 1분 안팎). 체크가 30분 넘게 안 끝나면 그때 Cloudflare Pages 배포 기록을 사용자에게 확인 요청.
 
 ## 임대·공고 전·배치도 (2026-10-28 추가)
 - **임대** (LH공고·마이홈공고 탭): 파일 이름·key = `lh{공고ID}` (LH공고 D열) 또는 `mh{공고ID}-{주택순번}` (마이홈 공고ID). `"kind": "rental"`, `"source": "lh"`, `"source_name": "LH청약플러스"`, `source_url`(공식 공고), `rcpt`, `announce`, `notice_date`, `schedule`(직접), `rent_models`[{type, target, excl, supply_area, units, deposit, monthly}] — 금액이 '공고문 참조'면 deposit·monthly 빼기. `rent_summary`{deposit, monthly, basis}는 마이홈 대표 조건(임대보증금·월임대료 열)일 때 basis에 "마이홈 대표 조건 · 주택형별 상이". 예시: `lh0000061190.json`(금액 있음), `lh2015122300020925.json`(계층별·금액 공고문 참조).
