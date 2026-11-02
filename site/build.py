@@ -1319,7 +1319,7 @@ def main():
     n_open = len([x for x in s if x["status"] == "open"])
     n_up = len([x for x in s if x["status"] == "upcoming"])
     mu_now = [x for x in s if x["kind"] == "mujeonwi" and x["status"] in ("open", "upcoming")]
-    title = f"줍줍알람 — 청약 공고 지금 접수 중 {n_open}곳·예정 {n_up}곳 | 줍줍(무순위)·분양 일정"
+    title = f"줍줍알람 — 청약 일정·줍줍 공고 | 지금 접수 중 {n_open}곳·예정 {n_up}곳"   # 청약 일정 5,890 · 줍줍 5,210 (_site.json 10/29)
     desc = (f"{d(TODAY.isoformat())} 기준 청약 공고 접수 중 {n_open}곳·접수 예정 {n_up}곳."
             + ((f" 줍줍(무순위) {len(mu_now)}건: " + "·".join((x.get("complex") or x["title"]) for x in mu_now[:2]) + (" 등." if len(mu_now) > 2 else ".")) if mu_now else "")
             + " 무순위·민간분양·공공분양·신혼희망타운·임대의 접수일, 분양가, 자격을 청약홈 공식 데이터로 정리해요.")
@@ -1421,7 +1421,7 @@ def main():
             u_ = [x for x in sorted_n(lst) if x["status"] == "upcoming"]
             top = [(x.get("complex") or x["title"]) for x in (o_ + u_)[:2]]
             cnt = f"지금 접수 중 {len(o_)}건" + (f"·예정 {len(u_)}건" if u_ else "") if o_ else (f"접수 예정 {len(u_)}건" if u_ else "접수 일정 모음")
-            t_ = f"줍줍(무순위) 공고 — {cnt} · 줍줍알람"
+            t_ = f"줍줍·무순위 청약 공고 — {cnt} · 줍줍알람"   # 네이버 검색량: 줍줍 5,210 · 무순위 청약 3,450 · 줍줍 청약 3,230 (_site.json 10/29)
             ds_ = (f"{d(TODAY.isoformat())} 기준 줍줍(무순위)·임의공급 공고 {cnt.replace('지금 ', '')}"
                    + ((f": {'·'.join(top)}" + (" 등" if len(o_) + len(u_) > 2 else "")) if top else "")
                    + ". 청약통장 없이 추첨으로 뽑는 공고의 접수일·분양가·자격을 공식 데이터로 정리.")
