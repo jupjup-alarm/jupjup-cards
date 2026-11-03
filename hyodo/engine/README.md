@@ -11,6 +11,7 @@
 - `episodes/<ID>-<slug>/`: research.md · video.json · official.png(공식 캡처)는 커밋한다. `out/`(음성 캐시·렌더·완성본)은 커밋하지 않는다.
 - **완성본 공개**: `python3 lib/publish.py episodes/<편>` → 저장소 `hyodo/<ID>/`에 롱폼·숏츠 mp4, 썸네일, upload.json을 두고 공개 주소(`https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/hyodo/<ID>/<파일>`)를 upload.json에 적는다. GitHub 파일 상한 100MB라 90MB가 넘는 영상은 자동으로 다시 인코딩한다. (GitHub 릴리스 생성은 이 세션 종류에서 막혀 있음 — 2026-11-03 확인.)
 - **업로드는 사용자 Mac**: `/Users/den/줍줍알람/효도알람/youtube/`(ego lite: make_job.py·upload.mjs·README.md). 유튜브 탭 L·M열의 https 주소에서 영상을 내려받아 예약 업로드한다. 올리는 조건: 설정 B2 '자동 업로드' ON + 상태(O열) '업로드대기' + 검수 결과(P열)에 '통과'.
+- **Mac과 소통(전달함)**: `/Users/den/줍줍알람/효도알람/_전달함/클라우드→로컬.md`(클라우드가 보냄)·`로컬→클라우드.md`(Mac Claude Code가 답함). 예약 작업은 시작할 때 로컬→클라우드.md를 읽고, 전할 것은 클라우드→로컬.md 끝에 날짜·시각과 함께 덧붙인다(연결된 컴퓨터 도구 device_bash, 폴더 이름 NFD 주의). Mac 쪽 안내는 `효도알람/CLAUDE.md`.
 - **게시 뒤 정리**: 상태 '게시됨'이고 업로드일에서 7일 지난 편은 `hyodo/<ID>/*.mp4`를 지워 커밋한다(썸네일·upload.json은 남김). 분석 작업이 한다.
 - 운영시트 '효도알람'(id 1eM8Jk8RTh-3OcET7BkKsNfGnRjWOypsrAxXyQyM3cxI): 사용법·유튜브·소재조사·조사노트·정책달력·벤치마크채널·벤치마크영상·성과·분석·채널현황·댓글함·지침로그·설정. 유튜브 채널 ID UCh4uDkAtCFUs4Jx_pYDa44A.
   - 유튜브 탭 A~T: A 업로드일 | B 시각 | C 편ID | D 형식(롱폼/숏츠) | E 카테고리 | F 원본 롱폼ID | G 제목 | H 설명 | I 태그 | J 고정 댓글 | K 챕터 | L 영상 파일(https) | M 썸네일(https, 숏츠는 비움) | N 재생목록(본인 받을 돈/자녀 받을 돈/달라지는 정책) | O 상태(검수→업로드대기→예약완료→게시됨 / 보류·오류) | P 검수 결과 | Q 유튜브 링크(자동) | R 길이(자동) | S 업로드 로그(자동) | T 메모. Q~S는 ego lite가 쓴다.
