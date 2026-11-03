@@ -43,6 +43,7 @@ ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT))
 from render import THEMES, FACES, BELL, esc, hl, rgba, photo_uri, unit  # noqa: E402
 WARN = []
+CUT_TIMES, POP_TIMES = [], []   # 템포형: 컷이 바뀌는 시각·튀어나오는 시각 (효과음용)
 
 OWNER_REPO = "jupjup-alarm/jupjup-cards"
 BRANCH = os.environ.get("CARDS_BRANCH", "main")
@@ -106,13 +107,34 @@ def word_times(words, t0, dur, spans=None):
     return out
 
 
-def say_html(text, t0, dur, th, spans=None):
+def say_html(text, t0, dur, th, spans=None, fast=False, end=None):
     """내레이션에 맞춰 단어가 하나씩 켜지는 자막. 숫자가 든 단어는 강조색.
-    쉼표·문장 끝 = 숨 쉬는 곳 → 실제 음성의 쉼 위치에 맞춰 다음 묶음이 켜진다."""
+    쉼표·문장 끝 = 숨 쉬는 곳 → 실제 음성의 쉼 위치에 맞춰 다음 묶음이 켜진다.
+    fast(2026-11-03 템포형): 지금 말하는 구절(숨 단위)만 크게 보여주고, 다음 구절이 나오면 바뀐다."""
     words = str(text or "").split()
     if not words:
         return ""
     times = word_times(words, t0, dur, spans)
+    if fast:
+        phrases, cur = [], []
+        for w, at in zip(words, times):
+            cur.append((w, at))
+            if BREATH_END.search(w) or len(cur) >= 7:
+                phrases.append(cur); cur = []
+        if cur:
+            phrases.append(cur)
+        out = []
+        for k, ph in enumerate(phrases):
+            a = ph[0][1]
+            b = phrases[k + 1][0][1] if k + 1 < len(phrases) else (end if end else t0 + dur + 0.6)
+            ws = []
+            for w, at in ph:
+                num = any(c.isdigit() for c in w)
+                cls = "w wn" if num else "w"
+                style = f' style="--hl:{th["hl"]}"' if num else ""
+                ws.append(f'<span class="{cls}" data-w="{at:.2f}"{style}>{unit(esc(w))}</span>')
+            out.append(f'<div class="ph" data-a="{a:.2f}" data-b="{b:.2f}">{" ".join(ws)}</div>')
+        return f'<div class="say fast">{"".join(out)}</div>'
     out = []
     for w, at in zip(words, times):
         num = any(c.isdigit() for c in w)
@@ -122,8 +144,9 @@ def say_html(text, t0, dur, th, spans=None):
     return f'<div class="say">{" ".join(out)}</div>'
 
 
-def bg_html(src, start, end, credit=None, pos=None):
-    """풀화면 배경: 지도(maps/)는 단지 쪽으로 천천히 확대, 사진은 천천히 확대하며 옆으로 흐름."""
+def bg_html(src, start, end, credit=None, pos=None, cuts=False):
+    """풀화면 배경: 지도(maps/)는 단지 쪽으로 천천히 확대, 사진은 천천히 확대하며 옆으로 흐름.
+    cuts(템포형): 사진을 약 1.8초마다 다른 구도(확대·위치)로 끊어 보여준다 — 한 장으로도 컷이 바뀌는 느낌."""
     uri = photo_uri(src)
     if src and not uri:
         WARN.append(f"배경 {src} 없음 → 색 배경으로 만듦")
@@ -131,7 +154,11 @@ def bg_html(src, start, end, credit=None, pos=None):
         return "", False
     is_map = str(src).startswith("maps/")
     credit = credit or ("© NAVER Corp." if is_map else "")
-    return (f'<img class="bgimg {"zoom" if is_map else "pan"}" data-s="{start:.3f}" data-e="{end:.3f}" src="{uri}" alt="" '
+    motion = "zoom" if is_map else ("cuts" if cuts else "pan")
+    if cuts:
+        n = max(1, int((end - start) / 1.8))
+        CUT_TIMES.extend(start + (end - start) * k / n for k in range(1, n))
+    return (f'<img class="bgimg {motion}" data-s="{start:.3f}" data-e="{end:.3f}" src="{uri}" alt="" '
             f'style="object-position:{esc(pos or "center 45%")}">'
             f'<div class="bgshade"></div>'
             + (f'<div class="hcredit">{esc(credit)}</div>' if credit else "")), True
@@ -139,7 +166,8 @@ def bg_html(src, start, end, credit=None, pos=None):
 
 def beat_html(sc, th, start, end):
     """이야기 장면: 풀화면 배경 + 숫자(또는 핵심어) 하나 크게 + 내레이션 자막."""
-    back, has_bg = bg_html(sc.get("bg"), start, end, sc.get("bg_credit"), sc.get("bg_pos"))
+    fast = sc.get("_fast")
+    back, has_bg = bg_html(sc.get("bg"), start, end, sc.get("bg_credit"), sc.get("bg_pos"), cuts=fast)
     if not has_bg:
         back = f'<div class="blob" style="background:{th["spark"]}"></div>'
     ink = "#FFFFFF" if has_bg else (th.get("fg") or th["ink"])
@@ -153,11 +181,75 @@ def beat_html(sc, th, start, end):
            if sc.get("big") else "")
     bsub = (f'<div class="bsub in" data-in="{start + 0.45:.2f}">{unit(esc(sc["big_sub"]))}</div>'
             if sc.get("big_sub") else "")
+    proof = proof_html(sc.get("proof"), th, start, end) if fast else ""
+    if proof:   # 증거 카드가 나오면 큰 숫자는 물러나고 카드가 그 자리를 채운다 (자막은 계속)
+        pat = start + min(1.1, (end - start) * 0.3)
+        eyebrow = eyebrow.replace('class="bchip in"', f'class="bchip in" data-out="{pat:.2f}"')
+        big = big.replace('class="big in pop"', f'class="big in pop" data-out="{pat:.2f}"')
+        bsub = bsub.replace('class="bsub in"', f'class="bsub in" data-out="{pat:.2f}"')
+    if fast and sc.get("big"):
+        POP_TIMES.append(start + 0.25)
     return f'''
-<section class="scene beat{' onbg' if has_bg else ''}" data-dark="1" data-s="{start:.3f}" data-e="{end:.3f}" style="background:{th['bg']};color:{ink}">
+<section class="scene beat{' onbg' if has_bg else ''}{' fastb' if fast else ''}" data-dark="1" data-s="{start:.3f}" data-e="{end:.3f}" style="background:{th['bg']};color:{ink}">
   {back}
-  <div class="bbody">{eyebrow}{big}{bsub}{say_html(sc.get("say"), vs, vd, th, sc.get("_vspans"))}</div>
+  {proof}
+  <div class="bbody">{eyebrow}{big}{bsub}{say_html(sc.get("say"), vs, vd, th, sc.get("_vspans"), fast=fast, end=end)}</div>
 </section>'''
+
+
+def num_of(v):
+    """'13억원'·'3억9,050만원'·'56만5,050원' → 억 단위 숫자 (막대 길이용). 못 읽으면 None."""
+    t = str(v).replace(",", "").replace(" ", "")
+    m = re.match(r"(?:(\d+(?:\.\d+)?)억)?(?:(\d+(?:\.\d+)?)천)?(?:(\d+(?:\.\d+)?)만)?(\d+)?원?", t)
+    if not m or not any(m.groups()):
+        return None
+    eok, cheon, man, won = (float(x) if x else 0 for x in m.groups())
+    return eok + cheon * 0.1 + man / 10000 + won / 1e8
+
+
+def proof_html(pf, th, start, end):
+    """증거 카드 (2026-11-03): 말로만 하지 않고 근거를 화면에 띄운다. 장면 중간에 튀어나옴.
+    kind compare = 비교 막대(이 집 vs 옆 단지 실거래), doc = 공고문 요약 메모(형광펜), image = 평면도·조감도·배치도."""
+    if not pf:
+        return ""
+    at = start + min(1.1, (end - start) * 0.3)
+    POP_TIMES.append(at)
+    kind = pf.get("kind")
+    src = f'<div class="pfsrc">{esc(pf.get("src") or "")}</div>' if pf.get("src") else ""
+    if kind == "compare":
+        items = pf.get("items") or []
+        ns = [it.get("n") if it.get("n") is not None else num_of(it.get("value")) for it in items]
+        mx = max([x for x in ns if x] or [1])
+        rows = ""
+        for k, (it, n) in enumerate(zip(items, ns)):
+            w = 100 * (n or 0) / mx
+            col = th["hl"] if k == 0 else "rgba(255,255,255,.55)"
+            rows += (f'<div class="pfrow"><div class="pfl">{esc(it.get("label"))}</div>'
+                     f'<div class="pfbar"><i class="grow" data-g="{at + 0.25 + k * 0.35:.2f}" data-w="{w:.1f}" style="background:{col}"></i></div>'
+                     f'<div class="pfv" style="color:{col if k == 0 else "#fff"}">{unit(esc(it.get("value")))}</div></div>')
+        body = f'<div class="pfhead">{esc(pf.get("head") or "비교해보면")}</div>{rows}{src}'
+        cls = "pf cmp"
+    elif kind == "doc":
+        mark = pf.get("mark")
+        lines = "".join(f'<div class="pfln{" mk" if mark is not None and k == int(mark) else ""}">'
+                        f'<span class="hlbg" data-g="{at + 0.6:.2f}" style="background:{rgba(th["hl"], .55)}"></span>'
+                        f'<span class="tx">{unit(esc(ln))}</span></div>'
+                        for k, ln in enumerate(pf.get("lines") or []))
+        body = (f'<div class="pfdochead"><span class="pfdoctag">공고문 요약</span>{esc(pf.get("head") or "")}</div>'
+                f'{lines}{src}')
+        cls = "pf doc"
+    elif kind == "image":
+        uri = photo_uri(pf.get("img"))
+        if not uri:
+            WARN.append(f"증거 이미지 {pf.get('img')} 없음 → 카드 뺌")
+            return ""
+        body = (f'<div class="pfimg"><img src="{uri}" alt=""></div>'
+                f'<div class="pfsrc">{esc(pf.get("credit") or pf.get("src") or "")}</div>')
+        cls = "pf img"
+    else:
+        WARN.append(f"알 수 없는 증거 카드: {kind}")
+        return ""
+    return f'<div class="{cls} in pop" data-in="{at:.2f}">{body}</div>'''
 
 
 def scene_html(sc, th, idx, start, end):
@@ -327,6 +419,42 @@ html,body{word-break:keep-all;width:1080px;height:1920px;overflow:hidden;backgro
 .say .wn.on{color:var(--hl)}
 .cask{margin-top:34px;font-size:54px;font-weight:900}
 .voiced .beat .bbody{bottom:680px}
+/* ── 템포형 (tempo: fast, 2026-11-03) ── */
+.tbar{position:absolute;left:54px;right:54px;top:300px;z-index:8;background:rgba(10,12,20,.86);border-radius:22px;
+ padding:16px 26px;font-family:'Black Han Sans';font-size:62px;line-height:1.12;color:#fff;text-align:center;letter-spacing:-1px}
+.tbl{white-space:nowrap;overflow:hidden}
+.tb .brand,.tb .bar{top:-200px}
+.tb .hook{padding-top:560px}
+.tb .hcredit{top:470px}
+.fast .beat .bbody{bottom:440px}
+.fast .say.fast{margin-top:30px;min-height:190px;max-width:912px}
+.say.fast .ph{display:none;font-size:66px;font-weight:900;line-height:1.3;text-shadow:0 3px 14px rgba(0,0,0,.55)}
+.say.fast .ph.on{display:block}
+.say.fast .w{opacity:.45}
+.say.fast .w.on{opacity:1}
+.fast .big{font-size:186px}
+.pf{position:absolute;left:70px;right:70px;top:500px;z-index:4;border-radius:30px;padding:30px 34px;box-shadow:0 18px 50px rgba(0,0,0,.45)}
+.pf.cmp{background:rgba(10,14,28,.92);color:#fff}
+.pfhead{font-size:40px;font-weight:900;margin-bottom:20px;opacity:.9}
+.pfrow{display:grid;grid-template-columns:1fr;gap:6px;margin-bottom:18px}
+.pfl{font-size:36px;font-weight:700;opacity:.85}
+.pfbar{height:44px;border-radius:12px;background:rgba(255,255,255,.1);overflow:hidden}
+.pfbar i{display:block;height:100%;width:0;border-radius:12px}
+.pfv{font-family:'Black Han Sans';font-size:64px;line-height:1.05}
+.pfsrc{font-size:26px;font-weight:500;opacity:.7;margin-top:10px}
+.pf.doc{background:#FFFDF6;color:#1B2230;border:2px solid #E6DFC8}
+.pfdochead{font-size:38px;font-weight:900;margin-bottom:16px;display:flex;align-items:center;gap:14px}
+.pfdoctag{font-size:28px;font-weight:900;color:#fff;background:#1B2230;border-radius:10px;padding:6px 14px}
+.pfln{position:relative;font-size:46px;font-weight:800;line-height:1.5;padding:2px 6px}
+.pfln .hlbg{position:absolute;left:0;top:18%;height:64%;width:0;border-radius:8px;z-index:0}
+.pfln .tx{position:relative;z-index:1}
+.pf.doc .pfsrc{color:#5B6472;opacity:1}
+.pf.img{background:#fff;color:#1B2230;padding:20px}
+.pfimg{height:470px;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:18px;background:#F3F5F8}
+.pfimg img{max-width:100%;max-height:100%;object-fit:contain}
+.pf.img .pfsrc{color:#5B6472;opacity:1}
+.fast .narrator{left:auto;right:60px;bottom:auto;top:470px;width:170px;height:170px}
+.tb .narrator{top:520px}
 """
 
 JS = """
@@ -345,7 +473,9 @@ window.renderAt=function(t){
   document.querySelectorAll('.in').forEach(el=>{
     const p=cl((t-(+el.dataset.in))/0.45);
     const k=el.classList.contains('pop')?back(p):ease(p);
-    el.style.opacity=ease(p);
+    const out=el.dataset.out?cl((t-(+el.dataset.out))/0.25):0;
+    el.style.opacity=ease(p)*(1-out);
+    if(el.dataset.out){el.style.display=out>=1?'none':'';}
     el.style.transform=el.classList.contains('pop')?'translateY('+((1-k)*80)+'px) scale('+(0.85+0.15*k)+')':'translateY('+((1-k)*60)+'px)';
   });
   document.querySelectorAll('.kb').forEach(el=>{
@@ -359,6 +489,17 @@ window.renderAt=function(t){
     el.style.transform='scale('+(1.14+0.06*p)+') translateX('+((p-0.5)*-5)+'%)';
   });
   document.querySelectorAll('.say .w').forEach(el=>{el.classList.toggle('on', t>=+el.dataset.w)});
+  document.querySelectorAll('.say.fast .ph').forEach(el=>{el.classList.toggle('on', t>=+el.dataset.a-0.05 && t<+el.dataset.b-0.05)});
+  document.querySelectorAll('.say.fast').forEach(sy=>{ if(![...sy.children].some(c=>c.classList.contains('on'))&&sy.children.length){
+    const ch=[...sy.children]; const first=ch[0]; if(t<+first.dataset.a) first.classList.add('on'); else ch[ch.length-1].classList.add('on'); }});
+  const CUTS=[[1.12,'50% 45%',0],[1.38,'30% 40%',-2],[1.26,'70% 55%',2],[1.55,'50% 35%',0],[1.2,'40% 60%',-1.5]];
+  document.querySelectorAll('.cuts').forEach(el=>{
+    const a=+el.dataset.s,e=+el.dataset.e,n=Math.max(1,Math.floor((e-a)/1.8)),seg=(e-a)/n;
+    const k=Math.max(0,Math.min(n-1,Math.floor((t-a)/seg))),q=cl((t-a-k*seg)/seg),c=CUTS[k%CUTS.length];
+    el.style.transformOrigin=c[1]; el.style.transform='scale('+(c[0]+0.05*q)+') translateX('+(c[2]*q)+'%)';
+  });
+  document.querySelectorAll('.grow').forEach(el=>{el.style.width=(+el.dataset.w*ease(cl((t-(+el.dataset.g))/0.7)))+'%'});
+  document.querySelectorAll('.pfln.mk .hlbg').forEach(el=>{el.style.width=(100*ease(cl((t-(+el.dataset.g))/0.5)))+'%'});
   document.querySelectorAll('.punch').forEach(el=>{
     const k=ease(cl((t-(+el.dataset.p))/0.25)); el.style.transform='scale('+(1.05-0.05*k)+')'; el.style.transformOrigin='left center';
   });
@@ -380,7 +521,8 @@ window.renderAt=function(t){
   const nar=document.querySelector('.narrator');
   if(nar){
     const ctaS=+(document.querySelector('.cta')||{dataset:{s:1e9}}).dataset.s;
-    nar.style.opacity=cl((t-0.4)/0.4)*cl((ctaS-t)/0.3);
+    let pfOn=0; document.querySelectorAll('.pf').forEach(p=>{const sc=p.closest('.scene'); if(t>=+p.dataset.in-0.2&&t<+sc.dataset.e) pfOn=1;});
+    nar.style.opacity=cl((t-0.4)/0.4)*cl((ctaS-t)/0.3)*(1-pfOn);
     nar.style.transform='translateY('+(Math.sin(t*3.2)*8)+'px) rotate('+(Math.sin(t*2.1)*3)+'deg)';
     nar.querySelectorAll('rect,circle,path,ellipse:not(.eye):not(.mouth)').forEach(x=>{
       if(x.getAttribute('fill')!=='#FF5233'&&!x.getAttribute('fill')?.startsWith('#FFB4')){
@@ -503,9 +645,13 @@ def build(spec):
     th = dict(THEMES.get(spec.get("series", "줍줍알람"), THEMES["줍줍알람"]))
     tl, total = timeline(spec)
     voiced = any(f for _, _, f in tl)
+    fast = spec.get("tempo") == "fast"
+    CUT_TIMES.clear(); POP_TIMES.clear()
     scenes = []
     for i, (sc, (t, d, f)) in enumerate(zip(spec["scenes"], tl)):
-        sc = dict(sc, _voiced=voiced)
+        sc = dict(sc, _voiced=voiced, _fast=fast)
+        if fast and i:
+            CUT_TIMES.append(t)
         if sc["type"] == "beat" and not sc.get("bg") and spec.get("bg"):
             sc["bg"] = spec["bg"]                      # 장면에 배경이 없으면 원고 전체 배경(단지 사진·지도)
             sc.setdefault("bg_credit", spec.get("bg_credit"))
@@ -530,9 +676,17 @@ def build(spec):
         scenes.append(scene_html(sc, th, i, t, t + d))
     mouth = envelope(tl, total) if voiced else []
     narrator = f'<div class="narrator">{talk_svg()}</div>' if voiced else ""
-    page = f"""<!doctype html><html><head><meta charset="utf-8"><style>{font_face()}{CSS}</style></head><body class="{'voiced' if voiced else ''}">
+    tbar = ""
+    if spec.get("title_bar"):   # 템포형: 영상 내내 맨 위에 고정되는 제목 (2026-11-03, 주비서·양집사·베리스식)
+        tl_ = str(spec["title_bar"]).split("\n")[:2]
+        tbar = ('<div class="tbar">' + "".join(
+            f'<div class="tbl"{f" style=\"color:{th["hl"]}\"" if k == len(tl_) - 1 and len(tl_) > 1 else ""}>{unit(esc(x))}</div>'
+            for k, x in enumerate(tl_)) + '</div>')
+    body_cls = " ".join(c for c in ("voiced" if voiced else "", "fast" if fast else "", "tb" if tbar else "") if c)
+    page = f"""<!doctype html><html><head><meta charset="utf-8"><style>{font_face()}{CSS}</style></head><body class="{body_cls}">
 <div class="brand">{BELL.format(s=40, c=th['accent'])}<span>줍줍알람</span></div>
 <div class="bar"><i style="background:{th['accent']}"></i></div>
+{tbar}
 {''.join(scenes)}
 {narrator}
 <script>const MOUTH={json.dumps(mouth)};{JS.replace('__TOTAL__', f'{total:.3f}')}</script></body></html>"""
@@ -549,19 +703,32 @@ FIT_JS = """
     while ([...h.querySelectorAll('.hline')].some(l => l.scrollWidth > max) && n < 40) { fs *= 0.96; h.style.fontSize = fs + 'px'; n++; }
   });
   const voiced = document.body.classList.contains('voiced');
+  const fast = document.body.classList.contains('fast');
+  document.querySelectorAll('.tbl').forEach(l => { let n = 0;   // 맨 위 고정 제목은 줄마다 한 줄로
+    while (l.scrollWidth > l.clientWidth + 1 && n < 30) { l.style.fontSize = (parseFloat(getComputedStyle(l).fontSize) * 0.95) + 'px'; n++; } });
   document.querySelectorAll('.scene').forEach(s => {
-    const LIMIT = (voiced && !s.classList.contains('cta')) ? 1250 : 1480;  // 마무리 장면엔 말하는 캐릭터가 없음
+    const LIMIT = (fast && s.classList.contains('beat')) ? 1500 : ((voiced && !s.classList.contains('cta')) ? 1250 : 1480);  // 마무리 장면엔 말하는 캐릭터가 없음
     const vis = s.style.opacity, vv = s.style.visibility;
     s.style.opacity = 1; s.style.visibility = 'visible';
     s.querySelectorAll('.in').forEach(e => { e.dataset.o = e.style.opacity; e.style.opacity = 1; });
-    const bottom = () => Math.max(...[...s.children].filter(k => !['blob','char','hph','hshade','hcredit','bgimg','bgshade'].some(c => k.classList.contains(c)))
+    const bottom = () => Math.max(...[...s.children].filter(k => !['blob','char','hph','hshade','hcredit','bgimg','bgshade','pf'].some(c => k.classList.contains(c)))
                                        .map(k => k.getBoundingClientRect().bottom));
     let k = 0;
     // 이야기 장면: 큰 숫자가 한 줄을 넘지 않게, 묶음 맨 위가 상단 가림 영역(420px)에 닿지 않게
     s.querySelectorAll('.big').forEach(b => { let n = 0;
       while (b.scrollWidth > 912 && n < 30) { b.style.fontSize = (parseFloat(getComputedStyle(b).fontSize) * 0.95) + 'px'; n++; } });
+    const pf = s.querySelector('.pf');
+    if (pf) { let n = 0;   // 증거 카드(큰 숫자가 물러난 뒤 자리)가 아래 자막과 겹치면 카드 그림 높이 → 카드 글자 순으로 줄임
+      const sy = s.querySelector('.say');
+      const top = () => sy ? sy.getBoundingClientRect().top : 1500;
+      while (pf.getBoundingClientRect().bottom + 30 > top() && n < 16) {
+        const im = pf.querySelector('.pfimg');
+        if (im && parseFloat(getComputedStyle(im).height) > 280) im.style.height = (parseFloat(getComputedStyle(im).height) * 0.9) + 'px';
+        else pf.querySelectorAll('.pfhead,.pfl,.pfv,.pfln,.pfdochead,.pfsrc').forEach(e => { e.style.fontSize = (parseFloat(getComputedStyle(e).fontSize) * 0.94) + 'px'; });
+        n++; }
+    }
     s.querySelectorAll('.bbody').forEach(b => { let n = 0;
-      while (b.getBoundingClientRect().top < 430 && n < 12) {
+      while (b.getBoundingClientRect().top < (fast ? 470 : 430) && n < 12) {
         b.querySelectorAll('.big,.say,.bsub').forEach(e => { e.style.fontSize = (parseFloat(getComputedStyle(e).fontSize) * 0.94) + 'px'; }); n++; } });
     while (bottom() > LIMIT && k < 5) {
       s.querySelectorAll('.ptitle,.rv,.rl,.ptext,.hlines,.hsub,.cline,.eyebrow,.cask').forEach(e => {
@@ -576,6 +743,21 @@ FIT_JS = """
   });
 }
 """
+
+
+def sfx_files():
+    """효과음 2개를 직접 만든다 (외부 음원 없음 — 저작권 걱정 없음). 목소리보다 훨씬 작게."""
+    d = Path(os.environ.get("TMPDIR", "/tmp")) / "jupjup_sfx"
+    d.mkdir(exist_ok=True)
+    spec = {"whoosh": "anoisesrc=d=0.32:c=pink:a=0.6,highpass=f=700,lowpass=f=5000,afade=t=in:d=0.12,afade=t=out:st=0.14:d=0.18,volume=0.22",
+            "pop": "sine=f=1250:d=0.09,afade=t=out:st=0.01:d=0.08,volume=0.28"}
+    out = {}
+    for k, f in spec.items():
+        p = d / f"{k}.wav"
+        if not p.exists():
+            subprocess.run(["ffmpeg", "-y", "-v", "error", "-f", "lavfi", "-i", f, "-ar", "44100", "-ac", "2", str(p)], check=True)
+        out[k] = p
+    return out
 
 
 def main(path):
@@ -615,6 +797,10 @@ def main(path):
 
     mp4 = out / "reel.mp4"
     voices = [(t0 + lead(i), f) for i, (t0, _, f) in enumerate(tl) if f]
+    if spec.get("tempo") == "fast" and spec.get("sfx", True):   # 템포형 효과음: 컷마다 휙, 숫자·카드가 튀어나올 때 톡
+        sfx = sfx_files()
+        voices += [(round(x, 3), sfx["whoosh"]) for x in sorted(set(round(c, 2) for c in CUT_TIMES)) if 0.2 < x < total - 0.3]
+        voices += [(round(x, 3), sfx["pop"]) for x in sorted(set(round(c, 2) for c in POP_TIMES)) if 0.2 < x < total - 0.3]
     cmd = ["ffmpeg", "-y", "-loglevel", "error", "-framerate", str(FPS), "-i", str(frames / "%05d.jpg"),
            "-f", "lavfi", "-t", f"{total:.3f}", "-i", "anullsrc=channel_layout=stereo:sample_rate=44100"]
     for _, f in voices:
