@@ -1,222 +1,228 @@
 {
  "id": "N-0001",
- "no": 13,
+ "no": 14,
  "series": "새벽괴담",
  "format": "story",
- "mood": "horror",
+ "mood": "wonder",
  "title": "1609년 강원도의 하늘",
  "hook": [
-  "1609년, 어느 집 처마 밑",
-  "땅에서 빛이 솟았다"
+  "실록 속, 마당에서 뜬 빛",
+  "그 안에서 북소리"
  ],
- "accent_word": "땅에서",
+ "accent_word": "북소리",
  "images": [
   {
-   "id": "j01",
-   "prompt": "A Joseon-era Korean hanok courtyard in 1609 on a pale, cloudless afternoon: under the deep dark shadow of the tiled eaves, just above the packed dirt ground, a round glowing disc of light about the size of a washbasin hovers, the only bright thing in the scene, nobody there.",
+   "id": "k01",
+   "prompt": "Joseon-era Korea, 1609: a perfectly clear, pale, cloudless daytime sky above pine-covered Gangwon mountain ridges and a small village of tiled and thatched roofs at the bottom of the frame; in the middle of the empty sky a faint circular ripple distorts the air like the shockwave of a drumbeat, calm and mysterious.",
    "nop": true,
-   "seed": 801
+   "seed": 901
   },
   {
-   "id": "j02",
-   "prompt": "A low wooden desk in a dim Joseon-era government office lit by one small oil lamp: five folded old hanji paper reports laid side by side, brush writing on them blurred and unreadable, deep shadows.",
+   "id": "k02",
+   "prompt": "A low wooden desk in a dim Joseon-era government office lit by one small oil lamp: five folded old hanji paper reports laid side by side, brush writing on them blurred and unreadable, a calm glow.",
    "nop": true,
-   "seed": 802
+   "seed": 902
   },
   {
-   "id": "j03",
-   "prompt": "Gangwon mountains in Joseon-era Korea, 1609: a pale cloudless sky above pine-covered ridges, far away a long red glowing band like a strip of red cloth and a thin streak of fire like a flying arrow crossing the sky, small tiled village roofs below, eerie stillness.",
+   "id": "k03",
+   "prompt": "Gangwon mountains in Joseon-era Korea, 1609: a pale cloudless sky above pine ridges, far away a long glowing red band like a strip of red cloth and a thin bright streak of fire like a flying arrow crossing the sky, small village roofs below, wondrous stillness.",
    "nop": true,
-   "seed": 803
+   "seed": 903
   },
   {
-   "id": "j04",
-   "prompt": "Early morning over a Joseon-era coastal town by the east sea, 1609: a red glowing shape like a bottle gourd with a long white tail sinking slowly down from the pale clear sky toward the land beyond the northern mountains, the downward direction clearly visible, town roofs dark below.",
+   "id": "k05",
+   "prompt": "Morning over a Joseon-era coastal town by the east sea, 1609: a red glowing shape like a bottle gourd with a long white tail sinking down from the pale clear sky toward the land beyond the northern mountains, the downward direction clearly visible, town roofs below.",
    "nop": true,
-   "seed": 804
+   "seed": 905
   },
   {
-   "id": "j05",
-   "prompt": "Afternoon in a small Joseon-era village at the foot of mountains near the east sea: one modest hanok house with an empty swept dirt courtyard, the space under its eaves unusually dark, pale cloudless sky above, no people.",
+   "id": "k06",
+   "prompt": "Afternoon in a small Joseon-era village at the foot of mountains near the east sea: one modest hanok house with an empty swept dirt courtyard, a deep cool shadow under its tiled eaves, pale cloudless sky above, quiet.",
    "nop": true,
-   "seed": 805
+   "seed": 906
   },
   {
-   "id": "j06",
-   "prompt": "Close to the eaves of a Joseon-era hanok: a band of light curling upward along the roof line like a rolled flag, white on one side, blue in the middle and red on the other, breathing out a faint pale vapour, dark wooden beams and tiles around it.",
+   "id": "k07",
+   "prompt": "A Joseon-era hanok courtyard on a pale cloudless afternoon: under the shadow of the tiled eaves, just above the packed dirt ground, a round glowing disc of soft white light about the size of a washbasin rising gently, the only bright thing in the scene.",
    "nop": true,
-   "seed": 806
+   "seed": 907
   },
   {
-   "id": "j07",
-   "prompt": "Above the tiled roof of a Joseon-era hanok under a pale sky: a glowing band of light snapping into two pieces, one piece dissolving into drifting smoke, the other a flat cushion-shaped glow hanging perfectly still in mid-air.",
+   "id": "k08",
+   "prompt": "Close to the eaves of a Joseon-era hanok: a band of light curving upward along the roof line, white at one end, blue in the middle and red at the other end, softly glowing against a pale sky, wooden beams and tiles around it.",
    "nop": true,
-   "seed": 807
+   "seed": 908
   },
   {
-   "id": "j08",
-   "prompt": "Low view across an empty Joseon-era hanok courtyard: a flat cushion-shaped glowing light hanging motionless in the air above the dirt, a little dust stirring on the ground beneath it, far away on the wooden veranda one small faceless figure in white hanbok seen from behind, deep shadows under the eaves.",
-   "seed": 808
-  },
-  {
-   "id": "j09",
-   "prompt": "A Joseon-era mountain village seen from far away on a pale afternoon: high above distant mountains a small thin streak of a daytime meteor in the sky, but the focus of the picture is the dark courtyard of one house at the bottom of the frame.",
+   "id": "k09",
+   "prompt": "Above the tiled roof of a Joseon-era hanok under a pale sky: a glowing band of light breaking into two pieces, one piece dissolving into drifting smoke, the other a flat cushion-shaped glow hanging perfectly still in mid-air.",
    "nop": true,
-   "seed": 809
+   "seed": 909
   },
   {
-   "id": "j10",
+   "id": "k10",
+   "prompt": "Low view across an empty Joseon-era hanok courtyard: a flat glowing piece of light hanging motionless in the air above the dirt, a little dust stirring on the ground beneath it, far away on the wooden veranda one small faceless figure in white hanbok seen from behind.",
+   "seed": 910
+  },
+  {
+   "id": "k11",
+   "prompt": "A Joseon-era mountain village seen from far away on a pale afternoon: high above the distant mountains a small thin streak of a daytime meteor in the sky, while at the bottom of the frame one house courtyard has a faint glow on the ground.",
+   "nop": true,
+   "seed": 911
+  },
+  {
+   "id": "k12",
    "prompt": "Boogi the owl archivist sits at an old wooden desk in a dark archive room at night under a small amber lantern, an open old Korean bound book in front of him with writing blurred and unreadable, an old ink-drawn map of mountains and coast without any letters lying on the book.",
    "with_character": true,
    "nop": true,
-   "seed": 810
+   "seed": 912
   }
  ],
  "scenes": [
   {
-   "say": "허공에 뜬 세숫대야만 한 빛. 그 안에서, 북소리가 났습니다.",
-   "tts": "허공에 뜬 세숫대야만 한 빛. 그 안에서 북소리가 났습니다.",
-   "img": "j08",
+   "say": "마당 땅에서 떠오른 빛, 그 안에서 북소리가 났습니다.",
+   "img": "k07",
+   "tts": "마당 땅에서 떠오른 빛, 그 안에서 북소리가 났습니다.",
    "move": "in",
-   "focus": [
-    0.5,
-    0.5
-   ],
    "emph": [
     "북소리가"
    ]
   },
   {
-   "say": "1609년, 강원도 다섯 고을이 올린 보고.",
-   "tts": "천육백구 년, 강원도 다섯 고을이 올린 보고.",
-   "img": "j02",
+   "say": "1609년, 실록에 남은 강원도의 보고입니다.",
+   "img": "k02",
+   "tts": "천육백구 년, 실록에 남은 강원도의 보고입니다.",
    "move": "in",
    "cont": true,
    "emph": [
-    "보고."
+    "실록에"
    ]
   },
   {
-   "say": "아침부터 한낮까지, 구름 없는 하늘에서… 북소리가 났습니다.",
-   "tts": "아침부터 한낮까지, 구름 없는 하늘에서 [pause short] 북소리가 났습니다.",
-   "img": "j03",
-   "move": "in",
-   "emph": [
-    "북소리가"
-   ]
+   "say": "그날 아침, 구름 한 점 없는 하늘에 불빛들이 지나갑니다.",
+   "img": "k01",
+   "move": "in"
   },
   {
-   "say": "고을마다, 붉은 빛과 화살 같은 불빛이 하늘을 지나갔고,",
-   "tts": "고을마다 붉은 빛과 화살 같은 불빛이 하늘을 지나갔고,",
-   "img": "j03",
-   "zoom": 1.4,
-   "focus": [
-    0.55,
-    0.35
-   ],
+   "say": "붉은 천 조각 같은 것, 화살처럼 날아간 불빛.",
+   "img": "k03",
    "move": "right",
+   "cont": true,
+   "emph": [
+    "화살처럼"
+   ]
+  },
+  {
+   "say": "강릉에선 붉은 것이,",
+   "img": "k05",
+   "move": "down",
    "cont": true
   },
   {
-   "say": "강릉에선 붉은 것이, 북쪽 땅으로 떨어지듯 내려갔습니다.",
-   "tts": "강릉에선 붉은 것이, 북쪽 땅으로 떨어지듯 내려갔습니다.",
-   "img": "j04",
+   "say": "북쪽 땅으로 떨어지듯 내려갔습니다.",
+   "img": "k05",
    "move": "down",
    "cont": true,
+   "emph": [
+    "북쪽"
+   ],
+   "zoom": 1.4,
+   "focus": [
+    0.5,
+    0.7
+   ]
+  },
+  {
+   "say": "오후, 강릉 바로 북쪽 양양.",
+   "img": "k06",
+   "move": "in",
    "emph": [
     "북쪽"
    ]
   },
   {
-   "say": "오후, 강릉 바로 북쪽 양양. 이번엔 하늘이 아니었습니다.",
-   "tts": "오후, 강릉 바로 북쪽 양양. 이번엔 하늘이 아니었습니다.",
-   "img": "j05",
+   "say": "그런데 이번엔, 하늘이 아니었습니다.",
+   "img": "k06",
+   "tts": "그런데 이번엔 하늘이 아니었습니다.",
+   "zoom": 1.45,
+   "focus": [
+    0.5,
+    0.6
+   ],
    "move": "in",
+   "cont": true,
    "emph": [
     "하늘이"
    ]
   },
   {
-   "say": "한 집 처마 밑 땅바닥에서, 세숫대야만 한 빛이 떠오릅니다.",
-   "tts": "한 집 처마 밑 땅바닥에서 세숫대야만 한 빛이 떠오릅니다.",
-   "img": "j01",
-   "move": "up",
-   "cont": true,
-   "emph": [
-    "땅바닥에서,"
-   ]
-  },
-  {
-   "say": "빛은 땅에 내려앉을 듯하다가, 휘어 올라갑니다.",
-   "tts": "빛은 땅에 내려앉을 듯하다가, 휘어 올라갑니다.",
-   "img": "j06",
-   "move": "up"
-  },
-  {
-   "say": "희게, 푸르게, 붉게. 깃발처럼 말렸다 펴지며.",
-   "tts": "희게 푸르게 붉게. 깃발처럼 말렸다 펴지며.",
-   "img": "j06",
-   "zoom": 1.4,
-   "focus": [
-    0.5,
-    0.4
-   ],
-   "move": "in",
-   "cont": true,
-   "emph": [
-    "숨을"
-   ]
-  },
-  {
-   "say": "그러다 둘로 끊어지고, 한 조각은 연기처럼 사라집니다.",
-   "tts": "그러다 둘로 끊어지고, 한 조각은 연기처럼 사라집니다.",
-   "img": "j07",
-   "move": "in"
-  },
-  {
-   "say": "남은 한 조각은, 그 자리에… 가만히 떠 있었습니다.",
-   "tts": "남은 한 조각은 그 자리에 [pause short] 가만히 떠 있었습니다.",
-   "img": "j07",
-   "zoom": 1.45,
-   "focus": [
-    0.55,
-    0.45
-   ],
-   "move": "in",
-   "cont": true,
-   "sfx": "heartbeat",
-   "emph": [
-    "가만히"
-   ]
-  },
-  {
-   "say": "그리고 그 안에서… 돌 구르는 소리. 북 치는 소리.",
-   "tts": "그리고 그 안에서 [pause short] 돌 구르는 소리. 북 치는 소리.",
-   "img": "j08",
+   "say": "한 집 처마 밑 땅에서, 세숫대야만 한 빛이 떠오릅니다.",
+   "img": "k07",
    "zoom": 1.35,
    "focus": [
     0.5,
+    0.6
+   ],
+   "move": "up",
+   "cont": true,
+   "emph": [
+    "땅에서,"
+   ]
+  },
+  {
+   "say": "빛은 휘어 오르며 색을 바꾸다, 둘로 갈라집니다.",
+   "img": "k08",
+   "move": "up"
+  },
+  {
+   "say": "한 조각은 연기처럼 사라지고,",
+   "img": "k09",
+   "move": "in",
+   "cont": true
+  },
+  {
+   "say": "한 조각은 그 자리에 떠 있었습니다.",
+   "img": "k09",
+   "move": "in",
+   "cont": true,
+   "emph": [
+    "떠"
+   ],
+   "zoom": 1.45,
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "say": "그 조각을 두고, 보고서엔 이렇게 적었습니다.",
+   "img": "k10",
+   "move": "in",
+   "cont": true
+  },
+  {
+   "say": "그 안에서… 돌 구르는 소리, 북 치는 소리가 났다고.",
+   "img": "k10",
+   "tts": "그 안에서 [pause short] 돌 구르는 소리 북 치는 소리가 났다고.",
+   "zoom": 1.4,
+   "focus": [
+    0.5,
     0.45
    ],
    "move": "in",
-   "sfx": [
-    "knock",
-    "hit"
-   ],
+   "sfx": "hit",
    "emph": [
     "북 치는"
    ]
   },
   {
-   "say": "하늘의 빛은, 큰 유성이었을지도 모릅니다.",
-   "tts": "하늘의 빛은 큰 유성이었을지도 모릅니다.",
-   "img": "j09",
+   "say": "하늘의 빛들은, 큰 유성이었을 거라는 설명이 있습니다.",
+   "img": "k11",
    "move": "in"
   },
   {
-   "say": "하지만 양양의 빛은, 하늘이 아니라 땅에서 떠올랐습니다.",
-   "tts": "하지만 양양의 빛은, 하늘이 아니라 땅에서 떠올랐습니다.",
-   "img": "j09",
+   "say": "하지만 이 빛은, 땅에서 올랐습니다.",
+   "img": "k11",
    "zoom": 1.5,
    "focus": [
     0.5,
@@ -229,45 +235,59 @@
    ]
   },
   {
-   "say": "그날 아침, 강릉에서 북쪽 땅으로 떨어진… 그 붉은 것.",
-   "tts": "그날 아침, 강릉에서 북쪽 땅으로 떨어진 [pause short] 그 붉은 것.",
-   "img": "j10",
+   "say": "아침엔 강릉 하늘에서, 북쪽으로 떨어지던 빛.",
+   "img": "k12",
    "zoom": 1.3,
    "focus": [
     0.5,
     0.6
    ],
    "move": "in",
+   "cont": true,
    "emph": [
-    "북쪽"
+    "북쪽으로"
    ]
   },
   {
-   "say": "북소리를 품은 그 빛은, 떠오르기 전까지… 어디 있었을까요?",
-   "tts": "북소리를 품은 그 빛은, 떠오르기 전까지 [pause short] 어디 있었을까요?",
-   "img": "j10",
+   "say": "오후엔 마당 땅에서 북소리를 낸 빛.",
+   "img": "k12",
+   "move": "in",
+   "cont": true,
+   "zoom": 1.15,
+   "focus": [
+    0.5,
+    0.55
+   ],
+   "emph": [
+    "북소리를"
+   ]
+  },
+  {
+   "say": "둘은, 같은 것이었을까요?",
+   "img": "k12",
+   "tts": "둘은 같은 것이었을까요?",
    "move": "out",
    "cont": true,
    "emph": [
-    "어디"
+    "같은"
    ]
   }
  ],
  "youtube": {
-  "title": "허공에 뜬 빛 속에서, 북소리가 났다",
-  "summary": "1609년, 구름 한 점 없던 날. 강원도 다섯 고을이 하늘과 땅에서 본 것을 조선왕조실록에 보고로 남겼습니다. 양양의 한 집에서는 그 빛이 마당 땅에서 떠올랐습니다.",
-  "pinned": "그날 아침 강릉에서 북쪽 땅으로 떨어진 그 붉은 것. 북소리를 품은 그 빛은, 떠오르기 전까지 어디 있었을까요?"
+  "title": "마당 땅에서 뜬 빛, 그 안에서 북소리가 났다",
+  "summary": "1609년, 구름 한 점 없던 날. 강원도 고을들이 하늘에서 본 이상한 빛을 조정에 보고했고, 조선왕조실록에 남았습니다. 그날 오후 양양의 한 집에서는, 빛이 마당 땅에서 떠올랐습니다.",
+  "pinned": "아침 강릉 하늘의 빛과 오후 양양 마당의 빛, 같은 것이었을까요? 같다, 다르다 한 단어로."
  },
  "threads": [
-  "1609년 조선 강원도, 구름 한 점 없는 날이었는데 다섯 고을에서 하늘에 이상한 게 지나갔다고 실록에 보고가 남아 있어. 붉은 천 같은 거, 화살 같은 불빛.",
-  "아침에 강릉에선 붉은 게 북쪽 땅으로 떨어지듯 내려갔대. 그리고 오후, 강릉 바로 북쪽 양양에선 하늘이 아니라 어느 집 처마 밑 땅바닥에서 세숫대야만 한 빛이 떠올랐다는 거야.",
-  "그 빛이 희고 푸르고 붉게 감기다가 둘로 끊어졌는데, 한 조각은 연기처럼 사라지고 한 조각은 방석처럼 그 자리에 떠 있었대. 그리고 그 안에서 돌 구르는 소리, 북 치는 소리가 났다고.",
-  "낮에도 보이는 큰 유성이었다는 설명도 있어. 근데 그 빛은 하늘에서 온 게 아니라 땅에서 올라왔잖아.",
-  "아침에 북쪽으로 떨어진 그거, 그 집 마당 땅 밑에서 뭘 하고 있었을까. 영상으로 보려면 인스타 @ossak_alarm 에서 봐."
+  "1609년 조선 강원도, 어느 집 마당 땅에서 빛이 떠올랐는데 그 안에서 북소리가 났대. 지어낸 얘기가 아니라 강원도에서 조정에 올린 보고가 실록에 그대로 남아 있어.",
+  "그날 아침엔 구름 한 점 없는 하늘에 이상한 빛들이 지나갔대. 붉은 천 조각 같은 거, 화살처럼 날아가는 불빛. 강릉에선 붉은 게 북쪽 땅으로 떨어지듯 내려갔다고.",
+  "그리고 오후, 강릉 바로 북쪽 양양. 이번엔 하늘이 아니라 어느 집 처마 밑 땅에서 세숫대야만 한 빛이 떠올랐대. 희고 푸르고 붉게 물들다가 둘로 끊어졌는데, 한 조각은 그 자리에 가만히 떠 있었고.",
+  "보고서엔 그 안에서 돌 구르는 소리, 북 치는 소리가 났다고 적혀 있어. 낮에 보인 큰 유성이라는 설명도 있긴 한데, 이 빛은 땅에서 올라왔잖아.",
+  "아침에 강릉 하늘에서 북쪽으로 떨어진 빛, 오후에 바로 북쪽 마당 땅에서 북소리를 낸 빛. 너는 둘이 같은 거라고 봐? 영상으로 보려면 인스타 @ossak_alarm 에서 봐."
  ],
- "sources": "출처: 조선왕조실록 광해군일기 1609년(광해군 1) 9월 25일(정초본·중초본), 8월 25일",
+ "sources": "출처: 조선왕조실록 광해군일기 1609년(광해군 1) 9월 25일(강원 감사 보고), 8월 25일",
  "tags": "#새벽괴담 #조선왕조실록",
  "risk": "저",
  "adapted": true,
- "hook_type": "있을 수 없는 소리(떠 있는 빛 속 북소리)"
+ "hook_type": "일상 공간×초자연(마당 땅에서 뜬 빛 속 북소리)"
 }

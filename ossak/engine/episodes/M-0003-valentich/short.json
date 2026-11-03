@@ -1,0 +1,142 @@
+{
+ "id": "M-0003",
+ "no": 13,
+ "series": "미제파일",
+ "format": "loop",
+ "mood": "mystery",
+ "title": "프레더릭 발렌티치 실종",
+ "hook": [
+  "혼자 날던 조종사 위",
+  "초록 불빛, 교신 끊겼다"
+ ],
+ "accent_word": "초록",
+ "images": [
+  {
+   "id": "q01",
+   "prompt": "Night, 1978: inside the cockpit of a small single-engine light aircraft seen from behind, the faceless dark silhouette of a lone young pilot from behind, dim instrument panel glow, through the windscreen in the middle of the dark sky a blurred green glow with no visible shape.",
+   "seed": 931
+  },
+  {
+   "id": "q02",
+   "prompt": "A dim 1970s air traffic control room at night: radio console with a desk microphone and reel equipment, one faceless controller silhouette seen from behind wearing a headset, papers and screens blurred and unreadable, cold light.",
+   "seed": 932
+  },
+  {
+   "id": "q03",
+   "prompt": "Seen from far away at night: one tiny single-engine light aircraft over a perfectly calm dark sea that mirrors the stars like glass, so the horizon between sea and sky is almost invisible, a faint green glow in the darkness above the plane.",
+   "nop": true,
+   "seed": 933
+  },
+  {
+   "id": "q04",
+   "prompt": "Close-up of a small aircraft's shaking analog instrument panel at night, needles blurred with motion, a green light reflected across the glass of the gauges, no hands, no people.",
+   "nop": true,
+   "seed": 934
+  },
+  {
+   "id": "q05",
+   "prompt": "Close-up of a 1970s control room console at night: a loudspeaker grille and a lit red transmit lamp, an empty chair pushed back, cold blue light, nobody there.",
+   "nop": true,
+   "seed": 935
+  },
+  {
+   "id": "q06",
+   "prompt": "Dawn over a wide empty calm sea, grey light, far away one small search aircraft silhouette flying low over the water, nothing floating on the surface.",
+   "nop": true,
+   "seed": 936
+  }
+ ],
+ "scenes": [
+  {
+   "say": "“그게, 저를 가지고 노는 것 같습니다.”",
+   "img": "q01",
+   "tts": "그게 저를 가지고 노는 것 같습니다.",
+   "move": "in",
+   "emph": [
+    "가지고",
+    "노는"
+   ]
+  },
+  {
+   "say": "1978년 호주,",
+   "img": "q02",
+   "tts": "천구백칠십팔 년 호주,",
+   "move": "in",
+   "cont": true
+  },
+  {
+   "say": "밤바다 위를 혼자 날던 조종사의 교신입니다.",
+   "img": "q03",
+   "tts": "밤바다 위를 혼자 날던 조종사의 교신입니다.",
+   "move": "in",
+   "cont": true,
+   "emph": [
+    "교신입니다."
+   ],
+   "zoom": 1.0
+  },
+  {
+   "say": "초록 불빛이 따라오며, 머리 위를 맴돈다고 했습니다.",
+   "img": "q03",
+   "move": "up",
+   "emph": [
+    "머리",
+    "위를"
+   ],
+   "zoom": 1.5,
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "say": "마지막 교신. “맴돌고 있습니다, 비행기가 아닙니다.”",
+   "img": "q04",
+   "tts": "마지막 교신. 맴돌고 있습니다 [pause short] 비행기가 아닙니다.",
+   "move": "in",
+   "cont": true,
+   "emph": [
+    "비행기가",
+    "아닙니다.”"
+   ]
+  },
+  {
+   "say": "그 뒤 열린 마이크로, 금속을 긁는 듯한 소리가 들렸습니다.",
+   "img": "q05",
+   "move": "in",
+   "sfx": "hit",
+   "emph": [
+    "금속을"
+   ]
+  },
+  {
+   "say": "나흘을 찾았지만, 비행기 조각 하나 나오지 않았습니다.",
+   "img": "q06",
+   "move": "right",
+   "cont": true
+  },
+  {
+   "say": "그가 올려다본 위는, 정말 하늘이었을까요?",
+   "img": "q01",
+   "zoom": 1.4,
+   "focus": [
+    0.5,
+    0.4
+   ],
+   "move": "out",
+   "emph": [
+    "하늘이었을까요?"
+   ]
+  }
+ ],
+ "youtube": {
+  "title": "혼자 날던 조종사가, 위를 보며 남긴 교신",
+  "summary": "1978년 10월, 호주 배스 해협 위를 혼자 날던 20세 조종사 프레더릭 발렌티치. 약 5분 동안 정체 모를 불빛을 보고하던 교신은 그대로 끊겼고, 원인은 지금도 확인되지 않았습니다.",
+  "pinned": "그가 올려다본 '위'는 정말 하늘이었을까요? 하늘, 바다 중 하나로 답해 주세요."
+ },
+ "sources": "출처: 호주 교통부 사고조사 요약보고서(NAA 소장)·교신 녹취록, Snopes(2024), Skeptical Inquirer(2013)",
+ "tags": "#미제파일 #발렌티치",
+ "risk": "중",
+ "adapted": false,
+ "hook_type": "혼자×동행(혼자 날던 조종사 위 초록 불빛)"
+}
