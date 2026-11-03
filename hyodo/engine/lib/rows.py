@@ -3,7 +3,8 @@
   python3 lib/rows.py episodes/<편> <롱폼 업로드일 YYYY-MM-DD> "<검수 결과>"
 
 - 롱폼: 설정의 롱폼 기본 시각 07:00, 숏츠: 다음 날·다다음 날 12:30
-- 상태(O)는 항상 '검수' — 사용자가 확인하고 '업로드대기'로 바꾼다.
+- 상태(O)는 '업로드대기'(자동 발행 원칙, 2026-11-03 운영자 결정). 자동 검수에 걸린 편은 행을 넣지 않는다.
+- 수정본(정정)은 publish.py --rev N 뒤에 rows.py를 돌려 L·M열 주소만 새 파일로 바꾸는 데 쓴다(README 8절).
 - 출력: out/sheet_rows.json (구글 시트 update_values/append_values에 그대로 넣는 2차원 배열)
 """
 import datetime as dt, json, pathlib, sys
@@ -20,10 +21,10 @@ def main(ep, day, review):
     d0 = dt.date.fromisoformat(day)
     cat = spec.get("category", "")
     rows = [[d0.isoformat(), LONG_T, L["id"], "롱폼", cat, "", L["title"], L["description"], ", ".join(L["tags"]),
-             L["pinned"], "\n".join(L["chapters"]), L["video_url"], L.get("thumb_url", ""), L["playlist"], "검수", review]]
+             L["pinned"], "\n".join(L["chapters"]), L["video_url"], L.get("thumb_url", ""), L["playlist"], "업로드대기", review]]
     for i, s in enumerate(up["shorts"], 1):
         rows.append([(d0 + dt.timedelta(days=i)).isoformat(), SHORT_T, s["id"], "숏츠", cat, L["id"], s["title"],
-                     s["description"], ", ".join(s["tags"]), "", "", s["video_url"], "", s["playlist"], "검수", review])
+                     s["description"], ", ".join(s["tags"]), "", "", s["video_url"], "", s["playlist"], "업로드대기", review])
     for r in rows:
         if len(r[6]) > 100:
             raise SystemExit(f"{r[2]}: 제목 {len(r[6])}자 — 유튜브 최대 100자")

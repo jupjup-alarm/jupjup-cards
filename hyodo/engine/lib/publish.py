@@ -1,6 +1,8 @@
 """완성 영상·썸네일을 저장소 hyodo/<편ID>/ 로 옮기고 공개 주소를 upload.json에 적는다.
 
-  python3 lib/publish.py episodes/<편>
+  python3 lib/publish.py episodes/<편> [--rev N]
+
+- --rev N: 정정 수정본. 파일 이름이 <ID>-rN.mp4 처럼 바뀐다(공개 주소 캐시를 피하고 원본과 구분).
 
 - 공개 주소: https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/hyodo/<편ID>/<파일>
 - GitHub 한 파일 상한 100MB. 90MB가 넘는 영상은 CRF를 올려 다시 인코딩한다(화면이 거의 정지라 화질 차이가 작다).
@@ -23,7 +25,7 @@ def shrink(src, dst):
     raise SystemExit(f"{src.name}: CRF 34로도 90MB를 넘어요 — 길이를 줄이거나 R2가 필요해요")
 
 
-def main(ep):
+def main(ep, rev=0):
     out = ep / "out"
     up = json.loads((out / "upload.json").read_text())
     vid = up["long"]["id"]
@@ -33,7 +35,7 @@ def main(ep):
     report = []
     for it in items:
         src = out / it["video"]
-        tgt = dest / src.name
+        tgt = dest / (src.stem + (f"-r{rev}" if rev else "") + src.suffix)
         if src.stat().st_size > LIMIT:
             crf = shrink(src, tgt); report.append(f"{src.name}: CRF {crf}로 다시 인코딩")
         else:
@@ -41,8 +43,10 @@ def main(ep):
         it["video_url"] = f"{BASE}/{vid}/{tgt.name}"
         it["size_mb"] = round(tgt.stat().st_size / 1048576, 1)
     th = out / up["long"]["thumb"]
-    shutil.copy(th, dest / th.name)
-    up["long"]["thumb_url"] = f"{BASE}/{vid}/{th.name}"
+    thn = th.stem + (f"-r{rev}" if rev else "") + th.suffix
+    shutil.copy(th, dest / thn)
+    up["long"]["thumb_url"] = f"{BASE}/{vid}/{thn}"
+    up["rev"] = rev
     (out / "upload.json").write_text(json.dumps(up, ensure_ascii=False, indent=1))
     shutil.copy(out / "upload.json", dest / "upload.json")
     for it in items:
@@ -53,4 +57,6 @@ def main(ep):
 
 
 if __name__ == "__main__":
-    main(pathlib.Path(sys.argv[1]).resolve())
+    a = sys.argv[1:]
+    rev = int(a[a.index("--rev") + 1]) if "--rev" in a else 0
+    main(pathlib.Path(a[0]).resolve(), rev)
