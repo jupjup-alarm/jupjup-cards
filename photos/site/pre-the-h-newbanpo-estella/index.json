@@ -1,0 +1,88 @@
+{
+ "key": "pre-the-h-newbanpo-estella",
+ "images": [
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "낮 전경",
+   "file": "photos/site/pre-the-h-newbanpo-estella/birdseye.jpg",
+   "src": "https://the-h-newbanpoestella.co.kr/assets/images/sub/summary.jpg",
+   "crop": "0,0,1,0.54",
+   "w": 1200,
+   "h": 745,
+   "md5": "478cc54fcd701cbcaaeed875caf1ba95",
+   "photo": true
+  },
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "한강 쪽 상층부 투시도",
+   "file": "photos/site/pre-the-h-newbanpo-estella/birdseye-2.jpg",
+   "src": "https://the-h-newbanpoestella.co.kr/assets/images/main/visual-bg-new.jpg",
+   "crop": "",
+   "w": 1600,
+   "h": 833,
+   "md5": "bb20aaf0e714b353d50c074f8a20e4da",
+   "photo": true
+  },
+  {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "",
+   "file": "photos/site/pre-the-h-newbanpo-estella/siteplan.jpg",
+   "src": "https://the-h-newbanpoestella.co.kr/assets/images/sub/place.jpg",
+   "crop": "",
+   "w": 1200,
+   "h": 1000,
+   "md5": "5b52a8f0f8e96829bc2e7838edae42ef",
+   "photo": false
+  },
+  {
+   "cat": "dongho",
+   "kind": "동호배치도",
+   "label": "101·102동",
+   "file": "photos/site/pre-the-h-newbanpo-estella/dongho-101-102.jpg",
+   "src": "https://the-h-newbanpoestella.co.kr/assets/images/sub/architecture.jpg",
+   "crop": "",
+   "w": 1200,
+   "h": 920,
+   "md5": "8f44079494edc7e6310d2ec4c01de464",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "84",
+   "file": "photos/site/pre-the-h-newbanpo-estella/plan-84.jpg",
+   "src": "https://the-h-newbanpoestella.co.kr/assets/images/sub/unit.jpg",
+   "crop": "",
+   "w": 1105,
+   "h": 2000,
+   "md5": "2b5ca8ab66ec8b60a884d026281bb06e",
+   "photo": false
+  },
+  {
+   "cat": "community",
+   "kind": "커뮤니티",
+   "label": "평면",
+   "file": "photos/site/pre-the-h-newbanpo-estella/community.jpg",
+   "src": "https://the-h-newbanpoestella.co.kr/assets/images/sub/community.jpg",
+   "crop": "",
+   "w": 908,
+   "h": 1600,
+   "md5": "a9870a4c97aa5806cda6f64ae618eada",
+   "photo": false
+  }
+ ],
+ "links": [
+  {
+   "kind": "vr",
+   "label": "84",
+   "name": "VR",
+   "url": "https://dodle4534.cafe24.com/the_h_vr/84basic/index.html"
+  }
+ ],
+ "homepage": "https://the-h-newbanpoestella.co.kr/",
+ "owner": "신반포22차 재건축조합·현대엔지니어링",
+ "updated": "2026-11-03 22:44"
+}

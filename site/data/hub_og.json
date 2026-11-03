@@ -39,6 +39,11 @@
   "image": "photos/ccb9f972d60e.jpg",
   "pos": "center 55%"
  },
+ "/region/gyeonggi/namyangju/": {
+  "credit": "이미지: 에코월드이엔씨 조감도 · 실제와 다를 수 있음",
+  "image": "photos/site/2026910281/birdseye.jpg",
+  "pos": "center 55%"
+ },
  "/region/gyeonggi/siheung/": {
   "credit": "이미지: LH 제공 조감도 · 실제와 다를 수 있음",
   "image": "photos/5f6df7524354.jpg",
@@ -68,6 +73,11 @@
   "credit": "이미지: 서울빌라가로주택정비사업조합 제공 조감도 · 실제와 다를 수 있음",
   "image": "photos/f8fc2f4eb166-bldg.jpg",
   "pos": "center 40%"
+ },
+ "/region/seoul/seocho/": {
+  "credit": "이미지: 디에이치 신반포에스테라 분양 홈페이지(신반포22차 재건축조합·현대엔지니어링) 조감도 · 실제와 다를 수 있음",
+  "image": "photos/site/pre-the-h-newbanpo-estella/birdseye.jpg",
+  "pos": "center 55%"
  },
  "/schedule/2026-10/": {
   "credit": "이미지: 비에스한양·비에스산업 조감도 · 실제와 다를 수 있음",
