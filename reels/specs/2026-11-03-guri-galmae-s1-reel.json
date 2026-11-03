@@ -1,0 +1,61 @@
+{
+ "slug": "2026-11-03-guri-galmae-s1-reel",
+ "title": "구리갈매 S1블록 10년공공임대",
+ "series": "임대알람",
+ "voice": "voices/80bc1abbd8c2/",
+ "voice_speed": 1.0,
+ "thumb": {
+  "badge": "11/4 마감"
+ },
+ "scenes": [
+  {
+   "type": "hook",
+   "chips": [
+    "임대알람"
+   ],
+   "lines": [
+    "이상합니다",
+    "월세 118만 싸다?"
+   ],
+   "sub": "소득도 안 본대요",
+   "face": "깜짝",
+   "photo": "photos/mood/211c46b048-1.jpg"
+  },
+  {
+   "type": "beat",
+   "eyebrow": "장소",
+   "big": "구리 갈매 S1블록",
+   "big_sub": "LH 10년 공공임대 59㎡",
+   "highlight": "구리 갈매 S1블록",
+   "say": "지금 구리 갈매에, LH 10년 공공임대가 나왔는데요.",
+   "bg": "photos/mood/211c46b048-3.jpg"
+  },
+  {
+   "type": "beat",
+   "eyebrow": "가격",
+   "big": "월 56만5,050원",
+   "big_sub": "옆 갈매6단지 59㎡ 월 175만원",
+   "highlight": "월 56만5,050원",
+   "say": "월세는 56만 5,050원이에요. 옆 단지 59㎡는 월 175만 원이고요.",
+   "bg": "photos/mood/211c46b048-2.jpg"
+  },
+  {
+   "type": "beat",
+   "eyebrow": "다만",
+   "big": "딱 12명 · 통장 2년",
+   "big_sub": "24회 납입, 소득·자산은 안 봐요",
+   "highlight": "딱 12명 · 통장 2년",
+   "say": "다만 딱 12명이고, 통장 2년 24회가 필요해요. 소득과 자산은 안 봐요.",
+   "bg": "none"
+  },
+  {
+   "type": "cta",
+   "lines": [
+    "이 월세면",
+    "넣으실 거예요?"
+   ],
+   "highlight": "댓글",
+   "ask": "내일(11/4) 마감, 팔로우하고 챙기세요"
+  }
+ ]
+}
