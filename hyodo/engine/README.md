@@ -6,7 +6,12 @@
 - **코드 원본**: GitHub `jupjup-alarm/jupjup-cards`의 `hyodo/engine/`(이 문서). 클라우드 경로 `/home/claude/jupjup-cards/hyodo/engine`. 고친 코드는 여기에 커밋한다(사용자 Mac 폴더의 lib는 옛 사본).
 - **준비**: `cd hyodo/engine && npm ci`(hyperframes 0.9.6 고정), `pip install --break-system-packages kiwipiepy pillow`(없을 때만). Chromium·ffmpeg·Noto CJK 글꼴은 클라우드에 있다. hyperframes는 `HYPERFRAMES_SKIP_SKILLS=1`로 돌린다.
 - **키**: 운영시트 '설정' 탭 B22 Cloudflare 계정 ID, B23 Cloudflare 토큰, B24 구글 TTS 키(유튜브 Data API도 이 키), B25 공공데이터포털 키 → 환경변수 `CF_ACCOUNT_ID`·`CF_API_TOKEN`·`GOOGLE_TTS_KEY`·`DATA_GO_KR_KEY`로만 쓴다(lib/env.py가 환경변수를 먼저 읽음). 값은 출력·커밋·보고하지 않는다. `.env` 파일을 만들면 umask 077, `.gitignore`에 있음.
-- `lib/`: tts.py(구글 TTS, 쉼 표기·구절 합성), subs.py(넷플릭스 규칙 자막), scenes.py(장면 템플릿 9종 + 숏츠 끝 카드), build.py(전체 빌드), thumb.py(썸네일), meta.py(설명·챕터·태그), publish.py(완성본을 공개 주소로), capture.cjs(공식 페이지 캡처), char.py·poses.py·cutout.py(막내 캐릭터)
+- **API 크레딧으로 글 작업 (2026-11-04 운영자 결정)**: 예약 작업은 구독 사용량(Claude·Claude Code 공용 주간 한도)을 쓴다. 토큰을 많이 먹는 조사·대본·검수는 콘솔 API 크레딧으로 돌린다 — '설정' B26 Anthropic API 키를 `ANTHROPIC_API_KEY`로(값 출력 금지). B26이 비어 있으면 예전처럼 하위 에이전트로 한다.
+  - `python3 lib/draft.py episodes/<편> --brief <소재 메모> --minutes 8` → research.md·video.json 초안(Opus + web_fetch로 원문 확인). 소재 메모 = 소재조사 행 + 조사노트 사실·출처 + 지침로그 최근 방향을 예약 작업이 텍스트로 모은 것.
+  - `python3 lib/review.py fact|style episodes/<편> --apply` → 팩트체크(Opus, 원문 직접 열기)·문장 검수(Sonnet). 종료 코드 0 통과 / 2 반려, 고칠 문장은 video.json에 바로 반영, 결과 out/review_*.json. 새 API 대화라 '대본 쓴 맥락과 따로'(5절) 조건을 만족한다.
+  - `python3 lib/review.py visual episodes/<편> <스냅샷 시트·완성본 프레임 png …>` → 시각 검수(Sonnet, 그림 입력).
+  - 토큰 사용량은 `out/llm_usage.jsonl`. 예약 작업은 초안을 다시 쓰지 말고 결과 JSON과 diff만 보고 판단한다(구독 사용량을 아끼는 게 목적).
+- `lib/`: llm.py(Anthropic API), draft.py(조사·대본 초안), review.py(자동 검수), tts.py(구글 TTS, 쉼 표기·구절 합성), subs.py(넷플릭스 규칙 자막), scenes.py(장면 템플릿 9종 + 숏츠 끝 카드), build.py(전체 빌드), thumb.py(썸네일), meta.py(설명·챕터·태그), publish.py(완성본을 공개 주소로), capture.cjs(공식 페이지 캡처), char.py·poses.py·cutout.py(막내 캐릭터)
 - `assets/char/*_cut.png`(막내: base 인사, point 가리키기, phone 휴대폰), `assets/music/`(Mixkit Free License, LICENSE.txt에 출처)
 - `episodes/<ID>-<slug>/`: research.md · video.json · official.png(공식 캡처)는 커밋한다. `out/`(음성 캐시·렌더·완성본)은 커밋하지 않는다.
 - **완성본 공개**: `python3 lib/publish.py episodes/<편>` → 저장소 `hyodo/<ID>/`에 롱폼·숏츠 mp4, 썸네일, upload.json을 두고 공개 주소(`https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/hyodo/<ID>/<파일>`)를 upload.json에 적는다. GitHub 파일 상한 100MB라 90MB가 넘는 영상은 자동으로 다시 인코딩한다. (GitHub 릴리스 생성은 이 세션 종류에서 막혀 있음 — 2026-11-03 확인.)
@@ -76,7 +81,7 @@ TTS는 쉼표에서 쉬기도 하고 안 쉬기도 하며, 구절 중간에 엉�
 - 자동 맞춤: 한 줄로 보여야 하는 문구(data-fit)는 폭에 맞게 줄이고, 자막 자리를 넘는 덩어리는 최소 0.8배까지 줄인다. 줄인 비율은 body의 data-fitted에 남는다. 0.9보다 작게 줄었으면 화면 문구를 짧게 고친다(글자가 다시 작아지므로).
 - 화면 문구는 짧게: 표 한 칸·체크 문항·취급기관 목록이 길어지면 크기가 줄어든다. 자세한 내용은 내레이션과 설명란으로 보낸다.
 
-## 5. 검수 (각각 별도 하위 에이전트, 대본을 쓴 맥락과 공유하지 않음)
+## 5. 검수 (대본을 쓴 맥락과 공유하지 않음 — B26 키가 있으면 lib/review.py, 없으면 각각 별도 하위 에이전트)
 1. 팩트체크: video.json의 모든 숫자·날짜·요일·조건·기관·전화번호를 원문 URL을 직접 열어 대조. 판정 통과/반려 + 고칠 문장. 반려면 고쳐서 한 번 더 받고, 두 번째도 반려면 유튜브 탭 상태 '보류'.
 2. 문장 검수: 위 문장 규칙과 쉼 표기(4-1)로 모든 화면 문구와 say를 한 줄씩 판정. 사실 의미는 바꾸지 않는다.
 3. 시각 검수: 렌더 전 `hyperframes snapshot --at <장면 끝-0.5초> --no-end`로 장면별 마지막 화면을 찍어 시트로 모아 직접 본다. 확인: 글자 줄바꿈·넘침, 자막 자리(롱폼 y>830, 숏츠 y>1270)를 침범하는지, 자동 축소(data-fitted)가 0.9 미만인지, 캐릭터와 글자 겹침, 공식 캡처의 강조 박스가 보이는지.
