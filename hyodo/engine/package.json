@@ -1,0 +1,18 @@
+{
+  "name": "hyodo",
+  "version": "1.0.0",
+  "description": "효도알람 제작 엔진",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "hyperframes": "0.9.6"
+  }
+}

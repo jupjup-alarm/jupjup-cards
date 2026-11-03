@@ -21,3 +21,8 @@ ossak/engine/episodes/*/short_rows.json
 ossak/engine/episodes/*/vpanels/
 ossak/engine/episodes/*/vpanels_sheet.jpg
 ossak/engine/episodes/*/short_scene_times.json
+# 효도알람 제작 엔진
+hyodo/engine/node_modules/
+hyodo/engine/.env
+hyodo/engine/episodes/*/out/
+hyodo/engine/**/__pycache__/
