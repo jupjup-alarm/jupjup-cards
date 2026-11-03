@@ -698,3 +698,11 @@ h1{font-weight:800;letter-spacing:-.03em;font-size:26px;line-height:1.28}
 /* 2026-11-03 사용자 요청: 한마디 접지 않고 펼쳐 보여줌 */
 .take p{word-break:keep-all;overflow-wrap:anywhere}
 .take .take-rest{margin-top:10px}
+/* 2026-11-03 사용자 요청: 공고 '30초 체크' 상자 좌우 여백 없앰 — 테두리 상자 대신 얇은 줄로 구분, 화면 폭을 다 씀 */
+#h-chk ~ .g-self{border:0;border-radius:0;box-shadow:none;padding:0;margin:4px 0 0;gap:0}
+#h-chk ~ .g-self ol{padding-left:0;list-style:none;gap:0}
+#h-chk ~ .g-self li{padding:14px 0;border-bottom:1px solid var(--line);gap:10px}
+#h-chk ~ .g-self li:first-child{border-top:1px solid var(--line)}
+#h-chk ~ .g-self .g-selfres{margin:16px 0 4px}
+#h-chk ~ .g-self .g-toolnote{margin:0}
+#h-chk ~ .g-self li > span:first-child{word-break:keep-all;overflow-wrap:anywhere}
