@@ -1324,7 +1324,7 @@ def main():
         n["related_title"] = f"{n['sido']}에서 곧 접수하는 공고" if same else "함께 볼 공고"
         # 한마디: 결론 한 문장 + 나머지는 '왜 그런지 보기'로 접음 (2026-11-03 사용자 결정 — 읽기 쉬운 구조)
         tk = (n.get("take") or "").strip()
-        m_ = re.search(r"(?<=[.!?요다])\s+", tk)
+        m_ = re.search(r"(?<=[.!?])\s+", tk)
         n["take_head"], n["take_rest"] = (tk[:m_.start()], tk[m_.end():]) if m_ and m_.start() >= 20 else (tk, "")
         # 첫 화면 '다음 할 일' (2026-11-03 사용자 결정 — 접수 끝난 공고로 들어온 사람을 지금 넣을 수 있는 공고로)
         n["next_alts"] = []
