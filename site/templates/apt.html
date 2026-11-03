@@ -39,6 +39,8 @@
     <details class="dz-rule"><summary>신호색은 이렇게 정해요</summary><ul>{% for r in z.rule %}<li>{{ r }}</li>{% endfor %}</ul><p>추천이 아니라 판단 재료예요. 기준에 맞춰 기계적으로 붙이고, 숫자 근거는 아래 각 칸에 있어요.</p></details>
   </section>
   {% endif %}
+  {# 2026-11-03 사용자 결정: 애드센스는 3초 판단 카드 바로 아래(요약 카드 위)로 올림 #}
+  {{ ads_slot('apt_top', 'ad-apt ad-top') }}
   <aside aria-label="핵심 요약">
     <div class="summary">
       <dl class="facts num">
@@ -68,6 +70,8 @@
     </div>
     {{ cp_ad('pc', 'ad-pc') }}
   </aside>
+  {# 2026-11-03 사용자 결정 시안 A: 모바일 쿠팡 띠 배너를 요약 카드 바로 아래(한마디 위)에 하나 더 #}
+  {{ cp_ad('apt_top_mo', 'ad-apt ad-top') }}
 
   {% if n.moved %}
   {% set m = n.moved %}
@@ -94,7 +98,6 @@
       <p>{{ n.take }}</p>
     </div>
   </section>
-  {{ ads_slot('apt_top', 'ad-apt') }}
 
 
   {% if n.dz %}{% set z = n.dz %}
