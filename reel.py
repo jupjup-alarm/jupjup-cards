@@ -54,10 +54,14 @@ NAVY = "#0F1E3D"
 
 def font_face():
     out = []
-    for fam, fn, extra in [("Black Han Sans", "BlackHanSans-Regular.ttf", ""),
-                           ("Noto Sans KR", "NotoSansKR-VF.ttf", "font-weight:100 900;")]:
+    # 2026-11-03 사용자 결정: 릴스 글꼴 Pretendard (예전 Black Han Sans·Noto Sans KR)
+    for fam, fn, extra in [("Pretendard Display", "Pretendard-Black.otf", "size-adjust:92%;"),
+                           ("Pretendard", "Pretendard-Medium.otf", "font-weight:100 500;"),
+                           ("Pretendard", "Pretendard-Bold.otf", "font-weight:600 700;"),
+                           ("Pretendard", "Pretendard-ExtraBold.otf", "font-weight:800;"),
+                           ("Pretendard", "Pretendard-Black.otf", "font-weight:900;")]:
         b64 = base64.b64encode((ROOT / "fonts" / fn).read_bytes()).decode()
-        out.append(f"@font-face{{font-family:'{fam}';src:url(data:font/ttf;base64,{b64});{extra}}}")
+        out.append(f"@font-face{{font-family:'{fam}';src:url(data:font/otf;base64,{b64});{extra}}}")
     return "\n".join(out)
 
 
@@ -349,7 +353,7 @@ def scene_html(sc, th, idx, start, end):
 
 CSS = """
 *{margin:0;padding:0;box-sizing:border-box}
-html,body{word-break:keep-all;width:1080px;height:1920px;overflow:hidden;background:#fff;font-family:'Noto Sans KR',sans-serif;color:#0F1E3D}
+html,body{word-break:keep-all;width:1080px;height:1920px;overflow:hidden;background:#fff;font-family:'Pretendard',sans-serif;color:#0F1E3D}
 .scene{position:absolute;inset:0;opacity:0;padding:440px 84px 520px;display:flex;flex-direction:column;overflow:hidden}
 .brand{position:absolute;left:84px;top:300px;display:flex;align-items:center;gap:12px;font-weight:900;font-size:34px;z-index:5}
 .bar{position:absolute;left:84px;right:84px;top:370px;height:8px;border-radius:4px;background:rgba(15,30,61,.12);z-index:5;overflow:hidden}
@@ -358,13 +362,13 @@ html,body{word-break:keep-all;width:1080px;height:1920px;overflow:hidden;backgro
 .blob{position:absolute;width:900px;height:900px;border-radius:50%;right:-380px;top:180px;opacity:.13}
 .chips{display:flex;gap:16px;margin-bottom:40px}
 .chip{font-weight:900;font-size:40px;padding:10px 26px;border-radius:14px}
-.hlines{font-family:'Black Han Sans';font-size:190px;line-height:1.08;letter-spacing:-2px}
+.hlines{font-family:'Pretendard Display';font-size:190px;line-height:1.08;letter-spacing:-2px}
 .hline{white-space:nowrap}
 .hbasis{font-size:44px;font-weight:700;line-height:1.35;margin:-12px 0 28px;word-break:keep-all;position:relative;max-width:850px}
 .hook.photo .hbasis{text-shadow:0 2px 12px rgba(0,0,0,.45)}
 .hsub{font-size:52px;font-weight:700;margin-top:44px;line-height:1.4;white-space:pre-line}
 .char{position:absolute;right:170px;bottom:420px;width:320px;height:320px}
-.unit{font-family:'Noto Sans KR',sans-serif;font-weight:900;font-size:.82em;letter-spacing:0}
+.unit{font-family:'Pretendard',sans-serif;font-weight:900;font-size:.82em;letter-spacing:0}
 .hph{position:absolute;left:0;top:0;width:1080px;height:1250px;object-fit:cover;transform-origin:center 40%}
 .hshade{position:absolute;inset:0}
 .hcredit{position:absolute;right:84px;top:400px;font-size:26px;font-weight:500;color:rgba(255,255,255,.85);
@@ -382,7 +386,7 @@ html,body{word-break:keep-all;width:1080px;height:1920px;overflow:hidden;backgro
 .voiced .plan .planbox{height:520px}
 .voiced .plan .ptitle{font-size:88px}
 .eyebrow{font-size:50px;font-weight:900;margin-bottom:18px}
-.ptitle{white-space:pre-line;font-family:'Black Han Sans';font-size:124px;line-height:1.12;margin-bottom:56px;letter-spacing:-1px}
+.ptitle{white-space:pre-line;font-family:'Pretendard Display';font-size:124px;line-height:1.12;margin-bottom:56px;letter-spacing:-1px}
 .rows{display:flex;flex-direction:column;gap:26px}
 .row{border-radius:32px;padding:44px 46px;display:flex;align-items:center;gap:30px}
 .rl{flex:0 0 230px;font-size:44px;font-weight:900}
@@ -390,7 +394,7 @@ html,body{word-break:keep-all;width:1080px;height:1920px;overflow:hidden;backgro
 .ptext{white-space:pre-line;margin-top:48px;font-size:46px;font-weight:600;color:#5B6472;line-height:1.45}
 .cta{align-items:center;justify-content:center;text-align:center;padding-top:420px;padding-bottom:460px}
 .cchar{width:380px;height:380px;margin-bottom:30px}
-.cline{font-family:'Black Han Sans';font-size:100px;line-height:1.15}
+.cline{font-family:'Pretendard Display';font-size:100px;line-height:1.15}
 .btns{margin-top:56px}
 .btn{display:inline-block;color:#fff;font-weight:900;font-size:46px;padding:26px 54px;border-radius:999px}
 .disc{margin-top:48px;font-size:30px;color:#5B6472;line-height:1.5}
@@ -410,7 +414,7 @@ html,body{word-break:keep-all;width:1080px;height:1920px;overflow:hidden;backgro
 .bgimg.zoom{height:1300px;transform-origin:center center}
 .bbody{position:absolute;left:84px;right:84px;bottom:670px;display:flex;flex-direction:column;align-items:flex-start}
 .bchip{font-weight:900;font-size:44px;padding:10px 28px;border-radius:14px;margin-bottom:26px}
-.big{font-family:'Black Han Sans';font-size:176px;line-height:1.05;letter-spacing:-2px;white-space:pre;transform-origin:left center}
+.big{font-family:'Pretendard Display';font-size:176px;line-height:1.05;letter-spacing:-2px;white-space:pre;transform-origin:left center}
 .onbg .big{text-shadow:0 6px 30px rgba(0,0,0,.45)}
 .bsub{font-size:50px;font-weight:800;margin-top:18px;opacity:.9;white-space:pre-line;line-height:1.3}
 .say{margin-top:44px;font-size:54px;font-weight:800;line-height:1.42;max-width:912px}
@@ -421,7 +425,7 @@ html,body{word-break:keep-all;width:1080px;height:1920px;overflow:hidden;backgro
 .voiced .beat .bbody{bottom:680px}
 /* ── 템포형 (tempo: fast, 2026-11-03) ── */
 .tbar{position:absolute;left:54px;right:54px;top:300px;z-index:8;background:rgba(10,12,20,.86);border-radius:22px;
- padding:16px 26px;font-family:'Black Han Sans';font-size:62px;line-height:1.12;color:#fff;text-align:center;letter-spacing:-1px}
+ padding:16px 26px;font-family:'Pretendard Display';font-size:62px;line-height:1.12;color:#fff;text-align:center;letter-spacing:-1px}
 .tbl{white-space:nowrap;overflow:hidden}
 .tb .brand,.tb .bar{top:-200px}
 .tb .hook{padding-top:560px}
@@ -440,7 +444,7 @@ html,body{word-break:keep-all;width:1080px;height:1920px;overflow:hidden;backgro
 .pfl{font-size:36px;font-weight:700;opacity:.85}
 .pfbar{height:44px;border-radius:12px;background:rgba(255,255,255,.1);overflow:hidden}
 .pfbar i{display:block;height:100%;width:0;border-radius:12px}
-.pfv{font-family:'Black Han Sans';font-size:64px;line-height:1.05}
+.pfv{font-family:'Pretendard Display';font-size:64px;line-height:1.05}
 .pfsrc{font-size:26px;font-weight:500;opacity:.7;margin-top:10px}
 .pf.doc{background:#FFFDF6;color:#1B2230;border:2px solid #E6DFC8}
 .pfdochead{font-size:38px;font-weight:900;margin-bottom:16px;display:flex;align-items:center;gap:14px}

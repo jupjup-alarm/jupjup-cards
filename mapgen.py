@@ -137,7 +137,7 @@ def make_map(sigungu, dong=None, sido=None, width=920, height=600, accent="#E040
     gx, gy = P(*_centroid(sgg["polys"]))
     for lx, ly, t, fs, col, fw in labels:
         parts.append(f'<text x="{lx:.0f}" y="{ly:.0f}" text-anchor="middle" font-size="{fs}" font-weight="{fw}" fill="{col}" '
-                     f'font-family="Noto Sans KR">{t}</text>')
+                     f'font-family="Pretendard, Pretendard Variable, Noto Sans KR, sans-serif">{t}</text>')
     if target:
         px, py = P(*_centroid(target["polys"]))
     else:
@@ -153,11 +153,11 @@ def make_map(sigungu, dong=None, sido=None, width=920, height=600, accent="#E040
     ly = py - 132 if py > 160 else py + 20
     parts.append(f'<g transform="translate({lx:.0f},{ly:.0f})"><rect width="{tw}" height="54" rx="27" fill="{ink}"/>'
                  f'<text x="{tw / 2:.0f}" y="37" text-anchor="middle" font-size="30" font-weight="900" fill="#FFFFFF" '
-                 f'font-family="Noto Sans KR">{name}</text></g>')
+                 f'font-family="Pretendard, Pretendard Variable, Noto Sans KR, sans-serif">{name}</text></g>')
     if target:  # 시군구 이름은 핀과 겹치지 않을 때만
         if abs(gx - px) > 120 or abs(gy - py) > 80:
             parts.append(f'<text x="{gx:.0f}" y="{gy:.0f}" text-anchor="middle" font-size="34" font-weight="900" fill="{ink}" '
-                         f'font-family="Noto Sans KR" opacity="0.85">{sgg["props"]["name"].split()[-1]}</text>')
+                         f'font-family="Pretendard, Pretendard Variable, Noto Sans KR, sans-serif" opacity="0.85">{sgg["props"]["name"].split()[-1]}</text>')
     parts.append("</svg>")
     return "".join(parts), info
 

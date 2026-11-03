@@ -405,12 +405,18 @@ PHOTO_WARN = []
 BUILDERS = {"cover": cover, "info": info, "check": check, "closing": closing, "week": week, "map": mapcard, "plan": plancard}
 
 CSS = """
-@font-face{font-family:'Black Han Sans';src:url('FONTDIR/BlackHanSans-Regular.ttf')}
+/* 2026-11-03 사용자 결정: 카드 글꼴 Pretendard (예전 Black Han Sans·Noto Sans KR) */
+@font-face{font-family:'Pretendard Display';src:url('FONTDIR/Pretendard-Black.otf');size-adjust:92%}
+@font-face{font-family:'Pretendard';src:url('FONTDIR/Pretendard-Medium.otf');font-weight:100 500}
+@font-face{font-family:'Pretendard';src:url('FONTDIR/Pretendard-SemiBold.otf');font-weight:600}
+@font-face{font-family:'Pretendard';src:url('FONTDIR/Pretendard-Bold.otf');font-weight:700}
+@font-face{font-family:'Pretendard';src:url('FONTDIR/Pretendard-ExtraBold.otf');font-weight:800}
+@font-face{font-family:'Pretendard';src:url('FONTDIR/Pretendard-Black.otf');font-weight:900}
 @font-face{font-family:'Noto Sans KR';src:url('FONTDIR/NotoSansKR-VF.ttf');font-weight:100 900}
 *{box-sizing:border-box;margin:0}
 body{margin:0;width:1080px;height:1350px;overflow:hidden}
 .card{width:1080px;height:1350px;padding:80px;display:flex;flex-direction:column;position:relative;overflow:hidden;
- font-family:'Noto Sans KR',sans-serif;color:#0F1E3D;word-break:keep-all;overflow-wrap:break-word}
+ font-family:'Pretendard',sans-serif;color:#0F1E3D;word-break:keep-all;overflow-wrap:break-word}
 .hdr{display:flex;justify-content:space-between;align-items:center;flex-shrink:0}
 .brand{display:flex;align-items:center;gap:12px;font-size:28px;font-weight:700}
 .brand.big{gap:14px;font-size:32px}
@@ -419,7 +425,7 @@ body{margin:0;width:1080px;height:1350px;overflow:hidden}
 .chips{display:flex;gap:16px;flex-wrap:wrap}
 .chip{font-size:36px;font-weight:900;padding:10px 26px;border-radius:12px;background:var(--chip-bg);color:var(--chip-fg)}
 .chip2{font-size:36px;font-weight:700;padding:7px 23px;border-radius:12px;border:3px solid var(--outline);color:var(--chip2-fg,#FFFFFF)}
-.cover-title{font-family:'Black Han Sans',sans-serif;font-size:150px;line-height:1.12;letter-spacing:-2px}
+.cover-title{font-family:'Pretendard Display',sans-serif;font-size:150px;line-height:1.12;letter-spacing:-2px}
 .cover-title .fitw{white-space:nowrap}
 .cover-sub{font-size:42px;font-weight:500;max-width:920px}
 .cover-basis{font-size:38px;font-weight:700;line-height:1.35;width:920px;max-width:100%;margin-bottom:-14px}
@@ -428,7 +434,7 @@ body{margin:0;width:1080px;height:1350px;overflow:hidden}
 .char{position:absolute;right:50px;bottom:40px;width:340px;height:340px}
 .body{display:flex;flex-direction:column;margin-top:110px;transform-origin:left top}
 .eyebrow{font-size:36px;font-weight:700}
-.title{font-family:'Black Han Sans',sans-serif;font-size:96px;line-height:1.15;margin-top:28px}
+.title{font-family:'Pretendard Display',sans-serif;font-size:96px;line-height:1.15;margin-top:28px}
 .rows{display:flex;flex-direction:column;gap:20px;margin-top:72px}
 .row{display:flex;align-items:center;gap:32px;border-radius:28px;padding:36px 48px}
 .rl{width:200px;flex-shrink:0;font-size:36px;font-weight:700}
@@ -437,7 +443,7 @@ body{margin:0;width:1080px;height:1350px;overflow:hidden}
 .para p{font-size:38px;font-weight:500;line-height:1.5;color:#0F1E3D}
 .items{display:flex;flex-direction:column;gap:24px;margin-top:80px}
 .item{display:flex;align-items:flex-start;gap:28px;border:3px solid #0F1E3D;border-radius:28px;padding:40px 44px}
-.num{font-family:'Black Han Sans',sans-serif;font-size:56px;line-height:1}
+.num{font-family:'Pretendard Display',sans-serif;font-size:56px;line-height:1}
 .itxt{display:flex;flex-direction:column;gap:8px}
 .ib{font-size:44px;font-weight:900;line-height:1.3}
 .id{font-size:34px;font-weight:500;color:#5B6472;line-height:1.4}
@@ -447,7 +453,7 @@ body{margin:0;width:1080px;height:1350px;overflow:hidden}
 .closing{align-items:center}
 .closing .hdr{align-self:stretch}
 .char-c{width:440px;height:440px;margin-top:60px;flex-shrink:0}
-.close-title{font-family:'Black Han Sans',sans-serif;font-size:92px;line-height:1.2;text-align:center;margin-top:30px;transform-origin:center top}
+.close-title{font-family:'Pretendard Display',sans-serif;font-size:92px;line-height:1.2;text-align:center;margin-top:30px;transform-origin:center top}
 .close-title .fitw{white-space:nowrap}
 .btns{display:flex;gap:24px;margin-top:56px}
 .btn{display:flex;align-items:center;gap:14px;border-radius:999px;padding:24px 44px;font-size:38px;font-weight:900;color:#FFFFFF}
@@ -470,7 +476,7 @@ body{margin:0;width:1080px;height:1350px;overflow:hidden}
 .mapbox svg,.mapbox img{display:block;width:100%;height:auto}
 .addr{margin-top:24px;font-size:36px;font-weight:700}
 .mrows{margin-top:24px}
-.unit{font-family:'Noto Sans KR',sans-serif;font-weight:900;font-size:.82em;letter-spacing:0}
+.unit{font-family:'Pretendard',sans-serif;font-weight:900;font-size:.82em;letter-spacing:0}
 .pimg{position:absolute;left:0;top:0;width:1080px;height:900px;object-fit:cover}
 .pshade{position:absolute;inset:0}
 .pcover .brand{text-shadow:0 2px 10px rgba(0,0,0,.35)}
