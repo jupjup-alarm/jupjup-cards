@@ -141,12 +141,8 @@ def og_image(g, out_path):
     fonts = SITE.parent / "fonts"
     im = Image.new("RGB", (1200, 630), (15, 30, 61))
     dr = ImageDraw.Draw(im)
-    big = ImageFont.truetype(str(fonts / "BlackHanSans-Regular.ttf"), 76)
-    mid = ImageFont.truetype(str(fonts / "NotoSansKR-VF.ttf"), 34)
-    try:
-        mid.set_variation_by_name("Bold")
-    except Exception:
-        pass
+    big = ImageFont.truetype(str(fonts / "Pretendard-Black.otf"), 76)
+    mid = ImageFont.truetype(str(fonts / "Pretendard-Bold.otf"), 34)
     dr.rounded_rectangle((80, 84, 80 + 22, 84 + 22), 11, fill=(255, 82, 51))
     dr.text((118, 74), f"{g.get('category', '')} 가이드", font=mid, fill=(255, 241, 236))
     words, lines, cur = g["h1"].split(" "), [], ""

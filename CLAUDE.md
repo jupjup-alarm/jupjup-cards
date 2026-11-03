@@ -9,7 +9,7 @@
 - `render.py` — 카드 원고(JSON) → `cards/<slug>/NN.jpg`, `preview.jpg`, `manifest.json`, `dc/*.dc.html`
 - `specs/<slug>.json` — 카드 원고
 - `templates/char_*.svg` — 종이 캐릭터 (surprise=깜짝, happy=신남, wink=윙크, closing=마무리)
-- `fonts/` — Black Han Sans, Noto Sans KR (OFL)
+- `fonts/` — Pretendard (OFL — 릴스 썸네일 thumb.py·사이트 공유 썸네일 og.py, 2026-11-03 사용자 결정), Black Han Sans, Noto Sans KR (OFL — 카드뉴스·릴스 본편)
 - `maps/` — 시트 스크립트가 올리는 네이버 지도 이미지
 - `photos/` — 시트 스크립트가 올리는 단지 사진 ('청약조사' W열 → AA열), 평면도 `photos/plan-…` (AB열 → AC열), 배치도 `photos/layout-…` (AD열 → AE열), 동호배치도 `photos/dongho-…` (AF열 → AG열) — 배치도·동호배치도는 사이트(jupjupalarm.com) 공고 페이지용, AH열은 공식 홈페이지 주소
 - `photos/site/<key>/` — 분양 홈페이지 자료 (2026-11-02): ① 조사 담당이 `tools/site_assets.py`로 홈페이지를 훑고 고른 이미지 주소를 '청약조사' AI열(홈페이지 자료, 첫 줄 `key: …`)에 적으면, ④·⑦이 `python3 tools/site_photos.py --text "<AI열>"`로 받는다 → `<분류>-….jpg`(birdseye 조감도·siteplan 단지배치·dongho 동호배치·plan 평면·community 커뮤니티·interior 인테리어), `index.json`(분류·label·w·h·photo 여부·E모델하우스 링크), `contact.jpg`(미리보기). 출처 문구 "이미지: <사업주체> 분양 홈페이지 · 실제와 다를 수 있음".

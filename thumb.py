@@ -45,8 +45,11 @@ def html(d):
     credit = f'<div class="credit">{esc(d["credit"])}</div>' if d.get("credit") else ""
     badge = f'<span class="badge">{esc(d["badge"])}</span>' if d.get("badge") else ""
     return f"""<!doctype html><html><head><meta charset="utf-8"><style>
-@font-face{{font-family:'BH';src:url('{fd}/BlackHanSans-Regular.ttf')}}
-@font-face{{font-family:'NS';src:url('{fd}/NotoSansKR-VF.ttf');font-weight:100 900}}
+@font-face{{font-family:'BH';src:url('{fd}/Pretendard-Black.otf')}}
+@font-face{{font-family:'NS';src:url('{fd}/Pretendard-Medium.otf');font-weight:100 500}}
+@font-face{{font-family:'NS';src:url('{fd}/Pretendard-Bold.otf');font-weight:600 700}}
+@font-face{{font-family:'NS';src:url('{fd}/Pretendard-ExtraBold.otf');font-weight:800}}
+@font-face{{font-family:'NS';src:url('{fd}/Pretendard-Black.otf');font-weight:900}}
 html,body{{margin:0;width:1080px;height:1920px;overflow:hidden;background:#000;word-break:keep-all}}
 .ph{{position:absolute;inset:0;width:1080px;height:1920px;object-fit:cover;object-position:{d.get('photo_pos','center 45%')};
   filter:saturate(1.15) contrast(1.05)}}
@@ -60,7 +63,7 @@ html,body{{margin:0;width:1080px;height:1920px;overflow:hidden;background:#000;w
 .chip{{font:900 44px 'NS';color:#111;background:#fff;padding:10px 26px;border-radius:14px}}
 .badge{{font:900 44px 'NS';color:#fff;background:#FF3B30;padding:10px 26px;border-radius:14px}}
 .basis{{font:700 46px 'NS';color:rgba(255,255,255,.92);line-height:1.3;white-space:nowrap}}
-.l{{font-family:'BH';line-height:1.05;letter-spacing:-3px;white-space:nowrap;
+.l{{font-family:'BH';line-height:1.1;letter-spacing:-6px;white-space:nowrap;
   text-shadow:0 6px 0 rgba(0,0,0,.55),0 0 40px rgba(0,0,0,.6)}}
 .l1{{color:#fff;font-size:190px}}
 .l2{{color:#FFD43B;font-size:200px}}

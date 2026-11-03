@@ -7,8 +7,8 @@ from PIL import Image, ImageDraw, ImageFont
 REPO = Path(__file__).resolve().parents[1]
 ASSETS = Path(__file__).resolve().parent / "og_assets"
 W, H = 1200, 630
-BHS = str(REPO / "fonts/BlackHanSans-Regular.ttf")
-NOTO = str(REPO / "fonts/NotoSansKR-VF.ttf")
+BHS = str(REPO / "fonts/Pretendard-Black.otf")   # 2026-11-03 사용자 결정: 썸네일 글꼴 Pretendard (예전 Black Han Sans)
+PRET = {w: str(REPO / f"fonts/Pretendard-{w}.otf") for w in ("Medium", "SemiBold", "Bold", "ExtraBold", "Black")}
 NOGLYPH = set("·・‧∙•㎡")  # Black Han Sans에 없는 글자 → Noto Bold
 
 # 토큰 (site/static/style.css :root + render.py THEMES)
@@ -34,15 +34,13 @@ def bhs(sz):
 def noto(sz, w="Bold"):
     k = ("n", sz, w)
     if k not in _fc:
-        f = ImageFont.truetype(NOTO, sz)
-        f.set_variation_by_name(w)
-        _fc[k] = f
+        _fc[k] = ImageFont.truetype(PRET.get(w, PRET["Medium"] if w in ("Regular", "Light", "") else PRET["Bold"]), sz)
     return _fc[k]
 
 
 def runs(t, f):
     """Black Han Sans에 없는 글자만 같은 크기 Noto Bold로 바꿔 그린다."""
-    if f.path != BHS:
+    if True:  # Pretendard는 · 같은 글자가 다 있어 바꿔 그릴 필요 없음
         return [(t, f)]
     out, cur, cm = [], "", None
     for ch in t:

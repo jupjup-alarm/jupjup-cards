@@ -631,8 +631,8 @@ def og_default(dst):
     W, H = 1200, 630
     im = Image.new("RGB", (W, H), "#0F1E3D")
     dr = ImageDraw.Draw(im)
-    f1 = ImageFont.truetype(str(REPO / "fonts/BlackHanSans-Regular.ttf"), 150)
-    f2 = ImageFont.truetype(str(REPO / "fonts/NotoSansKR-VF.ttf"), 44)
+    f1 = ImageFont.truetype(str(REPO / "fonts/Pretendard-Black.otf"), 150)
+    f2 = ImageFont.truetype(str(REPO / "fonts/Pretendard-Bold.otf"), 44)
     dr.text((W // 2, 250), "줍줍알람", font=f1, fill="#FFFFFF", anchor="mm")
     dr.rounded_rectangle((W // 2 - 300, 370, W // 2 + 300, 450), radius=40, fill="#FF5233")
     dr.text((W // 2, 410), "청약 공고를 한눈에", font=f2, fill="#FFFFFF", anchor="mm")
@@ -912,7 +912,7 @@ def og_make(n, dst, has_photo):
     lines = list(og_lines(n))
     ph = n.get("photo") if has_photo else None
     src = (REPO / ph["image"]) if ph else None
-    key = json.dumps({"v": "B7", "lines": lines, "photo": ph and [ph["image"], ph.get("pos"), ph.get("credit"), src.stat().st_mtime]}, ensure_ascii=False)
+    key = json.dumps({"v": "B8-pretendard", "lines": lines, "photo": ph and [ph["image"], ph.get("pos"), ph.get("credit"), src.stat().st_mtime]}, ensure_ascii=False)
     ver = hashlib.sha1(key.encode()).hexdigest()[:8]
     tag = dst.with_suffix(".key")
     if dst.exists() and tag.exists() and tag.read_text(encoding="utf-8") == key:
@@ -947,7 +947,7 @@ def og_hub(url, chip_t, l1, l2, small, pool):
     slug = re.sub(r"[^a-z0-9]+", "-", url.strip("/").lower()) or "home"
     dst = PUB / "og" / f"{slug}.jpg"
     dst.parent.mkdir(parents=True, exist_ok=True)
-    key = json.dumps({"v": "H1", "t": [chip_t, l1, l2, small], "photo": ph}, ensure_ascii=False)
+    key = json.dumps({"v": "H2-pretendard", "t": [chip_t, l1, l2, small], "photo": ph}, ensure_ascii=False)
     ver = hashlib.sha1(key.encode()).hexdigest()[:8]
     OG.render_hub(chip_t, l1, l2, small, ph, ph.get("credit") if ph else None).save(dst, "JPEG", quality=84, optimize=True, progressive=True)
     return f"/og/{slug}.jpg?v={ver}"
@@ -958,22 +958,17 @@ def og_card(n, dst):
     from PIL import Image, ImageDraw, ImageFont
     lines = og_lines(n)
     tag = dst.with_suffix(".key")
-    key = json.dumps(lines, ensure_ascii=False)
+    key = json.dumps(lines + ["font:pretendard"], ensure_ascii=False)
     if dst.exists() and tag.exists() and tag.read_text(encoding="utf-8") == key:
         return
     kind, st, title, loc, big, small = lines
     W, H = 1200, 630
     im = Image.new("RGB", (W, H), "#0F1E3D")
     dr = ImageDraw.Draw(im)
-    fh = lambda sz: ImageFont.truetype(str(REPO / "fonts/BlackHanSans-Regular.ttf"), sz)
+    fh = lambda sz: ImageFont.truetype(str(REPO / "fonts/Pretendard-Black.otf"), sz)
 
     def fn(sz, bold=True):
-        f = ImageFont.truetype(str(REPO / "fonts/NotoSansKR-VF.ttf"), sz)
-        try:
-            f.set_variation_by_name("Bold" if bold else "Regular")
-        except Exception:
-            pass
-        return f
+        return ImageFont.truetype(str(REPO / ("fonts/Pretendard-Bold.otf" if bold else "fonts/Pretendard-Medium.otf")), sz)
     NOGLYPH = "·・‧∙•"  # Black Han Sans에 없는 글자는 Noto로
 
     def parts(t, f):
