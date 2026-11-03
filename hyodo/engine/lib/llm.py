@@ -1,6 +1,8 @@
 """Anthropic API(콘솔 API 크레딧)로 글 작업을 돌린다 — 예약 작업(구독 주간 한도)을 아끼려고 (2026-11-04 운영자 결정).
 
-키: 환경변수 ANTHROPIC_API_KEY (운영시트 '설정' B26). 값은 출력·커밋·보고하지 않는다.
+키: 환경변수 ANTHROPIC_API_KEY (운영시트 '설정' B26, 없으면 engine/.env). 값은 출력·커밋·보고하지 않는다.
+배치(Message Batches API, 요금 50%)가 기본이다: 요청을 배치로 넣고 끝날 때까지 기다린다(보통 1시간 안).
+HYODO_BATCH_WAIT분(기본 45) 안에 안 끝나면 배치를 취소하고 바로(정가) 다시 부른다. HYODO_BATCH=0이면 처음부터 바로 부른다.
 쓴 토큰은 episodes/<편>/out/llm_usage.jsonl 에 한 줄씩 남는다.
 """
 import base64, json, os, pathlib, re, sys, time, urllib.request, urllib.error
@@ -12,11 +14,69 @@ WEB_TOOLS = [{"type": "web_fetch_20260318", "name": "web_fetch", "max_uses": 25}
              {"type": "web_search_20250305", "name": "web_search", "max_uses": 8}]
 
 
+BATCH = os.environ.get("HYODO_BATCH", "1") != "0"
+BATCH_WAIT = float(os.environ.get("HYODO_BATCH_WAIT", "45")) * 60
+
+
 def key():
     k = os.environ.get("ANTHROPIC_API_KEY")
     if not k:
+        import env
+        k = env.load().get("ANTHROPIC_API_KEY")
+    if not k:
         sys.exit("ANTHROPIC_API_KEY가 없어요 — 운영시트 '설정' B26 값을 환경변수로 넣어 주세요(키는 출력하지 말 것).")
     return k
+
+
+def _req(url, body=None, method="POST", raw=False):
+    req = urllib.request.Request(url, data=json.dumps(body).encode() if body is not None else None, method=method,
+                                 headers={"x-api-key": key(), "anthropic-version": "2023-06-01",
+                                          "content-type": "application/json"})
+    with urllib.request.urlopen(req, timeout=600) as r:
+        b = r.read()
+    return b if raw else json.loads(b)
+
+
+def _batch(body, tag):
+    """한 요청짜리 배치. 끝나면 메시지 응답(dict), 시간 안에 안 끝나면 None."""
+    b = _req(URL + "/batches", {"requests": [{"custom_id": "r1", "params": body}]})
+    bid, t0 = b["id"], time.time()
+    print(f"[llm] {tag} 배치 {bid} 넣음 — 기다리는 중", file=sys.stderr)
+    while True:
+        time.sleep(20 if time.time() - t0 < 300 else 60)
+        b = _req(f"{URL}/batches/{bid}", method="GET")
+        if b["processing_status"] == "ended":
+            break
+        if time.time() - t0 > BATCH_WAIT:
+            try:
+                _req(f"{URL}/batches/{bid}/cancel", {})
+            except Exception:
+                pass
+            print(f"[llm] {tag} 배치가 {BATCH_WAIT/60:.0f}분 안에 안 끝나 취소 — 바로 부름(정가)", file=sys.stderr)
+            return None
+    for line in _req(b["results_url"], method="GET", raw=True).decode().splitlines():
+        if not line.strip():
+            continue
+        res = json.loads(line)["result"]
+        if res["type"] == "succeeded":
+            print(f"[llm] {tag} 배치 끝 ({(time.time()-t0)/60:.1f}분)", file=sys.stderr)
+            return res["message"]
+        print(f"[llm] {tag} 배치 결과 {res['type']}: {json.dumps(res.get('error'), ensure_ascii=False)[:300]} — 바로 부름", file=sys.stderr)
+    return None
+
+
+def _call(body, tag, stats):
+    if BATCH:
+        try:
+            r = _batch(body, tag)
+        except urllib.error.HTTPError as e:
+            print(f"[llm] {tag} 배치 오류 {e.code}: {e.read().decode(errors='replace')[:300]} — 바로 부름", file=sys.stderr)
+            r = None
+        if r is not None:
+            stats["batch"] += 1
+            return r
+    stats["direct"] += 1
+    return _post(body)
 
 
 def _post(body):
@@ -54,10 +114,11 @@ def ask(content, system="", model=None, web=False, max_tokens=16000, log=None, t
         body["system"] = system
     if web:
         body["tools"] = WEB_TOOLS
-    use = {"input_tokens": 0, "output_tokens": 0, "cache_read_input_tokens": 0, "web_fetch": 0, "web_search": 0}
+    use = {"input_tokens": 0, "output_tokens": 0, "cache_read_input_tokens": 0, "web_fetch": 0, "web_search": 0,
+           "batch": 0, "direct": 0}
     texts = []
     for _ in range(12):
-        r = _post(body)
+        r = _call(body, tag, use)
         u = r.get("usage", {})
         for k in ("input_tokens", "output_tokens", "cache_read_input_tokens"):
             use[k] += u.get(k) or 0
@@ -77,7 +138,8 @@ def ask(content, system="", model=None, web=False, max_tokens=16000, log=None, t
             f.write(json.dumps({"t": time.strftime("%Y-%m-%d %H:%M"), "tag": tag, "model": model, **use},
                                ensure_ascii=False) + "\n")
     print(f"[llm] {tag} {model} 입력 {use['input_tokens']:,} · 출력 {use['output_tokens']:,} 토큰"
-          + (f" · fetch {use['web_fetch']} · search {use['web_search']}" if web else ""), file=sys.stderr)
+          + (f" · fetch {use['web_fetch']} · search {use['web_search']}" if web else "")
+          + f" · 배치 {use['batch']}회(반값)·바로 {use['direct']}회", file=sys.stderr)
     return "".join(texts)
 
 
