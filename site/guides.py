@@ -15,8 +15,9 @@ except ImportError:  # pip install --break-system-packages markdown
 SITE = Path(__file__).resolve().parent
 import os
 GDIR = Path(os.environ["GUIDE_DIR"]) if os.environ.get("GUIDE_DIR") else SITE / "data" / "guide"
-CATS = ["청약 자격", "무순위", "임대", "대출", "신도시"]
-CAT_SLUG = {"청약 자격": "eligibility", "무순위": "mujeonwi", "임대": "rental", "대출": "loan", "신도시": "new-town"}
+CATS = ["청약 자격", "무순위", "임대", "대출", "신도시", "전세", "세금·규제"]
+CAT_SLUG = {"청약 자격": "eligibility", "무순위": "mujeonwi", "임대": "rental", "대출": "loan", "신도시": "new-town",
+            "전세": "jeonse", "세금·규제": "tax-rules"}   # 2026-11-03 전세·세금·규제 추가
 TOOLS = {"gajeom", "dsr", "selfcheck"}
 
 
@@ -216,6 +217,7 @@ def build(E, notices, write, common, pub, base, today, problems):
         write(g["url"], h, title, desc, "page", g.get("checked") or g.get("published"))
     # 모음
     cats = [(c, CAT_SLUG[c], [g for g in guides if g.get("category") == c]) for c in CATS]
+    cats = [x for x in cats if x[2]]   # 아직 글이 없는 분류는 목록에서 숨김
     cats = [c for c in cats if c[2]]
     h = E.get_template("guide_index.html").render(
         cats=cats, guides=guides, guides_ld=[{"@type": "ListItem", "position": i, "url": base + g["url"], "name": g["h1"]} for i, g in enumerate(guides, 1)], **common, page_url="/guide/", title="청약·임대·대출 가이드 — 칼럼 모음 · 줍줍알람",
