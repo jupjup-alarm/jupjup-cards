@@ -537,18 +537,20 @@ window.renderAt=function(t){
 """
 
 
-LEAD, TAIL = 0.35, 0.5   # 장면 시작 후 말하기까지, 말 끝난 뒤 다음 장면까지 (초)
+LEAD, TAIL = 0.35, 0.5   # (음성 없을 때) 장면 시작 후 말하기까지, 말 끝난 뒤 다음 장면까지 (초)
 FIRST_LEAD = 0.05        # 첫 장면(훅)은 바로 말하기 시작 — 1초 안에 훅이 들리게
+# 2026-11-03 사용자 "대사가 쉬는 부분이 많다": 음성 앞뒤 무음을 잘라 붙이고, 장면 사이 숨은 0.12+0.25초만.
+V_LEAD, V_TAIL, V_LAST_TAIL = 0.12, 0.25, 1.1
 
 
 def lead(i):
-    return FIRST_LEAD if i == 0 else LEAD
+    return FIRST_LEAD if i == 0 else V_LEAD
 
 
-def speech_spans(path, min_pause=0.15):
+def speech_spans(path, min_pause=0.15, noise="-38dB"):
     """음성 파일에서 말소리 구간들 [(시작, 끝)…] (앞뒤 무음 제외, 문장 안 쉼으로 나뉨)."""
     total = audio_len(path)
-    log = subprocess.run(["ffmpeg", "-v", "info", "-i", str(path), "-af", f"silencedetect=n=-38dB:d={min_pause}",
+    log = subprocess.run(["ffmpeg", "-v", "info", "-i", str(path), "-af", f"silencedetect=n={noise}:d={min_pause}",
                           "-f", "null", "-"], capture_output=True, text=True).stderr
     sil, s0 = [], None
     for line in log.splitlines():
@@ -583,34 +585,69 @@ def audio_len(path):
     return float(r.stdout.strip())
 
 
-def voice_files(spec):
+def _speed(f, speed, tmp):
+    if f and f.exists() and abs(speed - 1.0) > 0.01:   # 말 빠르기 조정 (음높이 유지)
+        tmp.mkdir(parents=True, exist_ok=True)
+        g = tmp / f.name
+        subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", str(f), "-filter:a", f"atempo={speed}", str(g)], check=True)
+        return g
+    return f
+
+
+def voice_segments(spec):
+    """장면별 음성 조각 {file, s0, s1, spans}. spans는 s0 기준 상대 초.
+    - voices/<id>/full.mp3가 있으면(2026-11-03, 대본 전체를 한 번에 읽힌 것 — 장면 사이도 말이 이어짐)
+      장면 수 - 1개의 가장 긴 쉼을 장면 경계로 써서 잘라 쓴다.
+    - 없으면 장면별 01.mp3… 의 앞뒤 무음을 잘라 쓴다."""
+    n = len(spec["scenes"])
     v = str(spec.get("voice") or "").split(" ")[0].strip()
     if not v:
-        return [None] * len(spec["scenes"])
+        return [None] * n
     d = ROOT / v
     speed = float(spec.get("voice_speed", 1.0))
     tmp = ROOT / "reels" / spec["slug"] / "_voice"
+    full = _speed(d / "full.mp3", speed, tmp)
+    if full and full.exists() and n > 1:
+        sp = speech_spans(full, min_pause=0.12)
+        gaps = sorted(range(len(sp) - 1), key=lambda j: sp[j + 1][0] - sp[j][1], reverse=True)[:n - 1]
+        if len(sp) >= n and len(gaps) == n - 1:
+            cut = sorted(gaps)
+            groups, k0 = [], 0
+            for g in cut + [len(sp) - 1]:
+                groups.append(sp[k0:g + 1]); k0 = g + 1
+            out = []
+            for grp in groups:
+                a, b = grp[0][0], grp[-1][1]
+                out.append({"file": full, "s0": max(0.0, a - 0.03), "s1": b + 0.06,
+                            "spans": [(x - a, y - a) for x, y in grp]})
+            return out
+        WARN.append(f"한 번에 읽은 음성(full.mp3)에서 장면 경계 {n - 1}곳을 못 찾음 → 장면별 파일 사용")
     out = []
-    for i in range(len(spec["scenes"])):
-        f = d / f"{i + 1:02d}.mp3"
-        if f.exists() and abs(speed - 1.0) > 0.01:   # 말 빠르기 조정 (음높이 유지)
-            tmp.mkdir(parents=True, exist_ok=True)
-            g = tmp / f.name
-            subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", str(f), "-filter:a", f"atempo={speed}", str(g)], check=True)
-            f = g
-        out.append(f if f.exists() else None)
+    for i in range(n):
+        f = _speed(d / f"{i + 1:02d}.mp3", speed, tmp)
+        if not (f and f.exists()):
+            out.append(None)
+            continue
+        sp = speech_spans(f) or [(0.0, audio_len(f))]
+        a, b = sp[0][0], sp[-1][1]
+        out.append({"file": f, "s0": max(0.0, a - 0.03), "s1": b + 0.06, "spans": [(x - a, y - a) for x, y in sp]})
     return out
 
 
 def timeline(spec):
-    """장면별 (시작, 길이, 음성파일). 음성이 있으면 음성 길이에 맞춰 장면을 늘린다."""
-    vf = voice_files(spec)
+    """장면별 (시작, 길이, 음성 조각). 음성이 있으면 말 길이에 딱 맞춘다 (빈 시간 없이)."""
+    segs = voice_segments(spec)
+    voiced = any(segs)
     t, out = 0.0, []
-    for i, (sc, f) in enumerate(zip(spec["scenes"], vf)):
-        d = float(sc.get("dur", 5))
-        if f:
-            d = max(d, lead(i) + audio_len(f) + TAIL)
-        out.append((t, d, f))
+    last = len(spec["scenes"]) - 1
+    for i, (sc, g) in enumerate(zip(spec["scenes"], segs)):
+        if g:
+            d = lead(i) + (g["s1"] - g["s0"]) + (V_LAST_TAIL if i == last else V_TAIL)
+        elif voiced:
+            d = float(sc.get("dur", 2.5))
+        else:
+            d = float(sc.get("dur", 5))
+        out.append((t, d, g))
         t += d
     return out, t
 
@@ -621,11 +658,11 @@ def envelope(tl, total):
     n = int(round(total * FPS))
     env = np.zeros(n)
     sr, hop = 16000, 16000 // FPS
-    for i, (start, _, f) in enumerate(tl):
-        if not f:
+    for i, (start, _, g) in enumerate(tl):
+        if not g:
             continue
-        raw = subprocess.run(["ffmpeg", "-v", "error", "-i", str(f), "-ac", "1", "-ar", str(sr), "-f", "s16le", "-"],
-                             capture_output=True, check=True).stdout
+        raw = subprocess.run(["ffmpeg", "-v", "error", "-ss", f"{g['s0']:.3f}", "-to", f"{g['s1']:.3f}", "-i", str(g["file"]),
+                              "-ac", "1", "-ar", str(sr), "-f", "s16le", "-"], capture_output=True, check=True).stdout
         a = np.frombuffer(raw, dtype=np.int16).astype(np.float32) / 32768
         k = len(a) // hop
         rms = np.sqrt((a[:k * hop].reshape(k, hop) ** 2).mean(axis=1))
@@ -658,9 +695,9 @@ def build(spec):
         if sc.get("bg") == "none":
             sc["bg"] = None
         if f:                                          # 자막 단어가 켜지는 시간 = 이 장면 음성 구간
-            sc["_vs"], sc["_vd"] = t + lead(i), audio_len(f)
+            sc["_vs"], sc["_vd"] = t + lead(i), f["s1"] - f["s0"]
             if sc.get("say"):                          # 호흡 검사: 대본의 숨 표시 vs 실제 쉼
-                spans, want = speech_spans(f), breath_marks(sc["say"])
+                spans, want = list(f["spans"]), breath_marks(sc["say"])
                 extra = []
                 while len(spans) > want > 0:           # 대본에 없는 쉼은 가장 짧은 것부터 합침
                     k = min(range(len(spans) - 1), key=lambda j: spans[j + 1][0] - spans[j][1])
@@ -796,18 +833,20 @@ def main(path):
         b.close()
 
     mp4 = out / "reel.mp4"
-    voices = [(t0 + lead(i), f) for i, (t0, _, f) in enumerate(tl) if f]
+    voices = [(t0 + lead(i), g["file"], g["s0"], g["s1"]) for i, (t0, _, g) in enumerate(tl) if g]
     if spec.get("tempo") == "fast" and spec.get("sfx", True):   # 템포형 효과음: 컷마다 휙, 숫자·카드가 튀어나올 때 톡
         sfx = sfx_files()
-        voices += [(round(x, 3), sfx["whoosh"]) for x in sorted(set(round(c, 2) for c in CUT_TIMES)) if 0.2 < x < total - 0.3]
-        voices += [(round(x, 3), sfx["pop"]) for x in sorted(set(round(c, 2) for c in POP_TIMES)) if 0.2 < x < total - 0.3]
+        voices += [(round(x, 3), sfx["whoosh"], None, None) for x in sorted(set(round(c, 2) for c in CUT_TIMES)) if 0.2 < x < total - 0.3]
+        voices += [(round(x, 3), sfx["pop"], None, None) for x in sorted(set(round(c, 2) for c in POP_TIMES)) if 0.2 < x < total - 0.3]
     cmd = ["ffmpeg", "-y", "-loglevel", "error", "-framerate", str(FPS), "-i", str(frames / "%05d.jpg"),
            "-f", "lavfi", "-t", f"{total:.3f}", "-i", "anullsrc=channel_layout=stereo:sample_rate=44100"]
-    for _, f in voices:
+    for _, f, _a, _b in voices:
         cmd += ["-i", str(f)]
     if voices:
-        fl = "".join(f"[{k + 2}:a]aformat=sample_rates=44100:channel_layouts=stereo,adelay={int(t0 * 1000)}:all=1[v{k}];"
-                     for k, (t0, _) in enumerate(voices))
+        def trim(a, b):
+            return f"atrim=start={a:.3f}:end={b:.3f},asetpts=PTS-STARTPTS," if a is not None else ""
+        fl = "".join(f"[{k + 2}:a]{trim(a, b)}aformat=sample_rates=44100:channel_layouts=stereo,adelay={int(t0 * 1000)}:all=1[v{k}];"
+                     for k, (t0, _f, a, b) in enumerate(voices))
         fl += "[1:a]" + "".join(f"[v{k}]" for k in range(len(voices))) + \
               f"amix=inputs={len(voices) + 1}:normalize=0:duration=first,loudnorm=I=-15:TP=-1.5:LRA=11,aresample=44100,atrim=0:{total:.3f}[aout]"
         cmd += ["-filter_complex", fl, "-map", "0:v", "-map", "[aout]"]
