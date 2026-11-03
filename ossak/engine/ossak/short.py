@@ -9,7 +9,7 @@
 
 원고: episodes/<편>/short.json
 {
-  "id": "W-0001", "no": 1, "series": "세계기담", "format": "story" | "loop", "mood": "mystery" | "horror",
+  "id": "W-0001", "no": 1, "series": "세계기담", "format": "story" | "loop", "mood": "mystery" | "horror" | "wonder",  # wonder = 신기형(2026-11-03), 화면·소리는 mystery와 같음
   "title": "디아틀로프 고개",                      # 사건 이름(시트용)
   "hook": ["한겨울, 신발 두고", "텐트를 떠난 9명"],  # 화면 위 고정 제목 2줄 (줄당 10자 안팎)
   "accent_word": "9명",
