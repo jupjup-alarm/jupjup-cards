@@ -1,0 +1,132 @@
+{
+ "id": "W-0005",
+ "no": 11,
+ "series": "세계기담",
+ "format": "loop",
+ "mood": "mystery",
+ "title": "퉁구스카 대폭발",
+ "hook": [
+  "다 쓰러진 숲,",
+  "한가운데만 서 있다"
+ ],
+ "accent_word": "한가운데만",
+ "images": [
+  {
+   "id": "t01",
+   "prompt": "Siberian taiga at dawn, 1908, seen from high above: a vast forest where millions of trees lie flattened on the ground in a perfect radial pattern, every trunk pointing outward away from one center; in the very center a small cluster of tall bare branchless trunks still stands upright in low mist, catching a faint warm amber light. No crater, no hole. Pale empty dawn sky in the upper part.",
+   "nop": true,
+   "seed": 501
+  },
+  {
+   "id": "t02",
+   "prompt": "Siberia, early morning of 30 June 1908: endless dark taiga forest under a pale sky that is split by one long, bright, glowing seam of light stretching across it like a crack, amber glow on the horizon, deep stillness, no buildings.",
+   "nop": true,
+   "seed": 502
+  },
+  {
+   "id": "t03",
+   "prompt": "Siberian taiga, ground-level view: a seemingly endless sea of fallen tree trunks lying parallel on the ground, all their roots torn up on the same side, all pointing away from a far misty center on the horizon, grey dawn light, silent.",
+   "nop": true,
+   "seed": 503
+  },
+  {
+   "id": "t04",
+   "prompt": "Siberian taiga: a flat, marshy, perfectly level bog clearing in the middle of a devastated forest, still water and moss, mist drifting low, absolutely no crater, no hole, no rock, no debris, nothing at all, eerie emptiness, grey light.",
+   "nop": true,
+   "seed": 504
+  },
+  {
+   "id": "t05",
+   "prompt": "Siberian taiga: in the middle of a flattened forest, a group of tall upright tree trunks stripped of every branch and all bark, standing straight like telegraph poles over a misty bog, fallen trees lying all around them at a distance, a faint amber light, eerie silence.",
+   "nop": true,
+   "seed": 505
+  }
+ ],
+ "scenes": [
+  {
+   "say": "숲 하나가 통째로 쓰러졌는데, 구덩이는 어디에도 없었습니다.",
+   "tts": "숲 하나가 통째로 쓰러졌는데 구덩이는 어디에도 없었습니다.",
+   "img": "t01",
+   "move": "in",
+   "emph": [
+    "구덩이는"
+   ]
+  },
+  {
+   "say": "1908년 시베리아, 하늘이 둘로 갈라진 아침의 기록입니다.",
+   "tts": "천구백팔 년 시베리아, 하늘이 둘로 갈라진 아침의 기록입니다.",
+   "img": "t02",
+   "move": "up",
+   "cont": true,
+   "emph": [
+    "갈라진"
+   ]
+  },
+  {
+   "say": "수천만 그루가, 한 점에서 바깥쪽으로 쓰러져 있었죠.",
+   "tts": "수천만 그루가 한 점에서 바깥쪽으로 쓰러져 있었죠.",
+   "img": "t03",
+   "move": "in",
+   "emph": [
+    "바깥쪽으로"
+   ]
+  },
+  {
+   "say": "무언가 떨어졌다면, 그 자리엔 구덩이가 있어야 했습니다.",
+   "tts": "무언가 떨어졌다면, 그 자리엔 구덩이가 있어야 했습니다.",
+   "img": "t04",
+   "move": "in",
+   "cont": true
+  },
+  {
+   "say": "그런데 그곳엔… 떨어진 돌 하나 찾을 수 없었습니다.",
+   "tts": "그런데 그곳엔 [pause short] 떨어진 돌 하나 찾을 수 없었습니다.",
+   "img": "t04",
+   "zoom": 1.5,
+   "focus": [
+    0.5,
+    0.6
+   ],
+   "move": "out",
+   "cont": true,
+   "emph": [
+    "돌 하나"
+   ]
+  },
+  {
+   "say": "가운데 나무들만, 가지를 잃고 꼿꼿이 서 있었죠.",
+   "tts": "가운데 나무들만 가지를 잃고 꼿꼿이 서있었죠.",
+   "img": "t05",
+   "move": "up",
+   "sfx": "hit",
+   "emph": [
+    "꼿꼿이"
+   ]
+  },
+  {
+   "say": "한가운데 그 가지, 어느 쪽에서 꺾였는지 짐작 가세요?",
+   "tts": "한가운데 그 가지, 어느쪽에서 꺾였는지 짐작 가세요?",
+   "img": "t01",
+   "zoom": 1.4,
+   "focus": [
+    0.5,
+    0.58
+   ],
+   "move": "out",
+   "cont": true,
+   "emph": [
+    "어느 쪽에서"
+   ]
+  }
+ ],
+ "youtube": {
+  "title": "숲이 통째로 쓰러졌는데, 구덩이가 없었다",
+  "summary": "1908년 시베리아. 수천만 그루가 같은 방향으로 쓰러진 숲 한가운데엔, 구덩이도 떨어진 물체도 없었습니다.",
+  "pinned": "한가운데 그 가지, 어느 쪽에서 꺾였는지 짐작 가세요?"
+ },
+ "sources": "출처: NASA(2019·2023), ESA Planetary Defence, Encyclopaedia Britannica, Scientific American",
+ "tags": "#세계기담 #퉁구스카",
+ "risk": "저",
+ "adapted": true,
+ "hook_type": "거대한 충격×흔적 없음(누운 숲×구덩이 없음)"
+}

@@ -1,0 +1,314 @@
+{
+ "id": "M-0001",
+ "no": 12,
+ "series": "미제파일",
+ "format": "story",
+ "mood": "mystery",
+ "title": "서머턴 맨",
+ "hook": [
+  "상표 잘린 옷의 남자",
+  "경찰은 얼굴을 본떴다"
+ ],
+ "accent_word": "얼굴을",
+ "images": [
+  {
+   "id": "g01",
+   "prompt": "A 1949 police storeroom at night: a pale white plaster bust of a man's head and shoulders on a wooden shelf, seen strictly from directly behind so only the smooth back of the plaster head and shoulders are visible, no face visible at all, a single warm orange accent light, dark ceiling above.",
+   "nop": true,
+   "seed": 601
+  },
+  {
+   "id": "g02",
+   "prompt": "Evening on a long sandy beach in South Australia, 1948: a low concrete sea wall running along the sand, a row of old street lamps glowing along the esplanade, calm waves, two tiny faceless silhouettes strolling far away in the distance, nobody lying anywhere, empty sea wall, dusk sky above.",
+   "seed": 602
+  },
+  {
+   "id": "g03",
+   "prompt": "Early grey morning on an empty sandy beach in South Australia, 1948: an empty low concrete sea wall in soft fog, a few tiny faceless silhouettes standing far away beside it seen from a great distance, no lying figure, no body, nothing on the sand, cold light.",
+   "seed": 603
+  },
+  {
+   "id": "g04",
+   "prompt": "Close-up under a desk lamp in a 1940s police office: the inside collar of a man's 1940s jacket laid on a wooden table, the spot where the maker's label should be has been neatly cut out leaving a small rectangular gap with loose threads; beside it an empty space on the table where a wallet should be.",
+   "nop": true,
+   "seed": 604
+  },
+  {
+   "id": "g05",
+   "prompt": "A 1949 railway station cloakroom in Adelaide: long wooden shelves crowded with old suitcases and bags, and one brown leather suitcase set apart alone on the counter under a single hanging lamp, dim, nobody there.",
+   "nop": true,
+   "seed": 605
+  },
+  {
+   "id": "g06",
+   "prompt": "An open old brown leather suitcase on a wooden counter under lamplight: neatly folded 1940s shirts and trousers inside, the label spots on each garment visibly cut away with small rectangular gaps and loose threads, a spool of bright orange thread on top.",
+   "nop": true,
+   "seed": 606
+  },
+  {
+   "id": "g07",
+   "prompt": "Close-up under warm lamplight: the inside collar of a folded 1940s white shirt with a small plain cloth tag stitched inside bearing only faint smudged ink marks, completely illegible, no letters, no characters, the rest of the garment plain.",
+   "nop": true,
+   "seed": 617
+  },
+  {
+   "id": "g08",
+   "prompt": "Close-up of the inside waistband of old 1940s men's trousers on a table: a tiny secret pocket sewn into the waistband, the end of a tightly rolled scrap of paper peeking out of it, lamp light, no hands.",
+   "nop": true,
+   "seed": 608
+  },
+  {
+   "id": "g09",
+   "prompt": "Inside a dark 1940s car at night seen from the back seat, full frame edge to edge with no borders: a small old book lying face down on the leather back seat, lit by a street lamp glow through the side window, faint pencil marks in five short lines across its back cover, blurred and unreadable.",
+   "nop": true,
+   "seed": 619
+  },
+  {
+   "id": "g10",
+   "prompt": "An abstract dark navy space filled with a vast glowing network of thousands of tiny connected dots and thin lines like a family tree spreading outward, one single dot glowing bright orange near the middle.",
+   "nop": true,
+   "seed": 610
+  },
+  {
+   "id": "g11",
+   "prompt": "A cosy night archive room: Boogi the small owl archivist sits at a wooden desk under a little amber lantern, an open large ledger in front of him, a folded old shirt with a cut-out label beside the ledger, a dark window showing a night sea.",
+   "with_character": true,
+   "nop": true,
+   "seed": 611
+  }
+ ],
+ "scenes": [
+  {
+   "say": "갈아입을 옷까지, 상표가 전부 잘려 있었습니다.",
+   "tts": "갈아입을 옷까지 상표가 전부 잘려 있었습니다.",
+   "img": "g06",
+   "move": "in",
+   "emph": [
+    "전부"
+   ]
+  },
+  {
+   "say": "1948년 호주 애들레이드, 이름 없는 남자의 기록.",
+   "tts": "천구백사십팔 년 호주 애들레이드, 이름 없는 남자의 기록.",
+   "img": "g02",
+   "move": "in",
+   "cont": true,
+   "emph": [
+    "이름"
+   ]
+  },
+  {
+   "say": "해변 방파제에 기댄 남자를, 사람들은 잠든 줄 알았습니다.",
+   "tts": "해변 방파제에 기댄 남자를, 사람들은 잠든 줄 알았습니다.",
+   "img": "g02",
+   "zoom": 1.5,
+   "focus": [
+    0.5,
+    0.65
+   ],
+   "move": "left"
+  },
+  {
+   "say": "다음 날 아침, 그는 같은 자리에서 숨진 채 발견됩니다.",
+   "tts": "다음 날 아침, 그는 같은 자리에서 숨진 채 발견됩니다.",
+   "img": "g03",
+   "move": "in",
+   "cont": true
+  },
+  {
+   "say": "신분증도 없이.",
+   "tts": "신분증도 없이.",
+   "img": "g04",
+   "move": "in",
+   "cont": true,
+   "emph": [
+    "신분증도"
+   ]
+  },
+  {
+   "say": "해가 바뀌고, 역 보관소에서 주인 없는 가방이 나옵니다.",
+   "tts": "해가 바뀌고, 역 보관소에서 주인 없는 가방이 나옵니다.",
+   "img": "g05",
+   "move": "in"
+  },
+  {
+   "say": "그 안의 옷들도, 상표가 하나같이 잘려 있었습니다.",
+   "tts": "그 안의 옷들도, 상표가 하나같이 잘려 있었습니다.",
+   "img": "g06",
+   "zoom": 1.35,
+   "focus": [
+    0.5,
+    0.55
+   ],
+   "move": "out",
+   "cont": true,
+   "emph": [
+    "하나같이"
+   ]
+  },
+  {
+   "say": "그런데 몇 벌에, 이름 하나가 남아 있었습니다.",
+   "tts": "그런데 몇 벌에 이름 하나가 남아 있었습니다.",
+   "img": "g07",
+   "move": "in",
+   "emph": [
+    "이름"
+   ]
+  },
+  {
+   "say": "T. Keane. 그 이름으론, 그를 찾을 수 없었습니다.",
+   "tts": "티 킨. 그 이름으론, 그를 찾을 수 없었습니다.",
+   "img": "g07",
+   "zoom": 1.45,
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "move": "out",
+   "cont": true,
+   "emph": [
+    "T. Keane."
+   ]
+  },
+  {
+   "say": "몇 달 뒤, 바지 속 숨은 주머니에서 쪽지가 나옵니다.",
+   "tts": "몇 달 뒤, 바지 속 숨은 주머니에서 쪽지가 나옵니다.",
+   "img": "g08",
+   "move": "in",
+   "emph": [
+    "숨은"
+   ]
+  },
+  {
+   "say": "시집 마지막 장의 조각. 단 두 단어, Tamám Shud.",
+   "tts": "시집마지막 장의 조각. 단 두 단어, 타맘 슈드.",
+   "img": "g08",
+   "zoom": 1.5,
+   "focus": [
+    0.55,
+    0.45
+   ],
+   "move": "in",
+   "cont": true,
+   "emph": [
+    "Tamám",
+    "Shud."
+   ]
+  },
+  {
+   "say": "찢긴 바로 그 시집은, 누군가의 차에서 나옵니다.",
+   "tts": "찢긴 바로 그 시집은 누군가의 차에서 나옵니다.",
+   "img": "g09",
+   "move": "in",
+   "cont": true,
+   "emph": [
+    "바로"
+   ]
+  },
+  {
+   "say": "뒤표지엔, 연필로 쓴 뜻 모를 다섯 줄.",
+   "tts": "뒤표지엔, 연필로쓴 뜻 모를 다섯 줄.",
+   "img": "g09",
+   "zoom": 1.4,
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "move": "out",
+   "cont": true,
+   "emph": [
+    "다섯 줄."
+   ]
+  },
+  {
+   "say": "이름을 끝내 몰라, 경찰은 그의 얼굴을 석고로 본떠 둡니다.",
+   "tts": "이름을 끝내 몰라, 경찰은 그의 얼굴을 석고로 본떠 둡니다.",
+   "img": "g01",
+   "move": "in",
+   "emph": [
+    "얼굴을"
+   ]
+  },
+  {
+   "say": "그리고 70년 뒤, 그 석고에서 머리카락이 나옵니다.",
+   "tts": "그리고 칠십 년 뒤, 그 석고에서머리카락이 나옵니다.",
+   "img": "g01",
+   "zoom": 1.5,
+   "focus": [
+    0.5,
+    0.4
+   ],
+   "move": "in",
+   "cont": true,
+   "sfx": "hit",
+   "emph": [
+    "머리카락"
+   ]
+  },
+  {
+   "say": "그 머리카락으로 연구진이 찾아낸, 한 사람의 이름.",
+   "tts": "그 머리카락으로 연구진이 찾아낸, 한사람의 이름.",
+   "img": "g10",
+   "move": "out",
+   "cont": true,
+   "emph": [
+    "이름."
+   ]
+  },
+  {
+   "say": "경찰 확인은 아직입니다. 다섯 줄의 뜻도, 아무도 모릅니다.",
+   "tts": "경찰 확인은 아직입니다. 다섯 줄의 뜻도 아무도 모릅니다.",
+   "img": "g11",
+   "zoom": 1.35,
+   "focus": [
+    0.45,
+    0.6
+   ],
+   "move": "in",
+   "emph": [
+    "아무도"
+   ]
+  },
+  {
+   "say": "상표를 다 잘라 낸 그 옷들, 몇 벌에만 남아 있던 이름.",
+   "tts": "상표를 다 잘라 낸 그 옷들, 몇 벌에만 남아 있던 이름.",
+   "img": "g11",
+   "move": "out",
+   "cont": true,
+   "emph": [
+    "이름."
+   ],
+   "zoom": 1.15,
+   "focus": [
+    0.6,
+    0.55
+   ]
+  },
+  {
+   "say": "기억나세요?",
+   "tts": "기억나세요?",
+   "img": "g11",
+   "move": "out",
+   "cont": true,
+   "emph": [
+    "기억나세요?"
+   ]
+  }
+ ],
+ "youtube": {
+  "title": "상표 잘린 옷의 남자, 경찰은 얼굴을 본떴다",
+  "summary": "1948년 호주 애들레이드의 해변. 이름이 될 만한 것이 하나도 없던 남자의 옷에서, 상표는 모두 잘려 있었습니다. 갈아입을 옷까지.",
+  "pinned": "상표를 다 잘라 낸 그 옷들, 몇 벌에만 남아 있던 이름. 기억나세요?"
+ },
+ "threads": [
+  "1948년 호주 해변에서 이름 없는 남자가 발견됐어. 지갑도 신분증도 없었고, 입고 있던 옷 상표가 전부 잘려 있었대.",
+  "해가 바뀌고 역 보관소에서 아무도 안 찾아간 가방이 나왔는데, 그 안에 든 갈아입을 옷까지 상표가 다 잘려 있었어. 근데 몇 벌에만 이름이 하나 남아 있었대. 'T. Keane'. 그 이름으로도 그 사람은 끝내 못 찾았고.",
+  "몇 달 뒤엔 바지 속에 꿰맨 숨은 주머니에서 돌돌 만 쪽지가 나와. 시집 마지막 장에서 찢어 낸 두 단어. 그 시집은 누군가의 차에서 나왔는데, 뒤표지에 연필로 쓴 다섯 줄이 있었어. 이건 지금도 아무도 못 풀었어.",
+  "이름을 끝내 몰라서 경찰이 얼굴을 석고로 본떠 뒀는데, 70년 뒤에 그 석고에 박힌 머리카락으로 연구진이 한 사람을 지목했대. 경찰 공식 확인은 아직이고.",
+  "상표를 다 잘라 낸 옷에, 왜 그 이름만 남아 있었을까. 영상으로 보려면 인스타 @ossak_alarm 에서 봐."
+ ],
+ "sources": "출처: Smithsonian Magazine(2011·2022), InDaily(2021·2022), AP(2022)",
+ "tags": "#미제파일 #서머턴맨",
+ "risk": "중",
+ "hook_type": "지운 흔적×남은 하나(상표 전부 잘린 옷)"
+}
