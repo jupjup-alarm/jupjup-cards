@@ -43,7 +43,7 @@
       {% endif %}
       <div><dt>공급</dt><dd>{{ '{:,}'.format(n.units) }}{{ n.unit_word }}</dd>{% if n.units_note %}<dd class="s">{{ n.units_note }}</dd>{% endif %}</div>
       {% if n.comp and n.comp.short and n.status in ('waiting', 'announced') %}
-      <div><dt>경쟁률</dt><dd>{{ n.comp.short.split(' · ')[-1] }}</dd></div>
+      {% set cr = n.comp.short.split(' · ')[-1] %}<div><dt>{{ '평균 경쟁률' if cr.startswith('평균 ') else '경쟁률' }}</dt>{% set cv = cr[3:] if cr.startswith('평균 ') else cr %}<dd{% if cv|length > 7 %} class="sm"{% endif %}>{{ cv|replace('대 1', '대 1') }}</dd></div>
       {% elif n.is_rental %}
       <div><dt>월 임대료</dt><dd>{% if n.houses and n.rent_range and n.rent_range.monthly %}{{ n.rent_range.monthly[0]|money }}~{% elif n.rent_summary.monthly %}{{ n.rent_summary.monthly|money }}{% else %}공고문{% endif %}</dd></div>
       {% else %}
@@ -165,7 +165,7 @@
       {% set done = s.start and end < today.isoformat() %}
       {% set is_next = (not done) and (not ns.next) and s.start %}
       {% if is_next %}{% set ns.next = true %}{% endif %}
-      <li class="{{ 'done' if done else ('next' if is_next else '') }}">{% if s.month %}<span class="when">{{ s.month|tmonth }}</span>{% elif s.end and s.end != s.start %}<span class="when">{{ s.start|tdate }}<br>~ {{ s.end|tdate }}</span>{% else %}<span class="when">{{ s.start|tdate }}</span>{% endif %}<span class="dot"></span><span class="what">{{ s.label }}{% if is_next %}<span class="now">{{ '오늘' if s.start <= today.isoformat() else '다음' }}</span>{% endif %}{% if s.note %}<small>{{ s.note }}</small>{% endif %}</span></li>
+      <li class="{{ 'done' if done else ('next' if is_next else '') }}">{% if s.month %}<span class="when">{{ s.month|tmonth }}</span>{% else %}<span class="when">{{ s.start|tlwhen(s.end) }}</span>{% endif %}<span class="dot"></span><span class="what">{{ s.label }}{% if is_next %}<span class="now">{{ '오늘' if s.start <= today.isoformat() else '다음' }}</span>{% endif %}{% if s.note %}<small>{{ s.note }}</small>{% endif %}</span></li>
     {% endfor %}
     </ol>
   </section>

@@ -683,3 +683,11 @@ h1{font-weight:800;letter-spacing:-.03em;font-size:26px;line-height:1.28}
 .due-v span{font-size:13px;color:var(--ink-sub)}
 .due .arr{color:#9AA3B2;font-size:20px}
 .hh-find .quick a{border-radius:0;border:0;border-bottom:1px solid var(--line);padding:12px 0;background:none}
+
+/* 2026-11-03 고침: 종 아이콘이 말풍선 padding을 받아 잘리던 것, 다른 해 날짜가 칸에서 꺾이던 것 */
+.take > div.bell{padding:0;background:var(--ink);border-radius:50%;overflow:hidden}
+.take .bell svg{display:block;margin:0}
+.tl .when{white-space:nowrap}
+.tl .when .y{display:block;font-size:12px;font-weight:700;color:var(--ink-sub);letter-spacing:0;line-height:1.2}
+.tf dd{white-space:normal;word-break:keep-all;overflow-wrap:normal}
+.tf dd.sm{font-size:clamp(13px, 3.6vw, 16px)}

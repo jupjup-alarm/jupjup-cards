@@ -180,6 +180,20 @@ def tdate(iso):
     return Markup(f'<time datetime="{iso[:10]}">{html.escape(d(iso))}</time>')
 
 
+def tlwhen(a, b=None):
+    """일정 왼쪽 날짜칸: 다른 해면 연도를 작은 줄로 따로 (2027.3.22(월)이 칸에서 꺾이지 않게)."""
+    def one(iso, show_year):
+        x = dt.date.fromisoformat(iso[:10])
+        y = f'<span class="y">{x.year}</span>' if show_year else ""
+        return f'{y}<time datetime="{iso[:10]}">{x.month}.{x.day}({DOW[x.weekday()]})</time>'
+    xa = dt.date.fromisoformat(a[:10])
+    out = one(a, xa.year != TODAY.year)
+    if b and b != a:
+        xb = dt.date.fromisoformat(b[:10])
+        out += ('<br><span class="y">' + str(xb.year) + "</span>~ " if xb.year != xa.year else "<br>~ ") + one(b, False)
+    return Markup(out)
+
+
 def sd(iso):
     """'2026-11-02' → '11.2' (올해), '2027.2.16' (다른 해) — 날짜 카드용 짧은 표기."""
     if not iso:
@@ -1178,7 +1192,7 @@ def notice_images(n):
 def env():
     e = Environment(loader=FileSystemLoader(SITE / "templates"), autoescape=select_autoescape(["html", "xml"]),
                     trim_blocks=True, lstrip_blocks=True)
-    e.filters.update(sd=sd, h2s=h2s, combine=lambda a, b: {**a, **b}, money=money, mrange=lambda r: f"{money(r[0])[:-1]}~{money(r[1])}" if r and r[0] != r[1] else money(r[0]) if r else '', d=d, drange=drange, won=won, py=py, m2=m2, tdate=tdate, trange=trange, tmonth=tmonth,
+    e.filters.update(sd=sd, h2s=h2s, combine=lambda a, b: {**a, **b}, money=money, mrange=lambda r: f"{money(r[0])[:-1]}~{money(r[1])}" if r and r[0] != r[1] else money(r[0]) if r else '', d=d, drange=drange, won=won, py=py, m2=m2, tdate=tdate, tlwhen=tlwhen, trange=trange, tmonth=tmonth,
                      jsonld=lambda o: Markup(json.dumps(o, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")))
     def crumb_ld(items, last, page_url):
         el = [{"@type": "ListItem", "name": lab, "item": BASE + u} for lab, u in items if u]
