@@ -691,3 +691,6 @@ h1{font-weight:800;letter-spacing:-.03em;font-size:26px;line-height:1.28}
 .tl .when .y{display:block;font-size:12px;font-weight:700;color:var(--ink-sub);letter-spacing:0;line-height:1.2}
 .tf dd{white-space:normal;word-break:keep-all;overflow-wrap:normal}
 .tf dd.sm{font-size:clamp(13px, 3.6vw, 16px)}
+/* 2026-11-03: 한국어 줄바꿈을 낱말 단위로 (2만4,|480원, 12.2(|수) 같은 꺾임 방지) */
+.lead,.band .addr,.tf dd.s,.trow,.nx-end p{word-break:keep-all;overflow-wrap:anywhere}
+.tf dd:not(.s){overflow:hidden;text-overflow:clip}

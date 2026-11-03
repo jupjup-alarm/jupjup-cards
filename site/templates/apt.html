@@ -37,7 +37,7 @@
   <div class="ticket" data-nx="{{ n.status }}">
     <dl class="tf num">
       {% if n.is_rental %}
-      <div><dt>임대보증금</dt><dd>{% if n.houses and n.rent_range and n.rent_range.deposit %}{{ n.rent_range.deposit[0]|money }}~{% elif n.rent_summary.deposit %}{{ n.rent_summary.deposit|money }}{% else %}공고문{% endif %}</dd></div>
+      <div><dt>임대보증금</dt><dd>{% if n.houses and n.rent_range and n.rent_range.deposit %}{{ n.rent_range.deposit[0]|money }}</dd><dd class="s">부터 · 집마다 달라요{% elif n.rent_summary.deposit %}{{ n.rent_summary.deposit|money }}{% else %}공고문{% endif %}</dd></div>
       {% else %}
       <div><dt>{{ n.price_label }}</dt><dd>{{ n.max_price|won }}</dd><dd class="s">{{ n.max_type }} 기준</dd></div>
       {% endif %}
@@ -45,11 +45,12 @@
       {% if n.comp and n.comp.short and n.status in ('waiting', 'announced') %}
       {% set cr = n.comp.short.split(' · ')[-1] %}<div><dt>{{ '평균 경쟁률' if cr.startswith('평균 ') else '경쟁률' }}</dt>{% set cv = cr[3:] if cr.startswith('평균 ') else cr %}<dd{% if cv|length > 7 %} class="sm"{% endif %}>{{ cv|replace('대 1', '대 1') }}</dd></div>
       {% elif n.is_rental %}
-      <div><dt>월 임대료</dt><dd>{% if n.houses and n.rent_range and n.rent_range.monthly %}{{ n.rent_range.monthly[0]|money }}~{% elif n.rent_summary.monthly %}{{ n.rent_summary.monthly|money }}{% else %}공고문{% endif %}</dd></div>
+      <div><dt>월 임대료</dt><dd>{% if n.houses and n.rent_range and n.rent_range.monthly %}{{ n.rent_range.monthly[0]|money }}</dd><dd class="s">부터{% elif n.rent_summary.monthly %}{{ n.rent_summary.monthly|money }}{% else %}공고문{% endif %}</dd></div>
       {% else %}
       <div><dt>청약통장</dt><dd>{{ n.account[0] }}</dd><dd class="s">{{ n.account[1] }}</dd></div>
       {% endif %}
     </dl>
+    <script>document.querySelectorAll('.tf dd:not(.s)').forEach(function(e){var f=parseFloat(getComputedStyle(e).fontSize);while(e.scrollWidth>e.clientWidth+1&&f>12){f-=.5;e.style.fontSize=f+'px'}})</script>
     <div class="perf" aria-hidden="true"></div>
     <div class="tb">
       <p class="trow"><span>접수</span><b>{{ n.rcpt[0]|tdate }}{% if n.rcpt[1] and n.rcpt[1] != n.rcpt[0] %} ~ {{ n.rcpt[1]|tdate }}{% endif %}</b></p>
