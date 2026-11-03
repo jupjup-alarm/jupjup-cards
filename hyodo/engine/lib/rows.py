@@ -2,14 +2,14 @@
 
   python3 lib/rows.py episodes/<편> <롱폼 업로드일 YYYY-MM-DD> "<검수 결과>"
 
-- 롱폼: 설정의 롱폼 기본 시각 07:00, 숏츠: 다음 날·다다음 날 12:30
+- 롱폼: 매일 07:00(2026-11-04부터 매일 1편), 숏츠: a는 다음 날 12:30, b는 다다음 날 19:30 (하루 숏츠 2개가 시간이 겹치지 않게)
 - 상태(O)는 '업로드대기'(자동 발행 원칙, 2026-11-03 운영자 결정). 자동 검수에 걸린 편은 행을 넣지 않는다.
 - 수정본(정정)은 publish.py --rev N 뒤에 rows.py를 돌려 L·M열 주소만 새 파일로 바꾸는 데 쓴다(README 8절).
 - 출력: out/sheet_rows.json (구글 시트 update_values/append_values에 그대로 넣는 2차원 배열)
 """
 import datetime as dt, json, pathlib, sys
 
-LONG_T, SHORT_T = "07:00", "12:30"
+LONG_T, SHORT_T = "07:00", ["12:30", "19:30"]
 
 
 def main(ep, day, review):
@@ -23,7 +23,7 @@ def main(ep, day, review):
     rows = [[d0.isoformat(), LONG_T, L["id"], "롱폼", cat, "", L["title"], L["description"], ", ".join(L["tags"]),
              L["pinned"], "\n".join(L["chapters"]), L["video_url"], L.get("thumb_url", ""), L["playlist"], "업로드대기", review]]
     for i, s in enumerate(up["shorts"], 1):
-        rows.append([(d0 + dt.timedelta(days=i)).isoformat(), SHORT_T, s["id"], "숏츠", cat, L["id"], s["title"],
+        rows.append([(d0 + dt.timedelta(days=i)).isoformat(), SHORT_T[(i - 1) % 2], s["id"], "숏츠", cat, L["id"], s["title"],
                      s["description"], ", ".join(s["tags"]), "", "", s["video_url"], "", s["playlist"], "업로드대기", review])
     for r in rows:
         if len(r[6]) > 100:
