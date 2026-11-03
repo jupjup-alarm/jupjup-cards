@@ -58,6 +58,7 @@
   </div>
   {% endif %}
 {% endif %}
+<!--CHIPNAV-->
 
 
   {% if n.dz %}{% set z = n.dz %}
@@ -72,7 +73,7 @@
   {% endif %}
   {# 2026-11-03 사용자 결정: 애드센스는 3초 판단 카드 바로 아래(요약 카드 위)로 올림 #}
   {{ ads_slot('apt_top', 'ad-apt ad-top') }}
-  <aside aria-label="핵심 요약">
+  <aside aria-label="핵심 요약"{% if n.dz %} class="has-dz"{% endif %}>
     <div class="summary">
       <dl class="facts num">
         <div><dt>{{ ('공고 전 예상 접수' if n.moved else '접수 예정') if n.is_pre else '접수' }}</dt><dd>{% if n.rcpt[0] == n.rcpt[1] %}<span class="ln">{{ n.rcpt[0]|tdate }}</span><small>{{ n.receipt_note or '하루만 받아요' }}</small>{% else %}<span class="ln">{{ n.rcpt[0]|tdate }}</span><span class="ln">~ {{ n.rcpt[1]|tdate }}</span>{% if n.receipt_note %}<small>{{ n.receipt_note }}</small>{% endif %}{% endif %}</dd></div>
@@ -126,22 +127,43 @@
     <div class="bell" aria-hidden="true"><svg viewBox="0 0 200 200"><circle cx="100" cy="34" r="10" fill="#FFFFFF"/><path d="M54 110 Q38 96 40 80" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"/><path d="M146 110 Q162 96 160 80" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"/><path d="M100 40 C68 40 54 66 54 96 L54 132 L40 152 L160 152 L146 132 L146 96 C146 66 132 40 100 40 Z" fill="#FF5233"/><rect x="36" y="146" width="128" height="14" rx="7" fill="#FFFFFF"/><path d="M76 102 Q84 92 92 102" fill="none" stroke="#0F1E3D" stroke-width="5" stroke-linecap="round"/><path d="M108 102 Q116 92 124 102" fill="none" stroke="#0F1E3D" stroke-width="5" stroke-linecap="round"/><path d="M88 114 Q100 132 112 114 Z" fill="#0F1E3D"/></svg></div>
     <div>
       <h2 id="take-h">{{ n.h2.take }}</h2>
-      <p>{{ n.take }}</p>
+      <p>{{ n.take_head }}</p>{% if n.take_rest %}
+      <details class="take-more"><summary>왜 그런지 보기</summary><p>{{ n.take_rest }}</p></details>{% endif %}
     </div>
   </section>
 
+  <section class="sec" aria-labelledby="h-sch">
+    <h2 id="h-sch">{{ n.h2.get('sch', '청약 일정') }}</h2>
+    {% if not n.is_pre and n.rcpt[0] %}{% set mv = namespace(s=none, r=none) %}{% for s in n.schedule %}{% if '입주' in s.label and not mv.s %}{% set mv.s = s %}{% endif %}{% if s.label == '청약 접수' and s.start and not mv.r %}{% set mv.r = s %}{% endif %}{% endfor %}{% set ra = mv.r.start if mv.r else n.rcpt[0] %}{% set rb = (mv.r.end or mv.r.start) if mv.r else n.rcpt[1] %}
+    <div class="dcards num">
+      <div class="{{ 'now' if n.status in ('open', 'upcoming') }}"><small>{{ '접수' if n.is_rental else '청약 접수' }}</small><b>{{ ra|sd }}{% if rb and rb != ra %} ~ {{ rb|sd }}{% endif %}</b></div>
+      {% if n.announce %}<div class="{{ 'now' if n.status == 'waiting' }}"><small>당첨자 발표</small><b>{{ n.announce|sd }}</b></div>{% endif %}
+      {% if mv.s %}<div><small>{{ mv.s.label }}</small><b>{% if mv.s.month %}{{ mv.s.month|tmonth }}{% else %}{{ mv.s.start|sd }}{% endif %}</b></div>{% endif %}
+    </div>
+    {% endif %}
+    <ol class="tl num">
+    {% set ns = namespace(next=false) %}
+    {% for s in n.schedule %}
+      {% set end = s.end if s.end else (s.start if s.start else '9999') %}
+      {% set done = s.start and end < today.isoformat() %}
+      {% set is_next = (not done) and (not ns.next) and s.start %}
+      {% if is_next %}{% set ns.next = true %}{% endif %}
+      <li class="{{ 'done' if done else ('next' if is_next else '') }}"><span class="dot"></span><span class="what">{{ s.label }}{% if is_next %}<span class="now">{{ '오늘' if s.start <= today.isoformat() else '다음' }}</span>{% endif %}{% if s.note %}<small>{{ s.note }}</small>{% endif %}</span>{% if s.month %}<span class="when">{{ s.month|tmonth }}</span>{% else %}<span class="when">{{ s.start|trange(s.end) }}</span>{% endif %}</li>
+    {% endfor %}
+    </ol>
+  </section>
 
   {% if n.dz %}{% set z = n.dz %}
-  {% if z.fit %}
-  <section class="sec" aria-labelledby="h-fit">
-    <h2 id="h-fit">이런 분께 맞아요</h2>
-    <div class="dfit">
-      <div class="fit-y"><p class="fit-h">이런 분이라면 볼 만해요</p><ul>{% for a, b in z.fit.yes %}<li><b>{{ a }}</b><span>{{ b }}</span></li>{% endfor %}</ul></div>
-      <div class="fit-n"><p class="fit-h">이런 분은 다시 생각해 보세요</p><ul>{% for a, b in z.fit.no %}<li><b>{{ a }}</b><span>{{ b }}</span></li>{% endfor %}</ul></div>
-    </div>
+  {% if z.check %}
+  <section class="sec" aria-labelledby="h-chk">
+    <h2 id="h-chk">{{ z.check.title }}</h2>
+    <div class="g-tool g-self" data-tool="selfcheck"><ol>{% for q in z.check["items"] %}<li><span>{{ q }}</span><span class="g-yn" role="group"><button type="button" data-v="1" aria-pressed="false">예</button><button type="button" data-v="0" aria-pressed="false">아니오</button></span></li>{% endfor %}</ol>
+    <p class="g-selfres" aria-live="polite"><b data-yes>0</b> / {{ z.check["items"]|length }}개 '예'</p><p class="g-toolnote">{{ z.check.result }}</p></div>
   </section>
   {% endif %}
+  {% endif %}
 
+  {% if n.dz %}{% set z = n.dz %}
   {% if n.gap %}
   <section class="sec" aria-labelledby="h-gap">
     <h2 id="h-gap">{{ n.h2.gap }}</h2>
@@ -157,7 +179,9 @@
     <p class="note">{{ n.gap.basis }} · 같은 생활권·비슷한 면적의 최근 실거래와 비교한 추정이에요. 실제 시세와 다를 수 있고, 차익을 보장하지 않아요.</p>
   </section>
   {% endif %}
+  {% endif %}
 
+  {% if n.dz %}{% set z = n.dz %}
   {% if z.funds and z.funds.opts and z.funds.steps %}
   <section class="sec" aria-labelledby="h-fund" data-fund>
     <h2 id="h-fund">당첨되면, 돈은 이렇게 나가요</h2>
@@ -177,8 +201,9 @@
     <p class="note">{{ z.funds.basis }} 금액은 만원 아래를 버린 값이에요.</p>
   </section>
   {% endif %}
+  {% endif %}
 
-
+  {% if n.dz %}{% set z = n.dz %}
   {% if z.rent and z.rent.opts %}
   <section class="sec" aria-labelledby="h-rent" data-rent data-d0="{{ z.rent.opts[0][1] }}" data-m0="{{ z.rent.opts[0][2] }}"{% if z.rent.conv %} data-up="{{ z.rent.conv.up }}" data-down="{{ z.rent.conv.down }}" data-unit="{{ z.rent.conv.unit }}"{% endif %}>
     <h2 id="h-rent">입주할 때·매달 나가는 돈</h2>
@@ -198,7 +223,9 @@
     {% for l in z.links %}<a class="guide-link" href="{{ l[1] }}"><b>{{ l[0] }}</b><span>{{ l[2] }} →</span></a>{% endfor %}
   </section>
   {% endif %}
+  {% endif %}
 
+  {% if n.dz %}{% set z = n.dz %}
   {% if z.refs %}
   <section class="sec" aria-labelledby="h-odds">
     <h2 id="h-odds">{{ n.h2.odds }}</h2>
@@ -215,19 +242,13 @@
     </div>
   </section>
   {% endif %}
+  {% endif %}
 
+  {% if n.dz %}{% set z = n.dz %}
   {% if z.traps %}
   <section class="sec" aria-labelledby="h-trap">
     <h2 id="h-trap">{{ n.h2.trap }}</h2>
     <ul class="traps">{% for a, b in z.traps %}<li><b>{{ a }}</b><span>{{ b }}</span></li>{% endfor %}</ul>
-  </section>
-  {% endif %}
-
-  {% if z.check %}
-  <section class="sec" aria-labelledby="h-chk">
-    <h2 id="h-chk">{{ z.check.title }}</h2>
-    <div class="g-tool g-self" data-tool="selfcheck"><ol>{% for q in z.check["items"] %}<li><span>{{ q }}</span><span class="g-yn" role="group"><button type="button" data-v="1" aria-pressed="false">예</button><button type="button" data-v="0" aria-pressed="false">아니오</button></span></li>{% endfor %}</ol>
-    <p class="g-selfres" aria-live="polite"><b data-yes>0</b> / {{ z.check["items"]|length }}개 '예'</p><p class="g-toolnote">{{ z.check.result }}</p></div>
   </section>
   {% endif %}
   {% endif %}
@@ -248,21 +269,6 @@
     </div>
   </section>
   {% endif %}
-
-  <section class="sec" aria-labelledby="h-sch">
-    <h2 id="h-sch">{{ n.h2.get('sch', '청약 일정') }}</h2>
-    <ol class="tl num">
-    {% set ns = namespace(next=false) %}
-    {% for s in n.schedule %}
-      {% set end = s.end if s.end else (s.start if s.start else '9999') %}
-      {% set done = s.start and end < today.isoformat() %}
-      {% set is_next = (not done) and (not ns.next) and s.start %}
-      {% if is_next %}{% set ns.next = true %}{% endif %}
-      <li class="{{ 'done' if done else ('next' if is_next else '') }}"><span class="dot"></span><span class="what">{{ s.label }}{% if is_next %}<span class="now">{{ '오늘' if s.start <= today.isoformat() else '다음' }}</span>{% endif %}{% if s.note %}<small>{{ s.note }}</small>{% endif %}</span>{% if s.month %}<span class="when">{{ s.month|tmonth }}</span>{% else %}<span class="when">{{ s.start|trange(s.end) }}</span>{% endif %}</li>
-    {% endfor %}
-    </ol>
-  </section>
-
 
   {% if n.is_pre %}
   <section class="sec" aria-labelledby="h-price">
@@ -333,11 +339,12 @@
         <caption>{{ n.price_label|replace('최고 ', '') }}은 주택형별 최고가 기준. 층·호별 금액은 공고문 참고.</caption>
         <thead><tr><th scope="col" style="text-align:left">주택형</th>{% if n.areas %}<th scope="col">전용면적</th>{% endif %}{% if n.has_special %}<th scope="col">특별공급</th>{% endif %}{% if n.has_general %}<th scope="col">{{ '무순위 공급' if n.kind == 'mujeonwi' else '일반공급' }}</th>{% endif %}<th scope="col">{{ n.price_label }}</th></tr></thead>
         <tbody>
-        {% for m in n.models %}<tr><th scope="row">{{ m.type }}</th>{% if n.areas %}<td>{% if n.areas[m.type] %}{{ n.areas[m.type].excl|m2 }}{% else %}—{% endif %}</td>{% endif %}{% if n.has_special %}<td>{{ m.special }}세대</td>{% endif %}{% if n.has_general %}<td>{{ m.general }}세대</td>{% endif %}<td class="max">{% if n.price_ranges and n.price_ranges[m.type] %}{{ n.price_ranges[m.type] }}{% else %}{{ m.max|won }}{% endif %}</td></tr>
+        {% for m in n.models %}<tr{% if n.models|length > 4 and loop.index > 3 %} class="fx"{% endif %}><th scope="row">{{ m.type }}</th>{% if n.areas %}<td>{% if n.areas[m.type] %}{{ n.areas[m.type].excl|m2 }}{% else %}—{% endif %}</td>{% endif %}{% if n.has_special %}<td>{{ m.special }}세대</td>{% endif %}{% if n.has_general %}<td>{{ m.general }}세대</td>{% endif %}<td class="max">{% if n.price_ranges and n.price_ranges[m.type] %}{{ n.price_ranges[m.type] }}{% else %}{{ m.max|won }}{% endif %}</td></tr>
         {% endfor %}
         </tbody>
       </table>
     </div>
+    {% if n.models|length > 4 %}<button type="button" class="tfold" data-fold hidden>주택형 {{ n.models|length }}개 전체 보기 ▾</button>{% endif %}
     {% if n.rent_rows %}
     <dl class="kv wide" style="margin-top:14px">{% for k, v in n.rent_rows %}<div><dt>{{ k }}</dt><dd class="num">{{ v }}</dd></div>{% endfor %}</dl>
     {% endif %}
@@ -459,16 +466,6 @@
   </section>
   {% endif %}
 
-  <section class="sec" aria-labelledby="h-elig">
-    <h2 id="h-elig">{{ n.h2.get('elig', '신청 자격') }}</h2>
-    <dl class="kv">
-    {% for row in n.eligibility %}<div><dt>{{ row[0] }}</dt><dd>{{ row[1] }}{% if row|length > 2 and row[2] %} <span class="tag">{{ row[2] }}</span>{% endif %}</dd></div>
-    {% endfor %}
-    </dl>
-  {% if n.guide_link %}<a class="guide-link" href="{{ n.guide_link.url }}"><b>처음이라면</b><span>{{ n.guide_link.h1 }} →</span></a>{% endif %}
-  </section>
-  {{ cp_ad('apt_mo', 'ad-apt') }}
-
   {% if not n.houses %}
   <section class="sec" aria-labelledby="h-loc">
     <h2 id="h-loc">{{ n.h2.loc }}</h2>
@@ -481,6 +478,29 @@
     <p class="place">{{ n.address }}{% if n.near %} ({{ n.near }}){% endif %} · <a href="https://map.naver.com/p/search/{{ (n.naver_query or n.address)|urlencode }}" target="_blank" rel="noopener">네이버 지도에서 보기</a></p>
   </section>
   {% endif %}
+
+  <section class="sec" aria-labelledby="h-elig">
+    <h2 id="h-elig">{{ n.h2.get('elig', '신청 자격') }}</h2>
+    <dl class="kv">
+    {% for row in n.eligibility %}<div><dt>{{ row[0] }}</dt><dd>{{ row[1] }}{% if row|length > 2 and row[2] %} <span class="tag">{{ row[2] }}</span>{% endif %}</dd></div>
+    {% endfor %}
+    </dl>
+  {% if n.guide_link %}<a class="guide-link" href="{{ n.guide_link.url }}"><b>처음이라면</b><span>{{ n.guide_link.h1 }} →</span></a>{% endif %}
+  </section>
+  {{ cp_ad('apt_mo', 'ad-apt') }}
+
+  {% if n.dz %}{% set z = n.dz %}
+  {% if z.fit %}
+  <section class="sec" aria-labelledby="h-fit">
+    <h2 id="h-fit">이런 분께 맞아요</h2>
+    <div class="dfit">
+      <div class="fit-y"><p class="fit-h">이런 분이라면 볼 만해요</p><ul>{% for a, b in z.fit.yes %}<li><b>{{ a }}</b><span>{{ b }}</span></li>{% endfor %}</ul></div>
+      <div class="fit-n"><p class="fit-h">이런 분은 다시 생각해 보세요</p><ul>{% for a, b in z.fit.no %}<li><b>{{ a }}</b><span>{{ b }}</span></li>{% endfor %}</ul></div>
+    </div>
+  </section>
+  {% endif %}
+  {% endif %}
+
 
   <section class="sec" aria-labelledby="h-info">
     <h2 id="h-info">공급 정보</h2>
@@ -541,6 +561,13 @@
 </main>
 {% endblock %}
 {% block after %}
+<script>
+(function(){var b=document.querySelector('[data-fold]');if(b){var w=b.previousElementSibling;w.classList.add('folded');b.hidden=false;b.addEventListener('click',function(){var f=w.classList.toggle('folded');b.textContent=f?b.textContent.replace('접기 ▴','전체 보기 ▾'):b.textContent.replace('전체 보기 ▾','접기 ▴');if(window.jjEv&&!f)jjEv('table_open',{});});}
+var nav=document.querySelector('.chipnav');if(!nav)return;var as=[].slice.call(nav.querySelectorAll('a'));
+as.forEach(function(a){a.addEventListener('click',function(){if(window.jjEv)jjEv('chip_click',{to:a.getAttribute('href').slice(1)});});});
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){as.forEach(function(a){var on=a.getAttribute('href')==='#'+e.target.id;a.classList.toggle('on',on);if(on&&a.scrollIntoView)nav.scrollTo({left:a.offsetLeft-16,behavior:'smooth'});});}});},{rootMargin:'-60px 0px -70% 0px'});
+as.forEach(function(a){var h=document.getElementById(a.getAttribute('href').slice(1));if(h)io.observe(h);});}})();
+</script>
 <div class="bar">
   <button class="btn ghost" type="button" data-share>공유하기</button>
   <a class="btn primary" href="{{ IG }}" target="_blank" rel="noopener">{{ ig_icon() }}인스타 팔로우</a>

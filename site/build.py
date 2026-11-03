@@ -180,6 +180,31 @@ def tdate(iso):
     return Markup(f'<time datetime="{iso[:10]}">{html.escape(d(iso))}</time>')
 
 
+def sd(iso):
+    """'2026-11-02' → '11.2' (올해), '2027.2.16' (다른 해) — 날짜 카드용 짧은 표기."""
+    if not iso:
+        return ""
+    x = dt.date.fromisoformat(iso[:10])
+    return f"{x.month}.{x.day}" if x.year == TODAY.year else f"{x.year}.{x.month}.{x.day}"
+
+
+# 공고 상세 바로가기 칩 (2026-11-03 사용자 결정 — 페이지에 실제로 있는 칸만, 나오는 순서대로)
+CHIPS = {"h-sch": "일정", "h-chk": "나도 될까", "h-gap": "시세 비교", "h-fund": "돈 계산", "h-rent": "입주·월 비용", "h-odds": "경쟁 예상",
+         "h-trap": "주의점", "h-comp": "경쟁률", "h-price": "분양가 표", "h-houses": "주택 목록", "h-plan": "평면", "h-layout": "배치도",
+         "h-tour": "둘러보기", "h-loc": "위치", "h-elig": "자격", "h-faq": "FAQ"}
+
+
+def chipnav(h, n):
+    ids = [i for i in re.findall(r'<h2 id="([\w-]+)"', h) if i in CHIPS]
+    if len(ids) < 3:
+        return h.replace("<!--CHIPNAV-->", "")
+    lab = dict(CHIPS)
+    if n.get("is_rental"):
+        lab["h-price"] = "임대 조건"
+    nav = '<nav class="chipnav" aria-label="이 페이지 바로가기">' + "".join(f'<a href="#{i}">{lab[i]}</a>' for i in ids) + "</nav>"
+    return h.replace("<!--CHIPNAV-->", nav)
+
+
 def trange(a, b=None):
     if not b or a == b:
         return tdate(a)
@@ -1081,7 +1106,7 @@ def notice_images(n):
 def env():
     e = Environment(loader=FileSystemLoader(SITE / "templates"), autoescape=select_autoescape(["html", "xml"]),
                     trim_blocks=True, lstrip_blocks=True)
-    e.filters.update(combine=lambda a, b: {**a, **b}, money=money, mrange=lambda r: f"{money(r[0])[:-1]}~{money(r[1])}" if r and r[0] != r[1] else money(r[0]) if r else '', d=d, drange=drange, won=won, py=py, m2=m2, tdate=tdate, trange=trange, tmonth=tmonth,
+    e.filters.update(sd=sd, combine=lambda a, b: {**a, **b}, money=money, mrange=lambda r: f"{money(r[0])[:-1]}~{money(r[1])}" if r and r[0] != r[1] else money(r[0]) if r else '', d=d, drange=drange, won=won, py=py, m2=m2, tdate=tdate, trange=trange, tmonth=tmonth,
                      jsonld=lambda o: Markup(json.dumps(o, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")))
     def crumb_ld(items, last, page_url):
         el = [{"@type": "ListItem", "name": lab, "item": BASE + u} for lab, u in items if u]
@@ -1297,6 +1322,10 @@ def main():
         rel = extra + [x for x in sorted_n(same) + sorted_n(same_kind) if x not in extra]
         n["related"] = rel[:4]
         n["related_title"] = f"{n['sido']}에서 곧 접수하는 공고" if same else "함께 볼 공고"
+        # 한마디: 결론 한 문장 + 나머지는 '왜 그런지 보기'로 접음 (2026-11-03 사용자 결정 — 읽기 쉬운 구조)
+        tk = (n.get("take") or "").strip()
+        m_ = re.search(r"(?<=[.!?요다])\s+", tk)
+        n["take_head"], n["take_rest"] = (tk[:m_.start()], tk[m_.end():]) if m_ and m_.start() >= 20 else (tk, "")
         # 첫 화면 '다음 할 일' (2026-11-03 사용자 결정 — 접수 끝난 공고로 들어온 사람을 지금 넣을 수 있는 공고로)
         n["next_alts"] = []
         if n["status"] in ("waiting", "announced"):
@@ -1354,6 +1383,7 @@ def main():
         n["guides"] = gl[1:4]
         n["crumb"] = crumb_for(n)
         h = apt_tpl.render(n=n, **common, page_url=n["url"], title=title, desc=desc, og=n["imgs"]["og"])
+        h = chipnav(h, n)
         write(n["url"], h, title, desc, "apt", n["modified"])
 
     # ── 목록 공통
