@@ -205,6 +205,15 @@ def chipnav(h, n):
     return h.replace("<!--CHIPNAV-->", nav)
 
 
+def h2s(text, n):
+    """'계양신도시 카이브 유보라 AC3블록 청약 일정' → <span class="k">단지명</span> <span class="t">청약 일정</span> (검색어 그대로, 보기만 2단)."""
+    t = str(text or "")
+    for nm in sorted({x for x in (n.get("complex"), n.get("title"), n.get("h1_base")) if x}, key=len, reverse=True):
+        if t.startswith(nm + " ") and len(t) > len(nm) + 1:
+            return Markup(f'<span class="k">{html.escape(nm)}</span> <span class="t">{html.escape(t[len(nm) + 1:])}</span>')
+    return t
+
+
 def trange(a, b=None):
     if not b or a == b:
         return tdate(a)
@@ -1060,6 +1069,65 @@ def site_assets(n):
     return idx
 
 
+def locmap(n, out):
+    """네이버 지도가 없는 공고의 위치 지도 — 통계청 SGIS 2018 행정구역 경계(공공누리 1유형)로 오프라인 생성 (2026-11-03 사용자 결정: 이미지 없는 공고에도 그림 하나)."""
+    try:
+        sys.path.insert(0, str(REPO))
+        import mapgen
+    except Exception:
+        return None
+    addr = (n.get("address") or "").replace("(", " ").replace(")", " ")
+    toks = addr.split()
+    sgg = None
+    big = ("광역시", "특별시", "특별자치시", "특별자치도", "도")
+    for i in range(len(toks) - 1):
+        if toks[i].endswith(("시", "특례시")) and not toks[i].endswith(big) and toks[i + 1].endswith("구"):
+            sgg = f"{toks[i]} {toks[i + 1]}"
+            break
+    sgg = sgg or n.get("sigungu") or ""
+    # 2018 경계 자료 기준 이름으로: '화성특례시' → '화성시', 2026 인천 서구 분구(서해구·검단구) → '서구'
+    sgg = sgg.replace("특례시", "시")
+    if n.get("sido") == "인천" and sgg in ("서해구", "검단구"):
+        sgg = "서구"
+    dong = next((t for t in toks if re.fullmatch(r"[가-힣]+\d*(동|읍|면)", t) and not t.endswith("지구")), None)
+    if not sgg:
+        return None
+    try:
+        svg, info = mapgen.make_map(sgg, dong, n.get("sido"), width=780, height=440, accent="#FF5233", tint="#FFE3D9",
+                                    label_dong=dong)
+        if not svg and " " in sgg:
+            svg, info = mapgen.make_map(sgg.split()[0], None, n.get("sido"), width=780, height=440, accent="#FF5233", tint="#FFE3D9")
+    except Exception as e:
+        print("위치 지도 실패", n["key"], e, file=sys.stderr)
+        return None
+    if not svg:
+        return None
+    out.mkdir(parents=True, exist_ok=True)
+    (out / "locmap.svg").write_text(svg)
+    return {"src": "locmap.svg", "w": 780, "h": 440, "area": f"{n.get('sido', '')} {sgg}" + (f" {dong}" if dong and info.get("found_dong") else "")}
+
+
+def lead_of(n):
+    if n.get("is_pre") or n.get("moved") or not n.get("rcpt") or not n["rcpt"][0]:
+        return ""
+    a, b = n["rcpt"]
+    parts = []
+    if n.get("units"):
+        parts.append(f"{n['units']:,}{n.get('unit_word') or '세대'} 모집")
+    rng = d(a) if (not b or a == b) else f"{d(a)}~{d(b)}"
+    s = f"{rng} 접수"
+    if n.get("is_rental"):
+        rs = n.get("rent_summary") or {}
+        if rs.get("deposit"):
+            s += f", 보증금 {money(rs['deposit'])}" + (f"·월 {money(rs['monthly'])}" if rs.get("monthly") else "") + (f"({rs['basis']})" if rs.get("basis") else "")
+    elif n.get("max_price"):
+        s += f", {n.get('price_label') or '최고 분양가'} {won(n['max_price'])}" + (f"({n['max_type']})" if n.get("max_type") else "")
+    if n.get("announce"):
+        s += f", 당첨자 발표 {d(n['announce'])}"
+    parts.append(s)
+    return ". ".join(parts) + "."
+
+
 def notice_images(n):
     out = PUB / "apt" / n["key"]
     imgs = {}
@@ -1072,6 +1140,10 @@ def notice_images(n):
         sz = img_out(n["map"], out / "map.webp", 960)
         if sz:
             imgs["map"] = {"src": "map.webp", "w": sz[0], "h": sz[1]}
+    if "map" not in imgs and not n.get("houses"):
+        lm = locmap(n, out)
+        if lm:
+            imgs["locmap"] = lm
     plans = []
     for p in n.get("plans", []):
         slug = re.sub(r"[^a-z0-9]+", "-", p["type"].lower()).strip("-")
@@ -1106,7 +1178,7 @@ def notice_images(n):
 def env():
     e = Environment(loader=FileSystemLoader(SITE / "templates"), autoescape=select_autoescape(["html", "xml"]),
                     trim_blocks=True, lstrip_blocks=True)
-    e.filters.update(sd=sd, combine=lambda a, b: {**a, **b}, money=money, mrange=lambda r: f"{money(r[0])[:-1]}~{money(r[1])}" if r and r[0] != r[1] else money(r[0]) if r else '', d=d, drange=drange, won=won, py=py, m2=m2, tdate=tdate, trange=trange, tmonth=tmonth,
+    e.filters.update(sd=sd, h2s=h2s, combine=lambda a, b: {**a, **b}, money=money, mrange=lambda r: f"{money(r[0])[:-1]}~{money(r[1])}" if r and r[0] != r[1] else money(r[0]) if r else '', d=d, drange=drange, won=won, py=py, m2=m2, tdate=tdate, trange=trange, tmonth=tmonth,
                      jsonld=lambda o: Markup(json.dumps(o, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")))
     def crumb_ld(items, last, page_url):
         el = [{"@type": "ListItem", "name": lab, "item": BASE + u} for lab, u in items if u]
@@ -1239,6 +1311,9 @@ def main():
         shutil.rmtree(p) if p.is_dir() else p.unlink()
     css_hash = None
     for f in (SITE / "static").iterdir():
+        if f.is_dir():
+            shutil.copytree(f, PUB / f.name)
+            continue
         if f.name == "style.css":
             css_hash = hashlib.sha1(f.read_bytes()).hexdigest()[:8]
             shutil.copy2(f, PUB / f"style.{css_hash}.css")
@@ -1322,6 +1397,8 @@ def main():
         rel = extra + [x for x in sorted_n(same) + sorted_n(same_kind) if x not in extra]
         n["related"] = rel[:4]
         n["related_title"] = f"{n['sido']}에서 곧 접수하는 공고" if same else "함께 볼 공고"
+        # 첫 문단: 검색자가 찾는 답(세대·접수·가격·발표)을 먼저 한 문장으로 (2026-11-03 리디자인 v2 — SEO 우선)
+        n["lead"] = lead_of(n)
         # 한마디: 결론 한 문장 + 나머지는 '왜 그런지 보기'로 접음 (2026-11-03 사용자 결정 — 읽기 쉬운 구조)
         tk = (n.get("take") or "").strip()
         m_ = re.search(r"(?<=[.!?])\s+", tk)
@@ -1461,7 +1538,16 @@ def main():
     regions_used = sorted(sido_map, key=lambda k: list(regions["sido"]).index(k))
     home_tbl = tsort([x for x in s if x["status"] in ("open", "upcoming")])[:12]
     home_og = og_hub("/", "청약 공고 모음", "오늘 볼 청약 공고", "한눈에 보기", "줍줍(무순위) · 분양 · 신혼희망타운 · 임대 — 접수일 · 분양가 · 자격", s)
-    h = home_tpl.render(groups=home_groups, page_url="/", title=title, desc=desc, og=home_og,
+    # 홈 첫 화면: 마감 임박 (2026-11-03 리디자인 v2 — 링크 상자 대신 실제 공고가 먼저)
+    t0, t1 = TODAY.isoformat(), (TODAY + dt.timedelta(days=1)).isoformat()
+    due = [("오늘 마감", d(t0), [x for x in s if x["status"] == "open" and x["rcpt"][1] == t0]),
+           ("내일 마감", d(t1), [x for x in s if x["status"] == "open" and x["rcpt"][1] == t1])]
+    due = [g for g in due if g[2]]
+    if not due:
+        soon = tsort([x for x in s if x["status"] == "upcoming"])[:5]
+        if soon:
+            due = [("곧 접수 시작", "", soon)]
+    h = home_tpl.render(groups=home_groups, page_url="/", title=title, desc=desc, og=home_og, due=due,
                         regions_used=regions_used, region_slug=regions["sido"], sido_map=sido_map, hub_quick=hub_quick, n_open=n_open, n_up=n_up,
                         tbl=home_tbl, tbl_cap=f"청약 공고 접수 중·예정 {n_open + n_up}곳 중 {len(home_tbl)}곳 — {d(TODAY.isoformat())} 기준 · 청약홈·LH·마이홈 공식 데이터", **common)
     write("/", h, title, desc, "list", max(x["modified"] for x in notices))

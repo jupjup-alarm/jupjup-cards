@@ -6,32 +6,54 @@
 {% endblock %}
 {% block main %}
 <main class="wrap page" id="main">
-  {{ crumbs(n.crumb) }}
-
+  {# 2026-11-03 리디자인 v2 (SEO 우선): 사진이 있으면 사진 → 제목부, 없으면 남색 제목 띠 + 위치 지도 #}
   {% if n.imgs.hero %}
-  <div class="hero">
+  <figure class="hero2">
     <img class="hero-img" src="{{ n.imgs.hero.src }}" width="{{ n.imgs.hero.w }}" height="{{ n.imgs.hero.h }}" alt="{{ n.photo.alt }}" fetchpriority="high" decoding="async"{% if n.photo.pos %} style="object-position:{{ n.photo.pos }}"{% endif %}>
-    <div class="hero-txt">
-      {{ badges(n) }}
-      <h1>{{ n.h1_base or n.title }}{% if n.h1_kw %} <span class="h1-kw">{{ n.h1_kw }}</span>{% endif %}</h1>
-    </div>
-    <span class="hero-credit">{{ n.photo.credit }}</span>
-  </div>
-  <div class="head">
-  {% else %}
-  <div class="head plain">
+    <figcaption>{{ n.photo.credit }}</figcaption>
+  </figure>
+  {% endif %}
+  {% set bmap = n.imgs.map or n.imgs.locmap %}
+  <div class="head{{ '' if n.imgs.hero else ' band' }}">
+    {{ crumbs(n.crumb) }}
     {{ badges(n) }}
     <h1>{{ n.h1_base or n.title }}{% if n.h1_kw %} <span class="h1-kw">{{ n.h1_kw }}</span>{% endif %}</h1>
-  {% endif %}
 {% if n.moved %}<a class="moved" href="{{ n.moved.url }}"><b>공식 공고가 나왔어요</b><span>확정 분양가·청약 일정 보기 →</span></a>{% endif %}
+    {% if n.lead %}<p class="lead">{{ n.lead }}</p>{% endif %}
     <p class="addr">{{ n.address }}</p>
+    {% if not n.lead %}
     <p class="oneline num">{% if n.units %}<span>{{ '{:,}'.format(n.units) }}{{ n.unit_word }}</span>{% endif %}{% if n.is_pre %}<span>예상 {{ n.price_short or n.price_text }}</span><span>{{ '예상 접수 ' ~ (n.rcpt[0]|d) if n.moved else (n.rcpt[0]|d) ~ ' 접수 예정' }}</span>{% elif n.is_rental %}{% if n.houses and n.rent_level %}<span>{{ n.rent_level }}</span>{% elif n.rent_summary.deposit %}<span>보증금 {{ n.rent_summary.deposit|money }}</span>{% endif %}<span>{{ n.rcpt[0]|d }} 접수</span>{% else %}<span>{{ n.price_label|replace(' 분양가', '') }} {{ n.max_price|won }}</span><span>{% if n.status == 'announced' %}{{ n.announce|d }} 발표{% else %}{{ n.rcpt[0]|d }} 접수{% endif %}</span>{% endif %}</p>
+    {% endif %}
+    {% if not n.imgs.hero and bmap %}
+    <figure class="band-map">
+      <img src="{{ bmap.src }}" width="{{ bmap.w }}" height="{{ bmap.h }}" alt="{{ n.map_alt or ((n.complex or n.title) ~ ' 위치 지도') }}" decoding="async">
+      <figcaption><span>{{ bmap.area or (n.near or '') }}</span><span>{{ '© NAVER Corp.' if n.imgs.map else '지도: 통계청 SGIS' }}</span></figcaption>
+    </figure>
+    {% endif %}
   </div>
 {# 첫 화면 '다음 할 일' (2026-11-03 사용자 결정 시안) — 접수 중·예정은 버튼 2개, 접수 끝은 안내 + 지금 넣을 수 있는 공고 #}
 {% set chk_to = '#h-chk' if (n.dz and n.dz.check) else '#h-elig' %}
 {% if not n.is_pre and not n.moved %}
+  <div class="ticket" data-nx="{{ n.status }}">
+    <dl class="tf num">
+      {% if n.is_rental %}
+      <div><dt>임대보증금</dt><dd>{% if n.houses and n.rent_range and n.rent_range.deposit %}{{ n.rent_range.deposit[0]|money }}~{% elif n.rent_summary.deposit %}{{ n.rent_summary.deposit|money }}{% else %}공고문{% endif %}</dd></div>
+      {% else %}
+      <div><dt>{{ n.price_label }}</dt><dd>{{ n.max_price|won }}</dd><dd class="s">{{ n.max_type }} 기준</dd></div>
+      {% endif %}
+      <div><dt>공급</dt><dd>{{ '{:,}'.format(n.units) }}{{ n.unit_word }}</dd>{% if n.units_note %}<dd class="s">{{ n.units_note }}</dd>{% endif %}</div>
+      {% if n.comp and n.comp.short and n.status in ('waiting', 'announced') %}
+      <div><dt>경쟁률</dt><dd>{{ n.comp.short.split(' · ')[-1] }}</dd></div>
+      {% elif n.is_rental %}
+      <div><dt>월 임대료</dt><dd>{% if n.houses and n.rent_range and n.rent_range.monthly %}{{ n.rent_range.monthly[0]|money }}~{% elif n.rent_summary.monthly %}{{ n.rent_summary.monthly|money }}{% else %}공고문{% endif %}</dd></div>
+      {% else %}
+      <div><dt>청약통장</dt><dd>{{ n.account[0] }}</dd><dd class="s">{{ n.account[1] }}</dd></div>
+      {% endif %}
+    </dl>
+    <div class="perf" aria-hidden="true"></div>
+    <div class="tb">
+      <p class="trow"><span>접수</span><b>{{ n.rcpt[0]|tdate }}{% if n.rcpt[1] and n.rcpt[1] != n.rcpt[0] %} ~ {{ n.rcpt[1]|tdate }}{% endif %}</b></p>
   {% if n.status in ('open', 'upcoming') %}
-  <div class="nx" data-nx="{{ n.status }}">
     <div class="nx-row">
       <a class="nx-b p" href="{{ chk_to }}" data-nx-to="check">{% if n.dz and n.dz.check %}나도 넣을 수 있을까?<small>30초 자격 체크 ↓</small>{% else %}누가 넣을 수 있나요?<small>신청 자격 보기 ↓</small>{% endif %}</a>
       {% if n.status == 'open' %}
@@ -43,13 +65,11 @@
       {% endif %}
     </div>
     {% if n.status == 'open' %}
-    <p class="nx-dl">⏰ {% if n.rcpt[1] == today.isoformat() %}오늘 마감{% else %}마감 {{ n.rcpt[1]|tdate }}{% endif %} · 마감 전에 자격부터 확인하세요</p>
+    <p class="nx-dl">{% if n.rcpt[1] == today.isoformat() %}오늘 마감{% else %}마감 {{ n.rcpt[1]|tdate }}{% endif %} · 마감 전에 자격부터 확인하세요</p>
     {% else %}
-    <p class="nx-dl soon">📅 {{ n.rcpt[0]|tdate }} 접수 시작 · {{ '자격·서류를 미리 확인하세요' if n.is_rental else '통장·서류를 미리 준비하세요' }}</p>
+    <p class="nx-dl soon">{{ n.rcpt[0]|tdate }} 접수 시작 · {{ '자격·서류를 미리 확인하세요' if n.is_rental else '통장·서류를 미리 준비하세요' }}</p>
     {% endif %}
-  </div>
-  {% elif n.status in ('waiting', 'announced') %}
-  <div class="nx" data-nx="{{ n.status }}">
+  {% else %}
     <div class="nx-end">
       <b>이 공고는 접수가 끝났어요</b>
       {% if n.status == 'waiting' %}<p>당첨자 발표 {{ n.announce|tdate }} · 결과가 나오면 이 페이지에 경쟁률을 올려요</p>
@@ -57,8 +77,10 @@
       {% for a in n.next_alts %}<a class="nx-alt" href="{{ a.url }}" data-nx-to="alt">{{ a.title }}<span>{{ a.tag }}</span></a>{% endfor %}
       <a class="nx-more" href="/schedule/this-week/" data-nx-to="list">지금 넣을 수 있는 공고 전체 보기 →</a>
     </div>
-  </div>
   {% endif %}
+    </div>
+  </div>
+  <p class="trust"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>{{ n.source_name or '청약홈' }} {{ '입주자모집공고' if not n.is_rental else '모집공고' }}{% if n.notice_date %}({{ n.notice_date|d }}){% endif %} 원문 대조 · 최종 수정 <time datetime="{{ n.modified[:10] }}">{{ n.modified|d }}</time></p>
 {% endif %}
 <!--CHIPNAV-->
 
@@ -67,7 +89,7 @@
   <section class="dz-card" aria-labelledby="h-dz">
     <h2 id="h-dz"><span class="dz-tag">3초 판단</span> {{ n.h2.dz }}</h2>
     <ul class="dz-grid">
-    {% for c in z.cards %}<li class="dz-c s-{{ c.sig }}"><span class="dz-k"><i aria-hidden="true"></i>{{ c.k }}<span class="sr">{{ {'g':' 좋음','y':' 보통','r':' 주의','n':''}[c.sig] }}</span></span><b>{{ c.head }}</b>{% if c.sub %}<small>{{ c.sub }}</small>{% endif %}</li>
+    {% for c in z.cards %}<li class="dz-c s-{{ c.sig }}"><span class="dz-k">{{ c.k }}</span><span class="dz-v"><b>{{ c.head }}</b>{% if c.sub %}<small>{{ c.sub }}</small>{% endif %}</span>{% if c.sig != 'n' %}<span class="dz-m"><span class="dz-g" aria-hidden="true"><i></i><i></i><i></i></span>{{ {'g':'좋음','y':'보통','r':'주의'}[c.sig] }}</span>{% endif %}</li>
     {% endfor %}
     </ul>
     <details class="dz-rule"><summary>신호색은 이렇게 정해요</summary><ul>{% for r in z.rule %}<li>{{ r }}</li>{% endfor %}</ul><p>추천이 아니라 판단 재료예요. 기준에 맞춰 기계적으로 붙이고, 숫자 근거는 아래 각 칸에 있어요.</p></details>
@@ -75,7 +97,7 @@
   {% endif %}
   {# 2026-11-03 사용자 결정: 애드센스는 3초 판단 카드 바로 아래(요약 카드 위)로 올림 #}
   {{ ads_slot('apt_top', 'ad-apt ad-top') }}
-  <aside aria-label="핵심 요약"{% if n.dz %} class="has-dz"{% endif %}>
+  <aside aria-label="핵심 요약"{% if not n.is_pre and not n.moved %} class="has-dz"{% endif %}>
     <div class="summary">
       <dl class="facts num">
         <div><dt>{{ ('공고 전 예상 접수' if n.moved else '접수 예정') if n.is_pre else '접수' }}</dt><dd>{% if n.rcpt[0] == n.rcpt[1] %}<span class="ln">{{ n.rcpt[0]|tdate }}</span><small>{{ n.receipt_note or '하루만 받아요' }}</small>{% else %}<span class="ln">{{ n.rcpt[0]|tdate }}</span><span class="ln">~ {{ n.rcpt[1]|tdate }}</span>{% if n.receipt_note %}<small>{{ n.receipt_note }}</small>{% endif %}{% endif %}</dd></div>
@@ -135,14 +157,7 @@
   </section>
 
   <section class="sec" aria-labelledby="h-sch">
-    <h2 id="h-sch">{{ n.h2.get('sch', '청약 일정') }}</h2>
-    {% if not n.is_pre and n.rcpt[0] %}{% set mv = namespace(s=none, r=none) %}{% for s in n.schedule %}{% if '입주' in s.label and not mv.s %}{% set mv.s = s %}{% endif %}{% if s.label == '청약 접수' and s.start and not mv.r %}{% set mv.r = s %}{% endif %}{% endfor %}{% set ra = mv.r.start if mv.r else n.rcpt[0] %}{% set rb = (mv.r.end or mv.r.start) if mv.r else n.rcpt[1] %}
-    <div class="dcards num">
-      <div class="{{ 'now' if n.status in ('open', 'upcoming') }}"><small>{{ '접수' if n.is_rental else '청약 접수' }}</small><b>{{ ra|sd }}{% if rb and rb != ra %} ~ {{ rb|sd }}{% endif %}</b></div>
-      {% if n.announce %}<div class="{{ 'now' if n.status == 'waiting' }}"><small>당첨자 발표</small><b>{{ n.announce|sd }}</b></div>{% endif %}
-      {% if mv.s %}<div><small>{{ mv.s.label }}</small><b>{% if mv.s.month %}{{ mv.s.month|tmonth }}{% else %}{{ mv.s.start|sd }}{% endif %}</b></div>{% endif %}
-    </div>
-    {% endif %}
+    <h2 id="h-sch">{{ (n.h2.get('sch', '청약 일정'))|h2s(n) }}</h2>
     <ol class="tl num">
     {% set ns = namespace(next=false) %}
     {% for s in n.schedule %}
@@ -150,7 +165,7 @@
       {% set done = s.start and end < today.isoformat() %}
       {% set is_next = (not done) and (not ns.next) and s.start %}
       {% if is_next %}{% set ns.next = true %}{% endif %}
-      <li class="{{ 'done' if done else ('next' if is_next else '') }}"><span class="dot"></span><span class="what">{{ s.label }}{% if is_next %}<span class="now">{{ '오늘' if s.start <= today.isoformat() else '다음' }}</span>{% endif %}{% if s.note %}<small>{{ s.note }}</small>{% endif %}</span>{% if s.month %}<span class="when">{{ s.month|tmonth }}</span>{% else %}<span class="when">{{ s.start|trange(s.end) }}</span>{% endif %}</li>
+      <li class="{{ 'done' if done else ('next' if is_next else '') }}">{% if s.month %}<span class="when">{{ s.month|tmonth }}</span>{% elif s.end and s.end != s.start %}<span class="when">{{ s.start|tdate }}<br>~ {{ s.end|tdate }}</span>{% else %}<span class="when">{{ s.start|tdate }}</span>{% endif %}<span class="dot"></span><span class="what">{{ s.label }}{% if is_next %}<span class="now">{{ '오늘' if s.start <= today.isoformat() else '다음' }}</span>{% endif %}{% if s.note %}<small>{{ s.note }}</small>{% endif %}</span></li>
     {% endfor %}
     </ol>
   </section>
@@ -168,7 +183,7 @@
   {% if n.dz %}{% set z = n.dz %}
   {% if n.gap %}
   <section class="sec" aria-labelledby="h-gap">
-    <h2 id="h-gap">{{ n.h2.gap }}</h2>
+    <h2 id="h-gap">{{ (n.h2.gap)|h2s(n) }}</h2>
     <p class="gapv">{{ n.gap.verdict }}</p>
     {% if z.bars %}
     <div class="vbar num" role="img" aria-label="{{ z.bars.mk[0] }} {{ z.bars.mk[1] }}, {{ z.bars.pr[0] }} {{ z.bars.pr[1] }}">
@@ -257,7 +272,7 @@
 
   {% if n.comp and n.comp.rows %}
   <section class="sec" aria-labelledby="h-comp">
-    <h2 id="h-comp">{{ n.h2.get('comp', '청약 경쟁률') }}</h2>
+    <h2 id="h-comp">{{ (n.h2.get('comp', '청약 경쟁률'))|h2s(n) }}</h2>
     {% if n.comp.summary %}<p class="comp-sum num">{{ n.comp.summary }}</p>{% endif %}
     <div class="tbl">
       <table class="num fit">
@@ -274,13 +289,13 @@
 
   {% if n.is_pre %}
   <section class="sec" aria-labelledby="h-price">
-    <h2 id="h-price">{% if n.h2.price %}{{ n.h2.price }} {% endif %}예상 분양가·공급 규모</h2>
+    <h2 id="h-price">{% if n.h2.price %}<span class="k">{{ n.h2.price }}</span> <span class="t">예상 분양가·공급 규모</span>{% else %}예상 분양가·공급 규모{% endif %}</h2>
     <dl class="kv">{% for k, v in n.pre_rows %}<div><dt>{{ k }}</dt><dd>{{ v }}</dd></div>{% endfor %}</dl>
     <p class="note">{{ n.pre_note or '아직 입주자모집공고가 나오지 않은 단지예요. 위 값은 모두 보도 기준이고, 공고가 나오면 공식 값으로 바꿔요.' }}</p>
   </section>
   {% elif n.is_rental and n.houses %}
   <section class="sec" aria-labelledby="h-price">
-    <h2 id="h-price">{% if n.h2.price %}{{ n.h2.price }} {% endif %}임대 조건</h2>
+    <h2 id="h-price">{% if n.h2.price %}<span class="k">{{ n.h2.price }}</span> <span class="t">임대 조건</span>{% else %}임대 조건{% endif %}</h2>
     {% if n.rental_type %}<p class="lead2">{{ RENTAL_EXPLAIN.get(n.rental_type, '') }}</p>{% endif %}
     <dl class="kv">
       {% if n.rent_level %}<div><dt>임대료 수준</dt><dd><b>{{ n.rent_level }}</b></dd></div>{% endif %}
@@ -293,7 +308,7 @@
   </section>
 
   <section class="sec" aria-labelledby="h-houses">
-    <h2 id="h-houses">{{ n.h2.get('houses', '어디에 있는 집인가요') }}</h2>
+    <h2 id="h-houses">{{ (n.h2.get('houses', '어디에 있는 집인가요'))|h2s(n) }}</h2>
     <div class="hstat">
       <div class="bars">
         <p class="bars-h">지역별</p>
@@ -335,7 +350,7 @@
   </section>
   {% else %}
   <section class="sec" aria-labelledby="h-price">
-    <h2 id="h-price">{% if n.h2.price %}{{ n.h2.price }} 분양가·공급 세대{% else %}분양가·공급 세대{% endif %}</h2>
+    <h2 id="h-price">{% if n.h2.price %}<span class="k">{{ n.h2.price }}</span> <span class="t">분양가·공급 세대</span>{% else %}분양가·공급 세대{% endif %}</h2>
     <div class="tbl">
       <table class="num fit">
         <caption>{{ n.price_label|replace('최고 ', '') }}은 주택형별 최고가 기준. 층·호별 금액은 공고문 참고.</caption>
@@ -357,14 +372,14 @@
 
   {% if n.steps %}
   <section class="sec" aria-labelledby="h-how">
-    <h2 id="h-how">{{ n.h2.get('how', '신청 방법') }}</h2>
+    <h2 id="h-how">{{ (n.h2.get('how', '신청 방법'))|h2s(n) }}</h2>
     <ol class="steps">{% for a, b in n.steps %}<li><b>{{ a }}</b><span>{{ b }}</span></li>{% endfor %}</ol>
   </section>
   {% endif %}
 
   {% if n.gap and not n.dz %}
   <section class="sec" aria-labelledby="h-gap">
-    <h2 id="h-gap">{{ n.h2.gap }}</h2>
+    <h2 id="h-gap">{{ (n.h2.gap)|h2s(n) }}</h2>
     <p class="gapv">{{ n.gap.verdict }}</p>
     <p class="gapt">{{ n.gap.text }}</p>
     <dl class="kv wide">{% for k, v in n.gap.rows %}<div><dt>{{ k }}</dt><dd class="num">{{ v }}</dd></div>{% endfor %}</dl>
@@ -374,7 +389,7 @@
 
   {% if n.areas or n.imgs.plans or (n.models and not n.is_pre) %}
   <section class="sec" aria-labelledby="h-plan">
-    <h2 id="h-plan">{{ n.h2.get('plan', '평면도·면적') }}</h2>
+    <h2 id="h-plan">{{ (n.h2.get('plan', '평면도·면적'))|h2s(n) }}</h2>
     {% if n.imgs.plans %}
       {% if n.imgs.plans|length > 1 %}
       <div class="ptabs" role="tablist" aria-label="주택형" hidden>
@@ -433,7 +448,7 @@
 
   {% if n.imgs.layouts %}
   <section class="sec" aria-labelledby="h-layout">
-    <h2 id="h-layout">{{ n.h2.get('layout', '단지 배치도') }}</h2>
+    <h2 id="h-layout">{{ (n.h2.get('layout', '단지 배치도'))|h2s(n) }}</h2>
     <div class="plans">
     {% for p in n.imgs.layouts %}
       <figure class="fig">
@@ -448,7 +463,7 @@
 
   {% if n.imgs.gallery or n.site_links %}
   <section class="sec" aria-labelledby="h-tour">
-    <h2 id="h-tour">{{ n.h2.get('tour', '단지 둘러보기') }}</h2>
+    <h2 id="h-tour">{{ (n.h2.get('tour', '단지 둘러보기'))|h2s(n) }}</h2>
     {% if n.imgs.gallery %}
     <div class="gal">
     {% for p in n.imgs.gallery %}
@@ -470,11 +485,16 @@
 
   {% if not n.houses %}
   <section class="sec" aria-labelledby="h-loc">
-    <h2 id="h-loc">{{ n.h2.loc }}</h2>
+    <h2 id="h-loc">{{ (n.h2.loc)|h2s(n) }}</h2>
     {% if n.imgs.map %}
     <figure class="fig">
       <img src="{{ n.imgs.map.src }}" width="{{ n.imgs.map.w }}" height="{{ n.imgs.map.h }}" alt="{{ n.map_alt or (n.complex ~ ' 위치 지도') }}" loading="lazy">
       <figcaption>© NAVER Corp.</figcaption>
+    </figure>
+    {% elif n.imgs.locmap %}
+    <figure class="fig">
+      <img src="{{ n.imgs.locmap.src }}" width="{{ n.imgs.locmap.w }}" height="{{ n.imgs.locmap.h }}" alt="{{ (n.complex or n.title) ~ ' 위치 지도 — ' ~ n.imgs.locmap.area }}" loading="lazy">
+      <figcaption>지도: 통계청 SGIS 행정구역 경계(공공누리 제1유형) · 대략적인 위치</figcaption>
     </figure>
     {% endif %}
     <p class="place">{{ n.address }}{% if n.near %} ({{ n.near }}){% endif %} · <a href="https://map.naver.com/p/search/{{ (n.naver_query or n.address)|urlencode }}" target="_blank" rel="noopener">네이버 지도에서 보기</a></p>
@@ -482,7 +502,7 @@
   {% endif %}
 
   <section class="sec" aria-labelledby="h-elig">
-    <h2 id="h-elig">{{ n.h2.get('elig', '신청 자격') }}</h2>
+    <h2 id="h-elig">{{ (n.h2.get('elig', '신청 자격'))|h2s(n) }}</h2>
     <dl class="kv">
     {% for row in n.eligibility %}<div><dt>{{ row[0] }}</dt><dd>{{ row[1] }}{% if row|length > 2 and row[2] %} <span class="tag">{{ row[2] }}</span>{% endif %}</dd></div>
     {% endfor %}
@@ -556,7 +576,7 @@
     {% if n.source_line %}<p>{{ n.source_line }}</p>{% elif not n.is_pre %}<p>청약홈 입주자모집공고 (모집공고일 {{ n.notice_date|d }}) · 청약홈 공공데이터 {{ n.fetched_at|replace('-', '.') }} 기준</p>{% endif %}
     {% for s in n.sources_extra|default([]) %}<p>{{ s }}</p>{% endfor %}
     {% if n.pre_page %}<p>공고 전 전망과 비교: <a href="{{ n.pre_page.url }}">{{ n.pre_page.title }} 예상 vs 실제</a></p>{% endif %}
-    {% if n.imgs.map %}<p>지도 © NAVER Corp.</p>{% endif %}
+    {% if n.imgs.map %}<p>지도 © NAVER Corp.</p>{% elif n.imgs.locmap %}<p>지도: 통계청 SGIS 2018 행정구역 경계 (공공누리 제1유형)</p>{% endif %}
     <p>최종 수정 <time datetime="{{ n.modified[:10] }}">{{ n.modified|d }}</time> · 내용이 다르면 <a href="/contact/">오류 알려주기</a></p>
     <p>정보 제공 목적이며 투자 권유가 아니에요. 신청 전 입주자모집공고 원문을 꼭 확인하세요.</p>
   </section>
