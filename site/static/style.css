@@ -695,3 +695,6 @@ h1{font-weight:800;letter-spacing:-.03em;font-size:26px;line-height:1.28}
 .lead,.band .addr,.tf dd.s,.trow,.nx-end p{word-break:keep-all;overflow-wrap:anywhere}
 .tf dd:not(.s){overflow:hidden;text-overflow:clip}
 .fcalc{grid-template-columns:minmax(0,1fr)}.frow input{width:0}
+/* 2026-11-03 사용자 요청: 한마디 접지 않고 펼쳐 보여줌 */
+.take p{word-break:keep-all;overflow-wrap:anywhere}
+.take .take-rest{margin-top:10px}
