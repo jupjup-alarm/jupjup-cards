@@ -512,3 +512,21 @@ footer nav{display:flex;flex-wrap:wrap;gap:4px 12px}
 /* 애드센스: 광고가 안 채워지면(승인 전·재고 없음) 자리를 접는다 (2026-11-03) */
 .ad-g:has(ins[data-ad-status="unfilled"]){display:none}
 .ad-guide{margin:28px 0}
+
+/* 첫 화면 '다음 할 일' (2026-11-03) */
+.nx{display:grid;gap:8px;margin:2px 0 14px}
+.nx-row{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:8px}
+.nx-b{display:flex;flex-direction:column;justify-content:center;min-height:56px;border-radius:12px;padding:8px 12px;text-decoration:none;font-weight:800;font-size:15px;line-height:1.25}
+.nx-b small{font-weight:600;font-size:12px;opacity:.85;margin-top:2px}
+.nx-b.p{background:var(--ink);color:#fff}
+.nx-b.g{background:var(--paper);color:var(--ink);border:1px solid var(--line)}
+.nx-dl{margin:0;font-size:13px;font-weight:700;color:var(--coral-strong)}
+.nx-dl.soon{color:var(--blue)}
+.nx-end{background:#F4F5F8;border-radius:12px;padding:14px 14px 8px}
+.nx-end b{display:block;font-size:16px;color:var(--ink)}
+.nx-end p{margin:4px 0 8px;font-size:13px;color:var(--ink-sub)}
+.nx-end p a{color:var(--blue);font-weight:700}
+.nx-alt{display:flex;justify-content:space-between;align-items:center;gap:8px;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:11px 12px;margin-top:6px;text-decoration:none;color:var(--ink);font-weight:700;font-size:14px;line-height:1.35}
+.nx-alt span{font-size:12px;font-weight:800;color:var(--coral-strong);white-space:nowrap}
+.nx-more{display:block;text-align:center;font-size:13px;font-weight:700;color:var(--blue);padding:10px 0 4px;text-decoration:none}
+@media (min-width:1024px){.nx{max-width:520px}}

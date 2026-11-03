@@ -1297,6 +1297,15 @@ def main():
         rel = extra + [x for x in sorted_n(same) + sorted_n(same_kind) if x not in extra]
         n["related"] = rel[:4]
         n["related_title"] = f"{n['sido']}에서 곧 접수하는 공고" if same else "함께 볼 공고"
+        # 첫 화면 '다음 할 일' (2026-11-03 사용자 결정 — 접수 끝난 공고로 들어온 사람을 지금 넣을 수 있는 공고로)
+        n["next_alts"] = []
+        if n["status"] in ("waiting", "announced"):
+            for x in rel[:2]:
+                if x["status"] == "open":
+                    tag = "오늘 마감" if x["rcpt"][1] == TODAY.isoformat() else f"마감 {d(x['rcpt'][1])}"
+                else:
+                    tag = f"D-{dday(x)}"
+                n["next_alts"].append({"url": x["url"], "title": x["title"], "tag": tag})
         st = n["status"]
         typ = n["kind_label"]
         seo = seo_of(n)

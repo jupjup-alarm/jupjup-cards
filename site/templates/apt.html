@@ -27,6 +27,37 @@
     <p class="addr">{{ n.address }}</p>
     <p class="oneline num">{% if n.units %}<span>{{ '{:,}'.format(n.units) }}{{ n.unit_word }}</span>{% endif %}{% if n.is_pre %}<span>예상 {{ n.price_short or n.price_text }}</span><span>{{ '예상 접수 ' ~ (n.rcpt[0]|d) if n.moved else (n.rcpt[0]|d) ~ ' 접수 예정' }}</span>{% elif n.is_rental %}{% if n.houses and n.rent_level %}<span>{{ n.rent_level }}</span>{% elif n.rent_summary.deposit %}<span>보증금 {{ n.rent_summary.deposit|money }}</span>{% endif %}<span>{{ n.rcpt[0]|d }} 접수</span>{% else %}<span>{{ n.price_label|replace(' 분양가', '') }} {{ n.max_price|won }}</span><span>{% if n.status == 'announced' %}{{ n.announce|d }} 발표{% else %}{{ n.rcpt[0]|d }} 접수{% endif %}</span>{% endif %}</p>
   </div>
+{# 첫 화면 '다음 할 일' (2026-11-03 사용자 결정 시안) — 접수 중·예정은 버튼 2개, 접수 끝은 안내 + 지금 넣을 수 있는 공고 #}
+{% set chk_to = '#h-chk' if (n.dz and n.dz.check) else '#h-elig' %}
+{% if not n.is_pre and not n.moved %}
+  {% if n.status in ('open', 'upcoming') %}
+  <div class="nx" data-nx="{{ n.status }}">
+    <div class="nx-row">
+      <a class="nx-b p" href="{{ chk_to }}" data-nx-to="check">{% if n.dz and n.dz.check %}나도 넣을 수 있을까?<small>30초 자격 체크 ↓</small>{% else %}누가 넣을 수 있나요?<small>신청 자격 보기 ↓</small>{% endif %}</a>
+      {% if n.status == 'open' %}
+      <a class="nx-b g" href="{{ n.source_url }}" target="_blank" rel="noopener" data-nx-to="official">{{ n.source_name or '청약홈' }}에서 신청<small>공식 사이트로 이동 ↗</small></a>
+      {% else %}
+      <a class="nx-b g" href="{{ IG }}" target="_blank" rel="noopener" data-nx-to="follow">접수일 알림 받기<small>인스타 팔로우 ↗</small></a>
+      {% endif %}
+    </div>
+    {% if n.status == 'open' %}
+    <p class="nx-dl">⏰ {% if n.rcpt[1] == today.isoformat() %}오늘 마감{% else %}마감 {{ n.rcpt[1]|tdate }}{% endif %} · 마감 전에 자격부터 확인하세요</p>
+    {% else %}
+    <p class="nx-dl soon">📅 {{ n.rcpt[0]|tdate }} 접수 시작 · {{ '자격·서류를 미리 확인하세요' if n.is_rental else '통장·서류를 미리 준비하세요' }}</p>
+    {% endif %}
+  </div>
+  {% elif n.status in ('waiting', 'announced') %}
+  <div class="nx" data-nx="{{ n.status }}">
+    <div class="nx-end">
+      <b>이 공고는 접수가 끝났어요</b>
+      {% if n.status == 'waiting' %}<p>당첨자 발표 {{ n.announce|tdate }} · 결과가 나오면 이 페이지에 경쟁률을 올려요</p>
+      {% else %}<p>당첨자 발표까지 끝났어요{% if n.comp and n.comp.rows %} · <a href="#h-comp" data-nx-to="comp">경쟁률 결과 보기 ↓</a>{% endif %}</p>{% endif %}
+      {% for a in n.next_alts %}<a class="nx-alt" href="{{ a.url }}" data-nx-to="alt">{{ a.title }}<span>{{ a.tag }}</span></a>{% endfor %}
+      <a class="nx-more" href="/schedule/this-week/" data-nx-to="list">지금 넣을 수 있는 공고 전체 보기 →</a>
+    </div>
+  </div>
+  {% endif %}
+{% endif %}
 
 
   {% if n.dz %}{% set z = n.dz %}
@@ -514,6 +545,9 @@
   <button class="btn ghost" type="button" data-share>공유하기</button>
   <a class="btn primary" href="{{ IG }}" target="_blank" rel="noopener">{{ ig_icon() }}인스타 팔로우</a>
 </div>
+<script>
+document.querySelectorAll('[data-nx-to]').forEach(function(a){a.addEventListener('click',function(){var b=a.closest('[data-nx]');if(window.jjEv)jjEv('next_click',{to:a.dataset.nxTo,state:b?b.dataset.nx:''});});});
+</script>
 {% if n.dz %}
 <script>
 (function(){
