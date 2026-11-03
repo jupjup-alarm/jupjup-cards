@@ -694,3 +694,4 @@ h1{font-weight:800;letter-spacing:-.03em;font-size:26px;line-height:1.28}
 /* 2026-11-03: 한국어 줄바꿈을 낱말 단위로 (2만4,|480원, 12.2(|수) 같은 꺾임 방지) */
 .lead,.band .addr,.tf dd.s,.trow,.nx-end p{word-break:keep-all;overflow-wrap:anywhere}
 .tf dd:not(.s){overflow:hidden;text-overflow:clip}
+.fcalc{grid-template-columns:minmax(0,1fr)}.frow input{width:0}
