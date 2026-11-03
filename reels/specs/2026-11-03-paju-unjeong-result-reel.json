@@ -1,0 +1,59 @@
+{
+ "slug": "2026-11-03-paju-unjeong-result-reel",
+ "title": "파주 운정 우미 린 더 센텀 청약 결과",
+ "series": "줍줍알람",
+ "voice": "voices/08a4e71c5e66/",
+ "voice_speed": 1.0,
+ "scenes": [
+  {
+   "type": "hook",
+   "chips": [
+    "줍줍알람"
+   ],
+   "lines": [
+    "1세대에",
+    "2,564명 몰렸어요"
+   ],
+   "sub": "파주 84㎡ 줍줍 결과",
+   "face": "깜짝",
+   "photo": "photos/mood/2c4436dfed-1.jpg"
+  },
+  {
+   "type": "beat",
+   "eyebrow": "왜",
+   "big": "5억4,250만원",
+   "big_sub": "옆 단지 84㎡ 7억9,500만원",
+   "highlight": "5억4,250만원",
+   "say": "파주 운정 84㎡가 5억 4,250만 원, 옆 단지는 7억 9,500만 원이에요.",
+   "bg": "maps/780b14cfcada.png"
+  },
+  {
+   "type": "beat",
+   "eyebrow": "전체",
+   "big": "2세대에 4,981명",
+   "big_sub": "84B도 2,417대 1",
+   "highlight": "2세대에 4,981명",
+   "say": "84A는 2,564대 1이었고, 84B도 2,417대 1이었어요.",
+   "bg": "photos/mood/2c4436dfed-2.jpg",
+   "bg_pos": "center 25%"
+  },
+  {
+   "type": "beat",
+   "eyebrow": "다만",
+   "big": "추첨 · 가점 무관",
+   "big_sub": "다음 줍줍 11/4 부천 26세대",
+   "highlight": "추첨 · 가점 무관",
+   "say": "다만 추첨이라 가점은 안 봤어요. 다음 줍줍은 내일 부천 고강동 26세대예요.",
+   "bg": "none"
+  },
+  {
+   "type": "cta",
+   "lines": [
+    "다음엔 몇 명?",
+    "댓글로 예측해주세요"
+   ],
+   "highlight": "댓글",
+   "ask": "팔로우하면 다음 줍줍 바로 알려드려요"
+  }
+ ]
+}
