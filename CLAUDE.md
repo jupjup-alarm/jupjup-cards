@@ -71,6 +71,11 @@ git add specs cards && git commit -m "cards: <slug>" && git push origin HEAD:mai
 ```
 main에 푸시가 거절되면 `cards` 브랜치에 푸시하고 `CARDS_BRANCH=cards`로 다시 렌더링해 주소를 맞춘다.
 
+## 카드 영상 — `cardreel.py` (2026-11-03 사용자 결정)
+- 인스타 카드뉴스는 캐러셀 대신 **카드 영상 릴스**로 올린다 (새 계정이라 캐러셀 도달이 1~5명 — 릴스는 비팔로워에게 추천됨, @donnamu_grow 카드 영상 175만 회 형식).
+- 카드를 render.py로 만든 뒤 `python3 cardreel.py cards/<slug>` → `reels/<slug>-cards/<slug>-cards.mp4`(1080×1920, 표지 2.4초·카드마다 3.1초, 밀어 넘기기 + 작은 효과음), `<slug>-cards_thumb.jpg`, `manifest.json`.
+- '오늘의 발행 플랜' S열에는 카드 jpg 주소 대신 그 manifest의 video + 줄바꿈 + cover를 넣는다 (시트 스크립트가 .mp4를 보고 릴스로 게시). 실패하면 예전처럼 jpg 주소. 올리기: `git add specs cards photos reels`.
+
 ## 숏츠(릴스) — `reel.py`
 - 원고: `reels/specs/<slug>.json` → `python3 reel.py reels/specs/<slug>.json` → `reels/<slug>/reel.mp4`, `cover.jpg`, `preview.jpg`, `manifest.json` + 이름 붙은 사본 `<slug>.mp4`·`<slug>_thumb.jpg` (manifest의 video·cover 주소는 사본 쪽 — 내려받아도 파일명이 겹치지 않게, 2026-11-02)
 - 썸네일 (2026-11-02 "썸네일이 너무 구려서"): reel.py가 끝에 `thumb.py`로 `<slug>_thumb.jpg`를 큰 글자 표지(사진 꽉 채움 + 칩·빨간 띠 + 근거 한 줄 + 2줄, 둘째 줄 노랑)로 다시 만든다. hook의 photo·chips(둘째 칩 = 빨간 띠)·basis(없으면 sub)·lines를 쓰고, 원고 맨 위 `"thumb": {"badge": "11/4 마감", "lines": [...], "basis": ...}`로 덮어쓸 수 있다. 사진이 없으면 첫 프레임 사본 그대로. 단독 실행: `python3 thumb.py thumbs/<slug>.json`.
