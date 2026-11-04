@@ -18,7 +18,15 @@ const { chromium } = require('playwright');
     return null;
   }, needle);
   await p.waitForTimeout(500);
+  // 강조 박스 위치(화면 비율) — 장면이 그쪽으로 다가가게 official.json에 남긴다
+  const box = await p.evaluate(() => {
+    const el = [...document.querySelectorAll('*')].find(x => x.style && x.style.outline && x.style.outline.includes('solid'));
+    if (!el) return null;
+    const r = el.getBoundingClientRect();
+    return { x: (r.left + r.width / 2) / innerWidth, y: (r.top + r.height / 2) / innerHeight };
+  });
   await p.screenshot({ path: out });
-  console.log(JSON.stringify({ hit }));
+  require('fs').writeFileSync(out.replace(/\.png$/, '.json'), JSON.stringify({ hit, box }));
+  console.log(JSON.stringify({ hit, box }));
   await b.close();
 })();

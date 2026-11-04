@@ -22,7 +22,7 @@ def section(title_prefix):
 
 
 FMT = """마지막에 아래 형식의 ```json 블록 하나로만 판정을 낸다.
-{"verdict": "통과" 또는 "반려", "summary": "한 줄", "fixes": [{"scene": "장면 id", "field": "say[2] 또는 data.rows[1][1] 같은 위치", "now": "지금 video.json에 있는 글자 그대로(정확히 복사)", "fix": "고친 글자", "why": "이유(팩트체크면 원문 발췌와 URL)"}]}
+{"verdict": "통과" 또는 "반려", "after_fix": "fixes를 그대로 넣으면 통과인지: 통과 또는 반려", "summary": "한 줄", "fixes": [{"scene": "장면 id", "field": "say[2] 또는 data.rows[1][1] 같은 위치", "now": "지금 video.json에 있는 글자 그대로(정확히 복사)", "fix": "고친 글자", "why": "이유(팩트체크면 원문 발췌와 URL)"}]}
 now는 video.json 원문과 한 글자도 다르지 않게 복사한다(바꿔 넣기에 쓴다). 고칠 게 없으면 fixes는 []."""
 
 
@@ -49,13 +49,13 @@ def fact(ep, spec, research):
 
 
 def style(ep, spec, research):
-    rules = "\n".join(section(t) for t in ("3. video.json", "4. 문장 규칙", "4-1.", "4-2.", "4-3."))
+    rules = "\n".join(section(t) for t in ("3. video.json", "3-1.", "3-2.", "4. 문장 규칙", "4-1.", "4-2.", "4-3."))
     system = ("너는 '효도알람' 문장 검수자다. 60대 시청자가 일상에서 쓰는 말인지, 번역투·행정투가 없는지, 쉼 표기(` / `)가 규칙대로인지 본다. "
               "사실(숫자·날짜·조건)의 뜻은 절대 바꾸지 않는다.")
     user = f"""규칙:
 {rules}
 
-아래 video.json의 화면 문구(title, thumb, 모든 data 글자)와 say를 한 줄씩 판정해라.
+아래 video.json의 화면 문구(title, thumb, 모든 data 글자, shorts의 lines)와 say(롱폼 장면·숏츠 beats)를 한 줄씩 판정해라. 0초 규칙(hook 첫 문장·숏츠 첫 beat가 대상+손익인지)도 본다.
 - 번역투(~에 대해, ~를 통해, ~으로 인해, ~하는 것이 가능, ~되어지다, ~하게 됩니다, 사물 주어 피동문), 명사로 뚝 끊긴 문구, '끝·완료·마감' 같은 두 뜻 말을 고친다.
 - 쉼 표기: 넣어야 할 자리에 없는 ` / `, 넣으면 안 되는 자리(날짜·숫자와 단위·꾸미는 말과 명사 사이)의 ` / `, 5자 미만 구절, 32자 넘는 구절.
 - 화면 문구가 길어 글자가 줄어들 만한 곳(표 한 칸 14자 넘음, 체크 문항 두 줄 넘음)은 짧게.
@@ -65,7 +65,7 @@ def style(ep, spec, research):
 {json.dumps(spec, ensure_ascii=False, indent=1)}
 
 {FMT}"""
-    return llm.ask(user, system=system, model=llm.MODEL_FAST, max_tokens=16000,
+    return llm.ask(user, system=system, model=llm.MODEL_FAST, max_tokens=48000,
                    log=ep / "out" / "llm_usage.jsonl", tag="style")
 
 
@@ -138,7 +138,14 @@ def main():
     print(json.dumps({"kind": kind, "verdict": res.get("verdict"), "summary": res.get("summary"),
                       "fixes": len(res.get("fixes") or []), "applied": res.get("applied"),
                       "not_applied": len(res.get("not_applied") or [])}, ensure_ascii=False))
-    sys.exit(0 if res.get("verdict") == "통과" else 2)
+    ok = res.get("verdict") == "통과"
+    # 고칠 문장을 전부 넣었고 검수자가 '넣으면 통과'라고 했으면 통과로 본다(라운드마다 새 지적이 나와 끝나지 않는 것을 막음)
+    if not ok and "--apply" in rest and res.get("after_fix") == "통과" and res.get("fixes") and not res.get("not_applied"):
+        ok = True
+        res["verdict_final"] = "통과(고칠 문장 반영)"
+        (out / f"review_{kind}.json").write_text(json.dumps(res, ensure_ascii=False, indent=1))
+        print(json.dumps({"kind": kind, "verdict_final": res["verdict_final"]}, ensure_ascii=False))
+    sys.exit(0 if ok else 2)
 
 
 if __name__ == "__main__":

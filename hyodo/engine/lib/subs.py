@@ -175,6 +175,14 @@ def ass_time(t):
     return f"{int(h)}:{int(m):02d}:{s:05.2f}"
 
 
+NUM = re.compile(r"(\S*\d\S*)")
+
+
+def color_nums(line):
+    """숫자가 든 어절(금액·날짜·비율)은 노란색 — 2026-11-04 벤치마크 분석(강조색)."""
+    return NUM.sub(lambda m: "{\\c&H00D7FF&}" + m.group(1) + "{\\c&HFFFFFF&}", line)
+
+
 def ass(ev, portrait):
     W, H = (1080, 1920) if portrait else (1920, 1080)
     fs, ml, mv = (76, 40, 400) if portrait else (80, 80, 48)
@@ -192,7 +200,7 @@ Style: Sub,Noto Sans CJK KR,{fs},&H00FFFFFF,&H00FFFFFF,&H00141414,&H8C000000,-1,
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 """
-    body = "\n".join(f"Dialogue: 0,{ass_time(a)},{ass_time(b)},Sub,,0,0,0,," + "\\N".join(break_lines(t)) for a, b, t in ev)
+    body = "\n".join(f"Dialogue: 0,{ass_time(a)},{ass_time(b)},Sub,,0,0,0,," + "\\N".join(map(color_nums, break_lines(t))) for a, b, t in ev)
     return head + body + "\n"
 
 

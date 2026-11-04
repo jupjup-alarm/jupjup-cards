@@ -9,8 +9,30 @@ def mmss(t):
     t = int(t); return f"{t // 60}:{t % 60:02d}"
 
 
+BANNED = ["속보", "긴급", "충격", "발칵", "LIVE", "라이브", "실시간", "건국 이래", "역대급", "난리"]
+
+
+def check_title(spec):
+    """2026-11-04 벤치마크 분석: 과장 태그 금지(멈춤), 제목이 썸네일 글자를 되풀이하면 경고(제목은 썸네일을 보완)."""
+    titles = [spec["title"]] + [s["title"] for s in spec.get("shorts", [])]
+    th = spec.get("thumb", {})
+    for tt in titles + [th.get("big", ""), th.get("age", "")]:
+        bad = [w for w in BANNED if w.lower() in tt.lower()]
+        if bad:
+            raise SystemExit(f"제목·썸네일에 과장 표현 {bad}: {tt}")
+    words = lambda s: {w for w in s.replace(",", " ").split() if len(w) >= 2}
+    same = words(spec["title"]) & (words(th.get("big", "")) | words(th.get("age", "")))
+    warn = []
+    if len(same) >= 2:
+        warn.append(f"제목이 썸네일 글자를 되풀이함 {sorted(same)} — 제목은 누가·무엇·언제·왜를 문장으로 보완")
+    return warn
+
+
 def make(ep):
     spec = json.loads((ep / "video.json").read_text())
+    warn = check_title(spec)
+    for w in warn:
+        print("[경고]", w)
     tl = json.loads((ep / "out" / "timeline.json").read_text())
     t, chapters = 0.0, []
     for s in spec["scenes"]:
@@ -23,7 +45,10 @@ def make(ep):
     hs = spec.get("hashtags") or ["#" + tags[0].replace(" ", ""), "#정부지원금"]
     hashtags = " ".join(hs + ["#효도알람"])
     playlist = spec.get("playlist") or {"본인": "본인 받을 돈", "자녀": "자녀 받을 돈"}.get(spec.get("category", ""), "달라지는 정책")
-    rows = S["summary"]["data"]["rows"]
+    # 3줄 요약: 2026-11-04부터 summary 장면 대신 outro.data.rows (예전 편은 summary)
+    rows = (S["summary"]["data"]["rows"] if "summary" in S else
+            next(s for s in spec["scenes"] if s["type"] == "outro")["data"]["rows"])
+    S.setdefault("apply", next((s for s in spec["scenes"] if s["type"] == "apply"), {"data": {"tel": ""}}))
     src = "\n".join(f"· {x['name']} {x['url']}" for x in spec["sources"])
     desc = (f"{spec['title']}\n\n"
             + "\n".join(f"✔ {a}: {b}" for a, b in rows)
@@ -39,7 +64,7 @@ def make(ep):
         shorts.append({"id": sh["id"], "format": "숏츠", "title": sh["title"],
                        "description": f"{sh['title']}\n\n자세한 신청 방법은 효도알람 전체 영상에서 확인하세요.\n\n[출처] 확인일 {spec['checked']}\n{src}\n\n{NOTICE}\n\n" + " ".join(hs[:2] + ["#shorts"]),
                        "tags": tags, "video": f"{sh['id']}.mp4", "playlist": playlist, "parent": spec["id"]})
-    out = {"long": long, "shorts": shorts}
+    out = {"long": long, "shorts": shorts, "warnings": warn}
     (ep / "out" / "upload.json").write_text(json.dumps(out, ensure_ascii=False, indent=1))
     return out
 
