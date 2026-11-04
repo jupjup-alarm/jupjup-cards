@@ -65,7 +65,7 @@ def style(ep, spec, research):
 {json.dumps(spec, ensure_ascii=False, indent=1)}
 
 {FMT}"""
-    return llm.ask(user, system=system, model=llm.MODEL_FAST, max_tokens=16000,
+    return llm.ask(user, system=system, model=llm.MODEL_FAST, max_tokens=48000,
                    log=ep / "out" / "llm_usage.jsonl", tag="style")
 
 
