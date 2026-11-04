@@ -1300,3 +1300,5 @@ body:has(.lwrap:not(.home)){background:var(--ground)}
   .top.sub .wrap{grid-template-columns:72px minmax(0,1fr) 72px}
   .top.sub .hdr-share{justify-self:end}
 }
+/* 2026-11-04 사용자 요청: 아래 고정 CTA 바가 바로가기 탭(일정·30초 체크·주의점…, z 20)·본문 위로 오게 */
+.bar{z-index:35}
