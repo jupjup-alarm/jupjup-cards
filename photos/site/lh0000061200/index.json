@@ -1,0 +1,120 @@
+{
+ "key": "lh0000061200",
+ "owner": "LH 팸플릿(2021)",
+ "images": [
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "단지 투시도",
+   "file": "photos/site/lh0000061200/birdseye.jpg",
+   "src": "LH 고양지축 B-1블록 공공분양주택 팸플릿(2021.9) p.3",
+   "w": 1890,
+   "h": 1183,
+   "md5": "28fa16e5ddd6d834f6668f1edb988414",
+   "photo": true
+  },
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "단지 전체(항공 투시도)",
+   "file": "photos/site/lh0000061200/birdseye-2.jpg",
+   "src": "LH 고양지축 B-1블록 공공분양주택 팸플릿(2021.9) p.6",
+   "w": 1660,
+   "h": 1204,
+   "md5": "65f7e844c148ea803f64866d95360d11",
+   "photo": true
+  },
+  {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "6개 동 612세대 · 타입별 색 구분",
+   "file": "photos/site/lh0000061200/siteplan.jpg",
+   "src": "LH 고양지축 B-1블록 공공분양주택 팸플릿(2021.9) p.20",
+   "w": 1671,
+   "h": 1694,
+   "md5": "82658abf623d0ce60f3f852507f2f570",
+   "photo": false
+  },
+  {
+   "cat": "dongho",
+   "kind": "동호배치도",
+   "label": "101~106동",
+   "file": "photos/site/lh0000061200/dongho.jpg",
+   "src": "LH 고양지축 B-1블록 공공분양주택 팸플릿(2021.9) p.20",
+   "w": 1399,
+   "h": 1930,
+   "md5": "0d063ba3f05ba421c0f343f20b6ecf74",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "59B",
+   "file": "photos/site/lh0000061200/plan-59b.jpg",
+   "src": "LH 고양지축 B-1블록 공공분양주택 팸플릿(2021.9) p.14",
+   "w": 1346,
+   "h": 1316,
+   "md5": "b1fa482eb3ebbd6277cf0243dd8bc004",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "84A",
+   "file": "photos/site/lh0000061200/plan-84a.jpg",
+   "src": "LH 고양지축 B-1블록 공공분양주택 팸플릿(2021.9) p.16",
+   "w": 1383,
+   "h": 1008,
+   "md5": "0a56ad7d20beee93162d90b229bff4b2",
+   "photo": false
+  },
+  {
+   "cat": "interior",
+   "kind": "인테리어",
+   "label": "59B 거실(견본)",
+   "file": "photos/site/lh0000061200/interior-59b-living.jpg",
+   "src": "LH 고양지축 B-1블록 공공분양주택 팸플릿(2021.9) p.9",
+   "w": 1629,
+   "h": 1180,
+   "md5": "41b1152258ea913e08cccdbfc7e5fda5",
+   "photo": true
+  },
+  {
+   "cat": "interior",
+   "kind": "인테리어",
+   "label": "59B 주방(견본)",
+   "file": "photos/site/lh0000061200/interior-59b-kitchen.jpg",
+   "src": "LH 고양지축 B-1블록 공공분양주택 팸플릿(2021.9) p.9",
+   "w": 1625,
+   "h": 1215,
+   "md5": "0ce0c4313b1ce0b2f63e1150fc225425",
+   "photo": true
+  },
+  {
+   "cat": "interior",
+   "kind": "인테리어",
+   "label": "84A 거실(견본)",
+   "file": "photos/site/lh0000061200/interior-84a-living.jpg",
+   "src": "LH 고양지축 B-1블록 공공분양주택 팸플릿(2021.9) p.10",
+   "w": 1660,
+   "h": 1225,
+   "md5": "6adece4faaa362acb5d9085cef090a51",
+   "photo": true
+  },
+  {
+   "cat": "interior",
+   "kind": "인테리어",
+   "label": "84A 주방(견본)",
+   "file": "photos/site/lh0000061200/interior-84a-kitchen.jpg",
+   "src": "LH 고양지축 B-1블록 공공분양주택 팸플릿(2021.9) p.10",
+   "w": 1660,
+   "h": 1241,
+   "md5": "9ab528e41175699c32860f971a3d8b0f",
+   "photo": true
+  }
+ ],
+ "links": [],
+ "homepage": "",
+ "note": "사용자가 올린 LH 최초 분양 팸플릿(2021.9, 고양지축 B-1블록 공공분양)에서 잘라 씀. 이번 잔여세대 타입(59B·84A)의 평면·실내만. 실내 사진은 견본 사진 (2026-11-04)",
+ "updated": "2026-11-04 19:10"
+}

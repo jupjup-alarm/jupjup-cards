@@ -29,6 +29,11 @@
   "image": "photos/site/2026940241/birdseye.jpg",
   "pos": "center 55%"
  },
+ "/region/gyeonggi/goyang/": {
+  "credit": "이미지: LH 팸플릿(2021) 조감도 · 실제와 다를 수 있음",
+  "image": "photos/site/lh0000061200/birdseye.jpg",
+  "pos": "center 55%"
+ },
  "/region/gyeonggi/guri/": {
   "credit": "이미지: LH 제공 조감도 · 실제와 다를 수 있음",
   "image": "photos/74cac851de49.jpg",
