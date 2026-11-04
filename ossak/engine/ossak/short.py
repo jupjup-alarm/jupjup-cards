@@ -393,8 +393,8 @@ def build(ep, spec, a):
     accent = hexrgb(accent_hex)
     horror = spec.get("mood") == "horror"
     loop = spec.get("format") == "loop"
-    if horror and "TTS_RATE" not in os.environ:
-        os.environ["TTS_RATE"] = "0.95"
+    if "TTS_RATE" not in os.environ:   # 공포 0.95, 그 밖 1.0 (원고 tts_rate로 바꿀 수 있음)
+        os.environ["TTS_RATE"] = str(spec.get("tts_rate") or ("0.95" if horror else "1.0"))
     scenes = spec["scenes"]
     moves = ["in", "up", "out", "down", "in", "left", "out", "right"]
     for i, sc in enumerate(scenes):
@@ -477,11 +477,11 @@ def build(ep, spec, a):
         raise SystemExit(f"{total:.1f}초 — 서사형은 70초를 넘기지 않는다 (2026-11-02 사용자 결정). 곁가지 문장을 빼고 다시")
     if not loop and total < 48:
         print(f"주의: {total:.1f}초 — 서사형 목표 50~70초")
-    # 한 장면(같은 그림)이 4.5초를 넘으면 시청자가 넘긴다 (2026-11-02 사용자 결정 — 장면을 나누거나 그림을 바꿀 것)
+    # 한 장면(같은 그림)은 2~3초, 3.5초를 넘으면 경고 (2026-11-04 — 터진 영상은 2~3초마다 화면이 바뀜)
     ends = starts[1:] + [total]
-    long_sc = [(i + 1, round(e - s, 1)) for i, (s, e) in enumerate(zip(starts, ends)) if e - s > 4.5]
+    long_sc = [(i + 1, round(e - s, 1)) for i, (s, e) in enumerate(zip(starts, ends)) if e - s > 3.5]
     if long_sc:
-        print("장면 길이 경고(4.5초 초과 — 문장을 두 장면으로 나누고 그림·zoom·focus를 바꾸세요): "
+        print("장면 길이 경고(3.5초 초과 — 문장을 두 장면으로 나누고 그림·zoom·focus를 바꾸세요): "
               + ", ".join(f"장면{i} {d}초" for i, d in long_sc))
     (ep / "short_scene_times.json").write_text(json.dumps(
         [round(e - s, 2) for s, e in zip(starts, ends)]))
