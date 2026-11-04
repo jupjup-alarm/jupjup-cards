@@ -20,6 +20,7 @@ PRICE = {"claude-opus-5-5": (4, 5, 0.20, 20), "claude-sonnet-5-5": (2, 2.5, 0.10
          "claude-haiku-5-5": (0.10, 0.125, 0.01, 0.50), "claude-fable-5-1": (10, 12.5, 0.25, 50)}
 SEARCH_USD = 10 / 1000
 
+NO_CREDIT = 3   # 종료 코드: API 크레딧이 다 떨어졌거나 키가 안 됨 → 예약 작업은 구독 사용량(하위 에이전트)으로 이어 간다
 BATCH = os.environ.get("HYODO_BATCH", "1") != "0"
 BATCH_WAIT = float(os.environ.get("HYODO_BATCH_WAIT", "45")) * 60
 
@@ -30,7 +31,8 @@ def key():
         import env
         k = env.load().get("ANTHROPIC_API_KEY")
     if not k:
-        sys.exit("ANTHROPIC_API_KEY가 없어요 — 운영시트 '설정' B26 값을 환경변수로 넣어 주세요(키는 출력하지 말 것).")
+        print("ANTHROPIC_API_KEY가 없어요 — 운영시트 '설정' B26 값을 환경변수로 넣어 주세요(키는 출력하지 말 것).", file=sys.stderr)
+        sys.exit(NO_CREDIT)
     return k
 
 
@@ -104,6 +106,9 @@ def _post(body, beta=None):
             msg = e.read().decode(errors="replace")[:500]
             if e.code in (429, 500, 502, 503, 529) and i < 4:
                 time.sleep(15 * (i + 1)); continue
+            if e.code in (401, 402, 403) or "credit balance" in msg.lower() or "billing" in msg.lower():
+                print(f"Anthropic API 크레딧 부족·키 오류 {e.code}: {msg}", file=sys.stderr)
+                sys.exit(NO_CREDIT)
             sys.exit(f"Anthropic API 오류 {e.code}: {msg}")
         except (urllib.error.URLError, TimeoutError) as e:
             if i < 4:

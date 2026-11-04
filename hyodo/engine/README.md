@@ -6,7 +6,7 @@
 - **코드 원본**: GitHub `jupjup-alarm/jupjup-cards`의 `hyodo/engine/`(이 문서). 클라우드 경로 `/home/claude/jupjup-cards/hyodo/engine`. 고친 코드는 여기에 커밋한다(사용자 Mac 폴더의 lib는 옛 사본).
 - **준비**: `cd hyodo/engine && npm ci`(hyperframes 0.9.6 고정), `pip install --break-system-packages kiwipiepy pillow`(없을 때만). Chromium·ffmpeg·Noto CJK 글꼴은 클라우드에 있다. hyperframes는 `HYPERFRAMES_SKIP_SKILLS=1`로 돌린다.
 - **키**: 운영시트 '설정' 탭 B22 Cloudflare 계정 ID, B23 Cloudflare 토큰, B24 구글 TTS 키(유튜브 Data API도 이 키), B25 공공데이터포털 키 → 환경변수 `CF_ACCOUNT_ID`·`CF_API_TOKEN`·`GOOGLE_TTS_KEY`·`DATA_GO_KR_KEY`로만 쓴다(lib/env.py가 환경변수를 먼저 읽음). 값은 출력·커밋·보고하지 않는다. `.env` 파일을 만들면 umask 077, `.gitignore`에 있음.
-- **API 크레딧으로 글 작업 (2026-11-04 운영자 결정)**: 예약 작업은 구독 사용량(Claude·Claude Code 공용 주간 한도)을 쓴다. 토큰을 많이 먹는 조사·대본·검수는 콘솔 API 크레딧으로 돌린다 — '설정' B26 Anthropic API 키를 `ANTHROPIC_API_KEY`로(값 출력 금지). B26이 비어 있으면 예전처럼 하위 에이전트로 한다.
+- **API 크레딧으로 글 작업 (2026-11-04 운영자 결정)**: 예약 작업은 구독 사용량(Claude·Claude Code 공용 주간 한도)을 쓴다. 토큰을 많이 먹는 조사·대본·검수는 콘솔 API 크레딧으로 돌린다 — '설정' B26 Anthropic API 키를 `ANTHROPIC_API_KEY`로(값 출력 금지). B26이 비어 있거나 **API 크레딧이 다 떨어지면**(draft.py·review.py 종료 코드 3) 예전처럼 하위 에이전트(구독 사용량)로 이어 간다.
   - `python3 lib/draft.py episodes/<편> --brief <소재 메모> --minutes 8` → research.md·video.json 초안(Opus + web_fetch로 원문 확인). 소재 메모 = 소재조사 행 + 조사노트 사실·출처 + 지침로그 최근 방향을 예약 작업이 텍스트로 모은 것.
   - `python3 lib/review.py fact|style episodes/<편> --apply` → 팩트체크(Opus, 원문 직접 열기)·문장 검수(Sonnet). 종료 코드 0 통과 / 2 반려, 고칠 문장은 video.json에 바로 반영, 결과 out/review_*.json. 새 API 대화라 '대본 쓴 맥락과 따로'(5절) 조건을 만족한다.
   - `python3 lib/review.py visual episodes/<편> <스냅샷 시트·완성본 프레임 png …>` → 시각 검수(Sonnet, 그림 입력).
