@@ -1302,3 +1302,11 @@ body:has(.lwrap:not(.home)){background:var(--ground)}
 }
 /* 2026-11-04 사용자 요청: 아래 고정 CTA 바가 바로가기 탭(일정·30초 체크·주의점…, z 20)·본문 위로 오게 */
 .bar{z-index:35}
+
+/* 데스크톱 폭 통일 (2026-11-04 사용자 요청 "모두 홈 콘텐츠 영역 넓이로"): 상단 헤더·바로가기 탭·푸터·모든 페이지 본문을 홈(.home2)과 같은 1200px로 */
+@media (min-width:1024px){
+  .wrap{max-width:1200px}
+  .lwrap{max-width:none}
+  .page{grid-template-columns:minmax(0,1fr) 300px}
+  .g-page{grid-template-columns:minmax(0,1fr) 280px}
+}
