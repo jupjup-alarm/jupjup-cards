@@ -2134,16 +2134,24 @@ def main():
     for n in notices:
         if n.get("source") != "applyhome" or status_of(n) not in ("open", "upcoming"):
             continue
-        if (DATA / "notice_text" / f"{n['key']}.txt").exists():
-            continue
         url = n.get("source_url") or ""
         if "applyhome.co.kr" not in url:
             continue
+        mf = DATA / "notice_files" / f"{n['key']}.json"
+        meta = json.loads(mf.read_text()) if mf.exists() else {}
+        need = []
+        if not (DATA / "notice_text" / f"{n['key']}.txt").exists():
+            need.append("notice")
+        if not meta.get("pamphlet_none") and not any(x.get("kind") == "pamphlet" for x in meta.get("files", [])):
+            need.append("pamphlet")   # 2026-11-04 사용자 결정 "공고문과 팜플렛이 있으면 팜플렛도 받아야 해"
+        if not need:
+            continue
         want.append({"key": n["key"], "title": n["title"], "rcpt": n["rcpt"], "url": url,
-                     "homepage": n.get("homepage") or "", "save_as": f"{n['key']}.pdf"})
+                     "homepage": n.get("homepage") or "", "need": need,
+                     "save_as": f"{n['key']}.pdf", "pamphlet_as": f"{n['key']}-pamphlet.pdf"})
     want.sort(key=lambda x: x["rcpt"][0])
     wf = DATA / "notice_wanted.json"
-    wtxt = json.dumps({"how": "ego lite: url을 열어 '모집공고문' PDF를 받아 ~/줍줍알람/공고문/<save_as>로 저장. 캡차·차단 화면이면 멈추고 건너뜀(우회 금지).",
+    wtxt = json.dumps({"how": "ego lite: need에 notice가 있으면 url(청약홈)에서 '모집공고문' PDF → ~/줍줍알람/공고문/<save_as>, pamphlet이 있으면 청약홈·homepage(분양 홈페이지)에서 팸플릿·카탈로그 PDF → ~/줍줍알람/공고문/<pamphlet_as>(여러 개면 -pamphlet2.pdf…), 어디에도 없으면 notice_import.py --no-pamphlet <key>. 캡차·차단 화면이면 멈추고 건너뜀(우회 금지).",
                        "items": want}, ensure_ascii=False, indent=1)
     if not wf.exists() or wf.read_text() != wtxt:
         wf.write_text(wtxt)

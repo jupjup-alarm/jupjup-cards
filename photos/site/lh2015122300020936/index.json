@@ -1,0 +1,94 @@
+{
+ "key": "lh2015122300020936",
+ "owner": "LH 팸플릿",
+ "images": [
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "단지 조감도(공공분양 포함 전체)",
+   "file": "photos/site/lh2015122300020936/birdseye.jpg",
+   "src": "LH 구리갈매역세권 A-1블록 신혼희망타운 팸플릿",
+   "w": 1166,
+   "h": 964,
+   "md5": "ac8ac50c4bb687d1a4a1e5d5412fa518",
+   "photo": true
+  },
+  {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "단지배치도",
+   "file": "photos/site/lh2015122300020936/siteplan.jpg",
+   "src": "LH 구리갈매역세권 A-1블록 신혼희망타운 팸플릿",
+   "w": 1092,
+   "h": 1456,
+   "md5": "796784f901a2a6ae56a6f905bfcce94f",
+   "photo": false
+  },
+  {
+   "cat": "dongho",
+   "kind": "동호배치도",
+   "label": "동호배치도",
+   "file": "photos/site/lh2015122300020936/dongho.jpg",
+   "src": "LH 구리갈매역세권 A-1블록 신혼희망타운 팸플릿",
+   "w": 1890,
+   "h": 1171,
+   "md5": "9a35c4d314b7b586a28b43e6961aee7e",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "46A",
+   "file": "photos/site/lh2015122300020936/plan-46a.jpg",
+   "src": "LH 구리갈매역세권 A-1블록 신혼희망타운 팸플릿",
+   "w": 943,
+   "h": 877,
+   "md5": "6b2c20f8f36723231fa96d14978131b1",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "55A",
+   "file": "photos/site/lh2015122300020936/plan-55a.jpg",
+   "src": "LH 구리갈매역세권 A-1블록 신혼희망타운 팸플릿",
+   "w": 943,
+   "h": 877,
+   "md5": "6323e21fc5f345e6eca2ffd369fa3b40",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "55B",
+   "file": "photos/site/lh2015122300020936/plan-55b.jpg",
+   "src": "LH 구리갈매역세권 A-1블록 신혼희망타운 팸플릿",
+   "w": 943,
+   "h": 877,
+   "md5": "7226cad1c9761584ad1492d6711c66f1",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "55C",
+   "file": "photos/site/lh2015122300020936/plan-55c.jpg",
+   "src": "LH 구리갈매역세권 A-1블록 신혼희망타운 팸플릿",
+   "w": 943,
+   "h": 877,
+   "md5": "deebc97c21d93303b3957858ac8d8a62",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "55D",
+   "file": "photos/site/lh2015122300020936/plan-55d.jpg",
+   "src": "LH 구리갈매역세권 A-1블록 신혼희망타운 팸플릿",
+   "w": 943,
+   "h": 877,
+   "md5": "ba8465aa3a9d80204ad8d51e4845e8e0",
+   "photo": false
+  }
+ ]
+}

@@ -1,5 +1,5 @@
 {
- "how": "ego lite: url을 열어 '모집공고문' PDF를 받아 ~/줍줍알람/공고문/<save_as>로 저장. 캡차·차단 화면이면 멈추고 건너뜀(우회 금지).",
+ "how": "ego lite: need에 notice가 있으면 url(청약홈)에서 '모집공고문' PDF → ~/줍줍알람/공고문/<save_as>, pamphlet이 있으면 청약홈·homepage(분양 홈페이지)에서 팸플릿·카탈로그 PDF → ~/줍줍알람/공고문/<pamphlet_as>(여러 개면 -pamphlet2.pdf…), 어디에도 없으면 notice_import.py --no-pamphlet <key>. 캡차·차단 화면이면 멈추고 건너뜀(우회 금지).",
  "items": [
   {
    "key": "2026000373",
@@ -10,7 +10,12 @@
    ],
    "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000373&pblancNo=2026000373",
    "homepage": "https://www.i-sh.co.kr/main/index.do",
-   "save_as": "2026000373.pdf"
+   "need": [
+    "notice",
+    "pamphlet"
+   ],
+   "save_as": "2026000373.pdf",
+   "pamphlet_as": "2026000373-pamphlet.pdf"
   },
   {
    "key": "2026000496",
@@ -21,7 +26,12 @@
    ],
    "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000496&pblancNo=2026000496",
    "homepage": "https://www.arkone-prugio.com",
-   "save_as": "2026000496.pdf"
+   "need": [
+    "notice",
+    "pamphlet"
+   ],
+   "save_as": "2026000496.pdf",
+   "pamphlet_as": "2026000496-pamphlet.pdf"
   },
   {
    "key": "2026000502",
@@ -32,7 +42,12 @@
    ],
    "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000502&pblancNo=2026000502",
    "homepage": "https://www.hwaseong-lottecastlesignature.com",
-   "save_as": "2026000502.pdf"
+   "need": [
+    "notice",
+    "pamphlet"
+   ],
+   "save_as": "2026000502.pdf",
+   "pamphlet_as": "2026000502-pamphlet.pdf"
   },
   {
    "key": "2026000517",
@@ -43,7 +58,12 @@
    ],
    "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000517&pblancNo=2026000517",
    "homepage": "https://www.gtx운정중앙역시티프라디움.com",
-   "save_as": "2026000517.pdf"
+   "need": [
+    "notice",
+    "pamphlet"
+   ],
+   "save_as": "2026000517.pdf",
+   "pamphlet_as": "2026000517-pamphlet.pdf"
   },
   {
    "key": "2026000518",
@@ -54,7 +74,12 @@
    ],
    "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000518&pblancNo=2026000518",
    "homepage": "https://www.gtx운정중앙역시티프라디움.com",
-   "save_as": "2026000518.pdf"
+   "need": [
+    "notice",
+    "pamphlet"
+   ],
+   "save_as": "2026000518.pdf",
+   "pamphlet_as": "2026000518-pamphlet.pdf"
   },
   {
    "key": "2026000530",
@@ -65,7 +90,12 @@
    ],
    "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000530&pblancNo=2026000530",
    "homepage": "https://www.gy-bando.com",
-   "save_as": "2026000530.pdf"
+   "need": [
+    "notice",
+    "pamphlet"
+   ],
+   "save_as": "2026000530.pdf",
+   "pamphlet_as": "2026000530-pamphlet.pdf"
   },
   {
    "key": "2026000532",
@@ -76,7 +106,12 @@
    ],
    "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000532&pblancNo=2026000532",
    "homepage": "https://www.gy-bando.com",
-   "save_as": "2026000532.pdf"
+   "need": [
+    "notice",
+    "pamphlet"
+   ],
+   "save_as": "2026000532.pdf",
+   "pamphlet_as": "2026000532-pamphlet.pdf"
   },
   {
    "key": "2026940245",
@@ -87,7 +122,12 @@
    ],
    "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940245&pblancNo=2026940245",
    "homepage": "http://www.고강휴먼빌아파트.shop",
-   "save_as": "2026940245.pdf"
+   "need": [
+    "notice",
+    "pamphlet"
+   ],
+   "save_as": "2026940245.pdf",
+   "pamphlet_as": "2026940245-pamphlet.pdf"
   },
   {
    "key": "2026940246",
@@ -98,7 +138,12 @@
    ],
    "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940246&pblancNo=2026940246",
    "homepage": "https://www.xi.co.kr/kps",
-   "save_as": "2026940246.pdf"
+   "need": [
+    "notice",
+    "pamphlet"
+   ],
+   "save_as": "2026940246.pdf",
+   "pamphlet_as": "2026940246-pamphlet.pdf"
   },
   {
    "key": "2026000472",
@@ -109,7 +154,12 @@
    ],
    "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000472&pblancNo=2026000472",
    "homepage": "https://guri.ensvil.com/",
-   "save_as": "2026000472.pdf"
+   "need": [
+    "notice",
+    "pamphlet"
+   ],
+   "save_as": "2026000472.pdf",
+   "pamphlet_as": "2026000472-pamphlet.pdf"
   },
   {
    "key": "2026000499",
@@ -120,7 +170,12 @@
    ],
    "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000499&pblancNo=2026000499",
    "homepage": "https://jije.forena.co.kr/",
-   "save_as": "2026000499.pdf"
+   "need": [
+    "notice",
+    "pamphlet"
+   ],
+   "save_as": "2026000499.pdf",
+   "pamphlet_as": "2026000499-pamphlet.pdf"
   },
   {
    "key": "2026000515",
@@ -131,7 +186,12 @@
    ],
    "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000515&pblancNo=2026000515",
    "homepage": "https://pg2.lynn.co.kr/",
-   "save_as": "2026000515.pdf"
+   "need": [
+    "notice",
+    "pamphlet"
+   ],
+   "save_as": "2026000515.pdf",
+   "pamphlet_as": "2026000515-pamphlet.pdf"
   },
   {
    "key": "2026000525",
@@ -142,7 +202,12 @@
    ],
    "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000525&pblancNo=2026000525",
    "homepage": "https://www.엘리프시흥더프라임.com",
-   "save_as": "2026000525.pdf"
+   "need": [
+    "notice",
+    "pamphlet"
+   ],
+   "save_as": "2026000525.pdf",
+   "pamphlet_as": "2026000525-pamphlet.pdf"
   },
   {
    "key": "2026000527",
@@ -153,7 +218,12 @@
    ],
    "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000527&pblancNo=2026000527",
    "homepage": "http://www.gwanggyo-centreville.com",
-   "save_as": "2026000527.pdf"
+   "need": [
+    "notice",
+    "pamphlet"
+   ],
+   "save_as": "2026000527.pdf",
+   "pamphlet_as": "2026000527-pamphlet.pdf"
   },
   {
    "key": "2026000528",
@@ -164,7 +234,12 @@
    ],
    "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000528&pblancNo=2026000528",
    "homepage": "http://www.gwanggyo-centreville.com",
-   "save_as": "2026000528.pdf"
+   "need": [
+    "notice",
+    "pamphlet"
+   ],
+   "save_as": "2026000528.pdf",
+   "pamphlet_as": "2026000528-pamphlet.pdf"
   },
   {
    "key": "2026000533",
@@ -175,7 +250,12 @@
    ],
    "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000533&pblancNo=2026000533",
    "homepage": "https://apply.lh.or.kr",
-   "save_as": "2026000533.pdf"
+   "need": [
+    "notice",
+    "pamphlet"
+   ],
+   "save_as": "2026000533.pdf",
+   "pamphlet_as": "2026000533-pamphlet.pdf"
   },
   {
    "key": "2026000535",
@@ -186,7 +266,12 @@
    ],
    "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000535&pblancNo=2026000535",
    "homepage": "https://www.중앙하이츠구성플랫폼시티.com",
-   "save_as": "2026000535.pdf"
+   "need": [
+    "notice",
+    "pamphlet"
+   ],
+   "save_as": "2026000535.pdf",
+   "pamphlet_as": "2026000535-pamphlet.pdf"
   },
   {
    "key": "2026910281",
@@ -197,7 +282,12 @@
    ],
    "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910281&pblancNo=2026910281",
    "homepage": "https://cent.villiv.co.kr",
-   "save_as": "2026910281.pdf"
+   "need": [
+    "notice",
+    "pamphlet"
+   ],
+   "save_as": "2026910281.pdf",
+   "pamphlet_as": "2026910281-pamphlet.pdf"
   },
   {
    "key": "2026820014",
@@ -208,7 +298,12 @@
    ],
    "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026820014&pblancNo=2026820014",
    "homepage": "https://apply.lh.or.kr",
-   "save_as": "2026820014.pdf"
+   "need": [
+    "notice",
+    "pamphlet"
+   ],
+   "save_as": "2026820014.pdf",
+   "pamphlet_as": "2026820014-pamphlet.pdf"
   },
   {
    "key": "2026000531",
@@ -219,7 +314,12 @@
    ],
    "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000531&pblancNo=2026000531",
    "homepage": "https://apply.lh.or.kr/",
-   "save_as": "2026000531.pdf"
+   "need": [
+    "notice",
+    "pamphlet"
+   ],
+   "save_as": "2026000531.pdf",
+   "pamphlet_as": "2026000531-pamphlet.pdf"
   },
   {
    "key": "2026820013",
@@ -230,7 +330,12 @@
    ],
    "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026820013&pblancNo=2026820013",
    "homepage": "https://apply.lh.or.kr/",
-   "save_as": "2026820013.pdf"
+   "need": [
+    "notice",
+    "pamphlet"
+   ],
+   "save_as": "2026820013.pdf",
+   "pamphlet_as": "2026820013-pamphlet.pdf"
   }
  ]
 }

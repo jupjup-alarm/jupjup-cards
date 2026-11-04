@@ -1,0 +1,94 @@
+{
+ "key": "lh0000061197",
+ "owner": "LH 팸플릿",
+ "images": [
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "투시도",
+   "file": "photos/site/lh0000061197/birdseye.jpg",
+   "src": "LH 인천가정2 A-2블록 신혼희망타운 팸플릿(2024.1)",
+   "w": 1890,
+   "h": 1681,
+   "md5": "6d5d517e6ac2f7755307050add76ad14",
+   "photo": true
+  },
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "단지 조감도",
+   "file": "photos/site/lh0000061197/birdseye-2.jpg",
+   "src": "LH 인천가정2 A-2블록 신혼희망타운 팸플릿(2024.1)",
+   "w": 1890,
+   "h": 1533,
+   "md5": "d6412fe55b9459186240b0e358e45a45",
+   "photo": true
+  },
+  {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "단지배치도",
+   "file": "photos/site/lh0000061197/siteplan.jpg",
+   "src": "LH 인천가정2 A-2블록 신혼희망타운 팸플릿(2024.1)",
+   "w": 1587,
+   "h": 1533,
+   "md5": "5df6954e162be06392e2e1f766c9186d",
+   "photo": false
+  },
+  {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "단지배치도(타입별 색)",
+   "file": "photos/site/lh0000061197/siteplan-2.jpg",
+   "src": "LH 인천가정2 A-2블록 신혼희망타운 팸플릿(2024.1)",
+   "w": 1642,
+   "h": 1890,
+   "md5": "b1d28ffe3893c11caaacd405d8a5e8cc",
+   "photo": false
+  },
+  {
+   "cat": "dongho",
+   "kind": "동호배치도",
+   "label": "동호배치도",
+   "file": "photos/site/lh0000061197/dongho.jpg",
+   "src": "LH 인천가정2 A-2블록 신혼희망타운 팸플릿(2024.1)",
+   "w": 1407,
+   "h": 1890,
+   "md5": "83c4455b813f6b6865c2543435efe37a",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "55A",
+   "file": "photos/site/lh0000061197/plan-55a.jpg",
+   "src": "LH 인천가정2 A-2블록 신혼희망타운 팸플릿(2024.1)",
+   "w": 1474,
+   "h": 1455,
+   "md5": "28d5efb237d0644030cc73d3027347da",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "55B",
+   "file": "photos/site/lh0000061197/plan-55b.jpg",
+   "src": "LH 인천가정2 A-2블록 신혼희망타운 팸플릿(2024.1)",
+   "w": 1474,
+   "h": 1455,
+   "md5": "dbee961b84adbaac473ed9034f33419f",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "55C",
+   "file": "photos/site/lh0000061197/plan-55c.jpg",
+   "src": "LH 인천가정2 A-2블록 신혼희망타운 팸플릿(2024.1)",
+   "w": 1474,
+   "h": 1455,
+   "md5": "68575f78b094c35951ae3f003249bd08",
+   "photo": false
+  }
+ ]
+}
