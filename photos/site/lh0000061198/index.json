@@ -1,0 +1,105 @@
+{
+ "key": "lh0000061198",
+ "owner": "LH 팸플릿",
+ "images": [
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "단지 전체(항공 투시도)",
+   "file": "photos/site/lh0000061198/birdseye-air.jpg",
+   "src": "LH 인천가정2 B2블록 공공분양 팸플릿(2026.4) p.5",
+   "w": 1581,
+   "h": 1446,
+   "md5": "d668205e2103c5229349e35d28c7e474",
+   "photo": true
+  },
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "단지 외관(투시도)",
+   "file": "photos/site/lh0000061198/birdseye.jpg",
+   "src": "LH 인천가정2 B2블록 공공분양 팸플릿(2026.4) p.2",
+   "w": 1890,
+   "h": 1262,
+   "md5": "4bfad1f4909af4d22774f62850b700bf",
+   "photo": true
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "84A",
+   "file": "photos/site/lh0000061198/plan-84a.jpg",
+   "src": "LH 인천가정2 B2블록 공공분양 팸플릿(2026.4) p.9",
+   "w": 1289,
+   "h": 904,
+   "md5": "bcf3d5b0eebce41445d6f6d57ecf1ce6",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "84B",
+   "file": "photos/site/lh0000061198/plan-84b.jpg",
+   "src": "LH 인천가정2 B2블록 공공분양 팸플릿(2026.4) p.11",
+   "w": 1083,
+   "h": 1033,
+   "md5": "ade0b340d9d98706f3fad01d968581fb",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "84C",
+   "file": "photos/site/lh0000061198/plan-84c.jpg",
+   "src": "LH 인천가정2 B2블록 공공분양 팸플릿(2026.4) p.13",
+   "w": 1289,
+   "h": 904,
+   "md5": "3526dcd5119c84ccd392afb5dc82ce89",
+   "photo": false
+  },
+  {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "B2블록",
+   "file": "photos/site/lh0000061198/siteplan.jpg",
+   "src": "LH 인천가정2 B2블록 공공분양 팸플릿(2026.4) p.5",
+   "w": 1888,
+   "h": 1334,
+   "md5": "909a2cced2c55777af7c1a4ec49f939b",
+   "photo": false
+  },
+  {
+   "cat": "dongho",
+   "kind": "동호배치도",
+   "label": "B2블록 201~207동 (전체 308세대 기준)",
+   "file": "photos/site/lh0000061198/dongho.jpg",
+   "src": "LH 인천가정2 B2블록 공공분양 팸플릿(2026.4) p.15",
+   "w": 1890,
+   "h": 1260,
+   "md5": "96debfec46700515eec523fe017fae16",
+   "photo": false
+  },
+  {
+   "cat": "interior",
+   "kind": "인테리어",
+   "label": "84A 거실(견본)",
+   "file": "photos/site/lh0000061198/interior-84a-living.jpg",
+   "src": "LH 인천가정2 B2블록 공공분양 팸플릿(2026.4) p.6",
+   "w": 1019,
+   "h": 868,
+   "md5": "d27b4eeaa1577fe798c94fea38237f9e",
+   "photo": true
+  }
+ ],
+ "links": [
+  {
+   "kind": "emodel",
+   "label": "사이버 견본주택",
+   "name": "사이버견본주택",
+   "url": "https://hanaro.lh.or.kr/g2b2"
+  }
+ ],
+ "homepage": "",
+ "note": "공고 첨부 LH 분양 팸플릿(2026.4)에서 잘라 씀. 84A·A1·A2, 84B·B1은 구조가 같아 평면 하나씩. 동호배치도는 전체 308세대 기준(잔여 동·호 아님). 실내 사진은 견본 사진 (2026-11-04)",
+ "updated": "2026-11-04 22:30"
+}

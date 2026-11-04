@@ -40,7 +40,7 @@ def kind_of(name):
     n = name.replace(" ", "")
     if not n.lower().endswith(".pdf"):
         return "other"
-    if re.search(r"팜플렛|팸플릿|팜플릿|카탈로그|브로슈어", n):
+    if re.search(r"팜플렛|팸플렛|팸플릿|팜플릿|카탈로그|브로슈어", n):
         return "pamphlet"
     if re.search(r"서식|신청서|동의서|위임장|확인서|매뉴얼|안내문|체크리스트|양식", n):
         return "form"
