@@ -1,0 +1,59 @@
+{
+  "slug": "2026-11-05-dongtan-happyhouse",
+  "title": "화성시 동탄지역 행복주택 8개 단지(입주자격완화·선계약후검증)",
+  "series": "임대알람",
+  "count": 7,
+  "urls": [
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-11-05-dongtan-happyhouse/01.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-11-05-dongtan-happyhouse/02.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-11-05-dongtan-happyhouse/03.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-11-05-dongtan-happyhouse/04.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-11-05-dongtan-happyhouse/05.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-11-05-dongtan-happyhouse/06.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-11-05-dongtan-happyhouse/07.jpg"
+  ],
+  "warnings": {
+    "02": [
+      "zoom 0.88"
+    ],
+    "04": [
+      "zoom 0.91"
+    ],
+    "05": [
+      "zoom 0.91"
+    ],
+    "06": [
+      "zoom 0.97"
+    ]
+  },
+  "boards": [
+    {
+      "file": "2026-11-05-dongtan-happyhouse-01.dc.html",
+      "title": "화성시 동탄지역 행복주택 8개 단지(입주자격완화·선계약후검증) 1/7"
+    },
+    {
+      "file": "2026-11-05-dongtan-happyhouse-02.dc.html",
+      "title": "화성시 동탄지역 행복주택 8개 단지(입주자격완화·선계약후검증) 2/7"
+    },
+    {
+      "file": "2026-11-05-dongtan-happyhouse-03.dc.html",
+      "title": "화성시 동탄지역 행복주택 8개 단지(입주자격완화·선계약후검증) 3/7"
+    },
+    {
+      "file": "2026-11-05-dongtan-happyhouse-04.dc.html",
+      "title": "화성시 동탄지역 행복주택 8개 단지(입주자격완화·선계약후검증) 4/7"
+    },
+    {
+      "file": "2026-11-05-dongtan-happyhouse-05.dc.html",
+      "title": "화성시 동탄지역 행복주택 8개 단지(입주자격완화·선계약후검증) 5/7"
+    },
+    {
+      "file": "2026-11-05-dongtan-happyhouse-06.dc.html",
+      "title": "화성시 동탄지역 행복주택 8개 단지(입주자격완화·선계약후검증) 6/7"
+    },
+    {
+      "file": "2026-11-05-dongtan-happyhouse-07.dc.html",
+      "title": "화성시 동탄지역 행복주택 8개 단지(입주자격완화·선계약후검증) 7/7"
+    }
+  ]
+}
