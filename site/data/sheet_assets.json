@@ -1,9 +1,11 @@
 {
- "source": "구글시트 '청약조사' AA·AC·AE·AG열 (runner/assets.py — 이 판은 2026-11-04 손으로 옮김, 다음 실행 때 덮어씀)",
+ "source": "구글시트 '청약조사' AA·AC·AE·AG열 (runner/assets.py)",
  "rows": [
   {
    "row": 9,
    "title": "마곡스카이온",
+   "addr": "서울 강서구 방화동 584-1",
+   "photo_desc": "https://static.wixstatic.com/media/371497_70e7b82e64c74eff8b4dacb2dca0f7ae~mv2.jpg (단지 조감도 — 상단에 홍보 문구 포함)",
    "photo_src": "출처: 마곡스카이온 분양 홈페이지(서울빌라가로주택정비사업조합) / 이용조건: 사업주체 홍보 조감도, 출처 표기·실제와 다를 수 있음",
    "photo": "photos/f8fc2f4eb166-bldg.jpg",
    "plans": "59 (A타입 전용 59.13㎡) | photos/plan-8d15ad110b88.jpg"
@@ -11,6 +13,8 @@
   {
    "row": 10,
    "title": "시흥하중 A1블록 신혼희망타운 잔여세대",
+   "addr": "경기 시흥시 하중동 시흥하중지구 A1블록",
+   "photo_desc": "https://www.lhhj-a1.co.kr/overview/img/01-1.jpg (단지 조감도 — LH 사이버 견본주택 '단지안내')",
    "photo_src": "출처: LH(시흥하중 A1블록 신혼희망타운 사이버 견본주택) / 이용조건: 사업주체 홍보 조감도, 출처 표기·실제와 다를 수 있음",
    "photo": "photos/5f6df7524354.jpg",
    "homepage": "https://www.lhhj-a1.co.kr/"
@@ -18,171 +22,235 @@
   {
    "row": 12,
    "title": "시흥거모지구 S-1블록 공공분양주택",
+   "addr": "경기 시흥시 거모동 시흥거모 공공주택지구 S-1블록 (신길온천역 인근)",
+   "photo_desc": "https://apply.lh.or.kr/upload/Files/upload_dec/2026/HSL/10/27/2026102269101495.jpg (단지 조감도)",
    "photo_src": "출처: LH(LH청약플러스 공고 '단지조감도') / 이용조건: 사업주체 홍보 조감도, 출처 표기·실제와 다를 수 있음",
    "photo": "photos/81ac1d02c7e8.jpg",
    "layouts": "단지 배치도 | photos/layout-8270ff5f6db8.jpg",
-   "homepage": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061186"
+   "dongho": "없음",
+   "homepage": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061186&ccrCnntSysDsCd=02&uppAisTpCd=05&aisTpCd=05&mi=1027"
   },
   {
    "row": 13,
    "title": "디에이치 신반포에스테라",
-   "photo_desc": "단지 투시도 — 한강 배경 상층부",
+   "addr": "서울 서초구 잠원동 65-33 (고속터미널역 인근)",
+   "photo_desc": "https://the-h-newbanpoestella.co.kr/assets/images/main/visual-bg-new.jpg (단지 투시도 — 한강 배경 상층부)",
    "photo_src": "출처: 디에이치 신반포에스테라 분양 홈페이지(신반포22차 재건축조합·현대엔지니어링) / 이용조건: 사업주체 홍보 투시도, 출처 표기·실제와 다를 수 있음",
    "photo": "photos/a817b66d3db8.jpg",
    "plans": "84 | photos/plan-2c543c74dacd.jpg",
    "layouts": "단지 배치도 | photos/layout-84c541e768b9.jpg",
    "dongho": "동호배치도 | photos/dongho-0cf43e1d53cb.jpg",
-   "site": "key: pre-the-h-newbanpo-estella"
+   "homepage": "https://the-h-newbanpoestella.co.kr/",
+   "site": "key: pre-the-h-newbanpo-estella\n홈페이지: https://the-h-newbanpoestella.co.kr/\n출처: 신반포22차 재건축조합·현대엔지니어링\n조감도 | 낮 전경 | https://the-h-newbanpoestella.co.kr/assets/images/sub/summary.jpg | crop=0,0,1,0.54\n조감도 | 한강 쪽 상층부 투시도 | https://the-h-newbanpoestella.co.kr/assets/images/main/visual-bg-new.jpg\n단지배치도 | | https://the-h-newbanpoestella.co.kr/assets/images/sub/place.jpg\n동호배치도 | 101·102동 | https://the-h-newbanpoestella.co.kr/assets/images/sub/architecture.jpg\n평면도 | 84 | https://the-h-newbanpoestella.co.kr/assets/images/sub/unit.jpg\n커뮤니티 | 평면 | https://the-h-newbanpoestella.co.kr/assets/images/sub/community.jpg\nVR | 84 | https://dodle4534.cafe24.com/the_h_vr/84basic/index.html"
   },
   {
    "row": 24,
    "title": "화서역 호수공원 아너스빌 무순위",
-   "photo_desc": "단지 투시도 — 호수공원 쪽 조감",
+   "addr": "경기도 수원시 권선구 서둔동 212-1번지 일원 (화서역 인근)",
+   "photo_desc": "https://www.xn--h50bp5wx7b30b79e72a035f.com/assets/images/main/overview-bg-new.jpg (단지 투시도 — 호수공원 쪽 조감)\nhttps://www.xn--h50bp5wx7b30b79e72a035f.com/assets/images/main/visual-bg-01.jpg (단지 투시도 — 호수 너머 원경)",
    "photo_src": "출처: 화서역 호수공원 아너스빌 분양 홈페이지(삼환기업) / 이용조건: 사업주체 홍보 투시도, 출처 표기·실제와 다를 수 있음",
    "photo": "photos/99259c46de0b.jpg",
    "plans": "84B | photos/plan-6ca529f14fb5.jpg\n84D | photos/plan-9fa320a2a1c6.jpg",
-   "layouts": "단지 배치도 | photos/layout-17e661856065.jpg"
+   "layouts": "단지 배치도 | photos/layout-17e661856065.jpg",
+   "dongho": "없음",
+   "homepage": "https://www.xn--h50bp5wx7b30b79e72a035f.com/"
   },
   {
    "row": 33,
    "title": "더샵 분당하이스트 무순위",
+   "addr": "경기도 성남시 분당구 정자동 90번지",
+   "photo_desc": "없음",
+   "photo_src": "분양 홈페이지에 조감도·투시도 없음(세대 아이소 이미지·AI 제작 커뮤니티 이미지만) / 평면도 출처: 더샵 분당하이스트 분양 홈페이지(느티마을4단지 리모델링주택조합·포스코이앤씨) / 이용조건: 사업주체 홍보 이미지, 출처 표기·실제와 다를 수 있음",
    "photo": "없음",
-   "photo_src": "분양 홈페이지에 조감도·투시도 없음 / 평면도 출처: 더샵 분당하이스트 분양 홈페이지(느티마을4단지 리모델링주택조합·포스코이앤씨)",
-   "plans": "84A1 | photos/plan-8b60dc695f0e.jpg"
+   "plans": "84A1 | photos/plan-8b60dc695f0e.jpg",
+   "homepage": "https://더샵분당하이스트.kr"
   },
   {
    "row": 34,
    "title": "안성 아양지구 B-2블록 금성백조 예미지(2차) 임의공급",
+   "addr": "경기도 안성시 옥산동 659번지 일대(아양지구 B-2블록)",
+   "photo_desc": "없음",
+   "photo_src": "분양 홈페이지(ay-yemizi.com) 이미지가 인테리어 배경뿐, 조감도 없음 / 평면도 출처: 안성 아양 예미지 분양 홈페이지((주)금성백조주택) / 이용조건: 사업주체 홍보 이미지, 출처 표기·실제와 다를 수 있음",
    "photo": "없음",
-   "photo_src": "분양 홈페이지 이미지가 인테리어 배경뿐, 조감도 없음 / 평면도 출처: 안성 아양 예미지 분양 홈페이지((주)금성백조주택)",
    "plans": "84 | photos/plan-1093d537e008.jpg"
   },
   {
    "row": 37,
    "title": "과천지식정보타운 S-12블록 행복주택",
+   "addr": "경기도 과천시 갈현동 579-5 (과천지식정보타운 공공주택지구 S-12블록)",
+   "photo_desc": "https://apply.lh.or.kr/upload/Files/upload_dec/2026/LSE/10/22/2026102269101985.jpg (단지 조감도)",
    "photo_src": "출처: LH(LH청약플러스 공고 '단지조감도') / 이용조건: 사업주체 홍보 조감도, 출처 표기·실제와 다를 수 있음",
    "photo": "photos/de78b024662f.jpg"
   },
   {
    "row": 38,
    "title": "구리갈매역세권 A-1블록 신혼희망타운 행복주택",
+   "addr": "경기도 구리시 갈매동 산 14 (구리갈매역세권 공공주택지구 A-1블록, 갈매역·별내역 인근)",
+   "photo_desc": "https://apply.lh.or.kr/upload/Files/upload_dec/2026/LSE/10/27/2026102769163602.jpg (단지 조감도)",
    "photo_src": "출처: LH(LH청약플러스 공고 '단지조감도') / 이용조건: 사업주체 홍보 조감도, 출처 표기·실제와 다를 수 있음",
    "photo": "photos/74cac851de49.jpg"
   },
   {
    "row": 43,
    "title": "화성시 동탄지역 행복주택 8개 단지(입주자격완화·선계약후검증)",
-   "photo_desc": "화성동탄2 A-54블록 투시도",
+   "addr": "경기도 화성시 동탄구 동탄영천로 108-21(A4-1블록) · 동탄신리천로5길 90(A-53) · 동탄신리천로5가길 35(A-54) · 동탄신리천로8길 15(A57-1) · 동탄순환대로10길 42(A77-1) · 동탄순환대로2길 13(A-82) · 동탄첨단산업1로 57(지원6-2) · 동탄기흥로277번길 12(C26) 등 8개 단지",
+   "photo_desc": "https://apply.lh.or.kr/upload/Files/upload_dec/2022/LSE/11/04/2022110450771411.jpg (화성동탄2 A-54블록 투시도)",
    "photo_src": "출처: LH(LH청약플러스 공고 '전경사진' — 화성동탄2 A-54블록) / 이용조건: 사업주체 홍보 투시도, 출처 표기·실제와 다를 수 있음",
    "photo": "photos/ccb9f972d60e.jpg"
   },
   {
    "row": 45,
    "title": "숭의역 노르웨이숲 더 스카이 무순위",
-   "photo_desc": "단지 투시도 — 야간 원경",
+   "addr": "인천광역시 미추홀구 숭의동 350-1번지 일원 (숭의역 인근)",
+   "photo_desc": "https://xn--o80b88an0jf4j1a99d07pp6by2aeid716s.com/assets/images/main/visual-apt.png (단지 투시도 — 야간 원경)",
    "photo_src": "출처: 숭의역 노르웨이숲 더 스카이 분양 홈페이지(숭의역2단지지역주택조합) / 이용조건: 사업주체 홍보 투시도, 출처 표기·실제와 다를 수 있음",
-   "photo": "photos/8c8902a87c85.png"
+   "photo": "photos/8c8902a87c85.png",
+   "plans": "없음",
+   "homepage": "https://숭의역노르웨이숲더스카이.com"
   },
   {
    "row": 51,
    "title": "엘리프 한신더휴 수원 C3블록(2차) 임의공급",
+   "addr": "경기 수원시 권선구 금곡동 수원당수지구 C3블록",
+   "photo_desc": "http://www.xn--9m1b83j3xh2was2iwubdz8ceua06k.com/images/main/visual1.jpg (단지 조감도 — 당수지구 엘리프 한신더휴 C3·D3블록 전체)",
    "photo_src": "출처: 엘리프 한신더휴 수원 분양 홈페이지(수원당수피에프브이·계룡건설산업) / 이용조건: 사업주체 홍보 조감도, 출처 표기·실제와 다를 수 있음",
    "photo": "photos/93f1a9187ec6.jpg",
    "plans": "84D | photos/plan-5dcaa2f8f798.jpg\n84C | photos/plan-ff4a21c29c91.jpg",
-   "layouts": "단지 배치도 | photos/layout-e0901ff584b2.jpg"
+   "layouts": "단지 배치도 | photos/layout-e0901ff584b2.jpg",
+   "dongho": "없음",
+   "homepage": "http://www.엘리프한신더휴수원.com"
   },
   {
    "row": 52,
    "title": "엘리프 시흥 더프라임",
-   "photo_desc": "단지 일러스트 — 실사 조감도 아님, 티저 홈페이지 메인 이미지",
+   "addr": "경기도 시흥시 거모동 시흥거모 공공주택지구 B-5블록",
+   "photo_desc": "https://xn--9m1bw2f72b22pdwdr3cdz1bca395c.com/teaser/assets/img/hero.jpg (단지 일러스트 — 실사 조감도 아님, 티저 홈페이지 메인 이미지)",
    "photo_src": "출처: 엘리프 시흥 더프라임 분양 홈페이지(시흥거모피에프브이·계룡건설산업) / 이용조건: 사업주체 홍보 이미지(일러스트), 출처 표기·실제와 다를 수 있음",
    "photo": "photos/e6a4303edf4b.jpg",
-   "site": "key: 2026000525"
+   "plans": "없음",
+   "layouts": "없음",
+   "dongho": "없음",
+   "homepage": "https://www.엘리프시흥더프라임.com",
+   "site": "key: 2026000525\n홈페이지: https://www.엘리프시흥더프라임.com\n자료 없음: 티저 사이트 — 조감도·단지배치·동호배치·평면도 이미지 없음(이미지컷·입지 그림·청약안내만), 입주자모집공고 PDF만 있음 (2026-11-03)"
   },
   {
    "row": 58,
    "title": "안산신길2지구 B-1블록 공공분양주택(본청약)",
-   "photo_src": "출처: LH(LH청약플러스 공고 '단지조감도') / 이용조건: 사업주체 홍보 조감도, 출처 표기·실제와 다를 수 있음",
+   "addr": "경기 안산시 단원구 신길동 안산신길2지구 B-1블록",
+   "photo_desc": "https://apply.lh.or.kr/upload/Files/upload_dec/2026/HSL/10/29/2026102969214931.jpg (단지 조감도)",
+   "photo_src": "출처: LH(LH청약플러스 공고 '단지조감도' — 안산신길2 B-1블록) / 이용조건: 사업주체 홍보 조감도, 출처 표기·실제와 다를 수 있음",
    "photo": "photos/c74e2030add5.jpg",
+   "plans": "없음",
    "layouts": "단지 배치도 | photos/layout-ccce73ee97e3.jpg",
-   "homepage": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061196"
+   "dongho": "없음",
+   "homepage": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061196&ccrCnntSysDsCd=02&uppAisTpCd=05&aisTpCd=05&mi=1027"
   },
   {
    "row": 59,
    "title": "안산신길2 A-6블록 신혼희망타운(공공분양)(본청약)",
-   "photo_src": "출처: LH(LH청약플러스 공고 '단지조감도') / 이용조건: 사업주체 홍보 조감도, 출처 표기·실제와 다를 수 있음",
+   "addr": "경기 안산시 단원구 신길동 안산신길2지구 A-6블록",
+   "photo_desc": "https://apply.lh.or.kr/upload/Files/upload_dec/2026/HSL/10/27/2026102769173647.jpg (단지 조감도)",
+   "photo_src": "출처: LH(LH청약플러스 공고 '단지조감도' — 안산신길2 A-6블록) / 이용조건: 사업주체 홍보 조감도, 출처 표기·실제와 다를 수 있음",
    "photo": "photos/5fa99f659dc5.jpg",
+   "plans": "없음",
    "layouts": "단지 배치도 | photos/layout-ae3b600dd0be.jpg",
-   "homepage": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061189"
+   "dongho": "없음",
+   "homepage": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061189&ccrCnntSysDsCd=02&uppAisTpCd=39&aisTpCd=39&mi=1027"
   },
   {
    "row": 60,
    "title": "인천가정2 A-2블록 신혼희망타운 잔여세대 (입주 완료)",
-   "photo_src": "출처: LH(LH청약플러스 공고 '단지조감도') / 이용조건: 사업주체 홍보 조감도, 출처 표기·실제와 다를 수 있음",
+   "addr": "인천 서해구 가정동 인천가정2지구 A-2블록 (가정역 인근)",
+   "photo_desc": "https://apply.lh.or.kr/upload/Files/upload_dec/2026/HSL/10/29/2024010255746918.jpg (단지 조감도)",
+   "photo_src": "출처: LH(LH청약플러스 공고 '단지조감도' — 인천가정2 A-2블록) / 이용조건: 사업주체 홍보 조감도, 출처 표기·실제와 다를 수 있음",
    "photo": "photos/b1a74e628f16.jpg",
+   "plans": "없음",
    "layouts": "단지 배치도 | photos/layout-ed2627c935d9.jpg",
-   "homepage": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061197"
+   "dongho": "없음",
+   "homepage": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061197&ccrCnntSysDsCd=02&uppAisTpCd=39&aisTpCd=39&mi=1027"
   },
   {
    "row": 61,
    "title": "인천가정2 B2블록 공공분양 잔여세대 (순번추첨 동호지정)",
-   "photo_src": "출처: LH(LH청약플러스 공고 '단지조감도') / 이용조건: 사업주체 홍보 조감도, 출처 표기·실제와 다를 수 있음",
+   "addr": "인천 서해구 가정동 인천가정2지구 B2블록 (가정역 인근, 주택전시관 청라동 92-7)",
+   "photo_desc": "https://apply.lh.or.kr/upload/Files/upload_dec/2026/HSL/10/30/2026041466442005.jpg (단지 조감도)",
+   "photo_src": "출처: LH(LH청약플러스 공고 '단지조감도' — 인천가정2 B2블록) / 이용조건: 사업주체 홍보 조감도, 출처 표기·실제와 다를 수 있음",
    "photo": "photos/8609481ea067.jpg",
+   "plans": "없음",
    "layouts": "단지 배치도 | photos/layout-f573afe7edcb.jpg",
    "dongho": "동호배치도 | photos/dongho-12e6e8d9a34b.jpg",
-   "homepage": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061198"
+   "homepage": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061198&ccrCnntSysDsCd=02&uppAisTpCd=05&aisTpCd=05&mi=1027"
   },
   {
    "row": 65,
    "title": "오산세교2 7단지(A-6BL) 영구임대 예비입주자(소득 150% 완화)",
-   "photo_desc": "단지 투시도",
+   "addr": "경기 오산시 송로 11 (청학동, 오산세교2지구 A-6블록)",
+   "photo_desc": "https://apply.lh.or.kr/upload/Files/upload_dec/2022/LSE/08/18/2022081849722555.jpg (단지 투시도)",
    "photo_src": "출처: LH(LH청약플러스 공고 '전경사진' — 오산세교2 A-6블록 투시도) / 이용조건: 사업주체 홍보 투시도, 출처 표기·실제와 다를 수 있음",
    "photo": "photos/c50495e5533b.jpg"
   },
   {
    "row": 70,
    "title": "고촌센트럴자이(14차) 임의공급",
+   "addr": "경기도 김포시 고촌읍 신곡리 김포신곡6지구 도시개발사업구역 A3BL",
+   "photo_desc": "https://www.xi.co.kr/Files/cmsPage/20230921_134955_702001.jpg (단지 조감도)",
    "photo_src": "출처: GS건설(고촌센트럴자이 분양 홈페이지 xi.co.kr/kps) / 이용조건: 사업주체 홍보 조감도, 출처 표기·실제와 다를 수 있음",
    "photo": "photos/d074eaaf39d6.jpg",
    "plans": "84A | photos/plan-9ea7b86738f3.jpg\n84B | photos/plan-63a84c5d6363.jpg",
    "layouts": "단지 배치도 | photos/layout-b7387673ae67.jpg",
    "dongho": "동호배치도 | photos/dongho-f7ee3223778e.jpg",
-   "site": "key: 2026940246"
+   "homepage": "https://www.xi.co.kr/kps",
+   "site": "key: 2026940246\n홈페이지: https://www.xi.co.kr/kps\n출처: GS건설\n조감도 | 낮 전경(하천 쪽) | https://www.xi.co.kr/Files/cmsPage/20230921_134955_702001.jpg\n조감도 | 1,287세대 전경 | https://www.xi.co.kr/Files/cmsMain/20231129_092438_349001.jpg\n단지배치도 | | https://www.xi.co.kr/Files/cmsPage/20231026_151023_253001.jpg\n동호배치도 | | https://www.xi.co.kr/Files/cmsPage/20231026_150537_928001.jpg\n평면도 | 84A | https://www.xi.co.kr/Files/apt_area_kind/20231026_153939_331001.jpg\n평면도 | 84B | https://www.xi.co.kr/Files/apt_area_kind/20231026_153950_224001.jpg\n평면도 | 105 | https://www.xi.co.kr/Files/apt_area_kind/20231026_153959_895001.jpg\n커뮤니티 | 클럽 자이안 | https://www.xi.co.kr/Files/cmsPage/20231026_150548_312001.jpg\nE모델하우스 | | https://www.xi.co.kr/kps/view?cmsMenuSeq=19516"
   },
   {
    "row": 71,
    "title": "빌리브센트하이(2차) 무순위",
-   "photo_desc": "단지 투시도 — 낮 원경",
+   "addr": "경기도 남양주시 화도읍 마석우리 295-32번지 일대",
+   "photo_desc": "https://cent.villiv.co.kr/resources/img/main/visual_img_2.jpg (단지 투시도 — 낮 원경)\nhttps://cent.villiv.co.kr/resources/img/main/visual_img_1.jpg (단지 투시도 — 노을 원경)",
    "photo_src": "출처: 신세계건설(빌리브 센트하이 분양 홈페이지) / 이용조건: 사업주체 홍보 투시도, 출처 표기·실제와 다를 수 있음",
    "photo": "photos/bf1ddb6ec2de.jpg",
-   "site": "key: 2026910281"
+   "plans": "없음",
+   "layouts": "없음",
+   "dongho": "없음",
+   "homepage": "https://cent.villiv.co.kr",
+   "site": "key: 2026910281\n홈페이지: https://cent.villiv.co.kr\n출처: 신세계건설\n조감도 | 낮 원경 | https://cent.villiv.co.kr/resources/img/main/visual_img_2.jpg\n조감도 | 노을 원경 | https://cent.villiv.co.kr/resources/img/main/visual_img_1.jpg\n조감도 | 상가 쪽 거리 투시도 | https://cent.villiv.co.kr/resources/img/main/visual_img_3.jpg\nVR | 스카이 VR | https://cent.villiv.co.kr/share/skyvr/index.html\n(평면도·배치도 이미지 없음 — 2026-11-04)"
   },
   {
    "row": 78,
    "title": "남양주왕숙 A-2블록 신혼희망타운(공공분양) 잔여세대",
-   "photo_src": "출처: LH(LH청약플러스 공고 '단지조감도') / 이용조건: 사업주체 홍보 조감도, 출처 표기·실제와 다를 수 있음",
+   "addr": "경기 남양주시 진접읍 연평리 남양주왕숙 공공주택지구 A-2블록",
+   "photo_desc": "https://apply.lh.or.kr/upload/Files/upload_dec/2026/HSL/10/23/2025072462795203.jpg (단지 조감도)",
+   "photo_src": "출처: LH(LH청약플러스 공고 '단지조감도' — 남양주왕숙 A-2블록) / 이용조건: 사업주체 홍보 조감도, 출처 표기·실제와 다를 수 있음",
    "photo": "photos/39289af7c9a9.jpg",
+   "plans": "없음",
    "layouts": "단지 배치도 | photos/layout-010a8fbc1d0a.jpg",
    "dongho": "동호배치도 | photos/dongho-e391a97f2e12.jpg",
-   "homepage": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061192"
+   "homepage": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061192&ccrCnntSysDsCd=02&uppAisTpCd=39&aisTpCd=39&mi=1027"
   },
   {
    "row": 79,
    "title": "고양장항 A-2·A-4·A-5블록 신혼희망타운(공공분양) 잔여세대",
-   "photo_src": "출처: LH(LH청약플러스 공고 '단지조감도') / 이용조건: 사업주체 홍보 조감도, 출처 표기·실제와 다를 수 있음",
+   "addr": "경기 고양시 일산동구 장항한강5로 10(A-2블록, 중앙하이츠장항) · 장항한강3로 30(A-4블록, 쌍용더플래티넘장항) · 장항한강2로 20(A-5블록, 일산라이브더센텀) (고양장항 공공주택지구)",
+   "photo_desc": "https://apply.lh.or.kr/upload/Files/upload_dec/2026/HSL/11/02/2020123142641265.jpg (A-5블록 단지 조감도)\nhttps://apply.lh.or.kr/upload/Files/upload_dec/2026/HSL/11/02/2020122942609767.jpg (A-4블록 단지 조감도)",
+   "photo_src": "출처: LH(LH청약플러스 공고 '단지조감도' — 고양장항 A-5·A-4블록) / 이용조건: 사업주체 홍보 조감도, 출처 표기·실제와 다를 수 있음",
    "photo": "photos/bcbb5a4fe52a.jpg",
+   "plans": "없음",
    "layouts": "단지 배치도 | photos/layout-88ef861d2b5e.jpg\n단지 배치도 | photos/layout-aab1eacc7d81.jpg",
-   "homepage": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061199"
+   "dongho": "없음",
+   "homepage": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061199&ccrCnntSysDsCd=02&uppAisTpCd=39&aisTpCd=39&mi=1027"
   },
   {
    "row": 80,
    "title": "고양지축 B-1블록 공공분양 잔여세대(지축역북한산비바힐스)",
-   "photo_src": "출처: LH(LH청약플러스 공고 '단지조감도') / 이용조건: 사업주체 홍보 조감도, 출처 표기·실제와 다를 수 있음",
+   "addr": "경기 고양시 덕양구 오부자로 55 (지축동 875, 지축역 인근)",
+   "photo_desc": "https://apply.lh.or.kr/upload/Files/upload_dec/2026/HSL/11/02/2021092845738707.jpg (단지 조감도)",
+   "photo_src": "출처: LH(LH청약플러스 공고 '단지조감도' — 고양지축 B-1블록) / 이용조건: 사업주체 홍보 조감도, 출처 표기·실제와 다를 수 있음",
    "photo": "photos/88d604d2f0c8.jpg",
+   "plans": "없음",
    "layouts": "단지 배치도 | photos/layout-52c6ed895417.jpg",
    "dongho": "동호배치도 | photos/dongho-7be9bacf9c12.jpg",
-   "homepage": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061200"
+   "homepage": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061200&ccrCnntSysDsCd=02&uppAisTpCd=05&aisTpCd=05&mi=1027"
   }
  ],
- "updated": "2026-11-04 19:20"
+ "updated": "2026-11-04 21:19"
 }
