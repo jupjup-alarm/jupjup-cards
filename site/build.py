@@ -1934,6 +1934,33 @@ def main():
     (PUB / "links.json").write_text(json.dumps({"built_at": now.isoformat(timespec="seconds"), "links": links},
                                                ensure_ascii=False, separators=(",", ":")))
 
+    # 단지 이름 검색 (2026-11-04 리디자인 7단계) — 브라우저가 /search.json 을 받아 페이지 안에서 바로 거름. 서버·외부 검색 없음.
+    #   /search/ 는 noindex · 사이트맵 제외. links.json(시트 스크립트용)은 형식 그대로 둠.
+    SORD = {"open": 0, "upcoming": 1, "pre": 2, "waiting": 3, "announced": 4, "released": 5}
+    def sprice(n):
+        if n["is_pre"]:
+            return "예상 " + (n.get("price_short") or n.get("price_text") or "")
+        if n["is_rental"]:
+            if n.get("houses") and n.get("rent_level"):
+                return n["rent_level"]
+            rs = n.get("rent_summary") or {}
+            return ("보증금 " + money(rs["deposit"]) + (" · 월 " + money(rs["monthly"]) if rs.get("monthly") else "")) if rs.get("deposit") else ""
+        return f"{n.get('price_label') or '최고 분양가'} {won(n['max_price'])}" if n.get("max_price") else ""
+    sidx = []
+    for n, l in zip(notices, links):
+        sidx.append({"t": n["title"], "k": n["kind_label"], "a": f"{n['sido']} {n.get('sigungu') or ''}".strip(),
+                     "n": " ".join(x for x in l["names"] if x != n["title"]) + " " + (n.get("address") or "") + " " + (n.get("near") or ""),
+                     "u": n["url"], "s": n["status"], "r": n["rcpt"], "p": sprice(n)})
+    sidx.sort(key=lambda x: (SORD.get(x["s"], 9), x["r"][1] or x["r"][0] or "9999"))
+    hubs = [{"t": PAGES[u]["title"].split(" · ")[0].split(" — ")[0], "u": u} for u in PAGES
+            if (u.startswith("/region/") or u.startswith("/type/")) and u.count("/") >= 3]
+    (PUB / "search.json").write_text(json.dumps({"built_at": now.isoformat(timespec="seconds"), "n": sidx, "h": hubs},
+                                                ensure_ascii=False, separators=(",", ":")))
+    live_pop = [x for x in sorted(notices, key=lambda x: (x["rcpt"][1] or x["rcpt"][0])) if x["status"] == "open"][:6]
+    h = E.get_template("search.html").render(page_url="/search/", title="단지 이름으로 찾기 · 줍줍알람", desc="", og="/og-default.jpg",
+                                             pop=live_pop, **common)
+    write("/search/", h, "단지 이름으로 찾기 · 줍줍알람", "", "list", index=False)
+
     # 사이트맵·RSS·robots·헤더
     write_sitemaps(now)
     write_rss(notices, now)

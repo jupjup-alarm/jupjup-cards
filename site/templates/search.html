@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% set noindex = true %}
+{# 2026-11-04 리디자인 7단계: 단지 이름 검색 — /search.json 을 받아 브라우저에서 바로 거름 (서버·외부 검색 없음, noindex·사이트맵 제외) #}
+{% block main %}
+<main class="wrap srch" id="main">
+  <form class="srch-bar" action="/search/" method="get" role="search">
+    <label><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span class="sr">단지 이름으로 찾기</span><input type="search" name="q" id="sq" placeholder="단지 이름·지역 (예: 갈매, 고덕강일)" autocomplete="off" enterkeyhint="search" autofocus></label>
+    <a class="srch-x" href="/">닫기</a>
+  </form>
+  <p class="srch-n num" id="sn" aria-live="polite"></p>
+  <ul class="srch-list" id="sl"></ul>
+  <div id="sh" hidden><p class="srch-lab">지역·모음</p><div class="srch-hubs" id="shl"></div></div>
+  <div id="sp">
+    <p class="srch-lab">지금 접수 중인 단지</p>
+    <div class="srch-pop">{% for n in pop %}<a href="{{ n.url }}">{{ n.complex or n.title }}</a>{% endfor %}</div>
+    <p class="srch-tip">단지 이름 일부, 시·군·구, 동 이름으로 찾을 수 있어요. 초성(예: ㄱㄷㄱㅇ)도 돼요.</p>
+  </div>
+</main>
+{% endblock %}
+{% block after %}
+<script>
+(function(){
+  var q=document.getElementById('sq'),L=document.getElementById('sl'),N=document.getElementById('sn'),H=document.getElementById('sh'),HL=document.getElementById('shl'),P=document.getElementById('sp'),D=null,t=null;
+  var CH='ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ';
+  function norm(s){return (s||'').toLowerCase().replace(/[\s·\-()（）\[\],.]/g,'');}
+  function cho(s){var o='';for(var i=0;i<s.length;i++){var c=s.charCodeAt(i)-44032;o+=(c>=0&&c<11172)?CH[Math.floor(c/588)]:s[i];}return o;}
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function kst(){var n=new Date(Date.now()+9*3600e3);return Date.UTC(n.getUTCFullYear(),n.getUTCMonth(),n.getUTCDate());}
+  function dd(iso){if(!iso)return null;var p=iso.split('-');return (Date.UTC(+p[0],p[1]-1,+p[2])-kst())/864e5;}
+  var W='일월화수목금토';function md(iso){var p=iso.split('-'),d=new Date(Date.UTC(+p[0],p[1]-1,+p[2]));return (+p[1])+'.'+(+p[2])+'('+W[d.getUTCDay()]+')';}
+  function pill(x){var e=x.r[1]||x.r[0];
+    if(x.s==='open'){var d=dd(e);return d===0?'<span class="hm-pill p-t">오늘 마감</span>':'<span class="hm-pill p-o">마감 '+md(e)+'</span>';}
+    if(x.s==='upcoming'){return '<span class="hm-pill p-u">D-'+Math.max(1,dd(x.r[0]))+'</span>';}
+    return '<span class="hm-pill p-g">'+({pre:'공고 전',waiting:'발표 대기',announced:'발표 완료',released:'공고 나옴'}[x.s]||'')+'</span>';}
+  function mark(t,raw){var i=t.toLowerCase().indexOf(raw.toLowerCase());return i<0?esc(t):esc(t.slice(0,i))+'<mark>'+esc(t.slice(i,i+raw.length))+'</mark>'+esc(t.slice(i+raw.length));}
+  function run(){var raw=q.value.trim(),v=norm(raw);
+    try{history.replaceState(null,'',raw?'?q='+encodeURIComponent(raw):location.pathname);}catch(e){}
+    if(!v||!D){L.innerHTML='';N.textContent='';H.hidden=true;P.hidden=false;return;}
+    var jamo=/^[ㄱ-ㅎ]+$/.test(v);
+    var hit=D.n.filter(function(x){if(!x._a){x._a=norm(x.t+' '+x.n+' '+x.a);x._c=cho(x._a);}return jamo?x._c.indexOf(v)>-1:x._a.indexOf(v)>-1;});
+    var hubs=D.h.filter(function(h){var a=norm(h.t);return jamo?cho(a).indexOf(v)>-1:a.indexOf(v)>-1;}).slice(0,4);
+    N.textContent=hit.length?('공고 '+hit.length+'곳'):'찾는 공고가 없어요. 단지 이름 일부나 시·군·구로 다시 찾아보세요.';
+    L.innerHTML=hit.slice(0,40).map(function(x){return '<li><a class="srch-row" href="'+x.u+'"><b>'+mark(x.t,raw)+'</b>'+pill(x)+'<span class="num">'+esc(x.a)+(x.p?' · '+esc(x.p):'')+'</span></a></li>';}).join('');
+    HL.innerHTML=hubs.map(function(h){return '<a href="'+h.u+'">'+esc(h.t)+'<span aria-hidden="true">›</span></a>';}).join('');
+    H.hidden=!hubs.length;P.hidden=true;}
+  q.addEventListener('input',function(){clearTimeout(t);t=setTimeout(run,80);});
+  document.querySelector('.srch-bar').addEventListener('submit',function(e){e.preventDefault();run();q.blur();if(window.jjEv)jjEv('search',{q:q.value.trim().slice(0,30)});});
+  var u=new URLSearchParams(location.search).get('q');if(u)q.value=u;
+  fetch('/search.json').then(function(r){return r.json();}).then(function(j){D=j;run();}).catch(function(){N.textContent='검색 자료를 불러오지 못했어요. 잠시 뒤 다시 해 주세요.';});
+})();
+</script>
+{% endblock %}

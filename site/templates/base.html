@@ -53,6 +53,7 @@
       <a href="/guide/"{% if tab == 'guide' %} aria-current="page"{% endif %}>가이드</a>{% endif %}
     </nav>
     {% if sub %}<button class="hdr-ic" type="button" data-share aria-label="공유하기"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg></button>{% else %}
+    <a class="hdr-ic hdr-search" href="/search/" aria-label="단지 이름으로 찾기"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span>단지 이름으로 찾기</span></a>
         <a class="hdr-ic" href="{{ IG }}" rel="noopener" aria-label="인스타그램에서 새 공고 알림 받기"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg></a>{% endif %}
     {% if gart %}<i class="rprog" aria-hidden="true"></i>{% endif %}
   </div>

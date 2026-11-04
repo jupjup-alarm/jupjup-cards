@@ -1237,3 +1237,35 @@ body:has(.lwrap:not(.home)){background:var(--ground)}
 .nf-btns a{min-height:48px;border-radius:12px;border:1.5px solid var(--navy);display:grid;place-items:center;font-size:15px;font-weight:700;text-decoration:none;color:var(--ink)}
 .nf-btns a.p{background:var(--navy);color:#fff}
 @media (prefers-color-scheme:dark){.doc-fix{background:#13223F}.nf-btns a{border-color:var(--ink)}.nf-btns a.p{background:#E9EDF4;color:var(--navy);border-color:#E9EDF4}}
+
+/* ══════════ 리디자인 7단계 — 단지 이름 검색 (2026-11-04) ══════════ */
+.hdr-search{margin-left:auto}
+.hdr-search span{display:none}
+.hdr-search + .hdr-ic{margin-left:0}
+@media (min-width:1024px){
+  .top .hdr-search{display:flex;width:280px;height:40px;border-radius:999px;background:rgba(255,255,255,.1);color:#C9D0DD;gap:8px;padding:0 14px;justify-content:flex-start;align-items:center;text-decoration:none;font-size:14px}
+  .top .hdr-search span{display:inline}
+  .top .hdr-search svg{width:18px;height:18px}
+  .top .hdr-search:hover{background:rgba(255,255,255,.16);color:#fff}
+}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.srch{max-width:760px;padding-bottom:40px}
+.srch-bar{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;padding-block:12px;border-bottom:1px solid var(--line);margin-inline:calc(-1 * max(16px, env(safe-area-inset-left, 0px)));padding-inline:max(16px, env(safe-area-inset-left, 0px))}
+.srch-bar label{height:46px;border-radius:12px;background:var(--ground);display:flex;align-items:center;gap:8px;padding:0 12px;color:var(--ink-sub)}
+.srch-bar input{flex:1;min-width:0;border:0;background:none;font:inherit;font-size:16px;font-weight:600;color:var(--ink);outline:none}
+.srch-bar label:focus-within{box-shadow:0 0 0 2px var(--navy)}
+.srch-x{min-height:44px;padding:0 6px;display:grid;place-items:center;font-size:15px;font-weight:700;color:var(--ink-sub);text-decoration:none}
+.srch-n{margin:16px 4px 6px;font-size:13px;font-weight:700;color:var(--ink-sub)}
+.srch-list{list-style:none;margin:0;padding:0}
+.srch-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;align-items:center;padding:14px 4px;border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink)}
+.srch-row b{font-size:15.5px;font-weight:700;letter-spacing:-.02em;line-height:1.35}
+.srch-row .hm-pill{grid-row:span 2;font-size:12.5px;height:28px;min-width:0}
+.srch-row > span.num{font-size:12.5px;color:var(--ink-sub)}
+.srch-row mark{background:#FFE1D8;color:inherit;border-radius:3px;padding:0 1px}
+.srch-lab{margin:20px 4px 8px;font-size:13px;font-weight:700;color:var(--ink-sub)}
+.srch-hubs{display:flex;flex-direction:column;gap:6px}
+.srch-hubs a{display:flex;justify-content:space-between;align-items:center;min-height:52px;padding:0 14px;border-radius:12px;background:var(--ground);font-size:15px;font-weight:700;text-decoration:none;color:var(--ink)}
+.srch-pop{display:flex;flex-wrap:wrap;gap:8px;padding:0 4px}
+.srch-pop a{min-height:38px;padding:0 13px;border-radius:999px;border:1px solid var(--line);display:inline-flex;align-items:center;font-size:13.5px;font-weight:700;text-decoration:none;color:var(--ink)}
+.srch-tip{margin:20px 4px 0;font-size:13px;line-height:1.6;color:var(--ink-sub)}
+@media (prefers-color-scheme:dark){.srch-row mark{background:#5A2A1E}}
