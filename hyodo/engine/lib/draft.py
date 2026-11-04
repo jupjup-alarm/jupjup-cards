@@ -1,12 +1,15 @@
 """조사 + 대본 초안을 API 크레딧으로 (구독 주간 한도 아끼기, 2026-11-04).
 
-python3 lib/draft.py episodes/<ID>-<slug> --brief <소재 메모 파일> [--minutes 8]
+python3 lib/draft.py episodes/<ID>-<slug> --brief <소재 메모 파일> [--minutes 8] [--mode solo|advisor]
+  --mode solo(기본): Opus가 원문을 읽고 대본까지 쓴다.
+  --mode advisor: Sonnet이 원문을 읽고 대본을 쓰고, Opus 어드바이저에게 두 번(원문을 다 읽은 뒤 구성 · JSON 내기 직전 점검) 묻는다.
+  기본값은 환경변수 HYODO_DRAFT_MODE로 바꿀 수 있다.
   소재 메모: 소재조사 행(ID·카테고리·정책명·대상·핵심 숫자·마감·표지 훅·대표 출처)과 조사노트 사실 문장·출처, 지침로그 최근 방향을
   예약 작업이 텍스트로 모아 둔 파일.
 → episodes/<편>/research.md, video.json 을 새로 쓴다(이미 있으면 .bak으로 남김). 공식 원문은 Opus가 web_fetch로 직접 연다.
 그다음은 README 그대로: review.py fact/style → 빌드 → review.py visual → …
 """
-import json, pathlib, re, sys
+import json, os, pathlib, re, sys
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import llm
 
@@ -25,6 +28,7 @@ def main():
     args = sys.argv[2:]
     brief = pathlib.Path(args[args.index("--brief") + 1]).read_text()
     minutes = args[args.index("--minutes") + 1] if "--minutes" in args else "8"
+    mode = args[args.index("--mode") + 1] if "--mode" in args else os.environ.get("HYODO_DRAFT_MODE", "solo")
     ep.mkdir(parents=True, exist_ok=True)
     ex_video = (EXAMPLE / "video.json").read_text()
     ex_research = (EXAMPLE / "research.md").read_text()
@@ -51,8 +55,16 @@ def main():
 순서: ① 소재 메모의 출처와 공식 원문을 web_fetch로 열어 사실을 확인한다(요일은 직접 계산). ② research.md(사실·등급·출처·원문 발췌·주의)를 쓴다.
 ③ video.json을 쓴다(id·category·checked(오늘 날짜)·title·thumb·voice·tags·hashtags·playlist·sources·scenes 9종·shorts 2편).
 마지막에 ```json 블록 하나로만 낸다: {{"research_md": "research.md 전체 글", "video": {{video.json 객체}}, "doubts": ["원문으로 확인 못 한 것·애매한 것"]}}"""
-    text = llm.ask(user, system=system, model=llm.MODEL_SMART, web=True, max_tokens=32000,
-                   log=ep / "out" / "llm_usage.jsonl", tag="draft")
+    if mode == "advisor":
+        system += ("\n\n어드바이저(advisor 도구): 너보다 강한 검토자가 대화 전체를 보고 조언한다. 정확히 두 번 부른다 — "
+                   "① 공식 원문을 다 열어 읽은 뒤, research.md·video.json을 쓰기 전에(장면 구성·강조할 숫자·빠진 조건을 묻는다) "
+                   "② 마지막 ```json 블록을 내기 직전에(원문과 다른 숫자·날짜·요일, 확정 전 숫자를 확정처럼 쓴 곳, 문장 규칙 위반을 점검받는다). "
+                   "조언은 무겁게 받아들이되, 원문과 다르면 원문을 따른다.")
+        text = llm.ask(user, system=system, model=llm.MODEL_FAST, web=True, max_tokens=32000,
+                       log=ep / "out" / "llm_usage.jsonl", tag="draft-advisor", advisor=llm.MODEL_SMART)
+    else:
+        text = llm.ask(user, system=system, model=llm.MODEL_SMART, web=True, max_tokens=32000,
+                       log=ep / "out" / "llm_usage.jsonl", tag="draft")
     (ep / "out").mkdir(exist_ok=True)
     (ep / "out" / "draft_raw.md").write_text(text)
     res = llm.json_out(text)
