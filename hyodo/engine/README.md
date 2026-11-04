@@ -12,7 +12,7 @@
   - `python3 lib/review.py visual episodes/<편> <스냅샷 시트·완성본 프레임 png …>` → 시각 검수(Sonnet, 그림 입력).
   - **배치(반값)가 기본**: Message Batches API는 요금 50%(프롬프트 캐시 할인과 겹침), 보통 1시간 안, 최대 24시간. web_fetch·web_search도 배치에서 된다. llm.py는 배치로 넣고 기다리다가 `HYODO_BATCH_WAIT`분(기본 45) 안에 안 끝나면 취소하고 바로(정가) 부른다. `HYODO_BATCH=0`이면 처음부터 바로. 기다리는 시간이 길어 예약 작업은 draft.py·review.py를 **백그라운드로 실행**하고 끝날 때까지 기다린다(포그라운드 명령은 10분 제한).
   - 토큰 사용량은 `out/llm_usage.jsonl`(batch·direct 횟수 포함), 추정 비용 usd_*, 어드바이저 몫 따로).
-  - **어드바이저 방식(시험 중, 2026-11-04)**: `draft.py --mode advisor` → Sonnet이 원문을 읽고 대본을 쓰고 Opus 어드바이저(advisor_20260301 베타)에게 두 번 묻는다. 기본은 아직 `solo`(Opus 혼자) — 비교 결과를 보고 바꾼다. 예약 작업은 초안을 다시 쓰지 말고 결과 JSON과 diff만 보고 판단한다(구독 사용량을 아끼는 게 목적).
+  - **어드바이저 방식(시험 중, 2026-11-04)**: `draft.py --mode advisor` → Sonnet이 원문을 읽고 대본을 쓰고 Opus 어드바이저(advisor_20260301 베타)에게 두 번 묻는다. 기본은 `solo`(Opus 혼자). 2026-11-04 S-0006으로 두 번씩 비교: 프롬프트 캐시를 켠 뒤 대본 1편 solo 약 $1.0, advisor 약 $1.3~1.9(어드바이저가 대화 전체 30만 토큰을 Opus 요금으로 캐시 없이 읽음). 품질은 한 번씩 이겨 비슷 — 그래서 solo 유지. 참고 비용(배치·캐시): 팩트체크 1회 약 $0.55, 문장 검수 약 $0.06. 예약 작업은 초안을 다시 쓰지 말고 결과 JSON과 diff만 보고 판단한다(구독 사용량을 아끼는 게 목적).
 - `lib/`: llm.py(Anthropic API), draft.py(조사·대본 초안), review.py(자동 검수), tts.py(구글 TTS, 쉼 표기·구절 합성), subs.py(넷플릭스 규칙 자막), scenes.py(장면 템플릿 9종 + 숏츠 끝 카드), build.py(전체 빌드), thumb.py(썸네일), meta.py(설명·챕터·태그), publish.py(완성본을 공개 주소로), capture.cjs(공식 페이지 캡처), char.py·poses.py·cutout.py(막내 캐릭터)
 - `assets/char/*_cut.png`(막내: base 인사, point 가리키기, phone 휴대폰), `assets/music/`(Mixkit Free License, LICENSE.txt에 출처)
 - `episodes/<ID>-<slug>/`: research.md · video.json · official.png(공식 캡처)는 커밋한다. `out/`(음성 캐시·렌더·완성본)은 커밋하지 않는다.
