@@ -22,7 +22,7 @@ def section(title_prefix):
 
 
 FMT = """마지막에 아래 형식의 ```json 블록 하나로만 판정을 낸다.
-{"verdict": "통과" 또는 "반려", "summary": "한 줄", "fixes": [{"scene": "장면 id", "field": "say[2] 또는 data.rows[1][1] 같은 위치", "now": "지금 video.json에 있는 글자 그대로(정확히 복사)", "fix": "고친 글자", "why": "이유(팩트체크면 원문 발췌와 URL)"}]}
+{"verdict": "통과" 또는 "반려", "after_fix": "fixes를 그대로 넣으면 통과인지: 통과 또는 반려", "summary": "한 줄", "fixes": [{"scene": "장면 id", "field": "say[2] 또는 data.rows[1][1] 같은 위치", "now": "지금 video.json에 있는 글자 그대로(정확히 복사)", "fix": "고친 글자", "why": "이유(팩트체크면 원문 발췌와 URL)"}]}
 now는 video.json 원문과 한 글자도 다르지 않게 복사한다(바꿔 넣기에 쓴다). 고칠 게 없으면 fixes는 []."""
 
 
@@ -138,7 +138,14 @@ def main():
     print(json.dumps({"kind": kind, "verdict": res.get("verdict"), "summary": res.get("summary"),
                       "fixes": len(res.get("fixes") or []), "applied": res.get("applied"),
                       "not_applied": len(res.get("not_applied") or [])}, ensure_ascii=False))
-    sys.exit(0 if res.get("verdict") == "통과" else 2)
+    ok = res.get("verdict") == "통과"
+    # 고칠 문장을 전부 넣었고 검수자가 '넣으면 통과'라고 했으면 통과로 본다(라운드마다 새 지적이 나와 끝나지 않는 것을 막음)
+    if not ok and "--apply" in rest and res.get("after_fix") == "통과" and res.get("fixes") and not res.get("not_applied"):
+        ok = True
+        res["verdict_final"] = "통과(고칠 문장 반영)"
+        (out / f"review_{kind}.json").write_text(json.dumps(res, ensure_ascii=False, indent=1))
+        print(json.dumps({"kind": kind, "verdict_final": res["verdict_final"]}, ensure_ascii=False))
+    sys.exit(0 if ok else 2)
 
 
 if __name__ == "__main__":

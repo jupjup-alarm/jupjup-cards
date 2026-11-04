@@ -10,8 +10,10 @@ from char import multipart
 E = env.load()
 URL = f"https://api.cloudflare.com/client/v4/accounts/{E['CF_ACCOUNT_ID']}/ai/run/@cf/black-forest-labs/flux-2-klein-4b"
 STYLE = ("Warm soft 2D illustration in a gentle Korean webtoon picture-book style, soft pastel colors, clean shapes, "
-         "cozy natural light, expressive faces, Korean people. Not a photograph. No text, no letters, no numbers, "
-         "no logos, no watermark. ")
+         "cozy natural light, expressive faces. Contemporary South Korea: Korean people in modern everyday clothes "
+         "(cardigans, knit sweaters, blouses, jackets), modern Korean apartment interiors with sofas, dining tables and chairs. "
+         "No kimono, no hanbok, no tatami mats, no Japanese interiors, no children unless asked. Not a photograph. "
+         "No text, no letters, no numbers, no logos, no watermark. ")
 
 
 def gen(prompt, out, w=768, h=1152, seed=None):
