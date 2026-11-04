@@ -1,0 +1,26 @@
+{
+ "key": "2026820013",
+ "source": "ego lite (사용자 브라우저)",
+ "files": [
+  {
+   "name": "2026820013-pamphlet.pdf",
+   "kind": "pamphlet",
+   "md5": "6d7ef057f071c2c6e4ca39252b0a4c27",
+   "bytes": 36184741,
+   "got": "ok",
+   "cands": 14,
+   "folder": "pamphlets/2026820013/1"
+  },
+  {
+   "name": "2026820013.pdf",
+   "kind": "notice",
+   "md5": "771da07e157130f37a6d0290de4a3daa",
+   "bytes": 1156294,
+   "got": "ok",
+   "text_by": "pypdf"
+  }
+ ],
+ "site": "2026-11-05",
+ "checked": "2026-11-05 07:51",
+ "changed": true
+}

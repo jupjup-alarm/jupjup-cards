@@ -1,0 +1,17 @@
+{
+ "key": "2026820014",
+ "source": "ego lite (사용자 브라우저)",
+ "files": [
+  {
+   "name": "2026820014.pdf",
+   "kind": "notice",
+   "md5": "7a69edaeeaf3661cab2d96a4232f584e",
+   "bytes": 1072714,
+   "got": "ok",
+   "text_by": "pypdf"
+  }
+ ],
+ "site_none": "2026-11-05",
+ "checked": "2026-11-05 07:51",
+ "changed": true
+}

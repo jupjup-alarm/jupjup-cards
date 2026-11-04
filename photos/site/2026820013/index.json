@@ -1,0 +1,105 @@
+{
+ "key": "2026820013",
+ "images": [
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "단지 조감도",
+   "file": "photos/site/2026820013/birdseye.jpg",
+   "src": "https://www.lhasg2-a6.co.kr/overview/img/01.jpg",
+   "crop": "",
+   "w": 1620,
+   "h": 1180,
+   "md5": "a21e2a1f90bec69c94b584b9f96f61c8",
+   "photo": true
+  },
+  {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "",
+   "file": "photos/site/2026820013/siteplan.jpg",
+   "src": "https://www.lhasg2-a6.co.kr/overview/img/03-1.jpg",
+   "crop": "",
+   "w": 1420,
+   "h": 2306,
+   "md5": "ef02b11c680f129875d8bbd29447656a",
+   "photo": true
+  },
+  {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "조경",
+   "file": "photos/site/2026820013/siteplan-2.jpg",
+   "src": "https://www.lhasg2-a6.co.kr/overview/img/03-3.jpg",
+   "crop": "",
+   "w": 1420,
+   "h": 1325,
+   "md5": "b827f5f4f1056030d347a85d0f5d398c",
+   "photo": false
+  },
+  {
+   "cat": "dongho",
+   "kind": "동호배치도",
+   "label": "",
+   "file": "photos/site/2026820013/dongho.jpg",
+   "src": "https://www.lhasg2-a6.co.kr/overview/img/04.jpg",
+   "crop": "",
+   "w": 1420,
+   "h": 1872,
+   "md5": "bb0a18e18e9ecf3a727b496adf755b7a",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "55A",
+   "file": "photos/site/2026820013/plan-55a.jpg",
+   "src": "https://www.lhasg2-a6.co.kr/unit/img/55a-1.jpg",
+   "crop": "",
+   "w": 1620,
+   "h": 1727,
+   "md5": "2cf396b7eeea0d460654b941f7772f64",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "55B",
+   "file": "photos/site/2026820013/plan-55b.jpg",
+   "src": "https://www.lhasg2-a6.co.kr/unit/img/55b-1.jpg",
+   "crop": "",
+   "w": 1620,
+   "h": 1910,
+   "md5": "2d21adb9ead785f87d1b04266b5db2af",
+   "photo": false
+  },
+  {
+   "cat": "interior",
+   "kind": "인테리어",
+   "label": "1",
+   "file": "photos/site/2026820013/interior-1.jpg",
+   "src": "https://www.lhasg2-a6.co.kr/unit/img/02-1.jpg",
+   "crop": "",
+   "w": 1158,
+   "h": 2400,
+   "md5": "1c8b3e72544bab189dab1ef9d36de5bf",
+   "photo": true
+  },
+  {
+   "cat": "interior",
+   "kind": "인테리어",
+   "label": "2",
+   "file": "photos/site/2026820013/interior-2.jpg",
+   "src": "https://www.lhasg2-a6.co.kr/unit/img/02-2.jpg",
+   "crop": "",
+   "w": 1158,
+   "h": 2400,
+   "md5": "519ad39b3fdd1da52c9ed28544f0fe73",
+   "photo": true
+  }
+ ],
+ "links": [],
+ "homepage": "https://www.lhasg2-a6.co.kr/",
+ "owner": "한국토지주택공사 경기남부지역본부",
+ "updated": "2026-11-05 07:51"
+}

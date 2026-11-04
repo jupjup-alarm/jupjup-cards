@@ -1,0 +1,136 @@
+{
+ "key": "2026000472",
+ "images": [
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "단지 전경",
+   "file": "photos/site/2026000472/birdseye.jpg",
+   "src": "https://guri.ensvil.com/bon/img/dan/01cont01.jpg?v01",
+   "crop": "",
+   "w": 2354,
+   "h": 1329,
+   "md5": "856d898521ea10575fa65ad032a0e14e",
+   "photo": true
+  },
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "원경",
+   "file": "photos/site/2026000472/birdseye-2.jpg",
+   "src": "https://guri.ensvil.com/bon/img/mimg01.jpg",
+   "crop": "",
+   "w": 2000,
+   "h": 1152,
+   "md5": "17eb1e3e6800974f23fe30ecf2fb0d06",
+   "photo": true
+  },
+  {
+   "cat": "dongho",
+   "kind": "동호배치도",
+   "label": "",
+   "file": "photos/site/2026000472/dongho.jpg",
+   "src": "https://guri.ensvil.com/bon/img/dan/02cont01.jpg?v01",
+   "crop": "",
+   "w": 2362,
+   "h": 2692,
+   "md5": "5340eca24c7650af4718bd70f2038100",
+   "photo": true
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "75",
+   "file": "photos/site/2026000472/plan-75.jpg",
+   "src": "https://guri.ensvil.com/bon/img/fam/t75.jpg",
+   "crop": "",
+   "w": 2271,
+   "h": 3000,
+   "md5": "2a7d2fc2874eaeb2d3ad56637b9977bd",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "84",
+   "file": "photos/site/2026000472/plan-84.jpg",
+   "src": "https://guri.ensvil.com/bon/img/fam/t84.jpg",
+   "crop": "",
+   "w": 2267,
+   "h": 3000,
+   "md5": "73ed024d500fb08f9186d91d54b3040d",
+   "photo": false
+  },
+  {
+   "cat": "community",
+   "kind": "커뮤니티",
+   "label": "",
+   "file": "photos/site/2026000472/community.jpg",
+   "src": "https://guri.ensvil.com/bon/img/dan/03cont01.jpg",
+   "crop": "",
+   "w": 2297,
+   "h": 2400,
+   "md5": "d3040edb389b9b6b7d1ce6d0666b1f5f",
+   "photo": false
+  },
+  {
+   "cat": "interior",
+   "kind": "인테리어",
+   "label": "침실",
+   "file": "photos/site/2026000472/interior.jpg",
+   "src": "https://guri.ensvil.com/bon/img/fam/02cont01.jpg",
+   "crop": "",
+   "w": 1896,
+   "h": 2400,
+   "md5": "33778eb64cfa9b2e01b6f9abac30efea",
+   "photo": true
+  },
+  {
+   "cat": "interior",
+   "kind": "인테리어",
+   "label": "거실",
+   "file": "photos/site/2026000472/interior-2.jpg",
+   "src": "https://guri.ensvil.com/bon/img/fam/02cont02.jpg",
+   "crop": "",
+   "w": 1896,
+   "h": 2400,
+   "md5": "fff1b0d4c149ed60df5a2643479f2876",
+   "photo": true
+  },
+  {
+   "cat": "interior",
+   "kind": "인테리어",
+   "label": "주방",
+   "file": "photos/site/2026000472/interior-3.jpg",
+   "src": "https://guri.ensvil.com/bon/img/fam/02cont03.jpg",
+   "crop": "",
+   "w": 1895,
+   "h": 2400,
+   "md5": "a6bd897a3f27a9a64a854a6ca12e8067",
+   "photo": true
+  },
+  {
+   "cat": "interior",
+   "kind": "인테리어",
+   "label": "욕실",
+   "file": "photos/site/2026000472/interior-4.jpg",
+   "src": "https://guri.ensvil.com/bon/img/fam/02cont04.jpg",
+   "crop": "",
+   "w": 1895,
+   "h": 2400,
+   "md5": "6eb414bd08f3c84cb0865ee75a62a1cd",
+   "photo": true
+  }
+ ],
+ "links": [
+  {
+   "kind": "emodel",
+   "label": "E모델하우스",
+   "name": "E모델하우스",
+   "url": "https://sws360.com/2026/cocoa/guri_ensvil/index.html"
+  }
+ ],
+ "homepage": "https://guri.ensvil.com/",
+ "owner": "(주)신안",
+ "updated": "2026-11-05 07:51"
+}
