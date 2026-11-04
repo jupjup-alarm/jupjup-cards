@@ -14,7 +14,7 @@ ROOT = LIB.parent
 sys.path.insert(0, str(LIB))
 import tts, scenes, subs as subsmod
 
-LEAD, GAP, TAIL = 0.5, 0.55, 0.8  # 줄 사이 쉼 0.55초(구절·문장 쉼은 tts.py)
+LEAD, GAP, TAIL = 0.25, 0.35, 0.5  # 줄 사이 쉼 0.35초(구절·문장 쉼은 tts.py) — 2026-11-04 빈틈 줄이기
 SR = 24000
 HF = str(ROOT / "node_modules" / ".bin" / "hyperframes")
 FONTDIR = "/usr/share/fonts/opentype/noto"
@@ -36,7 +36,7 @@ def timeline(ep, spec):
     for s in spec["scenes"]:
         t = LEAD; lines = []
         for text in s["say"]:
-            p, d, segs = tts.line(text, spec["voice"], cache)
+            p, d, segs = tts.line(text, spec["voice"], cache, spec.get("rate", tts.RATE))
             lines.append({"text": tts.shown(text).replace(" / ", " ").replace("/", ""), "wav": str(p), "start": round(t, 3), "dur": round(d, 3), "segs": segs})
             t += d + GAP
         tl[s["id"]] = {"lines": lines, "dur": round(t - GAP + TAIL, 3)}
@@ -69,6 +69,10 @@ def scene_dirs(ep, spec, tl, fmt, short=None):
         else:
             s, times, dur = S[sid], [x["start"] for x in tl[sid]["lines"]], tl[sid]["dur"]
         s = dict(s); s["_checked"] = spec.get("checked", "")
+        if s.get("type") == "official":  # 캡처의 강조 박스 위치(capture.cjs가 남김) → 그쪽으로 다가간다
+            for cj in (ep / "official.json", ep / "out" / "official.json"):
+                if cj.exists():
+                    s["_zoom"] = json.loads(cj.read_text()).get("box"); break
         d = ep / "out" / "render" / tag / sid
         d.mkdir(parents=True, exist_ok=True)
         page = scenes.html(s, times, dur, portrait, spec.get("sources", []))
@@ -79,7 +83,7 @@ def scene_dirs(ep, spec, tl, fmt, short=None):
             ip.write_text(page)
         (d / "hyperframes.json").write_text('{"paths":{"blocks":"compositions","components":"compositions/components","assets":"assets"}}')
         (d / "meta.json").write_text(json.dumps({"id": f"{tag}-{sid}", "name": sid}))
-        for n in ["base", "point", "phone"]:
+        for n in scenes.CHAR_FILES:
             shutil.copy(ROOT / "assets" / "char" / f"{n}_cut.png", d / f"char_{n}.png")
         for cand in (ep / "official.png", ep / "out" / "official.png"):  # 편 폴더(커밋됨) 우선
             if cand.exists():
@@ -215,6 +219,11 @@ def main():
     if a.fmt in ("short", "both"):
         jobs += [("short", sh_) for sh_ in spec.get("shorts", [])]
     for fmt, short in jobs:
+        if short and short.get("beats"):  # 2026-11-04 숏츠 전용 빠른 컷 형식(lib/shorts.py)
+            import shorts as shortsmod
+            p, total = shortsmod.build(ep, spec, short)
+            print(short["id"], p.name, probe(p)["format"])
+            continue
         tag, dirs = scene_dirs(ep, spec, tl, fmt, short)
         render(dirs, a.jobs)
         total, starts = mix(ep, spec, tl, tag, dirs)

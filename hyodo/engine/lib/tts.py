@@ -1,8 +1,9 @@
 """구글 TTS(Chirp3-HD) 내레이션. 쉼은 대본 표기로 정확히 제어한다.
 
 대본(say) 표기
-  /            숨 쉼(0.25초). 이 자리에서 구절을 나눠 따로 읽고 정확한 무음을 넣는다.
-  문장 끝 . ? !  문장 쉼(0.45초). '누가.'처럼 6자 이하 이름표 문장 뒤는 0.3초.
+  /            숨 쉼(0.18초). 이 자리에서 구절을 나눠 따로 읽고 정확한 무음을 넣는다.
+  문장 끝 . ? !  문장 쉼(0.32초). '누가.'처럼 6자 이하 이름표 문장 뒤는 0.22초.
+  (2026-11-04 벤치마크 분석: 터진 영상 분당 약 300음절, 우리 215 → 속도 1.15배·쉼 축소)
   {표시|읽기}   자막에는 앞, 내레이션은 뒤로 읽는다. 예: {1397|일삼구칠}, {6%|6퍼센트}
   / 가 없는 곳은 이어 말한다: 구절 안에서 TTS가 스스로 낸 0.15초 넘는 쉼은 0.12초로 줄인다.
 
@@ -13,7 +14,8 @@ sys.path.insert(0, str(pathlib.Path(__file__).parent))
 import env
 KEY = env.load()["GOOGLE_TTS_KEY"]
 SR = 24000
-P_BREATH, P_SENT, P_LABEL = 0.25, 0.45, 0.30
+P_BREATH, P_SENT, P_LABEL = 0.18, 0.32, 0.22
+RATE = 1.15
 SIL_DB, MAX_IN, KEEP_IN, EDGE = -45.0, 0.15, 0.12, 0.03
 
 DISP = re.compile(r"\{([^|{}]*)\|([^|{}]*)\}")
@@ -44,7 +46,7 @@ def phrases(text):
     return out
 
 
-def synth(text, voice, out, rate=0.95):
+def synth(text, voice, out, rate=RATE):
     body = {"input": {"text": spoken(text)}, "voice": {"languageCode": "ko-KR", "name": voice},
             "audioConfig": {"audioEncoding": "LINEAR16", "sampleRateHertz": SR, "speakingRate": rate}}
     req = urllib.request.Request(f"https://texttospeech.googleapis.com/v1/text:synthesize?key={KEY}",
@@ -114,7 +116,7 @@ def clip(text, voice, cache_dir, rate):
     return tid
 
 
-def line(text, voice, cache_dir, rate=0.95):
+def line(text, voice, cache_dir, rate=RATE):
     cache_dir = pathlib.Path(cache_dir); cache_dir.mkdir(parents=True, exist_ok=True)
     ph = phrases(text)
     key = hashlib.sha1(f"{voice}|{rate}|{json.dumps(ph, ensure_ascii=False)}|v2".encode()).hexdigest()[:12]
