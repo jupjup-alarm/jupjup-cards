@@ -1211,3 +1211,29 @@ body:has(.lwrap:not(.home)){background:var(--ground)}
 .g-now .hm-rows{gap:8px}
 @media (min-width:1024px){.g-now{margin-inline:0;border-radius:var(--r-lg);padding:22px 24px}}
 @media (prefers-color-scheme:dark){.g-answer{background:#13223F!important}}
+
+/* ══════════ 리디자인 6단계 — 문서·404 (2026-11-04 캔버스 시안 v3) ══════════ */
+.doctabs{background:var(--card);border-bottom:1px solid var(--line)}
+.doctabs .wrap{display:flex;gap:18px;overflow-x:auto;scrollbar-width:none}
+.doctabs .wrap::-webkit-scrollbar{display:none}
+.doctabs a{flex:none;min-height:46px;display:flex;align-items:center;font-size:14px;font-weight:600;color:var(--ink-sub);text-decoration:none;border-bottom:3px solid transparent}
+.doctabs a[aria-current]{font-weight:700;color:var(--ink);border-bottom-color:var(--coral)}
+.prose{padding-top:20px}
+.prose .crumb{font-size:12.5px;padding:0}
+.prose h1{margin:10px 0 14px;font-size:28px;font-weight:900;letter-spacing:-.04em;line-height:1.25}
+.prose h2{margin:30px 0 10px;font-size:20px;font-weight:900;letter-spacing:-.03em}
+.prose p,.prose li{font-size:16px;line-height:1.8}
+.doc-fix{margin-top:28px;border-radius:var(--r-md);background:var(--navy);color:#fff;padding:16px 18px;display:flex;flex-direction:column;gap:4px}
+.doc-fix b{font-size:15.5px}
+.doc-fix p{margin:0 0 8px;font-size:13.5px!important;line-height:1.6!important;color:#C9D0DD}
+.prose .doc-fix a{min-height:44px;border-radius:10px;background:#fff;color:var(--navy);display:grid;place-items:center;font-size:14.5px;font-weight:700;text-decoration:none}
+/* 404 */
+.nf .nf-head{align-items:center;justify-items:center;text-align:center;padding-top:36px;padding-bottom:28px}
+.nf-mark{width:72px;height:72px;border-radius:50%;background:var(--navy);display:grid;place-items:center}
+.nf-mark i{width:26px;height:26px;border-radius:50%;background:var(--coral)}
+.nf .nf-head h1{font-size:25px;margin-top:6px}
+.nf .nf-head p{color:var(--ink-sub)!important}
+.nf-btns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;width:100%;max-width:420px;margin-top:8px}
+.nf-btns a{min-height:48px;border-radius:12px;border:1.5px solid var(--navy);display:grid;place-items:center;font-size:15px;font-weight:700;text-decoration:none;color:var(--ink)}
+.nf-btns a.p{background:var(--navy);color:#fff}
+@media (prefers-color-scheme:dark){.doc-fix{background:#13223F}.nf-btns a{border-color:var(--ink)}.nf-btns a.p{background:#E9EDF4;color:var(--navy);border-color:#E9EDF4}}

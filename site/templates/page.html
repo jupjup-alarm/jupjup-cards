@@ -1,11 +1,17 @@
 {% extends "base.html" %}
 {% from "macros.html" import crumbs with context %}
+{# 2026-11-04 리디자인 6단계: 문서 페이지끼리 오가는 탭 + 흰 바탕 글 + (문의 말고) 오류 제보 상자 #}
+{% set docs = [('about', '소개'), ('sources', '데이터 출처'), ('privacy', '개인정보 처리방침'), ('terms', '이용약관'), ('contact', '문의')] %}
 {% block main %}
+<nav class="doctabs" aria-label="사이트 정보"><div class="wrap">{% for s, l in docs %}<a href="/{{ s }}/"{% if page_url == '/' ~ s ~ '/' %} aria-current="page"{% endif %}>{{ l }}</a>{% endfor %}</div></nav>
 <main class="wrap" id="main">
-  {{ crumbs(crumb) }}
   <article class="prose">
+    {{ crumbs(crumb) }}
     <h1>{{ h1 }}</h1>
     {{ body }}
+    {% if page_url != '/contact/' %}
+    <div class="doc-fix"><b>오류를 발견했다면</b><p>공고 내용이 공식 공고문과 다르면 알려주세요. 확인 후 바로 고치고 페이지의 '최종 수정' 날짜를 바꿔요.</p><a href="/contact/">문의·오류 제보</a></div>
+    {% endif %}
   </article>
 </main>
 {% endblock %}
