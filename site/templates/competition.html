@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "macros.html" import card, crumbs, nrow with context %}
+{% from "macros.html" import card, crumbs, nrow, cp_ad with context %}
 {% set nav = 'type' %}
 {% block main %}
 <main class="wrap" id="main">
@@ -23,6 +23,8 @@
         </table>
       </div>
     </section>
+    {# 2026-11-04 사용자 요청: 경쟁률 페이지에도 쿠팡 광고 — 표 아래 띠(PC·모바일) + 맨 끝 큰 배너(모바일) #}
+    {{ cp_ad('home', 'ad-home') }}{{ cp_ad('home_mo', 'ad-home') }}
     {% if faq %}
     <section class="lsec lbox" aria-labelledby="comp-faq">
       <h2 id="comp-faq">청약 경쟁률, 자주 묻는 질문</h2>
@@ -34,6 +36,7 @@
       <h2>단지별로 보기 <small>{{ rows|length }}곳</small></h2>
       <ul class="hm-rows">{% for r in rows %}{{ nrow(r.n) }}{% endfor %}</ul>
     </section>
+    {{ cp_ad('home_end_mo', 'ad-home ad-end') }}
   </div>
 </main>
 {% endblock %}
