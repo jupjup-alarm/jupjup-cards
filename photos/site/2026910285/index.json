@@ -1,0 +1,33 @@
+{
+ "key": "2026910285",
+ "images": [
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "호수 쪽 낮 전경",
+   "file": "photos/site/2026910285/birdseye.jpg",
+   "src": "https://xn--2i0bq5hvjp1kpzchxro8a528e.kr/img/apt_img.jpg",
+   "crop": "",
+   "w": 926,
+   "h": 929,
+   "md5": "db9eb7c57693c1af353fac8471c771b3",
+   "photo": true
+  },
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "상가 쪽 거리 투시도",
+   "file": "photos/site/2026910285/birdseye-2.jpg",
+   "src": "https://xn--2i0bq5hvjp1kpzchxro8a528e.kr/img/shop_img.jpg",
+   "crop": "0,0.5,1,1",
+   "w": 926,
+   "h": 465,
+   "md5": "533652f73ef5bf91933da64ed5a8d65a",
+   "photo": true
+  }
+ ],
+ "links": [],
+ "homepage": "https://더샵송도그란테르.kr",
+ "owner": "포스코이앤씨·케이비부동산신탁",
+ "updated": "2026-11-04 22:46"
+}

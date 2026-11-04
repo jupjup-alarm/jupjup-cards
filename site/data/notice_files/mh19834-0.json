@@ -1,0 +1,47 @@
+{
+ "key": "mh19834-0",
+ "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019546&ccrCnntSysDsCd=03&uppAisTpCd=13&aisTpCd=17&mi=1026",
+ "checked": "2026-11-04 22:51",
+ "files": [
+  {
+   "fileid": "68868375",
+   "name": "[공고문]2026년다자녀전세임대입주자수시모집(수정).hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "68868379",
+   "name": "[공고문]2026년다자녀전세임대입주자수시모집(수정).pdf",
+   "kind": "notice",
+   "got": "ok",
+   "md5": "34ee63c1f5ef2cd9e14e528e1b16d853",
+   "pages": 7,
+   "bytes": 329766
+  },
+  {
+   "fileid": "66095414",
+   "name": "1.2026년다자녀전세임대입주자모집QnA.hwp",
+   "kind": "other"
+  },
+  {
+   "fileid": "66095415",
+   "name": "2-1.금융정보등(금융ㆍ신용ㆍ보험정보)제공동의서및유의사항.hwp",
+   "kind": "other"
+  },
+  {
+   "fileid": "66095416",
+   "name": "2-2.샘플_금융정보제공동의서.pdf",
+   "kind": "form"
+  },
+  {
+   "fileid": "66095417",
+   "name": "3.자산보유사실확인서및유의사항.hwp",
+   "kind": "other"
+  },
+  {
+   "fileid": "68824694",
+   "name": "4.개인정보수집이용및제3자제공동의서(양식_수정).hwpx",
+   "kind": "other"
+  }
+ ],
+ "changed": true
+}

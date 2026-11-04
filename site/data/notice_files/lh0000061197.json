@@ -1,7 +1,7 @@
 {
  "key": "lh0000061197",
  "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061197&ccrCnntSysDsCd=02&uppAisTpCd=39&aisTpCd=39&mi=1027",
- "checked": "2026-11-04 22:35",
+ "checked": "2026-11-04 22:44",
  "files": [
   {
    "fileid": "69224264",
@@ -47,5 +47,5 @@
    "kind": "other"
   }
  ],
- "changed": true
+ "changed": false
 }

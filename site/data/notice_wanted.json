@@ -20,119 +20,6 @@
    "owner": "서울주택도시개발공사"
   },
   {
-   "key": "2026000496",
-   "title": "청라 아크원 푸르지오",
-   "rcpt": [
-    "2026-11-02",
-    "2026-11-04"
-   ],
-   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000496&pblancNo=2026000496",
-   "homepage": "https://www.arkone-prugio.com",
-   "need": [
-    "notice",
-    "pamphlet",
-    "site"
-   ],
-   "save_as": "2026000496.pdf",
-   "pamphlet_as": "2026000496-pamphlet.pdf",
-   "site_as": "2026000496-site.txt",
-   "owner": "(주)청라스마트시티"
-  },
-  {
-   "key": "2026000502",
-   "title": "화성 향남 롯데캐슬 시그니처",
-   "rcpt": [
-    "2026-11-02",
-    "2026-11-04"
-   ],
-   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000502&pblancNo=2026000502",
-   "homepage": "https://www.hwaseong-lottecastlesignature.com",
-   "need": [
-    "notice",
-    "pamphlet",
-    "site"
-   ],
-   "save_as": "2026000502.pdf",
-   "pamphlet_as": "2026000502-pamphlet.pdf",
-   "site_as": "2026000502-site.txt",
-   "owner": "신영부동산신탁 주식회사"
-  },
-  {
-   "key": "2026000517",
-   "title": "GTX운정중앙역 시티프라디움 3단지",
-   "rcpt": [
-    "2026-11-02",
-    "2026-11-04"
-   ],
-   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000517&pblancNo=2026000517",
-   "homepage": "https://www.gtx운정중앙역시티프라디움.com",
-   "need": [
-    "notice",
-    "pamphlet",
-    "site"
-   ],
-   "save_as": "2026000517.pdf",
-   "pamphlet_as": "2026000517-pamphlet.pdf",
-   "site_as": "2026000517-site.txt",
-   "owner": "(주)넥스트건설"
-  },
-  {
-   "key": "2026000518",
-   "title": "GTX운정중앙역 시티프라디움 4단지",
-   "rcpt": [
-    "2026-11-02",
-    "2026-11-04"
-   ],
-   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000518&pblancNo=2026000518",
-   "homepage": "https://www.gtx운정중앙역시티프라디움.com",
-   "need": [
-    "notice",
-    "pamphlet",
-    "site"
-   ],
-   "save_as": "2026000518.pdf",
-   "pamphlet_as": "2026000518-pamphlet.pdf",
-   "site_as": "2026000518-site.txt",
-   "owner": "(주)넥스트건설"
-  },
-  {
-   "key": "2026000530",
-   "title": "계양신도시 카이브 유보라 AC3블록",
-   "rcpt": [
-    "2026-11-02",
-    "2026-11-04"
-   ],
-   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000530&pblancNo=2026000530",
-   "homepage": "https://www.gy-bando.com",
-   "need": [
-    "notice",
-    "pamphlet"
-   ],
-   "save_as": "2026000530.pdf",
-   "pamphlet_as": "2026000530-pamphlet.pdf",
-   "site_as": "2026000530-site.txt",
-   "owner": "(주)반도건설"
-  },
-  {
-   "key": "2026000532",
-   "title": "계양신도시 카이브 유보라 AC4블록",
-   "rcpt": [
-    "2026-11-02",
-    "2026-11-04"
-   ],
-   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000532&pblancNo=2026000532",
-   "homepage": "https://www.gy-bando.com",
-   "need": [
-    "notice",
-    "pamphlet",
-    "site"
-   ],
-   "save_as": "2026000532.pdf",
-   "pamphlet_as": "2026000532-pamphlet.pdf",
-   "site_as": "2026000532-site.txt",
-   "owner": "(주)반도건설"
-  },
-  {
    "key": "2026940245",
    "title": "고강휴먼빌 임의공급",
    "rcpt": [
@@ -336,6 +223,24 @@
    "pamphlet_as": "2026910281-pamphlet.pdf",
    "site_as": "2026910281-site.txt",
    "owner": "(주)에코월드이엔씨"
+  },
+  {
+   "key": "2026910285",
+   "title": "더샵 송도그란테르 G5-6블록 무순위",
+   "rcpt": [
+    "2026-11-09",
+    "2026-11-09"
+   ],
+   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910285&pblancNo=2026910285",
+   "homepage": "https://더샵송도그란테르.kr",
+   "need": [
+    "notice",
+    "pamphlet"
+   ],
+   "save_as": "2026910285.pdf",
+   "pamphlet_as": "2026910285-pamphlet.pdf",
+   "site_as": "2026910285-site.txt",
+   "owner": "케이비부동산신탁(주)"
   },
   {
    "key": "2026820014",

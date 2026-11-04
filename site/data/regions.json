@@ -63,6 +63,10 @@
    "서해구": "seohae",
    "연수구": "yeonsu",
    "검단구": "geomdan"
+  },
+  "경남": {
+   "거창군": "geochang",
+   "의령군": "uiryeong"
   }
  }
 }
