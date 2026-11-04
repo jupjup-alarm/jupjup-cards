@@ -1700,7 +1700,7 @@ def main():
                 + ", ".join(f"{k} {a}곳" for k, a in act) + ". 접수일·분양가·자격을 공식 데이터로 정리.")
 
     def list_page(url, h1, title, desc, groups, intro=None, crumb=None, links=None, kind="list", empty=None, tbl_label=None, og_t=None,
-                  sections=None, h1_kw=None, tbl=True):
+                  sections=None, h1_kw=None, tbl=True, **extra):
         all_n = [x for _, g in groups for x in g]
         lm = max([x["modified"] for x in all_n], default=now.isoformat(timespec="seconds"))
         # '한눈에 보기' 표 — 접수 중·예정만 최대 12곳 (2026-11-02 SEO 기획안 개선안 1)
@@ -1710,7 +1710,7 @@ def main():
                + f" — {d(TODAY.isoformat())} 기준 · 청약홈·LH·마이홈 공식 데이터")
         h = list_tpl.render(h1=h1, groups=groups, intro=intro, crumb=crumb or [("홈", "/")], links=links, empty=empty,
                             page_url=url, title=title, desc=desc, og=og_hub(url, *og_t, all_n) if og_t else "/og-default.jpg",
-                            items=all_n, tbl=tbl, tbl_cap=cap, sections=sections or [], h1_kw=h1_kw, **common)
+                            items=all_n, tbl=tbl, tbl_cap=cap, sections=sections or [], h1_kw=h1_kw, **extra, **common)
         write(url, h, title, desc, kind, lm)
 
     def tsort(lst):
@@ -1982,6 +1982,22 @@ def main():
         tbl_ = mk_table(f"주변 실거래보다 분양가가 낮은 공고 {len(lot)}곳 — 비교 단지 실거래 기준 추정 · {d(TODAY.isoformat())}",
                         ["단지", "지역", "상태", "시세 대비", "비교 기준 (실거래)"], rows_, left=5, txt=True)
         top_ = live_[0] if live_ else lot[0]
+        # 2026-11-04 사용자 결정(2번): 모바일에서 표 대신 차익 순위 카드 + 정렬·지역·'지금 넣을 수 있는 것만' 칩, 표는 맨 아래 '한눈에 보기'로
+        cards_ = []
+        for x in lot:
+            g = x["gap"]
+            gr = g.get("rows") or []
+            mk_ = parse_won(gr[0][1]) if gr else None
+            pr_ = parse_won(gr[1][1]) if len(gr) > 1 else None
+            pct_ = round(pr_ * 100 / mk_) if (mk_ and pr_ and pr_ < mk_) else None
+            st = x["status"]
+            end_ = (x["rcpt"][1] or x["rcpt"][0]) if st == "open" else (x["rcpt"][0] if st in ("upcoming", "pre") else None)
+            cards_.append({"n": x, "pct": pct_, "won": gap_won(g["verdict"]), "end": end_ or "9999-12-31",
+                           "live": st in ("open", "upcoming"), "v": re.sub(r"\s*\(추정\)\s*$", "", g["verdict"]),
+                           "mk": gr[0] if gr else None, "pr": gr[1] if len(gr) > 1 else None})
+        lotto_sum = {"n": len(lot), "live": len(live_), "top": max(cards_, key=lambda c: c["won"]),
+                     "sidos": [sd for sd in ("서울", "경기", "인천") if any(c["n"]["sido"] == sd for c in cards_)]
+                              + (["그 밖"] if any(c["n"]["sido"] not in ("서울", "경기", "인천") for c in cards_) else [])}
         list_page("/lotto/", "로또 청약 — 시세보다 싸게 나온 공고", f"로또 청약 — 시세보다 싸게 나온 공고 {len(lot)}곳 · 줍줍알람",
                   f"{d(TODAY.isoformat())} 기준 주변 실거래보다 분양가가 낮은 청약 공고 {len(lot)}곳(접수 중·예정 {len(live_)}곳). "
                   f"{top_.get('complex') or top_['title']} {top_['gap']['verdict']} 등. 비교 단지와 실거래 시점을 함께 정리.",
@@ -1991,7 +2007,8 @@ def main():
                   [("홈", "/"), ("로또 청약", None)],
                   [("줍줍 공고", "/type/mujeonwi/"), ("청약 경쟁률", "/competition/"), ("서울 줍줍", "/region/seoul/mujeonwi/")],
                   tbl=False, h1_kw=f"접수 중·예정 {len(live_)}곳",
-                  sections=[{"h2": "시세보다 얼마나 싼가요", "small": f"{len(lot)}곳", "top": True, "html": tbl_}],
+                  sections=[{"h2": "한눈에 보기 — 시세 비교 표", "small": f"{len(lot)}곳", "html": tbl_}],
+                  lotto=cards_, lotto_sum=lotto_sum,
                   og_t=("로또 청약", "시세보다 싼 공고", "한눈에 보기", "주변 실거래와 비교 · 비교 단지 · 거래 시점"))
 
     def comp_intro(rows_, best_):

@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "macros.html" import card, crumbs, cp_ad, ntable, nrow with context %}
+{% from "macros.html" import card, crumbs, cp_ad, ntable, nrow, pill with context %}
 {% set nav = 'schedule' if page_url.startswith('/schedule') else ('region' if page_url.startswith('/region') else 'type') %}
 {% block main %}
 <main class="wrap" id="main">
@@ -33,7 +33,40 @@
       {{ sec.html }}
     </section>
     {% endfor %}
-    {% for label, lst in groups %}
+    {% if lotto %}
+    {# 2026-11-04 사용자 결정: 로또 청약 — 차익 순위 카드 + 칩 (표는 맨 아래 '한눈에 보기') #}
+    <section class="lsec lotto" aria-labelledby="lt-h">
+      <h2 id="lt-h">시세보다 얼마나 싼가요 <small>{{ lotto_sum.n }}곳</small></h2>
+      <p class="lt-sum num">{{ lotto_sum.n }}곳 중 접수 중·예정 <b>{{ lotto_sum.live }}곳</b> · 최대 <b>{{ lotto_sum.top.v }}</b> (추정, {{ lotto_sum.top.n.complex or lotto_sum.top.n.title }})</p>
+      <div class="lt-chips" role="group" aria-label="정렬·거르기">
+        <button type="button" data-sort="gap" aria-pressed="true">차익 큰 순</button>
+        <button type="button" data-sort="end" aria-pressed="false">마감 임박 순</button>
+        <span class="lt-sep" aria-hidden="true"></span>
+        <button type="button" data-sido="" aria-pressed="true">전체</button>{% for sd in lotto_sum.sidos %}
+        <button type="button" data-sido="{{ sd }}" aria-pressed="false">{{ sd }}</button>{% endfor %}
+        <span class="lt-sep" aria-hidden="true"></span>
+        <button type="button" data-live aria-pressed="false">접수 중·예정만</button>
+      </div>
+      <p class="lt-n num" aria-live="polite"></p>
+      <ol class="lt-list">{% for c in lotto %}{% set n = c.n %}
+        <li data-won="{{ c.won }}" data-end="{{ c.end }}" data-sido="{{ n.sido if n.sido in ('서울', '경기', '인천') else '그 밖' }}" data-live="{{ 1 if c.live else 0 }}" data-grp="{{ 0 if n.status in ('open', 'upcoming', 'pre') else 1 }}" data-i="{{ loop.index0 }}"><a class="lt-c st-{{ n.status }}" href="{{ n.url }}">
+          <span class="lt-r num">{{ loop.index }}</span>
+          <span class="lt-b">
+            <span class="lt-t"><b>{{ n.title }}</b>{{ pill(n) }}</span>
+            <span class="lt-m num">{{ n.sido }} {{ n.sigungu or '' }} · {{ n.kind_label }}{% if n.status in ('open', 'upcoming') or n.is_pre %} · {{ n.rcpt[0]|trange(n.rcpt[1]) }} 접수{% if n.is_pre %} 예정{% endif %}{% endif %}</span>
+            <b class="lt-v num">{{ c.v }} <small>(추정)</small></b>
+            {% if c.pct %}<span class="lt-bar" aria-hidden="true"><i style="width:{{ c.pct }}%"></i></span><span class="lt-p num">분양가가 주변 시세의 <b>{{ c.pct }}%</b></span>{% endif %}
+            {% if c.mk %}<span class="lt-k num"><em>비교</em>{{ c.mk[0] }} <b>{{ c.mk[1] }}</b></span>{% endif %}
+            {% if c.pr %}<span class="lt-k num"><em>이 단지</em>{{ c.pr[0]|replace('이 단지 ', '', 1) }} <b>{{ c.pr[1] }}</b></span>{% endif %}
+          </span>
+        </a></li>{% endfor %}
+      </ol>
+      <p class="lt-empty" hidden>조건에 맞는 공고가 없어요. 칩을 다시 골라 보세요.</p>
+      <p class="note">비교 단지의 최근 실거래가와 분양가로 계산한 추정이에요. 차익이 클수록 경쟁이 몰리고 거주의무·전매 제한이 붙는 경우가 많아요.</p>
+    </section>
+    {{ cp_ad('home', 'ad-home') }}
+    {% endif %}
+    {% for label, lst in groups if not lotto %}
     <section class="lsec lbox"{% if label == '지금 접수 중' %} id="g-open"{% elif label == '접수 예정' %} id="g-up"{% endif %}>
       <h2>{{ label }} <small>{{ lst|length }}곳</small></h2>
       {% if lst %}<ul class="hm-rows">{% for n in lst %}{{ nrow(n) }}{% endfor %}</ul>
@@ -58,6 +91,30 @@
 </main>
 {% endblock %}
 {% block after %}
+{% if lotto %}
+<script>
+(function(){
+  var L=document.querySelector('.lt-list');if(!L)return;
+  var items=[].slice.call(L.children),bs=document.querySelectorAll('.lt-chips button'),N=document.querySelector('.lt-n'),E=document.querySelector('.lt-empty');
+  var st={sort:'gap',sido:'',live:false};
+  function run(){
+    var v=items.filter(function(li){return (!st.sido||li.dataset.sido===st.sido)&&(!st.live||li.dataset.live==='1');});
+    v.sort(st.sort==='gap'?function(a,b){return (a.dataset.grp-b.dataset.grp)||(b.dataset.won-a.dataset.won)||(a.dataset.i-b.dataset.i);}
+      :function(a,b){return (b.dataset.live-a.dataset.live)||(a.dataset.end<b.dataset.end?-1:a.dataset.end>b.dataset.end?1:0)||(b.dataset.won-a.dataset.won);});
+    items.forEach(function(li){li.hidden=true;});
+    v.forEach(function(li,k){li.hidden=false;li.querySelector('.lt-r').textContent=k+1;L.appendChild(li);});
+    N.textContent=(st.sido||st.live)?(v.length+'곳 보는 중'):'';E.hidden=v.length>0;
+  }
+  bs.forEach(function(b){b.addEventListener('click',function(){
+    var t,val;
+    if(b.dataset.sort){st.sort=b.dataset.sort;t='sort';val=b.textContent;document.querySelectorAll('.lt-chips [data-sort]').forEach(function(x){x.setAttribute('aria-pressed',x===b);});}
+    else if(b.hasAttribute('data-live')){st.live=!st.live;b.setAttribute('aria-pressed',st.live);t='live';val=st.live?'on':'off';}
+    else{st.sido=b.dataset.sido;t='region';val=b.textContent;document.querySelectorAll('.lt-chips [data-sido]').forEach(function(x){x.setAttribute('aria-pressed',x===b);});}
+    run();if(window.jjEv)jjEv('lotto_filter',{filter_type:t,filter_value:val,results_count:L.querySelectorAll('li:not([hidden])').length});
+  });});
+})();
+</script>
+{% endif %}
 <script type="application/ld+json">
 {{ {"@context": "https://schema.org", "@graph": [crumb_ld(crumb, h1, page_url),
   {"@type": "CollectionPage", "@id": BASE ~ page_url, "url": BASE ~ page_url, "name": h1, "description": desc, "inLanguage": "ko",
