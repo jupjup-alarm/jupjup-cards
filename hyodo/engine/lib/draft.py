@@ -49,7 +49,7 @@ def main():
 [예시 research.md]
 {ex_research}
 
-[예시 video.json — 형식·장면 data 필드 이름을 그대로 따른다. 내용·숫자는 새로]
+[예시 video.json — 형식·장면 data 필드 이름만 따른다. 내용·숫자·kids 주제(청년미래적금)는 가져오지 말고 이번 소재로 새로. kids 장면은 이번 소재와 이어지는 반대 세대 혜택 1개, check 장면은 정확히 3문항]
 {ex_video}
 
 순서: ① 소재 메모의 출처와 공식 원문을 web_fetch로 열어 사실을 확인한다(요일은 직접 계산). ② research.md(사실·등급·출처·원문 발췌·주의)를 쓴다.
