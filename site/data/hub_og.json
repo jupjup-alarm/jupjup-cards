@@ -69,6 +69,11 @@
   "image": "photos/site/2026000530/birdseye.jpg",
   "pos": "center 55%"
  },
+ "/region/incheon/seohae/": {
+  "credit": "이미지: LH 제공 조감도 · 실제와 다를 수 있음",
+  "image": "photos/b1a74e628f16.jpg",
+  "pos": "center 50%"
+ },
  "/region/seoul/": {
   "credit": "이미지: 서울빌라가로주택정비사업조합 제공 조감도 · 실제와 다를 수 있음",
   "image": "photos/f8fc2f4eb166-bldg.jpg",

@@ -1089,6 +1089,119 @@ def site_assets(n):
     return idx
 
 
+SHEET_GENERIC = set("""블록 bl 공공분양 공공분양주택 분양 분양주택 신혼희망타운 잔여세대 행복주택 무순위 임의공급 청약 결과 주택 본청약 사전청약
+예비입주자 추가모집 모집 입주 완료 입주자 공고 지구 단지 순번추첨 동호지정 영구임대 국민임대 10년공공임대 공공임대 지분적립형 토지임대부
+분양 예정 차 lh sh gh 최초 재공급 계약취소분 일반 매입임대 전세임대 잔여 소득 완화""".split())
+
+
+def _sheet_norm(s):
+    return re.sub(r"[^0-9a-z가-힣]", "", (s or "").lower())
+
+
+def _sheet_blocks(s):
+    s = (s or "").upper().replace("-", "")
+    return set(re.findall(r"(?<![A-Z0-9])([A-Z]{1,2}\d{1,2})(?=블록|BL|\b|[^0-9A-Z])", s))
+
+
+_SHEET_ROWS = None
+
+
+def sheet_rows():
+    global _SHEET_ROWS
+    if _SHEET_ROWS is None:
+        f = DATA / "sheet_assets.json"
+        try:
+            _SHEET_ROWS = json.loads(f.read_text(encoding="utf-8")).get("rows", []) if f.exists() else []
+        except ValueError:
+            _SHEET_ROWS = []
+    return _SHEET_ROWS
+
+
+def sheet_match(n):
+    """이 공고에 맞는 '청약조사' 줄 — ① AI열 key ② AH열 LH panId ③ 단지 이름 낱말·블록 번호가 맞는 줄 (청약 결과 줄 제외)."""
+    rows = [r for r in sheet_rows() if "청약 결과" not in r.get("title", "")]
+    key = n["key"]
+    for r in rows:
+        m = re.search(r"key\s*[:：]\s*([0-9A-Za-z_-]+)", r.get("site", ""))
+        if m and m.group(1) == key:
+            return r
+    for r in rows:
+        m = re.search(r"panId=(\d+)", r.get("homepage", ""))
+        if m and f"lh{m.group(1)}" == key:
+            return r
+    mine = _sheet_norm(" ".join([n.get("title") or "", n.get("complex") or ""] + list(n.get("aliases") or []) + list(n.get("search_names") or [])))
+    myb = _sheet_blocks(" ".join([n.get("title") or "", n.get("complex") or ""]))
+    best, best_s = None, 0.0
+    for r in rows:
+        toks = [t for t in re.findall(r"[0-9A-Za-z가-힣]+", r["title"]) if len(t) >= 2 and t.lower() not in SHEET_GENERIC
+                and not re.fullmatch(r"[A-Za-z]{1,2}-?\d{1,2}(블록|bl|BL)?|\d+(차|세대|호)?", t)]
+        if not toks or _sheet_norm(toks[0]) not in mine:
+            continue
+        rb = _sheet_blocks(r["title"])
+        if rb and myb and not (rb & myb):
+            continue
+        s = sum(1 for t in toks if _sheet_norm(t) in mine) / len(toks)
+        if s >= 0.6 and s > best_s:
+            best, best_s = r, s
+    return best
+
+
+def _sheet_files(v, cat):
+    """'84A | photos/plan-….jpg' 줄들 → [(라벨, 파일)] (실패·없음 줄은 버림)."""
+    out = []
+    for ln in (v or "").splitlines():
+        parts = [p.strip() for p in ln.split("|")]
+        f = parts[-1]
+        if f.startswith("photos/") and (REPO / f).exists():
+            out.append((parts[0] if len(parts) > 1 else "", f))
+    return out
+
+
+def sheet_assets(n):
+    """사진·평면도·배치도가 아직 없는 공고에 '청약조사' AA·AC·AE·AG열 파일을 붙인다 (2026-11-04 사용자 결정 — 손으로 옮기다 빠지는 일이 잦아서).
+    json에 직접 넣은 값·photos/site 홈페이지 자료가 먼저다. 이용조건이 막힌 사진(공공누리 2~4유형·상업 이용 금지·사용 불가)은 쓰지 않는다."""
+    if n.get("photo") and n.get("plans") and n.get("layouts"):
+        return
+    r = sheet_match(n)
+    if not r:
+        return
+    src = r.get("photo_src", "")
+    m = re.search(r"출처\s*[:：]\s*([^/\n]+)", src)
+    owner = ""
+    if m:
+        main = m.group(1).strip()
+        paren = re.search(r"[(（]([^)）]+)[)）]", main)
+        base = re.sub(r"\s*[(（].*$", "", main).strip()
+        owner = paren.group(1).split("·")[0].strip() if ("홈페이지" in base and paren) else base
+    owner = owner or n.get("image_credit_owner") or ""
+    if owner and not n.get("image_credit_owner"):
+        n["image_credit_owner"] = owner
+    blocked = re.search(r"공공누리\s*[234]\s*유형|상업적 이용금지|변경금지|사용 불가|CC\s*BY[- ]?N[CD]", src)
+    name = n.get("complex") or n["title"]
+    used = []
+    if not n.get("photo") and not blocked:
+        ph = _sheet_files(r.get("photo"), "photo")
+        if ph:
+            desc = r.get("photo_desc", "")
+            word = "홍보 그림" if "일러스트" in desc else ("투시도" if "투시도" in desc else "조감도")
+            n["photo"] = {"image": ph[0][1], "credit": f"이미지: {owner or '사업주체'} 제공 {word} · 실제와 다를 수 있음",
+                          "alt": f"{name} {word}", "pos": "center 50%"}
+            used.append("사진")
+    if not n.get("plans"):
+        pl = _sheet_files(r.get("plans"), "plan")
+        if pl:
+            n["plans"] = [{"type": t or f"평면 {i}", "image": f, "alt": f"{name} {t} 평면도".replace("  ", " ")} for i, (t, f) in enumerate(pl, 1)][:6]
+            used.append("평면도")
+    if not n.get("layouts"):
+        lay = [("단지 배치도", f) for _, f in _sheet_files(r.get("layouts"), "layout")[:2]] + \
+              [("동호배치도", f) for _, f in _sheet_files(r.get("dongho"), "dongho")[:2]]
+        if lay:
+            n["layouts"] = [{"kind": k, "image": f, "alt": f"{name} {k}"} for k, f in lay]
+            used.append("배치도")
+    if used:
+        n["_sheet_assets"] = f"청약조사 {r['row']}행 ({'·'.join(used)})"
+
+
 def locmap(n, out):
     """네이버 지도가 없는 공고의 위치 지도 — 통계청 SGIS 2018 행정구역 경계(공공누리 1유형)로 오프라인 생성 (2026-11-03 사용자 결정: 이미지 없는 공고에도 그림 하나)."""
     try:
@@ -1152,6 +1265,7 @@ def notice_images(n):
     out = PUB / "apt" / n["key"]
     imgs = {}
     site_assets(n)
+    sheet_assets(n)
     if n.get("photo"):
         sz = img_out(n["photo"]["image"], out / "hero.webp", 960)
         if sz:
@@ -1975,7 +2089,8 @@ def main():
     errs = check(notices)
     report = {"built_at": now.isoformat(timespec="seconds"), "today": TODAY.isoformat(), "pages": len(PAGES),
               "notices": len(notices), "problems": problems, "errors": errs,
-              "seo_gaps": {k: [f"{a} ({b:,})" for a, b in v] for k, v in SEO_GAPS.items()}}
+              "seo_gaps": {k: [f"{a} ({b:,})" for a, b in v] for k, v in SEO_GAPS.items()},
+              "sheet_assets": {n["key"]: n["_sheet_assets"] for n in notices if n.get("_sheet_assets")}}
     (SITE / "build-report.json").write_text(json.dumps(report, ensure_ascii=False, indent=1))
     if not a.no_state:
         (DATA / "state.json").write_text(json.dumps(state, ensure_ascii=False, indent=1, sort_keys=True))
