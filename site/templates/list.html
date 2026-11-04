@@ -19,7 +19,9 @@
       {% endif %}
       {% if links %}<div class="llinks">{% for label, url in links %}<a href="{{ url }}">{{ label }}</a>{% endfor %}</div>{% endif %}
     </div>
-    {% if tbl %}
+    {# 2026-11-04 사용자 요청: 청약 일정 페이지는 '한눈에 보기' 표를 맨 아래로 #}
+    {% set tbl_last = page_url.startswith('/schedule') %}
+    {% if tbl and not tbl_last %}
     <section class="lsec">
       <h2>한눈에 보기 <small>{{ today.isoformat()|d }} 기준</small></h2>
       {{ ntable(tbl, tbl_cap) }}
@@ -45,6 +47,12 @@
       {{ sec.html }}
     </section>
     {% endfor %}
+    {% if tbl and tbl_last %}
+    <section class="lsec">
+      <h2>한눈에 보기 <small>{{ today.isoformat()|d }} 기준</small></h2>
+      {{ ntable(tbl, tbl_cap) }}
+    </section>
+    {% endif %}
     {% if page_url.startswith('/type/') %}{{ cp_ad('home_end_mo', 'ad-home ad-end') }}{% endif %}
   </div>
 </main>
