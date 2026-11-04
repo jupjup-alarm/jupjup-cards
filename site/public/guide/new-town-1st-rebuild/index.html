@@ -374,11 +374,17 @@
     </section>
 
 
+    <div class="ad ad-home" data-ad="home_mo">
+  <div class="ad-box" style="height:120px" data-cp="{&#34;height&#34;: &#34;120&#34;, &#34;id&#34;: 1044447, &#34;subId&#34;: &#34;jupjupalarm&#34;, &#34;template&#34;: &#34;carousel&#34;, &#34;trackingCode&#34;: &#34;AF3230467&#34;, &#34;tsource&#34;: &#34;&#34;, &#34;width&#34;: &#34;100%&#34;}" data-mq="(max-width:767px)"></div>
+</div>
     <section class="g-rel" aria-labelledby="g-rel">
       <h2 id="g-rel">함께 읽을 가이드</h2>
       <div class="g-rel-list"><a href="/guide/new-town-3rd/"><span>신도시</span><b>3기 신도시, 어디에 얼마나 짓고 언제 들어가나요?</b></a><a href="/guide/new-town-2nd/"><span>신도시</span><b>2기 신도시 검단·위례·운정·동탄, 지금 어디까지 왔나요?</b></a><a href="/guide/new-taekji-2026/"><span>신도시</span><b>신규택지 후보지 6곳, 어디에 몇 호 짓고 언제 착공하나요?</b></a></div>
     </section>
 
+    <div class="ad ad-home ad-end" data-ad="home_end_mo">
+  <div class="ad-box" style="height:300px" data-cp="{&#34;height&#34;: &#34;300&#34;, &#34;id&#34;: 1044447, &#34;subId&#34;: &#34;jupjupalarm&#34;, &#34;template&#34;: &#34;carousel&#34;, &#34;trackingCode&#34;: &#34;AF3230467&#34;, &#34;tsource&#34;: &#34;&#34;, &#34;width&#34;: &#34;100%&#34;}" data-mq="(max-width:767px)"></div>
+</div>
     <section class="g-src" aria-labelledby="g-src">
       <h2 id="g-src">근거와 출처</h2>
       <ul><li><a href="https://www.molit.go.kr/USR/NEWS/m_71/dtl.jsp?lcmspage=1&amp;id=95090410" target="_blank" rel="noopener nofollow">국토교통부 보도자료 「1기 신도시 선도지구 13개 구역 3.6만호 선정」</a> — 2024.11.27 — 도시별 구역·물량, 연립 별도 정비물량, 순차 정비 3단계, 지원책 (원문 페이지는 열람이 막혀 같은 보도자료 전재본으로 내용 확인). 접수 결과(2024년 9월 말)·이주대책(2024.12.19)도 같은 보도자료 계열의 전재 보도로 확인했어요</li><li><a href="https://www.korea.kr/briefing/policyBriefingView.do?newsId=156631864" target="_blank" rel="noopener nofollow">정책브리핑 「1기 신도시 선도지구 선정계획 발표」</a> — 국토교통부 2024.5.22 — 도시별 기본 물량, 평가 기준, 2027 착공·2030 입주 목표</li><li><a href="https://gonggam.korea.kr/newsContentView.es?mid=a12503000000&amp;section_id=NCCD_POLICY&amp;content=NC002&amp;news_id=54576b79-afeb-4955-b9d4-1bd61f6428f1&amp;code_cd=0101000000" target="_blank" rel="noopener nofollow">정책브리핑 「1기 신도시 재건축 정비구역 확대」(K-공감)</a> — 국토교통부 2025.9.26 — 2026년 구역지정 한도 도시별 물량</li><li><a href="https://www.korea.kr/news/policyNewsView.do?newsId=148956977" target="_blank" rel="noopener nofollow">정책브리핑 「1기 신도시 전 구역 패스트트랙 지원」</a> — 국토교통부 2025.12.23 — 패스트트랙 확대, 선도지구 15곳 중 8곳 심의 통과, 학교용지부담금</li><li><a href="https://www.law.go.kr/LSW/lsRvsRsnListP.do?lsId=010071&amp;chrClsCd=010202&amp;lsRvsGubun=all" target="_blank" rel="noopener nofollow">국가법령정보센터 노후계획도시 정비 및 지원에 관한 특별법 제정·개정이유</a> — 2023.12.26 제정, 2024.4.27 시행 — 적용 요건, 기본방침, 특별정비구역, 안전진단 특례, 이주대책</li><li><a href="https://snvision.seongnam.go.kr/sub_read.html?uid=22243" target="_blank" rel="noopener nofollow">성남시 시정소식지 「분당 선도지구 양지마을 특별정비구역 지정 고시 완료」</a> — 성남시 2026.1.27 — 분당 선도지구 4곳 7개 구역 지정 완료</li></ul>
@@ -466,6 +472,7 @@
   });
   function flash(b,msg){if(b.querySelector('svg')){b.classList.add('done');b.setAttribute('title',msg);setTimeout(function(){b.classList.remove('done');b.removeAttribute('title')},1500);return;}var o=b.textContent;b.textContent=msg;setTimeout(function(){b.textContent=o},1500);}
   var rp=document.querySelector('.rprog');if(rp){var rt=false;function rpu(){var h=document.documentElement.scrollHeight-innerHeight;rp.style.transform='scaleX('+(h>0?Math.min(1,scrollY/h):0)+')';rt=false;}addEventListener('scroll',function(){if(!rt){rt=true;requestAnimationFrame(rpu);}},{passive:true});rpu();}
+  document.querySelectorAll('.tabbar a,.top .nav a').forEach(function(a){a.addEventListener('click',function(){jjEv('tab_click',{tab:a.textContent.trim(),tab_place:a.closest('.tabbar')?'bottom':'header',from_page:location.pathname,link_url:a.getAttribute('href')});});});
   document.querySelectorAll('[data-back]').forEach(function(a){a.addEventListener('click',function(e){try{if(document.referrer&&new URL(document.referrer).host===location.host&&history.length>1){e.preventDefault();history.back();}}catch(x){}});});
   function copy(text,b){if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(function(){flash(b,'복사됨')},function(){flash(b,'복사 안 됨')});}}
   document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(){copy(b.getAttribute('data-copy'),b)})});

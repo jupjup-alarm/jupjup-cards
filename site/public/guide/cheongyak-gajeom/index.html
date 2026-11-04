@@ -214,11 +214,17 @@
       <p class="note">공고는 매일 아침 새로 고쳐져요. <a href="/schedule/this-week/">이번 주 청약 일정 전체 보기 →</a></p>
     </section>
 
+    <div class="ad ad-home" data-ad="home_mo">
+  <div class="ad-box" style="height:120px" data-cp="{&#34;height&#34;: &#34;120&#34;, &#34;id&#34;: 1044447, &#34;subId&#34;: &#34;jupjupalarm&#34;, &#34;template&#34;: &#34;carousel&#34;, &#34;trackingCode&#34;: &#34;AF3230467&#34;, &#34;tsource&#34;: &#34;&#34;, &#34;width&#34;: &#34;100%&#34;}" data-mq="(max-width:767px)"></div>
+</div>
     <section class="g-rel" aria-labelledby="g-rel">
       <h2 id="g-rel">함께 읽을 가이드</h2>
       <div class="g-rel-list"><a href="/guide/first-priority/"><span>청약 자격</span><b>주택청약 1순위 조건, 가입기간과 예치금은 어떻게 되나요?</b></a><a href="/guide/homeless-criteria/"><span>청약 자격</span><b>청약에서 무주택자는 누구인가요?</b></a><a href="/guide/mujeonwi/"><span>무순위</span><b>무순위 청약(줍줍), 누가 어떻게 넣을 수 있나요?</b></a></div>
     </section>
 
+    <div class="ad ad-home ad-end" data-ad="home_end_mo">
+  <div class="ad-box" style="height:300px" data-cp="{&#34;height&#34;: &#34;300&#34;, &#34;id&#34;: 1044447, &#34;subId&#34;: &#34;jupjupalarm&#34;, &#34;template&#34;: &#34;carousel&#34;, &#34;trackingCode&#34;: &#34;AF3230467&#34;, &#34;tsource&#34;: &#34;&#34;, &#34;width&#34;: &#34;100%&#34;}" data-mq="(max-width:767px)"></div>
+</div>
     <section class="g-src" aria-labelledby="g-src">
       <h2 id="g-src">근거와 출처</h2>
       <ul><li><a href="https://www.law.go.kr/법령/주택공급에관한규칙" target="_blank" rel="noopener nofollow">주택공급에 관한 규칙 (국토교통부령 제1592호, 2026.6.15 시행)</a> — 제10조·제19조·제23조·제26조·제27조·제28조·제46조·제53조·제55조</li><li><a href="https://www.law.go.kr/법령별표서식/(주택공급에 관한 규칙,20260615,별표1)" target="_blank" rel="noopener nofollow">주택공급에 관한 규칙 별표 1 가점제 적용기준</a> — 가점 항목·점수표, 배우자 통장 합산(비고 2)</li><li><a href="https://www.applyhome.co.kr/ap/apg/selectAddpntCalculatorView.do" target="_blank" rel="noopener nofollow">청약홈 청약가점계산기</a> — 무주택 0점 기준, 부양가족 제외 사례, 미성년 가입기간</li><li><a href="https://www.applyhome.co.kr/ar/ara/selectSubscrptIntroPreawnerSlctnView.do" target="_blank" rel="noopener nofollow">청약홈 청약제도안내 — 당첨자 선정</a> — 민영주택 가점·추첨 선정 비율, 추첨제 무주택 우선</li></ul>
@@ -306,6 +312,7 @@
   });
   function flash(b,msg){if(b.querySelector('svg')){b.classList.add('done');b.setAttribute('title',msg);setTimeout(function(){b.classList.remove('done');b.removeAttribute('title')},1500);return;}var o=b.textContent;b.textContent=msg;setTimeout(function(){b.textContent=o},1500);}
   var rp=document.querySelector('.rprog');if(rp){var rt=false;function rpu(){var h=document.documentElement.scrollHeight-innerHeight;rp.style.transform='scaleX('+(h>0?Math.min(1,scrollY/h):0)+')';rt=false;}addEventListener('scroll',function(){if(!rt){rt=true;requestAnimationFrame(rpu);}},{passive:true});rpu();}
+  document.querySelectorAll('.tabbar a,.top .nav a').forEach(function(a){a.addEventListener('click',function(){jjEv('tab_click',{tab:a.textContent.trim(),tab_place:a.closest('.tabbar')?'bottom':'header',from_page:location.pathname,link_url:a.getAttribute('href')});});});
   document.querySelectorAll('[data-back]').forEach(function(a){a.addEventListener('click',function(e){try{if(document.referrer&&new URL(document.referrer).host===location.host&&history.length>1){e.preventDefault();history.back();}}catch(x){}});});
   function copy(text,b){if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(function(){flash(b,'복사됨')},function(){flash(b,'복사 안 됨')});}}
   document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(){copy(b.getAttribute('data-copy'),b)})});

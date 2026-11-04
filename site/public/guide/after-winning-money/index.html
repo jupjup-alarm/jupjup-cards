@@ -267,11 +267,17 @@
       <p class="note">공고는 매일 아침 새로 고쳐져요. <a href="/schedule/this-week/">이번 주 청약 일정 전체 보기 →</a></p>
     </section>
 
+    <div class="ad ad-home" data-ad="home_mo">
+  <div class="ad-box" style="height:120px" data-cp="{&#34;height&#34;: &#34;120&#34;, &#34;id&#34;: 1044447, &#34;subId&#34;: &#34;jupjupalarm&#34;, &#34;template&#34;: &#34;carousel&#34;, &#34;trackingCode&#34;: &#34;AF3230467&#34;, &#34;tsource&#34;: &#34;&#34;, &#34;width&#34;: &#34;100%&#34;}" data-mq="(max-width:767px)"></div>
+</div>
     <section class="g-rel" aria-labelledby="g-rel">
       <h2 id="g-rel">함께 읽을 가이드</h2>
       <div class="g-rel-list"><a href="/guide/dsr-ltv-dti/"><span>대출</span><b>DSR·LTV·DTI, 내 주택담보대출 한도는 얼마일까요?</b></a><a href="/guide/didimdol-bogeumjari/"><span>대출</span><b>디딤돌대출과 보금자리론, 우리 집엔 어느 쪽이 맞을까요?</b></a><a href="/guide/mujeonwi/"><span>무순위</span><b>무순위 청약(줍줍), 누가 어떻게 넣을 수 있나요?</b></a></div>
     </section>
 
+    <div class="ad ad-home ad-end" data-ad="home_end_mo">
+  <div class="ad-box" style="height:300px" data-cp="{&#34;height&#34;: &#34;300&#34;, &#34;id&#34;: 1044447, &#34;subId&#34;: &#34;jupjupalarm&#34;, &#34;template&#34;: &#34;carousel&#34;, &#34;trackingCode&#34;: &#34;AF3230467&#34;, &#34;tsource&#34;: &#34;&#34;, &#34;width&#34;: &#34;100%&#34;}" data-mq="(max-width:767px)"></div>
+</div>
     <section class="g-src" aria-labelledby="g-src">
       <h2 id="g-src">근거와 출처</h2>
       <ul><li><a href="https://www.law.go.kr/법령/주택공급에관한규칙" target="_blank" rel="noopener nofollow">주택공급에 관한 규칙 제21조·제59조·제60조·제60조의2·제61조 (국가법령정보센터)</a> — 입주금 구분과 계약금 20%·중도금 60% 상한, 중도금 분할 시점, 잔금 시기, 공급계약 기간, 입주예정일 통보·입주지정기간, 연체료. 국토교통부령 제1592호(2026.6.15 시행) 기준</li><li><a href="https://www.khug.or.kr/hug/web/ig/hp/ighp000001.jsp" target="_blank" rel="noopener nofollow">주택도시보증공사 주택구입자금보증 상품개요</a> — 보증 신청 자격(분양대금 5%·일부 10% 납부), 분양대금 60% 한도, 인당 한도, 세대당 2건·규제지역 1건, 보증료율 연 0.130%, 규제지역 표(2026.7.1 추가분 포함)</li><li><a href="https://www.fsc.go.kr/po020201/85518" target="_blank" rel="noopener nofollow">금융위원회 「대출수요 관리 방안」 FAQ (2025.10.15)</a> — 중도금대출 금액 상한·DSR 미적용과 잔금 전환 시 적용, 시가 판단 기준, 증액 없는 전환 시 LTV, 집단대출 경과규정·전매 분양권, 중도금 원리금의 DSR 반영</li><li><a href="https://www.fsc.go.kr/po020201/85466" target="_blank" rel="noopener nofollow">금융위원회 「10.15 주택시장 안정화 대책」 관련 FAQ (2025.10.17)</a> — 규제지역 LTV 40%·생애최초 70%, 주택가격 구간별 한도, DSR 은행 40%·2금융권 50%, 분양권 취득 시 전세대출 회수 시점</li><li><a href="https://better.fsc.go.kr/fsc_new/status/adminMap/PrvntcDetail.do?muNo=144&amp;postNo=5349&amp;stNo=11" target="_blank" rel="noopener nofollow">금융위원회공고 제2026-362호 3단계 스트레스 DSR 행정지도 변경시행 예고 (2026.6.18)</a> — 수도권·규제지역 주담대 스트레스 금리 3.0% 이상, 지방 주담대 50% 적용 2026.12.31까지, 잔금대출 경과규정(입주자모집공고 기준)</li><li><a href="https://www.fsc.go.kr/no010101/87517" target="_blank" rel="noopener nofollow">관계부처 합동 보도자료 및 「부동산 시장 안정을 위한 금융 종합대책」 (금융위원회, 2026.8.13)</a> — LTV·DSR·주담대 한도 유지, 주택공급 관련 주담대(이주비·중도금·잔금) 총량관리 별도 관리(2026년 하반기)</li></ul>
@@ -359,6 +365,7 @@
   });
   function flash(b,msg){if(b.querySelector('svg')){b.classList.add('done');b.setAttribute('title',msg);setTimeout(function(){b.classList.remove('done');b.removeAttribute('title')},1500);return;}var o=b.textContent;b.textContent=msg;setTimeout(function(){b.textContent=o},1500);}
   var rp=document.querySelector('.rprog');if(rp){var rt=false;function rpu(){var h=document.documentElement.scrollHeight-innerHeight;rp.style.transform='scaleX('+(h>0?Math.min(1,scrollY/h):0)+')';rt=false;}addEventListener('scroll',function(){if(!rt){rt=true;requestAnimationFrame(rpu);}},{passive:true});rpu();}
+  document.querySelectorAll('.tabbar a,.top .nav a').forEach(function(a){a.addEventListener('click',function(){jjEv('tab_click',{tab:a.textContent.trim(),tab_place:a.closest('.tabbar')?'bottom':'header',from_page:location.pathname,link_url:a.getAttribute('href')});});});
   document.querySelectorAll('[data-back]').forEach(function(a){a.addEventListener('click',function(e){try{if(document.referrer&&new URL(document.referrer).host===location.host&&history.length>1){e.preventDefault();history.back();}}catch(x){}});});
   function copy(text,b){if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(function(){flash(b,'복사됨')},function(){flash(b,'복사 안 됨')});}}
   document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(){copy(b.getAttribute('data-copy'),b)})});

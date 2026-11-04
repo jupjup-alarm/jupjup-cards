@@ -394,11 +394,17 @@
       <p class="note">공고는 매일 아침 새로 고쳐져요. <a href="/schedule/this-week/">이번 주 청약 일정 전체 보기 →</a></p>
     </section>
 
+    <div class="ad ad-home" data-ad="home_mo">
+  <div class="ad-box" style="height:120px" data-cp="{&#34;height&#34;: &#34;120&#34;, &#34;id&#34;: 1044447, &#34;subId&#34;: &#34;jupjupalarm&#34;, &#34;template&#34;: &#34;carousel&#34;, &#34;trackingCode&#34;: &#34;AF3230467&#34;, &#34;tsource&#34;: &#34;&#34;, &#34;width&#34;: &#34;100%&#34;}" data-mq="(max-width:767px)"></div>
+</div>
     <section class="g-rel" aria-labelledby="g-rel">
       <h2 id="g-rel">함께 읽을 가이드</h2>
       <div class="g-rel-list"><a href="/guide/dsr-ltv-dti/"><span>대출</span><b>DSR·LTV·DTI, 내 주택담보대출 한도는 얼마일까요?</b></a><a href="/guide/newborn-loan/"><span>대출</span><b>신생아 특례대출, 우리 집도 받을 수 있을까요?</b></a><a href="/guide/after-winning-money/"><span>대출</span><b>청약 당첨 후 계약금·중도금·잔금, 돈은 언제 얼마나 필요할까요?</b></a></div>
     </section>
 
+    <div class="ad ad-home ad-end" data-ad="home_end_mo">
+  <div class="ad-box" style="height:300px" data-cp="{&#34;height&#34;: &#34;300&#34;, &#34;id&#34;: 1044447, &#34;subId&#34;: &#34;jupjupalarm&#34;, &#34;template&#34;: &#34;carousel&#34;, &#34;trackingCode&#34;: &#34;AF3230467&#34;, &#34;tsource&#34;: &#34;&#34;, &#34;width&#34;: &#34;100%&#34;}" data-mq="(max-width:767px)"></div>
+</div>
     <section class="g-src" aria-labelledby="g-src">
       <h2 id="g-src">근거와 출처</h2>
       <ul><li><a href="https://nhuf.molit.go.kr/FP/FP05/FP0503/FP05030101.jsp" target="_blank" rel="noopener nofollow">주택도시기금 내집마련 디딤돌대출 안내</a> — 대상·세대주·소득·순자산·대상주택·한도·LTV·DTI·금리표(2026.10.29 게시값)·우대·중도상환수수료·실거주·신혼 1인 소득 기준(자주하는 질문 포함)</li><li><a href="https://www.hf.go.kr/ko/sub01/sub01_01_01.do" target="_blank" rel="noopener nofollow">한국주택금융공사 보금자리론 (일반)·(특성별) 상품소개</a> — 신청대상·6억 원 주택·주택 수·소득·LTV·DTI 규제지역 차감과 예외·한도·만기·용도·우대·가산·조기상환수수료·추가주택 처분. 생애최초 보금자리론은 특성별 상품소개(sub01_01_02)</li><li><a href="https://www.hf.go.kr/ko/sub01/sub01_01_04.do" target="_blank" rel="noopener nofollow">한국주택금융공사 보금자리론 금리안내</a> — 2026.10.1 공시 만기별 금리(아낌e·u·t), 우대금리 항목·한도, 규제지역 가산. 2026.9.28 &#39;10월 보금자리론 금리 동결&#39; 보도자료로 확인</li><li><a href="https://www.hf.go.kr/_custom/hf/_common/board/index/21.do?mode=view&amp;articleNo=600594" target="_blank" rel="noopener nofollow">한국주택금융공사 보도자료 — 보금자리론, 소득기준 개선해 &#39;결혼페널티&#39; 없앤다 (2026.9.28)</a> — 신혼부부 1인 연소득 7천만 원 기준, 2026.10.19 신규 신청분부터 (2026.8.13 금융 종합대책 후속)</li><li><a href="https://www.fsc.go.kr/edu/news/84845" target="_blank" rel="noopener nofollow">금융위원회 — 가계부채 관리 강화 방안 (2025.6.27)</a> — 생애최초 LTV 수도권·규제지역 70%(정책대출 동일), 디딤돌 한도 축소, 6억 원 한도에서 정책대출 제외, DSR 적용 확대 검토 언급</li><li><a href="https://www.fsc.go.kr/po020201/85466" target="_blank" rel="noopener nofollow">금융위원회 — 「10.15 주택시장 안정화 대책」 관련 FAQ (2025.10.17)</a> — 규제지역 디딤돌 LTV 70%·DTI 60%, 보금자리론 LTV 60%·DTI 50%(생애최초·실수요자 예외), 한도 3.6억·4.2억 원 유지</li></ul>
@@ -486,6 +492,7 @@
   });
   function flash(b,msg){if(b.querySelector('svg')){b.classList.add('done');b.setAttribute('title',msg);setTimeout(function(){b.classList.remove('done');b.removeAttribute('title')},1500);return;}var o=b.textContent;b.textContent=msg;setTimeout(function(){b.textContent=o},1500);}
   var rp=document.querySelector('.rprog');if(rp){var rt=false;function rpu(){var h=document.documentElement.scrollHeight-innerHeight;rp.style.transform='scaleX('+(h>0?Math.min(1,scrollY/h):0)+')';rt=false;}addEventListener('scroll',function(){if(!rt){rt=true;requestAnimationFrame(rpu);}},{passive:true});rpu();}
+  document.querySelectorAll('.tabbar a,.top .nav a').forEach(function(a){a.addEventListener('click',function(){jjEv('tab_click',{tab:a.textContent.trim(),tab_place:a.closest('.tabbar')?'bottom':'header',from_page:location.pathname,link_url:a.getAttribute('href')});});});
   document.querySelectorAll('[data-back]').forEach(function(a){a.addEventListener('click',function(e){try{if(document.referrer&&new URL(document.referrer).host===location.host&&history.length>1){e.preventDefault();history.back();}}catch(x){}});});
   function copy(text,b){if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(function(){flash(b,'복사됨')},function(){flash(b,'복사 안 됨')});}}
   document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(){copy(b.getAttribute('data-copy'),b)})});

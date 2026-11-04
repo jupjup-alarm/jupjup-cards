@@ -205,11 +205,17 @@
       <p class="note">공고는 매일 아침 새로 고쳐져요. <a href="/schedule/this-week/">이번 주 청약 일정 전체 보기 →</a></p>
     </section>
 
+    <div class="ad ad-home" data-ad="home_mo">
+  <div class="ad-box" style="height:120px" data-cp="{&#34;height&#34;: &#34;120&#34;, &#34;id&#34;: 1044447, &#34;subId&#34;: &#34;jupjupalarm&#34;, &#34;template&#34;: &#34;carousel&#34;, &#34;trackingCode&#34;: &#34;AF3230467&#34;, &#34;tsource&#34;: &#34;&#34;, &#34;width&#34;: &#34;100%&#34;}" data-mq="(max-width:767px)"></div>
+</div>
     <section class="g-rel" aria-labelledby="g-rel">
       <h2 id="g-rel">함께 읽을 가이드</h2>
       <div class="g-rel-list"><a href="/guide/homeless-criteria/"><span>청약 자격</span><b>청약에서 무주택자는 누구인가요?</b></a><a href="/guide/after-winning-money/"><span>대출</span><b>청약 당첨 후 계약금·중도금·잔금, 돈은 언제 얼마나 필요할까요?</b></a><a href="/guide/first-priority/"><span>청약 자격</span><b>주택청약 1순위 조건, 가입기간과 예치금은 어떻게 되나요?</b></a></div>
     </section>
 
+    <div class="ad ad-home ad-end" data-ad="home_end_mo">
+  <div class="ad-box" style="height:300px" data-cp="{&#34;height&#34;: &#34;300&#34;, &#34;id&#34;: 1044447, &#34;subId&#34;: &#34;jupjupalarm&#34;, &#34;template&#34;: &#34;carousel&#34;, &#34;trackingCode&#34;: &#34;AF3230467&#34;, &#34;tsource&#34;: &#34;&#34;, &#34;width&#34;: &#34;100%&#34;}" data-mq="(max-width:767px)"></div>
+</div>
     <section class="g-src" aria-labelledby="g-src">
       <h2 id="g-src">근거와 출처</h2>
       <ul><li><a href="https://www.law.go.kr/법령/주택공급에관한규칙" target="_blank" rel="noopener nofollow">주택공급에 관한 규칙 (국토교통부령, 2026.6.15 시행)</a> — 제2조·제4조·제19조·제26조·제27조·제28조·제47조의3·제53조·제54조·제58조·제59조·제60조, 연혁(2025.6.10 개정 전후 제26조 비교)</li><li><a href="https://www.law.go.kr/법령/주택법" target="_blank" rel="noopener nofollow">주택법</a> — 제57조의2(거주의무), 제64조(전매제한), 제65조(공급질서 교란 금지)</li><li><a href="https://www.korea.kr/briefing/pressReleaseView.do?newsId=156673784" target="_blank" rel="noopener nofollow">국토교통부 보도자료 &#39;무순위 청약, 이제 무주택·거주자에게 공급한다&#39; (2025.2.11)</a> — 무순위 개편 발표 원문(첨부 PDF)</li><li><a href="https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910275&amp;pblancNo=2026910275" target="_blank" rel="noopener nofollow">청약홈 무순위(사후) 입주자모집공고 — 더샵 분당하이스트 (2026.10.27)</a> — 신청 경로·시간, 1인 1건, 당첨자 관리 안내</li><li><a href="https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026930038&amp;pblancNo=2026930038" target="_blank" rel="noopener nofollow">청약홈 불법행위재공급 입주자모집공고 — 고양 장항 아테라 (2026.10.2)</a> — 제47조의3 계약취소주택 재공급 공고 예, 불법행위재공급 메뉴</li><li><a href="https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940228&amp;pblancNo=2026940228" target="_blank" rel="noopener nofollow">청약홈 임의공급 입주자모집공고 — 마곡스카이온 (2026.10.15)</a> — 임의공급 공고 예, &#39;APT 임의공급&#39; 메뉴</li></ul>
@@ -297,6 +303,7 @@
   });
   function flash(b,msg){if(b.querySelector('svg')){b.classList.add('done');b.setAttribute('title',msg);setTimeout(function(){b.classList.remove('done');b.removeAttribute('title')},1500);return;}var o=b.textContent;b.textContent=msg;setTimeout(function(){b.textContent=o},1500);}
   var rp=document.querySelector('.rprog');if(rp){var rt=false;function rpu(){var h=document.documentElement.scrollHeight-innerHeight;rp.style.transform='scaleX('+(h>0?Math.min(1,scrollY/h):0)+')';rt=false;}addEventListener('scroll',function(){if(!rt){rt=true;requestAnimationFrame(rpu);}},{passive:true});rpu();}
+  document.querySelectorAll('.tabbar a,.top .nav a').forEach(function(a){a.addEventListener('click',function(){jjEv('tab_click',{tab:a.textContent.trim(),tab_place:a.closest('.tabbar')?'bottom':'header',from_page:location.pathname,link_url:a.getAttribute('href')});});});
   document.querySelectorAll('[data-back]').forEach(function(a){a.addEventListener('click',function(e){try{if(document.referrer&&new URL(document.referrer).host===location.host&&history.length>1){e.preventDefault();history.back();}}catch(x){}});});
   function copy(text,b){if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(function(){flash(b,'복사됨')},function(){flash(b,'복사 안 됨')});}}
   document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(){copy(b.getAttribute('data-copy'),b)})});

@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "macros.html" import crumbs with context %}
+{% from "macros.html" import crumbs, cp_ad with context %}
 {% block main %}
 <main class="wrap" id="main">
   <div class="lwrap">
@@ -26,7 +26,9 @@
         </a>{% endfor %}
       </div>
     </section>
+    {% if loop.first %}{{ cp_ad('home', 'ad-home') }}{{ cp_ad('home_mo', 'ad-home') }}{% endif %}{# 2026-11-04 사용자 요청: 가이드 목록 광고 #}
     {% endfor %}
+    {{ cp_ad('home_end_mo', 'ad-home ad-end') }}
   </div>
 </main>
 {% endblock %}

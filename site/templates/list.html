@@ -37,7 +37,7 @@
       {% if lst %}<ul class="hm-rows">{% for n in lst %}{{ nrow(n) }}{% endfor %}</ul>
       {% else %}<p class="empty">{{ empty or '공고가 없어요.' }}</p>{% endif %}
     </section>
-    {% if loop.first %}{{ cp_ad('home', 'ad-home') }}{% endif %}
+    {% if loop.first %}{{ cp_ad('home', 'ad-home') }}{% if page_url.startswith('/type/') %}{{ cp_ad('home_mo', 'ad-home') }}{% endif %}{% endif %}{# 2026-11-04 사용자 요청: 유형 페이지 모바일 광고 #}
     {% endfor %}
     {% for sec in sections if not sec.top %}
     <section class="lsec">
@@ -45,6 +45,7 @@
       {{ sec.html }}
     </section>
     {% endfor %}
+    {% if page_url.startswith('/type/') %}{{ cp_ad('home_end_mo', 'ad-home ad-end') }}{% endif %}
   </div>
 </main>
 {% endblock %}

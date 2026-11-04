@@ -417,11 +417,17 @@
       <p class="note">공고는 매일 아침 새로 고쳐져요. <a href="/schedule/this-week/">이번 주 청약 일정 전체 보기 →</a></p>
     </section>
 
+    <div class="ad ad-home" data-ad="home_mo">
+  <div class="ad-box" style="height:120px" data-cp="{&#34;height&#34;: &#34;120&#34;, &#34;id&#34;: 1044447, &#34;subId&#34;: &#34;jupjupalarm&#34;, &#34;template&#34;: &#34;carousel&#34;, &#34;trackingCode&#34;: &#34;AF3230467&#34;, &#34;tsource&#34;: &#34;&#34;, &#34;width&#34;: &#34;100%&#34;}" data-mq="(max-width:767px)"></div>
+</div>
     <section class="g-rel" aria-labelledby="g-rel">
       <h2 id="g-rel">함께 읽을 가이드</h2>
       <div class="g-rel-list"><a href="/guide/lh-rental-types/"><span>임대</span><b>공공임대주택 7가지, 내게 맞는 건 뭘까요?</b></a><a href="/guide/youth-rental/"><span>임대</span><b>청년 임대주택, 무엇부터 넣어야 할까요?</b></a><a href="/guide/national-rental/"><span>임대</span><b>국민임대주택 자격, 우리 집도 될까요?</b></a></div>
     </section>
 
+    <div class="ad ad-home ad-end" data-ad="home_end_mo">
+  <div class="ad-box" style="height:300px" data-cp="{&#34;height&#34;: &#34;300&#34;, &#34;id&#34;: 1044447, &#34;subId&#34;: &#34;jupjupalarm&#34;, &#34;template&#34;: &#34;carousel&#34;, &#34;trackingCode&#34;: &#34;AF3230467&#34;, &#34;tsource&#34;: &#34;&#34;, &#34;width&#34;: &#34;100%&#34;}" data-mq="(max-width:767px)"></div>
+</div>
     <section class="g-src" aria-labelledby="g-src">
       <h2 id="g-src">근거와 출처</h2>
       <ul><li><a href="https://www.law.go.kr/flDownload.do?gubun=&amp;flSeq=159738495&amp;bylClsCd=110201" target="_blank" rel="noopener nofollow">공공주택 특별법 시행규칙 [별표 5] 행복주택의 입주자 자격 및 거주기간 (2025.3.31 개정)</a> — 계층별 자격·소득 비율·공급비율·선정 순위·거주기간·출산 가산</li><li><a href="https://apply.lh.or.kr/lhapply/cm/cntnts/cntntsView.do?cntntsId=1201391&amp;mi=1201663" target="_blank" rel="noopener nofollow">LH청약플러스 임대가이드 — 행복주택 입주자격</a> — 2025년도 도시근로자 월평균소득표, 계층별 총자산·자동차 기준, 자산 산정 방법</li><li><a href="https://apply.lh.or.kr/lhapply/cm/cntnts/cntntsView.do?mi=1201664&amp;cntntsId=1201392" target="_blank" rel="noopener nofollow">LH청약플러스 임대가이드 — 행복주택 임대조건</a> — 공급대상 계수, 보증금·임대료 전환</li><li><a href="https://www.lh.or.kr/menu.es?mid=a10401020100" target="_blank" rel="noopener nofollow">LH 행복주택 소개</a> — 임대료 시세 60~80%, 2026년 적용 자산·자동차 기준</li><li><a href="https://www.korea.kr/news/policyNewsView.do?newsId=148935556" target="_blank" rel="noopener nofollow">정책브리핑 — 신생아 가구, 공공임대주택 최우선으로…세대원수별 면적기준 폐지 (국토교통부, 2024.10.28)</a> — 행복주택 최대 거주기간 6년(유자녀 10년) → 10년(유자녀 14년) 개정 입법예고</li><li><a href="https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300020960&amp;ccrCnntSysDsCd=03&amp;uppAisTpCd=06&amp;aisTpCd=10&amp;mi=1026" target="_blank" rel="noopener nofollow">LH 행복주택 입주자 모집공고 — 과천지식정보타운 S12블록 (2026.10.28)</a> — 2026년 소득·자산 기준표, 출산 자산 가산, 우선공급 배점, 신청 절차</li></ul>
@@ -509,6 +515,7 @@
   });
   function flash(b,msg){if(b.querySelector('svg')){b.classList.add('done');b.setAttribute('title',msg);setTimeout(function(){b.classList.remove('done');b.removeAttribute('title')},1500);return;}var o=b.textContent;b.textContent=msg;setTimeout(function(){b.textContent=o},1500);}
   var rp=document.querySelector('.rprog');if(rp){var rt=false;function rpu(){var h=document.documentElement.scrollHeight-innerHeight;rp.style.transform='scaleX('+(h>0?Math.min(1,scrollY/h):0)+')';rt=false;}addEventListener('scroll',function(){if(!rt){rt=true;requestAnimationFrame(rpu);}},{passive:true});rpu();}
+  document.querySelectorAll('.tabbar a,.top .nav a').forEach(function(a){a.addEventListener('click',function(){jjEv('tab_click',{tab:a.textContent.trim(),tab_place:a.closest('.tabbar')?'bottom':'header',from_page:location.pathname,link_url:a.getAttribute('href')});});});
   document.querySelectorAll('[data-back]').forEach(function(a){a.addEventListener('click',function(e){try{if(document.referrer&&new URL(document.referrer).host===location.host&&history.length>1){e.preventDefault();history.back();}}catch(x){}});});
   function copy(text,b){if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(function(){flash(b,'복사됨')},function(){flash(b,'복사 안 됨')});}}
   document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(){copy(b.getAttribute('data-copy'),b)})});

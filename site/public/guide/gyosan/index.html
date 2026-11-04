@@ -279,11 +279,17 @@
     </section>
 
 
+    <div class="ad ad-home" data-ad="home_mo">
+  <div class="ad-box" style="height:120px" data-cp="{&#34;height&#34;: &#34;120&#34;, &#34;id&#34;: 1044447, &#34;subId&#34;: &#34;jupjupalarm&#34;, &#34;template&#34;: &#34;carousel&#34;, &#34;trackingCode&#34;: &#34;AF3230467&#34;, &#34;tsource&#34;: &#34;&#34;, &#34;width&#34;: &#34;100%&#34;}" data-mq="(max-width:767px)"></div>
+</div>
     <section class="g-rel" aria-labelledby="g-rel">
       <h2 id="g-rel">함께 읽을 가이드</h2>
       <div class="g-rel-list"><a href="/guide/new-town-3rd/"><span>신도시</span><b>3기 신도시, 어디에 얼마나 짓고 언제 들어가나요?</b></a><a href="/guide/first-priority/"><span>청약 자격</span><b>주택청약 1순위 조건, 가입기간과 예치금은 어떻게 되나요?</b></a><a href="/guide/newlywed/"><span>청약 자격</span><b>신혼부부 청약, 신혼희망타운부터 신생아 특공까지 무엇을 넣을 수 있나요?</b></a></div>
     </section>
 
+    <div class="ad ad-home ad-end" data-ad="home_end_mo">
+  <div class="ad-box" style="height:300px" data-cp="{&#34;height&#34;: &#34;300&#34;, &#34;id&#34;: 1044447, &#34;subId&#34;: &#34;jupjupalarm&#34;, &#34;template&#34;: &#34;carousel&#34;, &#34;trackingCode&#34;: &#34;AF3230467&#34;, &#34;tsource&#34;: &#34;&#34;, &#34;width&#34;: &#34;100%&#34;}" data-mq="(max-width:767px)"></div>
+</div>
     <section class="g-src" aria-labelledby="g-src">
       <h2 id="g-src">근거와 출처</h2>
       <ul><li><a href="https://www.xn--3-3u6ey6lv7rsa.kr/kor/CMS/Contents/Contents.do?mCode=MN050" target="_blank" rel="noopener nofollow">3기 신도시 종합정보포털 — 하남 교산 지구개요</a> — 위치·면적(본단지·기업이전단지)·호수·인구·사업시행자·주요 추진경위 (2026년 10월 확인)</li><li><a href="https://www.xn--3-3u6ey6lv7rsa.kr/kor/CMS/Contents/Contents.do?mCode=MN097" target="_blank" rel="noopener nofollow">3기 신도시 종합정보포털 — 하남 교산 광역교통계획</a> — 철도·버스·환승·도로 사업 목록과 길이 (2026년 10월 확인)</li><li><a href="https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000060838&amp;ccrCnntSysDsCd=02&amp;uppAisTpCd=05&amp;aisTpCd=05&amp;mi=1027" target="_blank" rel="noopener nofollow">LH청약플러스 — 교산 푸르지오 더 퍼스트(하남교산 A-2BL) 공공분양주택 입주자모집공고</a> — 2025.3.31 공고 — 주택형·세대수·평균 분양가·접수 일정·입주 예정. 공고문 PDF(분양 홈페이지 게시본)에서 지역우선 공급기준·공급 구분·전매·거주의무 확인</li><li><a href="https://www.korea.kr/news/policyNewsView.do?newsId=148892147" target="_blank" rel="noopener nofollow">정책브리핑 「남양주 왕숙·하남 교산 신도시 지구계획 수립 완료」</a> — 국토교통부 2021.8.26 — 631만㎡·약 3.3만 가구·공공임대 11,770가구·공원녹지 35%</li><li><a href="https://www.korea.kr/news/policyNewsView.do?newsId=148946338" target="_blank" rel="noopener nofollow">정책브리핑 「서울3호선 연장 승인…2032년 하남교산~강남터미널 40분 시대」</a> — 국토교통부 대도시권광역교통위원회 2025.7.21 — 송파하남선 기본계획 승인(7.22)·11.7km·정거장 6곳·1조 8,356억 원</li><li><a href="https://www.korea.kr/news/policyNewsView.do?newsId=148962743" target="_blank" rel="noopener nofollow">정책브리핑 「올해 수도권 공공주택 6만호 이상 착공…2020년 이후 최대치」</a> — 국토교통부 2026.4.15 — 교산 송전선로 임시 이설로 8개 블록(3,000호) 착공 최대 3년 단축</li></ul>
@@ -371,6 +377,7 @@
   });
   function flash(b,msg){if(b.querySelector('svg')){b.classList.add('done');b.setAttribute('title',msg);setTimeout(function(){b.classList.remove('done');b.removeAttribute('title')},1500);return;}var o=b.textContent;b.textContent=msg;setTimeout(function(){b.textContent=o},1500);}
   var rp=document.querySelector('.rprog');if(rp){var rt=false;function rpu(){var h=document.documentElement.scrollHeight-innerHeight;rp.style.transform='scaleX('+(h>0?Math.min(1,scrollY/h):0)+')';rt=false;}addEventListener('scroll',function(){if(!rt){rt=true;requestAnimationFrame(rpu);}},{passive:true});rpu();}
+  document.querySelectorAll('.tabbar a,.top .nav a').forEach(function(a){a.addEventListener('click',function(){jjEv('tab_click',{tab:a.textContent.trim(),tab_place:a.closest('.tabbar')?'bottom':'header',from_page:location.pathname,link_url:a.getAttribute('href')});});});
   document.querySelectorAll('[data-back]').forEach(function(a){a.addEventListener('click',function(e){try{if(document.referrer&&new URL(document.referrer).host===location.host&&history.length>1){e.preventDefault();history.back();}}catch(x){}});});
   function copy(text,b){if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(function(){flash(b,'복사됨')},function(){flash(b,'복사 안 됨')});}}
   document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(){copy(b.getAttribute('data-copy'),b)})});

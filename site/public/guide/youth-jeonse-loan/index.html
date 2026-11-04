@@ -376,11 +376,17 @@
       <p class="note">공고는 매일 아침 새로 고쳐져요. <a href="/schedule/this-week/">이번 주 청약 일정 전체 보기 →</a></p>
     </section>
 
+    <div class="ad ad-home" data-ad="home_mo">
+  <div class="ad-box" style="height:120px" data-cp="{&#34;height&#34;: &#34;120&#34;, &#34;id&#34;: 1044447, &#34;subId&#34;: &#34;jupjupalarm&#34;, &#34;template&#34;: &#34;carousel&#34;, &#34;trackingCode&#34;: &#34;AF3230467&#34;, &#34;tsource&#34;: &#34;&#34;, &#34;width&#34;: &#34;100%&#34;}" data-mq="(max-width:767px)"></div>
+</div>
     <section class="g-rel" aria-labelledby="g-rel">
       <h2 id="g-rel">함께 읽을 가이드</h2>
       <div class="g-rel-list"><a href="/guide/newborn-loan/"><span>대출</span><b>신생아 특례대출, 우리 집도 받을 수 있을까요?</b></a><a href="/guide/didimdol-bogeumjari/"><span>대출</span><b>디딤돌대출과 보금자리론, 우리 집엔 어느 쪽이 맞을까요?</b></a><a href="/guide/youth-rental/"><span>임대</span><b>청년 임대주택, 무엇부터 넣어야 할까요?</b></a></div>
     </section>
 
+    <div class="ad ad-home ad-end" data-ad="home_end_mo">
+  <div class="ad-box" style="height:300px" data-cp="{&#34;height&#34;: &#34;300&#34;, &#34;id&#34;: 1044447, &#34;subId&#34;: &#34;jupjupalarm&#34;, &#34;template&#34;: &#34;carousel&#34;, &#34;trackingCode&#34;: &#34;AF3230467&#34;, &#34;tsource&#34;: &#34;&#34;, &#34;width&#34;: &#34;100%&#34;}" data-mq="(max-width:767px)"></div>
+</div>
     <section class="g-src" aria-labelledby="g-src">
       <h2 id="g-src">근거와 출처</h2>
       <ul><li><a href="https://nhuf.molit.go.kr/FP/FP05/FP0502/FP05020301.jsp" target="_blank" rel="noopener nofollow">주택도시기금 청년전용 버팀목전세자금 안내</a> — 대상·소득·순자산·보증금·한도·금리표·우대·기간·신청 (2026년 기준)</li><li><a href="https://nhuf.molit.go.kr/FP/FP05/FP0502/FP05020401.jsp" target="_blank" rel="noopener nofollow">주택도시기금 신혼부부전용 전세자금 안내</a> — 혼인 기간·소득 특례·보증금·한도·우대·보증기관</li><li><a href="https://nhuf.molit.go.kr/FP/FP05/FP0502/FP05020101.jsp" target="_blank" rel="noopener nofollow">주택도시기금 버팀목전세자금 안내</a> — 일반 버팀목 소득·보증금·한도·우대</li><li><a href="https://nhuf.molit.go.kr/FP/FP05/FP0502/FP05020703.jsp" target="_blank" rel="noopener nofollow">주택도시기금 청년전용 보증부월세대출 안내</a> — 보증금·월세 대출 한도와 금리</li><li><a href="https://www.fsc.go.kr/no010101/84824" target="_blank" rel="noopener nofollow">금융위원회 보도자료 — 수도권 중심의 가계부채 관리 강화 방안 (2025.6.27)</a> — 정책대출 한도 조정 (청년 버팀목 2억→1.5억, 신혼 전세 수도권 3억→2.5억)</li><li><a href="https://nhuf.molit.go.kr/" target="_blank" rel="noopener nofollow">주택도시기금 홈페이지 상품 메뉴</a> — 주택전세자금대출 상품 목록 (중소기업취업청년 상품 미표시 확인)</li></ul>
@@ -468,6 +474,7 @@
   });
   function flash(b,msg){if(b.querySelector('svg')){b.classList.add('done');b.setAttribute('title',msg);setTimeout(function(){b.classList.remove('done');b.removeAttribute('title')},1500);return;}var o=b.textContent;b.textContent=msg;setTimeout(function(){b.textContent=o},1500);}
   var rp=document.querySelector('.rprog');if(rp){var rt=false;function rpu(){var h=document.documentElement.scrollHeight-innerHeight;rp.style.transform='scaleX('+(h>0?Math.min(1,scrollY/h):0)+')';rt=false;}addEventListener('scroll',function(){if(!rt){rt=true;requestAnimationFrame(rpu);}},{passive:true});rpu();}
+  document.querySelectorAll('.tabbar a,.top .nav a').forEach(function(a){a.addEventListener('click',function(){jjEv('tab_click',{tab:a.textContent.trim(),tab_place:a.closest('.tabbar')?'bottom':'header',from_page:location.pathname,link_url:a.getAttribute('href')});});});
   document.querySelectorAll('[data-back]').forEach(function(a){a.addEventListener('click',function(e){try{if(document.referrer&&new URL(document.referrer).host===location.host&&history.length>1){e.preventDefault();history.back();}}catch(x){}});});
   function copy(text,b){if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(function(){flash(b,'복사됨')},function(){flash(b,'복사 안 됨')});}}
   document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(){copy(b.getAttribute('data-copy'),b)})});

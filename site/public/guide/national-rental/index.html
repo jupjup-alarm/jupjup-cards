@@ -658,11 +658,17 @@
     </section>
 
 
+    <div class="ad ad-home" data-ad="home_mo">
+  <div class="ad-box" style="height:120px" data-cp="{&#34;height&#34;: &#34;120&#34;, &#34;id&#34;: 1044447, &#34;subId&#34;: &#34;jupjupalarm&#34;, &#34;template&#34;: &#34;carousel&#34;, &#34;trackingCode&#34;: &#34;AF3230467&#34;, &#34;tsource&#34;: &#34;&#34;, &#34;width&#34;: &#34;100%&#34;}" data-mq="(max-width:767px)"></div>
+</div>
     <section class="g-rel" aria-labelledby="g-rel">
       <h2 id="g-rel">함께 읽을 가이드</h2>
       <div class="g-rel-list"><a href="/guide/lh-rental-types/"><span>임대</span><b>공공임대주택 7가지, 내게 맞는 건 뭘까요?</b></a><a href="/guide/happy-house/"><span>임대</span><b>행복주택, 나는 어떤 계층으로 넣을 수 있을까요?</b></a><a href="/guide/homeless-criteria/"><span>청약 자격</span><b>청약에서 무주택자는 누구인가요?</b></a></div>
     </section>
 
+    <div class="ad ad-home ad-end" data-ad="home_end_mo">
+  <div class="ad-box" style="height:300px" data-cp="{&#34;height&#34;: &#34;300&#34;, &#34;id&#34;: 1044447, &#34;subId&#34;: &#34;jupjupalarm&#34;, &#34;template&#34;: &#34;carousel&#34;, &#34;trackingCode&#34;: &#34;AF3230467&#34;, &#34;tsource&#34;: &#34;&#34;, &#34;width&#34;: &#34;100%&#34;}" data-mq="(max-width:767px)"></div>
+</div>
     <section class="g-src" aria-labelledby="g-src">
       <h2 id="g-src">근거와 출처</h2>
       <ul><li><a href="https://www.law.go.kr/LSW/flDownload.do?flSeq=154976197&amp;bylClsCd=110201" target="_blank" rel="noopener nofollow">공공주택 특별법 시행규칙 [별표 4] 국민임대주택의 입주자 자격 (국가법령정보센터, 2025.8.1 개정)</a> — 면적별 소득 기준·순위, 우선공급 비율, 신혼부부 순위·점수, 동일순위 배점, 출산 가산</li><li><a href="https://apply.lh.or.kr/lhapply/cm/cntnts/cntntsView.do?mi=1144&amp;cntntsId=1023" target="_blank" rel="noopener nofollow">LH청약플러스 임대가이드 — 국민임대 입주자격</a> — 2025년도 소득 금액표(1~8인), 자산 산정 방법, 무주택세대구성원 범위, 배점표</li><li><a href="https://www.i-sh.co.kr/app/lay2/S48T590C1479/contents.do" target="_blank" rel="noopener nofollow">SH 인터넷청약시스템 — 국민임대주택 청약자격</a> — 2026년 기준 총자산 345,000,000원·자동차 45,420,000원</li><li><a href="https://www.lh.or.kr/menu.es?mid=a10401010000" target="_blank" rel="noopener nofollow">LH 임대주택 유형 안내</a> — 국민임대 임대료 시세 60~80%, 최대 거주기간 30년</li><li><a href="https://m.easylaw.go.kr/MOB/CsmInfoRetrieve.laf?csmSeq=1769&amp;ccfNo=2&amp;cciNo=2&amp;cnpClsNo=1" target="_blank" rel="noopener nofollow">찾기 쉬운 생활법령정보 — 국민임대주택 입주하기(임대절차)</a> — 국민임대 정의(30년 이상 장기 임대), 신청~당첨자 발표 절차</li><li><a href="https://www.easylaw.go.kr/CSP/CnpClsMain.laf?csmSeq=1769&amp;ccfNo=3&amp;cciNo=3&amp;cnpClsNo=1" target="_blank" rel="noopener nofollow">찾기 쉬운 생활법령정보 — 임대차계약의 재계약 거절 등</a> — 재계약 거절 사유 (2026.9.15 기준)</li></ul>
@@ -750,6 +756,7 @@
   });
   function flash(b,msg){if(b.querySelector('svg')){b.classList.add('done');b.setAttribute('title',msg);setTimeout(function(){b.classList.remove('done');b.removeAttribute('title')},1500);return;}var o=b.textContent;b.textContent=msg;setTimeout(function(){b.textContent=o},1500);}
   var rp=document.querySelector('.rprog');if(rp){var rt=false;function rpu(){var h=document.documentElement.scrollHeight-innerHeight;rp.style.transform='scaleX('+(h>0?Math.min(1,scrollY/h):0)+')';rt=false;}addEventListener('scroll',function(){if(!rt){rt=true;requestAnimationFrame(rpu);}},{passive:true});rpu();}
+  document.querySelectorAll('.tabbar a,.top .nav a').forEach(function(a){a.addEventListener('click',function(){jjEv('tab_click',{tab:a.textContent.trim(),tab_place:a.closest('.tabbar')?'bottom':'header',from_page:location.pathname,link_url:a.getAttribute('href')});});});
   document.querySelectorAll('[data-back]').forEach(function(a){a.addEventListener('click',function(e){try{if(document.referrer&&new URL(document.referrer).host===location.host&&history.length>1){e.preventDefault();history.back();}}catch(x){}});});
   function copy(text,b){if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(function(){flash(b,'복사됨')},function(){flash(b,'복사 안 됨')});}}
   document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(){copy(b.getAttribute('data-copy'),b)})});

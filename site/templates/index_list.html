@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "macros.html" import card, crumbs, nrow with context %}
+{% from "macros.html" import card, crumbs, nrow, cp_ad with context %}
 {% set nav = 'region' if page_url.startswith('/region') else 'type' %}
 {% block main %}
 <main class="wrap" id="main">
@@ -19,7 +19,9 @@
       {% else %}<p class="hubintro">지금 접수 중이거나 예정된 공고는 없어요. 최근 공고와 결과는 전체 목록에서 볼 수 있어요.</p>{% endif %}
       <p class="lbox-more"><a href="{{ url }}">{{ label }} 공고 전체 {{ total }}곳 보기 →</a></p>
     </section>
+    {% if loop.first and page_url.startswith('/type/') %}{{ cp_ad('home', 'ad-home') }}{{ cp_ad('home_mo', 'ad-home') }}{% endif %}{# 2026-11-04 사용자 요청: 유형 허브 광고 #}
     {% endfor %}
+    {% if page_url.startswith('/type/') %}{{ cp_ad('home_end_mo', 'ad-home ad-end') }}{% endif %}
   </div>
 </main>
 {% endblock %}
