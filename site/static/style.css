@@ -1284,3 +1284,9 @@ body:has(.lwrap:not(.home)){background:var(--ground)}
 .dz-c .dz-v b{font-size:18px;line-height:1.4}
 .dz-c .dz-v small{font-size:14.5px;line-height:1.55;color:var(--ink-2)}
 @media (min-width:720px){.dz-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+/* 2026-11-04 사용자 피드백: 공고 줄 — 왼쪽 칸에 유형 + D-day를 위아래로, 오른쪽은 글만 (넓어짐) */
+.hm-row{grid-template-columns:60px minmax(0,1fr)!important;align-items:start!important}
+.hm-lc{display:flex;flex-direction:column;align-items:center;gap:6px;padding-top:2px}
+.hm-lc .hm-tile{width:60px;height:auto;min-height:40px;padding:6px 4px}
+.hm-lc .hm-pill{width:60px;min-width:0;height:26px;padding:0 4px;font-size:12.5px}
+.hm-lc .hm-pill.p-g{font-size:11px;height:auto;min-height:26px;padding:4px;white-space:normal;line-height:1.25;text-align:center}
