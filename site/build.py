@@ -75,6 +75,15 @@ RENTAL_EXPLAIN = {
     "다자녀 매입임대": "LH가 사들인 기존 주택을 다자녀 가구에 시중 시세보다 낮은 임대료로 빌려주는 공공임대예요.",
     "든든전세": "LH가 사들인 주택을 시세보다 낮은 전세로 빌려주는 매입임대예요. 월세 없이 보증금만 내요.",
 }
+COMP_FAQ = [   # 청약 경쟁률 허브 자주 묻는 질문 (2026-11-04) — 이 사이트 계산 방식과 일반 원칙만, 공고별 수치 없음
+    ("평균 경쟁률과 최고 경쟁률은 어떻게 달라요?",
+     "평균 경쟁률은 그 공고의 전체 접수 건수를 전체 공급 세대로 나눈 값이에요. 최고 경쟁률은 주택형·순위별로 따로 낸 경쟁률 중 가장 높은 값이라, 인기 타입 하나에 몰리면 평균보다 훨씬 높게 나와요."),
+    ("경쟁률이 1대 1보다 낮으면 무슨 뜻이에요?",
+     "접수한 사람이 공급 세대보다 적은 '미달'이에요. 남은 세대는 나중에 무순위(줍줍)로 다시 나올 수 있어서, 미달 단지는 줍줍 공고를 같이 지켜보는 게 좋아요."),
+    ("이 페이지의 경쟁률은 어디서 가져와요?",
+     "한국부동산원 청약홈이 공개하는 공식 경쟁률을 공공데이터포털로 받아 그대로 옮겨요. 평균은 그 값으로 줍줍알람이 계산한 값이고, 공식 결과는 청약홈에서 다시 확인하세요."),
+]
+
 KIND_INTRO = {
     "mujeonwi": "1·2순위 청약이 끝난 뒤 남은 세대나 계약 취소분을 다시 뽑는 공고예요. 청약통장 없이 추첨으로 뽑고, 2025년 6월 10일부터는 무주택세대구성원만 신청할 수 있어요. 거주지역 요건과 재당첨 제한은 공고마다 달라요. 임의공급(사업주체가 조건을 따로 정하는 공급)도 여기에 함께 모았어요.",
     "private": "민간 건설사가 짓는 아파트의 일반 청약이에요. 청약통장이 필요하고, 지역·면적에 따라 가점제와 추첨제 비율이 달라요.",
@@ -1475,6 +1484,20 @@ def main():
     # ── 목록 공통
     list_tpl = E.get_template("list.html")
 
+    def hub_lead(groups_, order_):
+        """허브 첫 문단: 오늘 기준 묶음별 접수 중·예정 수 (2026-11-04 허브 보강 — 구글이 먼저 읽은 허브가 목록뿐이라 부실)."""
+        act = [(k, len([x for x in groups_[k] if x["status"] in ("open", "upcoming")])) for k in order_ if k in groups_]
+        tot = sum(len(groups_[k]) for k in order_ if k in groups_)
+        live_ = sum(a for _, a in act)
+        parts = ", ".join(f"{k} {a}곳" for k, a in act if a)
+        return (f"{d(TODAY.isoformat())} 기준 청약 공고 {tot}곳 중 지금 접수 중이거나 곧 접수하는 공고는 {live_}곳이에요"
+                + (f" ({parts})" if parts else "") + ". 묶음마다 마감이 가까운 공고부터 3곳씩 보여드려요.")
+
+    def hub_desc(prefix, groups_, order_):
+        act = [(k, len([x for x in groups_[k] if x["status"] in ("open", "upcoming")])) for k in order_ if k in groups_]
+        return (f"{d(TODAY.isoformat())} 기준 {prefix} 청약 공고 모음 — 접수 중·예정 "
+                + ", ".join(f"{k} {a}곳" for k, a in act) + ". 접수일·분양가·자격을 공식 데이터로 정리.")
+
     def list_page(url, h1, title, desc, groups, intro=None, crumb=None, links=None, kind="list", empty=None, tbl_label=None, og_t=None,
                   sections=None, h1_kw=None, tbl=True):
         all_n = [x for _, g in groups for x in g]
@@ -1632,11 +1655,13 @@ def main():
     # 지역 목록
     h = E.get_template("index_list.html").render(
         h1="지역별 청약 공고", title="지역별 청약 공고 · 줍줍알람",
-        desc="시·도별 청약 공고 모음. " + ", ".join(f"{k} {len(v)}곳" for k, v in sido_map.items()) + ".",
+        desc=hub_desc("시·도별", sido_map, regions_used),
         entries=[(k, f"/region/{regions['sido'][k]}/", len(sido_map[k]),
-                  len([x for x in sido_map[k] if x["status"] in ("open", "upcoming")])) for k in regions_used],
+                  len([x for x in sido_map[k] if x["status"] in ("open", "upcoming")]),
+                  tsort([x for x in sido_map[k] if x["status"] in ("open", "upcoming")])[:3]) for k in regions_used],
+        lead=hub_lead(sido_map, regions_used),
         page_url="/region/", og="/og-default.jpg", crumb=[("홈", "/"), ("지역", None)], **common)
-    write("/region/", h, "지역별 청약 공고 · 줍줍알람", "", "list")
+    write("/region/", h, "지역별 청약 공고 · 줍줍알람", hub_desc("시·도별", sido_map, regions_used), "list")
 
     # 청약 경쟁률 표 행 (경쟁률 허브·줍줍 허브 공용)
     crow = []
@@ -1686,12 +1711,16 @@ def main():
                   else (label, f"{label} 공고", "한눈에 보기", "접수일 · 분양가 · 자격 — 공식 데이터로 정리"))
     h = E.get_template("index_list.html").render(
         h1="유형별 청약 공고", title="유형별 청약 공고 · 줍줍알람",
-        desc="무순위(줍줍)·민간분양·공공분양·신혼희망타운 유형별 청약 공고 모음.",
-        entries=[(KINDS[k][0], f"/type/{k}/", len(v), len([x for x in v if x["status"] in ("open", "upcoming")]))
+        desc=hub_desc("무순위(줍줍)·민간분양·공공분양·신혼희망타운·공공임대 유형별", {KINDS[k][0]: v for k, v in by_kind.items()}, [KINDS[k][0] for k in sorted(by_kind, key=list(KINDS).index)]),
+        entries=[(KINDS[k][0], f"/type/{k}/", len(v), len([x for x in v if x["status"] in ("open", "upcoming")]),
+                  tsort([x for x in v if x["status"] in ("open", "upcoming")])[:3])
                  for k, v in sorted(by_kind.items(), key=lambda kv: list(KINDS).index(kv[0]))],
         intros={KINDS[k][0]: KIND_INTRO[k] for k in by_kind},
+        lead=hub_lead({KINDS[k][0]: v for k, v in by_kind.items()}, [KINDS[k][0] for k in sorted(by_kind, key=list(KINDS).index)]),
         page_url="/type/", og="/og-default.jpg", crumb=[("홈", "/"), ("유형", None)], **common)
-    write("/type/", h, "유형별 청약 공고 · 줍줍알람", "", "list")
+    write("/type/", h, "유형별 청약 공고 · 줍줍알람",
+          hub_desc("무순위(줍줍)·민간분양·공공분양·신혼희망타운·공공임대 유형별", {KINDS[k][0]: v for k, v in by_kind.items()},
+                   [KINDS[k][0] for k in sorted(by_kind, key=list(KINDS).index)]), "list")
 
     # 검색어 허브 그리기
     def lcnt(lst):
@@ -1746,6 +1775,15 @@ def main():
                   sections=[{"h2": "시세보다 얼마나 싼가요", "small": f"{len(lot)}곳", "top": True, "html": tbl_}],
                   og_t=("로또 청약", "시세보다 싼 공고", "한눈에 보기", "주변 실거래와 비교 · 비교 단지 · 거래 시점"))
 
+    def comp_intro(rows_, best_):
+        """경쟁률 허브 첫 문단 — 숫자 요약 (2026-11-04 허브 보강)."""
+        avgv = [float(r["avg"].split("대")[0]) for r in rows_]
+        under = sum(1 for v in avgv if v < 1)
+        mu = sum(1 for r in rows_ if r["n"]["kind"] == "mujeonwi")
+        bn = best_["n"].get("complex") or best_["n"]["title"]
+        return (f"최근 접수가 끝난 {len(rows_)}곳(무순위·줍줍 {mu}곳 포함)의 청약홈 공식 경쟁률이에요. "
+                f"주택형 기준 최고 경쟁률은 {bn} {best_['top']}이고, 평균 경쟁률이 1대 1에 못 미친 미달 단지는 {under}곳이에요.")
+
     # 청약 경쟁률 허브 (2026-11-02 SEO 기획안 3단계 — 네이버 '청약 경쟁률' 월 약 4,300회 검색, _site.json) — crow는 유형 허브 앞에서 계산
     if crow:
         best = max(crow, key=lambda r: r["topv"])
@@ -1756,7 +1794,8 @@ def main():
         crumb = [("홈", "/"), ("청약 경쟁률", None)]
         h = E.get_template("competition.html").render(
             h1=h1, rows=crow, crumb=crumb, page_url="/competition/", title=title, desc=desc,
-            intro=f"최근 접수가 끝난 단지 {len(crow)}곳의 청약홈 공식 경쟁률이에요. 평균은 전체 공급 세대 대비 접수 건수, 최고는 주택형·순위별 가장 높은 경쟁률이에요.",
+            intro=comp_intro(crow, best),
+            faq=COMP_FAQ, faq_ld={"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in COMP_FAQ]},
             tbl_cap=f"청약홈 공식 경쟁률 {len(crow)}곳 — {d(TODAY.isoformat())} 기준 · 접수 마감이 최근인 순서",
             og=og_hub("/competition/", "청약 경쟁률", "청약 경쟁률", "한눈에 보기", "청약홈 공식 경쟁률 — 무순위(줍줍) · 아파트 분양", [r["n"] for r in crow]),
             **common)

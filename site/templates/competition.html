@@ -23,6 +23,13 @@
         </table>
       </div>
     </section>
+    {% if faq %}
+    <section class="lsec" aria-labelledby="comp-faq">
+      <h2 id="comp-faq">청약 경쟁률, 자주 묻는 질문</h2>
+      <div class="faq">{% for q, a in faq %}<details{% if loop.first %} open{% endif %}><summary>{{ q }}</summary><p>{{ a }}</p></details>{% endfor %}</div>
+      <p class="tbl-more"><a href="/type/mujeonwi/">미달 뒤 나오는 줍줍·무순위 공고 보기 →</a></p>
+    </section>
+    {% endif %}
     <section class="lsec">
       <h2>단지별로 보기 <small>{{ rows|length }}곳</small></h2>
       <div class="cards">{% for r in rows %}{{ card(r.n) }}{% endfor %}</div>
@@ -33,6 +40,6 @@
 {% block after %}
 <script type="application/ld+json">
 {{ {"@context": "https://schema.org", "@graph": [crumb_ld(crumb, h1, page_url),
-  {"@type": "ItemList", "name": h1, "itemListElement": items_ld(rows|map(attribute='n')|list)}]}|jsonld }}
+  {"@type": "ItemList", "name": h1, "itemListElement": items_ld(rows|map(attribute='n')|list)}] + ([faq_ld] if faq_ld else [])}|jsonld }}
 </script>
 {% endblock %}
