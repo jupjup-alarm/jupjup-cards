@@ -1275,3 +1275,12 @@ body:has(.lwrap:not(.home)){background:var(--ground)}
   .page > .ad,.page > .ad-g{margin-top:10px;padding-block:16px}
   .page > .take{margin-top:10px;padding-top:22px}
 }
+/* 2026-11-04 사용자 피드백(모바일 3초 판단): 상자 정리 — 이름 옆 오른쪽에 막대+판정, 본문 글자 키우고 빈 높이 없앰 */
+.dz-c{display:grid!important;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"k m" "v v";gap:8px 12px;align-items:center;min-height:0!important;padding:16px 18px}
+.dz-c .dz-k{grid-area:k;font-size:14px;font-weight:700;color:var(--ink-sub);padding:0}
+.dz-c .dz-m{grid-area:m;display:flex;align-items:center;gap:8px;margin:0;font-size:13.5px}
+.dz-c .dz-g i{width:16px;height:6px}
+.dz-c .dz-v{grid-area:v;gap:4px}
+.dz-c .dz-v b{font-size:18px;line-height:1.4}
+.dz-c .dz-v small{font-size:14.5px;line-height:1.55;color:var(--ink-2)}
+@media (min-width:720px){.dz-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
