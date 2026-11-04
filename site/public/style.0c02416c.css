@@ -868,3 +868,51 @@ footer nav a{display:inline-flex;align-items:center;min-height:36px}
 @media (prefers-reduced-motion:reduce){.lwrap.home .card,.ticket .nx-b{transition:none}.ticket .nx-b:active,.nx-alt:active{transform:none}}
 /* 상단 바가 붙어 있으니 오른쪽 요약 카드·가이드 목차는 그 아래에 붙게 */
 @media (min-width:1024px){.page > aside{top:calc(var(--hdr) + 16px)}.g-page>.g-toc{top:calc(var(--hdr) + 20px)}}
+
+/* ══════════ 리디자인 1단계 — 공통 틀 (2026-11-04 캔버스 시안 v3 '일정이 먼저 보이는 공고 앱') ══════════ */
+/* 토큰: 시안 색·크기 (기존 --ink·--coral 등은 그대로, 시안에서 새로 쓰는 것만 추가) */
+:root{
+  --ground:#F4F6F9;      /* 앱 바탕 (카드는 --card 흰색) */
+  --ink-2:#3B4556;       /* 본문 보조 */
+  --muted:#8A93A3;       /* 비활성 탭·아이콘 */
+  --blue-tint:#EBF0FD;   /* 접수 예정 */
+  --green-tint:#E8F5F0;  /* 임대·접수 중 */
+  --plain-tint:#EEF1F6;  /* 민간분양·발표 */
+  --r-sm:10px;--r-md:14px;--r-lg:18px;
+  --hdr:56px;--tab-h:60px;
+  --safe-b:env(safe-area-inset-bottom,0px);
+}
+/* 머리글: 모바일은 흰 바탕 + 오른쪽 알림(인스타) 아이콘, 메뉴는 하단 탭으로 */
+.top{background:var(--card);border-bottom:1px solid var(--line);box-shadow:none}
+.top .wrap{height:var(--hdr);gap:8px}
+.top .logo{color:var(--ink);font-weight:900;letter-spacing:-.03em}
+.top .nav{display:none}
+.hdr-ic{display:grid;place-items:center;width:var(--tap);height:var(--tap);margin-right:-10px;color:var(--ink);border-radius:50%}
+.hdr-ic:active{background:var(--soft)}
+/* 하단 5칸 탭 (모바일·태블릿) */
+.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:40;display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));
+  height:calc(var(--tab-h) + var(--safe-b));padding-bottom:var(--safe-b);background:var(--card);border-top:1px solid var(--line)}
+.tabbar a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:11px;font-weight:700;color:var(--muted);text-decoration:none;letter-spacing:-.01em}
+.tabbar svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tabbar a[aria-current="page"]{color:var(--ink)}
+.tabbar a:active{background:var(--soft)}
+body:has(.tabbar) footer .wrap{padding-bottom:calc(var(--tab-h) + var(--safe-b) + 32px)}
+@media (min-width:1024px){
+  :root{--hdr:64px}
+  .tabbar{display:none}
+  body:has(.tabbar) footer .wrap{padding-bottom:40px}
+  .top{background:var(--navy);border-bottom:0}
+  .top .wrap{justify-content:flex-start;gap:32px}
+  .top .logo{color:#fff;font-size:19px}
+  .top .nav{display:flex;gap:4px;font-size:15px;font-weight:600;color:#C9D0DD}
+  .top .nav a{padding:0 12px;border-radius:var(--r-sm)}
+  .top .nav a:hover{color:#fff;background:rgba(255,255,255,.08)}
+  .top .nav a[aria-current]{color:#fff;font-weight:700}
+  .hdr-ic{display:none}
+}
+@media (prefers-color-scheme:dark){
+  :root{--ground:#0B1220;--ink-2:#C3CBD8;--muted:#6B7689;--blue-tint:#16224A;--green-tint:#10271F;--plain-tint:#1A2333}
+  .top{background:var(--card);border-bottom-color:var(--line)}
+  .tabbar{background:var(--card);border-top-color:var(--line)}
+  @media (min-width:1024px){.top{background:#13223F}}
+}
