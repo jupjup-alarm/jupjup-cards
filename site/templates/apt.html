@@ -209,7 +209,8 @@
   {% if z.funds and z.funds.opts and z.funds.steps %}
   <section class="sec" aria-labelledby="h-fund" data-fund>
     <h2 id="h-fund">당첨되면, 돈은 이렇게 나가요</h2>
-    {% if z.funds.opts|length > 1 %}<div class="fopt" role="group" aria-label="분양가 고르기">{% for a, v in z.funds.opts %}<button type="button" aria-pressed="{{ 'true' if loop.first else 'false' }}" data-price="{{ v }}">{{ a }} <span class="num">{{ v|won }}</span></button>{% endfor %}</div>{% endif %}
+    {% if z.funds.opts|length > 1 %}<div class="fopt" role="group" aria-label="분양가 고르기">{% for a, v, k in z.funds.opts %}<button type="button" aria-pressed="{{ 'true' if loop.first else 'false' }}" data-price="{{ v }}" data-k="{{ k }}">{{ a }}</button>{% endfor %}</div>{% endif %}
+    <p class="fsum num"><span data-fk>{{ z.funds.opts[0][2] }}</span> <b data-fsum>{{ z.funds.opts[0][1]|won }}</b></p>
     <ol class="ftl num" data-price0="{{ z.funds.opts[0][1] }}">
     {% for st in z.funds.steps %}<li><span class="fdot"></span><span class="fw"><b>{{ st.label }} <small>{{ st.pct }}%</small></b><small>{{ st.when }}</small></span><b class="fa" data-pct="{{ st.pct }}">{{ (z.funds.opts[0][1] * st.pct // 100)|won }}</b></li>
     {% endfor %}
@@ -644,7 +645,7 @@ document.querySelectorAll('[data-nx-to]').forEach(function(a){a.addEventListener
         ri.addEventListener('input',rc);ri.addEventListener('change',function(){jjEv('calc_use',{calc:'rent'});});}
   var f=document.querySelector('[data-fund]');if(!f)return;
   var ol=f.querySelector('.ftl'),price=+ol.getAttribute('data-price0'),inp=f.querySelector('#fcash'),res=f.querySelector('#fres');
-  function draw(){f.querySelectorAll('.fa').forEach(function(b){b.textContent=won(price*(+b.getAttribute('data-pct'))/100);});calc();}
+  function draw(){var sb=f.querySelector('[aria-pressed="true"][data-price]'),fs=f.querySelector('[data-fsum]');if(fs){fs.textContent=won(price);if(sb)f.querySelector('[data-fk]').textContent=sb.getAttribute('data-k');}f.querySelectorAll('.fa').forEach(function(b){b.textContent=won(price*(+b.getAttribute('data-pct'))/100);});calc();}
   function calc(){if(!inp)return;var dep=+res.getAttribute('data-dep'),need=price*dep/100,v=parseFloat((inp.value||'').replace(/[^0-9.]/g,''));
     if(!v){res.textContent='현금을 넣으면 계약금 '+dep+'%('+won(need)+')를 감당할 수 있는지 바로 계산해요.';res.className='fres';return;}
     var have=v*10000;

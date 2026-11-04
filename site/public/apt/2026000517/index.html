@@ -24,7 +24,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="alternate" type="application/rss+xml" title="줍줍알람" href="/rss.xml">
 <link rel="stylesheet" href="/fonts/pretendard/pretendard.css">
-<link rel="stylesheet" href="/style.72bf63ea.css">
+<link rel="stylesheet" href="/style.f235c022.css">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6103BRQ0LP"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-6103BRQ0LP');</script><script>window.jjEv=function(n,p){try{if(window.gtag)gtag('event',n,p||{});}catch(e){}};</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1196853150959268" crossorigin="anonymous"></script></head>
@@ -379,7 +379,7 @@ document.querySelectorAll('[data-nx-to]').forEach(function(a){a.addEventListener
         ri.addEventListener('input',rc);ri.addEventListener('change',function(){jjEv('calc_use',{calc:'rent'});});}
   var f=document.querySelector('[data-fund]');if(!f)return;
   var ol=f.querySelector('.ftl'),price=+ol.getAttribute('data-price0'),inp=f.querySelector('#fcash'),res=f.querySelector('#fres');
-  function draw(){f.querySelectorAll('.fa').forEach(function(b){b.textContent=won(price*(+b.getAttribute('data-pct'))/100);});calc();}
+  function draw(){var sb=f.querySelector('[aria-pressed="true"][data-price]'),fs=f.querySelector('[data-fsum]');if(fs){fs.textContent=won(price);if(sb)f.querySelector('[data-fk]').textContent=sb.getAttribute('data-k');}f.querySelectorAll('.fa').forEach(function(b){b.textContent=won(price*(+b.getAttribute('data-pct'))/100);});calc();}
   function calc(){if(!inp)return;var dep=+res.getAttribute('data-dep'),need=price*dep/100,v=parseFloat((inp.value||'').replace(/[^0-9.]/g,''));
     if(!v){res.textContent='현금을 넣으면 계약금 '+dep+'%('+won(need)+')를 감당할 수 있는지 바로 계산해요.';res.className='fres';return;}
     var have=v*10000;

@@ -807,6 +807,17 @@ def make_decide(n, notices):
     rule.append("필요한 돈: 계약 때 필요한 현금이 1억5천만원 이상이면 주의, 5천만원 이상이면 보통, 그보다 적으면 좋음")
     # 돈 흐름
     opts = f.get("price_options") or ([[n.get("max_type") or "최고가", price]] if price else [])
+    # 2026-11-04 사용자 요청: 고르기 버튼엔 타입만 ("A-5 56㎡ 평균 3억4,387만원" → "A-5 56㎡"), 금액은 버튼 아래 한 줄로
+    def opt_short(a):
+        t = re.sub(r"\s*[(（][^)）]*[)）]", "", a)
+        t = re.sub(r"\s+(평균|최고|최저)(\s*분양가)?$", "", t)
+        t = re.sub(r"\s+\d+동.*$", "", t)
+        return t.strip() or a
+    shorts = [opt_short(a) for a, _ in opts]
+    if len(set(shorts)) < len(shorts):
+        shorts = [a for a, _ in opts]
+    opts = [[sh, v, ("평균 분양가" if "평균" in a else ("최저 분양가" if "최저" in a else ("최고 분양가" if "최고" in a else "분양가")))]
+            for sh, (a, v) in zip(shorts, opts)]
     steps = [{"label": a, "when": fill(b), "pct": c} for a, b, c in f.get("steps", [])]
     out = {"cards": cards, "rule": rule, "bars": bars, "refs": refs[:10], "med": med,
            "fit": src.get("fit"), "traps": [[a, fill(b)] for a, b in src.get("traps", [])],

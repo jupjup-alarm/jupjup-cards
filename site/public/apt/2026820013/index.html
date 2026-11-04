@@ -24,7 +24,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="alternate" type="application/rss+xml" title="줍줍알람" href="/rss.xml">
 <link rel="stylesheet" href="/fonts/pretendard/pretendard.css">
-<link rel="stylesheet" href="/style.72bf63ea.css">
+<link rel="stylesheet" href="/style.f235c022.css">
 <link rel="preload" as="image" href="hero.webp" fetchpriority="high"><script async src="https://www.googletagmanager.com/gtag/js?id=G-6103BRQ0LP"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-6103BRQ0LP');</script><script>window.jjEv=function(n,p){try{if(window.gtag)gtag('event',n,p||{});}catch(e){}};</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1196853150959268" crossorigin="anonymous"></script></head>
@@ -147,7 +147,8 @@
 
   <section class="sec" aria-labelledby="h-fund" data-fund>
     <h2 id="h-fund">당첨되면, 돈은 이렇게 나가요</h2>
-<div class="fopt" role="group" aria-label="분양가 고르기"><button type="button" aria-pressed="true" data-price="466580000">55A <span class="num">4억6,658만원</span></button><button type="button" aria-pressed="false" data-price="456920000">55B <span class="num">4억5,692만원</span></button></div>    <ol class="ftl num" data-price0="466580000">
+<div class="fopt" role="group" aria-label="분양가 고르기"><button type="button" aria-pressed="true" data-price="466580000" data-k="분양가">55A</button><button type="button" aria-pressed="false" data-price="456920000" data-k="분양가">55B</button></div>    <p class="fsum num"><span data-fk>분양가</span> <b data-fsum>4억6,658만원</b></p>
+    <ol class="ftl num" data-price0="466580000">
 <li><span class="fdot"></span><span class="fw"><b>계약금 <small>10%</small></b><small>계약일 2027.3.30(화) ~ 2027.4.2(금)</small></span><b class="fa" data-pct="10">4,665만원</b></li>
 <li><span class="fdot"></span><span class="fw"><b>중도금 <small>20%</small></b><small>2028.8.9(수) · 2029.2.9(금) (10%씩 2회)</small></span><b class="fa" data-pct="20">9,331만원</b></li>
 <li><span class="fdot"></span><span class="fw"><b>잔금 <small>70%</small></b><small>입주 2029.11 예정</small></span><b class="fa" data-pct="70">3억2,660만원</b></li>
@@ -381,7 +382,7 @@ document.querySelectorAll('[data-nx-to]').forEach(function(a){a.addEventListener
         ri.addEventListener('input',rc);ri.addEventListener('change',function(){jjEv('calc_use',{calc:'rent'});});}
   var f=document.querySelector('[data-fund]');if(!f)return;
   var ol=f.querySelector('.ftl'),price=+ol.getAttribute('data-price0'),inp=f.querySelector('#fcash'),res=f.querySelector('#fres');
-  function draw(){f.querySelectorAll('.fa').forEach(function(b){b.textContent=won(price*(+b.getAttribute('data-pct'))/100);});calc();}
+  function draw(){var sb=f.querySelector('[aria-pressed="true"][data-price]'),fs=f.querySelector('[data-fsum]');if(fs){fs.textContent=won(price);if(sb)f.querySelector('[data-fk]').textContent=sb.getAttribute('data-k');}f.querySelectorAll('.fa').forEach(function(b){b.textContent=won(price*(+b.getAttribute('data-pct'))/100);});calc();}
   function calc(){if(!inp)return;var dep=+res.getAttribute('data-dep'),need=price*dep/100,v=parseFloat((inp.value||'').replace(/[^0-9.]/g,''));
     if(!v){res.textContent='현금을 넣으면 계약금 '+dep+'%('+won(need)+')를 감당할 수 있는지 바로 계산해요.';res.className='fres';return;}
     var have=v*10000;
