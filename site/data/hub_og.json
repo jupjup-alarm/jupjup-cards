@@ -109,6 +109,11 @@
   "image": "photos/site/2026000530/birdseye.jpg",
   "pos": "center 55%"
  },
+ "/type/public/": {
+  "credit": "이미지: 서울주택도시개발공사(SH) 조감도 · 실제와 다를 수 있음",
+  "image": "photos/site/2026000373/birdseye.jpg",
+  "pos": "center 55%"
+ },
  "/type/rental/": {
   "credit": "이미지: LH 제공 투시도 · 실제와 다를 수 있음",
   "image": "photos/c50495e5533b.jpg",
