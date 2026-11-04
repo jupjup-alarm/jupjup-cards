@@ -195,6 +195,7 @@ def build(E, notices, write, common, pub, base, today, problems):
         lst = [n for n in open_n if n["kind"] in kinds and (not match or any(w in (n["title"] + (n.get("kind_label") or "") + " ".join(n.get("aliases") or [])) for w in match))]
         lst.sort(key=lambda n: n["rcpt"][0])
         g["notices"] = lst[:4]
+        g["n_live"] = len(lst)   # 가이드 목록 '지금 접수 중·예정 N건' (2026-11-04 리디자인 5단계, 빌드가 날마다 채움)
         g["rel"] = [by[s] for s in (g.get("related") or []) if s in by and s != g["slug"]][:3]
         if len(g["rel"]) < 2:
             g["rel"] += [x for x in guides if x is not g and x.get("category") == g.get("category") and x not in g["rel"]][:2 - len(g["rel"])]
@@ -216,7 +217,7 @@ def build(E, notices, write, common, pub, base, today, problems):
     cats = [x for x in cats if x[2]]   # 아직 글이 없는 분류는 목록에서 숨김
     cats = [c for c in cats if c[2]]
     h = E.get_template("guide_index.html").render(
-        cats=cats, guides=guides, guides_ld=[{"@type": "ListItem", "position": i, "url": base + g["url"], "name": g["h1"]} for i, g in enumerate(guides, 1)], **common, page_url="/guide/", title="청약·임대·대출 가이드 — 칼럼 모음 · 줍줍알람",
+        cats=cats, guides=guides, feat=(by["mujeonwi"] if by.get("mujeonwi", {}).get("n_live") else max(guides, key=lambda g: g.get("n_live", 0))) if any(g.get("n_live") for g in guides) else None, guides_ld=[{"@type": "ListItem", "position": i, "url": base + g["url"], "name": g["h1"]} for i, g in enumerate(guides, 1)], **common, page_url="/guide/", title="청약·임대·대출 가이드 — 칼럼 모음 · 줍줍알람",
         desc=f"청약 가점·무순위·임대주택·주택담보대출(DSR·LTV)·신도시까지, 법령과 공식 안내를 근거로 정리한 칼럼 {len(guides)}편.",
         og="/og-default.jpg", crumb=[("홈", "/"), ("가이드", None)], nav="guide")
     write("/guide/", h, "청약·임대·대출 가이드 — 칼럼 모음 · 줍줍알람", "", "list", index=bool(guides))

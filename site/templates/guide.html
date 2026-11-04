@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "macros.html" import card, crumbs, cp_ad, ads_slot with context %}
+{% from "macros.html" import card, crumbs, cp_ad, ads_slot, nrow with context %}
 {% block main %}
 <main class="wrap g-page" id="main">
   <article class="g-art">
@@ -21,7 +21,7 @@
     <section class="g-answer" aria-labelledby="g-ans"><h2 id="g-ans">먼저 결론</h2><ol>{% for a in g.answer %}<li>{{ a }}</li>{% endfor %}</ol></section>
     {% endif %}
     {% if g.toc %}
-    <details class="g-toc-m"><summary>이 글의 순서 · {{ g.toc|length }}개 장</summary><ol>{% for id, t in g.toc %}<li><a href="#{{ id }}">{{ '%02d'|format(loop.index) }} {{ t }}</a></li>{% endfor %}{% if g.faq %}<li><a href="#g-faq">자주 묻는 질문</a></li>{% endif %}</ol></details>
+    <details class="g-toc-m" open><summary>이 글의 순서 · {{ g.toc|length }}개 장</summary><ol>{% for id, t in g.toc %}<li><a href="#{{ id }}">{{ '%02d'|format(loop.index) }} {{ t }}</a></li>{% endfor %}{% if g.faq %}<li><a href="#g-faq">자주 묻는 질문</a></li>{% endif %}</ol></details>
     {% endif %}
     <div class="g-body">
       {{ g.html_a }}
@@ -40,7 +40,7 @@
     {% if g.notices %}
     <section class="g-now" aria-labelledby="g-now">
       <h2 id="g-now">지금 접수 중·예정인 공고</h2>
-      <div class="cards">{% for n in g.notices %}{{ card(n) }}{% endfor %}</div>
+      <ul class="hm-rows">{% for n in g.notices %}{{ nrow(n) }}{% endfor %}</ul>
       <p class="note">공고는 매일 아침 새로 고쳐져요. <a href="/schedule/this-week/">이번 주 청약 일정 전체 보기 →</a></p>
     </section>
     {% endif %}

@@ -24,7 +24,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="alternate" type="application/rss+xml" title="줍줍알람" href="/rss.xml">
 <link rel="stylesheet" href="/fonts/pretendard/pretendard.css">
-<link rel="stylesheet" href="/style.44837567.css">
+<link rel="stylesheet" href="/style.d52a4f4c.css">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6103BRQ0LP"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-6103BRQ0LP');</script><script>window.jjEv=function(n,p){try{if(window.gtag)gtag('event',n,p||{});}catch(e){}};</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1196853150959268" crossorigin="anonymous"></script></head>
@@ -42,13 +42,17 @@
 </header>
 <main class="wrap" id="main">
   <div class="lwrap">
-    <nav class="crumb" aria-label="경로"><a href="/">홈</a><span aria-hidden="true">›</span><span>가이드</span></nav>
-
     <div class="lhead">
+      <nav class="crumb" aria-label="경로"><a href="/">홈</a><span aria-hidden="true">›</span><span>가이드</span></nav>
+
       <h1>청약·임대·대출 가이드</h1>
       <p>공고를 읽기 전에 알아 두면 좋은 기준을 칼럼으로 정리했어요. 법령과 공식 안내를 근거로 쓰고, 기준이 바뀌면 고쳐요.</p>
-      <div class="llinks"><a href="#eligibility">청약 자격 4</a><a href="#mujeonwi">무순위 1</a><a href="#rental">임대 5</a><a href="#loan">대출 5</a><a href="#new-town">신도시 6</a></div>
     </div>
+    <nav class="gcats" aria-label="주제"><a href="#eligibility">청약 자격 <span class="num">4</span></a><a href="#mujeonwi">무순위 <span class="num">1</span></a><a href="#rental">임대 <span class="num">5</span></a><a href="#loan">대출 <span class="num">5</span></a><a href="#new-town">신도시 <span class="num">6</span></a></nav>
+    <a class="gfeat" href="/guide/mujeonwi/">
+      <span class="gfeat-k"><i aria-hidden="true"></i>무순위 가이드 · 지금 접수 중·예정인 줍줍 3건</span>
+      <b>무순위 청약(줍줍), 누가 어떻게 넣을 수 있나요?</b><span class="gfeat-d">2025년 6월부터 무순위는 무주택세대구성원만 넣을 수 있어요. 통장은 필요 없지만 거주지역, 재당첨 제한, 짧은 계약 일정은 공고마다 달라요.</span><small class="num">2026.10 기준 · 읽는 데 9분</small>
+    </a>
     <section class="lsec" id="eligibility">
       <h2>청약 자격 <small>4편</small></h2>
       <div class="g-grid">        <a class="g-card" href="/guide/cheongyak-gajeom/">
@@ -455,6 +459,7 @@
     if(d>0)el.textContent='D-'+d;else if(d===0)el.textContent='오늘';else el.textContent='마감';
   });
   function flash(b,msg){if(b.querySelector('svg')){b.classList.add('done');b.setAttribute('title',msg);setTimeout(function(){b.classList.remove('done');b.removeAttribute('title')},1500);return;}var o=b.textContent;b.textContent=msg;setTimeout(function(){b.textContent=o},1500);}
+  var rp=document.querySelector('.rprog');if(rp){var rt=false;function rpu(){var h=document.documentElement.scrollHeight-innerHeight;rp.style.transform='scaleX('+(h>0?Math.min(1,scrollY/h):0)+')';rt=false;}addEventListener('scroll',function(){if(!rt){rt=true;requestAnimationFrame(rpu);}},{passive:true});rpu();}
   document.querySelectorAll('[data-back]').forEach(function(a){a.addEventListener('click',function(e){try{if(document.referrer&&new URL(document.referrer).host===location.host&&history.length>1){e.preventDefault();history.back();}}catch(x){}});});
   function copy(text,b){if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(function(){flash(b,'복사됨')},function(){flash(b,'복사 안 됨')});}}
   document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(){copy(b.getAttribute('data-copy'),b)})});

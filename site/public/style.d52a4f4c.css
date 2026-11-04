@@ -1170,3 +1170,44 @@ body:has(.lwrap:not(.home)){background:var(--ground)}
   .lbox .hm-rows{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
   .lbox .hm-row{border-right:1px solid var(--line)}
 }
+
+/* ══════════ 리디자인 5단계 — 가이드 (2026-11-04 캔버스 시안 v3) ══════════ */
+/* 가이드 목록: 주제 칩(붙어 다님) · 지금 공고와 이어지는 한 편 · 흰 카드 */
+.gcats{position:sticky;top:var(--hdr);z-index:20;background:var(--ground);margin-inline:var(--bleed);padding:12px var(--pad) 8px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;
+  -webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent)}
+.gcats::-webkit-scrollbar{display:none}
+.gcats a{flex:none;min-height:40px;padding:0 14px;border-radius:999px;display:inline-flex;align-items:center;gap:5px;font-size:14px;font-weight:700;background:var(--card);border:1px solid var(--line);color:var(--ink);text-decoration:none}
+.gcats a span{font-size:12px;opacity:.7}
+.gcats a:last-child{margin-right:28px}
+.gfeat{display:flex;flex-direction:column;gap:8px;margin-top:12px;background:var(--navy);color:#fff;border-radius:var(--r-lg);padding:20px;text-decoration:none}
+.gfeat-k{display:flex;gap:8px;align-items:center;font-size:12.5px;font-weight:700;color:#FF8A70}
+.gfeat-k i{width:6px;height:6px;border-radius:50%;background:var(--coral);flex:none}
+.gfeat b{font-size:21px;font-weight:900;letter-spacing:-.035em;line-height:1.35}
+.gfeat-d{font-size:14px;line-height:1.6;color:#C9D0DD}
+.gfeat small{font-size:12.5px;color:#AEB7C8}
+.lwrap .g-grid{display:flex;flex-direction:column;gap:8px}
+.lwrap .g-card{background:var(--card);border-radius:var(--r-md);padding:16px;border:0;text-decoration:none;color:var(--ink)}
+.lwrap .g-card .g-ct b{font-size:16px;font-weight:700;letter-spacing:-.025em;line-height:1.4}
+.lwrap .g-card .g-ct > span{font-size:13px;line-height:1.6;color:var(--ink-sub)}
+.lwrap .g-card .g-ct small{font-size:12px;font-weight:600;color:var(--muted)}
+@media (max-width:1023px){.lwrap .g-card .g-thumb{display:none}.lwrap .g-card{display:block}}
+@media (min-width:1024px){.gcats{position:static;margin:16px 0 0;padding:0;-webkit-mask-image:none;mask-image:none;flex-wrap:wrap}.lwrap .g-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.gfeat{padding:24px 28px}}
+/* 가이드 글: 읽은 만큼 차는 막대 · 먼저 결론 남색 상자 · 순서 펼침 · 번호 붙은 장 제목 */
+.top.sub{position:sticky}
+.rprog{position:absolute;left:0;bottom:-1px;height:3px;width:100%;background:var(--coral);transform:scaleX(0);transform-origin:0 50%;pointer-events:none}
+.top{position:sticky}
+.g-answer{background:var(--navy)!important;color:#fff;border:0!important;border-radius:var(--r-md)!important;padding:18px 18px 16px!important}
+.g-answer h2{color:#FF8A70!important;font-size:13px!important;font-weight:700;letter-spacing:.02em;margin:0 0 10px!important}
+.g-answer ol{margin:0;padding:0;list-style:none;counter-reset:ga;display:flex;flex-direction:column;gap:12px}
+.g-answer li{counter-increment:ga;display:grid;grid-template-columns:22px minmax(0,1fr);gap:8px;font-size:15.5px;font-weight:600;line-height:1.6;color:#fff}
+.g-answer li::before{content:counter(ga);font-weight:800;color:#FF8A70;font-variant-numeric:tabular-nums}
+.g-toc-m{border:1px solid var(--line);border-radius:var(--r-md);padding:4px 16px 8px}
+.g-toc-m summary{min-height:var(--tap);display:flex;align-items:center;font-size:14.5px;font-weight:700;cursor:pointer}
+.g-toc-m li a{display:block;padding:10px 0;border-top:1px solid var(--line);font-size:14.5px;line-height:1.5;text-decoration:none;color:var(--ink-2)}
+.g-body{counter-reset:gh}
+.g-body > h2{counter-increment:gh;font-size:23px;font-weight:900;letter-spacing:-.035em;line-height:1.4;scroll-margin-top:calc(var(--hdr) + 16px)}
+.g-now{background:var(--ground);margin-inline:calc(-1 * max(20px, env(safe-area-inset-left, 0px)));padding:22px max(20px, env(safe-area-inset-left, 0px));border:0}
+.g-now h2{font-size:19px;font-weight:900;letter-spacing:-.03em}
+.g-now .hm-rows{gap:8px}
+@media (min-width:1024px){.g-now{margin-inline:0;border-radius:var(--r-lg);padding:22px 24px}}
+@media (prefers-color-scheme:dark){.g-answer{background:#13223F!important}}

@@ -39,8 +39,8 @@
 <a class="skip" href="#main">본문 바로가기</a>
 {# 2026-11-04 리디자인 1단계(공통 틀): 모바일은 흰 머리글 + 하단 5칸 탭, 데스크톱(1024px~)은 남색 머리글 + 메뉴 5개 #}
 {% set tab = 'home' if page_url == '/' else ('schedule' if page_url.startswith('/schedule') else ('region' if page_url.startswith('/region') else ('type' if page_url.startswith('/type') else ('guide' if page_url.startswith('/guide') else ('competition' if page_url.startswith('/competition') else nav))))) %}
-{% set sub = page_url.startswith('/apt/') %}
-{% set back = ((n.crumb|selectattr(1)|list)[-1][1] if (n is defined and n.crumb and (n.crumb|selectattr(1)|list)) else '/') if sub else '/' %}
+{% set sub = page_url.startswith('/apt/') or (page_url.startswith('/guide/') and page_url != '/guide/') %}{% set gart = sub and page_url.startswith('/guide/') %}
+{% set back = '/guide/' if gart else ((n.crumb|selectattr(1)|list)[-1][1] if (n is defined and n.crumb and (n.crumb|selectattr(1)|list)) else '/') if sub else '/' %}
 <header class="top{{ ' sub' if sub }}">
   <div class="wrap">
     {% if sub %}<a class="hdr-back" href="{{ back }}" aria-label="목록으로" data-back><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7"/></svg></a>{% endif %}
@@ -54,6 +54,7 @@
     </nav>
     {% if sub %}<button class="hdr-ic" type="button" data-share aria-label="공유하기"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg></button>{% else %}
         <a class="hdr-ic" href="{{ IG }}" rel="noopener" aria-label="인스타그램에서 새 공고 알림 받기"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg></a>{% endif %}
+    {% if gart %}<i class="rprog" aria-hidden="true"></i>{% endif %}
   </div>
 </header>
 {% block main %}{% endblock %}
@@ -87,6 +88,7 @@
     if(d>0)el.textContent='D-'+d;else if(d===0)el.textContent='오늘';else el.textContent='마감';
   });
   function flash(b,msg){if(b.querySelector('svg')){b.classList.add('done');b.setAttribute('title',msg);setTimeout(function(){b.classList.remove('done');b.removeAttribute('title')},1500);return;}var o=b.textContent;b.textContent=msg;setTimeout(function(){b.textContent=o},1500);}
+  var rp=document.querySelector('.rprog');if(rp){var rt=false;function rpu(){var h=document.documentElement.scrollHeight-innerHeight;rp.style.transform='scaleX('+(h>0?Math.min(1,scrollY/h):0)+')';rt=false;}addEventListener('scroll',function(){if(!rt){rt=true;requestAnimationFrame(rpu);}},{passive:true});rpu();}
   document.querySelectorAll('[data-back]').forEach(function(a){a.addEventListener('click',function(e){try{if(document.referrer&&new URL(document.referrer).host===location.host&&history.length>1){e.preventDefault();history.back();}}catch(x){}});});
   function copy(text,b){if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(function(){flash(b,'복사됨')},function(){flash(b,'복사 안 됨')});}}
   document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(){copy(b.getAttribute('data-copy'),b)})});
