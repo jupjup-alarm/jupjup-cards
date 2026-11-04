@@ -11,7 +11,8 @@ import base64, json, os, pathlib, re, sys, time, urllib.request, urllib.error
 URL = "https://api.anthropic.com/v1/messages"
 MODEL_SMART = os.environ.get("HYODO_MODEL_SMART", "claude-opus-5-5")    # 대본·팩트체크
 MODEL_FAST = os.environ.get("HYODO_MODEL_FAST", "claude-sonnet-5-5")    # 문장·시각 검수, 어드바이저 방식의 실행자
-WEB_TOOLS = [{"type": "web_fetch_20260318", "name": "web_fetch", "max_uses": 25},
+# max_content_tokens: 공단·부처 페이지는 메뉴까지 통째로 들어와 한 장이 수만 토큰 — 12,000에서 자른다(2026-11-04 S-0006 비교에서 입력 160만 토큰)
+WEB_TOOLS = [{"type": "web_fetch_20260318", "name": "web_fetch", "max_uses": 25, "max_content_tokens": 12000},
              {"type": "web_search_20250305", "name": "web_search", "max_uses": 8}]
 ADVISOR_BETA = "advisor-tool-2026-03-01"
 
@@ -133,14 +134,19 @@ def image_block(path):
 
 
 def ask(content, system="", model=None, web=False, max_tokens=16000, log=None, tag="",
-        advisor=None, advisor_max_uses=3, advisor_max_tokens=2048):
+        advisor=None, advisor_max_uses=3, advisor_max_tokens=3072):
     """content: 문자열 또는 블록 목록. 서버 도구(web_fetch/web_search/advisor)는 pause_turn을 이어 받는다.
     돌려주는 값: 마지막 답의 글(text 블록을 이은 것)."""
     model = model or MODEL_SMART
+    # 프롬프트 캐시: 서버 도구(fetch·search)를 쓰면 한 요청 안에서도 앞부분(규칙·예시)을 몇십 번 다시 읽는다 → 캐시로 0.1배
+    if isinstance(content, str):
+        content = [{"type": "text", "text": content}]
+    content = [dict(b) for b in content]
+    content[-1]["cache_control"] = {"type": "ephemeral"}
     msgs = [{"role": "user", "content": content}]
     body = {"model": model, "max_tokens": max_tokens, "messages": msgs}
     if system:
-        body["system"] = system
+        body["system"] = [{"type": "text", "text": system, "cache_control": {"type": "ephemeral"}}]
     tools = list(WEB_TOOLS) if web else []
     beta = None
     if advisor:
