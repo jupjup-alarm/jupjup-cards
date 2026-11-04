@@ -26,11 +26,13 @@
       <div class="hm-feat">
       {% for n in lst %}
         <a class="hm-fc" href="{{ n.url }}">
-          <span class="hm-fc-top">
+          {% set og = n.imgs.og if n.imgs is defined and n.imgs and n.imgs.og and 'og-default' not in n.imgs.og else '' %}
+          {% if og %}<span class="hm-fc-top og"><img src="{{ og }}" alt="{{ n.title }} 공고 요약 이미지" width="1200" height="630"{% if loop.index > 2 %} loading="lazy"{% endif %} decoding="async"></span>
+          {% else %}<span class="hm-fc-top">
             <span class="hm-chips"><span class="c-t">오늘 마감</span><span>{{ n.kind_label }}</span></span>
             {% if n.is_rental %}{% set pr = nprice(n)|trim %}<span class="hm-fc-v"><small>임대 조건</small><b class="num s">{{ pr or '공고문 확인' }}</b></span>
             {% elif n.max_price %}<span class="hm-fc-v"><small>{{ n.price_label or '최고 분양가' }}</small><b class="num">{{ n.max_price|won }}</b></span>{% endif %}
-          </span>
+          </span>{% endif %}
           <span class="hm-fc-b"><b>{{ n.title }}</b><span class="num">{{ n.sigungu or n.sido }}{% if n.units %} · {{ '{:,}'.format(n.units) }}{{ n.unit_word or '세대' }}{% endif %}{% if n.chips %} · {{ n.chips[0][0] }}{% endif %}</span></span>
         </a>
       {% endfor %}

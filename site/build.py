@@ -2219,7 +2219,7 @@ def check(notices):
             elif not h.endswith("/") and not (PUB / h.lstrip("/")).exists() and not (PUB / url.lstrip("/") / h).exists():
                 errs.append(f"없는 파일: {url} → {h}")
         for m in re.finditer(r'src="([^":]+)"', p["html"]):
-            s = m.group(1)
+            s = m.group(1).split("?")[0]  # ?v= 캐시 무효화 꼬리는 떼고 확인
             base = PUB / url.lstrip("/") if url.endswith("/") else (PUB / url.lstrip("/")).parent
             f = PUB / s.lstrip("/") if s.startswith("/") else base / s
             if not f.exists():
