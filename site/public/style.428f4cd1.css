@@ -1293,3 +1293,10 @@ body:has(.lwrap:not(.home)){background:var(--ground)}
 /* 2026-11-04 공고 상세 아래 바: 카카오톡 오픈채팅 알림방 (카카오 노랑) */
 .bar .btn.kakao{background:#FEE500;color:#191919;border-color:#FEE500;gap:8px;display:flex;align-items:center;justify-content:center;text-decoration:none}
 .bar .btn.kakao svg{width:20px;height:20px;flex:none}
+/* 2026-11-04 사용자 요청: 공고 상세·가이드 글 머리글 공유 아이콘 옆에 '공유' 글자 */
+.hdr-share{width:auto!important;display:flex!important;align-items:center;gap:4px;padding:0 8px!important;border-radius:999px!important;font-size:14px;font-weight:700;color:var(--ink)}
+.hdr-share svg{width:20px;height:20px}
+@media (max-width:1023px){
+  .top.sub .wrap{grid-template-columns:72px minmax(0,1fr) 72px}
+  .top.sub .hdr-share{justify-self:end}
+}
