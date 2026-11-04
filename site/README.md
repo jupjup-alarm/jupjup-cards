@@ -5,7 +5,8 @@
 ## 매일 하는 일 (⑦)
 1. `git pull --rebase origin main`
 2. '청약홈API' 탭 전체를 `site/data/applyhome.json`의 `rows`로 덮어쓰기 (열 이름 = 시트 머리글, `fetched_at` = A열 값).
-3. 새 공고마다 `site/data/apt/{주택관리번호}.json` 작성 — 형식은 기존 파일 참고. 사실은 '청약조사' 탭·청약홈API 값만.
+2-1. LH 공고문 받기: `python3 tools/lh_files.py --all --upcoming` (아래 'LH 공고문 자동 반영' 절 — 2026-11-04).
+3. 새 공고마다 `site/data/apt/{주택관리번호}.json` 작성 — 형식은 기존 파일 참고. 사실은 '청약조사' 탭·청약홈API 값, LH 공고는 공고문 글자(`site/data/notice_text/<key>.txt` — 시트와 다르면 공고문 우선).
    - 필수: `title, kind, region{sido,sigungu}, take(한마디 2줄+), who, eligibility(행 배열), faq(3개+), account`
    - `aliases`: '청약조사' C열 단지명과 '오늘의 발행 플랜' C열 단지명이 title과 다르면 넣는다 (시트 스크립트가 스레드 링크·DM에서 이 이름으로 페이지를 찾음 — `public/links.json`).
    - 선택: `photo{image,credit,alt,pos}`(AA·X열), `map`(Y열), `coords`(Z열 [경도,위도]), `plans[{type,image,alt}]`(AC열 — 반드시 이미지를 열어 타입 확인), `areas`, `gap`(H열에 근거 단지가 있을 때만 — 아래 '비교 단지 시세'), `schedule`(자동 일정이 틀릴 때), `info_extra`, `sources_extra`, `related_extra`
@@ -43,6 +44,13 @@
   - json에 직접 넣은 photo·plans·layouts가 있으면 그게 우선 (홈페이지 자료로 덮지 않음).
 - **시트 사진 자동 연결** (2026-11-04 사용자 결정 — AA·AE·AG열에 받아 둔 사진을 공고 json에 손으로 옮기다 빠지는 일이 잦아서): jupjup-runner `assets` 워크플로(매일 10:40·22:40)가 '청약조사' AA(사진)·AC(평면도)·AE(배치도)·AG(동호배치도) 파일 목록을 `site/data/sheet_assets.json`으로 내려 두고, 빌드가 **아직 photo·plans·layouts가 없는 공고에만** 붙인다. 순서: json에 직접 넣은 값 → photos/site 홈페이지 자료 → 시트 자료. 줄 찾기: AI열 `key:` → AH열 LH `panId` → 단지 이름 낱말·블록 번호(A-2·B2 등)가 맞는 줄 ('청약 결과' 줄 제외). 출처는 X열 '출처:'(분양 홈페이지면 괄호 안 회사)로 "이미지: {출처} 제공 조감도(투시도·홍보 그림) · 실제와 다를 수 있음". X열에 공공누리 2~4유형·상업적 이용금지·변경금지·사용 불가가 있으면 사진은 안 쓴다. 잘못 붙은 그림은 json에 직접 photo·plans·layouts를 넣어 덮는다 (`build-report.json`의 `sheet_assets`에 어느 공고가 몇 행을 썼는지 나옴).
 - AI열이 "홈페이지 차단"·"자료 없음"이면 아무것도 하지 않는다. 공고당 이미지 상한(6장)은 홈페이지 자료가 있는 공고엔 적용하지 않는다 (둘러보기 8장 + 평면 타입 수).
+
+## LH 공고문 자동 반영 (2026-11-04 사용자 결정 — "LH 공고 페이지에 항상 pdf가 있는데 못 가져와?")
+- LH청약플러스 공고 페이지(source_url)의 첨부 목록에서 공고문·팸플릿 PDF를 공개 내려받기 주소로 받는다: `python3 tools/lh_files.py --all --upcoming` (한 공고는 `python3 tools/lh_files.py lh0000061199`). 결과: `site/data/notice_files/<key>.json`(첨부 목록·md5·`changed`), `site/data/notice_text/<key>.txt`(공고문 글자, pdftotext -layout). PDF 원본은 `.cache/lh/<key>/`(커밋 안 함). 차단·오류면 건너뛴다 — 우회하지 않는다.
+- ⑦은 LH 공고(분양·신혼희망타운·임대) 페이지를 만들거나 고칠 때 **notice_text를 1차 자료로** 읽는다: 자격(소득·자산 금액·거주지역), 공급 호수·동호, 타입별 가격·보증금·월세, 납부 조건(계약금·중도금·잔금·기금 융자금·모기지 → decide.funds), 옵션·발코니, 전매·거주의무·재당첨, 예비입주자, 서류·계약 일정·장소, 문의처. 시트 값과 공고문이 다르면 공고문을 따르고 보고에 적는다. 표가 글자로 깨지면 그 쪽만 `pdftoppm -r 110 -f N -l N`으로 떠서 본다. 기준 예시: lh0000061199·lh0000061200(분양), 2026000531(공공분양 본청약, 손으로 반영).
+- `changed: true`(새 공고 또는 첨부가 바뀜 — 정정공고)인 공고는 그날 다시 대조해 고친다.
+- 팸플릿이 있고 페이지에 photo·plans·layouts가 없으면 `python3 tools/lh_files.py <key> --pamphlet` → `.cache/lh/<key>/cand/contact-*.jpg`를 보고 조감도·배치도·동호배치도·평면도·인테리어를 골라 `photos/site/<key>/`(긴 변 1890px 이하 JPEG) + index.json(owner "LH 팸플릿", 형식은 photos/site/lh0000061199/index.json). 평면도 label은 청약 타입명과 같게.
+- 청약홈 공고(민간·임의공급 등)는 상세 페이지가 자동 접속을 막아 공고문을 받지 않는다(우회 금지). 사용자가 PDF를 주면 그때 같은 방식으로 반영한다.
 
 ## 비교 단지 시세 (2026-10-29 사용자 결정 — "모든 공고, 임대주택은 비교단지 시세 확보")
 - **모든 공고**에 `gap`을 채우는 것이 기본이다. ① 조사 담당이 '청약조사' H열에 근거 단지와 함께 적어 두고, 이 페이지는 H열 값 그대로 옮긴다 (H열이 "확인필요"·"해당없음"이면 `gap` 없이).
