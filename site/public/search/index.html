@@ -81,7 +81,6 @@
     return '<span class="hm-pill p-g">'+({pre:'공고 전',waiting:'발표 대기',announced:'발표 완료',released:'공고 나옴'}[x.s]||'')+'</span>';}
   function mark(t,raw){var i=t.toLowerCase().indexOf(raw.toLowerCase());return i<0?esc(t):esc(t.slice(0,i))+'<mark>'+esc(t.slice(i,i+raw.length))+'</mark>'+esc(t.slice(i+raw.length));}
   function run(){var raw=q.value.trim(),v=norm(raw);
-    try{history.replaceState(null,'',raw?'?q='+encodeURIComponent(raw):location.pathname);}catch(e){}
     if(!v||!D){L.innerHTML='';N.textContent='';H.hidden=true;P.hidden=false;return;}
     var jamo=/^[ㄱ-ㅎ]+$/.test(v);
     var hit=D.n.filter(function(x){if(!x._a){x._a=norm(x.t+' '+x.n+' '+x.a);x._c=cho(x._a);}return jamo?x._c.indexOf(v)>-1:x._a.indexOf(v)>-1;});
@@ -89,11 +88,21 @@
     N.textContent=hit.length?('공고 '+hit.length+'곳'):'찾는 공고가 없어요. 단지 이름 일부나 시·군·구로 다시 찾아보세요.';
     L.innerHTML=hit.slice(0,40).map(function(x){return '<li><a class="srch-row" href="'+x.u+'"><b>'+mark(x.t,raw)+'</b>'+pill(x)+'<span class="num">'+esc(x.a)+(x.p?' · '+esc(x.p):'')+'</span></a></li>';}).join('');
     HL.innerHTML=hubs.map(function(h){return '<a href="'+h.u+'">'+esc(h.t)+'<span aria-hidden="true">›</span></a>';}).join('');
-    H.hidden=!hubs.length;P.hidden=true;}
-  q.addEventListener('input',function(){clearTimeout(t);t=setTimeout(run,80);});
-  document.querySelector('.srch-bar').addEventListener('submit',function(e){e.preventDefault();run();q.blur();if(window.jjEv)jjEv('search',{q:q.value.trim().slice(0,30)});});
+    H.hidden=!hubs.length;P.hidden=true;last={term:raw,n:hit.length,jamo:jamo};}
+  /* 구글 애널리틱스 (2026-11-04): 무엇을 찾는지 — 입력이 1.2초 멈추거나, 검색 버튼·결과를 누르거나, 페이지를 떠날 때 한 번씩 보냄 (같은 검색어는 한 번만) */
+  var last=null,sent='',gt=null;
+  function track(how){clearTimeout(gt);if(!last||!last.term||last.term===sent||!window.jjEv)return;sent=last.term;
+    var p={search_term:last.term.slice(0,50),results_count:last.n,search_type:last.jamo?'초성':'글자',search_how:how};
+    jjEv('search',p);if(!last.n)jjEv('search_no_results',{search_term:p.search_term,search_type:p.search_type});}
+  L.addEventListener('click',function(e){var a=e.target.closest('a');if(!a)return;track('click');
+    var i=[].indexOf.call(L.querySelectorAll('a'),a);if(window.jjEv)jjEv('select_content',{content_type:'search_result',item_id:a.getAttribute('href'),search_term:(last&&last.term||'').slice(0,50),position:i+1});});
+  HL.addEventListener('click',function(e){var a=e.target.closest('a');if(!a)return;track('click');if(window.jjEv)jjEv('select_content',{content_type:'search_hub',item_id:a.getAttribute('href'),search_term:(last&&last.term||'').slice(0,50)});});
+  document.querySelector('.srch-pop').addEventListener('click',function(e){var a=e.target.closest('a');if(a&&window.jjEv)jjEv('select_content',{content_type:'search_suggestion',item_id:a.getAttribute('href')});});
+  addEventListener('pagehide',function(){track('leave');});
+  q.addEventListener('input',function(){clearTimeout(t);t=setTimeout(run,80);clearTimeout(gt);gt=setTimeout(function(){track('pause');},1200);});
+  document.querySelector('.srch-bar').addEventListener('submit',function(e){e.preventDefault();run();q.blur();track('submit');});
   var u=new URLSearchParams(location.search).get('q');if(u)q.value=u;
-  fetch('/search.json').then(function(r){return r.json();}).then(function(j){D=j;run();}).catch(function(){N.textContent='검색 자료를 불러오지 못했어요. 잠시 뒤 다시 해 주세요.';});
+  fetch('/search.json').then(function(r){return r.json();}).then(function(j){D=j;run();if(u)track('link');}).catch(function(){N.textContent='검색 자료를 불러오지 못했어요. 잠시 뒤 다시 해 주세요.';});
 })();
 </script>
 <script>
