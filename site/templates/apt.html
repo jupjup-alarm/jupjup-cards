@@ -597,12 +597,12 @@ as.forEach(function(a){a.addEventListener('click',function(){if(window.jjEv)jjEv
 if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){as.forEach(function(a){var on=a.getAttribute('href')==='#'+e.target.id;a.classList.toggle('on',on);if(on&&a.scrollIntoView)nav.scrollTo({left:a.offsetLeft-16,behavior:'smooth'});});}});},{rootMargin:'-60px 0px -70% 0px'});
 as.forEach(function(a){var h=document.getElementById(a.getAttribute('href').slice(1));if(h)io.observe(h);});}})();
 </script>
-{# 2026-11-04 리디자인 3단계: 접수 중·예정은 '남은 날 + 공유하기'(사용자 결정 16:36, 자격 체크는 티켓 버튼에), 그 밖은 인스타 알림 #}
+{# 2026-11-04 리디자인 3단계: 접수 중·예정은 '남은 날 + 카톡 알림방'(사용자 결정 18:00 — 공유는 머리글 아이콘, 자격 체크는 티켓 버튼), 그 밖은 인스타 알림 #}
 {% if n.status in ('open', 'upcoming') and not n.is_pre and not n.moved %}
 {% set dl = days_to(n.rcpt[1] or n.rcpt[0]) if n.status == 'open' else n.dday %}
 <div class="bar bar2">
   <p class="bar-d {{ 'o' if n.status == 'open' else 'u' }}"><span>{{ '마감까지' if n.status == 'open' else '접수까지' }}</span><b class="num" {% if n.status == 'open' %}data-dend="{{ n.rcpt[1] or n.rcpt[0] }}"{% else %}data-dday="{{ n.rcpt[0] }}"{% endif %}>{{ '오늘' if dl == 0 else 'D-' ~ dl }}</b></p>
-  <button class="btn primary" type="button" data-share data-nx-to="bar_share">공유하기</button>
+  <a class="btn primary kakao" href="{{ KAKAO }}" target="_blank" rel="noopener" data-nx-to="bar_kakao"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 4C7 4 3 7.1 3 11c0 2.5 1.7 4.7 4.2 5.9L6.5 20l3.6-2.4c.6.1 1.2.1 1.9.1 5 0 9-3.1 9-7s-4-6.7-9-6.7z" fill="currentColor"/></svg>카톡으로 청약 알림 받기</a>
 </div>
 {% else %}
 <div class="bar">

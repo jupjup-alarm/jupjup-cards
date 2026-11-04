@@ -29,6 +29,7 @@ PUB = SITE / "public"
 BASE = "https://jupjupalarm.com"
 IG = "https://www.instagram.com/jupjup_alarm/"
 THREADS = "https://www.threads.net/@jupjup_alarm"
+KAKAO = "https://open.kakao.com/o/glNu0yVi"   # 카카오톡 오픈채팅 알림방 (2026-11-04 개설)
 BLOG = "https://blog.naver.com/jupjupalarm"          # 청약노트 네이버 블로그 (연관 채널)
 YOUTUBE = "https://www.youtube.com/channel/UCbIKC-joj_M279Tii7sLSiA"
 # 쿠팡 파트너스 다이나믹 배너 (공고 페이지). mq = 이 화면 조건일 때만 불러옴(숨긴 채 노출되지 않게)
@@ -1234,7 +1235,7 @@ def env():
         return out if len(out) >= 2 else []
     def days_to(iso):
         return (dt.date.fromisoformat(iso) - TODAY).days if iso else None
-    e.globals.update(steps4=steps4, days_to=days_to, HAS_GUIDES=bool(GUIDES.load()), RENTAL_EXPLAIN=RENTAL_EXPLAIN, BASE=BASE, IG=IG, THREADS=THREADS, BLOG=BLOG, YOUTUBE=YOUTUBE, COUPANG=COUPANG, COUPANG_NOTE=COUPANG_NOTE, ADSENSE=ADSENSE, GA=GA, STATUS=STATUS, KINDS=KINDS, crumb_ld=crumb_ld, items_ld=items_ld,
+    e.globals.update(steps4=steps4, days_to=days_to, HAS_GUIDES=bool(GUIDES.load()), RENTAL_EXPLAIN=RENTAL_EXPLAIN, BASE=BASE, IG=IG, THREADS=THREADS, KAKAO=KAKAO, BLOG=BLOG, YOUTUBE=YOUTUBE, COUPANG=COUPANG, COUPANG_NOTE=COUPANG_NOTE, ADSENSE=ADSENSE, GA=GA, STATUS=STATUS, KINDS=KINDS, crumb_ld=crumb_ld, items_ld=items_ld,
                      logo=Markup((SITE / "static/favicon.svg").read_text().replace('<svg xmlns="http://www.w3.org/2000/svg" ', '<svg class="mark" aria-hidden="true" focusable="false" ')))
     return e
 

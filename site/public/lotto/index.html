@@ -24,7 +24,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="alternate" type="application/rss+xml" title="줍줍알람" href="/rss.xml">
 <link rel="stylesheet" href="/fonts/pretendard/pretendard.css">
-<link rel="stylesheet" href="/style.0792e3aa.css">
+<link rel="stylesheet" href="/style.9f11d0f5.css">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6103BRQ0LP"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-6103BRQ0LP');</script><script>window.jjEv=function(n,p){try{if(window.gtag)gtag('event',n,p||{});}catch(e){}};</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1196853150959268" crossorigin="anonymous"></script></head>
@@ -161,7 +161,7 @@
     var u=document.querySelector('link[rel=canonical]').href;jjEv('share',{method:navigator.share?'native':'copy'});
     if(navigator.share){navigator.share({title:document.title,url:u}).catch(function(){});}else{copy(u,b);}
   })});
-  document.querySelectorAll('a[href*="instagram.com"],a[href*="threads."]').forEach(function(a){a.addEventListener('click',function(){jjEv('follow_click',{channel:a.href.indexOf('threads')>-1?'threads':'instagram'});});});
+  document.querySelectorAll('a[href*="instagram.com"],a[href*="threads."],a[href*="open.kakao.com"]').forEach(function(a){a.addEventListener('click',function(){jjEv('follow_click',{channel:a.href.indexOf('kakao')>-1?'kakao':(a.href.indexOf('threads')>-1?'threads':'instagram')});});});
   var tl=document.querySelector('.ptabs');
   if(tl){var tabs=[].slice.call(tl.querySelectorAll('[role=tab]'));
     function sel(tab){tabs.forEach(function(b){var on=b===tab;b.setAttribute('aria-selected',on);b.tabIndex=on?0:-1;document.getElementById(b.getAttribute('aria-controls')).hidden=!on;});}
