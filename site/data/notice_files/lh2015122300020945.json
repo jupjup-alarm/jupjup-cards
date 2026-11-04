@@ -1,0 +1,27 @@
+{
+ "key": "lh2015122300020945",
+ "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300020945&ccrCnntSysDsCd=03&uppAisTpCd=13&aisTpCd=26&mi=1026",
+ "checked": "2026-11-04 22:14",
+ "files": [
+  {
+   "fileid": "69110456",
+   "name": "(261022)(인천본부)공급대상주택목록.xlsx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69110458",
+   "name": "(261022)(인천본부)일반매입임대주택입주자모집공고문.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69110457",
+   "name": "(261022)(인천본부)일반매입임대주택입주자모집공고문.pdf",
+   "kind": "notice",
+   "got": "ok",
+   "md5": "a11860cb1c8ec929253a52aff23b6429",
+   "pages": 15,
+   "bytes": 462704
+  }
+ ],
+ "changed": true
+}

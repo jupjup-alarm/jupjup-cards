@@ -1,0 +1,32 @@
+{
+ "key": "lh2015122300020896",
+ "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300020896&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=09&mi=1026",
+ "checked": "2026-11-04 22:15",
+ "files": [
+  {
+   "fileid": "69203681",
+   "name": "오산세교27단지(A-6BL)영구임대주택입주자격완화예비입주자모집(2026.11.02).hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69203687",
+   "name": "오산세교27단지(A-6BL)영구임대주택입주자격완화예비입주자모집(2026.11.02).pdf",
+   "kind": "notice",
+   "got": "ok",
+   "md5": "d7967a8778f0ea953cbcd78e204a327f",
+   "pages": 32,
+   "bytes": 632780
+  },
+  {
+   "fileid": "69203673",
+   "name": "마이마이서비스고객매뉴얼(V6).hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "68931436",
+   "name": "제출서류양식(영구임대).hwpx",
+   "kind": "other"
+  }
+ ],
+ "changed": true
+}

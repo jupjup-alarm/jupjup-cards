@@ -1,0 +1,36 @@
+{
+ "key": "lh2015122300020936",
+ "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300020936&ccrCnntSysDsCd=03&uppAisTpCd=39&aisTpCd=42&mi=1026",
+ "checked": "2026-11-04 22:14",
+ "files": [
+  {
+   "fileid": "69138781",
+   "name": "261027_구리갈매역세권A-1BL신혼희망타운행복주택_모집공고문_.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69138783",
+   "name": "261027_구리갈매역세권A-1BL신혼희망타운행복주택_모집공고문_.pdf",
+   "kind": "notice",
+   "got": "ok",
+   "md5": "6bc21634e44223b9f9d41eda70bddd3d",
+   "pages": 43,
+   "bytes": 744319
+  },
+  {
+   "fileid": "69138778",
+   "name": "261027_구리갈매역세권A-1BL신혼희망타운행복주택팸플릿.pdf",
+   "kind": "pamphlet",
+   "got": "ok",
+   "md5": "99897b067e72b2b3326523745fab1101",
+   "pages": 13,
+   "bytes": 31908046
+  },
+  {
+   "fileid": "69138620",
+   "name": "첨부파일_공사양식서류.zip",
+   "kind": "other"
+  }
+ ],
+ "changed": true
+}

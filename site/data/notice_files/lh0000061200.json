@@ -1,0 +1,41 @@
+{
+ "key": "lh0000061200",
+ "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061200&ccrCnntSysDsCd=02&uppAisTpCd=05&aisTpCd=05&mi=1027",
+ "checked": "2026-11-04 22:14",
+ "files": [
+  {
+   "fileid": "69272971",
+   "name": "(261103공고)고양지축B-1블록공공분양주택추가입주자모집공고문.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69272976",
+   "name": "(261103공고)고양지축B-1블록공공분양주택추가입주자모집공고문.pdf",
+   "kind": "notice",
+   "got": "ok",
+   "md5": "b4d96d304165bf822d3200303bc08a19",
+   "pages": 11,
+   "bytes": 502297
+  },
+  {
+   "fileid": "69272993",
+   "name": "(210929-최초공고)고양지축B-1블록팜플렛.pdf",
+   "kind": "pamphlet",
+   "got": "ok",
+   "md5": "064be67aa569597a3893832949c03a8c",
+   "pages": 22,
+   "bytes": 23459155
+  },
+  {
+   "fileid": "69273047",
+   "name": "개인정보수집이용및제3자제공동의서(추가모집).hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69273068",
+   "name": "위임장(고양지축공공분양주택).hwpx",
+   "kind": "other"
+  }
+ ],
+ "changed": true
+}

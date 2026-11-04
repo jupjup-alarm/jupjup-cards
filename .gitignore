@@ -26,3 +26,4 @@ hyodo/engine/node_modules/
 hyodo/engine/.env
 hyodo/engine/episodes/*/out/
 hyodo/engine/**/__pycache__/
+.cache/

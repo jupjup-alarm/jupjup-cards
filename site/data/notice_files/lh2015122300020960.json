@@ -1,0 +1,56 @@
+{
+ "key": "lh2015122300020960",
+ "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300020960&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=10&mi=1026",
+ "checked": "2026-11-04 22:15",
+ "files": [
+  {
+   "fileid": "69178683",
+   "name": "과천지식정보타운S12블록행복주택공고문.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69178684",
+   "name": "과천지식정보타운S12블록행복주택공고문.pdf",
+   "kind": "notice",
+   "got": "ok",
+   "md5": "6782d7a3e6e462b49edfc3fa511db92c",
+   "pages": 49,
+   "bytes": 894736
+  },
+  {
+   "fileid": "69178686",
+   "name": "과천지식정보타운S12블록행복주택팸플릿.pdf",
+   "kind": "pamphlet",
+   "got": "ok",
+   "md5": "1c3d6bbf14d4e59b4d60fffbc00c4fef",
+   "pages": 15,
+   "bytes": 92410420
+  },
+  {
+   "fileid": "69178688",
+   "name": "별첨1.(필수)개인정보수집이용및제3자제공동의서등.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69178689",
+   "name": "별첨2.예비신혼부부신청확인서,세대구성확인서.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69178690",
+   "name": "별첨3.본인행정정보제공요구서.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69178691",
+   "name": "별첨4.위임장(양식).hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69178692",
+   "name": "별첨5.각서(복학예정인자로대학생에공급신청한자).hwpx",
+   "kind": "other"
+  }
+ ],
+ "changed": true
+}

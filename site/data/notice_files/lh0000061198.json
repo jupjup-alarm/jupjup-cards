@@ -1,0 +1,41 @@
+{
+ "key": "lh0000061198",
+ "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061198&ccrCnntSysDsCd=02&uppAisTpCd=05&aisTpCd=05&mi=1027",
+ "checked": "2026-11-04 22:14",
+ "files": [
+  {
+   "fileid": "69224852",
+   "name": "인천가정2B2BL잔여세대추가모집(순번추첨동호지정)입주자모집공고문.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69224439",
+   "name": "인천가정2B2BL잔여세대추가모집(순번추첨동호지정)입주자모집공고문.pdf",
+   "kind": "notice",
+   "got": "ok",
+   "md5": "93e134a14f0221cb2a741083b42c7197",
+   "pages": 16,
+   "bytes": 608796
+  },
+  {
+   "fileid": "69224869",
+   "name": "인천가정2B2블록분양팸플릿.pdf",
+   "kind": "pamphlet",
+   "got": "ok",
+   "md5": "844c0bb0c8555b4900c507658e8d2427",
+   "pages": 17,
+   "bytes": 18486944
+  },
+  {
+   "fileid": "69224913",
+   "name": "위임장.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69224911",
+   "name": "인천가정2B2블록잔여세대배치도.pdf",
+   "kind": "other"
+  }
+ ],
+ "changed": true
+}

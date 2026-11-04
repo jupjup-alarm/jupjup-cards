@@ -1,0 +1,47 @@
+{
+ "key": "lh0000061197",
+ "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061197&ccrCnntSysDsCd=02&uppAisTpCd=39&aisTpCd=39&mi=1027",
+ "checked": "2026-11-04 22:13",
+ "files": [
+  {
+   "fileid": "69224264",
+   "name": "(공고문)인천가정2A-2블록신혼희망타운(공공분양)추가입주자모집공고문_게시.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69224266",
+   "name": "(공고문)인천가정2A-2블록신혼희망타운(공공분양)추가입주자모집공고문_게시.pdf",
+   "kind": "notice",
+   "got": "ok",
+   "md5": "2d39590fd0317ce84bb3b1a4bd89f2f8",
+   "pages": 17,
+   "bytes": 633944
+  },
+  {
+   "fileid": "69215079",
+   "name": "(팸플렛)인천가정2A2(2401).pdf",
+   "kind": "other"
+  },
+  {
+   "fileid": "69215088",
+   "name": "(동호판)인천가정2A-2블록잔여세대동호판.pdf",
+   "kind": "other"
+  },
+  {
+   "fileid": "69215096",
+   "name": "(토지이용계획도)인천가정2A-2블록토지이용계획도.pdf",
+   "kind": "other"
+  },
+  {
+   "fileid": "69215168",
+   "name": "1.위임장.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69215169",
+   "name": "2.개인정보수집이용및제3자제공동의서.hwpx",
+   "kind": "other"
+  }
+ ],
+ "changed": true
+}

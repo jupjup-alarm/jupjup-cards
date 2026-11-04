@@ -1,0 +1,51 @@
+{
+ "key": "lh2015122300020925",
+ "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300020925&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=10&mi=1026",
+ "checked": "2026-11-04 22:14",
+ "files": [
+  {
+   "fileid": "69040750",
+   "name": "[공고문]인천부평(도시재생뉴딜)행복주택입주자모집(`26.10.19.).hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69040764",
+   "name": "[공고문]인천부평(도시재생뉴딜)행복주택입주자모집(`26.10.19.).pdf",
+   "kind": "notice",
+   "got": "ok",
+   "md5": "fb448b8dafcdb99a18eb06c14c812809",
+   "pages": 50,
+   "bytes": 881561
+  },
+  {
+   "fileid": "69041668",
+   "name": "[팸플릿]인천부평(도시재생뉴딜)행복주택.pdf",
+   "kind": "pamphlet",
+   "got": "ok",
+   "md5": "57ea5397b9f9e53bd5d479d0ea90e908",
+   "pages": 15,
+   "bytes": 11408914
+  },
+  {
+   "fileid": "69040771",
+   "name": "[양식1]공통제출서류(예비자중복선정,개인정보수집,자산보유,금융정보)_전원필수제출.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69040774",
+   "name": "[양식2]추가제출서류(대학생복학예정자신청시)_해당자만제출.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69040776",
+   "name": "[양식3]추가제출서류(예비신혼부부_신청시)_해당자만제출.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69040789",
+   "name": "[양식4]위임장(현장대리인신청시)_해당자만제출.hwpx",
+   "kind": "other"
+  }
+ ],
+ "changed": true
+}

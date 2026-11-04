@@ -1,0 +1,27 @@
+{
+ "key": "lh2015122300020769",
+ "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300020769&ccrCnntSysDsCd=03&uppAisTpCd=13&aisTpCd=26&mi=1026",
+ "checked": "2026-11-04 22:14",
+ "files": [
+  {
+   "fileid": "68615189",
+   "name": "[정정][경기남부]2026년일반매입임대주택입주자모집공고문(방문접수).hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "68615191",
+   "name": "[정정][경기남부]2026년일반매입임대주택입주자모집공고문(방문접수).pdf",
+   "kind": "notice",
+   "got": "ok",
+   "md5": "78b7a4a0decdc721ed91e573b1f93337",
+   "pages": 17,
+   "bytes": 487417
+  },
+  {
+   "fileid": "68615193",
+   "name": "★[정정][경기남부]2026년일반매입임대주택입주자모집공고주택목록.xlsx",
+   "kind": "other"
+  }
+ ],
+ "changed": true
+}
