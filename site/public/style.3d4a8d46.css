@@ -1291,5 +1291,5 @@ body:has(.lwrap:not(.home)){background:var(--ground)}
 .hm-lc .hm-pill{width:60px;min-width:0;height:26px;padding:0 4px;font-size:12.5px}
 .hm-lc .hm-pill.p-g{font-size:11px;height:auto;min-height:26px;padding:4px;white-space:normal;line-height:1.25;text-align:center}
 /* 2026-11-04 공고 상세 아래 바: 카카오톡 오픈채팅 알림방 (카카오 노랑) */
-.bar2 .btn.kakao{background:#FEE500;color:#191919;border-color:#FEE500;gap:8px;display:flex;align-items:center;justify-content:center;text-decoration:none}
-.bar2 .btn.kakao svg{width:20px;height:20px;flex:none}
+.bar .btn.kakao{background:#FEE500;color:#191919;border-color:#FEE500;gap:8px;display:flex;align-items:center;justify-content:center;text-decoration:none}
+.bar .btn.kakao svg{width:20px;height:20px;flex:none}
