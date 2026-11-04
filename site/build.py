@@ -748,6 +748,21 @@ def make_decide_rental(n, src):
     rule.append("보증금: 보증금이 1억원 이상이면 주의, 3천만원 이상이면 보통, 그보다 적으면 좋음")
     conv = src.get("conv")
     opts = [[m["type"], m["deposit"], m.get("monthly") or 0] for m in ms]
+    # 같은 타입이 계층별로 여러 줄이면(과천 16A 대학생·청년…) 버튼에 계층을 짧게 붙인다 — 같은 금액 줄은 하나로 (2026-11-04)
+    types = [o[0] for o in opts]
+    if len(set(types)) < len(types):
+        seen, uniq = set(), []
+        for m, o in zip(ms, opts):
+            tg = re.split(r"\s+[—-]\s+", m.get("target") or "")[0].strip()
+            if len(tg) > 12:
+                tg = re.sub(r"\s*[(（][^)）]*[)）]", "", tg).strip()[:12]
+            lab = f"{o[0]} {tg}".strip() if types.count(o[0]) > 1 else o[0]
+            if (lab, o[1], o[2]) in seen:
+                continue
+            seen.add((lab, o[1], o[2]))
+            uniq.append([lab, o[1], o[2]])
+        labs = [u[0] for u in uniq]
+        opts = [[f"{u[0]} ({labs[:i].count(u[0]) + 1})" if labs.count(u[0]) > 1 else u[0], u[1], u[2]] for i, u in enumerate(uniq)]
     return {"rental": True, "cards": cards, "rule": rule, "fit": src.get("fit"),
             "traps": [[a, fill(b)] for a, b in src.get("traps", [])], "check": src.get("check"),
             "rent": {"opts": opts, "conv": conv, "note": fill(src.get("rent_note", "")), "basis": src.get("rent_basis", "")},
@@ -2112,6 +2127,26 @@ def main():
     (PUB / "_headers").write_text(HEADERS)
     redirects = json.loads((DATA / "redirects.json").read_text()) if (DATA / "redirects.json").exists() else []
     (PUB / "_redirects").write_text("".join(f"{a} {b} 301\n" for a, b in redirects))
+
+    # 청약홈 공고문 받을 목록 (2026-11-04 사용자 결정 — 청약홈 상세는 자동 접속을 막아서, 사용자 Mac의 ego lite 브라우저가
+    # 사람처럼 열어 공고문 PDF를 ~/줍줍알람/공고문/<key>.pdf 로 받는다 → ⑦이 Mac 폴더에서 가져와 notice_text로)
+    want = []
+    for n in notices:
+        if n.get("source") != "applyhome" or status_of(n) not in ("open", "upcoming"):
+            continue
+        if (DATA / "notice_text" / f"{n['key']}.txt").exists():
+            continue
+        url = n.get("source_url") or ""
+        if "applyhome.co.kr" not in url:
+            continue
+        want.append({"key": n["key"], "title": n["title"], "rcpt": n["rcpt"], "url": url,
+                     "homepage": n.get("homepage") or "", "save_as": f"{n['key']}.pdf"})
+    want.sort(key=lambda x: x["rcpt"][0])
+    wf = DATA / "notice_wanted.json"
+    wtxt = json.dumps({"how": "ego lite: url을 열어 '모집공고문' PDF를 받아 ~/줍줍알람/공고문/<save_as>로 저장. 캡차·차단 화면이면 멈추고 건너뜀(우회 금지).",
+                       "items": want}, ensure_ascii=False, indent=1)
+    if not wf.exists() or wf.read_text() != wtxt:
+        wf.write_text(wtxt)
 
     # 고아 공고 이미지 폴더 정리 (페이지가 없는 apt/ 폴더는 이미지뿐이면 남겨둠 — 지우지 않음)
     errs = check(notices)

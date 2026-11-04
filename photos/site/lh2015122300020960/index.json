@@ -1,0 +1,127 @@
+{
+ "key": "lh2015122300020960",
+ "owner": "LH 팸플릿",
+ "images": [
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "S12블록 투시도",
+   "file": "photos/site/lh2015122300020960/birdseye-perspective.jpg",
+   "src": "LH 과천지식정보타운 S12블록 행복주택 팸플릿 PDF 3쪽",
+   "w": 1890,
+   "h": 795,
+   "md5": "833795365d28cbaef11b1785467b8b0b",
+   "photo": true
+  },
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "단지 조감도",
+   "file": "photos/site/lh2015122300020960/birdseye.jpg",
+   "src": "LH 과천지식정보타운 S12블록 행복주택 팸플릿 PDF 6쪽",
+   "w": 1064,
+   "h": 922,
+   "md5": "136069bdcb23cb390292fd49624cba81",
+   "photo": true
+  },
+  {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "단지배치도",
+   "file": "photos/site/lh2015122300020960/siteplan.jpg",
+   "src": "LH 과천지식정보타운 S12블록 행복주택 팸플릿 PDF 6쪽",
+   "w": 987,
+   "h": 922,
+   "md5": "1f26c213f3d25430a590ae0eaa42ed63",
+   "photo": false
+  },
+  {
+   "cat": "dongho",
+   "kind": "동호배치도",
+   "label": "단지배치도·동호배치도",
+   "file": "photos/site/lh2015122300020960/dongho.jpg",
+   "src": "LH 과천지식정보타운 S12블록 행복주택 팸플릿 PDF 14쪽",
+   "w": 1890,
+   "h": 1161,
+   "md5": "81be0cba4806951232895c16c1ba7afd",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "16A",
+   "file": "photos/site/lh2015122300020960/plan-16a.jpg",
+   "src": "LH 과천지식정보타운 S12블록 행복주택 팸플릿 PDF 7쪽",
+   "w": 590,
+   "h": 870,
+   "md5": "dac006447d3e094b46d31639c9bf24ad",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "16B",
+   "file": "photos/site/lh2015122300020960/plan-16b.jpg",
+   "src": "LH 과천지식정보타운 S12블록 행복주택 팸플릿 PDF 8쪽",
+   "w": 590,
+   "h": 870,
+   "md5": "76ad4d7610050c3eec5ab233b63f9d72",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "26A",
+   "file": "photos/site/lh2015122300020960/plan-26a.jpg",
+   "src": "LH 과천지식정보타운 S12블록 행복주택 팸플릿 PDF 9쪽",
+   "w": 590,
+   "h": 870,
+   "md5": "3d859da09f490f24b3e9d8aaaf386c95",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "26B",
+   "file": "photos/site/lh2015122300020960/plan-26b.jpg",
+   "src": "LH 과천지식정보타운 S12블록 행복주택 팸플릿 PDF 10쪽",
+   "w": 590,
+   "h": 870,
+   "md5": "340c843495405ae5f6f317d14470f039",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "36A",
+   "file": "photos/site/lh2015122300020960/plan-36a.jpg",
+   "src": "LH 과천지식정보타운 S12블록 행복주택 팸플릿 PDF 11쪽",
+   "w": 590,
+   "h": 870,
+   "md5": "526f51101ee21b9c390f0998ea64eb4c",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "36B",
+   "file": "photos/site/lh2015122300020960/plan-36b.jpg",
+   "src": "LH 과천지식정보타운 S12블록 행복주택 팸플릿 PDF 12쪽",
+   "w": 590,
+   "h": 870,
+   "md5": "26b8cab707b45af9e9ad6f4d5aa6ebc4",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "36C",
+   "file": "photos/site/lh2015122300020960/plan-36c.jpg",
+   "src": "LH 과천지식정보타운 S12블록 행복주택 팸플릿 PDF 13쪽",
+   "w": 590,
+   "h": 870,
+   "md5": "02d8d22b2cccb5786e9da20323d0d652",
+   "photo": false
+  }
+ ]
+}
