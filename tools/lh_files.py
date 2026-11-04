@@ -8,6 +8,7 @@ https://apply.lh.or.kr/lhapply/lhFile.do?fileid=<id> 로 PDF를 받는다. 차�
   python3 tools/lh_files.py --all                    # site/data/apt/lh*.json 전부
   python3 tools/lh_files.py --all --upcoming         # 접수 마감 전인 것만
   python3 tools/lh_files.py lh0000061199 --pamphlet  # 팸플릿 이미지 후보도 뽑기
+  python3 tools/lh_files.py lh0000061205 --url "<LH 공고 상세 주소>"   # 사이트 json이 아직 없는 새 공고
 결과 (저장소에 올리는 것):
   site/data/notice_files/<key>.json   첨부 목록 {name, fileid, kind(notice|pamphlet|form|other), md5, pages, got}, changed(바뀌었으면 true)
   site/data/notice_text/<key>.txt     공고문 PDF 글자 (pdftotext -layout) — 사이트 발행 담당이 자격·납부조건·동호·옵션을 채울 때 읽는다
@@ -105,10 +106,11 @@ def pamphlet_cands(pdf, folder):
     return [str(f.relative_to(ROOT)) for f in keep]
 
 
-def run(key, s, pamphlet=False):
-    f = APT / f"{key}.json"
-    d = json.loads(f.read_text(encoding="utf-8"))
-    url = d.get("source_url") or ""
+def run(key, s, pamphlet=False, url=None):
+    if url is None:   # 사이트 공고 json의 source_url (아직 페이지가 없는 새 공고는 --url로 — ① 조사 API가 씀, 2026-11-05)
+        f = APT / f"{key}.json"
+        d = json.loads(f.read_text(encoding="utf-8"))
+        url = d.get("source_url") or ""
     if "apply.lh.or.kr" not in url:
         return {"key": key, "skip": "LH청약플러스 주소 없음"}
     r = s.get(url, timeout=30)
@@ -168,6 +170,7 @@ def main():
     ap.add_argument("--all", action="store_true")
     ap.add_argument("--upcoming", action="store_true", help="--all과 함께: 접수 마감 전인 공고만")
     ap.add_argument("--pamphlet", action="store_true")
+    ap.add_argument("--url", help="LH청약플러스 공고 상세 주소 (사이트 json이 없는 새 공고) — key 하나와 함께")
     a = ap.parse_args()
     keys = list(a.keys)
     if a.all:
@@ -180,9 +183,11 @@ def main():
         sys.exit("공고 key를 주거나 --all")
     s = requests.Session()
     s.headers["User-Agent"] = "jupjup-alarm/1.0 (+https://jupjupalarm.com)"
+    if a.url and len(keys) != 1:
+        sys.exit("--url은 key 하나와 함께")
     for k in dict.fromkeys(keys):
         try:
-            print(json.dumps(run(k, s, a.pamphlet), ensure_ascii=False))
+            print(json.dumps(run(k, s, a.pamphlet, a.url), ensure_ascii=False))
         except Exception as e:  # noqa: BLE001
             print(json.dumps({"key": k, "error": str(e)[:200]}, ensure_ascii=False))
 
