@@ -137,8 +137,33 @@ def won(v):
     return (f"{man:,.0f}만 원" if man == int(man) else f"{man:,.1f}만 원")
 
 
+def body_calc_sum(s, P):
+    """받는 돈 계산: items[{label, monthly}] × months (적금형이 아닌 수당·연금용, 2026-11-04 S-0002)."""
+    d = s["data"]
+    m = d["months"]
+    top = max(it["monthly"] for it in d["items"]) * m
+    track = 760 if P else 1100
+    at = d.get("at", list(range(1, len(d["items"]) + 1)))
+    bars = ""
+    for i, it in enumerate(d["items"]):
+        tot = it["monthly"] * m
+        per = (f'<span class="muted" style="font-weight:700">· 한 달 {it["monthly"]:,}원 × {m}달</span>' if m > 1 else '')
+        bars += (f'<div data-at="{at[i]}" style="margin-top:{44 if P else 40}px">'
+                 f'<div style="font-size:{48 if P else 54}px;font-weight:800;margin-bottom:14px">{e(it["label"])} {per}</div>'
+                 f'<div style="display:flex;align-items:center;height:110px">'
+                 f'<div data-grow="{at[i]}" style="width:{track * tot / top:.0f}px;height:110px;background:{C["orange"]};border-radius:18px;transform-origin:left center"></div>'
+                 f'<div style="margin-left:22px;font-size:{60 if P else 72}px;font-weight:900;color:{C["orange"]};white-space:nowrap">{tot:,}원</div>'
+                 f'</div></div>')
+    box = "left:60px;right:60px;top:230px" if P else "left:130px;right:130px;top:170px"
+    na = d.get("note_at", len(d["items"]) + 1)
+    return (f'<div style="position:absolute;{box}"><div data-at="0" class="title">{e(d["title"])}</div>{bars}'
+            f'<div data-at="{na}" class="muted" style="margin-top:40px;font-size:{44 if P else 48}px;font-weight:700">※ {e(d["note"])}</div></div>')
+
+
 def body_calc(s, P):
     d = s["data"]
+    if "items" in d:
+        return body_calc_sum(s, P)
     paid = d["monthly"] * d["months"]
     top = max(paid * (1 + r["rate"]) for r in d["rates"])
     track = 700 if P else 1160
