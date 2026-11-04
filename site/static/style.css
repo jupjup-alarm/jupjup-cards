@@ -1038,3 +1038,84 @@ body:has(.home2){background:var(--ground)}
 }
 .hm-main > *,.hm-rail > *{min-width:0;max-width:100%}
 .hm-hero,.hm-week,.hm-kinds,.hm-feat{max-width:none}
+
+/* ══════════ 리디자인 3단계 — 공고 상세 (2026-11-04 캔버스 시안 v3) ══════════ */
+/* 머리글: 모바일은 ‹ 뒤로 · 가운데 줍줍알람 · 공유 */
+@media (max-width:1023px){
+  .top.sub .wrap{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;padding-left:6px;padding-right:6px}
+  .top.sub .logo{justify-self:center;font-size:15px;font-weight:700;gap:6px}
+  .top.sub .logo .mark{width:22px;height:22px}
+  .top.sub .hdr-ic{margin:0}
+}
+.hdr-back{display:grid;place-items:center;width:var(--tap);height:var(--tap);color:var(--ink);border-radius:50%}
+.hdr-back:active{background:var(--soft)}
+button.hdr-ic{border:0;background:none;padding:0;cursor:pointer;font:inherit}
+.hdr-ic.done{color:var(--green)}
+@media (min-width:1024px){.hdr-back,.top.sub .hdr-ic{display:none}}
+/* 바탕은 연회색, 묶음마다 흰 칸 (모바일은 화면 끝까지) */
+body:has(main.page){background:var(--ground)}
+.page{--bleed:calc(-1 * max(20px, env(safe-area-inset-left, 0px)));--pad:max(20px, env(safe-area-inset-left, 0px));padding-top:0}
+.pre-ban{margin:0 var(--bleed);padding:10px var(--pad);background:#EEE9FB;color:#4B2FA6;font-size:13px;font-weight:700;display:flex;gap:8px;align-items:center}
+.pre-ban i{width:8px;height:8px;border-radius:50%;background:#6D4FD6;flex:none}
+@media (max-width:1023px){
+  .page > .head:not(.band){background:var(--card);margin-inline:var(--bleed);padding:16px var(--pad) 18px}
+  .tk-wrap{background:var(--card);margin-inline:var(--bleed);padding:0 16px 18px}
+  .tk-wrap .ticket{margin-top:0}
+  .tk-wrap .trust{margin:12px 4px 0}
+  .page > .chipnav{margin-top:10px;margin-inline:var(--bleed);background:var(--card);border-bottom:1px solid var(--line)}
+  .page > .dz-card,.page > .take{background:var(--card);margin:0 var(--bleed);padding:22px var(--pad)}
+  .page > .take{padding-top:4px;grid-template-columns:44px minmax(0,1fr)}
+  .page > .dz-card{margin-top:0}
+  .page > .sec{background:var(--card);border-top:0;margin-top:10px}
+}
+/* 3초 판단: 2×2 색 상자 */
+.dz-card h2{font-size:22px;font-weight:900;letter-spacing:-.035em;color:var(--ink);line-height:1.3}
+.dz-card h2 .dz-tag{display:block;font-size:13px;font-weight:700;letter-spacing:0;margin:0 0 2px}
+.dz-grid{gap:8px}
+.dz-c{border-radius:var(--r-md);padding:14px;min-height:140px;display:flex;flex-direction:column;gap:6px;background:var(--ground)}
+.dz-c.s-g{background:#EEF8F1}.dz-c.s-y{background:#FFF7E0}.dz-c.s-r{background:var(--coral-tint)}
+.dz-c .dz-v b{font-weight:900;letter-spacing:-.03em}
+.dz-c .dz-m{margin-top:auto}
+/* 티켓: 접수 진행 막대 */
+.tprog{list-style:none;margin:2px 0 4px;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));gap:4px}
+.tprog li{display:flex;flex-direction:column;gap:4px;min-width:0}
+.tprog i{display:block;height:6px;border-radius:3px;background:var(--line)}
+.tprog b{font-size:11.5px;font-weight:700;line-height:1.3;word-break:keep-all}
+.tprog span{font-size:11px;color:var(--ink-sub)}
+.tprog .done i{background:var(--green)}.tprog .done b{color:var(--ink-sub)}
+.tprog .now i{background:var(--coral)}.tprog .now b{color:var(--coral-strong)}
+/* 접수 끝난 공고: 경쟁률을 크게 */
+.ticket .tf:has(.cmp){grid-template-columns:repeat(2,minmax(0,1fr))}
+.ticket .tf .cmp{order:-1;grid-column:1 / -1;background:var(--navy);color:#fff;border-radius:14px;margin:4px 4px 8px;padding:14px 16px!important;border:0!important}
+.ticket .tf .cmp dt{color:#C9D0DD}
+.ticket .tf .cmp dd{font-size:34px!important;font-weight:900;letter-spacing:-.04em;line-height:1.1;color:#fff}
+/* 일정: 다음 할 일을 상자로, 지난 일정은 접어 둠 */
+.tl .next{background:var(--coral-tint);border-radius:12px;padding:12px 12px 12px 0;margin:0 -12px 8px 0}
+.tl .next::before{display:none}
+.tl .next .when,.tl .next .what{color:var(--coral-strong)}
+.tl.fold li.done{display:none}
+.tl-more{margin-top:4px;width:100%;height:44px;border-radius:12px;border:1px solid var(--line);background:var(--card);font:inherit;font-size:14px;font-weight:700;color:var(--ink-sub);cursor:pointer}
+/* 아래 바: 남은 날 + 자격 체크 */
+.bar.bar2{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px;align-items:center;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px))}
+.bar-d{margin:0;display:flex;flex-direction:column;padding:0 6px;line-height:1.2}
+.bar-d span{font-size:11.5px;font-weight:700}
+.bar-d b{font-size:18px;font-weight:900}
+.bar-d.o{color:var(--coral-strong)}.bar-d.u{color:var(--blue)}
+.bar2 .btn.primary{height:50px;border-radius:12px;justify-content:center;font-size:15.5px}
+/* 데스크톱: 흰 카드 묶음 */
+@media (min-width:1024px){
+  .page{padding-top:8px}
+  .page > .sec{background:var(--card);border:0;border-radius:var(--r-lg);padding:24px 28px;margin-top:16px}
+  .page > .dz-card{background:var(--card);border-radius:var(--r-lg);padding:24px 28px}
+  .page > .take{background:var(--card);border-radius:var(--r-lg);padding:20px 28px}
+  .page > .chipnav{background:var(--ground)}
+  .pre-ban{margin:12px 0 0;border-radius:12px}
+}
+@media (prefers-color-scheme:dark){
+  .dz-c.s-g{background:#10271F}.dz-c.s-y{background:#2A2410}.dz-c.s-r{background:var(--coral-tint)}
+  .pre-ban{background:#2A2150;color:#C9B8FF}
+  .ticket .tf .cmp{background:#13223F}
+}
+.bar:not(.bar2){grid-template-columns:minmax(0,1fr)}
+@media (max-width:1023px){.page > .ad-g,.page > .ad{background:var(--card);margin-inline:var(--bleed);padding-inline:var(--pad)}}
+@media (min-width:1024px){.bar.bar2{display:none}}

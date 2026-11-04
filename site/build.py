@@ -1206,7 +1206,34 @@ def env():
         return {"@type": "BreadcrumbList", "itemListElement": el}
     def items_ld(items):
         return [{"@type": "ListItem", "position": i, "url": BASE + n["url"], "name": n["title"]} for i, n in enumerate(items, 1)]
-    e.globals.update(HAS_GUIDES=bool(GUIDES.load()), RENTAL_EXPLAIN=RENTAL_EXPLAIN, BASE=BASE, IG=IG, THREADS=THREADS, BLOG=BLOG, YOUTUBE=YOUTUBE, COUPANG=COUPANG, COUPANG_NOTE=COUPANG_NOTE, ADSENSE=ADSENSE, GA=GA, STATUS=STATUS, KINDS=KINDS, crumb_ld=crumb_ld, items_ld=items_ld,
+    def steps4(n):
+        """공고 상세 '접수 진행' 막대 (2026-11-04 리디자인 3단계) — 일정에서 접수·발표 단계만 최대 4개, 오늘 기준 끝남/지금/다음."""
+        t = TODAY.isoformat()
+        ev = [x for x in (n.get("schedule") or []) if x.get("start") and re.search(r"접수|발표|순위", x.get("label", ""))
+              and not re.search(r"사전청약|서류|견본|포기|배정", x.get("label", ""))]
+        if len(ev) < 2:
+            return []
+        st = []
+        for x in ev:
+            end = x.get("end") or x["start"]
+            st.append({"label": re.sub(r"\s*\(.*?\)", "", x["label"]).replace("당첨자·동호수 발표", "당첨자 발표").replace("당첨자(서류 제출 대상자) 발표", "당첨자 발표"),
+                       "date": x["start"], "state": "done" if end < t else ("now" if x["start"] <= t else "next")})
+        # 같은 이름이 이어지면(1순위 두 번 등) 하나로
+        out = []
+        for x in st:
+            if out and out[-1]["label"] == x["label"]:
+                if x["state"] == "now" or (out[-1]["state"] == "done" and x["state"] != "done"):
+                    out[-1]["state"] = x["state"] if out[-1]["state"] != "now" else "now"
+                continue
+            out.append(x)
+        if len(out) > 4:
+            i = next((k for k, x in enumerate(out) if x["state"] != "done"), len(out))
+            a = max(0, min(i - 1, len(out) - 4))
+            out = out[a:a + 4]
+        return out if len(out) >= 2 else []
+    def days_to(iso):
+        return (dt.date.fromisoformat(iso) - TODAY).days if iso else None
+    e.globals.update(steps4=steps4, days_to=days_to, HAS_GUIDES=bool(GUIDES.load()), RENTAL_EXPLAIN=RENTAL_EXPLAIN, BASE=BASE, IG=IG, THREADS=THREADS, BLOG=BLOG, YOUTUBE=YOUTUBE, COUPANG=COUPANG, COUPANG_NOTE=COUPANG_NOTE, ADSENSE=ADSENSE, GA=GA, STATUS=STATUS, KINDS=KINDS, crumb_ld=crumb_ld, items_ld=items_ld,
                      logo=Markup((SITE / "static/favicon.svg").read_text().replace('<svg xmlns="http://www.w3.org/2000/svg" ', '<svg class="mark" aria-hidden="true" focusable="false" ')))
     return e
 

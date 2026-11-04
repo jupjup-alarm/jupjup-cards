@@ -7,6 +7,7 @@
 {% block main %}
 <main class="wrap page" id="main">
   {# 2026-11-03 리디자인 v2 (SEO 우선): 사진이 있으면 사진 → 제목부, 없으면 남색 제목 띠 + 위치 지도 #}
+  {% if n.is_pre and not n.moved %}<p class="pre-ban"><i aria-hidden="true"></i>아직 입주자모집공고 전이에요 · 모든 값은 보도 기준</p>{% endif %}
   {% if n.imgs.hero %}
   <figure class="hero2">
     <img class="hero-img" src="{{ n.imgs.hero.src }}" width="{{ n.imgs.hero.w }}" height="{{ n.imgs.hero.h }}" alt="{{ n.photo.alt }}" fetchpriority="high" decoding="async"{% if n.photo.pos %} style="object-position:{{ n.photo.pos }}"{% endif %}>
@@ -34,6 +35,7 @@
 {# 첫 화면 '다음 할 일' (2026-11-03 사용자 결정 시안) — 접수 중·예정은 버튼 2개, 접수 끝은 안내 + 지금 넣을 수 있는 공고 #}
 {% set chk_to = '#h-chk' if (n.dz and n.dz.check) else '#h-elig' %}
 {% if not n.is_pre and not n.moved %}
+  <div class="tk-wrap">
   <div class="ticket" data-nx="{{ n.status }}">
     <dl class="tf num">
       {% if n.is_rental %}
@@ -43,7 +45,7 @@
       {% endif %}
       <div><dt>공급</dt><dd>{% if n.units %}{{ '{:,}'.format(n.units) }}{{ n.unit_word }}{% else %}예비 모집{% endif %}</dd>{% if n.units_note %}<dd class="s">{{ n.units_note }}</dd>{% endif %}</div>
       {% if n.comp and n.comp.short and n.status in ('waiting', 'announced') %}
-      {% set cr = n.comp.short.split(' · ')[-1] %}<div><dt>{{ '평균 경쟁률' if cr.startswith('평균 ') else '경쟁률' }}</dt>{% set cv = cr[3:] if cr.startswith('평균 ') else cr %}<dd{% if cv|length > 7 %} class="sm"{% endif %}>{{ cv|replace('대 1', '대 1') }}</dd></div>
+      {% set cr = n.comp.short.split(' · ')[-1] %}<div class="cmp"><dt>{{ '평균 경쟁률' if cr.startswith('평균 ') else '경쟁률' }}</dt>{% set cv = cr[3:] if cr.startswith('평균 ') else cr %}<dd{% if cv|length > 7 %} class="sm"{% endif %}>{{ cv|replace('대 1', '대 1') }}</dd></div>
       {% elif n.is_rental %}
       <div><dt>월 임대료</dt><dd>{% if n.houses and n.rent_range and n.rent_range.monthly %}{{ n.rent_range.monthly[0]|money }}</dd><dd class="s">부터{% elif n.rent_summary.monthly %}{{ n.rent_summary.monthly|money }}{% else %}공고문{% endif %}</dd></div>
       {% else %}
@@ -54,6 +56,8 @@
     <div class="perf" aria-hidden="true"></div>
     <div class="tb">
       <p class="trow"><span>접수</span><b>{{ n.rcpt[0]|tdate }}{% if n.rcpt[1] and n.rcpt[1] != n.rcpt[0] %} ~ {{ n.rcpt[1]|tdate }}{% endif %}</b></p>
+      {% set sp = steps4(n) if n.status in ('open', 'upcoming') else [] %}{% if sp %}
+      <ol class="tprog" aria-label="접수 진행">{% for x in sp %}<li class="{{ x.state }}"><i aria-hidden="true"></i><b>{{ x.label }}</b><span class="num">{{ x.date|d }}</span></li>{% endfor %}</ol>{% endif %}
   {% if n.status in ('open', 'upcoming') %}
     <div class="nx-row">
       <a class="nx-b p" href="{{ chk_to }}" data-nx-to="check">{% if n.dz and n.dz.check %}나도 넣을 수 있을까?<small>30초 자격 체크 ↓</small>{% else %}누가 넣을 수 있나요?<small>신청 자격 보기 ↓</small>{% endif %}</a>
@@ -82,6 +86,7 @@
     </div>
   </div>
   <p class="trust"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>{{ n.source_name or '청약홈' }} {{ '입주자모집공고' if not n.is_rental else '모집공고' }}{% if n.notice_date %}({{ n.notice_date|d }}){% endif %} 원문 대조 · 최종 수정 <time datetime="{{ n.modified[:10] }}">{{ n.modified|d }}</time></p>
+  </div>
 {% endif %}
 <!--CHIPNAV-->
 
@@ -159,7 +164,7 @@
 
   <section class="sec" aria-labelledby="h-sch">
     <h2 id="h-sch">{{ (n.h2.get('sch', '청약 일정'))|h2s(n) }}</h2>
-    <ol class="tl num">
+    <ol class="tl num" data-tl>
     {% set ns = namespace(next=false) %}
     {% for s in n.schedule %}
       {% set end = s.end if s.end else (s.start if s.start else '9999') %}
@@ -169,6 +174,7 @@
       <li class="{{ 'done' if done else ('next' if is_next else '') }}">{% if s.month %}<span class="when">{{ s.month|tmonth }}</span>{% else %}<span class="when">{{ s.start|tlwhen(s.end) }}</span>{% endif %}<span class="dot"></span><span class="what">{{ s.label }}{% if is_next %}<span class="now">{{ '오늘' if s.start <= today.isoformat() else '다음' }}</span>{% endif %}{% if s.note %}<small>{{ s.note }}</small>{% endif %}</span></li>
     {% endfor %}
     </ol>
+    <button type="button" class="tl-more" hidden>지난 일정 보기 ▾</button>
   </section>
 
   {% if n.dz %}{% set z = n.dz %}
@@ -591,10 +597,23 @@ as.forEach(function(a){a.addEventListener('click',function(){if(window.jjEv)jjEv
 if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){as.forEach(function(a){var on=a.getAttribute('href')==='#'+e.target.id;a.classList.toggle('on',on);if(on&&a.scrollIntoView)nav.scrollTo({left:a.offsetLeft-16,behavior:'smooth'});});}});},{rootMargin:'-60px 0px -70% 0px'});
 as.forEach(function(a){var h=document.getElementById(a.getAttribute('href').slice(1));if(h)io.observe(h);});}})();
 </script>
-<div class="bar">
-  <button class="btn ghost" type="button" data-share>공유하기</button>
-  <a class="btn primary" href="{{ IG }}" target="_blank" rel="noopener">{{ ig_icon() }}인스타 팔로우</a>
+{# 2026-11-04 리디자인 3단계: 접수 중·예정은 '남은 날 + 자격 체크', 그 밖은 인스타 알림 (공유는 위 머리글로) #}
+{% if n.status in ('open', 'upcoming') and not n.is_pre and not n.moved %}
+{% set dl = days_to(n.rcpt[1] or n.rcpt[0]) if n.status == 'open' else n.dday %}
+<div class="bar bar2">
+  <p class="bar-d {{ 'o' if n.status == 'open' else 'u' }}"><span>{{ '마감까지' if n.status == 'open' else '접수까지' }}</span><b class="num" {% if n.status == 'open' %}data-dend="{{ n.rcpt[1] or n.rcpt[0] }}"{% else %}data-dday="{{ n.rcpt[0] }}"{% endif %}>{{ '오늘' if dl == 0 else 'D-' ~ dl }}</b></p>
+  <a class="btn primary" href="{{ '#h-chk' if (n.dz and n.dz.check) else '#h-elig' }}" data-nx-to="bar_check">{{ '30초 자격 체크' if (n.dz and n.dz.check) else '신청 자격 보기' }}</a>
 </div>
+{% else %}
+<div class="bar">
+  <a class="btn primary" href="{{ IG }}" target="_blank" rel="noopener">{{ ig_icon() }}인스타 팔로우하고 새 공고 알림 받기</a>
+</div>
+{% endif %}
+<script>
+(function(){var ol=document.querySelector('[data-tl]');if(!ol)return;var d=ol.querySelectorAll('li.done').length,b=ol.nextElementSibling;
+  if(d<2||!b)return;ol.classList.add('fold');b.textContent='지난 일정 '+d+'개 보기 ▾';b.hidden=false;
+  b.addEventListener('click',function(){var f=ol.classList.toggle('fold');b.textContent=f?'지난 일정 '+d+'개 보기 ▾':'지난 일정 접기 ▴';});})();
+</script>
 <script>
 document.querySelectorAll('[data-nx-to]').forEach(function(a){a.addEventListener('click',function(){var b=a.closest('[data-nx]');if(window.jjEv)jjEv('next_click',{to:a.dataset.nxTo,state:b?b.dataset.nx:''});});});
 </script>

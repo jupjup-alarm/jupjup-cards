@@ -24,7 +24,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="alternate" type="application/rss+xml" title="줍줍알람" href="/rss.xml">
 <link rel="stylesheet" href="/fonts/pretendard/pretendard.css">
-<link rel="stylesheet" href="/style.42d4fa96.css">
+<link rel="stylesheet" href="/style.a2e88349.css">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6103BRQ0LP"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-6103BRQ0LP');</script><script>window.jjEv=function(n,p){try{if(window.gtag)gtag('event',n,p||{});}catch(e){}};</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1196853150959268" crossorigin="anonymous"></script></head>
@@ -38,8 +38,7 @@
       <a href="/region/" aria-current="page">지역</a>
       <a href="/type/">유형</a>
       <a href="/competition/">청약 경쟁률</a>      <a href="/guide/">가이드</a>    </nav>
-    <a class="hdr-ic" href="https://www.instagram.com/jupjup_alarm/" rel="noopener" aria-label="인스타그램에서 새 공고 알림 받기"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg></a>
-  </div>
+        <a class="hdr-ic" href="https://www.instagram.com/jupjup_alarm/" rel="noopener" aria-label="인스타그램에서 새 공고 알림 받기"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg></a>  </div>
 </header>
 <main class="wrap" id="main">
   <div class="lwrap">
@@ -256,7 +255,8 @@
     var p=el.getAttribute('data-dend').split('-');var d=(Date.UTC(+p[0],p[1]-1,+p[2])-t)/864e5;
     if(d>0)el.textContent='D-'+d;else if(d===0)el.textContent='오늘';else el.textContent='마감';
   });
-  function flash(b,msg){var o=b.textContent;b.textContent=msg;setTimeout(function(){b.textContent=o},1500);}
+  function flash(b,msg){if(b.querySelector('svg')){b.classList.add('done');b.setAttribute('title',msg);setTimeout(function(){b.classList.remove('done');b.removeAttribute('title')},1500);return;}var o=b.textContent;b.textContent=msg;setTimeout(function(){b.textContent=o},1500);}
+  document.querySelectorAll('[data-back]').forEach(function(a){a.addEventListener('click',function(e){try{if(document.referrer&&new URL(document.referrer).host===location.host&&history.length>1){e.preventDefault();history.back();}}catch(x){}});});
   function copy(text,b){if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(function(){flash(b,'복사됨')},function(){flash(b,'복사 안 됨')});}}
   document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(){copy(b.getAttribute('data-copy'),b)})});
   document.querySelectorAll('[data-share]').forEach(function(b){b.addEventListener('click',function(){
