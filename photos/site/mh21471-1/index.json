@@ -1,0 +1,94 @@
+{
+ "key": "mh21471-1",
+ "owner": "한국자산관리공사",
+ "images": [
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "건물 전경(조감도)",
+   "file": "photos/site/mh21471-1/birdseye.jpg",
+   "src": "한국자산관리공사 영등포복합청사 사업 설명 자료(조감도·투시도·평면도)",
+   "crop": "167,440,1683,2132",
+   "w": 1516,
+   "h": 1692,
+   "md5": "f4532ce642032d06934b757914c97848",
+   "photo": true
+  },
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "정면 투시도",
+   "file": "photos/site/mh21471-1/birdseye-2.jpg",
+   "src": "한국자산관리공사 영등포복합청사 사업 설명 자료(조감도·투시도·평면도)",
+   "crop": "141,317,1657,1846",
+   "w": 1516,
+   "h": 1529,
+   "md5": "033562fcadbfca7212abb10d61c6cdf5",
+   "photo": true
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "21형",
+   "file": "photos/site/mh21471-1/plan-21.jpg",
+   "src": "나라키움 영등포복합청사 관리사무소 단위세대 평면도",
+   "crop": "60,455,205,762",
+   "w": 435,
+   "h": 921,
+   "md5": "18223f44e9f04d4e951348112aa281b1",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "19형",
+   "file": "photos/site/mh21471-1/plan-19.jpg",
+   "src": "나라키움 영등포복합청사 관리사무소 단위세대 평면도",
+   "crop": "60,138,205,447",
+   "w": 435,
+   "h": 927,
+   "md5": "fec86f85980f5ea63ab5bed9e5caca93",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "20형",
+   "file": "photos/site/mh21471-1/plan-20.jpg",
+   "src": "나라키움 영등포복합청사 관리사무소 단위세대 평면도",
+   "crop": "280,138,424,447",
+   "w": 432,
+   "h": 927,
+   "md5": "928be25054f22356f2f7b0d5e0781ac8",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "29형",
+   "file": "photos/site/mh21471-1/plan-29.jpg",
+   "src": "나라키움 영등포복합청사 관리사무소 단위세대 평면도",
+   "crop": "238,455,465,762",
+   "w": 681,
+   "h": 921,
+   "md5": "0cf3dffec9894ec7fa1aaf3ddf875518",
+   "photo": false
+  },
+  {
+   "cat": "siteplan",
+   "kind": "층별 평면도",
+   "label": "지상 8층 (19·20·21·29형 배치)",
+   "file": "photos/site/mh21471-1/floor8.jpg",
+   "src": "한국자산관리공사 영등포복합청사 사업 설명 자료(조감도·투시도·평면도)",
+   "crop": "190,235,1820,1280",
+   "w": 1630,
+   "h": 1045,
+   "md5": "b26cc9c02dbf32430341a7701f4af207",
+   "photo": false
+  }
+ ],
+ "links": [],
+ "homepage": "",
+ "note": "사용자가 올린 사업 설명 자료(3쪽)와 관리사무소 단위세대 평면도 그림에서 잘라 씀 (2026-11-04)",
+ "updated": "2026-11-04 11:35"
+}
