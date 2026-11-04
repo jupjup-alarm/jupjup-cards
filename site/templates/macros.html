@@ -8,7 +8,7 @@
 {% endmacro %}
 
 {% macro card(n) %}
-<a class="card" href="{{ n.url }}">
+<a class="card st-{{ n.status }}" href="{{ n.url }}">
   {{ badges(n) }}
   <strong>{{ n.title }}</strong>
   <span class="a">{{ n.sido }} {{ n.sigungu or '' }}{% if n.near %} · {{ n.near }}{% endif %}</span>

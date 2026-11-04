@@ -710,3 +710,161 @@ h1{font-weight:800;letter-spacing:-.03em;font-size:26px;line-height:1.28}
 .hubsec h2 a{color:inherit;text-decoration:none}
 .hubsec h2 small{display:block;margin-top:2px}
 .hubintro{margin:0 0 12px;font-size:14.5px;color:var(--ink-sub);line-height:1.65;word-break:keep-all}
+
+/* ══════════ stageshow 다듬기 (2026-11-04 사용자 요청 — 홈·공고 상세를 실제 앱처럼: 글자·숫자는 그대로, 배치·스타일만) ══════════ */
+:root{--navy:#0F1E3D;--card:#FFFFFF;--soft:#F4F5F7;--hdr:52px;--tap:44px}
+/* 큰 제목: Pretendard Black 굵기 (Variable 900 = Pretendard Display Black과 같은 굵기, 새 글꼴 파일 없이) */
+h1,.home-hero h1,.g-h1{font-weight:900;letter-spacing:-.035em}
+.due h2,.lsec h2,.sec h2,.dz-card h2{font-weight:850}
+/* 상단 고정: 남색 바는 화면 위에 붙어 있고, 공고 상세 바로가기 탭은 그 바로 아래에 붙음 */
+.top{position:sticky;top:0;z-index:30;box-shadow:0 1px 0 rgba(255,255,255,.06)}
+.top .wrap{height:var(--hdr)}
+.nav a{display:inline-flex;align-items:center;min-height:var(--tap)}
+.chipnav{top:var(--hdr);box-shadow:0 6px 12px -10px rgba(15,30,61,.35)}
+.chipnav a{min-height:var(--tap)}
+main h2[id]{scroll-margin-top:calc(var(--hdr) + 60px)}
+main [id]{scroll-margin-top:calc(var(--hdr) + 60px)}
+/* 옆으로 넘기는 줄(유형 칩·바로가기 탭)은 오른쪽 끝을 흐리게 — 더 있다는 표시 */
+.hh-kinds,.chipnav{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent);padding-right:28px}
+.hh-kinds a{min-height:var(--tap);display:inline-flex;align-items:center}
+
+/* 홈 첫 화면 */
+.home-hero{gap:12px;padding-bottom:24px}
+.home-hero h1{font-size:31px;line-height:1.18}
+.home-hero .h1-kw{font-size:19px;font-weight:800;margin-top:8px}
+.home-hero p{font-size:14.5px}
+.due{margin-top:28px}
+.due h2{font-size:23px}
+.due li a{padding:16px 0;gap:14px}
+.due li a:active{background:var(--soft)}
+.due-d{border-radius:14px;font-size:16.5px;font-variant-numeric:tabular-nums}
+.due-v b{font-size:16.5px;font-weight:800}
+.due-v small{font-size:12.5px}
+/* 섹션 제목 위계: 마감 임박과 같은 크기, 곳 수는 작게 */
+.lsec{margin-top:40px}
+.lsec h2{font-size:22px;letter-spacing:-.03em;line-height:1.3;margin:0 0 12px;flex-wrap:wrap}
+.lsec h2 small{font-size:13px;font-weight:600}
+/* 한눈에 보기 표: 단지 이름 칸을 왼쪽에 고정해 옆으로 넘겨도 어느 단지인지 보이게 */
+.ntbl{border-radius:14px;-webkit-overflow-scrolling:touch}
+.ntbl thead th:first-child,.ntbl th[scope=row]{position:sticky;left:0;z-index:1}
+.ntbl th[scope=row]{background:var(--paper);box-shadow:inset -1px 0 0 var(--line);min-width:10.5em}
+.ntbl thead th:first-child{box-shadow:inset -1px 0 0 var(--line)}
+.ntbl th[scope=row] a{font-weight:700;text-decoration:underline;text-decoration-color:var(--line);text-decoration-thickness:1.5px;text-underline-offset:4px}
+.ntbl th[scope=row] a:hover{text-decoration-color:currentColor}
+.ntbl tbody tr:hover th,.ntbl tbody tr:hover td{background:var(--soft)}
+.ntbl td,.ntbl th{padding:12px}
+.tbl-more{gap:8px}
+.tbl-more a{display:inline-flex;align-items:center;min-height:var(--tap);padding:0 14px;border:1px solid var(--line);border-radius:999px;text-decoration:none;font-size:14px}
+/* 공고 카드: 배지 한 줄 높이를 맞추고, 단지명이 먼저 보이게 */
+.card{padding:16px 0;gap:6px 10px}
+.card .badges{gap:5px}
+.card .badge{font-size:11.5px;padding:5px 7px;border-radius:6px}
+.card strong{font-size:17px;font-weight:800;letter-spacing:-.025em;line-height:1.35}
+.card .a{font-size:13px}
+.card .m{font-size:14px;line-height:1.55}
+.card .tags span{font-size:12px;padding:4px 8px}
+.card .arr{color:#9AA3B2;font-size:20px}
+.card:active{background:var(--soft)}
+/* 접수가 끝난 공고(발표 대기·최근 발표): 흐리게, 눌러 볼 수는 그대로 */
+.card.st-waiting strong,.card.st-announced strong{color:var(--ink-sub)}
+.card.st-waiting .m,.card.st-announced .m,.card.st-waiting .tags,.card.st-announced .tags{opacity:.8}
+.card.st-announced .badge:not(.b-done){opacity:.75}
+/* 빈 상태 */
+.empty{border:1px dashed var(--line);border-radius:14px;background:var(--soft);text-align:center;padding:28px 16px;margin-top:4px}
+/* 찾아보기·팔로우 */
+.hh-find .quick a{min-height:56px;justify-content:center}
+.follow{border-radius:16px;padding:20px}
+.follow .btn{color:var(--navy)}
+footer nav a{display:inline-flex;align-items:center;min-height:36px}
+
+/* 데스크톱 홈(1024px~): 왼쪽 760px만 쓰던 것을 전체 폭으로 — 마감 임박 두 묶음 나란히, 카드는 두 줄 */
+@media (min-width:1024px){
+  .lwrap.home{max-width:none}
+  .due-wrap{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px}
+  .due-wrap > .due:only-child{grid-column:1 / -1}
+  .lwrap.home .cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;border-top:0}
+  .lwrap.home .card{border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .15s,box-shadow .15s}
+  .lwrap.home .card:hover{border-color:#C9D0DD;box-shadow:0 6px 18px rgba(15,30,61,.08)}
+  .lwrap.home .ntbl table{min-width:0}
+  .lwrap.home .quick{grid-template-columns:repeat(4,minmax(0,1fr));gap:0 24px}
+  .home-hero h1{font-size:38px}
+}
+
+/* 공고 상세 */
+.head h1{font-size:27px;line-height:1.24}
+@media (min-width:1024px){.head h1{font-size:34px}}
+.ticket{border-radius:18px}
+.ticket .nx-b{border-radius:12px}
+.ticket .nx-b:active,.nx-alt:active{transform:scale(.99)}
+.trust{line-height:1.5}
+/* 30초 체크·돈 계산 선택 버튼: 손가락으로 누르기 좋은 44px */
+.g-yn{gap:8px}
+.g-yn button{min-height:var(--tap);min-width:64px;padding:0 16px;font-size:14.5px;font-weight:700}
+.g-yn button[aria-pressed="true"]{background:var(--navy);border-color:var(--navy)}
+.fopt button{min-height:var(--tap);padding:0 14px;font-weight:600}
+.fopt button[aria-pressed="true"]{background:var(--navy);border-color:var(--navy)}
+.ptab{min-height:var(--tap)}
+.ptab[aria-selected="true"]{background:var(--navy);border-color:var(--navy)}
+.frow input{min-height:48px}
+.tfold{min-height:48px}
+.faq summary{padding-block:16px;min-height:var(--tap)}
+.copy{min-height:32px}
+.dz-c{padding:16px 0}
+.dz-v b{font-weight:800}
+/* 접수가 끝난 공고: 다음 할 일 상자를 '끝난 상태'로 분명하게 */
+.ticket[data-nx="waiting"] .nx-end > b,.ticket[data-nx="announced"] .nx-end > b{display:flex;align-items:center;gap:8px}
+.ticket[data-nx="waiting"] .nx-end > b::before,.ticket[data-nx="announced"] .nx-end > b::before{content:"";width:8px;height:8px;border-radius:50%;background:#9AA3B2;flex:none}
+.nx-alt{min-height:var(--tap)}
+/* 로딩 흔들림 방지: 이미지 칸 높이를 미리 잡음 */
+.band-map img{aspect-ratio:16/10;object-fit:cover}
+.gal .fig img{aspect-ratio:4/3}
+.take .bell{flex:none}
+
+/* ── 다크 모드 (기기 설정을 따름) ── */
+@media (prefers-color-scheme:dark){
+  :root{color-scheme:dark;
+    --ink:#E9EDF4;--ink-sub:#9BA6B8;--line:#263247;--band:#141C2B;--paper:#0B1220;--card:#111A2A;--soft:#151E2F;
+    --coral:#FF6A4D;--coral-strong:#FF8A70;--coral-tint:#3A1C16;--blue:#86A8FF;--green:#45C79B}
+  body{background:var(--paper)}
+  .top,.home-hero,.head.band,.follow{background:#13223F}
+  .top{box-shadow:0 1px 0 var(--line)}
+  .btn.primary,.nx-b.p,.steps li::before,.take > div.bell,.take .bell{background:#1F3566;color:#fff;border-color:#1F3566}
+  .btn{border-color:var(--line)}
+  .follow .btn{background:#fff;color:var(--navy)}
+  .ptab[aria-selected="true"],.g-yn button[aria-pressed="true"],.fopt button[aria-pressed="true"],.hfilter button[aria-pressed="true"]{background:#E9EDF4;border-color:#E9EDF4;color:var(--navy)}
+  .hh-kinds a:first-child{background:#fff;color:var(--navy)}
+  .due ul{border-top-color:var(--ink)}
+  .ticket{background:var(--card);border-color:var(--line);box-shadow:0 8px 26px rgba(0,0,0,.45)}
+  .perf::before,.perf::after{background:var(--paper);border-color:var(--line)}
+  .ticket .nx-b.g{border-color:var(--ink)}
+  .take > div:not(.bell),.nx-end,.dcards div,.g-two div,.rbox > div,.fcalc,.dfit > div{background:var(--soft)}
+  .chipnav{box-shadow:0 6px 12px -10px rgba(0,0,0,.8)}
+  .fit-y{background:#10271F!important}.fit-n{background:var(--soft)!important}
+  .s-g{background:#10271F}.s-y{background:#2A2410}.s-r{background:var(--coral-tint)}
+  .dz-c{background:none}
+  .s-g .dz-g i{background:var(--ink)}.s-y .dz-g i:nth-child(-n+2){background:var(--ink)}
+  .b-wait{background:var(--band);border-color:var(--line)}
+  .b-done{background:#3A4458}
+  .b-pre{background:#2A2150;color:#C9B8FF}
+  .b-mu,.hero .b-mu{background:#C8361A;color:#fff}
+  .badge.b-open{background:#0E7A5F;color:#fff}
+  .b-soon{background:#2B5BE0;color:#fff}
+  .tour-link{background:#2B5BE0}
+  .moved{background:#2B5BE0}
+  .g-answer{border-left-color:var(--ink)}
+  .g-bar3 i:nth-child(1){background:#E9EDF4}
+  .vt i{background:#5B6679}
+  .card .arr,.due .arr{color:#5B6679}
+  .lwrap.home .card:hover{border-color:#3A4760}
+  /* 그림·지도·평면도는 밝은 바탕 그대로 (그림 속 글자가 어두운 색이라서) */
+  .band-map img,.plan .fig img,.gal .fig.fit img{background:#fff}
+  .g-cover,.g-fig{background:#E9EDF2;color:#0F1E3D}
+  .g-cover figcaption,.g-fig figcaption{color:#5B6472}
+  .fig{border-color:var(--line)}
+  input,select,textarea{color:var(--ink)}
+  ::placeholder{color:#6B7689}
+  .ad,.ad-g{background:transparent}
+}
+@media (prefers-reduced-motion:reduce){.lwrap.home .card,.ticket .nx-b{transition:none}.ticket .nx-b:active,.nx-alt:active{transform:none}}
+/* 상단 바가 붙어 있으니 오른쪽 요약 카드·가이드 목차는 그 아래에 붙게 */
+@media (min-width:1024px){.page > aside{top:calc(var(--hdr) + 16px)}.g-page>.g-toc{top:calc(var(--hdr) + 20px)}}

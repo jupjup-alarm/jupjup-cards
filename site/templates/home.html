@@ -2,7 +2,7 @@
 {% from "macros.html" import card, ig_icon, cp_ad, ntable with context %}
 {% block main %}
 <main class="wrap" id="main">
-  <div class="lwrap">
+  <div class="lwrap home">
     {# 2026-11-03 리디자인 v2: 남색 띠(제목·숫자·유형 칩) → 마감 임박 공고 → 표·목록 → 찾아보기 링크 #}
     <div class="home-hero">
       <p class="hh-date">{{ today.isoformat()|d }} 기준 · 청약홈·LH·마이홈 공식 데이터</p>
@@ -13,6 +13,7 @@
         {% for k in kinds_used %}<a href="/type/{{ k }}/">{{ '임대' if k == 'rental' else KINDS[k][0] }}</a>{% endfor %}
       </nav>
     </div>
+    {% if due %}<div class="due-wrap">
     {% for label, day, lst in due %}
     <section class="due">
       <h2>{{ label }} <b>{{ lst|length }}</b>{% if day %}<small>{{ day }}</small>{% endif %}</h2>
@@ -27,6 +28,7 @@
       </ul>
     </section>
     {% endfor %}
+    </div>{% endif %}
     {% if tbl %}
     <section class="lsec">
       <h2>지금 접수 중·예정 청약 공고 <small>{{ today.isoformat()|d }} 기준</small></h2>
