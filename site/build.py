@@ -2144,14 +2144,18 @@ def main():
             need.append("notice")
         if not meta.get("pamphlet_none") and not any(x.get("kind") == "pamphlet" for x in meta.get("files", [])):
             need.append("pamphlet")   # 2026-11-04 사용자 결정 "공고문과 팜플렛이 있으면 팜플렛도 받아야 해"
+        site_idx = REPO / "photos" / "site" / n["key"] / "index.json"
+        if n.get("homepage") and not site_idx.exists() and not meta.get("site_none"):
+            need.append("site")   # 2026-11-04 사용자 결정 "공식 홈페이지에서 평면도·단지배치도·동호수배치도·단지 둘러보기도"
         if not need:
             continue
         want.append({"key": n["key"], "title": n["title"], "rcpt": n["rcpt"], "url": url,
                      "homepage": n.get("homepage") or "", "need": need,
-                     "save_as": f"{n['key']}.pdf", "pamphlet_as": f"{n['key']}-pamphlet.pdf"})
+                     "save_as": f"{n['key']}.pdf", "pamphlet_as": f"{n['key']}-pamphlet.pdf",
+                     "site_as": f"{n['key']}-site.txt", "owner": n.get("developer") or ""})
     want.sort(key=lambda x: x["rcpt"][0])
     wf = DATA / "notice_wanted.json"
-    wtxt = json.dumps({"how": "ego lite: need에 notice가 있으면 url(청약홈)에서 '모집공고문' PDF → ~/줍줍알람/공고문/<save_as>, pamphlet이 있으면 청약홈·homepage(분양 홈페이지)에서 팸플릿·카탈로그 PDF → ~/줍줍알람/공고문/<pamphlet_as>(여러 개면 -pamphlet2.pdf…), 어디에도 없으면 notice_import.py --no-pamphlet <key>. 캡차·차단 화면이면 멈추고 건너뜀(우회 금지).",
+    wtxt = json.dumps({"how": "ego lite: need에 notice가 있으면 url(청약홈)에서 '모집공고문' PDF → ~/줍줍알람/공고문/<save_as>, pamphlet이 있으면 청약홈·homepage(분양 홈페이지)에서 팸플릿·카탈로그 PDF → ~/줍줍알람/공고문/<pamphlet_as>(여러 개면 -pamphlet2.pdf…), 어디에도 없으면 notice_import.py --no-pamphlet <key>. site가 있으면 homepage에서 평면도·단지배치도·동호배치도·조감도·커뮤니티·단지 둘러보기 그림의 원본 주소(가장 큰 것)를 AI열 형식으로 ~/줍줍알람/공고문/<site_as>에 적고 notice_import.py --site로 받음(그림이 없으면 --no-site <key>). 캡차·차단 화면이면 멈추고 건너뜀(우회 금지).",
                        "items": want}, ensure_ascii=False, indent=1)
     if not wf.exists() or wf.read_text() != wtxt:
         wf.write_text(wtxt)

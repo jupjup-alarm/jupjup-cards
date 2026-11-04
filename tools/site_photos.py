@@ -15,6 +15,7 @@ AI열 형식 (줄마다):
   인테리어 | 84A 거실 | https://…
   커뮤니티 | 라운지 사진 | https://…/community.jpg | crop=0,0.62,1,1
       ↑ 여러 그림이 한 장에 붙은 긴 이미지는 crop=왼,위,오른,아래 (0~1 비율 또는 원본 px)로 필요한 부분만. 같은 주소를 crop만 다르게 여러 줄 써도 됨
+  평면도 | 59A | ~/줍줍알람/공고문/2026000123-site/plan-59a.png   ← ego lite가 직접 저장한 파일도 됨 (주소로 못 받을 때)
   E모델하우스 | 84A·103A | https://…   (링크만, 받지 않음)
   VR | 항공VR | https://…               (링크만)
   ※ "홈페이지 차단" / "자료 없음: …" 한 줄이면 아무것도 받지 않는다.
@@ -39,10 +40,11 @@ import requests
 from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parent.parent
-KINDS = {  # 한글 분류 → (파일 접두어, 긴 변 px)
-    "조감도": ("birdseye", 1600), "투시도": ("birdseye", 1600), "단지배치도": ("siteplan", 2000), "배치도": ("siteplan", 2000),
-    "동호배치도": ("dongho", 2000), "평면도": ("plan", 2000), "커뮤니티": ("community", 1600), "인테리어": ("interior", 1600),
-    "입지": ("location", 1600),
+KINDS = {  # 한글 분류 → (파일 접두어, 긴 변 px) — 2026-11-04 사용자 결정 "이미지는 최대한 큰 사이즈로, 원본을" → 2400·3000으로 키움
+    "조감도": ("birdseye", 2400), "투시도": ("birdseye", 2400), "외관": ("birdseye", 2400), "단지배치도": ("siteplan", 3000), "배치도": ("siteplan", 3000),
+    "동호배치도": ("dongho", 3000), "동호수배치도": ("dongho", 3000), "평면도": ("plan", 3000), "커뮤니티": ("community", 2400),
+    "단지둘러보기": ("community", 2400), "단지 둘러보기": ("community", 2400), "조경": ("community", 2400), "인테리어": ("interior", 2400),
+    "입지": ("location", 2400),
 }
 LINKS = {"E모델하우스": "emodel", "e모델하우스": "emodel", "VR": "vr", "사이버견본주택": "emodel", "모집공고": "pdf"}
 
@@ -58,7 +60,7 @@ def parse(text):
             meta[{"홈페이지": "homepage", "출처": "owner"}.get(m.group(1), "key")] = m.group(2).strip()
             continue
         parts = [p.strip() for p in line.split("|")]
-        ui = next((i for i, p in enumerate(parts) if p.startswith("http")), None)
+        ui = next((i for i, p in enumerate(parts) if p.startswith(("http", "file:", "/", "~/"))), None)
         if ui is not None and ui >= 1:
             kind, label, url = parts[0], (parts[1] if ui >= 2 else ""), parts[ui]
             crop = next((p.split("=", 1)[1].strip() for p in parts[ui + 1:] if p.startswith("crop=")), "")
@@ -179,7 +181,11 @@ def main():
         while name in used:
             name, n = f"{base}-{n}.jpg", n + 1
         try:
-            r = s.get(it["src"], timeout=30, headers={"Referer": ref} if ref else {})
+            if not it["src"].startswith("http"):   # ego lite가 직접 저장한 파일 (2026-11-04)
+                lp = Path(it["src"].removeprefix("file://")).expanduser()
+                r = type("R", (), {"status_code": 200, "content": lp.read_bytes(), "raise_for_status": lambda self: None})()
+            else:
+                r = s.get(it["src"], timeout=30, headers={"Referer": ref} if ref else {})
             if r.status_code in (401, 403, 406, 429, 451):
                 warn.append(f"차단 {r.status_code}: {it['src']} (우회하지 않음)")
                 continue

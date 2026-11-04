@@ -116,6 +116,8 @@ def main():
     ap.add_argument("pdfs", nargs="*")
     ap.add_argument("--key")
     ap.add_argument("--no-pamphlet", nargs="*", default=[], metavar="KEY", help="팸플릿을 찾았지만 없던 공고 key")
+    ap.add_argument("--site", nargs="*", default=[], metavar="TXT", help="분양 홈페이지 이미지 목록(AI열 형식, 첫 줄 key:) — tools/site_photos.py로 받음")
+    ap.add_argument("--no-site", nargs="*", default=[], metavar="KEY", help="홈페이지에 쓸 그림이 없던 공고 key")
     ap.add_argument("--push", action="store_true")
     a = ap.parse_args()
     done = []
@@ -127,6 +129,28 @@ def main():
                 save_meta(mp, meta)
                 done.append(key)
                 print(f"팸플릿 없음 기록: {key}")
+    for key in a.no_site:
+        if (APT / f"{key}.json").exists():
+            mp, meta = load_meta(key)
+            if not meta.get("site_none"):
+                meta["site_none"] = dt.date.today().isoformat()
+                save_meta(mp, meta)
+                done.append(key)
+                print(f"홈페이지 그림 없음 기록: {key}")
+    for f in a.site:   # 2026-11-04 사용자 결정 "공식 홈페이지에서 평면도·단지배치도·동호수배치도·단지 둘러보기도, 원본 크기로"
+        t = Path(f).expanduser()
+        m = re.search(r"^\s*key\s*[:：]\s*([0-9A-Za-z_-]+)", t.read_text(encoding="utf-8"), re.M)
+        if not m or not (APT / f"{m.group(1)}.json").exists():
+            print(f"건너뜀: {t.name} — 첫 줄 key: 가 없거나 공고 파일이 없음")
+            continue
+        r = subprocess.run([sys.executable, str(ROOT / "tools" / "site_photos.py"), "--file", str(t)], capture_output=True, text=True)
+        print(r.stdout[-1500:] or r.stderr[-800:])
+        if r.returncode == 0:
+            mp, meta = load_meta(m.group(1))
+            meta["site"] = dt.date.today().isoformat()
+            meta.pop("site_none", None)
+            save_meta(mp, meta)
+            done.append(m.group(1))
     for f in a.pdfs:
         p = Path(f).expanduser()
         stem = a.key or p.stem
@@ -169,7 +193,9 @@ def main():
         g("add", "site/data/notice_text", "site/data/notice_files")
         if PAM.exists():
             g("add", "pamphlets")
-        g("commit", "-m", f"data: 청약홈 공고문·팸플릿 {len(set(done))}건 (ego lite)")
+        if (ROOT / "photos" / "site").exists():
+            g("add", "photos/site")
+        g("commit", "-m", f"data: 청약홈 공고문·팸플릿·홈페이지 그림 {len(set(done))}건 (ego lite)")
         for _ in range(3):
             if subprocess.run(["git", "-C", str(ROOT), "pull", "--rebase", "origin", "main"]).returncode == 0 and \
                subprocess.run(["git", "-C", str(ROOT), "push", "origin", "HEAD:main"]).returncode == 0:
