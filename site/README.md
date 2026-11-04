@@ -121,3 +121,4 @@
 - 날마다 빌드가 채우는 것: 홈 숫자 칸·이번 주 7일 줄, 목록 숫자 칸, 공고 상세 '접수 진행' 막대(`steps4`), 가이드 목록 '지금 접수 중·예정인 줍줍 N건'.
 - 7단계 단지 이름 검색: 빌드가 `/search.json`(공고 단지명·별칭·주소·지역 + 지역·유형 모음)을 만들고 `/search/`가 브라우저 안에서 바로 거름(초성 검색 포함). 서버·외부 검색 없음. `/search/`는 noindex·사이트맵 제외. `links.json`(시트 스크립트용) 형식은 그대로.
 - 검색 GA 이벤트(2026-11-04): `search`(search_term·results_count·search_type 글자/초성·search_how pause/submit/click/leave/link — 입력이 1.2초 멈추거나 누르거나 떠날 때, 같은 검색어 한 번), 결과 0건이면 `search_no_results`, 결과·모음·추천 누르면 `select_content`(content_type search_result/search_hub/search_suggestion, item_id=주소, position). 검색 중 주소창(?q=)은 바꾸지 않음(GA 페이지뷰 중복 방지), ?q= 링크로 들어오면 그대로 검색.
+- 문구 규칙 (2026-11-04 사용자 피드백 "90일 안 잔금 이런 문구 너무 어색해"): 주의점 제목·자금 꼬리말(`card_tail`)·일정 메모를 '90일 안 잔금'처럼 명사로 줄이지 말 것. 조사를 살려 읽히게 — "잔금은 계약 뒤 90일 안에", "잔금 90%는 계약 뒤 90일 안에", "계약은 발표 뒤 2주 안에".
