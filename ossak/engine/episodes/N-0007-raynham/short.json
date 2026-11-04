@@ -6,16 +6,15 @@
  "mood": "horror",
  "title": "1936 레이넘 홀 갈색 옷의 여인",
  "hook": [
-  "저택 화보 촬영 중",
-  "“빨리, 뭔가 있어요”"
+  "눈 가린 사진가 옆,",
+  "조수만 본 그것"
  ],
- "accent_word": "빨리,",
+ "accent_word": "조수만",
  "images": [
   {
-   "id": "r01",
-   "prompt": "England, 1936: the great dark carved oak staircase of an old English country manor hall, wide steps rising to a dim landing, an old wooden bellows camera on a tripod at the foot of the stairs, and halfway up the stairs a faint small pale glow of light hanging in the darkness, not a figure, dark wooden ceiling above.",
-   "nop": true,
-   "seed": 701
+   "id": "v01",
+   "prompt": "View from halfway up a great dark carved oak staircase in an old English manor, looking down at its foot: far below, a tiny faceless photographer silhouette whose head and shoulders are hidden under a heavy black focusing cloth behind a 1930s wooden bellows camera on a tripod, the lens pointing up the stairs, the dark empty steps in the foreground, a single cold light from a tall window, dark ceiling above.",
+   "seed": 721
   },
   {
    "id": "r02",
@@ -24,10 +23,14 @@
    "seed": 702
   },
   {
-   "id": "r03",
-   "prompt": "Norfolk, England, dusk: the exterior of a large old stately country house seen from across a dark lawn, tall chimneys, rows of dark windows and only one single window glowing faintly, bare trees, grey-blue sky above.",
-   "nop": true,
-   "seed": 703
+   "id": "r09",
+   "prompt": "England, 1926, daytime: the same great carved oak staircase in an old manor, two small boys in 1920s clothes seen from far behind as tiny faceless silhouettes at the foot of the stairs looking up, the staircase above them empty, soft window light.",
+   "seed": 709
+  },
+  {
+   "id": "r10",
+   "prompt": "A dark wood-panelled room in an old English manor: a large old oil portrait of a woman in a brown satin gown hanging on the wall, her face hidden in deep shadow and blurred, two small boys seen from behind as tiny faceless silhouettes standing in front of it, candle light.",
+   "seed": 710
   },
   {
    "id": "r04",
@@ -57,26 +60,16 @@
    "seed": 708
   },
   {
-   "id": "r09",
-   "prompt": "England, 1926, daytime: the same great carved oak staircase in an old manor, two small boys in 1920s clothes seen from far behind as tiny faceless silhouettes at the foot of the stairs looking up, the staircase above them empty, soft window light.",
-   "seed": 709
-  },
-  {
-   "id": "r10",
-   "prompt": "A dark wood-panelled room in an old English manor: a large old oil portrait of a woman in a brown satin gown hanging on the wall, her face hidden in deep shadow and blurred, two small boys seen from behind as tiny faceless silhouettes standing in front of it, candle light.",
-   "seed": 710
-  },
-  {
    "id": "r11",
-   "prompt": "A 1930s photographic darkroom lit only by a dim red safelight: a shallow developing tray with a wet glass negative showing only the faint shape of a staircase, and in the middle of the stairs a vague pale blurred smudge, not a figure, deep shadows.",
+   "prompt": "A 1930s photographic darkroom lit only by a dim red safelight: a shallow developing tray with a wet glass negative showing a carved staircase, and in the middle of the stairs a faint pale veiled shape standing on the steps, faceless and featureless, its lower edge dissolving into haze so no feet are visible, deep shadows.",
    "nop": true,
-   "seed": 711
+   "seed": 722
   },
   {
    "id": "r12",
-   "prompt": "An old wooden desk under one candle: a 1930s file folder with typed papers, all text blurred and unreadable, a magnifying glass resting on a strip of photographic negative, dark room.",
+   "prompt": "An old wooden desk under one candle: two strips of old photographic negative laid slightly overlapping each other under a round magnifying glass, a few papers with text blurred and unreadable, dark room.",
    "nop": true,
-   "seed": 712
+   "seed": 723
   },
   {
    "id": "r13",
@@ -88,46 +81,67 @@
  ],
  "scenes": [
   {
-   "say": "계단 앞, 사진가는 아무것도 못 봤습니다. 옆의 조수만, 그것을 봤습니다.",
-   "tts": "계단 앞 사진가는 아무것도 못 봤습니다. 옆의 조수만 그것을 봤습니다.",
-   "img": "r01",
+   "say": "사진가 눈엔 텅 빈 계단, 조수는 외쳤습니다. “뭔가 있어요!”",
+   "tts": "사진가 눈엔 텅 빈 계단 [pause short] 조수는 외쳤습니다. 뭔가 있어요!",
+   "img": "v01",
    "move": "in",
-   "focus": [
-    0.5,
-    0.45
-   ],
    "emph": [
-    "조수만,"
+    "조수는"
    ]
   },
   {
-   "say": "1936년 영국. 그 사진은, 지금도 남아 있습니다.",
-   "tts": "천구백삼십육 년 영국. 그 사진은 지금도 남아 있습니다.",
+   "say": "그 순간이, 진짜 사진으로 남았습니다.",
+   "tts": "그 순간이 진짜 사진으로 남았습니다.",
    "img": "r02",
    "move": "in",
    "cont": true,
    "emph": [
-    "남아"
+    "진짜"
    ]
   },
   {
-   "say": "이 저택 계단엔, 갈색 옷의 여인이 나온다고 전해졌죠.",
-   "tts": "이 저택 계단엔 갈색 옷의 여인이 나온다고 전해졌죠.",
-   "img": "r03",
-   "move": "in",
+   "say": "갈색 옷의 여인이 나온다고 전해지던, 영국의 한 저택.",
+   "tts": "갈색 옷의 여인이 나온다고 전해지던 영국의 한 저택.",
+   "img": "r09",
+   "zoom": 1.5,
+   "focus": [
+    0.5,
+    0.35
+   ],
+   "move": "up",
    "emph": [
     "갈색"
    ]
   },
   {
-   "say": "9월의 오후, 잡지 사진가 두 사람이 그 계단을 찍으러 옵니다.",
-   "tts": "구월의 오후, 잡지 사진가 두 사람이 그 계단을 찍으러 옵니다.",
+   "say": "그 사진보다 10년 전, 두 소년이 계단에서 낯선 여자를 만났죠.",
+   "tts": "그 사진보다 십 년 전, 두 소년이 계단에서 낯선 여자를 만났죠.",
+   "img": "r09",
+   "move": "out",
+   "cont": true,
+   "emph": [
+    "낯선"
+   ]
+  },
+  {
+   "say": "둘이 가리킨 초상화도, 갈색 옷의 여인이었습니다.",
+   "tts": "둘이 가리킨 초상화도 갈색 옷의 여인이었습니다.",
+   "img": "r10",
+   "move": "in",
+   "cont": true,
+   "emph": [
+    "갈색"
+   ]
+  },
+  {
+   "say": "그리고 10년 뒤, 카메라가 그 계단 앞에 섭니다.",
+   "tts": "그리고 십 년 뒤, 카메라가 그 계단 앞에 섭니다.",
    "img": "r04",
    "move": "in"
   },
   {
-   "say": "첫 장을 찍고, 사진가는 검은 천을 머리에 뒤집어씁니다.",
-   "tts": "첫 장을 찍고, 사진가는 검은 천을 머리에 뒤집어씁니다.",
+   "say": "초점을 맞추려, 사진가가 검은 천을 머리에 씁니다.",
+   "tts": "초점을 맞추려 사진가가 검은 천을 머리에 씁니다.",
    "img": "r05",
    "move": "in",
    "cont": true,
@@ -136,27 +150,15 @@
    ]
   },
   {
-   "say": "이제 그는, 아무것도 볼 수 없습니다.",
-   "tts": "이제 그는 아무것도 볼 수 없습니다.",
-   "img": "r05",
-   "zoom": 1.4,
-   "focus": [
-    0.5,
-    0.4
-   ],
-   "move": "out",
-   "cont": true
-  },
-  {
-   "say": "그때 옆의 조수가, 계단 위를 올려다봅니다.",
-   "tts": "그때 옆의 조수가 계단 위를 올려다봅니다.",
+   "say": "그런데 그가 천 속에 있는 사이, 조수가 위를 봅니다.",
+   "tts": "그런데 그가 천 속에 있는 사이, 조수가 위를 봅니다.",
    "img": "r06",
    "move": "up",
    "sfx": "heartbeat"
   },
   {
-   "say": "무언가 희미한 것이, 천천히 계단을 내려오고 있었습니다.",
-   "tts": "무언가 희미한 것이, 천천히 계단을 내려오고 있었습니다.",
+   "say": "베일을 쓴 듯한 형체가, 천천히 내려오고 있었습니다.",
+   "tts": "베일을 쓴 듯한 형체가 천천히 내려오고 있었습니다.",
    "img": "r06",
    "zoom": 1.4,
    "focus": [
@@ -170,8 +172,8 @@
    ]
   },
   {
-   "say": "“빨리, 빨리… 뭔가 있어요.” 플래시가 터지고, 셔터는 몇 초간 열려 있습니다.",
-   "tts": "빨리 빨리 [pause short] 뭔가 있어요. 플래시가 터지고, 셔터는 몇 초간 열려 있습니다.",
+   "say": "“빨리, 빨리!” 셔터가 열립니다.",
+   "tts": "빨리 빨리! 셔터가 열립니다.",
    "img": "r07",
    "move": "out",
    "cont": true,
@@ -180,8 +182,8 @@
    ]
   },
   {
-   "say": "천을 벗은 사진가 앞에, 계단은 텅 비어 있었죠.",
-   "tts": "천을 벗은 사진가 앞에 계단은 텅 비어 있었죠.",
+   "say": "플래시가 터지고, 천을 벗자 계단은 텅 비어 있었죠.",
+   "tts": "플래시가 터지고, 천을 벗자 계단은 텅 비어 있었죠.",
    "img": "r08",
    "move": "in",
    "emph": [
@@ -189,65 +191,44 @@
    ]
   },
   {
-   "say": "그런데 그 계단에서 그것을 본 건, 처음이 아니었습니다.",
-   "tts": "그런데 그 계단에서 그것을 본 건 처음이 아니었습니다.",
-   "img": "r08",
-   "zoom": 1.4,
-   "focus": [
-    0.5,
-    0.4
-   ],
-   "move": "up",
-   "cont": true
-  },
-  {
-   "say": "10년 전, 이 집 아들과 친구도 계단에서 낯선 여자를 만났죠.",
-   "tts": "십 년 전, 이 집 아들과 친구도 계단에서 낯선 여자를 만났죠.",
-   "img": "r09",
-   "move": "up",
-   "emph": [
-    "낯선"
-   ]
-  },
-  {
-   "say": "귀신 이야기를 몰랐던 두 아이는, 갈색 드레스의 초상화를 가리켰습니다.",
-   "tts": "귀신 이야기를 몰랐던 두 아이는, 갈색 드레스의 초상화를 가리켰습니다.",
-   "img": "r10",
-   "move": "in",
-   "cont": true,
-   "emph": [
-    "초상화를"
-   ]
-  },
-  {
-   "say": "그리고 현상한 필름. 그 계단 위로, 베일을 쓴 듯한 흐릿한 형체가 내려오고 있었습니다.",
-   "tts": "그리고 현상한 필름. 그 계단 위로 베일을 쓴 듯한 흐릿한 형체가 내려오고 있었습니다.",
+   "say": "현상한 필름 속, 계단 한가운데에 발끝만 흐려진 형체.",
+   "tts": "현상한 필름 속, 계단 한가운데에 발끝만 흐려진 형체.",
    "img": "r11",
    "move": "in",
    "sfx": "hit",
    "emph": [
-    "형체가"
+    "형체."
    ]
   },
   {
-   "say": "그 몇 초 사이 카메라가 흔들렸을 뿐이라는 설명도 있죠.",
-   "tts": "그 몇 초 사이 카메라가 흔들렸을 뿐이라는 설명도 있죠.",
-   "img": "r12",
-   "zoom": 1.4,
+   "say": "천 속의 사진가는 못 본, 내려오던 모습 그대로였죠.",
+   "tts": "천 속의 사진가는 못 본 [pause short] 내려오던 모습 그대로였죠.",
+   "img": "r11",
+   "zoom": 1.5,
    "focus": [
     0.5,
-    0.55
+    0.6
    ],
+   "move": "up",
+   "cont": true,
+   "emph": [
+    "그대로였죠."
+   ]
+  },
+  {
+   "say": "사진이 두 번 겹쳐 찍힌 거라는 설명도 있죠.",
+   "tts": "사진이 두 번 겹쳐 찍힌 거라는 설명도 있죠.",
+   "img": "r12",
    "move": "out"
   },
   {
-   "say": "하지만 조수는, 셔터가 열리기 전에 이미 그것을 봤습니다.",
-   "tts": "하지만 조수는 셔터가 열리기 전에 이미 그것을 봤습니다.",
-   "img": "r01",
-   "zoom": 1.35,
+   "say": "하지만 조수는, 셔터가 열리기 전에 이미 봤다고 했습니다.",
+   "tts": "하지만 조수는 셔터가 열리기 전에 이미 봤다고 했습니다.",
+   "img": "v01",
+   "zoom": 1.4,
    "focus": [
     0.5,
-    0.45
+    0.75
    ],
    "move": "in",
    "cont": true,
@@ -256,31 +237,29 @@
    ]
   },
   {
-   "say": "셔터가 열려 있던 그 몇 초… 당신이라면, 천을 걷고 계단을 봤을까요?",
-   "tts": "셔터가 열려 있던 그 몇 초 [pause short] 당신이라면 천을 걷고 계단을 봤을까요?",
+   "say": "당신이 그 천 속에 있었다면… 조수의 말을 믿었을까요?",
+   "tts": "당신이 그 천 속에 있었다면 [pause short] 조수의 말을 믿었을까요?",
    "img": "r13",
    "move": "in",
-   "cont": true,
    "emph": [
-    "봤을까요?"
+    "믿었을까요?"
    ]
   }
  ],
  "youtube": {
-  "title": "저택 화보 촬영 중, 조수가 외쳤다 “빨리”",
-  "summary": "1936년 영국 노퍽의 오래된 저택. 계단을 찍던 잡지 조수가 셔터가 열리기도 전에 무언가를 보고 외쳤습니다. 그리고 그 사진은 잡지에 실렸습니다.",
-  "pinned": "셔터가 열려 있던 그 몇 초, 당신이라면 천을 걷고 계단을 봤을까요?"
+  "title": "눈 가린 사진가 옆, 조수만 본 계단의 그것",
+  "summary": "1936년 영국 노퍽의 오래된 저택. 사진가가 초점 천을 머리에 쓴 사이, 옆의 조수가 계단 위를 보고 외쳤습니다. 그 사진은 잡지에 실렸고, 10년 전 같은 계단에서는 두 소년이 낯선 여자를 만났습니다.",
+  "pinned": "당신이 그 천 속에 있었다면, 조수의 말을 믿었을까요? 믿는다 / 안 믿는다로 답해 주세요."
  },
  "threads": [
-  "1936년 영국 노퍽, 오래된 저택 계단을 잡지 사진가 둘이 찍고 있었어. 그 집 계단엔 갈색 옷 입은 여자가 나온다는 이야기가 오래 전해졌대.",
-  "첫 장 찍고 사진가가 검은 천을 머리에 뒤집어쓰는데, 옆에 있던 조수가 계단 위를 보더니 외쳤대. \"빨리, 빨리, 뭔가 있어요.\" 셔터 열리고 플래시 터졌는데, 천 벗은 사진가 눈엔 텅 빈 계단뿐이었고.",
-  "근데 그보다 10년 전, 그 집 아들이랑 친구가 같은 계단에서 낯선 여자를 만났대. 귀신 이야기 하나도 몰랐던 애들이 초상화를 보고 '이 사람'이라고 가리켰다고.",
-  "현상해 보니까 조수가 외친 바로 그 계단에 뭔가가 내려오는 중이었어. 필름 조작 흔적은 없다는 감정이 나왔고, 셔터가 열린 6초 동안 카메라가 흔들렸을 뿐이라는 설명도 있어. 근데 셔터 열리기 전에 외친 건 설명이 안 되잖아.",
-  "셔터 열려 있던 그 몇 초, 너라면 천 걷고 계단 봤을 것 같아? 영상으로 보려면 인스타 @ossak_alarm 에서 봐."
+  "1926년 영국 어느 저택. 귀신 얘기 하나도 모르던 두 소년이 계단에서 낯선 여자를 만났대. 나중에 집에 걸린 초상화를 보고 '이 사람'이라고 가리켰는데, 그게 갈색 옷 입은 여자 초상화였어. 그 계단엔 원래 갈색 옷의 여인이 나온다는 얘기가 전해지던 집이었고.",
+  "10년 뒤, 잡지 사진가 둘이 그 계단을 찍으러 와. 사진가가 초점 맞추려고 검은 천을 머리에 뒤집어쓴 사이, 옆에 있던 조수가 계단 위를 보더니 소리쳤대. \"빨리, 빨리, 뭔가 있어요!\"",
+  "셔터 열리고 플래시 터지고, 사진가가 천을 벗었는데 계단은 텅 비어 있었어. 근데 현상한 필름엔 계단 한가운데에 베일 쓴 것 같은 흐릿한 형체가 내려오던 그대로 찍혀 있었대.",
+  "필름에 두 번 겹쳐 찍힌 거라는 설명도 있어. 근데 조수는 셔터 열리기 전에 이미 봤다고 했거든. 그 천 속에 너였으면, 조수 말 믿었을 것 같아? 영상으로 보려면 인스타 @ossak_alarm 에서 봐."
  ],
  "sources": "출처: Country Life(1936.12.26), LIFE(1937.1.4), Norfolk Record Office 블로그(2024), Museum of Hoaxes, Gisborne Times(1927.1.24)",
  "tags": "#새벽괴담 #레이넘홀",
  "risk": "저",
  "adapted": true,
- "hook_type": "본 사람×못 본 사람(조수만 봤다)"
+ "hook_type": "본 사람×못 본 사람(눈 가린 사진가 옆 조수만 봤다)"
 }

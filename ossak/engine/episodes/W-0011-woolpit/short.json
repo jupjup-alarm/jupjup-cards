@@ -1,0 +1,258 @@
+{
+ "id": "W-0011",
+ "no": 0,
+ "series": "세계기담",
+ "format": "story",
+ "mood": "mystery",
+ "title": "울핏의 초록 아이들",
+ "hook": [
+  "두 수도사가 따로 적은",
+  "초록빛 남매"
+ ],
+ "accent_word": "초록빛",
+ "images": [
+  {
+   "id": "g01",
+   "prompt": "Medieval England at dusk under a strange dim sky with no sun, only a faint amber glow low on the horizon: at the edge of a golden harvest wheat field, two small children seen from far behind as tiny faceless silhouettes holding hands, their bare arms with a faint pale green tint, a distant stone village church bell tower beyond the field. Faceless child silhouettes with no facial features, not alien, nothing glowing.",
+   "seed": 1101
+  },
+  {
+   "id": "g02",
+   "prompt": "A medieval monastery scriptorium at night: two separate open handwritten manuscripts on two wooden desks, a single candle between them, all script blurred and unreadable, stone arches.",
+   "nop": true,
+   "seed": 1102
+  },
+  {
+   "id": "g03",
+   "prompt": "An English harvest field in late afternoon in the 12th century: sheaves of wheat, tiny distant reaper silhouettes with sickles, and at the field edge a deep dark wolf-trap pit lined with sharpened wooden stakes, two very small children sitting at the pit edge seen from behind. Faceless child silhouettes with no facial features, not alien, nothing glowing.",
+   "seed": 1103
+  },
+  {
+   "id": "g04",
+   "prompt": "Close view of a folded piece of strange woven cloth with an unfamiliar shimmering pattern lying on a rough wooden bench in a medieval cottage, blurred legs of villagers standing far behind, dim window light.",
+   "nop": true,
+   "seed": 1104
+  },
+  {
+   "id": "g05",
+   "prompt": "A rustic medieval wooden table in a dim cottage: an untouched loaf of bread and a bowl of porridge pushed aside, and a heap of raw green broad bean pods split open, a small child's hand shadow reaching in from the edge of the frame.",
+   "nop": true,
+   "seed": 1105
+  },
+  {
+   "id": "g06",
+   "prompt": "Inside a medieval English cottage at night: two small children seen from behind as faceless silhouettes sitting close to a hearth fire, warm firelight, the room wide with wooden beams and a small window showing a dark winter sky. Faceless child silhouettes with no facial features, not alien, nothing glowing.",
+   "seed": 1106
+  },
+  {
+   "id": "g07",
+   "prompt": "A young girl seen from behind as a faceless silhouette standing at a small cottage window at dusk, looking out over dim fields toward the horizon. Faceless child silhouettes with no facial features, not alien, nothing glowing.",
+   "seed": 1107
+  },
+  {
+   "id": "g08",
+   "prompt": "A strange twilight pasture under a dim sky with no sun, everything in soft dusky light: a few cattle grazing, a tiny child silhouette far behind, and the air faintly rippling as if a huge bell had just rung, birds lifting off. Faceless child silhouettes with no facial features, not alien, nothing glowing.",
+   "seed": 1108
+  },
+  {
+   "id": "g09",
+   "prompt": "An imagined homeland: a wide silent land under a permanent dusk, dim amber horizon, low hills, scattered small houses with no lights and a tiny distant church spire, no sun anywhere in the sky.",
+   "nop": true,
+   "seed": 1109
+  },
+  {
+   "id": "g10",
+   "prompt": "A medieval dirt road between two English villages at dusk, a small distant village with a stone church bell tower, empty road, darkening sky.",
+   "nop": true,
+   "seed": 1110
+  },
+  {
+   "id": "g11",
+   "prompt": "A cosy night archive room: Boogi the small owl archivist sits at a wooden desk under a little amber lantern, two old open medieval chronicles in front of him with script blurred and unreadable, a window behind showing a dim dusk sky with no sun.",
+   "with_character": true,
+   "nop": true,
+   "seed": 1111
+  }
+ ],
+ "scenes": [
+  {
+   "say": "종소리 한 번에, 초록 피부의 남매가 나타났습니다.",
+   "tts": "종소리 한 번에 초록 피부의 남매가 나타났습니다.",
+   "img": "g01",
+   "move": "in",
+   "emph": [
+    "초록"
+   ]
+  },
+  {
+   "say": "12세기 영국, 두 수도사가 따로 적어 남긴 일입니다.",
+   "tts": "십이 세기 영국, 두 수도사가 따로 적어 남긴 일입니다.",
+   "img": "g02",
+   "move": "in",
+   "cont": true,
+   "emph": [
+    "따로"
+   ]
+  },
+  {
+   "say": "추수하던 울핏 마을, 늑대 잡는 구덩이 옆에서였죠.",
+   "tts": "추수하던 울핏 마을, 늑대 잡는 구덩이 옆에서였죠.",
+   "img": "g03",
+   "move": "in"
+  },
+  {
+   "say": "두 아이의 피부는, 정말 풀잎처럼 초록빛이었습니다.",
+   "tts": "두 아이의 피부는 정말 풀잎처럼 초록빛이었습니다.",
+   "img": "g03",
+   "zoom": 1.5,
+   "focus": [
+    0.5,
+    0.62
+   ],
+   "move": "in",
+   "cont": true,
+   "emph": [
+    "초록빛이었습니다."
+   ]
+  },
+  {
+   "say": "알아듣지 못할 말, 처음 보는 옷감의 옷.",
+   "tts": "알아듣지 못할 말, 처음 보는 옷감의 옷.",
+   "img": "g04",
+   "move": "right"
+  },
+  {
+   "say": "며칠을 굶던 아이들은, 날콩만은 허겁지겁 먹었죠.",
+   "tts": "며칠을 굶던 아이들은 날콩만은 허겁지겁 먹었죠.",
+   "img": "g05",
+   "move": "in",
+   "cont": true,
+   "emph": [
+    "날콩만은"
+   ]
+  },
+  {
+   "say": "다른 음식도 먹게 되자, 초록빛이 조금씩 빠집니다.",
+   "tts": "다른 음식도 먹게 되자, 초록빛이 조금씩 빠집니다.",
+   "img": "g06",
+   "move": "in",
+   "emph": [
+    "빠집니다."
+   ]
+  },
+  {
+   "say": "몸이 약한 남동생은, 얼마 뒤 숨졌습니다.",
+   "tts": "몸이 약한 남동생은 얼마 뒤 숨졌습니다.",
+   "img": "g06",
+   "zoom": 1.0,
+   "move": "right",
+   "cont": true
+  },
+  {
+   "say": "혼자 남은 누나는, 말을 배워 털어놓습니다.",
+   "tts": "혼자 남은 누나는 말을 배워 털어놓습니다.",
+   "img": "g07",
+   "move": "in",
+   "emph": [
+    "누나는,"
+   ]
+  },
+  {
+   "say": "가축을 돌보던 날, 종소리 같은 큰 소리가 울렸고,",
+   "tts": "가축을 돌보던 날, 종소리 같은 큰 소리가 울렸고",
+   "img": "g08",
+   "move": "out",
+   "cont": true,
+   "emph": [
+    "종소리"
+   ]
+  },
+  {
+   "say": "정신을 차리니, 그 늑대 구덩이 옆이었다고요.",
+   "tts": "정신을 차리니 그 늑대 구덩이 옆이었다고요.",
+   "img": "g03",
+   "zoom": 1.6,
+   "focus": [
+    0.5,
+    0.7
+   ],
+   "move": "up",
+   "cont": true,
+   "emph": [
+    "구덩이"
+   ]
+  },
+  {
+   "say": "고향은 늘 해 질 녘처럼 어둑한, 성 마르틴의 땅.",
+   "tts": "고향은 늘 해 질 녘처럼 어둑한, 성 마르틴의 땅.",
+   "img": "g09",
+   "move": "in",
+   "emph": [
+    "성",
+    "마르틴의"
+   ]
+  },
+  {
+   "say": "“그곳엔, 해가 뜨지 않아요.”",
+   "tts": "그곳엔 [pause short] 해가 뜨지 않아요.",
+   "img": "g01",
+   "zoom": 1.4,
+   "focus": [
+    0.5,
+    0.3
+   ],
+   "move": "up",
+   "cont": true,
+   "sfx": "hit",
+   "emph": [
+    "해가"
+   ]
+  },
+  {
+   "say": "가장 그럴듯한 답은, 말이 다른 이주민 마을의 길 잃은 아이.",
+   "tts": "가장 그럴듯한 답은, 말이 다른 이주민 마을의 길 잃은 아이.",
+   "img": "g10",
+   "move": "in"
+  },
+  {
+   "say": "하지만 그 답도, 종소리는 설명하지 못합니다.",
+   "tts": "하지만 그 답도 종소리는 설명하지 못합니다.",
+   "img": "g10",
+   "zoom": 1.5,
+   "focus": [
+    0.55,
+    0.45
+   ],
+   "move": "in",
+   "cont": true,
+   "emph": [
+    "종소리는"
+   ]
+  },
+  {
+   "say": "성 마르틴의 땅, 당신은 어디였다고 보세요?",
+   "tts": "성 마르틴의 땅 [pause short] 당신은 어디였다고 보세요?",
+   "img": "g11",
+   "move": "in",
+   "emph": [
+    "어디였다고"
+   ]
+  }
+ ],
+ "youtube": {
+  "title": "종소리 한 번에 낯선 마을, 초록빛 남매",
+  "summary": "12세기 영국 서퍽의 울핏 마을. 추수철 늑대 구덩이 옆에서 피부가 초록빛인 남매가 발견됐다고, 두 수도사가 따로 기록했습니다. 말을 배운 누나는 자기가 온 곳을 이렇게 말했습니다.",
+  "pinned": "해가 뜨지 않는다던 '성 마르틴의 땅', 당신은 어디였다고 보세요?"
+ },
+ "threads": [
+  "12세기 영국 울핏이라는 마을. 추수하다가 늑대 잡는 구덩이 옆에서 남매 둘이 발견됐대. 피부가 초록빛이었고, 아무도 못 알아듣는 말을 하고, 처음 보는 옷감 옷을 입고 있었대. 이걸 두 수도사가 각자 따로 기록해 놨어.",
+  "며칠을 아무것도 안 먹다가 날콩만 허겁지겁 먹었고, 다른 음식도 먹게 되니까 초록빛이 조금씩 빠졌대. 남동생은 몸이 약해서 얼마 뒤 숨졌고.",
+  "말을 배운 누나가 어떻게 왔는지 얘기했는데, 가축 돌보다가 종소리 같은 큰 소리가 울렸고 정신 차려 보니 그 구덩이 옆이었대. 고향은 늘 해 질 녘처럼 어둑하고, 해가 안 뜨는 땅이었다고.",
+  "말이 다른 이주민 마을에서 길 잃은 아이였다는 설명이 제일 그럴듯해. 근데 그 종소리는 그걸로도 설명이 안 돼. 누나가 말한 '성 마르틴의 땅', 너는 어디였다고 봐? 영상으로 보려면 인스타 @ossak_alarm 에서 봐."
+ ],
+ "sources": "출처: 윌리엄 오브 뉴버그 『잉글랜드사』(c.1189), 랠프 오브 코기셜 『잉글랜드 연대기』(1220년대), Wikipedia 'Green children of Woolpit'",
+ "tags": "#세계기담 #초록아이들",
+ "risk": "저",
+ "adapted": true,
+ "hook_type": "순간 이동×기록(종소리 한 번에 낯선 마을)"
+}

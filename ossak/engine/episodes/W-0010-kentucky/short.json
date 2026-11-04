@@ -1,0 +1,119 @@
+{
+ "id": "W-0010",
+ "no": 15,
+ "series": "세계기담",
+ "format": "loop",
+ "mood": "wonder",
+ "title": "1876 켄터키 고기비",
+ "hook": [
+  "맑은 하늘의 고기,",
+  "두 남자가 맛봤다"
+ ],
+ "accent_word": "맛봤다",
+ "images": [
+  {
+   "id": "k01",
+   "prompt": "1876 rural Kentucky, late morning: close view of two weathered hands of a faceless farmer silhouette holding a small piece of dark red raw meat above a dented tin plate on a wooden porch rail, a perfectly clear cloudless pale sky in the upper part, nobody eating, no blood.",
+   "seed": 1001
+  },
+  {
+   "id": "k02",
+   "prompt": "A 1870s Kentucky farmhouse with a wooden porch and split-rail fence among rolling fields, a perfectly clear cloudless pale sky, late morning, very still.",
+   "nop": true,
+   "seed": 1002
+  },
+  {
+   "id": "k03",
+   "prompt": "A wooden farmhouse porch in 1876 Kentucky: an iron soap kettle steaming over a small fire, a woman seen from behind at a distance as a faceless silhouette looking up, small dark flakes drifting down through bright still air like snow under a clear cloudless sky.",
+   "seed": 1003
+  },
+  {
+   "id": "k04",
+   "prompt": "High angle view of one small rectangular patch of grass bounded by a split-rail fence on a farm, small dark scattered pieces lying only inside the patch, the rest of the field clean and green, clear daylight, no blood.",
+   "nop": true,
+   "seed": 1004
+  },
+  {
+   "id": "k05",
+   "prompt": "A 19th-century brass microscope on a dark wooden desk at night, seven small glass specimen dishes in a row, a single amber oil lamp, paper labels blurred and unreadable, an old glass jar in the background.",
+   "nop": true,
+   "seed": 1005
+  }
+ ],
+ "scenes": [
+  {
+   "say": "구름 한 점 없는 한낮, 고기가 눈처럼 내렸습니다.",
+   "tts": "구름 한 점 없는 한낮 고기가 눈처럼 내렸습니다.",
+   "img": "k03",
+   "move": "down",
+   "emph": [
+    "눈처럼"
+   ]
+  },
+  {
+   "say": "1876년 미국 켄터키, 당시 신문에 남은 기록입니다.",
+   "tts": "천팔백칠십육 년 미국 켄터키, 당시 신문에 남은 기록입니다.",
+   "img": "k02",
+   "move": "in",
+   "cont": true,
+   "emph": [
+    "기록입니다."
+   ]
+  },
+  {
+   "say": "비누를 끓이던 농가 앞, 작은 땅 한 구역에만요.",
+   "tts": "비누를 끓이던 농가 앞, 작은 땅 한 구역에만요.",
+   "img": "k04",
+   "move": "in",
+   "emph": [
+    "한"
+   ]
+  },
+  {
+   "say": "맛을 본 두 남자는, 양고기나 사슴고기 같다고 했죠.",
+   "tts": "맛을 본 두 남자는, 양고기나 사슴고기 같다고 했죠.",
+   "img": "k01",
+   "move": "in",
+   "cont": true,
+   "emph": [
+    "두",
+    "남자는,"
+   ]
+  },
+  {
+   "say": "그런데 현미경 속 조각들은, 폐와 근육과 연골이었습니다.",
+   "tts": "그런데 현미경 속 조각들은, 폐와 근육과 연골이었습니다.",
+   "img": "k05",
+   "move": "in",
+   "emph": [
+    "폐와",
+    "연골이었습니다."
+   ]
+  },
+  {
+   "say": "맑은 하늘 위, 그 고기를 먼저 삼켰던 건 누구죠?",
+   "tts": "맑은 하늘 위 [pause short] 그 고기를 먼저 삼켰던 건 누구죠?",
+   "img": "k02",
+   "zoom": 1.4,
+   "focus": [
+    0.5,
+    0.25
+   ],
+   "move": "up",
+   "cont": true,
+   "emph": [
+    "누구죠?"
+   ]
+  }
+ ],
+ "youtube": {
+  "title": "구름 없는 한낮, 고기가 눈처럼 내렸다",
+  "summary": "1876년 3월 미국 켄터키의 한 농가. 구름 한 점 없는 한낮, 몇 분 동안 작은 땅 한 귀퉁이에만 고기 조각이 떨어졌다고 당시 신문이 기록했습니다.",
+  "pinned": "맑은 하늘 위, 그 고기를 먼저 삼켰던 건 누구였을까요? 한 단어로 답해 주세요."
+ },
+ "sources": "출처: 뉴욕타임스(1876.3.10), Scientific American(1876), L. D. Kastenbine, Louisville Medical News(1876), Scientific American 블로그(2014)",
+ "tags": "#세계기담 #켄터키고기비",
+ "risk": "저",
+ "adapted": true,
+ "hook_type": "하늘에서 온 것×사람의 행동(고기를 맛봄)"
+}

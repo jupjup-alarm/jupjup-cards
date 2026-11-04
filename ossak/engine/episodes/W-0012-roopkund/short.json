@@ -1,0 +1,241 @@
+{
+ "id": "W-0012",
+ "no": 0,
+ "series": "세계기담",
+ "format": "story",
+ "mood": "mystery",
+ "title": "루프쿤드 해골 호수의 그리스인",
+ "hook": [
+  "해발 5,000m 얼음 호수",
+  "무기도 없던 열넷"
+ ],
+ "accent_word": "열넷",
+ "images": [
+  {
+   "id": "g01",
+   "prompt": "A small round frozen alpine lake at night high in the Indian Himalaya, ringed by dark jagged ridges and snow, one amber moonlit glow on the thick ice, nobody around, open night sky above. No bodies, no bones, no skulls.",
+   "nop": true,
+   "seed": 1201
+  },
+  {
+   "id": "g02",
+   "prompt": "1942, a forest ranger seen from far behind as a small faceless silhouette in a long coat with a walking staff standing on the rocky shore of a half-frozen Himalayan lake, scattered grey stones and ice shards, a distant snow peak, grey dawn light. No bodies, no bones, no skulls.",
+   "seed": 1202
+  },
+  {
+   "id": "g03",
+   "prompt": "A faint ghostly column of tiny faceless soldier silhouettes from the 1940s dissolving into thick mountain fog on a Himalayan ridge, like a rumor or a memory, muted navy tones. No bodies, no bones, no skulls.",
+   "seed": 1203
+  },
+  {
+   "id": "g04",
+   "prompt": "Heavy dark storm clouds pressing low over a narrow empty Himalayan ridge path, the first large white hailstones falling through the air, a single amber light glowing under the clouds. No bodies, no bones, no skulls.",
+   "nop": true,
+   "seed": 1204
+  },
+  {
+   "id": "g05",
+   "prompt": "A respectful distant procession of tiny faceless pilgrim silhouettes carrying small lanterns climbing a steep Himalayan ridge at dusk toward a mountain shrine, a storm gathering above, reverent mood, not scary. No bodies, no bones, no skulls.",
+   "seed": 1205
+  },
+  {
+   "id": "g06",
+   "prompt": "A dark navy laboratory table at night: a softly glowing DNA double helix diagram of light splitting into two separate clusters of light points floating above the table, no text, a single desk lamp.",
+   "nop": true,
+   "seed": 1206
+  },
+  {
+   "id": "g07",
+   "prompt": "The same small Himalayan lake shore in a distant past age: a row of faint old amber lantern lights along the dark shore, dim sepia mist, snowy ridges, no figures close. No bodies, no bones, no skulls.",
+   "nop": true,
+   "seed": 1207
+  },
+  {
+   "id": "g08",
+   "prompt": "An abstract cross-section of very thick layered lake ice like strata of time, two thin glowing amber layers far apart separated by a deep band of dark ice, cold blue darkness.",
+   "nop": true,
+   "seed": 1208
+  },
+  {
+   "id": "g09",
+   "prompt": "A dark antique map on an old desk: a faint glowing amber line running from small Mediterranean islands across seas and deserts toward high snowy mountains, fading out at the end, all labels blurred and unreadable.",
+   "nop": true,
+   "seed": 1209
+  },
+  {
+   "id": "g10",
+   "prompt": "An empty Himalayan ridge pilgrim path at blue dawn, one small unlit brass lantern left standing on a flat stone, prayer flags faintly in the distance, nobody.",
+   "nop": true,
+   "seed": 1210
+  },
+  {
+   "id": "g11",
+   "prompt": "A cosy night archive room: Boogi the small owl archivist sits at a wooden desk under a little amber lantern with an open large ledger, and through the window behind him a small frozen mountain lake glows under the moon.",
+   "with_character": true,
+   "nop": true,
+   "seed": 1211
+  }
+ ],
+ "scenes": [
+  {
+   "say": "얼음 호수의 뼈, 열넷은 그리스인이었습니다.",
+   "tts": "얼음 호수의 뼈 열넷은 그리스인이었습니다.",
+   "img": "g01",
+   "move": "in",
+   "emph": [
+    "그리스인이었습니다."
+   ]
+  },
+  {
+   "say": "1년에 열한 달 얼어 있는, 히말라야의 작은 호수.",
+   "tts": "일 년에 열한 달 얼어 있는, 히말라야의 작은 호수.",
+   "img": "g01",
+   "zoom": 1.5,
+   "focus": [
+    0.5,
+    0.62
+   ],
+   "move": "in",
+   "cont": true,
+   "emph": [
+    "열한"
+   ]
+  },
+  {
+   "say": "1942년, 산림 감시원이 찾은 건 수백 명의 뼈.",
+   "tts": "천구백사십이 년, 산림 감시원이 찾은 건 수백 명의 뼈.",
+   "img": "g02",
+   "move": "in",
+   "emph": [
+    "수백"
+   ]
+  },
+  {
+   "say": "길 잃은 일본군이라고, 다들 여겼죠.",
+   "tts": "길 잃은 일본군이라고 다들 여겼죠.",
+   "img": "g03",
+   "move": "left",
+   "cont": true
+  },
+  {
+   "say": "하지만 그 뼈들은, 전쟁보다 훨씬 오래된 것이었습니다.",
+   "tts": "하지만 그 뼈들은 전쟁보다 훨씬 오래된 것이었습니다.",
+   "img": "g03",
+   "zoom": 1.4,
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "move": "in",
+   "cont": true,
+   "emph": [
+    "오래된"
+   ]
+  },
+  {
+   "say": "여럿이 똑같이 머리 위쪽을, 위에서 맞은 듯 다쳤습니다.",
+   "tts": "여럿이 똑같이 머리 위쪽을, 위에서 맞은 듯 다쳤습니다.",
+   "img": "g04",
+   "move": "down",
+   "emph": [
+    "위쪽에"
+   ]
+  },
+  {
+   "say": "그래서 나온 답은, 큰 우박을 만난 순례자들.",
+   "tts": "그래서 나온 답은, 큰 우박을 만난 순례자들.",
+   "img": "g05",
+   "move": "up",
+   "cont": true,
+   "emph": [
+    "우박을"
+   ]
+  },
+  {
+   "say": "그런데 DNA를 읽자, 그들은 한 무리가 아니었습니다.",
+   "tts": "그런데 디엔에이를 읽자, 그들은 한 무리가 아니었습니다.",
+   "img": "g06",
+   "move": "in",
+   "emph": [
+    "한",
+    "무리가"
+   ]
+  },
+  {
+   "say": "스물셋은 천 년도 더 전, 남아시아 사람들.",
+   "tts": "스물셋은 천 년도 더 전, 남아시아 사람들.",
+   "img": "g07",
+   "move": "in",
+   "cont": true
+  },
+  {
+   "say": "나머지 열넷은, 먹던 음식부터 달랐죠.",
+   "tts": "나머지 열넷은 먹던 음식부터 달랐죠.",
+   "img": "g07",
+   "zoom": 1.4,
+   "focus": [
+    0.35,
+    0.55
+   ],
+   "move": "left",
+   "cont": true,
+   "emph": [
+    "달랐죠."
+   ]
+  },
+  {
+   "say": "그 열넷은, 천 년 뒤인 1800년쯤 한꺼번에 숨졌습니다.",
+   "tts": "그 열넷은 천 년 뒤인 천팔백 년쯤, 한꺼번에 숨졌습니다.",
+   "img": "g08",
+   "move": "in",
+   "sfx": "hit",
+   "emph": [
+    "천",
+    "년",
+    "뒤인"
+   ]
+  },
+  {
+   "say": "무기도 싸운 흔적도 없던 열넷, 지중해 그리스 사람들.",
+   "tts": "무기도 싸운 흔적도 없던 열넷, 지중해 그리스 사람들.",
+   "img": "g09",
+   "move": "right",
+   "cont": true,
+   "emph": [
+    "그리스"
+   ]
+  },
+  {
+   "say": "순례자라기엔 말이 안 된다고, 학자는 말합니다.",
+   "tts": "순례자라기엔 말이 안 된다고 학자는 말합니다.",
+   "img": "g10",
+   "move": "in",
+   "cont": true
+  },
+  {
+   "say": "그리스에서 온 열넷, 길을 잃은 걸까요, 찾아간 걸까요?",
+   "tts": "그리스에서 온 열넷 [pause short] 길을 잃은 걸까요 [pause short] 찾아간 걸까요?",
+   "img": "g11",
+   "move": "in",
+   "emph": [
+    "찾아간"
+   ]
+  }
+ ],
+ "youtube": {
+  "title": "일본군인 줄 알았던 호수, 열넷은 그리스인",
+  "summary": "인도 히말라야, 1년에 열한 달 얼어 있는 작은 호수 루프쿤드. 1942년 수백 명의 흔적이 발견됐고, 2019년 DNA 분석은 그 사람들이 한 무리가 아니었다고 밝혔습니다.",
+  "pinned": "그리스에서 온 열넷, 길을 잃은 걸까요, 찾아간 걸까요? 한 단어로 답해 주세요."
+ },
+ "threads": [
+  "인도 히말라야에 1년에 열한 달 얼어 있는 작은 호수가 있어. 1942년에 산림 감시원이 거기서 수백 명의 흔적을 발견했는데, 처음엔 길 잃은 일본군이 숨진 데라고들 생각했대.",
+  "근데 그 뼈들은 전쟁보다 훨씬 오래된 거였어. 여럿이 똑같이 머리 위쪽에 상처가 있어서, 여신을 찾아가던 순례자들이 큰 우박을 만났다는 설명이 나왔지.",
+  "근데 2019년에 DNA를 읽어 보니까 한 무리가 아니었어. 스물셋은 천 년도 더 전의 남아시아 사람들이고, 다른 열넷은 그보다 천 년 뒤에 한꺼번에 숨졌는데 그리스 쪽 혈통이었대. 무기도 싸운 흔적도 없고.",
+  "순례자였다기엔 말이 안 된다고 학자도 말해. 그리스에서 온 그 열넷, 길을 잃은 걸까 찾아간 걸까? 영상으로 보려면 인스타 @ossak_alarm 에서 봐."
+ ],
+ "sources": "출처: Harney 외, Nature Communications(2019), National Geographic(2019), Outlook Traveller",
+ "tags": "#세계기담 #루프쿤드",
+ "risk": "저",
+ "adapted": true,
+ "hook_type": "오해×반전 정체(일본군인 줄 알았던 호수, 그리스인)"
+}
