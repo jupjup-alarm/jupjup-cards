@@ -13,15 +13,27 @@
   "title": "디아틀로프 고개",                      # 사건 이름(시트용)
   "hook": ["한겨울, 신발 두고", "텐트를 떠난 9명"],  # 화면 위 고정 제목 2줄 (줄당 10자 안팎)
   "accent_word": "9명",
-  "images": [{"id": "v01", "prompt": "영문 장면 묘사", "with_character": false, "nop": true}],
+  "images": [{"id": "v01", "prompt": "영문 장면 묘사", "with_character": false, "nop": true,
+              "bright": true,      # 밝고 선명하게 (첫 화면·현상 장면 — 구성 규칙 1)
+              "ref": "v02"}],      # 같은 인물 이어 그리기 (먼저 그린 그림을 참고로)
   "scenes": [
     {"say": "자막·내레이션 문장", "tts": "읽기용 표기(선택)", "sub": "자막이 달라야 할 때(선택)",
      "img": "v01", "move": "in|out|up|down|left|right", "zoom": 1.0, "focus": [0.5, 0.5],
-     "sfx": "hit",            # 이 장면 직전 0.6초 무음 + 낮은 효과음 (반전 직전에 한 번). 공포형은 그 앞에 긴장음이 차오른다
-                              # "knock": 말 시작 전 노크 세 번 / "heartbeat": 장면 내내 낮은 심장 소리. 여러 개면 ["knock", "hit"]
+     "sfx": "hit",            # 반전 직전: 0.45초 숨(소리는 줄이기만) + 낮은 효과음 (한 편에 한 번). 공포형은 그 앞에 긴장음이 차오른다
+                              # "knock": 노크 세 번 / "heartbeat": 낮은 심장 소리 / "thud": 떨어져 박히는 '퍽' / "pop" / "paper"
+                              # 여러 개면 ["thud", "hit"]. 컷마다 '휙'·큰 글자 '톡'·증거 '종이'는 자동
      "hold": 0.0,             # 말이 끝난 뒤 그림을 더 보여줄 초
-     "emph": ["9명"]}         # 자막에서 말머리 색으로 칠할 단어
+     "emph": ["9명"],         # 자막에서 말머리 색으로 칠할 단어
+     # ── 편집 (2026-11-04 터진 영상 분석 반영 — 화면이 1.5초 넘게 멈추지 않는다) ──
+     "shots": [{"img": "v02", "zoom": 1.4, "focus": [0.4, 0.6], "move": "in", "w": 1}],   # 장면 안 컷. 없으면 자동으로
+                              # 약 1.6초마다 같은 그림의 다른 구도(원경↔근접)로 끊는다. "points": [[x,y],…]로 근접 위치 지정
+     "big": "개구리 알?",      # 화면 가운데 큰 핵심어 (톡 소리와 함께 튀어나옴). {"text": "...", "at": 0.3}도 됨
+     "proof": {"img": "proof/x.jpg", "hl": [x0, y0, x1, y1], "credit": "White Pine News 1876.3.18 · 미국 의회도서관"}
+                              # 실물 증거(원본 신문·사진·문서). 전체 → hl 부분 확대 두 컷, hl은 그림 비율(0~1)로 형광펜
   ],
+  "src_line": "1876 · 미국 켄터키",   # 화면 아래쪽 작은 고정 글자 — 연도·지명·출처는 말 대신 여기 (구성 규칙 2)
+  "faces": true,                       # 가상 인물 얼굴·표정 허용 (2026-11-04 사용자 결정, 기본 true). 실존 인물 닮은 얼굴 금지
+
   "youtube": {"title": "제목 15~25자", "summary": "설명란 두세 줄(답 없이)", "pinned": "고정 댓글 질문"},
   "instagram": {"caption": "첫 줄 훅 … (선택, 없으면 자동)"},
   "sources": "출처: …", "tags": "#세계기담 #디아틀로프", "risk": "저",
@@ -31,7 +43,8 @@
 
 화면: 위 300px·아래 420px·오른쪽 140px에는 글자를 두지 않는다. 제목은 위(y≈310~), 자막은 가운데 아래(y≈1130),
 부기 로고는 오른쪽 위. 첫 프레임부터 제목·그림·첫 자막이 보인다(로고 인트로·페이드인 없음).
-소리: 내레이션(구글 Umbriel) + 낮은 바람 소리(공포형은 낮은 울림 추가) + sfx 장면 앞 무음과 효과음.
+소리: 내레이션(구글 Umbriel) + 끊기지 않는 바닥 소리(바람 + 낮은 화음, 공포형은 낮은 울림) + 컷마다 '휙', 큰 글자 '톡',
+증거 '종이', sfx 장면 효과음. 문장 사이·반전 직전에도 소리를 비우지 않는다(줄일 뿐). 끝은 마지막 말 0.35초 뒤 바로 끝.
 """
 import argparse, base64, datetime, json, math, os, pathlib, re, subprocess, sys, time, urllib.error, urllib.request, wave
 import numpy as np
@@ -63,12 +76,19 @@ BASE = "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/ossak/"
 W, H, FPS, SR = 1080, 1920, 30, 48000
 SAFE_R = 140                        # 오른쪽 버튼 자리
 TITLE_Y, SUB_Y, SUB_MAXW = 318, 1130, 840
-LEAD, GAP, HIT_GAP, PGAP = 0.05, 0.22, 0.6, 0.38
+LEAD, GAP, HIT_GAP, PGAP = 0.05, 0.22, 0.45, 0.38
+END_TAIL = 0.35                     # 마지막 말 뒤 꼬리 (터진 영상은 0.4초 안에 끝남 — 2026-11-04)
+SHOT_MAX = 1.7                      # 자동 컷 간격 상한(초)
+SRC_Y = 1468
 SERIES = {"세계기담": ("#F2B544", "amber"), "새벽괴담": ("#3FB8A8", "teal"), "미제파일": ("#E8693A", "orange"),
           "그날의 기록": ("#E8693A", "orange"), "그 후": ("#9AA3B8", "silver")}
 CHARACTER = ("Boogi, a small round owl archivist mascot: dark slate-navy feathers, two pointed ear tufts, large glowing "
              "amber eyes behind thin round silver glasses, a small amber diamond-shaped beak, a lighter navy chevron-patterned "
              "belly, short wings, carrying a small cream notebook and a little amber lantern. Cute, simple, flat webtoon character design.")
+FACES = ("Human characters are fictional ordinary people with clearly visible, expressive faces and readable emotions "
+         "(surprise, disgust, fear), drawn in webtoon style, not resembling any real or famous person. ")
+BRIGHT = (" Bright clear daylight and vivid natural colors for this scene, high contrast, the strange subject large, sharp and "
+          "unmistakable in the middle of the frame.")
 NOP = " Absolutely no human figures, silhouettes or shadows of people anywhere in the image."
 HORROR = " Deep shadows, a single cold light source, unsettling empty space, nothing explicit."
 VERT = (" Tall vertical 9:16 composition filling the whole frame edge to edge (no black bars, no borders): "
@@ -88,7 +108,17 @@ def gen_image(spec, im, out):
     if im.get("with_character"):
         prompt += " The owl must look exactly like the owl character in the reference image: " + CHARACTER
         refs = {"input_image_0": ("boogi.png", (ENGINE / "refs" / "boogi_sheet.png").read_bytes(), "image/png")}
-    prompt += " " + STYLE.format(accent=SERIES.get(spec["series"], ("", "amber"))[1])
+    if im.get("ref"):                                   # 같은 인물·장소를 이어 그릴 때: 먼저 그린 그림을 참고로
+        rp = out.parent / f"{im['ref']}.jpg"
+        if rp.exists():
+            refs = {"input_image_0": ("ref.jpg", rp.read_bytes(), "image/jpeg")}
+            prompt += " Keep the same character (same face, beard, hat and clothes) as in the reference image."
+    if im.get("bright"):
+        prompt += BRIGHT
+    style = STYLE.format(accent=SERIES.get(spec["series"], ("", "amber"))[1])
+    if spec.get("faces", True) and not im.get("nop"):     # 2026-11-04 사용자 결정: 가상 인물 얼굴 허용
+        style = style.replace("Any human figures are faceless silhouettes with no facial features. ", FACES)
+    prompt += " " + style
     iw, ih = (int(x) for x in os.environ.get("SHORT_IMG", "864x1536").split("x"))   # 장당 약 156뉴런 (512² 칸 6개 × 26.05)
     body, ctype = multipart({"prompt": prompt, "width": iw, "height": ih, **({"seed": im["seed"]} if im.get("seed") else {})}, refs)
     url = f"https://api.cloudflare.com/client/v4/accounts/{acc}/ai/run/{MODELS['klein']}"
@@ -206,26 +236,83 @@ def riser(dur_s=2.6):
     return ((0.6 * nz * 6 + 0.4 * tone) * env * 0.12).astype(np.float32)
 
 
-def mix(total, placements, hits, silences, horror, knocks=(), beats=()):
+def pad(n, rng):
+    """낮게 깔리는 화음 — 문장 사이에도 소리가 비지 않게 (2026-11-04: 터진 영상 12편 모두 무음 0회)."""
+    t = np.arange(n) / SR
+    out = np.zeros(n, np.float32)
+    for f, g, lfo in ((110.0, 1.0, 0.07), (164.81, 0.7, 0.05), (220.0, 0.45, 0.09), (261.63, 0.35, 0.06)):
+        ph = rng.uniform(0, 2 * np.pi)
+        out += (g * np.sin(2 * np.pi * f * t + ph) * (0.65 + 0.35 * np.sin(2 * np.pi * lfo * t + ph))).astype(np.float32)
+    k = 24
+    out = np.convolve(out, np.ones(k, dtype=np.float32) / k, mode="same")
+    return out / (np.max(np.abs(out)) + 1e-9)
+
+
+def whoosh():
+    """컷이 바뀔 때 작은 '휙'."""
+    n = int(SR * 0.3)
+    t = np.arange(n) / SR
+    rng = np.random.default_rng(21)
+    x = rng.standard_normal(n).astype(np.float32)
+    x = x - np.convolve(x, np.ones(30) / 30, mode="same")           # 고역만
+    x = np.convolve(x, np.ones(6) / 6, mode="same")
+    env = np.sin(np.pi * np.clip(t / 0.3, 0, 1)) ** 2
+    return (x * env * 0.05).astype(np.float32)
+
+
+def pop():
+    """큰 글자가 튀어나올 때 '톡'."""
+    t = np.arange(int(SR * 0.09)) / SR
+    f = 820 - 2600 * t
+    return (np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-t * 45) * 0.16).astype(np.float32)
+
+
+def thud():
+    """무언가 떨어져 박히는 '퍽'."""
+    t = np.arange(int(SR * 0.45)) / SR
+    f = 70 + 60 * np.exp(-t * 18)
+    rng = np.random.default_rng(17)
+    nz = np.convolve(rng.standard_normal(len(t)), np.ones(12) / 12, mode="same") * np.exp(-t * 40)
+    return ((np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-t * 9) * 0.5 + nz * 0.35) * 0.7).astype(np.float32)
+
+
+def paper():
+    """증거 화면이 나올 때 종이 넘기는 소리."""
+    n = int(SR * 0.35)
+    t = np.arange(n) / SR
+    rng = np.random.default_rng(29)
+    x = rng.standard_normal(n).astype(np.float32)
+    x = x - np.convolve(x, np.ones(12) / 12, mode="same")
+    crack = (rng.random(n) < 0.004) * rng.standard_normal(n) * 3
+    env = np.clip(t / 0.05, 0, 1) * np.exp(-t * 7)
+    return ((x + crack) * env * 0.07).astype(np.float32)
+
+
+FX = {"whoosh": whoosh, "pop": pop, "thud": thud, "paper": paper}
+
+
+def mix(total, placements, hits, silences, horror, knocks=(), beats=(), events=()):
     n = int(total * SR) + 1
     out = np.zeros(n, np.float32)
     for start, wav in placements:
         a = int(start * SR)
         out[a:a + len(wav)] += wav[:max(0, n - a)]
     rng = np.random.default_rng(11)
-    amb = brown(n, rng) * (0.02 if horror else 0.012)
+    # 바닥 소리: 터진 영상 바닥 -20~-37dB, 우리는 -40~-44dB였다 (2026-11-04 분석) → 바람 + 화음으로 채운다
+    amb = brown(n, rng) * (0.03 if horror else 0.022)
     if horror:
         t = np.arange(n) / SR
-        amb += (0.010 * np.sin(2 * np.pi * 55 * t) + 0.006 * np.sin(2 * np.pi * 82.4 * t)) * (0.6 + 0.4 * np.sin(2 * np.pi * 0.11 * t))
+        amb += (0.016 * np.sin(2 * np.pi * 55 * t) + 0.010 * np.sin(2 * np.pi * 82.4 * t)) * (0.6 + 0.4 * np.sin(2 * np.pi * 0.11 * t))
+    else:
+        amb += pad(n, rng) * 0.03
     env = np.ones(n, np.float32)
-    fade = int(SR * 1.2)
-    env[:fade] = np.linspace(0.3, 1, fade)
-    env[-fade:] *= np.linspace(1, 0.4, fade)
-    for s, e in silences:                    # 반전 직전 무음: 바람 소리도 빠진다
+    fade = int(SR * 0.3)
+    env[-fade:] *= np.linspace(1, 0.5, fade)
+    for s, e in silences:                    # 반전 직전: 소리를 비우지 않고 줄이기만 한다
         a, b = int(s * SR), int(e * SR)
-        r = int(0.12 * SR)
-        env[a:a + r] *= np.linspace(1, 0, r)[:len(env[a:a + r])]
-        env[a + r:b] = 0
+        r = int(0.1 * SR)
+        env[a:a + r] *= np.linspace(1, 0.45, r)[:len(env[a:a + r])]
+        env[a + r:b] *= 0.45
     out += amb * env
     def put(sig, t0):
         a = int(t0 * SR)
@@ -243,9 +330,12 @@ def mix(total, placements, hits, silences, horror, knocks=(), beats=()):
             put(r, s0 - len(r) / SR)
     hs = hit_sound()
     for t0 in hits:
-        a = int(t0 * SR)
-        seg = hs[:max(0, n - a)]
-        out[a:a + len(seg)] += seg
+        put(hs, t0)
+    cache = {}
+    for t0, name in events:
+        if name not in cache:
+            cache[name] = FX[name]()
+        put(cache[name], t0)
     peak = np.max(np.abs(out)) or 1
     if peak > 0.97:
         out *= 0.97 / peak
@@ -362,17 +452,141 @@ def sub_image(text, emph, accent):
     return img
 
 
-def view(src, sc, p):
+def big_image(text, accent):
+    """화면 가운데 큰 핵심어 (편집 규칙 5 — 핵심어 하나만)."""
+    lines = str(text).split("\n")
+    size = 132
+    d = ImageDraw.Draw(Image.new("RGB", (1, 1)))
+    f = font("sans", size, 800)
+    while max(d.textlength(l, font=f) for l in lines) > W - SAFE_R - 140 and size > 72:
+        size -= 6
+        f = font("sans", size, 800)
+    lh = int(size * 1.2)
+    img = Image.new("RGBA", (W - SAFE_R, lh * len(lines) + 40), (0, 0, 0, 0))
+    dd = ImageDraw.Draw(img)
+    for i, l in enumerate(lines):
+        x = (img.width - d.textlength(l, font=f)) / 2
+        dd.text((x, 20 + i * lh), l, font=f, fill=accent, stroke_width=10, stroke_fill=(0, 0, 0))
+    return img
+
+
+def src_layer(text):
+    """아래쪽 작은 고정 글자 (연도·지명·출처 — 말로 읽지 않는다, 구성 규칙 2)."""
+    lay = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    if not text:
+        return lay
+    d = ImageDraw.Draw(lay)
+    f = font("sans", 30, 600)
+    tw = d.textlength(text, font=f)
+    cx = (W - SAFE_R) / 2 + 20
+    d.rounded_rectangle((cx - tw / 2 - 18, SRC_Y - 24, cx + tw / 2 + 18, SRC_Y + 24), radius=22, fill=(6, 8, 16, 150))
+    d.text((cx, SRC_Y), text, font=f, fill=(232, 226, 212, 235), anchor="mm")
+    return lay
+
+
+PROOF_W, PROOF_H, PROOF_CY = 900, 720, 830
+
+
+def proof_frame(P, shot, p, accent, bgc):
+    """실물 증거(원본 신문·사진·문서) 화면: 흐린 배경 위 카드, 전체 → hl 확대, 형광펜 (편집 규칙 4)."""
+    key = id(P)
+    if key not in bgc:
+        r = max(W / P.width, H / P.height)
+        bg = P.resize((int(P.width * r) + 2, int(P.height * r) + 2), Image.BILINEAR).crop((0, 0, W, H))
+        bg = bg.filter(ImageFilter.GaussianBlur(28))
+        bgc[key] = Image.blend(bg, Image.new("RGB", (W, H), (4, 6, 12)), 0.62).convert("RGBA")
+    fr = bgc[key].copy()
+    hl = shot.get("hl")
+    box = (0, 0, P.width, P.height)
+    if hl and shot.get("_zoom"):
+        x0, y0, x1, y1 = hl[0] * P.width, hl[1] * P.height, hl[2] * P.width, hl[3] * P.height
+        bw, bh = (x1 - x0) * 1.35, (y1 - y0) * 1.8
+        ar = P.width / P.height
+        if bw / bh < ar:
+            bw = bh * ar
+        else:
+            bh = bw / ar
+        cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
+        bw, bh = min(bw, P.width), min(bh, P.height)
+        cx = min(max(cx, bw / 2), P.width - bw / 2)
+        cy = min(max(cy, bh / 2), P.height - bh / 2)
+        box = (cx - bw / 2, cy - bh / 2, cx + bw / 2, cy + bh / 2)
+    z = 1 + 0.06 * p                                   # 천천히 다가감
+    bx0, by0, bx1, by1 = box
+    cw, ch = (bx1 - bx0) / z, (by1 - by0) / z
+    mx, my = (bx0 + bx1) / 2, (by0 + by1) / 2
+    box = (mx - cw / 2, my - ch / 2, mx + cw / 2, my + ch / 2)
+    r = min(PROOF_W / cw, PROOF_H / ch)
+    dw, dh = int(cw * r), int(ch * r)
+    card = P.resize((dw, dh), Image.LANCZOS, box=box).convert("RGBA")
+    if hl:                                             # 형광펜: 장면 20%부터 왼쪽→오른쪽으로 칠해짐
+        m = min(1, max(0, (p - 0.2) / 0.35)) if shot.get("_zoom") or not shot.get("_split") else 0
+        if m > 0:
+            hx0 = (hl[0] * P.width - box[0]) * r
+            hy0 = (hl[1] * P.height - box[1]) * r
+            hx1 = (hl[2] * P.width - box[0]) * r
+            hy1 = (hl[3] * P.height - box[1]) * r
+            ov = Image.new("RGBA", card.size, (0, 0, 0, 0))
+            ImageDraw.Draw(ov).rectangle((hx0, hy0, hx0 + (hx1 - hx0) * m, hy1), fill=accent + (78,))
+            card = Image.alpha_composite(card, ov)
+    cx = int((W - SAFE_R) / 2 + 20)
+    x, y = cx - dw // 2, PROOF_CY - dh // 2
+    sh = Image.new("RGBA", (dw + 40, dh + 40), (0, 0, 0, 0))
+    ImageDraw.Draw(sh).rectangle((20, 26, dw + 20, dh + 26), fill=(0, 0, 0, 150))
+    fr.alpha_composite(sh.filter(ImageFilter.GaussianBlur(12)), (x - 20, y - 20))
+    ImageDraw.Draw(fr).rectangle((x - 6, y - 6, x + dw + 5, y + dh + 5), fill=(240, 234, 220, 255))
+    fr.alpha_composite(card, (x, y))
+    if shot.get("credit"):
+        d = ImageDraw.Draw(fr)
+        f = font("sans", 28, 600)
+        d.text((cx, y + dh + 34), shot["credit"], font=f, fill=(225, 220, 205, 230), anchor="mm",
+               stroke_width=3, stroke_fill=(0, 0, 0))
+    return fr
+
+
+def plan_shots(sc, s, e):
+    """장면(s~e초)을 컷으로 나눈다. 반환: [(시작, 끝, 컷 dict)] (편집 규칙 1 — 1.5초 넘게 멈추지 않기)."""
+    d = e - s
+    if sc.get("shots"):
+        shots = [dict(sh) for sh in sc["shots"]]
+    elif sc.get("proof"):
+        pf = sc["proof"]
+        base = {"proof": pf["img"], "hl": pf.get("hl"), "credit": pf.get("credit", ""), "_split": bool(pf.get("hl"))}
+        shots = [dict(base)] + ([dict(base, _zoom=True)] if pf.get("hl") and d > 1.4 else [])
+    else:
+        n = max(1, math.ceil(d / SHOT_MAX)) if not sc.get("one_shot") else 1
+        z0 = sc.get("zoom", 1.0)
+        f0 = sc.get("focus", [0.5, 0.5])
+        pts = sc.get("points") or [f0, [f0[0] + 0.08, f0[1] - 0.05], [f0[0] - 0.08, f0[1] + 0.05], [f0[0] + 0.04, f0[1] + 0.07]]
+        zs = (1.0, 1.38, 1.18, 1.5)
+        mvs = [sc["move"], "in", "out", "left"]
+        shots = [{"img": sc["img"], "zoom": z0 * zs[k % 4], "focus": [min(.9, max(.1, pts[k % len(pts)][0])), min(.9, max(.1, pts[k % len(pts)][1]))],
+                  "move": mvs[k % 4]} for k in range(n)]
+    ws = [sh.get("w", 1) for sh in shots]
+    out, t0 = [], s
+    for sh, w in zip(shots, ws):
+        t1 = t0 + d * w / sum(ws)
+        if not sh.get("proof"):
+            sh.setdefault("img", sc["img"])
+            sh.setdefault("zoom", sc.get("zoom", 1.0))
+            sh.setdefault("focus", sc.get("focus", [0.5, 0.5]))
+            sh.setdefault("move", sc["move"])
+        out.append((t0, t1, sh))
+        t0 = t1
+    return out
+
+
+def view(src, sc, p, punch=0.0):
     """장면 진행 p(0~1)에 따른 잘라낼 상자 (src 좌표)."""
     sw, sh = src.size
     z0 = sc.get("zoom", 1.0)
     fx, fy = sc.get("focus", [0.5, 0.5])
     mv = sc["move"]
     e = p * p * (3 - 2 * p) * 0.35 + p * 0.65          # 살짝 부드러운 시작
-    z = z0 * (1 + 0.08 * e) if mv == "in" else z0 * (1.08 - 0.08 * e) if mv == "out" else z0 * 1.06
+    z = z0 * (1 + 0.12 * e) if mv == "in" else z0 * (1.12 - 0.12 * e) if mv == "out" else z0 * 1.08
     cw, ch = sw / z, sh / z
     cx, cy = fx * sw, fy * sh
-    span = 0.05
+    span = 0.07
     if mv == "up":
         cy += (0.5 - e) * span * 2 * sh
     elif mv == "down":
@@ -381,6 +595,8 @@ def view(src, sc, p):
         cx += (0.5 - e) * span * 2 * sw
     elif mv == "right":
         cx -= (0.5 - e) * span * 2 * sw
+    if punch:                                          # 컷 첫 몇 프레임: 살짝 크게 들어왔다 자리 잡음
+        cw, ch = cw / (1 + punch), ch / (1 + punch)
     cx = min(max(cx, cw / 2), sw - cw / 2)
     cy = min(max(cy, ch / 2), sh - ch / 2)
     return (cx - cw / 2, cy - ch / 2, cx + cw / 2, cy + ch / 2)
@@ -467,7 +683,7 @@ def build(ep, spec, a):
                 b_end = (n0 + pbound[pi][k + 1]) if k + 1 < len(idx) else end
                 beats.append((starts[i], b_end + 0.4))
         t = end + scenes[idx[-1]].get("hold", 0)
-        t += (1.0 if loop else 1.3) if pi == len(paras) - 1 else PGAP
+        t += END_TAIL if pi == len(paras) - 1 else PGAP
     for sc in scenes:
         sc["sfx"] = "hit" if "hit" in sc["_fx"] else ""
     total = t
@@ -477,19 +693,35 @@ def build(ep, spec, a):
         raise SystemExit(f"{total:.1f}초 — 서사형은 70초를 넘기지 않는다 (2026-11-02 사용자 결정). 곁가지 문장을 빼고 다시")
     if not loop and total < 48:
         print(f"주의: {total:.1f}초 — 서사형 목표 50~70초")
-    # 한 장면(같은 그림)은 2~3초, 3.5초를 넘으면 경고 (2026-11-04 — 터진 영상은 2~3초마다 화면이 바뀜)
+    # 컷: 장면마다 약 1.6초 안쪽으로 끊는다 (2026-11-04 분석 — 터진 영상 화면 변화 0.9~1.5초, 우리 3.8~4.6초)
     ends = starts[1:] + [total]
-    long_sc = [(i + 1, round(e - s, 1)) for i, (s, e) in enumerate(zip(starts, ends)) if e - s > 3.5]
-    if long_sc:
-        print("장면 길이 경고(3.5초 초과 — 문장을 두 장면으로 나누고 그림·zoom·focus를 바꾸세요): "
-              + ", ".join(f"장면{i} {d}초" for i, d in long_sc))
+    shots = []                                  # (시작, 끝, 컷, 장면 번호)
+    for i, (s0, e0) in enumerate(zip(starts, ends)):
+        shots += [(a0, a1, sh, i) for a0, a1, sh in plan_shots(scenes[i], s0, e0)]
+    long_sh = [(k + 1, round(a1 - a0, 1)) for k, (a0, a1, sh, i) in enumerate(shots) if a1 - a0 > 2.2]
+    if long_sh:
+        print("컷 길이 경고(2.2초 초과 — shots를 나누세요): " + ", ".join(f"컷{k} {d}초" for k, d in long_sh))
+    imgs_used = len({sh.get("img") or sh.get("proof") for _, _, sh, _ in shots})
+    print(f"컷 {len(shots)}개 · 평균 {total / len(shots):.2f}초 · 서로 다른 그림 {imgs_used}장")
     (ep / "short_scene_times.json").write_text(json.dumps(
         [round(e - s, 2) for s, e in zip(starts, ends)]))
+    events = []
+    for k, (a0, a1, sh, i) in enumerate(shots):
+        if k and a0 > 0.2 and not (sh.get("proof") and sh.get("_zoom")):
+            events.append((a0 - 0.08, "paper" if sh.get("proof") else "whoosh"))
+    for i, sc in enumerate(scenes):
+        for name in sc["_fx"]:
+            if name in FX:
+                events.append((starts[i] + (0.02 if i == 0 else 0.0), name))
+        if sc.get("big"):
+            bg = sc["big"] if isinstance(sc["big"], dict) else {"text": sc["big"]}
+            sc["_big"] = (bg["text"], starts[i] + (ends[i] - starts[i]) * bg.get("at", 0.15))
+            events.append((sc["_big"][1], "pop"))
 
     work = ep / "short_work"
     work.mkdir(exist_ok=True)
     audio = mix(total, [(pstart[pi], read_wav(pwav[pi])) for pi in range(len(paras))], hits, sil, horror,
-                knocks, beats)
+                knocks, beats, events)
     write_wav(work / "mix.wav", audio)
 
     # 3) 자막 시간표 — 문단 음성에서 어절 시각을 구하고, 장면 경계를 넘지 않게 덩어리를 나눈다
@@ -524,10 +756,17 @@ def build(ep, spec, a):
     black = Image.new("RGB", (W, H), (2, 3, 8))
     tl = title_layer(spec["hook"], spec.get("accent_word"), accent)
     lg = logo()
-    srcs = {}
-    for sc in scenes:
-        if sc["img"] not in srcs:
-            p = ep / "vpanels" / f"{sc['img']}.jpg"
+    srcs, proofs, bgc = {}, {}, {}
+    for _, _, sh, _ in shots:
+        if sh.get("proof"):
+            if sh["proof"] not in proofs:
+                pp = ep / sh["proof"]
+                if not pp.exists():
+                    raise SystemExit(f"증거 이미지 없음: {pp}")
+                proofs[sh["proof"]] = Image.open(pp).convert("RGB")
+            continue
+        if sh["img"] not in srcs:
+            p = ep / "vpanels" / f"{sh['img']}.jpg"
             if not p.exists():
                 raise SystemExit(f"세로 그림 없음: {p.name} — --images 먼저")
             im = Image.open(p).convert("RGB")
@@ -539,7 +778,7 @@ def build(ep, spec, a):
                 gray = im.convert("L").convert("RGB")
                 im = Image.blend(im, gray, 0.35)
                 im = Image.blend(im, Image.new("RGB", im.size, (6, 14, 24)), 0.18)
-            srcs[sc["img"]] = im
+            srcs[sh["img"]] = im
     grains = []
     if horror:                                # 필름 입자 (6장 돌려 씀)
         rng = np.random.default_rng(9)
@@ -553,23 +792,32 @@ def build(ep, spec, a):
     nframes = int(round(total * FPS))
     bounds = [int(round(s * FPS)) for s in starts[1:]] + [nframes]
     bounds_start = [0] + bounds[:-1]
-    cap_cache, stills, prev, ci = {}, [], None, 0
+    sbounds = [int(round(a1 * FPS)) for _, a1, _, _ in shots]
+    sbounds[-1] = nframes
+    sstart = [0] + sbounds[:-1]
+    sl = src_layer(spec.get("src_line", ""))
+    big_cache = {}
+    cap_cache, stills, ci = {}, [], 0
     for fi in range(nframes):
         tsec = fi / FPS
         si = next(k for k in range(len(scenes)) if fi < bounds[k])
         sc = scenes[si]
         b0, b1 = bounds_start[si], bounds[si]
-        p = (fi - b0) / max(1, b1 - b0)
-        fr = srcs[sc["img"]].resize((W, H), Image.BILINEAR, box=view(srcs[sc["img"]], sc, p))
-        if si > 0 and fi - b0 < 5 and sc.get("sfx") != "hit" and prev is not None:
-            fr = Image.blend(prev, fr, (fi - b0 + 1) / 6)
-        if fi == b1 - 1:
-            prev = fr
+        kk = next(k for k in range(len(shots)) if fi < sbounds[k])
+        sh = shots[kk][2]
+        c0f, c1f = sstart[kk], sbounds[kk]
+        p = (fi - c0f) / max(1, c1f - c0f)
+        if sh.get("proof"):                   # 실물 증거 화면 (자르지 않고 카드로)
+            fr = proof_frame(proofs[sh["proof"]], sh, p, accent, bgc).convert("RGB")
+        else:                                 # 하드 컷 + 첫 4프레임 살짝 펀치
+            k4 = fi - c0f
+            punch = 0.05 * (1 - k4 / 4) if kk > 0 and k4 < 4 else 0.0
+            fr = srcs[sh["img"]].resize((W, H), Image.BILINEAR, box=view(srcs[sh["img"]], sh, p, punch))
         # 반전 직전 무음 구간: 화면도 살짝 어두워진다
         dim = 0
         for s0, e0 in sil:
             if s0 <= tsec < e0 + 0.05:
-                dim = min(1, (tsec - s0) / 0.25) * 0.55
+                dim = min(1, (tsec - s0) / 0.25) * 0.3
         fr = Image.composite(black, fr, vig)
         if dim:
             fr = Image.blend(fr, black, dim)
@@ -579,6 +827,17 @@ def build(ep, spec, a):
         fr = fr.convert("RGBA")
         if grains:
             fr.alpha_composite(grains[(fi // 3) % len(grains)])   # 3프레임마다 바뀌는 입자 (용량 절약)
+        if sc.get("_big") and tsec >= sc["_big"][1]:
+            bt = sc["_big"][0]
+            if bt not in big_cache:
+                big_cache[bt] = big_image(bt, accent)
+            bi = big_cache[bt]
+            k5 = (tsec - sc["_big"][1]) * FPS
+            sz = 1.28 - 0.28 * min(1, k5 / 5)
+            if sz > 1.001:
+                bi = bi.resize((int(bi.width * sz), int(bi.height * sz)), Image.BILINEAR)
+            fr.alpha_composite(bi, (int((W - SAFE_R) / 2 + 20 - bi.width / 2), int(820 - bi.height / 2)))
+        fr.alpha_composite(sl)
         fr.alpha_composite(tl)
         fr.alpha_composite(lg, (W - SAFE_R // 2 - lg.width - 10, 240))   # 인스타 상단 가림 영역(위 230px) 아래로 (2026-11-02)
         if fi == 0:
