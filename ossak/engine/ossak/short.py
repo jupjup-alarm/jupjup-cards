@@ -21,12 +21,12 @@
      "img": "v01", "move": "in|out|up|down|left|right", "zoom": 1.0, "focus": [0.5, 0.5],
      "sfx": "hit",            # 반전 직전: 0.45초 숨(소리는 줄이기만) + 낮은 효과음 (한 편에 한 번). 공포형은 그 앞에 긴장음이 차오른다
                               # "knock": 노크 세 번 / "heartbeat": 낮은 심장 소리 / "thud": 떨어져 박히는 '퍽' / "pop" / "paper"
-                              # 여러 개면 ["thud", "hit"]. 컷마다 '휙'·큰 글자 '톡'·증거 '종이'는 자동
+                              # 여러 개면 ["thud", "hit"]. 그림 전환 '휙'·큰 글자 '톡'·증거 '종이'는 자동
      "hold": 0.0,             # 말이 끝난 뒤 그림을 더 보여줄 초
      "emph": ["9명"],         # 자막에서 말머리 색으로 칠할 단어
      # ── 편집 (2026-11-04 터진 영상 분석 반영 — 화면이 1.5초 넘게 멈추지 않는다) ──
-     "shots": [{"img": "v02", "zoom": 1.4, "focus": [0.4, 0.6], "move": "in", "w": 1}],   # 장면 안 컷. 없으면 자동으로
-                              # 약 1.6초마다 같은 그림의 다른 구도(원경↔근접)로 끊는다. "points": [[x,y],…]로 근접 위치 지정
+     "shots": [{"img": "v02", "zoom": 1.4, "focus": [0.4, 0.6], "move": "in", "w": 1}],   # 장면 안에서 다른 그림으로 넘어갈 때만.
+                              # 같은 그림 구도만 끊는 컷은 쓰지 않는다(2026-11-04 사용자: 정신없다). 한 장면 = 한 그림 + 천천히 움직임
      "big": "개구리 알?",      # 화면 가운데 큰 핵심어 (톡 소리와 함께 튀어나옴). {"text": "...", "at": 0.3}도 됨
      "proof": {"img": "proof/x.jpg", "hl": [x0, y0, x1, y1], "credit": "White Pine News 1876.3.18 · 미국 의회도서관"}
                               # 실물 증거(원본 신문·사진·문서). 전체 → hl 부분 확대 두 컷, hl은 그림 비율(0~1)로 형광펜
@@ -43,7 +43,7 @@
 
 화면: 위 300px·아래 420px·오른쪽 140px에는 글자를 두지 않는다. 제목은 위(y≈310~), 자막은 가운데 아래(y≈1130),
 부기 로고는 오른쪽 위. 첫 프레임부터 제목·그림·첫 자막이 보인다(로고 인트로·페이드인 없음).
-소리: 내레이션(구글 Umbriel) + 끊기지 않는 바닥 소리(바람 + 낮은 화음, 공포형은 낮은 울림) + 컷마다 '휙', 큰 글자 '톡',
+소리: 내레이션(구글 Umbriel) + 끊기지 않는 바닥 소리(바람 + 낮은 화음, 공포형은 낮은 울림) + 그림이 바뀔 때 '휙', 큰 글자 '톡',
 증거 '종이', sfx 장면 효과음. 문장 사이·반전 직전에도 소리를 비우지 않는다(줄일 뿐). 끝은 마지막 말 0.35초 뒤 바로 끝.
 """
 import argparse, base64, datetime, json, math, os, pathlib, re, subprocess, sys, time, urllib.error, urllib.request, wave
@@ -498,7 +498,7 @@ def proof_frame(P, shot, p, accent, bgc):
     fr = bgc[key].copy()
     hl = shot.get("hl")
     box = (0, 0, P.width, P.height)
-    if hl and shot.get("_zoom"):
+    if hl and (shot.get("_zoom") or shot.get("_glide")):
         x0, y0, x1, y1 = hl[0] * P.width, hl[1] * P.height, hl[2] * P.width, hl[3] * P.height
         bw, bh = (x1 - x0) * 1.35, (y1 - y0) * 1.8
         ar = P.width / P.height
@@ -511,7 +511,11 @@ def proof_frame(P, shot, p, accent, bgc):
         cx = min(max(cx, bw / 2), P.width - bw / 2)
         cy = min(max(cy, bh / 2), P.height - bh / 2)
         box = (cx - bw / 2, cy - bh / 2, cx + bw / 2, cy + bh / 2)
-    z = 1 + 0.06 * p                                   # 천천히 다가감
+        if shot.get("_glide"):                         # 전체(처음 25%) → 형광펜 부분으로 부드럽게 다가감
+            e = min(1, max(0, (p - 0.25) / 0.5))
+            e = e * e * (3 - 2 * e)
+            box = tuple(a + (b - a) * e for a, b in zip((0, 0, P.width, P.height), box))
+    z = 1 + 0.04 * p                                   # 천천히 다가감
     bx0, by0, bx1, by1 = box
     cw, ch = (bx1 - bx0) / z, (by1 - by0) / z
     mx, my = (bx0 + bx1) / 2, (by0 + by1) / 2
@@ -520,7 +524,8 @@ def proof_frame(P, shot, p, accent, bgc):
     dw, dh = int(cw * r), int(ch * r)
     card = P.resize((dw, dh), Image.LANCZOS, box=box).convert("RGBA")
     if hl:                                             # 형광펜: 장면 20%부터 왼쪽→오른쪽으로 칠해짐
-        m = min(1, max(0, (p - 0.2) / 0.35)) if shot.get("_zoom") or not shot.get("_split") else 0
+        m = (min(1, max(0, (p - 0.55) / 0.3)) if shot.get("_glide")
+             else min(1, max(0, (p - 0.2) / 0.35)) if shot.get("_zoom") or not shot.get("_split") else 0)
         if m > 0:
             hx0 = (hl[0] * P.width - box[0]) * r
             hy0 = (hl[1] * P.height - box[1]) * r
@@ -552,9 +557,9 @@ def plan_shots(sc, s, e):
     elif sc.get("proof"):
         pf = sc["proof"]
         base = {"proof": pf["img"], "hl": pf.get("hl"), "credit": pf.get("credit", ""), "_split": bool(pf.get("hl"))}
-        shots = [dict(base)] + ([dict(base, _zoom=True)] if pf.get("hl") and d > 1.4 else [])
+        shots = [dict(base, _glide=bool(pf.get("hl")))]
     else:
-        n = max(1, math.ceil(d / SHOT_MAX)) if not sc.get("one_shot") else 1
+        n = max(1, math.ceil(d / SHOT_MAX)) if sc.get("split") else 1   # 2026-11-04 사용자: 같은 그림 구도만 끊는 자동 컷은 정신없다 → 기본 끔
         z0 = sc.get("zoom", 1.0)
         f0 = sc.get("focus", [0.5, 0.5])
         pts = sc.get("points") or [f0, [f0[0] + 0.08, f0[1] - 0.05], [f0[0] - 0.08, f0[1] + 0.05], [f0[0] + 0.04, f0[1] + 0.07]]
@@ -583,7 +588,7 @@ def view(src, sc, p, punch=0.0):
     fx, fy = sc.get("focus", [0.5, 0.5])
     mv = sc["move"]
     e = p * p * (3 - 2 * p) * 0.35 + p * 0.65          # 살짝 부드러운 시작
-    z = z0 * (1 + 0.12 * e) if mv == "in" else z0 * (1.12 - 0.12 * e) if mv == "out" else z0 * 1.08
+    z = z0 * (1 + 0.10 * e) if mv == "in" else z0 * (1.10 - 0.10 * e) if mv == "out" else z0 * 1.07
     cw, ch = sw / z, sh / z
     cx, cy = fx * sw, fy * sh
     span = 0.07
@@ -693,21 +698,24 @@ def build(ep, spec, a):
         raise SystemExit(f"{total:.1f}초 — 서사형은 70초를 넘기지 않는다 (2026-11-02 사용자 결정). 곁가지 문장을 빼고 다시")
     if not loop and total < 48:
         print(f"주의: {total:.1f}초 — 서사형 목표 50~70초")
-    # 컷: 장면마다 약 1.6초 안쪽으로 끊는다 (2026-11-04 분석 — 터진 영상 화면 변화 0.9~1.5초, 우리 3.8~4.6초)
+    # 컷: 그림이 바뀔 때만 (같은 그림 구도 컷은 2026-11-04 사용자 판단으로 끔 — split:true일 때만)
     ends = starts[1:] + [total]
     shots = []                                  # (시작, 끝, 컷, 장면 번호)
     for i, (s0, e0) in enumerate(zip(starts, ends)):
         shots += [(a0, a1, sh, i) for a0, a1, sh in plan_shots(scenes[i], s0, e0)]
-    long_sh = [(k + 1, round(a1 - a0, 1)) for k, (a0, a1, sh, i) in enumerate(shots) if a1 - a0 > 2.2]
+    long_sh = [(k + 1, round(a1 - a0, 1)) for k, (a0, a1, sh, i) in enumerate(shots) if a1 - a0 > 4.5]
     if long_sh:
-        print("컷 길이 경고(2.2초 초과 — shots를 나누세요): " + ", ".join(f"컷{k} {d}초" for k, d in long_sh))
+        print("그림 길이 경고(한 그림 4.5초 초과 — 다음 그림을 일찍 넣거나 문장을 나누세요): " + ", ".join(f"컷{k} {d}초" for k, d in long_sh))
     imgs_used = len({sh.get("img") or sh.get("proof") for _, _, sh, _ in shots})
-    print(f"컷 {len(shots)}개 · 평균 {total / len(shots):.2f}초 · 서로 다른 그림 {imgs_used}장")
+    print(f"그림 전환 {len(shots)}번 · 평균 {total / len(shots):.2f}초 · 서로 다른 그림 {imgs_used}장")
     (ep / "short_scene_times.json").write_text(json.dumps(
         [round(e - s, 2) for s, e in zip(starts, ends)]))
     events = []
+    def src_of(sh):
+        return sh.get("proof") or sh.get("img")
     for k, (a0, a1, sh, i) in enumerate(shots):
-        if k and a0 > 0.2 and not (sh.get("proof") and sh.get("_zoom")):
+        sh["_new"] = k == 0 or src_of(sh) != src_of(shots[k - 1][2])
+        if k and a0 > 0.2 and sh["_new"]:        # 그림이 바뀔 때만 (같은 그림 구도 바뀜엔 소리 없음)
             events.append((a0 - 0.08, "paper" if sh.get("proof") else "whoosh"))
     for i, sc in enumerate(scenes):
         for name in sc["_fx"]:
@@ -811,7 +819,7 @@ def build(ep, spec, a):
             fr = proof_frame(proofs[sh["proof"]], sh, p, accent, bgc).convert("RGB")
         else:                                 # 하드 컷 + 첫 4프레임 살짝 펀치
             k4 = fi - c0f
-            punch = 0.05 * (1 - k4 / 4) if kk > 0 and k4 < 4 else 0.0
+            punch = 0.04 * (1 - k4 / 4) if kk > 0 and sh.get("_new") and k4 < 4 else 0.0
             fr = srcs[sh["img"]].resize((W, H), Image.BILINEAR, box=view(srcs[sh["img"]], sh, p, punch))
         # 반전 직전 무음 구간: 화면도 살짝 어두워진다
         dim = 0
