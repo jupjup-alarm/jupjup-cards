@@ -45,7 +45,7 @@
 틀: `episodes/_template/video.json`(필드마다 쓰는 법이 값에 적혀 있음). 옛 형식 예시: episodes/S-0001-youth-future/(summary 장면·장면형 숏츠).
 - 장면 8종 순서: **hook → check → calc → table → official → apply → kids → outro**. '3줄 요약'(summary) 장면은 없애고 outro.data.rows로 옮긴다. kids는 이번 주제와 이어지는 반대 세대 혜택 1개.
 - **0초 규칙**: hook.say[0]은 대상 + 손익 한 문장(인사·채널 소개 금지). 첫 프레임부터 badge·big·line이 다 보인다. say[2]는 '오늘 볼 3가지' 예고(hook.data.agenda 칩 3개, agenda_at=2), say[3]에 "오늘도 받을 돈부터 챙겨드릴게요. 효도알람 막내예요." + 좋아요 다리("도움 되시면 좋아요 한 번…"). hook은 15초 안팎.
-- **60초 안에 금액**: check(3문항)를 짧게 하고 calc를 세 번째에. calc는 `bars`(비율·금액 막대 2~4개, n=막대 길이용 숫자) 또는 적립식(monthly·months·rates).
+- **60초 안에 금액**: check(3문항)를 짧게 하고 calc를 세 번째에. calc는 `bars`(비율·금액 막대 2~4개, n=막대 길이용 숫자), `items`(받는 돈: [{label, monthly}] × months) 또는 적립식(monthly·months·rates).
 - official: 2문장(6~10초), data.headline(무엇을 확인했나 한 줄, 22자 안팎) + label(출처) + highlight(캡처에서 강조할 글자).
 - 자녀 공유 요청: calc 끝 1문장 + outro 끝(엔딩 문구).
 - 필드: id, category(본인/자녀/정책변화), checked, title, thumb{age, big, img, mood}, voice(ko-KR-Chirp3-HD-Sulafat 고정), rate(선택, 기본 1.15), tags[](5~8개), hashtags[](2~3개), playlist, sources[{name,url}], scenes[{id, type, chapter, data, say[]}], shorts[{id, title, topic, beats[]}].
