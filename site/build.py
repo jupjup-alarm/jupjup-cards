@@ -77,7 +77,7 @@ RENTAL_EXPLAIN = {
 }
 COMP_FAQ = [   # 청약 경쟁률 허브 자주 묻는 질문 (2026-11-04) — 이 사이트 계산 방식과 일반 원칙만, 공고별 수치 없음
     ("평균 경쟁률과 최고 경쟁률은 어떻게 달라요?",
-     "평균 경쟁률은 그 공고의 전체 접수 건수를 전체 공급 세대로 나눈 값이에요. 최고 경쟁률은 주택형·순위별로 따로 낸 경쟁률 중 가장 높은 값이라, 인기 타입 하나에 몰리면 평균보다 훨씬 높게 나와요."),
+     "평균 경쟁률은 그 공고의 전체 접수 건수를 전체 공급 세대로 나눈 값이에요. 최고 경쟁률은 타입·순위별로 따로 낸 경쟁률 중 가장 높은 값이라, 인기 타입 하나에 몰리면 평균보다 훨씬 높게 나와요."),
     ("경쟁률이 1대 1보다 낮으면 무슨 뜻이에요?",
      "접수한 사람이 공급 세대보다 적은 '미달'이에요. 남은 세대는 나중에 무순위(줍줍)로 다시 나올 수 있어서, 미달 단지는 줍줍 공고를 같이 지켜보는 게 좋아요."),
     ("이 페이지의 경쟁률은 어디서 가져와요?",
@@ -212,9 +212,10 @@ def sd(iso):
 
 
 # 공고 상세 바로가기 칩 (2026-11-03 사용자 결정 — 페이지에 실제로 있는 칸만, 나오는 순서대로)
-CHIPS = {"h-sch": "일정", "h-chk": "나도 될까", "h-gap": "시세 비교", "h-fund": "돈 계산", "h-rent": "입주·월 비용", "h-odds": "경쟁 예상",
-         "h-trap": "주의점", "h-comp": "경쟁률", "h-price": "분양가 표", "h-houses": "주택 목록", "h-plan": "평면", "h-layout": "배치도",
-         "h-tour": "둘러보기", "h-loc": "위치", "h-elig": "자격", "h-faq": "FAQ"}
+# 2026-11-04 사용자 결정 "사람들이 흔히 쓰는 단어와 언어로": 나도 될까→30초 체크, 돈 계산→필요한 돈, FAQ→자주 묻는 질문 등
+CHIPS = {"h-sch": "일정", "h-chk": "30초 체크", "h-gap": "시세 비교", "h-fund": "필요한 돈", "h-rent": "보증금·월세", "h-odds": "경쟁률 예상",
+         "h-trap": "주의점", "h-comp": "경쟁률", "h-price": "분양가 표", "h-houses": "주택 목록", "h-plan": "평면도", "h-layout": "배치도",
+         "h-tour": "단지 사진", "h-loc": "위치", "h-elig": "신청 자격", "h-faq": "자주 묻는 질문"}
 
 
 def chipnav(h, n):
@@ -716,34 +717,34 @@ def make_decide_rental(n, src):
         lo, hi = min(mon), max(mon)
         head = f"월 {won_band(lo)}" if lo == hi else f"월 {won_band(lo)}~{won_band(hi)}"
     else:
-        head = "월 임대료 공고문 확인"
+        head = "월세 공고문 확인"
     m = re.search(r"주변 시세의 약 (\d+(?:\.\d+)?)% 수준", v)
     pm = re.search(r"(\d+(?:\.\d+)?)%", n.get("rent_level") or "")
     if m:
         pct = float(m.group(1))
-        cards.append({"k": "월 부담", "sig": "g" if pct <= 60 else ("y" if pct <= 85 else "r"), "head": head, "sub": f"주변 시세의 약 {m.group(1)}% (추정)"})
+        cards.append({"k": "월세", "sig": "g" if pct <= 60 else ("y" if pct <= 85 else "r"), "head": head, "sub": f"주변 시세의 약 {m.group(1)}% (추정)"})
     elif re.search(r"저렴\(추정\)$", v):
-        cards.append({"k": "월 부담", "sig": "g", "head": head, "sub": "주변 시세보다 " + v[:-4].strip() + " (추정)"})
+        cards.append({"k": "월세", "sig": "g", "head": head, "sub": "주변 시세보다 " + v[:-4].strip() + " (추정)"})
     elif pm:
         pct = float(pm.group(1))
-        cards.append({"k": "월 부담", "sig": "g" if pct <= 60 else ("y" if pct <= 85 else "r"), "head": head, "sub": n["rent_level"] + " (공고 기준)"})
+        cards.append({"k": "월세", "sig": "g" if pct <= 60 else ("y" if pct <= 85 else "r"), "head": head, "sub": n["rent_level"] + " (공고 기준)"})
     else:
-        cards.append({"k": "월 부담", "sig": "n", "head": head, "sub": "주변 시세와 비교는 확인 중이에요"})
-    rule.append("월 부담: 주변 시세(또는 공고의 시중시세)의 60% 이하면 초록, 85% 이하면 노랑, 그보다 비싸면 빨강, 비교 전이면 회색")
+        cards.append({"k": "월세", "sig": "n", "head": head, "sub": "주변 시세와 비교는 확인 중이에요"})
+    rule.append("월세: 주변 시세(또는 공고의 시중시세)의 60% 이하면 좋음, 85% 이하면 보통, 그보다 비싸면 주의, 비교 전이면 표시 없음")
     d = src.get("door") or {}
     if d.get("head"):
-        cards.append({"k": "문턱", "sig": d.get("sig", "n"), "head": d["head"], "sub": d.get("sub", "")})
-    rule.append("문턱: 무주택·계층 자격 말고 소득·자산 기준과 거주지역 제한이 없으면 초록, 하나 있으면 노랑, 둘 다 있으면 빨강")
+        cards.append({"k": "자격", "sig": d.get("sig", "n"), "head": d["head"], "sub": d.get("sub", "")})
+    rule.append("자격: 무주택·계층 자격 말고 소득·자산 기준과 거주지역 제한이 없으면 좋음, 하나 있으면 보통, 둘 다 있으면 주의")
     st = src.get("stay") or {}
     if st.get("head"):
-        cards.append({"k": "거주기간", "sig": st.get("sig", "n"), "head": st["head"], "sub": st.get("sub", "")})
-    rule.append("거주기간: 최장 10년 이상 살 수 있으면 초록, 4~9년이면 노랑, 그보다 짧으면 빨강")
+        cards.append({"k": "살 수 있는 기간", "sig": st.get("sig", "n"), "head": st["head"], "sub": st.get("sub", "")})
+    rule.append("살 수 있는 기간: 최장 10년 이상 살 수 있으면 좋음, 4~9년이면 보통, 그보다 짧으면 주의")
     if dep:
         lo, hi = min(dep), max(dep)
         sig = "r" if hi >= 100_000_000 else ("y" if hi >= 30_000_000 else "g")
-        cards.append({"k": "입주 돈", "sig": sig, "head": f"보증금 {won(lo)}" if lo == hi else f"보증금 {won(lo)[:-1]}~{won(hi)}",
-                      "sub": src.get("dep_sub") or "블록·주택형·계층별로 달라요"})
-    rule.append("입주 돈: 보증금이 1억원 이상이면 빨강, 3천만원 이상이면 노랑, 그보다 적으면 초록")
+        cards.append({"k": "보증금", "sig": sig, "head": f"보증금 {won(lo)}" if lo == hi else f"보증금 {won(lo)[:-1]}~{won(hi)}",
+                      "sub": src.get("dep_sub") or "블록·타입·계층별로 달라요"})
+    rule.append("보증금: 보증금이 1억원 이상이면 주의, 3천만원 이상이면 보통, 그보다 적으면 좋음")
     conv = src.get("conv")
     opts = [[m["type"], m["deposit"], m.get("monthly") or 0] for m in ms]
     return {"rental": True, "cards": cards, "rule": rule, "fit": src.get("fit"),
@@ -769,18 +770,18 @@ def make_decide(n, notices):
         pct = round(pr * 100 / mk)
         sig = "g" if pct <= 70 else ("y" if pct <= 90 else "r")
         base = re.sub(r"\s*\(.*?\)\s*$", "", rows[0][0])
-        cards.append({"k": "이득", "sig": sig, "head": "시세보다 " + gap["verdict"][:-4].strip(), "sub": f"주변 시세의 {pct}% 가격 · {base} 대비 (추정)"})
+        cards.append({"k": "시세 차이", "sig": sig, "head": "시세보다 " + gap["verdict"][:-4].strip(), "sub": f"주변 시세의 {pct}% 가격 · {base} 대비 (추정)"})
         bars = {"mk": rows[0], "pr": rows[1], "pct": pct}
     elif gap.get("verdict"):
-        cards.append({"k": "이득", "sig": "r", "head": gap["verdict"], "sub": "근거는 아래 '시세와 비교하면'"})
+        cards.append({"k": "시세 차이", "sig": "r", "head": gap["verdict"], "sub": "근거는 아래 '시세와 비교하면'"})
     else:
-        cards.append({"k": "이득", "sig": "n", "head": "비교 시세 확인 중", "sub": "근거 단지를 찾으면 채워요"})
-    rule.append("이득: 분양가가 주변 시세의 70% 이하면 초록, 90% 이하면 노랑, 그보다 비싸거나 차익 기대가 낮으면 빨강")
+        cards.append({"k": "시세 차이", "sig": "n", "head": "비교 시세 확인 중", "sub": "근거 단지를 찾으면 채워요"})
+    rule.append("시세 차이: 분양가가 주변 시세의 70% 이하면 좋음, 90% 이하면 보통, 그보다 비싸거나 차익 기대가 낮으면 주의")
     # ② 문턱 — 사람이 판정 (지역·소득·자산 조건 수)
     d = src.get("door") or {}
     if d.get("head"):
-        cards.append({"k": "문턱", "sig": d.get("sig", "n"), "head": d["head"], "sub": d.get("sub", "")})
-    rule.append("문턱: 청약통장·소득·거주지역 조건이 없으면 초록, 하나 있으면 노랑, 둘 이상이면 빨강")
+        cards.append({"k": "자격", "sig": d.get("sig", "n"), "head": d["head"], "sub": d.get("sub", "")})
+    rule.append("자격: 청약통장·소득·거주지역 조건이 없으면 좋음, 하나 있으면 보통, 둘 이상이면 주의")
     # ③ 경쟁 — 공급 세대 수 + 최근 같은 유형 경쟁률
     refs = comp_refs(notices, n["kind"]) if n["kind"] == "mujeonwi" else []
     rates = sorted(x["rate"] for x in refs)
@@ -791,8 +792,8 @@ def make_decide(n, notices):
     if one_day:
         head += " · 하루 접수"
     sub = f"최근 수도권 줍줍 {len(rates)}곳 경쟁률 가운데값 {med:.1f}대 1" if med is not None else (src.get("comp_sub") or "")
-    cards.append({"k": "경쟁", "sig": sig, "head": head, "sub": sub})
-    rule.append("경쟁: 공급이 5세대 이하면 빨강, 30세대 이하면 노랑, 그보다 많으면 초록")
+    cards.append({"k": "경쟁률", "sig": sig, "head": head, "sub": sub})
+    rule.append("경쟁률: 공급이 5세대 이하면 주의, 30세대 이하면 보통, 그보다 많으면 좋음")
     # ④ 자금 — 계약금
     f = src.get("funds") or {}
     price = n.get("max_price") or 0
@@ -801,8 +802,8 @@ def make_decide(n, notices):
         amt = price * dep // 100
         sig = "r" if amt >= 150_000_000 else ("y" if amt >= 50_000_000 else "g")
         rest = price - amt
-        cards.append({"k": "자금", "sig": sig, "head": f"계약금 {won_about(amt)}", "sub": f"입주 전까지 {won_about(rest)} 더" + (f" · {f['card_tail']}" if f.get("card_tail") else "")})
-    rule.append("자금: 계약 때 필요한 현금이 1억5천만원 이상이면 빨강, 5천만원 이상이면 노랑, 그보다 적으면 초록")
+        cards.append({"k": "필요한 돈", "sig": sig, "head": f"계약금 {won_about(amt)}", "sub": f"입주 전까지 {won_about(rest)} 더" + (f" · {f['card_tail']}" if f.get("card_tail") else "")})
+    rule.append("필요한 돈: 계약 때 필요한 현금이 1억5천만원 이상이면 주의, 5천만원 이상이면 보통, 그보다 적으면 좋음")
     # 돈 흐름
     opts = f.get("price_options") or ([[n.get("max_type") or "최고가", price]] if price else [])
     steps = [{"label": a, "when": fill(b), "pct": c} for a, b, c in f.get("steps", [])]
@@ -1885,7 +1886,7 @@ def main():
         mu = sum(1 for r in rows_ if r["n"]["kind"] == "mujeonwi")
         bn = best_["n"].get("complex") or best_["n"]["title"]
         return (f"최근 접수가 끝난 {len(rows_)}곳(무순위·줍줍 {mu}곳 포함)의 청약홈 공식 경쟁률이에요. "
-                f"주택형 기준 최고 경쟁률은 {bn} {best_['top']}이고, 평균 경쟁률이 1대 1에 못 미친 미달 단지는 {under}곳이에요.")
+                f"타입 기준 최고 경쟁률은 {bn} {best_['top']}이고, 평균 경쟁률이 1대 1에 못 미친 미달 단지는 {under}곳이에요.")
 
     # 청약 경쟁률 허브 (2026-11-02 SEO 기획안 3단계 — 네이버 '청약 경쟁률' 월 약 4,300회 검색, _site.json) — crow는 유형 허브 앞에서 계산
     if crow:

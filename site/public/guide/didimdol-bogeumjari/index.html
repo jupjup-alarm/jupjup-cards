@@ -406,7 +406,7 @@
     <section class="g-src" aria-labelledby="g-src">
       <h2 id="g-src">근거와 출처</h2>
       <ul><li><a href="https://nhuf.molit.go.kr/FP/FP05/FP0503/FP05030101.jsp" target="_blank" rel="noopener nofollow">주택도시기금 내집마련 디딤돌대출 안내</a> — 대상·세대주·소득·순자산·대상주택·한도·LTV·DTI·금리표(2026.10.29 게시값)·우대·중도상환수수료·실거주·신혼 1인 소득 기준(자주하는 질문 포함)</li><li><a href="https://www.hf.go.kr/ko/sub01/sub01_01_01.do" target="_blank" rel="noopener nofollow">한국주택금융공사 보금자리론 (일반)·(특성별) 상품소개</a> — 신청대상·6억 원 주택·주택 수·소득·LTV·DTI 규제지역 차감과 예외·한도·만기·용도·우대·가산·조기상환수수료·추가주택 처분. 생애최초 보금자리론은 특성별 상품소개(sub01_01_02)</li><li><a href="https://www.hf.go.kr/ko/sub01/sub01_01_04.do" target="_blank" rel="noopener nofollow">한국주택금융공사 보금자리론 금리안내</a> — 2026.10.1 공시 만기별 금리(아낌e·u·t), 우대금리 항목·한도, 규제지역 가산. 2026.9.28 &#39;10월 보금자리론 금리 동결&#39; 보도자료로 확인</li><li><a href="https://www.hf.go.kr/_custom/hf/_common/board/index/21.do?mode=view&amp;articleNo=600594" target="_blank" rel="noopener nofollow">한국주택금융공사 보도자료 — 보금자리론, 소득기준 개선해 &#39;결혼페널티&#39; 없앤다 (2026.9.28)</a> — 신혼부부 1인 연소득 7천만 원 기준, 2026.10.19 신규 신청분부터 (2026.8.13 금융 종합대책 후속)</li><li><a href="https://www.fsc.go.kr/edu/news/84845" target="_blank" rel="noopener nofollow">금융위원회 — 가계부채 관리 강화 방안 (2025.6.27)</a> — 생애최초 LTV 수도권·규제지역 70%(정책대출 동일), 디딤돌 한도 축소, 6억 원 한도에서 정책대출 제외, DSR 적용 확대 검토 언급</li><li><a href="https://www.fsc.go.kr/po020201/85466" target="_blank" rel="noopener nofollow">금융위원회 — 「10.15 주택시장 안정화 대책」 관련 FAQ (2025.10.17)</a> — 규제지역 디딤돌 LTV 70%·DTI 60%, 보금자리론 LTV 60%·DTI 50%(생애최초·실수요자 예외), 한도 3.6억·4.2억 원 유지</li></ul>
-      <p class="note">2026.10 기준으로 법령·공식 안내를 확인해 정리했어요 (처음 쓴 날 2026.10.29, 마지막 확인 2026.10.29). 제도는 바뀔 수 있으니 신청 전에는 입주자모집공고와 해당 기관 안내를 꼭 확인하세요. 이 글은 정보 제공 목적이며 투자·대출 권유가 아니에요. 틀린 곳은 <a href="/contact/">문의</a>로 알려 주세요.</p>
+      <p class="note">2026.10 기준으로 법령·공식 안내를 확인해 정리했어요 (처음 쓴 날 2026.10.29, 마지막 확인 2026.10.29). 제도는 바뀔 수 있으니 신청 전에는 모집공고와 해당 기관 안내를 꼭 확인하세요. 이 글은 정보 제공 목적이며 투자·대출 권유가 아니에요. 틀린 곳은 <a href="/contact/">문의</a>로 알려 주세요.</p>
     </section>
   </article>
 
@@ -445,7 +445,7 @@
     var muv=[0,2],tgv=[1,2];for(y=1;y<15;y++){muv.push(2*y+2);tgv.push(y+2);}muv.push(32);tgv.push(17);
     function sel(id,opts,def){return '<label class="g-row"><span>'+id+'</span><select>'+opts.map(function(o,i){return '<option value="'+i+'"'+(i===def?' selected':'')+'>'+o+'</option>';}).join('')+'</select></label>';}
     el.innerHTML='<h3>내 청약 가점 계산해 보기</h3>'+sel('무주택 기간',mu,8)+sel('부양가족 수 (본인 제외)',bu,2)+sel('청약통장 가입기간',tg,10)+
-      '<div class="g-res"><b data-t>0점</b><span data-d></span></div><div class="g-bar3"><i data-a></i><i data-b></i><i data-c></i></div><p class="g-toolnote">점수표는 주택공급에 관한 규칙 별표 1 기준이에요. 무주택 기간 시작일·부양가족 인정 여부에 따라 달라질 수 있으니 최종 점수는 청약홈 \'청약가점 계산하기\'와 입주자모집공고로 확인하세요.</p>';
+      '<div class="g-res"><b data-t>0점</b><span data-d></span></div><div class="g-bar3"><i data-a></i><i data-b></i><i data-c></i></div><p class="g-toolnote">점수표는 주택공급에 관한 규칙 별표 1 기준이에요. 무주택 기간 시작일·부양가족 인정 여부에 따라 달라질 수 있으니 최종 점수는 청약홈 \'청약가점 계산하기\'와 모집공고로 확인하세요.</p>';
     var ss=el.querySelectorAll('select');
     function run(){var a=muv[+ss[0].value],b=5+5*(+ss[1].value),c=tgv[+ss[2].value],t=a+b+c;
       el.querySelector('[data-t]').textContent=t+'점';el.querySelector('[data-d]').textContent='/ 84점 · 무주택 '+a+' + 부양가족 '+b+' + 통장 '+c;

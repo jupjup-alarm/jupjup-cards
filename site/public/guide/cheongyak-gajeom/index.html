@@ -226,7 +226,7 @@
     <section class="g-src" aria-labelledby="g-src">
       <h2 id="g-src">근거와 출처</h2>
       <ul><li><a href="https://www.law.go.kr/법령/주택공급에관한규칙" target="_blank" rel="noopener nofollow">주택공급에 관한 규칙 (국토교통부령 제1592호, 2026.6.15 시행)</a> — 제10조·제19조·제23조·제26조·제27조·제28조·제46조·제53조·제55조</li><li><a href="https://www.law.go.kr/법령별표서식/(주택공급에 관한 규칙,20260615,별표1)" target="_blank" rel="noopener nofollow">주택공급에 관한 규칙 별표 1 가점제 적용기준</a> — 가점 항목·점수표, 배우자 통장 합산(비고 2)</li><li><a href="https://www.applyhome.co.kr/ap/apg/selectAddpntCalculatorView.do" target="_blank" rel="noopener nofollow">청약홈 청약가점계산기</a> — 무주택 0점 기준, 부양가족 제외 사례, 미성년 가입기간</li><li><a href="https://www.applyhome.co.kr/ar/ara/selectSubscrptIntroPreawnerSlctnView.do" target="_blank" rel="noopener nofollow">청약홈 청약제도안내 — 당첨자 선정</a> — 민영주택 가점·추첨 선정 비율, 추첨제 무주택 우선</li></ul>
-      <p class="note">2026.10 기준으로 법령·공식 안내를 확인해 정리했어요 (처음 쓴 날 2026.10.29, 마지막 확인 2026.10.29). 제도는 바뀔 수 있으니 신청 전에는 입주자모집공고와 해당 기관 안내를 꼭 확인하세요. 이 글은 정보 제공 목적이며 투자·대출 권유가 아니에요. 틀린 곳은 <a href="/contact/">문의</a>로 알려 주세요.</p>
+      <p class="note">2026.10 기준으로 법령·공식 안내를 확인해 정리했어요 (처음 쓴 날 2026.10.29, 마지막 확인 2026.10.29). 제도는 바뀔 수 있으니 신청 전에는 모집공고와 해당 기관 안내를 꼭 확인하세요. 이 글은 정보 제공 목적이며 투자·대출 권유가 아니에요. 틀린 곳은 <a href="/contact/">문의</a>로 알려 주세요.</p>
     </section>
   </article>
 
@@ -265,7 +265,7 @@
     var muv=[0,2],tgv=[1,2];for(y=1;y<15;y++){muv.push(2*y+2);tgv.push(y+2);}muv.push(32);tgv.push(17);
     function sel(id,opts,def){return '<label class="g-row"><span>'+id+'</span><select>'+opts.map(function(o,i){return '<option value="'+i+'"'+(i===def?' selected':'')+'>'+o+'</option>';}).join('')+'</select></label>';}
     el.innerHTML='<h3>내 청약 가점 계산해 보기</h3>'+sel('무주택 기간',mu,8)+sel('부양가족 수 (본인 제외)',bu,2)+sel('청약통장 가입기간',tg,10)+
-      '<div class="g-res"><b data-t>0점</b><span data-d></span></div><div class="g-bar3"><i data-a></i><i data-b></i><i data-c></i></div><p class="g-toolnote">점수표는 주택공급에 관한 규칙 별표 1 기준이에요. 무주택 기간 시작일·부양가족 인정 여부에 따라 달라질 수 있으니 최종 점수는 청약홈 \'청약가점 계산하기\'와 입주자모집공고로 확인하세요.</p>';
+      '<div class="g-res"><b data-t>0점</b><span data-d></span></div><div class="g-bar3"><i data-a></i><i data-b></i><i data-c></i></div><p class="g-toolnote">점수표는 주택공급에 관한 규칙 별표 1 기준이에요. 무주택 기간 시작일·부양가족 인정 여부에 따라 달라질 수 있으니 최종 점수는 청약홈 \'청약가점 계산하기\'와 모집공고로 확인하세요.</p>';
     var ss=el.querySelectorAll('select');
     function run(){var a=muv[+ss[0].value],b=5+5*(+ss[1].value),c=tgv[+ss[2].value],t=a+b+c;
       el.querySelector('[data-t]').textContent=t+'점';el.querySelector('[data-d]').textContent='/ 84점 · 무주택 '+a+' + 부양가족 '+b+' + 통장 '+c;

@@ -7,7 +7,7 @@
 {% block main %}
 <main class="wrap page" id="main">
   {# 2026-11-03 리디자인 v2 (SEO 우선): 사진이 있으면 사진 → 제목부, 없으면 남색 제목 띠 + 위치 지도 #}
-  {% if n.is_pre and not n.moved %}<p class="pre-ban"><i aria-hidden="true"></i>아직 입주자모집공고 전이에요 · 모든 값은 보도 기준</p>{% endif %}
+  {% if n.is_pre and not n.moved %}<p class="pre-ban"><i aria-hidden="true"></i>아직 모집공고 전이에요 · 모든 값은 보도 기준</p>{% endif %}
   {% if n.imgs.hero %}
   <figure class="hero2">
     <img class="hero-img" src="{{ n.imgs.hero.src }}" width="{{ n.imgs.hero.w }}" height="{{ n.imgs.hero.h }}" alt="{{ n.photo.alt }}" fetchpriority="high" decoding="async"{% if n.photo.pos %} style="object-position:{{ n.photo.pos }}"{% endif %}>
@@ -39,7 +39,7 @@
   <div class="ticket" data-nx="{{ n.status }}">
     <dl class="tf num">
       {% if n.is_rental %}
-      <div><dt>임대보증금</dt><dd>{% if n.houses and n.rent_range and n.rent_range.deposit %}{{ n.rent_range.deposit[0]|money }}</dd><dd class="s">부터 · 집마다 달라요{% elif n.rent_summary.deposit %}{{ n.rent_summary.deposit|money }}{% else %}공고문{% endif %}</dd></div>
+      <div><dt>보증금</dt><dd>{% if n.houses and n.rent_range and n.rent_range.deposit %}{{ n.rent_range.deposit[0]|money }}</dd><dd class="s">부터 · 집마다 달라요{% elif n.rent_summary.deposit %}{{ n.rent_summary.deposit|money }}{% else %}공고문{% endif %}</dd></div>
       {% else %}
       <div><dt>{{ n.price_label }}</dt><dd>{{ n.max_price|won }}</dd><dd class="s">{{ n.max_type }} 기준</dd></div>
       {% endif %}
@@ -47,7 +47,7 @@
       {% if n.comp and n.comp.short and n.status in ('waiting', 'announced') %}
       {% set cr = n.comp.short.split(' · ')[-1] %}<div class="cmp"><dt>{{ '평균 경쟁률' if cr.startswith('평균 ') else '경쟁률' }}</dt>{% set cv = cr[3:] if cr.startswith('평균 ') else cr %}<dd{% if cv|length > 7 %} class="sm"{% endif %}>{{ cv|replace('대 1', '대 1') }}</dd></div>
       {% elif n.is_rental %}
-      <div><dt>월 임대료</dt><dd>{% if n.houses and n.rent_range and n.rent_range.monthly %}{{ n.rent_range.monthly[0]|money }}</dd><dd class="s">부터{% elif n.rent_summary.monthly %}{{ n.rent_summary.monthly|money }}{% else %}공고문{% endif %}</dd></div>
+      <div><dt>월세</dt><dd>{% if n.houses and n.rent_range and n.rent_range.monthly %}{{ n.rent_range.monthly[0]|money }}</dd><dd class="s">부터{% elif n.rent_summary.monthly %}{{ n.rent_summary.monthly|money }}{% else %}공고문{% endif %}</dd></div>
       {% else %}
       <div><dt>청약통장</dt><dd>{{ n.account[0] }}</dd><dd class="s">{{ n.account[1] }}</dd></div>
       {% endif %}
@@ -63,8 +63,8 @@
       <a class="nx-b p" href="{{ chk_to }}" data-nx-to="check">{% if n.dz and n.dz.check %}나도 넣을 수 있을까?<small>30초 자격 체크 ↓</small>{% else %}누가 넣을 수 있나요?<small>신청 자격 보기 ↓</small>{% endif %}</a>
       {% if n.status == 'open' %}
       {# 2026-11-03 사용자 결정: 첫 화면에 바깥으로 나가는 버튼(청약홈)은 두지 않음 — 페이지 안 사진·평면도·분양가로 #}
-      {% if n.imgs.plans or n.imgs.gallery %}<a class="nx-b g" href="{{ '#h-plan' if n.imgs.plans else '#h-tour' }}" data-nx-to="photos">평면도·단지 사진<small>{{ '주택형별 평면도 ↓' if n.imgs.plans else '조감도·커뮤니티 ↓' }}</small></a>
-      {% else %}<a class="nx-b g" href="#h-price" data-nx-to="price">{{ '임대 조건 보기' if n.is_rental else '분양가 표 보기' }}<small>{{ '보증금·월세 ↓' if n.is_rental else '주택형별 최고가 ↓' }}</small></a>{% endif %}
+      {% if n.imgs.plans or n.imgs.gallery %}<a class="nx-b g" href="{{ '#h-plan' if n.imgs.plans else '#h-tour' }}" data-nx-to="photos">평면도·단지 사진<small>{{ '타입별 평면도 ↓' if n.imgs.plans else '조감도·커뮤니티 ↓' }}</small></a>
+      {% else %}<a class="nx-b g" href="#h-price" data-nx-to="price">{{ '임대 조건 보기' if n.is_rental else '분양가 표 보기' }}<small>{{ '보증금·월세 ↓' if n.is_rental else '타입별 최고가 ↓' }}</small></a>{% endif %}
       {% else %}
       <a class="nx-b g" href="{{ IG }}" target="_blank" rel="noopener" data-nx-to="follow">접수일 알림 받기<small>인스타 팔로우 ↗</small></a>
       {% endif %}
@@ -85,7 +85,7 @@
   {% endif %}
     </div>
   </div>
-  <p class="trust"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>{{ n.source_name or '청약홈' }} {{ '입주자모집공고' if not n.is_rental else '모집공고' }}{% if n.notice_date %}({{ n.notice_date|d }}){% endif %} 원문 대조 · 최종 수정 <time datetime="{{ n.modified[:10] }}">{{ n.modified|d }}</time></p>
+  <p class="trust"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>{{ n.source_name or '청약홈' }} {{ '모집공고' if not n.is_rental else '모집공고' }}{% if n.notice_date %}({{ n.notice_date|d }}){% endif %} 원문 대조 · 최종 수정 <time datetime="{{ n.modified[:10] }}">{{ n.modified|d }}</time></p>
   </div>
 {% endif %}
 <!--CHIPNAV-->
@@ -98,7 +98,7 @@
     {% for c in z.cards %}<li class="dz-c s-{{ c.sig }}"><span class="dz-k">{{ c.k }}</span><span class="dz-v"><b>{{ c.head }}</b>{% if c.sub %}<small>{{ c.sub }}</small>{% endif %}</span>{% if c.sig != 'n' %}<span class="dz-m"><span class="dz-g" aria-hidden="true"><i></i><i></i><i></i></span>{{ {'g':'좋음','y':'보통','r':'주의'}[c.sig] }}</span>{% endif %}</li>
     {% endfor %}
     </ul>
-    <details class="dz-rule"><summary>신호색은 이렇게 정해요</summary><ul>{% for r in z.rule %}<li>{{ r }}</li>{% endfor %}</ul><p>추천이 아니라 판단 재료예요. 기준에 맞춰 기계적으로 붙이고, 숫자 근거는 아래 각 칸에 있어요.</p></details>
+    <details class="dz-rule"><summary>좋음·보통·주의는 이렇게 정해요</summary><ul>{% for r in z.rule %}<li>{{ r }}</li>{% endfor %}</ul><p>추천이 아니라 참고용이에요. 정해진 기준대로 붙이고, 숫자 근거는 아래 각 칸에 있어요.</p></details>
   </section>
   {% endif %}
   {# 2026-11-03 사용자 결정: 애드센스는 3초 판단 카드 바로 아래(요약 카드 위)로 올림 #}
@@ -110,7 +110,7 @@
         {% if n.is_pre %}
         <div><dt>예상 분양가</dt><dd>{{ n.price_short or n.price_text }}<small>{{ n.price_basis or '보도 기준' }}</small></dd></div>
         {% elif n.is_rental %}
-        <div><dt>임대보증금</dt><dd>{% if n.houses and n.rent_range and n.rent_range.deposit %}{{ n.rent_range.deposit[0]|money }}~<small>최고 {{ n.rent_range.deposit[1]|money }} · 집마다 달라요</small>{% elif n.rent_summary.deposit %}{{ n.rent_summary.deposit|money }}<small>{{ n.rent_summary.basis }}</small>{% else %}공고문 참조<small>주택형별로 달라요</small>{% endif %}</dd></div>
+        <div><dt>보증금</dt><dd>{% if n.houses and n.rent_range and n.rent_range.deposit %}{{ n.rent_range.deposit[0]|money }}~<small>최고 {{ n.rent_range.deposit[1]|money }} · 집마다 달라요</small>{% elif n.rent_summary.deposit %}{{ n.rent_summary.deposit|money }}<small>{{ n.rent_summary.basis }}</small>{% else %}공고문 참조<small>타입별로 달라요</small>{% endif %}</dd></div>
         {% else %}
         <div><dt>{{ n.price_label }}</dt><dd>{{ n.max_price|won }}<small>{{ n.max_type }} 기준</small></dd></div>
         {% endif %}
@@ -118,7 +118,7 @@
         {% if n.comp and n.comp.short and n.status in ('waiting', 'announced') %}
         <div><dt>경쟁률</dt><dd>{{ n.comp.short.split(' · ')[-1] }}<small>{{ n.comp.short.split(' · ')[0] }}</small></dd></div>
         {% elif n.is_rental %}
-        <div><dt>월 임대료</dt><dd>{% if n.houses and n.rent_range and n.rent_range.monthly %}{{ n.rent_range.monthly[0]|money }}~<small>최고 {{ n.rent_range.monthly[1]|money }}</small>{% elif n.rent_summary.monthly %}{{ n.rent_summary.monthly|money }}<small>{{ n.rent_summary.basis }}</small>{% else %}공고문 참조<small>주택형별로 달라요</small>{% endif %}</dd></div>
+        <div><dt>월세</dt><dd>{% if n.houses and n.rent_range and n.rent_range.monthly %}{{ n.rent_range.monthly[0]|money }}~<small>최고 {{ n.rent_range.monthly[1]|money }}</small>{% elif n.rent_summary.monthly %}{{ n.rent_summary.monthly|money }}<small>{{ n.rent_summary.basis }}</small>{% else %}공고문 참조<small>타입별로 달라요</small>{% endif %}</dd></div>
         {% else %}
         <div><dt>청약통장</dt><dd>{{ n.account[0] }}<small>{{ n.account[1] }}</small></dd></div>
         {% endif %}
@@ -141,7 +141,7 @@
     <h2 id="h-vs">예상과 실제 비교</h2>
     <div class="tbl">
       <table class="num fit">
-        <caption>예상은 공고 전 보도 기준, 실제는 {{ m.source_name or '청약홈' }} 입주자모집공고 기준.</caption>
+        <caption>예상은 공고 전 보도 기준, 실제는 {{ m.source_name or '청약홈' }} 모집공고 기준.</caption>
         <thead><tr><th scope="col" style="text-align:left">항목</th><th scope="col">공고 전 예상</th><th scope="col">실제 공고</th></tr></thead>
         <tbody>
           <tr><th scope="row">분양가</th><td style="white-space:normal">{{ n.price_short or n.price_text }}</td><td class="max">{% if m.max_price %}최고 {{ m.max_price|won }}<small>{{ m.max_type }} 기준</small>{% else %}공고문 확인{% endif %}</td></tr>
@@ -231,7 +231,7 @@
   {% if z.rent and z.rent.opts %}
   <section class="sec" aria-labelledby="h-rent" data-rent data-d0="{{ z.rent.opts[0][1] }}" data-m0="{{ z.rent.opts[0][2] }}"{% if z.rent.conv %} data-up="{{ z.rent.conv.up }}" data-down="{{ z.rent.conv.down }}" data-unit="{{ z.rent.conv.unit }}"{% endif %}>
     <h2 id="h-rent">입주할 때·매달 나가는 돈</h2>
-    {% if z.rent.opts|length > 1 %}<div class="fopt" role="group" aria-label="블록·주택형 고르기">{% for a, dv, mv in z.rent.opts %}<button type="button" aria-pressed="{{ 'true' if loop.first else 'false' }}" data-dep="{{ dv }}" data-mon="{{ mv }}">{{ a }}</button>{% endfor %}</div>{% endif %}
+    {% if z.rent.opts|length > 1 %}<div class="fopt" role="group" aria-label="블록·타입 고르기">{% for a, dv, mv in z.rent.opts %}<button type="button" aria-pressed="{{ 'true' if loop.first else 'false' }}" data-dep="{{ dv }}" data-mon="{{ mv }}">{{ a }}</button>{% endfor %}</div>{% endif %}
     <div class="rbox num">
       <div><span>입주 때 보증금</span><b data-r="dep">{{ z.rent.opts[0][1]|money }}</b></div>
       <div><span>매달 임대료</span><b data-r="mon">{{ z.rent.opts[0][2]|money }}</b></div>
@@ -298,7 +298,7 @@
   <section class="sec" aria-labelledby="h-price">
     <h2 id="h-price">{% if n.h2.price %}<span class="k">{{ n.h2.price }}</span> <span class="t">예상 분양가·공급 규모</span>{% else %}예상 분양가·공급 규모{% endif %}</h2>
     <dl class="kv">{% for k, v in n.pre_rows %}<div><dt>{{ k }}</dt><dd>{{ v }}</dd></div>{% endfor %}</dl>
-    <p class="note">{{ n.pre_note or '아직 입주자모집공고가 나오지 않은 단지예요. 위 값은 모두 보도 기준이고, 공고가 나오면 공식 값으로 바꿔요.' }}</p>
+    <p class="note">{{ n.pre_note or '아직 모집공고가 나오지 않은 단지예요. 위 값은 모두 보도 기준이고, 공고가 나오면 공식 값으로 바꿔요.' }}</p>
   </section>
   {% elif n.is_rental and n.houses %}
   <section class="sec" aria-labelledby="h-price">
@@ -306,8 +306,8 @@
     {% if n.rental_type %}<p class="lead2">{{ RENTAL_EXPLAIN.get(n.rental_type, '') }}</p>{% endif %}
     <dl class="kv">
       {% if n.rent_level %}<div><dt>임대료 수준</dt><dd><b>{{ n.rent_level }}</b></dd></div>{% endif %}
-      {% if n.rent_range and n.rent_range.deposit %}<div><dt>임대보증금</dt><dd class="num">{{ n.rent_range.deposit|mrange }}</dd></div>{% endif %}
-      {% if n.rent_range and n.rent_range.monthly %}<div><dt>월 임대료</dt><dd class="num">{{ n.rent_range.monthly|mrange }}</dd></div>{% endif %}
+      {% if n.rent_range and n.rent_range.deposit %}<div><dt>보증금</dt><dd class="num">{{ n.rent_range.deposit|mrange }}</dd></div>{% endif %}
+      {% if n.rent_range and n.rent_range.monthly %}<div><dt>월세</dt><dd class="num">{{ n.rent_range.monthly|mrange }}</dd></div>{% endif %}
       {% if n.lease %}<div><dt>임대기간</dt><dd>{{ n.lease }}</dd></div>{% endif %}
       <div><dt>공급</dt><dd class="num">{{ n.units }}호{% if n.units_note %} · {{ n.units_note }}{% endif %}{% if n.excl_range %} · 전용 {{ n.excl_range[0]|m2 }}~{{ n.excl_range[1]|m2 }}{% endif %}</dd></div>
     </dl>
@@ -342,11 +342,11 @@
   </section>
   {% elif n.is_rental %}
   <section class="sec" aria-labelledby="h-price">
-    <h2 id="h-price">주택형·임대 조건</h2>
+    <h2 id="h-price">타입·임대 조건</h2>
     <div class="tbl">
       <table class="num fit">
-        <caption>{{ n.rent_caption or '보증금·월 임대료는 공고문 기준. ‘공고문 참조’는 주택형·계층별로 금액이 달라 공고문 표를 확인하세요.' }}</caption>
-        <thead><tr><th scope="col" style="text-align:left">주택형</th><th scope="col">대상</th><th scope="col">공급</th><th scope="col">보증금 · 월세</th></tr></thead>
+        <caption>{{ n.rent_caption or '보증금·월세는 공고문 기준. ‘공고문 참조’는 타입·계층별로 금액이 달라 공고문 표를 확인하세요.' }}</caption>
+        <thead><tr><th scope="col" style="text-align:left">타입</th><th scope="col">대상</th><th scope="col">공급</th><th scope="col">보증금 · 월세</th></tr></thead>
         <tbody>
         {% for m in n.rent_models %}<tr><th scope="row">{{ m.type }}</th><td style="white-space:normal;text-align:left">{{ m.target or '—' }}</td><td>{% if m.units %}{{ m.units }}세대{% elif n.units %}<small>합계 {{ n.units }}{{ n.unit_word or '세대' }}</small>{% else %}<small>예비 모집</small>{% endif %}</td><td class="max">{% if m.deposit %}{{ m.deposit|money }}<small>월 {{ m.monthly|money }}</small>{% else %}공고문 참조{% endif %}</td></tr>
         {% endfor %}
@@ -360,15 +360,15 @@
     <h2 id="h-price">{% if n.h2.price %}<span class="k">{{ n.h2.price }}</span> <span class="t">분양가·공급 세대</span>{% else %}분양가·공급 세대{% endif %}</h2>
     <div class="tbl">
       <table class="num fit">
-        <caption>{{ n.price_label|replace('최고 ', '') }}은 주택형별 최고가 기준. 층·호별 금액은 공고문 참고.</caption>
-        <thead><tr><th scope="col" style="text-align:left">주택형</th>{% if n.areas %}<th scope="col">전용면적</th>{% endif %}{% if n.has_special %}<th scope="col">특별공급</th>{% endif %}{% if n.has_general %}<th scope="col">{{ '무순위 공급' if n.kind == 'mujeonwi' else '일반공급' }}</th>{% endif %}<th scope="col">{{ n.price_label }}</th></tr></thead>
+        <caption>{{ n.price_label|replace('최고 ', '') }}은 타입별 최고가 기준. 층·호별 금액은 공고문 참고.</caption>
+        <thead><tr><th scope="col" style="text-align:left">타입</th>{% if n.areas %}<th scope="col">전용면적</th>{% endif %}{% if n.has_special %}<th scope="col">특별공급</th>{% endif %}{% if n.has_general %}<th scope="col">{{ '무순위 공급' if n.kind == 'mujeonwi' else '일반공급' }}</th>{% endif %}<th scope="col">{{ n.price_label }}</th></tr></thead>
         <tbody>
         {% for m in n.models %}<tr{% if n.models|length > 4 and loop.index > 3 %} class="fx"{% endif %}><th scope="row">{{ m.type }}</th>{% if n.areas %}<td>{% if n.areas[m.type] %}{{ n.areas[m.type].excl|m2 }}{% else %}—{% endif %}</td>{% endif %}{% if n.has_special %}<td>{{ m.special }}세대</td>{% endif %}{% if n.has_general %}<td>{{ m.general }}세대</td>{% endif %}<td class="max">{% if n.price_ranges and n.price_ranges[m.type] %}{{ n.price_ranges[m.type] }}{% else %}{{ m.max|won }}{% endif %}</td></tr>
         {% endfor %}
         </tbody>
       </table>
     </div>
-    {% if n.models|length > 4 %}<button type="button" class="tfold" data-fold hidden>주택형 {{ n.models|length }}개 전체 보기 ▾</button>{% endif %}
+    {% if n.models|length > 4 %}<button type="button" class="tfold" data-fold hidden>타입 {{ n.models|length }}개 전체 보기 ▾</button>{% endif %}
     {% if n.rent_rows %}
     <dl class="kv wide" style="margin-top:14px">{% for k, v in n.rent_rows %}<div><dt>{{ k }}</dt><dd class="num">{{ v }}</dd></div>{% endfor %}</dl>
     {% endif %}
@@ -399,7 +399,7 @@
     <h2 id="h-plan">{{ (n.h2.get('plan', '평면도·면적'))|h2s(n) }}</h2>
     {% if n.imgs.plans %}
       {% if n.imgs.plans|length > 1 %}
-      <div class="ptabs" role="tablist" aria-label="주택형" hidden>
+      <div class="ptabs" role="tablist" aria-label="타입" hidden>
         {% for p in n.imgs.plans %}<button class="ptab" type="button" role="tab" id="t-{{ p.slug }}" aria-controls="p-{{ p.slug }}" aria-selected="{{ 'true' if loop.first else 'false' }}">{{ p.type }}{% set mm = n.models|selectattr('type', 'equalto', p.type)|list %}{% if mm %}<small>{{ mm[0].general + mm[0].special }}세대</small>{% endif %}</button>
         {% endfor %}
       </div>
@@ -426,10 +426,10 @@
       {% if n.plan_note %}<p class="note">{{ n.plan_note }}</p>{% endif %}
     {% endif %}
     {% if n.areas %}
-    {% if n.imgs.plans %}<h3 class="sub3">주택형별 면적</h3>{% endif %}
+    {% if n.imgs.plans %}<h3 class="sub3">타입별 면적</h3>{% endif %}
     <div class="tbl">
       <table class="num fit">
-        <thead><tr><th scope="col" style="text-align:left">주택형</th><th scope="col">전용면적</th><th scope="col">공급면적</th></tr></thead>
+        <thead><tr><th scope="col" style="text-align:left">타입</th><th scope="col">전용면적</th><th scope="col">공급면적</th></tr></thead>
         <tbody>
         {% for t, a in n.areas.items() %}<tr><th scope="row">{{ t }}</th><td>{{ a.excl|m2 }}<small>약 {{ a.excl|py }}평</small></td><td>{% if a.supply %}{{ a.supply|m2 }}<small>약 {{ a.supply|py }}평</small>{% else %}공고문 확인{% endif %}</td></tr>
         {% endfor %}
@@ -439,8 +439,8 @@
     {% else %}
     <div class="tbl">
       <table class="num fit">
-        <caption>주택형 숫자는 전용면적(㎡)이에요. 정확한 전용·공급면적은 공고문에서 확인하세요.</caption>
-        <thead><tr><th scope="col" style="text-align:left">주택형</th><th scope="col">전용면적(약)</th><th scope="col">전용 기준 평형</th></tr></thead>
+        <caption>타입 숫자는 전용면적(㎡)이에요. 정확한 전용·공급면적은 공고문에서 확인하세요.</caption>
+        <thead><tr><th scope="col" style="text-align:left">타입</th><th scope="col">전용면적(약)</th><th scope="col">전용 기준 평형</th></tr></thead>
         <tbody>
         {% set seen = namespace(v=[]) %}
         {% for m in n.models %}{% set num = m.type|replace('A','')|replace('B','')|replace('C','')|replace('D','')|replace('E','')|replace('F','')|replace('G','')|replace('H','')|replace('I','')|replace('J','')|replace('K','')|replace('N','')|replace('P','') %}{% if num.isdigit() and num not in seen.v %}{% set seen.v = seen.v + [num] %}<tr><th scope="row">{{ num }}㎡ 타입</th><td>약 {{ num }}㎡</td><td>약 {{ (num|int)|py }}평</td></tr>
@@ -449,7 +449,7 @@
       </table>
     </div>
     {% endif %}
-    {% if n.homepage and not n.imgs.plans %}<p class="note">주택형별 평면도는 <a href="{{ n.homepage }}" target="_blank" rel="noopener">{{ n.homepage_label or '공식 홈페이지' }}</a>에서 볼 수 있어요.</p>{% endif %}
+    {% if n.homepage and not n.imgs.plans %}<p class="note">타입별 평면도는 <a href="{{ n.homepage }}" target="_blank" rel="noopener">{{ n.homepage_label or '공식 홈페이지' }}</a>에서 볼 수 있어요.</p>{% endif %}
   </section>
   {% endif %}
 
@@ -545,10 +545,10 @@
   <section class="sec" aria-labelledby="h-official">
     <h2 id="h-official">공식 공고문 확인</h2>
     {% if n.is_pre %}
-    <p class="lead2">아직 입주자모집공고가 나오지 않았어요. 공고가 올라오면 이 페이지를 공식 값으로 바꾸고, 인스타그램에서 먼저 알려드려요.</p>
+    <p class="lead2">아직 모집공고가 나오지 않았어요. 공고가 올라오면 이 페이지를 공식 값으로 바꾸고, 인스타그램에서 먼저 알려드려요.</p>
     <a class="btn primary wide" href="{{ IG }}" target="_blank" rel="noopener">{{ ig_icon() }}인스타 팔로우하고 공고 알림 받기</a>
     {% else %}
-    <p class="lead2">신청 전에 입주자모집공고 원문을 꼭 확인하세요. {{ '주택형·계층별 보증금과 세부 자격은' if n.is_rental else '세부 자격과 층·호별 분양가는' }} 공고문에 있어요.</p>
+    <p class="lead2">신청 전에 모집공고 원문을 꼭 확인하세요. {{ '타입·계층별 보증금과 세부 자격은' if n.is_rental else '세부 자격과 층·호별 분양가는' }} 공고문에 있어요.</p>
     <a class="btn primary wide" href="{{ n.source_url }}" target="_blank" rel="noopener">{{ n.source_name or '청약홈' }}에서 공식 공고 보기</a>
     {% endif %}
   </section>
@@ -580,12 +580,12 @@
 
   <section class="sec src" aria-labelledby="h-src">
     <h2 id="h-src">출처</h2>
-    {% if n.source_line %}<p>{{ n.source_line }}</p>{% elif not n.is_pre %}<p>청약홈 입주자모집공고 (모집공고일 {{ n.notice_date|d }}) · 청약홈 공공데이터 {{ n.fetched_at|replace('-', '.') }} 기준</p>{% endif %}
+    {% if n.source_line %}<p>{{ n.source_line }}</p>{% elif not n.is_pre %}<p>청약홈 모집공고 (모집공고일 {{ n.notice_date|d }}) · 청약홈 공공데이터 {{ n.fetched_at|replace('-', '.') }} 기준</p>{% endif %}
     {% for s in n.sources_extra|default([]) %}<p>{{ s }}</p>{% endfor %}
     {% if n.pre_page %}<p>공고 전 전망과 비교: <a href="{{ n.pre_page.url }}">{{ n.pre_page.title }} 예상 vs 실제</a></p>{% endif %}
     {% if n.imgs.map %}<p>지도 © NAVER Corp.</p>{% elif n.imgs.locmap %}<p>지도: 통계청 SGIS 2018 행정구역 경계 (공공누리 제1유형)</p>{% endif %}
     <p>최종 수정 <time datetime="{{ n.modified[:10] }}">{{ n.modified|d }}</time> · 내용이 다르면 <a href="/contact/">오류 알려주기</a></p>
-    <p>정보 제공 목적이며 투자 권유가 아니에요. 신청 전 입주자모집공고 원문을 꼭 확인하세요.</p>
+    <p>정보 제공 목적이며 투자 권유가 아니에요. 신청 전 모집공고 원문을 꼭 확인하세요.</p>
   </section>
 </main>
 {% endblock %}
