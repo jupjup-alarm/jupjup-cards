@@ -1261,7 +1261,65 @@ def mu_sections(crow_mu):
     return out
 
 
+# ── 허브·홈의 고정 제목·설명 (2026-11-04 사용자 결정 — 네이버 웹마스터 가이드: 메인 title·description을 자주 바꾸거나
+#    80자 넘게 길면 불이익. 날짜·곳 수 같은 매일 바뀌는 숫자는 본문에만 두고, 제목·설명은 브랜드 문구로 고정) ──
+HOME_TITLE = "줍줍알람 - 놓치기 쉬운 청약 공고 알림"
+HOME_DESC = "줍줍(무순위)부터 공공분양·임대까지, 청약 공고의 일정·분양가·자격을 공식 데이터로 쉽게 정리해요."
+FIXED_META = {
+    "/type/": ("유형별 청약 공고 — 줍줍·분양·임대", "무순위(줍줍), 민간분양, 공공분양, 신혼희망타운, 공공임대 공고를 유형별로 모아 접수 일정과 자격을 정리해요."),
+    "/type/mujeonwi/": ("줍줍·무순위 청약 공고 — 접수일·분양가·자격", "청약통장 없이 추첨으로 뽑는 줍줍(무순위)·임의공급 공고를 모아 접수일, 분양가, 신청 자격을 정리해요."),
+    "/type/private/": ("민간분양 청약 일정 — 아파트 분양 공고 모음", "민간 건설사 아파트 분양 공고의 접수일, 분양가, 가점·추첨 비율과 자격을 청약홈 공식 데이터로 정리해요."),
+    "/type/public/": ("공공분양 청약 일정 — LH·SH·GH 분양 공고", "LH·SH·GH 공공분양과 토지임대부 공고의 접수일, 분양가, 소득·자산 기준을 공식 데이터로 정리해요."),
+    "/type/newlywed/": ("신혼희망타운 청약 일정 — 공고 모음", "신혼부부·예비신혼부부·한부모가족 대상 신혼희망타운 공고의 접수일, 분양가, 소득·자산 기준을 정리해요."),
+    "/type/rental/": ("행복주택·공공임대 모집 공고 — 보증금·월세·자격", "LH·SH·GH 행복주택, 국민임대, 매입임대, 전세임대 모집 공고의 보증금·월세와 신청 자격을 정리해요."),
+    "/region/": ("지역별 청약 공고 — 서울·경기·인천", "서울·경기·인천 시군구별 청약 공고를 모아 접수 일정, 분양가, 자격을 한눈에 볼 수 있게 정리해요."),
+    "/region/seoul/mujeonwi/": ("서울 줍줍·무순위 청약 — 공고 모음", "서울 무순위(줍줍)·임의공급 공고의 접수일, 분양가, 자격과 청약홈 공식 경쟁률을 한 페이지에 모았어요."),
+    "/region/gyeonggi/dongtan/": ("동탄 청약 일정 — 아파트 분양·임대", "화성 동탄 일대 아파트 분양과 행복주택 공고의 접수일, 분양가, 보증금과 자격을 정리해요."),
+    "/competition/": ("청약 경쟁률 — 청약홈 공식 경쟁률 모음", "최근 접수가 끝난 아파트 분양·무순위(줍줍) 단지의 청약홈 공식 경쟁률을 공급·접수 건수와 함께 정리해요."),
+    "/lotto/": ("로또 청약 — 시세보다 싸게 나온 공고", "주변 실거래보다 분양가가 낮게 나온 청약 공고를 비교 단지, 거래 시점과 함께 모았어요. 금액은 추정이에요."),
+    "/schedule/this-week/": ("이번 주 청약 일정 — 아파트 분양·줍줍", "이번 주와 다음 주에 접수하는 아파트 분양, 줍줍(무순위), 공공분양, 임대 공고를 날짜순으로 정리해요."),
+}
+
+
+def fixed_meta(url, html_text):
+    """허브 주소면 (제목, 설명) 고정값, 아니면 None. 지역·월별 허브는 이름만 넣는 틀."""
+    if url == "/":
+        return HOME_TITLE, HOME_DESC
+    if url in FIXED_META:
+        t, d_ = FIXED_META[url]
+        return f"{t} · 줍줍알람", d_
+    m = re.fullmatch(r"/schedule/(\d{4})-(\d{2})/", url)
+    if m:
+        ym = f"{m.group(1)}년 {int(m.group(2))}월"
+        return (f"{ym} 청약 일정 — 아파트 분양·줍줍·임대 · 줍줍알람",
+                f"{ym}에 접수하는 아파트 분양, 줍줍(무순위), 임대 공고의 접수일과 분양가를 날짜순으로 정리해요.")
+    m = re.fullmatch(r"/region/[a-z-]+/(?:[a-z-]+/)?", url)
+    if m:
+        h1 = re.search(r"<h1[^>]*>(.*?)</h1>", html_text, re.S)
+        place = re.sub(r"<[^>]+>", " ", h1.group(1)) if h1 else ""
+        place = re.split(r"\s*청약", html.unescape(re.sub(r"\s+", " ", place)).strip())[0].strip()
+        if place:
+            return (f"{place} 청약 일정 — 아파트 분양·줍줍 공고 · 줍줍알람",
+                    f"{place} 아파트 분양, 줍줍(무순위), 공공분양, 임대 공고의 접수일과 분양가, 자격을 날짜순으로 정리해요.")
+    return None
+
+
+def _set_meta(h, title, desc):
+    e = lambda x: html.escape(x, quote=True)
+    h = re.sub(r"<title>.*?</title>", lambda _: f"<title>{e(title)}</title>", h, count=1, flags=re.S)
+    h = re.sub(r'<meta name="description" content="[^"]*">', lambda _: f'<meta name="description" content="{e(desc)}">', h, count=1)
+    h = re.sub(r'<meta property="og:title" content="[^"]*">', lambda _: f'<meta property="og:title" content="{e(title.replace(" · 줍줍알람", ""))}">', h, count=1)
+    h = re.sub(r'<meta property="og:description" content="[^"]*">', lambda _: f'<meta property="og:description" content="{e(desc)}">', h, count=1)
+    if '<meta name="description"' not in h:
+        h = h.replace("</title>", f'</title>\n<meta name="description" content="{e(desc)}">\n<meta property="og:description" content="{e(desc)}">', 1)
+    return h
+
+
 def write(url, html_text, title, desc, kind, lastmod=None, index=True):
+    fm = fixed_meta(url, html_text) if kind == "list" or url == "/" else None
+    if fm:
+        title, desc = fm
+        html_text = _set_meta(html_text, title, desc)
     PAGES[url] = {"title": title, "desc": desc, "kind": kind, "lastmod": lastmod, "index": index, "html": html_text}
     p = PUB / url.lstrip("/") / "index.html" if url.endswith("/") else PUB / url.lstrip("/")
     p.parent.mkdir(parents=True, exist_ok=True)
@@ -1451,7 +1509,7 @@ def main():
             m = n["moved"]
             desc = f"공고 전 예상 {n.get('price_short') or n['price_text']} → 실제 최고 {won(m['max_price']) if m.get('max_price') else '공고문 확인'}. 보도로 알려진 전망과 실제 입주자모집공고를 비교하고, 확정 일정·분양가 페이지로 안내해요."
         elif n["is_pre"]:
-            desc = f"{n['units']:,}세대 · 예상 분양가 {n['price_text']} · {d(n['rcpt'][0])} 접수 예정(보도 기준). 공고 전 단지의 일정·분양가 전망·시세 비교를 정리. 공고가 나오면 공식 값으로 바꿔요."
+            desc = f"{n['units']:,}세대 · 예상 분양가 {n['price_text']} · 청약 접수 {d(n['rcpt'][0])} 전망(보도 기준). 공고 전 단지의 일정·분양가 전망·시세 비교를 정리. 공고가 나오면 공식 값으로 바꿔요."
         elif n["is_rental"] and n["houses"]:
             rr = n.get("rent_range") or {}
             cond = n.get("rent_level") or ""
