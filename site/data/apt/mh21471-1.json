@@ -161,5 +161,11 @@
   ],
   "basis": "국토교통부 실거래가 공개시스템 기준"
  },
- "image_credit_owner": "한국자산관리공사"
+ "image_credit_owner": "한국자산관리공사",
+ "photo": {
+  "image": "photos/site/mh21471-1/birdseye.jpg",
+  "credit": "이미지: 한국자산관리공사 조감도 · 실제와 다를 수 있음",
+  "alt": "나라키움영등포복합청사 행복주택 조감도",
+  "pos": "center 35%"
+ }
 }

@@ -41,7 +41,7 @@
       {% else %}
       <div><dt>{{ n.price_label }}</dt><dd>{{ n.max_price|won }}</dd><dd class="s">{{ n.max_type }} 기준</dd></div>
       {% endif %}
-      <div><dt>공급</dt><dd>{{ '{:,}'.format(n.units) }}{{ n.unit_word }}</dd>{% if n.units_note %}<dd class="s">{{ n.units_note }}</dd>{% endif %}</div>
+      <div><dt>공급</dt><dd>{% if n.units %}{{ '{:,}'.format(n.units) }}{{ n.unit_word }}{% else %}예비 모집{% endif %}</dd>{% if n.units_note %}<dd class="s">{{ n.units_note }}</dd>{% endif %}</div>
       {% if n.comp and n.comp.short and n.status in ('waiting', 'announced') %}
       {% set cr = n.comp.short.split(' · ')[-1] %}<div><dt>{{ '평균 경쟁률' if cr.startswith('평균 ') else '경쟁률' }}</dt>{% set cv = cr[3:] if cr.startswith('평균 ') else cr %}<dd{% if cv|length > 7 %} class="sm"{% endif %}>{{ cv|replace('대 1', '대 1') }}</dd></div>
       {% elif n.is_rental %}
@@ -109,7 +109,7 @@
         {% else %}
         <div><dt>{{ n.price_label }}</dt><dd>{{ n.max_price|won }}<small>{{ n.max_type }} 기준</small></dd></div>
         {% endif %}
-        <div><dt>공급</dt><dd>{{ '{:,}'.format(n.units) }}{{ n.unit_word }}{% if n.units_note %}<small>{{ n.units_note }}</small>{% endif %}</dd></div>
+        <div><dt>공급</dt><dd>{% if n.units %}{{ '{:,}'.format(n.units) }}{{ n.unit_word }}{% else %}예비 모집{% endif %}{% if n.units_note %}<small>{{ n.units_note }}</small>{% endif %}</dd></div>
         {% if n.comp and n.comp.short and n.status in ('waiting', 'announced') %}
         <div><dt>경쟁률</dt><dd>{{ n.comp.short.split(' · ')[-1] }}<small>{{ n.comp.short.split(' · ')[0] }}</small></dd></div>
         {% elif n.is_rental %}
@@ -342,7 +342,7 @@
         <caption>{{ n.rent_caption or '보증금·월 임대료는 공고문 기준. ‘공고문 참조’는 주택형·계층별로 금액이 달라 공고문 표를 확인하세요.' }}</caption>
         <thead><tr><th scope="col" style="text-align:left">주택형</th><th scope="col">대상</th><th scope="col">공급</th><th scope="col">보증금 · 월세</th></tr></thead>
         <tbody>
-        {% for m in n.rent_models %}<tr><th scope="row">{{ m.type }}</th><td style="white-space:normal;text-align:left">{{ m.target or '—' }}</td><td>{% if m.units %}{{ m.units }}세대{% else %}<small>합계 {{ n.units }}{{ n.unit_word or '세대' }}</small>{% endif %}</td><td class="max">{% if m.deposit %}{{ m.deposit|money }}<small>월 {{ m.monthly|money }}</small>{% else %}공고문 참조{% endif %}</td></tr>
+        {% for m in n.rent_models %}<tr><th scope="row">{{ m.type }}</th><td style="white-space:normal;text-align:left">{{ m.target or '—' }}</td><td>{% if m.units %}{{ m.units }}세대{% elif n.units %}<small>합계 {{ n.units }}{{ n.unit_word or '세대' }}</small>{% else %}<small>예비 모집</small>{% endif %}</td><td class="max">{% if m.deposit %}{{ m.deposit|money }}<small>월 {{ m.monthly|money }}</small>{% else %}공고문 참조{% endif %}</td></tr>
         {% endfor %}
         </tbody>
       </table>
