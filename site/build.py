@@ -1637,7 +1637,25 @@ def main():
         soon = tsort([x for x in s if x["status"] == "upcoming"])[:5]
         if soon:
             due = [("곧 접수 시작", "", soon)]
-    h = home_tpl.render(groups=home_groups, page_url="/", title=title, desc=desc, og=home_og, due=due,
+    # 홈 리디자인 2단계(2026-11-04 캔버스 시안 v3): 숫자 칸 3개 + 이번 주 7일 줄 — 빌드가 날마다 다시 채움
+    for x in s:
+        x["dend"] = (dt.date.fromisoformat(x["rcpt"][1] or x["rcpt"][0]) - TODAY).days if x["rcpt"][0] else None
+    wk0 = TODAY - dt.timedelta(days=TODAY.weekday())
+    live_s = [x for x in s if x["status"] in ("open", "upcoming")]
+    home_week = []
+    for i in range(7):
+        di = (wk0 + dt.timedelta(days=i)).isoformat()
+        ends = sum(1 for x in live_s if (x["rcpt"][1] or x["rcpt"][0]) == di)
+        starts = sum(1 for x in live_s if x["rcpt"][0] == di and (x["rcpt"][1] or x["rcpt"][0]) != di)
+        anns = sum(1 for x in s if not x["is_pre"] and x.get("announce") == di)
+        past = di < t0
+        tag, tc = ("", "")
+        if not past:
+            tag, tc = (f"마감 {ends}", "e") if ends else (f"접수 {starts}", "s") if starts else (f"발표 {anns}", "a") if anns else ("", "")
+        home_week.append({"iso": di, "dow": "월화수목금토일"[i], "day": int(di[8:]), "past": past, "today": di == t0, "tag": tag, "tc": tc})
+    n_week = len([x for x in s if x["status"] == "upcoming" and x["rcpt"][0] <= week_end.isoformat()])
+    h = home_tpl.render(groups=home_groups, page_url="/", title=title, desc=desc, og=home_og, due=due, home_week=home_week, n_week=n_week,
+                        week_label=f"{d(wk0.isoformat())} ~ {d(week_end.isoformat())}", t1=t1,
                         regions_used=regions_used, region_slug=regions["sido"], sido_map=sido_map, hub_quick=hub_quick, n_open=n_open, n_up=n_up,
                         tbl=home_tbl, tbl_cap=f"청약 공고 접수 중·예정 {n_open + n_up}곳 중 {len(home_tbl)}곳 — {d(TODAY.isoformat())} 기준 · 청약홈·LH·마이홈 공식 데이터", **common)
     write("/", h, title, desc, "list", max(x["modified"] for x in notices))

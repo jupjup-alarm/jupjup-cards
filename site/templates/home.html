@@ -1,52 +1,81 @@
 {% extends "base.html" %}
-{% from "macros.html" import card, ig_icon, cp_ad, ntable with context %}
+{% from "macros.html" import ig_icon, cp_ad, ntable with context %}
+{# 2026-11-04 리디자인 2단계(캔버스 시안 v3 '일정이 먼저 보이는 공고 앱'):
+   흰 머리 띠(제목·숫자 칸 3개) → 이번 주 7일 줄 → 유형 칩(붙어 다님) → 오늘 마감 큰 카드 → 내일 마감·목록 줄 → 한눈에 보기 표 → 찾아보기.
+   데스크톱(1024px~)은 오른쪽 칸에 이번 주 일정·유형을 붙여 둠. 모든 공고 링크는 HTML에 그대로(접힌 줄도). #}
+{% macro kcls(n) %}{{ 'k-mu' if n.kind == 'mujeonwi' else ('k-rent' if n.is_rental else ('k-pub' if n.kind in ('public', 'newlywed') else 'k-pri')) }}{% endmacro %}
+{% macro price(n) %}{% if n.is_pre %}예상 {{ n.price_short or n.price_text }}{% elif n.is_rental %}{% if n.houses and n.rent_level %}{{ n.rent_level }}{% if n.rent_summary.monthly %} · 월 {{ n.rent_summary.monthly|money }}~{% endif %}{% elif n.rent_summary and n.rent_summary.deposit %}보증금 {{ n.rent_summary.deposit|money }}{% if n.rent_summary.monthly %} · 월 {{ n.rent_summary.monthly|money }}{% endif %}{% endif %}{% elif n.max_price %}{{ n.price_label or '최고 분양가' }} {{ n.max_price|won }}{% endif %}{% endmacro %}
+{% macro pill(n) %}{% if n.status == 'open' %}{% if n.dend == 0 %}<span class="hm-pill p-t">오늘</span>{% else %}<span class="hm-pill p-o" data-dend="{{ n.rcpt[1] or n.rcpt[0] }}">D-{{ n.dend }}</span>{% endif %}{% elif n.status == 'upcoming' %}<span class="hm-pill p-u" data-dday="{{ n.rcpt[0] }}">D-{{ n.dday }}</span>{% elif n.status == 'pre' %}<span class="hm-pill p-g">공고 전</span>{% elif n.status == 'waiting' %}<span class="hm-pill p-g">발표 {{ n.announce|d }}</span>{% else %}<span class="hm-pill p-g">발표 완료</span>{% endif %}{% endmacro %}
+{% macro row(n, more=False) %}
+<li{% if more %} class="x"{% endif %}><a class="hm-row st-{{ n.status }}" href="{{ n.url }}">
+  <span class="hm-tile {{ kcls(n) }}">{{ n.kind_label }}</span>
+  <span class="hm-rv"><b>{{ n.title }}</b><span class="num">{{ n.sido }} {{ n.sigungu or '' }}{% if n.units %} · {{ '{:,}'.format(n.units) }}{{ n.unit_word or '세대' }}{% endif %}{% if n.status in ('open', 'upcoming') or n.is_pre %} · {{ n.rcpt[0]|trange(n.rcpt[1]) }} 접수{% if n.is_pre %} 예정 (보도 기준){% endif %}{% endif %}</span>{% if n.status in ('waiting', 'announced') and n.comp and n.comp.short %}<b class="hm-p num">{{ n.comp.short }}</b>{% else %}{% set pr = price(n)|trim %}{% if pr %}<b class="hm-p num">{{ pr }}</b>{% endif %}{% endif %}</span>
+  {{ pill(n) }}
+</a></li>
+{% endmacro %}
 {% block main %}
-<main class="wrap" id="main">
-  <div class="lwrap home">
-    {# 2026-11-03 리디자인 v2: 남색 띠(제목·숫자·유형 칩) → 마감 임박 공고 → 표·목록 → 찾아보기 링크 #}
-    <div class="home-hero">
-      <p class="hh-date">{{ today.isoformat()|d }} 기준 · 청약홈·LH·마이홈 공식 데이터</p>
+<main class="wrap home2" id="main">
+  <div class="hm-grid">
+  <div class="hm-main">
+    <section class="hm-hero">
+      <p class="hm-date">{{ today.isoformat()|d }} 기준 · 청약홈·LH·마이홈 공식 데이터</p>
       <h1>청약 일정·줍줍(무순위) 공고 <span class="h1-kw">지금 접수 중 <b>{{ n_open }}곳</b>·예정 {{ n_up }}곳</span></h1>
-      <p>무순위(줍줍)·민간분양·공공분양·신혼희망타운 공고를 청약홈 공식 데이터로 정리해요. 접수일, 분양가, 자격, 그리고 넣을 만한지 줍줍알람의 한마디까지 한 페이지에 담았어요.</p>
-      <nav class="hh-kinds" aria-label="유형별 공고">
-        <a href="/schedule/this-week/">이번 주 일정</a>
-        {% for k in kinds_used %}<a href="/type/{{ k }}/">{{ '임대' if k == 'rental' else KINDS[k][0] }}</a>{% endfor %}
-      </nav>
-    </div>
-    {% if due %}<div class="due-wrap">
-    {% for label, day, lst in due %}
-    <section class="due">
-      <h2>{{ label }} <b>{{ lst|length }}</b>{% if day %}<small>{{ day }}</small>{% endif %}</h2>
-      <ul>
-      {% for n in lst[:6] %}
-        <li><a href="{{ n.url }}">
-          <span class="due-d{{ ' t' if label == '오늘 마감' }}">{% if label == '오늘 마감' %}오늘{% elif label == '내일 마감' %}D-1{% else %}D-{{ n.dday }}{% endif %}</span>
-          <span class="due-v"><small>{{ n.kind_label }}{% if n.chips %} · {{ n.chips[0][0] }}{% endif %}</small><b>{{ n.title }}</b><span>{{ n.sigungu or n.sido }}{% if n.units %} · {{ '{:,}'.format(n.units) }}{{ n.unit_word or '세대' }}{% endif %}{% if n.is_rental %}{% if n.rent_summary and n.rent_summary.deposit %} · 보증금 {{ n.rent_summary.deposit|money }}{% endif %}{% elif n.max_price %} · 최고 {{ n.max_price|won }}{% endif %}</span></span>
-          <span class="arr" aria-hidden="true">›</span>
-        </a></li>
-      {% endfor %}
-      </ul>
+      <p class="hm-lead">무순위(줍줍)·민간분양·공공분양·신혼희망타운 공고를 청약홈 공식 데이터로 정리해요. 접수일, 분양가, 자격, 그리고 넣을 만한지 줍줍알람의 한마디까지 한 페이지에 담았어요.</p>
+      {% set d_today = (due|selectattr(0, 'equalto', '오늘 마감')|list) %}{% set d_tom = (due|selectattr(0, 'equalto', '내일 마감')|list) %}
+      <div class="hm-tiles">
+        <a class="t-t" href="{{ '#today' if d_today else '/schedule/this-week/' }}"><span>오늘 마감</span><b class="num">{{ d_today[0][2]|length if d_today else 0 }}</b></a>
+        <a class="t-n" href="{{ '#tomorrow' if d_tom else '/schedule/this-week/' }}"><span>내일 마감</span><b class="num">{{ d_tom[0][2]|length if d_tom else 0 }}</b></a>
+        <a class="t-w" href="{{ '#week' if n_week else '/schedule/this-week/' }}"><span>이번 주 접수</span><b class="num">{{ n_week }}</b></a>
+      </div>
     </section>
+
+    {% for label, day, lst in due %}
+    {% if label == '오늘 마감' %}
+    <section class="hm-sec" id="today">
+      <h2>{{ label }} <b>{{ lst|length }}</b>{% if day %}<small>{{ day }}</small>{% endif %}</h2>
+      <div class="hm-feat">
+      {% for n in lst %}
+        <a class="hm-fc" href="{{ n.url }}">
+          <span class="hm-fc-top">
+            <span class="hm-chips"><span class="c-t">오늘 마감</span><span>{{ n.kind_label }}</span></span>
+            {% if n.is_rental %}{% set pr = price(n)|trim %}<span class="hm-fc-v"><small>임대 조건</small><b class="num s">{{ pr or '공고문 확인' }}</b></span>
+            {% elif n.max_price %}<span class="hm-fc-v"><small>{{ n.price_label or '최고 분양가' }}</small><b class="num">{{ n.max_price|won }}</b></span>{% endif %}
+          </span>
+          <span class="hm-fc-b"><b>{{ n.title }}</b><span class="num">{{ n.sigungu or n.sido }}{% if n.units %} · {{ '{:,}'.format(n.units) }}{{ n.unit_word or '세대' }}{% endif %}{% if n.chips %} · {{ n.chips[0][0] }}{% endif %}</span></span>
+        </a>
+      {% endfor %}
+      </div>
+    </section>
+    {% else %}
+    <section class="hm-sec"{% if label == '내일 마감' %} id="tomorrow"{% endif %}>
+      <h2>{{ label }} <b>{{ lst|length }}</b>{% if day %}<small>{{ day }}</small>{% endif %}</h2>
+      <ul class="hm-rows">{% for n in lst %}{{ row(n) }}{% endfor %}</ul>
+    </section>
+    {% endif %}
     {% endfor %}
-    </div>{% endif %}
+
+    {% for label, lst in groups %}
+    <section class="hm-sec"{% if label == '이번 주 접수' %} id="week"{% endif %} data-more>
+      <h2>{{ label }} <small>{{ lst|length }}곳{% if label == '지금 접수 중' %} · 마감 빠른 순{% endif %}</small>{% if label == '당첨자 발표 대기' %}<a class="hm-more" href="/competition/">청약 경쟁률 ›</a>{% endif %}</h2>
+      <ul class="hm-rows">{% for n in lst %}{{ row(n, loop.index > 5) }}{% endfor %}</ul>
+      {% if lst|length > 5 %}<button type="button" class="hm-all" hidden>{{ label }} {{ lst|length }}곳 모두 보기</button>{% endif %}
+    </section>
+    {% if loop.first %}
     {% if tbl %}
-    <section class="lsec">
+    <section class="hm-sec">
       <h2>지금 접수 중·예정 청약 공고 <small>{{ today.isoformat()|d }} 기준</small></h2>
       {{ ntable(tbl, tbl_cap) }}
       <p class="tbl-more"><a href="/type/mujeonwi/">줍줍(무순위) 공고만 보기 →</a> <a href="/schedule/this-week/">이번 주 일정 →</a></p>
     </section>
     {% endif %}
-    {% for label, lst in groups %}
-    <section class="lsec">
-      <h2>{{ label }} <small>{{ lst|length }}곳</small></h2>
-      <div class="cards">{% for n in lst %}{{ card(n) }}{% endfor %}</div>
-    </section>
-    {% if loop.first %}{{ cp_ad('home', 'ad-home') }}{{ cp_ad('home_mo', 'ad-home') }}{% endif %}
+    {{ cp_ad('home', 'ad-home') }}{{ cp_ad('home_mo', 'ad-home') }}
+    {% endif %}
     {% endfor %}
     {{ cp_ad('home_end_mo', 'ad-home ad-end') }}
-    <section class="lsec hh-find">
+
+    <section class="hm-sec hm-find">
       <h2>어떤 청약을 찾으세요?</h2>
-      <div class="quick">
+      <div class="hm-quick">
         <a href="/schedule/this-week/"><b>이번 주 일정</b><span>접수 시작일 순서</span></a>
         <a href="/competition/"><b>청약 경쟁률</b><span>최근 발표 단지</span></a>
         {% for lb, u, sm in hub_quick %}<a href="{{ u }}"><b>{{ lb }}</b><span>{{ sm }}</span></a>{% endfor %}
@@ -54,14 +83,34 @@
         {% for s in regions_used %}<a href="/region/{{ region_slug[s] }}/"><b>{{ s }}</b><span>공고 {{ sido_map[s]|length }}곳</span></a>{% endfor %}
       </div>
     </section>
-    <div class="follow">
+    <div class="follow hm-follow">
       <p><b>새 공고가 나오면 인스타그램으로 먼저 알려드려요.</b><br>카드뉴스·릴스로 1분 만에 핵심만 정리해요.</p>
       <a class="btn" href="{{ IG }}" target="_blank" rel="noopener">{{ ig_icon() }}@jupjup_alarm 팔로우</a>
     </div>
   </div>
+
+  <aside class="hm-rail">
+    <section class="hm-week" aria-label="이번 주 청약 일정">
+      <div class="hm-week-h"><b>이번 주 일정 <small class="num">{{ week_label }}</small></b><a href="/schedule/this-week/">달력 보기 ›</a></div>
+      <ol class="hm-days">
+      {% for w in home_week %}
+        <li class="{{ 'td' if w.today else ('pa' if w.past else '') }}"><span>{{ w.dow }}</span><b class="num">{{ w.day }}</b><em class="{{ w.tc }}">{{ w.tag }}</em></li>
+      {% endfor %}
+      </ol>
+    </section>
+    <nav class="hm-kinds" aria-label="유형별 공고">
+      <a href="/schedule/this-week/">이번 주 일정</a>
+      {% for k in kinds_used %}<a href="/type/{{ k }}/">{{ '임대' if k == 'rental' else KINDS[k][0] }}</a>{% endfor %}
+    </nav>
+  </aside>
+  </div>
 </main>
 {% endblock %}
 {% block after %}
+<script>
+document.querySelectorAll('[data-more]').forEach(function(sec){var b=sec.querySelector('.hm-all');if(!b)return;
+  b.hidden=false;sec.classList.add('fold');b.addEventListener('click',function(){sec.classList.remove('fold');b.hidden=true;});});
+</script>
 <script type="application/ld+json">
 {{ {"@context": "https://schema.org", "@graph": [
   {"@type": "WebSite", "name": "줍줍알람", "url": BASE ~ "/", "inLanguage": "ko"},

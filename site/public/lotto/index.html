@@ -24,7 +24,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="alternate" type="application/rss+xml" title="줍줍알람" href="/rss.xml">
 <link rel="stylesheet" href="/fonts/pretendard/pretendard.css">
-<link rel="stylesheet" href="/style.0c02416c.css">
+<link rel="stylesheet" href="/style.42d4fa96.css">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6103BRQ0LP"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-6103BRQ0LP');</script><script>window.jjEv=function(n,p){try{if(window.gtag)gtag('event',n,p||{});}catch(e){}};</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1196853150959268" crossorigin="anonymous"></script></head>
@@ -233,6 +233,10 @@
   document.querySelectorAll('[data-dday]').forEach(function(el){
     var p=el.getAttribute('data-dday').split('-');var d=(Date.UTC(+p[0],p[1]-1,+p[2])-t)/864e5;
     if(d>0)el.textContent='D-'+d;else if(d===0)el.textContent='오늘';else el.hidden=true;
+  });
+  document.querySelectorAll('[data-dend]').forEach(function(el){
+    var p=el.getAttribute('data-dend').split('-');var d=(Date.UTC(+p[0],p[1]-1,+p[2])-t)/864e5;
+    if(d>0)el.textContent='D-'+d;else if(d===0)el.textContent='오늘';else el.textContent='마감';
   });
   function flash(b,msg){var o=b.textContent;b.textContent=msg;setTimeout(function(){b.textContent=o},1500);}
   function copy(text,b){if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(function(){flash(b,'복사됨')},function(){flash(b,'복사 안 됨')});}}
