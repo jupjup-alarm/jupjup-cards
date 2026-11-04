@@ -1,18 +1,8 @@
 {% extends "base.html" %}
-{% from "macros.html" import ig_icon, cp_ad, ntable with context %}
+{% from "macros.html" import ig_icon, cp_ad, ntable, nrow, nprice with context %}
 {# 2026-11-04 리디자인 2단계(캔버스 시안 v3 '일정이 먼저 보이는 공고 앱'):
    흰 머리 띠(제목·숫자 칸 3개) → 이번 주 7일 줄 → 유형 칩(붙어 다님) → 오늘 마감 큰 카드 → 내일 마감·목록 줄 → 한눈에 보기 표 → 찾아보기.
    데스크톱(1024px~)은 오른쪽 칸에 이번 주 일정·유형을 붙여 둠. 모든 공고 링크는 HTML에 그대로(접힌 줄도). #}
-{% macro kcls(n) %}{{ 'k-mu' if n.kind == 'mujeonwi' else ('k-rent' if n.is_rental else ('k-pub' if n.kind in ('public', 'newlywed') else 'k-pri')) }}{% endmacro %}
-{% macro price(n) %}{% if n.is_pre %}예상 {{ n.price_short or n.price_text }}{% elif n.is_rental %}{% if n.houses and n.rent_level %}{{ n.rent_level }}{% if n.rent_summary.monthly %} · 월 {{ n.rent_summary.monthly|money }}~{% endif %}{% elif n.rent_summary and n.rent_summary.deposit %}보증금 {{ n.rent_summary.deposit|money }}{% if n.rent_summary.monthly %} · 월 {{ n.rent_summary.monthly|money }}{% endif %}{% endif %}{% elif n.max_price %}{{ n.price_label or '최고 분양가' }} {{ n.max_price|won }}{% endif %}{% endmacro %}
-{% macro pill(n) %}{% if n.status == 'open' %}{% if n.dend == 0 %}<span class="hm-pill p-t">오늘</span>{% else %}<span class="hm-pill p-o" data-dend="{{ n.rcpt[1] or n.rcpt[0] }}">D-{{ n.dend }}</span>{% endif %}{% elif n.status == 'upcoming' %}<span class="hm-pill p-u" data-dday="{{ n.rcpt[0] }}">D-{{ n.dday }}</span>{% elif n.status == 'pre' %}<span class="hm-pill p-g">공고 전</span>{% elif n.status == 'waiting' %}<span class="hm-pill p-g">발표 {{ n.announce|d }}</span>{% else %}<span class="hm-pill p-g">발표 완료</span>{% endif %}{% endmacro %}
-{% macro row(n, more=False) %}
-<li{% if more %} class="x"{% endif %}><a class="hm-row st-{{ n.status }}" href="{{ n.url }}">
-  <span class="hm-tile {{ kcls(n) }}">{{ n.kind_label }}</span>
-  <span class="hm-rv"><b>{{ n.title }}</b><span class="num">{{ n.sido }} {{ n.sigungu or '' }}{% if n.units %} · {{ '{:,}'.format(n.units) }}{{ n.unit_word or '세대' }}{% endif %}{% if n.status in ('open', 'upcoming') or n.is_pre %} · {{ n.rcpt[0]|trange(n.rcpt[1]) }} 접수{% if n.is_pre %} 예정 (보도 기준){% endif %}{% endif %}</span>{% if n.status in ('waiting', 'announced') and n.comp and n.comp.short %}<b class="hm-p num">{{ n.comp.short }}</b>{% else %}{% set pr = price(n)|trim %}{% if pr %}<b class="hm-p num">{{ pr }}</b>{% endif %}{% endif %}</span>
-  {{ pill(n) }}
-</a></li>
-{% endmacro %}
 {% block main %}
 <main class="wrap home2" id="main">
   <div class="hm-grid">
@@ -38,7 +28,7 @@
         <a class="hm-fc" href="{{ n.url }}">
           <span class="hm-fc-top">
             <span class="hm-chips"><span class="c-t">오늘 마감</span><span>{{ n.kind_label }}</span></span>
-            {% if n.is_rental %}{% set pr = price(n)|trim %}<span class="hm-fc-v"><small>임대 조건</small><b class="num s">{{ pr or '공고문 확인' }}</b></span>
+            {% if n.is_rental %}{% set pr = nprice(n)|trim %}<span class="hm-fc-v"><small>임대 조건</small><b class="num s">{{ pr or '공고문 확인' }}</b></span>
             {% elif n.max_price %}<span class="hm-fc-v"><small>{{ n.price_label or '최고 분양가' }}</small><b class="num">{{ n.max_price|won }}</b></span>{% endif %}
           </span>
           <span class="hm-fc-b"><b>{{ n.title }}</b><span class="num">{{ n.sigungu or n.sido }}{% if n.units %} · {{ '{:,}'.format(n.units) }}{{ n.unit_word or '세대' }}{% endif %}{% if n.chips %} · {{ n.chips[0][0] }}{% endif %}</span></span>
@@ -49,7 +39,7 @@
     {% else %}
     <section class="hm-sec"{% if label == '내일 마감' %} id="tomorrow"{% endif %}>
       <h2>{{ label }} <b>{{ lst|length }}</b>{% if day %}<small>{{ day }}</small>{% endif %}</h2>
-      <ul class="hm-rows">{% for n in lst %}{{ row(n) }}{% endfor %}</ul>
+      <ul class="hm-rows">{% for n in lst %}{{ nrow(n) }}{% endfor %}</ul>
     </section>
     {% endif %}
     {% endfor %}
@@ -57,7 +47,7 @@
     {% for label, lst in groups %}
     <section class="hm-sec"{% if label == '이번 주 접수' %} id="week"{% endif %} data-more>
       <h2>{{ label }} <small>{{ lst|length }}곳{% if label == '지금 접수 중' %} · 마감 빠른 순{% endif %}</small>{% if label == '당첨자 발표 대기' %}<a class="hm-more" href="/competition/">청약 경쟁률 ›</a>{% endif %}</h2>
-      <ul class="hm-rows">{% for n in lst %}{{ row(n, loop.index > 5) }}{% endfor %}</ul>
+      <ul class="hm-rows">{% for n in lst %}{{ nrow(n, loop.index > 5) }}{% endfor %}</ul>
       {% if lst|length > 5 %}<button type="button" class="hm-all" hidden>{{ label }} {{ lst|length }}곳 모두 보기</button>{% endif %}
     </section>
     {% if loop.first %}

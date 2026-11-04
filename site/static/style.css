@@ -1119,3 +1119,54 @@ body:has(main.page){background:var(--ground)}
 .bar:not(.bar2){grid-template-columns:minmax(0,1fr)}
 @media (max-width:1023px){.page > .ad-g,.page > .ad{background:var(--card);margin-inline:var(--bleed);padding-inline:var(--pad)}}
 @media (min-width:1024px){.bar.bar2{display:none}}
+
+/* ══════════ 리디자인 4단계 — 허브·목록 (유형·지역·시군구·일정·경쟁률·로또, 2026-11-04 캔버스 시안 v3) ══════════ */
+body:has(.lwrap:not(.home)){background:var(--ground)}
+.lwrap{--bleed:calc(-1 * max(20px, env(safe-area-inset-left, 0px)));--pad:max(20px, env(safe-area-inset-left, 0px))}
+/* 머리 띠: 흰 바탕 (경로·제목·설명·숫자 칸·관련 링크) */
+.lwrap > .lhead{background:var(--card);margin-inline:var(--bleed);padding:14px var(--pad) 18px;gap:8px}
+.lhead .crumb{padding-block:0;font-size:12.5px}
+.lhead h1{margin:0;font-size:28px;font-weight:900;letter-spacing:-.04em;line-height:1.2}
+.lhead h1 .h1-kw{display:block;margin-top:6px;font-size:17px;font-weight:700;color:var(--ink-sub);letter-spacing:-.02em}
+.lhead > p{font-size:14.5px;line-height:1.6;color:var(--ink-2)}
+.lstat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:6px}
+.lstat > *{background:var(--ground);border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;text-decoration:none;color:var(--ink);min-height:var(--tap)}
+.lstat span{font-size:11.5px;font-weight:700;color:var(--ink-sub)}
+.lstat b{font-size:22px;font-weight:900;line-height:1.15}
+.lstat .c-g{color:var(--green)}.lstat .c-b{color:var(--blue)}
+.lhead .llinks a{background:var(--card);min-height:38px;font-weight:700;font-size:13.5px}
+/* 묶음 바로가기 칸 (유형·지역 허브) */
+.htiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:8px}
+.htiles.few{grid-template-columns:repeat(3,minmax(0,1fr))}
+.htiles a{background:var(--ground);border-radius:var(--r-md);padding:12px 14px;display:flex;flex-direction:column;gap:2px;text-decoration:none;color:var(--ink);min-height:72px;box-sizing:border-box}
+.htiles b{font-size:15.5px;font-weight:800}
+.htiles span{font-size:12px;color:var(--ink-sub);line-height:1.45}
+.htiles em{font-style:normal;font-weight:800;color:var(--coral-strong)}
+/* 묶음 상자: 흰 바탕 둥근 상자 안에 공고 줄 */
+.lbox{background:var(--card);border-radius:16px;padding:16px 0 0;overflow:hidden;margin-top:14px}
+.lbox > h2{padding:0 16px;font-size:19px!important;font-weight:900;margin-bottom:8px!important}
+.lbox > h2 a{color:inherit;text-decoration:none}
+.lbox > .hubintro,.lbox > p:not(.lbox-more):not(.empty){padding:0 16px}
+.lbox .hm-rows{gap:0}
+.lbox .hm-row{border-radius:0;border-top:1px solid var(--line);padding:13px 16px}
+.lbox .faq{border-top:0;padding:0 16px}
+.lbox > .tbl-more{padding:0 16px 14px}
+.lbox-more{margin:0;border-top:1px solid var(--line)}
+.lbox-more a{display:flex;justify-content:center;align-items:center;min-height:48px;font-size:14px;font-weight:700;color:var(--blue);text-decoration:none}
+.lbox .empty{margin:0 16px 16px}
+.lbox > :last-child:not(.lbox-more):not(.hm-rows){margin-bottom:16px}
+/* 공고 줄의 짧은 태그 (칩 2개) */
+.hm-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:3px}
+.hm-tags span{font-size:11px;font-weight:700;color:var(--ink-sub);background:var(--ground);border-radius:5px;padding:3px 6px}
+.lwrap > .lsec:not(.lbox) > h2{padding:0 4px}
+@media (min-width:1024px){
+  .lwrap{max-width:880px}
+  .lwrap > .lhead{margin:20px 0 0;border-radius:var(--r-lg);padding:22px 28px}
+  .lhead h1{font-size:34px}
+  .lstat{max-width:520px}
+  .htiles{grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}
+  .htiles.few{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .lbox{margin-top:18px}
+  .lbox .hm-rows{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .lbox .hm-row{border-right:1px solid var(--line)}
+}

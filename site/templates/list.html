@@ -1,13 +1,22 @@
 {% extends "base.html" %}
-{% from "macros.html" import card, crumbs, cp_ad, ntable with context %}
+{% from "macros.html" import card, crumbs, cp_ad, ntable, nrow with context %}
 {% set nav = 'schedule' if page_url.startswith('/schedule') else ('region' if page_url.startswith('/region') else 'type') %}
 {% block main %}
 <main class="wrap" id="main">
   <div class="lwrap">
-    {{ crumbs(crumb) }}
     <div class="lhead">
+      {{ crumbs(crumb) }}
       <h1>{{ h1 }}{% if h1_kw %} <span class="h1-kw">{{ h1_kw }}</span>{% endif %}</h1>
       {% if intro %}<p>{{ intro }}</p>{% endif %}
+      {# 2026-11-04 리디자인 4단계: 상태별 숫자 칸 (빌드가 날마다 채움) #}
+      {% set g_open = groups|selectattr(0, 'equalto', '지금 접수 중')|list %}{% set g_up = groups|selectattr(0, 'equalto', '접수 예정')|list %}
+      {% if g_open or g_up %}
+      <div class="lstat num">
+        <a href="#g-open"><span>접수 중</span><b class="c-g">{{ g_open[0][1]|length if g_open else 0 }}곳</b></a>
+        <a href="#g-up"><span>접수 예정</span><b class="c-b">{{ g_up[0][1]|length if g_up else 0 }}곳</b></a>
+        <span class="all"><span>이 목록 전체</span><b>{{ items|length }}곳</b></span>
+      </div>
+      {% endif %}
       {% if links %}<div class="llinks">{% for label, url in links %}<a href="{{ url }}">{{ label }}</a>{% endfor %}</div>{% endif %}
     </div>
     {% if tbl %}
@@ -23,9 +32,9 @@
     </section>
     {% endfor %}
     {% for label, lst in groups %}
-    <section class="lsec">
+    <section class="lsec lbox"{% if label == '지금 접수 중' %} id="g-open"{% elif label == '접수 예정' %} id="g-up"{% endif %}>
       <h2>{{ label }} <small>{{ lst|length }}곳</small></h2>
-      {% if lst %}<div class="cards">{% for n in lst %}{{ card(n) }}{% endfor %}</div>
+      {% if lst %}<ul class="hm-rows">{% for n in lst %}{{ nrow(n) }}{% endfor %}</ul>
       {% else %}<p class="empty">{{ empty or '공고가 없어요.' }}</p>{% endif %}
     </section>
     {% if loop.first %}{{ cp_ad('home', 'ad-home') }}{% endif %}

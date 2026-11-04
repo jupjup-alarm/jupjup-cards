@@ -1,11 +1,11 @@
 {% extends "base.html" %}
-{% from "macros.html" import card, crumbs with context %}
+{% from "macros.html" import card, crumbs, nrow with context %}
 {% set nav = 'type' %}
 {% block main %}
 <main class="wrap" id="main">
   <div class="lwrap">
-    {{ crumbs(crumb) }}
     <div class="lhead">
+      {{ crumbs(crumb) }}
       <h1>{{ h1 }}</h1>
       <p>{{ intro }}</p>
     </div>
@@ -24,15 +24,15 @@
       </div>
     </section>
     {% if faq %}
-    <section class="lsec" aria-labelledby="comp-faq">
+    <section class="lsec lbox" aria-labelledby="comp-faq">
       <h2 id="comp-faq">청약 경쟁률, 자주 묻는 질문</h2>
       <div class="faq">{% for q, a in faq %}<details{% if loop.first %} open{% endif %}><summary>{{ q }}</summary><p>{{ a }}</p></details>{% endfor %}</div>
       <p class="tbl-more"><a href="/type/mujeonwi/">미달 뒤 나오는 줍줍·무순위 공고 보기 →</a></p>
     </section>
     {% endif %}
-    <section class="lsec">
+    <section class="lsec lbox">
       <h2>단지별로 보기 <small>{{ rows|length }}곳</small></h2>
-      <div class="cards">{% for r in rows %}{{ card(r.n) }}{% endfor %}</div>
+      <ul class="hm-rows">{% for r in rows %}{{ nrow(r.n) }}{% endfor %}</ul>
     </section>
   </div>
 </main>

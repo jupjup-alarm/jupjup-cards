@@ -1,19 +1,23 @@
 {% extends "base.html" %}
-{% from "macros.html" import card, crumbs with context %}
+{% from "macros.html" import card, crumbs, nrow with context %}
 {% set nav = 'region' if page_url.startswith('/region') else 'type' %}
 {% block main %}
 <main class="wrap" id="main">
   <div class="lwrap">
-    {{ crumbs(crumb) }}
-    <div class="lhead"><h1>{{ h1 }}</h1>{% if lead %}<p>{{ lead }}</p>{% endif %}</div>
+    <div class="lhead">{{ crumbs(crumb) }}<h1>{{ h1 }}</h1>{% if lead %}<p>{{ lead }}</p>{% endif %}
+      {# 2026-11-04 리디자인 4단계: 묶음 바로가기 칸 #}
+      <nav class="htiles num{{ ' few' if entries|length <= 3 }}" aria-label="{{ h1 }} 바로가기">
+      {% for label, url, total, active, items in entries %}<a href="{{ url }}"><b>{{ label }}</b><span>접수 중·예정 <em>{{ active }}곳</em> · 전체 {{ total }}곳</span></a>{% endfor %}
+      </nav>
+    </div>
     {# 2026-11-04: 목록만 있던 허브를 묶음마다 '지금 넣을 수 있는 공고' 3곳 + 설명으로 보강 #}
     {% for label, url, total, active, items in entries %}
-    <section class="lsec hubsec" aria-labelledby="hub-{{ loop.index }}">
+    <section class="lsec lbox hubsec" aria-labelledby="hub-{{ loop.index }}">
       <h2 id="hub-{{ loop.index }}"><a href="{{ url }}">{{ label }} 청약 공고</a> <small class="num">접수 중·예정 {{ active }}곳 · 전체 {{ total }}곳</small></h2>
       {% if intros and intros[label] %}<p class="hubintro">{{ intros[label] }}</p>{% endif %}
-      {% if items %}<div class="cards">{% for n in items %}{{ card(n) }}{% endfor %}</div>
+      {% if items %}<ul class="hm-rows">{% for n in items %}{{ nrow(n) }}{% endfor %}</ul>
       {% else %}<p class="hubintro">지금 접수 중이거나 예정된 공고는 없어요. 최근 공고와 결과는 전체 목록에서 볼 수 있어요.</p>{% endif %}
-      <p class="tbl-more"><a href="{{ url }}">{{ label }} 공고 전체 {{ total }}곳 보기 →</a></p>
+      <p class="lbox-more"><a href="{{ url }}">{{ label }} 공고 전체 {{ total }}곳 보기 →</a></p>
     </section>
     {% endfor %}
   </div>
