@@ -34,8 +34,8 @@
   {
    "id": "v04",
    "bright": true,
-   "seed": 1304,
-   "prompt": "A fictional 1950s desert expedition man in a pith helmet and khaki clothes pressing his palm on the scratched sun-bleached metal fuselage of a World War II bomber half buried in sand, looking up at it with an amazed face, bright harsh sunlight."
+   "seed": 1404,
+   "prompt": "A fictional 1950s desert explorer in a khaki shirt and wide sun hat standing beside the silver metal side of an old World War II airplane resting on desert sand, one hand touching the metal, looking up at it with an amazed face, bright sunlight."
   },
   {
    "id": "v05",
@@ -133,17 +133,22 @@
  ],
  "scenes": [
   {
-   "say": "사막 한복판 폭격기, 옆 미군 기지엔 기록조차 없었습니다.",
-   "tts": "사막 한복판 폭격기 옆 미군 기지엔 기록조차 없었습니다.",
+   "say": "사막 한복판 폭격기, 근처 미군 기지엔 실종 기록도 없었습니다.",
+   "tts": "사막 한복판 폭격기 근처 미군 기지엔 실종 기록도 없었습니다.",
    "img": "v01",
    "move": "in",
    "emph": [
-    "기록조차"
+    "실종"
+   ],
+   "zoom": 1.6,
+   "focus": [
+    0.5,
+    0.58
    ]
   },
   {
-   "say": "석유를 찾던 비행기가, 처음 내려다봤죠.",
-   "tts": "석유를 찾던 비행기가, 처음 내려다봤죠.",
+   "say": "석유 탐사기가, 하늘에서 처음 발견했죠.",
+   "tts": "석유 탐사기가, 하늘에서 처음 발견했죠.",
    "img": "v02",
    "move": "in",
    "cont": true,
@@ -152,8 +157,8 @@
    ]
   },
   {
-   "say": "근처에서 사라진 미군기는, 없었거든요.",
-   "tts": "근처에서 사라진 미군기는, 없었거든요.",
+   "say": "그 일대에서 사라진 미군기는, 없었거든요.",
+   "tts": "그 일대에서 사라진 미군기는, 없었거든요.",
    "img": "v03",
    "move": "in",
    "cont": true,
@@ -322,7 +327,11 @@
      "move": "up",
      "w": 1
     }
-   ]
+   ],
+   "big": {
+    "text": "“아직 구조 없음”",
+    "at": 0.6
+   }
   },
   {
    "say": "그 밤 그들은, 아직 바다 위라고 믿었던 걸로 보입니다.",
@@ -331,7 +340,7 @@
    "move": "in",
    "sfx": "hit",
    "big": {
-    "text": "바다 위라고?",
+    "text": "바다인 줄 알았다",
     "at": 0.5
    },
    "emph": [
@@ -358,13 +367,13 @@
    ]
   },
   {
-   "say": "물 반 통으로 125km… 그들을 끝까지 걷게 한 건, 누구의 얼굴이었을까요?",
-   "tts": "물 반 통으로 백이십오 킬로미터… 그들을 끝까지 걷게 한 건, 누구의 얼굴이었을까요?",
+   "say": "물 반 통으로 125km… 당신이라면, 며칠을 걸을 수 있을까요?",
+   "tts": "물 반 통으로 백이십오 킬로미터… 당신이라면, 며칠을 걸을 수 있을까요?",
    "img": "v01",
    "move": "out",
    "cont": true,
    "emph": [
-    "얼굴이었을까요?"
+    "며칠을"
    ],
    "shots": [
     {
@@ -383,7 +392,7 @@
  "youtube": {
   "title": "레이디 비 굿, 기록에 없던 사막의 폭격기 😨",
   "summary": "1958년 리비아 사하라 한복판에서 거의 멀쩡한 미군 폭격기가 발견됐습니다. 근처 기지엔 그 일대 실종 기록이 없었고, 물과 식량은 남아 있었지만 9명과 낙하산은 없었습니다.",
-  "pinned": "물 반 통으로 125km, 그들을 끝까지 걷게 한 건 누구의 얼굴이었을까요? 한 단어로 남겨 주세요."
+  "pinned": "물 반 통으로 사막 125km, 당신이라면 며칠을 걸을 수 있을까요? 숫자 하나로 남겨 주세요."
  },
  "sources": "출처: 미 국립기록원(NARA) The Unwritten Record 'Lady Be Good', Air & Space Forces Magazine(2014.2), Evening Star(1960.2.14) — 미국 의회도서관 Chronicling America",
  "tags": "#세계기담 #레이디비굿",

@@ -27,9 +27,8 @@
   },
   {
    "id": "s03",
-   "ref": "s02",
    "seed": 5103,
-   "prompt": "Close-up of the same 1940s radio operator with headphones, pencil in hand, writing on a notepad and suddenly freezing, staring down at the paper with stiff wide eyes, warm lamp light, dark radio room."
+   "prompt": "Close-up of a fictional clean-shaven 1940s radio operator in his thirties with slicked dark hair, no beard, no hat, white shirt and loosened tie, with headphones, pencil in hand, writing on a notepad and suddenly freezing, staring down at the paper with stiff wide eyes, warm lamp light, dark radio room."
   },
   {
    "id": "s04",
@@ -39,9 +38,8 @@
   },
   {
    "id": "s05",
-   "ref": "s02",
    "seed": 5105,
-   "prompt": "Side view of the same 1940s radio operator pressing the headphones against his ears with both hands, leaning forward toward a large valve radio set, holding his breath with a tense face, a wall clock behind him with hands only and no readable numbers, dim lamp light."
+   "prompt": "Side view of a fictional clean-shaven 1940s radio operator in his thirties with slicked dark hair, no beard, no hat, white shirt and loosened tie, pressing the headphones against his ears with both hands, leaning forward toward a large valve radio set, holding his breath with a tense face, a wall clock behind him with hands only and no readable numbers, dim lamp light."
   },
   {
    "id": "s06",
@@ -211,17 +209,17 @@
    ]
   },
   {
-   "say": "맞바람에 늦은 줄 모르고, 산을 넘었다 믿은 거였죠.",
-   "tts": "맞바람에 늦은 줄 모르고, 산을 넘었다 믿은 거였죠.",
+   "say": "맞바람에 늦은 줄 모르고, 산을 넘은 줄 알고 내려간 거였죠.",
+   "tts": "맞바람에 늦은 줄 모르고, 산을 넘은 줄 알고 내려간 거였죠.",
    "img": "s11",
    "move": "in",
    "cont": true,
    "big": {
-    "text": "산을 넘었다?",
+    "text": "아직 산 앞이었다",
     "at": 0.55
    },
    "emph": [
-    "넘었다"
+    "내려간"
    ]
   },
   {
@@ -230,7 +228,7 @@
    "img": "s12",
    "move": "in",
    "big": {
-    "text": "STENDEC",
+    "text": "S·T·E·N·D·E·C",
     "at": 0.3
    },
    "emph": [

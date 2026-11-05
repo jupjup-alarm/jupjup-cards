@@ -17,7 +17,7 @@
    "id": "r01",
    "bright": true,
    "seed": 8101,
-   "prompt": "Close-up of a fictional bearded English man in his forties wearing a dark 1590s doublet and cloak, standing in a coastal forest in bright morning sunlight, his palm pressed flat on the bark of a big tree right beside three large freshly carved letters, his eyes wide and his face frozen in shock, the carved letters blurred and unreadable, leaves and sky in the upper part of the frame."
+   "prompt": "Close-up of a fictional bearded English man in his forties with short brown hair, wearing a dark 1590s doublet and a black cloak, standing in a coastal forest in bright morning sunlight, his palm pressed flat on the bark of a big tree next to three short fresh pale gouges cut into the bark (simple scratches, no letters, no symbols, no writing), his eyes wide and his face frozen in shock, leaves and sky in the upper part of the frame."
   },
   {
    "id": "r02",
@@ -58,13 +58,14 @@
    "bright": true,
    "nop": true,
    "seed": 8108,
-   "prompt": "Dawn light on a wet sandy beach: a clear line of bare human footprints crossing the sand toward the forest, a little grass smoking in the distance, peaceful but strange, no people anywhere."
+   "prompt": "Soft pink dawn light on a wet sandy beach: a clear line of bare human footprints crossing the sand toward the forest, a little grass smoking in the distance, peaceful but strange, no people anywhere."
   },
   {
    "id": "r09",
    "nop": true,
    "seed": 8109,
-   "prompt": "Wide view of an abandoned 1580s settlement in a clearing: a high palisade fence of tall pointed logs encloses empty spaces where houses have been taken down, only a few bare frames left, iron bars and lead pieces scattered on the ground, quiet morning light, no people."
+   "prompt": "Wide view in clear morning daylight of an abandoned 1580s settlement in a forest clearing: a high palisade fence of tall pointed logs encloses empty ground where houses have been taken down, only a few bare timber frames left, iron bars and lead pieces scattered on the grass, no people.",
+   "bright": true
   },
   {
    "id": "r10",
@@ -88,27 +89,24 @@
   {
    "id": "r13",
    "bright": true,
-   "ref": "r01",
    "seed": 8113,
-   "prompt": "The tall wooden entrance post of a palisade fence with a long word carved deep into it, the letters blurred and unreadable, and the same bearded Englishman in a dark cloak looking up at it from below in profile, mouth slightly open, bright daylight."
+   "prompt": "Bright daylight at the entrance of a high log palisade fence: a tall thick wooden entrance post with a long pale band of fresh rough gouges cut into it (no readable letters, no symbols), and a fictional bearded English man in his forties with short brown hair, wearing a dark 1590s doublet and a black cloak standing below it in profile, looking up at the post with his mouth slightly open in disbelief."
   },
   {
    "id": "r14",
    "nop": true,
    "seed": 8114,
-   "prompt": "Extreme macro close-up of smooth weathered wooden post surface with no marks at all, a single thumb resting on the blank wood just above the edge of carved letters at the bottom of the frame, the letters blurred, hard side light."
+   "prompt": "Extreme macro close-up of a smooth weathered grey wooden post surface, completely blank and unmarked, a single human thumb resting on the empty wood, hard side light, no letters, no symbols, no writing anywhere."
   },
   {
    "id": "r15",
-   "ref": "r01",
    "seed": 8115,
-   "prompt": "Close-up of the same bearded Englishman in a dark cloak breathing out in relief, one hand on his chest, a faint relieved smile with teary eyes, soft golden afternoon light by the palisade."
+   "prompt": "Close-up of a fictional bearded English man in his forties with short brown hair, wearing a dark 1590s doublet and a black cloak, standing by a log palisade fence in soft golden afternoon light, breathing out in relief with one hand on his chest, a faint relieved smile and teary eyes."
   },
   {
    "id": "r16",
-   "ref": "r01",
    "seed": 8116,
-   "prompt": "Storm at sea on the deck of a 1590 sailing ship, a snapped anchor rope whipping over the side, the same bearded Englishman in a dark cloak gripping the rail with both hands and looking back toward the vanishing horizon with despair, rain and huge waves."
+   "prompt": "Storm at sea on the wooden deck of a 1590 sailing ship in heavy rain: a snapped anchor rope whipping over the side, huge dark waves, a fictional bearded English man in his forties with short brown hair, wearing a dark 1590s doublet and a black cloak soaked, gripping the ship's rail with both hands and looking back toward the horizon with despair."
   },
   {
    "id": "r17",
@@ -139,7 +137,7 @@
    "bright": true,
    "nop": true,
    "seed": 8121,
-   "prompt": "Low angle close-up of a tall weathered wooden palisade entrance post with one long word carved deep into the wood, the letters blurred and unreadable, bright sunlight raking across the carving, blue sky above."
+   "prompt": "Low angle close-up of a tall weathered wooden palisade entrance post with a long band of rough pale gouges cut into the wood (no readable letters, no symbols, no writing), bright sunlight raking across it, blue sky above."
   }
  ],
  "scenes": [
@@ -270,8 +268,8 @@
    ]
   },
   {
-   "say": "스페인군에게 당했을까, 바다로 나갔을까.",
-   "tts": "스페인군에게 당했을까, 바다로 나갔을까.",
+   "say": "적국 스페인에 당했을까, 바다로 나갔을까.",
+   "tts": "적국 스페인에 당했을까, 바다로 나갔을까.",
    "img": "r12",
    "move": "in",
    "big": {
@@ -280,8 +278,8 @@
    }
   },
   {
-   "say": "그런데 입구 기둥에, 단어 하나가 새겨져 있었습니다.",
-   "tts": "그런데 입구 기둥에, 단어 하나가 새겨져 있었습니다.",
+   "say": "그런데 입구 기둥엔, 단어 전체가 새겨져 있었습니다.",
+   "tts": "그런데 입구 기둥엔, 단어 전체가 새겨져 있었습니다.",
    "img": "r13",
    "move": "up",
    "big": {
@@ -289,7 +287,7 @@
     "at": 0.55
    },
    "emph": [
-    "단어"
+    "전체가"
    ],
    "shots": [
     {
@@ -316,13 +314,13 @@
    ]
   },
   {
-   "say": "화이트는 믿었습니다. 그들이 무사히 그 섬으로 갔다고.",
-   "tts": "화이트는 믿었습니다. 그들이 무사히 그 섬으로 갔다고.",
+   "say": "화이트는 믿었습니다. 친한 원주민이 사는, 크로아토안섬으로 갔다고.",
+   "tts": "화이트는 믿었습니다. 친한 원주민이 사는, 크로아토안섬으로 갔다고.",
    "img": "r15",
    "move": "in",
    "cont": true,
    "emph": [
-    "무사히"
+    "친한"
    ]
   },
   {
@@ -336,8 +334,8 @@
    ]
   },
   {
-   "say": "2026년, 그들이 원주민 마을에 합류했다는 발표가 나왔습니다.",
-   "tts": "이천이십육 년, 그들이 원주민 마을에 합류했다는 발표가 나왔습니다.",
+   "say": "2026년, 고고학자들이 발표했습니다. 그들이 원주민 마을에 합류했다고.",
+   "tts": "이천이십육 년, 고고학자들이 발표했습니다. 그들이 원주민 마을에 합류했다고.",
    "img": "r17",
    "move": "in",
    "big": {
@@ -375,8 +373,8 @@
    ]
   },
   {
-   "say": "십자가 없던 그 대답, 아버지는 믿어도 됐던 걸까요?",
-   "tts": "십자가 없던 그 대답, 아버지는 믿어도 됐던 걸까요?",
+   "say": "아버지가 그 섬에 닿았다면, 딸을 다시 만날 수 있었을까요?",
+   "tts": "아버지가 그 섬에 닿았다면, 딸을 다시 만날 수 있었을까요?",
    "img": "r01",
    "move": "in",
    "zoom": 1.15,
@@ -385,15 +383,14 @@
     0.5
    ],
    "emph": [
-    "대답,",
-    "믿어도"
+    "딸을"
    ]
   }
  ],
  "youtube": {
   "title": "로어노크, 총독을 얼어붙게 한 나무의 세 글자",
   "summary": "1590년 8월, 3년 만에 북미 로어노크섬으로 돌아온 총독 존 화이트. 백 명 넘게 남겨 둔 정착지는 헐려 있었고, 기둥엔 단어 하나만 새겨져 있었습니다. 위험하면 새기기로 한 십자가는 없었습니다.",
-  "pinned": "십자가 없던 그 단어, 화이트는 믿어도 됐을까요? 믿어도 됐다 / 아니다로 답해 주세요. (나무의 CRO는 왜 세 글자에서 멈췄을까요?)"
+  "pinned": "화이트가 그 섬에 닿았다면, 딸을 다시 만날 수 있었을까요? 만났다 / 못 만났다로 답해 주세요. (나무의 CRO는 왜 세 글자에서 멈췄을까요?)"
  },
  "sources": "출처: 존 화이트 1590년 항해기(해클루트 『Principal Navigations』 1600 수록), 미 국립공원청(NPS) Fort Raleigh, 노스캐롤라이나 문화자원부(2016), History.com, Outer Banks Voice(2026.3.27) — 2026 발표에는 '17세기 교역품일 수 있다'는 반론도 있습니다",
  "tags": "#세계기담 #로어노크",
