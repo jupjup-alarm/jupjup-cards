@@ -215,11 +215,12 @@ def say_html(text, t0, dur, th, spans=None, fast=False, end=None):
             a = ph[0][1]
             b = phrases[k + 1][0][1] if k + 1 < len(phrases) else (end if end else t0 + dur + 0.6)
             ws = []
-            for w, at in ph:
+            brk = line_break([w for w, _ in ph], one_line=13)   # 두 줄이면 말이 끊기는 자리에서 (2026-11-05)
+            for n_, (w, at) in enumerate(ph):
                 num = any(c.isdigit() for c in w)
                 cls = "w wn" if num else "w"
                 style = f' style="--hl:{th["hl"]}"' if num else ""
-                ws.append(f'<span class="{cls}" data-w="{at:.2f}"{style}>{unit(esc(w))}</span>')
+                ws.append(("<br>" if n_ == brk else "") + f'<span class="{cls}" data-w="{at:.2f}"{style}>{unit(esc(w))}</span>')
             out.append(f'<div class="ph" data-a="{a:.2f}" data-b="{b:.2f}">{" ".join(ws)}</div>')
         return f'<div class="say fast">{"".join(out)}</div>'
     out = []
@@ -343,6 +344,29 @@ THUD_TIMES, HIT_TIMES = [], []   # 이야기형(story): 핵심어가 떨어질 �
 STORY_CUTS = [("50% 45%", 1.06, 0.10), ("35% 55%", 1.16, 0.08), ("65% 40%", 1.12, 0.09), ("50% 60%", 1.22, 0.07), ("45% 35%", 1.09, 0.10)]
 
 
+SPLIT_PUNCT = re.compile(r"[,，.?!…]$")
+SPLIT_GOOD = re.compile(r"(?:은|는|이|가|을|를|에|에서|도|고|며|면|서|요|데|죠|로|으로|랑|하고|까지|부터|만)$")
+
+
+def line_break(words, one_line=15):
+    """자막 두 줄 나누기 (2026-11-05 사용자 결정 — 모든 자막): 한 줄에 다 들어가면 그대로,
+    넘치면 두 줄 길이가 비슷하면서 말이 끊기는 자리(쉼표·조사 뒤)에서 나눈다. 반환: 둘째 줄이 시작하는 단어 번호 또는 None."""
+    lens = [len(w) for w in words]
+    total = sum(lens) + len(words) - 1
+    if total <= one_line or len(words) < 2:
+        return None
+    best, bk = None, None
+    for k in range(1, len(words)):
+        left = sum(lens[:k]) + k - 1
+        right = total - left - 1
+        cost = (abs(left - right) - (4.5 if SPLIT_PUNCT.search(words[k - 1]) else 1.5 if SPLIT_GOOD.search(words[k - 1]) else 0)
+                + (6 if min(left, right) <= 3 else 0) + (4 if max(left, right) > 17 else 0)
+                + (8 if re.match(r"(원|세대|채|명|건|호|대\s*1|평|층|개|곳|년|월|일)", words[k]) and re.search(r"[\d만억천]$|^(한|두|세|네|다섯|여섯|일곱|여덟|아홉|열|스무)$", words[k - 1]) else 0))   # 숫자와 단위는 한 줄에
+        if best is None or cost < best:
+            best, bk = cost, k
+    return bk
+
+
 def phrases_of(text, t0, dur, spans=None, end=None, maxw=8):
     """내레이션을 숨 단위 구절로 나누고 각 구절이 화면에 머무는 시간 [(a, b, [(단어, 켜지는 시각)…])]."""
     words = str(text or "").split()
@@ -409,8 +433,14 @@ def story_html(sc, th, start, end, first_shot=None):
                      + (f'<div class="scred seg" data-a="{a:.3f}" data-b="{b:.3f}">{esc(cred)}</div>' if cred else ""))
     else:
         back = f'<div class="blob" style="background:{th["spark"]}"></div>'
+    def cap_text(ph):
+        ws = [w for w, _ in ph]
+        k = line_break(ws)
+        if k is None:
+            return unit(esc(" ".join(ws)))
+        return unit(esc(" ".join(ws[:k]))) + "<br>" + unit(esc(" ".join(ws[k:])))
     caps = "".join(f'<div class="cap seg{" red" if dim and k in dim_k else ""}" data-a="{(start if k == 0 else a):.3f}" data-b="{(end if k == len(phs) - 1 else b):.3f}">'
-                   f'<span>{unit(esc(" ".join(w for w, _ in ph)))}</span></div>'
+                   f'<span>{cap_text(ph)}</span></div>'
                    for k, (a, b, ph) in enumerate(phs))
     dims = "".join(f'<div class="sdim seg" data-a="{segs[k][0]:.3f}" data-b="{segs[k][1]:.3f}"></div>' for k in dim_k if dim and k < len(segs))
     word = ""
@@ -1051,12 +1081,13 @@ FIT_JS = """
 
 def sfx_files():
     """효과음 2개를 직접 만든다 (외부 음원 없음 — 저작권 걱정 없음). 목소리보다 훨씬 작게."""
-    d = Path(os.environ.get("TMPDIR", "/tmp")) / "jupjup_sfx"
+    d = Path(os.environ.get("TMPDIR", "/tmp")) / "jupjup_sfx2"   # 2026-11-05 소리 바꿈 → 새 폴더(예전 캐시 안 씀)
     d.mkdir(exist_ok=True)
     spec = {"whoosh": "anoisesrc=d=0.32:c=pink:a=0.6,highpass=f=700,lowpass=f=5000,afade=t=in:d=0.12,afade=t=out:st=0.14:d=0.18,volume=0.22",
             "pop": "sine=f=1250:d=0.09,afade=t=out:st=0.01:d=0.08,volume=0.28",
-            "thud": "sine=f=58:d=0.42,afade=t=out:st=0.03:d=0.39,volume=0.95",
-            "hit": "anoisesrc=d=0.45:c=brown:a=0.9,lowpass=f=260,afade=t=out:st=0.02:d=0.43,volume=0.7"}
+            # 2026-11-05 사용자 "핵심어·질문 순간 내레이션이 깨진다": 말 위에 겹치는 소리라 작고 짧게, 말소리 대역(300Hz~)을 비켜 감
+            "thud": "sine=f=95:d=0.16,afade=t=out:st=0.01:d=0.15,volume=0.32",
+            "hit": "anoisesrc=d=0.22:c=brown:a=0.6,lowpass=f=180,afade=t=out:st=0.01:d=0.21,volume=0.22"}
     out = {}
     for k, f in spec.items():
         p = d / f"{k}.wav"
