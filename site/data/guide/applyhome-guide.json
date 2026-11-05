@@ -1,0 +1,282 @@
+{
+ "slug": "applyhome-guide",
+ "category": "청약 자격",
+ "title": "청약홈·LH청약플러스 사용법 — 공고 찾기부터 당첨 확인까지",
+ "h1": "청약홈과 LH청약플러스, 어디서 어떻게 신청하나요?",
+ "dek": "민영 아파트와 무순위는 청약홈, LH 공공분양·임대는 LH청약플러스예요. 인증서 준비부터 공고문 읽는 순서, 접수 시간, 당첨 확인까지 차례로 정리했어요.",
+ "description": "청약홈과 LH청약플러스는 무엇이 다를까요? 공고 찾는 곳, 공동인증서·간편인증 되는 경우, 입주자모집공고문 읽는 순서, 접수 시간 09:00~17:30, 당첨 발표 확인과 서류·계약까지 정리했어요.",
+ "basis": "2026.11",
+ "published": "2026-11-05",
+ "checked": "2026-11-05",
+ "keywords": [
+  "청약홈",
+  "LH청약플러스",
+  "LH청약",
+  "청약홈페이지",
+  "청약홈 간편인증",
+  "청약 당첨 조회"
+ ],
+ "answer": [
+  "민영 아파트와 무순위는 청약홈, LH 공공분양·임대는 LH청약플러스에서 신청해요. 최종 접수처는 공고문의 신청 방법이에요.",
+  "청약홈은 공동·금융인증서와 네이버·KB국민·토스·신한·카카오 인증서를 받지만, 무순위는 공동·금융인증서만 돼요.",
+  "청약홈 접수는 신청일 09:00~17:30이에요. 당첨은 청약홈 청약당첨조회나 LH청약플러스 결과조회에서 확인해요."
+ ],
+ "cover": {
+  "svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 326' role='img' aria-label='청약홈, LH청약플러스, SH 인터넷청약이 받는 공고와 청약 흐름'><rect x='0' y='0' width='640' height='326' rx='0' fill='#FFFFFF'/><text x='24' y='38' font-size='20' font-weight='700' fill='#0F1E3D'>청약 사이트, 공고마다 들어가는 곳이 달라요</text><text x='24' y='61' font-size='13' fill='#5B6472'>민영·무순위는 청약홈, LH 공공분양·임대는 LH청약플러스예요</text><rect x='24' y='80' width='184' height='136' rx='10' fill='#F4F6F9'/><rect x='24' y='80' width='184' height='6' rx='3' fill='#1E4FD8'/><text x='38' y='110' font-size='16' font-weight='700' fill='#0F1E3D'>청약홈</text><text x='38' y='129' font-size='12' fill='#5B6472'>한국부동산원</text><text x='38' y='154' font-size='13' fill='#0F1E3D'>민영 특별·1·2순위</text><text x='38' y='175' font-size='13' fill='#0F1E3D'>무순위·임의공급</text><text x='38' y='196' font-size='13' fill='#0F1E3D'>오피스텔·민간임대</text><rect x='228' y='80' width='184' height='136' rx='10' fill='#F4F6F9'/><rect x='228' y='80' width='184' height='6' rx='3' fill='#0E7A5F'/><text x='242' y='110' font-size='16' font-weight='700' fill='#0F1E3D'>LH청약플러스</text><text x='242' y='129' font-size='12' fill='#5B6472'>한국토지주택공사</text><text x='242' y='154' font-size='13' fill='#0F1E3D'>공공분양·신혼희망타운</text><text x='242' y='175' font-size='13' fill='#0F1E3D'>국민임대·행복주택 등</text><text x='242' y='196' font-size='13' fill='#0F1E3D'>당첨·서류제출 조회</text><rect x='432' y='80' width='184' height='136' rx='10' fill='#F4F6F9'/><rect x='432' y='80' width='184' height='6' rx='3' fill='#FF5233'/><text x='446' y='110' font-size='16' font-weight='700' fill='#0F1E3D'>SH 인터넷청약</text><text x='446' y='129' font-size='12' fill='#5B6472'>서울주택도시공사</text><text x='446' y='154' font-size='13' fill='#0F1E3D'>서울 공공분양</text><text x='446' y='175' font-size='13' fill='#0F1E3D'>장기전세·국민임대</text><text x='446' y='196' font-size='13' fill='#0F1E3D'>행복주택 등</text><rect x='24' y='238' width='104' height='32' rx='16' fill='#F4F6F9'/><text x='76' y='259' font-size='13' font-weight='700' fill='#0F1E3D' text-anchor='middle'>공고 찾기</text><text x='137' y='259' font-size='16' font-weight='700' fill='#9AA3B2' text-anchor='middle'>›</text><rect x='146' y='238' width='104' height='32' rx='16' fill='#F4F6F9'/><text x='198' y='259' font-size='13' font-weight='700' fill='#0F1E3D' text-anchor='middle'>자격 확인</text><text x='259' y='259' font-size='16' font-weight='700' fill='#9AA3B2' text-anchor='middle'>›</text><rect x='268' y='238' width='104' height='32' rx='16' fill='#FFF1EC'/><text x='320' y='259' font-size='13' font-weight='700' fill='#C8361A' text-anchor='middle'>신청</text><text x='381' y='259' font-size='16' font-weight='700' fill='#9AA3B2' text-anchor='middle'>›</text><rect x='390' y='238' width='104' height='32' rx='16' fill='#F4F6F9'/><text x='442' y='259' font-size='13' font-weight='700' fill='#0F1E3D' text-anchor='middle'>발표 확인</text><text x='503' y='259' font-size='16' font-weight='700' fill='#9AA3B2' text-anchor='middle'>›</text><rect x='512' y='238' width='104' height='32' rx='16' fill='#F4F6F9'/><text x='564' y='259' font-size='13' font-weight='700' fill='#0F1E3D' text-anchor='middle'>서류·계약</text><rect x='24' y='288' width='592' height='1' rx='0' fill='#E3E7ED'/><text x='24' y='310' font-size='12' fill='#5B6472'>청약홈 접수는 신청일 09:00~17:30 · 메뉴는 2026년 11월 화면 기준이에요</text></svg>",
+  "svg_narrow": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 340 556' role='img' aria-label='청약홈, LH청약플러스, SH 인터넷청약이 받는 공고와 청약 흐름'><rect x='0' y='0' width='340' height='556' rx='0' fill='#FFFFFF'/><text x='16' y='32' font-size='18' font-weight='700' fill='#0F1E3D'>청약 사이트,</text><text x='16' y='55' font-size='18' font-weight='700' fill='#0F1E3D'>공고마다 들어가는 곳이 달라요</text><text x='16' y='77' font-size='12.5' fill='#5B6472'>최종 신청처는 공고문의 신청 방법이에요</text><rect x='16' y='92' width='308' height='100' rx='10' fill='#F4F6F9'/><rect x='16' y='92' width='6' height='100' rx='3' fill='#1E4FD8'/><text x='32' y='116' font-size='15' font-weight='700' fill='#0F1E3D'>청약홈</text><text x='316' y='116' font-size='12' fill='#5B6472' text-anchor='end'>한국부동산원</text><text x='32' y='139' font-size='13' fill='#0F1E3D'>민영 특별·1·2순위</text><text x='32' y='159' font-size='13' fill='#0F1E3D'>무순위·임의공급</text><text x='32' y='179' font-size='13' fill='#0F1E3D'>오피스텔·민간임대</text><rect x='16' y='204' width='308' height='100' rx='10' fill='#F4F6F9'/><rect x='16' y='204' width='6' height='100' rx='3' fill='#0E7A5F'/><text x='32' y='228' font-size='15' font-weight='700' fill='#0F1E3D'>LH청약플러스</text><text x='316' y='228' font-size='12' fill='#5B6472' text-anchor='end'>한국토지주택공사</text><text x='32' y='251' font-size='13' fill='#0F1E3D'>공공분양·신혼희망타운</text><text x='32' y='271' font-size='13' fill='#0F1E3D'>국민임대·행복주택 등</text><text x='32' y='291' font-size='13' fill='#0F1E3D'>당첨·서류제출 조회</text><rect x='16' y='316' width='308' height='100' rx='10' fill='#F4F6F9'/><rect x='16' y='316' width='6' height='100' rx='3' fill='#FF5233'/><text x='32' y='340' font-size='15' font-weight='700' fill='#0F1E3D'>SH 인터넷청약</text><text x='316' y='340' font-size='12' fill='#5B6472' text-anchor='end'>서울주택도시공사</text><text x='32' y='363' font-size='13' fill='#0F1E3D'>서울 공공분양</text><text x='32' y='383' font-size='13' fill='#0F1E3D'>장기전세·국민임대</text><text x='32' y='403' font-size='13' fill='#0F1E3D'>행복주택 등</text><rect x='16' y='434' width='92' height='30' rx='15' fill='#F4F6F9'/><text x='62' y='454' font-size='13' font-weight='700' fill='#0F1E3D' text-anchor='middle'>공고 찾기</text><rect x='120' y='434' width='92' height='30' rx='15' fill='#F4F6F9'/><text x='166' y='454' font-size='13' font-weight='700' fill='#0F1E3D' text-anchor='middle'>자격 확인</text><rect x='224' y='434' width='92' height='30' rx='15' fill='#FFF1EC'/><text x='270' y='454' font-size='13' font-weight='700' fill='#C8361A' text-anchor='middle'>신청</text><rect x='16' y='474' width='92' height='30' rx='15' fill='#F4F6F9'/><text x='62' y='494' font-size='13' font-weight='700' fill='#0F1E3D' text-anchor='middle'>발표 확인</text><rect x='120' y='474' width='92' height='30' rx='15' fill='#F4F6F9'/><text x='166' y='494' font-size='13' font-weight='700' fill='#0F1E3D' text-anchor='middle'>서류·계약</text><text x='16' y='524' font-size='12' fill='#5B6472'>청약홈 접수 09:00~17:30 (신청일)</text><text x='16' y='542' font-size='12' fill='#5B6472'>메뉴는 2026년 11월 화면 기준이에요</text></svg>",
+  "alt": "청약홈(한국부동산원)은 민영 특별공급·1·2순위·무순위, LH청약플러스는 공공분양·공공임대, SH 인터넷청약은 서울 공공주택을 받고, 청약은 공고 찾기·자격 확인·신청·발표 확인·서류와 계약 순서로 진행돼요.",
+  "caption": "근거: 주택공급에 관한 규칙 제50조, 청약홈·LH청약플러스·SH 안내 (2026년 11월 5일 확인)"
+ },
+ "body": "## 청약홈과 LH청약플러스, 뭐가 다른가요?\n\n청약홈(applyhome.co.kr)은 한국부동산원이, LH청약플러스(apply.lh.or.kr)는 한국토지주택공사(LH)가 운영해요. 둘 다 청약을 받는 곳이지만 다루는 공고가 달라요. 같은 청약통장을 갖고 있어도 넣으려는 집에 따라 들어갈 청약홈페이지가 바뀌어요.\n\n나뉘는 근거는 「주택공급에 관한 규칙」 제50조예요. 사업주체는 청약 접수와 당첨자 선정을 은행이나 주택청약업무수행기관에 맡기는 게 원칙이에요. 다만 국가·지자체·LH·지방공사 같은 공공 사업주체는 청약 접수를 직접 할 수 있어요(제50조 제2항, 제18조).\n\n### 청약홈 — 한국부동산원 · 민영 아파트와 무순위의 창구\n\n민간 건설사가 짓는 아파트의 특별공급·1순위·2순위 청약을 받아요. 무순위·임의공급·불법행위재공급, 오피스텔·도시형생활주택·(공공지원)민간임대도 여기서 받아요. 2026년 11월 화면의 큰 메뉴는 청약신청, 청약당첨조회, 청약자격확인, 공고단지 청약연습, 청약일정 및 통계, 청약제도안내, 청약소통방이에요.\n\n| 하고 싶은 일 | 청약홈 메뉴 (2026년 11월 화면) |\n|---|---|\n| 이번 주 공고·경쟁률 보기 | 청약일정 및 통계 → 청약캘린더, 분양정보/경쟁률 |\n| 내 자격 미리 보기 | 청약자격확인 → 주택소유확인, 청약제한사항확인, 청약통장 가입내역, 청약자격진단 |\n| 세대원 정보 동의 | 청약자격확인 → 세대구성원 등록/조회, 세대구성원 동의 |\n| 신청·취소 | 청약신청 → APT → 특별공급, 1순위/2순위, 무순위 등 |\n| 결과 보기 | 청약당첨조회 → APT |\n\n### LH청약플러스 — LH · 공공분양·신혼희망타운·공공임대\n\nLH가 공급하는 공공분양과 신혼희망타운, 국민임대·행복주택 같은 공공임대의 공고와 접수가 여기서 이뤄져요. LH 안내에 따르면 공공분양·분양전환공공임대는 PC나 모바일 앱으로 인터넷 청약을 받아요. 임대주택은 공고에 따라 현장 접수만 하거나 인터넷 접수만 할 수도 있어요.\n\nLH 공공분양에 넣을 때도 청약홈을 한 번은 들러요. LH 공고 페이지는 주택소유 여부와 청약제한사항을 청약홈 '청약자격확인'에서 직접 조회해 보라고 안내해요.\n\n| 하고 싶은 일 | LH청약플러스 메뉴 (2026년 11월 화면) |\n|---|---|\n| 공고 보기 | 청약 → 분양주택·임대주택 → 공고문, 청약캘린더 |\n| 미리 연습 | 유형별 '청약연습하기' |\n| 자격 확인 | 분양주택 → 청약자격확인 (주택소유·통장·제한사항은 청약홈 연결) |\n| 신청 | 청약 → 분양주택·임대주택 → 청약신청 |\n| 결과·서류 | 청약결과 확인 → 당첨/낙찰 결과조회, 서류제출대상자 명단 |\n\n임대주택 유형별 차이는 [LH 임대주택 유형 비교](/guide/lh-rental-types/)에 정리해 두었어요.\n\n### SH 인터넷청약 — 서울주택도시공사 · 서울 공공주택\n\n서울에서 SH가 공급하는 분양주택·장기전세·국민임대·행복주택은 SH 홈페이지(i-sh.co.kr)의 '공고 및 공지'에 공고가 올라와요. 당첨자 발표와 서류심사 대상자 조회도 SH 인터넷청약에서 해요.\n\nSH 분양절차 안내에는 특별공급은 공사 홈페이지·방문, 일반공급은 한국부동산원에서 접수한다고 적혀 있어요. 다만 2026년 10월 고덕강일3단지 공고는 특별·일반공급 모두 SH 인터넷청약시스템에서 받았어요. 단지마다 다를 수 있으니 공고문의 신청 방법을 따르세요.\n\n| 하고 싶은 일 | SH 홈페이지 (2026년 11월 화면) |\n|---|---|\n| 공고 보기 | SH소식 → 공고 및 공지 |\n| 결과 보기 | 당첨자 발표, 서류심사 대상자 조회 |\n| 문의 | 콜센터 1600-3456 |\n\n:::note 화면은 바뀔 수 있어요\n위 메뉴 이름은 2026년 11월 5일 줍줍알람이 세 사이트를 직접 열어 확인한 것이에요. 개편되면 이름과 위치가 달라질 수 있어요. 신청 자격·일정·방법의 최종 기준은 그 단지의 입주자모집공고문이에요.\n:::\n\n## 청약 공고는 어디서 찾고, 어디서 신청하나요?\n\n가장 빠른 판별법은 공고문 첫 장의 사업주체를 보는 거예요. 공고문에는 신청 방법을 반드시 적게 돼 있어서(규칙 제21조 제3항 제10호) 접수처도 거기서 확인할 수 있어요.\n\n:::figure 어디서 신청할까요 — 사업주체에 따라 갈리는 청약 사이트 (주택공급에 관한 규칙 제50조, 각 기관 안내 2026년 11월 기준)\n<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 244' role='img' aria-label='공고문의 사업주체에 따라 청약홈, LH청약플러스, 공고문의 접수처로 나뉘는 흐름'><rect x='0' y='0' width='640' height='244' rx='0' fill='#FFFFFF'/><rect x='140' y='16' width='360' height='44' rx='10' fill='#0F1E3D'/><text x='320' y='44' font-size='14' font-weight='700' fill='#FFFFFF' text-anchor='middle'>공고문 첫 장의 사업주체와 신청 방법 보기</text><line x1='320' y1='60' x2='116' y2='92' stroke='#9AA3B2' stroke-width='2'/><rect x='24' y='92' width='184' height='30' rx='15' fill='#F4F6F9'/><text x='116' y='112' font-size='13' font-weight='700' fill='#5B6472' text-anchor='middle'>민간 건설사</text><line x1='116' y1='122' x2='116' y2='138' stroke='#9AA3B2' stroke-width='2'/><rect x='24' y='138' width='184' height='62' rx='10' fill='#FFFFFF' stroke='#1E4FD8' stroke-width='1.5'/><text x='116' y='164' font-size='15' font-weight='700' fill='#0F1E3D' text-anchor='middle'>청약홈</text><text x='116' y='186' font-size='12' fill='#5B6472' text-anchor='middle'>특별·1·2순위·무순위</text><line x1='320' y1='60' x2='320' y2='92' stroke='#9AA3B2' stroke-width='2'/><rect x='228' y='92' width='184' height='30' rx='15' fill='#F4F6F9'/><text x='320' y='112' font-size='13' font-weight='700' fill='#5B6472' text-anchor='middle'>LH</text><line x1='320' y1='122' x2='320' y2='138' stroke='#9AA3B2' stroke-width='2'/><rect x='228' y='138' width='184' height='62' rx='10' fill='#FFFFFF' stroke='#0E7A5F' stroke-width='1.5'/><text x='320' y='164' font-size='15' font-weight='700' fill='#0F1E3D' text-anchor='middle'>LH청약플러스</text><text x='320' y='186' font-size='12' fill='#5B6472' text-anchor='middle'>공공분양·공공임대</text><line x1='320' y1='60' x2='524' y2='92' stroke='#9AA3B2' stroke-width='2'/><rect x='432' y='92' width='184' height='30' rx='15' fill='#F4F6F9'/><text x='524' y='112' font-size='13' font-weight='700' fill='#5B6472' text-anchor='middle'>SH 등 지방공사</text><line x1='524' y1='122' x2='524' y2='138' stroke='#9AA3B2' stroke-width='2'/><rect x='432' y='138' width='184' height='62' rx='10' fill='#FFFFFF' stroke='#FF5233' stroke-width='1.5'/><text x='524' y='164' font-size='15' font-weight='700' fill='#0F1E3D' text-anchor='middle'>공고문의 접수처</text><text x='524' y='186' font-size='12' fill='#5B6472' text-anchor='middle'>SH 인터넷청약 등</text><text x='24' y='228' font-size='12.5' fill='#C8361A'>LH·SH가 직접 받는 공고는 청약통장 순위확인서(청약홈 발급)가 필요할 수 있어요</text></svg>\n<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 340 328' role='img' aria-label='공고문의 사업주체에 따라 청약홈, LH청약플러스, 공고문의 접수처로 나뉘는 흐름'><rect x='0' y='0' width='340' height='328' fill='#FFFFFF'/><rect x='16' y='16' width='308' height='40' rx='10' fill='#0F1E3D'/><text x='170' y='41' font-size='13' font-weight='700' fill='#FFFFFF' text-anchor='middle'>공고문 첫 장의 사업주체와 신청 방법 보기</text><rect x='16' y='86' width='116' height='30' rx='15' fill='#F4F6F9'/><text x='74' y='106' font-size='13' font-weight='700' fill='#5B6472' text-anchor='middle'>민간 건설사</text><path d='M136 101 h10 m-6 -5 l6 5 l-6 5' fill='none' stroke='#9AA3B2' stroke-width='2'/><rect x='152' y='72' width='172' height='58' rx='10' fill='#FFFFFF' stroke='#1E4FD8' stroke-width='1.5'/><text x='238' y='97' font-size='15' font-weight='700' fill='#0F1E3D' text-anchor='middle'>청약홈</text><text x='238' y='117' font-size='12' fill='#5B6472' text-anchor='middle'>특별·1·2순위·무순위</text><rect x='16' y='156' width='116' height='30' rx='15' fill='#F4F6F9'/><text x='74' y='176' font-size='13' font-weight='700' fill='#5B6472' text-anchor='middle'>LH</text><path d='M136 171 h10 m-6 -5 l6 5 l-6 5' fill='none' stroke='#9AA3B2' stroke-width='2'/><rect x='152' y='142' width='172' height='58' rx='10' fill='#FFFFFF' stroke='#0E7A5F' stroke-width='1.5'/><text x='238' y='167' font-size='15' font-weight='700' fill='#0F1E3D' text-anchor='middle'>LH청약플러스</text><text x='238' y='187' font-size='12' fill='#5B6472' text-anchor='middle'>공공분양·공공임대</text><rect x='16' y='226' width='116' height='30' rx='15' fill='#F4F6F9'/><text x='74' y='246' font-size='13' font-weight='700' fill='#5B6472' text-anchor='middle'>SH 등 지방공사</text><path d='M136 241 h10 m-6 -5 l6 5 l-6 5' fill='none' stroke='#9AA3B2' stroke-width='2'/><rect x='152' y='212' width='172' height='58' rx='10' fill='#FFFFFF' stroke='#FF5233' stroke-width='1.5'/><text x='238' y='237' font-size='15' font-weight='700' fill='#0F1E3D' text-anchor='middle'>공고문의 접수처</text><text x='238' y='257' font-size='12' fill='#5B6472' text-anchor='middle'>SH 인터넷청약 등</text><text x='16' y='296' font-size='12.5' fill='#C8361A'>LH·SH가 직접 받는 공고는 청약통장</text><text x='16' y='315' font-size='12.5' fill='#C8361A'>순위확인서(청약홈 발급)가 필요할 수 있어요</text></svg>\n:::\n\n| 주택 종류 | 공고 찾는 곳 | 신청하는 곳 |\n|---|---|---|\n| 민영 아파트 (특별공급·1·2순위) | 청약홈 청약캘린더·분양정보 | 청약홈 |\n| 민영 무순위·임의공급·불법행위재공급 | 청약홈 분양정보 'APT 잔여세대' | 청약홈 |\n| 오피스텔·도시형생활주택·민간임대 | 청약홈 분양정보 | 청약홈 |\n| LH 공공분양·신혼희망타운 | LH청약플러스 분양주택 공고문 | LH청약플러스 |\n| LH 공공임대 (국민임대·행복주택 등) | LH청약플러스 임대주택 공고문 | LH청약플러스 또는 현장 (공고별) |\n| SH 분양·임대 | SH 공고 및 공지 | 공고문에 적힌 접수처 |\n\n공고를 놓치지 않으려면 알림을 걸어 두세요. 청약홈에는 '청약알리미 신청', LH청약플러스에는 '관심공고 알리미'가 있어요. 둘 다 로그인해야 쓸 수 있어요.\n\n무순위·잔여세대 공고를 고르는 법은 [줍줍(무순위) 청약 정리](/guide/mujeonwi/)에 따로 있어요.\n\n## 입주자모집공고문은 어떤 순서로 읽나요?\n\n공고문은 수십 쪽에 이르기도 해요. 처음부터 끝까지 읽기보다 '내가 넣을 수 있나 → 얼마인가 → 어떻게 넣나' 순서로 필요한 칸을 찾아 읽는 게 빨라요. 규칙 제21조 제3항이 공고문에 꼭 넣게 한 항목이 이 순서와 거의 맞아요.\n\n:::figure 입주자모집공고문 읽는 순서 다섯 단계 (주택공급에 관한 규칙 제21조 제3항 필수 기재 항목 기준, 줍줍알람 정리)\n<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 300' role='img' aria-label='입주자모집공고문 읽는 순서 다섯 단계: 일정표, 신청자격, 공급 세대와 가격, 신청 방법, 당첨 후 할 일'><rect x='0' y='0' width='640' height='300' rx='0' fill='#FFFFFF'/><rect x='16' y='16' width='608' height='40' rx='8' fill='#F4F6F9'/><circle cx='40' cy='36' r='13' fill='#FF5233'/><text x='40' y='41' font-size='13' font-weight='700' fill='#FFFFFF' text-anchor='middle'>1</text><text x='64' y='41' font-size='14' font-weight='700' fill='#0F1E3D'>일정표</text><text x='200' y='41' font-size='12.5' fill='#5B6472'>신청일시·당첨자 발표·서류 제출·계약 기간을 달력에 옮겨요</text><rect x='16' y='66' width='608' height='40' rx='8' fill='#FFFFFF'/><circle cx='40' cy='86' r='13' fill='#0F1E3D'/><text x='40' y='91' font-size='13' font-weight='700' fill='#FFFFFF' text-anchor='middle'>2</text><text x='64' y='91' font-size='14' font-weight='700' fill='#0F1E3D'>신청자격</text><text x='200' y='91' font-size='12.5' fill='#5B6472'>거주지역·무주택·통장 요건, 규제지역·재당첨 제한 여부</text><rect x='16' y='116' width='608' height='40' rx='8' fill='#F4F6F9'/><circle cx='40' cy='136' r='13' fill='#0F1E3D'/><text x='40' y='141' font-size='13' font-weight='700' fill='#FFFFFF' text-anchor='middle'>3</text><text x='64' y='141' font-size='14' font-weight='700' fill='#0F1E3D'>공급 세대·가격</text><text x='200' y='141' font-size='12.5' fill='#5B6472'>특별공급·일반공급 세대수, 주택형별 분양가·계약금</text><rect x='16' y='166' width='608' height='40' rx='8' fill='#FFFFFF'/><circle cx='40' cy='186' r='13' fill='#0F1E3D'/><text x='40' y='191' font-size='13' font-weight='700' fill='#FFFFFF' text-anchor='middle'>4</text><text x='64' y='191' font-size='14' font-weight='700' fill='#0F1E3D'>신청 방법</text><text x='200' y='191' font-size='12.5' fill='#5B6472'>인터넷 접수처, 쓸 수 있는 인증서, 방문 접수 여부</text><rect x='16' y='216' width='608' height='40' rx='8' fill='#F4F6F9'/><circle cx='40' cy='236' r='13' fill='#0F1E3D'/><text x='40' y='241' font-size='13' font-weight='700' fill='#FFFFFF' text-anchor='middle'>5</text><text x='64' y='241' font-size='14' font-weight='700' fill='#0F1E3D'>당첨 후 할 일</text><text x='200' y='241' font-size='12.5' fill='#5B6472'>제출 서류·부적격 처리, 중도금·잔금 납부 일정</text><text x='16' y='284' font-size='12.5' fill='#C8361A'>정정공고가 올라오면 정정된 공고문으로 1번부터 다시 읽어요</text></svg>\n<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 340 492' role='img' aria-label='입주자모집공고문 읽는 순서 다섯 단계: 일정표, 신청자격, 공급 세대와 가격, 신청 방법, 당첨 후 할 일'><rect x='0' y='0' width='340' height='492' fill='#FFFFFF'/><rect x='16' y='16' width='308' height='78' rx='8' fill='#F4F6F9'/><circle cx='36' cy='38' r='12' fill='#FF5233'/><text x='36' y='43' font-size='13' font-weight='700' fill='#FFFFFF' text-anchor='middle'>1</text><text x='56' y='43' font-size='14' font-weight='700' fill='#0F1E3D'>일정표</text><text x='56' y='66' font-size='12.5' fill='#5B6472'>신청일시·당첨자 발표·서류 제출</text><text x='56' y='84' font-size='12.5' fill='#5B6472'>계약 기간을 달력에 옮겨요</text><rect x='16' y='102' width='308' height='78' rx='8' fill='#FFFFFF'/><circle cx='36' cy='124' r='12' fill='#0F1E3D'/><text x='36' y='129' font-size='13' font-weight='700' fill='#FFFFFF' text-anchor='middle'>2</text><text x='56' y='129' font-size='14' font-weight='700' fill='#0F1E3D'>신청자격</text><text x='56' y='152' font-size='12.5' fill='#5B6472'>거주지역·무주택·통장 요건,</text><text x='56' y='170' font-size='12.5' fill='#5B6472'>규제지역·재당첨 제한 여부</text><rect x='16' y='188' width='308' height='78' rx='8' fill='#F4F6F9'/><circle cx='36' cy='210' r='12' fill='#0F1E3D'/><text x='36' y='215' font-size='13' font-weight='700' fill='#FFFFFF' text-anchor='middle'>3</text><text x='56' y='215' font-size='14' font-weight='700' fill='#0F1E3D'>공급 세대·가격</text><text x='56' y='238' font-size='12.5' fill='#5B6472'>특별공급·일반공급 세대수,</text><text x='56' y='256' font-size='12.5' fill='#5B6472'>주택형별 분양가·계약금</text><rect x='16' y='274' width='308' height='78' rx='8' fill='#FFFFFF'/><circle cx='36' cy='296' r='12' fill='#0F1E3D'/><text x='36' y='301' font-size='13' font-weight='700' fill='#FFFFFF' text-anchor='middle'>4</text><text x='56' y='301' font-size='14' font-weight='700' fill='#0F1E3D'>신청 방법</text><text x='56' y='324' font-size='12.5' fill='#5B6472'>인터넷 접수처, 쓸 수 있는 인증서,</text><text x='56' y='342' font-size='12.5' fill='#5B6472'>방문 접수 여부</text><rect x='16' y='360' width='308' height='78' rx='8' fill='#F4F6F9'/><circle cx='36' cy='382' r='12' fill='#0F1E3D'/><text x='36' y='387' font-size='13' font-weight='700' fill='#FFFFFF' text-anchor='middle'>5</text><text x='56' y='387' font-size='14' font-weight='700' fill='#0F1E3D'>당첨 후 할 일</text><text x='56' y='410' font-size='12.5' fill='#5B6472'>제출 서류·부적격 처리,</text><text x='56' y='428' font-size='12.5' fill='#5B6472'>중도금·잔금 납부 일정</text><text x='16' y='460' font-size='12.5' fill='#C8361A'>정정공고가 올라오면 정정된 공고문으로</text><text x='16' y='479' font-size='12.5' fill='#C8361A'>1번부터 다시 읽어요</text></svg>\n:::\n\n1. **일정표**: 공고는 최초 청약 접수일 10일 전까지 내야 해요(제21조 제2항). 기관추천 같은 일부 특별공급(제35·36조)은 물량이 적거나 관심이 낮으면 시장·군수·구청장이 5일 전으로 줄일 수 있어서, 공고 뒤 접수까지 며칠 안 남는 경우도 있어요.\n2. **신청자격**: 거주지역, 무주택 요건, 청약통장 요건을 봐요. 규제지역 단지인지에 따라 1순위 조건이 달라지니 [1순위 조건](/guide/first-priority/)과 [무주택 기준](/guide/homeless-criteria/)을 함께 보세요.\n3. **공급 세대·가격**: 특별공급과 일반공급 세대수, 주택형별 분양가와 계약금 비율이에요.\n4. **신청 방법**: 인터넷 접수처, 쓸 수 있는 인증서, 방문 접수 여부가 여기 있어요. 2026년 10월 LH 안산신길2 B-1블록 공고는 인터넷 청약을 원칙으로 하고, 인터넷이 어려운 정보취약계층은 현장에서 직원이 인터넷 대행접수를 돕는다고 적었어요.\n5. **당첨 후 할 일**: 제출 서류와 기한, 부적격 당첨 처리, 중도금·잔금 일정이에요.\n\n공고가 고쳐지면 '정정공고'가 따로 올라와요. 처음 받은 파일 대신 정정본을 기준으로 다시 확인하세요.\n\n## 청약홈 로그인, 공동인증서 말고 간편인증도 되나요?\n\n돼요. 다만 청약 유형에 따라 막히는 경우가 있어요. 청약홈은 무순위·임의공급·불법행위재공급, 그리고 청약통장을 쓰지 않는 특별공급 신청자에게 공동인증서·금융인증서만 쓰라고 안내해요. 청약통장이 없는 사람도 마찬가지예요.\n\n| 구분 | 청약홈 | LH청약플러스 |\n|---|---|---|\n| 공동인증서 | 은행·보험용, 범용 (증권용 불가) | 가능 |\n| 금융인증서 | 가능 | 가능 |\n| 간편인증 | 네이버·KB국민·토스·신한·카카오 인증서 | 은행·포털·통신사 인증서 등 (KB국민·신한·NH·네이버·카카오톡·토스·PASS 등 안내) |\n| 간편인증이 안 되는 경우 | 무순위·임의공급·불법행위재공급, 통장 안 쓰는 특별공급, 통장 미가입자 | 금융·간편인증은 토지·상가·매도 청약, 사업자(법인) 불가 |\n| 문의 | 1644-7445 (월~금 09:00~17:30) | 1600-1004 (평일 09:00~18:00) |\n\n### 앱·PC에서 인증서 옮기기\n\n청약홈 모바일 앱은 Google Play·App Store에서 '청약Home'을 검색하면 돼요. PC에 있는 공동인증서는 청약홈 '공동인증서 관리'에서 내보낸 뒤, 앱에서 8자리 인증번호를 넣어 가져와요. LH청약플러스는 '고객서비스 → 공동인증센터 → 공동인증서 복사'에서 옮겨요.\n\n### 브라우저\n\n브라우저는 Edge·Chrome·Firefox·Safari 등에서 쓸 수 있고, Internet Explorer는 안 돼요. 맥(macOS)은 버전에 따라 이용이 안 될 수 있다고 안내돼 있어요.\n\n## 청약 신청 방법, 접수 시간과 단계는?\n\n### 신청 전 확인\n\n신청 전에 청약 가능 여부부터 확인해요. 청약홈 '청약자격확인'에서 주택소유확인, 청약제한사항확인, 청약통장 가입내역을 차례로 볼 수 있어요. 가입내역의 순위는 1순위를 24개월 기준으로 보여줘서, 1년이면 1순위인 지역에서도 2순위로 보일 수 있어요. 실제 신청 때 주택을 고르면 그 주택 기준 순위가 나와요.\n\n세대원 정보 동의도 미리 해 두면 좋아요. 청약홈은 신청 과정에서 본인과 세대원의 주택소유·재당첨 제한 정보를 보여주도록 바꾸면서, 예전에 한 세대구성원 동의에는 이 변경이 반영되지 않으니 다시 동의해 달라고 안내하고 있어요.\n\nLH·SH처럼 사업주체가 직접 접수하면 그쪽에서 청약통장 정보를 바로 조회하지 못할 수 있어요. 이때 쓰는 게 '청약통장 순위확인서'예요. 청약홈 '청약자격확인 → 청약통장 → 순위확인서 발급'에서 뽑아요. 주택 이름 대신 10자리 주택관리번호로도 찾을 수 있어요.\n\n주택관리번호는 앞 4자리가 연도, 다음 2자리가 주택종류, 마지막 4자리가 연번이에요.\n\n처음이라면 연습부터 해 보세요. 청약홈에는 '청약가상체험'과 '공고단지 청약연습', LH청약플러스에는 유형별 '청약연습하기'가 있어요.\n\n### 접수 시간\n\n접수 시간은 사이트와 공고마다 달라요.\n\n| 구분 | 접수 시간 | 출처 |\n|---|---|---|\n| 청약홈 APT (특별공급·1·2순위·무순위 등) | 청약신청일 09:00~17:30 | 청약홈 청약신청 안내 |\n| LH 안산신길2 B-1블록 특별공급 (2026.10.30 공고) | 11.16 10:00~11.17 17:00 (밤에도 가능) | LH청약플러스 공고 |\n| LH 안산신길2 B-1블록 일반공급 | 11.18 10:00~17:00 | LH청약플러스 공고 |\n| SH 고덕강일지구 3단지 토지임대부 (2026.10.16 공고) | 10:00~17:00 | SH 공고 및 공지 |\n\n### 청약홈 신청 단계\n\n:::figure 청약홈 APT 청약 신청 흐름 (청약홈 청약신청 안내·자주묻는질문, 2026년 11월 기준 · 실제 화면 순서는 다를 수 있어요)\n<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 230' role='img' aria-label='청약홈 APT 청약 신청 여섯 단계: 인증서 로그인, 공급 유형 선택, 단지와 주택형 선택, 순위와 청약제한사항 확인, 거주지와 연락처 입력, 최종 신청'><rect x='0' y='0' width='640' height='230' rx='0' fill='#FFFFFF'/><rect x='24' y='16' width='184' height='72' rx='10' fill='#F4F6F9'/><circle cx='44' cy='38' r='11' fill='#0F1E3D'/><text x='44' y='42.5' font-size='12' font-weight='700' fill='#FFFFFF' text-anchor='middle'>1</text><text x='62' y='43' font-size='14' font-weight='700' fill='#0F1E3D'>인증서 로그인</text><text x='38' y='70' font-size='12' fill='#5B6472'>무순위는 공동·금융인증서</text><text x='218' y='57' font-size='16' font-weight='700' fill='#9AA3B2' text-anchor='middle'>›</text><rect x='228' y='16' width='184' height='72' rx='10' fill='#F4F6F9'/><circle cx='248' cy='38' r='11' fill='#0F1E3D'/><text x='248' y='42.5' font-size='12' font-weight='700' fill='#FFFFFF' text-anchor='middle'>2</text><text x='266' y='43' font-size='14' font-weight='700' fill='#0F1E3D'>공급 유형 고르기</text><text x='242' y='70' font-size='12' fill='#5B6472'>특별공급·1순위·무순위</text><text x='422' y='57' font-size='16' font-weight='700' fill='#9AA3B2' text-anchor='middle'>›</text><rect x='432' y='16' width='184' height='72' rx='10' fill='#F4F6F9'/><circle cx='452' cy='38' r='11' fill='#0F1E3D'/><text x='452' y='42.5' font-size='12' font-weight='700' fill='#FFFFFF' text-anchor='middle'>3</text><text x='470' y='43' font-size='14' font-weight='700' fill='#0F1E3D'>단지·주택형 선택</text><text x='446' y='70' font-size='12' fill='#5B6472'>주택관리번호로도 찾기</text><rect x='24' y='108' width='184' height='72' rx='10' fill='#F4F6F9'/><circle cx='44' cy='130' r='11' fill='#0F1E3D'/><text x='44' y='134.5' font-size='12' font-weight='700' fill='#FFFFFF' text-anchor='middle'>4</text><text x='62' y='135' font-size='14' font-weight='700' fill='#0F1E3D'>순위·제한사항 확인</text><text x='38' y='162' font-size='12' fill='#5B6472'>제한이 뜨면 신청 불가</text><text x='218' y='149' font-size='16' font-weight='700' fill='#9AA3B2' text-anchor='middle'>›</text><rect x='228' y='108' width='184' height='72' rx='10' fill='#F4F6F9'/><circle cx='248' cy='130' r='11' fill='#0F1E3D'/><text x='248' y='134.5' font-size='12' font-weight='700' fill='#FFFFFF' text-anchor='middle'>5</text><text x='266' y='135' font-size='14' font-weight='700' fill='#0F1E3D'>거주지·연락처 입력</text><text x='242' y='162' font-size='12' fill='#5B6472'>공고일 현재 등본 주소</text><text x='422' y='149' font-size='16' font-weight='700' fill='#9AA3B2' text-anchor='middle'>›</text><rect x='432' y='108' width='184' height='72' rx='10' fill='#FFF1EC'/><circle cx='452' cy='130' r='11' fill='#FF5233'/><text x='452' y='134.5' font-size='12' font-weight='700' fill='#FFFFFF' text-anchor='middle'>6</text><text x='470' y='135' font-size='14' font-weight='700' fill='#0F1E3D'>최종 신청 완료</text><text x='446' y='162' font-size='12' fill='#C8361A'>17:30 전에 끝내기</text><text x='24' y='214' font-size='12.5' fill='#5B6472'>같은 날 17:30 전에는 취소하고 다시 신청할 수 있어요 (횟수 제한 없음)</text></svg>\n<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 340 408' role='img' aria-label='청약홈 APT 청약 신청 여섯 단계: 인증서 로그인, 공급 유형 선택, 단지와 주택형 선택, 순위와 청약제한사항 확인, 거주지와 연락처 입력, 최종 신청'><rect x='0' y='0' width='340' height='408' fill='#FFFFFF'/><rect x='16' y='16' width='308' height='50' rx='10' fill='#F4F6F9'/><circle cx='36' cy='41' r='11' fill='#0F1E3D'/><text x='36' y='45.5' font-size='12' font-weight='700' fill='#FFFFFF' text-anchor='middle'>1</text><text x='56' y='38' font-size='14' font-weight='700' fill='#0F1E3D'>인증서 로그인</text><text x='56' y='56' font-size='12' fill='#5B6472'>무순위는 공동·금융인증서</text><rect x='16' y='74' width='308' height='50' rx='10' fill='#F4F6F9'/><circle cx='36' cy='99' r='11' fill='#0F1E3D'/><text x='36' y='103.5' font-size='12' font-weight='700' fill='#FFFFFF' text-anchor='middle'>2</text><text x='56' y='96' font-size='14' font-weight='700' fill='#0F1E3D'>공급 유형 고르기</text><text x='56' y='114' font-size='12' fill='#5B6472'>특별공급·1순위·무순위</text><rect x='16' y='132' width='308' height='50' rx='10' fill='#F4F6F9'/><circle cx='36' cy='157' r='11' fill='#0F1E3D'/><text x='36' y='161.5' font-size='12' font-weight='700' fill='#FFFFFF' text-anchor='middle'>3</text><text x='56' y='154' font-size='14' font-weight='700' fill='#0F1E3D'>단지·주택형 선택</text><text x='56' y='172' font-size='12' fill='#5B6472'>주택관리번호로도 찾기</text><rect x='16' y='190' width='308' height='50' rx='10' fill='#F4F6F9'/><circle cx='36' cy='215' r='11' fill='#0F1E3D'/><text x='36' y='219.5' font-size='12' font-weight='700' fill='#FFFFFF' text-anchor='middle'>4</text><text x='56' y='212' font-size='14' font-weight='700' fill='#0F1E3D'>순위·제한사항 확인</text><text x='56' y='230' font-size='12' fill='#5B6472'>제한이 뜨면 신청 불가</text><rect x='16' y='248' width='308' height='50' rx='10' fill='#F4F6F9'/><circle cx='36' cy='273' r='11' fill='#0F1E3D'/><text x='36' y='277.5' font-size='12' font-weight='700' fill='#FFFFFF' text-anchor='middle'>5</text><text x='56' y='270' font-size='14' font-weight='700' fill='#0F1E3D'>거주지·연락처 입력</text><text x='56' y='288' font-size='12' fill='#5B6472'>공고일 현재 등본 주소</text><rect x='16' y='306' width='308' height='50' rx='10' fill='#FFF1EC'/><circle cx='36' cy='331' r='11' fill='#FF5233'/><text x='36' y='335.5' font-size='12' font-weight='700' fill='#FFFFFF' text-anchor='middle'>6</text><text x='56' y='328' font-size='14' font-weight='700' fill='#0F1E3D'>최종 신청 완료</text><text x='56' y='346' font-size='12' fill='#C8361A'>17:30 전에 끝내기</text><text x='16' y='376' font-size='12.5' fill='#5B6472'>같은 날 17:30 전에는 취소하고 다시</text><text x='16' y='395' font-size='12.5' fill='#5B6472'>신청할 수 있어요 (횟수 제한 없음)</text></svg>\n:::\n\n청약홈은 17:30 전에 마지막 단계까지 끝나야 접수돼요. 신청 도중 17:30이 지나면 완료되지 않으니 여유 있게 들어가세요.\n\n거주지 칸에는 공고일 현재 주민등록표등본 주소지를 골라요. 연락처 칸의 주소는 우편을 받을 곳이라 등본 주소와 달라도 돼요. 잘못 입력해 자격·순위가 다르게 당첨되면 당첨과 계약이 취소되고 청약 신청이 제한될 수 있어요.\n\n### 신청 뒤 고치기·취소\n\n끝난 신청은 고칠 수 없어서, 바꾸려면 그날 17:30 전에 취소하고 다시 신청해야 해요.\n\nLH청약플러스도 비슷해요. 정해진 접수 일시 안에서는 마감 시간 전까지는 신청서를 고치거나 지울 수 있지만, 그 시간이 지나면 철회도 수정도 안 돼요.\n\n### 인터넷이 어렵다면 — 은행 지점\n\n인터넷 접수가 원칙이에요(규칙 제19조 제2항). 인터넷을 쓰기 어려운 고령자·장애인 같은 정보취약계층은 청약통장 가입 은행 지점에서 APT 1·2순위를 신청할 수 있어요. 특별공급은 은행 지점에서 받지 않아요.\n\n## 청약 당첨 발표 확인은 어디서, 그다음엔 무엇을 하나요?\n\n사업주체는 당첨자를 정하면 자기 홈페이지에 공고하고, 신청자가 주택청약업무수행기관 홈페이지에서 당첨 여부를 개별로 확인할 수 있게 해야 해요(규칙 제25조 제4항). 신청자가 요청하면 문자로 알려줄 수도 있어요.\n\n| 어디에 넣었나 | 당첨 확인 메뉴 (2026년 11월 화면) |\n|---|---|\n| 청약홈 | 청약당첨조회 → APT (오피스텔·민간임대는 별도 메뉴) |\n| LH청약플러스 | 청약결과 확인 → 당첨/낙찰 결과조회, 서류제출대상자 명단 |\n| SH | 당첨자 발표, 서류심사 대상자 조회 |\n\n### LH 공공분양 예시 일정\n\n발표 뒤 일정은 공고문에 모두 적혀 있어요. 2026년 10월 30일 나온 LH 공공분양 공고를 예로 보면 흐름이 이래요.\n\n:::figure LH 안산신길2 B-1블록 공공분양 일정 (LH청약플러스 입주자모집공고, 2026년 10월 30일 공고·정정공고 기준)\n<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 200' role='img' aria-label='LH 안산신길2 B-1블록 공공분양 일정: 10월 30일 공고, 11월 16~17일 특별공급, 11월 18일 일반공급, 11월 30일 당첨 발표, 12월 4~8일 서류 제출, 2027년 3월 15~18일 계약'><rect x='0' y='0' width='640' height='200' rx='0' fill='#FFFFFF'/><line x1='56' y1='70' x2='580' y2='70' stroke='#E3E7ED' stroke-width='3'/><circle cx='56' cy='70' r='8' fill='#0F1E3D'/><text x='56' y='46' font-size='13' font-weight='700' fill='#0F1E3D' text-anchor='middle'>모집공고</text><text x='56' y='98' font-size='12.5' fill='#5B6472' text-anchor='middle'>10.30</text><circle cx='160' cy='70' r='8' fill='#0F1E3D'/><text x='160' y='46' font-size='13' font-weight='700' fill='#0F1E3D' text-anchor='middle'>특별공급</text><text x='160' y='98' font-size='12.5' fill='#5B6472' text-anchor='middle'>11.16~17</text><circle cx='264' cy='70' r='8' fill='#0F1E3D'/><text x='264' y='46' font-size='13' font-weight='700' fill='#0F1E3D' text-anchor='middle'>일반공급</text><text x='264' y='98' font-size='12.5' fill='#5B6472' text-anchor='middle'>11.18</text><circle cx='368' cy='70' r='8' fill='#FF5233'/><text x='368' y='46' font-size='13' font-weight='700' fill='#C8361A' text-anchor='middle'>당첨 발표</text><text x='368' y='98' font-size='12.5' fill='#5B6472' text-anchor='middle'>11.30</text><circle cx='472' cy='70' r='8' fill='#0F1E3D'/><text x='472' y='46' font-size='13' font-weight='700' fill='#0F1E3D' text-anchor='middle'>서류 제출</text><text x='472' y='98' font-size='12.5' fill='#5B6472' text-anchor='middle'>12.4~8</text><circle cx='580' cy='70' r='8' fill='#0F1E3D'/><text x='580' y='46' font-size='13' font-weight='700' fill='#0F1E3D' text-anchor='middle'>계약</text><text x='580' y='98' font-size='12.5' fill='#5B6472' text-anchor='middle'>3.15~18</text><text x='580' y='115' font-size='12' fill='#5B6472' text-anchor='middle'>(2027년)</text><rect x='80.0' y='128' width='56' height='24' rx='12' fill='#FFF1EC'/><text x='108.0' y='145' font-size='13' font-weight='700' fill='#C8361A' text-anchor='middle'>17일</text><rect x='288.0' y='128' width='56' height='24' rx='12' fill='#FFF1EC'/><text x='316.0' y='145' font-size='13' font-weight='700' fill='#C8361A' text-anchor='middle'>12일</text><rect x='392.0' y='128' width='56' height='24' rx='12' fill='#FFF1EC'/><text x='420.0' y='145' font-size='13' font-weight='700' fill='#C8361A' text-anchor='middle'>4일</text><rect x='488.0' y='128' width='76' height='24' rx='12' fill='#FFF1EC'/><text x='526.0' y='145' font-size='13' font-weight='700' fill='#C8361A' text-anchor='middle'>약 3개월</text><text x='24' y='184' font-size='12.5' fill='#5B6472'>계약은 당첨자 공고일부터 11일이 지난 뒤에 해요 (규칙 제59조)</text></svg>\n<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 340 364' role='img' aria-label='LH 안산신길2 B-1블록 공공분양 일정: 10월 30일 공고, 11월 16~17일 특별공급, 11월 18일 일반공급, 11월 30일 당첨 발표, 12월 4~8일 서류 제출, 2027년 3월 15~18일 계약'><rect x='0' y='0' width='340' height='364' fill='#FFFFFF'/><line x1='36' y1='32' x2='36' y2='292' stroke='#E3E7ED' stroke-width='3'/><circle cx='36' cy='32' r='8' fill='#0F1E3D'/><text x='56' y='37' font-size='13' font-weight='700' fill='#0F1E3D'>모집공고</text><text x='140' y='37' font-size='12.5' fill='#5B6472'>10.30</text><rect x='272' y='47.0' width='52' height='22' rx='11' fill='#FFF1EC'/><text x='298.0' y='63.0' font-size='13' font-weight='700' fill='#C8361A' text-anchor='middle'>17일</text><circle cx='36' cy='84' r='8' fill='#0F1E3D'/><text x='56' y='89' font-size='13' font-weight='700' fill='#0F1E3D'>특별공급</text><text x='140' y='89' font-size='12.5' fill='#5B6472'>11.16~17</text><circle cx='36' cy='136' r='8' fill='#0F1E3D'/><text x='56' y='141' font-size='13' font-weight='700' fill='#0F1E3D'>일반공급</text><text x='140' y='141' font-size='12.5' fill='#5B6472'>11.18</text><rect x='272' y='151.0' width='52' height='22' rx='11' fill='#FFF1EC'/><text x='298.0' y='167.0' font-size='13' font-weight='700' fill='#C8361A' text-anchor='middle'>12일</text><circle cx='36' cy='188' r='8' fill='#FF5233'/><text x='56' y='193' font-size='13' font-weight='700' fill='#C8361A'>당첨 발표</text><text x='140' y='193' font-size='12.5' fill='#5B6472'>11.30</text><rect x='272' y='203.0' width='52' height='22' rx='11' fill='#FFF1EC'/><text x='298.0' y='219.0' font-size='13' font-weight='700' fill='#C8361A' text-anchor='middle'>4일</text><circle cx='36' cy='240' r='8' fill='#0F1E3D'/><text x='56' y='245' font-size='13' font-weight='700' fill='#0F1E3D'>서류 제출</text><text x='140' y='245' font-size='12.5' fill='#5B6472'>12.4~8</text><rect x='252' y='255.0' width='72' height='22' rx='11' fill='#FFF1EC'/><text x='288.0' y='271.0' font-size='13' font-weight='700' fill='#C8361A' text-anchor='middle'>약 3개월</text><circle cx='36' cy='292' r='8' fill='#0F1E3D'/><text x='56' y='297' font-size='13' font-weight='700' fill='#0F1E3D'>계약</text><text x='140' y='297' font-size='12.5' fill='#5B6472'>3.15~18 (2027년)</text><text x='16' y='332' font-size='12.5' fill='#5B6472'>계약은 당첨자 공고일부터 11일이 지난 뒤에</text><text x='16' y='351' font-size='12.5' fill='#5B6472'>해요 (규칙 제59조)</text></svg>\n:::\n\n일반공급 접수 12일 뒤 당첨자가 발표되고, 그 4일 뒤부터 5일 동안 서류를 받아요. 계약은 2027년 3월이에요.\n\n공급계약은 당첨자 공고일부터 11일이 지난 뒤, 3일 이상의 기간을 정해 맺어요(규칙 제59조 제2항). 무순위로 뽑힌 사람과 계약취소주택 당첨자는 예외로, 계약일을 각 공고문에서 따로 정해요.\n\n### LH 공공임대는 순서가 달라요\n\nLH 공공임대는 순서가 조금 달라요. LH 임대가이드는 '신청 → 서류제출대상자 발표 → 서류 접수 → 소득·자산 조사 → 소명 요청·심사 → 당첨자 발표' 순으로 안내해요. 서류제출대상자 발표는 당첨이 아니니 서류 기한을 놓치지 마세요.\n\n### 서류 준비\n\n서류 중 주민등록표 등본·초본은 입주자모집공고일 이후에 발급한 것이어야 해요(규칙 제23조 제2항). 공고 전에 미리 떼 둔 서류는 다시 받아야 할 수 있어요. 계약금·중도금 준비는 [당첨 후 돈 계획](/guide/after-winning-money/)을 참고하세요.\n\n:::cases\n### 경기 민영 아파트 1순위에 넣는 30대 직장인\n수도권 비규제지역 단지(가입기간 연장 공고 없음)이고, 통장 가입 14개월에 예치금도 채웠어요. 청약홈 가입내역에서는 24개월 기준이라 2순위로 보이지만, 신청 화면에서 단지를 고르면 1순위로 나와요. 통장을 쓰는 1순위 청약이라 네이버 인증서로 로그인해도 돼요. 접수일 09:00~17:30 안에 마쳐야 해요.\n\n### LH 공공분양 신혼부부 특별공급에 넣는 부부\nLH청약플러스에서 신청해요. 안산신길2 B-1블록이라면 특별공급 접수는 11월 16~17일이고, 접수 마감 13일 뒤인 11월 30일에 당첨자가 발표돼요. 주택소유·청약제한사항은 미리 청약홈에서 조회해 두고, 당첨되면 12월 4~8일 서류를 내요.\n\n### 청약통장 없이 민영 무순위에 넣는 50대\n세대원 모두 집이 없는 무주택세대구성원이에요. 무순위는 통장이 필요 없지만 청약홈에서 공동인증서나 금융인증서로만 로그인할 수 있어요. 간편인증만 있다면 접수일 전에 금융인증서를 발급해 두세요. 신청은 그날 09:00~17:30 안에 끝내야 해요.\n:::\n\n:::check 놓치기 쉬운 것\n- 접수처는 공고문의 신청 방법이 기준이에요\n- 무순위는 공동·금융인증서만 받아요\n- 청약홈 마감은 17:30, LH·SH는 공고마다 달라요\n- 정정공고가 있으면 정정본으로 다시 읽어요\n- 등본은 공고일 이후 발급본이 필요해요\n:::\n\n:::tip 종이 한마디\n접수 날 아침에 인증서부터 로그인해 보세요. 인증서에서 막히면 그날 접수를 놓칠 수 있어요.\n:::\n",
+ "faq": [
+  [
+   "청약홈 청약 시간은 몇 시부터 몇 시까지인가요?",
+   "청약홈 APT 청약은 청약신청일 09:00부터 17:30까지예요. 17:30 전에 최종 신청까지 끝나야 접수돼요. LH·SH 공고는 10:00~17:00처럼 시간이 다를 수 있으니 공고문을 보세요."
+  ],
+  [
+   "LH청약도 청약홈에서 하나요?",
+   "LH 공공분양·신혼희망타운·공공임대는 LH청약플러스(apply.lh.or.kr)에서 신청해요. 다만 주택소유 여부와 청약제한사항 조회, 청약통장 순위확인서 발급은 청약홈에서 해요."
+  ],
+  [
+   "청약홈 간편인증(네이버·카카오)으로 무순위 청약할 수 있나요?",
+   "안 돼요. 청약홈은 무순위·임의공급·불법행위재공급과 청약통장을 쓰지 않는 특별공급, 통장 미가입자에게 공동인증서나 금융인증서만 쓰라고 안내해요. 1·2순위처럼 통장을 쓰는 청약은 간편인증도 돼요."
+  ],
+  [
+   "청약홈 앱으로도 청약할 수 있나요?",
+   "돼요. Google Play·App Store에서 '청약Home'을 검색해 설치해요. PC의 공동인증서는 청약홈 '공동인증서 관리'에서 내보낸 뒤 앱에서 8자리 인증번호로 가져와요."
+  ],
+  [
+   "청약 신청하고 나서 취소하거나 수정할 수 있나요?",
+   "청약홈은 완료된 신청을 고칠 수 없어서, 신청일 17:30 전에 취소하고 다시 신청해야 해요. 그날 안에는 횟수 제한이 없지만 17:30이 지나면 취소·정정이 안 돼요. LH청약플러스도 접수 시간 안에서만 수정·삭제가 돼요."
+  ],
+  [
+   "청약 당첨 발표는 어디서 확인하나요?",
+   "청약홈에 넣었다면 '청약당첨조회', LH청약플러스는 '당첨/낙찰 결과조회', SH는 '당첨자 발표' 메뉴예요. 발표일과 시간은 공고문에 적혀 있어요."
+  ]
+ ],
+ "sources": [
+  {
+   "name": "주택공급에 관한 규칙 (국토교통부령 제1592호, 2026.6.15 시행)",
+   "url": "https://www.law.go.kr/법령/주택공급에관한규칙",
+   "note": "제18조·제19조·제21조·제23조·제25조·제50조·제59조"
+  },
+  {
+   "name": "청약홈 청약제도안내 — APT 청약신청방법",
+   "url": "https://www.applyhome.co.kr/ar/ara/selectSubscrptIntroHowToReqstView.do",
+   "note": "이용대상 인증서 7종, 공동·금융인증서만 되는 유형, 이용시간 09:00~17:30, 은행지점 청약. 같은 사이트의 청약신청 이용시간 표·로그인 화면·모바일 사용 안내·공동인증서 관리 쪽도 함께 확인 (2026.11.5)"
+  },
+  {
+   "name": "청약홈 자주묻는질문",
+   "url": "https://www.applyhome.co.kr/cu/cub/selectFAQList.do",
+   "note": "취소·재신청, 거주지·연락처 입력, 청약제한사항 화면, 가입내역 24개월 기준, 순위확인서·주택관리번호"
+  },
+  {
+   "name": "LH청약플러스 분양가이드·임대가이드·로그인 안내",
+   "url": "https://apply.lh.or.kr/lhapply/cm/cntnts/cntntsView.do?mi=1179&cntntsId=1049",
+   "note": "공공분양 절차(인터넷 PC·모바일앱), 통합공공임대 임대절차, 인증 수단, FAQ '청약신청 수정·취소', 콜센터 (2026.11.5 확인)"
+  },
+  {
+   "name": "LH청약플러스 안산신길2 B-1블록 공공분양주택 입주자모집공고 (2026.10.30, 정정공고)",
+   "url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061205&ccrCnntSysDsCd=02&uppAisTpCd=05&aisTpCd=05&mi=1027",
+   "note": "유형별 신청일시·당첨자 발표·서류 제출·계약 기간, 인터넷 원칙·현장 대행접수, 청약홈 자격확인 안내"
+  },
+  {
+   "name": "SH 고덕강일지구 3단지 토지임대부 분양주택 입주자모집공고 (2026.10.16, 정정)",
+   "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=312005",
+   "note": "인터넷 접수 10:00~17:00, 당첨자 발표·서류 제출 일정. SH 분양절차 안내(i-sh.co.kr 청약정보 → 공급절차)도 함께 확인"
+  }
+ ],
+ "facts": [
+  {
+   "item": "청약홈 운영 기관",
+   "value": "한국부동산원",
+   "source": "청약홈 (applyhome.co.kr)",
+   "effective": "2026.11.5 확인"
+  },
+  {
+   "item": "청약 접수 대행 원칙",
+   "value": "일반공급(제27·28조)은 입주자저축취급기관, 특별공급·무순위·계약취소주택 등은 주택청약업무수행기관에 대행 의뢰",
+   "source": "주택공급에 관한 규칙 제50조제1항",
+   "effective": "현행(2026.6.15 시행본 기준)"
+  },
+  {
+   "item": "공공 사업주체 직접 접수",
+   "value": "국가·지자체·LH·지방공사 등은 청약접수를 직접 할 수 있음",
+   "source": "주택공급에 관한 규칙 제50조제2항, 제18조",
+   "effective": "현행(2026.6.15 시행본 기준)"
+  },
+  {
+   "item": "인터넷 접수 원칙",
+   "value": "인터넷접수로 모집, 정보취약계층은 방문접수 가능하도록 조치",
+   "source": "주택공급에 관한 규칙 제19조제2항",
+   "effective": "현행(2026.6.15 시행본 기준)"
+  },
+  {
+   "item": "입주자모집공고 시기",
+   "value": "최초 청약 신청 접수일 10일 전 (제35·36조 특별공급 중 물량이 적거나 관심이 낮은 경우 5일 전으로 단축 가능)",
+   "source": "주택공급에 관한 규칙 제21조제2항",
+   "effective": "현행(2026.6.15 시행본 기준)"
+  },
+  {
+   "item": "공고문 필수 기재",
+   "value": "신청자격·서류·일시·장소(9호), 신청 방법(10호), 분양가·납부시기(11호), 당첨자 발표 일시·장소·방법(23호), 계약사항(25호) 등",
+   "source": "주택공급에 관한 규칙 제21조제3항",
+   "effective": "현행(2026.6.15 시행본 기준)"
+  },
+  {
+   "item": "당첨 사실 공고·확인",
+   "value": "사업주체 홈페이지 공고 + 주택청약업무수행기관 홈페이지에서 개별 확인, 요청 시 문자 통보 가능",
+   "source": "주택공급에 관한 규칙 제25조제4항",
+   "effective": "현행(2026.6.15 시행본 기준)"
+  },
+  {
+   "item": "공급계약 시기",
+   "value": "선정사실 공고일부터 11일 경과 후 3일 이상 (무순위·계약취소주택은 공고문에 따름)",
+   "source": "주택공급에 관한 규칙 제59조제2항",
+   "effective": "현행(2026.6.15 시행본 기준)"
+  },
+  {
+   "item": "주민등록표 등·초본 발행 시점",
+   "value": "입주자모집공고일 이후 발행분",
+   "source": "주택공급에 관한 규칙 제23조제2항",
+   "effective": "현행(2026.6.15 시행본 기준)"
+  },
+  {
+   "item": "청약홈 인터넷 청약 이용시간",
+   "value": "청약신청일 09:00~17:30 (17:30 전 최종 신청 완료)",
+   "source": "청약홈 APT 청약신청방법·청약신청 이용시간",
+   "effective": "2026.11.5 확인"
+  },
+  {
+   "item": "청약홈 취소·재신청",
+   "value": "신청일 17:30 전까지 취소 후 재신청, 횟수 제한 없음 / 이후 취소·정정 불가",
+   "source": "청약홈 자주묻는질문",
+   "effective": "2026.11.5 확인"
+  },
+  {
+   "item": "청약홈 청약신청내역조회 기간",
+   "value": "청약 후 3개월간",
+   "source": "청약홈 청약신청 이용시간 표",
+   "effective": "2026.11.5 확인"
+  },
+  {
+   "item": "청약홈 이용 인증서",
+   "value": "공동인증서(은행보험용·범용), 금융인증서, 네이버·KB국민·토스·신한·카카오 인증서 (증권용 공동인증서 불가)",
+   "source": "청약홈 APT 청약신청방법·로그인 화면",
+   "effective": "2026.11.5 확인"
+  },
+  {
+   "item": "공동·금융인증서만 되는 유형 (청약홈)",
+   "value": "APT 무순위·임의공급·불법행위재공급, 청약통장을 쓰지 않는 기관추천 특별공급 등, 청약통장 미가입자",
+   "source": "청약홈 APT 청약신청방법·로그인 화면",
+   "effective": "2026.11.5 확인"
+  },
+  {
+   "item": "은행지점 청약 (청약홈)",
+   "value": "정보취약계층(고령자·장애인 등)만 APT 1·2순위 가능, 특별공급 불가",
+   "source": "청약홈 APT 청약신청방법",
+   "effective": "2026.11.5 확인"
+  },
+  {
+   "item": "청약홈 모바일 앱",
+   "value": "Android·iOS '청약Home' 앱, 공동인증서는 '공동인증서 관리'에서 PC→모바일 가져오기(8자리 인증번호)",
+   "source": "청약홈 모바일 사용에 대한 안내·공동인증서 관리",
+   "effective": "2026.11.5 확인"
+  },
+  {
+   "item": "청약홈 브라우저",
+   "value": "Edge·Chrome·Firefox·Opera·Safari 가능, Internet Explorer 불가, macOS는 버전에 따라 이용 불가",
+   "source": "청약홈 권장 브라우저 안내",
+   "effective": "2026.11.5 확인"
+  },
+  {
+   "item": "청약홈 가입내역 순위 표시",
+   "value": "1순위를 24개월(24회) 기준으로 표시, 실제 신청 시 주택별 순위 표시",
+   "source": "청약홈 자주묻는질문",
+   "effective": "2026.11.5 확인"
+  },
+  {
+   "item": "청약 거주지·연락주소 입력",
+   "value": "거주지는 공고일 현재 주민등록표등본 주소지, 연락주소는 달라도 됨",
+   "source": "청약홈 자주묻는질문",
+   "effective": "2026.11.5 확인"
+  },
+  {
+   "item": "순위확인서·주택관리번호",
+   "value": "LH·SH 직접 청약 등에서 필요, 주택관리번호 10자리(연도4+주택종류2+연번4)",
+   "source": "청약홈 자주묻는질문",
+   "effective": "2026.11.5 확인"
+  },
+  {
+   "item": "청약홈 상담",
+   "value": "1644-7445, 월~금 09:00~17:30, 상담은 법적 효력 없는 참고용",
+   "source": "청약홈",
+   "effective": "2026.11.5 확인"
+  },
+  {
+   "item": "LH청약플러스 인증 수단",
+   "value": "공동인증서, 금융인증서, 간편인증 (금융·간편인증은 토지·상가·매도 청약, 사업자(법인) 불가)",
+   "source": "LH청약플러스 로그인 안내",
+   "effective": "2026.11.5 확인"
+  },
+  {
+   "item": "LH 공공분양 청약 방식",
+   "value": "PC(apply.lh.or.kr) 또는 모바일 앱 인터넷 청약, 접수 일시 내 수정·삭제 가능, 이후 철회·수정 불가",
+   "source": "LH청약플러스 FAQ '청약신청했는데 수정 또는 취소가 가능한가요?'·분양절차",
+   "effective": "2026.11.5 확인"
+  },
+  {
+   "item": "LH 공공임대 입주 신청 절차",
+   "value": "신청(현장·인터넷) → 서류제출대상자 발표 → 서류접수 → 소득·자산 조사 → 소명 요청 → 소명 심사 → 당첨자 발표",
+   "source": "LH청약플러스 임대가이드(통합공공임대 임대절차)",
+   "effective": "2026.11.5 확인"
+  },
+  {
+   "item": "LH 콜센터",
+   "value": "1600-1004, 평일 09:00~18:00",
+   "source": "LH청약플러스",
+   "effective": "2026.11.5 확인"
+  },
+  {
+   "item": "LH 안산신길2 B-1블록 일정",
+   "value": "특별공급 11.16~11.17, 일반공급 11.18 (특별공급 11.16 10:00~11.17 17:00 야간 포함, 일반공급 10:00~17:00, 인터넷 원칙·정보취약계층 현장 대행접수), 당첨자 발표 11.30, 서류 12.4~12.8, 계약 2027.3.15~3.18",
+   "source": "LH청약플러스 입주자모집공고",
+   "effective": "2026.10.30 공고(정정공고 기준)"
+  },
+  {
+   "item": "LH 공고의 자격 조회 안내",
+   "value": "주택소유·청약제한사항은 청약홈 청약자격확인에서 조회, 소득·자산은 당첨자 선정 이후 사회보장정보시스템으로 검증",
+   "source": "LH청약플러스 안산신길2 B-1블록 공고 페이지",
+   "effective": "2026.10.30 공고"
+  },
+  {
+   "item": "SH 고덕강일지구 3단지 일정",
+   "value": "인터넷접수 10:00~17:00, 일반 1순위 11.4·11.5, 2순위 11.6, 당첨자 발표 11.26 16:00 이후, 서류 11.30~12.9 방문",
+   "source": "SH 공고 및 공지",
+   "effective": "2026.10.16 공고(정정)"
+  },
+  {
+   "item": "SH 분양절차",
+   "value": "특별공급 공사 홈페이지·방문 접수, 일반공급 한국부동산원 인터넷청약 (단, 2026.10.16 고덕강일3단지 공고는 특별·일반공급 모두 SH 인터넷청약시스템 접수)",
+   "source": "SH 청약정보 → 공급절차 → 분양절차",
+   "effective": "2026.11.5 확인"
+  },
+  {
+   "item": "SH 콜센터",
+   "value": "1600-3456",
+   "source": "SH 홈페이지",
+   "effective": "2026.11.5 확인"
+  }
+ ],
+ "related": [
+  "first-priority",
+  "mujeonwi",
+  "homeless-criteria"
+ ],
+ "notice_kinds": [
+  "private",
+  "public",
+  "mujeonwi",
+  "rental"
+ ]
+}

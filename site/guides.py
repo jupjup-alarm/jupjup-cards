@@ -86,6 +86,9 @@ def render_body(md_text, img_dir=None):
             continue
         if kind == "figure":
             svg = inner.strip()
+            svgs = re.findall(r"<svg\b.*?</svg>", svg, flags=re.S)
+            if len(svgs) == 2:  # 가로형 + 모바일 세로형 (390px에서 글자가 너무 작아지지 않게)
+                svg = f'<div class="g-cover-wide">{svgs[0]}</div><div class="g-cover-narrow">{svgs[1]}</div>'
             out.append(stash(f'<figure class="g-fig">{svg}<figcaption>{html.escape(arg)}</figcaption></figure>'))
         elif kind in ("note", "tip"):
             cls = "g-note" if kind == "note" else "g-tip"
@@ -131,7 +134,8 @@ def render_body(md_text, img_dir=None):
 
 
 def read_min(g):
-    n = len(re.sub(r"\s+", "", (g.get("body") or "") + " ".join(g.get("answer") or [])))
+    text = re.sub(r"<svg\b.*?</svg>", "", g.get("body") or "", flags=re.S)  # 그림 SVG 코드는 읽는 글이 아님
+    n = len(re.sub(r"\s+", "", text + " ".join(g.get("answer") or [])))
     return max(3, round(n / 600))
 
 

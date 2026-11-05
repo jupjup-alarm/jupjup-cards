@@ -54,6 +54,16 @@
   "image": "photos/site/2026910281/birdseye.jpg",
   "pos": "center 55%"
  },
+ "/region/gyeonggi/paju/": {
+  "credit": "이미지: (주)넥스트건설 조감도 · 실제와 다를 수 있음",
+  "image": "photos/site/2026000518/birdseye-4.jpg",
+  "pos": "center 55%"
+ },
+ "/region/gyeonggi/pyeongtaek/": {
+  "credit": "이미지: 한국투자부동산신탁(주) 조감도 · 실제와 다를 수 있음",
+  "image": "photos/site/2026000499/birdseye.jpg",
+  "pos": "center 55%"
+ },
  "/region/gyeonggi/siheung/": {
   "credit": "이미지: LH 제공 조감도 · 실제와 다를 수 있음",
   "image": "photos/5f6df7524354.jpg",

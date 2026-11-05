@@ -2,135 +2,6 @@
  "how": "ego lite: need에 notice가 있으면 url(청약홈)에서 '모집공고문' PDF → ~/줍줍알람/공고문/<save_as>, pamphlet이 있으면 청약홈·homepage(분양 홈페이지)에서 팸플릿·카탈로그 PDF → ~/줍줍알람/공고문/<pamphlet_as>(여러 개면 -pamphlet2.pdf…), 어디에도 없으면 notice_import.py --no-pamphlet <key>. site가 있으면 homepage에서 평면도·단지배치도·동호배치도·조감도·커뮤니티·단지 둘러보기 그림의 원본 주소(가장 큰 것)를 AI열 형식으로 ~/줍줍알람/공고문/<site_as>에 적고 notice_import.py --site로 받음(그림이 없으면 --no-site <key>). 캡차·차단 화면이면 멈추고 건너뜀(우회 금지).",
  "items": [
   {
-   "key": "2026000373",
-   "title": "고덕강일3단지 토지임대부 본청약",
-   "rcpt": [
-    "2026-10-26",
-    "2026-11-06"
-   ],
-   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000373&pblancNo=2026000373",
-   "homepage": "https://www.i-sh.co.kr/main/index.do",
-   "need": [
-    "notice",
-    "pamphlet"
-   ],
-   "save_as": "2026000373.pdf",
-   "pamphlet_as": "2026000373-pamphlet.pdf",
-   "site_as": "2026000373-site.txt",
-   "owner": "서울주택도시개발공사"
-  },
-  {
-   "key": "2026940245",
-   "title": "고강휴먼빌 임의공급",
-   "rcpt": [
-    "2026-11-04",
-    "2026-11-05"
-   ],
-   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940245&pblancNo=2026940245",
-   "homepage": "http://www.고강휴먼빌아파트.shop",
-   "need": [
-    "notice",
-    "pamphlet"
-   ],
-   "save_as": "2026940245.pdf",
-   "pamphlet_as": "2026940245-pamphlet.pdf",
-   "site_as": "2026940245-site.txt",
-   "owner": "삼하동호진주가로주택정비사업조합"
-  },
-  {
-   "key": "2026940246",
-   "title": "고촌센트럴자이 14차 임의공급",
-   "rcpt": [
-    "2026-11-04",
-    "2026-11-05"
-   ],
-   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940246&pblancNo=2026940246",
-   "homepage": "https://www.xi.co.kr/kps",
-   "need": [
-    "notice",
-    "pamphlet"
-   ],
-   "save_as": "2026940246.pdf",
-   "pamphlet_as": "2026940246-pamphlet.pdf",
-   "site_as": "2026940246-site.txt",
-   "owner": "(주)일레븐건설"
-  },
-  {
-   "key": "2026000472",
-   "title": "구리갈매역세권 B-1블록 신안인스빌 디센트",
-   "rcpt": [
-    "2026-11-09",
-    "2026-11-11"
-   ],
-   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000472&pblancNo=2026000472",
-   "homepage": "https://guri.ensvil.com/",
-   "need": [
-    "notice",
-    "pamphlet",
-    "site"
-   ],
-   "save_as": "2026000472.pdf",
-   "pamphlet_as": "2026000472-pamphlet.pdf",
-   "site_as": "2026000472-site.txt",
-   "owner": "(주)신안"
-  },
-  {
-   "key": "2026000499",
-   "title": "한화포레나 지제역",
-   "rcpt": [
-    "2026-11-09",
-    "2026-11-11"
-   ],
-   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000499&pblancNo=2026000499",
-   "homepage": "https://jije.forena.co.kr/",
-   "need": [
-    "notice",
-    "pamphlet",
-    "site"
-   ],
-   "save_as": "2026000499.pdf",
-   "pamphlet_as": "2026000499-pamphlet.pdf",
-   "site_as": "2026000499-site.txt",
-   "owner": "한국투자부동산신탁(주)"
-  },
-  {
-   "key": "2026000515",
-   "title": "평택 고덕 우미 린 더 프리미어",
-   "rcpt": [
-    "2026-11-09",
-    "2026-11-11"
-   ],
-   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000515&pblancNo=2026000515",
-   "homepage": "https://pg2.lynn.co.kr/",
-   "need": [
-    "notice",
-    "pamphlet",
-    "site"
-   ],
-   "save_as": "2026000515.pdf",
-   "pamphlet_as": "2026000515-pamphlet.pdf",
-   "site_as": "2026000515-site.txt",
-   "owner": "우미건설(주),지에스건설(주),이에스아이주식회사"
-  },
-  {
-   "key": "2026000525",
-   "title": "엘리프 시흥 더프라임",
-   "rcpt": [
-    "2026-11-09",
-    "2026-11-11"
-   ],
-   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000525&pblancNo=2026000525",
-   "homepage": "https://www.엘리프시흥더프라임.com",
-   "need": [
-    "notice",
-    "pamphlet"
-   ],
-   "save_as": "2026000525.pdf",
-   "pamphlet_as": "2026000525-pamphlet.pdf",
-   "site_as": "2026000525-site.txt",
-   "owner": "시흥거모피에프브이(주)"
-  },
-  {
    "key": "2026000527",
    "title": "광교 자연앤 센트레빌 A17BL 지분적립형",
    "rcpt": [
@@ -140,7 +11,6 @@
    "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000527&pblancNo=2026000527",
    "homepage": "http://www.gwanggyo-centreville.com",
    "need": [
-    "notice",
     "pamphlet",
     "site"
    ],
@@ -159,7 +29,6 @@
    "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000528&pblancNo=2026000528",
    "homepage": "http://www.gwanggyo-centreville.com",
    "need": [
-    "notice",
     "pamphlet",
     "site"
    ],
@@ -167,62 +36,6 @@
    "pamphlet_as": "2026000528-pamphlet.pdf",
    "site_as": "2026000528-site.txt",
    "owner": "경기주택도시공사"
-  },
-  {
-   "key": "2026000533",
-   "title": "안산신길2지구 B-1블록 공공분양 본청약",
-   "rcpt": [
-    "2026-11-09",
-    "2026-11-18"
-   ],
-   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000533&pblancNo=2026000533",
-   "homepage": "https://apply.lh.or.kr",
-   "need": [
-    "notice",
-    "pamphlet",
-    "site"
-   ],
-   "save_as": "2026000533.pdf",
-   "pamphlet_as": "2026000533-pamphlet.pdf",
-   "site_as": "2026000533-site.txt",
-   "owner": "한국토지주택공사 경기남부지역본부"
-  },
-  {
-   "key": "2026000535",
-   "title": "중앙하이츠 구성 플랫폼시티",
-   "rcpt": [
-    "2026-11-09",
-    "2026-11-12"
-   ],
-   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000535&pblancNo=2026000535",
-   "homepage": "https://www.중앙하이츠구성플랫폼시티.com",
-   "need": [
-    "notice",
-    "pamphlet",
-    "site"
-   ],
-   "save_as": "2026000535.pdf",
-   "pamphlet_as": "2026000535-pamphlet.pdf",
-   "site_as": "2026000535-site.txt",
-   "owner": "마북동298의1번지일원가로주택정비사업조합"
-  },
-  {
-   "key": "2026910281",
-   "title": "빌리브센트하이 2차 무순위",
-   "rcpt": [
-    "2026-11-09",
-    "2026-11-09"
-   ],
-   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910281&pblancNo=2026910281",
-   "homepage": "https://cent.villiv.co.kr",
-   "need": [
-    "notice",
-    "pamphlet"
-   ],
-   "save_as": "2026910281.pdf",
-   "pamphlet_as": "2026910281-pamphlet.pdf",
-   "site_as": "2026910281-site.txt",
-   "owner": "(주)에코월드이엔씨"
   },
   {
    "key": "2026910285",
@@ -252,51 +65,12 @@
    "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026820014&pblancNo=2026820014",
    "homepage": "https://apply.lh.or.kr",
    "need": [
-    "notice",
-    "pamphlet",
-    "site"
+    "pamphlet"
    ],
    "save_as": "2026820014.pdf",
    "pamphlet_as": "2026820014-pamphlet.pdf",
    "site_as": "2026820014-site.txt",
    "owner": "한국토지주택공사 경기북부지역본부"
-  },
-  {
-   "key": "2026000531",
-   "title": "시흥거모지구 S-1블록 공공분양 본청약",
-   "rcpt": [
-    "2026-11-16",
-    "2026-11-17"
-   ],
-   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000531&pblancNo=2026000531",
-   "homepage": "https://apply.lh.or.kr/",
-   "need": [
-    "notice",
-    "pamphlet"
-   ],
-   "save_as": "2026000531.pdf",
-   "pamphlet_as": "2026000531-pamphlet.pdf",
-   "site_as": "2026000531-site.txt",
-   "owner": "한국토지주택공사 경기남부지역본부"
-  },
-  {
-   "key": "2026820013",
-   "title": "안산신길2 A-6블록 신혼희망타운 본청약",
-   "rcpt": [
-    "2026-11-16",
-    "2026-11-24"
-   ],
-   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026820013&pblancNo=2026820013",
-   "homepage": "https://apply.lh.or.kr/",
-   "need": [
-    "notice",
-    "pamphlet",
-    "site"
-   ],
-   "save_as": "2026820013.pdf",
-   "pamphlet_as": "2026820013-pamphlet.pdf",
-   "site_as": "2026820013-site.txt",
-   "owner": "한국토지주택공사 경기남부지역본부"
   }
  ]
 }
