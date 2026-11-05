@@ -21,8 +21,12 @@ SIL_DB, MAX_IN, KEEP_IN, EDGE = -45.0, 0.15, 0.12, 0.03
 DISP = re.compile(r"\{([^|{}]*)\|([^|{}]*)\}")
 
 
+NUMCOMMA = re.compile(r"(?<=\d),(?=\d{3}(?!\d))")  # 349,700 → 349700 (2026-11-05 운영자: 금액 쉼표에서 쉬지 않게)
+
+
 def spoken(t):
-    return re.sub(r"\s+", " ", DISP.sub(lambda m: m.group(2), t)).strip()
+    t = NUMCOMMA.sub("", DISP.sub(lambda m: m.group(2), t))
+    return re.sub(r"\s+", " ", t).strip()
 
 
 def shown(t):
