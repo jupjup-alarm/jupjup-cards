@@ -1,0 +1,22 @@
+{
+ "key": "lh2015122300021026",
+ "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300021026&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
+ "checked": "2026-11-05 22:46",
+ "files": [
+  {
+   "fileid": "69314329",
+   "name": "인천논현2단지국민임대예비입주자모집공고문(2026.11.05).hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69314336",
+   "name": "인천논현2단지국민임대예비입주자모집공고문(2026.11.05).pdf",
+   "kind": "notice",
+   "got": "ok",
+   "md5": "9b20b1c502e4961d476fc66619ec2571",
+   "pages": 47,
+   "bytes": 1322834
+  }
+ ],
+ "changed": true
+}

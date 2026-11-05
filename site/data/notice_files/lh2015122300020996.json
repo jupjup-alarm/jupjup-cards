@@ -1,0 +1,22 @@
+{
+ "key": "lh2015122300020996",
+ "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300020996&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
+ "checked": "2026-11-05 22:46",
+ "files": [
+  {
+   "fileid": "69278300",
+   "name": "(26.11.05공고)국민임대예비입주자표준모집공고문(연천전곡1).hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69278305",
+   "name": "(26.11.05공고)국민임대예비입주자표준모집공고문(연천전곡1).pdf",
+   "kind": "notice",
+   "got": "ok",
+   "md5": "61702122adca336bd58fb7aff6bf7149",
+   "pages": 52,
+   "bytes": 1811777
+  }
+ ],
+ "changed": true
+}

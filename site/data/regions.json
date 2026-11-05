@@ -42,7 +42,9 @@
    "의왕시": "uiwang",
    "안양시": "anyang",
    "안산시": "ansan",
-   "오산시": "osan"
+   "오산시": "osan",
+   "연천군": "yeoncheon",
+   "광명시": "gwangmyeong"
   },
   "서울": {
    "강동구": "gangdong",
@@ -62,7 +64,8 @@
    "미추홀구": "michuhol",
    "서해구": "seohae",
    "연수구": "yeonsu",
-   "검단구": "geomdan"
+   "검단구": "geomdan",
+   "남동구": "namdong"
   },
   "경남": {
    "거창군": "geochang",

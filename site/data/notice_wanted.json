@@ -2,75 +2,42 @@
  "how": "ego lite: need에 notice가 있으면 url(청약홈)에서 '모집공고문' PDF → ~/줍줍알람/공고문/<save_as>, pamphlet이 있으면 청약홈·homepage(분양 홈페이지)에서 팸플릿·카탈로그 PDF → ~/줍줍알람/공고문/<pamphlet_as>(여러 개면 -pamphlet2.pdf…), 어디에도 없으면 notice_import.py --no-pamphlet <key>. site가 있으면 homepage에서 평면도·단지배치도·동호배치도·조감도·커뮤니티·단지 둘러보기 그림의 원본 주소(가장 큰 것)를 AI열 형식으로 ~/줍줍알람/공고문/<site_as>에 적고 notice_import.py --site로 받음(그림이 없으면 --no-site <key>). 캡차·차단 화면이면 멈추고 건너뜀(우회 금지).",
  "items": [
   {
-   "key": "2026000527",
-   "title": "광교 자연앤 센트레빌 A17BL 지분적립형",
+   "key": "2026910279",
+   "title": "봉담자이 프라이드시티 무순위",
    "rcpt": [
-    "2026-11-09",
-    "2026-11-11"
+    "2026-11-10",
+    "2026-11-10"
    ],
-   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000527&pblancNo=2026000527",
-   "homepage": "http://www.gwanggyo-centreville.com",
-   "need": [
-    "pamphlet",
-    "site"
-   ],
-   "save_as": "2026000527.pdf",
-   "pamphlet_as": "2026000527-pamphlet.pdf",
-   "site_as": "2026000527-site.txt",
-   "owner": "경기주택도시공사"
-  },
-  {
-   "key": "2026000528",
-   "title": "광교 자연앤 센트레빌 A17BL 공공분양",
-   "rcpt": [
-    "2026-11-09",
-    "2026-11-11"
-   ],
-   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000528&pblancNo=2026000528",
-   "homepage": "http://www.gwanggyo-centreville.com",
-   "need": [
-    "pamphlet",
-    "site"
-   ],
-   "save_as": "2026000528.pdf",
-   "pamphlet_as": "2026000528-pamphlet.pdf",
-   "site_as": "2026000528-site.txt",
-   "owner": "경기주택도시공사"
-  },
-  {
-   "key": "2026910285",
-   "title": "더샵 송도그란테르 G5-6블록 무순위",
-   "rcpt": [
-    "2026-11-09",
-    "2026-11-09"
-   ],
-   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910285&pblancNo=2026910285",
-   "homepage": "https://더샵송도그란테르.kr",
+   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910279&pblancNo=2026910279",
+   "homepage": "https://www.idsd.co.kr",
    "need": [
     "notice",
-    "pamphlet"
+    "pamphlet",
+    "site"
    ],
-   "save_as": "2026910285.pdf",
-   "pamphlet_as": "2026910285-pamphlet.pdf",
-   "site_as": "2026910285-site.txt",
-   "owner": "케이비부동산신탁(주)"
+   "save_as": "2026910279.pdf",
+   "pamphlet_as": "2026910279-pamphlet.pdf",
+   "site_as": "2026910279-site.txt",
+   "owner": "디에스디삼호(주)"
   },
   {
-   "key": "2026820014",
-   "title": "남양주왕숙 A-2블록 신혼희망타운 잔여세대",
+   "key": "2026910282",
+   "title": "광명 시티프라디움 에듀하임 무순위",
    "rcpt": [
-    "2026-11-11",
-    "2026-11-12"
+    "2026-11-10",
+    "2026-11-10"
    ],
-   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026820014&pblancNo=2026820014",
-   "homepage": "https://apply.lh.or.kr",
+   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910282&pblancNo=2026910282",
+   "homepage": "https://광명시티프라디움.com",
    "need": [
-    "pamphlet"
+    "notice",
+    "pamphlet",
+    "site"
    ],
-   "save_as": "2026820014.pdf",
-   "pamphlet_as": "2026820014-pamphlet.pdf",
-   "site_as": "2026820014-site.txt",
-   "owner": "한국토지주택공사 경기북부지역본부"
+   "save_as": "2026910282.pdf",
+   "pamphlet_as": "2026910282-pamphlet.pdf",
+   "site_as": "2026910282-site.txt",
+   "owner": "(주)시티글로벌"
   }
  ]
 }

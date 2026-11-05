@@ -1,0 +1,47 @@
+{
+ "key": "lh2015122300021009",
+ "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300021009&ccrCnntSysDsCd=03&uppAisTpCd=05&aisTpCd=05&mi=1027",
+ "checked": "2026-11-05 22:46",
+ "files": [
+  {
+   "fileid": "69286450",
+   "name": "경기남부권(수원·용인광교)공가세대일반매각공고문(85초과)_261105.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69286451",
+   "name": "경기남부권(수원·용인광교)공가세대일반매각공고문(85초과)_261105.pdf",
+   "kind": "notice",
+   "got": "ok",
+   "md5": "719e752b13f90e5540641bd8b993b229",
+   "pages": 6,
+   "bytes": 386306
+  },
+  {
+   "fileid": "69291378",
+   "name": "(붙임)세대열람보안각서.pdf",
+   "kind": "other"
+  },
+  {
+   "fileid": "69291368",
+   "name": "(붙임)토지거래계약허가신청제출서류(수원시영통구,광교더포레스트,필수).zip",
+   "kind": "other"
+  },
+  {
+   "fileid": "69291369",
+   "name": "(붙임)토지거래계약허가신청제출서류(용인시수지구,광교더힐,필수).zip",
+   "kind": "other"
+  },
+  {
+   "fileid": "69291384",
+   "name": "(참고)위임장(양식).pdf",
+   "kind": "form"
+  },
+  {
+   "fileid": "69291385",
+   "name": "(참고)주택상태확인서(계약시작성).pdf",
+   "kind": "form"
+  }
+ ],
+ "changed": true
+}

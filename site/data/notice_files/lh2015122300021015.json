@@ -1,0 +1,42 @@
+{
+ "key": "lh2015122300021015",
+ "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300021015&ccrCnntSysDsCd=03&uppAisTpCd=05&aisTpCd=05&mi=1027",
+ "checked": "2026-11-05 22:46",
+ "files": [
+  {
+   "fileid": "69293774",
+   "name": "(붙임)세대열람보안각서.pdf",
+   "kind": "other"
+  },
+  {
+   "fileid": "69290742",
+   "name": "경기남부권(안성동인힐타운)다세대주택공가세대일반매각공고문_261105.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69290744",
+   "name": "경기남부권(안성동인힐타운)다세대주택공가세대일반매각공고문_261105.pdf",
+   "kind": "notice",
+   "got": "ok",
+   "md5": "cc1a8088576d7fb831995d477e8bbc80",
+   "pages": 7,
+   "bytes": 447737
+  },
+  {
+   "fileid": "69290759",
+   "name": "(붙임)개인정보수집이용및제3자제공동의서및무주택서약서(양식).pdf",
+   "kind": "form"
+  },
+  {
+   "fileid": "69290761",
+   "name": "(참고)위임장(양식).pdf",
+   "kind": "form"
+  },
+  {
+   "fileid": "69290762",
+   "name": "(참고)주택상태확인서(계약시작성).pdf",
+   "kind": "form"
+  }
+ ],
+ "changed": true
+}

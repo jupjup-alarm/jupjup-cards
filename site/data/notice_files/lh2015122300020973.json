@@ -1,0 +1,22 @@
+{
+ "key": "lh2015122300020973",
+ "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300020973&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
+ "checked": "2026-11-05 22:46",
+ "files": [
+  {
+   "fileid": "69227273",
+   "name": "(261105)평택시국민임대주택예비입주자표준모집공고문_20261030.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69227274",
+   "name": "(261105)평택시국민임대주택예비입주자표준모집공고문_20261030.pdf",
+   "kind": "notice",
+   "got": "ok",
+   "md5": "78b904ebaee4c98a1c8d240416af4482",
+   "pages": 48,
+   "bytes": 1217543
+  }
+ ],
+ "changed": true
+}
