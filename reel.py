@@ -801,15 +801,37 @@ def sfx_files():
     return out
 
 
+def require_voice(spec):
+    """릴스는 내레이션 필수 (2026-11-05 사용자 결정 "릴스는 음성이 필수야" — 11/4·11/5 무음 릴스 4편 사고).
+    voice 없음·음성 파일 없음·장면 수와 음성 조각 수가 다르면 만들지 않고 멈춘다.
+    예외(효과음만 쓰는 시험 등)는 REEL_ALLOW_SILENT=1."""
+    if os.environ.get("REEL_ALLOW_SILENT") == "1":
+        return
+    n = len(spec["scenes"])
+    v = str(spec.get("voice") or "").split(" ")[0].strip()
+    if not v:
+        sys.exit("내레이션 없음: 원고에 voice가 없어요 — 릴스는 음성 필수 ('오늘의 발행 플랜' AA열 voices/<id>/가 생길 때까지 기다렸다가 만드세요)")
+    d = ROOT / v
+    parts = sorted(d.glob("[0-9][0-9].mp3")) if d.exists() else []
+    if not parts:
+        sys.exit(f"내레이션 없음: {v} 에 음성 파일이 없어요 (git pull --rebase origin main 후 다시)")
+    if len(parts) != n:
+        sys.exit(f"내레이션 어긋남: 장면 {n}개 ≠ 음성 조각 {len(parts)}개 ({v}) — 장면을 Z열 대본 블록 수에 맞추세요")
+
+
 def main(path):
     spec = json.loads(Path(path).read_text())
     slug = spec["slug"]
+    require_voice(spec)
     out = ROOT / "reels" / slug
     frames = out / "_frames"
     if frames.exists():
         shutil.rmtree(frames)
     frames.mkdir(parents=True)
     page, total, tl = build(spec)
+    if os.environ.get("REEL_ALLOW_SILENT") != "1" and not all(g for _, _, g in tl):
+        miss = [str(i + 1) for i, (_, _, g) in enumerate(tl) if not g]
+        sys.exit(f"내레이션 빠짐: 장면 {', '.join(miss)}에 음성이 없어요 ({spec.get('voice')})")
     (out / "reel.html").write_text(page)  # 작업용 (저장소에 올리지 않음)
 
     from playwright.sync_api import sync_playwright
@@ -885,7 +907,16 @@ def main(path):
     except Exception as e:
         WARN.append(f"썸네일 실패: {e}")
     base = f"{RAW_BASE}/reels/{slug}"
-    manifest = {"slug": slug, "duration": round(total, 2), "voiced": bool(voices), "video": f"{base}/{slug}.mp4",
+    narr = sum(g["s1"] - g["s0"] for _, _, g in tl if g)
+    try:   # 내레이션 크기 확인 — 너무 작으면 사실상 무음
+        vd = subprocess.run(["ffmpeg", "-i", str(mp4), "-af", "volumedetect", "-f", "null", "-"], capture_output=True, text=True).stderr
+        mean_db = float(re.search(r"mean_volume:\s*(-?[\d.]+)", vd).group(1))
+    except Exception:  # noqa: BLE001
+        mean_db = None
+    if os.environ.get("REEL_ALLOW_SILENT") != "1" and (narr < 3 or (mean_db is not None and mean_db < -32)):
+        sys.exit(f"내레이션 확인 실패: 말 {narr:.1f}초 · 평균 음량 {mean_db}dB — 무음에 가까워요")
+    manifest = {"slug": slug, "duration": round(total, 2), "voiced": narr >= 3, "narration_s": round(narr, 1),
+                "mean_db": mean_db, "voice": spec.get("voice"), "video": f"{base}/{slug}.mp4",
                 "cover": f"{base}/{slug}_thumb.jpg", "size_mb": round(mp4.stat().st_size / 1e6, 2), "warnings": WARN}
     (out / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=1))
     print(json.dumps(manifest, ensure_ascii=False))
