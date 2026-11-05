@@ -1,0 +1,398 @@
+{
+ "id": "W-0013",
+ "no": 21,
+ "series": "세계기담",
+ "format": "story",
+ "mood": "mystery",
+ "title": "레이디 비 굿 (사하라에서 16년 만에 발견된 B-24)",
+ "hook": [
+  "기록에 없는 폭격기",
+  "9명은 어디에?"
+ ],
+ "accent_word": "9명은",
+ "src_line": "1958년 · 리비아 사하라 (1943년 실종 미군 B-24)",
+ "faces": true,
+ "images": [
+  {
+   "id": "v01",
+   "bright": true,
+   "nop": true,
+   "seed": 1301,
+   "prompt": "An almost intact olive-drab World War II four-engine bomber lying on its belly in the middle of endless golden sand dunes of the Sahara, harsh midday sun, a little sand on the wings, the broken-off tail section slightly apart, the plane large and sharp in the middle of the frame, no markings or letters, deep blue empty sky above."
+  },
+  {
+   "id": "v02",
+   "bright": true,
+   "seed": 1302,
+   "prompt": "Close-up of a fictional 1950s oil company geologist, a sunburned man in a khaki shirt, pressing his face against the window of a small propeller plane, pushing his sunglasses up with wide astonished eyes; through the window far below, a tiny bomber sits on the sand dunes, bright daylight."
+  },
+  {
+   "id": "v03",
+   "seed": 1303,
+   "prompt": "A fictional 1950s US Air Force officer in a khaki uniform at a desk flipping through a thick ledger of records, stopping and frowning in disbelief, finger on a page, the writing blurred and unreadable, desk lamp, office with a ceiling fan."
+  },
+  {
+   "id": "v04",
+   "bright": true,
+   "seed": 1304,
+   "prompt": "A fictional 1950s desert expedition man in a pith helmet and khaki clothes pressing his palm on the scratched sun-bleached metal fuselage of a World War II bomber half buried in sand, looking up at it with an amazed face, bright harsh sunlight."
+  },
+  {
+   "id": "v05",
+   "nop": true,
+   "seed": 1305,
+   "prompt": "Inside a World War II bomber on the metal floor: several old military canteens and ration tins lined up neatly, sand on the floor, sharp beams of sunlight coming through gaps in the fuselage, dusty air."
+  },
+  {
+   "id": "v06",
+   "ref": "v04",
+   "seed": 1306,
+   "prompt": "Close-up of a 1940s aircraft radio set with round dials inside a bomber, the same expedition man's hand turning a knob, a faint warm glow by the needle, his amazed face in profile beside it, dim interior light."
+  },
+  {
+   "id": "v07",
+   "nop": true,
+   "seed": 1307,
+   "prompt": "An empty World War II bomber cockpit with two empty pilot seats, old headsets hanging, empty parachute hooks on the wall, a thin layer of sand on the floor, bright light through the windows."
+  },
+  {
+   "id": "v08",
+   "seed": 1308,
+   "prompt": "Close-up of a fictional expedition man's finger on an old paper map spread on a camp table, tracing from a coastline deep into an empty desert area, a brass compass beside it, the map labels blurred and unreadable, warm lantern light."
+  },
+  {
+   "id": "v09",
+   "bright": true,
+   "seed": 1309,
+   "prompt": "Imagined scene with slightly faded colors: a World War II bomber resting on desert sand and three young airmen in 1940s leather flight jackets walking away from it across the dunes, seen from behind, hot afternoon light."
+  },
+  {
+   "id": "v10",
+   "ref": "v04",
+   "seed": 1310,
+   "prompt": "Close-up of the same expedition man in a pith helmet inside the bomber, his eyes moving from the empty parachute hooks up toward the sky, a dawning realization on his face, light from above."
+  },
+  {
+   "id": "v11",
+   "nop": true,
+   "seed": 1311,
+   "prompt": "Night under moonlight: a dark World War II bomber with no lights gliding very low alone over pale desert dunes, sand spraying where its belly touches the ground, nobody around."
+  },
+  {
+   "id": "v12",
+   "nop": true,
+   "seed": 1312,
+   "prompt": "A starry night sky over a black desert: several white parachutes opening far away in the darkness, tiny distant figures under them, quiet and vast."
+  },
+  {
+   "id": "v13",
+   "seed": 1313,
+   "prompt": "Close-up at dawn in the desert: a fictional young airman in a 1940s flight jacket shaking a half-full metal canteen near his ear, lips pressed tight with determination, blurred figures of his companions behind him on the sand."
+  },
+  {
+   "id": "v14",
+   "seed": 1314,
+   "prompt": "1960, a group of fictional oil company workers in khaki work clothes standing on desert sand, they have taken off their hats and bow their heads in silence, looking down toward something outside the frame, soft late afternoon light, solemn."
+  },
+  {
+   "id": "v15",
+   "nop": true,
+   "seed": 1315,
+   "prompt": "Extreme close-up of a small worn leather pocket diary lying open on sand, faint pencil lines blurred and unreadable, cold blue dawn light, a few grains of sand on the pages."
+  },
+  {
+   "id": "v16",
+   "seed": 1316,
+   "prompt": "Night, inside a 1943 bomber cockpit, a fictional young pilot in a leather flight helmet looking down through the window into pitch darkness below, instrument lights glowing on his tense but calm face."
+  },
+  {
+   "id": "v17",
+   "nop": true,
+   "seed": 1317,
+   "prompt": "Night seen from high above: the silhouette of a four-engine bomber flying past a faint line of coastal lights and on into endless darkness of the desert, moonlight."
+  },
+  {
+   "id": "v18",
+   "nop": true,
+   "seed": 1318,
+   "prompt": "Dawn in the desert: a single line of footprints climbing over the ridge of a huge sand dune and disappearing beyond it, long shadows, no people."
+  },
+  {
+   "id": "v19",
+   "nop": true,
+   "seed": 1319,
+   "prompt": "A freezing clear night over empty desert dunes, a vast sky full of cold stars, pale blue moonlight on the sand, silent and lonely, nothing else."
+  },
+  {
+   "id": "v20",
+   "bright": true,
+   "nop": true,
+   "seed": 1320,
+   "prompt": "Close-up of an old dented World War II metal canteen lying on its side on rippled desert sand, its cap open, harsh sunlight and a long shadow, endless dunes blurred behind."
+  }
+ ],
+ "scenes": [
+  {
+   "say": "사막 한복판 폭격기, 옆 미군 기지엔 기록조차 없었습니다.",
+   "tts": "사막 한복판 폭격기 옆 미군 기지엔 기록조차 없었습니다.",
+   "img": "v01",
+   "move": "in",
+   "emph": [
+    "기록조차"
+   ]
+  },
+  {
+   "say": "석유를 찾던 비행기가, 처음 내려다봤죠.",
+   "tts": "석유를 찾던 비행기가, 처음 내려다봤죠.",
+   "img": "v02",
+   "move": "in",
+   "cont": true,
+   "emph": [
+    "처음"
+   ]
+  },
+  {
+   "say": "근처에서 사라진 미군기는, 없었거든요.",
+   "tts": "근처에서 사라진 미군기는, 없었거든요.",
+   "img": "v03",
+   "move": "in",
+   "cont": true,
+   "big": {
+    "text": "실종 기록: 없음",
+    "at": 0.45
+   },
+   "emph": [
+    "없었거든요."
+   ]
+  },
+  {
+   "say": "이듬해 가 보니, 기체는 거의 멀쩡했고,",
+   "tts": "이듬해 가 보니, 기체는 거의 멀쩡했고,",
+   "img": "v04",
+   "move": "up",
+   "emph": [
+    "멀쩡했고,"
+   ]
+  },
+  {
+   "say": "물과 식량도, 그대로였습니다.",
+   "tts": "물과 식량도, 그대로였습니다.",
+   "img": "v05",
+   "move": "in",
+   "cont": true,
+   "big": {
+    "text": "물 · 식량",
+    "at": 0.3
+   },
+   "emph": [
+    "그대로였습니다."
+   ]
+  },
+  {
+   "say": "16년 만에 켠 무전기는, 작동했다고 하죠.",
+   "tts": "십육 년 만에 켠 무전기는, 작동했다고 하죠.",
+   "img": "v06",
+   "move": "in",
+   "cont": true,
+   "emph": [
+    "작동했다고"
+   ]
+  },
+  {
+   "say": "타고 있던 아홉 명도, 낙하산도 없었습니다.",
+   "tts": "타고 있던 아홉 명도, 낙하산도 없었습니다.",
+   "sub": "타고 있던 9명도, 낙하산도 없었습니다.",
+   "img": "v07",
+   "move": "in",
+   "big": {
+    "text": "9명 · 낙하산 0",
+    "at": 0.4
+   }
+  },
+  {
+   "say": "기지에서 700km 가까이 떨어진 사막이었죠.",
+   "tts": "기지에서 칠백 킬로미터 가까이 떨어진 사막이었죠.",
+   "img": "v08",
+   "move": "left",
+   "cont": true,
+   "big": {
+    "text": "약 700km",
+    "at": 0.5
+   }
+  },
+  {
+   "say": "내려앉은 뒤, 걸어서 떠난 걸까요?",
+   "tts": "내려앉은 뒤, 걸어서 떠난 걸까요?",
+   "img": "v09",
+   "move": "in",
+   "big": {
+    "text": "걸어서?",
+    "at": 0.5
+   }
+  },
+  {
+   "say": "그런데 낙하산이 없다는 건, 뛰어내렸다는 뜻.",
+   "tts": "그런데 낙하산이 없다는 건, 뛰어내렸다는 뜻.",
+   "img": "v10",
+   "move": "up",
+   "cont": true,
+   "emph": [
+    "뛰어내렸다는"
+   ]
+  },
+  {
+   "say": "비행기만 빈 채로, 내려앉은 겁니다.",
+   "tts": "비행기만 빈 채로, 내려앉은 겁니다.",
+   "img": "v11",
+   "move": "left",
+   "cont": true,
+   "sfx": "thud",
+   "emph": [
+    "빈"
+   ]
+  },
+  {
+   "say": "아홉이 뛰어내렸고, 한 명은 그 밤 숨졌습니다.",
+   "tts": "아홉이 뛰어내렸고, 한 명은 그 밤 숨졌습니다.",
+   "sub": "9명이 뛰어내렸고, 한 명은 그 밤 숨졌습니다.",
+   "img": "v12",
+   "move": "down"
+  },
+  {
+   "say": "여덟 명은 물 반 통을 들고, 북쪽으로 걸었죠.",
+   "tts": "여덟 명은 물 반 통을 들고, 북쪽으로 걸었죠.",
+   "sub": "8명은 물 반 통을 들고, 북쪽으로 걸었죠.",
+   "img": "v13",
+   "move": "in",
+   "cont": true,
+   "big": {
+    "text": "물 반 통",
+    "at": 0.4
+   }
+  },
+  {
+   "say": "17년 뒤, 그중 다섯 명이 숨진 채 발견됩니다.",
+   "tts": "십칠 년 뒤, 그중 다섯 명이 숨진 채 발견됩니다.",
+   "sub": "17년 뒤, 그중 5명이 숨진 채 발견됩니다.",
+   "img": "v14",
+   "move": "in",
+   "cont": true,
+   "big": {
+    "text": "17년 뒤",
+    "at": 0.3
+   },
+   "shots": [
+    {
+     "proof": "proof/eveningstar.jpg",
+     "hl": [
+      0.17,
+      0.27,
+      0.97,
+      0.46
+     ],
+     "credit": "Evening Star 1960.2.14 · 미국 의회도서관",
+     "_zoom": true,
+     "w": 1
+    },
+    {
+     "img": "v14",
+     "move": "in",
+     "w": 2
+    }
+   ]
+  },
+  {
+   "say": "부조종사 수첩의 마지막 줄, “아직 구조 없음, 아주 추운 밤.”",
+   "tts": "부조종사 수첩의 마지막 줄, 아직 구조 없음 아주 추운 밤.",
+   "img": "v15",
+   "move": "in",
+   "cont": true,
+   "emph": [
+    "구조",
+    "없음,"
+   ],
+   "shots": [
+    {
+     "img": "v15",
+     "move": "in",
+     "w": 1
+    },
+    {
+     "img": "v19",
+     "move": "up",
+     "w": 1
+    }
+   ]
+  },
+  {
+   "say": "그 밤 그들은, 아직 바다 위라고 믿었던 걸로 보입니다.",
+   "tts": "그 밤 그들은, 아직 바다 위라고 믿었던 걸로 보입니다.",
+   "img": "v16",
+   "move": "in",
+   "sfx": "hit",
+   "big": {
+    "text": "바다 위라고?",
+    "at": 0.5
+   },
+   "emph": [
+    "바다"
+   ]
+  },
+  {
+   "say": "기지를 지나쳐 두 시간 더, 발밑은 이미 사하라였죠.",
+   "tts": "기지를 지나쳐 두 시간 더, 발밑은 이미 사하라였죠.",
+   "img": "v17",
+   "move": "left",
+   "cont": true,
+   "emph": [
+    "사하라였죠."
+   ]
+  },
+  {
+   "say": "따로 더 걸은 셋 중 한 명은, 지금도 찾지 못했습니다.",
+   "tts": "따로 더 걸은 셋 중 한 명은, 지금도 찾지 못했습니다.",
+   "img": "v18",
+   "move": "up",
+   "emph": [
+    "지금도"
+   ]
+  },
+  {
+   "say": "물 반 통으로 125km… 그들을 끝까지 걷게 한 건, 누구의 얼굴이었을까요?",
+   "tts": "물 반 통으로 백이십오 킬로미터… 그들을 끝까지 걷게 한 건, 누구의 얼굴이었을까요?",
+   "img": "v01",
+   "move": "out",
+   "cont": true,
+   "emph": [
+    "얼굴이었을까요?"
+   ],
+   "shots": [
+    {
+     "img": "v20",
+     "move": "in",
+     "w": 1
+    },
+    {
+     "img": "v01",
+     "move": "out",
+     "w": 1.2
+    }
+   ]
+  }
+ ],
+ "youtube": {
+  "title": "레이디 비 굿, 기록에 없던 사막의 폭격기 😨",
+  "summary": "1958년 리비아 사하라 한복판에서 거의 멀쩡한 미군 폭격기가 발견됐습니다. 근처 기지엔 그 일대 실종 기록이 없었고, 물과 식량은 남아 있었지만 9명과 낙하산은 없었습니다.",
+  "pinned": "물 반 통으로 125km, 그들을 끝까지 걷게 한 건 누구의 얼굴이었을까요? 한 단어로 남겨 주세요."
+ },
+ "sources": "출처: 미 국립기록원(NARA) The Unwritten Record 'Lady Be Good', Air & Space Forces Magazine(2014.2), Evening Star(1960.2.14) — 미국 의회도서관 Chronicling America",
+ "tags": "#세계기담 #레이디비굿",
+ "risk": "중",
+ "hook_type": "있으면 안 되는 곳의 물건×기록에 없음(사막의 폭격기)",
+ "threads": [
+  "1958년에 리비아 사하라 한복판에서 석유 찾던 비행기가 거의 멀쩡한 미군 폭격기를 내려다봤대. 근데 근처 미군 기지엔 그 일대에서 사라진 비행기 기록이 아예 없었어.",
+  "이듬해 사람들이 가 보니까 물이랑 식량이 그대로 남아 있고, 무전기도 작동했다고 해. 근데 타고 있던 아홉 명도, 낙하산도 없었어. 기지에서 700km 가까이 떨어진 사막이었고.",
+  "낙하산이 없다는 건 하늘에서 뛰어내렸다는 뜻이잖아. 1943년 그 밤, 그들은 아직 바다 위라고 믿은 걸로 보인대. 기지를 지나쳐서 두 시간을 더 날았는데 발밑은 이미 사하라였던 거지.",
+  "뛰어내린 여덟 명은 물 반 통 들고 북쪽으로 125km를 걸었고, 그중 다섯 명이 17년 뒤에야 숨진 채 발견됐어. 따로 더 걸은 셋 중 한 명은 지금도 못 찾았대. 영상으로 보려면 인스타 @ossak_alarm 에서 봐."
+ ]
+}

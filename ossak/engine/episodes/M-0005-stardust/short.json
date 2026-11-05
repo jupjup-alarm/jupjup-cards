@@ -1,0 +1,251 @@
+{
+ "id": "M-0005",
+ "no": 19,
+ "series": "미제파일",
+ "format": "loop",
+ "mood": "mystery",
+ "title": "스타더스트 STENDEC 마지막 교신",
+ "hook": [
+  "착륙 4분 전 무전",
+  "STENDEC?"
+ ],
+ "accent_word": "STENDEC?",
+ "src_line": "1947년 8월 · 부에노스아이레스 → 칠레 산티아고",
+ "faces": true,
+ "images": [
+  {
+   "id": "s01",
+   "bright": true,
+   "seed": 5101,
+   "prompt": "Extreme close-up of two hands of a 1940s airport radio operator holding up a long narrow strip of cream telegraph paper tape printed with dots and dashes, in a radio room with a brass Morse key and a big valve radio set on the desk, a single warm desk lamp beam lighting the paper tape in the middle of the frame, the dots and dashes blurred and unreadable."
+  },
+  {
+   "id": "s02",
+   "bright": true,
+   "seed": 5102,
+   "prompt": "Close-up portrait of a fictional 1940s radio operator, a man in his thirties with slicked dark hair, white shirt and loosened tie, wearing big bakelite headphones, frowning with raised eyebrows and an open mouth in confusion, his finger pressing a brass Morse key, warm lamp light in a 1940s airport radio room."
+  },
+  {
+   "id": "s03",
+   "ref": "s02",
+   "seed": 5103,
+   "prompt": "Close-up of the same 1940s radio operator with headphones, pencil in hand, writing on a notepad and suddenly freezing, staring down at the paper with stiff wide eyes, warm lamp light, dark radio room."
+  },
+  {
+   "id": "s04",
+   "nop": true,
+   "seed": 5104,
+   "prompt": "Top-down close-up of a 1940s message notepad on a wooden desk: three short lines of identical handwriting written one under another, blurred and unreadable, a pencil tip stopped at the end of the third line, a brass Morse key at the edge, warm lamp light."
+  },
+  {
+   "id": "s05",
+   "ref": "s02",
+   "seed": 5105,
+   "prompt": "Side view of the same 1940s radio operator pressing the headphones against his ears with both hands, leaning forward toward a large valve radio set, holding his breath with a tense face, a wall clock behind him with hands only and no readable numbers, dim lamp light."
+  },
+  {
+   "id": "s06",
+   "nop": true,
+   "seed": 5106,
+   "prompt": "A 1940s four-propeller airliner with no markings flying away from the viewer into a towering wall of grey snow clouds above jagged snowy Andes peaks, its shape fading into the snowstorm, dusk light."
+  },
+  {
+   "id": "s07",
+   "seed": 5107,
+   "prompt": "A fictional 1940s air accident investigator, a man in his fifties with grey hair and round glasses, sitting at a desk covered with a large blank mountain map, he has put his pen down and presses his forehead with one hand, a lost and exhausted face, desk lamp, blurred papers."
+  },
+  {
+   "id": "s08",
+   "seed": 5108,
+   "prompt": "Two fictional men in 1940s suits and hats at a cafe table, one holding a newspaper with a blurred unreadable headline and excitedly pointing up at the sky with a thrilled face, the other leaning back with a doubtful, skeptical squint, warm cafe light."
+  },
+  {
+   "id": "s09",
+   "bright": true,
+   "seed": 5109,
+   "prompt": "Two fictional mountaineers in modern red and blue climbing jackets, goggles pushed up, kneeling on a steep snowy glacier slope high in the Andes, both frozen in shock with wide eyes and open mouths, staring at something just in front of them in the ice, bright sunlight, deep blue sky."
+  },
+  {
+   "id": "s10",
+   "bright": true,
+   "nop": true,
+   "seed": 5110,
+   "prompt": "Close-up of a rusted old aircraft propeller engine half sticking out of cracked blue glacier ice, bent propeller blades, icicles, surrounded by empty white ice and snow, bright cold sunlight, nothing else around."
+  },
+  {
+   "id": "s11",
+   "nop": true,
+   "seed": 5111,
+   "prompt": "View from inside a 1940s airliner cockpit looking forward past the empty pilot seats and old round instrument gauges: through the windshield only white cloud, and a dark steep rocky mountain wall faintly appearing very close ahead inside the cloud, dim grey light."
+  },
+  {
+   "id": "s12",
+   "ref": "s02",
+   "seed": 5112,
+   "prompt": "Night, an empty 1940s airport radio room lit by one desk lamp. The same radio operator holds a strip of telegraph paper tape right in front of his eyes and stares at it silently with a haunted, puzzled face, the tape in the middle of the frame."
+  }
+ ],
+ "scenes": [
+  {
+   "say": "착륙 4분 전, 여객기가 보낸 단어는 STENDEC.",
+   "tts": "착륙 사 분 전 여객기가 보낸 단어는 스텐덱.",
+   "img": "s01",
+   "move": "in",
+   "big": {
+    "text": "STENDEC",
+    "at": 0.05
+   },
+   "emph": [
+    "STENDEC."
+   ]
+  },
+  {
+   "say": "처음 보는 단어에, 통신사는 다시 물었습니다.",
+   "tts": "처음 보는 단어에, 통신사는 다시 물었습니다.",
+   "img": "s02",
+   "move": "in",
+   "cont": true,
+   "emph": [
+    "다시"
+   ]
+  },
+  {
+   "say": "돌아온 답은, 또 STENDEC.",
+   "tts": "돌아온 답은, 또 스텐덱.",
+   "img": "s03",
+   "move": "in",
+   "big": {
+    "text": "STENDEC",
+    "at": 0.5
+   },
+   "emph": [
+    "또"
+   ]
+  },
+  {
+   "say": "그리고 한 번 더, STENDEC.",
+   "tts": "그리고 한 번 더, 스텐덱.",
+   "img": "s04",
+   "move": "in",
+   "cont": true,
+   "big": {
+    "text": "STENDEC ×3",
+    "at": 0.3
+   },
+   "emph": [
+    "한"
+   ]
+  },
+  {
+   "say": "그 뒤로, 무전은 다시 오지 않았습니다.",
+   "tts": "그 뒤로 무전은, 다시 오지 않았습니다.",
+   "img": "s05",
+   "move": "in",
+   "cont": true,
+   "emph": [
+    "오지"
+   ]
+  },
+  {
+   "say": "11명을 태운 그 비행기는, 끝내 돌아오지 못했습니다.",
+   "tts": "열한 명을 태운 그 비행기는, 끝내 돌아오지 못했습니다.",
+   "img": "s06",
+   "move": "in",
+   "big": {
+    "text": "11명",
+    "at": 0.2
+   },
+   "emph": [
+    "11명을"
+   ]
+  },
+  {
+   "say": "잔해도, 원인도 없었습니다.",
+   "tts": "잔해도 원인도, 없었습니다.",
+   "img": "s07",
+   "move": "in",
+   "cont": true,
+   "big": {
+    "text": "원인 불명",
+    "at": 0.4
+   }
+  },
+  {
+   "say": "UFO에 끌려갔다는 말까지 돌았죠.",
+   "tts": "유에프오에 끌려갔다는 말까지 돌았죠.",
+   "img": "s08",
+   "move": "in",
+   "big": {
+    "text": "UFO?",
+    "at": 0.3
+   },
+   "emph": [
+    "UFO에"
+   ]
+  },
+  {
+   "say": "그리고 51년 뒤, 빙하에서 엔진이 나왔습니다.",
+   "tts": "그리고 오십일 년 뒤, 빙하에서 엔진이 나왔습니다.",
+   "img": "s09",
+   "move": "in",
+   "sfx": "hit",
+   "big": {
+    "text": "51년",
+    "at": 0.15
+   },
+   "emph": [
+    "51년",
+    "엔진이"
+   ],
+   "shots": [
+    {
+     "img": "s09",
+     "move": "in",
+     "w": 1.3
+    },
+    {
+     "img": "s10",
+     "move": "in",
+     "w": 1
+    }
+   ]
+  },
+  {
+   "say": "맞바람에 늦은 줄 모르고, 산을 넘었다 믿은 거였죠.",
+   "tts": "맞바람에 늦은 줄 모르고, 산을 넘었다 믿은 거였죠.",
+   "img": "s11",
+   "move": "in",
+   "cont": true,
+   "big": {
+    "text": "산을 넘었다?",
+    "at": 0.55
+   },
+   "emph": [
+    "넘었다"
+   ]
+  },
+  {
+   "say": "4분 전 그 단어, STENDEC… 무슨 단어로 보이세요?",
+   "tts": "사 분 전 그 단어, 스텐덱… 무슨단어로 보이세요?",
+   "img": "s12",
+   "move": "in",
+   "big": {
+    "text": "STENDEC",
+    "at": 0.3
+   },
+   "emph": [
+    "STENDEC…",
+    "단어로"
+   ]
+  }
+ ],
+ "youtube": {
+  "title": "STENDEC, 착륙 4분 전 여객기가 보낸 단어",
+  "summary": "1947년 8월, 칠레 산티아고 착륙 4분 전. 11명을 태운 여객기 '스타더스트'가 모스 부호로 'STENDEC'이라는 단어를 보냈고, 통신사가 되묻자 같은 단어가 두 번 더 온 뒤 연락이 끊겼습니다. 그 단어의 뜻은 지금도 모릅니다.",
+  "pinned": "STENDEC, 당신 눈엔 무슨 단어로 보이세요? 일곱 글자를 섞어 봐도 좋아요."
+ },
+ "sources": "출처: 1947 영국 민간항공부 사고 조사 보고서(PBS NOVA 'Vanished!' 수록), Plane & Pilot 'A Pilot's Last Words: STENDEC', 아르헨티나 조사단 결론(2000)",
+ "tags": "#미제파일 #STENDEC",
+ "risk": "중",
+ "hook_type": "일상(착륙 보고)×아무도 모르는 단어"
+}

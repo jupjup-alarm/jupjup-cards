@@ -1,0 +1,409 @@
+{
+ "id": "W-0008",
+ "no": 20,
+ "series": "세계기담",
+ "format": "story",
+ "mood": "mystery",
+ "title": "로어노크 '사라진 식민지' (CROATOAN)",
+ "hook": [
+  "딸을 불렀더니",
+  "나무가 대답했다?"
+ ],
+ "accent_word": "대답했다?",
+ "src_line": "1590년 8월 · 로어노크섬 (북미 영국 정착지)",
+ "faces": true,
+ "images": [
+  {
+   "id": "r01",
+   "bright": true,
+   "seed": 8101,
+   "prompt": "Close-up of a fictional bearded English man in his forties wearing a dark 1590s doublet and cloak, standing in a coastal forest in bright morning sunlight, his palm pressed flat on the bark of a big tree right beside three large freshly carved letters, his eyes wide and his face frozen in shock, the carved letters blurred and unreadable, leaves and sky in the upper part of the frame."
+  },
+  {
+   "id": "r02",
+   "bright": true,
+   "seed": 8102,
+   "prompt": "A small wooden rowing boat leaving a sandy shore of a green island, a fictional bearded Englishman in a dark 1590s cloak sitting in the boat looking back over his shoulder with a sad face, on the beach a crowd of 1580s English settlers, men, women and children in simple period clothes, waving goodbye with visible faces, bright day, a big sailing ship waiting offshore."
+  },
+  {
+   "id": "r03",
+   "seed": 8103,
+   "prompt": "A fictional young English woman in a 1580s linen dress and white coif standing on a windy beach, holding a baby wrapped tightly in a cloth bundle against her chest (the baby's face hidden in the cloth), looking out toward the sea with a calm, hopeful face, soft daylight."
+  },
+  {
+   "id": "r04",
+   "ref": "r01",
+   "seed": 8104,
+   "prompt": "In front of a big old tree in a coastal forest, a fictional 1580s English settler man presses his palm on the bark while the same bearded Englishman in a dark cloak nods seriously beside him, a promise being made, slightly faded warm colors like a memory, no tools or knives."
+  },
+  {
+   "id": "r05",
+   "nop": true,
+   "seed": 8105,
+   "prompt": "Extreme close-up of rough tree bark with a single fingertip tracing the shape of a cross in the air just above the bark, slightly faded warm colors like a memory, no carving yet."
+  },
+  {
+   "id": "r06",
+   "seed": 8106,
+   "prompt": "Night on the deck of a 1590 English sailing ship, two fictional sailors in period clothes with startled faces pointing toward a dark low island on the horizon where orange smoke and a faint glow rise above the trees, lantern light."
+  },
+  {
+   "id": "r07",
+   "ref": "r01",
+   "seed": 8107,
+   "prompt": "Night, a small rowing boat on dark water near a dark island shore: a fictional sailor blowing a brass trumpet while the same bearded Englishman in a dark cloak cups both hands around his mouth and shouts toward the island, tense anxious faces lit by a single lantern."
+  },
+  {
+   "id": "r08",
+   "bright": true,
+   "nop": true,
+   "seed": 8108,
+   "prompt": "Dawn light on a wet sandy beach: a clear line of bare human footprints crossing the sand toward the forest, a little grass smoking in the distance, peaceful but strange, no people anywhere."
+  },
+  {
+   "id": "r09",
+   "nop": true,
+   "seed": 8109,
+   "prompt": "Wide view of an abandoned 1580s settlement in a clearing: a high palisade fence of tall pointed logs encloses empty spaces where houses have been taken down, only a few bare frames left, iron bars and lead pieces scattered on the ground, quiet morning light, no people."
+  },
+  {
+   "id": "r10",
+   "bright": true,
+   "nop": true,
+   "seed": 8110,
+   "prompt": "Close-up of freshly dug-up holes in sand with several old wooden chests around them, their lids torn open, books, papers and small belongings spilled out onto the sand, bright daylight."
+  },
+  {
+   "id": "r11",
+   "ref": "r01",
+   "seed": 8111,
+   "prompt": "The same bearded Englishman in a dark cloak kneeling on sand, holding up in both hands a rain-soaked, torn hand-painted watercolor map, his face stunned and heartbroken, a small rusted piece of armor beside his knee, grey daylight."
+  },
+  {
+   "id": "r12",
+   "nop": true,
+   "seed": 8112,
+   "prompt": "A dark stormy night sea: far away on the horizon the silhouette of a large warship with lanterns, and in the foreground a small empty wooden rowing boat drifting on rough waves, ominous moonlight."
+  },
+  {
+   "id": "r13",
+   "bright": true,
+   "ref": "r01",
+   "seed": 8113,
+   "prompt": "The tall wooden entrance post of a palisade fence with a long word carved deep into it, the letters blurred and unreadable, and the same bearded Englishman in a dark cloak looking up at it from below in profile, mouth slightly open, bright daylight."
+  },
+  {
+   "id": "r14",
+   "nop": true,
+   "seed": 8114,
+   "prompt": "Extreme macro close-up of smooth weathered wooden post surface with no marks at all, a single thumb resting on the blank wood just above the edge of carved letters at the bottom of the frame, the letters blurred, hard side light."
+  },
+  {
+   "id": "r15",
+   "ref": "r01",
+   "seed": 8115,
+   "prompt": "Close-up of the same bearded Englishman in a dark cloak breathing out in relief, one hand on his chest, a faint relieved smile with teary eyes, soft golden afternoon light by the palisade."
+  },
+  {
+   "id": "r16",
+   "ref": "r01",
+   "seed": 8116,
+   "prompt": "Storm at sea on the deck of a 1590 sailing ship, a snapped anchor rope whipping over the side, the same bearded Englishman in a dark cloak gripping the rail with both hands and looking back toward the vanishing horizon with despair, rain and huge waves."
+  },
+  {
+   "id": "r17",
+   "bright": true,
+   "seed": 8117,
+   "prompt": "A warm friendly historical reconstruction scene: 1580s English settlers in simple period clothes and Algonquian coastal Native American villagers in historically accurate deerskin clothing working together beside a longhouse and a cooking fire, sharing food and smiling, respectful, no stereotypes, bright daylight."
+  },
+  {
+   "id": "r18",
+   "bright": true,
+   "nop": true,
+   "seed": 8118,
+   "prompt": "Close-up of two gloved archaeologist hands brushing dirt off an old deer jawbone in an excavation pit, a small round lead musket ball embedded in the bone, brushes and a trowel nearby, bright daylight."
+  },
+  {
+   "id": "r19",
+   "seed": 8119,
+   "prompt": "Close-up of a few fictional 1580s English settlers on a windy beach, men and women in simple period clothes and coifs, waving goodbye toward the sea with brave but worried smiles, visible faces, bright daylight, a green forest behind them."
+  },
+  {
+   "id": "r20",
+   "bright": true,
+   "seed": 8120,
+   "prompt": "Warm historical reconstruction close-up: a fictional 1580s English settler woman in a linen coif and a fictional Algonquian coastal Native American woman in deerskin clothing sitting side by side, grinding corn together and laughing, respectful and accurate, no stereotypes, bright daylight by a longhouse."
+  },
+  {
+   "id": "r21",
+   "bright": true,
+   "nop": true,
+   "seed": 8121,
+   "prompt": "Low angle close-up of a tall weathered wooden palisade entrance post with one long word carved deep into the wood, the letters blurred and unreadable, bright sunlight raking across the carving, blue sky above."
+  }
+ ],
+ "scenes": [
+  {
+   "say": "딸을 부르러 섬에 왔더니, 나무가 대신 대답했습니다.",
+   "tts": "딸을 부르러 섬에 왔더니 나무가 대신 대답했습니다.",
+   "img": "r01",
+   "move": "in",
+   "big": {
+    "text": "C R O",
+    "at": 0.55
+   },
+   "emph": [
+    "나무가"
+   ]
+  },
+  {
+   "say": "총독 화이트. 3년 전, 백 명 넘는 사람을 두고 떠났죠.",
+   "tts": "총독 화이트. 삼 년 전, 백 명 넘는 사람을 두고 떠났죠.",
+   "img": "r02",
+   "move": "left",
+   "cont": true,
+   "emph": [
+    "3년"
+   ],
+   "shots": [
+    {
+     "img": "r02",
+     "move": "left",
+     "w": 1
+    },
+    {
+     "img": "r19",
+     "move": "in",
+     "w": 1
+    }
+   ]
+  },
+  {
+   "say": "그중엔 딸과, 갓 태어난 손녀도.",
+   "tts": "그중엔 딸과, 갓 태어난 손녀도.",
+   "img": "r03",
+   "move": "in",
+   "cont": true,
+   "emph": [
+    "딸과,"
+   ]
+  },
+  {
+   "say": "약속은 하나. 옮겨 가면, 나무에 갈 곳을 새기기로.",
+   "tts": "약속은 하나. 옮겨 가면, 나무에 갈 곳을 새기기로.",
+   "img": "r04",
+   "move": "in",
+   "emph": [
+    "갈"
+   ]
+  },
+  {
+   "say": "위험해서 떠난다면, 그 위에 십자가를.",
+   "tts": "위험해서 떠난다면, 그 위에 십자가를.",
+   "img": "r05",
+   "move": "in",
+   "cont": true,
+   "big": {
+    "text": "십자가 = 위험",
+    "at": 0.4
+   },
+   "emph": [
+    "십자가를."
+   ]
+  },
+  {
+   "say": "돌아온 밤, 섬에선 연기가 올랐습니다.",
+   "tts": "돌아온 밤, 섬에선 연기가 올랐습니다.",
+   "img": "r06",
+   "move": "in",
+   "emph": [
+    "연기가"
+   ]
+  },
+  {
+   "say": "나팔을 불고 노래를 불러도… 대답이 없었죠.",
+   "tts": "나팔을 불고 노래를 불러도… 대답이 없었죠.",
+   "img": "r07",
+   "move": "in",
+   "cont": true,
+   "emph": [
+    "대답이"
+   ]
+  },
+  {
+   "say": "새벽 모래엔, 원주민 발자국뿐.",
+   "tts": "새벽 모래엔, 원주민 발자국뿐.",
+   "img": "r08",
+   "move": "up",
+   "cont": true,
+   "emph": [
+    "발자국뿐."
+   ]
+  },
+  {
+   "say": "집들은 헐렸고, 높은 울타리만 남아 있었죠.",
+   "tts": "집들은 헐렸고, 높은 울타리만 남아 있었죠.",
+   "img": "r09",
+   "move": "out",
+   "emph": [
+    "헐렸고,"
+   ]
+  },
+  {
+   "say": "묻어 둔 상자들은 파헤쳐졌고,",
+   "tts": "묻어 둔 상자들은 파헤쳐졌고,",
+   "img": "r10",
+   "move": "in",
+   "cont": true,
+   "emph": [
+    "파헤쳐졌고,"
+   ]
+  },
+  {
+   "say": "그의 지도는, 비에 젖어 찢겨 있었습니다.",
+   "tts": "그의 지도는, 비에 젖어 찢겨 있었습니다.",
+   "img": "r11",
+   "move": "in",
+   "cont": true,
+   "emph": [
+    "찢겨"
+   ]
+  },
+  {
+   "say": "스페인군에게 당했을까, 바다로 나갔을까.",
+   "tts": "스페인군에게 당했을까, 바다로 나갔을까.",
+   "img": "r12",
+   "move": "in",
+   "big": {
+    "text": "스페인군? 바다로?",
+    "at": 0.3
+   }
+  },
+  {
+   "say": "그런데 입구 기둥에, 단어 하나가 새겨져 있었습니다.",
+   "tts": "그런데 입구 기둥에, 단어 하나가 새겨져 있었습니다.",
+   "img": "r13",
+   "move": "up",
+   "big": {
+    "text": "CROATOAN",
+    "at": 0.55
+   },
+   "emph": [
+    "단어"
+   ],
+   "shots": [
+    {
+     "img": "r13",
+     "move": "up",
+     "w": 1
+    },
+    {
+     "img": "r21",
+     "move": "in",
+     "w": 1
+    }
+   ]
+  },
+  {
+   "say": "크로아토안. 십자가는… 없었습니다.",
+   "tts": "크로아토안. 십자가는… 없었습니다.",
+   "img": "r14",
+   "move": "in",
+   "cont": true,
+   "sfx": "hit",
+   "emph": [
+    "없었습니다."
+   ]
+  },
+  {
+   "say": "화이트는 믿었습니다. 그들이 무사히 그 섬으로 갔다고.",
+   "tts": "화이트는 믿었습니다. 그들이 무사히 그 섬으로 갔다고.",
+   "img": "r15",
+   "move": "in",
+   "cont": true,
+   "emph": [
+    "무사히"
+   ]
+  },
+  {
+   "say": "하지만 폭풍에 닻을 잃고, 끝내 가지 못했죠.",
+   "tts": "하지만 폭풍에 닻을 잃고, 끝내 가지 못했죠.",
+   "img": "r16",
+   "move": "left",
+   "cont": true,
+   "emph": [
+    "끝내"
+   ]
+  },
+  {
+   "say": "2026년, 그들이 원주민 마을에 합류했다는 발표가 나왔습니다.",
+   "tts": "이천이십육 년, 그들이 원주민 마을에 합류했다는 발표가 나왔습니다.",
+   "img": "r17",
+   "move": "in",
+   "big": {
+    "text": "원주민 마을로?",
+    "at": 0.45
+   },
+   "emph": [
+    "합류했다는"
+   ],
+   "shots": [
+    {
+     "img": "r17",
+     "move": "in",
+     "w": 1
+    },
+    {
+     "img": "r20",
+     "move": "in",
+     "w": 1
+    }
+   ]
+  },
+  {
+   "say": "사슴 뼈에서, 그 시대 영국 총알이 나왔거든요.",
+   "tts": "사슴 뼈에서, 그 시대 영국 총알이 나왔거든요.",
+   "img": "r18",
+   "move": "in",
+   "cont": true,
+   "big": {
+    "text": "1500년대 영국 총알",
+    "at": 0.5
+   },
+   "emph": [
+    "총알이"
+   ]
+  },
+  {
+   "say": "십자가 없던 그 대답, 아버지는 믿어도 됐던 걸까요?",
+   "tts": "십자가 없던 그 대답, 아버지는 믿어도 됐던 걸까요?",
+   "img": "r01",
+   "move": "in",
+   "zoom": 1.15,
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "emph": [
+    "대답,",
+    "믿어도"
+   ]
+  }
+ ],
+ "youtube": {
+  "title": "로어노크, 총독을 얼어붙게 한 나무의 세 글자",
+  "summary": "1590년 8월, 3년 만에 북미 로어노크섬으로 돌아온 총독 존 화이트. 백 명 넘게 남겨 둔 정착지는 헐려 있었고, 기둥엔 단어 하나만 새겨져 있었습니다. 위험하면 새기기로 한 십자가는 없었습니다.",
+  "pinned": "십자가 없던 그 단어, 화이트는 믿어도 됐을까요? 믿어도 됐다 / 아니다로 답해 주세요. (나무의 CRO는 왜 세 글자에서 멈췄을까요?)"
+ },
+ "sources": "출처: 존 화이트 1590년 항해기(해클루트 『Principal Navigations』 1600 수록), 미 국립공원청(NPS) Fort Raleigh, 노스캐롤라이나 문화자원부(2016), History.com, Outer Banks Voice(2026.3.27) — 2026 발표에는 '17세기 교역품일 수 있다'는 반론도 있습니다",
+ "tags": "#세계기담 #로어노크",
+ "risk": "저",
+ "adapted": true,
+ "hook_type": "약속한 표식×없는 표식(나무가 대신 대답)",
+ "threads": [
+  "1587년에 영국 사람 백여 명이 북미 로어노크섬에 마을을 세웠어. 총독 화이트는 보급품 구하러 영국에 잠깐 다녀오기로 했는데, 전쟁 때문에 3년 만에야 돌아올 수 있었대. 섬엔 그의 딸이랑 갓 태어난 손녀도 있었고.",
+  "떠나기 전에 약속을 하나 해 뒀대. 다른 데로 옮겨 가면 나무에 갈 곳을 새기고, 위험해서 떠나는 거면 그 위에 십자가를 새기기로.",
+  "돌아와 보니 나팔 불고 노래 불러도 대답이 없었어. 집은 헐려 있고 높은 울타리만 둘러쳐져 있었고, 묻어 둔 상자들은 파헤쳐져 있었대. 그리고 입구 기둥에 단어 하나가 새겨져 있었어. 크로아토안. 십자가는 없었고.",
+  "화이트는 다들 무사히 근처 크로아토안섬으로 갔다고 믿었는데, 폭풍 때문에 끝내 거기 가 보지도 못하고 돌아갔대. 올해 3월엔 그 섬 사슴 뼈에서 그 시대 영국 총알이 나와서, 원주민 마을에 합류한 거라는 발표도 나왔어. 너라면 십자가 없던 그 단어, 믿었을 것 같아? 영상으로 보려면 인스타 @ossak_alarm 에서 봐."
+ ]
+}
