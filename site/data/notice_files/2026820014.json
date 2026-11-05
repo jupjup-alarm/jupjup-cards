@@ -9,9 +9,18 @@
    "bytes": 1072714,
    "got": "ok",
    "text_by": "pypdf"
+  },
+  {
+   "name": "2026820014-pamphlet.pdf",
+   "kind": "pamphlet",
+   "md5": "a9448ac29aa480ef3a6c45408eb3a837",
+   "bytes": 29931619,
+   "got": "ok",
+   "cands": 8,
+   "folder": "pamphlets/2026820014/1"
   }
  ],
  "site_none": "2026-11-05",
- "checked": "2026-11-05 07:51",
+ "checked": "2026-11-06 07:11",
  "changed": true
 }
