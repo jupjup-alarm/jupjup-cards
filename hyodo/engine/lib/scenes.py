@@ -105,8 +105,8 @@ def body_official(s, P):
     z = s.get("_zoom") or {"x": 0.47, "y": 0.5}
     zx, zy = max(0.1, min(0.9, z["x"])) * 100, max(0.1, min(0.9, z["y"])) * 100
     return f"""
-<div data-at="0" style="position:absolute;left:110px;top:130px;width:1360px;background:{C['green']};color:#fff;border-radius:22px;padding:18px 36px;font-size:62px;font-weight:900;line-height:1.2">{e(head)}</div>
-<div class="card" style="position:absolute;left:110px;top:270px;width:1360px;height:470px;overflow:hidden;border:4px solid {C['line']}">
+<div data-at="0" style="position:absolute;left:110px;top:150px;width:1360px;background:{C['green']};color:#fff;border-radius:22px;padding:18px 36px;font-size:62px;font-weight:900;line-height:1.2">{e(head)}</div>
+<div class="card" style="position:absolute;left:110px;top:288px;width:1360px;height:452px;overflow:hidden;border:4px solid {C['line']}">
  <img id="shot" src="official.png" style="width:100%;height:100%;object-fit:cover;object-position:50% {zy:.0f}%;transform-origin:{zx:.0f}% {zy:.0f}%">
 </div>
 <div data-at="0" style="position:absolute;left:110px;top:752px;font-size:40px;font-weight:800;color:{C['sub']}">출처: {e(d['label'])}</div>"""
@@ -141,7 +141,7 @@ def body_table(s, P):
     if d.get("note2"):
         notes += f'<div data-at="{d.get("note2_at", 3)}" style="margin-top:18px;font-size:{fs - 10}px;font-weight:800;line-height:1.3;color:{C["orange"]}">※ {e(d["note2"])}</div>'
     if d.get("note"):
-        notes += f'<div data-at="{d.get("note_at", len(d["rows"]) + 1)}" style="margin-top:14px;padding:14px 24px;background:{C["amberTint"]};border-radius:16px;font-size:{fs - 12}px;font-weight:800;line-height:1.3">예정: {e(d["note"])}</div>'
+        notes += f'<div data-at="{d.get("note_at", len(d["rows"]) + 1)}" style="margin-top:14px;padding:14px 24px;background:{C["amberTint"]};border-radius:16px;font-size:{fs - 12}px;font-weight:800;line-height:1.3">{e(d.get("note_prefix", "예정") + ": ") if d.get("note_prefix", "예정") else ""}{e(d["note"])}</div>'
     box = "left:60px;right:60px;top:230px" if P else "left:110px;width:1360px;top:130px"
     return (f'<div style="position:absolute;{box}"><div data-at="0" class="title">{e(d["title"])}</div>'
             f'<div class="card" style="margin-top:24px;overflow:hidden">{rows}</div>{notes}</div>')
@@ -267,10 +267,10 @@ def body_kids(s, P):
 def body_outro(s, P, sources):
     """마무리: 한 줄 정리(recap) + 3줄 요약(rows, 예전 summary 장면) + 다음 편 + 공유 요청 + 확인일·출처."""
     d = s["data"]
-    src = " · ".join(e(x["name"]) for x in sources)
+    src = e(s["data"]["src"]) if s["data"].get("src") else " · ".join(e(x["name"]) for x in sources)  # 출처가 길면 data.src로 화면용 줄임(전체는 설명란)
     rows = d.get("rows") or []
     ra = d.get("rows_at", 1)
-    box = "left:60px;right:60px;top:240px" if P else "left:110px;width:1360px;top:120px"
+    box = "left:60px;right:60px;top:240px" if P else "left:110px;width:1360px;top:150px"
     fs = 46 if P else 44
     items = "".join(
         f'<div data-at="{ra + i if isinstance(ra, int) else ra[i]}" style="display:flex;align-items:center;gap:24px;margin-top:10px">'
