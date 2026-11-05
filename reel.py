@@ -89,25 +89,108 @@ def talk_svg(detail="#0F1E3D"):
 BREATH_END = re.compile(r"[,，.?!…]+[\"'”’)]*$")
 
 
+UNIT_SYL = {"㎡": 4, "m²": 4, "%": 3, "~": 2, "km": 3, "㎞": 3}   # 읽을 때 소리 길이 (제곱미터·퍼센트·에서)
+
+
+def _num_syl(n_str):
+    """숫자를 한국어로 읽을 때 음절 수 (7441 → 칠천사백사십일 = 7)."""
+    n_str = n_str.replace(",", "")
+    if "." in n_str:
+        a, b = n_str.split(".", 1)
+        return _num_syl(a or "0") + 1 + len(b)
+    if not n_str.isdigit():
+        return len(n_str)
+    n = int(n_str)
+    if n == 0:
+        return 1
+    syl, grp = 0, 0
+    while n:
+        g, n = n % 10000, n // 10000
+        if g:
+            for p, d in enumerate(reversed(str(g).zfill(4))):   # p: 0 일, 1 십, 2 백, 3 천
+                d = int(d)
+                if d:
+                    syl += (0 if (d == 1 and p > 0) else 1) + (1 if p > 0 else 0)
+            if grp:
+                syl += 1                                      # 만·억·조
+        grp += 1
+    return syl
+
+
+def spoken_len(w):
+    """단어를 소리 내 읽을 때의 길이(음절). 숫자·단위·영문은 쓴 글자보다 훨씬 길다 — 자막 싱크용 (2026-11-05)."""
+    t, n = str(w), 0.0
+    for u, k in UNIT_SYL.items():
+        if u in t:
+            n += k * t.count(u); t = t.replace(u, " ")
+    for m in re.findall(r"\d[\d,]*(?:\.\d+)?", t):
+        n += 1.25 * _num_syl(m)       # 숫자는 또박또박 읽어서 같은 음절이라도 더 김
+    t = re.sub(r"\d[\d,]*(?:\.\d+)?", " ", t)
+    n += sum(1 for c in t if "가" <= c <= "힣")
+    n += 1.6 * sum(1 for c in t if c.isascii() and c.isalpha())
+    return max(n, 0.5)
+
+
+def _warp(spans, frac):
+    """말소리 구간들(쉼 제외)을 이어 붙인 시간축에서 frac(0~1) 지점의 실제 시각."""
+    tot = sum(b - a for a, b in spans) or 1e-6
+    want, acc = frac * tot, 0.0
+    for a, b in spans:
+        if acc + (b - a) >= want:
+            return a + (want - acc)
+        acc += b - a
+    return spans[-1][1]
+
+
 def word_times(words, t0, dur, spans=None):
-    """단어가 켜질 시각. spans = 실제 음성에서 말소리가 나는 구간들(쉼으로 나뉨, t0 기준 상대 초).
-    대본의 숨 표시(쉼표·문장 끝) 개수와 실제 쉼 개수가 맞으면 묶음마다 그 말소리 구간에 맞춰 켠다."""
-    groups, cur = [], []
-    for w in words:
-        cur.append(w)
-        if BREATH_END.search(w):
-            groups.append(cur); cur = []
-    if cur:
-        groups.append(cur)
-    if not spans or len(spans) != len(groups):
-        spans, groups = [(0.0, dur)], [words]
-    out = []
-    for (a, b), g in zip(spans, groups):
-        weights = [len(w) + 1 for w in g]
-        tot, acc = sum(weights), 0.0
-        for k in weights:
-            out.append(t0 + a + (b - a) * acc / tot)
-            acc += k
+    """단어가 켜질 시각 (2026-11-05 다시 짬 — 화면·자막·내레이션 싱크).
+    spans = 실제 음성의 말소리 구간들(쉼으로 나뉨, t0 기준 상대 초). 쉼마다 '어느 단어 사이에서 쉬었는지'를
+    읽는 길이(숫자·단위는 읽는 소리 길이로)로 맞춰 찾고(문장부호 자리면 가산점, 잡음 쉼은 건너뜀),
+    그 사이 단어들은 그 구간 말소리에 읽는 길이 비율로 펼친다."""
+    n = len(words)
+    if not n:
+        return []
+    sp = [x for x in (spans or []) if x[1] > x[0]] or [(0.0, dur)]
+    wl = [spoken_len(w) for w in words]
+    tot = sum(wl)
+    cum = [0.0]
+    for x in wl:
+        cum.append(cum[-1] + x)
+    c = [x / tot for x in cum]                       # 단어 j 앞 경계의 읽는 길이 비율
+    speech = [b - a for a, b in sp]
+    T = sum(speech) or 1e-6
+    f = [sum(speech[:i + 1]) / T for i in range(len(sp) - 1)]   # 쉼 i 앞까지의 말소리 비율
+    breath = {j for j in range(1, n) if BREATH_END.search(words[j - 1])}
+    from functools import lru_cache
+
+    @lru_cache(None)
+    def best(i, jmin):
+        if i == len(f):
+            return 0.0, ()
+        cost, path = best(i + 1, jmin)
+        cost += 0.07                                  # 이 쉼은 말 사이 숨이 아님(잡음·단어 안 쉼)
+        bc, bp = cost, path
+        for j in range(max(1, jmin), n):
+            d = abs(c[j] - f[i]) - (0.12 if j in breath else 0.0)   # 문장부호 자리에서 쉬는 게 보통
+            if d > 0.35:
+                continue
+            cc, pp = best(i + 1, j + 1)
+            if d + cc < bc:
+                bc, bp = d + cc, ((i, j),) + pp
+        return bc, bp
+
+    _, pairs = best(0, 1)
+    # 기준점: (단어 경계 j, 말소리 구간 시작 인덱스 k) — 처음과 끝 포함
+    anchors = [(0, 0)] + [(j, i + 1) for i, j in pairs] + [(n, len(sp))]
+    out = [0.0] * n
+    for (ja, ka), (jb, kb) in zip(anchors, anchors[1:]):
+        seg = sp[ka:kb] or [sp[min(ka, len(sp) - 1)]]
+        part = wl[ja:jb]
+        pt = sum(part) or 1e-6
+        acc = 0.0
+        for k in range(ja, jb):
+            out[k] = t0 + _warp(seg, acc / pt)
+            acc += wl[k]
     return out
 
 
@@ -268,17 +351,19 @@ def phrases_of(text, t0, dur, spans=None, end=None, maxw=8):
     times = word_times(words, t0, dur, spans)
     out, cur = [], []
     for w, at in zip(words, times):
+        if cur and sum(len(x) + 1 for x, _ in cur) + len(w) > 26:   # 자막 두 줄(약 26자)을 넘기기 전에 끊음
+            out.append(cur); cur = []
         cur.append((w, at))
         if BREATH_END.search(w) or len(cur) >= maxw:
             out.append(cur); cur = []
     if cur:
-        if out and len(cur) <= 2 and not BREATH_END.search(out[-1][-1][0]):
+        if out and len(cur) <= 2 and sum(len(x) + 1 for x, _ in out[-1] + cur) <= 30 and not BREATH_END.search(out[-1][-1][0]):
             out[-1] += cur          # 꼬리 한두 단어는 앞 구절에 붙임 ("아홉 / 채 남아" 끊김 방지)
         else:
             out.append(cur)
     k = 0
-    while k < len(out) - 1:          # 숨 표시 없이 maxw로 끊은 구절 뒤에 2단어 이하가 남으면 합침
-        if len(out[k + 1]) <= 2 and not BREATH_END.search(out[k][-1][0]):
+    while k < len(out) - 1:          # 숨 표시 없이 maxw로 끊은 구절 뒤에 2단어 이하가 남으면 합침 (두 줄 안일 때만)
+        if len(out[k + 1]) <= 2 and not BREATH_END.search(out[k][-1][0]) and sum(len(x) + 1 for x, _ in out[k] + out[k + 1]) <= 30:
             out[k] += out.pop(k + 1)
         else:
             k += 1
@@ -331,6 +416,20 @@ def story_html(sc, th, start, end, first_shot=None):
     word = ""
     if sc.get("word") and not sc.get("proof"):
         wat = start + float(sc.get("word_at", 0.15))
+        key = re.sub(r"\s", "", str(sc["word"]))
+        digits = re.sub(r"\D", "", key)
+        NATIVE = [("다섯", "5"), ("여섯", "6"), ("일곱", "7"), ("여덟", "8"), ("아홉", "9"), ("한", "1"), ("두", "2"), ("세", "3"), ("네", "4"), ("열", "10")]
+        def dig(w):   # '아홉' → 9 처럼 우리말 수도 숫자로 (핵심어 '9세대' ↔ 대본 '아홉 세대')
+            d = re.sub(r"\D", "", w)
+            if not d:
+                d = next((v for k, v in NATIVE if w.startswith(k) and (len(w) == len(k) or k in ("다섯", "여섯", "일곱", "여덟", "아홉"))), "")
+            return d
+        for a, b, ph in phs:   # 핵심어는 내레이션이 그 말을 할 때 떨어진다 (숫자가 같거나 글자가 들어 있는 첫 단어)
+            hit = next((at for w, at in ph if (digits and dig(w) and (digits in dig(w) or dig(w) in digits))
+                        or (not digits and key[:2] in w)), None)
+            if hit is not None and "word_at" not in sc:
+                wat = max(start + 0.05, hit - 0.1)
+                break
         THUD_TIMES.append(wat)
         word = f'<div class="sword" data-in="{wat:.2f}"><span>{unit(esc(sc["word"]))}</span></div>'
     if dim:
@@ -561,18 +660,17 @@ html,body{word-break:keep-all;width:1080px;height:1920px;overflow:hidden;backgro
 .sshade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 22%,rgba(0,0,0,0) 55%,rgba(0,0,0,.45) 100%)}
 .sdim{position:absolute;inset:0;background:rgba(0,0,0,.62);visibility:hidden}
 .scred{position:absolute;right:60px;top:330px;font-size:24px;font-weight:600;color:#fff;background:rgba(0,0,0,.45);padding:4px 12px;border-radius:8px;max-width:700px;text-align:right;visibility:hidden}
-.scap{position:absolute;left:60px;right:150px;top:830px;text-align:center}
-.cap{visibility:hidden}
-.cap span{display:inline-block;background:rgba(0,0,0,.62);color:#fff;font-size:52px;font-weight:800;line-height:1.32;padding:12px 26px;border-radius:14px;max-width:870px}
-.cap.red span{color:#FF4A3D;background:rgba(0,0,0,.82);font-size:60px;font-weight:900}
+.scap{position:absolute;left:60px;right:150px;top:860px;text-align:center}
+.cap{visibility:hidden;position:absolute;left:0;right:0;top:0}
+.cap>span{display:inline-block;background:rgba(0,0,0,.62);color:#fff;font-size:52px;font-weight:800;line-height:1.32;padding:12px 26px;border-radius:14px;max-width:870px}
+.cap .unit{background:none;padding:0;border-radius:0;font-size:1em;display:inline}
+.cap.red>span{color:#FF4A3D;background:rgba(0,0,0,.82)}
 .sword{position:absolute;left:30px;right:30px;top:1080px;text-align:center;perspective:1100px;opacity:0}
 .sword span{display:inline-block;font-family:'Pretendard Display';font-size:240px;line-height:1;color:#fff;letter-spacing:-4px;white-space:nowrap;
  transform:rotateX(26deg);transform-origin:center bottom;
  text-shadow:0 3px 0 #d9dde3,0 6px 0 #c3c8cf,0 9px 0 #aeb4bd,0 12px 0 #99a0aa,0 22px 26px rgba(0,0,0,.55)}
-.hasproof .scap{top:1230px}
-.story .pf{top:360px;left:60px;right:60px}
-.story .pfimg{height:640px}
-.send .cap span{font-size:56px}
+.story .pf{top:330px;left:60px;right:60px}
+.story .pfimg{height:400px}
 .sdisc{position:absolute;left:0;right:0;top:1420px;text-align:center;font-size:26px;color:rgba(255,255,255,.75)}
 .story-mode .bar{display:none}
 .story-mode .brand{font-size:30px}
@@ -698,7 +796,15 @@ def speech_spans(path, min_pause=0.15, noise="-38dB"):
         pos = b
     if total - pos > 0.05:
         spans.append((pos, total))
-    return spans
+    # 0.12초 미만 조각은 말이 아니라 잡음(숨·끝 잡음) — 옆 구간에 붙임 (2026-11-05 자막이 끝 잡음에 맞춰지던 문제)
+    clean = []
+    for a, b in spans:
+        if b - a < 0.12:
+            if clean and a - clean[-1][1] < 0.35:
+                clean[-1] = (clean[-1][0], b)
+            continue
+        clean.append((a, b))
+    return clean or spans
 
 
 def breath_marks(text):
@@ -757,7 +863,7 @@ def voice_segments(spec):
         if not (f and f.exists()):
             out.append(None)
             continue
-        sp = speech_spans(f) or [(0.0, audio_len(f))]
+        sp = speech_spans(f, min_pause=0.1) or [(0.0, audio_len(f))]   # 짧은 숨(0.1초)도 자막 기준점으로
         a, b = sp[0][0], sp[-1][1]
         out.append({"file": f, "s0": max(0.0, a - 0.03), "s1": b + 0.06, "spans": [(x - a, y - a) for x, y in sp]})
     return out
@@ -833,15 +939,37 @@ def build(spec):
             if sc.get("say"):                          # 호흡 검사: 대본의 숨 표시 vs 실제 쉼
                 spans, want = list(f["spans"]), breath_marks(sc["say"])
                 extra = []
-                while len(spans) > want > 0:           # 대본에 없는 쉼은 가장 짧은 것부터 합침
-                    k = min(range(len(spans) - 1), key=lambda j: spans[j + 1][0] - spans[j][1])
-                    extra.append(spans[k + 1][0] - spans[k][1])
-                    spans[k:k + 2] = [(spans[k][0], spans[k + 1][1])]
-                if len(spans) == want:
-                    sc["_vspans"] = spans
+                if len(spans) > want > 0:              # 대본에 없는 쉼이 있으면: 읽는 길이로 봐서 대본 숨 자리에 가장 가까운 쉼들만 남김
+                    import itertools
+                    words = sc["say"].split()
+                    grp_len, cur = [], 0.0
+                    for w in words:
+                        cur += spoken_len(w)
+                        if BREATH_END.search(w):
+                            grp_len.append(cur); cur = 0.0
+                    if cur:
+                        grp_len.append(cur)
+                    tot_l = sum(grp_len) or 1
+                    want_fr = [sum(grp_len[:k + 1]) / tot_l for k in range(len(grp_len) - 1)]
+                    speech = [(b - a) for a, b in spans]
+                    tot_t = sum(speech) or 1
+                    gap_fr = [sum(speech[:j + 1]) / tot_t for j in range(len(spans) - 1)]
+                    best = min(itertools.combinations(range(len(spans) - 1), want - 1),
+                               key=lambda c: sum(abs(gap_fr[j] - w) for j, w in zip(c, want_fr))
+                               - 0.05 * sum(spans[j + 1][0] - spans[j][1] for j in c))
+                    keep, merged, a0 = set(best), [], spans[0][0]
+                    for j in range(len(spans)):
+                        if j == len(spans) - 1 or j in keep:
+                            merged.append((a0, spans[j][1]))
+                            if j + 1 < len(spans):
+                                a0 = spans[j + 1][0]
+                        else:
+                            extra.append(spans[j + 1][0] - spans[j][1])
+                    spans = merged
+                sc["_vspans"] = list(f["spans"])    # 실제 쉼 그대로 → word_times가 단어 경계에 맞춰 정렬 (2026-11-05)
                 if len(spans) < want:
                     WARN.append(f"호흡: 장면 {i + 1} 쉼표에서 안 쉼 (대본 숨 {want - 1}곳 / 실제 {len(spans) - 1}곳) "
-                                f"→ 자막은 글자 수로 맞춤")
+                                f"→ 자막은 읽는 길이로 맞춤")
                 elif extra and max(extra) > 0.25:
                     WARN.append(f"호흡: 장면 {i + 1} 대본에 없는 곳에서 {max(extra):.2f}초 쉼 (③ 대본 쉼표 위치 확인)")
         scenes.append(scene_html(sc, th, i, t, t + d))
@@ -893,9 +1021,6 @@ FIT_JS = """
       while (b.scrollWidth > 912 && n < 30) { b.style.fontSize = (parseFloat(getComputedStyle(b).fontSize) * 0.95) + 'px'; n++; } });
     s.querySelectorAll('.sword span').forEach(b => { let n = 0;   // 핵심어는 한 줄로
       while (b.scrollWidth > 1000 && n < 30) { b.style.fontSize = (parseFloat(getComputedStyle(b).fontSize) * 0.95) + 'px'; n++; } });
-    s.querySelectorAll('.cap span').forEach(c => { const cv = c.parentElement.style.visibility; c.parentElement.style.visibility = 'visible'; let n = 0;
-      while (c.getBoundingClientRect().height > 2.7 * parseFloat(getComputedStyle(c).fontSize) && n < 12) { c.style.fontSize = (parseFloat(getComputedStyle(c).fontSize) * 0.95) + 'px'; n++; }
-      c.parentElement.style.visibility = cv; });
     const pf = s.querySelector('.pf');
     if (pf) { let n = 0;   // 증거 카드(큰 숫자가 물러난 뒤 자리)가 아래 자막과 겹치면 카드 그림 높이 → 카드 글자 순으로 줄임
       const sy = s.querySelector('.say');
