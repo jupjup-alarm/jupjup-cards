@@ -113,6 +113,17 @@ def make(items):
 def from_reel_spec(spec):
     """릴스 원고(hook 장면)에서 썸네일 원고를 만든다. spec["thumb"]가 있으면 그 값이 우선."""
     hook = next((s for s in spec["scenes"] if s["type"] == "hook"), None)
+    if not hook and spec.get("style") == "story" and spec["scenes"]:   # 이야기형(2026-11-05): 첫 장면 첫 컷 + thumb.lines
+        s0 = spec["scenes"][0]
+        sh = (s0.get("shots") or [None])[0]
+        sh = {"img": sh} if isinstance(sh, str) else (sh or {})
+        photo = sh.get("img")
+        if not photo or not (ROOT / photo).exists():
+            return None
+        d = {"slug": spec["slug"], "photo": photo, "photo_pos": sh.get("pos") or "center 45%", "credit": sh.get("credit") or "",
+             "chip": spec.get("series", ""), "badge": "", "basis": "", "lines": [s0.get("word") or ""]}
+        d.update(spec.get("thumb") or {})
+        return d
     if not hook:
         return None
     photo = hook.get("photo") or (hook.get("bg") if str(hook.get("bg", "")).startswith("photos/") else None)

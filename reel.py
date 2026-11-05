@@ -256,6 +256,100 @@ def proof_html(pf, th, start, end):
     return f'<div class="{cls} in pop" data-in="{at:.2f}">{body}</div>'''
 
 
+THUD_TIMES, HIT_TIMES = [], []   # 이야기형(story): 핵심어가 떨어질 때 '쿵', 질문 순간 '탁'
+STORY_CUTS = [("50% 45%", 1.06, 0.10), ("35% 55%", 1.16, 0.08), ("65% 40%", 1.12, 0.09), ("50% 60%", 1.22, 0.07), ("45% 35%", 1.09, 0.10)]
+
+
+def phrases_of(text, t0, dur, spans=None, end=None, maxw=8):
+    """내레이션을 숨 단위 구절로 나누고 각 구절이 화면에 머무는 시간 [(a, b, [(단어, 켜지는 시각)…])]."""
+    words = str(text or "").split()
+    if not words:
+        return []
+    times = word_times(words, t0, dur, spans)
+    out, cur = [], []
+    for w, at in zip(words, times):
+        cur.append((w, at))
+        if BREATH_END.search(w) or len(cur) >= maxw:
+            out.append(cur); cur = []
+    if cur:
+        if out and len(cur) <= 2 and not BREATH_END.search(out[-1][-1][0]):
+            out[-1] += cur          # 꼬리 한두 단어는 앞 구절에 붙임 ("아홉 / 채 남아" 끊김 방지)
+        else:
+            out.append(cur)
+    k = 0
+    while k < len(out) - 1:          # 숨 표시 없이 maxw로 끊은 구절 뒤에 2단어 이하가 남으면 합침
+        if len(out[k + 1]) <= 2 and not BREATH_END.search(out[k][-1][0]):
+            out[k] += out.pop(k + 1)
+        else:
+            k += 1
+    res = []
+    for k, ph in enumerate(out):
+        a = ph[0][1]
+        b = out[k + 1][0][1] if k + 1 < len(out) else (end if end else t0 + dur + 0.6)
+        res.append((a, b, ph))
+    return res
+
+
+def story_html(sc, th, start, end, first_shot=None):
+    """이야기형 장면 (2026-11-05 사용자 결정 — 분양통식): 한 구절 = 한 컷.
+    풀화면 사진이 구절마다 끊겨 바뀌고(앞으로 걸어 들어가는 움직임), 화면 가운데 작은 자막 상자에 지금 말하는 구절,
+    장면 핵심어(word) 하나를 화면 아래쪽에 바닥에 세운 듯 크게. dim=true(질문·반전 순간)는 화면을 어둡게 + 빨간 자막.
+    type "end"는 마지막 장면: 배경이 흐려지고 자막만 (첫 컷과 같은 사진이면 다시 보기로 자연스럽게 이어짐)."""
+    shots = [x if isinstance(x, dict) else {"img": x} for x in (sc.get("shots") or [])]
+    if not shots and sc.get("bg"):
+        shots = [{"img": sc["bg"], "pos": sc.get("bg_pos"), "credit": sc.get("bg_credit")}]
+    if sc["type"] == "end" and not shots and first_shot:
+        shots = [first_shot]
+    shots = [x for x in shots if photo_uri(x.get("img")) or WARN.append(f"컷 사진 {x.get('img')} 없음 → 뺌")]
+    vs, vd = sc.get("_vs"), sc.get("_vd")
+    if vs is None:
+        vs, vd = start + 0.1, max(0.8, (end - start) - 0.4)
+    phs = phrases_of(sc.get("say"), vs, vd, sc.get("_vspans"), end=end)
+    segs = [(start if k == 0 else a, end if k == len(phs) - 1 else b) for k, (a, b, _) in enumerate(phs)] or [(start, end)]
+    cuts = []                        # 사진 컷: 구절마다 + 구절이 길면 약 2.2초마다 더 끊음
+    for a, b in segs:
+        n = max(1, round((b - a) / 2.2))
+        cuts += [(a + (b - a) * j / n, a + (b - a) * (j + 1) / n) for j in range(n)]
+    dim = bool(sc.get("dim"))
+    dim_k = [k for k, (_, _, ph) in enumerate(phs) if ph[-1][0].rstrip("\"'”’)").endswith("?")] or [0]   # 어둡게: 질문 구절(없으면 첫 구절)만
+    blur = sc["type"] == "end"
+    back = ""
+    if shots:
+        for k, (a, b) in enumerate(cuts):
+            sh = shots[k % len(shots)]
+            org, z0, dz = STORY_CUTS[(k + sc.get("_i", 0)) % len(STORY_CUTS)]
+            cred = sh.get("credit") or ("© NAVER Corp." if str(sh.get("img")).startswith("maps/") else "")
+            back += (f'<img class="shot seg{" blurend" if blur else ""}" data-a="{a:.3f}" data-b="{b:.3f}" data-ss="{start:.3f}" data-o="{org}" data-z="{z0}" data-dz="{dz}" '
+                     f'src="{photo_uri(sh.get("img"))}" alt="" style="object-position:{esc(sh.get("pos") or "center 45%")}">'
+                     + (f'<div class="scred seg" data-a="{a:.3f}" data-b="{b:.3f}">{esc(cred)}</div>' if cred else ""))
+    else:
+        back = f'<div class="blob" style="background:{th["spark"]}"></div>'
+    caps = "".join(f'<div class="cap seg{" red" if dim and k in dim_k else ""}" data-a="{(start if k == 0 else a):.3f}" data-b="{(end if k == len(phs) - 1 else b):.3f}">'
+                   f'<span>{unit(esc(" ".join(w for w, _ in ph)))}</span></div>'
+                   for k, (a, b, ph) in enumerate(phs))
+    dims = "".join(f'<div class="sdim seg" data-a="{segs[k][0]:.3f}" data-b="{segs[k][1]:.3f}"></div>' for k in dim_k if dim and k < len(segs))
+    word = ""
+    if sc.get("word") and not sc.get("proof"):
+        wat = start + float(sc.get("word_at", 0.15))
+        THUD_TIMES.append(wat)
+        word = f'<div class="sword" data-in="{wat:.2f}"><span>{unit(esc(sc["word"]))}</span></div>'
+    if dim:
+        HIT_TIMES.extend(segs[k][0] + 0.02 for k in dim_k if k < len(segs))
+    proof = proof_html(sc.get("proof"), th, start, end) if sc.get("proof") else ""
+    tail = ('<div class="sdisc">정보 제공 목적 · 신청 전 입주자모집공고 원문 확인</div>' if blur else "")
+    cls = "scene story" + (" sdimmed" if dim else "") + (" hasproof" if proof else "") + (" send" if blur else "")
+    return f'''
+<section class="{cls}" data-dark="1" data-s="{start:.3f}" data-e="{end:.3f}" style="background:#0B0F1A">
+  {back}
+  <div class="sshade"></div>
+  {dims}
+  {proof}
+  {word}
+  <div class="scap">{caps}</div>
+  {tail}
+</section>'''
+
+
 def scene_html(sc, th, idx, start, end):
     t = sc["type"]
     a = f'data-s="{start:.3f}" data-e="{end:.3f}"'
@@ -305,6 +399,8 @@ def scene_html(sc, th, idx, start, end):
 </section>'''
     if t == "beat":
         return beat_html(sc, th, start, end)
+    if t in ("story", "end"):
+        return story_html(sc, th, start, end, sc.get("_first_shot"))
     if t == "points":
         rows = "".join(
             f'<div class="row in" data-in="{start + 0.55 + i * 0.35:.2f}" style="background:{th["tint"]}">'
@@ -459,6 +555,28 @@ html,body{word-break:keep-all;width:1080px;height:1920px;overflow:hidden;backgro
 .pf.img .pfsrc{color:#5B6472;opacity:1}
 .fast .narrator{left:auto;right:60px;bottom:auto;top:470px;width:170px;height:170px}
 .tb .narrator{top:520px}
+/* ── 이야기형 (style: story, 2026-11-05 — 분양통식: 한 구절 = 한 컷, 핵심어 하나, 가운데 작은 자막) ── */
+.story{padding:0;background:#0B0F1A}
+.shot{position:absolute;left:0;top:0;width:1080px;height:1920px;object-fit:cover;visibility:hidden}
+.sshade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 22%,rgba(0,0,0,0) 55%,rgba(0,0,0,.45) 100%)}
+.sdim{position:absolute;inset:0;background:rgba(0,0,0,.62);visibility:hidden}
+.scred{position:absolute;right:60px;top:330px;font-size:24px;font-weight:600;color:#fff;background:rgba(0,0,0,.45);padding:4px 12px;border-radius:8px;max-width:700px;text-align:right;visibility:hidden}
+.scap{position:absolute;left:60px;right:150px;top:830px;text-align:center}
+.cap{visibility:hidden}
+.cap span{display:inline-block;background:rgba(0,0,0,.62);color:#fff;font-size:52px;font-weight:800;line-height:1.32;padding:12px 26px;border-radius:14px;max-width:870px}
+.cap.red span{color:#FF4A3D;background:rgba(0,0,0,.82);font-size:60px;font-weight:900}
+.sword{position:absolute;left:30px;right:30px;top:1080px;text-align:center;perspective:1100px;opacity:0}
+.sword span{display:inline-block;font-family:'Pretendard Display';font-size:240px;line-height:1;color:#fff;letter-spacing:-4px;white-space:nowrap;
+ transform:rotateX(26deg);transform-origin:center bottom;
+ text-shadow:0 3px 0 #d9dde3,0 6px 0 #c3c8cf,0 9px 0 #aeb4bd,0 12px 0 #99a0aa,0 22px 26px rgba(0,0,0,.55)}
+.hasproof .scap{top:1230px}
+.story .pf{top:360px;left:60px;right:60px}
+.story .pfimg{height:640px}
+.send .cap span{font-size:56px}
+.sdisc{position:absolute;left:0;right:0;top:1420px;text-align:center;font-size:26px;color:rgba(255,255,255,.75)}
+.story-mode .bar{display:none}
+.story-mode .brand{font-size:30px}
+.story-mode .narrator{display:none}
 """
 
 JS = """
@@ -470,6 +588,7 @@ function fmt(n){return Math.round(n).toLocaleString('ko-KR')}
 window.renderAt=function(t){
   document.querySelectorAll('.scene').forEach(s=>{
     const a=+s.dataset.s,e=+s.dataset.e;
+    if(s.classList.contains('story')){const on=t>=a&&(t<e||e>=TOTAL-0.01);s.style.opacity=on?1:0;s.style.visibility=on?'visible':'hidden';s.style.transform='none';return;}
     const o=(a<=0.001?1:cl((t-a)/0.3))*(e>=TOTAL-0.01?1:cl((e-t)/0.3));
     s.style.opacity=o; s.style.visibility=o>0?'visible':'hidden';
     const z=1+0.03*cl((t-a)/(e-a)); s.style.transform='scale('+z+')';
@@ -502,6 +621,12 @@ window.renderAt=function(t){
     const k=Math.max(0,Math.min(n-1,Math.floor((t-a)/seg))),q=cl((t-a-k*seg)/seg),c=CUTS[k%CUTS.length];
     el.style.transformOrigin=c[1]; el.style.transform='scale('+(c[0]+0.05*q)+') translateX('+(c[2]*q)+'%)';
   });
+  document.querySelectorAll('.seg').forEach(el=>{const a=+el.dataset.a,b=+el.dataset.b; el.style.visibility=(t>=a-0.001&&t<b)?'visible':'hidden';});
+  document.querySelectorAll('.shot').forEach(el=>{const a=+el.dataset.a,b=+el.dataset.b,p=cl((t-a)/Math.max(0.5,b-a));
+    el.style.transformOrigin=el.dataset.o; el.style.transform='scale('+((+el.dataset.z)+(+el.dataset.dz)*ease(p))+') translateY('+(-1.2*p)+'%)';
+    if(el.classList.contains('blurend')){const q=cl((t-(+el.dataset.ss))/0.7); el.style.filter='blur('+(16*q)+'px) brightness('+(1-0.35*q)+')';}});
+  document.querySelectorAll('.sword').forEach(el=>{const q=cl((t-(+el.dataset.in))/0.28);
+    el.style.opacity=q>0?1:0; el.firstElementChild.style.transform='rotateX(26deg) scale('+(1.6-0.6*back(q))+')';});
   document.querySelectorAll('.grow').forEach(el=>{el.style.width=(+el.dataset.w*ease(cl((t-(+el.dataset.g))/0.7)))+'%'});
   document.querySelectorAll('.pfln.mk .hlbg').forEach(el=>{el.style.width=(100*ease(cl((t-(+el.dataset.g))/0.5)))+'%'});
   document.querySelectorAll('.punch').forEach(el=>{
@@ -687,11 +812,16 @@ def build(spec):
     tl, total = timeline(spec)
     voiced = any(f for _, _, f in tl)
     fast = spec.get("tempo") == "fast"
-    CUT_TIMES.clear(); POP_TIMES.clear()
+    story = spec.get("style") == "story"
+    CUT_TIMES.clear(); POP_TIMES.clear(); THUD_TIMES.clear(); HIT_TIMES.clear()
     scenes = []
+    s0 = spec["scenes"][0] if spec["scenes"] else {}
+    first_shot = ((s0.get("shots") or [None])[0]) if story else None
+    if isinstance(first_shot, str):
+        first_shot = {"img": first_shot}
     for i, (sc, (t, d, f)) in enumerate(zip(spec["scenes"], tl)):
-        sc = dict(sc, _voiced=voiced, _fast=fast)
-        if fast and i:
+        sc = dict(sc, _voiced=voiced, _fast=fast, _i=i, _first_shot=first_shot)
+        if (fast or story) and i:
             CUT_TIMES.append(t)
         if sc["type"] == "beat" and not sc.get("bg") and spec.get("bg"):
             sc["bg"] = spec["bg"]                      # 장면에 배경이 없으면 원고 전체 배경(단지 사진·지도)
@@ -716,14 +846,17 @@ def build(spec):
                     WARN.append(f"호흡: 장면 {i + 1} 대본에 없는 곳에서 {max(extra):.2f}초 쉼 (③ 대본 쉼표 위치 확인)")
         scenes.append(scene_html(sc, th, i, t, t + d))
     mouth = envelope(tl, total) if voiced else []
-    narrator = f'<div class="narrator">{talk_svg()}</div>' if voiced else ""
+    narrator = f'<div class="narrator">{talk_svg()}</div>' if voiced and not story else ""
     tbar = ""
     if spec.get("title_bar"):   # 템포형: 영상 내내 맨 위에 고정되는 제목 (2026-11-03, 주비서·양집사·베리스식)
         tl_ = str(spec["title_bar"]).split("\n")[:2]
         tbar = ('<div class="tbar">' + "".join(
             f'<div class="tbl"{f" style=\"color:{th["hl"]}\"" if k == len(tl_) - 1 and len(tl_) > 1 else ""}>{unit(esc(x))}</div>'
             for k, x in enumerate(tl_)) + '</div>')
-    body_cls = " ".join(c for c in ("voiced" if voiced else "", "fast" if fast else "", "tb" if tbar else "") if c)
+    if story:
+        tbar = ""   # 이야기형은 맨 위 고정 제목 없음 (답을 미리 보여주지 않게)
+    body_cls = " ".join(c for c in ("voiced" if voiced else "", "fast" if fast else "", "tb" if tbar else "",
+                                    "story-mode" if story else "") if c)
     page = f"""<!doctype html><html><head><meta charset="utf-8"><style>{font_face()}{CSS}</style></head><body class="{body_cls}">
 <div class="brand">{BELL.format(s=40, c=th['accent'])}<span>줍줍알람</span></div>
 <div class="bar"><i style="background:{th['accent']}"></i></div>
@@ -758,6 +891,11 @@ FIT_JS = """
     // 이야기 장면: 큰 숫자가 한 줄을 넘지 않게, 묶음 맨 위가 상단 가림 영역(420px)에 닿지 않게
     s.querySelectorAll('.big').forEach(b => { let n = 0;
       while (b.scrollWidth > 912 && n < 30) { b.style.fontSize = (parseFloat(getComputedStyle(b).fontSize) * 0.95) + 'px'; n++; } });
+    s.querySelectorAll('.sword span').forEach(b => { let n = 0;   // 핵심어는 한 줄로
+      while (b.scrollWidth > 1000 && n < 30) { b.style.fontSize = (parseFloat(getComputedStyle(b).fontSize) * 0.95) + 'px'; n++; } });
+    s.querySelectorAll('.cap span').forEach(c => { const cv = c.parentElement.style.visibility; c.parentElement.style.visibility = 'visible'; let n = 0;
+      while (c.getBoundingClientRect().height > 2.7 * parseFloat(getComputedStyle(c).fontSize) && n < 12) { c.style.fontSize = (parseFloat(getComputedStyle(c).fontSize) * 0.95) + 'px'; n++; }
+      c.parentElement.style.visibility = cv; });
     const pf = s.querySelector('.pf');
     if (pf) { let n = 0;   // 증거 카드(큰 숫자가 물러난 뒤 자리)가 아래 자막과 겹치면 카드 그림 높이 → 카드 글자 순으로 줄임
       const sy = s.querySelector('.say');
@@ -791,7 +929,9 @@ def sfx_files():
     d = Path(os.environ.get("TMPDIR", "/tmp")) / "jupjup_sfx"
     d.mkdir(exist_ok=True)
     spec = {"whoosh": "anoisesrc=d=0.32:c=pink:a=0.6,highpass=f=700,lowpass=f=5000,afade=t=in:d=0.12,afade=t=out:st=0.14:d=0.18,volume=0.22",
-            "pop": "sine=f=1250:d=0.09,afade=t=out:st=0.01:d=0.08,volume=0.28"}
+            "pop": "sine=f=1250:d=0.09,afade=t=out:st=0.01:d=0.08,volume=0.28",
+            "thud": "sine=f=58:d=0.42,afade=t=out:st=0.03:d=0.39,volume=0.95",
+            "hit": "anoisesrc=d=0.45:c=brown:a=0.9,lowpass=f=260,afade=t=out:st=0.02:d=0.43,volume=0.7"}
     out = {}
     for k, f in spec.items():
         p = d / f"{k}.wav"
@@ -860,7 +1000,14 @@ def main(path):
 
     mp4 = out / "reel.mp4"
     voices = [(t0 + lead(i), g["file"], g["s0"], g["s1"]) for i, (t0, _, g) in enumerate(tl) if g]
-    if spec.get("tempo") == "fast" and spec.get("sfx", True):   # 템포형 효과음: 컷마다 휙, 숫자·카드가 튀어나올 때 톡
+    story = spec.get("style") == "story"
+    if story and spec.get("sfx", True):   # 이야기형: 장면 바뀔 때 휙, 핵심어 쿵, 질문 순간 탁
+        sfx = sfx_files()
+        voices += [(round(x, 3), sfx["whoosh"], None, None) for x in sorted(set(round(c, 2) for c in CUT_TIMES)) if 0.2 < x < total - 0.3]
+        voices += [(round(x, 3), sfx["thud"], None, None) for x in sorted(set(round(c, 2) for c in THUD_TIMES)) if x < total - 0.3]
+        voices += [(round(x, 3), sfx["hit"], None, None) for x in sorted(set(round(c, 2) for c in HIT_TIMES)) if x < total - 0.3]
+        voices += [(round(x, 3), sfx["pop"], None, None) for x in sorted(set(round(c, 2) for c in POP_TIMES)) if x < total - 0.3]
+    if spec.get("tempo") == "fast" and spec.get("sfx", True) and not story:   # 템포형 효과음: 컷마다 휙, 숫자·카드가 튀어나올 때 톡
         sfx = sfx_files()
         voices += [(round(x, 3), sfx["whoosh"], None, None) for x in sorted(set(round(c, 2) for c in CUT_TIMES)) if 0.2 < x < total - 0.3]
         voices += [(round(x, 3), sfx["pop"], None, None) for x in sorted(set(round(c, 2) for c in POP_TIMES)) if 0.2 < x < total - 0.3]
@@ -868,13 +1015,23 @@ def main(path):
            "-f", "lavfi", "-t", f"{total:.3f}", "-i", "anullsrc=channel_layout=stereo:sample_rate=44100"]
     for _, f, _a, _b in voices:
         cmd += ["-i", str(f)]
-    if voices:
+    bgm = spec.get("bgm", "music/beat-one.mp3" if story else None)   # 배경음악 (music/ — CC0, 2026-11-05)
+    bgm_f = ROOT / bgm if bgm else None
+    if bgm and not bgm_f.exists():
+        WARN.append(f"배경음악 {bgm} 없음 → 음악 없이"); bgm_f = None
+    if bgm_f:
+        cmd += ["-stream_loop", "-1", "-i", str(bgm_f)]
+    bgv = float(spec.get("bgm_volume", 0.13))
+    if voices or bgm_f:
         def trim(a, b):
             return f"atrim=start={a:.3f}:end={b:.3f},asetpts=PTS-STARTPTS," if a is not None else ""
         fl = "".join(f"[{k + 2}:a]{trim(a, b)}aformat=sample_rates=44100:channel_layouts=stereo,adelay={int(t0 * 1000)}:all=1[v{k}];"
                      for k, (t0, _f, a, b) in enumerate(voices))
-        fl += "[1:a]" + "".join(f"[v{k}]" for k in range(len(voices))) + \
-              f"amix=inputs={len(voices) + 1}:normalize=0:duration=first,loudnorm=I=-15:TP=-1.5:LRA=11,aresample=44100,atrim=0:{total:.3f}[aout]"
+        if bgm_f:
+            fl += (f"[{len(voices) + 2}:a]atrim=0:{total:.3f},asetpts=PTS-STARTPTS,aformat=sample_rates=44100:channel_layouts=stereo,"
+                   f"afade=t=in:d=0.25,afade=t=out:st={max(0.0, total - 1.2):.3f}:d=1.2,volume={bgv}[bgm];")
+        mix = "[1:a]" + "".join(f"[v{k}]" for k in range(len(voices))) + ("[bgm]" if bgm_f else "")
+        fl += mix + f"amix=inputs={len(voices) + 1 + (1 if bgm_f else 0)}:normalize=0:duration=first,loudnorm=I=-15:TP=-1.5:LRA=11,aresample=44100,atrim=0:{total:.3f}[aout]"
         cmd += ["-filter_complex", fl, "-map", "0:v", "-map", "[aout]"]
     else:
         cmd += ["-map", "0:v", "-map", "1:a"]
