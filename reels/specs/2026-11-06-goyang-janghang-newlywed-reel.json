@@ -1,0 +1,121 @@
+{
+ "slug": "2026-11-06-goyang-janghang-newlywed-reel",
+ "title": "고양장항 A-2·A-4·A-5블록 신혼희망타운(공공분양) 잔여세대",
+ "series": "내집마련",
+ "style": "story",
+ "voice": "voices/b124e5417e60/",
+ "voice_speed": 1.0,
+ "bgm": "music/beat-one.mp3",
+ "thumb": {
+  "lines": [
+   "일산 신혼집",
+   "3억대 7채 남았다"
+  ]
+ },
+ "scenes": [
+  {
+   "type": "story",
+   "say": "일산에 3억대 신혼집이 7채 남았다고 합니다.",
+   "word": "7채",
+   "shots": [
+    {
+     "img": "photos/bcbb5a4fe52a.jpg",
+     "credit": "이미지: LH 제공 조감도 · 실제와 다를 수 있음",
+     "pos": "center 45%"
+    },
+    {
+     "img": "photos/mood/1d3549c8ab-2.jpg"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "심지어 이미 입주까지 끝난 집이래요.",
+   "word": "입주",
+   "shots": [
+    {
+     "img": "photos/mood/1d3549c8ab-ai.jpg"
+    },
+    {
+     "img": "photos/bcbb5a4fe52a.jpg",
+     "credit": "이미지: LH 제공 조감도 · 실제와 다를 수 있음",
+     "pos": "center 45%"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "이게 어떻게 가능할까요?",
+   "shots": [
+    {
+     "img": "photos/mood/1d3549c8ab-2.jpg"
+    },
+    {
+     "img": "photos/mood/1d3549c8ab-ai.jpg"
+    }
+   ],
+   "dim": true
+  },
+  {
+   "type": "story",
+   "say": "사실은요, 여긴 남은 집 추가모집인데요. 처음 분양가 그대로라고 합니다. 그것도 옆 단지 거의 반값 말이죠.",
+   "word": "반값",
+   "shots": [
+    {
+     "img": "photos/bcbb5a4fe52a.jpg",
+     "credit": "이미지: LH 제공 조감도 · 실제와 다를 수 있음",
+     "pos": "center 45%"
+    },
+    {
+     "img": "photos/mood/1d3549c8ab-ai.jpg"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "근데 잔금은 90일 안에 다 내야 해요.",
+   "word": "90일",
+   "shots": [
+    {
+     "img": "photos/mood/1d3549c8ab-2.jpg"
+    },
+    {
+     "img": "photos/mood/1d3549c8ab-ai.jpg"
+    }
+   ],
+   "dim": true
+  },
+  {
+   "type": "story",
+   "say": "집은 일산동구 장항동이고, 옆이 바로 백석동이라고 합니다.",
+   "word": "장항동",
+   "shots": [
+    {
+     "img": "photos/bcbb5a4fe52a.jpg",
+     "credit": "이미지: LH 제공 조감도 · 실제와 다를 수 있음",
+     "pos": "center 50%"
+    },
+    {
+     "img": "photos/mood/1d3549c8ab-ai.jpg"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "경기도 신혼부부면 통장도 소득도 안 보고, 접수는 11월 12일부터 이틀뿐이라고 하니까",
+   "word": "11월 12일",
+   "shots": [
+    {
+     "img": "photos/mood/1d3549c8ab-2.jpg"
+    },
+    {
+     "img": "photos/mood/1d3549c8ab-ai.jpg"
+    }
+   ]
+  },
+  {
+   "type": "end",
+   "say": "단지 이름이랑 공고 정리는 댓글에 아무 말이나 남겨 주세요."
+  }
+ ]
+}
