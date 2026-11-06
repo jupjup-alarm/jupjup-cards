@@ -143,7 +143,8 @@
    "plans": "없음",
    "layouts": "단지 배치도 | photos/layout-ccce73ee97e3.jpg",
    "dongho": "없음",
-   "homepage": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061196&ccrCnntSysDsCd=02&uppAisTpCd=05&aisTpCd=05&mi=1027"
+   "homepage": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061196&ccrCnntSysDsCd=02&uppAisTpCd=05&aisTpCd=05&mi=1027",
+   "site": "key: 2026000533\n홈페이지: https://www.lhasg2-b1.co.kr\n출처: LH 안산신길2 B-1블록 사이버 견본주택(CG·이미지컷, 실제와 다를 수 있음)\n조감도 | 단지 조감도 | https://www.lhasg2-b1.co.kr/overview/img/01.jpg\n단지배치도 | | https://www.lhasg2-b1.co.kr/overview/img/03-1.jpg\n동호배치도 | | https://www.lhasg2-b1.co.kr/overview/img/04.jpg\n입지 | 광역 위치(신길온천역·안산역) | https://www.lhasg2-b1.co.kr/business/img/02-2.jpg\n입지 | 항공 위치도 | https://www.lhasg2-b1.co.kr/business/img/02-1.jpg\n입지 | 지구 토지이용계획 | https://www.lhasg2-b1.co.kr/business/img/03.jpg\n평면도 | 74A | https://www.lhasg2-b1.co.kr/unit/img/74a.jpg\n평면도 | 84A | https://www.lhasg2-b1.co.kr/unit/img/84a.jpg\n평면도 | 84B | https://www.lhasg2-b1.co.kr/unit/img/84b.jpg\n평면도 | 84D | https://www.lhasg2-b1.co.kr/unit/img/84d.jpg\n평면도 | 84G | https://www.lhasg2-b1.co.kr/unit/img/84g.jpg\n평면도 | 84H | https://www.lhasg2-b1.co.kr/unit/img/84h.jpg\n평면도 | 84I | https://www.lhasg2-b1.co.kr/unit/img/84i.jpg\n평면도 | 84J(복층) | https://www.lhasg2-b1.co.kr/unit/img/84j.jpg\n카탈로그 | E-카달로그 PDF | https://www.lhasg2-b1.co.kr/file/%EC%95%88%EC%82%B0%EC%8B%A0%EA%B8%B82%20B-1%EB%B8%94%EB%A1%9D_E%EC%B9%B4%EB%8B%AC%EB%A1%9C%EA%B7%B8.pdf"
   },
   {
    "row": 59,
@@ -263,7 +264,55 @@
    "dongho": "없음",
    "homepage": "https://더샵송도그란테르.kr",
    "site": "key: 2026910285\n홈페이지: https://더샵송도그란테르.kr\n출처: 포스코이앤씨·케이비부동산신탁\n조감도 | 호수 쪽 낮 전경 | https://xn--2i0bq5hvjp1kpzchxro8a528e.kr/img/apt_img.jpg\n조감도 | 상가 쪽 거리 투시도 | https://xn--2i0bq5hvjp1kpzchxro8a528e.kr/img/shop_img.jpg | crop=0,0.5,1,1\n(평면도·배치도·동호배치도 없음 — 하위 페이지 /gran/·/allee/ 502 오류, 2026-11-05)"
+  },
+  {
+   "row": 94,
+   "title": "평택·안성 10년 공공임대(리츠) 예비입주자 — 통장·소득·자산 무관",
+   "addr": "경기도 안성시 아양로 73(서희스타힐스 NHF, 안성아양 B-4블록) 외 평택소사벌 B-2·평택고덕 A-10·평택고덕 A-1·안성아양 B-6블록 5개 단지",
+   "photo_desc": "https://apply.lh.or.kr/upload/Files/upload_dec/2026/HSL/11/03/2017052729039043.JPG (평택고덕 A-10블록 단지 조감도)\nhttps://apply.lh.or.kr/upload/Files/upload_dec/2026/HSL/11/03/2017122030769280.jpg (안성아양 B-6블록 단지 조감도)\nhttps://apply.lh.or.kr/upload/Files/upload_dec/2026/HSL/11/03/2021032343561741.png (평택고덕 A-1블록 단지 조감도)",
+   "photo_src": "출처: LH(LH청약플러스 공고 '단지조감도' — 평택고덕 A-10·안성아양 B-6·평택고덕 A-1블록, 안성아양 B-4·평택소사벌 B-2블록은 공고에 이미지 없음) / 이용조건: 사업주체 홍보 조감도, 출처 표기·실제와 다를 수 있음",
+   "photo": "photos/0b4e39c91123.jpg",
+   "plans": "없음",
+   "layouts": "단지 배치도 | photos/layout-8f44b8f1e9cd.jpg\n단지 배치도 | photos/layout-56a7568c89a8.jpg",
+   "dongho": "없음",
+   "homepage": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061201&ccrCnntSysDsCd=02&uppAisTpCd=06&aisTpCd=08&mi=1026"
+  },
+  {
+   "row": 95,
+   "title": "인천논현2단지 국민임대 예비입주자(정정)",
+   "addr": "인천광역시 남동구 은봉로166번길 27 (논현동, 논현휴먼시아 범마을)",
+   "photo_desc": "https://apply.lh.or.kr/upload/Files/upload/LSP/OLD/ftproot/Apt/475/2%EB%8B%A8%EC%A7%80%20%EC%A1%B0%EA%B0%90%EB%8F%84%282%29.jpg (단지 조감도)",
+   "photo_src": "출처: LH(LH청약플러스 공고 '단지조감도' — 인천논현2단지) / 이용조건: 사업주체 홍보 조감도, 출처 표기·실제와 다를 수 있음",
+   "photo": "photos/79c97b6bde29.jpg",
+   "plans": "없음",
+   "layouts": "단지 배치도 | 실패: 사용할 수 없는 주소: https://apply.lh.or.kr/uplo",
+   "dongho": "없음",
+   "homepage": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300021026&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026"
+  },
+  {
+   "row": 96,
+   "title": "인천 남동구 국민임대 예비입주자(인천논현3단지)",
+   "addr": "인천광역시 남동구 논현로 45 (논현동, 논현휴먼시아 하늘마을)",
+   "photo_desc": "https://apply.lh.or.kr/upload/Files/upload_dec/2016/LSE/06/02/2016060226746553.jpg (단지 조감도)",
+   "photo_src": "출처: LH(LH청약플러스 공고 '단지조감도' — 인천논현3단지) / 이용조건: 사업주체 홍보 조감도, 출처 표기·실제와 다를 수 있음",
+   "photo": "photos/afd83d525b6e.jpg",
+   "plans": "없음",
+   "layouts": "단지 배치도 | photos/layout-c322de70d8d6.jpg",
+   "dongho": "없음",
+   "homepage": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300020987&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026"
+  },
+  {
+   "row": 97,
+   "title": "평택송화 국민임대 예비입주자",
+   "addr": "경기도 평택시 팽성읍 팽성송화로 163 (주공아파트)",
+   "photo_desc": "https://apply.lh.or.kr/upload/Files/upload/LSP/OLD/ftproot/Apt/194/%EC%A1%B0%EA%B0%90%EB%8F%84%EC%B5%9C%EC%A2%85%5B2%5D.jpg (단지 조감도)",
+   "photo_src": "출처: LH(LH청약플러스 공고 '단지조감도' — 평택송화) / 이용조건: 사업주체 홍보 조감도, 출처 표기·실제와 다를 수 있음",
+   "photo": "photos/32f488c55711.jpg",
+   "plans": "없음",
+   "layouts": "단지 배치도 | photos/layout-c320334f9eb4.jpg",
+   "dongho": "없음",
+   "homepage": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300020973&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026"
   }
  ],
- "updated": "2026-11-05 11:31"
+ "updated": "2026-11-06 11:32"
 }
