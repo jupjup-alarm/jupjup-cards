@@ -1,0 +1,64 @@
+{
+  "slug": "2026-11-06-gwacheon-s12-happyhouse",
+  "title": "과천지식정보타운 S-12블록 행복주택",
+  "series": "임대알람",
+  "count": 8,
+  "urls": [
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-11-06-gwacheon-s12-happyhouse/01.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-11-06-gwacheon-s12-happyhouse/02.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-11-06-gwacheon-s12-happyhouse/03.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-11-06-gwacheon-s12-happyhouse/04.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-11-06-gwacheon-s12-happyhouse/05.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-11-06-gwacheon-s12-happyhouse/06.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-11-06-gwacheon-s12-happyhouse/07.jpg",
+    "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/cards/2026-11-06-gwacheon-s12-happyhouse/08.jpg"
+  ],
+  "warnings": {
+    "02": [
+      "zoom 0.82"
+    ],
+    "04": [
+      "zoom 0.82"
+    ],
+    "06": [
+      "zoom 0.88"
+    ],
+    "07": [
+      "zoom 0.88"
+    ]
+  },
+  "boards": [
+    {
+      "file": "2026-11-06-gwacheon-s12-happyhouse-01.dc.html",
+      "title": "과천지식정보타운 S-12블록 행복주택 1/8"
+    },
+    {
+      "file": "2026-11-06-gwacheon-s12-happyhouse-02.dc.html",
+      "title": "과천지식정보타운 S-12블록 행복주택 2/8"
+    },
+    {
+      "file": "2026-11-06-gwacheon-s12-happyhouse-03.dc.html",
+      "title": "과천지식정보타운 S-12블록 행복주택 3/8"
+    },
+    {
+      "file": "2026-11-06-gwacheon-s12-happyhouse-04.dc.html",
+      "title": "과천지식정보타운 S-12블록 행복주택 4/8"
+    },
+    {
+      "file": "2026-11-06-gwacheon-s12-happyhouse-05.dc.html",
+      "title": "과천지식정보타운 S-12블록 행복주택 5/8"
+    },
+    {
+      "file": "2026-11-06-gwacheon-s12-happyhouse-06.dc.html",
+      "title": "과천지식정보타운 S-12블록 행복주택 6/8"
+    },
+    {
+      "file": "2026-11-06-gwacheon-s12-happyhouse-07.dc.html",
+      "title": "과천지식정보타운 S-12블록 행복주택 7/8"
+    },
+    {
+      "file": "2026-11-06-gwacheon-s12-happyhouse-08.dc.html",
+      "title": "과천지식정보타운 S-12블록 행복주택 8/8"
+    }
+  ]
+}
