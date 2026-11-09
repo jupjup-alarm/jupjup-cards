@@ -1,0 +1,14 @@
+{
+ "slug": "2026-11-10-dongtan-happyhouse-reel",
+ "duration": 31.1,
+ "voiced": true,
+ "narration_s": 27.4,
+ "mean_db": -19.0,
+ "voice": "voices/34540a962134/",
+ "video": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-10-dongtan-happyhouse-reel/2026-11-10-dongtan-happyhouse-reel.mp4",
+ "cover": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-10-dongtan-happyhouse-reel/2026-11-10-dongtan-happyhouse-reel_thumb.jpg",
+ "size_mb": 10.55,
+ "warnings": [
+  "호흡: 장면 7 대본에 없는 곳에서 0.28초 쉼 (③ 대본 쉼표 위치 확인)"
+ ]
+}
