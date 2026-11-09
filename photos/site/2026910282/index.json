@@ -1,0 +1,172 @@
+{
+ "key": "2026910282",
+ "images": [
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "단지 전경",
+   "file": "photos/site/2026910282/birdseye.jpg",
+   "src": "https://xn--hc0bz5m11b1ue95n2zf6zxvzd.com/resources/img/main/hero_bg_fold.jpg",
+   "crop": "0,0.45,1,0.95",
+   "w": 1312,
+   "h": 852,
+   "md5": "a79c47d6f621fbf3dab6ae800b04ffa8",
+   "photo": true
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "59A",
+   "file": "photos/site/2026910282/plan-59a.jpg",
+   "src": "https://xn--hc0bz5m11b1ue95n2zf6zxvzd.com/resources/data/cyber/59A/unit_iso.jpg",
+   "crop": "",
+   "w": 1384,
+   "h": 876,
+   "md5": "66d66d318e86c9bf66458bdba645bc2a",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "59B",
+   "file": "photos/site/2026910282/plan-59b.jpg",
+   "src": "https://xn--hc0bz5m11b1ue95n2zf6zxvzd.com/resources/data/cyber/59B/unit_iso.jpg",
+   "crop": "",
+   "w": 830,
+   "h": 988,
+   "md5": "bd6ee2099668c899d0308003d01b5ec2",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "84A",
+   "file": "photos/site/2026910282/plan-84a.jpg",
+   "src": "https://xn--hc0bz5m11b1ue95n2zf6zxvzd.com/resources/data/cyber/84A/unit_iso.jpg",
+   "crop": "",
+   "w": 1244,
+   "h": 960,
+   "md5": "d06c13ddf6ae60a8c8e6f9b1c28efc79",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "84B",
+   "file": "photos/site/2026910282/plan-84b.jpg",
+   "src": "https://xn--hc0bz5m11b1ue95n2zf6zxvzd.com/resources/data/cyber/84B/unit_iso.jpg",
+   "crop": "",
+   "w": 1244,
+   "h": 926,
+   "md5": "9771576791d132eb59b110675d4e7aa9",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "84C",
+   "file": "photos/site/2026910282/plan-84c.jpg",
+   "src": "https://xn--hc0bz5m11b1ue95n2zf6zxvzd.com/resources/data/cyber/84C/unit_iso.jpg",
+   "crop": "",
+   "w": 1298,
+   "h": 952,
+   "md5": "7a1ad4bde6eaffa4f8d429750f8d5ca8",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "84D",
+   "file": "photos/site/2026910282/plan-84d.jpg",
+   "src": "https://xn--hc0bz5m11b1ue95n2zf6zxvzd.com/resources/data/cyber/84D/unit_iso.jpg",
+   "crop": "",
+   "w": 1292,
+   "h": 964,
+   "md5": "ba0f5ace1d832b3c0f6d717783dbd6be",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "84E",
+   "file": "photos/site/2026910282/plan-84e.jpg",
+   "src": "https://xn--hc0bz5m11b1ue95n2zf6zxvzd.com/resources/data/cyber/84E/unit_iso.jpg",
+   "crop": "",
+   "w": 994,
+   "h": 994,
+   "md5": "fe7c5a5a46d57ddc19c06d1a419d1489",
+   "photo": false
+  },
+  {
+   "cat": "community",
+   "kind": "커뮤니티",
+   "label": "골프연습장",
+   "file": "photos/site/2026910282/community.jpg",
+   "src": "https://xn--hc0bz5m11b1ue95n2zf6zxvzd.com/resources/img/main/community_img_01.jpg",
+   "crop": "",
+   "w": 1920,
+   "h": 1080,
+   "md5": "5e3a0587101f5ae7aabb25ea2c4724c5",
+   "photo": false
+  },
+  {
+   "cat": "community",
+   "kind": "커뮤니티",
+   "label": "GX룸",
+   "file": "photos/site/2026910282/community-gx.jpg",
+   "src": "https://xn--hc0bz5m11b1ue95n2zf6zxvzd.com/resources/img/main/community_img_02.jpg",
+   "crop": "",
+   "w": 1920,
+   "h": 1080,
+   "md5": "baa26249f9c5d332e107d7c1ce7a0c4f",
+   "photo": false
+  },
+  {
+   "cat": "community",
+   "kind": "커뮤니티",
+   "label": "피트니스센터",
+   "file": "photos/site/2026910282/community-2.jpg",
+   "src": "https://xn--hc0bz5m11b1ue95n2zf6zxvzd.com/resources/img/main/community_img_03.jpg",
+   "crop": "",
+   "w": 1920,
+   "h": 1080,
+   "md5": "e6c122a38b1513a5bbf84a2f05f7eb10",
+   "photo": false
+  },
+  {
+   "cat": "community",
+   "kind": "커뮤니티",
+   "label": "작은도서관",
+   "file": "photos/site/2026910282/community-3.jpg",
+   "src": "https://xn--hc0bz5m11b1ue95n2zf6zxvzd.com/resources/img/main/community_img_04.jpg",
+   "crop": "",
+   "w": 1920,
+   "h": 1080,
+   "md5": "16c30e97b8cef1f59ebcb05bc8bf0a40",
+   "photo": false
+  },
+  {
+   "cat": "community",
+   "kind": "커뮤니티",
+   "label": "독서실",
+   "file": "photos/site/2026910282/community-4.jpg",
+   "src": "https://xn--hc0bz5m11b1ue95n2zf6zxvzd.com/resources/img/main/community_img_05.jpg",
+   "crop": "",
+   "w": 1920,
+   "h": 1080,
+   "md5": "1ea45f78cbc2c6695defa0a9fffae645",
+   "photo": false
+  }
+ ],
+ "links": [
+  {
+   "kind": "emodel",
+   "label": "E모델하우스",
+   "name": "E모델하우스",
+   "url": "https://xn--hc0bz5m11b1ue95n2zf6zxvzd.com/pages/emodelhouse"
+  }
+ ],
+ "homepage": "https://광명시티프라디움.com",
+ "owner": "(주)시티글로벌",
+ "updated": "2026-11-09 19:18"
+}

@@ -1,0 +1,196 @@
+{
+ "key": "2026000497",
+ "images": [
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "단지 전경",
+   "file": "photos/site/2026000497/birdseye.jpg",
+   "src": "https://www.jh-raon.com/assets/images/sub/notice.jpg",
+   "crop": "0,0,1,0.37",
+   "w": 1200,
+   "h": 354,
+   "md5": "be11b373f117aacb3337a34a56cc3aa0",
+   "photo": false
+  },
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "투시도",
+   "file": "photos/site/2026000497/birdseye-2.jpg",
+   "src": "https://www.jh-raon.com/assets/images/sub/community.jpg",
+   "crop": "0,0.07,1,0.48",
+   "w": 1200,
+   "h": 768,
+   "md5": "05b7eaa867712f889e6cf4b16dc2e420",
+   "photo": true
+  },
+  {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "",
+   "file": "photos/site/2026000497/siteplan.jpg",
+   "src": "https://www.jh-raon.com/assets/images/sub/place.jpg",
+   "crop": "0,0,1,0.53",
+   "w": 1200,
+   "h": 850,
+   "md5": "0b356e1913fb1deb25a608bdca2c1a67",
+   "photo": true
+  },
+  {
+   "cat": "dongho",
+   "kind": "동호배치도",
+   "label": "101~103동",
+   "file": "photos/site/2026000497/dongho-101-103.jpg",
+   "src": "https://www.jh-raon.com/assets/images/sub/place.jpg",
+   "crop": "0,0.53,1,1",
+   "w": 1200,
+   "h": 753,
+   "md5": "0b356e1913fb1deb25a608bdca2c1a67",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "45",
+   "file": "photos/site/2026000497/plan-45.jpg",
+   "src": "https://www.jh-raon.com/assets/images/sub/unit_45.jpg",
+   "crop": "",
+   "w": 1200,
+   "h": 775,
+   "md5": "b14332609648566677cbd1b45017a30e",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "58",
+   "file": "photos/site/2026000497/plan-58.jpg",
+   "src": "https://www.jh-raon.com/assets/images/sub/unit_58.jpg",
+   "crop": "",
+   "w": 1200,
+   "h": 800,
+   "md5": "85e225bb4b005684ea26c1b647c186a1",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "59",
+   "file": "photos/site/2026000497/plan-59.jpg",
+   "src": "https://www.jh-raon.com/assets/images/sub/unit_59.jpg",
+   "crop": "",
+   "w": 1200,
+   "h": 800,
+   "md5": "dba541710708ccad0bace04e4ae505eb",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "70",
+   "file": "photos/site/2026000497/plan-70.jpg",
+   "src": "https://www.jh-raon.com/assets/images/sub/unit_70.jpg",
+   "crop": "",
+   "w": 1200,
+   "h": 1219,
+   "md5": "9fa9b44e6bb368ced20d9fc6c58ccd02",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "84",
+   "file": "photos/site/2026000497/plan-84.jpg",
+   "src": "https://www.jh-raon.com/assets/images/sub/unit_84.jpg",
+   "crop": "",
+   "w": 1200,
+   "h": 839,
+   "md5": "e8637e49d92787e0294e9325f59b28ff",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "73T",
+   "file": "photos/site/2026000497/plan-73t.jpg",
+   "src": "https://www.jh-raon.com/assets/images/sub/unit_73t.jpg",
+   "crop": "",
+   "w": 1200,
+   "h": 839,
+   "md5": "d2c3bc7457b18b94acfc07131b76b088",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "84T",
+   "file": "photos/site/2026000497/plan-84t.jpg",
+   "src": "https://www.jh-raon.com/assets/images/sub/unit_84t.jpg",
+   "crop": "",
+   "w": 1200,
+   "h": 839,
+   "md5": "429248bc96f85a3410649cb63584aa18",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "93T",
+   "file": "photos/site/2026000497/plan-93t.jpg",
+   "src": "https://www.jh-raon.com/assets/images/sub/unit_93t.jpg",
+   "crop": "",
+   "w": 1200,
+   "h": 839,
+   "md5": "53619f1f87f0ade2e60f0735a7e6c748",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "98T",
+   "file": "photos/site/2026000497/plan-98t.jpg",
+   "src": "https://www.jh-raon.com/assets/images/sub/unit_98t.jpg",
+   "crop": "",
+   "w": 1200,
+   "h": 839,
+   "md5": "950807bbfe94184a952a542a95cadabe",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "126T",
+   "file": "photos/site/2026000497/plan-126t.jpg",
+   "src": "https://www.jh-raon.com/assets/images/sub/unit_126t.jpg",
+   "crop": "",
+   "w": 1200,
+   "h": 839,
+   "md5": "10569d4265086646c73ff3005a5c7a1b",
+   "photo": false
+  },
+  {
+   "cat": "community",
+   "kind": "커뮤니티",
+   "label": "피트니스·휴게·열람실",
+   "file": "photos/site/2026000497/community.jpg",
+   "src": "https://www.jh-raon.com/assets/images/sub/community.jpg",
+   "crop": "0,0.83,1,0.97",
+   "w": 1200,
+   "h": 262,
+   "md5": "05b7eaa867712f889e6cf4b16dc2e420",
+   "photo": false
+  }
+ ],
+ "links": [
+  {
+   "kind": "emodel",
+   "label": "84",
+   "name": "E모델하우스",
+   "url": "https://www.jh-raon.com/pages/e_modelhouse.html"
+  }
+ ],
+ "homepage": "https://www.jh-raon.com",
+ "owner": "중화3재정비촉진구역 도시환경정비사업 토지등소유자",
+ "updated": "2026-11-09 19:18"
+}

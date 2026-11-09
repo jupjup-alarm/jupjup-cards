@@ -1,0 +1,141 @@
+{
+ "key": "2026910280",
+ "images": [
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "단지 전경",
+   "file": "photos/site/2026910280/birdseye.jpg",
+   "src": "https://www.xn--q20b152av7aa413bca79ak6fvvae81e0yqoma.com/theme/theme/img/sub1_1_01.jpg",
+   "crop": "",
+   "w": 1200,
+   "h": 750,
+   "md5": "7db2aeb07e9f1086a928e4380b0f7177",
+   "photo": true
+  },
+  {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "",
+   "file": "photos/site/2026910280/siteplan.jpg",
+   "src": "https://www.xn--q20b152av7aa413bca79ak6fvvae81e0yqoma.com/theme/theme/img/sub2_1_01.jpg",
+   "crop": "",
+   "w": 1200,
+   "h": 1627,
+   "md5": "2fa2533cc8ff426c306c5a1928564553",
+   "photo": true
+  },
+  {
+   "cat": "dongho",
+   "kind": "동호배치도",
+   "label": "",
+   "file": "photos/site/2026910280/dongho.jpg",
+   "src": "https://www.xn--q20b152av7aa413bca79ak6fvvae81e0yqoma.com/theme/theme/img/sub2_2_01.jpg",
+   "crop": "",
+   "w": 1200,
+   "h": 1827,
+   "md5": "440cf12b15917e65a6901d05567f61a8",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "59A",
+   "file": "photos/site/2026910280/plan-59a.jpg",
+   "src": "https://www.xn--q20b152av7aa413bca79ak6fvvae81e0yqoma.com/theme/theme/img/t7.jpg",
+   "crop": "",
+   "w": 1200,
+   "h": 631,
+   "md5": "22d2e29a4521df88aa3a17f2617d189d",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "59B",
+   "file": "photos/site/2026910280/plan-59b.jpg",
+   "src": "https://www.xn--q20b152av7aa413bca79ak6fvvae81e0yqoma.com/theme/theme/img/t8.jpg",
+   "crop": "",
+   "w": 1200,
+   "h": 631,
+   "md5": "e5feafb17cd15d27a122d957d1fcad7d",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "75",
+   "file": "photos/site/2026910280/plan-75.jpg",
+   "src": "https://www.xn--q20b152av7aa413bca79ak6fvvae81e0yqoma.com/theme/theme/img/t6.jpg",
+   "crop": "",
+   "w": 1200,
+   "h": 631,
+   "md5": "74832b90fa1a6a3d754dba32fc9cf171",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "84",
+   "file": "photos/site/2026910280/plan-84.jpg",
+   "src": "https://www.xn--q20b152av7aa413bca79ak6fvvae81e0yqoma.com/theme/theme/img/t5.jpg",
+   "crop": "",
+   "w": 1200,
+   "h": 631,
+   "md5": "f6bc34d7442a79e58490ba62799a41d6",
+   "photo": false
+  },
+  {
+   "cat": "community",
+   "kind": "커뮤니티",
+   "label": "",
+   "file": "photos/site/2026910280/community.jpg",
+   "src": "https://www.xn--q20b152av7aa413bca79ak6fvvae81e0yqoma.com/theme/theme/img/cummu_0403.jpg",
+   "crop": "0,0.1,1,1",
+   "w": 1200,
+   "h": 1339,
+   "md5": "bf6b3a542fb12aa3b09b62f7e4406d73",
+   "photo": true
+  },
+  {
+   "cat": "interior",
+   "kind": "인테리어",
+   "label": "거실",
+   "file": "photos/site/2026910280/interior.jpg",
+   "src": "https://www.xn--q20b152av7aa413bca79ak6fvvae81e0yqoma.com/theme/theme/img/sub3_2_01.jpg",
+   "crop": "0,0,1,0.2",
+   "w": 1200,
+   "h": 702,
+   "md5": "b7734e0900fe56d5b92a3beae40ab23f",
+   "photo": true
+  },
+  {
+   "cat": "interior",
+   "kind": "인테리어",
+   "label": "침실",
+   "file": "photos/site/2026910280/interior-2.jpg",
+   "src": "https://www.xn--q20b152av7aa413bca79ak6fvvae81e0yqoma.com/theme/theme/img/sub3_2_01.jpg",
+   "crop": "0,0.37,1,0.6",
+   "w": 1200,
+   "h": 807,
+   "md5": "b7734e0900fe56d5b92a3beae40ab23f",
+   "photo": true
+  },
+  {
+   "cat": "interior",
+   "kind": "인테리어",
+   "label": "주방",
+   "file": "photos/site/2026910280/interior-3.jpg",
+   "src": "https://www.xn--q20b152av7aa413bca79ak6fvvae81e0yqoma.com/theme/theme/img/sub3_2_01.jpg",
+   "crop": "0,0.8,1,1",
+   "w": 1200,
+   "h": 702,
+   "md5": "b7734e0900fe56d5b92a3beae40ab23f",
+   "photo": true
+  }
+ ],
+ "links": [],
+ "homepage": "https://www.오남역서희스타힐스여의재.com",
+ "owner": "양지7지구 3단지 지역주택조합",
+ "updated": "2026-11-09 19:18"
+}

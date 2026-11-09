@@ -1,0 +1,69 @@
+{
+ "key": "2026000557",
+ "images": [
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "단지 전경",
+   "file": "photos/site/2026000557/birdseye.jpg",
+   "src": "https://jeil-foredu.co.kr/sub/planning.jpg",
+   "crop": "",
+   "w": 1100,
+   "h": 614,
+   "md5": "5749ada307e7c6867cb586cf2350c000",
+   "photo": true
+  },
+  {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "",
+   "file": "photos/site/2026000557/siteplan.jpg",
+   "src": "https://jeil-foredu.co.kr/sub/complex.jpg",
+   "crop": "",
+   "w": 1100,
+   "h": 817,
+   "md5": "ba3db2d1e2006ba0eb91aa96a0f8976f",
+   "photo": true
+  },
+  {
+   "cat": "dongho",
+   "kind": "동호배치도",
+   "label": "",
+   "file": "photos/site/2026000557/dongho.jpg",
+   "src": "https://jeil-foredu.co.kr/sub/dh.jpg",
+   "crop": "",
+   "w": 1100,
+   "h": 522,
+   "md5": "6dfdf5720cc9b93b5a48e31b9b78d62f",
+   "photo": true
+  },
+  {
+   "cat": "community",
+   "kind": "커뮤니티",
+   "label": "EDU ZONE",
+   "file": "photos/site/2026000557/community-edu-zone.jpg",
+   "src": "https://jeil-foredu.co.kr/sub/community.jpg",
+   "crop": "0,0.03,1,0.5",
+   "w": 1100,
+   "h": 801,
+   "md5": "b6db77ad00b947d26e18a194cfd52b3e",
+   "photo": false
+  },
+  {
+   "cat": "community",
+   "kind": "커뮤니티",
+   "label": "HEALTHY ZONE",
+   "file": "photos/site/2026000557/community-healthy-zone.jpg",
+   "src": "https://jeil-foredu.co.kr/sub/community.jpg",
+   "crop": "0,0.5,1,1",
+   "w": 1100,
+   "h": 851,
+   "md5": "b6db77ad00b947d26e18a194cfd52b3e",
+   "photo": false
+  }
+ ],
+ "links": [],
+ "homepage": "http://jeil-foredu.co.kr",
+ "owner": "주식회사 브랜드뉴탄벌",
+ "updated": "2026-11-09 19:18"
+}

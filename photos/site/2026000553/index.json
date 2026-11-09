@@ -1,0 +1,184 @@
+{
+ "key": "2026000553",
+ "images": [
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "단지 전경",
+   "file": "photos/site/2026000553/birdseye.jpg",
+   "src": "https://feliztower-yangwoo.co.kr/sub/summary.jpg",
+   "crop": "0.07,0.42,0.93,0.70",
+   "w": 1118,
+   "h": 608,
+   "md5": "aea68dc0ee1d9d418f1f285da1b77297",
+   "photo": false
+  },
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "낮 전경",
+   "file": "photos/site/2026000553/birdseye-2.jpg",
+   "src": "https://feliztower-yangwoo.co.kr/sub/achitecture.jpg",
+   "crop": "0.30,0.16,0.95,0.39",
+   "w": 845,
+   "h": 551,
+   "md5": "c50b1f6a5fbb56b526277f50da35900f",
+   "photo": true
+  },
+  {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "",
+   "file": "photos/site/2026000553/siteplan.jpg",
+   "src": "https://feliztower-yangwoo.co.kr/sub/comp.jpg",
+   "crop": "0.03,0.15,0.86,0.52",
+   "w": 1079,
+   "h": 566,
+   "md5": "c2f0518b55269b6c836fadede00e8c86",
+   "photo": true
+  },
+  {
+   "cat": "dongho",
+   "kind": "동호배치도",
+   "label": "101~104동",
+   "file": "photos/site/2026000553/dongho-101-104.jpg",
+   "src": "https://feliztower-yangwoo.co.kr/sub/dh.jpg",
+   "crop": "",
+   "w": 1300,
+   "h": 1481,
+   "md5": "b78a3a52503ffb12c087b3d9e28f14fc",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "59",
+   "file": "photos/site/2026000553/plan-59.jpg",
+   "src": "https://feliztower-yangwoo.co.kr/sub/unit59.jpg",
+   "crop": "",
+   "w": 1300,
+   "h": 1486,
+   "md5": "cb93bb93e2f88967b4239ee5e69af603",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "84A",
+   "file": "photos/site/2026000553/plan-84a.jpg",
+   "src": "https://feliztower-yangwoo.co.kr/sub/unit84a.jpg",
+   "crop": "",
+   "w": 1300,
+   "h": 1486,
+   "md5": "6ecc103ff8445b6584e08f565418f39f",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "84B",
+   "file": "photos/site/2026000553/plan-84b.jpg",
+   "src": "https://feliztower-yangwoo.co.kr/sub/unit84b.jpg",
+   "crop": "",
+   "w": 1300,
+   "h": 1486,
+   "md5": "6379377518be824312d1ee4e6b2485ba",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "84C",
+   "file": "photos/site/2026000553/plan-84c.jpg",
+   "src": "https://feliztower-yangwoo.co.kr/sub/unit84c.jpg",
+   "crop": "",
+   "w": 1300,
+   "h": 1486,
+   "md5": "39d31c5f4bc09ce2e0e909698bbbf82c",
+   "photo": false
+  },
+  {
+   "cat": "community",
+   "kind": "커뮤니티",
+   "label": "커뮤니티 배치",
+   "file": "photos/site/2026000553/community.jpg",
+   "src": "https://feliztower-yangwoo.co.kr/sub/community.jpg",
+   "crop": "0,0,1,0.5",
+   "w": 1300,
+   "h": 2254,
+   "md5": "411b58f9c1c16994c4745b617fd8a89f",
+   "photo": false
+  },
+  {
+   "cat": "community",
+   "kind": "조경",
+   "label": "놀이터",
+   "file": "photos/site/2026000553/community-2.jpg",
+   "src": "https://feliztower-yangwoo.co.kr/sub/achitecture.jpg",
+   "crop": "0.31,0.73,0.82,0.96",
+   "w": 663,
+   "h": 551,
+   "md5": "c50b1f6a5fbb56b526277f50da35900f",
+   "photo": true
+  },
+  {
+   "cat": "interior",
+   "kind": "인테리어",
+   "label": "84A 거실",
+   "file": "photos/site/2026000553/interior-84a.jpg",
+   "src": "https://feliztower-yangwoo.co.kr/sub/interior84a.jpg",
+   "crop": "0.43,0.12,0.93,0.38",
+   "w": 650,
+   "h": 869,
+   "md5": "fb917ddcad1fdb1c6664dd9b86617c3f",
+   "photo": true
+  },
+  {
+   "cat": "interior",
+   "kind": "인테리어",
+   "label": "84A 주방",
+   "file": "photos/site/2026000553/interior-84a-2.jpg",
+   "src": "https://feliztower-yangwoo.co.kr/sub/interior84a.jpg",
+   "crop": "0,0.39,0.93,0.58",
+   "w": 1209,
+   "h": 635,
+   "md5": "fb917ddcad1fdb1c6664dd9b86617c3f",
+   "photo": true
+  },
+  {
+   "cat": "interior",
+   "kind": "인테리어",
+   "label": "84B 거실",
+   "file": "photos/site/2026000553/interior-84b.jpg",
+   "src": "https://feliztower-yangwoo.co.kr/sub/interior84b.jpg",
+   "crop": "0.42,0.13,1,0.39",
+   "w": 754,
+   "h": 728,
+   "md5": "0c7e3728836b884c1f396f1bf947ab33",
+   "photo": true
+  },
+  {
+   "cat": "interior",
+   "kind": "인테리어",
+   "label": "84B 주방",
+   "file": "photos/site/2026000553/interior-84b-2.jpg",
+   "src": "https://feliztower-yangwoo.co.kr/sub/interior84b.jpg",
+   "crop": "0,0.43,0.88,0.67",
+   "w": 1144,
+   "h": 671,
+   "md5": "0c7e3728836b884c1f396f1bf947ab33",
+   "photo": false
+  }
+ ],
+ "links": [
+  {
+   "kind": "emodel",
+   "label": "E모델하우스",
+   "name": "E모델하우스",
+   "url": "https://feliztower-yangwoo.co.kr/vr.html"
+  }
+ ],
+ "homepage": "https://feliztower-yangwoo.co.kr",
+ "owner": "의정부동지역주택조합,양우건설(주)",
+ "updated": "2026-11-09 19:18"
+}
