@@ -1,0 +1,61 @@
+{
+ "key": "2026820015",
+ "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061204&ccrCnntSysDsCd=02&uppAisTpCd=39&aisTpCd=39&mi=1027",
+ "checked": "2026-11-09 06:58",
+ "files": [
+  {
+   "fileid": "69314268",
+   "name": "시흥거모아테라모집공고_최종(안).hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69314535",
+   "name": "시흥거모아테라모집공고_최종(안).pdf",
+   "kind": "notice",
+   "got": "ok",
+   "md5": "fef901c15c840130d30690a56513fe47",
+   "pages": 32,
+   "bytes": 1117879
+  },
+  {
+   "fileid": "69312192",
+   "name": "시흥거모아테라팸플릿_최종(안).pdf",
+   "kind": "pamphlet",
+   "got": "ok",
+   "md5": "f5a7aa2760325302da5cf58d70f660e9",
+   "pages": 6,
+   "bytes": 4224791
+  },
+  {
+   "fileid": "69312243",
+   "name": "1.위임장.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69312245",
+   "name": "2-1.개인정보수집이용및제3자제공동의서(사전청약당첨자용).hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69312248",
+   "name": "2-2.개인정보수집이용및제3자제공동의서(본청약자용).hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69312254",
+   "name": "3-1.금융정보등(금융ㆍ신용ㆍ보험정보)제공동의서.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69312256",
+   "name": "3-2.금융정보등(금융ㆍ신용ㆍ보험정보)제공동의서-작성방법.pdf",
+   "kind": "form"
+  },
+  {
+   "fileid": "69312258",
+   "name": "4.자산보유사실확인서.hwpx",
+   "kind": "other"
+  }
+ ],
+ "changed": false
+}

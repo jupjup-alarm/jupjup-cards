@@ -38,6 +38,120 @@
    "pamphlet_as": "2026910282-pamphlet.pdf",
    "site_as": "2026910282-site.txt",
    "owner": "(주)시티글로벌"
+  },
+  {
+   "key": "2026910276",
+   "title": "검단신도시 AB20-2블록 중흥S-클래스 에듀파크 무순위",
+   "rcpt": [
+    "2026-11-11",
+    "2026-11-11"
+   ],
+   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910276&pblancNo=2026910276",
+   "homepage": "http://www.geomdan-sclass.com",
+   "need": [
+    "notice",
+    "pamphlet",
+    "site"
+   ],
+   "save_as": "2026910276.pdf",
+   "pamphlet_as": "2026910276-pamphlet.pdf",
+   "site_as": "2026910276-site.txt",
+   "owner": "중흥건설(주)"
+  },
+  {
+   "key": "2026910280",
+   "title": "오남역 서희스타힐스 여의재 3단지 무순위 (조합원 취소분)",
+   "rcpt": [
+    "2026-11-11",
+    "2026-11-11"
+   ],
+   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910280&pblancNo=2026910280",
+   "homepage": "https://www.오남역서희스타힐스여의재.com",
+   "need": [
+    "notice",
+    "pamphlet",
+    "site"
+   ],
+   "save_as": "2026910280.pdf",
+   "pamphlet_as": "2026910280-pamphlet.pdf",
+   "site_as": "2026910280-site.txt",
+   "owner": "양지7지구 3단지 지역주택조합"
+  },
+  {
+   "key": "2026910283",
+   "title": "영종하늘도시 A25블록 대성베르힐 5차 무순위",
+   "rcpt": [
+    "2026-11-11",
+    "2026-11-11"
+   ],
+   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910283&pblancNo=2026910283",
+   "homepage": "http://www.yjd-verthill.com",
+   "need": [
+    "notice",
+    "pamphlet",
+    "site"
+   ],
+   "save_as": "2026910283.pdf",
+   "pamphlet_as": "2026910283-pamphlet.pdf",
+   "site_as": "2026910283-site.txt",
+   "owner": "주식회사 인천영종피에프브이"
+  },
+  {
+   "key": "2026000497",
+   "title": "중화역 라온프라이빗 센트로",
+   "rcpt": [
+    "2026-11-16",
+    "2026-11-19"
+   ],
+   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000497&pblancNo=2026000497",
+   "homepage": "https://www.jh-raon.com",
+   "need": [
+    "notice",
+    "pamphlet",
+    "site"
+   ],
+   "save_as": "2026000497.pdf",
+   "pamphlet_as": "2026000497-pamphlet.pdf",
+   "site_as": "2026000497-site.txt",
+   "owner": "중화3재정비촉진구역 도시환경정비사업 토지등소유자"
+  },
+  {
+   "key": "2026000553",
+   "title": "의정부역 펠리스타워 양우내안애",
+   "rcpt": [
+    "2026-11-16",
+    "2026-11-18"
+   ],
+   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000553&pblancNo=2026000553",
+   "homepage": "https://feliztower-yangwoo.co.kr",
+   "need": [
+    "notice",
+    "pamphlet",
+    "site"
+   ],
+   "save_as": "2026000553.pdf",
+   "pamphlet_as": "2026000553-pamphlet.pdf",
+   "site_as": "2026000553-site.txt",
+   "owner": "의정부동지역주택조합,양우건설(주)"
+  },
+  {
+   "key": "2026000557",
+   "title": "제일풍경채 광주 포에듀",
+   "rcpt": [
+    "2026-11-16",
+    "2026-11-18"
+   ],
+   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000557&pblancNo=2026000557",
+   "homepage": "http://jeil-foredu.co.kr",
+   "need": [
+    "notice",
+    "pamphlet",
+    "site"
+   ],
+   "save_as": "2026000557.pdf",
+   "pamphlet_as": "2026000557-pamphlet.pdf",
+   "site_as": "2026000557-site.txt",
+   "owner": "주식회사 브랜드뉴탄벌"
   }
  ]
 }

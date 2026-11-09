@@ -2,7 +2,7 @@
  "key": "lh0000061201",
  "source": "lh",
  "source_name": "LH청약플러스",
- "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061201&ccrCnntSysDsCd=02&uppAisTpCd=06&aisTpCd=08&mi=1026",
+ "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061206&ccrCnntSysDsCd=02&uppAisTpCd=06&aisTpCd=08&mi=1026",
  "source_line": "LH청약플러스 10년 공공임대주택[리츠] 예비입주자 모집공고문 (모집공고일 2026.11.5(목)) 기준",
  "title": "평택·안성 10년 공공임대 리츠 예비입주자 (5개 단지 396명)",
  "complex": "평택소사벌 B-2 · 평택고덕 A-10·A-1 · 안성아양 B-4·B-6 (10년 공공임대 리츠)",
@@ -341,7 +341,8 @@
  ],
  "aliases": [
   "평택·안성 10년 공공임대(리츠) 예비입주자 — 통장·소득·자산 무관",
-  "평택시.안성시 지역 10년 공공임대주택[리츠] 예비입주자 모집공고"
+  "평택시.안성시 지역 10년 공공임대주택[리츠] 예비입주자 모집공고",
+  "[정정공고]평택시.안성시 지역 10년 공공임대주택[리츠] 예비입주자 모집공고(2026.11.05)"
  ],
  "search_names": [
   "평택 10년 공공임대",
