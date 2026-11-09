@@ -51,6 +51,8 @@ COUPANG = {
                    "opts": {"id": 1044447, "template": "carousel", "trackingCode": "AF3230467", "subId": "jupjupalarm", "width": "100%", "height": "120", "tsource": ""}},
     "apt_mo": {"mq": "(max-width:1023px)", "height": 120,
                "opts": {"id": 1044447, "template": "carousel", "trackingCode": "AF3230467", "subId": "jupjupalarm", "width": "100%", "height": "120", "tsource": ""}},
+    # /cp/ 쿠팡 배너 전용 페이지 (2026-11-09) — 1:1 큰 다이나믹 배너, 크기는 화면 폭에 맞춰 브라우저가 정함(data-sq)
+    "cp_square": {"mq": "all", "height": 480, "square": 560, "opts": {"id": 1044288, "template": "carousel", "trackingCode": "AF3230467", "subId": "jupjupalarm", "width": "480", "height": "480", "tsource": ""}},
     "apt_end_mo": {"mq": "(max-width:1023px)", "height": 300,
                    "opts": {"id": 1044447, "template": "carousel", "trackingCode": "AF3230467", "subId": "jupjupalarm", "width": "100%", "height": "300", "tsource": ""}},
 }
@@ -2119,6 +2121,10 @@ def main():
     h = E.get_template("search.html").render(page_url="/search/", title="단지 이름으로 찾기 · 줍줍알람", desc="", og="/og-default.jpg",
                                              pop=live_pop, **common)
     write("/search/", h, "단지 이름으로 찾기 · 줍줍알람", "", "list", index=False)
+
+    # /cp/ 쿠팡 배너 페이지 (2026-11-09 사용자 요청) — 머리글 바로 아래 1:1 다이나믹 배너 하나. noindex · 사이트맵 제외.
+    h = E.get_template("cp.html").render(page_url="/cp/", title="추천 상품 · 줍줍알람", desc="", og="/og-default.jpg", noindex=True, **common)
+    write("/cp/", h, "추천 상품 · 줍줍알람", "", "page", index=False)
 
     # 사이트맵·RSS·robots·헤더
     write_sitemaps(now)

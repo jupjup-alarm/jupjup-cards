@@ -29,7 +29,7 @@
 <div class="ad-g {{ cls }}"><ins class="adsbygoogle" style="display:block" data-ad-client="{{ ADSENSE.client }}" data-ad-slot="{{ sid }}" data-ad-format="auto" data-full-width-responsive="true"></ins></div>{% endif %}{% endmacro %}
 {% macro cp_ad(slot, cls='') %}{% set a = COUPANG.get(slot) %}{% if a %}
 <div class="ad {{ cls }}" data-ad="{{ slot }}">
-  <div class="ad-box" style="height:{{ a.height }}px" data-cp="{{ a.opts|tojson|forceescape }}" data-mq="{{ a.mq }}"></div>
+  <div class="ad-box" style="height:{{ a.height }}px" data-cp="{{ a.opts|tojson|forceescape }}" data-mq="{{ a.mq }}"{% if a.square %} data-sq="{{ a.square }}"{% endif %}></div>
 </div>{% endif %}{% endmacro %}
 
 {# 목록 맨 위 '한눈에 보기' 표 — 네이버·구글이 표 스니펫으로 쓸 수 있게 진짜 <table> (2026-11-02 SEO 기획안 개선안 1) #}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% from "macros.html" import cp_ad with context %}
+{# 2026-11-09: 쿠팡 배너 전용 — 머리글 바로 아래 1:1 큰 다이나믹 배너 하나 #}
+{% block main %}
+<main class="wrap cp-page" id="main">
+  <h1 class="sr-only">추천 상품</h1>
+  {{ cp_ad('cp_square', 'ad-cp') }}
+  <p class="cp-note">{{ COUPANG_NOTE }}</p>
+</main>
+{% endblock %}

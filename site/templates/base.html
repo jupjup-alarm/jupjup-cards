@@ -121,7 +121,7 @@
     hf.hidden=false;show('');}
   var ads=[].slice.call(document.querySelectorAll('[data-cp]')).filter(function(el){return window.matchMedia(el.getAttribute('data-mq')||'all').matches;});
   if(ads.length){var go=function(){var g=document.createElement('script');g.src='https://ads-partners.coupang.com/g.js';g.async=true;
-    g.onload=function(){ads.forEach(function(el){try{var o=JSON.parse(el.getAttribute('data-cp'));o.container=el;new PartnersCoupang.G(o);el.closest('.ad').classList.add('on');}catch(e){}});};
+    g.onload=function(){ads.forEach(function(el){try{var o=JSON.parse(el.getAttribute('data-cp'));var sq=+el.getAttribute('data-sq');if(sq){el.closest('.ad').classList.add('on');var w=Math.min(el.parentNode.clientWidth||sq,sq);o.width=o.height=String(w);el.style.height=w+'px';el.style.width=w+'px';}o.container=el;new PartnersCoupang.G(o);el.closest('.ad').classList.add('on');}catch(e){}});};
     document.head.appendChild(g);};
     if(document.readyState==='complete')go();else window.addEventListener('load',go);}
 })();
