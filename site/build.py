@@ -1572,7 +1572,14 @@ def main():
     order = {"open": 0, "upcoming": 1, "pre": 2, "waiting": 3, "announced": 4, "released": 5}
 
     def sort_key(n):
-        return (order[n["status"]], n["rcpt"][0] if n["status"] in ("open", "upcoming") else "~" + n["announce"], n["title"])
+        # 접수 중은 마감 빠른 순(2026-11-09 사용자 지적 — 예전엔 시작일 순이라 2월에 연 수시모집 D-55가 맨 위), 예정은 시작 빠른 순
+        if n["status"] == "open":
+            k = n["rcpt"][1] or n["rcpt"][0]
+        elif n["status"] == "upcoming":
+            k = n["rcpt"][0]
+        else:
+            k = "~" + n["announce"]
+        return (order[n["status"]], k, n["title"])
 
     def sorted_n(lst):
         lst = sorted(lst, key=sort_key)
@@ -1780,7 +1787,8 @@ def main():
     week_end = TODAY + dt.timedelta(days=6 - TODAY.weekday())
     nxt_end = week_end + dt.timedelta(days=7)
     home_groups = [
-        ("지금 접수 중", [x for x in s if x["status"] == "open"]),
+        # 오늘 마감은 바로 위 '오늘 마감' 칸에 따로 나오므로 빼고 D-1부터 (2026-11-09 사용자 결정)
+        ("지금 접수 중", [x for x in s if x["status"] == "open" and (x["rcpt"][1] or x["rcpt"][0]) != TODAY.isoformat()]),
         ("이번 주 접수", [x for x in s if x["status"] == "upcoming" and x["rcpt"][0] <= week_end.isoformat()]),
         ("다가오는 접수", [x for x in s if x["status"] == "upcoming" and x["rcpt"][0] > week_end.isoformat()]),
         ("공고 예정 (보도 기준)", [x for x in s if x["status"] == "pre"]),
