@@ -3,6 +3,7 @@
 정적 사이트. `python3 site/build.py` → `site/public/` → Cloudflare Pages가 그대로 배포 (빌드 명령 없음, 출력 폴더 `site/public`, 감시 경로 `site/**`).
 
 ## 매일 하는 일 (⑦)
+> ⭐ **2026-11-09 사용자 결정 — 바뀐 공고만**: jupjup-runner `assets` 워크플로가 07:20에 '청약홈API'·'청약조사'·'LH공고'·'마이홈공고'를 `site/data/sheet/*.json`으로, '청약홈API'는 `site/data/applyhome.json`으로도 내려 둔다(모델 없음). ⑦은 시트를 통째로 읽지 않고 `python3 site/tools/changed.py`가 고른 **새 공고·바뀐 공고(경쟁률·일정·가격·청약조사 칸·정정공고)만** 만들고 고친 뒤, 처리한 key를 `python3 site/tools/changed.py --mark KEY…`로 기록해 함께 커밋한다. 나머지 공고는 손대지 않는다 (상태·D-day는 build.py가 날짜로 자동). seen.json이 없는 첫날만 전체 점검 후 `--mark-all`.
 1. `git pull --rebase origin main`
 2. '청약홈API' 탭 전체를 `site/data/applyhome.json`의 `rows`로 덮어쓰기 (열 이름 = 시트 머리글, `fetched_at` = A열 값).
 2-1. LH 공고문 받기: `python3 tools/lh_files.py --all --upcoming` (아래 'LH 공고문 자동 반영' 절 — 2026-11-04).
