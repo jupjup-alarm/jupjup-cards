@@ -1,0 +1,16 @@
+{
+ "slug": "2026-11-10-gwacheon-s12-reel",
+ "duration": 41.32,
+ "voiced": true,
+ "narration_s": 38.7,
+ "mean_db": -18.2,
+ "voice": "voices/a8d735fe3163/",
+ "video": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-10-gwacheon-s12-reel/2026-11-10-gwacheon-s12-reel.mp4",
+ "cover": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-10-gwacheon-s12-reel/2026-11-10-gwacheon-s12-reel_thumb.jpg",
+ "size_mb": 9.77,
+ "warnings": [
+  "호흡: 장면 2 대본에 없는 곳에서 0.27초 쉼 (③ 대본 쉼표 위치 확인)",
+  "호흡: 장면 4 대본에 없는 곳에서 0.34초 쉼 (③ 대본 쉼표 위치 확인)",
+  "호흡: 장면 5 대본에 없는 곳에서 0.29초 쉼 (③ 대본 쉼표 위치 확인)"
+ ]
+}
