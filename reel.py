@@ -341,6 +341,8 @@ def proof_html(pf, th, start, end):
 
 
 THUD_TIMES, HIT_TIMES = [], []   # 이야기형(story): 핵심어가 떨어질 때 '쿵', 질문 순간 '탁'
+SHOT_LAST = [None]   # 바로 앞 컷 사진 (장면이 바뀌어도 같은 사진이 이어지지 않게)
+SHOT_USE = {}   # 이야기형: 사진별 사용 횟수 (2026-11-10 "사진 하나를 여러 번 돌려씀" — 모자라면 다른 장면 사진으로, 3번 넘으면 경고)
 STORY_CUTS = [("50% 45%", 1.06, 0.10), ("35% 55%", 1.16, 0.08), ("65% 40%", 1.12, 0.09), ("50% 60%", 1.22, 0.07), ("45% 35%", 1.09, 0.10)]
 
 
@@ -424,13 +426,25 @@ def story_html(sc, th, start, end, first_shot=None):
     blur = sc["type"] == "end"
     back = ""
     if shots:
+        pool = [x for x in (sc.get("_pool") or []) if photo_uri(x.get("img"))]
+        prev = SHOT_LAST[0]
+        if not blur and len(shots) > 1 and shots[0].get("img") == prev:
+            shots = shots[1:] + shots[:1]
         for k, (a, b) in enumerate(cuts):
-            sh = shots[k % len(shots)]
+            if blur or k < len(shots):
+                sh = shots[k % len(shots)]
+            else:   # 컷이 사진보다 많으면 같은 사진을 돌리지 말고, 편 전체에서 덜 쓴 사진(다른 장면 것 포함)을 쓴다
+                cand = [x for x in shots + pool if x.get("img") != prev] or shots
+                sh = min(cand, key=lambda x: (SHOT_USE.get(x.get("img"), 0), 0 if x in shots else 1))
+            if not blur:
+                SHOT_USE[sh.get("img")] = SHOT_USE.get(sh.get("img"), 0) + 1
+            prev = sh.get("img")
             org, z0, dz = STORY_CUTS[(k + sc.get("_i", 0)) % len(STORY_CUTS)]
             cred = sh.get("credit") or ("© NAVER Corp." if str(sh.get("img")).startswith("maps/") else "")
             back += (f'<img class="shot seg{" blurend" if blur else ""}" data-a="{a:.3f}" data-b="{b:.3f}" data-ss="{start:.3f}" data-o="{org}" data-z="{z0}" data-dz="{dz}" '
                      f'src="{photo_uri(sh.get("img"))}" alt="" style="object-position:{esc(sh.get("pos") or "center 45%")}">'
                      + (f'<div class="scred seg" data-a="{a:.3f}" data-b="{b:.3f}">{esc(cred)}</div>' if cred else ""))
+        SHOT_LAST[0] = prev
     else:
         back = f'<div class="blob" style="background:{th["spark"]}"></div>'
     def cap_text(ph):
@@ -949,14 +963,22 @@ def build(spec):
     voiced = any(f for _, _, f in tl)
     fast = spec.get("tempo") == "fast"
     story = spec.get("style") == "story"
-    CUT_TIMES.clear(); POP_TIMES.clear(); THUD_TIMES.clear(); HIT_TIMES.clear()
+    CUT_TIMES.clear(); POP_TIMES.clear(); THUD_TIMES.clear(); HIT_TIMES.clear(); SHOT_USE.clear(); SHOT_LAST[0] = None
     scenes = []
+    story_pool = []
+    if story:   # 편 전체 사진 묶음 = 장면 shots + 원고 맨 위 "pool"(④가 더 넣을 수 있는 단지 그림)
+        seen = set()
+        for x in [y for s in spec["scenes"] for y in (s.get("shots") or [])] + list(spec.get("pool") or []):
+            x = x if isinstance(x, dict) else {"img": x}
+            if x.get("img") and x["img"] not in seen:
+                seen.add(x["img"])
+                story_pool.append(x)
     s0 = spec["scenes"][0] if spec["scenes"] else {}
     first_shot = ((s0.get("shots") or [None])[0]) if story else None
     if isinstance(first_shot, str):
         first_shot = {"img": first_shot}
     for i, (sc, (t, d, f)) in enumerate(zip(spec["scenes"], tl)):
-        sc = dict(sc, _voiced=voiced, _fast=fast, _i=i, _first_shot=first_shot)
+        sc = dict(sc, _voiced=voiced, _fast=fast, _i=i, _first_shot=first_shot, _pool=story_pool)
         if (fast or story) and i:
             CUT_TIMES.append(t)
         if sc["type"] == "beat" and not sc.get("bg") and spec.get("bg"):
@@ -1003,6 +1025,11 @@ def build(spec):
                 elif extra and max(extra) > 0.25:
                     WARN.append(f"호흡: 장면 {i + 1} 대본에 없는 곳에서 {max(extra):.2f}초 쉼 (③ 대본 쉼표 위치 확인)")
         scenes.append(scene_html(sc, th, i, t, t + d))
+    if story and SHOT_USE:   # 2026-11-10 사진 돌려쓰기 점검
+        many = sorted(((n, k) for k, n in SHOT_USE.items() if n > 3), reverse=True)
+        WARN.append(f"사진: 컷 {sum(SHOT_USE.values())}개 · 서로 다른 사진 {len(SHOT_USE)}장")
+        for n, k in many:
+            WARN.append(f"사진 반복: {Path(str(k)).name} {n}번 — 단지 그림을 shots·pool에 더 넣을 것")
     mouth = envelope(tl, total) if voiced else []
     narrator = f'<div class="narrator">{talk_svg()}</div>' if voiced and not story else ""
     tbar = ""
