@@ -13,6 +13,36 @@
    "from": "sheet"
   },
   {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "블록1 단지조감도",
+   "file": "photos/site/lh0000061196/birdseye-b1.jpg",
+   "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=69214931",
+   "crop": "",
+   "w": 1181,
+   "h": 1019,
+   "md5": "1bc200195b1cfcb44ffaac285930bc26",
+   "block": "블록1",
+   "lh_tab": "단지조감도",
+   "desc": "",
+   "photo": true
+  },
+  {
+   "cat": "location",
+   "kind": "입지",
+   "label": "블록1 지역위치도",
+   "file": "photos/site/lh0000061196/location-b1.jpg",
+   "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=69214928",
+   "crop": "",
+   "w": 1181,
+   "h": 1021,
+   "md5": "b8d624801819f8c1a04f3548e5ebf552",
+   "block": "블록1",
+   "lh_tab": "지역위치도",
+   "desc": "",
+   "photo": true
+  },
+  {
    "cat": "siteplan",
    "kind": "단지배치도",
    "label": "단지 배치도",
@@ -22,13 +52,29 @@
    "h": 993,
    "photo": false,
    "from": "sheet"
+  },
+  {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "블록1 단지배치도",
+   "file": "photos/site/lh0000061196/siteplan-b1.jpg",
+   "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=69214923",
+   "crop": "",
+   "w": 1181,
+   "h": 993,
+   "md5": "00e88a6de64c98322efdb992ebffda7e",
+   "block": "블록1",
+   "lh_tab": "단지배치도",
+   "desc": "",
+   "photo": false
   }
  ],
  "links": [],
  "owner": "LH",
  "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
- "updated": "2026-11-10 10:08",
+ "updated": "2026-11-11 06:50",
  "name": "안산신길2지구 B-1블록 공공분양주택(본청약)",
  "row": 58,
- "ai_hash": "673a48ae2b37e0f431c0795ac27aa1e8"
+ "ai_hash": "673a48ae2b37e0f431c0795ac27aa1e8",
+ "lh_checked": "2026-11-11"
 }

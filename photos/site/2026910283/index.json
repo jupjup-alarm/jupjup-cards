@@ -1,0 +1,13 @@
+{
+ "key": "2026910283",
+ "images": [],
+ "links": [],
+ "name": "인천 영종하늘도시 A25블록 대성베르힐(5차) 무순위",
+ "row": 107,
+ "auto_site": {
+  "date": "2026-11-11",
+  "url": "http://www.yjd-verthill.com",
+  "result": "실패 y NameResolutionError(\"HTTPConnection(host='www.yjd-verthill.com', port=80): Failed to resolve 'www.yjd-verthill.com' ([Errno -2] Name or service not known)\"))\n"
+ },
+ "updated": "2026-11-11 06:52"
+}

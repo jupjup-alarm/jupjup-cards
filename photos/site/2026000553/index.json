@@ -4,122 +4,162 @@
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "단지 전경",
+   "label": "단지 전경 조감도",
    "file": "photos/site/2026000553/birdseye.jpg",
    "src": "https://feliztower-yangwoo.co.kr/sub/summary.jpg",
    "crop": "0.07,0.42,0.93,0.70",
    "w": 1118,
    "h": 608,
    "md5": "aea68dc0ee1d9d418f1f285da1b77297",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
-   "cat": "birdseye",
+   "cat": "location",
    "kind": "조감도",
-   "label": "낮 전경",
+   "label": "지역 항공 전경",
    "file": "photos/site/2026000553/birdseye-2.jpg",
    "src": "https://feliztower-yangwoo.co.kr/sub/achitecture.jpg",
    "crop": "0.30,0.16,0.95,0.39",
    "w": 845,
    "h": 551,
    "md5": "c50b1f6a5fbb56b526277f50da35900f",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "siteplan",
    "kind": "단지배치도",
-   "label": "",
+   "label": "단지 배치도",
    "file": "photos/site/2026000553/siteplan.jpg",
    "src": "https://feliztower-yangwoo.co.kr/sub/comp.jpg",
    "crop": "0.03,0.15,0.86,0.52",
    "w": 1079,
    "h": 566,
    "md5": "c2f0518b55269b6c836fadede00e8c86",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "dongho",
    "kind": "동호배치도",
-   "label": "101~104동",
+   "label": "101~104동 배치표",
    "file": "photos/site/2026000553/dongho-101-104.jpg",
    "src": "https://feliztower-yangwoo.co.kr/sub/dh.jpg",
    "crop": "",
    "w": 1300,
    "h": 1481,
    "md5": "b78a3a52503ffb12c087b3d9e28f14fc",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-11",
+   "ok": false,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "59",
+   "label": "59 평면도",
    "file": "photos/site/2026000553/plan-59.jpg",
    "src": "https://feliztower-yangwoo.co.kr/sub/unit59.jpg",
    "crop": "",
    "w": 1300,
    "h": 1486,
    "md5": "cb93bb93e2f88967b4239ee5e69af603",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "84A",
+   "label": "84A 평면도",
    "file": "photos/site/2026000553/plan-84a.jpg",
    "src": "https://feliztower-yangwoo.co.kr/sub/unit84a.jpg",
    "crop": "",
    "w": 1300,
    "h": 1486,
    "md5": "6ecc103ff8445b6584e08f565418f39f",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "84B",
+   "label": "84B 평면도",
    "file": "photos/site/2026000553/plan-84b.jpg",
    "src": "https://feliztower-yangwoo.co.kr/sub/unit84b.jpg",
    "crop": "",
    "w": 1300,
    "h": 1486,
    "md5": "6379377518be824312d1ee4e6b2485ba",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "84C",
+   "label": "84C 평면도",
    "file": "photos/site/2026000553/plan-84c.jpg",
    "src": "https://feliztower-yangwoo.co.kr/sub/unit84c.jpg",
    "crop": "",
    "w": 1300,
    "h": 1486,
    "md5": "39d31c5f4bc09ce2e0e909698bbbf82c",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "community",
    "kind": "커뮤니티",
-   "label": "커뮤니티 배치",
+   "label": "커뮤니티 배치 안내",
    "file": "photos/site/2026000553/community.jpg",
    "src": "https://feliztower-yangwoo.co.kr/sub/community.jpg",
    "crop": "0,0,1,0.5",
    "w": 1300,
    "h": 2254,
    "md5": "411b58f9c1c16994c4745b617fd8a89f",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-11",
+   "ok": false,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "community",
    "kind": "조경",
-   "label": "놀이터",
+   "label": "놀이터 조감",
    "file": "photos/site/2026000553/community-2.jpg",
    "src": "https://feliztower-yangwoo.co.kr/sub/achitecture.jpg",
    "crop": "0.31,0.73,0.82,0.96",
    "w": 663,
    "h": 551,
    "md5": "c50b1f6a5fbb56b526277f50da35900f",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "interior",
@@ -131,7 +171,11 @@
    "w": 650,
    "h": 869,
    "md5": "fb917ddcad1fdb1c6664dd9b86617c3f",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "interior",
@@ -143,7 +187,11 @@
    "w": 1209,
    "h": 635,
    "md5": "fb917ddcad1fdb1c6664dd9b86617c3f",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "interior",
@@ -155,7 +203,11 @@
    "w": 754,
    "h": 728,
    "md5": "0c7e3728836b884c1f396f1bf947ab33",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "interior",
@@ -167,7 +219,11 @@
    "w": 1144,
    "h": 671,
    "md5": "0c7e3728836b884c1f396f1bf947ab33",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   }
  ],
  "links": [

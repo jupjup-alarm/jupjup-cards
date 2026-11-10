@@ -13,6 +13,36 @@
    "from": "sheet"
   },
   {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "블록1 단지조감도",
+   "file": "photos/site/lh0000061195/birdseye-b1.jpg",
+   "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=69168018",
+   "crop": "",
+   "w": 2361,
+   "h": 2397,
+   "md5": "85ea9904901f09eeb1767b2fd33a8748",
+   "block": "블록1",
+   "lh_tab": "단지조감도",
+   "desc": "",
+   "photo": true
+  },
+  {
+   "cat": "location",
+   "kind": "입지",
+   "label": "블록1 지역위치도",
+   "file": "photos/site/lh0000061195/location-b1.jpg",
+   "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=69168017",
+   "crop": "",
+   "w": 1580,
+   "h": 1195,
+   "md5": "78b88581b6a42e3356227088d41774f9",
+   "block": "블록1",
+   "lh_tab": "지역위치도",
+   "desc": "",
+   "photo": true
+  },
+  {
    "cat": "siteplan",
    "kind": "단지배치도",
    "label": "단지 배치도",
@@ -22,13 +52,28 @@
    "h": 2284,
    "photo": false,
    "from": "sheet"
+  },
+  {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "블록1 단지배치도",
+   "file": "photos/site/lh0000061195/siteplan-b1.jpg",
+   "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=69168016",
+   "crop": "",
+   "w": 2356,
+   "h": 2284,
+   "md5": "6606cf8e526e054caccc5e4d7f3ec1b0",
+   "block": "블록1",
+   "lh_tab": "단지배치도",
+   "desc": "",
+   "photo": false
   }
  ],
  "links": [],
  "owner": "LH",
  "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
- "updated": "2026-11-10 10:06",
+ "updated": "2026-11-11 06:49",
  "name": "시흥거모지구 S-1블록 공공분양주택",
  "row": 12,
- "lh_checked": "2026-11-10"
+ "lh_checked": "2026-11-11"
 }

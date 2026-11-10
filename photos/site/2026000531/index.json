@@ -5,24 +5,32 @@
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "투시도",
+   "label": "단지 외관 투시도",
    "file": "photos/site/2026000531/birdseye.jpg",
    "src": "LH 시흥거모 S-1블록 공공분양 팸플릿(정정본) p.4~5",
    "w": 1890,
    "h": 1165,
    "md5": "aad4c7768404724d33db5a7dbbac2795",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "단지 조감도",
+   "label": "단지 항공 조감도",
    "file": "photos/site/2026000531/birdseye-2.jpg",
    "src": "LH 시흥거모 S-1블록 공공분양 팸플릿(정정본) p.10",
    "w": 1865,
    "h": 1890,
    "md5": "92aff662e235e07e806b88d302596306",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "siteplan",
@@ -33,18 +41,26 @@
    "w": 1890,
    "h": 1335,
    "md5": "bf0ab31564497d3ddd88b6999dfaa116",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "siteplan",
    "kind": "단지배치도",
-   "label": "단지배치도(타입별 색)",
+   "label": "타입별 색 배치도",
    "file": "photos/site/2026000531/siteplan-2.jpg",
    "src": "LH 시흥거모 S-1블록 공공분양 팸플릿(정정본) p.30",
    "w": 1191,
    "h": 1148,
    "md5": "1a0d7c0e17b6e527de579a354a0fc539",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "dongho",
@@ -55,84 +71,116 @@
    "w": 1091,
    "h": 1545,
    "md5": "7c2b6a7e484dba805d2e954ea01e0a67",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "59A",
+   "label": "59A 평면도",
    "file": "photos/site/2026000531/plan-59a.jpg",
    "src": "LH 시흥거모 S-1블록 공공분양 팸플릿(정정본) p.18",
    "w": 1813,
    "h": 1563,
    "md5": "0a4d51169603e647901f45867a61f25a",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "59B",
+   "label": "59B 평면도",
    "file": "photos/site/2026000531/plan-59b.jpg",
    "src": "LH 시흥거모 S-1블록 공공분양 팸플릿(정정본) p.22",
    "w": 1813,
    "h": 1563,
    "md5": "d6921916ed8a48611cc5dc9f1503576f",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "84A",
+   "label": "84A 평면도",
    "file": "photos/site/2026000531/plan-84a.jpg",
    "src": "LH 시흥거모 S-1블록 공공분양 팸플릿(정정본) p.26",
    "w": 1828,
    "h": 1443,
    "md5": "6212836f73ddc729aa5cad2c5c5b8682",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "interior",
    "kind": "인테리어",
-   "label": "59B 거실(주택전시관)",
+   "label": "59B 거실",
    "file": "photos/site/2026000531/interior-59b.jpg",
    "src": "LH 시흥거모 S-1블록 공공분양 팸플릿(정정본) p.14",
    "w": 1890,
    "h": 1157,
    "md5": "2d8e51fc93c602b41af4dbd35e1e4f90",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "interior",
    "kind": "인테리어",
-   "label": "59B 주방(주택전시관)",
+   "label": "59B 주방",
    "file": "photos/site/2026000531/interior-59b-2.jpg",
    "src": "LH 시흥거모 S-1블록 공공분양 팸플릿(정정본) p.14",
    "w": 1174,
    "h": 949,
    "md5": "080ff06a2d1d5ae791af3233b048b086",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "interior",
    "kind": "인테리어",
-   "label": "84A 거실(주택전시관)",
+   "label": "84A 거실",
    "file": "photos/site/2026000531/interior-84a.jpg",
    "src": "LH 시흥거모 S-1블록 공공분양 팸플릿(정정본) p.16",
    "w": 1890,
    "h": 1153,
    "md5": "fd9f8b93ba339102f22ea7d2c3a6dc83",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "interior",
    "kind": "인테리어",
-   "label": "84A 주방(주택전시관)",
+   "label": "84A 주방",
    "file": "photos/site/2026000531/interior-84a-2.jpg",
    "src": "LH 시흥거모 S-1블록 공공분양 팸플릿(정정본) p.16",
    "w": 1173,
    "h": 949,
    "md5": "375bdb38a2078b90994e3a3488c2324c",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   }
  ]
 }

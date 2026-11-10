@@ -4,98 +4,130 @@
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "낮 전경",
+   "label": "단지 낮 전경 조감도",
    "file": "photos/site/2026000530/birdseye.jpg",
    "src": "https://www.gy-bando.com/apt/image/sub/about/about_img01.jpg",
    "crop": "",
    "w": 1440,
    "h": 788,
    "md5": "2ef3f7c54af86b94b644c47e30aef451",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "siteplan",
    "kind": "단지배치도",
-   "label": "AC3·AC4",
+   "label": "AC3·AC4 단지배치도",
    "file": "photos/site/2026000530/siteplan-ac3-ac4.jpg",
    "src": "https://www.gy-bando.com/apt/image/sub/danji/design_img01.jpg",
    "crop": "",
    "w": 1440,
    "h": 850,
    "md5": "47d5464f3b28af93fa2dfacab2f236d0",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "dongho",
    "kind": "동호배치도",
-   "label": "",
+   "label": "동호배치도",
    "file": "photos/site/2026000530/dongho.jpg",
    "src": "https://www.gy-bando.com/apt/image/sub/danji/dong_img02.jpg",
    "crop": "",
    "w": 1440,
    "h": 1128,
    "md5": "5252270f7c44b74a61f4fe219d0ecd52",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "84A",
+   "label": "84A 평면도",
    "file": "photos/site/2026000530/plan-84a.jpg",
    "src": "https://www.gy-bando.com/apt/image/sub/unit/unit_84a_img01.jpg",
    "crop": "",
    "w": 1440,
    "h": 1693,
    "md5": "cf4ad216259243488c1551aa18cfdb31",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "84B",
+   "label": "84B 평면도",
    "file": "photos/site/2026000530/plan-84b.jpg",
    "src": "https://www.gy-bando.com/apt/image/sub/unit/unit_84b_img01.jpg",
    "crop": "",
    "w": 1440,
    "h": 1753,
    "md5": "c5c86798193827ec3e08061734a8b385",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "community",
    "kind": "커뮤니티",
-   "label": "평면",
+   "label": "커뮤니티 시설 배치도",
    "file": "photos/site/2026000530/community.jpg",
    "src": "https://www.gy-bando.com/apt/image/sub/danji/community_img01.jpg",
    "crop": "",
    "w": 1440,
    "h": 1033,
    "md5": "6af37930c6ecedf96b90ab60e0d46be5",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "community",
    "kind": "커뮤니티",
-   "label": "세탁실",
+   "label": "세탁실 이미지컷",
    "file": "photos/site/2026000530/community-2.jpg",
    "src": "https://www.gy-bando.com/apt/image/sub/danji/community_cont01-2.jpg",
    "crop": "",
    "w": 500,
    "h": 351,
    "md5": "0f0ba08fc90ad75afdfe1eee055664fd",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-11",
+   "ok": false,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "community",
    "kind": "커뮤니티",
-   "label": "골프연습장",
+   "label": "골프연습장 이미지컷",
    "file": "photos/site/2026000530/community-3.jpg",
    "src": "https://www.gy-bando.com/apt/image/sub/danji/community_cont01-3.jpg",
    "crop": "",
    "w": 500,
    "h": 351,
    "md5": "5afa9998ad0b96a1796b346dce8651ed",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-11",
+   "ok": false,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "interior",
@@ -107,7 +139,11 @@
    "w": 1600,
    "h": 1066,
    "md5": "0b1772fc869bde67a4dfff38a231bfc0",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "interior",
@@ -119,7 +155,11 @@
    "w": 1600,
    "h": 1066,
    "md5": "9397af8b8b8439fa3bfd12e9d835102e",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   }
  ],
  "links": [

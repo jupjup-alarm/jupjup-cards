@@ -13,6 +13,36 @@
    "from": "sheet"
   },
   {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "블록1 단지조감도",
+   "file": "photos/site/lh0000061189/birdseye-b1.jpg",
+   "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=69173647",
+   "crop": "",
+   "w": 1815,
+   "h": 1654,
+   "md5": "ae0ece07d1b213a156989bdb0779cee5",
+   "block": "블록1",
+   "lh_tab": "단지조감도",
+   "desc": "",
+   "photo": true
+  },
+  {
+   "cat": "location",
+   "kind": "입지",
+   "label": "블록1 지역위치도",
+   "file": "photos/site/lh0000061189/location-b1.jpg",
+   "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=69173615",
+   "crop": "",
+   "w": 2032,
+   "h": 1654,
+   "md5": "bc34b69dcd7bc0caea88dd6ca4274e40",
+   "block": "블록1",
+   "lh_tab": "지역위치도",
+   "desc": "",
+   "photo": true
+  },
+  {
    "cat": "siteplan",
    "kind": "단지배치도",
    "label": "단지 배치도",
@@ -22,13 +52,28 @@
    "h": 2362,
    "photo": false,
    "from": "sheet"
+  },
+  {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "블록1 단지배치도",
+   "file": "photos/site/lh0000061189/siteplan-b1.jpg",
+   "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=69173613",
+   "crop": "",
+   "w": 1397,
+   "h": 2362,
+   "md5": "a8038dc053d6ec6a1c79c22319cdcebe",
+   "block": "블록1",
+   "lh_tab": "단지배치도",
+   "desc": "",
+   "photo": false
   }
  ],
  "links": [],
  "owner": "LH",
  "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
- "updated": "2026-11-10 10:08",
+ "updated": "2026-11-11 06:50",
  "name": "안산신길2 A-6블록 신혼희망타운(공공분양)(본청약)",
  "row": 59,
- "lh_checked": "2026-11-10"
+ "lh_checked": "2026-11-11"
 }

@@ -4,158 +4,210 @@
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "낮 투시도",
+   "label": "단지 낮 투시도",
    "file": "photos/site/2026000535/birdseye.jpg",
    "src": "https://xn--2e0b97q70h3ub54eo3dtwdc4o60ksscp5d6za.com/assets/site/project/perspective_day.jpg?v=20261103hq",
    "crop": "",
    "w": 2400,
    "h": 1029,
    "md5": "37aeddba72ac6c8ae5ed84474376b946",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "낮 조감도",
+   "label": "단지 낮 조감도",
    "file": "photos/site/2026000535/birdseye-2.jpg",
    "src": "https://xn--2e0b97q70h3ub54eo3dtwdc4o60ksscp5d6za.com/assets/site/project/aerial_day.jpg?v=20261103hq",
    "crop": "",
    "w": 2400,
    "h": 1014,
    "md5": "e728cbb62c9f904405cacec05bc6eebd",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "메인 전경",
+   "label": "조감도 중복",
    "file": "photos/site/2026000535/birdseye-3.jpg",
    "src": "https://xn--2e0b97q70h3ub54eo3dtwdc4o60ksscp5d6za.com/assets/site/project/main-view.jpg?v=20261103hq",
    "crop": "",
    "w": 2400,
    "h": 1014,
    "md5": "e728cbb62c9f904405cacec05bc6eebd",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-11",
+   "ok": false,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "siteplan",
    "kind": "단지배치도",
-   "label": "",
+   "label": "단지배치도",
    "file": "photos/site/2026000535/siteplan.jpg",
    "src": "https://xn--2e0b97q70h3ub54eo3dtwdc4o60ksscp5d6za.com/assets/site/project/layout.png?v=20261030",
    "crop": "",
    "w": 1610,
    "h": 1061,
    "md5": "2b786e436efc40018b7dbd0b9e158637",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "dongho",
    "kind": "동호배치도",
-   "label": "",
+   "label": "동호배치표",
    "file": "photos/site/2026000535/dongho.jpg",
    "src": "https://xn--2e0b97q70h3ub54eo3dtwdc4o60ksscp5d6za.com/assets/site/project/dongho/dongho.png?v=20261030",
    "crop": "",
    "w": 1621,
    "h": 983,
    "md5": "cf5b8bedfbc79fc9889a49b1d2780175",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "59A",
+   "label": "59A 평면도",
    "file": "photos/site/2026000535/plan-59a.jpg",
    "src": "https://xn--2e0b97q70h3ub54eo3dtwdc4o60ksscp5d6za.com/assets/site/project/unit/plan/plan_59A_ext.png?v=20261028plan145d",
    "crop": "",
    "w": 1185,
    "h": 1158,
    "md5": "bb3cc0ea58a421cc4ee0930fa7297920",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "59B",
+   "label": "59B 평면도",
    "file": "photos/site/2026000535/plan-59b.jpg",
    "src": "https://xn--2e0b97q70h3ub54eo3dtwdc4o60ksscp5d6za.com/assets/site/project/unit/plan/plan_59B_ext.png?v=20261028plan145d",
    "crop": "",
    "w": 1201,
    "h": 1154,
    "md5": "def345e2dbc03614c8ef0e83d91d2926",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "68",
+   "label": "68 평면도",
    "file": "photos/site/2026000535/plan-68.jpg",
    "src": "https://xn--2e0b97q70h3ub54eo3dtwdc4o60ksscp5d6za.com/assets/site/project/unit/plan/plan_68_ext.png?v=20261028plan145d",
    "crop": "",
    "w": 699,
    "h": 975,
    "md5": "4b60f24222251365fc9a8268435f24a3",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "74",
+   "label": "74 평면도",
    "file": "photos/site/2026000535/plan-74.jpg",
    "src": "https://xn--2e0b97q70h3ub54eo3dtwdc4o60ksscp5d6za.com/assets/site/project/unit/plan/plan_74_ext.png?v=20261028plan145d",
    "crop": "",
    "w": 1353,
    "h": 1132,
    "md5": "408215357a4f5633fed5a0d8eae7c813",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "79",
+   "label": "79 평면도",
    "file": "photos/site/2026000535/plan-79.jpg",
    "src": "https://xn--2e0b97q70h3ub54eo3dtwdc4o60ksscp5d6za.com/assets/site/project/unit/plan/plan_79_ext.png?v=20261028plan145d",
    "crop": "",
    "w": 896,
    "h": 1113,
    "md5": "f9bff0fbbde475e500d78c31f568fed0",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "84",
+   "label": "84 평면도",
    "file": "photos/site/2026000535/plan-84.jpg",
    "src": "https://xn--2e0b97q70h3ub54eo3dtwdc4o60ksscp5d6za.com/assets/site/project/unit/plan/plan_84_ext.png?v=20261028plan145d",
    "crop": "",
    "w": 785,
    "h": 1072,
    "md5": "1788096d1ee1b5063740e873fae707c8",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "59A 아이소",
+   "label": "59A 아이소 평면",
    "file": "photos/site/2026000535/plan-59a-2.jpg",
    "src": "https://xn--2e0b97q70h3ub54eo3dtwdc4o60ksscp5d6za.com/assets/site/project/unit/iso/iso_59A.png?v=20261104isotrim",
    "crop": "",
    "w": 1800,
    "h": 1653,
    "md5": "1e1fed113ba51a85e3299d2d73e2265a",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "84 아이소",
+   "label": "84 아이소 평면",
    "file": "photos/site/2026000535/plan-84-2.jpg",
    "src": "https://xn--2e0b97q70h3ub54eo3dtwdc4o60ksscp5d6za.com/assets/site/project/unit/iso/iso_84.png?v=20261104isotrim",
    "crop": "",
    "w": 1669,
    "h": 1800,
    "md5": "2140ee90101b7c4c8e6ee8d754291765",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "community",
@@ -167,19 +219,27 @@
    "w": 1200,
    "h": 1200,
    "md5": "384da366f11bb6f34a05adb4fbb2ccab",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "community",
    "kind": "커뮤니티",
-   "label": "티하우스",
+   "label": "커피 스톡사진",
    "file": "photos/site/2026000535/community-2.jpg",
    "src": "https://xn--2e0b97q70h3ub54eo3dtwdc4o60ksscp5d6za.com/assets/site/project/community/teahouse.jpg",
    "crop": "",
    "w": 1000,
    "h": 667,
    "md5": "85dcf6e5650b0070842b447d76354f3a",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-11",
+   "ok": false,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "community",
@@ -191,7 +251,11 @@
    "w": 1400,
    "h": 788,
    "md5": "fb11b626c6bedad01eb182fcc32ad60d",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "community",
@@ -203,7 +267,11 @@
    "w": 1400,
    "h": 1050,
    "md5": "b1a4a27a36658aa9d44cc57dd5cae85c",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "community",
@@ -215,7 +283,11 @@
    "w": 637,
    "h": 818,
    "md5": "c9dc6beaa6a8020f1c7a186bf9207901",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "community",
@@ -227,7 +299,11 @@
    "w": 1200,
    "h": 1200,
    "md5": "ab8b3831e21d6a1d248d8d72716c0918",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   }
  ],
  "links": [],

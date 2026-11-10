@@ -13,6 +13,36 @@
    "from": "sheet"
   },
   {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "블록1 단지조감도",
+   "file": "photos/site/lh0000061192/birdseye-b1.jpg",
+   "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=69120984",
+   "crop": "",
+   "w": 1310,
+   "h": 1150,
+   "md5": "0ea94bb4167a05ade2ea2e428f3e4f8e",
+   "block": "블록1",
+   "lh_tab": "단지조감도",
+   "desc": "",
+   "photo": true
+  },
+  {
+   "cat": "location",
+   "kind": "입지",
+   "label": "블록1 지역위치도",
+   "file": "photos/site/lh0000061192/location-b1.jpg",
+   "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=69120983",
+   "crop": "",
+   "w": 1312,
+   "h": 1150,
+   "md5": "e405f28f216f7bcff95f06fa54aada28",
+   "block": "블록1",
+   "lh_tab": "지역위치도",
+   "desc": "",
+   "photo": true
+  },
+  {
    "cat": "siteplan",
    "kind": "단지배치도",
    "label": "단지 배치도",
@@ -24,6 +54,21 @@
    "from": "sheet"
   },
   {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "블록1 단지배치도",
+   "file": "photos/site/lh0000061192/siteplan-b1.jpg",
+   "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=69120985",
+   "crop": "",
+   "w": 1308,
+   "h": 1236,
+   "md5": "0766937a508e3582023c6ebe3216ec45",
+   "block": "블록1",
+   "lh_tab": "단지배치도",
+   "desc": "",
+   "photo": false
+  },
+  {
    "cat": "dongho",
    "kind": "동호배치도",
    "label": "동호배치도",
@@ -33,13 +78,28 @@
    "h": 1516,
    "photo": false,
    "from": "sheet"
+  },
+  {
+   "cat": "dongho",
+   "kind": "동호배치도",
+   "label": "블록1 동호배치도",
+   "file": "photos/site/lh0000061192/dongho-b1.jpg",
+   "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=69120986",
+   "crop": "",
+   "w": 1214,
+   "h": 1516,
+   "md5": "2f70f0b2e99ebdc67c6f2e5fc58ce9b9",
+   "block": "블록1",
+   "lh_tab": "동호배치도",
+   "desc": "",
+   "photo": false
   }
  ],
  "links": [],
  "owner": "LH",
  "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
- "updated": "2026-11-10 10:08",
+ "updated": "2026-11-11 06:51",
  "name": "남양주왕숙 A-2블록 신혼희망타운(공공분양) 잔여세대",
  "row": 78,
- "lh_checked": "2026-11-10"
+ "lh_checked": "2026-11-11"
 }

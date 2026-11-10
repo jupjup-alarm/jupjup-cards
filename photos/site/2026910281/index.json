@@ -4,38 +4,50 @@
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "낮 원경",
+   "label": "단지 낮 원경 조감도",
    "file": "photos/site/2026910281/birdseye.jpg",
    "src": "https://cent.villiv.co.kr/resources/img/main/visual_img_2.jpg",
    "crop": "",
    "w": 1600,
    "h": 739,
    "md5": "a250ce731fb9cac660cf3797ded9ee8a",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "노을 원경",
+   "label": "단지 노을 원경",
    "file": "photos/site/2026910281/birdseye-2.jpg",
    "src": "https://cent.villiv.co.kr/resources/img/main/visual_img_1.jpg",
    "crop": "",
    "w": 1600,
    "h": 739,
    "md5": "6002425165f894aa9955eac71da8b2ad",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "상가 쪽 거리 투시도",
+   "label": "상가 거리 투시도",
    "file": "photos/site/2026910281/birdseye-3.jpg",
    "src": "https://cent.villiv.co.kr/resources/img/main/visual_img_3.jpg",
    "crop": "",
    "w": 1600,
    "h": 739,
    "md5": "cbb8f201c0f5dc9d516c6cd591462fb9",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-11",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   }
  ],
  "links": [
