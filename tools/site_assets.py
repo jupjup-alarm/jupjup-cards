@@ -1,4 +1,4 @@
-"""(청약노트 저장소 note/site_assets.py 사본 — 2026-11-02 줍줍알람용으로 복사. 고칠 때는 양쪽 같이.)
+"""(원본 — 2026-11-10 사용자 결정 "사진 수집기는 하나로": 줍줍알람·청약노트 블로그 모두 이 파일을 쓴다. 청약노트 note/site_assets.py는 옛 사본.)
 분양 홈페이지 자료 수집기: 조감도·단지배치·동호배치·커뮤니티·타입별 평면도·입지 이미지와 E모델하우스 링크.
 
 사용:
@@ -62,6 +62,32 @@ PAGE_FIRST = {"community", "interior", "dongho"}  # 이 페이지의 이미지�
 SKIP_FILE = re.compile(r"(_m\.|_mo\.|_mobile|logo|icon|ico_|btn|button|arrow|close|top\.|go_top|sns|kakao|naver|blank|loading|spinner|bullet|dot|favicon|footer|qr)", re.I)
 BAN_TXT = re.compile(r"(재\s*판매|DB\s*금지)")
 IMG_EXT = re.compile(r"\.(jpe?g|png|webp|gif)(\?|$)", re.I)
+BIG_ATTRS = ("data-zoom", "data-zoom-image", "data-large", "data-large-src", "data-full", "data-full-src", "data-hires", "data-high-res", "data-big", "data-origin", "data-original", "data-lightbox", "data-image")
+SIZE_Q = re.compile(r"^(w|h|width|height|size|resize|quality|q|type|thumb|s|fit|crop|dpr)$", re.I)
+
+
+def original_candidates(src, bigger=()):
+    """화면용으로 줄인 이미지 주소에서 원본 후보 주소들을 만든다(2026-11-04, 사용자: '이미지 링크에서 받으면 화질이 더 좋다')."""
+    from urllib.parse import parse_qsl, urlencode
+    c = [b for b in bigger if b and b != src]
+    pu = urlparse(src)
+    q = [(k, v) for k, v in parse_qsl(pu.query, keep_blank_values=True) if not SIZE_Q.match(k)]
+    if pu.query:
+        c.append(pu._replace(query=urlencode(q)).geturl())
+    path = pu.path
+    for pat, rep in [(r"[_-](thumb|thumbnail|small|sm|s|m|mid|medium|mobile|mo)(?=\.[a-z]+$)", ""), (r"/(thumb|thumbs|thumbnail|small|resize|mobile|m)/", "/"),
+                     (r"-\d{2,4}x\d{2,4}(?=\.[a-z]+$)", ""), (r"_\d{2,4}x\d{2,4}(?=\.[a-z]+$)", ""), (r"/w\d{2,4}/", "/"), (r"/\d{2,4}x\d{2,4}/", "/")]:
+        np_ = re.sub(pat, rep, path, flags=re.I)
+        if np_ != path:
+            c.append(pu._replace(path=np_, query="").geturl())
+            c.append(pu._replace(path=np_).geturl())
+    seen, outl = set(), []
+    for u in c:
+        if u not in seen and u != src:
+            seen.add(u); outl.append(u)
+    return outl[:8]
+
+
 BLOCK_CODES = {401, 403, 406, 429, 451}
 
 
@@ -92,10 +118,7 @@ def photo_like(pim):
 
 
 def house_url(no):
-    try:
-        from market import load_env, odcloud   # 청약노트 저장소(note/market.py)에서만 있음
-    except ImportError:
-        sys.exit("줍줍알람 저장소에서는 --house를 못 써요 → '청약홈API' 탭 홈페이지 열·'청약조사' AH열 주소를 --url로")
+    from market import load_env, odcloud
     env = load_env()
     u = ""
     for ep in ("getAPTLttotPblancDetail", "getRemndrLttotPblancDetail", "getOPTLttotPblancDetail"):  # APT, 무순위·잔여, 임의공급
@@ -131,7 +154,12 @@ class Static:
                     for part in v.split(","):
                         u = part.strip().split(" ")[0]
                         if u:
-                            imgs.append({"src": urljoin(url, u), "alt": im.get("alt", ""), "ctx": ctx_text(im)})
+                            big = [urljoin(url, x.strip().split(" ")[0]) for a2 in ("srcset", "data-srcset") for x in (im.get(a2) or "").split(",") if x.strip()]
+                            big += [urljoin(url, im.get(a2)) for a2 in BIG_ATTRS if im.get(a2)]
+                            pa = im.find_parent("a")
+                            if pa and IMG_EXT.search(pa.get("href", "")):
+                                big.append(urljoin(url, pa["href"]))
+                            imgs.append({"src": urljoin(url, u), "alt": im.get("alt", ""), "ctx": ctx_text(im), "bigger": big})
         css_texts = [st.get_text() for st in soup.find_all("style")] + [t.get("style", "") for t in soup.find_all(style=True)]
         for ln in soup.find_all("link", rel=lambda x: x and "stylesheet" in x):
             try:
@@ -182,10 +210,19 @@ JS_COLLECT = r"""() => {
     for (let i = 0; i < 5 && p && !t; i++) { p = p.parentElement; if (!p) break;
       const h = p.querySelector('h1,h2,h3,h4,strong,.tit,.title,dt'); if (h) t = (h.innerText||'').trim().slice(0,40); }
     return t; };
+  const bigger = (el) => {  // 화면에 보이는 것보다 큰 원본 후보(2026-11-04): srcset 전부, 확대용 속성, 감싼 링크
+    const c = [];
+    ['srcset','data-srcset'].forEach(a => { const v = el.getAttribute(a); if (v) v.split(',').forEach(x => { const u = x.trim().split(' ')[0]; if (u) c.push(u); }); });
+    ['data-zoom','data-zoom-image','data-large','data-large-src','data-full','data-full-src','data-hires','data-high-res','data-big','data-origin','data-original','data-lightbox','data-image'].forEach(a => { const v = el.getAttribute(a); if (v) c.push(v); });
+    const a = el.closest('a'); if (a && a.href && /\.(jpe?g|png|webp)(\?|$)/i.test(a.href)) c.push(a.href);
+    if (a && a.getAttribute('data-src')) c.push(a.getAttribute('data-src'));
+    return c.map(u => { try { return new URL(u, location.href).href; } catch(e) { return ''; } }).filter(Boolean);
+  };
   document.querySelectorAll('img,source').forEach(el => {
     const s = el.currentSrc || el.src || el.getAttribute('data-src') || el.getAttribute('srcset') || '';
-    if (s) out.push({src: s.split(' ')[0], alt: el.alt || '', ctx: near(el)});
-    ['data-src','data-original','data-lazy'].forEach(a => { const v = el.getAttribute(a); if (v) out.push({src: v, alt: el.alt||'', ctx: near(el)}); });
+    const nat = el.naturalWidth ? [el.naturalWidth, el.naturalHeight] : null;
+    if (s) out.push({src: s.split(' ')[0], alt: el.alt || '', ctx: near(el), bigger: bigger(el), shown: nat});
+    ['data-src','data-original','data-lazy'].forEach(a => { const v = el.getAttribute(a); if (v) out.push({src: v, alt: el.alt||'', ctx: near(el), bigger: bigger(el)}); });
   });
   document.querySelectorAll('*').forEach(el => {
     const bg = getComputedStyle(el).backgroundImage;
@@ -214,7 +251,7 @@ class Browser:
         p.on("response", lambda r: seen.append(r.url) if r.request.resource_type == "image" else None)
         try:
             r = p.goto(url, wait_until="networkidle", timeout=40000)
-        except Exception:  # noqa: BLE001  — 추적 스크립트 때문에 조용해지지 않는 사이트: 'load'까지만 기다림
+        except Exception:  # noqa: BLE001  — 추적 스크립트 때문에 조용해지지 않는 사이트: 'load'까지만 기다림 (2026-11-02)
             try:
                 r = p.goto(url, wait_until="load", timeout=40000)
                 p.wait_for_timeout(2500)
@@ -308,7 +345,7 @@ def main():
                 break
             continue
         if re.search(r"(접근\s*차단|Access\s*Denied|접근이\s*제한|차단된\s*IP)", (d.get("title") or "") + " " + (d.get("text") or "")[:400], re.I):
-            blocked = f"{code} 차단 안내 페이지 {url}"   # 200으로 '접근 차단' 화면을 주는 사이트 (2026-11-02 guri.ensvil.com)
+            blocked = f"{code} 차단 안내 페이지 {url}"   # 200으로 '접근 차단' 화면을 주는 사이트 (2026-11-02)
             pages.append({"url": url, "status": code, "error": "blocked page"})
             print(f"차단됨 {blocked} → 이 사이트는 여기서 멈춰요(우회하지 않음)")
             break
@@ -320,7 +357,7 @@ def main():
             if not src.startswith("http") or src in images or re.search(r"(ytimg|youtube|google|kakao|naver|facebook|doubleclick)\.", urlparse(src).netloc) or SKIP_FILE.search(src.rsplit("/", 1)[-1]):
                 continue
             images[src] = {"src": src, "page": url, "page_title": d["title"], "menu": menu, "alt": im.get("alt", ""),
-                           "ctx": im.get("ctx", ""), "page_ban": ban}
+                           "ctx": im.get("ctx", ""), "page_ban": ban, "bigger": im.get("bigger") or []}
         for l in d["links"]:
             h = urldefrag(l.get("href") or "")[0]
             if not h.startswith("http"):
@@ -339,13 +376,34 @@ def main():
     s = requests.Session()
     kept, counters = [], {}
     hashes = set()
-    for im in images.values():
+    def fetch(u, ref):
         try:
-            r = s.get(im["src"], timeout=20, headers={"Referer": im["page"].encode("ascii", "ignore").decode()})
+            r = s.get(u, timeout=20, headers={"Referer": ref.encode("ascii", "ignore").decode()})
         except requests.RequestException:
-            continue
+            return None, 0
         if not r.ok or "image" not in r.headers.get("content-type", "image"):
+            return None, 0
+        try:
+            with Image.open(io.BytesIO(r.content)) as t:
+                return r, t.size[0] * t.size[1]
+        except Exception:  # noqa: BLE001
+            return None, 0
+
+    upgraded = 0
+    for im in images.values():
+        r, area = fetch(im["src"], im["page"])
+        if r is None:
             continue
+        # 원본 후보(감싼 링크·srcset·확대용 속성·크기 파라미터 뺀 주소)에서 더 큰 것을 고른다
+        for cu in original_candidates(im["src"], im.get("bigger") or []):
+            if not cu.startswith("http"):
+                continue
+            r2, a2 = fetch(cu, im["page"])
+            if r2 is not None and a2 > area * 1.1:
+                im["upgraded_from"] = im["src"]; im["src"] = cu
+                r, area = r2, a2
+        if im.get("upgraded_from"):
+            upgraded += 1
         h = hashlib.md5(r.content).hexdigest()
         if h in hashes:
             continue
@@ -368,7 +426,7 @@ def main():
             continue
         try:
             photo = photo_like(pim)
-        except OSError:   # 잘린 파일 (2026-11-02 sujain-pm2)
+        except OSError:   # 잘린 이미지 파일 (2026-11-02)
             continue
         counters[cat] = counters.get(cat, 0) + 1
         dst = out / cat / f"{counters[cat]:02d}_{re.sub(r'[^0-9A-Za-z가-힣._-]', '_', fname)[:60]}"
@@ -381,13 +439,14 @@ def main():
     kept.sort(key=lambda x: (not x["birdseye_candidate"], order.index(x["category"]) if x["category"] in order else 99))
 
     man = {"root": root, "engine": type(eng).__name__, "collected": time.strftime("%Y-%m-%d %H:%M"),
-           "blocked": blocked, "pages": pages, "images": kept, "links": list(links.values()),
+           "blocked": blocked, "upgraded": upgraded, "pages": pages, "images": kept, "links": list(links.values()),
            "counts": {c: sum(1 for k in kept if k["category"] == c) for c in order},
            "birdseye_candidates": [k["file"] for k in kept if k["birdseye_candidate"]]}
     (out / "manifest.json").write_text(json.dumps(man, ensure_ascii=False, indent=1))
     main_cats = ("birdseye", "overview", "site_plan", "dongho", "unit_plan", "community")
     contact([k for k in kept if k["category"] in main_cats or k["birdseye_candidate"]], out, "contact.jpg")
     contact([k for k in kept if not (k["category"] in main_cats or k["birdseye_candidate"])], out, "contact_more.jpg")
+    print("원본으로 바꿔 받은 이미지:", upgraded)
     print("조감도 후보:", man["birdseye_candidates"])
     print("분류별:", {k: v for k, v in man["counts"].items() if v}, "| 링크:", len(links), "| 페이지:", len(pages))
     for l in links.values():

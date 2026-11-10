@@ -118,7 +118,7 @@ def pamphlet_cands(pdf, folder):
 IMG_TABS = {"단지조감도": ("birdseye", "조감도"), "전경사진": ("birdseye", "외관"), "지구조감도": ("location", "입지"),
             "지역조감도": ("location", "입지"), "위치도": ("location", "입지"), "단지배치도": ("siteplan", "단지배치도"),
             "동호배치도": ("dongho", "동호배치도")}
-PLANS_PER_BLOCK = 3
+PLANS_PER_BLOCK = 2   # 2026-11-10 저장소 크기 — 블록마다 주택형 2개(평면도+투시도)
 
 
 def _blk_slug(name, i):
