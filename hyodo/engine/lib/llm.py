@@ -98,13 +98,16 @@ def _call(body, tag, stats, beta=None):
 
 
 def _post(body, beta=None):
-    req = urllib.request.Request(URL, data=json.dumps(body).encode(), method="POST", headers=_headers(beta))
     for i in range(5):
+        req = urllib.request.Request(URL, data=json.dumps(body).encode(), method="POST", headers=_headers(beta))
         try:
             with urllib.request.urlopen(req, timeout=900) as r:
                 return json.loads(r.read())
         except urllib.error.HTTPError as e:
             msg = e.read().decode(errors="replace")[:500]
+            if e.code == 400 and "cache_control" in body and "cache_control" in msg and i < 4:
+                print("[llm] 자동 캐시(cache_control)가 거절됨 → 빼고 다시", file=sys.stderr)
+                body.pop("cache_control"); continue
             if e.code in (429, 500, 502, 503, 529) and i < 4:
                 time.sleep(15 * (i + 1)); continue
             if e.code in (401, 402, 403) or "credit balance" in msg.lower() or "billing" in msg.lower():
@@ -121,7 +124,10 @@ def _usd(model, it, batch):
     p = PRICE.get(model)
     if not p:
         return 0.0
-    c = ((it.get("input_tokens") or 0) * p[0] + (it.get("cache_creation_input_tokens") or 0) * p[1]
+    cc = it.get("cache_creation") or {}
+    w1h = cc.get("ephemeral_1h_input_tokens") or 0          # 1시간 캐시 쓰기는 입력 2배
+    w5m = (it.get("cache_creation_input_tokens") or 0) - w1h
+    c = ((it.get("input_tokens") or 0) * p[0] + w5m * p[1] + w1h * p[0] * 2
          + (it.get("cache_read_input_tokens") or 0) * p[2] + (it.get("output_tokens") or 0) * p[3]) / 1e6
     return c * (0.5 if batch else 1)
 
@@ -138,7 +144,7 @@ def ask(content, system="", model=None, web=False, max_tokens=16000, log=None, t
     """content: 문자열 또는 블록 목록. 서버 도구(web_fetch/web_search/advisor)는 pause_turn을 이어 받는다.
     돌려주는 값: 마지막 답의 글(text 블록을 이은 것)."""
     model = model or MODEL_SMART
-    # 프롬프트 캐시: 서버 도구(fetch·search)를 쓰면 한 요청 안에서도 앞부분(규칙·예시)을 몇십 번 다시 읽는다 → 캐시로 0.1배
+    # 프롬프트 캐시: 서버 도구(fetch·search)를 쓰면 한 요청 안에서도 앞부분(규칙·예시)을 몇십 번 다시 읽는다 → 캐시로 0.05배(5.5 모델)
     if isinstance(content, str):
         content = [{"type": "text", "text": content}]
     content = [dict(b) for b in content]
@@ -147,6 +153,11 @@ def ask(content, system="", model=None, web=False, max_tokens=16000, log=None, t
     body = {"model": model, "max_tokens": max_tokens, "messages": msgs}
     if system:
         body["system"] = [{"type": "text", "text": system, "cache_control": {"type": "ephemeral"}}]
+    # 배치는 몇 분~수십 분 걸려 5분 캐시가 식기 쉬움(pause_turn 이어가기도 새 배치) → 배치일 때는 1시간 캐시(쓰기 2배, 읽기 0.05배)
+    if BATCH:
+        for blk in (body.get("system") or []) + [b for m in msgs for b in m["content"] if isinstance(b, dict)]:
+            if "cache_control" in blk:
+                blk["cache_control"] = {"type": "ephemeral", "ttl": "1h"}
     tools = list(WEB_TOOLS) if web else []
     beta = None
     if advisor:
@@ -155,6 +166,8 @@ def ask(content, system="", model=None, web=False, max_tokens=16000, log=None, t
         beta = ADVISOR_BETA
     if tools:
         body["tools"] = tools
+        # 2026-11-10 자동 캐시: 캐시 지점이 대화 끝으로 따라가서, pause_turn 이어가기 때 앞 대화(fetch·search 결과)를 0.05배로 읽음
+        body["cache_control"] = {"type": "ephemeral", "ttl": "1h"} if BATCH else {"type": "ephemeral"}
     use = {"input_tokens": 0, "output_tokens": 0, "cache_read_input_tokens": 0, "cache_creation_input_tokens": 0,
            "web_fetch": 0, "web_search": 0, "batch": 0, "direct": 0,
            "advisor_calls": 0, "advisor_input_tokens": 0, "advisor_output_tokens": 0, "advisor_errors": [],
