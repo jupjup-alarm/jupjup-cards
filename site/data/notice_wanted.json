@@ -2,25 +2,6 @@
  "how": "ego lite: need에 notice가 있으면 url(청약홈)에서 '모집공고문' PDF → ~/줍줍알람/공고문/<save_as>, pamphlet이 있으면 청약홈·homepage(분양 홈페이지)에서 팸플릿·카탈로그 PDF → ~/줍줍알람/공고문/<pamphlet_as>(여러 개면 -pamphlet2.pdf…), 어디에도 없으면 notice_import.py --no-pamphlet <key>. site가 있으면 homepage에서 평면도·단지배치도·동호배치도·조감도·커뮤니티·단지 둘러보기 그림의 원본 주소(가장 큰 것)를 AI열 형식으로 ~/줍줍알람/공고문/<site_as>에 적고 notice_import.py --site로 받음(그림이 없으면 --no-site <key>). 캡차·차단 화면이면 멈추고 건너뜀(우회 금지).",
  "items": [
   {
-   "key": "2026850055",
-   "title": "힐스테이트 회룡역파크뷰 공공지원민간임대",
-   "rcpt": [
-    "2026-11-10",
-    "2026-11-10"
-   ],
-   "url": "https://www.applyhome.co.kr/ai/aia/selectPRMOLttotPblancDetailView.do?houseManageNo=2026850055&pblancNo=2026850055&houseSecd=03",
-   "homepage": "https://hillstate.co.kr/SALE/1030/main/index",
-   "need": [
-    "notice",
-    "pamphlet",
-    "site"
-   ],
-   "save_as": "2026850055.pdf",
-   "pamphlet_as": "2026850055-pamphlet.pdf",
-   "site_as": "2026850055-site.txt",
-   "owner": "신한자산신탁 주식회사"
-  },
-  {
    "key": "2026910276",
    "title": "검단신도시 AB20-2블록 중흥S-클래스 에듀파크 무순위",
    "rcpt": [
@@ -55,6 +36,82 @@
    "pamphlet_as": "2026940252-pamphlet.pdf",
    "site_as": "2026940252-site.txt",
    "owner": "덕화주택가로주택정비사업조합"
+  },
+  {
+   "key": "2026940247",
+   "title": "수원이목지구 대방 디에트르 더 리체Ⅰ(A4BL) 임의공급",
+   "rcpt": [
+    "2026-11-12",
+    "2026-11-13"
+   ],
+   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940247&pblancNo=2026940247",
+   "homepage": "http://detre-sw.co.kr",
+   "need": [
+    "notice",
+    "pamphlet",
+    "site"
+   ],
+   "save_as": "2026940247.pdf",
+   "pamphlet_as": "2026940247-pamphlet.pdf",
+   "site_as": "2026940247-site.txt",
+   "owner": "디비이엔씨주식회사"
+  },
+  {
+   "key": "2026940251",
+   "title": "해링턴플레이스 노원 센트럴 4차 임의공급",
+   "rcpt": [
+    "2026-11-12",
+    "2026-11-13"
+   ],
+   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940251&pblancNo=2026940251",
+   "homepage": "https://www.harrington495.kr/",
+   "need": [
+    "notice",
+    "pamphlet",
+    "site"
+   ],
+   "save_as": "2026940251.pdf",
+   "pamphlet_as": "2026940251-pamphlet.pdf",
+   "site_as": "2026940251-site.txt",
+   "owner": "주식회사 엘앤피개발"
+  },
+  {
+   "key": "2026940254",
+   "title": "의정부역 센트럴 아이파크 6차 임의공급",
+   "rcpt": [
+    "2026-11-13",
+    "2026-11-13"
+   ],
+   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940254&pblancNo=2026940254",
+   "homepage": "https://www.i-park.com/uijeongbucentral",
+   "need": [
+    "notice",
+    "pamphlet",
+    "site"
+   ],
+   "save_as": "2026940254.pdf",
+   "pamphlet_as": "2026940254-pamphlet.pdf",
+   "site_as": "2026940254-site.txt",
+   "owner": "아이파크현대산업개발(주)"
+  },
+  {
+   "key": "2026910284",
+   "title": "중동역 다채로움 더원 무순위",
+   "rcpt": [
+    "2026-11-16",
+    "2026-11-16"
+   ],
+   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910284&pblancNo=2026910284",
+   "homepage": "http://중동역다채로움더원.com",
+   "need": [
+    "notice",
+    "pamphlet",
+    "site"
+   ],
+   "save_as": "2026910284.pdf",
+   "pamphlet_as": "2026910284-pamphlet.pdf",
+   "site_as": "2026910284-site.txt",
+   "owner": "송내동 성우아파트 소규모재건축정비사업조합"
   },
   {
    "key": "2026910290",
