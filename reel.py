@@ -900,8 +900,20 @@ def voice_segments(spec):
                 a, b = grp[0][0], grp[-1][1]
                 out.append({"file": full, "s0": max(0.0, a - 0.03), "s1": b + 0.06,
                             "spans": [(x - a, y - a) for x, y in grp]})
-            return out
-        WARN.append(f"한 번에 읽은 음성(full.mp3)에서 장면 경계 {n - 1}곳을 못 찾음 → 장면별 파일 사용")
+            # 2026-11-11: 가장 긴 쉼이 장면 경계가 아닐 때가 있음(지축 B-1 — 질문 장면에 다음 장면 첫 문장이 붙어
+            # 자막이 8초 동안 질문만 보임). 장면별 파일(01.mp3…) 말 길이와 견줘 크게 다르면 장면별 파일을 쓴다.
+            ref = []
+            for i in range(n):
+                f = _speed(d / f"{i + 1:02d}.mp3", speed, tmp)
+                sp1 = speech_spans(f, min_pause=0.1) if f and f.exists() else []
+                ref.append(sp1[-1][1] - sp1[0][0] if sp1 else None)
+            bad = [i + 1 for i, (o, r) in enumerate(zip(out, ref))
+                   if r and abs((o["s1"] - o["s0"]) - r) > max(0.8, 0.35 * r)]
+            if not bad:
+                return out
+            WARN.append(f"full.mp3 장면 경계가 장면별 음성과 어긋남(장면 {bad}) → 장면별 파일 사용")
+        else:
+            WARN.append(f"한 번에 읽은 음성(full.mp3)에서 장면 경계 {n - 1}곳을 못 찾음 → 장면별 파일 사용")
     out = []
     for i in range(n):
         f = _speed(d / f"{i + 1:02d}.mp3", speed, tmp)

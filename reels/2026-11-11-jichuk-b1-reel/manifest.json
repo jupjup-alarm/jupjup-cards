@@ -1,0 +1,18 @@
+{
+ "slug": "2026-11-11-jichuk-b1-reel",
+ "duration": 35.92,
+ "voiced": true,
+ "narration_s": 32.2,
+ "mean_db": -18.3,
+ "voice": "voices/486e9d835ec7/",
+ "video": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-11-jichuk-b1-reel/2026-11-11-jichuk-b1-reel.mp4",
+ "cover": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-11-jichuk-b1-reel/2026-11-11-jichuk-b1-reel_thumb.jpg",
+ "size_mb": 17.14,
+ "warnings": [
+  "full.mp3 장면 경계가 장면별 음성과 어긋남(장면 [1, 2, 3, 4, 6]) → 장면별 파일 사용",
+  "호흡: 장면 4 대본에 없는 곳에서 0.32초 쉼 (③ 대본 쉼표 위치 확인)",
+  "호흡: 장면 6 대본에 없는 곳에서 0.38초 쉼 (③ 대본 쉼표 위치 확인)",
+  "호흡: 장면 8 대본에 없는 곳에서 0.33초 쉼 (③ 대본 쉼표 위치 확인)",
+  "사진: 컷 14개 · 서로 다른 사진 6장"
+ ]
+}
