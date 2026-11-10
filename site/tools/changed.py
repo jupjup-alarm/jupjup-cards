@@ -62,7 +62,7 @@ def sources():
         gid = str(r.get("공고ID", "")).strip()
         if not gid:
             continue
-        keys = [k for k in apts if k.startswith(f"mh{gid}-")] or [f"mh{gid}-0"]
+        keys = [k for k in apts if k == f"mh{gid}" or k.startswith(f"mh{gid}-")] or [f"mh{gid}"]
         for k in keys:
             src.setdefault(k, {}).setdefault("마이홈공고", []).append(r)
     # 청약조사 → 공고 key (제목·단지명·별칭·검색 이름이 같은 공고)
@@ -110,6 +110,8 @@ def scan():
         if k not in apts:
             if set(parts) <= {"청약조사", "공고문 첨부"}:
                 continue            # 청약조사에만 있는 이름(공고 전 등)은 아래 '공고 전 후보'로
+            if k in seen and {a: b.get("h") for a, b in seen[k].items()} == {a: b["h"] for a, b in cur.items()}:
+                continue            # 다른 공고 페이지가 이미 담은 공고(정정·중복)로 처리함 표시한 것 — 원자료가 안 바뀌면 다시 안 띄움
             title = (parts.get("청약홈API") or parts.get("LH공고") or (parts.get("마이홈공고") or [{}])[0]).get("주택명") \
                 or (parts.get("LH공고") or {}).get("공고명") or (parts.get("마이홈공고") or [{}])[0].get("공고명", "")
             new.append({"key": k, "title": title, "from": sorted(parts)})

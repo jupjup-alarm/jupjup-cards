@@ -2,42 +2,23 @@
  "how": "ego lite: need에 notice가 있으면 url(청약홈)에서 '모집공고문' PDF → ~/줍줍알람/공고문/<save_as>, pamphlet이 있으면 청약홈·homepage(분양 홈페이지)에서 팸플릿·카탈로그 PDF → ~/줍줍알람/공고문/<pamphlet_as>(여러 개면 -pamphlet2.pdf…), 어디에도 없으면 notice_import.py --no-pamphlet <key>. site가 있으면 homepage에서 평면도·단지배치도·동호배치도·조감도·커뮤니티·단지 둘러보기 그림의 원본 주소(가장 큰 것)를 AI열 형식으로 ~/줍줍알람/공고문/<site_as>에 적고 notice_import.py --site로 받음(그림이 없으면 --no-site <key>). 캡차·차단 화면이면 멈추고 건너뜀(우회 금지).",
  "items": [
   {
-   "key": "2026910279",
-   "title": "봉담자이 프라이드시티 무순위",
+   "key": "2026850055",
+   "title": "힐스테이트 회룡역파크뷰 공공지원민간임대",
    "rcpt": [
     "2026-11-10",
     "2026-11-10"
    ],
-   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910279&pblancNo=2026910279",
-   "homepage": "https://www.idsd.co.kr",
+   "url": "https://www.applyhome.co.kr/ai/aia/selectPRMOLttotPblancDetailView.do?houseManageNo=2026850055&pblancNo=2026850055&houseSecd=03",
+   "homepage": "https://hillstate.co.kr/SALE/1030/main/index",
    "need": [
     "notice",
     "pamphlet",
     "site"
    ],
-   "save_as": "2026910279.pdf",
-   "pamphlet_as": "2026910279-pamphlet.pdf",
-   "site_as": "2026910279-site.txt",
-   "owner": "디에스디삼호(주)"
-  },
-  {
-   "key": "2026910282",
-   "title": "광명 시티프라디움 에듀하임 무순위",
-   "rcpt": [
-    "2026-11-10",
-    "2026-11-10"
-   ],
-   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910282&pblancNo=2026910282",
-   "homepage": "https://광명시티프라디움.com",
-   "need": [
-    "notice",
-    "pamphlet",
-    "site"
-   ],
-   "save_as": "2026910282.pdf",
-   "pamphlet_as": "2026910282-pamphlet.pdf",
-   "site_as": "2026910282-site.txt",
-   "owner": "(주)시티글로벌"
+   "save_as": "2026850055.pdf",
+   "pamphlet_as": "2026850055-pamphlet.pdf",
+   "site_as": "2026850055-site.txt",
+   "owner": "신한자산신탁 주식회사"
   },
   {
    "key": "2026910276",
@@ -49,7 +30,6 @@
    "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910276&pblancNo=2026910276",
    "homepage": "http://www.geomdan-sclass.com",
    "need": [
-    "notice",
     "pamphlet",
     "site"
    ],
@@ -59,99 +39,41 @@
    "owner": "중흥건설(주)"
   },
   {
-   "key": "2026910280",
-   "title": "오남역 서희스타힐스 여의재 3단지 무순위 (조합원 취소분)",
+   "key": "2026940252",
+   "title": "신월동 한양립스(3차) 임의공급",
    "rcpt": [
     "2026-11-11",
-    "2026-11-11"
+    "2026-11-12"
    ],
-   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910280&pblancNo=2026910280",
-   "homepage": "https://www.오남역서희스타힐스여의재.com",
+   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940252&pblancNo=2026940252",
+   "homepage": "",
    "need": [
     "notice",
-    "pamphlet",
-    "site"
+    "pamphlet"
    ],
-   "save_as": "2026910280.pdf",
-   "pamphlet_as": "2026910280-pamphlet.pdf",
-   "site_as": "2026910280-site.txt",
-   "owner": "양지7지구 3단지 지역주택조합"
+   "save_as": "2026940252.pdf",
+   "pamphlet_as": "2026940252-pamphlet.pdf",
+   "site_as": "2026940252-site.txt",
+   "owner": "덕화주택가로주택정비사업조합"
   },
   {
-   "key": "2026910283",
-   "title": "영종하늘도시 A25블록 대성베르힐 5차 무순위",
-   "rcpt": [
-    "2026-11-11",
-    "2026-11-11"
-   ],
-   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910283&pblancNo=2026910283",
-   "homepage": "http://www.yjd-verthill.com",
-   "need": [
-    "notice",
-    "pamphlet",
-    "site"
-   ],
-   "save_as": "2026910283.pdf",
-   "pamphlet_as": "2026910283-pamphlet.pdf",
-   "site_as": "2026910283-site.txt",
-   "owner": "주식회사 인천영종피에프브이"
-  },
-  {
-   "key": "2026000497",
-   "title": "중화역 라온프라이빗 센트로",
+   "key": "2026910290",
+   "title": "청계 노르웨이숲(14차) 무순위",
    "rcpt": [
     "2026-11-16",
-    "2026-11-19"
+    "2026-11-17"
    ],
-   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000497&pblancNo=2026000497",
-   "homepage": "https://www.jh-raon.com",
+   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910290&pblancNo=2026910290",
+   "homepage": "https://청계노르웨이숲.com",
    "need": [
     "notice",
     "pamphlet",
     "site"
    ],
-   "save_as": "2026000497.pdf",
-   "pamphlet_as": "2026000497-pamphlet.pdf",
-   "site_as": "2026000497-site.txt",
-   "owner": "중화3재정비촉진구역 도시환경정비사업 토지등소유자"
-  },
-  {
-   "key": "2026000553",
-   "title": "의정부역 펠리스타워 양우내안애",
-   "rcpt": [
-    "2026-11-16",
-    "2026-11-18"
-   ],
-   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000553&pblancNo=2026000553",
-   "homepage": "https://feliztower-yangwoo.co.kr",
-   "need": [
-    "notice",
-    "pamphlet",
-    "site"
-   ],
-   "save_as": "2026000553.pdf",
-   "pamphlet_as": "2026000553-pamphlet.pdf",
-   "site_as": "2026000553-site.txt",
-   "owner": "의정부동지역주택조합,양우건설(주)"
-  },
-  {
-   "key": "2026000557",
-   "title": "제일풍경채 광주 포에듀",
-   "rcpt": [
-    "2026-11-16",
-    "2026-11-18"
-   ],
-   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000557&pblancNo=2026000557",
-   "homepage": "http://jeil-foredu.co.kr",
-   "need": [
-    "notice",
-    "pamphlet",
-    "site"
-   ],
-   "save_as": "2026000557.pdf",
-   "pamphlet_as": "2026000557-pamphlet.pdf",
-   "site_as": "2026000557-site.txt",
-   "owner": "주식회사 브랜드뉴탄벌"
+   "save_as": "2026910290.pdf",
+   "pamphlet_as": "2026910290-pamphlet.pdf",
+   "site_as": "2026910290-site.txt",
+   "owner": "황학동청계지역주택조합"
   }
  ]
 }

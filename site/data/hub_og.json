@@ -19,6 +19,11 @@
   "image": "photos/99259c46de0b.jpg",
   "pos": "center 60%"
  },
+ "/region/gyeonggi/ansan/": {
+  "credit": "이미지: LH 안산신길2 B-1블록 사이버 견본주택(CG·이미지컷, 실제와 다를 수 있음) 조감도 · 실제와 다를 수 있음",
+  "image": "photos/site/2026000533/birdseye.jpg",
+  "pos": "center 55%"
+ },
  "/region/gyeonggi/anseong/": {
   "credit": "이미지: LH 제공 조감도 · 실제와 다를 수 있음",
   "image": "photos/0b4e39c91123.jpg",
@@ -78,6 +83,11 @@
   "credit": "이미지: 삼환기업 제공 투시도 · 실제와 다를 수 있음",
   "image": "photos/99259c46de0b.jpg",
   "pos": "center 60%"
+ },
+ "/region/gyeonggi/uijeongbu/": {
+  "credit": "이미지: 의정부동지역주택조합,양우건설(주) 조감도 · 실제와 다를 수 있음",
+  "image": "photos/site/2026000553/birdseye.jpg",
+  "pos": "center 55%"
  },
  "/region/incheon/": {
   "credit": "이미지: 숭의역2단지지역주택조합 제공 투시도 · 실제와 다를 수 있음",
