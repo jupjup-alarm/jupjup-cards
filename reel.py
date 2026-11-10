@@ -27,6 +27,7 @@
 - points: rows 2~4개. 한 줄씩 차례로 들어옴.
 - 배치: 핵심 내용은 화면 세로 가운데(피드 4:5 미리보기 영역 y≈285~1635)에 모은다. 위 300px(릴스 탭·계정명),
   아래 420px(캡션), 오른쪽 140px(좋아요·댓글 버튼, y 1000 아래)에는 글자·캐릭터를 두지 않는다.
+  단, 이야기형 자막(.scap)·핵심어(.sword)는 영상 가로 가운데(x=540)에 맞춘다 (2026-11-10 사용자 결정).
 """
 import base64
 import html
@@ -704,7 +705,7 @@ html,body{word-break:keep-all;width:1080px;height:1920px;overflow:hidden;backgro
 .sshade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 22%,rgba(0,0,0,0) 55%,rgba(0,0,0,.45) 100%)}
 .sdim{position:absolute;inset:0;background:rgba(0,0,0,.62);visibility:hidden}
 .scred{position:absolute;right:60px;top:330px;font-size:24px;font-weight:600;color:#fff;background:rgba(0,0,0,.45);padding:4px 12px;border-radius:8px;max-width:700px;text-align:right;visibility:hidden}
-.scap{position:absolute;left:60px;right:150px;top:860px;text-align:center}
+.scap{position:absolute;left:60px;right:60px;top:860px;text-align:center}  /* 2026-11-10: 영상 가로 가운데 (좋아요 버튼 피하던 오른쪽 여백 제거) */
 .cap{visibility:hidden;position:absolute;left:0;right:0;top:0}
 .cap>span{display:inline-block;background:rgba(0,0,0,.62);color:#fff;font-size:52px;font-weight:800;line-height:1.32;padding:12px 26px;border-radius:14px;max-width:870px}
 .cap .unit{background:none;padding:0;border-radius:0;font-size:1em;display:inline}
