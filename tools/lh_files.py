@@ -116,7 +116,7 @@ def pamphlet_cands(pdf, folder):
 
 
 IMG_TABS = {"단지조감도": ("birdseye", "조감도"), "전경사진": ("birdseye", "외관"), "지구조감도": ("location", "입지"),
-            "지역조감도": ("location", "입지"), "위치도": ("location", "입지"), "단지배치도": ("siteplan", "단지배치도"),
+            "지역조감도": ("location", "입지"), "위치도": ("location", "입지"), "지역위치도": ("location", "입지"), "단지배치도": ("siteplan", "단지배치도"),
             "동호배치도": ("dongho", "동호배치도")}
 PLANS_PER_BLOCK = 2   # 2026-11-10 저장소 크기 — 블록마다 주택형 2개(평면도+투시도)
 
@@ -134,7 +134,7 @@ def gallery(page):
     tabs = {(a, b): n.strip() for a, b, n in re.findall(r"onchangeImageTab\('(\d+)','(\d+)'\);\" id=\"tabPlanA\d+\">([^<]+)<", page)}
     out, k = [], {}
     i = page.find("function onchangeImageTab")
-    j = page.find("tabSize = list.length", i)
+    j = page.find("function ", i + 30)   # 임대(03)·분양(02) 갈래 모두 — 2026-11-10 분양 공고는 else 갈래에 목록이 있음
     body = page[i:j] if i >= 0 and j > i else ""
     for no1, sn, desc in re.findall(r'if\((\d+) == no1\)\{\s*list\.push\(\{\s*cmnAhflSn\s*:\s*"(\d+)".*?imgAhflDesc\s*:\s*"([^"]*)"', body, re.S):
         n = k.get(no1, 0)

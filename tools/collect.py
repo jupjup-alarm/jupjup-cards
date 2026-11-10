@@ -240,6 +240,15 @@ def main():
             idx["row"] = r["_row"]
             idx["ai_hash"] = hashlib.md5(ai.encode()).hexdigest()
             note.append("AI열 " + ("받음" if p.returncode == 0 else f"실패 {p.stderr[-80:]}"))
+            m2 = re.search(r"key\s*[:：]\s*([0-9A-Za-z_-]+)", ai)
+            if m2 and m2.group(1) != key:   # LH 공고 + 분양 홈페이지(AI열 key가 다름) → 한 단지 index로 합침 (파일은 그 폴더에 둔 채 경로만)
+                other = load_idx(m2.group(1))
+                have = {im["file"] for im in idx["images"]}
+                for im in other.get("images", []):
+                    if im["file"] not in have:
+                        idx["images"].append({**im, "from": im.get("from", "ai")})
+                idx.setdefault("owner_site", other.get("owner", ""))
+                idx.setdefault("links", []).extend(l for l in other.get("links", []) if l not in idx.get("links", []))
         else:
             hp = homepage_of(r, key, apply_rows)
             if hp and not lh_url and "auto_site" not in idx and sites < a.max_sites:
