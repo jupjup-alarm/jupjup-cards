@@ -4,110 +4,66 @@
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "낮 전경",
+   "label": "단지 낮 전경",
    "file": "photos/site/2026000528/birdseye.jpg",
    "src": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/images/main/visual9.jpg",
    "crop": "",
    "w": 2000,
    "h": 1000,
    "md5": "e3d6e0bbe7b119e57cf594b377cc4f03",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "야경",
+   "label": "단지 야경 전경",
    "file": "photos/site/2026000528/birdseye-2.jpg",
    "src": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/images/main/visual8.jpg",
    "crop": "",
    "w": 2000,
    "h": 1000,
    "md5": "a39195bc5ca4109cea304217b31e0f72",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "단지 조감도",
+   "label": "단지 항공 조감도",
    "file": "photos/site/2026000528/birdseye-3.jpg",
    "src": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/images/info/overview1_261026.jpg",
    "crop": "0,0,1,0.555",
    "w": 1200,
    "h": 823,
    "md5": "d2ebb88e502f5a959b1a21a2d8559c30",
-   "photo": true
-  },
-  {
-   "cat": "siteplan",
-   "kind": "단지배치도",
-   "label": "",
-   "file": "photos/site/2026000528/siteplan.jpg",
-   "src": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/images/complex-info/layout1.jpg",
-   "crop": "0,0.02,1,0.545",
-   "w": 1200,
-   "h": 1380,
-   "md5": "2a3bdacf1d8a8c071de86b119fbc613d",
-   "photo": true
-  },
-  {
-   "cat": "dongho",
-   "kind": "동호배치도",
-   "label": "1701~1709동",
-   "file": "photos/site/2026000528/dongho-1701-1709.jpg",
-   "src": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/images/complex-info/layout1.jpg",
-   "crop": "0,0.595,1,1",
-   "w": 1200,
-   "h": 1065,
-   "md5": "2a3bdacf1d8a8c071de86b119fbc613d",
-   "photo": false
-  },
-  {
-   "cat": "plan",
-   "kind": "평면도",
-   "label": "84A",
-   "file": "photos/site/2026000528/plan-84a.jpg",
-   "src": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/images/space/unit_84a.jpg",
-   "crop": "",
-   "w": 1200,
-   "h": 1746,
-   "md5": "6c99c7ad94e3fee8506cae52b47ee744",
-   "photo": false
-  },
-  {
-   "cat": "plan",
-   "kind": "평면도",
-   "label": "84B",
-   "file": "photos/site/2026000528/plan-84b.jpg",
-   "src": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/images/space/unit_84b.jpg",
-   "crop": "",
-   "w": 1200,
-   "h": 1666,
-   "md5": "ef64f1929db46fd1bfaaf65d519d095f",
-   "photo": false
-  },
-  {
-   "cat": "plan",
-   "kind": "평면도",
-   "label": "84C",
-   "file": "photos/site/2026000528/plan-84c.jpg",
-   "src": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/images/space/unit_84c.jpg",
-   "crop": "",
-   "w": 1200,
-   "h": 1438,
-   "md5": "25421b72d2991b9de4eed8190f6e7f25",
-   "photo": false
+   "photo": true,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "community",
    "kind": "단지둘러보기",
-   "label": "문주",
+   "label": "단지 문주",
    "file": "photos/site/2026000528/community.jpg",
    "src": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/images/complex-info/site-plan1.jpg",
    "crop": "0,0.055,1,0.318",
    "w": 1200,
    "h": 718,
    "md5": "4fbbb2f7ccbabfd7bbc14530f1e6d9f2",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "community",
@@ -119,7 +75,11 @@
    "w": 564,
    "h": 322,
    "md5": "4fbbb2f7ccbabfd7bbc14530f1e6d9f2",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "community",
@@ -131,7 +91,11 @@
    "w": 564,
    "h": 322,
    "md5": "4fbbb2f7ccbabfd7bbc14530f1e6d9f2",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": true,
+   "full": true
   },
   {
    "cat": "community",
@@ -143,7 +107,11 @@
    "w": 564,
    "h": 324,
    "md5": "4fbbb2f7ccbabfd7bbc14530f1e6d9f2",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "community",
@@ -155,7 +123,11 @@
    "w": 564,
    "h": 325,
    "md5": "4fbbb2f7ccbabfd7bbc14530f1e6d9f2",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "community",
@@ -167,31 +139,43 @@
    "w": 564,
    "h": 325,
    "md5": "4fbbb2f7ccbabfd7bbc14530f1e6d9f2",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "community",
    "kind": "커뮤니티",
-   "label": "B1F 평면",
+   "label": "B1F 시설 평면",
    "file": "photos/site/2026000528/community-b1f.jpg",
    "src": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/images/complex-info/community1.jpg",
    "crop": "0,0.04,1,0.37",
    "w": 1200,
    "h": 1012,
    "md5": "de8aba224f160aaa695a1c41a8faa4c9",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-10",
+   "ok": false,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "community",
    "kind": "커뮤니티",
-   "label": "B2F 평면",
+   "label": "B2F 시설 평면",
    "file": "photos/site/2026000528/community-b2f.jpg",
    "src": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/images/complex-info/community1.jpg",
    "crop": "0,0.38,1,0.6",
    "w": 1200,
    "h": 675,
    "md5": "de8aba224f160aaa695a1c41a8faa4c9",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-10",
+   "ok": false,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "community",
@@ -203,19 +187,27 @@
    "w": 396,
    "h": 255,
    "md5": "de8aba224f160aaa695a1c41a8faa4c9",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "community",
    "kind": "커뮤니티",
-   "label": "센트빌 듀플렉스 피트니스",
+   "label": "듀플렉스 피트니스",
    "file": "photos/site/2026000528/community-8.jpg",
    "src": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/images/complex-info/community1.jpg",
    "crop": "0.335,0.695,0.665,0.778",
    "w": 396,
    "h": 255,
    "md5": "de8aba224f160aaa695a1c41a8faa4c9",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "community",
@@ -227,19 +219,27 @@
    "w": 396,
    "h": 255,
    "md5": "de8aba224f160aaa695a1c41a8faa4c9",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "community",
    "kind": "커뮤니티",
-   "label": "키즈 & 맘스 라운지",
+   "label": "키즈&맘스 라운지",
    "file": "photos/site/2026000528/community-10.jpg",
    "src": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/images/complex-info/community1.jpg",
    "crop": "0,0.855,0.33,0.95",
    "w": 396,
    "h": 292,
    "md5": "de8aba224f160aaa695a1c41a8faa4c9",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "community",
@@ -251,7 +251,11 @@
    "w": 396,
    "h": 292,
    "md5": "de8aba224f160aaa695a1c41a8faa4c9",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "community",
@@ -263,7 +267,91 @@
    "w": 396,
    "h": 292,
    "md5": "de8aba224f160aaa695a1c41a8faa4c9",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": false
+  },
+  {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "단지배치도",
+   "file": "photos/site/2026000528/siteplan.jpg",
+   "src": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/images/complex-info/layout1.jpg",
+   "crop": "0,0.02,1,0.545",
+   "w": 1200,
+   "h": 1380,
+   "md5": "2a3bdacf1d8a8c071de86b119fbc613d",
+   "photo": true,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": false
+  },
+  {
+   "cat": "dongho",
+   "kind": "동호배치도",
+   "label": "1701~1709동 호배치",
+   "file": "photos/site/2026000528/dongho-1701-1709.jpg",
+   "src": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/images/complex-info/layout1.jpg",
+   "crop": "0,0.595,1,1",
+   "w": 1200,
+   "h": 1065,
+   "md5": "2a3bdacf1d8a8c071de86b119fbc613d",
+   "photo": false,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "84A 평면도",
+   "file": "photos/site/2026000528/plan-84a.jpg",
+   "src": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/images/space/unit_84a.jpg",
+   "crop": "",
+   "w": 1200,
+   "h": 1746,
+   "md5": "6c99c7ad94e3fee8506cae52b47ee744",
+   "photo": false,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "84B 평면도",
+   "file": "photos/site/2026000528/plan-84b.jpg",
+   "src": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/images/space/unit_84b.jpg",
+   "crop": "",
+   "w": 1200,
+   "h": 1666,
+   "md5": "ef64f1929db46fd1bfaaf65d519d095f",
+   "photo": false,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "84C 평면도",
+   "file": "photos/site/2026000528/plan-84c.jpg",
+   "src": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/images/space/unit_84c.jpg",
+   "crop": "",
+   "w": 1200,
+   "h": 1438,
+   "md5": "25421b72d2991b9de4eed8190f6e7f25",
+   "photo": false,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   }
  ],
  "links": [
@@ -276,5 +364,12 @@
  ],
  "homepage": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/",
  "owner": "경기주택도시공사",
- "updated": "2026-11-09 19:18"
+ "updated": "2026-11-10 10:08",
+ "name": "광교 자연앤 센트레빌(A17BL) 공공분양·지분적립형",
+ "row": 57,
+ "auto_site": {
+  "date": "2026-11-10",
+  "url": "http://www.gwanggyo-centreville.com",
+  "result": "0장 ()"
+ }
 }

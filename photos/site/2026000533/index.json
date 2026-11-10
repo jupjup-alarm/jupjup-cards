@@ -136,7 +136,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "84J",
+   "label": "84J(복층)",
    "file": "photos/site/2026000533/plan-84j.jpg",
    "src": "https://www.lhasg2-b1.co.kr/unit/img/84j.jpg",
    "crop": "",
@@ -204,10 +204,46 @@
    "h": 2400,
    "md5": "cab219f849ac3cfe47cba5557d296d12",
    "photo": false
+  },
+  {
+   "cat": "location",
+   "kind": "입지",
+   "label": "광역 위치(신길온천역·안산역)",
+   "file": "photos/site/2026000533/location.jpg",
+   "src": "https://www.lhasg2-b1.co.kr/business/img/02-2.jpg",
+   "crop": "",
+   "w": 1500,
+   "h": 1351,
+   "md5": "42e4bea5f92d6e8b7ff0682b927a31ed",
+   "photo": false
+  },
+  {
+   "cat": "location",
+   "kind": "입지",
+   "label": "항공 위치도",
+   "file": "photos/site/2026000533/location-2.jpg",
+   "src": "https://www.lhasg2-b1.co.kr/business/img/02-1.jpg",
+   "crop": "",
+   "w": 1500,
+   "h": 1272,
+   "md5": "f193e5e98a9689f4735a150b7147a41a",
+   "photo": true
+  },
+  {
+   "cat": "location",
+   "kind": "입지",
+   "label": "지구 토지이용계획",
+   "file": "photos/site/2026000533/location-3.jpg",
+   "src": "https://www.lhasg2-b1.co.kr/business/img/03.jpg",
+   "crop": "",
+   "w": 1500,
+   "h": 1350,
+   "md5": "190a183c0f09abcadca4c1428a68cda5",
+   "photo": false
   }
  ],
  "links": [],
- "homepage": "https://www.lhasg2-b1.co.kr/",
- "owner": "한국토지주택공사 경기남부지역본부",
- "updated": "2026-11-09 19:18"
+ "homepage": "https://www.lhasg2-b1.co.kr",
+ "owner": "LH 안산신길2 B-1블록 사이버 견본주택(CG·이미지컷, 실제와 다를 수 있음)",
+ "updated": "2026-11-10 10:08"
 }

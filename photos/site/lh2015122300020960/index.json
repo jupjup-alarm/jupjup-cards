@@ -25,6 +25,62 @@
    "photo": true
   },
   {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "블록1 단지조감도",
+   "file": "photos/site/lh2015122300020960/birdseye-b1.jpg",
+   "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=69101985",
+   "crop": "",
+   "w": 1811,
+   "h": 1279,
+   "md5": "947d6425d44782148eb62ca0746bd88d",
+   "block": "블록1",
+   "lh_tab": "단지조감도",
+   "desc": "과천지식정보타운 S12블록 행복주택 단지조감도 입니다.",
+   "photo": true
+  },
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "조감도",
+   "file": "photos/de78b024662f.jpg",
+   "src": "sheet:사진 파일",
+   "w": 1811,
+   "h": 1279,
+   "photo": true,
+   "from": "sheet"
+  },
+  {
+   "cat": "location",
+   "kind": "입지",
+   "label": "블록1 위치도",
+   "file": "photos/site/lh2015122300020960/location-b1.jpg",
+   "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=69101982",
+   "crop": "",
+   "w": 2400,
+   "h": 2017,
+   "md5": "a7363db29369bcbdf947ed777a0f6f2c",
+   "block": "블록1",
+   "lh_tab": "위치도",
+   "desc": "과천지식정보타운 S12블록 행복주택 위치도(교통망도) 입니다.",
+   "photo": false
+  },
+  {
+   "cat": "interior",
+   "kind": "인테리어",
+   "label": "블록1 투시도 16A형(대학생,청년)",
+   "file": "photos/site/lh2015122300020960/interior-b1-16a.jpg",
+   "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=69101724",
+   "crop": "",
+   "w": 1833,
+   "h": 1768,
+   "md5": "c2ac98b03b3481c1ddadffca3260b776",
+   "block": "블록1",
+   "lh_tab": "투시도",
+   "desc": "16A형 평면도 입니다.",
+   "photo": false
+  },
+  {
    "cat": "siteplan",
    "kind": "단지배치도",
    "label": "단지배치도",
@@ -36,6 +92,21 @@
    "photo": false
   },
   {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "블록1 단지배치도",
+   "file": "photos/site/lh2015122300020960/siteplan-b1.jpg",
+   "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=69101984",
+   "crop": "",
+   "w": 2303,
+   "h": 2426,
+   "md5": "9149cde18a573e3d356d2f397c4292e5",
+   "block": "블록1",
+   "lh_tab": "단지배치도",
+   "desc": "과천지식정보타운 S12블록 행복주택 단지배치도 입니다.",
+   "photo": false
+  },
+  {
    "cat": "dongho",
    "kind": "동호배치도",
    "label": "단지배치도·동호배치도",
@@ -44,6 +115,21 @@
    "w": 1890,
    "h": 1161,
    "md5": "81be0cba4806951232895c16c1ba7afd",
+   "photo": false
+  },
+  {
+   "cat": "dongho",
+   "kind": "동호배치도",
+   "label": "블록1 동호배치도",
+   "file": "photos/site/lh2015122300020960/dongho-b1.jpg",
+   "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=69102118",
+   "crop": "",
+   "w": 1921,
+   "h": 2320,
+   "md5": "e30891a85e456a2e7bf466eb1103b55d",
+   "block": "블록1",
+   "lh_tab": "동호배치도",
+   "desc": "과천지식정보타운 S12블록 행복주택 동호배치도 입니다.",
    "photo": false
   },
   {
@@ -122,6 +208,26 @@
    "h": 870,
    "md5": "02d8d22b2cccb5786e9da20323d0d652",
    "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "블록1 평면도 16A형(대학생,청년)",
+   "file": "photos/site/lh2015122300020960/plan-b1-16a.jpg",
+   "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=69101639",
+   "crop": "",
+   "w": 1794,
+   "h": 2833,
+   "md5": "f96ab618a11707620248303202c2bb24",
+   "block": "블록1",
+   "lh_tab": "평면도",
+   "desc": "16A형 평면도 입니다.",
+   "photo": false
   }
- ]
+ ],
+ "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
+ "updated": "2026-11-10 10:06",
+ "name": "과천지식정보타운 S-12블록 행복주택",
+ "row": 37,
+ "lh_checked": "2026-11-10"
 }

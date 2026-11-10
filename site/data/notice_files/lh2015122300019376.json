@@ -1,0 +1,37 @@
+{
+ "key": "lh2015122300019376",
+ "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019376&ccrCnntSysDsCd=03&uppAisTpCd=13&aisTpCd=17&mi=1026",
+ "checked": "2026-11-10 10:08",
+ "files": [
+  {
+   "fileid": "68869881",
+   "name": "[공고문]2026년청년전세임대1순위입주자수시모집(수정).hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "68869885",
+   "name": "[공고문]2026년청년전세임대1순위입주자수시모집(수정).pdf",
+   "kind": "notice",
+   "got": "ok",
+   "md5": "86879cc2451581c4888c7bab6073d138",
+   "pages": 11,
+   "bytes": 255205
+  },
+  {
+   "fileid": "65733877",
+   "name": "1.2026년청년전세임대1순위입주자수시모집QnA.hwp",
+   "kind": "other"
+  },
+  {
+   "fileid": "68824433",
+   "name": "2.개인정보수집이용및제3자제공동의서(양식_수정).hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "65733879",
+   "name": "3.복학확약각서양식.hwp",
+   "kind": "other"
+  }
+ ],
+ "changed": true
+}

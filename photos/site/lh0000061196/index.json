@@ -1,0 +1,34 @@
+{
+ "key": "lh0000061196",
+ "images": [
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "조감도",
+   "file": "photos/c74e2030add5.jpg",
+   "src": "sheet:사진 파일",
+   "w": 1181,
+   "h": 1019,
+   "photo": true,
+   "from": "sheet"
+  },
+  {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "단지 배치도",
+   "file": "photos/layout-ccce73ee97e3.jpg",
+   "src": "sheet:배치도 파일",
+   "w": 1181,
+   "h": 993,
+   "photo": false,
+   "from": "sheet"
+  }
+ ],
+ "links": [],
+ "owner": "LH",
+ "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
+ "updated": "2026-11-10 10:08",
+ "name": "안산신길2지구 B-1블록 공공분양주택(본청약)",
+ "row": 58,
+ "ai_hash": "673a48ae2b37e0f431c0795ac27aa1e8"
+}

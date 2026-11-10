@@ -1,0 +1,31 @@
+{
+ "key": "lh2015122300020973",
+ "images": [
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "조감도",
+   "file": "photos/32f488c55711.jpg",
+   "src": "sheet:사진 파일",
+   "w": 1000,
+   "h": 718,
+   "photo": true,
+   "from": "sheet"
+  },
+  {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "단지 배치도",
+   "file": "photos/layout-c320334f9eb4.jpg",
+   "src": "sheet:배치도 파일",
+   "w": 1653,
+   "h": 2338,
+   "photo": false,
+   "from": "sheet"
+  }
+ ],
+ "links": [],
+ "name": "평택송화 국민임대 예비입주자",
+ "row": 97,
+ "updated": "2026-11-10 10:08"
+}

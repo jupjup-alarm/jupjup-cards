@@ -1,0 +1,67 @@
+{
+ "key": "lh2015122300019550",
+ "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019550&ccrCnntSysDsCd=03&uppAisTpCd=13&aisTpCd=17&mi=1026",
+ "checked": "2026-11-10 10:07",
+ "files": [
+  {
+   "fileid": "68868726",
+   "name": "[공고문]2026년신혼·신생아전세임대Ⅰ입주자수시모집(수정).hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "68868733",
+   "name": "[공고문]2026년신혼·신생아전세임대Ⅰ입주자수시모집(수정).pdf",
+   "kind": "notice",
+   "got": "ok",
+   "md5": "a96996f54aa6e378dbc6222152fcb6aa",
+   "pages": 15,
+   "bytes": 326844
+  },
+  {
+   "fileid": "66096106",
+   "name": "1.2026년신혼신생아전세임대ⅠㆍⅡ주요문의사항QnA.hwp",
+   "kind": "other"
+  },
+  {
+   "fileid": "66096107",
+   "name": "2-1.금융정보등(금융ㆍ신용ㆍ보험정보)제공동의서및유의사항.hwp",
+   "kind": "other"
+  },
+  {
+   "fileid": "66096108",
+   "name": "2-2.샘플_금융정보제공동의서.pdf",
+   "kind": "form"
+  },
+  {
+   "fileid": "66096109",
+   "name": "3.자산보유사실확인서및유의사항.hwp",
+   "kind": "other"
+  },
+  {
+   "fileid": "68824797",
+   "name": "4.개인정보수집이용및제3자제공동의서(양식_수정).hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "66096111",
+   "name": "5.한부모가족세대구성확인서.hwp",
+   "kind": "other"
+  },
+  {
+   "fileid": "66096112",
+   "name": "6.예비신혼부부세대구성확인서.hwp",
+   "kind": "other"
+  },
+  {
+   "fileid": "66096113",
+   "name": "7.예비신혼부부전세임대신청위임장.hwp",
+   "kind": "other"
+  },
+  {
+   "fileid": "66096114",
+   "name": "8.예비신혼부부전세임대신청확인서.hwp",
+   "kind": "other"
+  }
+ ],
+ "changed": true
+}

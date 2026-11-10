@@ -25,6 +25,72 @@
    "photo": true
   },
   {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "조감도",
+   "file": "photos/8609481ea067.jpg",
+   "src": "sheet:사진 파일",
+   "w": 4967,
+   "h": 3508,
+   "photo": true,
+   "from": "sheet"
+  },
+  {
+   "cat": "interior",
+   "kind": "인테리어",
+   "label": "84A 거실(견본)",
+   "file": "photos/site/lh0000061198/interior-84a-living.jpg",
+   "src": "LH 인천가정2 B2블록 공공분양 팸플릿(2026.4) p.6",
+   "w": 1019,
+   "h": 868,
+   "md5": "d27b4eeaa1577fe798c94fea38237f9e",
+   "photo": true
+  },
+  {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "B2블록",
+   "file": "photos/site/lh0000061198/siteplan.jpg",
+   "src": "LH 인천가정2 B2블록 공공분양 팸플릿(2026.4) p.5",
+   "w": 1888,
+   "h": 1334,
+   "md5": "909a2cced2c55777af7c1a4ec49f939b",
+   "photo": false
+  },
+  {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "단지 배치도",
+   "file": "photos/layout-f573afe7edcb.jpg",
+   "src": "sheet:배치도 파일",
+   "w": 8651,
+   "h": 7308,
+   "photo": false,
+   "from": "sheet"
+  },
+  {
+   "cat": "dongho",
+   "kind": "동호배치도",
+   "label": "B2블록 201~207동 (전체 308세대 기준)",
+   "file": "photos/site/lh0000061198/dongho.jpg",
+   "src": "LH 인천가정2 B2블록 공공분양 팸플릿(2026.4) p.15",
+   "w": 1890,
+   "h": 1260,
+   "md5": "96debfec46700515eec523fe017fae16",
+   "photo": false
+  },
+  {
+   "cat": "dongho",
+   "kind": "동호배치도",
+   "label": "동호배치도",
+   "file": "photos/dongho-12e6e8d9a34b.jpg",
+   "src": "sheet:동호배치도 파일",
+   "w": 2598,
+   "h": 3425,
+   "photo": false,
+   "from": "sheet"
+  },
+  {
    "cat": "plan",
    "kind": "평면도",
    "label": "84A",
@@ -56,39 +122,6 @@
    "h": 904,
    "md5": "3526dcd5119c84ccd392afb5dc82ce89",
    "photo": false
-  },
-  {
-   "cat": "siteplan",
-   "kind": "단지배치도",
-   "label": "B2블록",
-   "file": "photos/site/lh0000061198/siteplan.jpg",
-   "src": "LH 인천가정2 B2블록 공공분양 팸플릿(2026.4) p.5",
-   "w": 1888,
-   "h": 1334,
-   "md5": "909a2cced2c55777af7c1a4ec49f939b",
-   "photo": false
-  },
-  {
-   "cat": "dongho",
-   "kind": "동호배치도",
-   "label": "B2블록 201~207동 (전체 308세대 기준)",
-   "file": "photos/site/lh0000061198/dongho.jpg",
-   "src": "LH 인천가정2 B2블록 공공분양 팸플릿(2026.4) p.15",
-   "w": 1890,
-   "h": 1260,
-   "md5": "96debfec46700515eec523fe017fae16",
-   "photo": false
-  },
-  {
-   "cat": "interior",
-   "kind": "인테리어",
-   "label": "84A 거실(견본)",
-   "file": "photos/site/lh0000061198/interior-84a-living.jpg",
-   "src": "LH 인천가정2 B2블록 공공분양 팸플릿(2026.4) p.6",
-   "w": 1019,
-   "h": 868,
-   "md5": "d27b4eeaa1577fe798c94fea38237f9e",
-   "photo": true
   }
  ],
  "links": [
@@ -101,5 +134,8 @@
  ],
  "homepage": "",
  "note": "공고 첨부 LH 분양 팸플릿(2026.4)에서 잘라 씀. 84A·A1·A2, 84B·B1은 구조가 같아 평면 하나씩. 동호배치도는 전체 308세대 기준(잔여 동·호 아님). 실내 사진은 견본 사진 (2026-11-04)",
- "updated": "2026-11-04 22:30"
+ "updated": "2026-11-10 10:08",
+ "name": "인천가정2 B2블록 공공분양 잔여세대 (순번추첨 동호지정)",
+ "row": 61,
+ "lh_checked": "2026-11-10"
 }

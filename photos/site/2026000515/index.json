@@ -4,14 +4,18 @@
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "단지 전경",
+   "label": "단지 전경 조감도",
    "file": "photos/site/2026000515/birdseye.jpg",
    "src": "https://pg2.lynn.co.kr/upload/editor/1bef1b49d77841a4bae5f6ee3a4b791d.png",
    "crop": "0,0,1,0.37",
    "w": 1100,
    "h": 588,
    "md5": "c74c600b3c4c5a12512f2b0cf6595c1c",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   }
  ],
  "links": [],

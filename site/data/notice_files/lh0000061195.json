@@ -1,0 +1,46 @@
+{
+ "key": "lh0000061195",
+ "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061195&ccrCnntSysDsCd=02&uppAisTpCd=05&aisTpCd=05&mi=1027",
+ "checked": "2026-11-10 10:06",
+ "files": [
+  {
+   "fileid": "69171326",
+   "name": "(정정)시흥거모S-1BL공공분양입주자모집공고문(최종).hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69171330",
+   "name": "(정정)시흥거모S-1BL공공분양입주자모집공고문(최종).pdf",
+   "kind": "notice",
+   "got": "ok",
+   "md5": "c9092b3e96ce101317976af985bcdb0a",
+   "pages": 41,
+   "bytes": 1590334
+  },
+  {
+   "fileid": "69171209",
+   "name": "(정정)시흥거모S-1BL공공분양팸플릿(최종).pdf",
+   "kind": "pamphlet",
+   "got": "ok",
+   "md5": "768d155dcdd0aefc3e67ad9d8e35f658",
+   "pages": 18,
+   "bytes": 40578179
+  },
+  {
+   "fileid": "69168038",
+   "name": "개인정보수집이용및제3자제공동의서.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69168030",
+   "name": "위임장.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69168041",
+   "name": "주택취득자금조달및입주계획서.hwpx",
+   "kind": "other"
+  }
+ ],
+ "changed": true
+}

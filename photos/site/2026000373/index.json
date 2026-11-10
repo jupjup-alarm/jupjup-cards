@@ -5,26 +5,34 @@
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "단지 전체(항공 투시도)",
+   "label": "단지 항공 조감도",
    "file": "photos/site/2026000373/birdseye.jpg",
    "src": "SH 고덕강일지구 3단지 입주자모집공고(2026.10.16) 팸플릿 p.8",
    "crop": "0,770,1890,2160",
    "w": 1890,
    "h": 1390,
    "md5": "02bc810a8d1ee4fc44e21525f2ff5477",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "siteplan",
    "kind": "단지배치도",
-   "label": "3단지 총 1,305세대 · 타입별 색 구분",
+   "label": "단지배치도(타입별 색)",
    "file": "photos/site/2026000373/siteplan.jpg",
    "src": "SH 고덕강일지구 3단지 입주자모집공고(2026.10.16) 팸플릿 p.9",
    "crop": "0,300,1890,2420",
    "w": 1890,
    "h": 2120,
    "md5": "ce6bfde1c103d05c72dfeaf3a404137a",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "dongho",
@@ -36,7 +44,11 @@
    "w": 1890,
    "h": 2140,
    "md5": "84c872f316b97ad7fc990ff975a6e9f2",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "dongho",
@@ -48,7 +60,11 @@
    "w": 1890,
    "h": 2140,
    "md5": "af3c8ea2cdb2975dac95b34cabc33f73",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "dongho",
@@ -60,7 +76,11 @@
    "w": 1890,
    "h": 2140,
    "md5": "80878223bb732d6000729bbc9b973feb",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "dongho",
@@ -72,7 +92,11 @@
    "w": 1890,
    "h": 2140,
    "md5": "28e26a3192a493edfca73edd3bc7b1ac",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "dongho",
@@ -84,55 +108,75 @@
    "w": 1890,
    "h": 2140,
    "md5": "3831ee9fbe461e26fd12ac7ae31afacb",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "49C1 평면도 (확장형)",
+   "label": "49C1 평면도",
    "file": "photos/site/2026000373/plan-49c.jpg",
    "src": "SH 고덕강일지구 3단지 입주자모집공고(2026.10.16) 팸플릿 p.17",
    "crop": "0,300,1890,2250",
    "w": 1890,
    "h": 1950,
    "md5": "9fdf5edd361801345c288ff0153cfd76",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "49F 평면도 (확장형)",
+   "label": "49F 평면도",
    "file": "photos/site/2026000373/plan-49f.jpg",
    "src": "SH 고덕강일지구 3단지 입주자모집공고(2026.10.16) 팸플릿 p.22",
    "crop": "0,300,1890,2250",
    "w": 1890,
    "h": 1950,
    "md5": "e6325c09f7b4253e4014cb53e077c106",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "59B 평면도 (확장형)",
+   "label": "59B 평면도",
    "file": "photos/site/2026000373/plan-59b.jpg",
    "src": "SH 고덕강일지구 3단지 입주자모집공고(2026.10.16) 팸플릿 p.29",
    "crop": "0,300,1890,2250",
    "w": 1890,
    "h": 1950,
    "md5": "b04b0ed954dc69a14ca494914508b8f5",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "59G 평면도 (확장형)",
+   "label": "59G 평면도",
    "file": "photos/site/2026000373/plan-59g.jpg",
    "src": "SH 고덕강일지구 3단지 입주자모집공고(2026.10.16) 팸플릿 p.36",
    "crop": "0,300,1890,2250",
    "w": 1890,
    "h": 1950,
    "md5": "629343f7f00365ba4536cb482a48716f",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   }
  ],
  "links": [],

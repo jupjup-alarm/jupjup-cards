@@ -4,14 +4,18 @@
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "단지 전경",
+   "label": "단지 노을 전경 조감도",
    "file": "photos/site/2026000499/birdseye.jpg",
    "src": "https://jije.forena.co.kr/img/main/main3.jpg",
    "crop": "",
    "w": 1920,
    "h": 988,
    "md5": "68491ba3492f4ada47bbc67f6c9402c0",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   }
  ],
  "links": [],

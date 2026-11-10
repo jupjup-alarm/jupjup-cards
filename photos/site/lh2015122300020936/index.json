@@ -14,6 +14,32 @@
    "photo": true
   },
   {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "블록1 단지조감도",
+   "file": "photos/site/lh2015122300020936/birdseye-b1.jpg",
+   "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=69163602",
+   "crop": "",
+   "w": 1205,
+   "h": 788,
+   "md5": "85ab7199117a4428b1f8bd913efc9b4f",
+   "block": "블록1",
+   "lh_tab": "단지조감도",
+   "desc": "구리갈매역세권 A-1BL 단지조감도",
+   "photo": true
+  },
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "조감도",
+   "file": "photos/74cac851de49.jpg",
+   "src": "sheet:사진 파일",
+   "w": 1205,
+   "h": 788,
+   "photo": true,
+   "from": "sheet"
+  },
+  {
    "cat": "siteplan",
    "kind": "단지배치도",
    "label": "단지배치도",
@@ -22,6 +48,21 @@
    "w": 1092,
    "h": 1456,
    "md5": "796784f901a2a6ae56a6f905bfcce94f",
+   "photo": false
+  },
+  {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "블록1 단지배치도",
+   "file": "photos/site/lh2015122300020936/siteplan-b1.jpg",
+   "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=69163451",
+   "crop": "",
+   "w": 747,
+   "h": 742,
+   "md5": "baa69004a5cc29f2f93f466abc276c31",
+   "block": "블록1",
+   "lh_tab": "단지배치도",
+   "desc": "구리갈매역세권 A-1BL 단지배치도",
    "photo": false
   },
   {
@@ -90,5 +131,10 @@
    "md5": "ba8465aa3a9d80204ad8d51e4845e8e0",
    "photo": false
   }
- ]
+ ],
+ "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
+ "updated": "2026-11-10 10:06",
+ "name": "구리갈매역세권 A-1블록 신혼희망타운 행복주택",
+ "row": 38,
+ "lh_checked": "2026-11-10"
 }

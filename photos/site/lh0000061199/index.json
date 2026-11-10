@@ -47,6 +47,138 @@
    "photo": true
   },
   {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "조감도",
+   "file": "photos/bcbb5a4fe52a.jpg",
+   "src": "sheet:사진 파일",
+   "w": 1417,
+   "h": 1002,
+   "photo": true,
+   "from": "sheet"
+  },
+  {
+   "cat": "interior",
+   "kind": "인테리어",
+   "label": "A-2 55A 거실(견본)",
+   "file": "photos/site/lh0000061199/interior-a2-55a-living.jpg",
+   "src": "LH 고양장항 A-2블록 신혼희망타운 팸플릿(2023.9) p.9",
+   "w": 1890,
+   "h": 1046,
+   "md5": "1593f08e9bf403c0d70a884962167218",
+   "photo": true
+  },
+  {
+   "cat": "interior",
+   "kind": "인테리어",
+   "label": "A-2 55A 주방(견본)",
+   "file": "photos/site/lh0000061199/interior-a2-55a-kitchen.jpg",
+   "src": "LH 고양장항 A-2블록 신혼희망타운 팸플릿(2023.9) p.9",
+   "w": 1890,
+   "h": 1342,
+   "md5": "728ac03ed14fe4d1371dd147a8835095",
+   "photo": true
+  },
+  {
+   "cat": "interior",
+   "kind": "인테리어",
+   "label": "A-5 56A 침실(견본)",
+   "file": "photos/site/lh0000061199/interior-a5-56a-room.jpg",
+   "src": "LH 고양장항 A-4·A-5블록 신혼희망타운 팸플릿(2020.12) p.17",
+   "w": 1696,
+   "h": 1121,
+   "md5": "59253f497b1b3e20193bf1ed8562ab28",
+   "photo": true
+  },
+  {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "A-2",
+   "file": "photos/site/lh0000061199/siteplan-a2.jpg",
+   "src": "LH 고양장항 A-2블록 신혼희망타운 팸플릿(2023.9) p.16",
+   "w": 925,
+   "h": 1102,
+   "md5": "7eac9b5064282d70d81f183cfaa27bdf",
+   "photo": false
+  },
+  {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "A-4",
+   "file": "photos/site/lh0000061199/siteplan-a4.jpg",
+   "src": "LH 고양장항 A-4·A-5블록 신혼희망타운 팸플릿(2020.12) p.13",
+   "w": 1219,
+   "h": 1493,
+   "md5": "f8e528fe55cb6a70d516ed06436945d1",
+   "photo": false
+  },
+  {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "A-5",
+   "file": "photos/site/lh0000061199/siteplan-a5.jpg",
+   "src": "LH 고양장항 A-4·A-5블록 신혼희망타운 팸플릿(2020.12) p.21",
+   "w": 1219,
+   "h": 1493,
+   "md5": "a71dfcf9008bb268861214ba3d350f9a",
+   "photo": false
+  },
+  {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "단지 배치도",
+   "file": "photos/layout-88ef861d2b5e.jpg",
+   "src": "sheet:배치도 파일",
+   "w": 1299,
+   "h": 919,
+   "photo": false,
+   "from": "sheet"
+  },
+  {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "단지 배치도",
+   "file": "photos/layout-aab1eacc7d81.jpg",
+   "src": "sheet:배치도 파일",
+   "w": 1299,
+   "h": 918,
+   "photo": false,
+   "from": "sheet"
+  },
+  {
+   "cat": "dongho",
+   "kind": "동호배치도",
+   "label": "A-2 201~205동",
+   "file": "photos/site/lh0000061199/dongho-a2.jpg",
+   "src": "LH 고양장항 A-2블록 신혼희망타운 팸플릿(2023.9) p.16",
+   "w": 852,
+   "h": 1205,
+   "md5": "90ba633e99e42bd0e2baf46aed28c78a",
+   "photo": false
+  },
+  {
+   "cat": "dongho",
+   "kind": "동호배치도",
+   "label": "A-4 401~411동",
+   "file": "photos/site/lh0000061199/dongho-a4.jpg",
+   "src": "LH 고양장항 A-4·A-5블록 신혼희망타운 팸플릿(2020.12) p.13",
+   "w": 1332,
+   "h": 1625,
+   "md5": "889444c3985185aef2d5c3b04ca8ee5e",
+   "photo": false
+  },
+  {
+   "cat": "dongho",
+   "kind": "동호배치도",
+   "label": "A-5 501~508동",
+   "file": "photos/site/lh0000061199/dongho-a5.jpg",
+   "src": "LH 고양장항 A-4·A-5블록 신혼희망타운 팸플릿(2020.12) p.21",
+   "w": 1389,
+   "h": 1550,
+   "md5": "6372315a380a839489c19fda8e0f875e",
+   "photo": false
+  },
+  {
    "cat": "plan",
    "kind": "평면도",
    "label": "A-2 46A",
@@ -89,109 +221,12 @@
    "h": 746,
    "md5": "5b084621abc4e81336a9160d3cf7f4ea",
    "photo": false
-  },
-  {
-   "cat": "siteplan",
-   "kind": "단지배치도",
-   "label": "A-2",
-   "file": "photos/site/lh0000061199/siteplan-a2.jpg",
-   "src": "LH 고양장항 A-2블록 신혼희망타운 팸플릿(2023.9) p.16",
-   "w": 925,
-   "h": 1102,
-   "md5": "7eac9b5064282d70d81f183cfaa27bdf",
-   "photo": false
-  },
-  {
-   "cat": "dongho",
-   "kind": "동호배치도",
-   "label": "A-2 201~205동",
-   "file": "photos/site/lh0000061199/dongho-a2.jpg",
-   "src": "LH 고양장항 A-2블록 신혼희망타운 팸플릿(2023.9) p.16",
-   "w": 852,
-   "h": 1205,
-   "md5": "90ba633e99e42bd0e2baf46aed28c78a",
-   "photo": false
-  },
-  {
-   "cat": "siteplan",
-   "kind": "단지배치도",
-   "label": "A-4",
-   "file": "photos/site/lh0000061199/siteplan-a4.jpg",
-   "src": "LH 고양장항 A-4·A-5블록 신혼희망타운 팸플릿(2020.12) p.13",
-   "w": 1219,
-   "h": 1493,
-   "md5": "f8e528fe55cb6a70d516ed06436945d1",
-   "photo": false
-  },
-  {
-   "cat": "dongho",
-   "kind": "동호배치도",
-   "label": "A-4 401~411동",
-   "file": "photos/site/lh0000061199/dongho-a4.jpg",
-   "src": "LH 고양장항 A-4·A-5블록 신혼희망타운 팸플릿(2020.12) p.13",
-   "w": 1332,
-   "h": 1625,
-   "md5": "889444c3985185aef2d5c3b04ca8ee5e",
-   "photo": false
-  },
-  {
-   "cat": "siteplan",
-   "kind": "단지배치도",
-   "label": "A-5",
-   "file": "photos/site/lh0000061199/siteplan-a5.jpg",
-   "src": "LH 고양장항 A-4·A-5블록 신혼희망타운 팸플릿(2020.12) p.21",
-   "w": 1219,
-   "h": 1493,
-   "md5": "a71dfcf9008bb268861214ba3d350f9a",
-   "photo": false
-  },
-  {
-   "cat": "dongho",
-   "kind": "동호배치도",
-   "label": "A-5 501~508동",
-   "file": "photos/site/lh0000061199/dongho-a5.jpg",
-   "src": "LH 고양장항 A-4·A-5블록 신혼희망타운 팸플릿(2020.12) p.21",
-   "w": 1389,
-   "h": 1550,
-   "md5": "6372315a380a839489c19fda8e0f875e",
-   "photo": false
-  },
-  {
-   "cat": "interior",
-   "kind": "인테리어",
-   "label": "A-2 55A 거실(견본)",
-   "file": "photos/site/lh0000061199/interior-a2-55a-living.jpg",
-   "src": "LH 고양장항 A-2블록 신혼희망타운 팸플릿(2023.9) p.9",
-   "w": 1890,
-   "h": 1046,
-   "md5": "1593f08e9bf403c0d70a884962167218",
-   "photo": true
-  },
-  {
-   "cat": "interior",
-   "kind": "인테리어",
-   "label": "A-2 55A 주방(견본)",
-   "file": "photos/site/lh0000061199/interior-a2-55a-kitchen.jpg",
-   "src": "LH 고양장항 A-2블록 신혼희망타운 팸플릿(2023.9) p.9",
-   "w": 1890,
-   "h": 1342,
-   "md5": "728ac03ed14fe4d1371dd147a8835095",
-   "photo": true
-  },
-  {
-   "cat": "interior",
-   "kind": "인테리어",
-   "label": "A-5 56A 침실(견본)",
-   "file": "photos/site/lh0000061199/interior-a5-56a-room.jpg",
-   "src": "LH 고양장항 A-4·A-5블록 신혼희망타운 팸플릿(2020.12) p.17",
-   "w": 1696,
-   "h": 1121,
-   "md5": "59253f497b1b3e20193bf1ed8562ab28",
-   "photo": true
   }
  ],
  "links": [],
  "homepage": "",
  "note": "사용자가 올린 LH 최초 분양 팸플릿(A-2 2023.9 · A-4·A-5 2020.12)에서 잘라 씀. 56A는 A-4·A-5 평면이 같아 A-5 쪽 하나만. 실내 사진은 견본 사진 (2026-11-04)",
- "updated": "2026-11-04 21:40"
+ "updated": "2026-11-10 10:08",
+ "name": "고양장항 A-2·A-4·A-5블록 신혼희망타운(공공분양) 잔여세대",
+ "row": 79
 }

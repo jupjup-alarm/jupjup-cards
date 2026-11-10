@@ -1,0 +1,34 @@
+{
+ "key": "lh0000061195",
+ "images": [
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "조감도",
+   "file": "photos/81ac1d02c7e8.jpg",
+   "src": "sheet:사진 파일",
+   "w": 2361,
+   "h": 2397,
+   "photo": true,
+   "from": "sheet"
+  },
+  {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "단지 배치도",
+   "file": "photos/layout-8270ff5f6db8.jpg",
+   "src": "sheet:배치도 파일",
+   "w": 2356,
+   "h": 2284,
+   "photo": false,
+   "from": "sheet"
+  }
+ ],
+ "links": [],
+ "owner": "LH",
+ "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
+ "updated": "2026-11-10 10:06",
+ "name": "시흥거모지구 S-1블록 공공분양주택",
+ "row": 12,
+ "lh_checked": "2026-11-10"
+}

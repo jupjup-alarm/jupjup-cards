@@ -1,0 +1,42 @@
+{
+ "key": "lh0000061201",
+ "images": [
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "조감도",
+   "file": "photos/0b4e39c91123.jpg",
+   "src": "sheet:사진 파일",
+   "w": 1296,
+   "h": 888,
+   "photo": true,
+   "from": "sheet"
+  },
+  {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "단지 배치도",
+   "file": "photos/layout-8f44b8f1e9cd.jpg",
+   "src": "sheet:배치도 파일",
+   "w": 1228,
+   "h": 830,
+   "photo": false,
+   "from": "sheet"
+  },
+  {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "단지 배치도",
+   "file": "photos/layout-56a7568c89a8.jpg",
+   "src": "sheet:배치도 파일",
+   "w": 761,
+   "h": 770,
+   "photo": false,
+   "from": "sheet"
+  }
+ ],
+ "links": [],
+ "name": "평택·안성 10년 공공임대(리츠) 예비입주자 — 통장·소득·자산 무관",
+ "row": 94,
+ "updated": "2026-11-10 10:08"
+}

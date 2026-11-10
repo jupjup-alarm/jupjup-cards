@@ -1,0 +1,51 @@
+{
+ "key": "lh0000061196",
+ "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061196&ccrCnntSysDsCd=02&uppAisTpCd=05&aisTpCd=05&mi=1027",
+ "checked": "2026-11-10 10:08",
+ "files": [
+  {
+   "fileid": "69227279",
+   "name": "안산신길2B-1입주자공고문(최종).hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69227281",
+   "name": "안산신길2B-1입주자공고문(최종).pdf",
+   "kind": "notice",
+   "got": "ok",
+   "md5": "3d9ee1b81fa44a13debc1c59666637fc",
+   "pages": 52,
+   "bytes": 1686339
+  },
+  {
+   "fileid": "69227653",
+   "name": "안산신길2B-1블록_팸플릿최종.pdf",
+   "kind": "pamphlet",
+   "got": "ok",
+   "md5": "9c4d61dfcce7a7e7f9844cb3f5b660b4",
+   "pages": 29,
+   "bytes": 38113033
+  },
+  {
+   "fileid": "69227255",
+   "name": "1.위임장.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69227257",
+   "name": "2-1.개인정보수집이용및제3자제공동의서(사전청약당첨자용).hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69227259",
+   "name": "2-2.개인정보수집이용및제3자제공동의서(본청약자용).hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69227264",
+   "name": "3.주택취득자금조달및입주계획서.hwpx",
+   "kind": "other"
+  }
+ ],
+ "changed": true
+}

@@ -4,122 +4,162 @@
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "낮 전경",
+   "label": "단지 낮 전경 조감도",
    "file": "photos/site/2026000527/birdseye.jpg",
    "src": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/images/main/visual9.jpg",
    "crop": "",
    "w": 2000,
    "h": 1000,
    "md5": "e3d6e0bbe7b119e57cf594b377cc4f03",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "야경",
+   "label": "단지 야경 조감도",
    "file": "photos/site/2026000527/birdseye-2.jpg",
    "src": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/images/main/visual8.jpg",
    "crop": "",
    "w": 2000,
    "h": 1000,
    "md5": "a39195bc5ca4109cea304217b31e0f72",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "단지 조감도",
+   "label": "단지 항공 조감도",
    "file": "photos/site/2026000527/birdseye-3.jpg",
    "src": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/images/info/overview1_261026.jpg",
    "crop": "0,0,1,0.555",
    "w": 1200,
    "h": 823,
    "md5": "d2ebb88e502f5a959b1a21a2d8559c30",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "siteplan",
    "kind": "단지배치도",
-   "label": "",
+   "label": "단지배치도",
    "file": "photos/site/2026000527/siteplan.jpg",
    "src": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/images/complex-info/layout1.jpg",
    "crop": "0,0.02,1,0.545",
    "w": 1200,
    "h": 1380,
    "md5": "2a3bdacf1d8a8c071de86b119fbc613d",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "dongho",
    "kind": "동호배치도",
-   "label": "1701~1709동",
+   "label": "1701~1709동 배치",
    "file": "photos/site/2026000527/dongho-1701-1709.jpg",
    "src": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/images/complex-info/layout1.jpg",
    "crop": "0,0.595,1,1",
    "w": 1200,
    "h": 1065,
    "md5": "2a3bdacf1d8a8c071de86b119fbc613d",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "59A",
+   "label": "59A 평면도",
    "file": "photos/site/2026000527/plan-59a.jpg",
    "src": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/images/space/unit_59a.jpg",
    "crop": "",
    "w": 1200,
    "h": 1777,
    "md5": "bcdb6e69456c0d80418d2ee4698f64b0",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "59B",
+   "label": "59B 평면도",
    "file": "photos/site/2026000527/plan-59b.jpg",
    "src": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/images/space/unit_59b_261102.jpg",
    "crop": "",
    "w": 1200,
    "h": 1756,
    "md5": "d77b9f3863bd3ca97f989560a4105b3b",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "59C",
+   "label": "59C 평면도",
    "file": "photos/site/2026000527/plan-59c.jpg",
    "src": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/images/space/unit_59c.jpg",
    "crop": "",
    "w": 1200,
    "h": 1440,
    "md5": "cb00f9eabf424542eff6450ffdf20570",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "59D",
+   "label": "59D 평면도",
    "file": "photos/site/2026000527/plan-59d.jpg",
    "src": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/images/space/unit_59d.jpg",
    "crop": "",
    "w": 1200,
    "h": 1756,
    "md5": "f3b08de605ce7ebcd7b5678f761f4e96",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "community",
    "kind": "단지둘러보기",
-   "label": "문주",
+   "label": "단지 정문 문주",
    "file": "photos/site/2026000527/community.jpg",
    "src": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/images/complex-info/site-plan1.jpg",
    "crop": "0,0.055,1,0.318",
    "w": 1200,
    "h": 718,
    "md5": "4fbbb2f7ccbabfd7bbc14530f1e6d9f2",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "community",
@@ -131,7 +171,11 @@
    "w": 564,
    "h": 322,
    "md5": "4fbbb2f7ccbabfd7bbc14530f1e6d9f2",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "community",
@@ -143,7 +187,11 @@
    "w": 564,
    "h": 322,
    "md5": "4fbbb2f7ccbabfd7bbc14530f1e6d9f2",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "community",
@@ -155,7 +203,11 @@
    "w": 564,
    "h": 324,
    "md5": "4fbbb2f7ccbabfd7bbc14530f1e6d9f2",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "community",
@@ -167,7 +219,11 @@
    "w": 564,
    "h": 325,
    "md5": "4fbbb2f7ccbabfd7bbc14530f1e6d9f2",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "community",
@@ -179,31 +235,43 @@
    "w": 564,
    "h": 325,
    "md5": "4fbbb2f7ccbabfd7bbc14530f1e6d9f2",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "community",
    "kind": "커뮤니티",
-   "label": "B1F 평면",
+   "label": "B1F 시설 평면",
    "file": "photos/site/2026000527/community-b1f.jpg",
    "src": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/images/complex-info/community1.jpg",
    "crop": "0,0.04,1,0.37",
    "w": 1200,
    "h": 1012,
    "md5": "de8aba224f160aaa695a1c41a8faa4c9",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-10",
+   "ok": false,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "community",
    "kind": "커뮤니티",
-   "label": "B2F 평면",
+   "label": "B2F 시설 평면",
    "file": "photos/site/2026000527/community-b2f.jpg",
    "src": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/images/complex-info/community1.jpg",
    "crop": "0,0.38,1,0.6",
    "w": 1200,
    "h": 675,
    "md5": "de8aba224f160aaa695a1c41a8faa4c9",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-10",
+   "ok": false,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "community",
@@ -215,19 +283,27 @@
    "w": 396,
    "h": 255,
    "md5": "de8aba224f160aaa695a1c41a8faa4c9",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "community",
    "kind": "커뮤니티",
-   "label": "센트빌 듀플렉스 피트니스",
+   "label": "듀플렉스 피트니스",
    "file": "photos/site/2026000527/community-8.jpg",
    "src": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/images/complex-info/community1.jpg",
    "crop": "0.335,0.695,0.665,0.778",
    "w": 396,
    "h": 255,
    "md5": "de8aba224f160aaa695a1c41a8faa4c9",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "community",
@@ -239,7 +315,11 @@
    "w": 396,
    "h": 255,
    "md5": "de8aba224f160aaa695a1c41a8faa4c9",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "community",
@@ -251,7 +331,11 @@
    "w": 396,
    "h": 292,
    "md5": "de8aba224f160aaa695a1c41a8faa4c9",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "community",
@@ -263,7 +347,11 @@
    "w": 396,
    "h": 292,
    "md5": "de8aba224f160aaa695a1c41a8faa4c9",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "community",
@@ -275,7 +363,11 @@
    "w": 396,
    "h": 292,
    "md5": "de8aba224f160aaa695a1c41a8faa4c9",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   }
  ],
  "links": [
