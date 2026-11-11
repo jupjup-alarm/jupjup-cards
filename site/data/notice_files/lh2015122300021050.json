@@ -1,0 +1,22 @@
+{
+ "key": "lh2015122300021050",
+ "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300021050&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=09&mi=1026",
+ "checked": "2026-11-12 07:19",
+ "files": [
+  {
+   "fileid": "69382122",
+   "name": "수원우만3영구임대주택예비입주자모집공고문(2026.11.11.).hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69382093",
+   "name": "수원우만3영구임대주택예비입주자모집공고문(2026.11.11.).pdf",
+   "kind": "notice",
+   "got": "ok",
+   "md5": "21bab27b3abfaaa652c24f1d970f2e5d",
+   "pages": 36,
+   "bytes": 876022
+  }
+ ],
+ "changed": true
+}

@@ -11,10 +11,43 @@
    "h": 480,
    "photo": true,
    "from": "sheet"
+  },
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "블록1 단지조감도",
+   "file": "photos/site/lh2015122300021026/birdseye-b1.jpg",
+   "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=24546481",
+   "crop": "",
+   "w": 640,
+   "h": 480,
+   "md5": "515bb73a6b6d1546081c68c3b8130815",
+   "block": "블록1",
+   "lh_tab": "단지조감도",
+   "desc": "단지조감도",
+   "photo": true
+  },
+  {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "블록1 단지배치도",
+   "file": "photos/site/lh2015122300021026/siteplan-b1.jpg",
+   "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=24546482",
+   "crop": "",
+   "w": 640,
+   "h": 480,
+   "md5": "5ad8d27900d1af42df81be7ac5674b38",
+   "block": "블록1",
+   "lh_tab": "단지배치도",
+   "desc": "단지배치도",
+   "photo": false
   }
  ],
  "links": [],
  "name": "인천논현2단지 국민임대 예비입주자(정정)",
  "row": 95,
- "updated": "2026-11-10 10:08"
+ "updated": "2026-11-12 07:25",
+ "owner": "LH",
+ "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
+ "lh_checked": "2026-11-12"
 }

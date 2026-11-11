@@ -1,0 +1,42 @@
+{
+ "key": "lh2015122300021050",
+ "images": [
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "블록1 평면도 39.87",
+   "file": "photos/site/lh2015122300021050/plan-b1-39-87.jpg",
+   "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=29769539",
+   "crop": "",
+   "w": 794,
+   "h": 1123,
+   "md5": "264ecae2e25328d5f6c4e2b6fd9d487f",
+   "block": "블록1",
+   "lh_tab": "평면도",
+   "desc": "",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "블록1 평면도 42.93",
+   "file": "photos/site/lh2015122300021050/plan-b1-42-93.jpg",
+   "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=35046914",
+   "crop": "",
+   "w": 666,
+   "h": 876,
+   "md5": "b341a8d369b0dad3d9f9057a0c5bedbf",
+   "block": "블록1",
+   "lh_tab": "평면도",
+   "desc": "평면도",
+   "photo": false
+  }
+ ],
+ "links": [],
+ "owner": "LH",
+ "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
+ "updated": "2026-11-12 07:19",
+ "name": "수원우만3 영구임대주택 예비입주자 모집(500호)",
+ "row": 134,
+ "lh_checked": "2026-11-12"
+}

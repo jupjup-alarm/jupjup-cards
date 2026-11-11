@@ -36,6 +36,36 @@
    "from": "sheet"
   },
   {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "블록1 단지조감도",
+   "file": "photos/site/lh0000061200/birdseye-b1.jpg",
+   "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=69254834",
+   "crop": "",
+   "w": 992,
+   "h": 701,
+   "md5": "1fd4a396ce03036dbaa72f01940a85d1",
+   "block": "블록1",
+   "lh_tab": "단지조감도",
+   "desc": "",
+   "photo": true
+  },
+  {
+   "cat": "location",
+   "kind": "입지",
+   "label": "블록1 지역위치도",
+   "file": "photos/site/lh0000061200/location-b1.jpg",
+   "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=69254835",
+   "crop": "",
+   "w": 945,
+   "h": 778,
+   "md5": "3cb29429d70073c687a842068c7c72b5",
+   "block": "블록1",
+   "lh_tab": "지역위치도",
+   "desc": "",
+   "photo": true
+  },
+  {
    "cat": "interior",
    "kind": "인테리어",
    "label": "59B 거실(견본)",
@@ -102,6 +132,21 @@
    "from": "sheet"
   },
   {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "블록1 단지배치도",
+   "file": "photos/site/lh0000061200/siteplan-b1.jpg",
+   "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=69254836",
+   "crop": "",
+   "w": 2800,
+   "h": 2481,
+   "md5": "92a83a603ae55e94856ea4f8555fd8de",
+   "block": "블록1",
+   "lh_tab": "단지배치도",
+   "desc": "",
+   "photo": false
+  },
+  {
    "cat": "dongho",
    "kind": "동호배치도",
    "label": "101~106동",
@@ -122,6 +167,21 @@
    "h": 3674,
    "photo": false,
    "from": "sheet"
+  },
+  {
+   "cat": "dongho",
+   "kind": "동호배치도",
+   "label": "블록1 동호배치도",
+   "file": "photos/site/lh0000061200/dongho-b1.jpg",
+   "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=69254838",
+   "crop": "",
+   "w": 2450,
+   "h": 3000,
+   "md5": "8830b72c9d7b6962a3a54d448c980fad",
+   "block": "블록1",
+   "lh_tab": "동호배치도",
+   "desc": "",
+   "photo": false
   },
   {
    "cat": "plan",
@@ -149,7 +209,9 @@
  "links": [],
  "homepage": "",
  "note": "사용자가 올린 LH 최초 분양 팸플릿(2021.9, 고양지축 B-1블록 공공분양)에서 잘라 씀. 이번 잔여세대 타입(59B·84A)의 평면·실내만. 실내 사진은 견본 사진 (2026-11-04)",
- "updated": "2026-11-10 10:08",
+ "updated": "2026-11-12 07:25",
  "name": "고양지축 B-1블록 공공분양 잔여세대(지축역북한산비바힐스)",
- "row": 80
+ "row": 80,
+ "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
+ "lh_checked": "2026-11-12"
 }

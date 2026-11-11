@@ -2,9 +2,25 @@
  "key": "2026910284",
  "images": [
   {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "단지 낮 조감도",
+   "file": "photos/site/2026910284/birdseye.jpg",
+   "src": "http://xn--2j1b9hun72mdquifbid72sy0i.com/bon/img/mimg01.jpg",
+   "crop": "",
+   "w": 2000,
+   "h": 1269,
+   "md5": "74930c6f57af0e7cf98fbbbb24318527",
+   "photo": true,
+   "checked": "2026-11-12",
+   "ok": true,
+   "name_shown": false,
+   "full": true
+  },
+  {
    "cat": "overview",
-   "kind": "overview",
-   "label": "overview",
+   "kind": "단지배치도",
+   "label": "",
    "file": "photos/site/2026910284/overview-auto-1.jpg",
    "src": "http://xn--2j1b9hun72mdquifbid72sy0i.com/bon/img/dan/01cont01.jpg",
    "w": 1972,
@@ -78,8 +94,8 @@
   },
   {
    "cat": "plan",
-   "kind": "plan",
-   "label": "plan",
+   "kind": "평면도",
+   "label": "54",
    "file": "photos/site/2026910284/plan-auto-2.jpg",
    "src": "http://xn--2j1b9hun72mdquifbid72sy0i.com/bon/img/fam/54.jpg?v01",
    "w": 1500,
@@ -150,6 +166,22 @@
    "ok": true,
    "name_shown": false,
    "full": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "84B 평면도",
+   "file": "photos/site/2026910284/plan-84b.jpg",
+   "src": "http://xn--2j1b9hun72mdquifbid72sy0i.com/bon/img/fam/84b.jpg?v01",
+   "crop": "",
+   "w": 1500,
+   "h": 919,
+   "md5": "b533d74226d1636ae892e84c07406660",
+   "photo": false,
+   "checked": "2026-11-12",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   }
  ],
  "links": [],
@@ -161,5 +193,7 @@
   "url": "http://중동역다채로움더원.com",
   "result": "10장 (overview 3, dongho 1, plan 6)"
  },
- "updated": "2026-11-11 09:08"
+ "updated": "2026-11-12 07:24",
+ "owner": "송내동 성우아파트 소규모재건축정비사업조합 분양 홈페이지",
+ "ai_hash": "98dbb489c8571e533d5c6e8017ea350b"
 }

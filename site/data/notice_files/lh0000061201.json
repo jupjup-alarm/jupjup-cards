@@ -1,24 +1,24 @@
 {
  "key": "lh0000061201",
- "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061206&ccrCnntSysDsCd=02&uppAisTpCd=06&aisTpCd=08&mi=1026",
- "checked": "2026-11-09 06:55",
+ "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061201&ccrCnntSysDsCd=02&uppAisTpCd=06&aisTpCd=08&mi=1026",
+ "checked": "2026-11-12 07:25",
  "files": [
   {
-   "fileid": "69325736",
-   "name": "공고_261105_평택시.안성시지역10년공공임대주택예비입주자모집공고문(261105).hwpx",
+   "fileid": "69270206",
+   "name": "결재_261030_평택시.안성시지역10년공공임대주택예비입주자모집공고문(261030).hwpx",
    "kind": "other"
   },
   {
-   "fileid": "69325753",
-   "name": "공고_261105_평택시.안성시지역10년공공임대주택예비입주자모집공고문(261105).pdf",
+   "fileid": "69270187",
+   "name": "결재_261030_평택시.안성시지역10년공공임대주택예비입주자모집공고문(261030).pdf",
    "kind": "notice",
    "got": "ok",
-   "md5": "9cdc7e2a459cd78d6309bd43956c5946",
+   "md5": "a6ab90b8be636187be11d5f62ce1c98c",
    "pages": 21,
-   "bytes": 628004
+   "bytes": 628005
   },
   {
-   "fileid": "69325756",
+   "fileid": "69270227",
    "name": "공고문첨부_팜플렛자료(261105공고)리츠5개지구.zip",
    "kind": "other"
   }

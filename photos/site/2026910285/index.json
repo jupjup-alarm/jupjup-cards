@@ -4,14 +4,18 @@
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "호수 쪽 낮 전경",
+   "label": "호수 쪽 노을 전경",
    "file": "photos/site/2026910285/birdseye.jpg",
    "src": "https://xn--2i0bq5hvjp1kpzchxro8a528e.kr/img/apt_img.jpg",
    "crop": "",
    "w": 926,
    "h": 929,
    "md5": "db9eb7c57693c1af353fac8471c771b3",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-12",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "birdseye",
@@ -23,7 +27,11 @@
    "w": 926,
    "h": 465,
    "md5": "533652f73ef5bf91933da64ed5a8d65a",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-12",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   }
  ],
  "links": [],

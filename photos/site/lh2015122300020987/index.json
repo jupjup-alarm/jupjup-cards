@@ -13,6 +13,36 @@
    "from": "sheet"
   },
   {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "블록1 단지조감도",
+   "file": "photos/site/lh2015122300020987/birdseye-b1.jpg",
+   "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=26746553",
+   "crop": "",
+   "w": 640,
+   "h": 480,
+   "md5": "ad474103da910d87527501941b3c99dc",
+   "block": "블록1",
+   "lh_tab": "단지조감도",
+   "desc": "단지조감도",
+   "photo": true
+  },
+  {
+   "cat": "location",
+   "kind": "입지",
+   "label": "블록1 지역조감도",
+   "file": "photos/site/lh2015122300020987/location-b1.jpg",
+   "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=26746555",
+   "crop": "",
+   "w": 640,
+   "h": 480,
+   "md5": "f528c41da8773782226edd519405f6fe",
+   "block": "블록1",
+   "lh_tab": "지역조감도",
+   "desc": "지역조감도",
+   "photo": true
+  },
+  {
    "cat": "siteplan",
    "kind": "단지배치도",
    "label": "단지 배치도",
@@ -22,10 +52,43 @@
    "h": 480,
    "photo": false,
    "from": "sheet"
+  },
+  {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "블록1 단지배치도",
+   "file": "photos/site/lh2015122300020987/siteplan-b1.jpg",
+   "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=26746554",
+   "crop": "",
+   "w": 640,
+   "h": 480,
+   "md5": "cc513d96750d455f63ea75175479a518",
+   "block": "블록1",
+   "lh_tab": "단지배치도",
+   "desc": "단지배치도",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "블록1 평면도 39",
+   "file": "photos/site/lh2015122300020987/plan-b1-39.jpg",
+   "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=27293133",
+   "crop": "",
+   "w": 709,
+   "h": 1165,
+   "md5": "c7b1f1ec6601729f4e7038af636c0340",
+   "block": "블록1",
+   "lh_tab": "평면도",
+   "desc": "",
+   "photo": false
   }
  ],
  "links": [],
  "name": "인천 남동구 국민임대 예비입주자(인천논현3단지)",
  "row": 96,
- "updated": "2026-11-10 10:08"
+ "updated": "2026-11-12 07:25",
+ "owner": "LH",
+ "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
+ "lh_checked": "2026-11-12"
 }

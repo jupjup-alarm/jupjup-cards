@@ -13,6 +13,21 @@
    "from": "sheet"
   },
   {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "블록1 단지조감도",
+   "file": "photos/site/lh2015122300020973/birdseye-b1.jpg",
+   "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=24545611",
+   "crop": "",
+   "w": 1000,
+   "h": 718,
+   "md5": "304752cf3742783782d2c18450cedcba",
+   "block": "블록1",
+   "lh_tab": "단지조감도",
+   "desc": "단지조감도",
+   "photo": true
+  },
+  {
    "cat": "siteplan",
    "kind": "단지배치도",
    "label": "단지 배치도",
@@ -22,10 +37,28 @@
    "h": 2338,
    "photo": false,
    "from": "sheet"
+  },
+  {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "블록1 단지배치도",
+   "file": "photos/site/lh2015122300020973/siteplan-b1.jpg",
+   "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=24545615",
+   "crop": "",
+   "w": 1653,
+   "h": 2338,
+   "md5": "e16fc4db0feee46bccb2795d3712b83b",
+   "block": "블록1",
+   "lh_tab": "단지배치도",
+   "desc": "단지배치도",
+   "photo": false
   }
  ],
  "links": [],
  "name": "평택송화 국민임대 예비입주자",
  "row": 97,
- "updated": "2026-11-10 10:08"
+ "updated": "2026-11-12 07:25",
+ "owner": "LH",
+ "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
+ "lh_checked": "2026-11-12"
 }

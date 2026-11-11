@@ -1,0 +1,61 @@
+{
+ "key": "2026940250",
+ "images": [
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "교복 모녀 스톡사진",
+   "file": "photos/site/2026940250/overview-auto-1.jpg",
+   "src": "https://www.arteragd.co.kr/images/img_main_visual01.jpg?1",
+   "w": 1920,
+   "h": 1000,
+   "photo": true,
+   "from": "auto",
+   "checked": "2026-11-12",
+   "ok": false,
+   "name_shown": false,
+   "full": false
+  },
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "지하철 스톡사진",
+   "file": "photos/site/2026940250/overview-auto-2.jpg",
+   "src": "https://www.arteragd.co.kr/images/img_main_visual02.jpg?3",
+   "w": 1920,
+   "h": 1000,
+   "photo": true,
+   "from": "auto",
+   "checked": "2026-11-12",
+   "ok": false,
+   "name_shown": false,
+   "full": false
+  },
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "가족 노을 스톡사진",
+   "file": "photos/site/2026940250/overview-auto-3.jpg",
+   "src": "https://www.arteragd.co.kr/images/img_main_visual03.jpg?1",
+   "w": 1920,
+   "h": 1000,
+   "photo": true,
+   "from": "auto",
+   "checked": "2026-11-12",
+   "ok": false,
+   "name_shown": false,
+   "full": false
+  }
+ ],
+ "links": [],
+ "name": "고덕신도시 아테라 A-63블록 공공분양주택(3차) 임의공급",
+ "row": 130,
+ "homepage": "https://www.arteragd.co.kr",
+ "auto_site": {
+  "date": "2026-11-12",
+  "url": "https://www.arteragd.co.kr",
+  "tries": 1,
+  "result": "3장 (overview 3)"
+ },
+ "updated": "2026-11-12 07:24"
+}

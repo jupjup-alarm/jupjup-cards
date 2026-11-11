@@ -1,0 +1,46 @@
+{
+ "key": "lh2015122300021052",
+ "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300021052&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=10&mi=1026",
+ "checked": "2026-11-12 07:19",
+ "files": [
+  {
+   "fileid": "69385652",
+   "name": "[공고문]인천산곡A1블록행복주택(산곡솔마루아파트)예비입주자모집(`26.11.11.).hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69385666",
+   "name": "[공고문]인천산곡A1블록행복주택(산곡솔마루아파트)예비입주자모집(`26.11.11.).pdf",
+   "kind": "notice",
+   "got": "ok",
+   "md5": "d966903dd2b19c10aec4b9e943b1722a",
+   "pages": 28,
+   "bytes": 1104713
+  },
+  {
+   "fileid": "69385680",
+   "name": "인천산곡A1블록행복주택팸플릿.pdf",
+   "kind": "pamphlet",
+   "got": "ok",
+   "md5": "e6fdbc4a85626175626083bbb1f138f3",
+   "pages": 10,
+   "bytes": 44239821
+  },
+  {
+   "fileid": "69385802",
+   "name": "(양식1)공통제출서류(예비자중복선정,개인정보수집,자산보유,금융정보)_전원필수제출.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69385812",
+   "name": "(양식2)추가제출서류(예비신혼부부신청시)_해당자만제출.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69385817",
+   "name": "(양식3)위임장(현장대리인신청시)_해당자만제출.hwpx",
+   "kind": "other"
+  }
+ ],
+ "changed": true
+}

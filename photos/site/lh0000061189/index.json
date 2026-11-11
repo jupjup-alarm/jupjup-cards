@@ -4,18 +4,22 @@
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "조감도",
+   "label": "단지 조감도",
    "file": "photos/5fa99f659dc5.jpg",
    "src": "sheet:사진 파일",
    "w": 1815,
    "h": 1654,
    "photo": true,
-   "from": "sheet"
+   "from": "sheet",
+   "checked": "2026-11-12",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "블록1 단지조감도",
+   "label": "단지 조감도(중복)",
    "file": "photos/site/lh0000061189/birdseye-b1.jpg",
    "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=69173647",
    "crop": "",
@@ -25,12 +29,16 @@
    "block": "블록1",
    "lh_tab": "단지조감도",
    "desc": "",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-12",
+   "ok": true,
+   "name_shown": false,
+   "full": true
   },
   {
    "cat": "location",
    "kind": "입지",
-   "label": "블록1 지역위치도",
+   "label": "지역 위치도",
    "file": "photos/site/lh0000061189/location-b1.jpg",
    "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=69173615",
    "crop": "",
@@ -40,7 +48,11 @@
    "block": "블록1",
    "lh_tab": "지역위치도",
    "desc": "",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-12",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "siteplan",
@@ -51,12 +63,16 @@
    "w": 1397,
    "h": 2362,
    "photo": false,
-   "from": "sheet"
+   "from": "sheet",
+   "checked": "2026-11-12",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   },
   {
    "cat": "siteplan",
    "kind": "단지배치도",
-   "label": "블록1 단지배치도",
+   "label": "단지 배치도(중복)",
    "file": "photos/site/lh0000061189/siteplan-b1.jpg",
    "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=69173613",
    "crop": "",
@@ -66,7 +82,11 @@
    "block": "블록1",
    "lh_tab": "단지배치도",
    "desc": "",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-12",
+   "ok": true,
+   "name_shown": false,
+   "full": false
   }
  ],
  "links": [],

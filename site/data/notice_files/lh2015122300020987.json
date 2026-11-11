@@ -1,39 +1,39 @@
 {
  "key": "lh2015122300020987",
- "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300021031&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
- "checked": "2026-11-09 06:55",
+ "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300020987&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
+ "checked": "2026-11-12 07:25",
  "files": [
   {
-   "fileid": "69334526",
+   "fileid": "69190884",
    "name": "인천시남동구지역국민임대예비입주자모집(26.11.05.).hwpx",
    "kind": "other"
   },
   {
-   "fileid": "69334527",
+   "fileid": "69190885",
    "name": "인천시남동구지역국민임대예비입주자모집(26.11.05.).pdf",
    "kind": "notice",
    "got": "ok",
-   "md5": "22e0be93b760c5d516c30916a82b6671",
+   "md5": "5f64d89e53725958f7a7b21711bd7b80",
    "pages": 17,
-   "bytes": 585030
+   "bytes": 585181
   },
   {
-   "fileid": "69334531",
+   "fileid": "69190890",
    "name": "마이마이서비스고객매뉴얼(v6).hwpx",
    "kind": "other"
   },
   {
-   "fileid": "69334533",
+   "fileid": "69190891",
    "name": "마이마이서비스고객매뉴얼(v6).pdf",
    "kind": "form"
   },
   {
-   "fileid": "69334528",
+   "fileid": "69190887",
    "name": "제출서류양식(현장대행).hwpx",
    "kind": "other"
   },
   {
-   "fileid": "69334530",
+   "fileid": "69190889",
    "name": "제출서류양식(현장대행).pdf",
    "kind": "form"
   }
