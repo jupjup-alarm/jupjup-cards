@@ -100,6 +100,37 @@ def pamphlet_images(pdf, folder, limit=40):
     return out
 
 
+def notice_images(pdf, folder, limit=12):
+    """공고문 PDF 그림 (2026-11-11 — 홈페이지가 없거나 막힌 단지용): 큰 그림(pamphlet_images와 같은 기준) +
+    pdftoppm이 있으면 '배치도·동호·평면·위치도' 글자가 있는 쪽을 통째로 그림으로(선으로 그린 배치도는 그림 파일이 아니라서).
+    → folder/cand-NN.jpg (+ cand-pNN.jpg). collect.py가 팸플릿처럼 검수 대기로 넣는다."""
+    out = pamphlet_images(pdf, folder, limit=limit)
+    if not shutil.which("pdftoppm"):
+        return out
+    import tempfile
+    from PIL import Image
+    try:
+        if shutil.which("pdftotext"):
+            pages = subprocess.run(["pdftotext", "-layout", str(pdf), "-"], capture_output=True, text=True, timeout=300).stdout.split("\f")
+        else:
+            from pypdf import PdfReader
+            pages = [(pg.extract_text() or "") for pg in PdfReader(str(pdf)).pages]
+    except Exception:  # noqa: BLE001
+        return out
+    want = [i + 1 for i, t in enumerate(pages) if re.search(r"(단지\s*)?배치도|동\s*·?\s*호수?\s*배치|평면도|위치도", t) and len(t.strip()) < 2500][:6]
+    for pno in want:
+        with tempfile.TemporaryDirectory() as td:
+            subprocess.run(["pdftoppm", "-r", "130", "-f", str(pno), "-l", str(pno), "-jpeg", str(pdf), f"{td}/p"], capture_output=True, timeout=300)
+            for f in Path(td).glob("p*.jpg"):
+                with Image.open(f) as im:
+                    im = im.convert("RGB")
+                    im.thumbnail((1600, 1600))
+                    dst = folder / f"cand-p{pno:02d}.jpg"
+                    im.save(dst, "JPEG", quality=82)
+                    out.append({"file": str(dst.relative_to(ROOT)), "w": im.width, "h": im.height})
+    return out
+
+
 def load_meta(key):
     p = OUT_F / f"{key}.json"
     return p, (json.loads(p.read_text()) if p.exists() else {"key": key, "source": "ego lite (사용자 브라우저)", "files": []})
@@ -177,6 +208,12 @@ def main():
             (OUT_T / f"{key}.txt").write_text(f"===== {p.name} =====\n{txt}", encoding="utf-8")
             rec["text_by"] = how
             print(f"공고문 저장: {key} ({len(txt):,}자, {how})")
+            try:
+                c = notice_images(p, PAM / key / "notice")
+                rec["cands"] = len(c)
+                print(f"공고문 그림: {key} {len(c)}장 → pamphlets/{key}/notice/")
+            except Exception as e:  # noqa: BLE001
+                print(f"공고문 그림 실패: {key} {e}")
         else:
             sub = PAM / key / (m.group(2) or "1")
             c = pamphlet_images(p, sub)

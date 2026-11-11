@@ -12,12 +12,18 @@
      없고 '공식 홈페이지'/청약홈 '홈페이지' 주소가 있으면 tools/site_assets.py로 훑어 분류별 상위 몇 장을 자동으로 넣는다 (from "auto", 검수 전)
   3. 청약홈 팸플릿 그림 pamphlets/<key>/cand-*.jpg (Mac ego lite → notice_import.py) → cat "pamphlet" (검수에서 분류)
   4. 시트 스크립트가 받아 둔 파일 — 사진 파일(AA)·평면도 파일(AC)·배치도 파일(AE)·동호배치도 파일(AG): 복사하지 않고 index에 경로만 등록
+못 받는 경우 대비 (2026-11-11):
+  - 첫 화면이 자바스크립트로 넘기기만 하면(location.href) 넘어간 페이지에서 시작, 한 페이지만 보이거나 그림이 3장 미만이면 브라우저로 다시
+  - 'Ⅰ단지·Ⅱ단지 고르기' 안내 화면이면 거기서 연결한 비슷한 주소 중 단지명 번호가 맞는 곳으로
+  - 홈페이지에 팸플릿·카탈로그 PDF가 있으면 그 안 큰 그림 → pamphlets/<key>/hp/ (공고문 그림은 notice_import.py가 pamphlets/<key>/notice/)
+  - 0장이면 다음 날 다시 (최대 3번, 차단은 다시 안 함) · assets_map에 usable·why → '작업대상' 탭에 '그림 0장'으로 떠서 ① 조사가 손으로
+  - --zero-only: 쓸 그림이 0장인 단지만 (⑦ SEO 직전 agent.yml이 한 번 더)
 검수(분류·이름/로고·풀화면 가능 여부)는 jupjup-runner runner/qc.py(API Sonnet, 새 그림만 한 번)가 index.json에 적는다.
 
 사용:
   python3 tools/collect.py                 # site/data/sheet/research.json(실행기 sheetdump.py가 내려 둔 '청약조사') 기준
   python3 tools/collect.py --only 43 52    # 그 행만
-  python3 tools/collect.py --max-sites 3   # 홈페이지 새로 훑기는 한 번에 최대 N곳 (기본 3 — 시간)
+  python3 tools/collect.py --max-sites 6   # 홈페이지 새로 훑기는 한 번에 최대 N곳 (기본 6, 새 행부터)
 규칙: 차단(401·403·406·429)·robots 금지는 우회하지 않는다 (각 도구 규칙 그대로).
 """
 import argparse
@@ -129,8 +135,10 @@ def add_pamphlet(key, idx):
     folder = ROOT / "pamphlets" / key
     have = {im["src"] for im in idx["images"]}
     n = 0
-    for f in sorted(folder.glob("cand-*.jpg")) if folder.exists() else []:
-        src = f"pamphlet:{f.name}"
+    # notice_import.py는 pamphlets/<key>/<번호>/, 공고문 그림은 notice/, 홈페이지 PDF는 hp/ 아래에 둔다 (2026-11-11 — 예전엔 바로 아래만 봐서 하나도 안 들어감)
+    files = sorted(folder.glob("cand-*.jpg")) + sorted(folder.glob("*/cand-*.jpg")) if folder.exists() else []
+    for f in files:
+        src = f"pamphlet:{f.relative_to(folder)}"
         if src in have:
             continue
         try:
@@ -147,30 +155,24 @@ def add_pamphlet(key, idx):
 
 def auto_site(key, url, idx):
     """분양 홈페이지를 site_assets.py로 훑어 분류별 상위 몇 장을 photos/site/<key>/에 넣는다 (검수 전 표시)."""
-    import subprocess
     out = CACHE / key
-    def crawl(engine):
-        return subprocess.run([sys.executable, str(ROOT / "tools" / "site_assets.py"), "--url", url, "--out", str(out), "--engine", engine,
-                               "--max-pages", "25"], capture_output=True, text=True, timeout=600)
-    r = crawl("static")
     man_p = out / "manifest.json"
-    # 글자만 있는 첫 화면(자바스크립트로 메뉴·그림을 그리는 홈페이지)이면 브라우저로 다시 (2026-11-11 — 해링턴 노원 static 3장 → browser 127장)
-    try:
-        weak = not man_p.exists() or sum(1 for im in json.loads(man_p.read_text()).get("images", []) if AUTO.get(im.get("category"))) < 3
-    except Exception:  # noqa: BLE001
-        weak = True
+    tries = (idx.get("auto_site") or {}).get("tries", 0) + 1
+    r, weak = crawl_site(url, out)
+    via = ""
     if weak:
-        try:
-            import playwright  # noqa: F401
-            r = crawl("browser")
-        except ImportError:
-            pass
+        # 첫 화면이 'Ⅰ단지·Ⅱ단지 고르기' 같은 안내 화면이면 거기서 연결한 비슷한 주소 중 단지명이 맞는 곳으로 (2026-11-11 수원이목 detre-sw → detre-sw1)
+        sib = sibling_site(url, idx.get("name", ""))
+        if sib:
+            r2, weak2 = crawl_site(sib, out)
+            if man_p.exists():
+                via, url, r, weak = url, sib, r2, weak2
     if not man_p.exists():
-        idx["auto_site"] = {"date": today(), "url": url, "result": f"실패 {(r.stderr or r.stdout)[-160:]}"}
+        idx["auto_site"] = {"date": today(), "url": url, "tries": tries, "result": f"실패 {(r.stderr or r.stdout)[-160:]}"}
         return 0
     man = json.loads(man_p.read_text())
     if man.get("blocked"):
-        idx["auto_site"] = {"date": today(), "url": url, "result": f"홈페이지 차단: {str(man['blocked'])[:120]}"}
+        idx["auto_site"] = {"date": today(), "url": url, "tries": 9, "result": f"홈페이지 차단: {str(man['blocked'])[:120]}"}   # 차단은 다시 시도하지 않음
         return 0
     have = {im["src"] for im in idx["images"]}
     used = {Path(im["file"]).name for im in idx["images"]}
@@ -201,8 +203,167 @@ def auto_site(key, url, idx):
         if l.get("url") and l["url"] not in seen and l.get("kind") in ("emodel", "vr"):
             idx.setdefault("links", []).append({"kind": l["kind"], "label": l.get("label", ""), "name": l.get("kind"), "url": l["url"]})
     idx.setdefault("homepage", url)
-    idx["auto_site"] = {"date": today(), "url": url, "result": f"{n}장 ({', '.join(f'{k} {v}' for k, v in cnt.items())})"}
+    n_pdf = homepage_pdf(key, man, idx)
+    idx["auto_site"] = {"date": today(), "url": url, "tries": tries, **({"via": via} if via else {}),
+                        "result": f"{n}장 ({', '.join(f'{k} {v}' for k, v in cnt.items())})" + (f" · 팸플릿 PDF 그림 {n_pdf}장" if n_pdf else "")}
     return n
+
+
+def crawl_site(url, out):
+    """static으로 훑고, 쓸 그림이 3장 미만이면 브라우저로 다시 (자바스크립트로 그리는 홈페이지 — 2026-11-11 해링턴 노원 static 3장 → browser 127장)."""
+    import subprocess
+    man_p = out / "manifest.json"
+
+    def run(engine):
+        man_p.unlink(missing_ok=True)
+        return subprocess.run([sys.executable, str(ROOT / "tools" / "site_assets.py"), "--url", url, "--out", str(out), "--engine", engine,
+                               "--max-pages", "25"], capture_output=True, text=True, timeout=600)
+
+    def is_weak():
+        try:
+            m = json.loads(man_p.read_text())
+            # 한 페이지만 봤으면(자바스크립트로 main.php로 넘기는 첫 화면 등) 메뉴를 못 따라간 것 — 브라우저로 다시
+            return sum(1 for im in m.get("images", []) if AUTO.get(im.get("category"))) < 3 or len(m.get("pages", [])) <= 1
+        except Exception:  # noqa: BLE001
+            return True
+    url = js_redirect(url)
+    r = run("static")
+    if is_weak():
+        try:
+            import playwright  # noqa: F401
+            r = run("browser")
+        except ImportError:
+            pass
+    return r, is_weak()
+
+
+def js_redirect(url):
+    """첫 화면이 자바스크립트로 다른 페이지로 넘기기만 하면(location.href="main.php") 그 페이지에서 시작 (모바일 주소 제외, 한 번만)."""
+    from urllib.parse import urljoin
+    try:
+        h = requests.get(url, timeout=15, headers={"User-Agent": "jupjup-alarm/1.0 (+https://jupjupalarm.com)"})
+        h.encoding = h.apparent_encoding or h.encoding
+    except requests.RequestException:
+        return url
+    if h.status_code >= 400 or len(re.findall(r"<a\s", h.text, re.I)) > 8:   # 메뉴가 있는 진짜 페이지면 그대로
+        return url
+    for t in re.findall(r"""location(?:\.href)?\s*=\s*["']([^"']+)["']|location\.replace\(\s*["']([^"']+)["']""", h.text):
+        t = t[0] or t[1]
+        if t and not re.search(r"(^|/)m/?$|mobile|^/m[/?]|//m\.", t, re.I):
+            u = urljoin(h.url, t)
+            if u != h.url:
+                log(f"  첫 화면이 넘김 → {u}")
+                return u
+    return url
+
+
+ROMAN = {"Ⅰ": 1, "Ⅱ": 2, "Ⅲ": 3, "Ⅳ": 4, "Ⅴ": 5, "Ⅵ": 6, "Ⅶ": 7, "Ⅷ": 8, "Ⅸ": 9, "Ⅹ": 10}
+
+
+def _nums(t):
+    """단지 번호 후보 — 'Ⅰ', '1단지', '1차', 'sw1' 같은 것."""
+    t = t or ""
+    out = {v for k, v in ROMAN.items() if k in t}
+    out |= {int(x) for x in re.findall(r"(\d{1,2})\s*(?:단지|블록)", t)}
+    return out
+
+
+def sibling_site(url, name):
+    """안내 화면이 연결한 '비슷한 이름' 주소(같은 도메인 줄기 + 숫자) 중 단지명 번호가 맞는 곳. 없으면 ""."""
+    from urllib.parse import urljoin, urlparse
+    try:
+        h = requests.get(url, timeout=15, headers={"User-Agent": "jupjup-alarm/1.0 (+https://jupjupalarm.com)"})
+        if h.status_code >= 400:
+            return ""
+        h.encoding = h.apparent_encoding or h.encoding
+        html = h.text
+    except requests.RequestException:
+        return ""
+    host = urlparse(h.url).hostname or ""
+    stem = re.sub(r"^www\.", "", host).split(".")[0]
+    stem = re.sub(r"\d+$", "", stem)
+    if len(stem) < 3:
+        return ""
+    cands = []
+    for href in re.findall(r"""(?:href|location(?:\.href)?\s*=|window\.open\()\s*=?\s*["']([^"']+)["']""", html):
+        u = urljoin(h.url, href)
+        hh = (urlparse(u).hostname or "").removeprefix("www.")
+        if u.startswith("http") and hh and hh != host.removeprefix("www.") and hh.split(".")[0].startswith(stem) and u not in cands:
+            cands.append(u)
+    if not cands:
+        return ""
+    want = _nums(name)
+    best, score = "", -1
+    for u in cands[:6]:
+        hh = (urlparse(u).hostname or "").split(".")[0]
+        got = {int(x) for x in re.findall(r"(\d{1,2})$", hh)}
+        try:
+            t = requests.get(u, timeout=12, headers={"User-Agent": "jupjup-alarm/1.0"})
+            t.encoding = t.apparent_encoding or t.encoding
+            title = (re.search(r"<title[^>]*>(.*?)</title>", t.text, re.S | re.I) or [None, ""])[1]
+            got |= _nums(title)
+        except requests.RequestException:
+            continue
+        sc = 2 * len(want & got) - (1 if want and got and not want & got else 0)
+        if sc > score:
+            best, score = u, sc
+    if want and score <= 0 and len(cands) > 1:
+        return ""          # 번호가 갈리는데 맞는 곳을 못 찾으면 엉뚱한 단지를 받지 않음
+    log(f"  안내 화면 → {best}")
+    return best
+
+
+PDF_WORDS = re.compile(r"팸플릿|팜플렛|카탈로그|브로슈어|리플렛|e-?book|catalog|brochure|leaflet|pamphlet|분양\s*안내", re.I)
+
+
+def homepage_pdf(key, man, idx):
+    """홈페이지에 올라 있는 팸플릿·카탈로그 PDF의 큰 그림 → pamphlets/<key>/hp/cand-NN.jpg (검수에서 분류). 공고문 PDF는 받지 않음."""
+    if idx.get("hp_pdf"):
+        return 0
+    pdfs = [l for l in man.get("links", []) if l.get("kind") == "pdf" and "공고" not in (l.get("text", "") + l.get("href", ""))]
+    pick = next((l for l in pdfs if PDF_WORDS.search(l.get("text", "") + " " + l.get("href", ""))), None)
+    if not pick:
+        return 0
+    import tempfile
+    try:
+        import notice_import as ni
+        resp = requests.get(pick["href"], timeout=90, stream=True, headers={"User-Agent": "jupjup-alarm/1.0 (+https://jupjupalarm.com)"})
+        if resp.status_code >= 400:
+            idx["hp_pdf"] = {"url": pick["href"], "result": f"HTTP {resp.status_code}"}
+            return 0
+        with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as f:
+            size = 0
+            for ch in resp.iter_content(1 << 16):
+                size += len(ch)
+                if size > 80 << 20:
+                    raise ValueError("80MB 넘음")
+                f.write(ch)
+        head = Path(f.name).read_bytes()[:5]
+        if head != b"%PDF-":
+            idx["hp_pdf"] = {"url": pick["href"], "result": "PDF 아님"}
+            return 0
+        c = ni.pamphlet_images(Path(f.name), ROOT / "pamphlets" / key / "hp")
+        Path(f.name).unlink(missing_ok=True)
+        idx["hp_pdf"] = {"url": pick["href"], "date": today(), "result": f"{len(c)}장"}
+        return len(c)
+    except Exception as e:  # noqa: BLE001
+        idx["hp_pdf"] = {"url": pick["href"], "result": f"실패 {str(e)[:80]}"}
+        return 0
+
+
+def usable(idx):
+    """페이지·릴스에 쓸 수 있는 그림 수 (검수에서 못 쓴다고 한 것·팸플릿 미분류 제외)."""
+    return sum(1 for im in idx.get("images", []) if (ROOT / im["file"]).exists() and im.get("ok", True) is not False and im.get("cat") != "pamphlet")
+
+
+def need_site(idx, hp):
+    """홈페이지를 (다시) 훑을지 — 처음이거나, 주소가 바뀌었거나, 0장이면 다음 날 다시 (최대 3번, 차단은 다시 안 함)."""
+    a = idx.get("auto_site")
+    if not a:
+        return True
+    if a.get("url") != hp and a.get("via") != hp:
+        return True
+    return usable(idx) == 0 and a.get("date") != today() and a.get("tries", 1) < 3
 
 
 def main():
@@ -210,6 +371,7 @@ def main():
     ap.add_argument("--only", nargs="*", type=int, help="'청약조사' 행 번호만")
     ap.add_argument("--max-sites", type=int, default=6)
     ap.add_argument("--max-lh", type=int, default=12)
+    ap.add_argument("--zero-only", action="store_true", help="쓸 그림이 0장인 단지만 (⑦ 직전 재수집, 2026-11-11)")
     a = ap.parse_args()
     rows = json.loads(SHEET.read_text())["rows"]
     apply_rows = json.loads(APPLY.read_text()).get("rows", []) if APPLY.exists() else []
@@ -230,11 +392,12 @@ def main():
         if not key:
             continue
         idx = load_idx(key)
+        skip = a.zero_only and usable(idx) > 0     # --zero-only: 그림 있는 단지는 새로 받지 않고 지도(assets_map)만 갱신
         idx.setdefault("name", r.get("단지명", ""))
         idx["row"] = r["_row"]
         before = len(idx["images"])
         note = []
-        if lh_url and lh < a.max_lh and idx.get("lh_checked") != t0:
+        if not skip and lh_url and lh < a.max_lh and idx.get("lh_checked") != t0:
             try:
                 res = lh_files.run(key, s, url=lh_url, images=True)
                 idx = load_idx(key)          # lh_files가 index를 썼음
@@ -246,7 +409,7 @@ def main():
                 note.append(f"LH 실패 {str(e)[:60]}")
             lh += 1
         ai = r.get("홈페이지 자료", "")
-        if re.search(r"^\s*key\s*[:：]", ai, re.M) and "|" in ai and idx.get("ai_hash") != hashlib.md5(ai.encode()).hexdigest():
+        if not skip and re.search(r"^\s*key\s*[:：]", ai, re.M) and "|" in ai and idx.get("ai_hash") != hashlib.md5(ai.encode()).hexdigest():
             import subprocess
             p = subprocess.run([sys.executable, str(ROOT / "tools" / "site_photos.py"), "--text", ai], capture_output=True, text=True, timeout=600)
             idx = load_idx(key)
@@ -265,7 +428,7 @@ def main():
                 idx.setdefault("links", []).extend(l for l in other.get("links", []) if l not in idx.get("links", []))
         else:
             hp = homepage_of(r, key, apply_rows)
-            if hp and not lh_url and "auto_site" not in idx and sites < a.max_sites:
+            if not skip and hp and not lh_url and need_site(idx, hp) and sites < a.max_sites:
                 note.append("홈페이지 " + str(auto_site(key, hp, idx)) + "장")
                 sites += 1
         n_sheet = add_sheet_files(r, key, idx)
@@ -277,8 +440,13 @@ def main():
         if len(idx["images"]) != before or note:
             save_idx(key, idx)
         ims = idx["images"]
-        amap[r.get("단지명", "")] = {"key": key, "row": r["_row"], "count": len(ims), "photos": sum(1 for x in ims if x.get("photo")),
-                                    "checked": sum(1 for x in ims if x.get("checked"))}
+        why = ""
+        if not usable(idx):   # ① 조사가 '작업대상'에서 보고 손으로 채우게 (2026-11-11)
+            asite = idx.get("auto_site") or {}
+            why = ("홈페이지 없음" if not homepage_of(r, key, apply_rows) and not lh_url else
+                   asite.get("result", "") if asite else "LH 그림 없음" if lh_url else "아직 안 훑음")[:80]
+        amap[r.get("단지명", "")] = {"key": key, "row": r["_row"], "count": len(ims), "usable": usable(idx), "photos": sum(1 for x in ims if x.get("photo")),
+                                    "checked": sum(1 for x in ims if x.get("checked")), **({"why": why} if why else {})}
         if note:
             report.append(f"{r['_row']}행 {r.get('단지명', '')[:18]} → {key}: {' · '.join(note)} (총 {len(ims)})")
     MAP.write_text(json.dumps(amap, ensure_ascii=False, indent=1))

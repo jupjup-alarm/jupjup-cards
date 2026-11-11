@@ -15,6 +15,7 @@
 - `photos/site/<key>/` — 분양 홈페이지 자료 (2026-11-02): ① 조사 담당이 `tools/site_assets.py`로 홈페이지를 훑고 고른 이미지 주소를 '청약조사' AI열(홈페이지 자료, 첫 줄 `key: …`)에 적으면, ④·⑦이 `python3 tools/site_photos.py --text "<AI열>"`로 받는다 → `<분류>-….jpg`(birdseye 조감도·siteplan 단지배치·dongho 동호배치·plan 평면·community 커뮤니티·interior 인테리어), `index.json`(분류·label·w·h·photo 여부·E모델하우스 링크), `contact.jpg`(미리보기). 출처 문구 "이미지: <사업주체> 분양 홈페이지 · 실제와 다를 수 있음".
 - `mapgen.py`, `data/` — 대체용 경계 지도 (통계청 SGIS 2018 행정구역 경계, 공공누리 제1유형)
 
+- `tools/collect.py` — ⓪ 단지 그림 수집기 (모델 없음): 새 행부터 하루 6곳, 자바스크립트 홈페이지는 브라우저로, 'Ⅰ·Ⅱ단지 고르기' 안내 화면은 이 단지 주소로 따라감, 홈페이지 팸플릿 PDF·공고문 PDF 그림(`pamphlets/<key>/hp|notice/`), 0장이면 다음 날 다시(최대 3번), `--zero-only`는 ⑦ 직전 재수집. 쓸 그림 0장 단지는 assets_map `usable: 0`·`why` → '작업대상' 탭 '그림 0장'으로 ① 조사가 손으로 (2026-11-11). 사이트는 검수 `ok: false` 그림을 쓰지 않는다.
 - `tools/contact.py` — 접촉 시트 (2026-11-09): 사진 후보·카드 장·영상 프레임·스크린샷을 번호 붙여 한 장으로 → 그 한 장만 Read로 열고, 문제 있는 번호만 원본을 연다 (`python3 tools/contact.py cards/<slug> -o /tmp/c.jpg`, 영상은 `reels/<slug>/reel.mp4 --every 1.5`).
 
 ## 원고(JSON) 형식

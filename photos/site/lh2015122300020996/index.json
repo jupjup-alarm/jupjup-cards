@@ -1,0 +1,27 @@
+{
+ "key": "lh2015122300020996",
+ "images": [
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "블록1 평면도 46",
+   "file": "photos/site/lh2015122300020996/plan-b1-46.jpg",
+   "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=69228276",
+   "crop": "",
+   "w": 758,
+   "h": 1073,
+   "md5": "b6b22488f2412092a52ed2dc7c17253f",
+   "block": "블록1",
+   "lh_tab": "평면도",
+   "desc": "46a형 평면도",
+   "photo": false
+  }
+ ],
+ "links": [],
+ "owner": "LH",
+ "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
+ "updated": "2026-11-11 09:45",
+ "name": "연천전곡1단지 국민임대 예비입주자",
+ "row": 98,
+ "lh_checked": "2026-11-11"
+}

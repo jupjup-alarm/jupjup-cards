@@ -3,6 +3,7 @@
   "key": "lh0000061195",
   "row": 12,
   "count": 5,
+  "usable": 5,
   "photos": 3,
   "checked": 0
  },
@@ -10,6 +11,7 @@
   "key": "lh2015122300020960",
   "row": 37,
   "count": 18,
+  "usable": 18,
   "photos": 4,
   "checked": 0
  },
@@ -17,6 +19,7 @@
   "key": "lh2015122300020936",
   "row": 38,
   "count": 11,
+  "usable": 11,
   "photos": 3,
   "checked": 0
  },
@@ -24,6 +27,7 @@
   "key": "lh2015122300020958",
   "row": 43,
   "count": 90,
+  "usable": 90,
   "photos": 28,
   "checked": 0
  },
@@ -31,6 +35,7 @@
   "key": "2026000525",
   "row": 52,
   "count": 26,
+  "usable": 13,
   "photos": 10,
   "checked": 26
  },
@@ -38,20 +43,25 @@
   "key": "lh2015122300019550",
   "row": 53,
   "count": 0,
+  "usable": 0,
   "photos": 0,
-  "checked": 0
+  "checked": 0,
+  "why": "LH 그림 없음"
  },
  "2026년 청년 전세임대 1순위 입주자 수시모집": {
   "key": "lh2015122300019376",
   "row": 54,
   "count": 0,
+  "usable": 0,
   "photos": 0,
-  "checked": 0
+  "checked": 0,
+  "why": "LH 그림 없음"
  },
  "광교 자연앤 센트레빌(A17BL) 공공분양·지분적립형": {
   "key": "2026000528",
   "row": 57,
   "count": 22,
+  "usable": 20,
   "photos": 16,
   "checked": 22
  },
@@ -59,6 +69,7 @@
   "key": "lh0000061196",
   "row": 58,
   "count": 5,
+  "usable": 5,
   "photos": 3,
   "checked": 0
  },
@@ -66,6 +77,7 @@
   "key": "lh0000061189",
   "row": 59,
   "count": 5,
+  "usable": 5,
   "photos": 3,
   "checked": 0
  },
@@ -80,6 +92,7 @@
   "key": "2026000472",
   "row": 64,
   "count": 10,
+  "usable": 5,
   "photos": 7,
   "checked": 10
  },
@@ -87,6 +100,7 @@
   "key": "lh2015122300020896",
   "row": 65,
   "count": 10,
+  "usable": 10,
   "photos": 4,
   "checked": 0
  },
@@ -94,6 +108,7 @@
   "key": "lh0000061204",
   "row": 72,
   "count": 3,
+  "usable": 3,
   "photos": 1,
   "checked": 0
  },
@@ -101,6 +116,7 @@
   "key": "lh0000061192",
   "row": 78,
   "count": 7,
+  "usable": 7,
   "photos": 3,
   "checked": 0
  },
@@ -108,6 +124,7 @@
   "key": "lh0000061199",
   "row": 79,
   "count": 26,
+  "usable": 26,
   "photos": 10,
   "checked": 0
  },
@@ -115,13 +132,15 @@
   "key": "lh0000061200",
   "row": 80,
   "count": 13,
+  "usable": 13,
   "photos": 7,
   "checked": 0
  },
  "경기남부권(수원·용인 광교) 공가세대 일반매각(무순위, 유주택자 가능)": {
   "key": "lh2015122300021009",
   "row": 91,
-  "count": 0,
+  "count": 2,
+  "usable": 2,
   "photos": 0,
   "checked": 0
  },
@@ -143,6 +162,7 @@
   "key": "lh0000061201",
   "row": 94,
   "count": 3,
+  "usable": 3,
   "photos": 1,
   "checked": 0
  },
@@ -150,6 +170,7 @@
   "key": "lh2015122300021026",
   "row": 95,
   "count": 1,
+  "usable": 1,
   "photos": 1,
   "checked": 0
  },
@@ -157,6 +178,7 @@
   "key": "lh2015122300020987",
   "row": 96,
   "count": 2,
+  "usable": 2,
   "photos": 1,
   "checked": 0
  },
@@ -164,13 +186,15 @@
   "key": "lh2015122300020973",
   "row": 97,
   "count": 2,
+  "usable": 2,
   "photos": 1,
   "checked": 0
  },
  "연천전곡1단지 국민임대 예비입주자": {
   "key": "lh2015122300020996",
   "row": 98,
-  "count": 0,
+  "count": 1,
+  "usable": 1,
   "photos": 0,
   "checked": 0
  },
@@ -185,84 +209,100 @@
   "key": "lh2015122300021015",
   "row": 100,
   "count": 0,
+  "usable": 0,
   "photos": 0,
-  "checked": 0
+  "checked": 0,
+  "why": "LH 그림 없음"
  },
  "2026 다자녀 전세임대 입주자 수시모집": {
   "key": "lh2015122300019546",
   "row": 102,
   "count": 0,
+  "usable": 0,
   "photos": 0,
-  "checked": 0
+  "checked": 0,
+  "why": "LH 그림 없음"
  },
  "중화역 라온프라이빗 센트로": {
   "key": "2026000497",
   "row": 106,
   "count": 28,
+  "usable": 17,
   "photos": 4,
-  "checked": 15
+  "checked": 28
  },
  "인천 영종하늘도시 A25블록 대성베르힐(5차) 무순위": {
   "key": "2026910283",
   "row": 107,
   "count": 0,
+  "usable": 0,
   "photos": 0,
-  "checked": 0
+  "checked": 0,
+  "why": "실패 y NameResolutionError(\"HTTPConnection(host='www.yjd-verthill.com', port=80): "
  },
  "오남역 서희스타힐스 여의재 3단지 무순위(조합원 취소분)": {
   "key": "2026910280",
   "row": 108,
   "count": 17,
+  "usable": 14,
   "photos": 7,
-  "checked": 0
+  "checked": 17
  },
  "인천 검단신도시 AB20-2블록 중흥S-클래스 에듀파크 무순위": {
   "key": "2026910276",
   "row": 109,
-  "count": 0,
-  "photos": 0,
-  "checked": 0
+  "count": 12,
+  "usable": 11,
+  "photos": 7,
+  "checked": 12
  },
  "청계 노르웨이숲(14차) 무순위": {
   "key": "2026910290",
   "row": 121,
-  "count": 0,
-  "photos": 0,
-  "checked": 0
+  "count": 15,
+  "usable": 14,
+  "photos": 5,
+  "checked": 15
  },
  "신월동 한양립스(3차) 임의공급": {
   "key": "2026940252",
   "row": 122,
   "count": 0,
+  "usable": 0,
   "photos": 0,
-  "checked": 0
+  "checked": 0,
+  "why": "홈페이지 없음"
  },
  "해링턴플레이스 노원 센트럴(4차) 임의공급": {
   "key": "2026940251",
   "row": 126,
   "count": 25,
+  "usable": 19,
   "photos": 12,
-  "checked": 0
+  "checked": 25
  },
  "의정부역 센트럴 아이파크(6차) 임의공급": {
   "key": "2026940254",
   "row": 127,
   "count": 8,
+  "usable": 3,
   "photos": 6,
-  "checked": 0
+  "checked": 8
  },
  "수원이목지구 대방 디에트르 더 리체Ⅰ(A4BL) 임의공급": {
   "key": "2026940247",
   "row": 128,
-  "count": 0,
-  "photos": 0,
-  "checked": 0
+  "count": 17,
+  "usable": 12,
+  "photos": 3,
+  "checked": 17
  },
  "중동역 다채로움 더원 무순위": {
   "key": "2026910284",
   "row": 129,
   "count": 10,
+  "usable": 8,
   "photos": 2,
-  "checked": 0
+  "checked": 10
  }
 }

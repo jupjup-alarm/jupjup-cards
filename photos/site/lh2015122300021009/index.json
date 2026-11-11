@@ -1,0 +1,42 @@
+{
+ "key": "lh2015122300021009",
+ "images": [
+  {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "광교40 더포레스트 단지배치도",
+   "file": "photos/site/lh2015122300021009/siteplan-b1.jpg",
+   "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=24547966",
+   "crop": "",
+   "w": 1113,
+   "h": 821,
+   "md5": "5d0b378ccefc90115cce6cc9db176a73",
+   "block": "광교40 더포레스트",
+   "lh_tab": "단지배치도",
+   "desc": "단지배치도",
+   "photo": false
+  },
+  {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "광교45 더힐 단지배치도",
+   "file": "photos/site/lh2015122300021009/siteplan-b2.jpg",
+   "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=24548499",
+   "crop": "",
+   "w": 2121,
+   "h": 3000,
+   "md5": "774785837180744977b382c5c3794e53",
+   "block": "광교45 더힐",
+   "lh_tab": "단지배치도",
+   "desc": "광교A27BL 단지배치도",
+   "photo": false
+  }
+ ],
+ "links": [],
+ "owner": "LH",
+ "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
+ "updated": "2026-11-11 09:45",
+ "name": "경기남부권(수원·용인 광교) 공가세대 일반매각(무순위, 유주택자 가능)",
+ "row": 91,
+ "lh_checked": "2026-11-11"
+}
