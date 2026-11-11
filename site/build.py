@@ -1089,7 +1089,8 @@ def site_assets(n):
         idx = json.loads(f.read_text(encoding="utf-8"))
     except ValueError:
         return None
-    ims = [im for im in idx.get("images", []) if (REPO / im["file"]).exists()]
+    # ⓪ 검수에서 못 쓴다고 한 그림(ok: false — 무늬·로고·남의 사진 같은 홍보용 스톡)은 빼기 (2026-11-11)
+    ims = [im for im in idx.get("images", []) if (REPO / im["file"]).exists() and im.get("ok", True) is not False]
     if not n.get("image_credit_owner"):
         n["image_credit_owner"] = idx.get("owner") or "분양 홈페이지"
     owner = n["image_credit_owner"]
@@ -1100,7 +1101,7 @@ def site_assets(n):
             n["photo"] = {"image": big["file"], "credit": f"이미지: {owner} 조감도 · 실제와 다를 수 있음",
                           "alt": f"{n['title']} 조감도", "pos": "center 55%"}
     if not n.get("plans"):
-        n["plans"] = [{"type": im["label"] or f"평면 {i}", "image": im["file"], "alt": f"{n['title']} {im['label']} 평면도"}
+        n["plans"] = [{"type": (im["label"] if im["label"] and im["label"] != im["cat"] else f"평면 {i}"), "image": im["file"], "alt": f"{n['title']} {im['label']} 평면도"}
                       for i, im in enumerate((im for im in ims if im["cat"] == "plan"), 1)][:8]
     if not n.get("layouts"):
         lay = [im for im in ims if im["cat"] == "siteplan"][:2] + [im for im in ims if im["cat"] == "dongho"][:2]
@@ -1308,7 +1309,10 @@ def notice_images(n):
             imgs["locmap"] = lm
     plans = []
     for p in n.get("plans", []):
-        slug = re.sub(r"[^a-z0-9]+", "-", p["type"].lower()).strip("-")
+        slug = re.sub(r"[^a-z0-9]+", "-", p["type"].lower()).strip("-") or "p"
+        base, k = slug, 2
+        while any(q["slug"] == slug for q in plans):   # 같은 이름 평면 여러 장이 한 파일로 덮이지 않게 (2026-11-11)
+            slug, k = f"{base}-{k}", k + 1
         sz = img_out(p["image"], out / f"plan-{slug}.webp", 1200, 80)
         if sz:
             plans.append(dict(p, src=f"plan-{slug}.webp", w=sz[0], h=sz[1], slug=slug))

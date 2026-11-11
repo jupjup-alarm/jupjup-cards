@@ -149,9 +149,22 @@ def auto_site(key, url, idx):
     """분양 홈페이지를 site_assets.py로 훑어 분류별 상위 몇 장을 photos/site/<key>/에 넣는다 (검수 전 표시)."""
     import subprocess
     out = CACHE / key
-    r = subprocess.run([sys.executable, str(ROOT / "tools" / "site_assets.py"), "--url", url, "--out", str(out), "--engine", "static",
-                        "--max-pages", "25"], capture_output=True, text=True, timeout=600)
+    def crawl(engine):
+        return subprocess.run([sys.executable, str(ROOT / "tools" / "site_assets.py"), "--url", url, "--out", str(out), "--engine", engine,
+                               "--max-pages", "25"], capture_output=True, text=True, timeout=600)
+    r = crawl("static")
     man_p = out / "manifest.json"
+    # 글자만 있는 첫 화면(자바스크립트로 메뉴·그림을 그리는 홈페이지)이면 브라우저로 다시 (2026-11-11 — 해링턴 노원 static 3장 → browser 127장)
+    try:
+        weak = not man_p.exists() or sum(1 for im in json.loads(man_p.read_text()).get("images", []) if AUTO.get(im.get("category"))) < 3
+    except Exception:  # noqa: BLE001
+        weak = True
+    if weak:
+        try:
+            import playwright  # noqa: F401
+            r = crawl("browser")
+        except ImportError:
+            pass
     if not man_p.exists():
         idx["auto_site"] = {"date": today(), "url": url, "result": f"실패 {(r.stderr or r.stdout)[-160:]}"}
         return 0
@@ -195,7 +208,7 @@ def auto_site(key, url, idx):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--only", nargs="*", type=int, help="'청약조사' 행 번호만")
-    ap.add_argument("--max-sites", type=int, default=3)
+    ap.add_argument("--max-sites", type=int, default=6)
     ap.add_argument("--max-lh", type=int, default=12)
     a = ap.parse_args()
     rows = json.loads(SHEET.read_text())["rows"]
@@ -207,7 +220,8 @@ def main():
     import lh_files
     sites = lh = 0
     report = []
-    for r in rows:
+    # 새로 들어온 행(아래쪽)부터 — 홈페이지 수집 칸(max-sites)을 오래된 행이 먼저 다 쓰지 않게 (2026-11-11)
+    for r in sorted(rows, key=lambda x: -x["_row"]):
         if a.only and r["_row"] not in a.only:
             continue
         if r.get("분류") in SKIP_TYPES or (r.get("접수 마감") and r["접수 마감"] < t0):
