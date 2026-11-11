@@ -1356,3 +1356,4 @@ body:has(.lwrap:not(.home)){background:var(--ground)}
 .cp-page .ad-cp{margin-top:0;background:transparent}
 .cp-page .ad-cp .ad-box{margin:0 auto;max-width:100%}
 .cp-note{margin:12px auto 0;max-width:560px;font-size:12px;line-height:1.5;color:var(--ink-sub);text-align:center}
+footer .biz{font-style:normal;line-height:1.6;opacity:.85}   /* 사업자 정보 (2026-11-11) */
