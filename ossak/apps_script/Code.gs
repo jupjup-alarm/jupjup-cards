@@ -440,7 +440,7 @@ function withDisclosure_(text) {
 }
 
 /* ───────── 하루 발행분 자동 예약 (2026-11-12) ─────────
-   설정: '하루 발행 시작일'(그날 '하루 발행 시작 편수'), 매일 +1, '하루 발행 최대 편수'까지.
+   설정: '하루 발행 시작일'(그날 '하루 발행 시작 편수'), 매일 +'하루 증가 편수'(없으면 1), '하루 발행 최대 편수'까지.
    '대기' 글 중 준비된 것(상품 정보가 다 있는 것)을 위에서부터 오늘 빈 시각에 넣고 '예약'으로 바꾼다.
    강추·목록형(형식 B·C)은 하루의 '링크 글 최대 비율(%)' 이하, 연달아 두 개 안 됨 — 다른 형식은 답글에만 링크가 붙어 세지 않는다
    (2026-11-12 사용자 결정: 모든 글에 답글 링크). 매시간 다시 확인해 모자란 만큼 채운다. */
@@ -453,7 +453,7 @@ function scheduleToday_() {
   const today = Utilities.formatDate(now, TZ, 'yyyy-MM-dd');
   const days = Math.round((new Date(today + 'T00:00:00+09:00') - new Date(start + 'T00:00:00+09:00')) / 86400000);
   if (days < 0) return 0;
-  const quota = Math.min(Number(cfg_('하루 발행 최대 편수')) || 10, (Number(cfg_('하루 발행 시작 편수')) || 3) + days);
+  const quota = Math.min(Number(cfg_('하루 발행 최대 편수')) || 10, (Number(cfg_('하루 발행 시작 편수')) || 3) + days * (Number(cfg_('하루 증가 편수')) || 1));
   const maxLink = Math.floor(quota * (Number(cfg_('링크 글 최대 비율(%)')) || 55) / 100);
   const sh = sheet_(SH.plan);
   const last = sh.getLastRow();
