@@ -252,6 +252,13 @@ def js_redirect(url):
         if t and not re.search(r"(^|/)m/?$|mobile|^/m[/?]|//m\.", t, re.I):
             u = urljoin(h.url, t)
             if u != h.url:
+                # 넘어간 주소가 다시 리다이렉트되면(/web → /web/) 끝 주소로 — 끝 '/'가 없으면 메뉴의 상대 주소(planning.php)가 한 단계 위로 잘못 풀려 한 페이지만 보게 됨 (2026-11-12 고덕 아테라: 스톡사진 3장뿐)
+                try:
+                    f = requests.get(u, timeout=15, headers={"User-Agent": "jupjup-alarm/1.0 (+https://jupjupalarm.com)"})
+                    if f.status_code < 400:
+                        u = f.url
+                except requests.RequestException:
+                    pass
                 log(f"  첫 화면이 넘김 → {u}")
                 return u
     return url
