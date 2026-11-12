@@ -27,6 +27,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 APT = ROOT / "site" / "data" / "apt"
 OUT_T = ROOT / "site" / "data" / "notice_text"
 OUT_F = ROOT / "site" / "data" / "notice_files"
@@ -214,6 +215,12 @@ def main():
                 print(f"공고문 그림: {key} {len(c)}장 → pamphlets/{key}/notice/")
             except Exception as e:  # noqa: BLE001
                 print(f"공고문 그림 실패: {key} {e}")
+            try:   # 2026-11-12 공고문 화면 컷 (공급금액·신청일정·신청자격) — 이야기형 릴스 증거 카드
+                import notice_shots
+                r = notice_shots.make(key, p)
+                print(f"공고문 화면 컷: {key} {len(r.get('notice_shots') or [])}장 → photos/site/{key}/notice-*.jpg")
+            except Exception as e:  # noqa: BLE001
+                print(f"공고문 화면 컷 실패: {key} {e}")
         else:
             sub = PAM / key / (m.group(2) or "1")
             c = pamphlet_images(p, sub)

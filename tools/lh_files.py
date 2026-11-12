@@ -277,11 +277,21 @@ def run(key, s, pamphlet=False, url=None, images=False):
     if texts:
         OUT_T.mkdir(parents=True, exist_ok=True)
         (OUT_T / f"{key}.txt").write_text("\n\n".join(texts), encoding="utf-8")
+    shots = None
+    if images:   # 2026-11-12 공고문 화면 컷 (공급금액·신청일정·신청자격) → photos/site/<key>/notice-*.jpg
+        pdfs = [folder / f"{a['fileid']}.pdf" for a in atts if a["kind"] == "notice" and a.get("got") == "ok"]
+        if pdfs:
+            try:
+                sys.path.insert(0, str(ROOT / "tools"))
+                import notice_shots
+                shots = notice_shots.make(key, max(pdfs, key=lambda q: q.stat().st_size), owner="LH")
+            except Exception as e:  # noqa: BLE001
+                shots = {"error": str(e)[:120]}
     return {"key": key, "notice": sum(a["kind"] == "notice" and a.get("got") == "ok" for a in atts),
             "pamphlet": sum(a["kind"] == "pamphlet" and a.get("got") == "ok" for a in atts),
             "new_or_changed": rec["changed"], "cands": len(cands),
             "contact": [str(p.relative_to(ROOT)) for p in (folder / "cand").glob("contact-*.jpg")] if pamphlet else [],
-            **({"images": imgs} if imgs is not None else {})}
+            **({"images": imgs} if imgs is not None else {}), **({"notice_shots": shots} if shots else {})}
 
 
 def upcoming(d, today):
