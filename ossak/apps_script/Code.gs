@@ -442,7 +442,8 @@ function withDisclosure_(text) {
 /* ───────── 하루 발행분 자동 예약 (2026-11-12) ─────────
    설정: '하루 발행 시작일'(그날 '하루 발행 시작 편수'), 매일 +1, '하루 발행 최대 편수'까지.
    '대기' 글 중 준비된 것(상품 정보가 다 있는 것)을 위에서부터 오늘 빈 시각에 넣고 '예약'으로 바꾼다.
-   링크 글은 하루의 '링크 글 최대 비율(%)' 이하, 연달아 두 개 안 됨. 매시간 다시 확인해 모자란 만큼 채운다. */
+   강추·목록형(형식 B·C)은 하루의 '링크 글 최대 비율(%)' 이하, 연달아 두 개 안 됨 — 다른 형식은 답글에만 링크가 붙어 세지 않는다
+   (2026-11-12 사용자 결정: 모든 글에 답글 링크). 매시간 다시 확인해 모자란 만큼 채운다. */
 function scheduleToday() { const n = scheduleToday_(); SpreadsheetApp.getUi().alert('오늘 새로 예약한 글: ' + n + '개'); }
 
 function scheduleToday_() {
@@ -464,8 +465,9 @@ function scheduleToday_() {
   let have = 0, links = 0;
   v.forEach(r => {
     if (r[P.date - 1] !== today || ['예약', '발행중', '발행완료', '발행오류', '처리중'].indexOf(r[P.status - 1].trim()) < 0) return;
-    have++; used[hhmm(r[P.time - 1])] = isLink(r[P.threads - 1]) ? 'L' : 'N';
-    if (isLink(r[P.threads - 1])) links++;
+    const hard = /^[BC]/.test(r[P.series - 1]);
+    have++; used[hhmm(r[P.time - 1])] = hard ? 'L' : 'N';
+    if (hard) links++;
   });
   if (have >= quota) return 0;
   const nowHm = Utilities.formatDate(new Date(now.getTime() + 10 * 60000), TZ, 'HH:mm');
@@ -481,10 +483,10 @@ function scheduleToday_() {
       if (picked[i] || v[i][P.status - 1].trim() !== '대기' || v[i][P.ch - 1].trim() !== '스레드') continue;
       const text = v[i][P.threads - 1];
       if (!text.trim()) continue;
-      const link = isLink(text);
-      if (link && (resolve_(text, pm).missing.length || nearLink || links >= maxLink)) continue;
-      if (/^[BC]/.test(v[i][P.series - 1]) && !link) continue;   // 강추·목록형인데 답글(링크)이 아직 없음
-      picked[i] = true; used[t] = link ? 'L' : 'N'; if (link) links++;
+      const hard = /^[BC]/.test(v[i][P.series - 1]);
+      if (resolve_(text, pm).missing.length) continue;            // 상품 정보가 아직 안 채워진 글
+      if (hard && (!isLink(text) || nearLink || links >= maxLink)) continue;
+      picked[i] = true; used[t] = hard ? 'L' : 'N'; if (hard) links++;
       sh.getRange(i + 2, P.date, 1, 2).setValues([["'" + today, "'" + t]]);
       sh.getRange(i + 2, P.status).setValue('예약');
       done++;
