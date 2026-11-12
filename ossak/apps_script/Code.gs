@@ -20,7 +20,13 @@
 const IG = 'https://graph.instagram.com/v26.0';
 const TH = 'https://graph.threads.net/v1.0';
 const TZ = 'Asia/Seoul';
-const SH = { plan: '발행계획', perf: '성과', fol: '팔로워', cmt: '댓글함', cfg: '설정', topic: '소재조사', yt: '유튜브' };
+const SH = { plan: '발행계획', perf: '성과', fol: '팔로워', cmt: '댓글함', cfg: '설정', topic: '소재조사', yt: '유튜브', prod: '상품' };
+// 상품 탭 열 (2026-11-12 자취생 먹거리 채널): 쿠팡 검색으로 가격·링크·사진을 채운다
+const PR = { id: 1, name: 2, price: 4, priceDate: 5, link: 9, image: 11, memo: 14, cpName: 15, rocket: 16 };
+const CP = 'https://api-gateway.coupang.com';
+const CP_BASE = '/v2/providers/affiliate_open_api/apis/openapi';
+const DISCLOSURE = '이 글은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.';
+const SLOTS = ['11:30', '18:30', '22:00', '07:30', '19:30', '12:30', '21:00', '08:40', '15:30', '17:10'];
 // 유튜브 탭 열 번호
 const Y = { date: 1, time: 2, id: 3, kind: 4, title: 5, status: 11, link: 12, len: 13, views: 14, avgPct: 15,
   swipe: 16, subs: 17, hook: 18, likes: 19, comments: 20, shares: 21, avgSec: 22, asOf: 23 };
@@ -33,10 +39,13 @@ const C = { at: 1, ch: 2, id: 3, link: 4, cid: 5, user: 6, text: 7, time: 8, par
 
 /* ───────── 메뉴 ───────── */
 function onOpen() {
-  SpreadsheetApp.getUi().createMenu('오싹알람')
+  SpreadsheetApp.getUi().createMenu('스레드 운영')
     .addItem('토큰 입력·연결 확인', 'setupTokens')
+    .addItem('쿠팡 파트너스 키 입력', 'setupCoupang')
     .addItem('자동 실행 켜기 (트리거 설치)', 'installTriggers')
     .addSeparator()
+    .addItem('상품 정보 지금 채우기 (쿠팡 검색)', 'syncProducts')
+    .addItem('오늘 발행분 지금 예약', 'scheduleToday')
     .addItem('지금 발행 확인', 'publishDue')
     .addItem('선택한 행 지금 발행 (시각 무시)', 'publishSelected')
     .addItem('성과·댓글 지금 수집', 'hourlyJob')
@@ -94,7 +103,7 @@ function refreshTokens() {
     props.setProperty('TH_TOKEN', r.access_token);
     msgs.push('스레드 토큰 갱신 (' + Math.round((r.expires_in || 0) / 86400) + '일)');
   } catch (e) { msgs.push('스레드 토큰 갱신 실패: ' + e.message); }
-  if (msgs.some(m => m.indexOf('실패') >= 0)) mail_('[오싹알람] 토큰 갱신 실패', msgs.join('\n') + '\n\n메뉴 오싹알람 → 토큰 입력으로 새 토큰을 넣어 주세요.');
+  if (msgs.some(m => m.indexOf('실패') >= 0)) mail_('[자취 스레드] 토큰 갱신 실패', msgs.join('\n') + '\n\n메뉴 오싹알람 → 토큰 입력으로 새 토큰을 넣어 주세요.');
   return msgs.join('\n');
 }
 
@@ -169,7 +178,14 @@ function publishRow_(sh, row, v) {
         return;
       }
     } else if (ch === '스레드') {
-      res = publishThreads_(String(v[P.threads - 1]));
+      const pm = productMap_();
+      const r = resolve_(String(v[P.threads - 1]), pm);
+      if (r.missing.length) throw new Error('상품 정보가 아직 없어요: ' + r.missing.join(', ') + ' — 상품 탭 확인');
+      const pics = String(v[P.images - 1]).split(/\r?\n/).map(s => s.trim()).filter(s => /^https:\/\//i.test(s));
+      let pic = pics[0] || '';
+      const pid = String(v[P.caption - 1]).trim();   // J열 = 상품ID. 강추형(B)에 상품이 하나면 그 상품 사진
+      if (!pic && /^B/.test(String(v[P.series - 1])) && pm[pid] && pm[pid].image) pic = pm[pid].image;
+      res = publishThreads_(withDisclosure_(r.text), pic);
     } else {
       throw new Error('아직 지원하지 않는 채널: ' + ch);
     }
@@ -189,7 +205,7 @@ function done_(sh, row, v, ch, res, stamp) {
     if (ch === '인스타 캐러셀') markTopic_(String(v[P.id - 1]), '발행');
     const risk = String(v[P.risk - 1]).trim();
     if (risk === '중' || risk === '고') {
-      mail_('[오싹알람] 리스크 ' + risk + ' 게시물이 올라갔어요: ' + v[P.title - 1],
+      mail_('[자취 스레드] 리스크 ' + risk + ' 게시물이 올라갔어요: ' + v[P.title - 1],
         ch + ' · ' + v[P.title - 1] + '\n' + (res.link || '') + '\n\n확인 후 문제가 있으면 앱에서 삭제하고, 발행계획 상태를 \'삭제\'·메모에 사유를 적어 주세요.');
       sh.getRange(row, P.alert).setValue("'" + stamp + ' 메일 보냄');
     }
@@ -199,7 +215,7 @@ function done_(sh, row, v, ch, res, stamp) {
 function fail_(sh, row, v, ch, e, stamp) {
   sh.getRange(row, P.status).setValue('발행오류');
   sh.getRange(row, P.log).setValue(stamp + ' 오류: ' + e.message);
-  mail_('[오싹알람] 발행 오류: ' + v[P.title - 1], ch + ' · ' + row + '행\n' + e.message);
+  mail_('[자취 스레드] 발행 오류: ' + v[P.title - 1], ch + ' · ' + row + '행\n' + e.message);
 }
 
 /* 릴스: 컨테이너를 만들고 최대 약 2분 기다린다. 덜 끝났으면 {pending: id} */
@@ -266,7 +282,8 @@ function waitIg_(id, t, tries, ms, soft) {
   throw new Error('인스타 컨테이너 준비 시간 초과 (' + id + ')');
 }
 
-function publishThreads_(text) {
+// image: 첫 글에 붙일 사진 주소(공개 jpg·png). 없으면 글자만 (2026-11-12 자취생 먹거리 채널)
+function publishThreads_(text, image) {
   const t = prop_('TH_TOKEN');
   const posts = text.split(/\r?\n\s*-{3,}\s*\r?\n/).map(s => s.trim()).filter(Boolean);
   if (!posts.length) throw new Error('스레드 본문이 비어 있어요');
@@ -274,9 +291,16 @@ function publishThreads_(text) {
   const ids = [];
   posts.forEach((p, i) => {
     const params = { media_type: 'TEXT', text: p.slice(0, 500), access_token: t };
+    if (i === 0 && image) { params.media_type = 'IMAGE'; params.image_url = image; }
     if (prev) params.reply_to_id = prev;
-    const c = api_('post', TH + '/me/threads', params).id;
-    Utilities.sleep(i === 0 ? 2000 : 4000);
+    let c;
+    try { c = api_('post', TH + '/me/threads', params).id; }
+    catch (e) {   // 사진 주소를 스레드가 못 받으면 글자만으로 다시
+      if (!(i === 0 && image)) throw e;
+      image = ''; params.media_type = 'TEXT'; delete params.image_url;
+      c = api_('post', TH + '/me/threads', params).id;
+    }
+    Utilities.sleep(i === 0 ? (image ? 8000 : 2000) : 4000);
     const id = api_('post', TH + '/me/threads_publish', { creation_id: c, access_token: t }).id;
     ids.push(id);
     if (!first) first = id;
@@ -287,11 +311,196 @@ function publishThreads_(text) {
   return { id: first, link: link, note: '글 ' + ids.length + '개 (' + ids.slice(1).join(',') + ')' };
 }
 
-/* ───────── 매시간: 성과·댓글·답변 ───────── */
+/* ───────── 쿠팡 파트너스 (2026-11-12) ───────── */
+function setupCoupang() {
+  const ui = SpreadsheetApp.getUi();
+  const props = PropertiesService.getScriptProperties();
+  const a = ui.prompt('쿠팡 파트너스 Access Key', '바꾸지 않으려면 비워 두고 확인.', ui.ButtonSet.OK_CANCEL);
+  if (a.getSelectedButton() !== ui.Button.OK) return;
+  if (a.getResponseText().trim()) props.setProperty('CP_ACCESS', a.getResponseText().trim());
+  const b = ui.prompt('쿠팡 파트너스 Secret Key', '바꾸지 않으려면 비워 두고 확인.', ui.ButtonSet.OK_CANCEL);
+  if (b.getSelectedButton() !== ui.Button.OK) return;
+  if (b.getResponseText().trim()) props.setProperty('CP_SECRET', b.getResponseText().trim());
+  let msg;
+  try { const r = coupangSearch_('냉동 볶음밥'); msg = '연결됨 — 검색 결과 ' + r.length + '개 (예: ' + (r[0] ? r[0].productName : '없음') + ')'; }
+  catch (e) { msg = '연결 실패: ' + e.message; }
+  ui.alert('쿠팡 파트너스', msg, ui.ButtonSet.OK);
+}
+
+function coupang_(method, path, query, body) {
+  const ak = prop_('CP_ACCESS'), sk = prop_('CP_SECRET');
+  const dt = Utilities.formatDate(new Date(), 'GMT', "yyMMdd'T'HHmmss'Z'");
+  const sig = Utilities.computeHmacSha256Signature(dt + method + path + (query || ''), sk)
+    .map(b => ('0' + (b & 0xff).toString(16)).slice(-2)).join('');
+  const opt = { method: method.toLowerCase(), muteHttpExceptions: true, contentType: 'application/json;charset=UTF-8',
+    headers: { Authorization: 'CEA algorithm=HmacSHA256, access-key=' + ak + ', signed-date=' + dt + ', signature=' + sig } };
+  if (body) opt.payload = JSON.stringify(body);
+  const r = UrlFetchApp.fetch(CP + path + (query ? '?' + query : ''), opt);
+  const code = r.getResponseCode();
+  let j;
+  try { j = JSON.parse(r.getContentText()); } catch (e) { j = {}; }
+  if (code >= 300 || (j.rCode !== undefined && String(j.rCode) !== '0')) {
+    const err = new Error('쿠팡 ' + code + ' ' + (j.rMessage || j.message || r.getContentText().slice(0, 150)));
+    err.code = code;
+    throw err;
+  }
+  return j.data;
+}
+
+// 검색은 시간당 호출 수가 적게 잡혀 있어 한 번 실행에 몇 건만 부른다
+function coupangSearch_(keyword) {
+  const q = 'keyword=' + encodeURIComponent(keyword) + '&limit=10';
+  let d;
+  try { d = coupang_('GET', CP_BASE + '/v1/products/search', q); }
+  catch (e) { if (e.code !== 404) throw e; d = coupang_('GET', CP_BASE + '/products/search', q); }
+  return (d && d.productData) || [];
+}
+
+function coupangShort_(productId, fallback) {
+  try {
+    const d = coupang_('POST', CP_BASE + '/v1/deeplink', '', { coupangUrls: ['https://www.coupang.com/vp/products/' + productId] });
+    return (d && d[0] && d[0].shortenUrl) || fallback;
+  } catch (e) { return fallback; }
+}
+
+function syncProducts() { syncProducts_(); SpreadsheetApp.getUi().alert('상품 탭을 확인하세요. 한 번에 최대 6개씩 채워요.'); }
+
+// 상품 탭에서 링크가 빈 행을 쿠팡에서 검색해 가격·링크·사진을 채운다 (한 번에 6개, 매시간)
+function syncProducts_() {
+  if (!PropertiesService.getScriptProperties().getProperty('CP_ACCESS')) return;
+  const sh = sheet_(SH.prod);
+  const last = sh.getLastRow();
+  if (last < 2) return;
+  const v = sh.getRange(2, 1, last - 1, PR.rocket).getDisplayValues();
+  const today = Utilities.formatDate(new Date(), TZ, 'yyyy-MM-dd');
+  let n = 0;
+  for (let i = 0; i < v.length && n < 6; i++) {
+    const name = v[i][PR.name - 1].trim();
+    if (!name || v[i][PR.link - 1].trim() || v[i][PR.cpName - 1].trim()) continue;
+    n++;
+    const row = i + 2;
+    let list;
+    try { list = coupangSearch_(name); }
+    catch (e) { sh.getRange(row, PR.memo).setValue((v[i][PR.memo - 1] + ' / ' + today + ' 쿠팡 검색 오류: ' + e.message).slice(0, 300)); break; }
+    // 브랜드(첫 단어)와 나머지 단어 하나 이상이 상품명에 들어 있어야 같은 상품으로 본다
+    const words = name.split(/\s+/);
+    const norm = t => String(t).replace(/\s+/g, '');
+    const hit = list.filter(p => norm(p.productName).indexOf(norm(words[0])) >= 0 &&
+      (words.length < 2 || words.slice(1).some(w => norm(p.productName).indexOf(norm(w)) >= 0)));
+    const pick = hit.filter(p => p.isRocket)[0] || hit[0];
+    if (!pick) { sh.getRange(row, PR.cpName).setValue('못 찾음 (' + today + ') — 상품명을 쿠팡 표기대로 고치고 이 칸을 지우면 다시 찾아요'); continue; }
+    sh.getRange(row, PR.price).setValue(pick.productPrice);
+    sh.getRange(row, PR.priceDate).setValue("'" + today);
+    sh.getRange(row, PR.link).setValue(coupangShort_(pick.productId, pick.productUrl));
+    sh.getRange(row, PR.image).setValue(pick.productImage || '');
+    sh.getRange(row, PR.cpName).setValue(pick.productName);
+    sh.getRange(row, PR.rocket).setValue(pick.isRocket ? '로켓' : '');
+  }
+}
+
+function productMap_() {
+  const sh = sheet_(SH.prod);
+  const last = sh.getLastRow();
+  const m = {};
+  if (last < 2) return m;
+  sh.getRange(2, 1, last - 1, PR.rocket).getDisplayValues().forEach(r => {
+    if (r[0]) m[r[0].trim()] = { name: r[PR.name - 1],
+      price: r[PR.price - 1], date: r[PR.priceDate - 1], link: r[PR.link - 1], image: r[PR.image - 1] };
+  });
+  return m;
+}
+
+// 본문의 {{P-001:링크}} {{P-001:가격}} {{P-001:이름}} 을 상품 탭 값으로 바꾼다
+function resolve_(text, pm) {
+  const missing = [];
+  const out = text.replace(/\{\{\s*(P-\d+)\s*:\s*(링크|가격|이름)\s*\}\}/g, (m, id, f) => {
+    const p = pm[id];
+    let val = '';
+    if (p) {
+      if (f === '링크') val = p.link;
+      else if (f === '이름') val = p.name;
+      else if (p.price) {
+        const n = Number(String(p.price).replace(/[^0-9]/g, ''));
+        const d = String(p.date).slice(5).replace('-', '/');
+        val = n ? n.toLocaleString('ko-KR') + '원' + (d ? ' (' + d + ' 조회, 바뀔 수 있음)' : '') : '';
+      }
+    }
+    if (!val) { if (missing.indexOf(id) < 0) missing.push(id); return m; }
+    return val;
+  });
+  return { text: out, missing: missing };
+}
+
+// 쿠팡 링크가 있는 글타래인데 대가성 문구가 없으면, 링크가 처음 나오는 글 맨 위에 붙인다
+function withDisclosure_(text) {
+  if (!/coupang\.com/i.test(text) || /쿠팡 파트너스 활동/.test(text)) return text;
+  const parts = text.split(/\r?\n\s*-{3,}\s*\r?\n/);
+  for (let i = 0; i < parts.length; i++) if (/coupang\.com/i.test(parts[i])) { parts[i] = DISCLOSURE + '\n\n' + parts[i].trim(); break; }
+  return parts.join('\n---\n');
+}
+
+/* ───────── 하루 발행분 자동 예약 (2026-11-12) ─────────
+   설정: '하루 발행 시작일'(그날 '하루 발행 시작 편수'), 매일 +1, '하루 발행 최대 편수'까지.
+   '대기' 글 중 준비된 것(상품 정보가 다 있는 것)을 위에서부터 오늘 빈 시각에 넣고 '예약'으로 바꾼다.
+   링크 글은 하루의 '링크 글 최대 비율(%)' 이하, 연달아 두 개 안 됨. 매시간 다시 확인해 모자란 만큼 채운다. */
+function scheduleToday() { const n = scheduleToday_(); SpreadsheetApp.getUi().alert('오늘 새로 예약한 글: ' + n + '개'); }
+
+function scheduleToday_() {
+  const start = String(cfg_('하루 발행 시작일')).trim();
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(start)) return 0;
+  const now = new Date();
+  const today = Utilities.formatDate(now, TZ, 'yyyy-MM-dd');
+  const days = Math.round((new Date(today + 'T00:00:00+09:00') - new Date(start + 'T00:00:00+09:00')) / 86400000);
+  if (days < 0) return 0;
+  const quota = Math.min(Number(cfg_('하루 발행 최대 편수')) || 10, (Number(cfg_('하루 발행 시작 편수')) || 3) + days);
+  const maxLink = Math.floor(quota * (Number(cfg_('링크 글 최대 비율(%)')) || 55) / 100);
+  const sh = sheet_(SH.plan);
+  const last = sh.getLastRow();
+  if (last < 2) return 0;
+  const v = sh.getRange(2, 1, last - 1, 19).getDisplayValues();
+  const isLink = t => /\{\{|coupang\.com|toss\./i.test(t);
+  const hhmm = t => { const m = String(t).match(/(\d{1,2}):(\d{2})/); return m ? ('0' + m[1]).slice(-2) + ':' + m[2] : ''; };
+  const used = {};
+  let have = 0, links = 0;
+  v.forEach(r => {
+    if (r[P.date - 1] !== today || ['예약', '발행중', '발행완료', '발행오류', '처리중'].indexOf(r[P.status - 1].trim()) < 0) return;
+    have++; used[hhmm(r[P.time - 1])] = isLink(r[P.threads - 1]) ? 'L' : 'N';
+    if (isLink(r[P.threads - 1])) links++;
+  });
+  if (have >= quota) return 0;
+  const nowHm = Utilities.formatDate(new Date(now.getTime() + 10 * 60000), TZ, 'HH:mm');
+  const day = SLOTS.slice(0, quota).sort();
+  const free = day.filter(t => !used[t] && t > nowHm).slice(0, quota - have);
+  const pm = productMap_();
+  const picked = {};
+  let done = 0;
+  free.forEach(t => {
+    const k = day.indexOf(t);
+    const nearLink = used[day[k - 1]] === 'L' || used[day[k + 1]] === 'L';
+    for (let i = 0; i < v.length; i++) {
+      if (picked[i] || v[i][P.status - 1].trim() !== '대기' || v[i][P.ch - 1].trim() !== '스레드') continue;
+      const text = v[i][P.threads - 1];
+      if (!text.trim()) continue;
+      const link = isLink(text);
+      if (link && (resolve_(text, pm).missing.length || nearLink || links >= maxLink)) continue;
+      if (/^[BC]/.test(v[i][P.series - 1]) && !link) continue;   // 강추·목록형인데 답글(링크)이 아직 없음
+      picked[i] = true; used[t] = link ? 'L' : 'N'; if (link) links++;
+      sh.getRange(i + 2, P.date, 1, 2).setValues([["'" + today, "'" + t]]);
+      sh.getRange(i + 2, P.status).setValue('예약');
+      done++;
+      break;
+    }
+  });
+  return done;
+}
+
+/* ───────── 매시간: 상품·예약·성과·댓글·답변 ───────── */
 function hourlyJob() {
   const lock = LockService.getScriptLock();
   if (!lock.tryLock(5000)) return;
   try {
+    safe_(syncProducts_);
+    safe_(scheduleToday_);
     safe_(collectMetrics_);
     safe_(collectComments_);
     safe_(postReplies_);
@@ -412,7 +621,7 @@ function collectComments_() {
     });
   });
   if (fresh.length) box.getRange(box.getLastRow() + 1, 1, fresh.length, fresh[0].length).setValues(fresh);
-  if (risky.length) mail_('[오싹알람] 확인이 필요한 댓글 ' + risky.length + '개',
+  if (risky.length) mail_('[자취 스레드] 확인이 필요한 댓글 ' + risky.length + '개',
     risky.join('\n\n') + '\n\n삭제 요청·유족 관련이면 24시간 안에 게시물을 확인·삭제하고, 댓글함 상태와 발행계획 메모에 사유를 남겨 주세요.');
 }
 
@@ -476,7 +685,7 @@ function checkStock_() {
   if (!min) return;
   const now = new Date();
   const n = planRows_(sheet_(SH.plan)).filter(r => r.ch === '인스타 릴스' && r.status === '예약' && r.when && r.when > now).length;
-  if (n < min) mail_('[오싹알람] 비축분이 ' + n + '편 남았어요', '예약된 인스타 릴스가 ' + n + '편이에요 (기준 ' + min + '편). 새 편 제작을 확인해 주세요.');
+  if (n < min) mail_('[자취 스레드] 비축분이 ' + n + '편 남았어요', '예약된 인스타 릴스가 ' + n + '편이에요 (기준 ' + min + '편). 새 편 제작을 확인해 주세요.');
 }
 
 /* ───────── 유튜브: 업로드 찾기 + 성과 (매일 08시, 메뉴) ───────── */
