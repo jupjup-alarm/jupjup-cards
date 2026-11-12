@@ -59,6 +59,11 @@
   "image": "photos/ccb9f972d60e.jpg",
   "pos": "center 55%"
  },
+ "/region/gyeonggi/icheon/": {
+  "credit": "이미지: 분양 홈페이지 조감도 · 실제와 다를 수 있음",
+  "image": "photos/site/2026910293/birdseye-auto-1.jpg",
+  "pos": "center 55%"
+ },
  "/region/gyeonggi/namyangju/": {
   "credit": "이미지: 에코월드이엔씨 조감도 · 실제와 다를 수 있음",
   "image": "photos/site/2026910281/birdseye.jpg",
@@ -103,6 +108,11 @@
   "credit": "이미지: LH 제공 조감도 · 실제와 다를 수 있음",
   "image": "photos/b1a74e628f16.jpg",
   "pos": "center 50%"
+ },
+ "/region/incheon/yeonsu/": {
+  "credit": "이미지: 포스코이앤씨·케이비부동산신탁 제공 조감도 · 실제와 다를 수 있음",
+  "image": "photos/1cb78a908582.jpg",
+  "pos": "center 75%"
  },
  "/region/seoul/": {
   "credit": "이미지: 서울빌라가로주택정비사업조합 제공 조감도 · 실제와 다를 수 있음",

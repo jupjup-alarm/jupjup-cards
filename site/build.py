@@ -290,7 +290,7 @@ def parse_comp(text):
             continue
         m = re.match(r"\s*(.+?):\s*공급\s*(\d+)\s*/\s*접수\s*(\d+)\s*/\s*경쟁률\s*(.+)", ln)
         if m:
-            rows.append({"name": m.group(1), "supply": int(m.group(2)), "apply": int(m.group(3)), "rate": m.group(4).strip()})
+            rows.append({"name": m.group(1), "supply": int(m.group(2)), "apply": int(m.group(3)), "rate": m.group(4).strip().replace(",", "")})
     short = ""
     m = re.search(r"([\d,]+)세대에\s*([\d,]+)\S*\s*접수.*?평균 약\s*([\d.]+)대 1", summary)
     if len(rows) == 1 and rows[0]["rate"][0].isdigit():
