@@ -1,7 +1,7 @@
 {
  "key": "lh2015122300020973",
  "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300020973&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
- "checked": "2026-11-12 07:25",
+ "checked": "2026-11-13 08:42",
  "files": [
   {
    "fileid": "69320621",
@@ -18,5 +18,5 @@
    "bytes": 1217548
   }
  ],
- "changed": true
+ "changed": false
 }

@@ -82,13 +82,58 @@
    "lh_tab": "평면도",
    "desc": "",
    "photo": false
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 공급금액 (p.2)",
+   "file": "photos/site/lh2015122300020987/notice-price.jpg",
+   "src": "69190885.pdf#p2",
+   "crop": "",
+   "w": 1400,
+   "h": 407,
+   "md5": "2df2ca26e095caafdc1fa2666195989e",
+   "photo": false,
+   "full": false,
+   "page": 2,
+   "marked": []
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 신청일정 (p.6)",
+   "file": "photos/site/lh2015122300020987/notice-schedule.jpg",
+   "src": "69190885.pdf#p6",
+   "crop": "",
+   "w": 1400,
+   "h": 409,
+   "md5": "7c800fc3a317daecaf297456eed72e6e",
+   "photo": false,
+   "full": false,
+   "page": 6,
+   "marked": []
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 신청자격 (p.1)",
+   "file": "photos/site/lh2015122300020987/notice-qual.jpg",
+   "src": "69190885.pdf#p1",
+   "crop": "",
+   "w": 1400,
+   "h": 407,
+   "md5": "8d9fa228bbdf374807a3b0fa9f601200",
+   "photo": false,
+   "full": false,
+   "page": 1,
+   "marked": []
   }
  ],
  "links": [],
  "name": "인천 남동구 국민임대 예비입주자(인천논현3단지)",
  "row": 96,
- "updated": "2026-11-12 07:25",
+ "updated": "2026-11-13 08:42",
  "owner": "LH",
  "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
- "lh_checked": "2026-11-12"
+ "lh_checked": "2026-11-13"
 }

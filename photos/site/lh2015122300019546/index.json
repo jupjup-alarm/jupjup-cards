@@ -1,11 +1,42 @@
 {
  "key": "lh2015122300019546",
- "images": [],
+ "images": [
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 공급금액 (p.2)",
+   "file": "photos/site/lh2015122300019546/notice-price.jpg",
+   "src": "68868379.pdf#p2",
+   "crop": "",
+   "w": 1400,
+   "h": 415,
+   "md5": "6f5e93280c3cce386af8fa84a54216e1",
+   "photo": false,
+   "full": false,
+   "page": 2,
+   "marked": []
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 신청자격 (p.1)",
+   "file": "photos/site/lh2015122300019546/notice-qual.jpg",
+   "src": "68868379.pdf#p1",
+   "crop": "",
+   "w": 1400,
+   "h": 416,
+   "md5": "47caf764c2451e8d447f7f4fb976092b",
+   "photo": false,
+   "full": false,
+   "page": 1,
+   "marked": []
+  }
+ ],
  "links": [],
  "owner": "LH",
  "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
- "updated": "2026-11-12 07:24",
+ "updated": "2026-11-13 08:42",
  "name": "2026 다자녀 전세임대 입주자 수시모집",
  "row": 102,
- "lh_checked": "2026-11-12"
+ "lh_checked": "2026-11-13"
 }

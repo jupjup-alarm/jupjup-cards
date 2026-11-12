@@ -123,24 +123,24 @@
  "고양장항 A-2·A-4·A-5블록 신혼희망타운(공공분양) 잔여세대": {
   "key": "lh0000061199",
   "row": 79,
-  "count": 26,
-  "usable": 26,
+  "count": 29,
+  "usable": 29,
   "photos": 10,
   "checked": 0
  },
  "고양지축 B-1블록 공공분양 잔여세대(지축역북한산비바힐스)": {
   "key": "lh0000061200",
   "row": 80,
-  "count": 17,
-  "usable": 17,
+  "count": 20,
+  "usable": 20,
   "photos": 9,
   "checked": 0
  },
  "경기남부권(수원·용인 광교) 공가세대 일반매각(무순위, 유주택자 가능)": {
   "key": "lh2015122300021009",
   "row": 91,
-  "count": 2,
-  "usable": 2,
+  "count": 5,
+  "usable": 5,
   "photos": 0,
   "checked": 0
  },
@@ -161,40 +161,40 @@
  "평택·안성 10년 공공임대(리츠) 예비입주자 — 통장·소득·자산 무관": {
   "key": "lh0000061201",
   "row": 94,
-  "count": 7,
-  "usable": 7,
+  "count": 10,
+  "usable": 10,
   "photos": 4,
   "checked": 0
  },
  "인천논현2단지 국민임대 예비입주자(정정)": {
   "key": "lh2015122300021026",
   "row": 95,
-  "count": 3,
-  "usable": 3,
+  "count": 6,
+  "usable": 6,
   "photos": 2,
   "checked": 0
  },
  "인천 남동구 국민임대 예비입주자(인천논현3단지)": {
   "key": "lh2015122300020987",
   "row": 96,
-  "count": 6,
-  "usable": 6,
+  "count": 9,
+  "usable": 9,
   "photos": 3,
   "checked": 0
  },
  "평택송화 국민임대 예비입주자": {
   "key": "lh2015122300020973",
   "row": 97,
-  "count": 4,
-  "usable": 4,
+  "count": 7,
+  "usable": 7,
   "photos": 2,
   "checked": 0
  },
  "연천전곡1단지 국민임대 예비입주자": {
   "key": "lh2015122300020996",
   "row": 98,
-  "count": 1,
-  "usable": 1,
+  "count": 4,
+  "usable": 4,
   "photos": 0,
   "checked": 0
  },
@@ -208,20 +208,18 @@
  "경기남부권(안성 동인힐타운) 다세대 공가세대 일반매각(무순위, 무주택)": {
   "key": "lh2015122300021015",
   "row": 100,
-  "count": 0,
-  "usable": 0,
+  "count": 3,
+  "usable": 3,
   "photos": 0,
-  "checked": 0,
-  "why": "LH 그림 없음"
+  "checked": 0
  },
  "2026 다자녀 전세임대 입주자 수시모집": {
   "key": "lh2015122300019546",
   "row": 102,
-  "count": 0,
-  "usable": 0,
+  "count": 2,
+  "usable": 2,
   "photos": 0,
-  "checked": 0,
-  "why": "LH 그림 없음"
+  "checked": 0
  },
  "중화역 라온프라이빗 센트로": {
   "key": "2026000497",
@@ -308,16 +306,16 @@
  "인천산곡 A1블록 행복주택 예비입주자(신혼부부·한부모 30호)": {
   "key": "lh2015122300021052",
   "row": 135,
-  "count": 6,
-  "usable": 6,
+  "count": 9,
+  "usable": 9,
   "photos": 2,
   "checked": 0
  },
  "수원우만3 영구임대주택 예비입주자 모집(500호)": {
   "key": "lh2015122300021050",
   "row": 134,
-  "count": 2,
-  "usable": 2,
+  "count": 6,
+  "usable": 6,
   "photos": 0,
   "checked": 0
  },
@@ -349,10 +347,17 @@
  "고덕신도시 아테라 A-63블록 공공분양주택(3차) 임의공급": {
   "key": "2026940250",
   "row": 130,
+  "count": 21,
+  "usable": 18,
+  "photos": 4,
+  "checked": 3
+ },
+ "부천대장 하우스토리 디센트(부천대장 A-2블록) 분양 예정": {
+  "key": "2026000457",
+  "row": 113,
   "count": 3,
-  "usable": 0,
-  "photos": 3,
-  "checked": 3,
-  "why": "3장 (overview 3)"
+  "usable": 3,
+  "photos": 0,
+  "checked": 0
  }
 }

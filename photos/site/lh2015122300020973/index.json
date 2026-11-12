@@ -52,13 +52,58 @@
    "lh_tab": "단지배치도",
    "desc": "단지배치도",
    "photo": false
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 공급금액 (p.4)",
+   "file": "photos/site/lh2015122300020973/notice-price.jpg",
+   "src": "69320623.pdf#p4",
+   "crop": "",
+   "w": 1156,
+   "h": 701,
+   "md5": "6800c4f66c662b0dddb7af6abe2d9075",
+   "photo": false,
+   "full": false,
+   "page": 4,
+   "marked": []
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 신청일정 (p.11)",
+   "file": "photos/site/lh2015122300020973/notice-schedule.jpg",
+   "src": "69320623.pdf#p11",
+   "crop": "",
+   "w": 1151,
+   "h": 701,
+   "md5": "fd1eba40e6b62a0d013abdb4ef750309",
+   "photo": false,
+   "full": false,
+   "page": 11,
+   "marked": []
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 신청자격 (p.1)",
+   "file": "photos/site/lh2015122300020973/notice-qual.jpg",
+   "src": "69320623.pdf#p1",
+   "crop": "",
+   "w": 1149,
+   "h": 701,
+   "md5": "078c6ad6677ec37155796378fe3109bd",
+   "photo": false,
+   "full": false,
+   "page": 1,
+   "marked": []
   }
  ],
  "links": [],
  "name": "평택송화 국민임대 예비입주자",
  "row": 97,
- "updated": "2026-11-12 07:25",
+ "updated": "2026-11-13 08:42",
  "owner": "LH",
  "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
- "lh_checked": "2026-11-12"
+ "lh_checked": "2026-11-13"
 }

@@ -90,13 +90,58 @@
    "lh_tab": "평면도",
    "desc": "인천산곡 A1 44형 평면",
    "photo": false
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 공급금액 (p.2)",
+   "file": "photos/site/lh2015122300021052/notice-price.jpg",
+   "src": "69385666.pdf#p2",
+   "crop": "",
+   "w": 1087,
+   "h": 701,
+   "md5": "b1691624ed32d9ed87bc5ab4b8c7e3e9",
+   "photo": false,
+   "full": false,
+   "page": 2,
+   "marked": []
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 신청일정 (p.1)",
+   "file": "photos/site/lh2015122300021052/notice-schedule.jpg",
+   "src": "69385666.pdf#p1",
+   "crop": "",
+   "w": 1074,
+   "h": 701,
+   "md5": "d61c5e483afb42486f9f9b9990f3b6a5",
+   "photo": false,
+   "full": false,
+   "page": 1,
+   "marked": []
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 신청자격 (p.1)",
+   "file": "photos/site/lh2015122300021052/notice-qual.jpg",
+   "src": "69385666.pdf#p1",
+   "crop": "",
+   "w": 1075,
+   "h": 701,
+   "md5": "6246f3d5d785aa3eebc441161f19c80d",
+   "photo": false,
+   "full": false,
+   "page": 1,
+   "marked": []
   }
  ],
  "links": [],
  "owner": "LH",
  "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
- "updated": "2026-11-12 07:19",
+ "updated": "2026-11-13 08:40",
  "name": "인천산곡 A1블록 행복주택 예비입주자(신혼부부·한부모 30호)",
  "row": 135,
- "lh_checked": "2026-11-12"
+ "lh_checked": "2026-11-13"
 }

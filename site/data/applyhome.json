@@ -1,9 +1,9 @@
 {
  "_about": "'청약홈API' 탭을 그대로 옮긴 것. ⑦이 매일 시트에서 다시 받아 덮어쓴다. 열 이름은 시트 머리글과 같다.",
- "fetched_at": "2026-11-13 07:13",
+ "fetched_at": "2026-11-13 08:13",
  "rows": [
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "APT(신혼희망타운)",
    "주택관리번호": "2026820012",
    "공고번호": "2026820012",
@@ -27,7 +27,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"한국토지주택공사 경기남부지역본부\",\"CNSTRCT_ENTRPS_NM\":\"이수건설 주식회사, 주식회사 오렌지이앤씨\",\"CNTRCT_CNCLS_BGNDE\":\"2027-02-16\",\"CNTRCT_CNCLS_ENDDE\":\"2027-02-18\",\"GNRL_RNK1_CRSPAREA_ENDDE\":\"2026-11-02\",\"GNRL_RNK1_CRSPAREA_RCPTDE\":\"2026-11-02\",\"GNRL_RNK1_ETC_AREA_ENDDE\":\"2026-11-02\",\"GNRL_RNK1_ETC_AREA_RCPTDE\":\"2026-11-02\",\"GNRL_RNK1_ETC_GG_ENDDE\":null,\"GNRL_RNK1_ETC_GG_RCPTDE\":null,\"GNRL_RNK2_CRSPAREA_ENDDE\":\"2026-11-03\",\"GNRL_RNK2_CRSPAREA_RCPTDE\":\"2026-11-03\",\"GNRL_RNK2_ETC_AREA_ENDDE\":\"2026-11-03\",\"GNRL_RNK2_ETC_AREA_RCPTDE\":\"2026-11-03\",\"GNRL_RNK2_ETC_GG_ENDDE\":null,\"GNRL_RNK2_ETC_GG_RCPTDE\":null,\"HMPG_ADRES\":\"https://apply.lh.or.kr/\",\"HOUSE_DTL_SECD\":\"03\",\"HOUSE_DTL_SECD_NM\":\"국민\",\"HOUSE_MANAGE_NO\":\"2026820012\",\"HOUSE_NM\":\"시흥하중지구 A1블록 신혼희망타운(공공분양) 추가입주자모집공고\",\"HOUSE_SECD\":\"10\",\"HOUSE_SECD_NM\":\"신혼희망타운\",\"HSSPLY_ADRES\":\"경기도 시흥시 하중동 일원 시흥하중 공공주택지구 내 A1블록\",\"HSSPLY_ZIP\":\"14976\",\"IMPRMN_BSNS_AT\":\"N\",\"LRSCL_BLDLND_AT\":\"N\",\"MDAT_TRGET_AREA_SECD\":\"N\",\"MDHS_TELNO\":\"03180777970\",\"MVN_PREARNGE_YM\":\"202903\",\"NPLN_PRVOPR_PUBLIC_HOUSE_AT\":\"N\",\"NSPRC_NM\":null,\"PARCPRC_ULS_AT\":\"Y\",\"PBLANC_NO\":\"2026820012\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026820012&pblancNo=2026820012\",\"PRZWNER_PRESNATN_DE\":\"2026-11-12\",\"PUBLIC_HOUSE_EARTH_AT\":\"Y\",\"PUBLIC_HOUSE_SPCLW_APPLC_AT\":\"Y\",\"RCEPT_BGNDE\":\"2026-11-02\",\"RCEPT_ENDDE\":\"2026-11-03\",\"RCRIT_PBLANC_DE\":\"2026-10-23\",\"RENT_SECD\":\"0\",\"RENT_SECD_NM\":\"분양주택\",\"SPECLT_RDN_EARTH_AT\":\"N\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"TOT_SUPLY_HSHLDCO\":175}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "APT(APT)",
    "주택관리번호": "2026000532",
    "공고번호": "2026000532",
@@ -51,7 +51,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"(주)반도건설\",\"CNSTRCT_ENTRPS_NM\":\"(주)반도건설\",\"CNTRCT_CNCLS_BGNDE\":\"2026-11-23\",\"CNTRCT_CNCLS_ENDDE\":\"2026-11-25\",\"GNRL_RNK1_CRSPAREA_ENDDE\":\"2026-11-03\",\"GNRL_RNK1_CRSPAREA_RCPTDE\":\"2026-11-03\",\"GNRL_RNK1_ETC_AREA_ENDDE\":\"2026-11-03\",\"GNRL_RNK1_ETC_AREA_RCPTDE\":\"2026-11-03\",\"GNRL_RNK1_ETC_GG_ENDDE\":null,\"GNRL_RNK1_ETC_GG_RCPTDE\":null,\"GNRL_RNK2_CRSPAREA_ENDDE\":\"2026-11-04\",\"GNRL_RNK2_CRSPAREA_RCPTDE\":\"2026-11-04\",\"GNRL_RNK2_ETC_AREA_ENDDE\":\"2026-11-04\",\"GNRL_RNK2_ETC_AREA_RCPTDE\":\"2026-11-04\",\"GNRL_RNK2_ETC_GG_ENDDE\":null,\"GNRL_RNK2_ETC_GG_RCPTDE\":null,\"HMPG_ADRES\":\"https://www.gy-bando.com\",\"HOUSE_DTL_SECD\":\"01\",\"HOUSE_DTL_SECD_NM\":\"민영\",\"HOUSE_MANAGE_NO\":\"2026000532\",\"HOUSE_NM\":\"계양신도시 카이브 유보라(AC4BL)\",\"HOUSE_SECD\":\"01\",\"HOUSE_SECD_NM\":\"APT\",\"HSSPLY_ADRES\":\"인천광역시 계양구 동양동 420-3번지 일원 (인천계양 테크노밸리 공공주택지구 AC4블록)\",\"HSSPLY_ZIP\":\"21013\",\"IMPRMN_BSNS_AT\":\"N\",\"LRSCL_BLDLND_AT\":\"Y\",\"MDAT_TRGET_AREA_SECD\":\"N\",\"MDHS_TELNO\":\"18000320\",\"MVN_PREARNGE_YM\":\"202908\",\"NPLN_PRVOPR_PUBLIC_HOUSE_AT\":\"Y\",\"NSPRC_NM\":\"헤럴드경제신문\",\"PARCPRC_ULS_AT\":\"Y\",\"PBLANC_NO\":\"2026000532\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000532&pblancNo=2026000532\",\"PRZWNER_PRESNATN_DE\":\"2026-11-11\",\"PUBLIC_HOUSE_EARTH_AT\":\"Y\",\"PUBLIC_HOUSE_SPCLW_APPLC_AT\":\"N\",\"RCEPT_BGNDE\":\"2026-11-02\",\"RCEPT_ENDDE\":\"2026-11-04\",\"RCRIT_PBLANC_DE\":\"2026-10-23\",\"RENT_SECD\":\"0\",\"RENT_SECD_NM\":\"분양주택\",\"SPECLT_RDN_EARTH_AT\":\"N\",\"SPSPLY_RCEPT_BGNDE\":\"2026-11-02\",\"SPSPLY_RCEPT_ENDDE\":\"2026-11-02\",\"SUBSCRPT_AREA_CODE\":\"400\",\"SUBSCRPT_AREA_CODE_NM\":\"인천\",\"TOT_SUPLY_HSHLDCO\":496}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "APT(APT)",
    "주택관리번호": "2026000531",
    "공고번호": "2026000531",
@@ -75,7 +75,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"한국토지주택공사 경기남부지역본부\",\"CNSTRCT_ENTRPS_NM\":\"씨에이이앤씨주식회사\",\"CNTRCT_CNCLS_BGNDE\":\"2027-02-01\",\"CNTRCT_CNCLS_ENDDE\":\"2027-02-03\",\"GNRL_RNK1_CRSPAREA_ENDDE\":\"2026-11-16\",\"GNRL_RNK1_CRSPAREA_RCPTDE\":\"2026-11-02\",\"GNRL_RNK1_ETC_AREA_ENDDE\":\"2026-11-16\",\"GNRL_RNK1_ETC_AREA_RCPTDE\":\"2026-11-02\",\"GNRL_RNK1_ETC_GG_ENDDE\":\"2026-11-16\",\"GNRL_RNK1_ETC_GG_RCPTDE\":\"2026-11-02\",\"GNRL_RNK2_CRSPAREA_ENDDE\":\"2026-11-17\",\"GNRL_RNK2_CRSPAREA_RCPTDE\":\"2026-11-17\",\"GNRL_RNK2_ETC_AREA_ENDDE\":\"2026-11-17\",\"GNRL_RNK2_ETC_AREA_RCPTDE\":\"2026-11-17\",\"GNRL_RNK2_ETC_GG_ENDDE\":\"2026-11-17\",\"GNRL_RNK2_ETC_GG_RCPTDE\":\"2026-11-17\",\"HMPG_ADRES\":\"https://apply.lh.or.kr/\",\"HOUSE_DTL_SECD\":\"03\",\"HOUSE_DTL_SECD_NM\":\"국민\",\"HOUSE_MANAGE_NO\":\"2026000531\",\"HOUSE_NM\":\"시흥거모지구 S-1블록 공공분양(본청약)\",\"HOUSE_SECD\":\"01\",\"HOUSE_SECD_NM\":\"APT\",\"HSSPLY_ADRES\":\"경기도 시흥시 거모동, 군자동 일원 시흥거모 공공주택지구 내 S-1블록\",\"HSSPLY_ZIP\":\"15069\",\"IMPRMN_BSNS_AT\":\"N\",\"LRSCL_BLDLND_AT\":\"Y\",\"MDAT_TRGET_AREA_SECD\":\"N\",\"MDHS_TELNO\":\"16001004\",\"MVN_PREARNGE_YM\":\"202906\",\"NPLN_PRVOPR_PUBLIC_HOUSE_AT\":\"N\",\"NSPRC_NM\":\"중부일보 \",\"PARCPRC_ULS_AT\":\"Y\",\"PBLANC_NO\":\"2026000531\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000531&pblancNo=2026000531\",\"PRZWNER_PRESNATN_DE\":\"2026-11-26\",\"PUBLIC_HOUSE_EARTH_AT\":\"Y\",\"PUBLIC_HOUSE_SPCLW_APPLC_AT\":\"Y\",\"RCEPT_BGNDE\":\"2026-11-02\",\"RCEPT_ENDDE\":\"2026-11-17\",\"RCRIT_PBLANC_DE\":\"2026-10-23\",\"RENT_SECD\":\"0\",\"RENT_SECD_NM\":\"분양주택\",\"SPECLT_RDN_EARTH_AT\":\"N\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"TOT_SUPLY_HSHLDCO\":300}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "APT(APT)",
    "주택관리번호": "2026000530",
    "공고번호": "2026000530",
@@ -99,7 +99,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"(주)반도건설\",\"CNSTRCT_ENTRPS_NM\":\"(주)반도건설\",\"CNTRCT_CNCLS_BGNDE\":\"2026-11-23\",\"CNTRCT_CNCLS_ENDDE\":\"2026-11-25\",\"GNRL_RNK1_CRSPAREA_ENDDE\":\"2026-11-03\",\"GNRL_RNK1_CRSPAREA_RCPTDE\":\"2026-11-03\",\"GNRL_RNK1_ETC_AREA_ENDDE\":\"2026-11-03\",\"GNRL_RNK1_ETC_AREA_RCPTDE\":\"2026-11-03\",\"GNRL_RNK1_ETC_GG_ENDDE\":null,\"GNRL_RNK1_ETC_GG_RCPTDE\":null,\"GNRL_RNK2_CRSPAREA_ENDDE\":\"2026-11-04\",\"GNRL_RNK2_CRSPAREA_RCPTDE\":\"2026-11-04\",\"GNRL_RNK2_ETC_AREA_ENDDE\":\"2026-11-04\",\"GNRL_RNK2_ETC_AREA_RCPTDE\":\"2026-11-04\",\"GNRL_RNK2_ETC_GG_ENDDE\":null,\"GNRL_RNK2_ETC_GG_RCPTDE\":null,\"HMPG_ADRES\":\"https://www.gy-bando.com\",\"HOUSE_DTL_SECD\":\"01\",\"HOUSE_DTL_SECD_NM\":\"민영\",\"HOUSE_MANAGE_NO\":\"2026000530\",\"HOUSE_NM\":\"계양신도시 카이브 유보라(AC3BL)\",\"HOUSE_SECD\":\"01\",\"HOUSE_SECD_NM\":\"APT\",\"HSSPLY_ADRES\":\"인천광역시 계양구 동양동 458-3번지 일원 (인천계양 테크노밸리 공공주택지구 AC3블록)\",\"HSSPLY_ZIP\":\"21013\",\"IMPRMN_BSNS_AT\":\"N\",\"LRSCL_BLDLND_AT\":\"Y\",\"MDAT_TRGET_AREA_SECD\":\"N\",\"MDHS_TELNO\":\"18000320\",\"MVN_PREARNGE_YM\":\"202908\",\"NPLN_PRVOPR_PUBLIC_HOUSE_AT\":\"Y\",\"NSPRC_NM\":\"헤럴드경제신문\",\"PARCPRC_ULS_AT\":\"Y\",\"PBLANC_NO\":\"2026000530\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000530&pblancNo=2026000530\",\"PRZWNER_PRESNATN_DE\":\"2026-11-10\",\"PUBLIC_HOUSE_EARTH_AT\":\"Y\",\"PUBLIC_HOUSE_SPCLW_APPLC_AT\":\"N\",\"RCEPT_BGNDE\":\"2026-11-02\",\"RCEPT_ENDDE\":\"2026-11-04\",\"RCRIT_PBLANC_DE\":\"2026-10-23\",\"RENT_SECD\":\"0\",\"RENT_SECD_NM\":\"분양주택\",\"SPECLT_RDN_EARTH_AT\":\"N\",\"SPSPLY_RCEPT_BGNDE\":\"2026-11-02\",\"SPSPLY_RCEPT_ENDDE\":\"2026-11-02\",\"SUBSCRPT_AREA_CODE\":\"400\",\"SUBSCRPT_AREA_CODE_NM\":\"인천\",\"TOT_SUPLY_HSHLDCO\":614}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "APT(APT)",
    "주택관리번호": "2026000518",
    "공고번호": "2026000518",
@@ -123,7 +123,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"(주)넥스트건설\",\"CNSTRCT_ENTRPS_NM\":\"주식회사 시티건설, 주식회사 시티, 주식회사 시티종합건설\",\"CNTRCT_CNCLS_BGNDE\":\"2026-11-25\",\"CNTRCT_CNCLS_ENDDE\":\"2026-11-29\",\"GNRL_RNK1_CRSPAREA_ENDDE\":\"2026-11-03\",\"GNRL_RNK1_CRSPAREA_RCPTDE\":\"2026-11-03\",\"GNRL_RNK1_ETC_AREA_ENDDE\":\"2026-11-03\",\"GNRL_RNK1_ETC_AREA_RCPTDE\":\"2026-11-03\",\"GNRL_RNK1_ETC_GG_ENDDE\":\"2026-11-03\",\"GNRL_RNK1_ETC_GG_RCPTDE\":\"2026-11-03\",\"GNRL_RNK2_CRSPAREA_ENDDE\":\"2026-11-04\",\"GNRL_RNK2_CRSPAREA_RCPTDE\":\"2026-11-04\",\"GNRL_RNK2_ETC_AREA_ENDDE\":\"2026-11-04\",\"GNRL_RNK2_ETC_AREA_RCPTDE\":\"2026-11-04\",\"GNRL_RNK2_ETC_GG_ENDDE\":\"2026-11-04\",\"GNRL_RNK2_ETC_GG_RCPTDE\":\"2026-11-04\",\"HMPG_ADRES\":\"https://www.gtx운정중앙역시티프라디움.com\",\"HOUSE_DTL_SECD\":\"01\",\"HOUSE_DTL_SECD_NM\":\"민영\",\"HOUSE_MANAGE_NO\":\"2026000518\",\"HOUSE_NM\":\"GTX운정중앙역 시티프라디움 4단지(후속사업)\",\"HOUSE_SECD\":\"01\",\"HOUSE_SECD_NM\":\"APT\",\"HSSPLY_ADRES\":\"경기도 파주시 파주운정3지구 주상복합 4블록(경기도 파주시 동패동 400-7번지 일원)\",\"HSSPLY_ZIP\":\"10890\",\"IMPRMN_BSNS_AT\":\"N\",\"LRSCL_BLDLND_AT\":\"Y\",\"MDAT_TRGET_AREA_SECD\":\"N\",\"MDHS_TELNO\":\"18996995\",\"MVN_PREARNGE_YM\":\"203007\",\"NPLN_PRVOPR_PUBLIC_HOUSE_AT\":\"N\",\"NSPRC_NM\":\"아시아경제\",\"PARCPRC_ULS_AT\":\"Y\",\"PBLANC_NO\":\"2026000518\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000518&pblancNo=2026000518\",\"PRZWNER_PRESNATN_DE\":\"2026-11-11\",\"PUBLIC_HOUSE_EARTH_AT\":\"N\",\"PUBLIC_HOUSE_SPCLW_APPLC_AT\":\"N\",\"RCEPT_BGNDE\":\"2026-11-02\",\"RCEPT_ENDDE\":\"2026-11-04\",\"RCRIT_PBLANC_DE\":\"2026-10-23\",\"RENT_SECD\":\"0\",\"RENT_SECD_NM\":\"분양주택\",\"SPECLT_RDN_EARTH_AT\":\"N\",\"SPSPLY_RCEPT_BGNDE\":\"2026-11-02\",\"SPSPLY_RCEPT_ENDDE\":\"2026-11-02\",\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"TOT_SUPLY_HSHLDCO\":358}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "APT(APT)",
    "주택관리번호": "2026000517",
    "공고번호": "2026000517",
@@ -147,7 +147,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"(주)넥스트건설\",\"CNSTRCT_ENTRPS_NM\":\"주식회사 시티건설, 주식회사 시티, 주식회사 시티종합건설\",\"CNTRCT_CNCLS_BGNDE\":\"2026-11-25\",\"CNTRCT_CNCLS_ENDDE\":\"2026-11-29\",\"GNRL_RNK1_CRSPAREA_ENDDE\":\"2026-11-03\",\"GNRL_RNK1_CRSPAREA_RCPTDE\":\"2026-11-03\",\"GNRL_RNK1_ETC_AREA_ENDDE\":\"2026-11-03\",\"GNRL_RNK1_ETC_AREA_RCPTDE\":\"2026-11-03\",\"GNRL_RNK1_ETC_GG_ENDDE\":\"2026-11-03\",\"GNRL_RNK1_ETC_GG_RCPTDE\":\"2026-11-03\",\"GNRL_RNK2_CRSPAREA_ENDDE\":\"2026-11-04\",\"GNRL_RNK2_CRSPAREA_RCPTDE\":\"2026-11-04\",\"GNRL_RNK2_ETC_AREA_ENDDE\":\"2026-11-04\",\"GNRL_RNK2_ETC_AREA_RCPTDE\":\"2026-11-04\",\"GNRL_RNK2_ETC_GG_ENDDE\":\"2026-11-04\",\"GNRL_RNK2_ETC_GG_RCPTDE\":\"2026-11-04\",\"HMPG_ADRES\":\"https://www.gtx운정중앙역시티프라디움.com\",\"HOUSE_DTL_SECD\":\"01\",\"HOUSE_DTL_SECD_NM\":\"민영\",\"HOUSE_MANAGE_NO\":\"2026000517\",\"HOUSE_NM\":\"GTX운정중앙역 시티프라디움 3단지(후속사업)\",\"HOUSE_SECD\":\"01\",\"HOUSE_SECD_NM\":\"APT\",\"HSSPLY_ADRES\":\"경기도 파주시 파주운정3지구 주상복합 3블록(경기도 파주시 동패동 1673번지 일원)\",\"HSSPLY_ZIP\":\"10890\",\"IMPRMN_BSNS_AT\":\"N\",\"LRSCL_BLDLND_AT\":\"Y\",\"MDAT_TRGET_AREA_SECD\":\"N\",\"MDHS_TELNO\":\"18996995\",\"MVN_PREARNGE_YM\":\"203007\",\"NPLN_PRVOPR_PUBLIC_HOUSE_AT\":\"N\",\"NSPRC_NM\":\"아시아경제\",\"PARCPRC_ULS_AT\":\"Y\",\"PBLANC_NO\":\"2026000517\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000517&pblancNo=2026000517\",\"PRZWNER_PRESNATN_DE\":\"2026-11-10\",\"PUBLIC_HOUSE_EARTH_AT\":\"N\",\"PUBLIC_HOUSE_SPCLW_APPLC_AT\":\"N\",\"RCEPT_BGNDE\":\"2026-11-02\",\"RCEPT_ENDDE\":\"2026-11-04\",\"RCRIT_PBLANC_DE\":\"2026-10-23\",\"RENT_SECD\":\"0\",\"RENT_SECD_NM\":\"분양주택\",\"SPECLT_RDN_EARTH_AT\":\"N\",\"SPSPLY_RCEPT_BGNDE\":\"2026-11-02\",\"SPSPLY_RCEPT_ENDDE\":\"2026-11-02\",\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"TOT_SUPLY_HSHLDCO\":337}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "APT(APT)",
    "주택관리번호": "2026000496",
    "공고번호": "2026000496",
@@ -171,7 +171,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"(주)청라스마트시티\",\"CNSTRCT_ENTRPS_NM\":\"(주)대우건설\",\"CNTRCT_CNCLS_BGNDE\":\"2026-11-22\",\"CNTRCT_CNCLS_ENDDE\":\"2026-11-24\",\"GNRL_RNK1_CRSPAREA_ENDDE\":\"2026-11-03\",\"GNRL_RNK1_CRSPAREA_RCPTDE\":\"2026-11-03\",\"GNRL_RNK1_ETC_AREA_ENDDE\":\"2026-11-03\",\"GNRL_RNK1_ETC_AREA_RCPTDE\":\"2026-11-03\",\"GNRL_RNK1_ETC_GG_ENDDE\":null,\"GNRL_RNK1_ETC_GG_RCPTDE\":null,\"GNRL_RNK2_CRSPAREA_ENDDE\":\"2026-11-04\",\"GNRL_RNK2_CRSPAREA_RCPTDE\":\"2026-11-04\",\"GNRL_RNK2_ETC_AREA_ENDDE\":\"2026-11-04\",\"GNRL_RNK2_ETC_AREA_RCPTDE\":\"2026-11-04\",\"GNRL_RNK2_ETC_GG_ENDDE\":null,\"GNRL_RNK2_ETC_GG_RCPTDE\":null,\"HMPG_ADRES\":\"https://www.arkone-prugio.com\",\"HOUSE_DTL_SECD\":\"01\",\"HOUSE_DTL_SECD_NM\":\"민영\",\"HOUSE_MANAGE_NO\":\"2026000496\",\"HOUSE_NM\":\"청라 아크원 푸르지오\",\"HOUSE_SECD\":\"01\",\"HOUSE_SECD_NM\":\"APT\",\"HSSPLY_ADRES\":\"인천광역시 서해구 청라동 86-1번지 (청라국제업무단지 M5BL)\",\"HSSPLY_ZIP\":\"22754\",\"IMPRMN_BSNS_AT\":\"N\",\"LRSCL_BLDLND_AT\":\"Y\",\"MDAT_TRGET_AREA_SECD\":\"N\",\"MDHS_TELNO\":\"15516881\",\"MVN_PREARNGE_YM\":\"203108\",\"NPLN_PRVOPR_PUBLIC_HOUSE_AT\":\"N\",\"NSPRC_NM\":\"아시아경제\",\"PARCPRC_ULS_AT\":\"Y\",\"PBLANC_NO\":\"2026000496\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000496&pblancNo=2026000496\",\"PRZWNER_PRESNATN_DE\":\"2026-11-10\",\"PUBLIC_HOUSE_EARTH_AT\":\"N\",\"PUBLIC_HOUSE_SPCLW_APPLC_AT\":\"N\",\"RCEPT_BGNDE\":\"2026-11-02\",\"RCEPT_ENDDE\":\"2026-11-04\",\"RCRIT_PBLANC_DE\":\"2026-10-22\",\"RENT_SECD\":\"0\",\"RENT_SECD_NM\":\"분양주택\",\"SPECLT_RDN_EARTH_AT\":\"N\",\"SPSPLY_RCEPT_BGNDE\":\"2026-11-02\",\"SPSPLY_RCEPT_ENDDE\":\"2026-11-02\",\"SUBSCRPT_AREA_CODE\":\"400\",\"SUBSCRPT_AREA_CODE_NM\":\"인천\",\"TOT_SUPLY_HSHLDCO\":868}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "APT(APT)",
    "주택관리번호": "2026000502",
    "공고번호": "2026000502",
@@ -195,7 +195,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"신영부동산신탁 주식회사\",\"CNSTRCT_ENTRPS_NM\":\"롯데건설(주)\",\"CNTRCT_CNCLS_BGNDE\":\"2026-11-23\",\"CNTRCT_CNCLS_ENDDE\":\"2026-11-25\",\"GNRL_RNK1_CRSPAREA_ENDDE\":\"2026-11-03\",\"GNRL_RNK1_CRSPAREA_RCPTDE\":\"2026-11-03\",\"GNRL_RNK1_ETC_AREA_ENDDE\":\"2026-11-03\",\"GNRL_RNK1_ETC_AREA_RCPTDE\":\"2026-11-03\",\"GNRL_RNK1_ETC_GG_ENDDE\":null,\"GNRL_RNK1_ETC_GG_RCPTDE\":null,\"GNRL_RNK2_CRSPAREA_ENDDE\":\"2026-11-04\",\"GNRL_RNK2_CRSPAREA_RCPTDE\":\"2026-11-04\",\"GNRL_RNK2_ETC_AREA_ENDDE\":\"2026-11-04\",\"GNRL_RNK2_ETC_AREA_RCPTDE\":\"2026-11-04\",\"GNRL_RNK2_ETC_GG_ENDDE\":null,\"GNRL_RNK2_ETC_GG_RCPTDE\":null,\"HMPG_ADRES\":\"https://www.hwaseong-lottecastlesignature.com\",\"HOUSE_DTL_SECD\":\"01\",\"HOUSE_DTL_SECD_NM\":\"민영\",\"HOUSE_MANAGE_NO\":\"2026000502\",\"HOUSE_NM\":\"화성 향남 롯데캐슬 시그니처\",\"HOUSE_SECD\":\"01\",\"HOUSE_SECD_NM\":\"APT\",\"HSSPLY_ADRES\":\"경기도 화성시 만세구 향남읍 상신리 산 13-13 일원\",\"HSSPLY_ZIP\":\"18622\",\"IMPRMN_BSNS_AT\":\"N\",\"LRSCL_BLDLND_AT\":\"N\",\"MDAT_TRGET_AREA_SECD\":\"N\",\"MDHS_TELNO\":\"15511542\",\"MVN_PREARNGE_YM\":\"202912\",\"NPLN_PRVOPR_PUBLIC_HOUSE_AT\":\"N\",\"NSPRC_NM\":\"문화일보\",\"PARCPRC_ULS_AT\":\"N\",\"PBLANC_NO\":\"2026000502\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000502&pblancNo=2026000502\",\"PRZWNER_PRESNATN_DE\":\"2026-11-10\",\"PUBLIC_HOUSE_EARTH_AT\":\"N\",\"PUBLIC_HOUSE_SPCLW_APPLC_AT\":\"N\",\"RCEPT_BGNDE\":\"2026-11-02\",\"RCEPT_ENDDE\":\"2026-11-04\",\"RCRIT_PBLANC_DE\":\"2026-10-21\",\"RENT_SECD\":\"0\",\"RENT_SECD_NM\":\"분양주택\",\"SPECLT_RDN_EARTH_AT\":\"N\",\"SPSPLY_RCEPT_BGNDE\":\"2026-11-02\",\"SPSPLY_RCEPT_ENDDE\":\"2026-11-02\",\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"TOT_SUPLY_HSHLDCO\":1542}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "APT(APT)",
    "주택관리번호": "2026000509",
    "공고번호": "2026000509",
@@ -219,7 +219,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"케이비부동산신탁(주)\",\"CNSTRCT_ENTRPS_NM\":\"(주)포스코이앤씨\",\"CNTRCT_CNCLS_BGNDE\":\"2026-11-16\",\"CNTRCT_CNCLS_ENDDE\":\"2026-11-18\",\"GNRL_RNK1_CRSPAREA_ENDDE\":\"2026-10-27\",\"GNRL_RNK1_CRSPAREA_RCPTDE\":\"2026-10-27\",\"GNRL_RNK1_ETC_AREA_ENDDE\":\"2026-10-27\",\"GNRL_RNK1_ETC_AREA_RCPTDE\":\"2026-10-27\",\"GNRL_RNK1_ETC_GG_ENDDE\":\"2026-10-27\",\"GNRL_RNK1_ETC_GG_RCPTDE\":\"2026-10-27\",\"GNRL_RNK2_CRSPAREA_ENDDE\":\"2026-10-28\",\"GNRL_RNK2_CRSPAREA_RCPTDE\":\"2026-10-28\",\"GNRL_RNK2_ETC_AREA_ENDDE\":\"2026-10-28\",\"GNRL_RNK2_ETC_AREA_RCPTDE\":\"2026-10-28\",\"GNRL_RNK2_ETC_GG_ENDDE\":\"2026-10-28\",\"GNRL_RNK2_ETC_GG_RCPTDE\":\"2026-10-28\",\"HMPG_ADRES\":\"https://아크메르동탄.kr\",\"HOUSE_DTL_SECD\":\"01\",\"HOUSE_DTL_SECD_NM\":\"민영\",\"HOUSE_MANAGE_NO\":\"2026000509\",\"HOUSE_NM\":\"아크메르 동탄 99\",\"HOUSE_SECD\":\"01\",\"HOUSE_SECD_NM\":\"APT\",\"HSSPLY_ADRES\":\"경기도 화성특례시 동탄구 반송동 99번지[동탄(1) M1-2-2블록]\",\"HSSPLY_ZIP\":\"18445\",\"IMPRMN_BSNS_AT\":\"N\",\"LRSCL_BLDLND_AT\":\"Y\",\"MDAT_TRGET_AREA_SECD\":\"Y\",\"MDHS_TELNO\":\"15228111\",\"MVN_PREARNGE_YM\":\"203201\",\"NPLN_PRVOPR_PUBLIC_HOUSE_AT\":\"N\",\"NSPRC_NM\":\"아시아투데이\",\"PARCPRC_ULS_AT\":\"N\",\"PBLANC_NO\":\"2026000509\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000509&pblancNo=2026000509\",\"PRZWNER_PRESNATN_DE\":\"2026-11-04\",\"PUBLIC_HOUSE_EARTH_AT\":\"N\",\"PUBLIC_HOUSE_SPCLW_APPLC_AT\":\"N\",\"RCEPT_BGNDE\":\"2026-10-26\",\"RCEPT_ENDDE\":\"2026-10-28\",\"RCRIT_PBLANC_DE\":\"2026-10-16\",\"RENT_SECD\":\"0\",\"RENT_SECD_NM\":\"분양주택\",\"SPECLT_RDN_EARTH_AT\":\"Y\",\"SPSPLY_RCEPT_BGNDE\":\"2026-10-26\",\"SPSPLY_RCEPT_ENDDE\":\"2026-10-26\",\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"TOT_SUPLY_HSHLDCO\":996}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "APT(APT)",
    "주택관리번호": "2026000508",
    "공고번호": "2026000508",
@@ -243,7 +243,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"케이비부동산신탁(주)\",\"CNSTRCT_ENTRPS_NM\":\"(주)포스코이앤씨\",\"CNTRCT_CNCLS_BGNDE\":\"2026-11-16\",\"CNTRCT_CNCLS_ENDDE\":\"2026-11-18\",\"GNRL_RNK1_CRSPAREA_ENDDE\":\"2026-10-27\",\"GNRL_RNK1_CRSPAREA_RCPTDE\":\"2026-10-27\",\"GNRL_RNK1_ETC_AREA_ENDDE\":\"2026-10-27\",\"GNRL_RNK1_ETC_AREA_RCPTDE\":\"2026-10-27\",\"GNRL_RNK1_ETC_GG_ENDDE\":\"2026-10-27\",\"GNRL_RNK1_ETC_GG_RCPTDE\":\"2026-10-27\",\"GNRL_RNK2_CRSPAREA_ENDDE\":\"2026-10-28\",\"GNRL_RNK2_CRSPAREA_RCPTDE\":\"2026-10-28\",\"GNRL_RNK2_ETC_AREA_ENDDE\":\"2026-10-28\",\"GNRL_RNK2_ETC_AREA_RCPTDE\":\"2026-10-28\",\"GNRL_RNK2_ETC_GG_ENDDE\":\"2026-10-28\",\"GNRL_RNK2_ETC_GG_RCPTDE\":\"2026-10-28\",\"HMPG_ADRES\":\"https://아크메르동탄.kr\",\"HOUSE_DTL_SECD\":\"01\",\"HOUSE_DTL_SECD_NM\":\"민영\",\"HOUSE_MANAGE_NO\":\"2026000508\",\"HOUSE_NM\":\"아크메르 동탄 95\",\"HOUSE_SECD\":\"01\",\"HOUSE_SECD_NM\":\"APT\",\"HSSPLY_ADRES\":\"경기도 화성특례시 동탄구 반송동 95번지[동탄(1) M1-1-2블록]\",\"HSSPLY_ZIP\":\"18445\",\"IMPRMN_BSNS_AT\":\"N\",\"LRSCL_BLDLND_AT\":\"Y\",\"MDAT_TRGET_AREA_SECD\":\"Y\",\"MDHS_TELNO\":\"15228111\",\"MVN_PREARNGE_YM\":\"203201\",\"NPLN_PRVOPR_PUBLIC_HOUSE_AT\":\"N\",\"NSPRC_NM\":\"아시아투데이\",\"PARCPRC_ULS_AT\":\"N\",\"PBLANC_NO\":\"2026000508\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000508&pblancNo=2026000508\",\"PRZWNER_PRESNATN_DE\":\"2026-11-03\",\"PUBLIC_HOUSE_EARTH_AT\":\"N\",\"PUBLIC_HOUSE_SPCLW_APPLC_AT\":\"N\",\"RCEPT_BGNDE\":\"2026-10-26\",\"RCEPT_ENDDE\":\"2026-10-28\",\"RCRIT_PBLANC_DE\":\"2026-10-16\",\"RENT_SECD\":\"0\",\"RENT_SECD_NM\":\"분양주택\",\"SPECLT_RDN_EARTH_AT\":\"Y\",\"SPSPLY_RCEPT_BGNDE\":\"2026-10-26\",\"SPSPLY_RCEPT_ENDDE\":\"2026-10-26\",\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"TOT_SUPLY_HSHLDCO\":812}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "APT(APT)",
    "주택관리번호": "2026000373",
    "공고번호": "2026000373",
@@ -387,7 +387,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"한국토지주택공사 인천지역본부\",\"CNSTRCT_ENTRPS_NM\":\"(주)케이씨씨건설\",\"CNTRCT_CNCLS_BGNDE\":\"2027-02-23\",\"CNTRCT_CNCLS_ENDDE\":\"2027-02-26\",\"GNRL_RNK1_CRSPAREA_ENDDE\":\"2026-10-22\",\"GNRL_RNK1_CRSPAREA_RCPTDE\":\"2026-10-19\",\"GNRL_RNK1_ETC_AREA_ENDDE\":\"2026-10-22\",\"GNRL_RNK1_ETC_AREA_RCPTDE\":\"2026-10-19\",\"GNRL_RNK1_ETC_GG_ENDDE\":null,\"GNRL_RNK1_ETC_GG_RCPTDE\":null,\"GNRL_RNK2_CRSPAREA_ENDDE\":\"2026-10-27\",\"GNRL_RNK2_CRSPAREA_RCPTDE\":\"2026-10-23\",\"GNRL_RNK2_ETC_AREA_ENDDE\":\"2026-10-27\",\"GNRL_RNK2_ETC_AREA_RCPTDE\":\"2026-10-23\",\"GNRL_RNK2_ETC_GG_ENDDE\":null,\"GNRL_RNK2_ETC_GG_RCPTDE\":null,\"HMPG_ADRES\":\"https://apply.lh.or.kr\",\"HOUSE_DTL_SECD\":\"03\",\"HOUSE_DTL_SECD_NM\":\"국민\",\"HOUSE_MANAGE_NO\":\"2026820010\",\"HOUSE_NM\":\"인천계양 A17블록 신혼희망타운(공공분양)(본청약)\",\"HOUSE_SECD\":\"10\",\"HOUSE_SECD_NM\":\"신혼희망타운\",\"HSSPLY_ADRES\":\"인천광역시 계양구 귤현동, 동양동, 박촌동, 병방동, 상야동, 경기도 부천시 대장동, 서울특별시 강서구 오곡동 일원 인천계양 테크노밸리 공공주택지구 내 A17블록\",\"HSSPLY_ZIP\":\"21021\",\"IMPRMN_BSNS_AT\":\"N\",\"LRSCL_BLDLND_AT\":\"Y\",\"MDAT_TRGET_AREA_SECD\":\"N\",\"MDHS_TELNO\":\"0325654777\",\"MVN_PREARNGE_YM\":\"202911\",\"NPLN_PRVOPR_PUBLIC_HOUSE_AT\":\"N\",\"NSPRC_NM\":null,\"PARCPRC_ULS_AT\":\"Y\",\"PBLANC_NO\":\"2026820010\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026820010&pblancNo=2026820010\",\"PRZWNER_PRESNATN_DE\":\"2026-11-05\",\"PUBLIC_HOUSE_EARTH_AT\":\"Y\",\"PUBLIC_HOUSE_SPCLW_APPLC_AT\":\"Y\",\"RCEPT_BGNDE\":\"2026-10-19\",\"RCEPT_ENDDE\":\"2026-10-27\",\"RCRIT_PBLANC_DE\":\"2026-09-30\",\"RENT_SECD\":\"0\",\"RENT_SECD_NM\":\"분양주택\",\"SPECLT_RDN_EARTH_AT\":\"N\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"400\",\"SUBSCRPT_AREA_CODE_NM\":\"인천\",\"TOT_SUPLY_HSHLDCO\":309}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "무순위·잔여세대",
    "주택관리번호": "2026910271",
    "공고번호": "2026910271",
@@ -411,7 +411,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"송도랜드마크시티 유한회사\",\"CNTRCT_CNCLS_BGNDE\":\"2026-11-04\",\"CNTRCT_CNCLS_ENDDE\":\"2026-11-05\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":null,\"HOUSE_MANAGE_NO\":\"2026910271\",\"HOUSE_NM\":\"힐스테이트 레이크 송도 4차(2차)\",\"HOUSE_SECD\":\"04\",\"HOUSE_SECD_NM\":\"무순위\",\"HSSPLY_ADRES\":\"인천광역시 연수구 송도동 397-2\",\"HSSPLY_ZIP\":\"22022\",\"MDHS_TELNO\":\"0328348890\",\"MVN_PREARNGE_YM\":\"202611\",\"NSPRC_NM\":null,\"PBLANC_NO\":\"2026910271\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910271&pblancNo=2026910271\",\"PRZWNER_PRESNATN_DE\":\"2026-11-02\",\"RCRIT_PBLANC_DE\":\"2026-10-22\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"400\",\"SUBSCRPT_AREA_CODE_NM\":\"인천\",\"SUBSCRPT_RCEPT_BGNDE\":\"2026-10-27\",\"SUBSCRPT_RCEPT_ENDDE\":\"2026-10-28\",\"TOT_SUPLY_HSHLDCO\":8}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "무순위·잔여세대",
    "주택관리번호": "2026910270",
    "공고번호": "2026910270",
@@ -435,7 +435,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"(주)이노디앤씨\",\"CNTRCT_CNCLS_BGNDE\":\"2026-11-07\",\"CNTRCT_CNCLS_ENDDE\":\"2026-11-07\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"https://충정로역자이르네.com\",\"HOUSE_MANAGE_NO\":\"2026910270\",\"HOUSE_NM\":\"충정로역자이르네(2차)\",\"HOUSE_SECD\":\"04\",\"HOUSE_SECD_NM\":\"무순위\",\"HSSPLY_ADRES\":\"서울특별시 중구 중림동 157-2번지 일원\",\"HSSPLY_ZIP\":\"04504\",\"MDHS_TELNO\":\"16601245\",\"MVN_PREARNGE_YM\":\"203005\",\"NSPRC_NM\":null,\"PBLANC_NO\":\"2026910270\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910270&pblancNo=2026910270\",\"PRZWNER_PRESNATN_DE\":\"2026-11-02\",\"RCRIT_PBLANC_DE\":\"2026-10-22\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"100\",\"SUBSCRPT_AREA_CODE_NM\":\"서울\",\"SUBSCRPT_RCEPT_BGNDE\":\"2026-10-27\",\"SUBSCRPT_RCEPT_ENDDE\":\"2026-10-27\",\"TOT_SUPLY_HSHLDCO\":9}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "무순위·잔여세대",
    "주택관리번호": "2026930044",
    "공고번호": "2026930044",
@@ -459,7 +459,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"(주)한화\",\"CNTRCT_CNCLS_BGNDE\":\"2026-11-05\",\"CNTRCT_CNCLS_ENDDE\":\"2026-11-05\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":null,\"HOUSE_MANAGE_NO\":\"2026930044\",\"HOUSE_NM\":\"한화포레나 영흥숲\",\"HOUSE_SECD\":\"06\",\"HOUSE_SECD_NM\":\"불법행위 재공급\",\"HSSPLY_ADRES\":\"경기도 수원시 영통구 원천동 333-1번지 일원\",\"HSSPLY_ZIP\":\"16522\",\"MDHS_TELNO\":\"0318989447\",\"MVN_PREARNGE_YM\":\"202611\",\"NSPRC_NM\":null,\"PBLANC_NO\":\"2026930044\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026930044&pblancNo=2026930044\",\"PRZWNER_PRESNATN_DE\":\"2026-10-29\",\"RCRIT_PBLANC_DE\":\"2026-10-21\",\"SPSPLY_RCEPT_BGNDE\":\"2026-10-26\",\"SPSPLY_RCEPT_ENDDE\":\"2026-10-26\",\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"SUBSCRPT_RCEPT_BGNDE\":\"2026-10-26\",\"SUBSCRPT_RCEPT_ENDDE\":\"2026-10-26\",\"TOT_SUPLY_HSHLDCO\":1}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "무순위·잔여세대",
    "주택관리번호": "2026910268",
    "공고번호": "2026910268",
@@ -483,7 +483,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"(주)다우개발\",\"CNTRCT_CNCLS_BGNDE\":\"2026-11-03\",\"CNTRCT_CNCLS_ENDDE\":\"2026-11-03\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"http://halla-shincheon.co.kr/\",\"HOUSE_MANAGE_NO\":\"2026910268\",\"HOUSE_NM\":\"신천역 에피트(3차)\",\"HOUSE_SECD\":\"04\",\"HOUSE_SECD_NM\":\"무순위\",\"HSSPLY_ADRES\":\"경기도 시흥시 시흥대로 1110\",\"HSSPLY_ZIP\":\"14950\",\"MDHS_TELNO\":\"0313110230\",\"MVN_PREARNGE_YM\":\"202611\",\"NSPRC_NM\":null,\"PBLANC_NO\":\"2026910268\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910268&pblancNo=2026910268\",\"PRZWNER_PRESNATN_DE\":\"2026-10-29\",\"RCRIT_PBLANC_DE\":\"2026-10-21\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"SUBSCRPT_RCEPT_BGNDE\":\"2026-10-26\",\"SUBSCRPT_RCEPT_ENDDE\":\"2026-10-26\",\"TOT_SUPLY_HSHLDCO\":8}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "무순위·잔여세대",
    "주택관리번호": "2026910265",
    "공고번호": "2026910265",
@@ -507,7 +507,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"(주)한화\",\"CNTRCT_CNCLS_BGNDE\":\"2026-11-05\",\"CNTRCT_CNCLS_ENDDE\":\"2026-11-05\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":null,\"HOUSE_MANAGE_NO\":\"2026910265\",\"HOUSE_NM\":\"한화포레나 영흥숲(3차)\",\"HOUSE_SECD\":\"04\",\"HOUSE_SECD_NM\":\"무순위\",\"HSSPLY_ADRES\":\"경기도 수원시 영통구 원천동 333-1번지 일원\",\"HSSPLY_ZIP\":\"16522\",\"MDHS_TELNO\":\"0318989447\",\"MVN_PREARNGE_YM\":\"202611\",\"NSPRC_NM\":null,\"PBLANC_NO\":\"2026910265\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910265&pblancNo=2026910265\",\"PRZWNER_PRESNATN_DE\":\"2026-10-29\",\"RCRIT_PBLANC_DE\":\"2026-10-21\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"SUBSCRPT_RCEPT_BGNDE\":\"2026-10-26\",\"SUBSCRPT_RCEPT_ENDDE\":\"2026-10-26\",\"TOT_SUPLY_HSHLDCO\":1}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "무순위·잔여세대",
    "주택관리번호": "2026910264",
    "공고번호": "2026910264",
@@ -531,7 +531,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"신극동아파트 가로주택정비사업조합\",\"CNTRCT_CNCLS_BGNDE\":\"2026-10-28\",\"CNTRCT_CNCLS_ENDDE\":\"2026-10-28\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"http://efete-eungye.com/\",\"HOUSE_MANAGE_NO\":\"2026910264\",\"HOUSE_NM\":\"시흥 은계 에피트(조합원 취소분)\",\"HOUSE_SECD\":\"04\",\"HOUSE_SECD_NM\":\"무순위\",\"HSSPLY_ADRES\":\"경기도 시흥시 은행동 289-31번지 일원\",\"HSSPLY_ZIP\":\"14921\",\"MDHS_TELNO\":\"0313184998\",\"MVN_PREARNGE_YM\":\"202610\",\"NSPRC_NM\":null,\"PBLANC_NO\":\"2026910264\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910264&pblancNo=2026910264\",\"PRZWNER_PRESNATN_DE\":\"2026-10-23\",\"RCRIT_PBLANC_DE\":\"2026-10-15\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"SUBSCRPT_RCEPT_BGNDE\":\"2026-10-20\",\"SUBSCRPT_RCEPT_ENDDE\":\"2026-10-20\",\"TOT_SUPLY_HSHLDCO\":16}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "무순위·잔여세대",
    "주택관리번호": "2026910262",
    "공고번호": "2026910262",
@@ -747,7 +747,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"(주)이노디앤씨\",\"CNTRCT_CNCLS_BGNDE\":\"2026-10-17\",\"CNTRCT_CNCLS_ENDDE\":\"2026-10-17\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"https://충정로역자이르네.com\",\"HOUSE_MANAGE_NO\":\"2026910251\",\"HOUSE_NM\":\"충정로역자이르네\",\"HOUSE_SECD\":\"04\",\"HOUSE_SECD_NM\":\"무순위\",\"HSSPLY_ADRES\":\"서울특별시 중구 중림동 157-2번지 일원\",\"HSSPLY_ZIP\":\"04504\",\"MDHS_TELNO\":\"16601245\",\"MVN_PREARNGE_YM\":\"203005\",\"NSPRC_NM\":null,\"PBLANC_NO\":\"2026910251\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910251&pblancNo=2026910251\",\"PRZWNER_PRESNATN_DE\":\"2026-10-12\",\"RCRIT_PBLANC_DE\":\"2026-09-28\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"100\",\"SUBSCRPT_AREA_CODE_NM\":\"서울\",\"SUBSCRPT_RCEPT_BGNDE\":\"2026-10-06\",\"SUBSCRPT_RCEPT_ENDDE\":\"2026-10-06\",\"TOT_SUPLY_HSHLDCO\":35}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "임의공급",
    "주택관리번호": "2026940235",
    "공고번호": "2026940235",
@@ -771,7 +771,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"주식회사 하나자산신탁\",\"CNTRCT_CNCLS_BGNDE\":\"20261104\",\"CNTRCT_CNCLS_ENDDE\":\"20261104\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"https://unjeong-iparkcity.com\",\"HOUSE_MANAGE_NO\":\"2026940235\",\"HOUSE_NM\":\"운정 아이파크 포레스트(2차)\",\"HOUSE_SECD\":\"11\",\"HOUSE_SECD_NM\":\"임의공급\",\"HSSPLY_ADRES\":\"파주메디컬클러스터 도시개발구역 A2BL (경기도 파주시 서패동 432번지 일원)\",\"HSSPLY_ZIP\":\"10883\",\"MDHS_TELNO\":\"16603255\",\"MVN_PREARNGE_YM\":\"202812\",\"PBLANC_NO\":\"2026940235\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940235&pblancNo=2026940235\",\"PRZWNER_PRESNATN_DE\":\"20261028\",\"RCRIT_PBLANC_DE\":\"20261021\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"SUBSCRPT_RCEPT_BGNDE\":\"20261023\",\"SUBSCRPT_RCEPT_ENDDE\":\"20261023\",\"TOT_SUPLY_HSHLDCO\":20}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "임의공급",
    "주택관리번호": "2026940233",
    "공고번호": "2026940233",
@@ -795,7 +795,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"원종동성락아파트가로주택정비사업조합\",\"CNTRCT_CNCLS_BGNDE\":\"20261106\",\"CNTRCT_CNCLS_ENDDE\":\"20261106\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"https://www.중앙하이츠원종역.com\",\"HOUSE_MANAGE_NO\":\"2026940233\",\"HOUSE_NM\":\"중앙하이츠 원종역(3차)\",\"HOUSE_SECD\":\"11\",\"HOUSE_SECD_NM\":\"임의공급\",\"HSSPLY_ADRES\":\"경기도 부천시 오정구 원종동 276-2\",\"HSSPLY_ZIP\":\"14420\",\"MDHS_TELNO\":\"0326782399\",\"MVN_PREARNGE_YM\":\"202803\",\"PBLANC_NO\":\"2026940233\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940233&pblancNo=2026940233\",\"PRZWNER_PRESNATN_DE\":\"20261030\",\"RCRIT_PBLANC_DE\":\"20261021\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"SUBSCRPT_RCEPT_BGNDE\":\"20261023\",\"SUBSCRPT_RCEPT_ENDDE\":\"20261027\",\"TOT_SUPLY_HSHLDCO\":11}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "임의공급",
    "주택관리번호": "2026940232",
    "공고번호": "2026940232",
@@ -819,7 +819,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"한국자산신탁(주)\",\"CNTRCT_CNCLS_BGNDE\":\"20261106\",\"CNTRCT_CNCLS_ENDDE\":\"20261106\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"http://개성로니엘.kr\",\"HOUSE_MANAGE_NO\":\"2026940232\",\"HOUSE_NM\":\"금정역 개성로니엘(4차)\",\"HOUSE_SECD\":\"11\",\"HOUSE_SECD_NM\":\"임의공급\",\"HSSPLY_ADRES\":\"경기도 군포시 금정동 77-4번지 일원\",\"HSSPLY_ZIP\":\"15811\",\"MDHS_TELNO\":\"15440337\",\"MVN_PREARNGE_YM\":\"202611\",\"PBLANC_NO\":\"2026940232\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940232&pblancNo=2026940232\",\"PRZWNER_PRESNATN_DE\":\"20261030\",\"RCRIT_PBLANC_DE\":\"20261023\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"SUBSCRPT_RCEPT_BGNDE\":\"20261027\",\"SUBSCRPT_RCEPT_ENDDE\":\"20261027\",\"TOT_SUPLY_HSHLDCO\":52}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "임의공급",
    "주택관리번호": "2026940231",
    "공고번호": "2026940231",
@@ -843,7 +843,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"아이파크현대산업개발(주)\",\"CNTRCT_CNCLS_BGNDE\":\"20261030\",\"CNTRCT_CNCLS_ENDDE\":\"20261030\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"https://www.i-park.com/uijeongbucentral\",\"HOUSE_MANAGE_NO\":\"2026940231\",\"HOUSE_NM\":\"의정부역 센트럴 아이파크 (5차)\",\"HOUSE_SECD\":\"11\",\"HOUSE_SECD_NM\":\"임의공급\",\"HSSPLY_ADRES\":\"경기도 의정부시 의정부동 253-19번지 일원\",\"HSSPLY_ZIP\":\"11669\",\"MDHS_TELNO\":\"15660431\",\"MVN_PREARNGE_YM\":\"202912\",\"PBLANC_NO\":\"2026940231\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940231&pblancNo=2026940231\",\"PRZWNER_PRESNATN_DE\":\"20261028\",\"RCRIT_PBLANC_DE\":\"20261020\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"SUBSCRPT_RCEPT_BGNDE\":\"20261023\",\"SUBSCRPT_RCEPT_ENDDE\":\"20261023\",\"TOT_SUPLY_HSHLDCO\":8}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "임의공급",
    "주택관리번호": "2026940229",
    "공고번호": "2026940229",
@@ -867,7 +867,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"노량진2재정비촉진구역재개발정비사업조합\",\"CNTRCT_CNCLS_BGNDE\":\"20261022\",\"CNTRCT_CNCLS_ENDDE\":\"20261022\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"https://altia.skdefine.com\",\"HOUSE_MANAGE_NO\":\"2026940229\",\"HOUSE_NM\":\"드파인 아르티아\",\"HOUSE_SECD\":\"11\",\"HOUSE_SECD_NM\":\"임의공급\",\"HSSPLY_ADRES\":\"서울특별시 동작구 노량진동 312-75번지 일대\",\"HSSPLY_ZIP\":\"06936\",\"MDHS_TELNO\":\"16444041\",\"MVN_PREARNGE_YM\":\"202911\",\"PBLANC_NO\":\"2026940229\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940229&pblancNo=2026940229\",\"PRZWNER_PRESNATN_DE\":\"20261021\",\"RCRIT_PBLANC_DE\":\"20261014\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"100\",\"SUBSCRPT_AREA_CODE_NM\":\"서울\",\"SUBSCRPT_RCEPT_BGNDE\":\"20261016\",\"SUBSCRPT_RCEPT_ENDDE\":\"20261016\",\"TOT_SUPLY_HSHLDCO\":1}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "임의공급",
    "주택관리번호": "2026940228",
    "공고번호": "2026940228",
@@ -891,7 +891,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"서울빌라가로주택정비사업조합\",\"CNTRCT_CNCLS_BGNDE\":\"20261104\",\"CNTRCT_CNCLS_ENDDE\":\"20261105\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"https://www.마곡스카이온.com\",\"HOUSE_MANAGE_NO\":\"2026940228\",\"HOUSE_NM\":\"마곡스카이온\",\"HOUSE_SECD\":\"11\",\"HOUSE_SECD_NM\":\"임의공급\",\"HSSPLY_ADRES\":\"서울특별시 강서구 방화동 584-1\",\"HSSPLY_ZIP\":\"07609\",\"MDHS_TELNO\":\"024180900\",\"MVN_PREARNGE_YM\":\"202801\",\"PBLANC_NO\":\"2026940228\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940228&pblancNo=2026940228\",\"PRZWNER_PRESNATN_DE\":\"20261102\",\"RCRIT_PBLANC_DE\":\"20261015\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"100\",\"SUBSCRPT_AREA_CODE_NM\":\"서울\",\"SUBSCRPT_RCEPT_BGNDE\":\"20261026\",\"SUBSCRPT_RCEPT_ENDDE\":\"20261028\",\"TOT_SUPLY_HSHLDCO\":24}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "임의공급",
    "주택관리번호": "2026940227",
    "공고번호": "2026940227",
@@ -915,7 +915,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"케이비부동산신탁(주)\",\"CNTRCT_CNCLS_BGNDE\":\"20261031\",\"CNTRCT_CNCLS_ENDDE\":\"20261031\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":null,\"HOUSE_MANAGE_NO\":\"2026940227\",\"HOUSE_NM\":\"화곡더리브스카이(4차)\",\"HOUSE_SECD\":\"11\",\"HOUSE_SECD_NM\":\"임의공급\",\"HSSPLY_ADRES\":\"서울특별시 강서구 가로공원로80길 40\",\"HSSPLY_ZIP\":\"07765\",\"MDHS_TELNO\":\"18333341\",\"MVN_PREARNGE_YM\":\"202611\",\"PBLANC_NO\":\"2026940227\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940227&pblancNo=2026940227\",\"PRZWNER_PRESNATN_DE\":\"20261030\",\"RCRIT_PBLANC_DE\":\"20261022\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"100\",\"SUBSCRPT_AREA_CODE_NM\":\"서울\",\"SUBSCRPT_RCEPT_BGNDE\":\"20261026\",\"SUBSCRPT_RCEPT_ENDDE\":\"20261027\",\"TOT_SUPLY_HSHLDCO\":5}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "임의공급",
    "주택관리번호": "2026940226",
    "공고번호": "2026940226",
@@ -939,7 +939,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"경기주택도시공사\",\"CNTRCT_CNCLS_BGNDE\":\"20261023\",\"CNTRCT_CNCLS_ENDDE\":\"20261024\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"http://gd-hausd.com/\",\"HOUSE_MANAGE_NO\":\"2026940226\",\"HOUSE_NM\":\"고덕 자연앤 하우스디(A4BL)(민영)(5차)\",\"HOUSE_SECD\":\"11\",\"HOUSE_SECD_NM\":\"임의공급\",\"HSSPLY_ADRES\":\"경기도 평택시 고덕동 1858-2번지(고덕국제화계획지구 A4BL)\",\"HSSPLY_ZIP\":\"18004\",\"MDHS_TELNO\":\"15880466\",\"MVN_PREARNGE_YM\":\"202802\",\"PBLANC_NO\":\"2026940226\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940226&pblancNo=2026940226\",\"PRZWNER_PRESNATN_DE\":\"20261021\",\"RCRIT_PBLANC_DE\":\"20261014\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"SUBSCRPT_RCEPT_BGNDE\":\"20261016\",\"SUBSCRPT_RCEPT_ENDDE\":\"20261016\",\"TOT_SUPLY_HSHLDCO\":35}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "임의공급",
    "주택관리번호": "2026940225",
    "공고번호": "2026940225",
@@ -963,7 +963,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"계룡건설산업(주)\",\"CNTRCT_CNCLS_BGNDE\":\"20261105\",\"CNTRCT_CNCLS_ENDDE\":\"20261105\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"https://www.엘리프검단포레듀.com\",\"HOUSE_MANAGE_NO\":\"2026940225\",\"HOUSE_NM\":\"엘리프 검단 포레듀(AA32블록)(4차)\",\"HOUSE_SECD\":\"11\",\"HOUSE_SECD_NM\":\"임의공급\",\"HSSPLY_ADRES\":\"인천광역시 검단구 검단신도시 AA32BL(마전동)\",\"HSSPLY_ZIP\":\"23472\",\"MDHS_TELNO\":\"0325670187\",\"MVN_PREARNGE_YM\":\"202803\",\"PBLANC_NO\":\"2026940225\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940225&pblancNo=2026940225\",\"PRZWNER_PRESNATN_DE\":\"20261029\",\"RCRIT_PBLANC_DE\":\"20261019\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"400\",\"SUBSCRPT_AREA_CODE_NM\":\"인천\",\"SUBSCRPT_RCEPT_BGNDE\":\"20261021\",\"SUBSCRPT_RCEPT_ENDDE\":\"20261026\",\"TOT_SUPLY_HSHLDCO\":23}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "임의공급",
    "주택관리번호": "2026940224",
    "공고번호": "2026940224",
@@ -1011,7 +1011,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"코리아신탁(주)\",\"CNTRCT_CNCLS_BGNDE\":\"20261017\",\"CNTRCT_CNCLS_ENDDE\":\"20261017\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"https://brand.hldni.com/suwon-efete/\",\"HOUSE_MANAGE_NO\":\"2026940223\",\"HOUSE_NM\":\"서수원 에피트 센트럴마크(M1BL)(3차)\",\"HOUSE_SECD\":\"11\",\"HOUSE_SECD_NM\":\"임의공급\",\"HSSPLY_ADRES\":\"경기도 수원시 권선구 당수동 3001번지 일원 (수원당수 공공주택지구 M1BL)\",\"HSSPLY_ZIP\":\"16373\",\"MDHS_TELNO\":\"18992888\",\"MVN_PREARNGE_YM\":\"202809\",\"PBLANC_NO\":\"2026940223\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940223&pblancNo=2026940223\",\"PRZWNER_PRESNATN_DE\":\"20261016\",\"RCRIT_PBLANC_DE\":\"20261008\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"SUBSCRPT_RCEPT_BGNDE\":\"20261013\",\"SUBSCRPT_RCEPT_ENDDE\":\"20261013\",\"TOT_SUPLY_HSHLDCO\":8}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "임의공급",
    "주택관리번호": "2026940222",
    "공고번호": "2026940222",
@@ -1227,7 +1227,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"무지개마을4단지리모델링주택조합\",\"CNTRCT_CNCLS_BGNDE\":\"20261017\",\"CNTRCT_CNCLS_ENDDE\":\"20261017\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"https://더샵분당센트로.kr\",\"HOUSE_MANAGE_NO\":\"2026940211\",\"HOUSE_NM\":\"더샵 분당센트로(6차)\",\"HOUSE_SECD\":\"11\",\"HOUSE_SECD_NM\":\"임의공급\",\"HSSPLY_ADRES\":\"경기도 성남시 분당구 미금로 66\",\"HSSPLY_ZIP\":\"13623\",\"MDHS_TELNO\":\"18335255\",\"MVN_PREARNGE_YM\":\"202704\",\"PBLANC_NO\":\"2026940211\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940211&pblancNo=2026940211\",\"PRZWNER_PRESNATN_DE\":\"20261016\",\"RCRIT_PBLANC_DE\":\"20261001\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"SUBSCRPT_RCEPT_BGNDE\":\"20261007\",\"SUBSCRPT_RCEPT_ENDDE\":\"20261013\",\"TOT_SUPLY_HSHLDCO\":3}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "임의공급",
    "주택관리번호": "2026940156",
    "공고번호": "2026940156",
@@ -1251,7 +1251,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"대진빌라가로주택정비사업조합\",\"CNTRCT_CNCLS_BGNDE\":\"20261029\",\"CNTRCT_CNCLS_ENDDE\":\"20261030\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"http://www.foreapt.com\",\"HOUSE_MANAGE_NO\":\"2026940156\",\"HOUSE_NM\":\"방배 더 유엘 포레(2차)\",\"HOUSE_SECD\":\"11\",\"HOUSE_SECD_NM\":\"임의공급\",\"HSSPLY_ADRES\":\"서울특별시 서초구 효령로29길 16 (방배동, 방배 더 유엘포레)\",\"HSSPLY_ZIP\":\"06686\",\"MDHS_TELNO\":\"0264085300\",\"MVN_PREARNGE_YM\":\"202611\",\"PBLANC_NO\":\"2026940156\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940156&pblancNo=2026940156\",\"PRZWNER_PRESNATN_DE\":\"20261028\",\"RCRIT_PBLANC_DE\":\"20261019\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"100\",\"SUBSCRPT_AREA_CODE_NM\":\"서울\",\"SUBSCRPT_RCEPT_BGNDE\":\"20261022\",\"SUBSCRPT_RCEPT_ENDDE\":\"20261023\",\"TOT_SUPLY_HSHLDCO\":6}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "무순위·잔여세대",
    "주택관리번호": "2026930042",
    "공고번호": "2026930042",
@@ -1275,7 +1275,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"(주)명일건설\",\"CNTRCT_CNCLS_BGNDE\":\"2026-11-13\",\"CNTRCT_CNCLS_ENDDE\":\"2026-11-13\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"https://www.lynn.co.kr\",\"HOUSE_MANAGE_NO\":\"2026930042\",\"HOUSE_NM\":\"파주 운정신도시 우미 린 더 센텀\",\"HOUSE_SECD\":\"06\",\"HOUSE_SECD_NM\":\"불법행위 재공급\",\"HSSPLY_ADRES\":\"경기도 파주시 물향기1로 45(동패동) 운정중앙역 우미 린 더 센텀\",\"HSSPLY_ZIP\":\"10889\",\"MDHS_TELNO\":\"0319434400\",\"MVN_PREARNGE_YM\":\"202701\",\"NSPRC_NM\":null,\"PBLANC_NO\":\"2026930042\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026930042&pblancNo=2026930042\",\"PRZWNER_PRESNATN_DE\":\"2026-11-05\",\"RCRIT_PBLANC_DE\":\"2026-10-26\",\"SPSPLY_RCEPT_BGNDE\":\"2026-11-02\",\"SPSPLY_RCEPT_ENDDE\":\"2026-11-02\",\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"SUBSCRPT_RCEPT_BGNDE\":\"2026-11-02\",\"SUBSCRPT_RCEPT_ENDDE\":\"2026-11-02\",\"TOT_SUPLY_HSHLDCO\":1}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "무순위·잔여세대",
    "주택관리번호": "2026910269",
    "공고번호": "2026910269",
@@ -1299,7 +1299,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"삼환기업(주)\",\"CNTRCT_CNCLS_BGNDE\":\"2026-11-13\",\"CNTRCT_CNCLS_ENDDE\":\"2026-11-13\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"https://www.화서역아너스빌.com\",\"HOUSE_MANAGE_NO\":\"2026910269\",\"HOUSE_NM\":\"화서역 호수공원 아너스빌\",\"HOUSE_SECD\":\"04\",\"HOUSE_SECD_NM\":\"무순위\",\"HSSPLY_ADRES\":\"경기도 수원시 권선구 서둔동 212-1번지 일원\",\"HSSPLY_ZIP\":\"16608\",\"MDHS_TELNO\":\"15511480\",\"MVN_PREARNGE_YM\":\"202910\",\"NSPRC_NM\":null,\"PBLANC_NO\":\"2026910269\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910269&pblancNo=2026910269\",\"PRZWNER_PRESNATN_DE\":\"2026-11-06\",\"RCRIT_PBLANC_DE\":\"2026-10-26\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"SUBSCRPT_RCEPT_BGNDE\":\"2026-11-02\",\"SUBSCRPT_RCEPT_ENDDE\":\"2026-11-02\",\"TOT_SUPLY_HSHLDCO\":169}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "무순위·잔여세대",
    "주택관리번호": "2026910257",
    "공고번호": "2026910257",
@@ -1323,7 +1323,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"(주)명일건설\",\"CNTRCT_CNCLS_BGNDE\":\"2026-11-13\",\"CNTRCT_CNCLS_ENDDE\":\"2026-11-13\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"https://www.lynn.co.kr\",\"HOUSE_MANAGE_NO\":\"2026910257\",\"HOUSE_NM\":\"파주 운정신도시 우미 린 더 센텀\",\"HOUSE_SECD\":\"04\",\"HOUSE_SECD_NM\":\"무순위\",\"HSSPLY_ADRES\":\"경기도 파주시 물향기1로 45(동패동) 운정중앙역 우미 린 더 센텀\",\"HSSPLY_ZIP\":\"10888\",\"MDHS_TELNO\":\"0319434400\",\"MVN_PREARNGE_YM\":\"202701\",\"NSPRC_NM\":null,\"PBLANC_NO\":\"2026910257\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910257&pblancNo=2026910257\",\"PRZWNER_PRESNATN_DE\":\"2026-11-05\",\"RCRIT_PBLANC_DE\":\"2026-10-26\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"SUBSCRPT_RCEPT_BGNDE\":\"2026-11-02\",\"SUBSCRPT_RCEPT_ENDDE\":\"2026-11-02\",\"TOT_SUPLY_HSHLDCO\":2}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "임의공급",
    "주택관리번호": "2026940238",
    "공고번호": "2026940238",
@@ -1347,7 +1347,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"(주)금성백조주택\",\"CNTRCT_CNCLS_BGNDE\":\"20261107\",\"CNTRCT_CNCLS_ENDDE\":\"20261107\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"https://ay-yemizi.com/\",\"HOUSE_MANAGE_NO\":\"2026940238\",\"HOUSE_NM\":\"안성 아양지구 B-2블록 금성백조 예미지(2차)\",\"HOUSE_SECD\":\"11\",\"HOUSE_SECD_NM\":\"임의공급\",\"HSSPLY_ADRES\":\"경기도 안성시 아양지구 B-2블록 (옥산동 659번지)\",\"HSSPLY_ZIP\":\"17577\",\"MDHS_TELNO\":\"18991482\",\"MVN_PREARNGE_YM\":\"202806\",\"PBLANC_NO\":\"2026940238\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940238&pblancNo=2026940238\",\"PRZWNER_PRESNATN_DE\":\"20261102\",\"RCRIT_PBLANC_DE\":\"20261026\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"SUBSCRPT_RCEPT_BGNDE\":\"20261028\",\"SUBSCRPT_RCEPT_ENDDE\":\"20261028\",\"TOT_SUPLY_HSHLDCO\":73}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "임의공급",
    "주택관리번호": "2026940236",
    "공고번호": "2026940236",
@@ -1371,7 +1371,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"장미연립가로주택정비사업조합\",\"CNTRCT_CNCLS_BGNDE\":\"20261103\",\"CNTRCT_CNCLS_ENDDE\":\"20261103\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"https://brand.hldni.com/bucheon-urbanic/\",\"HOUSE_MANAGE_NO\":\"2026940236\",\"HOUSE_NM\":\"부천역 에피트 어바닉(5차)\",\"HOUSE_SECD\":\"11\",\"HOUSE_SECD_NM\":\"임의공급\",\"HSSPLY_ADRES\":\"경기도 부천시 원미구 원미동 150-1외 2필지\",\"HSSPLY_ZIP\":\"14572\",\"MDHS_TELNO\":\"0326110105\",\"MVN_PREARNGE_YM\":\"202807\",\"PBLANC_NO\":\"2026940236\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940236&pblancNo=2026940236\",\"PRZWNER_PRESNATN_DE\":\"20261102\",\"RCRIT_PBLANC_DE\":\"20261026\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"SUBSCRPT_RCEPT_BGNDE\":\"20261028\",\"SUBSCRPT_RCEPT_ENDDE\":\"20261028\",\"TOT_SUPLY_HSHLDCO\":5}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "무순위·잔여세대",
    "주택관리번호": "2026910275",
    "공고번호": "2026910275",
@@ -1395,7 +1395,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"느티마을4단지 리모델링주택조합\",\"CNTRCT_CNCLS_BGNDE\":\"2026-11-07\",\"CNTRCT_CNCLS_ENDDE\":\"2026-11-07\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"https://더샵분당하이스트.kr\",\"HOUSE_MANAGE_NO\":\"2026910275\",\"HOUSE_NM\":\"더샵 분당하이스트\",\"HOUSE_SECD\":\"04\",\"HOUSE_SECD_NM\":\"무순위\",\"HSSPLY_ADRES\":\"경기도 성남시 분당구 정자동 90번지\",\"HSSPLY_ZIP\":\"13611\",\"MDHS_TELNO\":\"18001430\",\"MVN_PREARNGE_YM\":\"202712\",\"NSPRC_NM\":null,\"PBLANC_NO\":\"2026910275\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910275&pblancNo=2026910275\",\"PRZWNER_PRESNATN_DE\":\"2026-11-05\",\"RCRIT_PBLANC_DE\":\"2026-10-27\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"SUBSCRPT_RCEPT_BGNDE\":\"2026-11-02\",\"SUBSCRPT_RCEPT_ENDDE\":\"2026-11-02\",\"TOT_SUPLY_HSHLDCO\":58}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "임의공급",
    "주택관리번호": "2026940239",
    "공고번호": "2026940239",
@@ -1419,7 +1419,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"(주)금성백조주택\",\"CNTRCT_CNCLS_BGNDE\":\"20261104\",\"CNTRCT_CNCLS_ENDDE\":\"20261104\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"https://ic-yemizi.com/\",\"HOUSE_MANAGE_NO\":\"2026940239\",\"HOUSE_NM\":\"이천 중리지구 B3블록 금성백조 예미지(3차)\",\"HOUSE_SECD\":\"11\",\"HOUSE_SECD_NM\":\"임의공급\",\"HSSPLY_ADRES\":\"경기도 이천시 중리지구 B3블록(중리동 518번지)\",\"HSSPLY_ZIP\":\"17375\",\"MDHS_TELNO\":\"0316380518\",\"MVN_PREARNGE_YM\":\"202611\",\"PBLANC_NO\":\"2026940239\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940239&pblancNo=2026940239\",\"PRZWNER_PRESNATN_DE\":\"20261103\",\"RCRIT_PBLANC_DE\":\"20261027\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"SUBSCRPT_RCEPT_BGNDE\":\"20261029\",\"SUBSCRPT_RCEPT_ENDDE\":\"20261029\",\"TOT_SUPLY_HSHLDCO\":15}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "무순위·잔여세대",
    "주택관리번호": "2026930043",
    "공고번호": "2026930043",
@@ -1443,7 +1443,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"대방건설 주식회사\",\"CNTRCT_CNCLS_BGNDE\":\"2026-11-12\",\"CNTRCT_CNCLS_ENDDE\":\"2026-11-12\",\"GNRL_RCEPT_BGNDE\":\"2026-11-02\",\"GNRL_RCEPT_ENDDE\":\"2026-11-02\",\"HMPG_ADRES\":\"http://www.detre-gc.co.kr/\",\"HOUSE_MANAGE_NO\":\"2026930043\",\"HOUSE_NM\":\"과천 디에트르 퍼스티지(S2BL)\",\"HOUSE_SECD\":\"06\",\"HOUSE_SECD_NM\":\"불법행위 재공급\",\"HSSPLY_ADRES\":\"경기도 과천시 지식정보타운 공공주택지구 S2BL\",\"HSSPLY_ZIP\":\"13824\",\"MDHS_TELNO\":\"15777347\",\"MVN_PREARNGE_YM\":\"202705\",\"NSPRC_NM\":null,\"PBLANC_NO\":\"2026930043\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026930043&pblancNo=2026930043\",\"PRZWNER_PRESNATN_DE\":\"2026-11-05\",\"RCRIT_PBLANC_DE\":\"2026-10-28\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"SUBSCRPT_RCEPT_BGNDE\":\"2026-11-02\",\"SUBSCRPT_RCEPT_ENDDE\":\"2026-11-02\",\"TOT_SUPLY_HSHLDCO\":2}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "무순위·잔여세대",
    "주택관리번호": "2026910278",
    "공고번호": "2026910278",
@@ -1467,7 +1467,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"숭의역2단지지역주택조합\",\"CNTRCT_CNCLS_BGNDE\":\"2026-11-06\",\"CNTRCT_CNCLS_ENDDE\":\"2026-11-06\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"https://숭의역노르웨이숲더스카이.com\",\"HOUSE_MANAGE_NO\":\"2026910278\",\"HOUSE_NM\":\"숭의역 노르웨이숲 더 스카이\",\"HOUSE_SECD\":\"04\",\"HOUSE_SECD_NM\":\"무순위\",\"HSSPLY_ADRES\":\"인천광역시 미추홀구 숭의동 350-1번지 일원\",\"HSSPLY_ZIP\":\"22174\",\"MDHS_TELNO\":\"16614229\",\"MVN_PREARNGE_YM\":\"203005\",\"NSPRC_NM\":null,\"PBLANC_NO\":\"2026910278\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910278&pblancNo=2026910278\",\"PRZWNER_PRESNATN_DE\":\"2026-11-05\",\"RCRIT_PBLANC_DE\":\"2026-10-28\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"400\",\"SUBSCRPT_AREA_CODE_NM\":\"인천\",\"SUBSCRPT_RCEPT_BGNDE\":\"2026-11-02\",\"SUBSCRPT_RCEPT_ENDDE\":\"2026-11-02\",\"TOT_SUPLY_HSHLDCO\":13}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "임의공급",
    "주택관리번호": "2026940241",
    "공고번호": "2026940241",
@@ -1491,7 +1491,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"주식회사비에스한양,주식회사비에스산업\",\"CNTRCT_CNCLS_BGNDE\":\"20261106\",\"CNTRCT_CNCLS_ENDDE\":\"20261106\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"https://www.sujain-pm2.co.kr\",\"HOUSE_MANAGE_NO\":\"2026940241\",\"HOUSE_NM\":\"풍무역세권 수자인 그라센트 2차(5차)\",\"HOUSE_SECD\":\"11\",\"HOUSE_SECD_NM\":\"임의공급\",\"HSSPLY_ADRES\":\"경기도 김포시 풍무역세권도시개발사업 B1BL(김포시 사우동 167-1번지)\",\"HSSPLY_ZIP\":\"10108\",\"MDHS_TELNO\":\"15511710\",\"MVN_PREARNGE_YM\":\"202901\",\"PBLANC_NO\":\"2026940241\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940241&pblancNo=2026940241\",\"PRZWNER_PRESNATN_DE\":\"20261104\",\"RCRIT_PBLANC_DE\":\"20261028\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"SUBSCRPT_RCEPT_BGNDE\":\"20261030\",\"SUBSCRPT_RCEPT_ENDDE\":\"20261030\",\"TOT_SUPLY_HSHLDCO\":4}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "APT(APT)",
    "주택관리번호": "2026000535",
    "공고번호": "2026000535",
@@ -1515,7 +1515,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"마북동298의1번지일원가로주택정비사업조합\",\"CNSTRCT_ENTRPS_NM\":\"씨에이이앤씨 주식회사\",\"CNTRCT_CNCLS_BGNDE\":\"2026-11-30\",\"CNTRCT_CNCLS_ENDDE\":\"2026-12-02\",\"GNRL_RNK1_CRSPAREA_ENDDE\":\"2026-11-10\",\"GNRL_RNK1_CRSPAREA_RCPTDE\":\"2026-11-10\",\"GNRL_RNK1_ETC_AREA_ENDDE\":\"2026-11-11\",\"GNRL_RNK1_ETC_AREA_RCPTDE\":\"2026-11-11\",\"GNRL_RNK1_ETC_GG_ENDDE\":null,\"GNRL_RNK1_ETC_GG_RCPTDE\":null,\"GNRL_RNK2_CRSPAREA_ENDDE\":\"2026-11-12\",\"GNRL_RNK2_CRSPAREA_RCPTDE\":\"2026-11-12\",\"GNRL_RNK2_ETC_AREA_ENDDE\":\"2026-11-12\",\"GNRL_RNK2_ETC_AREA_RCPTDE\":\"2026-11-12\",\"GNRL_RNK2_ETC_GG_ENDDE\":null,\"GNRL_RNK2_ETC_GG_RCPTDE\":null,\"HMPG_ADRES\":\"https://www.중앙하이츠구성플랫폼시티.com\",\"HOUSE_DTL_SECD\":\"01\",\"HOUSE_DTL_SECD_NM\":\"민영\",\"HOUSE_MANAGE_NO\":\"2026000535\",\"HOUSE_NM\":\"중앙하이츠 구성 플랫폼시티\",\"HOUSE_SECD\":\"01\",\"HOUSE_SECD_NM\":\"APT\",\"HSSPLY_ADRES\":\"경기도 용인시 기흥구 마북동 298-1번지 일원\",\"HSSPLY_ZIP\":\"16917\",\"IMPRMN_BSNS_AT\":\"N\",\"LRSCL_BLDLND_AT\":\"N\",\"MDAT_TRGET_AREA_SECD\":\"Y\",\"MDHS_TELNO\":\"18991008\",\"MVN_PREARNGE_YM\":\"202806\",\"NPLN_PRVOPR_PUBLIC_HOUSE_AT\":\"N\",\"NSPRC_NM\":\"문화일보\",\"PARCPRC_ULS_AT\":\"N\",\"PBLANC_NO\":\"2026000535\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000535&pblancNo=2026000535\",\"PRZWNER_PRESNATN_DE\":\"2026-11-18\",\"PUBLIC_HOUSE_EARTH_AT\":\"N\",\"PUBLIC_HOUSE_SPCLW_APPLC_AT\":\"N\",\"RCEPT_BGNDE\":\"2026-11-09\",\"RCEPT_ENDDE\":\"2026-11-12\",\"RCRIT_PBLANC_DE\":\"2026-10-29\",\"RENT_SECD\":\"0\",\"RENT_SECD_NM\":\"분양주택\",\"SPECLT_RDN_EARTH_AT\":\"Y\",\"SPSPLY_RCEPT_BGNDE\":\"2026-11-09\",\"SPSPLY_RCEPT_ENDDE\":\"2026-11-09\",\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"TOT_SUPLY_HSHLDCO\":76}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "APT(APT)",
    "주택관리번호": "2026000525",
    "공고번호": "2026000525",
@@ -1539,7 +1539,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"시흥거모피에프브이(주)\",\"CNSTRCT_ENTRPS_NM\":\"계룡건설산업(주)\",\"CNTRCT_CNCLS_BGNDE\":\"2026-11-28\",\"CNTRCT_CNCLS_ENDDE\":\"2026-11-30\",\"GNRL_RNK1_CRSPAREA_ENDDE\":\"2026-11-10\",\"GNRL_RNK1_CRSPAREA_RCPTDE\":\"2026-11-10\",\"GNRL_RNK1_ETC_AREA_ENDDE\":\"2026-11-10\",\"GNRL_RNK1_ETC_AREA_RCPTDE\":\"2026-11-10\",\"GNRL_RNK1_ETC_GG_ENDDE\":\"2026-11-10\",\"GNRL_RNK1_ETC_GG_RCPTDE\":\"2026-11-10\",\"GNRL_RNK2_CRSPAREA_ENDDE\":\"2026-11-11\",\"GNRL_RNK2_CRSPAREA_RCPTDE\":\"2026-11-11\",\"GNRL_RNK2_ETC_AREA_ENDDE\":\"2026-11-11\",\"GNRL_RNK2_ETC_AREA_RCPTDE\":\"2026-11-11\",\"GNRL_RNK2_ETC_GG_ENDDE\":\"2026-11-11\",\"GNRL_RNK2_ETC_GG_RCPTDE\":\"2026-11-11\",\"HMPG_ADRES\":\"https://www.엘리프시흥더프라임.com\",\"HOUSE_DTL_SECD\":\"01\",\"HOUSE_DTL_SECD_NM\":\"민영\",\"HOUSE_MANAGE_NO\":\"2026000525\",\"HOUSE_NM\":\"엘리프 시흥 더프라임\",\"HOUSE_SECD\":\"01\",\"HOUSE_SECD_NM\":\"APT\",\"HSSPLY_ADRES\":\"경기도 시흥시 거모동 시흥거모지구 B-5블록\",\"HSSPLY_ZIP\":\"15070\",\"IMPRMN_BSNS_AT\":\"N\",\"LRSCL_BLDLND_AT\":\"Y\",\"MDAT_TRGET_AREA_SECD\":\"N\",\"MDHS_TELNO\":\"16441966\",\"MVN_PREARNGE_YM\":\"202908\",\"NPLN_PRVOPR_PUBLIC_HOUSE_AT\":\"Y\",\"NSPRC_NM\":\"아시아경제\",\"PARCPRC_ULS_AT\":\"Y\",\"PBLANC_NO\":\"2026000525\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000525&pblancNo=2026000525\",\"PRZWNER_PRESNATN_DE\":\"2026-11-17\",\"PUBLIC_HOUSE_EARTH_AT\":\"Y\",\"PUBLIC_HOUSE_SPCLW_APPLC_AT\":\"N\",\"RCEPT_BGNDE\":\"2026-11-09\",\"RCEPT_ENDDE\":\"2026-11-11\",\"RCRIT_PBLANC_DE\":\"2026-10-29\",\"RENT_SECD\":\"0\",\"RENT_SECD_NM\":\"분양주택\",\"SPECLT_RDN_EARTH_AT\":\"N\",\"SPSPLY_RCEPT_BGNDE\":\"2026-11-09\",\"SPSPLY_RCEPT_ENDDE\":\"2026-11-09\",\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"TOT_SUPLY_HSHLDCO\":304}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "APT(APT)",
    "주택관리번호": "2026000499",
    "공고번호": "2026000499",
@@ -1563,7 +1563,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"한국투자부동산신탁(주)\",\"CNSTRCT_ENTRPS_NM\":\"(주)한화\",\"CNTRCT_CNCLS_BGNDE\":\"2026-11-29\",\"CNTRCT_CNCLS_ENDDE\":\"2026-12-01\",\"GNRL_RNK1_CRSPAREA_ENDDE\":\"2026-11-10\",\"GNRL_RNK1_CRSPAREA_RCPTDE\":\"2026-11-10\",\"GNRL_RNK1_ETC_AREA_ENDDE\":\"2026-11-10\",\"GNRL_RNK1_ETC_AREA_RCPTDE\":\"2026-11-10\",\"GNRL_RNK1_ETC_GG_ENDDE\":null,\"GNRL_RNK1_ETC_GG_RCPTDE\":null,\"GNRL_RNK2_CRSPAREA_ENDDE\":\"2026-11-11\",\"GNRL_RNK2_CRSPAREA_RCPTDE\":\"2026-11-11\",\"GNRL_RNK2_ETC_AREA_ENDDE\":\"2026-11-11\",\"GNRL_RNK2_ETC_AREA_RCPTDE\":\"2026-11-11\",\"GNRL_RNK2_ETC_GG_ENDDE\":null,\"GNRL_RNK2_ETC_GG_RCPTDE\":null,\"HMPG_ADRES\":\"https://jije.forena.co.kr/\",\"HOUSE_DTL_SECD\":\"01\",\"HOUSE_DTL_SECD_NM\":\"민영\",\"HOUSE_MANAGE_NO\":\"2026000499\",\"HOUSE_NM\":\"한화포레나 지제역\",\"HOUSE_SECD\":\"01\",\"HOUSE_SECD_NM\":\"APT\",\"HSSPLY_ADRES\":\"경기도 평택시 세교동 725번지 일원\",\"HSSPLY_ZIP\":\"18026\",\"IMPRMN_BSNS_AT\":\"N\",\"LRSCL_BLDLND_AT\":\"N\",\"MDAT_TRGET_AREA_SECD\":\"N\",\"MDHS_TELNO\":\"16611098\",\"MVN_PREARNGE_YM\":\"202911\",\"NPLN_PRVOPR_PUBLIC_HOUSE_AT\":\"N\",\"NSPRC_NM\":\"문화일보\",\"PARCPRC_ULS_AT\":\"N\",\"PBLANC_NO\":\"2026000499\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000499&pblancNo=2026000499\",\"PRZWNER_PRESNATN_DE\":\"2026-11-18\",\"PUBLIC_HOUSE_EARTH_AT\":\"N\",\"PUBLIC_HOUSE_SPCLW_APPLC_AT\":\"N\",\"RCEPT_BGNDE\":\"2026-11-09\",\"RCEPT_ENDDE\":\"2026-11-11\",\"RCRIT_PBLANC_DE\":\"2026-10-29\",\"RENT_SECD\":\"0\",\"RENT_SECD_NM\":\"분양주택\",\"SPECLT_RDN_EARTH_AT\":\"N\",\"SPSPLY_RCEPT_BGNDE\":\"2026-11-09\",\"SPSPLY_RCEPT_ENDDE\":\"2026-11-09\",\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"TOT_SUPLY_HSHLDCO\":1098}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "임의공급",
    "주택관리번호": "2026940237",
    "공고번호": "2026940237",
@@ -1587,7 +1587,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"수원당수피에프브이 주식회사,계룡건설산업(주)\",\"CNTRCT_CNCLS_BGNDE\":\"20261107\",\"CNTRCT_CNCLS_ENDDE\":\"20261107\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"http://www.엘리프한신더휴수원.com\",\"HOUSE_MANAGE_NO\":\"2026940237\",\"HOUSE_NM\":\"엘리프 한신더휴 수원 C3블록(2차)\",\"HOUSE_SECD\":\"11\",\"HOUSE_SECD_NM\":\"임의공급\",\"HSSPLY_ADRES\":\"경기도 수원시 권선구 금곡동 당수1지구 공공주택지구 내 C3블록\",\"HSSPLY_ZIP\":\"16390\",\"MDHS_TELNO\":\"0312987001\",\"MVN_PREARNGE_YM\":\"202712\",\"PBLANC_NO\":\"2026940237\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940237&pblancNo=2026940237\",\"PRZWNER_PRESNATN_DE\":\"20261106\",\"RCRIT_PBLANC_DE\":\"20261029\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"SUBSCRPT_RCEPT_BGNDE\":\"20261102\",\"SUBSCRPT_RCEPT_ENDDE\":\"20261103\",\"TOT_SUPLY_HSHLDCO\":21}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "APT(신혼희망타운)",
    "주택관리번호": "2026820013",
    "공고번호": "2026820013",
@@ -1611,7 +1611,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"한국토지주택공사 경기남부지역본부\",\"CNSTRCT_ENTRPS_NM\":\"동문건설(주), 남진건설 주식회사, 아라이앤씨 주식회사\",\"CNTRCT_CNCLS_BGNDE\":\"2027-03-30\",\"CNTRCT_CNCLS_ENDDE\":\"2027-04-02\",\"GNRL_RNK1_CRSPAREA_ENDDE\":\"2026-11-23\",\"GNRL_RNK1_CRSPAREA_RCPTDE\":\"2026-11-16\",\"GNRL_RNK1_ETC_AREA_ENDDE\":\"2026-11-23\",\"GNRL_RNK1_ETC_AREA_RCPTDE\":\"2026-11-16\",\"GNRL_RNK1_ETC_GG_ENDDE\":\"2026-11-23\",\"GNRL_RNK1_ETC_GG_RCPTDE\":\"2026-11-16\",\"GNRL_RNK2_CRSPAREA_ENDDE\":\"2026-11-24\",\"GNRL_RNK2_CRSPAREA_RCPTDE\":\"2026-11-24\",\"GNRL_RNK2_ETC_AREA_ENDDE\":\"2026-11-24\",\"GNRL_RNK2_ETC_AREA_RCPTDE\":\"2026-11-24\",\"GNRL_RNK2_ETC_GG_ENDDE\":\"2026-11-24\",\"GNRL_RNK2_ETC_GG_RCPTDE\":\"2026-11-24\",\"HMPG_ADRES\":\"https://apply.lh.or.kr/\",\"HOUSE_DTL_SECD\":\"03\",\"HOUSE_DTL_SECD_NM\":\"국민\",\"HOUSE_MANAGE_NO\":\"2026820013\",\"HOUSE_NM\":\"안산신길2 A-6블록 신혼희망타운(공공분양)(본청약)\",\"HOUSE_SECD\":\"10\",\"HOUSE_SECD_NM\":\"신혼희망타운\",\"HSSPLY_ADRES\":\"경기도 안산시 단원구 신길동 일원 안산신길2 공공주택지구 내 A-6블록\",\"HSSPLY_ZIP\":\"15398\",\"IMPRMN_BSNS_AT\":\"N\",\"LRSCL_BLDLND_AT\":\"Y\",\"MDAT_TRGET_AREA_SECD\":\"N\",\"MDHS_TELNO\":\"0312970311\",\"MVN_PREARNGE_YM\":\"202911\",\"NPLN_PRVOPR_PUBLIC_HOUSE_AT\":\"N\",\"NSPRC_NM\":\"중부일보 \",\"PARCPRC_ULS_AT\":\"Y\",\"PBLANC_NO\":\"2026820013\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026820013&pblancNo=2026820013\",\"PRZWNER_PRESNATN_DE\":\"2026-12-04\",\"PUBLIC_HOUSE_EARTH_AT\":\"Y\",\"PUBLIC_HOUSE_SPCLW_APPLC_AT\":\"Y\",\"RCEPT_BGNDE\":\"2026-11-16\",\"RCEPT_ENDDE\":\"2026-11-24\",\"RCRIT_PBLANC_DE\":\"2026-10-30\",\"RENT_SECD\":\"0\",\"RENT_SECD_NM\":\"분양주택\",\"SPECLT_RDN_EARTH_AT\":\"N\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"TOT_SUPLY_HSHLDCO\":251}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "APT(APT)",
    "주택관리번호": "2026000533",
    "공고번호": "2026000533",
@@ -1635,7 +1635,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"한국토지주택공사 경기남부지역본부\",\"CNSTRCT_ENTRPS_NM\":\"동부건설(주),㈜발해,㈜만훈,㈜동서\",\"CNTRCT_CNCLS_BGNDE\":\"2027-03-15\",\"CNTRCT_CNCLS_ENDDE\":\"2027-03-18\",\"GNRL_RNK1_CRSPAREA_ENDDE\":\"2026-11-17\",\"GNRL_RNK1_CRSPAREA_RCPTDE\":\"2026-11-09\",\"GNRL_RNK1_ETC_AREA_ENDDE\":\"2026-11-17\",\"GNRL_RNK1_ETC_AREA_RCPTDE\":\"2026-11-09\",\"GNRL_RNK1_ETC_GG_ENDDE\":\"2026-11-17\",\"GNRL_RNK1_ETC_GG_RCPTDE\":\"2026-11-09\",\"GNRL_RNK2_CRSPAREA_ENDDE\":\"2026-11-18\",\"GNRL_RNK2_CRSPAREA_RCPTDE\":\"2026-11-18\",\"GNRL_RNK2_ETC_AREA_ENDDE\":\"2026-11-18\",\"GNRL_RNK2_ETC_AREA_RCPTDE\":\"2026-11-18\",\"GNRL_RNK2_ETC_GG_ENDDE\":\"2026-11-18\",\"GNRL_RNK2_ETC_GG_RCPTDE\":\"2026-11-18\",\"HMPG_ADRES\":\"https://apply.lh.or.kr\",\"HOUSE_DTL_SECD\":\"03\",\"HOUSE_DTL_SECD_NM\":\"국민\",\"HOUSE_MANAGE_NO\":\"2026000533\",\"HOUSE_NM\":\"안산신길2지구 B-1블록 공공분양주택(본청약)\",\"HOUSE_SECD\":\"01\",\"HOUSE_SECD_NM\":\"APT\",\"HSSPLY_ADRES\":\"경기도 안산시 단원구 신길동 일원 안산신길2 공공주택지구 내 B-1블록\",\"HSSPLY_ZIP\":\"15399\",\"IMPRMN_BSNS_AT\":\"N\",\"LRSCL_BLDLND_AT\":\"Y\",\"MDAT_TRGET_AREA_SECD\":\"N\",\"MDHS_TELNO\":\"0312970311\",\"MVN_PREARNGE_YM\":\"202908\",\"NPLN_PRVOPR_PUBLIC_HOUSE_AT\":\"N\",\"NSPRC_NM\":\"경인일보, 중부일보 \",\"PARCPRC_ULS_AT\":\"Y\",\"PBLANC_NO\":\"2026000533\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000533&pblancNo=2026000533\",\"PRZWNER_PRESNATN_DE\":\"2026-11-30\",\"PUBLIC_HOUSE_EARTH_AT\":\"Y\",\"PUBLIC_HOUSE_SPCLW_APPLC_AT\":\"Y\",\"RCEPT_BGNDE\":\"2026-11-09\",\"RCEPT_ENDDE\":\"2026-11-18\",\"RCRIT_PBLANC_DE\":\"2026-10-30\",\"RENT_SECD\":\"0\",\"RENT_SECD_NM\":\"분양주택\",\"SPECLT_RDN_EARTH_AT\":\"N\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"TOT_SUPLY_HSHLDCO\":387}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "APT(APT)",
    "주택관리번호": "2026000528",
    "공고번호": "2026000528",
@@ -1659,7 +1659,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"경기주택도시공사\",\"CNSTRCT_ENTRPS_NM\":\"동부건설(주), (주)에이치제이중공업, 대보건설(주), (주)우호건설, 씨앤씨종합건설(주)\",\"CNTRCT_CNCLS_BGNDE\":\"2026-12-21\",\"CNTRCT_CNCLS_ENDDE\":\"2026-12-23\",\"GNRL_RNK1_CRSPAREA_ENDDE\":\"2026-11-10\",\"GNRL_RNK1_CRSPAREA_RCPTDE\":\"2026-11-10\",\"GNRL_RNK1_ETC_AREA_ENDDE\":\"2026-11-10\",\"GNRL_RNK1_ETC_AREA_RCPTDE\":\"2026-11-10\",\"GNRL_RNK1_ETC_GG_ENDDE\":\"2026-11-10\",\"GNRL_RNK1_ETC_GG_RCPTDE\":\"2026-11-10\",\"GNRL_RNK2_CRSPAREA_ENDDE\":\"2026-11-11\",\"GNRL_RNK2_CRSPAREA_RCPTDE\":\"2026-11-11\",\"GNRL_RNK2_ETC_AREA_ENDDE\":\"2026-11-11\",\"GNRL_RNK2_ETC_AREA_RCPTDE\":\"2026-11-11\",\"GNRL_RNK2_ETC_GG_ENDDE\":\"2026-11-11\",\"GNRL_RNK2_ETC_GG_RCPTDE\":\"2026-11-11\",\"HMPG_ADRES\":\"http://www.gwanggyo-centreville.com\",\"HOUSE_DTL_SECD\":\"03\",\"HOUSE_DTL_SECD_NM\":\"국민\",\"HOUSE_MANAGE_NO\":\"2026000528\",\"HOUSE_NM\":\"광교 자연앤 센트레빌(A17BL) 공공분양주택\",\"HOUSE_SECD\":\"01\",\"HOUSE_SECD_NM\":\"APT\",\"HSSPLY_ADRES\":\"경기도 수원시 영통구 원천동 633번지 일원\",\"HSSPLY_ZIP\":\"16517\",\"IMPRMN_BSNS_AT\":\"N\",\"LRSCL_BLDLND_AT\":\"Y\",\"MDAT_TRGET_AREA_SECD\":\"Y\",\"MDHS_TELNO\":\"0312611770\",\"MVN_PREARNGE_YM\":\"202910\",\"NPLN_PRVOPR_PUBLIC_HOUSE_AT\":\"N\",\"NSPRC_NM\":\"매일경제 \",\"PARCPRC_ULS_AT\":\"Y\",\"PBLANC_NO\":\"2026000528\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000528&pblancNo=2026000528\",\"PRZWNER_PRESNATN_DE\":\"2026-11-17\",\"PUBLIC_HOUSE_EARTH_AT\":\"N\",\"PUBLIC_HOUSE_SPCLW_APPLC_AT\":\"Y\",\"RCEPT_BGNDE\":\"2026-11-09\",\"RCEPT_ENDDE\":\"2026-11-11\",\"RCRIT_PBLANC_DE\":\"2026-10-30\",\"RENT_SECD\":\"0\",\"RENT_SECD_NM\":\"분양주택\",\"SPECLT_RDN_EARTH_AT\":\"Y\",\"SPSPLY_RCEPT_BGNDE\":\"2026-11-09\",\"SPSPLY_RCEPT_ENDDE\":\"2026-11-09\",\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"TOT_SUPLY_HSHLDCO\":360}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "APT(APT)",
    "주택관리번호": "2026000527",
    "공고번호": "2026000527",
@@ -1683,7 +1683,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"경기주택도시공사\",\"CNSTRCT_ENTRPS_NM\":\"동부건설(주), (주)에이치제이중공업, 대보건설(주), (주)우호건설, 씨앤씨종합건설(주)\",\"CNTRCT_CNCLS_BGNDE\":\"2027-01-25\",\"CNTRCT_CNCLS_ENDDE\":\"2027-01-27\",\"GNRL_RNK1_CRSPAREA_ENDDE\":\"2026-11-10\",\"GNRL_RNK1_CRSPAREA_RCPTDE\":\"2026-11-10\",\"GNRL_RNK1_ETC_AREA_ENDDE\":\"2026-11-10\",\"GNRL_RNK1_ETC_AREA_RCPTDE\":\"2026-11-10\",\"GNRL_RNK1_ETC_GG_ENDDE\":\"2026-11-10\",\"GNRL_RNK1_ETC_GG_RCPTDE\":\"2026-11-10\",\"GNRL_RNK2_CRSPAREA_ENDDE\":\"2026-11-11\",\"GNRL_RNK2_CRSPAREA_RCPTDE\":\"2026-11-11\",\"GNRL_RNK2_ETC_AREA_ENDDE\":\"2026-11-11\",\"GNRL_RNK2_ETC_AREA_RCPTDE\":\"2026-11-11\",\"GNRL_RNK2_ETC_GG_ENDDE\":\"2026-11-11\",\"GNRL_RNK2_ETC_GG_RCPTDE\":\"2026-11-11\",\"HMPG_ADRES\":\"http://www.gwanggyo-centreville.com\",\"HOUSE_DTL_SECD\":\"03\",\"HOUSE_DTL_SECD_NM\":\"국민\",\"HOUSE_MANAGE_NO\":\"2026000527\",\"HOUSE_NM\":\"광교 자연앤 센트레빌(A17BL) 지분적립형 분양주택\",\"HOUSE_SECD\":\"01\",\"HOUSE_SECD_NM\":\"APT\",\"HSSPLY_ADRES\":\"경기도 수원시 영통구 원천동 633번지 일원\",\"HSSPLY_ZIP\":\"16517\",\"IMPRMN_BSNS_AT\":\"N\",\"LRSCL_BLDLND_AT\":\"Y\",\"MDAT_TRGET_AREA_SECD\":\"Y\",\"MDHS_TELNO\":\"0312611770\",\"MVN_PREARNGE_YM\":\"202910\",\"NPLN_PRVOPR_PUBLIC_HOUSE_AT\":\"N\",\"NSPRC_NM\":\"한국경제 \",\"PARCPRC_ULS_AT\":\"Y\",\"PBLANC_NO\":\"2026000527\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000527&pblancNo=2026000527\",\"PRZWNER_PRESNATN_DE\":\"2026-11-18\",\"PUBLIC_HOUSE_EARTH_AT\":\"N\",\"PUBLIC_HOUSE_SPCLW_APPLC_AT\":\"Y\",\"RCEPT_BGNDE\":\"2026-11-09\",\"RCEPT_ENDDE\":\"2026-11-11\",\"RCRIT_PBLANC_DE\":\"2026-10-30\",\"RENT_SECD\":\"0\",\"RENT_SECD_NM\":\"분양주택\",\"SPECLT_RDN_EARTH_AT\":\"Y\",\"SPSPLY_RCEPT_BGNDE\":\"2026-11-09\",\"SPSPLY_RCEPT_ENDDE\":\"2026-11-09\",\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"TOT_SUPLY_HSHLDCO\":240}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "APT(APT)",
    "주택관리번호": "2026000515",
    "공고번호": "2026000515",
@@ -1707,7 +1707,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"우미건설(주),지에스건설(주),이에스아이주식회사\",\"CNSTRCT_ENTRPS_NM\":\"우미건설(주),지에스건설(주),이에스아이주식회사\",\"CNTRCT_CNCLS_BGNDE\":\"2026-11-29\",\"CNTRCT_CNCLS_ENDDE\":\"2026-12-01\",\"GNRL_RNK1_CRSPAREA_ENDDE\":\"2026-11-10\",\"GNRL_RNK1_CRSPAREA_RCPTDE\":\"2026-11-10\",\"GNRL_RNK1_ETC_AREA_ENDDE\":\"2026-11-10\",\"GNRL_RNK1_ETC_AREA_RCPTDE\":\"2026-11-10\",\"GNRL_RNK1_ETC_GG_ENDDE\":\"2026-11-10\",\"GNRL_RNK1_ETC_GG_RCPTDE\":\"2026-11-10\",\"GNRL_RNK2_CRSPAREA_ENDDE\":\"2026-11-11\",\"GNRL_RNK2_CRSPAREA_RCPTDE\":\"2026-11-11\",\"GNRL_RNK2_ETC_AREA_ENDDE\":\"2026-11-11\",\"GNRL_RNK2_ETC_AREA_RCPTDE\":\"2026-11-11\",\"GNRL_RNK2_ETC_GG_ENDDE\":\"2026-11-11\",\"GNRL_RNK2_ETC_GG_RCPTDE\":\"2026-11-11\",\"HMPG_ADRES\":\"https://pg2.lynn.co.kr/\",\"HOUSE_DTL_SECD\":\"01\",\"HOUSE_DTL_SECD_NM\":\"민영\",\"HOUSE_MANAGE_NO\":\"2026000515\",\"HOUSE_NM\":\"평택 고덕 우미 린 더 프리미어\",\"HOUSE_SECD\":\"01\",\"HOUSE_SECD_NM\":\"APT\",\"HSSPLY_ADRES\":\"경기도 평택시 고덕 국제화계획지구 내 Abc-33블록\",\"HSSPLY_ZIP\":\"18016\",\"IMPRMN_BSNS_AT\":\"N\",\"LRSCL_BLDLND_AT\":\"Y\",\"MDAT_TRGET_AREA_SECD\":\"N\",\"MDHS_TELNO\":\"0316661003\",\"MVN_PREARNGE_YM\":\"202905\",\"NPLN_PRVOPR_PUBLIC_HOUSE_AT\":\"N\",\"NSPRC_NM\":\"헤럴드경제신문\",\"PARCPRC_ULS_AT\":\"Y\",\"PBLANC_NO\":\"2026000515\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000515&pblancNo=2026000515\",\"PRZWNER_PRESNATN_DE\":\"2026-11-17\",\"PUBLIC_HOUSE_EARTH_AT\":\"N\",\"PUBLIC_HOUSE_SPCLW_APPLC_AT\":\"N\",\"RCEPT_BGNDE\":\"2026-11-09\",\"RCEPT_ENDDE\":\"2026-11-11\",\"RCRIT_PBLANC_DE\":\"2026-10-30\",\"RENT_SECD\":\"0\",\"RENT_SECD_NM\":\"분양주택\",\"SPECLT_RDN_EARTH_AT\":\"N\",\"SPSPLY_RCEPT_BGNDE\":\"2026-11-09\",\"SPSPLY_RCEPT_ENDDE\":\"2026-11-09\",\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"TOT_SUPLY_HSHLDCO\":623}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "APT(APT)",
    "주택관리번호": "2026000472",
    "공고번호": "2026000472",
@@ -1731,7 +1731,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"(주)신안\",\"CNSTRCT_ENTRPS_NM\":\"(주)신안\",\"CNTRCT_CNCLS_BGNDE\":\"2026-11-30\",\"CNTRCT_CNCLS_ENDDE\":\"2026-12-02\",\"GNRL_RNK1_CRSPAREA_ENDDE\":\"2026-11-10\",\"GNRL_RNK1_CRSPAREA_RCPTDE\":\"2026-11-10\",\"GNRL_RNK1_ETC_AREA_ENDDE\":\"2026-11-10\",\"GNRL_RNK1_ETC_AREA_RCPTDE\":\"2026-11-10\",\"GNRL_RNK1_ETC_GG_ENDDE\":\"2026-11-10\",\"GNRL_RNK1_ETC_GG_RCPTDE\":\"2026-11-10\",\"GNRL_RNK2_CRSPAREA_ENDDE\":\"2026-11-11\",\"GNRL_RNK2_CRSPAREA_RCPTDE\":\"2026-11-11\",\"GNRL_RNK2_ETC_AREA_ENDDE\":\"2026-11-11\",\"GNRL_RNK2_ETC_AREA_RCPTDE\":\"2026-11-11\",\"GNRL_RNK2_ETC_GG_ENDDE\":\"2026-11-11\",\"GNRL_RNK2_ETC_GG_RCPTDE\":\"2026-11-11\",\"HMPG_ADRES\":\"https://guri.ensvil.com/\",\"HOUSE_DTL_SECD\":\"01\",\"HOUSE_DTL_SECD_NM\":\"민영\",\"HOUSE_MANAGE_NO\":\"2026000472\",\"HOUSE_NM\":\"구리갈매역세권 B-1블록 신안인스빌 디센트\",\"HOUSE_SECD\":\"01\",\"HOUSE_SECD_NM\":\"APT\",\"HSSPLY_ADRES\":\"경기도 구리시 구리갈매역세권 B-1블록\",\"HSSPLY_ZIP\":\"11900\",\"IMPRMN_BSNS_AT\":\"N\",\"LRSCL_BLDLND_AT\":\"Y\",\"MDAT_TRGET_AREA_SECD\":\"Y\",\"MDHS_TELNO\":\"0315669450\",\"MVN_PREARNGE_YM\":\"202808\",\"NPLN_PRVOPR_PUBLIC_HOUSE_AT\":\"Y\",\"NSPRC_NM\":\"아시아경제\",\"PARCPRC_ULS_AT\":\"Y\",\"PBLANC_NO\":\"2026000472\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000472&pblancNo=2026000472\",\"PRZWNER_PRESNATN_DE\":\"2026-11-17\",\"PUBLIC_HOUSE_EARTH_AT\":\"Y\",\"PUBLIC_HOUSE_SPCLW_APPLC_AT\":\"N\",\"RCEPT_BGNDE\":\"2026-11-09\",\"RCEPT_ENDDE\":\"2026-11-11\",\"RCRIT_PBLANC_DE\":\"2026-10-30\",\"RENT_SECD\":\"0\",\"RENT_SECD_NM\":\"분양주택\",\"SPECLT_RDN_EARTH_AT\":\"Y\",\"SPSPLY_RCEPT_BGNDE\":\"2026-11-09\",\"SPSPLY_RCEPT_ENDDE\":\"2026-11-09\",\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"TOT_SUPLY_HSHLDCO\":213}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "무순위·잔여세대",
    "주택관리번호": "2026910281",
    "공고번호": "2026910281",
@@ -1755,7 +1755,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"(주)에코월드이엔씨\",\"CNTRCT_CNCLS_BGNDE\":\"2026-11-14\",\"CNTRCT_CNCLS_ENDDE\":\"2026-11-14\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"https://cent.villiv.co.kr\",\"HOUSE_MANAGE_NO\":\"2026910281\",\"HOUSE_NM\":\"빌리브센트하이(2차)\",\"HOUSE_SECD\":\"04\",\"HOUSE_SECD_NM\":\"무순위\",\"HSSPLY_ADRES\":\"경기도 남양주시 화도읍 마석우리 295-32번지 일원\",\"HSSPLY_ZIP\":\"12176\",\"MDHS_TELNO\":\"15884940\",\"MVN_PREARNGE_YM\":\"202612\",\"NSPRC_NM\":null,\"PBLANC_NO\":\"2026910281\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910281&pblancNo=2026910281\",\"PRZWNER_PRESNATN_DE\":\"2026-11-12\",\"RCRIT_PBLANC_DE\":\"2026-11-02\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"SUBSCRPT_RCEPT_BGNDE\":\"2026-11-09\",\"SUBSCRPT_RCEPT_ENDDE\":\"2026-11-09\",\"TOT_SUPLY_HSHLDCO\":5}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "임의공급",
    "주택관리번호": "2026940246",
    "공고번호": "2026940246",
@@ -1779,7 +1779,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"(주)일레븐건설\",\"CNTRCT_CNCLS_BGNDE\":\"20261112\",\"CNTRCT_CNCLS_ENDDE\":\"20261112\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"https://www.xi.co.kr/kps\",\"HOUSE_MANAGE_NO\":\"2026940246\",\"HOUSE_NM\":\"고촌센트럴자이(14차)\",\"HOUSE_SECD\":\"11\",\"HOUSE_SECD_NM\":\"임의공급\",\"HSSPLY_ADRES\":\"경기도 김포시 고촌읍 신곡리 김포신곡6지구 도시개발사업구역 A3BL\",\"HSSPLY_ZIP\":\"10130\",\"MDHS_TELNO\":\"16443318\",\"MVN_PREARNGE_YM\":\"202705\",\"PBLANC_NO\":\"2026940246\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940246&pblancNo=2026940246\",\"PRZWNER_PRESNATN_DE\":\"20261110\",\"RCRIT_PBLANC_DE\":\"20261102\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"SUBSCRPT_RCEPT_BGNDE\":\"20261104\",\"SUBSCRPT_RCEPT_ENDDE\":\"20261105\",\"TOT_SUPLY_HSHLDCO\":10}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "임의공급",
    "주택관리번호": "2026940245",
    "공고번호": "2026940245",
@@ -1803,7 +1803,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"삼하동호진주가로주택정비사업조합\",\"CNTRCT_CNCLS_BGNDE\":\"20261116\",\"CNTRCT_CNCLS_ENDDE\":\"20261118\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"http://www.고강휴먼빌아파트.shop\",\"HOUSE_MANAGE_NO\":\"2026940245\",\"HOUSE_NM\":\"고강휴먼빌\",\"HOUSE_SECD\":\"11\",\"HOUSE_SECD_NM\":\"임의공급\",\"HSSPLY_ADRES\":\"경기도 부천시 오정구 고강동 293-2번지 외 7필지\",\"HSSPLY_ZIP\":\"14417\",\"MDHS_TELNO\":\"0326849868\",\"MVN_PREARNGE_YM\":\"202611\",\"PBLANC_NO\":\"2026940245\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940245&pblancNo=2026940245\",\"PRZWNER_PRESNATN_DE\":\"20261110\",\"RCRIT_PBLANC_DE\":\"20261102\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"SUBSCRPT_RCEPT_BGNDE\":\"20261104\",\"SUBSCRPT_RCEPT_ENDDE\":\"20261105\",\"TOT_SUPLY_HSHLDCO\":26}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "APT(신혼희망타운)",
    "주택관리번호": "2026820014",
    "공고번호": "2026820014",
@@ -1827,7 +1827,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"한국토지주택공사 경기북부지역본부\",\"CNSTRCT_ENTRPS_NM\":\"계룡건설산업(주), 미래이앤시(주), (주)오스코\",\"CNTRCT_CNCLS_BGNDE\":\"2027-02-01\",\"CNTRCT_CNCLS_ENDDE\":\"2027-02-02\",\"GNRL_RNK1_CRSPAREA_ENDDE\":\"2026-11-11\",\"GNRL_RNK1_CRSPAREA_RCPTDE\":\"2026-11-11\",\"GNRL_RNK1_ETC_AREA_ENDDE\":\"2026-11-11\",\"GNRL_RNK1_ETC_AREA_RCPTDE\":\"2026-11-11\",\"GNRL_RNK1_ETC_GG_ENDDE\":\"2026-11-11\",\"GNRL_RNK1_ETC_GG_RCPTDE\":\"2026-11-11\",\"GNRL_RNK2_CRSPAREA_ENDDE\":\"2026-11-12\",\"GNRL_RNK2_CRSPAREA_RCPTDE\":\"2026-11-12\",\"GNRL_RNK2_ETC_AREA_ENDDE\":\"2026-11-12\",\"GNRL_RNK2_ETC_AREA_RCPTDE\":\"2026-11-12\",\"GNRL_RNK2_ETC_GG_ENDDE\":\"2026-11-12\",\"GNRL_RNK2_ETC_GG_RCPTDE\":\"2026-11-12\",\"HMPG_ADRES\":\"https://apply.lh.or.kr\",\"HOUSE_DTL_SECD\":\"03\",\"HOUSE_DTL_SECD_NM\":\"국민\",\"HOUSE_MANAGE_NO\":\"2026820014\",\"HOUSE_NM\":\"남양주왕숙 A-2블록 신혼희망타운(공공분양) 잔여세대 추가입주자모집공고\",\"HOUSE_SECD\":\"10\",\"HOUSE_SECD_NM\":\"신혼희망타운\",\"HSSPLY_ADRES\":\"경기도 남양주시 진접읍, 진건읍, 퇴계원읍 일원, 남양주왕숙 공공주택지구 내 A-2블록\",\"HSSPLY_ZIP\":\"12067\",\"IMPRMN_BSNS_AT\":\"N\",\"LRSCL_BLDLND_AT\":\"Y\",\"MDAT_TRGET_AREA_SECD\":\"N\",\"MDHS_TELNO\":\"16001004\",\"MVN_PREARNGE_YM\":\"202808\",\"NPLN_PRVOPR_PUBLIC_HOUSE_AT\":\"N\",\"NSPRC_NM\":null,\"PARCPRC_ULS_AT\":\"Y\",\"PBLANC_NO\":\"2026820014\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026820014&pblancNo=2026820014\",\"PRZWNER_PRESNATN_DE\":\"2026-11-19\",\"PUBLIC_HOUSE_EARTH_AT\":\"Y\",\"PUBLIC_HOUSE_SPCLW_APPLC_AT\":\"Y\",\"RCEPT_BGNDE\":\"2026-11-11\",\"RCEPT_ENDDE\":\"2026-11-12\",\"RCRIT_PBLANC_DE\":\"2026-11-03\",\"RENT_SECD\":\"0\",\"RENT_SECD_NM\":\"분양주택\",\"SPECLT_RDN_EARTH_AT\":\"N\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"TOT_SUPLY_HSHLDCO\":32}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "무순위·잔여세대",
    "주택관리번호": "2026910285",
    "공고번호": "2026910285",
@@ -1851,7 +1851,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"케이비부동산신탁(주)\",\"CNTRCT_CNCLS_BGNDE\":\"2026-11-19\",\"CNTRCT_CNCLS_ENDDE\":\"2026-11-19\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"https://더샵송도그란테르.kr\",\"HOUSE_MANAGE_NO\":\"2026910285\",\"HOUSE_NM\":\"더샵 송도그란테르 G5-6블록\",\"HOUSE_SECD\":\"04\",\"HOUSE_SECD_NM\":\"무순위\",\"HSSPLY_ADRES\":\"인천광역시 연수구 송도동 32-3,-6 (G5-6BL)\",\"HSSPLY_ZIP\":\"22008\",\"MDHS_TELNO\":\"16000255\",\"MVN_PREARNGE_YM\":\"203001\",\"NSPRC_NM\":null,\"PBLANC_NO\":\"2026910285\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910285&pblancNo=2026910285\",\"PRZWNER_PRESNATN_DE\":\"2026-11-12\",\"RCRIT_PBLANC_DE\":\"2026-11-04\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"400\",\"SUBSCRPT_AREA_CODE_NM\":\"인천\",\"SUBSCRPT_RCEPT_BGNDE\":\"2026-11-09\",\"SUBSCRPT_RCEPT_ENDDE\":\"2026-11-09\",\"TOT_SUPLY_HSHLDCO\":1}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "무순위·잔여세대",
    "주택관리번호": "2026910282",
    "공고번호": "2026910282",
@@ -1875,7 +1875,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"(주)시티글로벌\",\"CNTRCT_CNCLS_BGNDE\":\"2026-11-20\",\"CNTRCT_CNCLS_ENDDE\":\"2026-11-20\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"https://광명시티프라디움.com\",\"HOUSE_MANAGE_NO\":\"2026910282\",\"HOUSE_NM\":\"광명 시티프라디움 에듀하임\",\"HOUSE_SECD\":\"04\",\"HOUSE_SECD_NM\":\"무순위\",\"HSSPLY_ADRES\":\"경기도 광명시 소하동 광명 구름산지구 도시개발사업지구 A6BL\",\"HSSPLY_ZIP\":\"14326\",\"MDHS_TELNO\":\"18996851\",\"MVN_PREARNGE_YM\":\"202903\",\"NSPRC_NM\":null,\"PBLANC_NO\":\"2026910282\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910282&pblancNo=2026910282\",\"PRZWNER_PRESNATN_DE\":\"2026-11-13\",\"RCRIT_PBLANC_DE\":\"2026-11-05\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"SUBSCRPT_RCEPT_BGNDE\":\"2026-11-10\",\"SUBSCRPT_RCEPT_ENDDE\":\"2026-11-10\",\"TOT_SUPLY_HSHLDCO\":21}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "무순위·잔여세대",
    "주택관리번호": "2026910279",
    "공고번호": "2026910279",
@@ -1899,7 +1899,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"디에스디삼호(주)\",\"CNTRCT_CNCLS_BGNDE\":\"2026-11-20\",\"CNTRCT_CNCLS_ENDDE\":\"2026-11-20\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"https://www.idsd.co.kr\",\"HOUSE_MANAGE_NO\":\"2026910279\",\"HOUSE_NM\":\"봉담자이 프라이드시티\",\"HOUSE_SECD\":\"04\",\"HOUSE_SECD_NM\":\"무순위\",\"HSSPLY_ADRES\":\"경기도 화성특례시 효행구 봉담읍 삼봉안길 30 (봉담내리지구 A1블록 봉담자이 프라이드시티)\",\"HSSPLY_ZIP\":\"18294\",\"MDHS_TELNO\":\"0312784145\",\"MVN_PREARNGE_YM\":\"202612\",\"NSPRC_NM\":null,\"PBLANC_NO\":\"2026910279\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910279&pblancNo=2026910279\",\"PRZWNER_PRESNATN_DE\":\"2026-11-13\",\"RCRIT_PBLANC_DE\":\"2026-11-05\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"SUBSCRPT_RCEPT_BGNDE\":\"2026-11-10\",\"SUBSCRPT_RCEPT_ENDDE\":\"2026-11-10\",\"TOT_SUPLY_HSHLDCO\":2}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "공공지원민간임대",
    "주택관리번호": "2026850055",
    "공고번호": "2026850055",
@@ -1923,7 +1923,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"신한자산신탁 주식회사\",\"CNTRCT_CNCLS_BGNDE\":\"20261123\",\"CNTRCT_CNCLS_ENDDE\":\"20261125\",\"HMPG_ADRES\":\"https://hillstate.co.kr/SALE/1030/main/index\",\"HOUSE_DETAIL_SECD\":\"03\",\"HOUSE_DETAIL_SECD_NM\":\"공공지원민간임대\",\"HOUSE_MANAGE_NO\":\"2026850055\",\"HOUSE_NM\":\"힐스테이트 회룡역파크뷰\",\"HOUSE_SECD\":\"03\",\"HOUSE_SECD_NM\":\"공공지원민간임대\",\"HSSPLY_ADRES\":\"경기도 의정부시 신흥로 43\",\"HSSPLY_ZIP\":\"11639\",\"MDHS_TELNO\":\"0318271800\",\"MVN_PREARNGE_YM\":\"202701\",\"NSPRC_NM\":\"문화일보\",\"PBLANC_NO\":\"2026850055\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectPRMOLttotPblancDetailView.do?houseManageNo=2026850055&pblancNo=2026850055&houseSecd=03\",\"PRZWNER_PRESNATN_DE\":\"20261113\",\"RCRIT_PBLANC_DE\":\"20261105\",\"SEARCH_HOUSE_SECD\":\"0303\",\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"SUBSCRPT_RCEPT_BGNDE\":\"20261110\",\"SUBSCRPT_RCEPT_ENDDE\":\"20261110\",\"TOT_SUPLY_HSHLDCO\":909}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "APT(신혼희망타운)",
    "주택관리번호": "2026820015",
    "공고번호": "2026820015",
@@ -1947,7 +1947,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"한국토지주택공사경기남부지역본부\",\"CNSTRCT_ENTRPS_NM\":\"금호건설 주식회사\",\"CNTRCT_CNCLS_BGNDE\":\"2027-03-11\",\"CNTRCT_CNCLS_ENDDE\":\"2027-03-14\",\"GNRL_RNK1_CRSPAREA_ENDDE\":\"2026-11-26\",\"GNRL_RNK1_CRSPAREA_RCPTDE\":\"2026-11-16\",\"GNRL_RNK1_ETC_AREA_ENDDE\":\"2026-11-26\",\"GNRL_RNK1_ETC_AREA_RCPTDE\":\"2026-11-16\",\"GNRL_RNK1_ETC_GG_ENDDE\":\"2026-11-26\",\"GNRL_RNK1_ETC_GG_RCPTDE\":\"2026-11-16\",\"GNRL_RNK2_CRSPAREA_ENDDE\":\"2026-11-27\",\"GNRL_RNK2_CRSPAREA_RCPTDE\":\"2026-11-27\",\"GNRL_RNK2_ETC_AREA_ENDDE\":\"2026-11-27\",\"GNRL_RNK2_ETC_AREA_RCPTDE\":\"2026-11-27\",\"GNRL_RNK2_ETC_GG_ENDDE\":\"2026-11-27\",\"GNRL_RNK2_ETC_GG_RCPTDE\":\"2026-11-27\",\"HMPG_ADRES\":\"https://apply.lh.or.kr\",\"HOUSE_DTL_SECD\":\"03\",\"HOUSE_DTL_SECD_NM\":\"국민\",\"HOUSE_MANAGE_NO\":\"2026820015\",\"HOUSE_NM\":\"시흥 거모 아테라(시흥거모 A-6BL) 신혼희망타운(공공분양)(본청약)\",\"HOUSE_SECD\":\"10\",\"HOUSE_SECD_NM\":\"신혼희망타운\",\"HSSPLY_ADRES\":\"경기도 시흥시 거모지구 내 A-6블록\",\"HSSPLY_ZIP\":\"15070\",\"IMPRMN_BSNS_AT\":\"N\",\"LRSCL_BLDLND_AT\":\"Y\",\"MDAT_TRGET_AREA_SECD\":\"N\",\"MDHS_TELNO\":\"16615596\",\"MVN_PREARNGE_YM\":\"202909\",\"NPLN_PRVOPR_PUBLIC_HOUSE_AT\":\"N\",\"NSPRC_NM\":\"경향신문\",\"PARCPRC_ULS_AT\":\"Y\",\"PBLANC_NO\":\"2026820015\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026820015&pblancNo=2026820015\",\"PRZWNER_PRESNATN_DE\":\"2026-12-08\",\"PUBLIC_HOUSE_EARTH_AT\":\"Y\",\"PUBLIC_HOUSE_SPCLW_APPLC_AT\":\"Y\",\"RCEPT_BGNDE\":\"2026-11-16\",\"RCEPT_ENDDE\":\"2026-11-27\",\"RCRIT_PBLANC_DE\":\"2026-11-06\",\"RENT_SECD\":\"0\",\"RENT_SECD_NM\":\"분양주택\",\"SPECLT_RDN_EARTH_AT\":\"N\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"TOT_SUPLY_HSHLDCO\":480}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "APT(APT)",
    "주택관리번호": "2026000557",
    "공고번호": "2026000557",
@@ -1971,7 +1971,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"주식회사 브랜드뉴탄벌\",\"CNSTRCT_ENTRPS_NM\":\"제일건설 주식회사\",\"CNTRCT_CNCLS_BGNDE\":\"2026-12-07\",\"CNTRCT_CNCLS_ENDDE\":\"2026-12-09\",\"GNRL_RNK1_CRSPAREA_ENDDE\":\"2026-11-17\",\"GNRL_RNK1_CRSPAREA_RCPTDE\":\"2026-11-17\",\"GNRL_RNK1_ETC_AREA_ENDDE\":\"2026-11-17\",\"GNRL_RNK1_ETC_AREA_RCPTDE\":\"2026-11-17\",\"GNRL_RNK1_ETC_GG_ENDDE\":null,\"GNRL_RNK1_ETC_GG_RCPTDE\":null,\"GNRL_RNK2_CRSPAREA_ENDDE\":\"2026-11-18\",\"GNRL_RNK2_CRSPAREA_RCPTDE\":\"2026-11-18\",\"GNRL_RNK2_ETC_AREA_ENDDE\":\"2026-11-18\",\"GNRL_RNK2_ETC_AREA_RCPTDE\":\"2026-11-18\",\"GNRL_RNK2_ETC_GG_ENDDE\":null,\"GNRL_RNK2_ETC_GG_RCPTDE\":null,\"HMPG_ADRES\":\"http://jeil-foredu.co.kr\",\"HOUSE_DTL_SECD\":\"01\",\"HOUSE_DTL_SECD_NM\":\"민영\",\"HOUSE_MANAGE_NO\":\"2026000557\",\"HOUSE_NM\":\"제일풍경채 광주 포에듀\",\"HOUSE_SECD\":\"01\",\"HOUSE_SECD_NM\":\"APT\",\"HSSPLY_ADRES\":\"경기도 광주시 탄벌동 203-4번지 일원 (탄벌A지구 A5블럭)\",\"HSSPLY_ZIP\":\"12766\",\"IMPRMN_BSNS_AT\":\"N\",\"LRSCL_BLDLND_AT\":\"N\",\"MDAT_TRGET_AREA_SECD\":\"N\",\"MDHS_TELNO\":\"15337767\",\"MVN_PREARNGE_YM\":\"202911\",\"NPLN_PRVOPR_PUBLIC_HOUSE_AT\":\"N\",\"NSPRC_NM\":\"아시아경제\",\"PARCPRC_ULS_AT\":\"N\",\"PBLANC_NO\":\"2026000557\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000557&pblancNo=2026000557\",\"PRZWNER_PRESNATN_DE\":\"2026-11-24\",\"PUBLIC_HOUSE_EARTH_AT\":\"N\",\"PUBLIC_HOUSE_SPCLW_APPLC_AT\":\"N\",\"RCEPT_BGNDE\":\"2026-11-16\",\"RCEPT_ENDDE\":\"2026-11-18\",\"RCRIT_PBLANC_DE\":\"2026-11-06\",\"RENT_SECD\":\"0\",\"RENT_SECD_NM\":\"분양주택\",\"SPECLT_RDN_EARTH_AT\":\"N\",\"SPSPLY_RCEPT_BGNDE\":\"2026-11-16\",\"SPSPLY_RCEPT_ENDDE\":\"2026-11-16\",\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"TOT_SUPLY_HSHLDCO\":572}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "APT(APT)",
    "주택관리번호": "2026000553",
    "공고번호": "2026000553",
@@ -1995,7 +1995,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"의정부동지역주택조합,양우건설(주)\",\"CNSTRCT_ENTRPS_NM\":\"양우건설(주)\",\"CNTRCT_CNCLS_BGNDE\":\"2026-12-07\",\"CNTRCT_CNCLS_ENDDE\":\"2026-12-09\",\"GNRL_RNK1_CRSPAREA_ENDDE\":\"2026-11-17\",\"GNRL_RNK1_CRSPAREA_RCPTDE\":\"2026-11-17\",\"GNRL_RNK1_ETC_AREA_ENDDE\":\"2026-11-17\",\"GNRL_RNK1_ETC_AREA_RCPTDE\":\"2026-11-17\",\"GNRL_RNK1_ETC_GG_ENDDE\":null,\"GNRL_RNK1_ETC_GG_RCPTDE\":null,\"GNRL_RNK2_CRSPAREA_ENDDE\":\"2026-11-18\",\"GNRL_RNK2_CRSPAREA_RCPTDE\":\"2026-11-18\",\"GNRL_RNK2_ETC_AREA_ENDDE\":\"2026-11-18\",\"GNRL_RNK2_ETC_AREA_RCPTDE\":\"2026-11-18\",\"GNRL_RNK2_ETC_GG_ENDDE\":null,\"GNRL_RNK2_ETC_GG_RCPTDE\":null,\"HMPG_ADRES\":\"https://feliztower-yangwoo.co.kr\",\"HOUSE_DTL_SECD\":\"01\",\"HOUSE_DTL_SECD_NM\":\"민영\",\"HOUSE_MANAGE_NO\":\"2026000553\",\"HOUSE_NM\":\"의정부역 펠리스타워 양우내안애\",\"HOUSE_SECD\":\"01\",\"HOUSE_SECD_NM\":\"APT\",\"HSSPLY_ADRES\":\"경기도 의정부시 의정부동 424번지 일원 \",\"HSSPLY_ZIP\":\"11669\",\"IMPRMN_BSNS_AT\":\"N\",\"LRSCL_BLDLND_AT\":\"N\",\"MDAT_TRGET_AREA_SECD\":\"N\",\"MDHS_TELNO\":\"15773197\",\"MVN_PREARNGE_YM\":\"203101\",\"NPLN_PRVOPR_PUBLIC_HOUSE_AT\":\"N\",\"NSPRC_NM\":\"아시아경제\",\"PARCPRC_ULS_AT\":\"N\",\"PBLANC_NO\":\"2026000553\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000553&pblancNo=2026000553\",\"PRZWNER_PRESNATN_DE\":\"2026-11-24\",\"PUBLIC_HOUSE_EARTH_AT\":\"N\",\"PUBLIC_HOUSE_SPCLW_APPLC_AT\":\"N\",\"RCEPT_BGNDE\":\"2026-11-16\",\"RCEPT_ENDDE\":\"2026-11-18\",\"RCRIT_PBLANC_DE\":\"2026-11-06\",\"RENT_SECD\":\"0\",\"RENT_SECD_NM\":\"분양주택\",\"SPECLT_RDN_EARTH_AT\":\"N\",\"SPSPLY_RCEPT_BGNDE\":\"2026-11-16\",\"SPSPLY_RCEPT_ENDDE\":\"2026-11-16\",\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"TOT_SUPLY_HSHLDCO\":414}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "APT(APT)",
    "주택관리번호": "2026000497",
    "공고번호": "2026000497",
@@ -2019,7 +2019,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"중화3재정비촉진구역 도시환경정비사업 토지등소유자\",\"CNSTRCT_ENTRPS_NM\":\"라온건설(주)\",\"CNTRCT_CNCLS_BGNDE\":\"2026-12-07\",\"CNTRCT_CNCLS_ENDDE\":\"2026-12-09\",\"GNRL_RNK1_CRSPAREA_ENDDE\":\"2026-11-17\",\"GNRL_RNK1_CRSPAREA_RCPTDE\":\"2026-11-17\",\"GNRL_RNK1_ETC_AREA_ENDDE\":\"2026-11-18\",\"GNRL_RNK1_ETC_AREA_RCPTDE\":\"2026-11-18\",\"GNRL_RNK1_ETC_GG_ENDDE\":null,\"GNRL_RNK1_ETC_GG_RCPTDE\":null,\"GNRL_RNK2_CRSPAREA_ENDDE\":\"2026-11-19\",\"GNRL_RNK2_CRSPAREA_RCPTDE\":\"2026-11-19\",\"GNRL_RNK2_ETC_AREA_ENDDE\":\"2026-11-19\",\"GNRL_RNK2_ETC_AREA_RCPTDE\":\"2026-11-19\",\"GNRL_RNK2_ETC_GG_ENDDE\":null,\"GNRL_RNK2_ETC_GG_RCPTDE\":null,\"HMPG_ADRES\":\"https://www.jh-raon.com\",\"HOUSE_DTL_SECD\":\"01\",\"HOUSE_DTL_SECD_NM\":\"민영\",\"HOUSE_MANAGE_NO\":\"2026000497\",\"HOUSE_NM\":\"중화역 라온프라이빗 센트로\",\"HOUSE_SECD\":\"01\",\"HOUSE_SECD_NM\":\"APT\",\"HSSPLY_ADRES\":\"서울특별시 중랑구 중화동 303-9번지 일원\",\"HSSPLY_ZIP\":\"02102\",\"IMPRMN_BSNS_AT\":\"Y\",\"LRSCL_BLDLND_AT\":\"N\",\"MDAT_TRGET_AREA_SECD\":\"Y\",\"MDHS_TELNO\":\"15556223\",\"MVN_PREARNGE_YM\":\"202902\",\"NPLN_PRVOPR_PUBLIC_HOUSE_AT\":\"N\",\"NSPRC_NM\":\"문화일보\",\"PARCPRC_ULS_AT\":\"N\",\"PBLANC_NO\":\"2026000497\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000497&pblancNo=2026000497\",\"PRZWNER_PRESNATN_DE\":\"2026-11-25\",\"PUBLIC_HOUSE_EARTH_AT\":\"N\",\"PUBLIC_HOUSE_SPCLW_APPLC_AT\":\"N\",\"RCEPT_BGNDE\":\"2026-11-16\",\"RCEPT_ENDDE\":\"2026-11-19\",\"RCRIT_PBLANC_DE\":\"2026-11-06\",\"RENT_SECD\":\"0\",\"RENT_SECD_NM\":\"분양주택\",\"SPECLT_RDN_EARTH_AT\":\"Y\",\"SPSPLY_RCEPT_BGNDE\":\"2026-11-16\",\"SPSPLY_RCEPT_ENDDE\":\"2026-11-16\",\"SUBSCRPT_AREA_CODE\":\"100\",\"SUBSCRPT_AREA_CODE_NM\":\"서울\",\"TOT_SUPLY_HSHLDCO\":113}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "무순위·잔여세대",
    "주택관리번호": "2026910283",
    "공고번호": "2026910283",
@@ -2043,7 +2043,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"주식회사 인천영종피에프브이\",\"CNTRCT_CNCLS_BGNDE\":\"2026-11-19\",\"CNTRCT_CNCLS_ENDDE\":\"2026-11-19\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"http://www.yjd-verthill.com\",\"HOUSE_MANAGE_NO\":\"2026910283\",\"HOUSE_NM\":\"인천 영종하늘도시 A25블록 대성베르힐(5차)\",\"HOUSE_SECD\":\"04\",\"HOUSE_SECD_NM\":\"무순위\",\"HSSPLY_ADRES\":\"인천광역시 영종구 운남동 1709-1번지(영종 A25블록)\",\"HSSPLY_ZIP\":\"22373\",\"MDHS_TELNO\":\"0623652106\",\"MVN_PREARNGE_YM\":\"202612\",\"NSPRC_NM\":null,\"PBLANC_NO\":\"2026910283\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910283&pblancNo=2026910283\",\"PRZWNER_PRESNATN_DE\":\"2026-11-16\",\"RCRIT_PBLANC_DE\":\"2026-11-06\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"400\",\"SUBSCRPT_AREA_CODE_NM\":\"인천\",\"SUBSCRPT_RCEPT_BGNDE\":\"2026-11-11\",\"SUBSCRPT_RCEPT_ENDDE\":\"2026-11-11\",\"TOT_SUPLY_HSHLDCO\":1}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "무순위·잔여세대",
    "주택관리번호": "2026910280",
    "공고번호": "2026910280",
@@ -2067,7 +2067,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"양지7지구 3단지 지역주택조합\",\"CNTRCT_CNCLS_BGNDE\":\"2026-11-18\",\"CNTRCT_CNCLS_ENDDE\":\"2026-11-18\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"https://www.오남역서희스타힐스여의재.com\",\"HOUSE_MANAGE_NO\":\"2026910280\",\"HOUSE_NM\":\"오남역 서희스타힐스 여의재 3단지 (조합원 취소분)\",\"HOUSE_SECD\":\"04\",\"HOUSE_SECD_NM\":\"무순위\",\"HSSPLY_ADRES\":\"경기도 남양주시 오남읍 양지리 186-10번지 일원\",\"HSSPLY_ZIP\":\"12036\",\"MDHS_TELNO\":\"15550074\",\"MVN_PREARNGE_YM\":\"202901\",\"NSPRC_NM\":null,\"PBLANC_NO\":\"2026910280\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910280&pblancNo=2026910280\",\"PRZWNER_PRESNATN_DE\":\"2026-11-16\",\"RCRIT_PBLANC_DE\":\"2026-11-06\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"SUBSCRPT_RCEPT_BGNDE\":\"2026-11-11\",\"SUBSCRPT_RCEPT_ENDDE\":\"2026-11-11\",\"TOT_SUPLY_HSHLDCO\":6}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "무순위·잔여세대",
    "주택관리번호": "2026910276",
    "공고번호": "2026910276",
@@ -2091,7 +2091,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"중흥건설(주)\",\"CNTRCT_CNCLS_BGNDE\":\"2026-11-23\",\"CNTRCT_CNCLS_ENDDE\":\"2026-11-23\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"http://www.geomdan-sclass.com\",\"HOUSE_MANAGE_NO\":\"2026910276\",\"HOUSE_NM\":\"인천 검단신도시 AB20-2블록 중흥S-클래스 에듀파크\",\"HOUSE_SECD\":\"04\",\"HOUSE_SECD_NM\":\"무순위\",\"HSSPLY_ADRES\":\"인천광역시 검단지구 공동주택용지 AB20-2BL\",\"HSSPLY_ZIP\":\"22616\",\"MDHS_TELNO\":\"0325621990\",\"MVN_PREARNGE_YM\":\"202706\",\"NSPRC_NM\":null,\"PBLANC_NO\":\"2026910276\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910276&pblancNo=2026910276\",\"PRZWNER_PRESNATN_DE\":\"2026-11-16\",\"RCRIT_PBLANC_DE\":\"2026-11-06\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"400\",\"SUBSCRPT_AREA_CODE_NM\":\"인천\",\"SUBSCRPT_RCEPT_BGNDE\":\"2026-11-11\",\"SUBSCRPT_RCEPT_ENDDE\":\"2026-11-11\",\"TOT_SUPLY_HSHLDCO\":1}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "무순위·잔여세대",
    "주택관리번호": "2026910290",
    "공고번호": "2026910290",
@@ -2115,7 +2115,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"황학동청계지역주택조합\",\"CNTRCT_CNCLS_BGNDE\":\"2026-11-23\",\"CNTRCT_CNCLS_ENDDE\":\"2026-11-25\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"https://청계노르웨이숲.com\",\"HOUSE_MANAGE_NO\":\"2026910290\",\"HOUSE_NM\":\"청계 노르웨이숲(14차)\",\"HOUSE_SECD\":\"04\",\"HOUSE_SECD_NM\":\"무순위\",\"HSSPLY_ADRES\":\"서울특별시 중구 황학동 1756번지 일원\",\"HSSPLY_ZIP\":\"04574\",\"MDHS_TELNO\":\"15550807\",\"MVN_PREARNGE_YM\":\"202807\",\"NSPRC_NM\":null,\"PBLANC_NO\":\"2026910290\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910290&pblancNo=2026910290\",\"PRZWNER_PRESNATN_DE\":\"2026-11-20\",\"RCRIT_PBLANC_DE\":\"2026-11-09\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"100\",\"SUBSCRPT_AREA_CODE_NM\":\"서울\",\"SUBSCRPT_RCEPT_BGNDE\":\"2026-11-16\",\"SUBSCRPT_RCEPT_ENDDE\":\"2026-11-17\",\"TOT_SUPLY_HSHLDCO\":6}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "임의공급",
    "주택관리번호": "2026940252",
    "공고번호": "2026940252",
@@ -2139,7 +2139,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"덕화주택가로주택정비사업조합\",\"CNTRCT_CNCLS_BGNDE\":\"20261120\",\"CNTRCT_CNCLS_ENDDE\":\"20261122\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":null,\"HOUSE_MANAGE_NO\":\"2026940252\",\"HOUSE_NM\":\"신월동 한양립스(3차)\",\"HOUSE_SECD\":\"11\",\"HOUSE_SECD_NM\":\"임의공급\",\"HSSPLY_ADRES\":\"서울특별시 양천구 신월동 118-14외 2필지 일대\",\"HSSPLY_ZIP\":\"07923\",\"MDHS_TELNO\":\"0226960990\",\"MVN_PREARNGE_YM\":\"202612\",\"PBLANC_NO\":\"2026940252\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940252&pblancNo=2026940252\",\"PRZWNER_PRESNATN_DE\":\"20261117\",\"RCRIT_PBLANC_DE\":\"20261109\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"100\",\"SUBSCRPT_AREA_CODE_NM\":\"서울\",\"SUBSCRPT_RCEPT_BGNDE\":\"20261111\",\"SUBSCRPT_RCEPT_ENDDE\":\"20261112\",\"TOT_SUPLY_HSHLDCO\":5}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "무순위·잔여세대",
    "주택관리번호": "2026910284",
    "공고번호": "2026910284",
@@ -2163,7 +2163,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"송내동 성우아파트 소규모재건축정비사업조합\",\"CNTRCT_CNCLS_BGNDE\":\"2026-11-24\",\"CNTRCT_CNCLS_ENDDE\":\"2026-11-24\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"http://중동역다채로움더원.com\",\"HOUSE_MANAGE_NO\":\"2026910284\",\"HOUSE_NM\":\"중동역 다채로움 더원\",\"HOUSE_SECD\":\"04\",\"HOUSE_SECD_NM\":\"무순위\",\"HSSPLY_ADRES\":\"경기도 부천시 소사구 송내동 365-1번지 일원\",\"HSSPLY_ZIP\":\"14721\",\"MDHS_TELNO\":\"0326132355\",\"MVN_PREARNGE_YM\":\"202808\",\"NSPRC_NM\":null,\"PBLANC_NO\":\"2026910284\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910284&pblancNo=2026910284\",\"PRZWNER_PRESNATN_DE\":\"2026-11-19\",\"RCRIT_PBLANC_DE\":\"2026-11-10\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"SUBSCRPT_RCEPT_BGNDE\":\"2026-11-16\",\"SUBSCRPT_RCEPT_ENDDE\":\"2026-11-16\",\"TOT_SUPLY_HSHLDCO\":23}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "임의공급",
    "주택관리번호": "2026940254",
    "공고번호": "2026940254",
@@ -2187,7 +2187,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"아이파크현대산업개발(주)\",\"CNTRCT_CNCLS_BGNDE\":\"20261120\",\"CNTRCT_CNCLS_ENDDE\":\"20261120\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"https://www.i-park.com/uijeongbucentral\",\"HOUSE_MANAGE_NO\":\"2026940254\",\"HOUSE_NM\":\"의정부역 센트럴 아이파크(6차)\",\"HOUSE_SECD\":\"11\",\"HOUSE_SECD_NM\":\"임의공급\",\"HSSPLY_ADRES\":\"경기도 의정부시 의정부동 253-19번지 일원\",\"HSSPLY_ZIP\":\"11669\",\"MDHS_TELNO\":\"15660431\",\"MVN_PREARNGE_YM\":\"202912\",\"PBLANC_NO\":\"2026940254\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940254&pblancNo=2026940254\",\"PRZWNER_PRESNATN_DE\":\"20261118\",\"RCRIT_PBLANC_DE\":\"20261110\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"SUBSCRPT_RCEPT_BGNDE\":\"20261113\",\"SUBSCRPT_RCEPT_ENDDE\":\"20261113\",\"TOT_SUPLY_HSHLDCO\":6}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "임의공급",
    "주택관리번호": "2026940251",
    "공고번호": "2026940251",
@@ -2211,7 +2211,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"주식회사 엘앤피개발\",\"CNTRCT_CNCLS_BGNDE\":\"20261120\",\"CNTRCT_CNCLS_ENDDE\":\"20261120\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"https://www.harrington495.kr/\",\"HOUSE_MANAGE_NO\":\"2026940251\",\"HOUSE_NM\":\"해링턴플레이스 노원 센트럴(4차)\",\"HOUSE_SECD\":\"11\",\"HOUSE_SECD_NM\":\"임의공급\",\"HSSPLY_ADRES\":\"서울특별시 노원구 노원로 495(상계동 690)\",\"HSSPLY_ZIP\":\"01691\",\"MDHS_TELNO\":\"15442101\",\"MVN_PREARNGE_YM\":\"202705\",\"PBLANC_NO\":\"2026940251\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940251&pblancNo=2026940251\",\"PRZWNER_PRESNATN_DE\":\"20261118\",\"RCRIT_PBLANC_DE\":\"20261110\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"100\",\"SUBSCRPT_AREA_CODE_NM\":\"서울\",\"SUBSCRPT_RCEPT_BGNDE\":\"20261112\",\"SUBSCRPT_RCEPT_ENDDE\":\"20261113\",\"TOT_SUPLY_HSHLDCO\":8}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "임의공급",
    "주택관리번호": "2026940247",
    "공고번호": "2026940247",
@@ -2235,7 +2235,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"디비이엔씨주식회사\",\"CNTRCT_CNCLS_BGNDE\":\"20261121\",\"CNTRCT_CNCLS_ENDDE\":\"20261121\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"http://detre-sw.co.kr\",\"HOUSE_MANAGE_NO\":\"2026940247\",\"HOUSE_NM\":\"수원이목지구 대방 디에트르 더 리체Ⅰ(A4BL)\",\"HOUSE_SECD\":\"11\",\"HOUSE_SECD_NM\":\"임의공급\",\"HSSPLY_ADRES\":\"경기도 수원시 장안구 이목동 종전부동산 이목지구 도시개발사업 A4블록 공동주택용지\",\"HSSPLY_ZIP\":\"16342\",\"MDHS_TELNO\":\"16884007\",\"MVN_PREARNGE_YM\":\"202709\",\"PBLANC_NO\":\"2026940247\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940247&pblancNo=2026940247\",\"PRZWNER_PRESNATN_DE\":\"20261118\",\"RCRIT_PBLANC_DE\":\"20261110\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"SUBSCRPT_RCEPT_BGNDE\":\"20261112\",\"SUBSCRPT_RCEPT_ENDDE\":\"20261113\",\"TOT_SUPLY_HSHLDCO\":2}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "무순위·잔여세대",
    "주택관리번호": "2026910297",
    "공고번호": "2026910297",
@@ -2259,7 +2259,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"(주)덕원이앤씨\",\"CNTRCT_CNCLS_BGNDE\":\"2026-11-26\",\"CNTRCT_CNCLS_ENDDE\":\"2026-11-26\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"http://평택고덕대광로제비앙모아엘가.com\",\"HOUSE_MANAGE_NO\":\"2026910297\",\"HOUSE_NM\":\"평택 고덕 국제신도시 A-55 대광로제비앙 모아엘가(4차)\",\"HOUSE_SECD\":\"04\",\"HOUSE_SECD_NM\":\"무순위\",\"HSSPLY_ADRES\":\"경기도 평택시 고덕국제8로 10(고덕동 2705-1)\",\"HSSPLY_ZIP\":\"18016\",\"MDHS_TELNO\":\"18118500\",\"MVN_PREARNGE_YM\":\"202702\",\"NSPRC_NM\":null,\"PBLANC_NO\":\"2026910297\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910297&pblancNo=2026910297\",\"PRZWNER_PRESNATN_DE\":\"2026-11-19\",\"RCRIT_PBLANC_DE\":\"2026-11-11\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"SUBSCRPT_RCEPT_BGNDE\":\"2026-11-16\",\"SUBSCRPT_RCEPT_ENDDE\":\"2026-11-16\",\"TOT_SUPLY_HSHLDCO\":3}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "무순위·잔여세대",
    "주택관리번호": "2026910293",
    "공고번호": "2026910293",
@@ -2283,7 +2283,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"교보자산신탁(주)\",\"CNTRCT_CNCLS_BGNDE\":\"2026-11-26\",\"CNTRCT_CNCLS_ENDDE\":\"2026-11-26\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"https://xi.co.kr/irc\",\"HOUSE_MANAGE_NO\":\"2026910293\",\"HOUSE_NM\":\"이천자이 더 리체\",\"HOUSE_SECD\":\"04\",\"HOUSE_SECD_NM\":\"무순위\",\"HSSPLY_ADRES\":\"경기도 이천시 증포동 502번지\",\"HSSPLY_ZIP\":\"17346\",\"MDHS_TELNO\":\"0220520180\",\"MVN_PREARNGE_YM\":\"202611\",\"NSPRC_NM\":null,\"PBLANC_NO\":\"2026910293\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910293&pblancNo=2026910293\",\"PRZWNER_PRESNATN_DE\":\"2026-11-19\",\"RCRIT_PBLANC_DE\":\"2026-11-11\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"SUBSCRPT_RCEPT_BGNDE\":\"2026-11-16\",\"SUBSCRPT_RCEPT_ENDDE\":\"2026-11-16\",\"TOT_SUPLY_HSHLDCO\":3}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "무순위·잔여세대",
    "주택관리번호": "2026910291",
    "공고번호": "2026910291",
@@ -2307,7 +2307,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"주식회사 무궁화신탁\",\"CNTRCT_CNCLS_BGNDE\":\"2026-11-24\",\"CNTRCT_CNCLS_ENDDE\":\"2026-11-24\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"https://xi.co.kr/sd2\",\"HOUSE_MANAGE_NO\":\"2026910291\",\"HOUSE_NM\":\"송도자이 더 스타(3차)\",\"HOUSE_SECD\":\"04\",\"HOUSE_SECD_NM\":\"무순위\",\"HSSPLY_ADRES\":\"인천광역시 연수구 송도동 396-11 (A17블록)\",\"HSSPLY_ZIP\":\"22009\",\"MDHS_TELNO\":\"0220520180\",\"MVN_PREARNGE_YM\":\"202703\",\"NSPRC_NM\":null,\"PBLANC_NO\":\"2026910291\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910291&pblancNo=2026910291\",\"PRZWNER_PRESNATN_DE\":\"2026-11-19\",\"RCRIT_PBLANC_DE\":\"2026-11-11\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"400\",\"SUBSCRPT_AREA_CODE_NM\":\"인천\",\"SUBSCRPT_RCEPT_BGNDE\":\"2026-11-16\",\"SUBSCRPT_RCEPT_ENDDE\":\"2026-11-16\",\"TOT_SUPLY_HSHLDCO\":1}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "무순위·잔여세대",
    "주택관리번호": "2026910288",
    "공고번호": "2026910288",
@@ -2331,7 +2331,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"화창지구재개발정비사업조합\",\"CNTRCT_CNCLS_BGNDE\":\"2026-11-26\",\"CNTRCT_CNCLS_ENDDE\":\"2026-11-26\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"https://xi.co.kr/YYH\",\"HOUSE_MANAGE_NO\":\"2026910288\",\"HOUSE_NM\":\"안양자이 더 포레스트\",\"HOUSE_SECD\":\"04\",\"HOUSE_SECD_NM\":\"무순위\",\"HSSPLY_ADRES\":\"경기도 안양시 만안구 석수2동 38번지 일대\",\"HSSPLY_ZIP\":\"13905\",\"MDHS_TELNO\":\"0220520180\",\"MVN_PREARNGE_YM\":\"202611\",\"NSPRC_NM\":null,\"PBLANC_NO\":\"2026910288\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910288&pblancNo=2026910288\",\"PRZWNER_PRESNATN_DE\":\"2026-11-19\",\"RCRIT_PBLANC_DE\":\"2026-11-11\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"SUBSCRPT_RCEPT_BGNDE\":\"2026-11-16\",\"SUBSCRPT_RCEPT_ENDDE\":\"2026-11-16\",\"TOT_SUPLY_HSHLDCO\":1}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "임의공급",
    "주택관리번호": "2026940253",
    "공고번호": "2026940253",
@@ -2355,7 +2355,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"주식회사 무궁화신탁\",\"CNTRCT_CNCLS_BGNDE\":\"20261124\",\"CNTRCT_CNCLS_ENDDE\":\"20261124\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"https://xi.co.kr/sd2\",\"HOUSE_MANAGE_NO\":\"2026940253\",\"HOUSE_NM\":\"송도자이 더 스타\",\"HOUSE_SECD\":\"11\",\"HOUSE_SECD_NM\":\"임의공급\",\"HSSPLY_ADRES\":\"인천광역시 연수구 송도동 396-11 (A17블록)\",\"HSSPLY_ZIP\":\"22009\",\"MDHS_TELNO\":\"0220520180\",\"MVN_PREARNGE_YM\":\"202703\",\"PBLANC_NO\":\"2026940253\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940253&pblancNo=2026940253\",\"PRZWNER_PRESNATN_DE\":\"20261118\",\"RCRIT_PBLANC_DE\":\"20261111\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"400\",\"SUBSCRPT_AREA_CODE_NM\":\"인천\",\"SUBSCRPT_RCEPT_BGNDE\":\"20261113\",\"SUBSCRPT_RCEPT_ENDDE\":\"20261113\",\"TOT_SUPLY_HSHLDCO\":1}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "임의공급",
    "주택관리번호": "2026940250",
    "공고번호": "2026940250",
@@ -2379,7 +2379,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"한국토지주택공사 경기남부지역본부\",\"CNTRCT_CNCLS_BGNDE\":\"20261121\",\"CNTRCT_CNCLS_ENDDE\":\"20261121\",\"GNRL_RCEPT_BGNDE\":null,\"GNRL_RCEPT_ENDDE\":null,\"HMPG_ADRES\":\"https://www.arteragd.co.kr\",\"HOUSE_MANAGE_NO\":\"2026940250\",\"HOUSE_NM\":\"고덕신도시 아테라 A-63블록 공공분양주택(3차)\",\"HOUSE_SECD\":\"11\",\"HOUSE_SECD_NM\":\"임의공급\",\"HSSPLY_ADRES\":\"경기도 평택시 고덕동, 고덕면 일원(평택고덕국제화계획지구 내 A-63BL)\",\"HSSPLY_ZIP\":\"17789\",\"MDHS_TELNO\":\"18336301\",\"MVN_PREARNGE_YM\":\"202810\",\"PBLANC_NO\":\"2026940250\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940250&pblancNo=2026940250\",\"PRZWNER_PRESNATN_DE\":\"20261120\",\"RCRIT_PBLANC_DE\":\"20261111\",\"SPSPLY_RCEPT_BGNDE\":null,\"SPSPLY_RCEPT_ENDDE\":null,\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"SUBSCRPT_RCEPT_BGNDE\":\"20261113\",\"SUBSCRPT_RCEPT_ENDDE\":\"20261117\",\"TOT_SUPLY_HSHLDCO\":31}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "APT(APT)",
    "주택관리번호": "2026000576",
    "공고번호": "2026000576",
@@ -2403,7 +2403,7 @@
    "원본(JSON)": "{\"BSNS_MBY_NM\":\"우리자산신탁 주식회사\",\"CNSTRCT_ENTRPS_NM\":\"지에스건설(주)\",\"CNTRCT_CNCLS_BGNDE\":\"2026-12-13\",\"CNTRCT_CNCLS_ENDDE\":\"2026-12-15\",\"GNRL_RNK1_CRSPAREA_ENDDE\":\"2026-11-24\",\"GNRL_RNK1_CRSPAREA_RCPTDE\":\"2026-11-24\",\"GNRL_RNK1_ETC_AREA_ENDDE\":\"2026-11-24\",\"GNRL_RNK1_ETC_AREA_RCPTDE\":\"2026-11-24\",\"GNRL_RNK1_ETC_GG_ENDDE\":null,\"GNRL_RNK1_ETC_GG_RCPTDE\":null,\"GNRL_RNK2_CRSPAREA_ENDDE\":\"2026-11-25\",\"GNRL_RNK2_CRSPAREA_RCPTDE\":\"2026-11-25\",\"GNRL_RNK2_ETC_AREA_ENDDE\":\"2026-11-25\",\"GNRL_RNK2_ETC_AREA_RCPTDE\":\"2026-11-25\",\"GNRL_RNK2_ETC_GG_ENDDE\":null,\"GNRL_RNK2_ETC_GG_RCPTDE\":null,\"HMPG_ADRES\":\"https://xi.co.kr/armusee\",\"HOUSE_DTL_SECD\":\"01\",\"HOUSE_DTL_SECD_NM\":\"민영\",\"HOUSE_MANAGE_NO\":\"2026000576\",\"HOUSE_NM\":\"아르뮤제자이\",\"HOUSE_SECD\":\"01\",\"HOUSE_SECD_NM\":\"APT\",\"HSSPLY_ADRES\":\"경기도 안산시 상록구 성포동 586번지 일원\",\"HSSPLY_ZIP\":\"15294\",\"IMPRMN_BSNS_AT\":\"N\",\"LRSCL_BLDLND_AT\":\"N\",\"MDAT_TRGET_AREA_SECD\":\"N\",\"MDHS_TELNO\":\"18333367\",\"MVN_PREARNGE_YM\":\"203103\",\"NPLN_PRVOPR_PUBLIC_HOUSE_AT\":\"N\",\"NSPRC_NM\":\"아시아경제\",\"PARCPRC_ULS_AT\":\"N\",\"PBLANC_NO\":\"2026000576\",\"PBLANC_URL\":\"https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000576&pblancNo=2026000576\",\"PRZWNER_PRESNATN_DE\":\"2026-12-01\",\"PUBLIC_HOUSE_EARTH_AT\":\"N\",\"PUBLIC_HOUSE_SPCLW_APPLC_AT\":\"N\",\"RCEPT_BGNDE\":\"2026-11-23\",\"RCEPT_ENDDE\":\"2026-11-25\",\"RCRIT_PBLANC_DE\":\"2026-11-12\",\"RENT_SECD\":\"0\",\"RENT_SECD_NM\":\"분양주택\",\"SPECLT_RDN_EARTH_AT\":\"N\",\"SPSPLY_RCEPT_BGNDE\":\"2026-11-23\",\"SPSPLY_RCEPT_ENDDE\":\"2026-11-23\",\"SUBSCRPT_AREA_CODE\":\"410\",\"SUBSCRPT_AREA_CODE_NM\":\"경기\",\"TOT_SUPLY_HSHLDCO\":984}"
   },
   {
-   "받은 시각": "2026-11-13 07:13",
+   "받은 시각": "2026-11-13 08:13",
    "구분": "APT(APT)",
    "주택관리번호": "2026000457",
    "공고번호": "2026000457",

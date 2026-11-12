@@ -1,11 +1,57 @@
 {
  "key": "lh2015122300021015",
- "images": [],
+ "images": [
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 공급금액 (p.2)",
+   "file": "photos/site/lh2015122300021015/notice-price.jpg",
+   "src": "69290744.pdf#p2",
+   "crop": "",
+   "w": 1400,
+   "h": 885,
+   "md5": "cb24a81415ae269fc281414f684e4b1c",
+   "photo": false,
+   "full": false,
+   "page": 2,
+   "marked": []
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 신청일정 (p.5)",
+   "file": "photos/site/lh2015122300021015/notice-schedule.jpg",
+   "src": "69290744.pdf#p5",
+   "crop": "",
+   "w": 1400,
+   "h": 883,
+   "md5": "87adc3d7a3c9641c2283b776c70962b7",
+   "photo": false,
+   "full": false,
+   "page": 5,
+   "marked": []
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 신청자격 (p.3)",
+   "file": "photos/site/lh2015122300021015/notice-qual.jpg",
+   "src": "69290744.pdf#p3",
+   "crop": "",
+   "w": 1400,
+   "h": 880,
+   "md5": "6a04a4652b0ce26851a76926c6735af5",
+   "photo": false,
+   "full": false,
+   "page": 3,
+   "marked": []
+  }
+ ],
  "links": [],
  "owner": "LH",
  "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
- "updated": "2026-11-12 07:24",
+ "updated": "2026-11-13 08:42",
  "name": "경기남부권(안성 동인힐타운) 다세대 공가세대 일반매각(무순위, 무주택)",
  "row": 100,
- "lh_checked": "2026-11-12"
+ "lh_checked": "2026-11-13"
 }

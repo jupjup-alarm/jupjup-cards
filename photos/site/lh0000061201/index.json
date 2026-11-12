@@ -93,13 +93,58 @@
    "lh_tab": "단지배치도",
    "desc": "안성아양B-6블록 단지배치도입니다.",
    "photo": false
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 공급금액 (p.4)",
+   "file": "photos/site/lh0000061201/notice-price.jpg",
+   "src": "69270187.pdf#p4",
+   "crop": "",
+   "w": 1098,
+   "h": 701,
+   "md5": "ec7e5a93cef14bef25cead9d21dba4b9",
+   "photo": false,
+   "full": false,
+   "page": 4,
+   "marked": []
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 신청일정 (p.12)",
+   "file": "photos/site/lh0000061201/notice-schedule.jpg",
+   "src": "69270187.pdf#p12",
+   "crop": "",
+   "w": 1159,
+   "h": 701,
+   "md5": "1fc3021d8972e4de30c128251c7f3072",
+   "photo": false,
+   "full": false,
+   "page": 12,
+   "marked": []
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 신청자격 (p.9)",
+   "file": "photos/site/lh0000061201/notice-qual.jpg",
+   "src": "69270187.pdf#p9",
+   "crop": "",
+   "w": 1179,
+   "h": 701,
+   "md5": "3ab83473e084f81f826e142c46df1151",
+   "photo": false,
+   "full": false,
+   "page": 9,
+   "marked": []
   }
  ],
  "links": [],
  "name": "평택·안성 10년 공공임대(리츠) 예비입주자 — 통장·소득·자산 무관",
  "row": 94,
- "updated": "2026-11-12 07:25",
+ "updated": "2026-11-13 08:42",
  "owner": "LH",
  "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
- "lh_checked": "2026-11-12"
+ "lh_checked": "2026-11-13"
 }

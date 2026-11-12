@@ -45,6 +45,204 @@
    "ok": false,
    "name_shown": false,
    "full": false
+  },
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "overview",
+   "file": "photos/site/2026940250/overview-auto-1-2.jpg",
+   "src": "https://www.arteragd.co.kr/images/img_main_dbg.jpg",
+   "w": 1920,
+   "h": 1000,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "overview",
+   "file": "photos/site/2026940250/overview-auto-2-2.jpg",
+   "src": "https://www.arteragd.co.kr/images/img_main1_eimg.png",
+   "w": 553,
+   "h": 423,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "overview",
+   "file": "photos/site/2026940250/overview-auto-3-2.jpg",
+   "src": "https://www.arteragd.co.kr/images/img_main1_visual.jpg?1",
+   "w": 1920,
+   "h": 1000,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "location",
+   "file": "photos/site/2026940250/location-auto-1.jpg",
+   "src": "https://www.arteragd.co.kr/images/img_premium01.jpg?6",
+   "w": 942,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "location",
+   "file": "photos/site/2026940250/location-auto-2.jpg",
+   "src": "https://www.arteragd.co.kr/images/img_location01.jpg?6",
+   "w": 1100,
+   "h": 1936,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "community",
+   "kind": "community",
+   "label": "community",
+   "file": "photos/site/2026940250/community-auto-1.jpg",
+   "src": "https://www.arteragd.co.kr/images/img_community.jpg?2",
+   "w": 935,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "interior",
+   "kind": "interior",
+   "label": "interior",
+   "file": "photos/site/2026940250/interior-auto-1.jpg",
+   "src": "https://www.arteragd.co.kr/images/img_materials01.jpg?1",
+   "w": 226,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "interior",
+   "kind": "interior",
+   "label": "interior",
+   "file": "photos/site/2026940250/interior-auto-2.jpg",
+   "src": "https://www.arteragd.co.kr/images/img_materials02.jpg?1",
+   "w": 224,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "interior",
+   "kind": "interior",
+   "label": "interior",
+   "file": "photos/site/2026940250/interior-auto-3.jpg",
+   "src": "https://www.arteragd.co.kr/images/img_materials03.jpg?1",
+   "w": 208,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "interior",
+   "kind": "interior",
+   "label": "interior",
+   "file": "photos/site/2026940250/interior-auto-4.jpg",
+   "src": "https://www.arteragd.co.kr/images/img_materials04.jpg?1",
+   "w": 213,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "interior",
+   "kind": "interior",
+   "label": "interior",
+   "file": "photos/site/2026940250/interior-auto-5.jpg",
+   "src": "https://www.arteragd.co.kr/images/img_materials05.jpg?2",
+   "w": 224,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "siteplan",
+   "kind": "siteplan",
+   "label": "siteplan",
+   "file": "photos/site/2026940250/siteplan-auto-1.jpg",
+   "src": "https://www.arteragd.co.kr/images/img_complex01.jpg?3",
+   "w": 1100,
+   "h": 1087,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "siteplan",
+   "kind": "siteplan",
+   "label": "siteplan",
+   "file": "photos/site/2026940250/siteplan-auto-2.jpg",
+   "src": "https://www.arteragd.co.kr/images/img_complex02.jpg?1",
+   "w": 1100,
+   "h": 754,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "plan",
+   "file": "photos/site/2026940250/plan-auto-1.jpg",
+   "src": "https://www.arteragd.co.kr/images/img_unit01.jpg?1",
+   "w": 1100,
+   "h": 1319,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "plan",
+   "file": "photos/site/2026940250/plan-auto-2.jpg",
+   "src": "https://www.arteragd.co.kr/images/img_unit02.jpg?1",
+   "w": 1100,
+   "h": 1319,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "plan",
+   "file": "photos/site/2026940250/plan-auto-3.jpg",
+   "src": "https://www.arteragd.co.kr/images/img_unit03.jpg?1",
+   "w": 1100,
+   "h": 1319,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "plan",
+   "file": "photos/site/2026940250/plan-auto-4.jpg",
+   "src": "https://www.arteragd.co.kr/images/img_unit04.jpg?1",
+   "w": 1100,
+   "h": 1319,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "plan",
+   "file": "photos/site/2026940250/plan-auto-5.jpg",
+   "src": "https://www.arteragd.co.kr/images/img_unit05.jpg?3",
+   "w": 1100,
+   "h": 1319,
+   "photo": false,
+   "from": "auto"
   }
  ],
  "links": [],
@@ -52,10 +250,10 @@
  "row": 130,
  "homepage": "https://www.arteragd.co.kr",
  "auto_site": {
-  "date": "2026-11-12",
+  "date": "2026-11-13",
   "url": "https://www.arteragd.co.kr",
-  "tries": 1,
-  "result": "3장 (overview 3)"
+  "tries": 2,
+  "result": "18장 (overview 3, siteplan 2, plan 5, community 1, interior 5, location 2)"
  },
- "updated": "2026-11-12 07:24"
+ "updated": "2026-11-13 08:41"
 }

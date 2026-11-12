@@ -204,14 +204,59 @@
    "h": 1008,
    "md5": "0a56ad7d20beee93162d90b229bff4b2",
    "photo": false
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 공급금액 (p.3)",
+   "file": "photos/site/lh0000061200/notice-price.jpg",
+   "src": "69272976.pdf#p3",
+   "crop": "",
+   "w": 1126,
+   "h": 701,
+   "md5": "dfc3452299c044cf2326bef5e9d816f6",
+   "photo": false,
+   "full": false,
+   "page": 3,
+   "marked": []
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 신청일정 (p.6)",
+   "file": "photos/site/lh0000061200/notice-schedule.jpg",
+   "src": "69272976.pdf#p6",
+   "crop": "",
+   "w": 1120,
+   "h": 701,
+   "md5": "572788bbf1244647d2f0870c0012b4d6",
+   "photo": false,
+   "full": false,
+   "page": 6,
+   "marked": []
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 신청자격 (p.5)",
+   "file": "photos/site/lh0000061200/notice-qual.jpg",
+   "src": "69272976.pdf#p5",
+   "crop": "",
+   "w": 1126,
+   "h": 701,
+   "md5": "3c289f4b91d6d78f6cb7a6c4b28ceda0",
+   "photo": false,
+   "full": false,
+   "page": 5,
+   "marked": []
   }
  ],
  "links": [],
  "homepage": "",
  "note": "사용자가 올린 LH 최초 분양 팸플릿(2021.9, 고양지축 B-1블록 공공분양)에서 잘라 씀. 이번 잔여세대 타입(59B·84A)의 평면·실내만. 실내 사진은 견본 사진 (2026-11-04)",
- "updated": "2026-11-12 07:25",
+ "updated": "2026-11-13 08:42",
  "name": "고양지축 B-1블록 공공분양 잔여세대(지축역북한산비바힐스)",
  "row": 80,
  "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
- "lh_checked": "2026-11-12"
+ "lh_checked": "2026-11-13"
 }

@@ -30,13 +30,58 @@
    "lh_tab": "단지배치도",
    "desc": "광교A27BL 단지배치도",
    "photo": false
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 공급금액 (p.2)",
+   "file": "photos/site/lh2015122300021009/notice-price.jpg",
+   "src": "69286451.pdf#p2",
+   "crop": "",
+   "w": 1400,
+   "h": 880,
+   "md5": "4774663e6b0c53ba5af56ee567b16f61",
+   "photo": false,
+   "full": false,
+   "page": 2,
+   "marked": []
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 신청일정 (p.3)",
+   "file": "photos/site/lh2015122300021009/notice-schedule.jpg",
+   "src": "69286451.pdf#p3",
+   "crop": "",
+   "w": 1400,
+   "h": 883,
+   "md5": "949ae9613e9049e564f94916274fcc03",
+   "photo": false,
+   "full": false,
+   "page": 3,
+   "marked": []
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 신청자격 (p.3)",
+   "file": "photos/site/lh2015122300021009/notice-qual.jpg",
+   "src": "69286451.pdf#p3",
+   "crop": "",
+   "w": 1400,
+   "h": 880,
+   "md5": "f2a4ddd86b5fa1d6067527ad918a11c5",
+   "photo": false,
+   "full": false,
+   "page": 3,
+   "marked": []
   }
  ],
  "links": [],
  "owner": "LH",
  "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
- "updated": "2026-11-12 07:25",
+ "updated": "2026-11-13 08:42",
  "name": "경기남부권(수원·용인 광교) 공가세대 일반매각(무순위, 유주택자 가능)",
  "row": 91,
- "lh_checked": "2026-11-12"
+ "lh_checked": "2026-11-13"
 }

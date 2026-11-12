@@ -311,14 +311,59 @@
    "h": 746,
    "md5": "5b084621abc4e81336a9160d3cf7f4ea",
    "photo": false
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 공급금액 (p.3)",
+   "file": "photos/site/lh0000061199/notice-price.jpg",
+   "src": "69272304.pdf#p3",
+   "crop": "",
+   "w": 1125,
+   "h": 701,
+   "md5": "fa9256534d75ecdaa509b468c9bfe444",
+   "photo": false,
+   "full": false,
+   "page": 3,
+   "marked": []
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 신청일정 (p.10)",
+   "file": "photos/site/lh0000061199/notice-schedule.jpg",
+   "src": "69272304.pdf#p10",
+   "crop": "",
+   "w": 1119,
+   "h": 702,
+   "md5": "265ed87aee63d13402d580eb8affae56",
+   "photo": false,
+   "full": false,
+   "page": 10,
+   "marked": []
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 신청자격 (p.2)",
+   "file": "photos/site/lh0000061199/notice-qual.jpg",
+   "src": "69272304.pdf#p2",
+   "crop": "",
+   "w": 1125,
+   "h": 701,
+   "md5": "85102121639a9c8747ca99ca88befab8",
+   "photo": false,
+   "full": false,
+   "page": 2,
+   "marked": []
   }
  ],
  "links": [],
  "homepage": "",
  "note": "사용자가 올린 LH 최초 분양 팸플릿(A-2 2023.9 · A-4·A-5 2020.12)에서 잘라 씀. 56A는 A-4·A-5 평면이 같아 A-5 쪽 하나만. 실내 사진은 견본 사진 (2026-11-04)",
- "updated": "2026-11-12 07:25",
+ "updated": "2026-11-13 08:42",
  "name": "고양장항 A-2·A-4·A-5블록 신혼희망타운(공공분양) 잔여세대",
  "row": 79,
  "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
- "lh_checked": "2026-11-12"
+ "lh_checked": "2026-11-13"
 }

@@ -41,13 +41,58 @@
    "lh_tab": "단지배치도",
    "desc": "단지배치도",
    "photo": false
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 공급금액 (p.3)",
+   "file": "photos/site/lh2015122300021026/notice-price.jpg",
+   "src": "69314336.pdf#p3",
+   "crop": "",
+   "w": 1155,
+   "h": 701,
+   "md5": "247086758d7b588d49afb1dfd32c4899",
+   "photo": false,
+   "full": false,
+   "page": 3,
+   "marked": []
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 신청일정 (p.10)",
+   "file": "photos/site/lh2015122300021026/notice-schedule.jpg",
+   "src": "69314336.pdf#p10",
+   "crop": "",
+   "w": 1155,
+   "h": 701,
+   "md5": "1c5a61aeec7e227e1654690f454a92b6",
+   "photo": false,
+   "full": false,
+   "page": 10,
+   "marked": []
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 신청자격 (p.1)",
+   "file": "photos/site/lh2015122300021026/notice-qual.jpg",
+   "src": "69314336.pdf#p1",
+   "crop": "",
+   "w": 1148,
+   "h": 701,
+   "md5": "773bdc7f631de43c91fb4b9c25208115",
+   "photo": false,
+   "full": false,
+   "page": 1,
+   "marked": []
   }
  ],
  "links": [],
  "name": "인천논현2단지 국민임대 예비입주자(정정)",
  "row": 95,
- "updated": "2026-11-12 07:25",
+ "updated": "2026-11-13 08:42",
  "owner": "LH",
  "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
- "lh_checked": "2026-11-12"
+ "lh_checked": "2026-11-13"
 }

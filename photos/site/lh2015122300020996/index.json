@@ -15,13 +15,58 @@
    "lh_tab": "평면도",
    "desc": "46a형 평면도",
    "photo": false
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 공급금액 (p.4)",
+   "file": "photos/site/lh2015122300020996/notice-price.jpg",
+   "src": "69278305.pdf#p4",
+   "crop": "",
+   "w": 1156,
+   "h": 701,
+   "md5": "dbd52ea045d89e08a912e54a0d7213c4",
+   "photo": false,
+   "full": false,
+   "page": 4,
+   "marked": []
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 신청일정 (p.12)",
+   "file": "photos/site/lh2015122300020996/notice-schedule.jpg",
+   "src": "69278305.pdf#p12",
+   "crop": "",
+   "w": 1156,
+   "h": 701,
+   "md5": "47691a08623468c1a91a0866db9ce4c2",
+   "photo": false,
+   "full": false,
+   "page": 12,
+   "marked": []
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 신청자격 (p.1)",
+   "file": "photos/site/lh2015122300020996/notice-qual.jpg",
+   "src": "69278305.pdf#p1",
+   "crop": "",
+   "w": 1149,
+   "h": 701,
+   "md5": "9a2d304d3fb2b705f7d3ba7cdf2c0c17",
+   "photo": false,
+   "full": false,
+   "page": 1,
+   "marked": []
   }
  ],
  "links": [],
  "owner": "LH",
  "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
- "updated": "2026-11-12 07:25",
+ "updated": "2026-11-13 08:42",
  "name": "연천전곡1단지 국민임대 예비입주자",
  "row": 98,
- "lh_checked": "2026-11-12"
+ "lh_checked": "2026-11-13"
 }
