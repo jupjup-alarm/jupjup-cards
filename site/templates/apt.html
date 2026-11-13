@@ -395,13 +395,32 @@
   </section>
   {% endif %}
 
-  {% if n.nearby %}
-  <section class="sec" aria-labelledby="h-near">
-    <h2 id="h-near">주변 단지 실거래 비교 — {{ n.nearby.where }}</h2>
-    {% for t in n.nearby.lead %}<p>{{ t }}</p>{% endfor %}
-    <div class="tbl"><table><thead><tr>{% for h in n.nearby.head %}<th{% if loop.first %} style="text-align:left"{% endif %}>{{ h }}</th>{% endfor %}</tr></thead>
-    <tbody>{% for r in n.nearby.rows %}<tr>{% for c in r %}{% if loop.first %}<th scope="row" style="text-align:left">{{ c }}</th>{% else %}<td>{{ c }}</td>{% endif %}{% endfor %}</tr>{% endfor %}</tbody></table></div>
-    <p class="note">국토교통부 실거래가 공개시스템 ({{ n.nearby.made }} 조회) · 직거래·공공임대 단지는 뺐어요. 면적·층·연식이 달라 실제 시세와 다를 수 있고, 차익을 보장하지 않아요.</p>
+  {% if n.nearby %}{% set nb = n.nearby %}
+  <section class="sec nb" aria-labelledby="h-near">
+    <h2 id="h-near">주변 단지 실거래 비교</h2>
+    <p class="nb-where">{{ nb.where }} · 전용 {{ '%g'|format(nb.area) }}㎡ 안팎 · 최근 6개월({{ nb.span }})</p>
+    {% if nb.verdict %}<p class="nb-verdict t-{{ nb.tone }}">{{ nb.verdict }} <small>(추정)</small></p>{% endif %}
+    <div class="nb-chart" role="img" aria-label="{{ nb.unit }} 가격 비교 막대: {% for b in nb.bars %}{{ b.name }} {{ b.val }}{% if not loop.last %}, {% endif %}{% endfor %}">
+      <p class="nb-cap">{{ nb.unit }} 가격{% if nb.med_txt %} · 점선 = 주변 중앙값 {{ nb.med_txt }}{% endif %}</p>
+      {% for b in nb.bars %}
+      <div class="nb-row{% if b.ours %} is-ours{% endif %}">
+        <div class="nb-lab"><b>{{ b.name }}</b>{% if b.yr %}<span class="nb-yr">{{ b.yr }}</span>{% endif %}</div>
+        <div class="nb-track">
+          <span class="nb-bar" style="width:{{ b.w }}%"></span>
+          {% if nb.med_pos %}<span class="nb-med" style="left:{{ nb.med_pos }}%"></span>{% endif %}
+        </div>
+        <div class="nb-val">{{ b.val }}</div>
+        {% if b.sub %}<div class="nb-sub">{{ b.sub }}</div>{% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    <dl class="nb-facts">{% for k, v in nb.facts %}<div><dt>{{ k }}</dt><dd>{{ v }}</dd></div>{% endfor %}</dl>
+    {% for t in nb.lead[1:] %}<p class="nb-txt">{{ t }}</p>{% endfor %}
+    <details class="nb-more"><summary>거래 내역 표로 보기</summary>
+    <div class="tbl"><table><thead><tr>{% for h in nb.head %}<th{% if loop.first %} style="text-align:left"{% endif %}>{{ h }}</th>{% endfor %}</tr></thead>
+    <tbody>{% for r in nb.rows %}<tr>{% for c in r %}{% if loop.first %}<th scope="row" style="text-align:left">{{ c }}</th>{% else %}<td>{{ c }}</td>{% endif %}{% endfor %}</tr>{% endfor %}</tbody></table></div>
+    </details>
+    <p class="note">국토교통부 실거래가 공개시스템 ({{ nb.made }} 조회) · 직거래·공공임대 단지 제외 · 면적·층·연식이 달라 실제 시세와 다를 수 있어요 (<a href="/about/#criteria">비교 방법</a>)</p>
   </section>
   {% endif %}
 

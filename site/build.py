@@ -175,7 +175,42 @@ def make_nearby(key):
             rows.append([c["name"] + (f" ({c['built']})" if c.get("built") else ""), f"{c['area']:g}㎡" if c.get("area") else "",
                          won(c["price"]) if c.get("price") else "", won(c["ppa"]) if c.get("ppa") else "", ym(c.get("date")), f"{c['n']}건"])
         head = ["단지 (준공)", "면적", "최근 거래가", "㎡당 (중앙값)", "거래", "6개월 거래"]
-    return {"lead": lead, "head": head, "rows": rows, "where": where, "made": str(d.get("made", ""))[:10]}
+    # 2026-11-13 사용자 "UI가 중요": 판정 한 줄 + 막대 비교 + 숫자 칸 3개, 표는 접어 둠
+    bars, verdict, tone, facts = [], "", "n", []
+    if d["kind"] == "rent":
+        mm = st_.get("monthly_med")
+        vals = [(c["name"], c.get("built"), c.get("monthly"), f"보증금 {money(c.get('deposit'))} · {ym(c.get('date'))}") for c in comps[:5] if c.get("monthly")]
+        if ours.get("monthly"):
+            vals.insert(0, ("이 공고", None, ours["monthly"], f"보증금 {money(ours.get('deposit'))}"))
+        if mm and ours.get("monthly"):
+            pct = round(ours["monthly"] * 100 / mm)
+            verdict = f"주변 월세의 {pct}%" + (f" · 매달 약 {money(round(mm - ours['monthly'], -3))} 덜 내요" if mm > ours["monthly"] else "")
+            tone = "g" if pct <= 60 else ("y" if pct <= 85 else "r")
+        fmt, unit, med = (lambda v: money(v)), "월세", mm
+        facts = [("월세 거래", f"{st_['n']}건"), ("주변 월세 중앙값", money(mm)), ("주변 보증금 중앙값", money(st_.get("deposit_med")))]
+    else:
+        ppa = st_.get("ppa_med")
+        vals = [(c["name"], c.get("built"), c.get("ppa"), f"{c['area']:g}㎡ {won(c['price'])} · {ym(c.get('date'))}" if c.get("price") else "") for c in comps[:5] if c.get("ppa")]
+        if ours.get("price") and area:
+            mine = int(ours["price"] / area)
+            vals.insert(0, ("이 공고", None, mine, f"{area:g}㎡ 최고 {won(ours['price'])}"))
+            if ppa:
+                pct = round(mine * 100 / ppa)
+                diff = int(round(ppa * area - ours["price"], -6))
+                verdict = f"주변 시세의 {pct}%" + (f" · {area:g}㎡ 기준 약 {won(diff)} 싸게" if diff >= 10**7 else (f" · 약 {won(-diff)} 비싸게" if diff <= -10**7 else " · 주변과 비슷"))
+                tone = "g" if pct <= 70 else ("y" if pct <= 90 else "r")
+        fmt, unit, med = (lambda v: won(v)), "㎡당", ppa
+        top = st_.get("top") or {}
+        facts = [("매매 거래", f"{st_['n']}건"), ("㎡당 중앙값", won(ppa) if ppa else "-"),
+                 ("가장 비싼 거래", f"{won(top['price'])}" if top.get("price") else "-")]
+        if st_.get("built_med"):
+            facts.append(("비교 단지 연식", f"{st_['built_med']}년 전후"))
+    mx = max([v for _, _, v, _ in vals] + [med or 0]) or 1
+    for name_, yr, v, sub in vals:
+        bars.append({"name": name_, "yr": f"'{str(yr)[2:]}" if yr else "", "w": round(v * 100 / mx, 1), "val": fmt(v), "sub": sub, "ours": name_ == "이 공고"})
+    return {"lead": lead, "head": head, "rows": rows, "where": where, "made": str(d.get("made", ""))[:10],
+            "bars": bars, "med_pos": round(med * 100 / mx, 1) if med else None, "med_txt": fmt(med) if med else "",
+            "unit": unit, "verdict": verdict, "tone": tone, "facts": facts, "span": span, "area": area}
 
 
 def won(n):

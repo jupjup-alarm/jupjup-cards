@@ -1357,3 +1357,39 @@ body:has(.lwrap:not(.home)){background:var(--ground)}
 .cp-page .ad-cp .ad-box{margin:0 auto;max-width:100%}
 .cp-note{margin:12px auto 0;max-width:560px;font-size:12px;line-height:1.5;color:var(--ink-sub);text-align:center}
 footer .biz{font-style:normal;line-height:1.6;opacity:.85}   /* 사업자 정보 (2026-11-11) */
+
+/* 주변 단지 실거래 비교 (2026-11-13) */
+.nb-where{margin:-4px 0 12px;font-size:14px;color:var(--ink-sub)}
+.nb-verdict{display:inline-block;margin:0 0 16px;padding:8px 14px;border-radius:10px;font-size:18px;font-weight:800;letter-spacing:-.02em}
+.nb-verdict small{font-size:12px;font-weight:600;opacity:.75}
+.nb-verdict.t-g{background:#E7F5EF;color:var(--green)}
+.nb-verdict.t-y{background:#FFF6DB;color:#8A5A00}
+.nb-verdict.t-r{background:var(--coral-tint);color:var(--coral-strong)}
+.nb-verdict.t-n{background:var(--band);color:var(--ink)}
+.nb-chart{border:1px solid var(--line);border-radius:var(--r);padding:14px 16px 6px;background:var(--paper)}
+.nb-cap{margin:0 0 10px;font-size:12.5px;color:var(--ink-sub);font-weight:600}
+.nb-row{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"lab val" "track track" "sub sub";column-gap:10px;padding:8px 0;border-top:1px solid var(--line)}
+.nb-row:first-of-type{border-top:0}
+.nb-lab{grid-area:lab;min-width:0;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.nb-lab b{font-weight:700}
+.nb-yr{margin-left:6px;font-size:11.5px;font-weight:700;color:var(--ink-sub);background:var(--band);border-radius:6px;padding:1px 6px}
+.nb-val{grid-area:val;font-size:14px;font-weight:800;font-variant-numeric:tabular-nums}
+.nb-track{grid-area:track;position:relative;height:12px;margin:6px 0 2px;background:var(--band);border-radius:6px}
+.nb-bar{position:absolute;left:0;top:0;bottom:0;border-radius:6px;background:#9AA6B8}
+.nb-med{position:absolute;top:-4px;bottom:-4px;border-left:2px dashed var(--ink)}
+.nb-sub{grid-area:sub;font-size:12px;color:var(--ink-sub)}
+.is-ours .nb-lab b,.is-ours .nb-val{color:var(--coral-strong)}
+.is-ours .nb-bar{background:var(--coral)}
+.nb-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:14px 0}
+.nb-facts div{background:var(--band);border-radius:10px;padding:10px 12px}
+.nb-facts dt{font-size:12px;color:var(--ink-sub)}
+.nb-facts dd{margin:2px 0 0;font-size:16px;font-weight:800}
+.nb-txt{font-size:15px}
+.nb-more{margin:10px 0}
+.nb-more summary{cursor:pointer;font-weight:700;font-size:14px;color:var(--blue)}
+@media (prefers-color-scheme:dark){
+  .nb-verdict.t-g{background:#0f2e25;color:#6fd3b0}
+  .nb-verdict.t-y{background:#33290c;color:#f0c75e}
+  .nb-bar{background:#56627a}
+  .nb-med{border-left-color:#e8ecf3}
+}
