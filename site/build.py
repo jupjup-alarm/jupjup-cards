@@ -128,13 +128,27 @@ def month(s):
     return f"{m.group(1)}.{int(m.group(2))}" if m else (s or "")
 
 
-def make_nearby(key):
+def make_nearby(n):
     """site/data/nearby/<key>.json(국토부 실거래, tools/nearby.py) → 공고 페이지 '주변 단지 실거래 비교' 칸.
     2026-11-13 사용자 결정: 애드센스 '가치가 별로 없는 콘텐츠' — 공고 옮겨 적기가 아닌 우리 분석을 앞세움.
     문장은 숫자로만 만든다(모델 없음). 추정 표기를 붙이고 차익을 보장하지 않는다."""
-    f = DATA / "nearby" / f"{key}.json"
+    f = DATA / "nearby" / f"{n['key']}.json"
     if not f.exists():
-        return None
+        # 실거래 파일은 '청약조사' 줄의 수집 key(lh…)로 저장되는데, 페이지는 청약홈 번호일 수 있다 → 같은 줄(단지명)로 찾기 (2026-11-13)
+        r = sheet_match(n)
+        title = (r or {}).get("title", "").strip()
+        f = next((g for g in sorted((DATA / "nearby").glob("*.json"))
+                  if title and json.loads(g.read_text(encoding="utf-8")).get("name", "").strip() == title), None)
+        if not f:   # 그래도 없으면 블록 번호가 같고 지역 낱말(2글자+)이 겹치는 파일 (예: '시흥 거모 아테라 A-6블록')
+            words = lambda t: set(re.findall(r"[가-힣]{2,}", t)) - {"공공분양", "본청약", "신혼희망타운", "블록", "공공분양주택"}
+            mb, mw = _sheet_blocks(n["title"]), words(n["title"])
+            for g in sorted((DATA / "nearby").glob("*.json")):
+                nm = json.loads(g.read_text(encoding="utf-8")).get("name", "")
+                if mb and _sheet_blocks(nm) == mb and len(mw & words(nm)) >= 2:
+                    f = g
+                    break
+        if not f:
+            return None
     d = json.loads(f.read_text(encoding="utf-8"))
     st_, ours, comps = d.get("stats") or {}, d.get("ours") or {}, d.get("comps") or []
     if not comps or not st_.get("n"):
@@ -149,12 +163,8 @@ def make_nearby(key):
         mm, dm = st_.get("monthly_med"), st_.get("deposit_med")
         lead.append(f"{where}에서 전용 {area:g}㎡ 안팎(±8㎡) 아파트 월세 거래 {st_['n']}건({span})을 모았어요. "
                     f"보증금 중앙값 {money(dm)} · 월세 중앙값 {money(mm)}이에요.")
-        if mm and ours.get("monthly"):
-            pct = round(ours["monthly"] * 100 / mm)
-            tail = f" — 한 달에 약 {money(round(mm - ours['monthly'], -3))} 덜 내는 셈이에요(추정)." if mm > ours["monthly"] else "(추정)."
-            lead.append(f"이 공고 월 {money(ours['monthly'])}은 주변 월세 중앙값의 약 {pct}% 수준이에요" + tail)
         for c in comps[:6]:
-            rows.append([c["name"] + (f" ({c['built']})" if c.get("built") else ""), f"{c['area']:g}㎡" if c.get("area") else "",
+            rows.append([c["name"] + (f" ({c['built']})" if c.get("built") else ""), f"{round(c['area'], 1):g}㎡" if c.get("area") else "",
                          f"{money(c.get('deposit'))} / 월 {money(c.get('monthly'))}", ym(c.get("date")), f"{c['n']}건"])
         head = ["단지 (준공)", "면적", "최근 보증금 / 월세", "거래", "6개월 거래"]
     else:
@@ -164,41 +174,58 @@ def make_nearby(key):
         if ppa and ours.get("price") and area:
             mine = ours["price"] / area
             pct = round(mine * 100 / ppa)
-            lead.append(f"이 공고 {area:g}㎡ 최고 {won(ours['price'])}은 ㎡당 {won(int(mine))}으로, 주변 거래 중앙값의 약 {pct}% 수준이에요(추정)."
+            lead.append(f"이 공고 {area:g}㎡ 분양가 {won(ours['price'])}(공고 기준)은 ㎡당 {won(int(mine))}으로, 주변 거래 중앙값의 약 {pct}% 수준이에요(추정)."
                         + (" 주변보다 비싸게 나온 공고예요." if pct > 105 else ""))
         if top.get("price"):
             lead.append(f"같은 기간 가장 비싸게 거래된 곳은 {top['name']}" + (f"({top['built']}년 준공)" if top.get("built") else "")
-                        + f" {top['area']:g}㎡ {won(top['price'])}({ym(top.get('date'))})이에요.")
+                        + f" {round(top['area'], 1):g}㎡ {won(top['price'])}({ym(top.get('date'))})이에요.")
         if st_.get("built_med"):
             lead.append(f"비교 단지는 대부분 {st_['built_med']}년 전후에 지어졌어요. 새 아파트는 같은 동네 구축보다 비싸게 거래되는 경우가 많으니 연식 차이도 함께 보세요.")
         for c in comps[:6]:
-            rows.append([c["name"] + (f" ({c['built']})" if c.get("built") else ""), f"{c['area']:g}㎡" if c.get("area") else "",
+            rows.append([c["name"] + (f" ({c['built']})" if c.get("built") else ""), f"{round(c['area'], 1):g}㎡" if c.get("area") else "",
                          won(c["price"]) if c.get("price") else "", won(c["ppa"]) if c.get("ppa") else "", ym(c.get("date")), f"{c['n']}건"])
         head = ["단지 (준공)", "면적", "최근 거래가", "㎡당 (중앙값)", "거래", "6개월 거래"]
     # 2026-11-13 사용자 "UI가 중요": 판정 한 줄 + 막대 비교 + 숫자 칸 3개, 표는 접어 둠
     bars, verdict, tone, facts = [], "", "n", []
     if d["kind"] == "rent":
+        # 보증금이 서로 달라 월세만 비교하면 틀린다 → 보증금을 연 4.5%로 월세에 더한 '환산 월세'로 비교 (2026-11-13, 추정·가정 표기)
+        R = 0.045 / 12
+        eq = lambda dep, mon: (mon or 0) + (dep or 0) * R
         mm = st_.get("monthly_med")
+        ceq = [eq(c.get("deposit"), c.get("monthly")) for c in comps if c.get("monthly")]
         vals = [(c["name"], c.get("built"), c.get("monthly"), f"보증금 {money(c.get('deposit'))} · {ym(c.get('date'))}") for c in comps[:5] if c.get("monthly")]
         if ours.get("monthly"):
-            vals.insert(0, ("이 공고", None, ours["monthly"], f"보증금 {money(ours.get('deposit'))}"))
-        if mm and ours.get("monthly"):
-            pct = round(ours["monthly"] * 100 / mm)
-            verdict = f"주변 월세의 {pct}%" + (f" · 매달 약 {money(round(mm - ours['monthly'], -3))} 덜 내요" if mm > ours["monthly"] else "")
+            vals.insert(0, ("이 공고", None, ours["monthly"], f"보증금 {money(ours['deposit'])}" if ours.get("deposit") else ""))
+        if ours.get("monthly") and ours.get("deposit") is not None and ceq:
+            med_eq = sorted(ceq)[len(ceq) // 2]
+            mine = eq(ours["deposit"], ours["monthly"])
+            pct = round(mine * 100 / med_eq)
+            verdict = f"보증금까지 합쳐 보면 주변의 약 {pct}%" + (f" · 매달 약 {money(round(med_eq - mine, -3))} 아끼는 셈" if med_eq - mine >= 10000 else "")
             tone = "g" if pct <= 60 else ("y" if pct <= 85 else "r")
+            lead.append(f"보증금이 단지마다 달라서, 보증금을 연 4.5%로 월세에 더해(보증금 1,000만원 = 월 3만7,500원) 비교했어요. "
+                        f"이 공고는 환산 월 {money(round(mine, -3))}, 주변 비교 단지 중앙값은 환산 월 {money(round(med_eq, -3))}이에요(추정).")
         fmt, unit, med = (lambda v: money(v)), "월세", mm
         facts = [("월세 거래", f"{st_['n']}건"), ("주변 월세 중앙값", money(mm)), ("주변 보증금 중앙값", money(st_.get("deposit_med")))]
     else:
         ppa = st_.get("ppa_med")
-        vals = [(c["name"], c.get("built"), c.get("ppa"), f"{c['area']:g}㎡ {won(c['price'])} · {ym(c.get('date'))}" if c.get("price") else "") for c in comps[:5] if c.get("ppa")]
+        vals = [(c["name"], c.get("built"), c.get("ppa"), f"{round(c['area'], 1):g}㎡ {won(c['price'])} · {ym(c.get('date'))}" if c.get("price") else "") for c in comps[:5] if c.get("ppa")]
         if ours.get("price") and area:
             mine = int(ours["price"] / area)
-            vals.insert(0, ("이 공고", None, mine, f"{area:g}㎡ 최고 {won(ours['price'])}"))
-            if ppa:
-                pct = round(mine * 100 / ppa)
-                diff = int(round(ppa * area - ours["price"], -6))
-                verdict = f"주변 시세의 {pct}%" + (f" · {area:g}㎡ 기준 약 {won(diff)} 싸게" if diff >= 10**7 else (f" · 약 {won(-diff)} 비싸게" if diff <= -10**7 else " · 주변과 비슷"))
+            vals.insert(0, ("이 공고", None, mine, f"{area:g}㎡ 분양가 {won(ours['price'])}"))
+            # 새 공고를 30년 된 구축과 같이 놓으면 '비싸다'만 남는다 → 10년 이내 지은 단지가 있으면 그 단지들과 비교 (2026-11-13)
+            yr = dt.date.today().year
+            newp = sorted(c["ppa"] for c in comps if c.get("ppa") and str(c.get("built") or "").isdigit() and int(c["built"]) >= yr - 10)
+            base, label = (newp[len(newp) // 2], f"주변 10년 이내 단지({len(newp)}곳)") if newp else (ppa, "주변 시세")
+            old_only = not newp and st_.get("built_med") and st_["built_med"] < yr - 15
+            if base and not old_only:
+                pct = round(mine * 100 / base)
+                diff = int(round(base * area - ours["price"], -6))
+                verdict = f"{label}의 {pct}%" + (f" · {area:g}㎡ 기준 약 {won(diff)} 싸게" if diff >= 10**7 else (f" · 약 {won(-diff)} 비싸게" if diff <= -10**7 else " · 주변과 비슷"))
                 tone = "g" if pct <= 70 else ("y" if pct <= 90 else "r")
+                if newp:
+                    lead.append(f"비교가 공정하도록 10년 이내에 지은 주변 단지 {len(newp)}곳의 ㎡당 중앙값 {won(base)}과도 견줘 봤어요 — 이 공고는 그 {pct}% 수준이에요(추정).")
+            elif old_only:
+                verdict = f"주변은 {st_['built_med']}년 전후 구축 위주 — 새 아파트와 단순 비교는 어려워요"
         fmt, unit, med = (lambda v: won(v)), "㎡당", ppa
         top = st_.get("top") or {}
         facts = [("매매 거래", f"{st_['n']}건"), ("㎡당 중앙값", won(ppa) if ppa else "-"),
@@ -552,7 +579,7 @@ def build_notice(e, row, regions, problems):
     if n.get("gap"):
         n["gap"] = dict(n["gap"], text=fill(n["gap"]["text"]))
     n["price_label"] = e.get("price_label", "최고 분양가")
-    n["nearby"] = make_nearby(n["key"])
+    n["nearby"] = make_nearby(n)
     return n
 
 

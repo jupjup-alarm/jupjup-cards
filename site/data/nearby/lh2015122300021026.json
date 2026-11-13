@@ -16,7 +16,7 @@
  ],
  "ours": {
   "rental": true,
-  "deposit": null,
+  "deposit": 37202000,
   "monthly": 309670,
   "area": 51.93
  },

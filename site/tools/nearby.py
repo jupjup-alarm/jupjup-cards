@@ -27,11 +27,11 @@ SIDO = {"서울특별시": "서울", "서울시": "서울", "인천광역시": "
 def won(txt):
     """'4억7,552만원' / '275만원' / '54,660원' / '2,747,000원' → 원."""
     t = (txt or "").replace(" ", "")
-    m = re.match(r"(?:(\d+)억)?(?:([\d,]+)만)?(?:([\d,]+))?원?", t)
+    m = re.match(r"(?:(\d+)억)?(?:([\d,]+)만)?(?:(\d)천)?(?:([\d,]+))?원?", t)   # '2,036만5천원' (2026-11-13)
     if not m or not any(m.groups()):
         return None
-    e, man, w = (int((g or "0").replace(",", "") or 0) for g in m.groups())
-    return e * 10**8 + man * 10**4 + w
+    e, man, ch, w = (int((g or "0").replace(",", "") or 0) for g in m.groups())
+    return e * 10**8 + man * 10**4 + ch * 1000 + w
 
 
 def lawd_name(addr, codes):
@@ -62,15 +62,28 @@ def our_terms(r):
     txt = " ".join(str(r.get(k, "")) for k in ("분류", "공급유형", "단지명"))
     rental = bool(re.search(r"임대|전세", txt)) or "보증금" in g
     if rental:
-        dep = re.search(r"보증금\s*([\d억만,]+원)", g)
-        mon = re.search(r"월\s*(?:임대료\s*)?([\d만,]+원)", g)
+        dep = re.search(r"보증금\s*([\d억만천,]+원)", g)
+        mon = re.search(r"월\s*(?:임대료\s*)?([\d만천,]+원)", g)
         area = re.search(r"전용\s*(\d{2,3}(?:\.\d+)?)", g + " " + str(r.get("공급세대", "")))
         return {"rental": True, "deposit": won(dep.group(1)) if dep else None,
                 "monthly": won(mon.group(1)) if mon else None, "area": float(area.group(1)) if area else None}
-    m = re.search(r"(\d{2,3})(?:\.\d+)?[A-Z]?\s*(?:㎡|형)?\s*(?:최고|최저)?\s*(\d+억\s*[\d,]*\s*만?\s*원|[\d,]+만\s*원)", g)
-    if not m:
-        return None
-    return {"rental": False, "area": float(m.group(1)), "price": won(m.group(2)), "label": m.group(0)[:30]}
+    # 면적·가격 위치를 따로 찾아, 가격마다 바로 앞 면적에 붙인다 — "59A 3억8,643만~4억1,110만원",
+    # "55A 평균 4억6,196만원(최고 4억6,658만원)", "59B(전용59.93㎡) 평균 4억6,406만원" 모두 (2026-11-13 '원' 없는 범위·평균 표기 오독 수정)
+    areas = [(m.start(), float(m.group(1))) for m in
+             re.finditer(r"(?<![\d,억.])(\d{2,3}(?:\.\d+)?)[A-Z]?(?=[\s(㎡형A-Z]|$)", g)]
+    best = None
+    for m in re.finditer(r"(\d+)억\s*([\d,]*)\s*만?", g):
+        before = [a for p, a in areas if p < m.start()]
+        price = int(m.group(1)) * 10**8 + int((m.group(2) or "0").replace(",", "") or 0) * 10**4
+        if not before or price < 5 * 10**7:
+            continue
+        if best is None:
+            best = {"rental": False, "area": before[-1], "price": price, "label": g[:30]}
+        elif before[-1] == best["area"]:
+            best["price"] = max(best["price"], price)      # 같은 타입 안에서는 최고가
+        else:
+            break
+    return best
 
 
 _CACHE = {}
