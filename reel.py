@@ -715,7 +715,7 @@ html,body{word-break:keep-all;width:1080px;height:1920px;overflow:hidden;backgro
  transform:rotateX(26deg);transform-origin:center bottom;
  text-shadow:0 3px 0 #d9dde3,0 6px 0 #c3c8cf,0 9px 0 #aeb4bd,0 12px 0 #99a0aa,0 22px 26px rgba(0,0,0,.55)}
 .story .pf{top:330px;left:60px;right:60px}
-.story .pfimg{height:400px}
+.story .pfimg{height:470px}
 .sdisc{position:absolute;left:0;right:0;top:1420px;text-align:center;font-size:26px;color:rgba(255,255,255,.75)}
 .story-mode .bar{display:none}
 .story-mode .brand{font-size:30px}

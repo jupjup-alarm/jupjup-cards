@@ -95,17 +95,38 @@ def shot(pdf, key, kind, label, pattern, marks, folder):
     if not hit:
         return None
     p, y, lines, (W, H) = hit
-    top = max(0.0, y - H * (0.14 if kind == "mark" else 0.015))
-    bot = min(H, top + H * WIN)
-    if bot - top < H * WIN:          # 쪽 끝이면 위로 올림
-        top = max(0.0, bot - H * WIN)
-    # 좌우는 글자가 있는 범위만 (여백 줄이기)
-    xs = [(x0, x1) for y0, y1, x0, x1, _ in lines if y0 >= top and y1 <= bot]
-    left = max(0.0, min((a for a, _ in xs), default=0) - 8)
-    right = min(W, max((b for _, b in xs), default=W) + 8)
+    if kind == "mark":
+        # 2026-11-13 사용자 "형광펜 칠한 금액표가 하나도 안 보임": 형광펜 줄을 가운데 두고 좁게 확대 —
+        # 릴스 증거 카드 칸(가로:세로 ≈ 2.1:1)에 맞춰 쪽 너비의 45~60%만 잘라 글자가 2배 넘게 커지게.
+        ms = [norm(m) for m in marks if norm(m)]
+        hl = [(x0, x1, y0, y1) for y0, y1, x0, x1, tx in lines if any(m in norm(tx) for m in ms)]
+        hl = [h for h in hl if abs(h[2] - y) < H * 0.08] or hl
+        x0 = min(h[0] for h in hl); x1 = max(h[1] for h in hl)
+        # 같은 높이의 줄(표의 같은 행: 주택형·계층 이름)까지 넣어 무슨 숫자인지 보이게
+        row = [(a, b) for yy0, yy1, a, b, _ in lines if abs(yy0 - y) < 3]
+        if row:
+            x0 = min(x0, min(a for a, _ in row)); x1 = max(x1, max(b for _, b in row))
+        cw = min(W, max(x1 - x0 + 30, W * 0.45))
+        if cw > W * 0.6:     # 행이 너무 넓으면 형광펜 쪽 60%만
+            cw = W * 0.6
+            cx = (min(h[0] for h in hl) + max(h[1] for h in hl)) / 2
+        else:
+            cx = (x0 + x1) / 2
+        left = min(max(0.0, cx - cw / 2), W - cw); right = left + cw
+        ch = cw / 2.1
+        top = min(max(0.0, y - ch * 0.42), H - ch); bot = top + ch
+    else:
+        top = max(0.0, y - H * 0.015)
+        bot = min(H, top + H * WIN)
+        if bot - top < H * WIN:          # 쪽 끝이면 위로 올림
+            top = max(0.0, bot - H * WIN)
+        # 좌우는 글자가 있는 범위만 (여백 줄이기)
+        xs = [(x0, x1) for y0, y1, x0, x1, _ in lines if y0 >= top and y1 <= bot]
+        left = max(0.0, min((a for a, _ in xs), default=0) - 8)
+        right = min(W, max((b for _, b in xs), default=W) + 8)
     from PIL import Image, ImageDraw
     with tempfile.TemporaryDirectory() as td:
-        subprocess.run(["pdftoppm", "-r", str(DPI), "-f", str(p), "-l", str(p), "-jpeg", str(pdf), f"{td}/p"],
+        subprocess.run(["pdftoppm", "-r", str(DPI * 2 if kind == "mark" else DPI), "-f", str(p), "-l", str(p), "-jpeg", str(pdf), f"{td}/p"],
                        capture_output=True, timeout=300)
         fs = sorted(Path(td).glob("p*.jpg"))
         if not fs:
@@ -121,8 +142,10 @@ def shot(pdf, key, kind, label, pattern, marks, folder):
             if y0 < top or y1 > bot:
                 continue
             if any(norm(m_) and norm(m_) in norm(tx) for m_ in marks):
-                d.rectangle([int((x0 - left) * k) - 6, int((y0 - top) * k) - 4,
-                             int((x1 - left) * k) + 6, int((y1 - top) * k) + 4], fill=(255, 226, 0, 110))
+                box = [int((x0 - left) * k) - 6, int((y0 - top) * k) - 4, int((x1 - left) * k) + 6, int((y1 - top) * k) + 4]
+                d.rectangle(box, fill=(255, 226, 0, 130))
+                if kind == "mark":   # 확대 컷은 빨간 테두리까지 — 한눈에 보이게
+                    d.rectangle([box[0] - 4, box[1] - 4, box[2] + 4, box[3] + 4], outline=(230, 40, 40, 255), width=max(3, int(k * 1.2)))
                 marked.append(tx[:40])
         crop = Image.alpha_composite(crop.convert("RGBA"), ov).convert("RGB")
     crop.thumbnail((1400, 1400))

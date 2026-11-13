@@ -373,6 +373,22 @@ def need_site(idx, hp):
     return usable(idx) == 0 and a.get("date") != today() and a.get("tries", 1) < 3
 
 
+def add_satellite(r, idx):
+    """'청약조사' AJ열 위성사진(시트 스크립트 prepareSatellite가 네이버 위성 지도로 받아 둔 photos/sat/…) → index에 'aerial'.
+    2026-11-13 사용자 결정 "최대한 건물 실사": 이미 지어진 임대 단지처럼 홍보 사진이 없는 곳의 실제 모습."""
+    v = (r.get("위성사진") or "").strip()
+    if not v.startswith("photos/") or not (ROOT / v).exists():
+        return 0
+    if any(im.get("file") == v for im in idx["images"]):
+        return 0
+    from PIL import Image
+    w, h = Image.open(ROOT / v).size
+    idx["images"].append({"cat": "aerial", "kind": "위성사진", "label": "위성사진", "file": v, "src": "NAVER 위성 지도",
+                          "w": w, "h": h, "photo": True, "full": True, "ok": True, "checked": True, "from": "satellite",
+                          "credit": "위성사진 © NAVER Corp."})
+    return 1
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--only", nargs="*", type=int, help="'청약조사' 행 번호만")
@@ -438,6 +454,8 @@ def main():
             if not skip and hp and not lh_url and need_site(idx, hp) and sites < a.max_sites:
                 note.append("홈페이지 " + str(auto_site(key, hp, idx)) + "장")
                 sites += 1
+        if add_satellite(r, idx):
+            note.append("위성 1")
         n_sheet = add_sheet_files(r, key, idx)
         n_pam = add_pamphlet(key, idx)
         if n_sheet:
