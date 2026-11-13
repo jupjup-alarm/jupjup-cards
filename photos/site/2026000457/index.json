@@ -10,7 +10,9 @@
    "w": 1523,
    "h": 866,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-13",
+   "ok": true
   },
   {
    "cat": "location",
@@ -21,7 +23,9 @@
    "w": 755,
    "h": 494,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-13",
+   "ok": true
   },
   {
    "cat": "location",
@@ -32,7 +36,10 @@
    "w": 960,
    "h": 966,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-13",
+   "ok": false,
+   "why": "빈 그림"
   }
  ],
  "links": [],

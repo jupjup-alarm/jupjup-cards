@@ -10,7 +10,9 @@
    "w": 1100,
    "h": 545,
    "photo": true,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-13",
+   "ok": true
   },
   {
    "cat": "overview",
@@ -21,7 +23,10 @@
    "w": 1920,
    "h": 1000,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-13",
+   "ok": false,
+   "why": "빈 그림"
   },
   {
    "cat": "location",
@@ -32,7 +37,9 @@
    "w": 1100,
    "h": 1560,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-13",
+   "ok": true
   },
   {
    "cat": "siteplan",
@@ -43,7 +50,10 @@
    "w": 580,
    "h": 768,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-13",
+   "ok": false,
+   "why": "빈 그림"
   },
   {
    "cat": "siteplan",
@@ -54,7 +64,10 @@
    "w": 1100,
    "h": 1596,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-13",
+   "ok": false,
+   "why": "배치도 아님(생활 홍보 그림)"
   },
   {
    "cat": "dongho",
@@ -65,7 +78,9 @@
    "w": 1100,
    "h": 1457,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-13",
+   "ok": true
   }
  ],
  "links": [],
