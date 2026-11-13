@@ -83,13 +83,14 @@ def query(kind, lawd, dong, area, env):
     import realprice as rp
     os.environ["CHEONGYAK_ENV"] = env
     k = rp.key()
+    code = lawd if re.fullmatch(r"\d{5}", lawd) else json.load(open(SITE / "data" / "lawd.json", encoding="utf-8"))["codes"][lawd]
     deals = []
     mons = rp.months(6)
     for ym in mons:
         ck = (kind, lawd, ym)
         if ck not in _CACHE:
             try:
-                _CACHE[ck] = rp.fetch(kind, lawd, ym, k)
+                _CACHE[ck] = rp.fetch(kind, code, ym, k)   # API는 이름이 아닌 5자리 코드 (2026-11-13 원자료 0건 원인)
             except BaseException as e:  # noqa: BLE001  (realprice는 SystemExit로 알림)
                 raise RuntimeError(str(e)[:150])
         for it in _CACHE[ck]:
