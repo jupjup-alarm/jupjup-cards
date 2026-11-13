@@ -1,0 +1,133 @@
+{
+ "slug": "2026-11-13-pyeongtaek-godeok-a63-reel",
+ "title": "고덕신도시 아테라 A-63블록 공공분양주택(3차) 임의공급",
+ "series": "줍줍알람",
+ "style": "story",
+ "voice": "voices/9536ec7cc941/",
+ "voice_speed": 1.0,
+ "bgm": "music/beat-one.mp3",
+ "thumb": {
+  "lines": [
+   "평택 고덕 31채",
+   "4억7천대 남았다"
+  ]
+ },
+ "scenes": [
+  {
+   "type": "story",
+   "say": "평택 고덕 4억 7천대 아파트가 31채 남았대요.",
+   "word": "31채",
+   "shots": [
+    {
+     "img": "photos/site/2026940250/overview-auto-3-2-nologo.jpg",
+     "credit": "이미지: LH 공공분양 분양 홈페이지 · 실제와 다를 수 있음",
+     "pos": "center 50%"
+    },
+    {
+     "img": "photos/site/2026940250/overview-auto-1-2.jpg",
+     "credit": "이미지: LH 공공분양 분양 홈페이지 · 실제와 다를 수 있음",
+     "pos": "70% 50%"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "심지어 옆 단지보다 최대 1억 3천 싸대요.",
+   "word": "최대 1억 3천",
+   "shots": [
+    {
+     "img": "photos/site/2026940250/overview-auto-1-2.jpg",
+     "credit": "이미지: LH 공공분양 분양 홈페이지 · 실제와 다를 수 있음",
+     "pos": "30% 60%"
+    },
+    {
+     "img": "photos/mood/e893729539-1.jpg"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "이게 어떻게 가능할까요?",
+   "shots": [
+    {
+     "img": "photos/mood/e893729539-2.jpg"
+    },
+    {
+     "img": "photos/mood/e893729539-3.jpg"
+    }
+   ],
+   "dim": true
+  },
+  {
+   "type": "story",
+   "say": "사실은요, 여긴 LH 공공분양인데요. 앞선 모집에서 남은 세대라고 합니다.",
+   "shots": [
+    {
+     "img": "photos/site/2026940250/crop-siteplan-aerial.jpg",
+     "credit": "이미지: LH 공공분양 분양 홈페이지 · 실제와 다를 수 있음",
+     "pos": "center 40%"
+    },
+    {
+     "img": "photos/mood/e893729539-2.jpg"
+    }
+   ],
+   "proof": {
+    "kind": "image",
+    "img": "photos/site/2026940250/plan-auto-1.jpg",
+    "credit": "이미지: LH 공공분양 분양 홈페이지 · 실제와 다를 수 있음"
+   }
+  },
+  {
+   "type": "story",
+   "say": "근데 더 넓은 집도 있어요.",
+   "shots": [
+    {
+     "img": "photos/mood/e893729539-3.jpg"
+    }
+   ],
+   "dim": true,
+   "proof": {
+    "kind": "image",
+    "img": "photos/site/2026940250/plan-auto-3.jpg",
+    "credit": "이미지: LH 공공분양 분양 홈페이지 · 실제와 다를 수 있음"
+   }
+  },
+  {
+   "type": "story",
+   "say": "84㎡는 5억 3천대고 입주는 2028년 10월이래요.",
+   "word": "5억 3천대",
+   "shots": [
+    {
+     "img": "photos/site/2026940250/overview-auto-3-2-nologo.jpg",
+     "credit": "이미지: LH 공공분양 분양 홈페이지 · 실제와 다를 수 있음",
+     "pos": "25% 50%"
+    },
+    {
+     "img": "photos/site/2026940250/crop-siteplan-aerial.jpg",
+     "credit": "이미지: LH 공공분양 분양 홈페이지 · 실제와 다를 수 있음",
+     "pos": "70% 60%"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "접수는 11월 17일까지라고 하니까, 자격은 공고문으로 확인하세요.",
+   "word": "11월 17일",
+   "shots": [
+    {
+     "img": "photos/mood/e893729539-1.jpg"
+    },
+    {
+     "img": "photos/site/2026940250/overview-auto-3-2-nologo.jpg",
+     "credit": "이미지: LH 공공분양 분양 홈페이지 · 실제와 다를 수 있음",
+     "pos": "80% 50%"
+    }
+   ]
+  },
+  {
+   "type": "end",
+   "say": "단지 이름이랑 공고 정리는 댓글에 '고덕'이라고 남겨 주세요."
+  }
+ ],
+ "pool": []
+}

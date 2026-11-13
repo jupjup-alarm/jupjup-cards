@@ -1,0 +1,121 @@
+{
+ "slug": "2026-11-13-suwon-umaan3-rental-reel",
+ "title": "수원우만3 영구임대주택 예비입주자 모집(500호)",
+ "series": "임대알람",
+ "style": "story",
+ "voice": "voices/1d7cdc3ca902/",
+ "voice_speed": 1.0,
+ "bgm": "music/beat-one.mp3",
+ "thumb": {
+  "lines": [
+   "수원 우만동 500호",
+   "월 5만원대"
+  ]
+ },
+ "scenes": [
+  {
+   "type": "story",
+   "say": "수원에 월 5만 원대 아파트가 500호 나왔대요.",
+   "word": "월 5만 원대",
+   "shots": [
+    {
+     "img": "photos/mood/c94a5f86a8-1.jpg"
+    },
+    {
+     "img": "photos/mood/ef1b846552-2.jpg"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "심지어 주변 월세보다 45만 원 넘게 싸대요.",
+   "word": "45만 원",
+   "shots": [
+    {
+     "img": "photos/mood/c94a5f86a8-2.jpg"
+    },
+    {
+     "img": "photos/mood/d919f0ec79-1.jpg"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "이게 어떻게 가능할까요?",
+   "shots": [
+    {
+     "img": "photos/mood/d919f0ec79-2.jpg"
+    },
+    {
+     "img": "photos/mood/ef1b846552-3.jpg"
+    }
+   ],
+   "dim": true
+  },
+  {
+   "type": "story",
+   "say": "사실은요, 여긴 LH 영구임대인데요. 보증금도 275만 원이라고 합니다.",
+   "shots": [
+    {
+     "img": "photos/mood/d919f0ec79-3.jpg"
+    },
+    {
+     "img": "photos/mood/c94a5f86a8-1.jpg"
+    }
+   ],
+   "proof": {
+    "kind": "image",
+    "img": "photos/site/lh2015122300021050/notice-mark.jpg",
+    "credit": "자료: LH 입주자모집공고(2026.11.11)"
+   }
+  },
+  {
+   "type": "story",
+   "say": "근데 접수 방법이 특이해요.",
+   "shots": [
+    {
+     "img": "photos/mood/ef1b846552-2.jpg"
+    },
+    {
+     "img": "photos/mood/d919f0ec79-2.jpg"
+    }
+   ],
+   "dim": true
+  },
+  {
+   "type": "story",
+   "say": "인터넷 접수는 없고 동 행정복지센터에서만 받는대요.",
+   "shots": [
+    {
+     "img": "photos/mood/d919f0ec79-1.jpg"
+    },
+    {
+     "img": "photos/mood/ef1b846552-3.jpg"
+    }
+   ],
+   "proof": {
+    "kind": "image",
+    "img": "photos/site/lh2015122300021050/notice-schedule.jpg",
+    "credit": "자료: LH 입주자모집공고(2026.11.11)"
+   }
+  },
+  {
+   "type": "story",
+   "say": "영구임대 입주 계층이어야 하고, 접수는 11월 23일부터 25일까지라고 하니까",
+   "word": "11월 23일",
+   "shots": [
+    {
+     "img": "photos/mood/c94a5f86a8-2.jpg"
+    },
+    {
+     "img": "photos/mood/d919f0ec79-3.jpg"
+    }
+   ]
+  },
+  {
+   "type": "end",
+   "say": "단지 이름이랑 공고 정리는 댓글에 '수원'이라고 남겨 주세요."
+  }
+ ],
+ "pool": []
+}

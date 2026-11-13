@@ -1,0 +1,16 @@
+{
+ "slug": "2026-11-13-suwon-umaan3-rental-reel",
+ "duration": 29.66,
+ "voiced": true,
+ "narration_s": 25.9,
+ "mean_db": -18.5,
+ "voice": "voices/1d7cdc3ca902/",
+ "video": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-13-suwon-umaan3-rental-reel/2026-11-13-suwon-umaan3-rental-reel.mp4",
+ "cover": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-13-suwon-umaan3-rental-reel/2026-11-13-suwon-umaan3-rental-reel_thumb.jpg",
+ "size_mb": 9.57,
+ "warnings": [
+  "호흡: 장면 6 대본에 없는 곳에서 0.29초 쉼 (③ 대본 쉼표 위치 확인)",
+  "호흡: 장면 7 대본에 없는 곳에서 0.26초 쉼 (③ 대본 쉼표 위치 확인)",
+  "사진: 컷 12개 · 서로 다른 사진 7장"
+ ]
+}
