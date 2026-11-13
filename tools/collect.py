@@ -379,6 +379,12 @@ def add_satellite(r, idx):
     v = (r.get("위성사진") or "").strip()
     if not v.startswith("photos/") or not (ROOT / v).exists():
         return 0
+    # 이미 지어진 단지만 (2026-11-13 첫 8장 확인: 분양 예정·공사 중 단지는 빈 땅이나 옛 건물이 찍혀 오해를 부름)
+    txt = " ".join(str(r.get(k, "")) for k in ("단지명", "공급유형", "분양가/임대조건", "청약자격 요약"))
+    built = re.search(r"임대|공가|매입|입주\s*(완료|중|시작)|준공|즉시\s*입주|기존\s*주택|예비입주자", txt) and \
+        not re.search(r"분양\s*예정|\(예정\)|입주\s*(예정\s*)?20(2[7-9]|3\d)", txt)
+    if not built:
+        return 0
     if any(im.get("file") == v for im in idx["images"]):
         return 0
     from PIL import Image
