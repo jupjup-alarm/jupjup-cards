@@ -34,6 +34,24 @@
   {
    "cat": "notice",
    "kind": "공고문",
+   "label": "공고문 형광펜 (p.2)",
+   "file": "photos/site/lh2015122300021050/notice-mark.jpg",
+   "src": "69382093.pdf#p2",
+   "crop": "",
+   "w": 1400,
+   "h": 666,
+   "md5": "85093e06212011c1a6bf0eaa1409c5c6",
+   "photo": false,
+   "full": false,
+   "page": 2,
+   "marked": [
+    "2,747,000",
+    "54,660"
+   ]
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
    "label": "공고문 공급금액 (p.2)",
    "file": "photos/site/lh2015122300021050/notice-price.jpg",
    "src": "69382093.pdf#p2",
@@ -77,29 +95,26 @@
    "marked": []
   },
   {
-   "cat": "notice",
-   "kind": "공고문",
-   "label": "공고문 형광펜 (p.2)",
-   "file": "photos/site/lh2015122300021050/notice-mark.jpg",
-   "src": "69382093.pdf#p2",
-   "crop": "",
-   "w": 1400,
-   "h": 666,
-   "md5": "85093e06212011c1a6bf0eaa1409c5c6",
-   "photo": false,
-   "full": false,
-   "page": 2,
-   "marked": [
-    "2,747,000",
-    "54,660"
-   ]
+   "cat": "aerial",
+   "kind": "위성사진",
+   "label": "위성사진",
+   "file": "photos/sat/7918bf76bb82.png",
+   "src": "NAVER 위성 지도",
+   "w": 1080,
+   "h": 1920,
+   "photo": true,
+   "full": true,
+   "ok": true,
+   "checked": true,
+   "from": "satellite",
+   "credit": "위성사진 © NAVER Corp."
   }
  ],
  "links": [],
  "owner": "LH",
  "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
- "updated": "2026-11-13 13:33",
+ "updated": "2026-11-14 06:57",
  "name": "수원우만3 영구임대주택 예비입주자 모집(500호)",
  "row": 134,
- "lh_checked": "2026-11-13"
+ "lh_checked": "2026-11-14"
 }

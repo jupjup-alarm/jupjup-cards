@@ -1,0 +1,41 @@
+{
+ "key": "lh0000061211",
+ "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061211&ccrCnntSysDsCd=02&uppAisTpCd=05&aisTpCd=05&mi=1027",
+ "checked": "2026-11-14 06:56",
+ "files": [
+  {
+   "fileid": "69429428",
+   "name": "(261113)의정부우정A-1블록잔여세대추가입주자모집공고문.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69429454",
+   "name": "(261113)의정부우정A-1블록잔여세대추가입주자모집공고문.pdf",
+   "kind": "notice",
+   "got": "ok",
+   "md5": "7966c014bfaeaf0d5bdef4c8de3d9b4c",
+   "pages": 10,
+   "bytes": 375541
+  },
+  {
+   "fileid": "69429458",
+   "name": "(최초공고_250828)의정부우정A-1블록팸플릿.pdf",
+   "kind": "pamphlet",
+   "got": "ok",
+   "md5": "d115b9d56d249cf174ae763650e49107",
+   "pages": 18,
+   "bytes": 72239084
+  },
+  {
+   "fileid": "69429460",
+   "name": "(261113)의정부우정A-1블록공공분양주택잔여세대동호판.pdf",
+   "kind": "other"
+  },
+  {
+   "fileid": "69429462",
+   "name": "1.위임장.hwpx",
+   "kind": "other"
+  }
+ ],
+ "changed": true
+}

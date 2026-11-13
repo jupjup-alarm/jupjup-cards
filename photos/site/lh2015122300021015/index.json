@@ -45,13 +45,28 @@
    "full": false,
    "page": 3,
    "marked": []
+  },
+  {
+   "cat": "aerial",
+   "kind": "위성사진",
+   "label": "위성사진",
+   "file": "photos/sat/b3e4dc4e409d.png",
+   "src": "NAVER 위성 지도",
+   "w": 1080,
+   "h": 1920,
+   "photo": true,
+   "full": true,
+   "ok": true,
+   "checked": true,
+   "from": "satellite",
+   "credit": "위성사진 © NAVER Corp."
   }
  ],
  "links": [],
  "owner": "LH",
  "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
- "updated": "2026-11-13 08:42",
+ "updated": "2026-11-14 06:57",
  "name": "경기남부권(안성 동인힐타운) 다세대 공가세대 일반매각(무순위, 무주택)",
  "row": 100,
- "lh_checked": "2026-11-13"
+ "lh_checked": "2026-11-14"
 }

@@ -1,15 +1,77 @@
 {
  "key": "2026910297",
- "images": [],
+ "images": [
+  {
+   "cat": "commons",
+   "kind": "실사",
+   "label": "Panoramic view of Pyeongtaek.jpg",
+   "file": "photos/site/2026910297/commons-1.jpg",
+   "src": "https://commons.wikimedia.org/wiki/File:Panoramic_view_of_Pyeongtaek.jpg",
+   "w": 1920,
+   "h": 1274,
+   "photo": true,
+   "full": true,
+   "from": "commons",
+   "license": "KOGL Type 1",
+   "credit": "사진: Academy of Korean Studies · KOGL Type 1 (위키미디어 커먼즈)",
+   "md5": "710fe5ab4856855e364d67925c86497b"
+  },
+  {
+   "cat": "commons",
+   "kind": "실사",
+   "label": "Port of Pyeongtaek-Dangjin (South Korea) 평택당진항.jpg",
+   "file": "photos/site/2026910297/commons-2.jpg",
+   "src": "https://commons.wikimedia.org/wiki/File:Port_of_Pyeongtaek-Dangjin_(South_Korea)_%ED%8F%89%ED%83%9D%EB%8B%B9%EC%A7%84%ED%95%AD.jpg",
+   "w": 1920,
+   "h": 1280,
+   "photo": true,
+   "full": true,
+   "from": "commons",
+   "license": "KOGL Type 1",
+   "credit": "사진: Gyeonggi Province (경기도) · KOGL Type 1 (위키미디어 커먼즈)",
+   "md5": "356ee1a8ad1dee76af903197d401489b"
+  },
+  {
+   "cat": "commons",
+   "kind": "실사",
+   "label": "Port of Pyeongtaek-Dangjin 평택당진항.jpg",
+   "file": "photos/site/2026910297/commons-3.jpg",
+   "src": "https://commons.wikimedia.org/wiki/File:Port_of_Pyeongtaek-Dangjin_%ED%8F%89%ED%83%9D%EB%8B%B9%EC%A7%84%ED%95%AD.jpg",
+   "w": 1920,
+   "h": 275,
+   "photo": true,
+   "full": true,
+   "from": "commons",
+   "license": "CC BY-SA 4.0",
+   "credit": "사진: Yujin0203 · CC BY-SA 4.0 (위키미디어 커먼즈)",
+   "md5": "d5022fb31675716d013d5f4cb15dc63c"
+  },
+  {
+   "cat": "commons",
+   "kind": "실사",
+   "label": "Pyeongtaek(Asan) Port Outer Revetment (Section 2).png",
+   "file": "photos/site/2026910297/commons-4.jpg",
+   "src": "https://commons.wikimedia.org/wiki/File:Pyeongtaek(Asan)_Port_Outer_Revetment_(Section_2).png",
+   "w": 1920,
+   "h": 1440,
+   "photo": true,
+   "full": true,
+   "from": "commons",
+   "license": "CC BY-SA 4.0",
+   "credit": "사진: Wtbnt · CC BY-SA 4.0 (위키미디어 커먼즈)",
+   "md5": "4c094f8ab9101f9c351d1b58c6195cbd"
+  }
+ ],
  "links": [],
  "name": "평택 고덕 국제신도시 A-55 대광로제비앙 모아엘가(4차) 무순위",
  "row": 131,
  "homepage": "http://평택고덕대광로제비앙모아엘가.com",
  "auto_site": {
-  "date": "2026-11-13",
+  "date": "2026-11-14",
   "url": "http://평택고덕대광로제비앙모아엘가.com",
-  "tries": 2,
+  "tries": 3,
   "result": "0장 ()"
  },
- "updated": "2026-11-13 08:40"
+ "updated": "2026-11-14 06:57",
+ "commons_checked": "평택 고덕 국제신도시 A-55 대광로제비앙 모아엘가(4차) 무순위"
 }

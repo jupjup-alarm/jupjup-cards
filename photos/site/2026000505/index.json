@@ -1,0 +1,159 @@
+{
+ "key": "2026000505",
+ "images": [
+  {
+   "cat": "birdseye",
+   "kind": "birdseye",
+   "label": "단지 조감도",
+   "file": "photos/site/2026000505/birdseye-auto-1.jpg",
+   "src": "https://brand.hldni.com/gyeonghuigung/image/sub/danzi_design.jpg",
+   "w": 1300,
+   "h": 1027,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "birdseye",
+   "kind": "birdseye",
+   "label": "신분평 에피트 더웨이시티 투시도",
+   "file": "photos/site/2026000505/birdseye-auto-2.jpg",
+   "src": "https://brand.hldni.com/gyeonghuigung/image/sub/gonggo.jpg",
+   "w": 1300,
+   "h": 715,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "overview",
+   "file": "photos/site/2026000505/overview-auto-1.jpg",
+   "src": "https://brand.hldni.com/gyeonghuigung/image/main/main_visual02_bg.jpg",
+   "w": 1920,
+   "h": 1080,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "텍스트",
+   "file": "photos/site/2026000505/overview-auto-2.jpg",
+   "src": "https://brand.hldni.com/gyeonghuigung/image/main/main_visual02_text.png",
+   "w": 750,
+   "h": 485,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "사업개요",
+   "file": "photos/site/2026000505/overview-auto-3.jpg",
+   "src": "https://brand.hldni.com/gyeonghuigung/image/sub/about_img.jpg",
+   "w": 1300,
+   "h": 715,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "location",
+   "file": "photos/site/2026000505/location-auto-1.jpg",
+   "src": "https://brand.hldni.com/gyeonghuigung/image/main/premium_slide_1.jpg",
+   "w": 700,
+   "h": 570,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "location",
+   "file": "photos/site/2026000505/location-auto-2.jpg",
+   "src": "https://brand.hldni.com/gyeonghuigung/image/main/premium_slide_2.jpg",
+   "w": 700,
+   "h": 570,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "location",
+   "file": "photos/site/2026000505/location-auto-3.jpg",
+   "src": "https://brand.hldni.com/gyeonghuigung/image/main/premium_slide_3.jpg",
+   "w": 700,
+   "h": 570,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "community",
+   "kind": "community",
+   "label": "community",
+   "file": "photos/site/2026000505/community-auto-1.jpg",
+   "src": "https://brand.hldni.com/gyeonghuigung/image/sub/community.jpg",
+   "w": 1300,
+   "h": 1077,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "siteplan",
+   "kind": "siteplan",
+   "label": "선큰",
+   "file": "photos/site/2026000505/siteplan-auto-1.jpg",
+   "src": "https://brand.hldni.com/gyeonghuigung/image/sub/danzi_design_01.jpg",
+   "w": 640,
+   "h": 484,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "siteplan",
+   "kind": "siteplan",
+   "label": "티하우스",
+   "file": "photos/site/2026000505/siteplan-auto-2.jpg",
+   "src": "https://brand.hldni.com/gyeonghuigung/image/sub/danzi_design_02.jpg",
+   "w": 640,
+   "h": 484,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "dongho",
+   "kind": "dongho",
+   "label": "dongho",
+   "file": "photos/site/2026000505/dongho-auto-1.jpg",
+   "src": "https://brand.hldni.com/gyeonghuigung/image/sub/danzi1.jpg",
+   "w": 1300,
+   "h": 2009,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "울산 우정 에피트",
+   "file": "photos/site/2026000505/plan-auto-1.jpg",
+   "src": "https://brand.hldni.com/upload/file/apt/0fb59a25f0d646b58ff05cfb22536cee.jpg",
+   "w": 1300,
+   "h": 668,
+   "photo": true,
+   "from": "auto"
+  }
+ ],
+ "links": [],
+ "name": "경희궁 에피트",
+ "row": 148,
+ "homepage": "https://brand.hldni.com/gyeonghuigung/",
+ "auto_site": {
+  "date": "2026-11-14",
+  "url": "https://brand.hldni.com/gyeonghuigung/",
+  "tries": 1,
+  "result": "13장 (birdseye 2, overview 3, siteplan 2, dongho 1, plan 1, community 1, location 3)"
+ },
+ "updated": "2026-11-14 06:55"
+}

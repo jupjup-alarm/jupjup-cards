@@ -1,0 +1,82 @@
+{
+ "key": "2026000560",
+ "images": [
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "overview",
+   "file": "photos/site/2026000560/overview-auto-1.jpg",
+   "src": "https://www.xn--hj2b8hr9b52bo7rgihfns6hhx0a.com/assets/images/sub/overview.jpg",
+   "w": 1200,
+   "h": 1112,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "overview",
+   "file": "photos/site/2026000560/overview-auto-2.jpg",
+   "src": "https://www.xn--hj2b8hr9b52bo7rgihfns6hhx0a.com/assets/images/sub/brand.jpg",
+   "w": 1200,
+   "h": 1716,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "overview",
+   "file": "photos/site/2026000560/overview-auto-3.jpg",
+   "src": "https://www.xn--hj2b8hr9b52bo7rgihfns6hhx0a.com/assets/images/sub/environment.jpg",
+   "w": 1200,
+   "h": 2118,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "location",
+   "file": "photos/site/2026000560/location-auto-1.jpg",
+   "src": "https://www.xn--hj2b8hr9b52bo7rgihfns6hhx0a.com/assets/images/main/location-bg.jpg",
+   "w": 1920,
+   "h": 970,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "location",
+   "file": "photos/site/2026000560/location-auto-2.jpg",
+   "src": "https://www.xn--hj2b8hr9b52bo7rgihfns6hhx0a.com/assets/images/main/location-map.jpg",
+   "w": 1096,
+   "h": 749,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "location",
+   "file": "photos/site/2026000560/location-auto-3.jpg",
+   "src": "https://www.xn--hj2b8hr9b52bo7rgihfns6hhx0a.com/assets/images/main/premium-rotate-text.png",
+   "w": 1047,
+   "h": 1047,
+   "photo": false,
+   "from": "auto"
+  }
+ ],
+ "links": [],
+ "name": "해링턴 플레이스 문래",
+ "row": 147,
+ "homepage": "https://www.해링턴플레이스문래.com",
+ "auto_site": {
+  "date": "2026-11-14",
+  "url": "https://www.해링턴플레이스문래.com",
+  "tries": 1,
+  "result": "6장 (overview 3, location 3)"
+ },
+ "updated": "2026-11-14 06:56"
+}

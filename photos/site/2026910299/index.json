@@ -1,0 +1,137 @@
+{
+ "key": "2026910299",
+ "images": [
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "overview",
+   "file": "photos/site/2026910299/overview-auto-1.jpg",
+   "src": "https://neo233.viahost.co.kr/26seohee_star/images/financial/main1_k5.png",
+   "w": 1920,
+   "h": 1080,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "overview",
+   "file": "photos/site/2026910299/overview-auto-2.jpg",
+   "src": "https://neo233.viahost.co.kr/26seohee_star/images/financial/main1_k4.png",
+   "w": 1920,
+   "h": 1080,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "overview",
+   "file": "photos/site/2026910299/overview-auto-3.jpg",
+   "src": "https://neo233.viahost.co.kr/26seohee_star/images/financial/main1_k3.png",
+   "w": 1491,
+   "h": 1500,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "location",
+   "file": "photos/site/2026910299/location-auto-1.jpg",
+   "src": "https://neo233.viahost.co.kr/26seohee_star/images/sub02_01.jpg",
+   "w": 1100,
+   "h": 2225,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "location",
+   "file": "photos/site/2026910299/location-auto-2.jpg",
+   "src": "https://neo233.viahost.co.kr/26seohee_star/images/sub02_02.jpg",
+   "w": 1100,
+   "h": 2381,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "community",
+   "kind": "community",
+   "label": "community",
+   "file": "photos/site/2026910299/community-auto-1.jpg",
+   "src": "https://www.starhills-yg.co.kr/images/sub03_04.jpg",
+   "w": 928,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "interior",
+   "kind": "interior",
+   "label": "interior",
+   "file": "photos/site/2026910299/interior-auto-1.jpg",
+   "src": "https://neo233.viahost.co.kr/26seohee_star/images/sub06_02.jpg",
+   "w": 771,
+   "h": 2400,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "interior",
+   "kind": "interior",
+   "label": "interior",
+   "file": "photos/site/2026910299/interior-auto-2.jpg",
+   "src": "https://neo233.viahost.co.kr/26seohee_star/images/sub06_04.jpg",
+   "w": 183,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "siteplan",
+   "kind": "siteplan",
+   "label": "siteplan",
+   "file": "photos/site/2026910299/siteplan-auto-1.jpg",
+   "src": "https://neo233.viahost.co.kr/26seohee_star/images/sub03_01.jpg",
+   "w": 1100,
+   "h": 1690,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "siteplan",
+   "kind": "siteplan",
+   "label": "siteplan",
+   "file": "photos/site/2026910299/siteplan-auto-2.jpg",
+   "src": "https://neo233.viahost.co.kr/26seohee_star/images/sub03_02.jpg",
+   "w": 1100,
+   "h": 1701,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "plan",
+   "file": "photos/site/2026910299/plan-auto-1.jpg",
+   "src": "https://neo233.viahost.co.kr/26seohee_star/images/sub06_01.jpg",
+   "w": 792,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  }
+ ],
+ "links": [],
+ "name": "용인 양지 서희스타힐스 하이뷰 무순위(조합원 취소분)",
+ "row": 149,
+ "homepage": "https://www.starhills-yg.co.kr",
+ "auto_site": {
+  "date": "2026-11-14",
+  "url": "https://www.starhills-yg.co.kr",
+  "tries": 1,
+  "result": "11장 (overview 3, siteplan 2, plan 1, community 1, interior 2, location 2)"
+ },
+ "updated": "2026-11-14 06:54"
+}
