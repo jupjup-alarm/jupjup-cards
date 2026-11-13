@@ -128,6 +128,56 @@ def month(s):
     return f"{m.group(1)}.{int(m.group(2))}" if m else (s or "")
 
 
+def make_nearby(key):
+    """site/data/nearby/<key>.json(국토부 실거래, tools/nearby.py) → 공고 페이지 '주변 단지 실거래 비교' 칸.
+    2026-11-13 사용자 결정: 애드센스 '가치가 별로 없는 콘텐츠' — 공고 옮겨 적기가 아닌 우리 분석을 앞세움.
+    문장은 숫자로만 만든다(모델 없음). 추정 표기를 붙이고 차익을 보장하지 않는다."""
+    f = DATA / "nearby" / f"{key}.json"
+    if not f.exists():
+        return None
+    d = json.loads(f.read_text(encoding="utf-8"))
+    st_, ours, comps = d.get("stats") or {}, d.get("ours") or {}, d.get("comps") or []
+    if not comps or not st_.get("n"):
+        return None
+    mon = d.get("months") or []
+    span = f"{mon[0][:4]}.{mon[0][4:]}~{mon[-1][:4]}.{mon[-1][4:]}" if len(mon) > 1 else ""
+    area = ours.get("area") or 0
+    where = str(d.get("scope") or "")
+    lead, rows = [], []
+    ym = lambda x: f"{str(x)[2:4]}.{str(x)[5:7]}" if x else ""
+    if d["kind"] == "rent":
+        mm, dm = st_.get("monthly_med"), st_.get("deposit_med")
+        lead.append(f"{where}에서 전용 {area:g}㎡ 안팎(±8㎡) 아파트 월세 거래 {st_['n']}건({span})을 모았어요. "
+                    f"보증금 중앙값 {money(dm)} · 월세 중앙값 {money(mm)}이에요.")
+        if mm and ours.get("monthly"):
+            pct = round(ours["monthly"] * 100 / mm)
+            tail = f" — 한 달에 약 {money(round(mm - ours['monthly'], -3))} 덜 내는 셈이에요(추정)." if mm > ours["monthly"] else "(추정)."
+            lead.append(f"이 공고 월 {money(ours['monthly'])}은 주변 월세 중앙값의 약 {pct}% 수준이에요" + tail)
+        for c in comps[:6]:
+            rows.append([c["name"] + (f" ({c['built']})" if c.get("built") else ""), f"{c['area']:g}㎡" if c.get("area") else "",
+                         f"{money(c.get('deposit'))} / 월 {money(c.get('monthly'))}", ym(c.get("date")), f"{c['n']}건"])
+        head = ["단지 (준공)", "면적", "최근 보증금 / 월세", "거래", "6개월 거래"]
+    else:
+        ppa, top = st_.get("ppa_med"), st_.get("top") or {}
+        lead.append(f"{where}에서 전용 {area:g}㎡ 안팎(±8㎡) 아파트 매매 {st_['n']}건({span})을 모았어요. "
+                    f"㎡당 중앙값은 {won(ppa)}이에요 — {area:g}㎡로 치면 약 {won(int(round(ppa * area, -6)))}.")
+        if ppa and ours.get("price") and area:
+            mine = ours["price"] / area
+            pct = round(mine * 100 / ppa)
+            lead.append(f"이 공고 {area:g}㎡ 최고 {won(ours['price'])}은 ㎡당 {won(int(mine))}으로, 주변 거래 중앙값의 약 {pct}% 수준이에요(추정)."
+                        + (" 주변보다 비싸게 나온 공고예요." if pct > 105 else ""))
+        if top.get("price"):
+            lead.append(f"같은 기간 가장 비싸게 거래된 곳은 {top['name']}" + (f"({top['built']}년 준공)" if top.get("built") else "")
+                        + f" {top['area']:g}㎡ {won(top['price'])}({ym(top.get('date'))})이에요.")
+        if st_.get("built_med"):
+            lead.append(f"비교 단지는 대부분 {st_['built_med']}년 전후에 지어졌어요. 새 아파트는 같은 동네 구축보다 비싸게 거래되는 경우가 많으니 연식 차이도 함께 보세요.")
+        for c in comps[:6]:
+            rows.append([c["name"] + (f" ({c['built']})" if c.get("built") else ""), f"{c['area']:g}㎡" if c.get("area") else "",
+                         won(c["price"]) if c.get("price") else "", won(c["ppa"]) if c.get("ppa") else "", ym(c.get("date")), f"{c['n']}건"])
+        head = ["단지 (준공)", "면적", "최근 거래가", "㎡당 (중앙값)", "거래", "6개월 거래"]
+    return {"lead": lead, "head": head, "rows": rows, "where": where, "made": str(d.get("made", ""))[:10]}
+
+
 def won(n):
     """원 단위 정수 → '8억9,800만원' (만원 아래는 버림 — 금액 표기는 이 함수 하나로)."""
     man = n // 10000
@@ -467,6 +517,7 @@ def build_notice(e, row, regions, problems):
     if n.get("gap"):
         n["gap"] = dict(n["gap"], text=fill(n["gap"]["text"]))
     n["price_label"] = e.get("price_label", "최고 분양가")
+    n["nearby"] = make_nearby(n["key"])
     return n
 
 
@@ -1768,10 +1819,40 @@ def main():
         tbl = live[:12] if tbl else []
         cap = (f"{tbl_label or h1} 접수 중·예정 {len(live)}곳" + (f" 중 {len(tbl)}곳" if len(live) > len(tbl) else "")
                + f" — {d(TODAY.isoformat())} 기준 · 청약홈·LH·마이홈 공식 데이터")
+        # 2026-11-13 애드센스 '가치가 별로 없는 콘텐츠' 대응: ① 목록 요약 문단(숫자로 만든 이 페이지만의 정리)
+        # ② 공고가 3곳 미만인 얇은 목록(지난달·먼 달·공고 적은 지역)은 검색 노출 제외(noindex·사이트맵 제외)
+        summary = list_summary(all_n, live)
+        thin = len({x["key"] for x in all_n}) < 3 and url not in ("/schedule/this-week/",)
         h = list_tpl.render(h1=h1, groups=groups, intro=intro, crumb=crumb or [("홈", "/")], links=links, empty=empty,
                             page_url=url, title=title, desc=desc, og=og_hub(url, *og_t, all_n) if og_t else "/og-default.jpg",
-                            items=all_n, tbl=tbl, tbl_cap=cap, sections=sections or [], h1_kw=h1_kw, **extra, **common)
-        write(url, h, title, desc, kind, lm)
+                            items=all_n, tbl=tbl, tbl_cap=cap, sections=sections or [], h1_kw=h1_kw, summary=summary,
+                            noindex=thin, **extra, **common)
+        write(url, h, title, desc, kind, lm, index=not thin)
+
+    def list_summary(all_n, live):
+        if not live:
+            return ""
+        out = [f"{d(TODAY.isoformat())} 기준 접수 중·예정인 공고는 {len(live)}곳이에요."]
+        sg = {}
+        for x in live:
+            k = f"{x.get('sido', '')} {x.get('sigungu', '')}".strip()
+            sg[k] = sg.get(k, 0) + 1
+        top = sorted(sg.items(), key=lambda t: -t[1])[:3]
+        if len(sg) > 1:
+            out.append("많은 곳은 " + ", ".join(f"{k} {v}곳" for k, v in top) + "이에요.")
+        nxt = sorted((x for x in live if x["status"] == "upcoming" and x.get("rcpt") and x["rcpt"][0]), key=lambda x: x["rcpt"][0])
+        if nxt:
+            out.append(f"가장 먼저 접수를 시작하는 곳은 {nxt[0].get('complex') or nxt[0]['title']}({d(nxt[0]['rcpt'][0])})이에요.")
+        ends = sorted((x for x in live if x["status"] == "open" and x.get("rcpt") and x["rcpt"][-1]), key=lambda x: x["rcpt"][-1])
+        if ends:
+            out.append(f"마감이 가장 가까운 곳은 {ends[0].get('complex') or ends[0]['title']}({d(ends[0]['rcpt'][-1])})예요.")
+        ps = sorted(x["max_price"] for x in live if x.get("max_price") and not x.get("is_rental"))
+        if len(ps) >= 2:
+            out.append(f"분양 공고의 최고 분양가는 {won(ps[0])}부터 {won(ps[-1])}까지예요.")
+        lots = [x for x in live if (x.get("gap") or {}).get("verdict", "").endswith("저렴(추정)")]
+        if lots:
+            out.append(f"주변 실거래보다 싸게 나온 곳(추정)은 {len(lots)}곳이에요.")
+        return " ".join(out)
 
     def tsort(lst):
         """표 순서: 접수 중은 마감 빠른 순(수시모집처럼 오래 열린 건 뒤로), 그다음 접수 예정은 시작 빠른 순."""

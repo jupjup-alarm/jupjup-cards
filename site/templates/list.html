@@ -8,6 +8,7 @@
       {{ crumbs(crumb) }}
       <h1>{{ h1 }}{% if h1_kw %} <span class="h1-kw">{{ h1_kw }}</span>{% endif %}</h1>
       {% if intro %}<p>{{ intro }}</p>{% endif %}
+      {% if summary %}<p>{{ summary }}</p>{% endif %}
       {# 2026-11-04 리디자인 4단계: 상태별 숫자 칸 (빌드가 날마다 채움) #}
       {% set g_open = groups|selectattr(0, 'equalto', '지금 접수 중')|list %}{% set g_up = groups|selectattr(0, 'equalto', '접수 예정')|list %}
       {% if g_open or g_up %}

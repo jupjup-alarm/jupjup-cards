@@ -98,7 +98,7 @@
     {% for c in z.cards %}<li class="dz-c s-{{ c.sig }}"><span class="dz-k">{{ c.k }}</span><span class="dz-v"><b>{{ c.head }}</b>{% if c.sub %}<small>{{ c.sub }}</small>{% endif %}</span>{% if c.sig != 'n' %}<span class="dz-m"><span class="dz-g" aria-hidden="true"><i></i><i></i><i></i></span>{{ {'g':'좋음','y':'보통','r':'주의'}[c.sig] }}</span>{% endif %}</li>
     {% endfor %}
     </ul>
-    <details class="dz-rule"><summary>좋음·보통·주의는 이렇게 정해요</summary><ul>{% for r in z.rule %}<li>{{ r }}</li>{% endfor %}</ul><p>추천이 아니라 참고용이에요. 정해진 기준대로 붙이고, 숫자 근거는 아래 각 칸에 있어요.</p></details>
+    <p class="note">좋음·보통·주의는 <a href="/about/#criteria">줍줍알람 판정 기준</a>대로 붙인 참고 표시예요. 숫자 근거는 아래 각 칸에 있어요.</p>
   </section>
   {% endif %}
   {# 2026-11-03 사용자 결정: 애드센스는 3초 판단 카드 바로 아래(요약 카드 위)로 올림 #}
@@ -200,7 +200,7 @@
     </div>
     {% endif %}
     <p class="gapt">{{ n.gap.text }}</p>
-    <p class="note">{{ n.gap.basis }} · 같은 생활권·비슷한 면적의 최근 실거래와 비교한 추정이에요. 실제 시세와 다를 수 있고, 차익을 보장하지 않아요.</p>
+    <p class="note">{{ n.gap.basis }} · 추정치예요 (<a href="/about/#criteria">비교 방법</a>)</p>
   </section>
   {% endif %}
   {% endif %}
@@ -392,6 +392,16 @@
     <p class="gapt">{{ n.gap.text }}</p>
     <dl class="kv wide">{% for k, v in n.gap.rows %}<div><dt>{{ k }}</dt><dd class="num">{{ v }}</dd></div>{% endfor %}</dl>
     <p class="note">{{ n.gap.basis }} · 같은 생활권·비슷한 면적의 최근 {{ "전월세 " if n.is_rental else "" }}실거래와 비교한 추정이에요. 실제 시세와 다를 수 있어요.</p>
+  </section>
+  {% endif %}
+
+  {% if n.nearby %}
+  <section class="sec" aria-labelledby="h-near">
+    <h2 id="h-near">주변 단지 실거래 비교 — {{ n.nearby.where }}</h2>
+    {% for t in n.nearby.lead %}<p>{{ t }}</p>{% endfor %}
+    <div class="tbl"><table><thead><tr>{% for h in n.nearby.head %}<th{% if loop.first %} style="text-align:left"{% endif %}>{{ h }}</th>{% endfor %}</tr></thead>
+    <tbody>{% for r in n.nearby.rows %}<tr>{% for c in r %}{% if loop.first %}<th scope="row" style="text-align:left">{{ c }}</th>{% else %}<td>{{ c }}</td>{% endif %}{% endfor %}</tr>{% endfor %}</tbody></table></div>
+    <p class="note">국토교통부 실거래가 공개시스템 ({{ n.nearby.made }} 조회) · 직거래·공공임대 단지는 뺐어요. 면적·층·연식이 달라 실제 시세와 다를 수 있고, 차익을 보장하지 않아요.</p>
   </section>
   {% endif %}
 
