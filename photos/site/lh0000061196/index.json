@@ -67,14 +67,59 @@
    "lh_tab": "단지배치도",
    "desc": "",
    "photo": false
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 공급금액 (p.4)",
+   "file": "photos/site/lh0000061196/notice-price.jpg",
+   "src": "69227281.pdf#p4",
+   "crop": "",
+   "w": 1400,
+   "h": 903,
+   "md5": "9b24d433f76c46767be25b7560932ff2",
+   "photo": false,
+   "full": false,
+   "page": 4,
+   "marked": []
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 신청일정 (p.36)",
+   "file": "photos/site/lh0000061196/notice-schedule.jpg",
+   "src": "69227281.pdf#p36",
+   "crop": "",
+   "w": 1400,
+   "h": 879,
+   "md5": "0930a2e8244d1849a4d0b9891823c45c",
+   "photo": false,
+   "full": false,
+   "page": 36,
+   "marked": []
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 신청자격 (p.1)",
+   "file": "photos/site/lh0000061196/notice-qual.jpg",
+   "src": "69227281.pdf#p1",
+   "crop": "",
+   "w": 1400,
+   "h": 879,
+   "md5": "adbfeb476367fd6980023ecedeb6e352",
+   "photo": false,
+   "full": false,
+   "page": 1,
+   "marked": []
   }
  ],
  "links": [],
  "owner": "LH",
  "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
- "updated": "2026-11-11 06:50",
+ "updated": "2026-11-13 09:22",
  "name": "안산신길2지구 B-1블록 공공분양주택(본청약)",
  "row": 58,
  "ai_hash": "673a48ae2b37e0f431c0795ac27aa1e8",
- "lh_checked": "2026-11-11"
+ "lh_checked": "2026-11-13"
 }

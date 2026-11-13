@@ -67,13 +67,58 @@
    "lh_tab": "단지배치도",
    "desc": "",
    "photo": false
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 공급금액 (p.4)",
+   "file": "photos/site/lh0000061195/notice-price.jpg",
+   "src": "69171330.pdf#p4",
+   "crop": "",
+   "w": 1400,
+   "h": 879,
+   "md5": "cbf84f668cc62f061025926c1857f57a",
+   "photo": false,
+   "full": false,
+   "page": 4,
+   "marked": []
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 신청일정 (p.27)",
+   "file": "photos/site/lh0000061195/notice-schedule.jpg",
+   "src": "69171330.pdf#p27",
+   "crop": "",
+   "w": 1400,
+   "h": 882,
+   "md5": "f190421269dcd50d24e6e849f5d28ecd",
+   "photo": false,
+   "full": false,
+   "page": 27,
+   "marked": []
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 신청자격 (p.1)",
+   "file": "photos/site/lh0000061195/notice-qual.jpg",
+   "src": "69171330.pdf#p1",
+   "crop": "",
+   "w": 1400,
+   "h": 879,
+   "md5": "9453101312cbd0905bab06c2beeb03d7",
+   "photo": false,
+   "full": false,
+   "page": 1,
+   "marked": []
   }
  ],
  "links": [],
  "owner": "LH",
  "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
- "updated": "2026-11-11 06:49",
+ "updated": "2026-11-13 09:23",
  "name": "시흥거모지구 S-1블록 공공분양주택",
  "row": 12,
- "lh_checked": "2026-11-11"
+ "lh_checked": "2026-11-13"
 }

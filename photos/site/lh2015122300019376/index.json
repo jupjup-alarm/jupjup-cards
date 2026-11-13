@@ -1,11 +1,42 @@
 {
  "key": "lh2015122300019376",
- "images": [],
+ "images": [
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 공급금액 (p.5)",
+   "file": "photos/site/lh2015122300019376/notice-price.jpg",
+   "src": "68869885.pdf#p5",
+   "crop": "",
+   "w": 1117,
+   "h": 701,
+   "md5": "93e45c1596d69640e44b5b0f0994c099",
+   "photo": false,
+   "full": false,
+   "page": 5,
+   "marked": []
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 신청자격 (p.2)",
+   "file": "photos/site/lh2015122300019376/notice-qual.jpg",
+   "src": "68869885.pdf#p2",
+   "crop": "",
+   "w": 1082,
+   "h": 701,
+   "md5": "31596896533df3ca57b2839faf81aa37",
+   "photo": false,
+   "full": false,
+   "page": 2,
+   "marked": []
+  }
+ ],
  "links": [],
  "owner": "LH",
  "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
- "updated": "2026-11-12 09:06",
+ "updated": "2026-11-13 09:23",
  "name": "2026년 청년 전세임대 1순위 입주자 수시모집",
  "row": 54,
- "lh_checked": "2026-11-12"
+ "lh_checked": "2026-11-13"
 }

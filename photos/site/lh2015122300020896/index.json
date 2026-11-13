@@ -146,13 +146,58 @@
    "lh_tab": "평면도",
    "desc": "",
    "photo": false
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 공급금액 (p.2)",
+   "file": "photos/site/lh2015122300020896/notice-price.jpg",
+   "src": "69203687.pdf#p2",
+   "crop": "",
+   "w": 1155,
+   "h": 701,
+   "md5": "a87c4f9d8b7d98b4813a811b75fd2f0e",
+   "photo": false,
+   "full": false,
+   "page": 2,
+   "marked": []
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 신청일정 (p.11)",
+   "file": "photos/site/lh2015122300020896/notice-schedule.jpg",
+   "src": "69203687.pdf#p11",
+   "crop": "",
+   "w": 1135,
+   "h": 702,
+   "md5": "d2d95b826e56061a7002bd90da93817a",
+   "photo": false,
+   "full": false,
+   "page": 11,
+   "marked": []
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 신청자격 (p.1)",
+   "file": "photos/site/lh2015122300020896/notice-qual.jpg",
+   "src": "69203687.pdf#p1",
+   "crop": "",
+   "w": 1136,
+   "h": 701,
+   "md5": "68e027c020e95baac6bd5c5c01cc85e3",
+   "photo": false,
+   "full": false,
+   "page": 1,
+   "marked": []
   }
  ],
  "links": [],
  "owner": "LH",
  "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
- "updated": "2026-11-11 06:50",
+ "updated": "2026-11-13 09:22",
  "name": "오산세교2 7단지(A-6BL) 영구임대 예비입주자(소득 150% 완화)",
  "row": 65,
- "lh_checked": "2026-11-11"
+ "lh_checked": "2026-11-13"
 }

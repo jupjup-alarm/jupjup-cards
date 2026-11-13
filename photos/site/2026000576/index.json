@@ -1,0 +1,82 @@
+{
+ "key": "2026000576",
+ "images": [
+  {
+   "cat": "birdseye",
+   "kind": "birdseye",
+   "label": "조감도 CG",
+   "file": "photos/site/2026000576/birdseye-auto-1.jpg",
+   "src": "https://xi.co.kr/Files/cmsPage/20261112_093312_946001.jpg",
+   "w": 1100,
+   "h": 545,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "overview",
+   "file": "photos/site/2026000576/overview-auto-1.jpg",
+   "src": "https://xi.co.kr/Content/static/images/intro/main_bg.png",
+   "w": 1920,
+   "h": 1000,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "상세",
+   "file": "photos/site/2026000576/location-auto-1.jpg",
+   "src": "https://xi.co.kr/Files/cmsPage/20261112_100112_573001.jpg",
+   "w": 1100,
+   "h": 1560,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "siteplan",
+   "kind": "siteplan",
+   "label": "siteplan",
+   "file": "photos/site/2026000576/siteplan-auto-1.jpg",
+   "src": "https://xi.co.kr/Content/static/images/sub/construct/administrative_bg/ex_ad_00.png",
+   "w": 580,
+   "h": 768,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "siteplan",
+   "kind": "siteplan",
+   "label": "상세",
+   "file": "photos/site/2026000576/siteplan-auto-2.jpg",
+   "src": "https://xi.co.kr/Files/cmsPage/20260917_184236_416001.jpg",
+   "w": 1100,
+   "h": 1596,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "dongho",
+   "kind": "dongho",
+   "label": "상세",
+   "file": "photos/site/2026000576/dongho-auto-1.jpg",
+   "src": "https://xi.co.kr/Files/cmsPage/20261112_084950_376001.jpg",
+   "w": 1100,
+   "h": 1457,
+   "photo": false,
+   "from": "auto"
+  }
+ ],
+ "links": [],
+ "name": "아르뮤제자이",
+ "row": 141,
+ "homepage": "https://xi.co.kr/armusee",
+ "auto_site": {
+  "date": "2026-11-13",
+  "url": "https://xi.co.kr/armusee",
+  "tries": 1,
+  "result": "6장 (birdseye 1, overview 1, siteplan 2, dongho 1, location 1)"
+ },
+ "updated": "2026-11-13 09:19"
+}

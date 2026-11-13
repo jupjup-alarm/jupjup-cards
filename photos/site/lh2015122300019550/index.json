@@ -1,11 +1,42 @@
 {
  "key": "lh2015122300019550",
- "images": [],
+ "images": [
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 공급금액 (p.4)",
+   "file": "photos/site/lh2015122300019550/notice-price.jpg",
+   "src": "68868733.pdf#p4",
+   "crop": "",
+   "w": 1089,
+   "h": 701,
+   "md5": "d9034e63da68b7d82429495f8a356459",
+   "photo": false,
+   "full": false,
+   "page": 4,
+   "marked": []
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 신청자격 (p.1)",
+   "file": "photos/site/lh2015122300019550/notice-qual.jpg",
+   "src": "68868733.pdf#p1",
+   "crop": "",
+   "w": 1088,
+   "h": 701,
+   "md5": "48f6a3eeaad1df24f18db961c74e4896",
+   "photo": false,
+   "full": false,
+   "page": 1,
+   "marked": []
+  }
+ ],
  "links": [],
  "owner": "LH",
  "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
- "updated": "2026-11-12 09:06",
+ "updated": "2026-11-13 09:23",
  "name": "2026년 신혼·신생아 전세임대Ⅰ 입주자 수시모집",
  "row": 53,
- "lh_checked": "2026-11-12"
+ "lh_checked": "2026-11-13"
 }
