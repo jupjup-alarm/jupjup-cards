@@ -1043,6 +1043,10 @@ def build(spec):
         WARN.append(f"사진: 컷 {sum(SHOT_USE.values())}개 · 서로 다른 사진 {len(SHOT_USE)}장")
         for n, k in many:
             WARN.append(f"사진 반복: {Path(str(k)).name} {n}번 — 단지 그림을 shots·pool에 더 넣을 것")
+        mood = {k: n for k, n in SHOT_USE.items() if "photos/mood/" in str(k)}
+        if mood:   # 2026-11-13 고덕 편: 외국 붉은 벽돌 건물 분위기 사진이 20프레임 중 8프레임 — 이 단지로 오해됨
+            WARN.append(f"분위기 사진: {sum(mood.values())}컷 ({', '.join(Path(str(k)).name for k in mood)}) — "
+                        "단지와 상관없는 사진. shots·pool에서 빼고 단지 그림(조감도·평면·배치·지도)으로 바꿔 다시 렌더")
     mouth = envelope(tl, total) if voiced else []
     narrator = f'<div class="narrator">{talk_svg()}</div>' if voiced and not story else ""
     tbar = ""
