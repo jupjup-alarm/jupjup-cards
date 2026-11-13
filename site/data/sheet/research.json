@@ -1,6 +1,6 @@
 {
  "tab": "청약조사",
- "dumped_at": "2026-11-13 09:17",
+ "dumped_at": "2026-11-13 23:33",
  "rows": [
   {
    "_row": 2,
@@ -26,7 +26,8 @@
    "콘텐츠 점수": "62",
    "점수 근거": "돈22/문턱6/긴급2/훅14/저장14/신뢰4 — 4번째 게시 부진(×1.1), 11/27 공고 전까지 단독 재게시 보류",
    "지도 이미지": "maps/104752c28999.png",
-   "좌표(경도,위도)": "126.9874543,37.5032964"
+   "좌표(경도,위도)": "126.9874543,37.5032964",
+   "위성사진": "photos/sat/e1224bd0da81.png"
   },
   {
    "_row": 3,
@@ -296,7 +297,8 @@
    "배치도 파일": "단지 배치도 | photos/layout-8270ff5f6db8.jpg",
    "동호배치도 후보": "없음",
    "동호배치도 파일": "없음",
-   "공식 홈페이지": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061186&ccrCnntSysDsCd=02&uppAisTpCd=05&aisTpCd=05&mi=1027"
+   "공식 홈페이지": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061186&ccrCnntSysDsCd=02&uppAisTpCd=05&aisTpCd=05&mi=1027",
+   "위성사진": "photos/sat/c5f61d402007.png"
   },
   {
    "_row": 13,
@@ -356,7 +358,8 @@
    "사진 출처·이용조건": "허용 조건 공식 조감도 미확인(래미안 공식 사이트 확인 필요)",
    "지도 이미지": "maps/dafa20418e20.png",
    "좌표(경도,위도)": "126.9935819,37.503804",
-   "사진 파일": "없음"
+   "사진 파일": "없음",
+   "위성사진": "photos/sat/1394b04e20c2.png"
   },
   {
    "_row": 15,
@@ -1170,7 +1173,8 @@
    "배치도 후보": "없음",
    "배치도 파일": "없음",
    "동호배치도 후보": "없음",
-   "동호배치도 파일": "없음"
+   "동호배치도 파일": "없음",
+   "위성사진": "photos/sat/ba33dfe57645.png"
   },
   {
    "_row": 48,
@@ -1649,7 +1653,8 @@
    "사진 출처·이용조건": "출처: LH(LH청약플러스 공고 '전경사진' — 오산세교2 A-6블록 투시도) / 이용조건: 사업주체 홍보 투시도, 출처 표기·실제와 다를 수 있음",
    "지도 이미지": "maps/d2dc82648f71.png",
    "좌표(경도,위도)": "127.0527643,37.1495164",
-   "사진 파일": "photos/c50495e5533b.jpg"
+   "사진 파일": "photos/c50495e5533b.jpg",
+   "위성사진": "photos/sat/0dc42e749249.png"
   },
   {
    "_row": 66,
@@ -1680,7 +1685,8 @@
    "배치도 후보": "없음",
    "배치도 파일": "없음",
    "동호배치도 후보": "없음",
-   "동호배치도 파일": "없음"
+   "동호배치도 파일": "없음",
+   "위성사진": "photos/sat/ca8387258430.png"
   },
   {
    "_row": 67,
@@ -1853,7 +1859,8 @@
    "동호배치도 후보": "없음",
    "동호배치도 파일": "없음",
    "공식 홈페이지": "https://arterashgm.co.kr/",
-   "홈페이지 자료": "key: pre-siheung-geomo-artera\n홈페이지: https://arterashgm.co.kr/\n자료 없음: 티저 사이트 — 조감도·단지배치·평면도 페이지 없음(이미지컷·입지 그림만) (2026-11-03)"
+   "홈페이지 자료": "key: pre-siheung-geomo-artera\n홈페이지: https://arterashgm.co.kr/\n자료 없음: 티저 사이트 — 조감도·단지배치·평면도 페이지 없음(이미지컷·입지 그림만) (2026-11-03)",
+   "위성사진": "photos/sat/b1608eaccb31.png"
   },
   {
    "_row": 73,
@@ -2050,7 +2057,8 @@
    "배치도 파일": "단지 배치도 | photos/layout-52c6ed895417.jpg",
    "동호배치도 후보": "동호배치도 | https://apply.lh.or.kr/upload/Files/upload_dec/2026/HSL/11/02/2021092845738714.jpg",
    "동호배치도 파일": "동호배치도 | photos/dongho-7be9bacf9c12.jpg",
-   "공식 홈페이지": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061200&ccrCnntSysDsCd=02&uppAisTpCd=05&aisTpCd=05&mi=1027"
+   "공식 홈페이지": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061200&ccrCnntSysDsCd=02&uppAisTpCd=05&aisTpCd=05&mi=1027",
+   "위성사진": "photos/sat/51908142976e.png"
   },
   {
    "_row": 81,
@@ -2403,7 +2411,8 @@
    "배치도 파일": "단지 배치도 | 실패: 사용할 수 없는 주소: https://apply.lh.or.kr/uplo",
    "동호배치도 후보": "없음",
    "동호배치도 파일": "없음",
-   "공식 홈페이지": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300021026&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026"
+   "공식 홈페이지": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300021026&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
+   "위성사진": "photos/sat/2ec617d9fd25.png"
   },
   {
    "_row": 96,
@@ -2435,7 +2444,8 @@
    "배치도 파일": "단지 배치도 | photos/layout-c322de70d8d6.jpg",
    "동호배치도 후보": "없음",
    "동호배치도 파일": "없음",
-   "공식 홈페이지": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300020987&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026"
+   "공식 홈페이지": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300020987&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
+   "위성사진": "photos/sat/f50a39b62735.png"
   },
   {
    "_row": 97,
@@ -2467,7 +2477,8 @@
    "배치도 파일": "단지 배치도 | photos/layout-c320334f9eb4.jpg",
    "동호배치도 후보": "없음",
    "동호배치도 파일": "없음",
-   "공식 홈페이지": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300020973&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026"
+   "공식 홈페이지": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300020973&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
+   "위성사진": "photos/sat/6cf8144e0838.png"
   },
   {
    "_row": 98,
@@ -2499,7 +2510,8 @@
    "배치도 파일": "없음",
    "동호배치도 후보": "없음",
    "동호배치도 파일": "없음",
-   "공식 홈페이지": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300020996&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026"
+   "공식 홈페이지": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300020996&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
+   "위성사진": "photos/sat/09643d8aba98.png"
   },
   {
    "_row": 99,
@@ -2565,7 +2577,8 @@
    "배치도 파일": "없음",
    "동호배치도 후보": "없음",
    "동호배치도 파일": "없음",
-   "공식 홈페이지": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300021015&ccrCnntSysDsCd=03&uppAisTpCd=05&aisTpCd=05&mi=1027"
+   "공식 홈페이지": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300021015&ccrCnntSysDsCd=03&uppAisTpCd=05&aisTpCd=05&mi=1027",
+   "위성사진": "photos/sat/b3e4dc4e409d.png"
   },
   {
    "_row": 101,
@@ -2596,7 +2609,8 @@
    "배치도 후보": "없음",
    "배치도 파일": "없음",
    "동호배치도 후보": "없음",
-   "동호배치도 파일": "없음"
+   "동호배치도 파일": "없음",
+   "위성사진": "photos/sat/418cf52f5526.png"
   },
   {
    "_row": 102,
@@ -2705,7 +2719,8 @@
    "점수 근거": "돈6/문턱6/긴급5/훅9/저장12/신뢰9 — 서울 7호선 신규 공고, 차익 기대 낮음 → 14시 연재",
    "지도 이미지": "maps/01ab25e1a776.png",
    "좌표(경도,위도)": "127.0792818,37.6002342",
-   "공식 홈페이지": "https://www.jh-raon.com"
+   "공식 홈페이지": "https://www.jh-raon.com",
+   "위성사진": "photos/sat/31360514ca5f.png"
   },
   {
    "_row": 107,
@@ -2860,7 +2875,8 @@
    "점수 근거": "돈3/문턱8/긴급2/훅5/저장4/신뢰4 — 분양가·일정 미발표(견본주택 11/13 기사 기준) → 공고 후 재평가",
    "지도 이미지": "maps/514da13bcde7.png",
    "좌표(경도,위도)": "126.7765,37.5442",
-   "공식 홈페이지": "https://www.부천대장하우스토리디센트.com"
+   "공식 홈페이지": "https://www.부천대장하우스토리디센트.com",
+   "위성사진": "photos/sat/ada501284ff2.png"
   },
   {
    "_row": 114,
@@ -2882,7 +2898,8 @@
    "콘텐츠 점수": "40",
    "점수 근거": "돈10/문턱8/긴급2/훅8/저장8/신뢰4 — 시세 30~50%(기사 기준), 금액·일정 공고 전",
    "지도 이미지": "maps/63a59c869e29.png",
-   "좌표(경도,위도)": "127.040297,37.189279"
+   "좌표(경도,위도)": "127.040297,37.189279",
+   "위성사진": "photos/sat/56e597c2e3be.png"
   },
   {
    "_row": 115,
@@ -3027,7 +3044,8 @@
    "점수 근거": "돈4/문턱5/긴급5/훅5/저장4/신뢰9 — 14차 무순위 6세대, 39㎡ 7억3,826만원으로 주변 소형보다 비쌈(차익 기대 낮음) → 미편성",
    "지도 이미지": "maps/92645e076a80.png",
    "좌표(경도,위도)": "127.0204066,37.569549",
-   "공식 홈페이지": "https://청계노르웨이숲.com"
+   "공식 홈페이지": "https://청계노르웨이숲.com",
+   "위성사진": "photos/sat/5ab7858e1531.png"
   },
   {
    "_row": 122,
@@ -3134,7 +3152,8 @@
    "점수 근거": "돈5/문턱6/긴급15/훅7/저장6/신뢰9 — 서울 노원 8세대·접수 11/12~13, 차익 기대 낮음(1988년 구축보다 비쌈), 자격 미기재 → 11시 임의공급 묶음 한 줄",
    "지도 이미지": "maps/44d56a2d4512.png",
    "좌표(경도,위도)": "127.0632603,37.6597487",
-   "공식 홈페이지": "https://www.harrington495.kr/"
+   "공식 홈페이지": "https://www.harrington495.kr/",
+   "위성사진": "photos/sat/c2cdfa02aacf.png"
   },
   {
    "_row": 127,
@@ -3158,7 +3177,8 @@
    "점수 근거": "돈11/문턱5/긴급15/훅11/저장5/신뢰9 — 내일(11/13) 하루 접수 전날, 약 6천만원 저렴(추정)·푸르지오더센트럴과 비슷 → 14시 마감형 연재·21시 묶음",
    "지도 이미지": "maps/c51019f135d9.png",
    "좌표(경도,위도)": "127.0438471,37.7421575",
-   "공식 홈페이지": "https://www.i-park.com/uijeongbucentral"
+   "공식 홈페이지": "https://www.i-park.com/uijeongbucentral",
+   "위성사진": "photos/sat/efb8059c5a74.png"
   },
   {
    "_row": 128,
@@ -3206,7 +3226,8 @@
    "지도 이미지": "maps/7b6c5e297c32.png",
    "좌표(경도,위도)": "126.7620135,37.4845469",
    "공식 홈페이지": "http://중동역다채로움더원.com",
-   "홈페이지 자료": "key: 2026910284\n홈페이지: http://중동역다채로움더원.com\n출처: 송내동 성우아파트 소규모재건축정비사업조합 분양 홈페이지\n조감도 | 낮 전경 | http://xn--2j1b9hun72mdquifbid72sy0i.com/bon/img/mimg01.jpg\n단지배치도 | | http://xn--2j1b9hun72mdquifbid72sy0i.com/bon/img/dan/01cont01.jpg\n평면도 | 54 | http://xn--2j1b9hun72mdquifbid72sy0i.com/bon/img/fam/54.jpg?v01\n평면도 | 84B | http://xn--2j1b9hun72mdquifbid72sy0i.com/bon/img/fam/84b.jpg?v01"
+   "홈페이지 자료": "key: 2026910284\n홈페이지: http://중동역다채로움더원.com\n출처: 송내동 성우아파트 소규모재건축정비사업조합 분양 홈페이지\n조감도 | 낮 전경 | http://xn--2j1b9hun72mdquifbid72sy0i.com/bon/img/mimg01.jpg\n단지배치도 | | http://xn--2j1b9hun72mdquifbid72sy0i.com/bon/img/dan/01cont01.jpg\n평면도 | 54 | http://xn--2j1b9hun72mdquifbid72sy0i.com/bon/img/fam/54.jpg?v01\n평면도 | 84B | http://xn--2j1b9hun72mdquifbid72sy0i.com/bon/img/fam/84b.jpg?v01",
+   "위성사진": "photos/sat/7577cae6522e.png"
   },
   {
    "_row": 130,
@@ -3253,7 +3274,8 @@
    "점수 근거": "돈15/문턱5/긴급10/훅10/저장5/신뢰9 — 3세대·11/16 하루, 6천~1억2천 저렴(추정)이나 1층 4억9,700만원 거래로 편차 → 11시 무순위 묶음 최애",
    "지도 이미지": "maps/70d257837a00.png",
    "좌표(경도,위도)": "127.0198815,37.0352396",
-   "공식 홈페이지": "http://평택고덕대광로제비앙모아엘가.com"
+   "공식 홈페이지": "http://평택고덕대광로제비앙모아엘가.com",
+   "위성사진": "photos/sat/8b6bb1f12f57.png"
   },
   {
    "_row": 132,
@@ -3277,7 +3299,8 @@
    "점수 근거": "돈3/문턱5/긴급10/훅4/저장4/신뢰9 — 84B 4억9,290만원이 증포동 84㎡ 실거래보다 약 1억5천 비쌈(차익 기대 낮음) → 11시 묶음 한 줄",
    "지도 이미지": "maps/f1892490200d.png",
    "좌표(경도,위도)": "127.4471115,37.2907859",
-   "공식 홈페이지": "https://xi.co.kr/irc"
+   "공식 홈페이지": "https://xi.co.kr/irc",
+   "위성사진": "photos/sat/853b1676b098.png"
   },
   {
    "_row": 133,
@@ -3301,7 +3324,8 @@
    "점수 근거": "돈12/문턱5/긴급10/훅9/저장4/신뢰9 — 1세대·최대 1억3천 저렴(추정)이나 6억5,000만원 거래도 있어 편차 큼 → 11시 묶음 한 줄",
    "지도 이미지": "maps/48c36a4465ce.png",
    "좌표(경도,위도)": "126.909355,37.413969",
-   "공식 홈페이지": "https://xi.co.kr/YYH"
+   "공식 홈페이지": "https://xi.co.kr/YYH",
+   "위성사진": "photos/sat/259f46590bcd.png"
   },
   {
    "_row": 134,
@@ -3324,7 +3348,8 @@
    "콘텐츠 점수": "70",
    "점수 근거": "뎘22/문턱8/긴급5/훅14/저장12/신뢰9 — 월 5만원대 500호, 스레드 ×9.07, 영구임대 계층 한정 → 11/13 13시 이야기형 릴스",
    "지도 이미지": "maps/a179bb2d5677.png",
-   "좌표(경도,위도)": "127.0349395,37.2920515"
+   "좌표(경도,위도)": "127.0349395,37.2920515",
+   "위성사진": "photos/sat/7918bf76bb82.png"
   },
   {
    "_row": 135,
@@ -3347,7 +3372,8 @@
    "콘텐츠 점수": "35",
    "점수 근거": "돈6/문턱6/긴급5/훅5/저장5/신뢰8 — 신혼·한부모 30호, 비교 시세 없음 → 19시30분 신혼 3곳 묶음 한 줄",
    "지도 이미지": "maps/6529d155ce69.png",
-   "좌표(경도,위도)": "126.6974839,37.5105798"
+   "좌표(경도,위도)": "126.6974839,37.5105798",
+   "위성사진": "photos/sat/6389507ee60c.png"
   },
   {
    "_row": 136,
@@ -3428,7 +3454,8 @@
    "상태": "후보",
    "지도 이미지": "maps/a1915276b65b.png",
    "좌표(경도,위도)": "127.244105,37.4214185",
-   "공식 홈페이지": "http://jeil-foredu.co.kr"
+   "공식 홈페이지": "http://jeil-foredu.co.kr",
+   "위성사진": "photos/sat/0a0133f59d3f.png"
   },
   {
    "_row": 140,
@@ -3448,7 +3475,8 @@
    "상태": "후보",
    "지도 이미지": "maps/ed00a6260896.png",
    "좌표(경도,위도)": "127.0448267,37.7419067",
-   "공식 홈페이지": "https://feliztower-yangwoo.co.kr"
+   "공식 홈페이지": "https://feliztower-yangwoo.co.kr",
+   "위성사진": "photos/sat/f2befcfd64a3.png"
   },
   {
    "_row": 141,
@@ -3468,7 +3496,8 @@
    "상태": "후보",
    "지도 이미지": "maps/43ff52d9eb7b.png",
    "좌표(경도,위도)": "126.85007,37.3172006",
-   "공식 홈페이지": "https://xi.co.kr/armusee"
+   "공식 홈페이지": "https://xi.co.kr/armusee",
+   "위성사진": "photos/sat/628f1ac403a0.png"
   },
   {
    "_row": 142,
