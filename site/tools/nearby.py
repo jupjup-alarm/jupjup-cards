@@ -14,7 +14,6 @@ import json
 import os
 import re
 import statistics as st
-import subprocess
 import sys
 from pathlib import Path
 
@@ -74,19 +73,45 @@ def our_terms(r):
     return {"rental": False, "area": float(m.group(1)), "price": won(m.group(2)), "label": m.group(0)[:30]}
 
 
+_CACHE = {}
+
+
 def query(kind, lawd, dong, area, env):
-    cmd = ["python3", str(TOOL), kind, lawd, "--months", "6", "--tol", "8"]
-    if area:
-        cmd += ["--area", str(area)]
-    if dong:
-        cmd += ["--dong", dong]
-    if kind == "rent":
-        cmd += ["--monthly-only"]
-    r = subprocess.run(cmd, capture_output=True, text=True, timeout=180, env={**os.environ, "CHEONGYAK_ENV": env})
-    try:
-        return json.loads(r.stdout)
-    except ValueError:
-        raise RuntimeError((r.stderr or r.stdout)[:200])
+    """realprice.py를 프로세스 안에서 불러 (시군구·월) 응답을 캐시 — 같은 시군구 공고가 여럿이어도 API는 월마다 한 번.
+    (2026-11-13 첫 실행이 25분 시간 초과: 공고마다 따로 6개월×2번 호출하던 것)"""
+    sys.path.insert(0, str(TOOL.parent))
+    import realprice as rp
+    os.environ["CHEONGYAK_ENV"] = env
+    k = rp.key()
+    deals = []
+    mons = rp.months(6)
+    for ym in mons:
+        ck = (kind, lawd, ym)
+        if ck not in _CACHE:
+            try:
+                _CACHE[ck] = rp.fetch(kind, lawd, ym, k)
+            except BaseException as e:  # noqa: BLE001  (realprice는 SystemExit로 알림)
+                raise RuntimeError(str(e)[:150])
+        for it in _CACHE[ck]:
+            r = rp.norm(kind, it)
+            if not r:
+                continue
+            if kind == "trade" and "직거래" in (r.get("via") or ""):
+                continue
+            if kind != "trade" and (rp.PUBLIC.search(r["name"] or "") or not r.get("monthly")):
+                continue
+            if dong and r["dong"] != dong:
+                continue
+            if area and (r["area"] is None or abs(r["area"] - area) > 8):
+                continue
+            deals.append(r)
+    deals.sort(key=lambda r: r["date"], reverse=True)
+    by = {}
+    for r in deals:
+        g = by.setdefault((r["name"], r["dong"]), {"name": r["name"], "dong": r["dong"], "built": r["built"], "n": 0, "latest": r})
+        g["n"] += 1
+    return {"source": "국토교통부 실거래가 공개시스템 (공공데이터포털 API)", "months": mons[::-1], "count": len(deals),
+            "complexes": sorted(by.values(), key=lambda g: -g["n"])[:20], "deals": deals[:200]}
 
 
 def summarize(res, ours):
@@ -115,7 +140,7 @@ def summarize(res, ours):
         stats = {"n": len(ppas), "ppa_med": round(st.median(ppas)) if ppas else None,
                  "price_med": st.median(prices) if prices else None,
                  "top": {k: top.get(k) for k in ("name", "area", "price", "date", "built")} if top else None,
-                 "built_med": round(st.median([g["built"] for g in rows if g.get("built")])) if any(g.get("built") for g in rows) else None}
+                 "built_med": round(st.median([int(g["built"]) for g in rows if str(g.get("built") or "").isdigit()])) if any(str(g.get("built") or "").isdigit() for g in rows) else None}
     return rows[:8], stats
 
 
