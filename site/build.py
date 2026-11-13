@@ -1108,7 +1108,11 @@ def site_assets(n):
             # 위 조건(birdseye)에 안 걸렸음. ⓪ 검수를 통과(ok: true)한 사진만 — 단지 전경(overview) 먼저, 없으면 커뮤니티 투시도.
             okp = [im for im in ims if im.get("ok") is True and im.get("photo") and im["w"] >= 1000 and im["w"] >= im["h"] * 1.05]
             alt = next((im for c in ("overview", "community") for im in okp if im["cat"] == c), None)
-            if not alt:   # 2026-11-13 홍보 사진이 없으면 위성사진(이미 지어진 단지의 실제 모습)
+            com = next((im for im in ims if im["cat"] == "commons" and im["w"] >= 1000), None)
+            if not alt and com:   # 공개 라이선스 실사(위키미디어 커먼즈) — 작가·라이선스 표기 그대로
+                n["photo"] = {"image": com["file"], "credit": com.get("credit", "위키미디어 커먼즈"),
+                              "alt": f"{n['title']} 사진", "pos": "center 50%"}
+            if not alt and not com:   # 2026-11-13 홍보 사진이 없으면 위성사진(이미 지어진 단지의 실제 모습)
                 sat = next((im for im in ims if im["cat"] == "aerial"), None)
                 if sat:
                     n["photo"] = {"image": sat["file"], "credit": sat.get("credit", "위성사진 © NAVER Corp."),

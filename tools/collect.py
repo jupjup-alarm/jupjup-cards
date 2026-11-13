@@ -454,6 +454,17 @@ def main():
             if not skip and hp and not lh_url and need_site(idx, hp) and sites < a.max_sites:
                 note.append("홈페이지 " + str(auto_site(key, hp, idx)) + "장")
                 sites += 1
+        if not skip and usable(idx) == 0 and idx.get("commons_checked") != r.get("단지명", ""):
+            # 2026-11-13 사용자 결정: 사진 없는 단지는 공개 라이선스(상업 이용·변경 허용) 실사를 위키미디어 커먼즈에서 찾아봄
+            try:
+                import official_photos
+                save_idx(key, idx)
+                res = official_photos.run(key, r.get("단지명", ""))
+                idx = load_idx(key)
+                if res.get("commons"):
+                    note.append(f"커먼즈 {len(res['commons'])}")
+            except Exception as e:  # noqa: BLE001
+                note.append(f"커먼즈 실패 {str(e)[:40]}")
         if add_satellite(r, idx):
             note.append("위성 1")
         n_sheet = add_sheet_files(r, key, idx)
