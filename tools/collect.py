@@ -376,7 +376,7 @@ def need_site(idx, hp):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--only", nargs="*", type=int, help="'청약조사' 행 번호만")
-    ap.add_argument("--max-sites", type=int, default=6)
+    ap.add_argument("--max-sites", type=int, default=12)   # 2026-11-13 6→12 (사진 없는 공고 줄이기)
     ap.add_argument("--max-lh", type=int, default=12)
     ap.add_argument("--zero-only", action="store_true", help="쓸 그림이 0장인 단지만 (⑦ 직전 재수집, 2026-11-11)")
     a = ap.parse_args()

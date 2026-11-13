@@ -190,7 +190,10 @@ def render(L, photo=None, credit=None):
     th = dict(THEME["줍줍알람"])  # 시리즈 색 대신 남색 하나 (사용자 결정)
     if photo:
         im = photo_bg(photo["image"], photo.get("pos"))
-        im = shade(im, [(0, .5), (.14, .35), (.26, .66), (.78, .74), (1, .82)])  # 가운데 글자 아래가 어둡게
+        if photo.get("map"):   # 지도 배경(2026-11-13): 회색으로 뜨지 않게 남색으로 고르게 덮음
+            im = shade(im, [(0, .80), (1, .84)], color=(15, 30, 61))
+        else:
+            im = shade(im, [(0, .5), (.14, .35), (.26, .66), (.78, .74), (1, .82)])  # 가운데 글자 아래가 어둡게
         th = dict(THEME["줍줍알람"], sub="#E6EAF1")
     else:
         im = Image.new("RGB", (W, H), th["bg"])

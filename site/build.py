@@ -950,8 +950,11 @@ def og_make(n, dst, has_photo):
     import og as OG
     lines = list(og_lines(n))
     ph = n.get("photo") if has_photo else None
+    if not ph and n.get("map") and (REPO / n["map"]).exists():
+        # 2026-11-13 사용자 결정: 단지 그림이 없는 공고는 남색 단색 대신 그 단지 위치 지도(네이버)를 배경으로
+        ph = {"image": n["map"], "pos": "center 50%", "credit": "지도 © NAVER Corp.", "map": True}
     src = (REPO / ph["image"]) if ph else None
-    key = json.dumps({"v": "B9-fit", "lines": lines, "photo": ph and [ph["image"], ph.get("pos"), ph.get("credit"), src.stat().st_mtime]}, ensure_ascii=False)
+    key = json.dumps({"v": "B9-fit", "lines": lines, "photo": ph and [ph["image"], ph.get("pos"), ph.get("credit"), src.stat().st_mtime, ph.get("map")]}, ensure_ascii=False)
     ver = hashlib.sha1(key.encode()).hexdigest()[:8]
     tag = dst.with_suffix(".key")
     if dst.exists() and tag.exists() and tag.read_text(encoding="utf-8") == key:
