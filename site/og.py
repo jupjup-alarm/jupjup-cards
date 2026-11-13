@@ -221,9 +221,20 @@ def render(L, photo=None, credit=None):
         l1 = [(head or (place(loc) + " " + kind), "#FFFFFF")]
         l2 = [((rows[0][0] + " ") if rows[0][0] else "", "#FFFFFF"), (rows[0][1], th["hl"])]
         sub = small
+    wide = lambda z: max(sum(tw(dr, s, bhs(z)) for s, _ in ln) for ln in (l1, l2))
     sz = 96
-    while sz > 60 and max(sum(tw(dr, s, bhs(sz)) for s, _ in ln) for ln in (l1, l2)) > maxw:
+    while sz > 60 and wide(sz) > maxw:
         sz -= 4
+    if wide(sz) > maxw:   # 2026-11-13 "글이 길면 잘림": 괄호 설명은 작은 줄로 내리고, 그래도 넘치면 더 줄임
+        m = re.search(r"\s*\(([^()]*)\)\s*$", l2[-1][0])
+        if m:
+            l2[-1] = (l2[-1][0][:m.start()], l2[-1][1])
+            sub = sub or m.group(1)
+            sz = 96
+            while sz > 60 and wide(sz) > maxw:
+                sz -= 4
+        while sz > 40 and wide(sz) > maxw:
+            sz -= 2
     fs = fit(dr, sub, lambda s: noto(s, "Medium"), 34, maxw, 26)
     # 글자 묶음(칩~작은 줄)을 세로 가운데에 (사용자 요청 2026-10-29 "제목이 아래로 치우침")
     sub_h = 62 if sub else 0                         # 작은 줄이 없으면(훅만) 그만큼 묶음이 작아짐

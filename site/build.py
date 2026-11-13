@@ -951,7 +951,7 @@ def og_make(n, dst, has_photo):
     lines = list(og_lines(n))
     ph = n.get("photo") if has_photo else None
     src = (REPO / ph["image"]) if ph else None
-    key = json.dumps({"v": "B8-pretendard", "lines": lines, "photo": ph and [ph["image"], ph.get("pos"), ph.get("credit"), src.stat().st_mtime]}, ensure_ascii=False)
+    key = json.dumps({"v": "B9-fit", "lines": lines, "photo": ph and [ph["image"], ph.get("pos"), ph.get("credit"), src.stat().st_mtime]}, ensure_ascii=False)
     ver = hashlib.sha1(key.encode()).hexdigest()[:8]
     tag = dst.with_suffix(".key")
     if dst.exists() and tag.exists() and tag.read_text(encoding="utf-8") == key:
@@ -1100,6 +1100,15 @@ def site_assets(n):
         if big:
             n["photo"] = {"image": big["file"], "credit": f"이미지: {owner} 조감도 · 실제와 다를 수 있음",
                           "alt": f"{n['title']} 조감도", "pos": "center 55%"}
+        else:
+            # 2026-11-13 "오늘 마감 공고에 실사가 없는 게 많음": 분양 홈페이지 수집기는 조감도를 'overview'로 분류해서
+            # 위 조건(birdseye)에 안 걸렸음. ⓪ 검수를 통과(ok: true)한 사진만 — 단지 전경(overview) 먼저, 없으면 커뮤니티 투시도.
+            okp = [im for im in ims if im.get("ok") is True and im.get("photo") and im["w"] >= 1000 and im["w"] >= im["h"] * 1.05]
+            alt = next((im for c in ("overview", "community") for im in okp if im["cat"] == c), None)
+            if alt:
+                word = "조감도" if alt["cat"] == "overview" else "투시도"
+                n["photo"] = {"image": alt["file"], "credit": f"이미지: {owner if '홈페이지' in owner else owner + ' 분양 홈페이지'} {word} · 실제와 다를 수 있음",
+                              "alt": f"{n['title']} {word}", "pos": "center 50%"}
     if not n.get("plans"):
         n["plans"] = [{"type": (im["label"] if im["label"] and im["label"] != im["cat"] else f"평면 {i}"), "image": im["file"], "alt": f"{n['title']} {im['label']} 평면도"}
                       for i, im in enumerate((im for im in ims if im["cat"] == "plan"), 1)][:8]
