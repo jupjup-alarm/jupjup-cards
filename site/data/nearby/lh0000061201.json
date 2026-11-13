@@ -1,0 +1,30 @@
+{
+ "key": "lh0000061201",
+ "name": "평택·안성 10년 공공임대(리츠) 예비입주자 — 통장·소득·자산 무관",
+ "made": "2026-11-13T19:47",
+ "kind": "rent",
+ "lawd": "경기 안성시",
+ "scope": "안성시",
+ "dong": null,
+ "months": [
+  "202606",
+  "202607",
+  "202608",
+  "202609",
+  "202610",
+  "202611"
+ ],
+ "ours": {
+  "rental": true,
+  "deposit": 65850000,
+  "monthly": 543070,
+  "area": null
+ },
+ "stats": {
+  "n": 0,
+  "monthly_med": null,
+  "deposit_med": null
+ },
+ "comps": [],
+ "source": "국토교통부 실거래가 공개시스템 (공공데이터포털 API)"
+}
