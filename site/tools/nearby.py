@@ -190,6 +190,10 @@ def main():
             log.append(f"{name[:20]}: 조회 실패 {str(e)[:80]}")
             continue
         comps, stats = summarize(res, ours)
+        if not stats.get("n"):
+            f.unlink(missing_ok=True)       # 0건은 저장하지 않음 — 다음 실행에서 다시 시도
+            log.append(f"{name[:20]}: {scope} 0건 (원자료 {res.get('raw')})")
+            continue
         json.dump({"key": key, "name": name, "made": dt.datetime.now().isoformat(timespec="minutes"), "kind": kind,
                    "lawd": lawd, "scope": scope, "dong": dong, "months": res.get("months"), "ours": ours,
                    "stats": stats, "comps": comps, "source": res.get("source")},
