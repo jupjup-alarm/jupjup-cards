@@ -110,7 +110,10 @@ def query(kind, lawd, dong, area, env):
     for r in deals:
         g = by.setdefault((r["name"], r["dong"]), {"name": r["name"], "dong": r["dong"], "built": r["built"], "n": 0, "latest": r})
         g["n"] += 1
-    return {"source": "국토교통부 실거래가 공개시스템 (공공데이터포털 API)", "months": mons[::-1], "count": len(deals),
+    raw = sum(len(_CACHE.get((kind, lawd, ym), [])) for ym in mons)
+    if not deals:
+        print(f"  [진단] {kind} {lawd} dong={dong} area={area} 원자료 {raw}건 → 조건 맞는 0건", file=sys.stderr)
+    return {"source": "국토교통부 실거래가 공개시스템 (공공데이터포털 API)", "months": mons[::-1], "count": len(deals), "raw": raw,
             "complexes": sorted(by.values(), key=lambda g: -g["n"])[:20], "deals": deals[:200]}
 
 
