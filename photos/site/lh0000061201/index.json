@@ -4,18 +4,23 @@
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "조감도",
+   "label": "A-10 단지 조감도",
    "file": "photos/0b4e39c91123.jpg",
    "src": "sheet:사진 파일",
    "w": 1296,
    "h": 888,
    "photo": true,
-   "from": "sheet"
+   "from": "sheet",
+   "checked": "2026-11-14",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "평택고덕AB-10(공임리츠) Ab-10 단지조감도",
+   "label": "A-10 단지 조감도",
    "file": "photos/site/lh0000061201/birdseye-b3.jpg",
    "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=69271297",
    "crop": "",
@@ -25,12 +30,17 @@
    "block": "평택고덕AB-10(공임리츠) Ab-10",
    "lh_tab": "단지조감도",
    "desc": "평택고덕A-10블록 단지조감도입니다.",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-14",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "평택고덕국제화계획 Aab1(공임리츠) A-1 단지조감도",
+   "label": "A-1 단지 조감도",
    "file": "photos/site/lh0000061201/birdseye-b5.jpg",
    "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=69271327",
    "crop": "",
@@ -40,12 +50,17 @@
    "block": "평택고덕국제화계획 Aab1(공임리츠) A-1",
    "lh_tab": "단지조감도",
    "desc": "평택고덕A-1블록 단지조감도입니다.",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-14",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "location",
    "kind": "입지",
-   "label": "평택고덕AB-10(공임리츠) Ab-10 지역위치도",
+   "label": "지역 조감도",
    "file": "photos/site/lh0000061201/location-b3.jpg",
    "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=69271298",
    "crop": "",
@@ -55,7 +70,12 @@
    "block": "평택고덕AB-10(공임리츠) Ab-10",
    "lh_tab": "지역위치도",
    "desc": "평택고덕A-10블록 지역위치도입니다.",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-14",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "siteplan",
@@ -66,23 +86,33 @@
    "w": 1228,
    "h": 830,
    "photo": false,
-   "from": "sheet"
+   "from": "sheet",
+   "checked": "2026-11-14",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "siteplan",
    "kind": "단지배치도",
-   "label": "단지 배치도",
+   "label": "B-6 단지 배치도",
    "file": "photos/layout-56a7568c89a8.jpg",
    "src": "sheet:배치도 파일",
    "w": 761,
    "h": 770,
    "photo": false,
-   "from": "sheet"
+   "from": "sheet",
+   "checked": "2026-11-14",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "siteplan",
    "kind": "단지배치도",
-   "label": "안성아양B-6(공임리츠) B-6 단지배치도",
+   "label": "B-6 단지 배치도",
    "file": "photos/site/lh0000061201/siteplan-b4.jpg",
    "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=69271492",
    "crop": "",
@@ -92,7 +122,12 @@
    "block": "안성아양B-6(공임리츠) B-6",
    "lh_tab": "단지배치도",
    "desc": "안성아양B-6블록 단지배치도입니다.",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-14",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "notice",
@@ -142,7 +177,7 @@
   {
    "cat": "commons",
    "kind": "실사",
-   "label": "Pyeongtaek-godeok IC 20191207 104104.jpg",
+   "label": "고덕IC 고속도로",
    "file": "photos/site/lh0000061201/commons-1.jpg",
    "src": "https://commons.wikimedia.org/wiki/File:Pyeongtaek-godeok_IC_20191207_104104.jpg",
    "w": 1920,
@@ -152,12 +187,16 @@
    "from": "commons",
    "license": "CC BY-SA 4.0",
    "credit": "사진: 밝은소년 · CC BY-SA 4.0 (위키미디어 커먼즈)",
-   "md5": "f1d9deb476b27aa7d74a4ab209a1d3b5"
+   "md5": "f1d9deb476b27aa7d74a4ab209a1d3b5",
+   "checked": "2026-11-14",
+   "ok": false,
+   "name_shown": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "commons",
    "kind": "실사",
-   "label": "Pyeongtaek-godeok IC 20191207 104142.jpg",
+   "label": "고덕IC 고속도로",
    "file": "photos/site/lh0000061201/commons-2.jpg",
    "src": "https://commons.wikimedia.org/wiki/File:Pyeongtaek-godeok_IC_20191207_104142.jpg",
    "w": 1920,
@@ -167,12 +206,16 @@
    "from": "commons",
    "license": "CC BY-SA 4.0",
    "credit": "사진: 밝은소년 · CC BY-SA 4.0 (위키미디어 커먼즈)",
-   "md5": "d76641f8ae1cc3e3b5e294645145b03d"
+   "md5": "d76641f8ae1cc3e3b5e294645145b03d",
+   "checked": "2026-11-14",
+   "ok": false,
+   "name_shown": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "commons",
    "kind": "실사",
-   "label": "Pyeongtaek-godeok IC 20191207 104213.jpg",
+   "label": "고덕IC 고속도로",
    "file": "photos/site/lh0000061201/commons-3.jpg",
    "src": "https://commons.wikimedia.org/wiki/File:Pyeongtaek-godeok_IC_20191207_104213.jpg",
    "w": 1920,
@@ -182,12 +225,16 @@
    "from": "commons",
    "license": "CC BY-SA 4.0",
    "credit": "사진: 밝은소년 · CC BY-SA 4.0 (위키미디어 커먼즈)",
-   "md5": "363fc3d90672c126145ce78fe1b1281b"
+   "md5": "363fc3d90672c126145ce78fe1b1281b",
+   "checked": "2026-11-14",
+   "ok": false,
+   "name_shown": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "commons",
    "kind": "실사",
-   "label": "Pyeongtaek-godeok IC 20191207 104219.jpg",
+   "label": "고덕IC 고속도로",
    "file": "photos/site/lh0000061201/commons-4.jpg",
    "src": "https://commons.wikimedia.org/wiki/File:Pyeongtaek-godeok_IC_20191207_104219.jpg",
    "w": 1920,
@@ -197,7 +244,11 @@
    "from": "commons",
    "license": "CC BY-SA 4.0",
    "credit": "사진: 밝은소년 · CC BY-SA 4.0 (위키미디어 커먼즈)",
-   "md5": "d859e3baf899aaa3cfd9082fb4e70555"
+   "md5": "d859e3baf899aaa3cfd9082fb4e70555",
+   "checked": "2026-11-14",
+   "ok": false,
+   "name_shown": false,
+   "checked_by": "정기 작업"
   }
  ],
  "links": [],

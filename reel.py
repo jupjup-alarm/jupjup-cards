@@ -1053,7 +1053,7 @@ def build(spec):
     if spec.get("title_bar"):   # 템포형: 영상 내내 맨 위에 고정되는 제목 (2026-11-03, 주비서·양집사·베리스식)
         tl_ = str(spec["title_bar"]).split("\n")[:2]
         tbar = ('<div class="tbar">' + "".join(
-            f'<div class="tbl"{f" style=\"color:{th["hl"]}\"" if k == len(tl_) - 1 and len(tl_) > 1 else ""}>{unit(esc(x))}</div>'
+            '<div class="tbl"' + (' style="color:' + th["hl"] + '"' if k == len(tl_) - 1 and len(tl_) > 1 else "") + f'>{unit(esc(x))}</div>'
             for k, x in enumerate(tl_)) + '</div>')
     if story:
         tbar = ""   # 이야기형은 맨 위 고정 제목 없음 (답을 미리 보여주지 않게)

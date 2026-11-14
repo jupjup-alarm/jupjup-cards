@@ -47,37 +47,52 @@
    "full": false
   },
   {
-   "cat": "overview",
+   "cat": "location",
    "kind": "overview",
-   "label": "overview",
+   "label": "고덕신도시 전경",
    "file": "photos/site/2026940250/overview-auto-1-2.jpg",
    "src": "https://www.arteragd.co.kr/images/img_main_dbg.jpg",
    "w": 1920,
    "h": 1000,
    "photo": true,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-14",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
-   "cat": "overview",
+   "cat": "location",
    "kind": "overview",
-   "label": "overview",
+   "label": "주변 위치도",
    "file": "photos/site/2026940250/overview-auto-2-2.jpg",
    "src": "https://www.arteragd.co.kr/images/img_main1_eimg.png",
    "w": 553,
    "h": 423,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-14",
+   "ok": true,
+   "name_shown": true,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
-   "cat": "overview",
+   "cat": "birdseye",
    "kind": "overview",
-   "label": "overview",
+   "label": "단지 투시도",
    "file": "photos/site/2026940250/overview-auto-3-2.jpg",
    "src": "https://www.arteragd.co.kr/images/img_main1_visual.jpg?1",
    "w": 1920,
    "h": 1000,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-14",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "location",
@@ -88,7 +103,12 @@
    "w": 942,
    "h": 2400,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-14",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "location",
@@ -99,7 +119,12 @@
    "w": 1100,
    "h": 1936,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-14",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "community",
@@ -110,7 +135,12 @@
    "w": 935,
    "h": 2400,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-14",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "interior",
@@ -121,7 +151,12 @@
    "w": 226,
    "h": 2400,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-14",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "interior",
@@ -132,7 +167,12 @@
    "w": 224,
    "h": 2400,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-14",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "interior",
@@ -143,7 +183,12 @@
    "w": 208,
    "h": 2400,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-14",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "interior",
@@ -154,7 +199,12 @@
    "w": 213,
    "h": 2400,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-14",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "interior",
@@ -165,84 +215,124 @@
    "w": 224,
    "h": 2400,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-14",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "siteplan",
    "kind": "siteplan",
-   "label": "siteplan",
+   "label": "단지 배치도",
    "file": "photos/site/2026940250/siteplan-auto-1.jpg",
    "src": "https://www.arteragd.co.kr/images/img_complex01.jpg?3",
    "w": 1100,
    "h": 1087,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-14",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
-   "cat": "siteplan",
+   "cat": "dongho",
    "kind": "siteplan",
-   "label": "siteplan",
+   "label": "동호 배치표",
    "file": "photos/site/2026940250/siteplan-auto-2.jpg",
    "src": "https://www.arteragd.co.kr/images/img_complex02.jpg?1",
    "w": 1100,
    "h": 754,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-14",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
    "kind": "plan",
-   "label": "plan",
+   "label": "74A 평면도",
    "file": "photos/site/2026940250/plan-auto-1.jpg",
    "src": "https://www.arteragd.co.kr/images/img_unit01.jpg?1",
    "w": 1100,
    "h": 1319,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-14",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
    "kind": "plan",
-   "label": "plan",
+   "label": "74B 평면도",
    "file": "photos/site/2026940250/plan-auto-2.jpg",
    "src": "https://www.arteragd.co.kr/images/img_unit02.jpg?1",
    "w": 1100,
    "h": 1319,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-14",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
    "kind": "plan",
-   "label": "plan",
+   "label": "84A 평면도",
    "file": "photos/site/2026940250/plan-auto-3.jpg",
    "src": "https://www.arteragd.co.kr/images/img_unit03.jpg?1",
    "w": 1100,
    "h": 1319,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-14",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
    "kind": "plan",
-   "label": "plan",
+   "label": "84B 평면도",
    "file": "photos/site/2026940250/plan-auto-4.jpg",
    "src": "https://www.arteragd.co.kr/images/img_unit04.jpg?1",
    "w": 1100,
    "h": 1319,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-14",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
    "kind": "plan",
-   "label": "plan",
+   "label": "84C 평면도",
    "file": "photos/site/2026940250/plan-auto-5.jpg",
    "src": "https://www.arteragd.co.kr/images/img_unit05.jpg?3",
    "w": 1100,
    "h": 1319,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-14",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   }
  ],
  "links": [],

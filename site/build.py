@@ -1195,6 +1195,9 @@ def og_card(n, dst):
     tag.write_text(key, encoding="utf-8")
 
 
+UNREVIEWED_SRC = {"auto", "commons", "pamphlet"}   # 검수(ok: true) 전에는 안 쓰는 수집 출처 (2026-11-14)
+
+
 def site_assets(n):
     """분양 홈페이지 자료 (photos/site/{key}/index.json — ① 조사 담당이 고른 것을 tools/site_photos.py로 받은 것, 2026-11-02).
     공고 json에 photo·plans·layouts가 없으면 여기서 채우고, 커뮤니티·인테리어·조감도는 '단지 둘러보기' 갤러리, E모델하우스·VR은 링크로."""
@@ -1206,10 +1209,18 @@ def site_assets(n):
     except ValueError:
         return None
     # ⓪ 검수에서 못 쓴다고 한 그림(ok: false — 무늬·로고·남의 사진 같은 홍보용 스톡)은 빼기 (2026-11-11)
-    ims = [im for im in idx.get("images", []) if (REPO / im["file"]).exists() and im.get("ok", True) is not False]
-    # 2026-11-14: ⓪ 검수를 건너뛴 날(ok 없음)엔 ⑦이 contact.jpg를 보고 고른 그림만 — 공고 json "site_pick": [파일 경로…] ([]면 하나도 안 씀)
+    # 2026-11-14 사용자 결정: 검수 안 된 그림은 기본으로 안 씀 — 홈페이지 자동 수집(auto)·위키미디어(commons)·팸플릿은
+    # 다른 단지 그림·스톡 사진이 섞여 있어서 ⓪ 검수(ok: true)를 통과해야 씀. 시트 사진(sheet)·LH 공고 탭 그림·
+    # ① 조사가 고른 홈페이지 그림(from 없음)은 검수 전에도 씀. ok: false는 언제나 뺌.
+    def usable(im):
+        if im.get("checked") or "ok" in im:
+            return im.get("ok") is True
+        return (im.get("from") or "") not in UNREVIEWED_SRC
+    pick = set(n.get("site_pick") or [])
+    ims = [im for im in idx.get("images", []) if (REPO / im["file"]).exists() and (usable(im) or im["file"] in pick)]
+    # 2026-11-14: 공고 json "site_pick": [파일 경로…]가 있으면 그 그림만 (⑦이 접촉 시트를 보고 고른 것, []면 하나도 안 씀)
     if "site_pick" in n:
-        ims = [im for im in ims if im["file"] in set(n["site_pick"])]
+        ims = [im for im in ims if im["file"] in pick]
     if not n.get("image_credit_owner"):
         n["image_credit_owner"] = idx.get("owner") or "분양 홈페이지"
     owner = n["image_credit_owner"]

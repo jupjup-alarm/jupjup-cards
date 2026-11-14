@@ -26,7 +26,12 @@
    "w": 1920,
    "h": 1000,
    "photo": true,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-14",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "overview",
@@ -37,7 +42,12 @@
    "w": 1920,
    "h": 1000,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-14",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "overview",
@@ -48,7 +58,12 @@
    "w": 1920,
    "h": 1000,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-14",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "location",
@@ -75,29 +90,44 @@
    "w": 1453,
    "h": 1452,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-14",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "location",
    "kind": "location",
-   "label": "location",
+   "label": "광역 위치도",
    "file": "photos/site/2026000553/location-auto-2.jpg",
    "src": "https://feliztower-yangwoo.co.kr/img/location_map.jpg",
    "w": 1920,
    "h": 1000,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-14",
+   "ok": true,
+   "name_shown": true,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "location",
    "kind": "location",
-   "label": "지역도",
+   "label": "광역 위치도",
    "file": "photos/site/2026000553/location-auto-3.jpg",
    "src": "https://feliztower-yangwoo.co.kr/sub/location_map_1107.jpg",
    "w": 2400,
    "h": 896,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-14",
+   "ok": true,
+   "name_shown": true,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "community",
@@ -212,26 +242,36 @@
    "full": false
   },
   {
-   "cat": "siteplan",
+   "cat": "birdseye",
    "kind": "siteplan",
-   "label": "siteplan",
+   "label": "단지 낮 조감도",
    "file": "photos/site/2026000553/siteplan-auto-1.jpg",
    "src": "https://feliztower-yangwoo.co.kr/img/complex_bg2.jpg",
    "w": 960,
    "h": 850,
    "photo": true,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-14",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
-   "cat": "siteplan",
+   "cat": "birdseye",
    "kind": "siteplan",
-   "label": "siteplan",
+   "label": "단지·도시 전경 조감도",
    "file": "photos/site/2026000553/siteplan-auto-2.jpg",
    "src": "https://feliztower-yangwoo.co.kr/img/complex_bg.jpg",
    "w": 1920,
    "h": 1000,
    "photo": true,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-14",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "dongho",
@@ -258,7 +298,12 @@
    "w": 280,
    "h": 2400,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-14",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
@@ -325,15 +370,20 @@
    "full": false
   },
   {
-   "cat": "plan",
+   "cat": "interior",
    "kind": "plan",
-   "label": "plan",
+   "label": "라운지 연출 사진",
    "file": "photos/site/2026000553/plan-auto-1.jpg",
    "src": "https://feliztower-yangwoo.co.kr/img/unit_bg.jpg",
    "w": 1920,
    "h": 1000,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-14",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
@@ -344,7 +394,12 @@
    "w": 1920,
    "h": 1000,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-14",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   }
  ],
  "links": [

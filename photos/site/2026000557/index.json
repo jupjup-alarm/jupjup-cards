@@ -18,26 +18,36 @@
    "full": true
   },
   {
-   "cat": "overview",
+   "cat": "birdseye",
    "kind": "overview",
-   "label": "overview",
+   "label": "단지 낮 조감도",
    "file": "photos/site/2026000557/overview-auto-1.jpg",
    "src": "http://jeil-foredu.co.kr/img/main.jpg",
    "w": 1920,
    "h": 1000,
    "photo": true,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-14",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
-   "cat": "overview",
+   "cat": "birdseye",
    "kind": "overview",
-   "label": "overview",
+   "label": "단지 낮 조감도",
    "file": "photos/site/2026000557/overview-auto-2.jpg",
    "src": "http://jeil-foredu.co.kr/sub/planning.jpg",
    "w": 1100,
    "h": 614,
    "photo": true,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-14",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "overview",
@@ -48,18 +58,28 @@
    "w": 1920,
    "h": 1000,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-14",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "location",
    "kind": "location",
-   "label": "location",
+   "label": "광역 위치도",
    "file": "photos/site/2026000557/location-auto-1.jpg",
    "src": "http://jeil-foredu.co.kr/img/location_map.jpg",
    "w": 2000,
    "h": 1310,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-14",
+   "ok": true,
+   "name_shown": true,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "location",
@@ -70,18 +90,28 @@
    "w": 1920,
    "h": 1000,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-14",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "location",
    "kind": "location",
-   "label": "location",
+   "label": "지구 토지이용도",
    "file": "photos/site/2026000557/location-auto-3.jpg",
    "src": "http://jeil-foredu.co.kr/img/city_map.png",
    "w": 780,
    "h": 1000,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-14",
+   "ok": true,
+   "name_shown": true,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "community",
@@ -118,13 +148,18 @@
   {
    "cat": "community",
    "kind": "community",
-   "label": "community",
+   "label": "커뮤니티 평면",
    "file": "photos/site/2026000557/community-auto-1.jpg",
    "src": "http://jeil-foredu.co.kr/sub/community.jpg",
    "w": 1100,
    "h": 1703,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-14",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "siteplan",
@@ -143,15 +178,20 @@
    "full": false
   },
   {
-   "cat": "siteplan",
+   "cat": "birdseye",
    "kind": "siteplan",
-   "label": "siteplan",
+   "label": "단지 조감도",
    "file": "photos/site/2026000557/siteplan-auto-1.jpg",
    "src": "http://jeil-foredu.co.kr/img/complex_bg.jpg",
    "w": 643,
    "h": 872,
    "photo": true,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-14",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "siteplan",
@@ -162,7 +202,12 @@
    "w": 643,
    "h": 872,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-14",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "dongho",
@@ -189,7 +234,12 @@
    "w": 1131,
    "h": 1600,
    "photo": false,
-   "from": "pamphlet"
+   "from": "pamphlet",
+   "checked": "2026-11-14",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "pamphlet",
@@ -200,7 +250,12 @@
    "w": 1131,
    "h": 1600,
    "photo": false,
-   "from": "pamphlet"
+   "from": "pamphlet",
+   "checked": "2026-11-14",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "pamphlet",
@@ -211,7 +266,12 @@
    "w": 1131,
    "h": 1600,
    "photo": false,
-   "from": "pamphlet"
+   "from": "pamphlet",
+   "checked": "2026-11-14",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "pamphlet",
@@ -222,7 +282,12 @@
    "w": 1517,
    "h": 1071,
    "photo": false,
-   "from": "pamphlet"
+   "from": "pamphlet",
+   "checked": "2026-11-14",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   }
  ],
  "links": [],
