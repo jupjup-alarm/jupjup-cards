@@ -16,7 +16,7 @@
 - `mapgen.py`, `data/` — 대체용 경계 지도 (통계청 SGIS 2018 행정구역 경계, 공공누리 제1유형)
 
 - `tools/collect.py` — ⓪ 단지 그림 수집기 (모델 없음): 새 행부터 하루 6곳, 자바스크립트 홈페이지는 브라우저로, 'Ⅰ·Ⅱ단지 고르기' 안내 화면은 이 단지 주소로 따라감, 홈페이지 팸플릿 PDF·공고문 PDF 그림(`pamphlets/<key>/hp|notice/`), 0장이면 다음 날 다시(최대 3번), `--zero-only`는 ⑦ 직전 재수집. 쓸 그림 0장 단지는 assets_map `usable: 0`·`why` → '작업대상' 탭 '그림 0장'으로 ① 조사가 손으로 (2026-11-11). 사이트는 검수 `ok: false` 그림을 쓰지 않는다.
-- `tools/review.py` — ⓪ 사진 검수 (2026-11-14, API 검수 대신 정기 작업이 눈으로): `list`로 아직 안 본 그림의 번호 붙은 접촉 시트 → 판정 JSON → `apply`로 index.json에 checked·ok·name_shown·full. 사이트 빌드는 검수 안 된 홈페이지 자동 수집(auto)·위키미디어(commons)·팸플릿 그림을 쓰지 않는다 (시트 사진·LH 공고 탭 그림은 검수 전에도 씀).
+- `tools/review.py` — ⓪ 사진 검수 (2026-11-14, API 검수 대신 정기 작업이 눈으로): `list`로 아직 안 본 그림의 번호 붙은 접촉 시트 → 판정 JSON → `apply`로 index.json에 checked·ok·name_shown·full. 홈페이지·위키미디어·팸플릿 그림은 써도 된다 (사용자 결정 2026-11-14) — 사이트는 검수 전에도 쓰고, 검수에서 `ok: false`(다른 단지 그림·빈 그림·장식·스톡·인증서)로 표시된 것만 뺀다.
 - `tools/contact.py` — 접촉 시트 (2026-11-09): 사진 후보·카드 장·영상 프레임·스크린샷을 번호 붙여 한 장으로 → 그 한 장만 Read로 열고, 문제 있는 번호만 원본을 연다 (`python3 tools/contact.py cards/<slug> -o /tmp/c.jpg`, 영상은 `reels/<slug>/reel.mp4 --every 1.5`).
 
 ## 원고(JSON) 형식
