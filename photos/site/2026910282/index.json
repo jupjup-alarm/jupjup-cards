@@ -4,7 +4,7 @@
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "단지 노을 전경 조감도",
+   "label": "단지 전경",
    "file": "photos/site/2026910282/birdseye.jpg",
    "src": "https://xn--hc0bz5m11b1ue95n2zf6zxvzd.com/resources/img/main/hero_bg_fold.jpg",
    "crop": "0,0.45,1,0.95",
@@ -20,7 +20,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "59A 평면도",
+   "label": "59A",
    "file": "photos/site/2026910282/plan-59a.jpg",
    "src": "https://xn--hc0bz5m11b1ue95n2zf6zxvzd.com/resources/data/cyber/59A/unit_iso.jpg",
    "crop": "",
@@ -36,7 +36,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "59B 평면도",
+   "label": "59B",
    "file": "photos/site/2026910282/plan-59b.jpg",
    "src": "https://xn--hc0bz5m11b1ue95n2zf6zxvzd.com/resources/data/cyber/59B/unit_iso.jpg",
    "crop": "",
@@ -52,7 +52,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "84A 평면도",
+   "label": "84A",
    "file": "photos/site/2026910282/plan-84a.jpg",
    "src": "https://xn--hc0bz5m11b1ue95n2zf6zxvzd.com/resources/data/cyber/84A/unit_iso.jpg",
    "crop": "",
@@ -68,7 +68,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "84B 평면도",
+   "label": "84B",
    "file": "photos/site/2026910282/plan-84b.jpg",
    "src": "https://xn--hc0bz5m11b1ue95n2zf6zxvzd.com/resources/data/cyber/84B/unit_iso.jpg",
    "crop": "",
@@ -84,7 +84,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "84C 평면도",
+   "label": "84C",
    "file": "photos/site/2026910282/plan-84c.jpg",
    "src": "https://xn--hc0bz5m11b1ue95n2zf6zxvzd.com/resources/data/cyber/84C/unit_iso.jpg",
    "crop": "",
@@ -100,7 +100,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "84D 평면도",
+   "label": "84D",
    "file": "photos/site/2026910282/plan-84d.jpg",
    "src": "https://xn--hc0bz5m11b1ue95n2zf6zxvzd.com/resources/data/cyber/84D/unit_iso.jpg",
    "crop": "",
@@ -116,7 +116,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "84E 평면도",
+   "label": "84E",
    "file": "photos/site/2026910282/plan-84e.jpg",
    "src": "https://xn--hc0bz5m11b1ue95n2zf6zxvzd.com/resources/data/cyber/84E/unit_iso.jpg",
    "crop": "",
@@ -220,5 +220,5 @@
  ],
  "homepage": "https://광명시티프라디움.com",
  "owner": "(주)시티글로벌",
- "updated": "2026-11-09 19:18"
+ "updated": "2026-11-14 19:15"
 }

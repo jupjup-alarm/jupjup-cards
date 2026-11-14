@@ -4,7 +4,7 @@
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "단지 야간 항공 조감도",
+   "label": "단지 조감",
    "file": "photos/site/2026000502/birdseye.jpg",
    "src": "https://www.hwaseong-lottecastlesignature.com/assets/images/sub/view_06.jpg",
    "crop": "",
@@ -18,25 +18,9 @@
    "full": true
   },
   {
-   "cat": "community",
-   "kind": "조감도",
-   "label": "조경 산책로 투시도",
-   "file": "photos/site/2026000502/birdseye-2.jpg",
-   "src": "https://www.hwaseong-lottecastlesignature.com/assets/images/sub/view_05.jpg",
-   "crop": "",
-   "w": 1195,
-   "h": 673,
-   "md5": "625591888708624db3782d7c2db6f4f0",
-   "photo": true,
-   "checked": "2026-11-10",
-   "ok": true,
-   "name_shown": false,
-   "full": true
-  },
-  {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "수변 단지 전경",
+   "label": "수변 전경",
    "file": "photos/site/2026000502/birdseye-3.jpg",
    "src": "https://www.hwaseong-lottecastlesignature.com/assets/images/sub/view_08.jpg",
    "crop": "",
@@ -52,7 +36,7 @@
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "단지 야간 전경",
+   "label": "야간 전경",
    "file": "photos/site/2026000502/birdseye-4.jpg",
    "src": "https://www.hwaseong-lottecastlesignature.com/assets/images/sub/view_07.jpg",
    "crop": "",
@@ -66,9 +50,41 @@
    "full": true
   },
   {
+   "cat": "birdseye",
+   "kind": "단지둘러보기",
+   "label": "중앙정원",
+   "file": "photos/site/2026000502/community.jpg",
+   "src": "https://www.hwaseong-lottecastlesignature.com/assets/images/sub/view_01.jpg",
+   "crop": "",
+   "w": 1195,
+   "h": 673,
+   "md5": "0ff6bcfcfbc345844a3c537bfa27162a",
+   "photo": true,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": true
+  },
+  {
+   "cat": "birdseye",
+   "kind": "단지둘러보기",
+   "label": "산책로",
+   "file": "photos/site/2026000502/community-5.jpg",
+   "src": "https://www.hwaseong-lottecastlesignature.com/assets/images/sub/view_09.jpg",
+   "crop": "",
+   "w": 1195,
+   "h": 673,
+   "md5": "b67d2b9d6e658d5aab066809b1545dc5",
+   "photo": true,
+   "checked": "2026-11-10",
+   "ok": true,
+   "name_shown": false,
+   "full": true
+  },
+  {
    "cat": "siteplan",
    "kind": "단지배치도",
-   "label": "단지배치도",
+   "label": "",
    "file": "photos/site/2026000502/siteplan.jpg",
    "src": "https://www.hwaseong-lottecastlesignature.com/assets/images/sub/place.jpg",
    "crop": "",
@@ -84,7 +100,7 @@
   {
    "cat": "dongho",
    "kind": "동호배치도",
-   "label": "동호배치도",
+   "label": "",
    "file": "photos/site/2026000502/dongho.jpg",
    "src": "https://www.hwaseong-lottecastlesignature.com/assets/images/sub/architecture.jpg",
    "crop": "",
@@ -100,7 +116,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "84A 평면도",
+   "label": "84A",
    "file": "photos/site/2026000502/plan-84a.jpg",
    "src": "https://www.hwaseong-lottecastlesignature.com/assets/images/sub/unit_84a.jpg",
    "crop": "",
@@ -116,7 +132,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "84B 평면도",
+   "label": "84B",
    "file": "photos/site/2026000502/plan-84b.jpg",
    "src": "https://www.hwaseong-lottecastlesignature.com/assets/images/sub/unit_84b.jpg",
    "crop": "",
@@ -132,7 +148,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "84C 평면도",
+   "label": "84C",
    "file": "photos/site/2026000502/plan-84c.jpg",
    "src": "https://www.hwaseong-lottecastlesignature.com/assets/images/sub/unit_84c.jpg",
    "crop": "",
@@ -148,7 +164,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "84D 평면도",
+   "label": "84D",
    "file": "photos/site/2026000502/plan-84d.jpg",
    "src": "https://www.hwaseong-lottecastlesignature.com/assets/images/sub/unit_84d.jpg",
    "crop": "",
@@ -164,7 +180,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "84E 평면도",
+   "label": "84E",
    "file": "photos/site/2026000502/plan-84e.jpg",
    "src": "https://www.hwaseong-lottecastlesignature.com/assets/images/sub/unit_84e.jpg",
    "crop": "",
@@ -180,7 +196,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "84F 평면도",
+   "label": "84F",
    "file": "photos/site/2026000502/plan-84f.jpg",
    "src": "https://www.hwaseong-lottecastlesignature.com/assets/images/sub/unit_84f.jpg",
    "crop": "",
@@ -196,7 +212,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "84G 평면도",
+   "label": "84G",
    "file": "photos/site/2026000502/plan-84g.jpg",
    "src": "https://www.hwaseong-lottecastlesignature.com/assets/images/sub/unit_84g.jpg",
    "crop": "",
@@ -212,7 +228,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "102 평면도",
+   "label": "102",
    "file": "photos/site/2026000502/plan-102.jpg",
    "src": "https://www.hwaseong-lottecastlesignature.com/assets/images/sub/unit_102.jpg",
    "crop": "",
@@ -228,7 +244,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "112 평면도",
+   "label": "112",
    "file": "photos/site/2026000502/plan-112.jpg",
    "src": "https://www.hwaseong-lottecastlesignature.com/assets/images/sub/unit_112.jpg",
    "crop": "",
@@ -244,7 +260,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "120 평면도",
+   "label": "120",
    "file": "photos/site/2026000502/plan-120.jpg",
    "src": "https://www.hwaseong-lottecastlesignature.com/assets/images/sub/unit_120.jpg",
    "crop": "",
@@ -258,15 +274,15 @@
    "full": false
   },
   {
-   "cat": "birdseye",
-   "kind": "단지둘러보기",
-   "label": "중앙정원 조감도",
-   "file": "photos/site/2026000502/community.jpg",
-   "src": "https://www.hwaseong-lottecastlesignature.com/assets/images/sub/view_01.jpg",
+   "cat": "community",
+   "kind": "조감도",
+   "label": "항공 전경",
+   "file": "photos/site/2026000502/birdseye-2.jpg",
+   "src": "https://www.hwaseong-lottecastlesignature.com/assets/images/sub/view_05.jpg",
    "crop": "",
    "w": 1195,
    "h": 673,
-   "md5": "0ff6bcfcfbc345844a3c537bfa27162a",
+   "md5": "625591888708624db3782d7c2db6f4f0",
    "photo": true,
    "checked": "2026-11-10",
    "ok": true,
@@ -322,22 +338,6 @@
    "full": true
   },
   {
-   "cat": "birdseye",
-   "kind": "단지둘러보기",
-   "label": "산책로 단지 전경",
-   "file": "photos/site/2026000502/community-5.jpg",
-   "src": "https://www.hwaseong-lottecastlesignature.com/assets/images/sub/view_09.jpg",
-   "crop": "",
-   "w": 1195,
-   "h": 673,
-   "md5": "b67d2b9d6e658d5aab066809b1545dc5",
-   "photo": true,
-   "checked": "2026-11-10",
-   "ok": true,
-   "name_shown": false,
-   "full": true
-  },
-  {
    "cat": "community",
    "kind": "단지둘러보기",
    "label": "물놀이터",
@@ -356,7 +356,7 @@
   {
    "cat": "community",
    "kind": "단지둘러보기",
-   "label": "파고라 라운지",
+   "label": "파고라",
    "file": "photos/site/2026000502/community-7.jpg",
    "src": "https://www.hwaseong-lottecastlesignature.com/assets/images/sub/view_11.jpg",
    "crop": "",
@@ -388,7 +388,7 @@
   {
    "cat": "community",
    "kind": "커뮤니티",
-   "label": "커뮤니티 안내 표",
+   "label": "",
    "file": "photos/site/2026000502/community-9.jpg",
    "src": "https://www.hwaseong-lottecastlesignature.com/assets/images/sub/community.jpg",
    "crop": "",
@@ -404,7 +404,7 @@
   {
    "cat": "community",
    "kind": "조경",
-   "label": "조경설계 안내 페이지",
+   "label": "조경설계",
    "file": "photos/site/2026000502/community-10.jpg",
    "src": "https://www.hwaseong-lottecastlesignature.com/assets/images/sub/complex.jpg",
    "crop": "",
@@ -428,5 +428,5 @@
  ],
  "homepage": "https://www.hwaseong-lottecastlesignature.com",
  "owner": "신영부동산신탁 주식회사",
- "updated": "2026-11-09 19:18"
+ "updated": "2026-11-14 19:15"
 }

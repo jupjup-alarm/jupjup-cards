@@ -4,7 +4,7 @@
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "단지 낮 투시도",
+   "label": "낮 투시도",
    "file": "photos/site/2026000535/birdseye.jpg",
    "src": "https://xn--2e0b97q70h3ub54eo3dtwdc4o60ksscp5d6za.com/assets/site/project/perspective_day.jpg?v=20261103hq",
    "crop": "",
@@ -20,7 +20,7 @@
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "단지 낮 조감도",
+   "label": "낮 조감도",
    "file": "photos/site/2026000535/birdseye-2.jpg",
    "src": "https://xn--2e0b97q70h3ub54eo3dtwdc4o60ksscp5d6za.com/assets/site/project/aerial_day.jpg?v=20261103hq",
    "crop": "",
@@ -36,7 +36,7 @@
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "조감도 중복",
+   "label": "메인 전경",
    "file": "photos/site/2026000535/birdseye-3.jpg",
    "src": "https://xn--2e0b97q70h3ub54eo3dtwdc4o60ksscp5d6za.com/assets/site/project/main-view.jpg?v=20261103hq",
    "crop": "",
@@ -52,7 +52,7 @@
   {
    "cat": "siteplan",
    "kind": "단지배치도",
-   "label": "단지배치도",
+   "label": "",
    "file": "photos/site/2026000535/siteplan.jpg",
    "src": "https://xn--2e0b97q70h3ub54eo3dtwdc4o60ksscp5d6za.com/assets/site/project/layout.png?v=20261030",
    "crop": "",
@@ -68,7 +68,7 @@
   {
    "cat": "dongho",
    "kind": "동호배치도",
-   "label": "동호배치표",
+   "label": "",
    "file": "photos/site/2026000535/dongho.jpg",
    "src": "https://xn--2e0b97q70h3ub54eo3dtwdc4o60ksscp5d6za.com/assets/site/project/dongho/dongho.png?v=20261030",
    "crop": "",
@@ -84,7 +84,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "59A 평면도",
+   "label": "59A",
    "file": "photos/site/2026000535/plan-59a.jpg",
    "src": "https://xn--2e0b97q70h3ub54eo3dtwdc4o60ksscp5d6za.com/assets/site/project/unit/plan/plan_59A_ext.png?v=20261028plan145d",
    "crop": "",
@@ -100,7 +100,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "59B 평면도",
+   "label": "59B",
    "file": "photos/site/2026000535/plan-59b.jpg",
    "src": "https://xn--2e0b97q70h3ub54eo3dtwdc4o60ksscp5d6za.com/assets/site/project/unit/plan/plan_59B_ext.png?v=20261028plan145d",
    "crop": "",
@@ -116,7 +116,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "68 평면도",
+   "label": "68",
    "file": "photos/site/2026000535/plan-68.jpg",
    "src": "https://xn--2e0b97q70h3ub54eo3dtwdc4o60ksscp5d6za.com/assets/site/project/unit/plan/plan_68_ext.png?v=20261028plan145d",
    "crop": "",
@@ -132,7 +132,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "74 평면도",
+   "label": "74",
    "file": "photos/site/2026000535/plan-74.jpg",
    "src": "https://xn--2e0b97q70h3ub54eo3dtwdc4o60ksscp5d6za.com/assets/site/project/unit/plan/plan_74_ext.png?v=20261028plan145d",
    "crop": "",
@@ -148,7 +148,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "79 평면도",
+   "label": "79",
    "file": "photos/site/2026000535/plan-79.jpg",
    "src": "https://xn--2e0b97q70h3ub54eo3dtwdc4o60ksscp5d6za.com/assets/site/project/unit/plan/plan_79_ext.png?v=20261028plan145d",
    "crop": "",
@@ -164,7 +164,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "84 평면도",
+   "label": "84",
    "file": "photos/site/2026000535/plan-84.jpg",
    "src": "https://xn--2e0b97q70h3ub54eo3dtwdc4o60ksscp5d6za.com/assets/site/project/unit/plan/plan_84_ext.png?v=20261028plan145d",
    "crop": "",
@@ -180,7 +180,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "59A 아이소 평면",
+   "label": "59A 아이소",
    "file": "photos/site/2026000535/plan-59a-2.jpg",
    "src": "https://xn--2e0b97q70h3ub54eo3dtwdc4o60ksscp5d6za.com/assets/site/project/unit/iso/iso_59A.png?v=20261104isotrim",
    "crop": "",
@@ -196,7 +196,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "84 아이소 평면",
+   "label": "84 아이소",
    "file": "photos/site/2026000535/plan-84-2.jpg",
    "src": "https://xn--2e0b97q70h3ub54eo3dtwdc4o60ksscp5d6za.com/assets/site/project/unit/iso/iso_84.png?v=20261104isotrim",
    "crop": "",
@@ -228,7 +228,7 @@
   {
    "cat": "community",
    "kind": "커뮤니티",
-   "label": "커피 스톡사진",
+   "label": "티하우스",
    "file": "photos/site/2026000535/community-2.jpg",
    "src": "https://xn--2e0b97q70h3ub54eo3dtwdc4o60ksscp5d6za.com/assets/site/project/community/teahouse.jpg",
    "crop": "",
@@ -309,5 +309,5 @@
  "links": [],
  "homepage": "https://www.중앙하이츠구성플랫폼시티.com",
  "owner": "마북동298의1번지일원가로주택정비사업조합",
- "updated": "2026-11-09 19:18"
+ "updated": "2026-11-14 19:15"
 }

@@ -4,7 +4,7 @@
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "단지 전경 조감도",
+   "label": "단지 전경",
    "file": "photos/site/2026000515/birdseye.jpg",
    "src": "https://pg2.lynn.co.kr/upload/editor/1bef1b49d77841a4bae5f6ee3a4b791d.png",
    "crop": "0,0,1,0.37",
@@ -21,5 +21,5 @@
  "links": [],
  "homepage": "https://pg2.lynn.co.kr/",
  "owner": "우미건설(주),지에스건설(주),이에스아이주식회사",
- "updated": "2026-11-09 19:18"
+ "updated": "2026-11-14 19:15"
 }

@@ -4,7 +4,7 @@
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "단지 낮 조감도",
+   "label": "단지 조감도",
    "file": "photos/site/2026820013/birdseye.jpg",
    "src": "https://www.lhasg2-a6.co.kr/overview/img/01.jpg",
    "crop": "",
@@ -20,7 +20,7 @@
   {
    "cat": "siteplan",
    "kind": "단지배치도",
-   "label": "단지배치도(항공)",
+   "label": "",
    "file": "photos/site/2026820013/siteplan.jpg",
    "src": "https://www.lhasg2-a6.co.kr/overview/img/03-1.jpg",
    "crop": "",
@@ -36,7 +36,7 @@
   {
    "cat": "siteplan",
    "kind": "단지배치도",
-   "label": "단지배치도 도면",
+   "label": "조경",
    "file": "photos/site/2026820013/siteplan-2.jpg",
    "src": "https://www.lhasg2-a6.co.kr/overview/img/03-3.jpg",
    "crop": "",
@@ -52,7 +52,7 @@
   {
    "cat": "dongho",
    "kind": "동호배치도",
-   "label": "동호배치도",
+   "label": "",
    "file": "photos/site/2026820013/dongho.jpg",
    "src": "https://www.lhasg2-a6.co.kr/overview/img/04.jpg",
    "crop": "",
@@ -68,7 +68,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "55A 평면도",
+   "label": "55A",
    "file": "photos/site/2026820013/plan-55a.jpg",
    "src": "https://www.lhasg2-a6.co.kr/unit/img/55a-1.jpg",
    "crop": "",
@@ -84,7 +84,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "55B 평면도",
+   "label": "55B",
    "file": "photos/site/2026820013/plan-55b.jpg",
    "src": "https://www.lhasg2-a6.co.kr/unit/img/55b-1.jpg",
    "crop": "",
@@ -100,7 +100,7 @@
   {
    "cat": "interior",
    "kind": "인테리어",
-   "label": "실내 컷 모음 1",
+   "label": "1",
    "file": "photos/site/2026820013/interior-1.jpg",
    "src": "https://www.lhasg2-a6.co.kr/unit/img/02-1.jpg",
    "crop": "",
@@ -116,7 +116,7 @@
   {
    "cat": "interior",
    "kind": "인테리어",
-   "label": "실내 컷 모음 2",
+   "label": "2",
    "file": "photos/site/2026820013/interior-2.jpg",
    "src": "https://www.lhasg2-a6.co.kr/unit/img/02-2.jpg",
    "crop": "",
@@ -133,5 +133,5 @@
  "links": [],
  "homepage": "https://www.lhasg2-a6.co.kr/",
  "owner": "한국토지주택공사 경기남부지역본부",
- "updated": "2026-11-09 19:18"
+ "updated": "2026-11-14 19:15"
 }

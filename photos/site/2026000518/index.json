@@ -4,7 +4,7 @@
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "4단지 낮 투시도",
+   "label": "4단지 투시도",
    "file": "photos/site/2026000518/birdseye-4.jpg",
    "src": "https://www.xn--gtx-k74mh0hgtyn8d37ae1cudt6noxdy02c2cg.com/assets/images/overview-ai-20261021/overview-4-4800.webp",
    "crop": "",
@@ -20,7 +20,7 @@
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "단지 전경 조감도",
+   "label": "단지 전경",
    "file": "photos/site/2026000518/birdseye.jpg",
    "src": "https://www.xn--gtx-k74mh0hgtyn8d37ae1cudt6noxdy02c2cg.com/assets/images/main/sec1/s1_bg_pc_n4.jpg?v=20261023",
    "crop": "",
@@ -36,7 +36,7 @@
   {
    "cat": "siteplan",
    "kind": "단지배치도",
-   "label": "4단지 배치도",
+   "label": "4단지",
    "file": "photos/site/2026000518/siteplan-4.jpg",
    "src": "https://www.xn--gtx-k74mh0hgtyn8d37ae1cudt6noxdy02c2cg.com/assets/images/cg-hq-20261020/complex-4.webp",
    "crop": "",
@@ -52,7 +52,7 @@
   {
    "cat": "dongho",
    "kind": "동호배치도",
-   "label": "4단지 동호배치도",
+   "label": "4단지",
    "file": "photos/site/2026000518/dongho-4.jpg",
    "src": "https://www.xn--gtx-k74mh0hgtyn8d37ae1cudt6noxdy02c2cg.com/assets/images/supply-20261017/floor-4.png",
    "crop": "",
@@ -68,7 +68,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "60㎡ 평면도",
+   "label": "60",
    "file": "photos/site/2026000518/plan-60.jpg",
    "src": "https://www.xn--gtx-k74mh0hgtyn8d37ae1cudt6noxdy02c2cg.com/assets/images/final-20261028/unit-60-20261028.webp",
    "crop": "",
@@ -84,7 +84,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "84A 평면도",
+   "label": "84A",
    "file": "photos/site/2026000518/plan-84a.jpg",
    "src": "https://www.xn--gtx-k74mh0hgtyn8d37ae1cudt6noxdy02c2cg.com/assets/images/final-20261028/unit-84a-20261028.webp",
    "crop": "",
@@ -100,7 +100,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "84B 평면도",
+   "label": "84B",
    "file": "photos/site/2026000518/plan-84b.jpg",
    "src": "https://www.xn--gtx-k74mh0hgtyn8d37ae1cudt6noxdy02c2cg.com/assets/images/final-20261028/unit-84b-20261028.webp",
    "crop": "",
@@ -116,7 +116,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "88 평면도",
+   "label": "88",
    "file": "photos/site/2026000518/plan-88.jpg",
    "src": "https://www.xn--gtx-k74mh0hgtyn8d37ae1cudt6noxdy02c2cg.com/assets/images/final-20261028/unit-88-20261028.webp",
    "crop": "",
@@ -132,7 +132,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "115 평면도",
+   "label": "115",
    "file": "photos/site/2026000518/plan-115.jpg",
    "src": "https://www.xn--gtx-k74mh0hgtyn8d37ae1cudt6noxdy02c2cg.com/assets/images/final-20261028/unit-115-20261028.webp",
    "crop": "",
@@ -148,7 +148,7 @@
   {
    "cat": "community",
    "kind": "커뮤니티",
-   "label": "커뮤니티 배치도",
+   "label": "",
    "file": "photos/site/2026000518/community.jpg",
    "src": "https://www.xn--gtx-k74mh0hgtyn8d37ae1cudt6noxdy02c2cg.com/assets/images/sub/community/community_pc.jpg",
    "crop": "",
@@ -172,5 +172,5 @@
  ],
  "homepage": "https://www.gtx운정중앙역시티프라디움.com",
  "owner": "(주)넥스트건설",
- "updated": "2026-11-09 19:18"
+ "updated": "2026-11-14 19:15"
 }

@@ -4,7 +4,7 @@
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "단지 전경 조감도",
+   "label": "단지 전경",
    "file": "photos/site/2026000496/birdseye.jpg",
    "src": "https://www.arkone-prugio.com/resources/img/pages/overview/overview_apt_img.v100.jpg",
    "crop": "",
@@ -20,7 +20,7 @@
   {
    "cat": "siteplan",
    "kind": "단지배치도",
-   "label": "단지배치도",
+   "label": "",
    "file": "photos/site/2026000496/siteplan.jpg",
    "src": "https://www.arkone-prugio.com/resources/img/pages/dongho/map.v100.jpg",
    "crop": "",
@@ -36,7 +36,7 @@
   {
    "cat": "dongho",
    "kind": "동호배치도",
-   "label": "동호배치도",
+   "label": "",
    "file": "photos/site/2026000496/dongho.jpg",
    "src": "https://www.arkone-prugio.com/resources/img/pages/dongho/dongho.v100.jpg",
    "crop": "",
@@ -52,7 +52,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "84A 평면도",
+   "label": "84㎡A",
    "file": "photos/site/2026000496/plan-84-a.jpg",
    "src": "https://www.arkone-prugio.com/resources/data/cyber/84A/unit_plan.jpg?v=.v100",
    "crop": "0,0,1,0.37",
@@ -68,7 +68,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "84B 평면도",
+   "label": "84㎡B",
    "file": "photos/site/2026000496/plan-84-b.jpg",
    "src": "https://www.arkone-prugio.com/resources/data/cyber/84B/unit_plan.jpg?v=.v100",
    "crop": "0,0,1,0.37",
@@ -84,7 +84,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "84C 평면도",
+   "label": "84㎡C",
    "file": "photos/site/2026000496/plan-84-c.jpg",
    "src": "https://www.arkone-prugio.com/resources/data/cyber/84C/unit_plan.jpg?v=.v100",
    "crop": "0,0,1,0.37",
@@ -100,7 +100,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "84D 평면도",
+   "label": "84㎡D",
    "file": "photos/site/2026000496/plan-84-d.jpg",
    "src": "https://www.arkone-prugio.com/resources/data/cyber/84D/unit_plan.jpg?v=.v100",
    "crop": "0,0,1,0.37",
@@ -116,7 +116,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "103A 평면도",
+   "label": "103㎡A",
    "file": "photos/site/2026000496/plan-103-a.jpg",
    "src": "https://www.arkone-prugio.com/resources/data/cyber/103A/unit_plan.jpg?v=.v100",
    "crop": "0,0,1,0.37",
@@ -132,7 +132,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "103B 평면도",
+   "label": "103㎡B",
    "file": "photos/site/2026000496/plan-103-b.jpg",
    "src": "https://www.arkone-prugio.com/resources/data/cyber/103B/unit_plan.jpg?v=.v100",
    "crop": "0,0,1,0.37",
@@ -244,7 +244,7 @@
   {
    "cat": "community",
    "kind": "커뮤니티",
-   "label": "카페 (저해상도 이미지)",
+   "label": "그리너리 카페",
    "file": "photos/site/2026000496/community-7.jpg",
    "src": "https://www.arkone-prugio.com/resources/img/pages/community/photo-cafe.v100.png",
    "crop": "",
@@ -260,7 +260,7 @@
   {
    "cat": "community",
    "kind": "커뮤니티",
-   "label": "B1F 커뮤니티 평면",
+   "label": "그리너리 스포츠 B1F 평면",
    "file": "photos/site/2026000496/community-b1f.jpg",
    "src": "https://www.arkone-prugio.com/resources/img/pages/community/plan-sports-b1.v100.png",
    "crop": "",
@@ -276,7 +276,7 @@
   {
    "cat": "interior",
    "kind": "인테리어",
-   "label": "84A 거실",
+   "label": "84㎡A 거실",
    "file": "photos/site/2026000496/interior-84-a.jpg",
    "src": "https://www.arkone-prugio.com/resources/img/pages/interior/84a_01.v100.jpg",
    "crop": "",
@@ -292,7 +292,7 @@
   {
    "cat": "interior",
    "kind": "인테리어",
-   "label": "84A 주방/식당",
+   "label": "84㎡A 주방/식당",
    "file": "photos/site/2026000496/interior-84-a-2.jpg",
    "src": "https://www.arkone-prugio.com/resources/img/pages/interior/84a_02.v100.jpg",
    "crop": "",
@@ -308,7 +308,7 @@
   {
    "cat": "interior",
    "kind": "인테리어",
-   "label": "84A 침실1",
+   "label": "84㎡A 침실1",
    "file": "photos/site/2026000496/interior-84-a-1.jpg",
    "src": "https://www.arkone-prugio.com/resources/img/pages/interior/84a_09.v100.jpg",
    "crop": "",
@@ -324,7 +324,7 @@
   {
    "cat": "interior",
    "kind": "인테리어",
-   "label": "84A 침실3",
+   "label": "84㎡A 침실3",
    "file": "photos/site/2026000496/interior-84-a-3.jpg",
    "src": "https://www.arkone-prugio.com/resources/img/pages/interior/84a_13.v100.jpg",
    "crop": "",
@@ -340,7 +340,7 @@
   {
    "cat": "interior",
    "kind": "인테리어",
-   "label": "103A 거실",
+   "label": "103㎡A 거실",
    "file": "photos/site/2026000496/interior-103-a.jpg",
    "src": "https://www.arkone-prugio.com/resources/img/pages/interior/103a_01.v100.jpg",
    "crop": "",
@@ -356,7 +356,7 @@
   {
    "cat": "interior",
    "kind": "인테리어",
-   "label": "103A 주방/식당",
+   "label": "103㎡A 주방/식당",
    "file": "photos/site/2026000496/interior-103-a-2.jpg",
    "src": "https://www.arkone-prugio.com/resources/img/pages/interior/103a_02.v100.jpg",
    "crop": "",
@@ -372,7 +372,7 @@
   {
    "cat": "interior",
    "kind": "인테리어",
-   "label": "103A 침실1",
+   "label": "103㎡A 침실1",
    "file": "photos/site/2026000496/interior-103-a-1.jpg",
    "src": "https://www.arkone-prugio.com/resources/img/pages/interior/103a_09.v100.jpg",
    "crop": "",
@@ -396,5 +396,5 @@
  ],
  "homepage": "https://www.arkone-prugio.com",
  "owner": "(주)청라스마트시티",
- "updated": "2026-11-09 19:18"
+ "updated": "2026-11-14 19:15"
 }

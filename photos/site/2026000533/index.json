@@ -4,7 +4,7 @@
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "단지 낮 조감도",
+   "label": "단지 조감도",
    "file": "photos/site/2026000533/birdseye.jpg",
    "src": "https://www.lhasg2-b1.co.kr/overview/img/01.jpg",
    "crop": "",
@@ -20,7 +20,7 @@
   {
    "cat": "siteplan",
    "kind": "단지배치도",
-   "label": "단지배치도(조감)",
+   "label": "",
    "file": "photos/site/2026000533/siteplan.jpg",
    "src": "https://www.lhasg2-b1.co.kr/overview/img/03-1.jpg",
    "crop": "",
@@ -36,7 +36,7 @@
   {
    "cat": "siteplan",
    "kind": "단지배치도",
-   "label": "조경 배치도",
+   "label": "조경",
    "file": "photos/site/2026000533/siteplan-2.jpg",
    "src": "https://www.lhasg2-b1.co.kr/overview/img/03-2.jpg",
    "crop": "",
@@ -52,7 +52,7 @@
   {
    "cat": "dongho",
    "kind": "동호배치도",
-   "label": "동호배치도",
+   "label": "",
    "file": "photos/site/2026000533/dongho.jpg",
    "src": "https://www.lhasg2-b1.co.kr/overview/img/04.jpg",
    "crop": "",
@@ -68,7 +68,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "74A 평면도",
+   "label": "74A",
    "file": "photos/site/2026000533/plan-74a.jpg",
    "src": "https://www.lhasg2-b1.co.kr/unit/img/74a.jpg",
    "crop": "",
@@ -84,7 +84,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "84A 평면도",
+   "label": "84A",
    "file": "photos/site/2026000533/plan-84a.jpg",
    "src": "https://www.lhasg2-b1.co.kr/unit/img/84a.jpg",
    "crop": "",
@@ -100,7 +100,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "84B 평면도",
+   "label": "84B",
    "file": "photos/site/2026000533/plan-84b.jpg",
    "src": "https://www.lhasg2-b1.co.kr/unit/img/84b.jpg",
    "crop": "",
@@ -116,7 +116,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "84D 평면도",
+   "label": "84D",
    "file": "photos/site/2026000533/plan-84d.jpg",
    "src": "https://www.lhasg2-b1.co.kr/unit/img/84d.jpg",
    "crop": "",
@@ -132,7 +132,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "84G 평면도",
+   "label": "84G",
    "file": "photos/site/2026000533/plan-84g.jpg",
    "src": "https://www.lhasg2-b1.co.kr/unit/img/84g.jpg",
    "crop": "",
@@ -148,7 +148,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "84H 평면도",
+   "label": "84H",
    "file": "photos/site/2026000533/plan-84h.jpg",
    "src": "https://www.lhasg2-b1.co.kr/unit/img/84h.jpg",
    "crop": "",
@@ -164,7 +164,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "84I 평면도",
+   "label": "84I",
    "file": "photos/site/2026000533/plan-84i.jpg",
    "src": "https://www.lhasg2-b1.co.kr/unit/img/84i.jpg",
    "crop": "",
@@ -180,7 +180,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "84J 복층 평면도",
+   "label": "84J",
    "file": "photos/site/2026000533/plan-84j.jpg",
    "src": "https://www.lhasg2-b1.co.kr/unit/img/84j.jpg",
    "crop": "",
@@ -196,7 +196,7 @@
   {
    "cat": "interior",
    "kind": "인테리어",
-   "label": "실내 컷 모음1",
+   "label": "1",
    "file": "photos/site/2026000533/interior-1.jpg",
    "src": "https://www.lhasg2-b1.co.kr/unit/img/02-1.jpg",
    "crop": "",
@@ -212,7 +212,7 @@
   {
    "cat": "interior",
    "kind": "인테리어",
-   "label": "실내 컷 모음2",
+   "label": "2",
    "file": "photos/site/2026000533/interior-2.jpg",
    "src": "https://www.lhasg2-b1.co.kr/unit/img/02-2.jpg",
    "crop": "",
@@ -228,7 +228,7 @@
   {
    "cat": "interior",
    "kind": "인테리어",
-   "label": "실내 컷 모음3",
+   "label": "3",
    "file": "photos/site/2026000533/interior-3.jpg",
    "src": "https://www.lhasg2-b1.co.kr/unit/img/02-3.jpg",
    "crop": "",
@@ -244,7 +244,7 @@
   {
    "cat": "interior",
    "kind": "인테리어",
-   "label": "실내 컷 모음4",
+   "label": "4",
    "file": "photos/site/2026000533/interior-4.jpg",
    "src": "https://www.lhasg2-b1.co.kr/unit/img/02-4.jpg",
    "crop": "",
@@ -260,7 +260,7 @@
   {
    "cat": "interior",
    "kind": "인테리어",
-   "label": "실내 컷 모음5",
+   "label": "5",
    "file": "photos/site/2026000533/interior-5.jpg",
    "src": "https://www.lhasg2-b1.co.kr/unit/img/02-5.jpg",
    "crop": "",
@@ -323,7 +323,7 @@
   }
  ],
  "links": [],
- "homepage": "https://www.lhasg2-b1.co.kr",
- "owner": "LH 안산신길2 B-1블록 사이버 견본주택(CG·이미지컷, 실제와 다를 수 있음)",
- "updated": "2026-11-10 10:08"
+ "homepage": "https://www.lhasg2-b1.co.kr/",
+ "owner": "한국토지주택공사 경기남부지역본부",
+ "updated": "2026-11-14 19:15"
 }

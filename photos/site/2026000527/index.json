@@ -4,7 +4,7 @@
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "단지 낮 전경 조감도",
+   "label": "낮 전경",
    "file": "photos/site/2026000527/birdseye.jpg",
    "src": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/images/main/visual9.jpg",
    "crop": "",
@@ -20,7 +20,7 @@
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "단지 야경 조감도",
+   "label": "야경",
    "file": "photos/site/2026000527/birdseye-2.jpg",
    "src": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/images/main/visual8.jpg",
    "crop": "",
@@ -36,7 +36,7 @@
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "단지 항공 조감도",
+   "label": "단지 조감도",
    "file": "photos/site/2026000527/birdseye-3.jpg",
    "src": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/images/info/overview1_261026.jpg",
    "crop": "0,0,1,0.555",
@@ -52,7 +52,7 @@
   {
    "cat": "siteplan",
    "kind": "단지배치도",
-   "label": "단지배치도",
+   "label": "",
    "file": "photos/site/2026000527/siteplan.jpg",
    "src": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/images/complex-info/layout1.jpg",
    "crop": "0,0.02,1,0.545",
@@ -68,7 +68,7 @@
   {
    "cat": "dongho",
    "kind": "동호배치도",
-   "label": "1701~1709동 배치",
+   "label": "1701~1709동",
    "file": "photos/site/2026000527/dongho-1701-1709.jpg",
    "src": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/images/complex-info/layout1.jpg",
    "crop": "0,0.595,1,1",
@@ -84,7 +84,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "59A 평면도",
+   "label": "59A",
    "file": "photos/site/2026000527/plan-59a.jpg",
    "src": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/images/space/unit_59a.jpg",
    "crop": "",
@@ -100,7 +100,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "59B 평면도",
+   "label": "59B",
    "file": "photos/site/2026000527/plan-59b.jpg",
    "src": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/images/space/unit_59b_261102.jpg",
    "crop": "",
@@ -116,7 +116,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "59C 평면도",
+   "label": "59C",
    "file": "photos/site/2026000527/plan-59c.jpg",
    "src": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/images/space/unit_59c.jpg",
    "crop": "",
@@ -132,7 +132,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "59D 평면도",
+   "label": "59D",
    "file": "photos/site/2026000527/plan-59d.jpg",
    "src": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/images/space/unit_59d.jpg",
    "crop": "",
@@ -148,7 +148,7 @@
   {
    "cat": "community",
    "kind": "단지둘러보기",
-   "label": "단지 정문 문주",
+   "label": "문주",
    "file": "photos/site/2026000527/community.jpg",
    "src": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/images/complex-info/site-plan1.jpg",
    "crop": "0,0.055,1,0.318",
@@ -244,7 +244,7 @@
   {
    "cat": "community",
    "kind": "커뮤니티",
-   "label": "B1F 시설 평면",
+   "label": "B1F 평면",
    "file": "photos/site/2026000527/community-b1f.jpg",
    "src": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/images/complex-info/community1.jpg",
    "crop": "0,0.04,1,0.37",
@@ -260,7 +260,7 @@
   {
    "cat": "community",
    "kind": "커뮤니티",
-   "label": "B2F 시설 평면",
+   "label": "B2F 평면",
    "file": "photos/site/2026000527/community-b2f.jpg",
    "src": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/images/complex-info/community1.jpg",
    "crop": "0,0.38,1,0.6",
@@ -292,7 +292,7 @@
   {
    "cat": "community",
    "kind": "커뮤니티",
-   "label": "듀플렉스 피트니스",
+   "label": "센트빌 듀플렉스 피트니스",
    "file": "photos/site/2026000527/community-8.jpg",
    "src": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/images/complex-info/community1.jpg",
    "crop": "0.335,0.695,0.665,0.778",
@@ -380,5 +380,5 @@
  ],
  "homepage": "https://xn--hc0bse624alpgn0dn2h81ac9gr89a.com/",
  "owner": "경기주택도시공사",
- "updated": "2026-11-09 19:18"
+ "updated": "2026-11-14 19:15"
 }

@@ -4,7 +4,7 @@
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "단지 낮 조감도",
+   "label": "AC4BL",
    "file": "photos/site/2026000532/birdseye-ac4bl.jpg",
    "src": "https://www.gy-bando.com/apt/image/sub/about/about_img02.jpg",
    "crop": "",
@@ -20,7 +20,7 @@
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "단지 석양 조감도",
+   "label": "AC3BL",
    "file": "photos/site/2026000532/birdseye-ac3bl.jpg",
    "src": "https://www.gy-bando.com/apt/image/sub/about/about_img01.jpg",
    "crop": "",
@@ -36,7 +36,7 @@
   {
    "cat": "siteplan",
    "kind": "단지배치도",
-   "label": "단지배치도",
+   "label": "",
    "file": "photos/site/2026000532/siteplan.jpg",
    "src": "https://www.gy-bando.com/apt/image/sub/danji/design_img01.jpg",
    "crop": "",
@@ -52,7 +52,7 @@
   {
    "cat": "dongho",
    "kind": "동호배치도",
-   "label": "동호배치도",
+   "label": "",
    "file": "photos/site/2026000532/dongho.jpg",
    "src": "https://www.gy-bando.com/apt/image/sub/danji/dong_img02.jpg",
    "crop": "",
@@ -68,7 +68,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "84A 평면도",
+   "label": "84㎡A",
    "file": "photos/site/2026000532/plan-84-a.jpg",
    "src": "https://www.gy-bando.com/apt/image/sub/unit/unit_84a_img01.jpg",
    "crop": "",
@@ -84,7 +84,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "84B 평면도",
+   "label": "84㎡B",
    "file": "photos/site/2026000532/plan-84-b.jpg",
    "src": "https://www.gy-bando.com/apt/image/sub/unit/unit_84b_img01.jpg",
    "crop": "",
@@ -100,7 +100,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "84C 평면도",
+   "label": "84㎡C",
    "file": "photos/site/2026000532/plan-84-c.jpg",
    "src": "https://www.gy-bando.com/apt/image/sub/unit/unit_84c_img01.jpg",
    "crop": "",
@@ -116,7 +116,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "84D 평면도",
+   "label": "84㎡D",
    "file": "photos/site/2026000532/plan-84-d.jpg",
    "src": "https://www.gy-bando.com/apt/image/sub/unit/unit_84d_img01.jpg",
    "crop": "",
@@ -132,7 +132,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "84E 평면도",
+   "label": "84㎡E",
    "file": "photos/site/2026000532/plan-84-e.jpg",
    "src": "https://www.gy-bando.com/apt/image/sub/unit/unit_84e_img01.jpg",
    "crop": "",
@@ -148,7 +148,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "93A 평면도",
+   "label": "93㎡A",
    "file": "photos/site/2026000532/plan-93-a.jpg",
    "src": "https://www.gy-bando.com/apt/image/sub/unit/unit_93a_img01.jpg",
    "crop": "",
@@ -164,7 +164,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "93B 평면도",
+   "label": "93㎡B",
    "file": "photos/site/2026000532/plan-93-b.jpg",
    "src": "https://www.gy-bando.com/apt/image/sub/unit/unit_93b_img01.jpg",
    "crop": "",
@@ -180,7 +180,7 @@
   {
    "cat": "community",
    "kind": "커뮤니티",
-   "label": "커뮤니티 시설 배치",
+   "label": "",
    "file": "photos/site/2026000532/community.jpg",
    "src": "https://www.gy-bando.com/apt/image/sub/danji/community_img01.jpg",
    "crop": "",
@@ -196,7 +196,7 @@
   {
    "cat": "interior",
    "kind": "인테리어",
-   "label": "84A 거실",
+   "label": "84㎡A 거실",
    "file": "photos/site/2026000532/interior-84-a.jpg",
    "src": "https://www.gy-bando.com/apt/image/sub/unit/living_84a.jpg",
    "crop": "",
@@ -212,7 +212,7 @@
   {
    "cat": "interior",
    "kind": "인테리어",
-   "label": "84A 주방",
+   "label": "84㎡A 주방",
    "file": "photos/site/2026000532/interior-84-a-2.jpg",
    "src": "https://www.gy-bando.com/apt/image/sub/unit/kitchen_84a.jpg",
    "crop": "",
@@ -228,7 +228,7 @@
   {
    "cat": "interior",
    "kind": "인테리어",
-   "label": "84A 침실",
+   "label": "84㎡A 침실1",
    "file": "photos/site/2026000532/interior-84-a-1.jpg",
    "src": "https://www.gy-bando.com/apt/image/sub/unit/bedroom_84a.jpg",
    "crop": "",
@@ -244,7 +244,7 @@
   {
    "cat": "interior",
    "kind": "인테리어",
-   "label": "84D 거실",
+   "label": "84㎡D 거실",
    "file": "photos/site/2026000532/interior-84-d.jpg",
    "src": "https://www.gy-bando.com/apt/image/sub/unit/living_84d.jpg",
    "crop": "",
@@ -260,7 +260,7 @@
   {
    "cat": "interior",
    "kind": "인테리어",
-   "label": "84D 주방",
+   "label": "84㎡D 주방",
    "file": "photos/site/2026000532/interior-84-d-2.jpg",
    "src": "https://www.gy-bando.com/apt/image/sub/unit/kitchen_84d.jpg",
    "crop": "",
@@ -276,7 +276,7 @@
   {
    "cat": "interior",
    "kind": "인테리어",
-   "label": "93B 거실",
+   "label": "93㎡B 거실",
    "file": "photos/site/2026000532/interior-93-b.jpg",
    "src": "https://www.gy-bando.com/apt/image/sub/unit/living_93b.jpg",
    "crop": "",
@@ -292,7 +292,7 @@
   {
    "cat": "interior",
    "kind": "인테리어",
-   "label": "93B 주방",
+   "label": "93㎡B 주방",
    "file": "photos/site/2026000532/interior-93-b-2.jpg",
    "src": "https://www.gy-bando.com/apt/image/sub/unit/kitchen_93b.jpg",
    "crop": "",
@@ -308,7 +308,7 @@
   {
    "cat": "interior",
    "kind": "인테리어",
-   "label": "93B 드레스룸",
+   "label": "93㎡B 드레스룸",
    "file": "photos/site/2026000532/interior-93-b-3.jpg",
    "src": "https://www.gy-bando.com/apt/image/sub/unit/dressing_93b.jpg",
    "crop": "",
@@ -332,5 +332,5 @@
  ],
  "homepage": "https://www.gy-bando.com",
  "owner": "(주)반도건설",
- "updated": "2026-11-09 19:18"
+ "updated": "2026-11-14 19:15"
 }
