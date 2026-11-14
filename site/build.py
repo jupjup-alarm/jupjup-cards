@@ -2008,6 +2008,21 @@ def main():
             tag, tc = (f"마감 {ends}", "e") if ends else (f"접수 {starts}", "s") if starts else (f"발표 {anns}", "a") if anns else ("", "")
         home_week.append({"iso": di, "dow": "월화수목금토일"[i], "day": int(di[8:]), "past": past, "today": di == t0, "tag": tag, "tc": tc})
     n_week = len([x for x in s if x["status"] == "upcoming" and x["rcpt"][0] <= week_end.isoformat()])
+    # 홈 숫자 칸 3개: 평소엔 오늘 마감·내일 마감·이번 주 접수. 셋 다 0이면(주말 등) 빈 사이트처럼 보이므로
+    # 지금 접수 중·다음 주 접수 시작·다음 주 마감으로 바꿈 (2026-11-14 사용자 결정)
+    n_t0 = len([x for x in s if x["status"] == "open" and x["rcpt"][1] == t0])
+    n_t1 = len([x for x in s if x["status"] == "open" and x["rcpt"][1] == t1])
+    nw0, nw1 = (week_end + dt.timedelta(days=1)).isoformat(), nxt_end.isoformat()
+    if n_t0 or n_t1 or n_week:
+        tiles = [("t-t", "오늘 마감", n_t0, "#today" if n_t0 else "/schedule/this-week/"),
+                 ("t-n", "내일 마감", n_t1, "#tomorrow" if n_t1 else "/schedule/this-week/"),
+                 ("t-w", "이번 주 접수", n_week, "#week" if n_week else "/schedule/this-week/")]
+    else:
+        n_ns = len([x for x in s if x["status"] == "upcoming" and nw0 <= x["rcpt"][0] <= nw1])
+        n_ne = len([x for x in s if x["status"] in ("open", "upcoming") and nw0 <= (x["rcpt"][1] or x["rcpt"][0]) <= nw1])
+        tiles = [("t-t", "지금 접수 중", n_open, "#open"),
+                 ("t-n", "다음 주 접수 시작", n_ns, "#next"),
+                 ("t-w", "다음 주 마감", n_ne, "#next")]
     # 홈 '가이드' 띠 (2026-11-14 사용자 요청 — 애드센스 거절: 첫 화면에서 품질 높은 가이드가 안 보임)
     #  기초 4편(누구나 먼저 읽을 글) + 지금 접수 중 공고와 이어진 글 순으로 6편, 첫 화면 바로 아래에.
     live = [x for x in s if x["status"] in ("open", "upcoming")]
@@ -2019,7 +2034,7 @@ def main():
     BASICS = ["mujeonwi", "first-priority", "cheongyak-gajeom", "homeless-criteria", "applyhome-guide"]
     hg.sort(key=lambda g: (BASICS.index(g["slug"]) if g["slug"] in BASICS else 99, -g["n_live"]))
     home_guides, n_guides = hg[:6], len(hg)
-    h = home_tpl.render(home_guides=home_guides, n_guides=n_guides, groups=home_groups, page_url="/", title=title, desc=desc, og=home_og, due=due, home_week=home_week, n_week=n_week,
+    h = home_tpl.render(tiles=tiles, home_guides=home_guides, n_guides=n_guides, groups=home_groups, page_url="/", title=title, desc=desc, og=home_og, due=due, home_week=home_week, n_week=n_week,
                         week_label=f"{d(wk0.isoformat())} ~ {d(week_end.isoformat())}", t1=t1,
                         regions_used=regions_used, region_slug=regions["sido"], sido_map=sido_map, hub_quick=hub_quick, n_open=n_open, n_up=n_up,
                         tbl=home_tbl, tbl_cap=f"청약 공고 접수 중·예정 {n_open + n_up}곳 중 {len(home_tbl)}곳 — {d(TODAY.isoformat())} 기준 · 청약홈·LH·마이홈 공식 데이터", **common)
