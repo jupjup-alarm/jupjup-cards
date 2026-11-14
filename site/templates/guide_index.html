@@ -10,10 +10,21 @@
     </div>
     {# 2026-11-04 리디자인 5단계: 주제 칩(붙어 다님) + 지금 공고와 이어지는 가이드 한 편 #}
     <nav class="gcats" aria-label="주제">{% for c, slug, lst in cats %}<a href="#{{ slug }}">{{ c }} <span class="num">{{ lst|length }}</span></a>{% endfor %}</nav>
+    {% if latest %}
+    <section class="lsec" id="latest">
+      <h2>새로 올라온 가이드 <small>최신순</small></h2>
+      <div class="g-grid">{% for g in latest %}
+        <a class="g-card" href="{{ g.url }}">
+          <span class="g-thumb" aria-hidden="true">{{ (g.cover.svg_narrow or g.cover.svg)|safe }}</span>
+          <span class="g-ct"><b>{{ g.h1 }}</b><span>{{ g.dek }}</span><small>{{ g.category }} · <time datetime="{{ g.published }}">{{ g.pub_dot }} 발행</time> · 읽는 데 {{ g.read_min }}분</small></span>
+        </a>{% endfor %}
+      </div>
+    </section>
+    {% endif %}
     {% if feat %}
     <a class="gfeat" href="{{ feat.url }}">
       <span class="gfeat-k"><i aria-hidden="true"></i>{{ feat.category }} 가이드 · 지금 접수 중·예정인 {{ '줍줍' if feat.slug == 'mujeonwi' else '공고' }} {{ feat.n_live }}건</span>
-      <b>{{ feat.h1 }}</b><span class="gfeat-d">{{ feat.dek }}</span><small class="num">{{ feat.basis }} 기준 · 읽는 데 {{ feat.read_min }}분</small>
+      <b>{{ feat.h1 }}</b><span class="gfeat-d">{{ feat.dek }}</span><small class="num">{{ feat.pub_dot }} 발행 · 읽는 데 {{ feat.read_min }}분</small>
     </a>
     {% endif %}
     {% for c, slug, lst in cats %}
@@ -22,7 +33,7 @@
       <div class="g-grid">{% for g in lst %}
         <a class="g-card" href="{{ g.url }}">
           <span class="g-thumb" aria-hidden="true">{{ (g.cover.svg_narrow or g.cover.svg)|safe }}</span>
-          <span class="g-ct"><b>{{ g.h1 }}</b><span>{{ g.dek }}</span><small>{{ g.basis }} 기준 · 읽는 데 {{ g.read_min }}분</small></span>
+          <span class="g-ct"><b>{{ g.h1 }}</b><span>{{ g.dek }}</span><small><time datetime="{{ g.published }}">{{ g.pub_dot }} 발행</time> · 읽는 데 {{ g.read_min }}분</small></span>
         </a>{% endfor %}
       </div>
     </section>

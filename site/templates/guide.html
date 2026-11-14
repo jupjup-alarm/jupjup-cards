@@ -8,7 +8,7 @@
       <span class="g-eyebrow"><i></i>{{ g.category }} 가이드</span>
       <h1 class="g-h1">{{ g.h1 }}</h1>
       <p class="g-dek">{{ g.dek }}</p>
-      <p class="g-meta"><b>줍줍알람 편집팀</b><span>{{ g.basis }} 기준</span><span>마지막 확인 {{ g.checked|replace('-', '.') }}</span><span>읽는 데 {{ g.read_min }}분</span></p>
+      <p class="g-meta"><b>줍줍알람 편집팀</b><span><time datetime="{{ g.published }}">{{ g.published|replace('-', '.') }} 발행</time></span><span>{{ g.basis }} 기준</span><span>마지막 확인 {{ g.checked|replace('-', '.') }}</span><span>읽는 데 {{ g.read_min }}분</span></p>
     </header>
     {% if g.cover %}
     <figure class="g-cover">

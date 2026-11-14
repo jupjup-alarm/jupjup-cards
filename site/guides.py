@@ -168,6 +168,11 @@ def og_image(g, out_path):
 
 def build(E, notices, write, common, pub, base, today, problems):
     guides = load()
+    # 최신순 (2026-11-14 사용자 요청 "가이드 최신순으로, 글마다 발행일") — 같은 날은 이름순
+    guides.sort(key=lambda g: g.get("slug", ""))
+    guides.sort(key=lambda g: g.get("published") or "", reverse=True)
+    for g in guides:
+        g["pub_dot"] = (g.get("published") or "").replace("-", ".")
     by = {g["slug"]: g for g in guides}
     tpl = E.get_template("guide.html")
     open_n = [n for n in notices if n["status"] in ("open", "upcoming")]
@@ -221,7 +226,7 @@ def build(E, notices, write, common, pub, base, today, problems):
     cats = [x for x in cats if x[2]]   # 아직 글이 없는 분류는 목록에서 숨김
     cats = [c for c in cats if c[2]]
     h = E.get_template("guide_index.html").render(
-        cats=cats, guides=guides, feat=(by["mujeonwi"] if by.get("mujeonwi", {}).get("n_live") else max(guides, key=lambda g: g.get("n_live", 0))) if any(g.get("n_live") for g in guides) else None, guides_ld=[{"@type": "ListItem", "position": i, "url": base + g["url"], "name": g["h1"]} for i, g in enumerate(guides, 1)], **common, page_url="/guide/", title="청약·임대·대출 가이드 — 칼럼 모음 · 줍줍알람",
+        cats=cats, guides=guides, latest=guides[:6], feat=(by["mujeonwi"] if by.get("mujeonwi", {}).get("n_live") else max(guides, key=lambda g: g.get("n_live", 0))) if any(g.get("n_live") for g in guides) else None, guides_ld=[{"@type": "ListItem", "position": i, "url": base + g["url"], "name": g["h1"]} for i, g in enumerate(guides, 1)], **common, page_url="/guide/", title="청약·임대·대출 가이드 — 칼럼 모음 · 줍줍알람",
         desc=f"청약 가점·무순위·임대주택·주택담보대출(DSR·LTV)·신도시까지, 법령과 공식 안내를 근거로 정리한 칼럼 {len(guides)}편.",
         og="/og-default.jpg", crumb=[("홈", "/"), ("가이드", None)], nav="guide")
     write("/guide/", h, "청약·임대·대출 가이드 — 칼럼 모음 · 줍줍알람", "", "list", index=bool(guides))

@@ -20,12 +20,12 @@
 
     {% if home_guides %}
     <section class="hm-guides" aria-labelledby="h-hg">
-      <div class="hm-gh"><h2 id="h-hg">청약 처음이라면 먼저 읽어 보세요</h2><a href="/guide/">가이드 {{ n_guides }}편 전체 ›</a></div>
+      <div class="hm-gh"><h2 id="h-hg">새로 올라온 가이드</h2><a href="/guide/">가이드 {{ n_guides }}편 전체 ›</a></div>
       <p class="hm-gl">법령과 공식 안내를 근거로 줍줍알람이 직접 정리한 칼럼이에요. 공고를 보기 전에 기준부터 잡아 두면 실수가 줄어요.</p>
       <div class="hm-gs">{% for g in home_guides %}
         <a class="hm-gc" href="{{ g.url }}">
           {% if g.cover and (g.cover.svg_narrow or g.cover.svg) %}<span class="hm-gt" aria-hidden="true">{{ (g.cover.svg_narrow or g.cover.svg)|safe }}</span>{% endif %}
-          <span class="hm-gk">{{ g.category }} · {{ g.read_min }}분{% if g.n_live %} · 지금 공고 {{ g.n_live }}건{% endif %}</span>
+          <span class="hm-gk">{{ g.category }} · {{ (g.published or "")|replace("-", ".") }} 발행{% if g.n_live %} · 지금 공고 {{ g.n_live }}건{% endif %}</span>
           <b>{{ g.h1 }}</b>
           {% if g.dek %}<span class="hm-gd">{{ g.dek }}</span>{% endif %}
         </a>{% endfor %}
