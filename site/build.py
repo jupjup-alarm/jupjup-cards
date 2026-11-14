@@ -1207,6 +1207,9 @@ def site_assets(n):
         return None
     # ⓪ 검수에서 못 쓴다고 한 그림(ok: false — 무늬·로고·남의 사진 같은 홍보용 스톡)은 빼기 (2026-11-11)
     ims = [im for im in idx.get("images", []) if (REPO / im["file"]).exists() and im.get("ok", True) is not False]
+    # 2026-11-14: ⓪ 검수를 건너뛴 날(ok 없음)엔 ⑦이 contact.jpg를 보고 고른 그림만 — 공고 json "site_pick": [파일 경로…] ([]면 하나도 안 씀)
+    if "site_pick" in n:
+        ims = [im for im in ims if im["file"] in set(n["site_pick"])]
     if not n.get("image_credit_owner"):
         n["image_credit_owner"] = idx.get("owner") or "분양 홈페이지"
     owner = n["image_credit_owner"]
@@ -1245,8 +1248,8 @@ def site_assets(n):
     hero = (n.get("photo") or {}).get("image")
     gal = [im for im in bird if im["file"] != hero] + [im for im in ims if im["cat"] == "community"] + [im for im in ims if im["cat"] == "interior"]
     kind_ko = {"birdseye": "단지", "community": "커뮤니티", "interior": "인테리어"}
-    n["gallery"] = [{"image": im["file"], "label": im["label"] or kind_ko[im["cat"]], "kind": kind_ko[im["cat"]],
-                     "alt": f"{n['title']} {kind_ko[im['cat']]} {im['label']}".strip(), "photo": im.get("photo", True)} for im in gal[:8]]
+    n["gallery"] = [{"image": im["file"], "label": (im["label"] if im["label"] and im["label"] != im["cat"] else kind_ko[im["cat"]]), "kind": kind_ko[im["cat"]],
+                     "alt": f"{n['title']} {kind_ko[im['cat']]} {im['label'] if im['label'] != im['cat'] else ''}".strip(), "photo": im.get("photo", True)} for im in gal[:8]]
     n["site_links"] = [l for l in idx.get("links", []) if l.get("kind") in ("emodel", "vr") and l.get("url", "").startswith("http")
                        and "youtube.com/embed" not in l["url"]][:3]
     return idx

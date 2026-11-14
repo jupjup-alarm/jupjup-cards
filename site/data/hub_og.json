@@ -94,10 +94,20 @@
   "image": "photos/site/2026000553/birdseye.jpg",
   "pos": "center 55%"
  },
+ "/region/gyeonggi/yongin/": {
+  "credit": "이미지: 양지지구 2블럭 지역주택조합 분양 홈페이지 · 실제와 다를 수 있음",
+  "image": "photos/site/2026910299/overview-auto-2.jpg",
+  "pos": "center 60%"
+ },
  "/region/incheon/": {
   "credit": "이미지: 숭의역2단지지역주택조합 제공 투시도 · 실제와 다를 수 있음",
   "image": "photos/8c8902a87c85.png",
   "pos": "center 60%"
+ },
+ "/region/incheon/bupyeong/": {
+  "credit": "위성사진 © NAVER Corp.",
+  "image": "photos/sat/6389507ee60c.png",
+  "pos": "center 50%"
  },
  "/region/incheon/gyeyang/": {
   "credit": "이미지: 반도건설 조감도 · 실제와 다를 수 있음",
