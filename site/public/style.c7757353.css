@@ -1408,3 +1408,8 @@ footer .biz{font-style:normal;line-height:1.6;opacity:.85}   /* 사업자 정보
 .hm-gc b{font-size:15.5px;font-weight:800;line-height:1.4;letter-spacing:-.025em}
 .hm-gd{font-size:13px;line-height:1.55;color:var(--ink-sub);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 @media (min-width:1024px){.hm-gs{grid-auto-flow:row;grid-auto-columns:auto;grid-template-columns:repeat(3,minmax(0,1fr));overflow:visible}}
+
+/* 줍줍알람 분석 (2026-11-14) */
+.an p{line-height:1.75;margin:0 0 12px}
+.an-pts{margin:4px 0 12px;padding-left:18px;display:flex;flex-direction:column;gap:6px;line-height:1.6}
+.an-pts b{color:var(--ink)}
