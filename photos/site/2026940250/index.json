@@ -2,6 +2,22 @@
  "key": "2026940250",
  "images": [
   {
+   "cat": "birdseye",
+   "kind": "overview",
+   "label": "단지 투시도",
+   "file": "photos/site/2026940250/overview-auto-3-2.jpg",
+   "src": "https://www.arteragd.co.kr/images/img_main1_visual.jpg?1",
+   "w": 1920,
+   "h": 1000,
+   "photo": false,
+   "from": "auto",
+   "checked": "2026-11-14",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
+  },
+  {
    "cat": "overview",
    "kind": "overview",
    "label": "교복 모녀 스톡사진",
@@ -76,22 +92,6 @@
    "ok": true,
    "name_shown": true,
    "full": false,
-   "checked_by": "정기 작업"
-  },
-  {
-   "cat": "birdseye",
-   "kind": "overview",
-   "label": "단지 투시도",
-   "file": "photos/site/2026940250/overview-auto-3-2.jpg",
-   "src": "https://www.arteragd.co.kr/images/img_main1_visual.jpg?1",
-   "w": 1920,
-   "h": 1000,
-   "photo": false,
-   "from": "auto",
-   "checked": "2026-11-14",
-   "ok": true,
-   "name_shown": false,
-   "full": true,
    "checked_by": "정기 작업"
   },
   {
@@ -333,6 +333,17 @@
    "name_shown": false,
    "full": false,
    "checked_by": "정기 작업"
+  },
+  {
+   "cat": "pamphlet",
+   "kind": "팸플릿",
+   "label": "팸플릿 cand-01",
+   "file": "pamphlets/2026940250/notice/cand-01.jpg",
+   "src": "pamphlet:notice/cand-01.jpg",
+   "w": 1600,
+   "h": 1160,
+   "photo": false,
+   "from": "pamphlet"
   }
  ],
  "links": [],
@@ -345,5 +356,5 @@
   "tries": 2,
   "result": "18장 (overview 3, siteplan 2, plan 5, community 1, interior 5, location 2)"
  },
- "updated": "2026-11-13 08:41"
+ "updated": "2026-11-15 06:38"
 }

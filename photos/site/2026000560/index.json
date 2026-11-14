@@ -66,6 +66,39 @@
    "h": 1047,
    "photo": false,
    "from": "auto"
+  },
+  {
+   "cat": "pamphlet",
+   "kind": "팸플릿",
+   "label": "팸플릿 cand-01",
+   "file": "pamphlets/2026000560/notice/cand-01.jpg",
+   "src": "pamphlet:notice/cand-01.jpg",
+   "w": 1099,
+   "h": 1599,
+   "photo": false,
+   "from": "pamphlet"
+  },
+  {
+   "cat": "pamphlet",
+   "kind": "팸플릿",
+   "label": "팸플릿 cand-02",
+   "file": "pamphlets/2026000560/notice/cand-02.jpg",
+   "src": "pamphlet:notice/cand-02.jpg",
+   "w": 1084,
+   "h": 1543,
+   "photo": false,
+   "from": "pamphlet"
+  },
+  {
+   "cat": "pamphlet",
+   "kind": "팸플릿",
+   "label": "팸플릿 cand-03",
+   "file": "pamphlets/2026000560/notice/cand-03.jpg",
+   "src": "pamphlet:notice/cand-03.jpg",
+   "w": 1036,
+   "h": 689,
+   "photo": false,
+   "from": "pamphlet"
   }
  ],
  "links": [],
@@ -78,5 +111,5 @@
   "tries": 1,
   "result": "6장 (overview 3, location 3)"
  },
- "updated": "2026-11-14 06:56"
+ "updated": "2026-11-15 06:37"
 }

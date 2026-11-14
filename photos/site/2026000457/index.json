@@ -40,6 +40,17 @@
    "checked": "2026-11-13",
    "ok": false,
    "why": "빈 그림"
+  },
+  {
+   "cat": "pamphlet",
+   "kind": "팸플릿",
+   "label": "팸플릿 cand-01",
+   "file": "pamphlets/2026000457/notice/cand-01.jpg",
+   "src": "pamphlet:notice/cand-01.jpg",
+   "w": 709,
+   "h": 1021,
+   "photo": false,
+   "from": "pamphlet"
   }
  ],
  "links": [],
@@ -52,5 +63,5 @@
   "tries": 1,
   "result": "3장 (location 3)"
  },
- "updated": "2026-11-13 08:42"
+ "updated": "2026-11-15 06:38"
 }

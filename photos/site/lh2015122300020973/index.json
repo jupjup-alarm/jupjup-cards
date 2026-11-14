@@ -54,6 +54,21 @@
    "photo": false
   },
   {
+   "cat": "aerial",
+   "kind": "위성사진",
+   "label": "위성사진",
+   "file": "photos/sat/6cf8144e0838.png",
+   "src": "NAVER 위성 지도",
+   "w": 1080,
+   "h": 1920,
+   "photo": true,
+   "full": true,
+   "ok": true,
+   "checked": true,
+   "from": "satellite",
+   "credit": "위성사진 © NAVER Corp."
+  },
+  {
    "cat": "notice",
    "kind": "공고문",
    "label": "공고문 공급금액 (p.4)",
@@ -97,28 +112,13 @@
    "full": false,
    "page": 1,
    "marked": []
-  },
-  {
-   "cat": "aerial",
-   "kind": "위성사진",
-   "label": "위성사진",
-   "file": "photos/sat/6cf8144e0838.png",
-   "src": "NAVER 위성 지도",
-   "w": 1080,
-   "h": 1920,
-   "photo": true,
-   "full": true,
-   "ok": true,
-   "checked": true,
-   "from": "satellite",
-   "credit": "위성사진 © NAVER Corp."
   }
  ],
  "links": [],
  "name": "평택송화 국민임대 예비입주자",
  "row": 97,
- "updated": "2026-11-14 06:57",
+ "updated": "2026-11-15 06:38",
  "owner": "LH",
  "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
- "lh_checked": "2026-11-14"
+ "lh_checked": "2026-11-15"
 }

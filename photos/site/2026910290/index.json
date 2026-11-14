@@ -225,6 +225,39 @@
    "ok": true,
    "name_shown": false,
    "full": false
+  },
+  {
+   "cat": "pamphlet",
+   "kind": "팸플릿",
+   "label": "팸플릿 cand-01",
+   "file": "pamphlets/2026910290/notice/cand-01.jpg",
+   "src": "pamphlet:notice/cand-01.jpg",
+   "w": 1082,
+   "h": 1600,
+   "photo": false,
+   "from": "pamphlet"
+  },
+  {
+   "cat": "pamphlet",
+   "kind": "팸플릿",
+   "label": "팸플릿 cand-02",
+   "file": "pamphlets/2026910290/notice/cand-02.jpg",
+   "src": "pamphlet:notice/cand-02.jpg",
+   "w": 1270,
+   "h": 1600,
+   "photo": false,
+   "from": "pamphlet"
+  },
+  {
+   "cat": "pamphlet",
+   "kind": "팸플릿",
+   "label": "팸플릿 cand-03",
+   "file": "pamphlets/2026910290/notice/cand-03.jpg",
+   "src": "pamphlet:notice/cand-03.jpg",
+   "w": 1091,
+   "h": 1600,
+   "photo": false,
+   "from": "pamphlet"
   }
  ],
  "links": [],
@@ -237,5 +270,5 @@
   "tries": 1,
   "result": "15장 (overview 1, siteplan 1, dongho 1, plan 6, interior 3, location 3)"
  },
- "updated": "2026-11-11 09:43"
+ "updated": "2026-11-15 06:38"
 }
