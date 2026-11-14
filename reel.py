@@ -351,6 +351,21 @@ SPLIT_PUNCT = re.compile(r"[,，.?!…]$")
 SPLIT_GOOD = re.compile(r"(?:은|는|이|가|을|를|에|에서|도|고|며|면|서|요|데|죠|로|으로|랑|하고|까지|부터|만)$")
 
 
+GLUE_PREFIX = re.compile(r"^(월|연|약|총|최고|최저|최대|매달|매월)$")
+GLUE_UNIT = re.compile(r"(원|세대|채|명|건|호|대\s*1|평|층|개|곳|년|월|일)")
+GLUE_NUM = re.compile(r"[\d만억천]$|^(한|두|세|네|다섯|여섯|일곱|여덟|아홉|열|스무)$")
+
+
+def glued(prev, nxt):
+    """두 단어 사이에서 절대 줄을 바꾸거나 자막을 끊지 않는 자리 (2026-11-14 사용자 결정 "월 / 56만원 줄바꿈은 무조건 붙여"):
+    '월'·'연'·'약'·'최고' 같은 말 + 금액·숫자 ("월 56만원", "약 40퍼센트"), 숫자 + 단위 ("27 채", "아홉 세대")."""
+    if re.search(r"\d월$", prev) and re.match(r"\d+일", nxt):   # 날짜 '11월 16일'
+        return True
+    if GLUE_PREFIX.match(prev) and re.match(r"[\d한두세네다섯여섯일곱여덟아홉열스무]", nxt):
+        return True
+    return bool(GLUE_UNIT.match(nxt) and GLUE_NUM.search(prev))
+
+
 def line_break(words, one_line=15):
     """자막 두 줄 나누기 (2026-11-05 사용자 결정 — 모든 자막): 한 줄에 다 들어가면 그대로,
     넘치면 두 줄 길이가 비슷하면서 말이 끊기는 자리(쉼표·조사 뒤)에서 나눈다. 반환: 둘째 줄이 시작하는 단어 번호 또는 None."""
@@ -364,7 +379,7 @@ def line_break(words, one_line=15):
         right = total - left - 1
         cost = (abs(left - right) - (4.5 if SPLIT_PUNCT.search(words[k - 1]) else 1.5 if SPLIT_GOOD.search(words[k - 1]) else 0)
                 + (6 if min(left, right) <= 3 else 0) + (4 if max(left, right) > 17 else 0)
-                + (8 if re.match(r"(원|세대|채|명|건|호|대\s*1|평|층|개|곳|년|월|일)", words[k]) and re.search(r"[\d만억천]$|^(한|두|세|네|다섯|여섯|일곱|여덟|아홉|열|스무)$", words[k - 1]) else 0))   # 숫자와 단위는 한 줄에
+                + (1000 if glued(words[k - 1], words[k]) else 0))   # '월 56만원'·숫자와 단위는 무조건 한 줄에
         if best is None or cost < best:
             best, bk = cost, k
     return bk
@@ -377,11 +392,12 @@ def phrases_of(text, t0, dur, spans=None, end=None, maxw=8):
         return []
     times = word_times(words, t0, dur, spans)
     out, cur = [], []
-    for w, at in zip(words, times):
-        if cur and sum(len(x) + 1 for x, _ in cur) + len(w) > 26:   # 자막 두 줄(약 26자)을 넘기기 전에 끊음
-            out.append(cur); cur = []
+    for i, (w, at) in enumerate(zip(words, times)):
+        if cur and sum(len(x) + 1 for x, _ in cur) + len(w) > 26 and not glued(cur[-1][0], w):   # 자막 두 줄(약 26자)을 넘기기 전에 끊음
+            out.append(cur); cur = []   # ('월 56만원'처럼 붙여야 하는 자리면 안 끊음)
         cur.append((w, at))
-        if BREATH_END.search(w) or len(cur) >= maxw:
+        nxt = words[i + 1] if i + 1 < len(words) else ""
+        if BREATH_END.search(w) or (len(cur) >= maxw and not (nxt and glued(w, nxt))):
             out.append(cur); cur = []
     if cur:
         if out and len(cur) <= 2 and sum(len(x) + 1 for x, _ in out[-1] + cur) <= 30 and not BREATH_END.search(out[-1][-1][0]):
