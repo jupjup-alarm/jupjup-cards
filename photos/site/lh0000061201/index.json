@@ -138,6 +138,66 @@
    "full": false,
    "page": 9,
    "marked": []
+  },
+  {
+   "cat": "commons",
+   "kind": "실사",
+   "label": "Pyeongtaek-godeok IC 20191207 104104.jpg",
+   "file": "photos/site/lh0000061201/commons-1.jpg",
+   "src": "https://commons.wikimedia.org/wiki/File:Pyeongtaek-godeok_IC_20191207_104104.jpg",
+   "w": 1920,
+   "h": 1080,
+   "photo": true,
+   "full": true,
+   "from": "commons",
+   "license": "CC BY-SA 4.0",
+   "credit": "사진: 밝은소년 · CC BY-SA 4.0 (위키미디어 커먼즈)",
+   "md5": "f1d9deb476b27aa7d74a4ab209a1d3b5"
+  },
+  {
+   "cat": "commons",
+   "kind": "실사",
+   "label": "Pyeongtaek-godeok IC 20191207 104142.jpg",
+   "file": "photos/site/lh0000061201/commons-2.jpg",
+   "src": "https://commons.wikimedia.org/wiki/File:Pyeongtaek-godeok_IC_20191207_104142.jpg",
+   "w": 1920,
+   "h": 1080,
+   "photo": true,
+   "full": true,
+   "from": "commons",
+   "license": "CC BY-SA 4.0",
+   "credit": "사진: 밝은소년 · CC BY-SA 4.0 (위키미디어 커먼즈)",
+   "md5": "d76641f8ae1cc3e3b5e294645145b03d"
+  },
+  {
+   "cat": "commons",
+   "kind": "실사",
+   "label": "Pyeongtaek-godeok IC 20191207 104213.jpg",
+   "file": "photos/site/lh0000061201/commons-3.jpg",
+   "src": "https://commons.wikimedia.org/wiki/File:Pyeongtaek-godeok_IC_20191207_104213.jpg",
+   "w": 1920,
+   "h": 1080,
+   "photo": true,
+   "full": true,
+   "from": "commons",
+   "license": "CC BY-SA 4.0",
+   "credit": "사진: 밝은소년 · CC BY-SA 4.0 (위키미디어 커먼즈)",
+   "md5": "363fc3d90672c126145ce78fe1b1281b"
+  },
+  {
+   "cat": "commons",
+   "kind": "실사",
+   "label": "Pyeongtaek-godeok IC 20191207 104219.jpg",
+   "file": "photos/site/lh0000061201/commons-4.jpg",
+   "src": "https://commons.wikimedia.org/wiki/File:Pyeongtaek-godeok_IC_20191207_104219.jpg",
+   "w": 1920,
+   "h": 1080,
+   "photo": true,
+   "full": true,
+   "from": "commons",
+   "license": "CC BY-SA 4.0",
+   "credit": "사진: 밝은소년 · CC BY-SA 4.0 (위키미디어 커먼즈)",
+   "md5": "d859e3baf899aaa3cfd9082fb4e70555"
   }
  ],
  "links": [],
@@ -146,5 +206,6 @@
  "updated": "2026-11-14 06:57",
  "owner": "LH",
  "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
- "lh_checked": "2026-11-14"
+ "lh_checked": "2026-11-14",
+ "commons_checked": "평택고덕"
 }

@@ -1,0 +1,57 @@
+{
+ "slug": "2026-11-14-pyeongtaek-anseong-10yr-rental-reel",
+ "title": "평택·안성 10년 공공임대(리츠) 예비입주자 — 통장·소득·자산 무관",
+ "series": "임대알람",
+ "style": "story",
+ "voice": "voices/bf6d8d3afe98/",
+ "voice_speed": 1.0,
+ "bgm": "music/backbeat.mp3",
+ "thumb": {"lines": ["통장·소득 안 봐요", "84㎡ 월세 40% 수준"]},
+ "scenes": [
+  {"type": "story", "say": "월요일 하루 평택 안성에 새 아파트 임대가 월 54만 원대부터 열린대요.", "word": "월 54만 원대",
+   "shots": [
+    {"img": "photos/site/lh0000061201/birdseye-b3.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음", "pos": "center 45%"},
+    {"img": "photos/site/2026910297/commons-1.jpg", "credit": "사진: Academy of Korean Studies · KOGL Type 1 (위키미디어 커먼즈)"}
+   ]},
+  {"type": "story", "say": "심지어 10년 살고 분양으로 바꿀 수 있는 임대래요.", "word": "10년",
+   "shots": [
+    {"img": "photos/site/lh0000061201/birdseye-b5.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음"},
+    {"img": "photos/site/lh0000061201/location-b3.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음", "pos": "40% 60%"}
+   ],
+   "proof": {"kind": "image", "img": "photos/site/lh0000061201/notice-price.jpg", "credit": "자료: LH 예비입주자 모집공고(2026.11.05)"}},
+  {"type": "story", "say": "이게 어떻게 가능할까요?", "dim": true,
+   "shots": [
+    {"img": "photos/site/lh0000061201/commons-1.jpg", "credit": "사진: 밝은소년 · CC BY-SA 4.0 (위키미디어 커먼즈)"}
+   ]},
+  {"type": "story", "say": "사실은요 LH 10년 공공임대 예비입주자 모집이래요. 84㎡도 월 59만 원대인데 말이죠.", "word": "월 59만 원대",
+   "shots": [
+    {"img": "photos/site/lh0000061201/birdseye-b3.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음", "pos": "25% 40%"},
+    {"img": "photos/site/lh0000061201/commons-3.jpg", "credit": "사진: 밝은소년 · CC BY-SA 4.0 (위키미디어 커먼즈)"}
+   ],
+   "proof": {"kind": "doc", "head": "안성아양 B-4 84A", "lines": ["보증금 6,585만원", "월 59만8,030원", "통장·소득·자산 안 봄"], "mark": 1, "src": "출처: LH 예비입주자 모집공고"}},
+  {"type": "story", "say": "근데 주변 월세랑 비교하면 놀랍습니다.", "word": "주변 월세", "dim": true,
+   "shots": [
+    {"img": "photos/site/lh0000061201/location-b3.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음", "pos": "70% 40%"}
+   ]},
+  {"type": "story", "say": "옆 단지 84㎡는 월 150만 원에 거래됐대요. 월세만 보면 약 40퍼센트 수준이에요.", "word": "40퍼센트",
+   "shots": [
+    {"img": "photos/site/lh0000061201/commons-2.jpg", "credit": "사진: 밝은소년 · CC BY-SA 4.0 (위키미디어 커먼즈)"},
+    {"img": "photos/site/2026910297/commons-1.jpg", "credit": "사진: Academy of Korean Studies · KOGL Type 1 (위키미디어 커먼즈)", "pos": "70% 50%"}
+   ],
+   "proof": {"kind": "compare", "head": "84㎡ 월세 비교 (추정)", "items": [
+     {"label": "이 공고 84A 월세", "value": "월 59만8,030원", "n": 598030},
+     {"label": "옆 광신프로그레스 84㎡ 월세 실거래", "value": "월 150만원", "n": 1500000}],
+    "src": "국토부 실거래가 2026.09"}},
+  {"type": "story", "say": "통장도 소득도 자산도 안 보고, 접수는 11월 16일 하루뿐이래요.", "word": "11월 16일",
+   "shots": [
+    {"img": "photos/site/lh0000061201/commons-4.jpg", "credit": "사진: 밝은소년 · CC BY-SA 4.0 (위키미디어 커먼즈)"},
+    {"img": "photos/site/lh0000061201/birdseye-b5.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음", "pos": "center 30%"}
+   ],
+   "proof": {"kind": "image", "img": "photos/site/lh0000061201/notice-schedule.jpg", "credit": "자료: LH 예비입주자 모집공고(2026.11.05)"}},
+  {"type": "end", "say": "단지 이름이랑 공고 정리는 댓글에 '평택'이라고 남겨 주세요."}
+ ],
+ "pool": [
+  {"img": "photos/layout-8f44b8f1e9cd.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음"},
+  {"img": "photos/site/lh0000061201/siteplan-b4.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음"}
+ ]
+}
