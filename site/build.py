@@ -2008,7 +2008,18 @@ def main():
             tag, tc = (f"마감 {ends}", "e") if ends else (f"접수 {starts}", "s") if starts else (f"발표 {anns}", "a") if anns else ("", "")
         home_week.append({"iso": di, "dow": "월화수목금토일"[i], "day": int(di[8:]), "past": past, "today": di == t0, "tag": tag, "tc": tc})
     n_week = len([x for x in s if x["status"] == "upcoming" and x["rcpt"][0] <= week_end.isoformat()])
-    h = home_tpl.render(groups=home_groups, page_url="/", title=title, desc=desc, og=home_og, due=due, home_week=home_week, n_week=n_week,
+    # 홈 '가이드' 띠 (2026-11-14 사용자 요청 — 애드센스 거절: 첫 화면에서 품질 높은 가이드가 안 보임)
+    #  기초 4편(누구나 먼저 읽을 글) + 지금 접수 중 공고와 이어진 글 순으로 6편, 첫 화면 바로 아래에.
+    live = [x for x in s if x["status"] in ("open", "upcoming")]
+    hg = []
+    for g in GUIDES.load():
+        kinds = set(g.get("notice_kinds") or [])
+        g = dict(g, url=f"/guide/{g['slug']}/", read_min=GUIDES.read_min(g), n_live=len([x for x in live if x["kind"] in kinds]))
+        hg.append(g)
+    BASICS = ["mujeonwi", "first-priority", "cheongyak-gajeom", "homeless-criteria", "applyhome-guide"]
+    hg.sort(key=lambda g: (BASICS.index(g["slug"]) if g["slug"] in BASICS else 99, -g["n_live"]))
+    home_guides, n_guides = hg[:6], len(hg)
+    h = home_tpl.render(home_guides=home_guides, n_guides=n_guides, groups=home_groups, page_url="/", title=title, desc=desc, og=home_og, due=due, home_week=home_week, n_week=n_week,
                         week_label=f"{d(wk0.isoformat())} ~ {d(week_end.isoformat())}", t1=t1,
                         regions_used=regions_used, region_slug=regions["sido"], sido_map=sido_map, hub_quick=hub_quick, n_open=n_open, n_up=n_up,
                         tbl=home_tbl, tbl_cap=f"청약 공고 접수 중·예정 {n_open + n_up}곳 중 {len(home_tbl)}곳 — {d(TODAY.isoformat())} 기준 · 청약홈·LH·마이홈 공식 데이터", **common)

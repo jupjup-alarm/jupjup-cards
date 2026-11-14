@@ -10,7 +10,7 @@
     <section class="hm-hero">
       <p class="hm-date">{{ today.isoformat()|d }} 기준 · 청약홈·LH·마이홈 공식 데이터</p>
       <h1>청약 일정·줍줍(무순위) 공고 <span class="h1-kw">지금 접수 중 <b>{{ n_open }}곳</b>·예정 {{ n_up }}곳</span></h1>
-      <p class="hm-lead">무순위(줍줍)·민간분양·공공분양·신혼희망타운 공고를 청약홈 공식 데이터로 정리해요. 접수일, 분양가, 자격, 그리고 넣을 만한지 줍줍알람의 한마디까지 한 페이지에 담았어요.</p>
+      <p class="hm-lead">무순위(줍줍)·민간분양·공공분양·신혼희망타운 공고를 청약홈 공식 데이터로 정리해요. 접수일, 분양가, 자격, 그리고 넣을 만한지 줍줍알람의 한마디까지 한 페이지에 담았어요. 청약이 처음이라면 아래 <a href="/guide/">가이드</a>부터 읽어 보세요.</p>
       {% set d_today = (due|selectattr(0, 'equalto', '오늘 마감')|list) %}{% set d_tom = (due|selectattr(0, 'equalto', '내일 마감')|list) %}
       <div class="hm-tiles">
         <a class="t-t" href="{{ '#today' if d_today else '/schedule/this-week/' }}"><span>오늘 마감</span><b class="num">{{ d_today[0][2]|length if d_today else 0 }}</b></a>
@@ -18,6 +18,21 @@
         <a class="t-w" href="{{ '#week' if n_week else '/schedule/this-week/' }}"><span>이번 주 접수</span><b class="num">{{ n_week }}</b></a>
       </div>
     </section>
+
+    {% if home_guides %}
+    <section class="hm-guides" aria-labelledby="h-hg">
+      <div class="hm-gh"><h2 id="h-hg">청약 처음이라면 먼저 읽어 보세요</h2><a href="/guide/">가이드 {{ n_guides }}편 전체 ›</a></div>
+      <p class="hm-gl">법령과 공식 안내를 근거로 줍줍알람이 직접 정리한 칼럼이에요. 공고를 보기 전에 기준부터 잡아 두면 실수가 줄어요.</p>
+      <div class="hm-gs">{% for g in home_guides %}
+        <a class="hm-gc" href="{{ g.url }}">
+          {% if g.cover and (g.cover.svg_narrow or g.cover.svg) %}<span class="hm-gt" aria-hidden="true">{{ (g.cover.svg_narrow or g.cover.svg)|safe }}</span>{% endif %}
+          <span class="hm-gk">{{ g.category }} · {{ g.read_min }}분{% if g.n_live %} · 지금 공고 {{ g.n_live }}건{% endif %}</span>
+          <b>{{ g.h1 }}</b>
+          {% if g.dek %}<span class="hm-gd">{{ g.dek }}</span>{% endif %}
+        </a>{% endfor %}
+      </div>
+    </section>
+    {% endif %}
 
     {% for label, day, lst in due %}
     {% if label == '오늘 마감' %}
@@ -75,6 +90,7 @@
         {% for s in regions_used %}<a href="/region/{{ region_slug[s] }}/"><b>{{ s }}</b><span>공고 {{ sido_map[s]|length }}곳</span></a>{% endfor %}
       </div>
     </section>
+
     <div class="follow hm-follow">
       <p><b>새 공고가 나오면 인스타그램으로 먼저 알려드려요.</b><br>카드뉴스·릴스로 1분 만에 핵심만 정리해요.</p>
       <a class="btn" href="{{ IG }}" target="_blank" rel="noopener">{{ ig_icon() }}@jupjup_alarm 팔로우</a>
