@@ -1,0 +1,51 @@
+{
+ "slug": "2026-11-14-siheung-geomo-s1-reel",
+ "title": "시흥거모지구 S-1블록 공공분양주택",
+ "series": "내집마련",
+ "style": "story",
+ "voice": "voices/ca8a4b468e31/",
+ "voice_speed": 1.0,
+ "bgm": "music/beat-one.mp3",
+ "thumb": {"lines": ["시흥 일반분양 27채", "84㎡ 2억 싸게"]},
+ "scenes": [
+  {"type": "story", "say": "시흥에 옆 단지보다 2억 싼 새 아파트가 일반분양 27채 나왔대요.", "word": "27채",
+   "shots": [
+    {"img": "photos/site/lh0000061195/birdseye-b1.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음", "pos": "center 45%"},
+    {"img": "photos/sat/c5f61d402007.png", "credit": "위성사진 © NAVER Corp."}
+   ]},
+  {"type": "story", "say": "심지어 LH가 짓는 새 아파트래요.", "word": "새 아파트",
+   "shots": [
+    {"img": "photos/site/lh0000061195/siteplan-b1.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음", "pos": "center 40%"}
+   ]},
+  {"type": "story", "say": "이게 어떻게 가능할까요?", "dim": true,
+   "shots": [
+    {"img": "photos/site/lh0000061195/location-b1.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음", "pos": "60% 40%"}
+   ]},
+  {"type": "story", "say": "사실은요 상한제 공공분양이라 84㎡가 5억대래요. 옆 단지 84㎡는 7억6,800만 원에 팔렸는데 말이죠.", "word": "7억6,800만 원",
+   "shots": [
+    {"img": "photos/site/lh0000061195/birdseye-b1.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음", "pos": "30% 70%"},
+    {"img": "photos/sat/c5f61d402007.png", "credit": "위성사진 © NAVER Corp.", "pos": "center 60%"}
+   ],
+   "proof": {"kind": "compare", "head": "84㎡ 비교 (추정)", "items": [
+     {"label": "이 단지 84A 최고 분양가", "value": "5억7,026만원"},
+     {"label": "옆 시흥장현금강펜테리움센트럴파크 84㎡ 실거래", "value": "7억6,800만원"}],
+    "src": "국토부 실거래가 2026.10"}},
+  {"type": "story", "say": "근데 중요한 건 일반분양 숫자예요.", "word": "일반분양", "dim": true,
+   "shots": [
+    {"img": "maps/207b2c31fe1e.png"}
+   ]},
+  {"type": "story", "say": "300채 중 대부분이 사전청약과 특공 몫이라 일반은 27채뿐이래요.", "word": "27채",
+   "shots": [
+    {"img": "photos/site/lh0000061195/location-b1.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음", "pos": "25% 60%"},
+    {"img": "photos/site/lh0000061195/siteplan-b1.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음", "pos": "center 70%"}
+   ],
+   "proof": {"kind": "image", "img": "photos/site/lh0000061195/notice-price.jpg", "credit": "자료: LH 입주자모집공고(2026.10.23)"}},
+  {"type": "story", "say": "무주택에 청약통장 있으면 되고 일반 접수는 11월 17일 하루뿐이래요.", "word": "11월 17일",
+   "shots": [
+    {"img": "maps/207b2c31fe1e.png"}
+   ],
+   "proof": {"kind": "image", "img": "photos/site/lh0000061195/notice-schedule.jpg", "credit": "자료: LH 입주자모집공고(2026.10.23)"}},
+  {"type": "end", "say": "단지 이름이랑 공고 정리는 댓글에 '거모'라고 남겨 주세요."}
+ ],
+ "pool": []
+}

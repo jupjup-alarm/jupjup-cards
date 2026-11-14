@@ -1,0 +1,19 @@
+{
+ "slug": "2026-11-14-siheung-geomo-s1-reel",
+ "duration": 36.2,
+ "voiced": true,
+ "narration_s": 32.5,
+ "mean_db": -18.7,
+ "voice": "voices/ca8a4b468e31/",
+ "video": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-14-siheung-geomo-s1-reel/2026-11-14-siheung-geomo-s1-reel.mp4",
+ "cover": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-14-siheung-geomo-s1-reel/2026-11-14-siheung-geomo-s1-reel_thumb.jpg",
+ "size_mb": 20.58,
+ "warnings": [
+  "호흡: 장면 1 대본에 없는 곳에서 0.30초 쉼 (③ 대본 쉼표 위치 확인)",
+  "호흡: 장면 4 대본에 없는 곳에서 0.29초 쉼 (③ 대본 쉼표 위치 확인)",
+  "호흡: 장면 6 대본에 없는 곳에서 0.48초 쉼 (③ 대본 쉼표 위치 확인)",
+  "호흡: 장면 7 대본에 없는 곳에서 0.32초 쉼 (③ 대본 쉼표 위치 확인)",
+  "호흡: 장면 8 대본에 없는 곳에서 0.30초 쉼 (③ 대본 쉼표 위치 확인)",
+  "사진: 컷 15개 · 서로 다른 사진 5장"
+ ]
+}
