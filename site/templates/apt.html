@@ -427,7 +427,8 @@
   {# 2026-11-14 사용자 결정: 접수 중·예정 공고에만, 데이터로 쓴 '줍줍알람 분석' (애드센스 — 공고마다 다른 내용) #}
   {% if n.analysis and n.analysis.paras and n.status in ('open', 'upcoming') %}{% set an = n.analysis %}
   <section class="sec an" aria-labelledby="h-an">
-    <h2 id="h-an">줍줍알람 분석{% if an.h %} — {{ an.h }}{% endif %}</h2>
+    <p class="an-k">줍줍알람 분석</p>
+    <h2 id="h-an">{{ an.h or "이 공고, 숫자로 보면" }}</h2>
     {% for p in an.paras %}<p>{{ p }}</p>{% endfor %}
     {% if an.points %}<ul class="an-pts">{% for pt in an.points %}<li><b>{{ pt[0] }}</b> {{ pt[1] }}</li>{% endfor %}</ul>{% endif %}
     <p class="note">{% if an.basis %}근거: {{ an.basis|join(' · ') }}. {% endif %}숫자 비교는 공개 자료로 계산한 추정이며 투자 권유가 아니에요{% if an.made %} ({{ an.made|replace('-', '.') }} 작성){% endif %}.</p>
