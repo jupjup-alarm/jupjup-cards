@@ -1,0 +1,22 @@
+{
+ "key": "lh2015122300021068",
+ "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300021068&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=09&mi=1026",
+ "checked": "2026-11-17 06:53",
+ "files": [
+  {
+   "fileid": "69411858",
+   "name": "(26.11.16.공고)안산시영구임대예비입주자표준모집공고문.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69411857",
+   "name": "(26.11.16.공고)안산시영구임대예비입주자표준모집공고문.pdf",
+   "kind": "notice",
+   "got": "ok",
+   "md5": "d1fa9f4b20da278cac9240ebabea2e50",
+   "pages": 36,
+   "bytes": 890135
+  }
+ ],
+ "changed": true
+}

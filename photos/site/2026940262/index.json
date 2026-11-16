@@ -1,0 +1,203 @@
+{
+ "key": "2026940262",
+ "images": [
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "overview",
+   "file": "photos/site/2026940262/overview-auto-1.jpg",
+   "src": "https://www.xn--9m1b83joykr9b9zjpoc.com/images/info/overview1_240514.jpg?v=1",
+   "w": 1200,
+   "h": 972,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "overview",
+   "file": "photos/site/2026940262/overview-auto-2.jpg",
+   "src": "https://www.xn--9m1b83joykr9b9zjpoc.com/images/info/brand2_1_240605.jpg",
+   "w": 1200,
+   "h": 1182,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "overview",
+   "file": "photos/site/2026940262/overview-auto-3.jpg",
+   "src": "https://www.xn--9m1b83joykr9b9zjpoc.com/images/sub/visual1.jpg",
+   "w": 2000,
+   "h": 550,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "location",
+   "file": "photos/site/2026940262/location-auto-1.jpg",
+   "src": "https://www.xn--9m1b83joykr9b9zjpoc.com/images/main/slide_premium1_1.jpg",
+   "w": 1160,
+   "h": 1000,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "location",
+   "file": "photos/site/2026940262/location-auto-2.jpg",
+   "src": "https://www.xn--9m1b83joykr9b9zjpoc.com/images/main/slide_premium2_1.jpg",
+   "w": 1160,
+   "h": 1000,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "location",
+   "file": "photos/site/2026940262/location-auto-3.jpg",
+   "src": "https://www.xn--9m1b83joykr9b9zjpoc.com/images/main/slide_premium3_1.jpg",
+   "w": 1160,
+   "h": 1000,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "interior",
+   "kind": "interior",
+   "label": "interior",
+   "file": "photos/site/2026940262/interior-auto-1.jpg",
+   "src": "https://www.xn--9m1b83joykr9b9zjpoc.com/images/space/interior_84.jpg?v=1",
+   "w": 400,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "interior",
+   "kind": "interior",
+   "label": "interior",
+   "file": "photos/site/2026940262/interior-auto-2.jpg",
+   "src": "https://www.xn--9m1b83joykr9b9zjpoc.com/images/space/interior_59.jpg?v=1",
+   "w": 416,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "interior",
+   "kind": "interior",
+   "label": "interior",
+   "file": "photos/site/2026940262/interior-auto-3.jpg",
+   "src": "https://www.xn--9m1b83joykr9b9zjpoc.com/images/space/interior_42.jpg?v=1",
+   "w": 409,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "siteplan",
+   "kind": "siteplan",
+   "label": "siteplan",
+   "file": "photos/site/2026940262/siteplan-auto-1.jpg",
+   "src": "https://www.xn--9m1b83joykr9b9zjpoc.com/images/complex-info/layout1_240603.jpg?v=1",
+   "w": 1200,
+   "h": 1670,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "siteplan",
+   "kind": "siteplan",
+   "label": "siteplan",
+   "file": "photos/site/2026940262/siteplan-auto-2.jpg",
+   "src": "https://www.xn--9m1b83joykr9b9zjpoc.com/images/complex-info/system1.jpg?v=1",
+   "w": 1200,
+   "h": 2115,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "plan",
+   "file": "photos/site/2026940262/plan-auto-1.jpg",
+   "src": "https://www.xn--9m1b83joykr9b9zjpoc.com/images/main/slide_type1.png?v=1",
+   "w": 445,
+   "h": 600,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "plan",
+   "file": "photos/site/2026940262/plan-auto-2.jpg",
+   "src": "https://www.xn--9m1b83joykr9b9zjpoc.com/images/main/slide_type2.png",
+   "w": 445,
+   "h": 600,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "plan",
+   "file": "photos/site/2026940262/plan-auto-3.jpg",
+   "src": "https://www.xn--9m1b83joykr9b9zjpoc.com/images/main/slide_type3.png",
+   "w": 445,
+   "h": 600,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "plan",
+   "file": "photos/site/2026940262/plan-auto-4.jpg",
+   "src": "https://www.xn--9m1b83joykr9b9zjpoc.com/images/main/slide_type4.png",
+   "w": 445,
+   "h": 600,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "plan",
+   "file": "photos/site/2026940262/plan-auto-5.jpg",
+   "src": "https://www.xn--9m1b83joykr9b9zjpoc.com/images/main/slide_type5.png",
+   "w": 445,
+   "h": 600,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "plan",
+   "file": "photos/site/2026940262/plan-auto-6.jpg",
+   "src": "https://www.xn--9m1b83joykr9b9zjpoc.com/images/main/slide_type6.png",
+   "w": 445,
+   "h": 600,
+   "photo": false,
+   "from": "auto"
+  }
+ ],
+ "links": [],
+ "name": "리아츠 더 인천(24차) 임의공급",
+ "row": 162,
+ "homepage": "https://www.리아츠더인천.com",
+ "auto_site": {
+  "date": "2026-11-17",
+  "url": "https://www.리아츠더인천.com",
+  "tries": 1,
+  "result": "17장 (overview 3, siteplan 2, plan 6, interior 3, location 3)"
+ },
+ "updated": "2026-11-17 06:52"
+}
