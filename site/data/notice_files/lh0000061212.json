@@ -1,0 +1,36 @@
+{
+ "key": "lh0000061212",
+ "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061212&ccrCnntSysDsCd=02&uppAisTpCd=06&aisTpCd=08&mi=1026",
+ "checked": "2026-11-16 21:42",
+ "files": [
+  {
+   "fileid": "69430289",
+   "name": "파주운정A4BL공공임대주택리츠예비입주자모집공고(안)_261116.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69430292",
+   "name": "파주운정A4BL공공임대주택리츠예비입주자모집공고(안)_261116.pdf",
+   "kind": "notice",
+   "got": "ok",
+   "md5": "03963f1baaa2c96c997915daa6869b4a",
+   "pages": 13,
+   "bytes": 371709
+  },
+  {
+   "fileid": "69430296",
+   "name": "파주운정A4_별하람3_팜플렛.pdf",
+   "kind": "pamphlet",
+   "got": "ok",
+   "md5": "cf928da51ab03d6a12c5bfecba229bde",
+   "pages": 20,
+   "bytes": 30700073
+  },
+  {
+   "fileid": "69430297",
+   "name": "(양식)개인정보수집이용및제3자제공동의서.hwpx",
+   "kind": "other"
+  }
+ ],
+ "changed": true
+}
