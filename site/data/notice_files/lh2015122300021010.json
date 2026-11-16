@@ -1,0 +1,47 @@
+{
+ "key": "lh2015122300021010",
+ "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300021010&ccrCnntSysDsCd=03&uppAisTpCd=05&aisTpCd=05&mi=1027",
+ "checked": "2026-11-16 05:36",
+ "files": [
+  {
+   "fileid": "69286739",
+   "name": "경기남부권(수원광교)공가세대일반매각공고문(85이하)_261105.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69286740",
+   "name": "경기남부권(수원광교)공가세대일반매각공고문(85이하)_261105.pdf",
+   "kind": "notice",
+   "got": "ok",
+   "md5": "64bcd671ecc56859659973590ebeafa5",
+   "pages": 7,
+   "bytes": 453379
+  },
+  {
+   "fileid": "69286971",
+   "name": "(붙임)개인정보수집이용및제3자제공동의서및무주택서약서(양식,필수).pdf",
+   "kind": "form"
+  },
+  {
+   "fileid": "69286972",
+   "name": "(붙임)세대열람보안각서.pdf",
+   "kind": "other"
+  },
+  {
+   "fileid": "69286967",
+   "name": "(붙임)토지거래계약허가신청제출서류(필수).zip",
+   "kind": "other"
+  },
+  {
+   "fileid": "69286976",
+   "name": "(참고)위임장(양식).pdf",
+   "kind": "form"
+  },
+  {
+   "fileid": "69286977",
+   "name": "(참고)주택상태확인서(계약시작성).pdf",
+   "kind": "form"
+  }
+ ],
+ "changed": true
+}
