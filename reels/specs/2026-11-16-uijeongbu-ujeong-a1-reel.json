@@ -1,0 +1,49 @@
+{
+ "slug": "2026-11-16-uijeongbu-ujeong-a1-reel",
+ "title": "의정부우정 A-1블록 공공분양주택 잔여세대",
+ "series": "내집마련",
+ "style": "story",
+ "voice": "voices/6d2262180f1e/",
+ "voice_speed": 1.0,
+ "bgm": "music/beat-one.mp3",
+ "thumb": {"lines": ["의정부 59㎡ 3억대", "433채 남았다"]},
+ "scenes": [
+  {"type": "story", "say": "의정부에 3억대 59㎡ 새 아파트가 433채나 남았대요. 12월에 나흘만 받는대요.", "word": "433채",
+   "shots": [
+    {"img": "photos/site/lh0000061211/location-b1-nn.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음", "pos": "25% 60%"}
+   ],
+   "proof": {"kind": "image", "img": "photos/site/lh0000061211/notice-price.jpg", "credit": "자료: LH 입주자모집공고(2026.11.13)"}},
+  {"type": "story", "say": "심지어 순번 뽑아서 동이랑 호수를 직접 고른대요.", "word": "직접",
+   "shots": [
+    {"img": "photos/site/lh0000061211/siteplan-b1.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음", "pos": "center 40%"}
+   ],
+   "proof": {"kind": "image", "img": "photos/site/lh0000061211/dongho-b1.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음"}},
+  {"type": "story", "say": "이게 어떻게 가능할까요?", "dim": true,
+   "shots": [
+    {"img": "photos/site/lh0000061211/location-b1-nn.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음", "pos": "60% 35%"}
+   ]},
+  {"type": "story", "say": "사실은요 LH 잔여세대인데요. 계약금 1,000만 원에 중도금이 없대요.", "word": "1,000만 원",
+   "shots": [
+    {"img": "photos/site/lh0000061211/siteplan-b1.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음", "pos": "center 75%"}
+   ],
+   "proof": {"kind": "doc", "head": "공고문 요약", "lines": ["59㎡ 3억6,218만~3억9,075만원", "계약금 1,000만원(정액)", "중도금 없음 · 잔금은 입주 때"], "mark": 1, "src": "출처: LH 입주자모집공고(2026.11.13)"}},
+  {"type": "story", "say": "근데 진짜 놀라운 건 자격이에요.", "dim": true,
+   "shots": [
+    {"img": "photos/site/lh0000061211/dongho-b1.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음", "pos": "center 30%"}
+   ]},
+  {"type": "story", "say": "집이 있어도 되고 청약통장도 소득도 안 본대요.", "word": "청약통장",
+   "shots": [
+    {"img": "photos/site/lh0000061211/location-b1-nn.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음", "pos": "40% 80%"}
+   ],
+   "proof": {"kind": "image", "img": "photos/site/lh0000061211/notice-qual.jpg", "credit": "자료: LH 입주자모집공고(2026.11.13)"}},
+  {"type": "story", "say": "국내 사는 만 19세 이상이면 되고, 접수는 12월 7일부터 10일까지라고 하니까", "word": "12월 7일",
+   "shots": [
+    {"img": "photos/site/lh0000061211/siteplan-b1.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음", "pos": "30% 20%"}
+   ]},
+  {"type": "end", "say": "단지 이름이랑 공고 정리는 댓글에 '의정부'라고 남겨 주세요."}
+ ],
+ "pool": [
+  {"img": "photos/site/lh0000061211/location-b1-nn.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음"},
+  {"img": "photos/site/lh0000061211/siteplan-b1.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음"}
+ ]
+}
