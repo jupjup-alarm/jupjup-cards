@@ -1,6 +1,6 @@
 {
  "tab": "청약조사",
- "dumped_at": "2026-11-17 06:51",
+ "dumped_at": "2026-11-17 07:59",
  "rows": [
   {
    "_row": 2,
@@ -3903,11 +3903,18 @@
    "점수 근거": "돈23/문턱20/긴급15/훅15/저장9/신뢰4+공고문 — 서초 잠원 84㎡ 잔여 5세대, 무주택·통장·거주지 무관·전매·실거주 없음, 반포센트럴자이 48억 대비 약 4~6억 저렴(추정), 11/18~19 접수. 🎬 릴스 후보(①: 남은 N채+차익+문턱 없음)",
    "단지 사진 후보": "https://the-h-newbanpoestella.co.kr/assets/images/main/visual-bg-new.jpg (단지 투시도 — 한강 배경 상층부)",
    "사진 출처·이용조건": "출처: 디에이치 신반포에스테라 분양 홈페이지(신반포22차 재건축조합·현대엔지니어링) / 이용조건: 사업주체 홍보 투시도, 출처 표기·실제와 다를 수 있음",
+   "지도 이미지": "maps/3bdebc558ada.png",
+   "좌표(경도,위도)": "127.0072693,37.511672",
+   "사진 파일": "photos/1649ee137c64.jpg",
    "평면도 후보": "84 | https://the-h-newbanpoestella.co.kr/assets/images/sub/unit.jpg",
+   "평면도 파일": "84 | photos/plan-796420d9d69b.jpg",
    "배치도 후보": "단지 배치도 | https://the-h-newbanpoestella.co.kr/assets/images/sub/place.jpg",
+   "배치도 파일": "단지 배치도 | photos/layout-39a34dbde114.jpg",
    "동호배치도 후보": "동호배치도 | https://the-h-newbanpoestella.co.kr/assets/images/sub/architecture.jpg",
+   "동호배치도 파일": "동호배치도 | photos/dongho-fb1db60e121a.jpg",
    "공식 홈페이지": "https://the-h-newbanpoestella.co.kr/",
-   "홈페이지 자료": "key: 2026940256\n홈페이지: https://the-h-newbanpoestella.co.kr/\n출처: 신반포22차 재건축조합·현대엔지니어링\n조감도 | 낮 전경 | https://the-h-newbanpoestella.co.kr/assets/images/sub/summary.jpg | crop=0,0,1,0.54\n조감도 | 한강 쪽 상층부 투시도 | https://the-h-newbanpoestella.co.kr/assets/images/main/visual-bg-new.jpg\n단지배치도 | | https://the-h-newbanpoestella.co.kr/assets/images/sub/place.jpg\n동호배치도 | 101·102동 | https://the-h-newbanpoestella.co.kr/assets/images/sub/architecture.jpg\n평면도 | 84 | https://the-h-newbanpoestella.co.kr/assets/images/sub/unit.jpg\n커뮤니티 | 평면 | https://the-h-newbanpoestella.co.kr/assets/images/sub/community.jpg\nVR | 84 | https://dodle4534.cafe24.com/the_h_vr/84basic/index.html"
+   "홈페이지 자료": "key: 2026940256\n홈페이지: https://the-h-newbanpoestella.co.kr/\n출처: 신반포22차 재건축조합·현대엔지니어링\n조감도 | 낮 전경 | https://the-h-newbanpoestella.co.kr/assets/images/sub/summary.jpg | crop=0,0,1,0.54\n조감도 | 한강 쪽 상층부 투시도 | https://the-h-newbanpoestella.co.kr/assets/images/main/visual-bg-new.jpg\n단지배치도 | | https://the-h-newbanpoestella.co.kr/assets/images/sub/place.jpg\n동호배치도 | 101·102동 | https://the-h-newbanpoestella.co.kr/assets/images/sub/architecture.jpg\n평면도 | 84 | https://the-h-newbanpoestella.co.kr/assets/images/sub/unit.jpg\n커뮤니티 | 평면 | https://the-h-newbanpoestella.co.kr/assets/images/sub/community.jpg\nVR | 84 | https://dodle4534.cafe24.com/the_h_vr/84basic/index.html",
+   "위성사진": "photos/sat/8af9b89d7ca2.png"
   },
   {
    "_row": 161,
@@ -3918,7 +3925,7 @@
    "공급유형": "10년 공공임대(분양전환형, 리츠) 예비입주자 무순위",
    "공급세대": "예비입주자 168명 (A20 산내2 110명 — 총 1,362세대 / A4 별하람3 58명 — 총 1,422세대), 공가가 생기면 순번대로 입주",
    "분양가/임대조건": "A20 산내2: 51㎡ 보증금 6,214만원·월 35만5,090원 / 59㎡ 7,545만6,000원·월 39만9,470원 / 74㎡ 9,432만1,000원·월 46만6,050원 / 84㎡ 1억541만7,000원·월 53만2,630원 · A4 별하람3: 59㎡ 5,235만2,000원·월 50만7,330원 / 74㎡ 7,448만1,000원·월 63만6,860원 / 80㎡ 8,419만6,000원·월 66만9,250원 / 84㎡ 8,851만4,000원·월 70만1,630원 (LH 공고문, 2년마다 변동 가능)",
-   "예상 시세차익": "확인필요 — 시도: 국토부 실거래 API 조회가 11/17 세션 권한 문제로 막힘 (파주 목동동·와동동 59㎡ 월세로 다시 조회)",
+   "예상 시세차익": "월세 약 60만~110만원 저렴(추정), 단 이 공고 보증금이 4천만원대 더 많음 — 근거: 같은 목동동 산내마을9단지힐스테이트운정(2018년) 전용59.98㎡ 월세 실거래 보증금 3,000만원·월 150만원(2026.11, 신규)·해솔마을3단지운정현대(2001년) 59.998㎡ 보증금 3,000만원·월 100만원(2026.11, 신규), 이 공고 산내2 59㎡ 보증금 7,545만6,000원·월 39만9,470원과 비교 / 별하람3: 와동동 별하람마을1단지제일풍경채(2023년) 59.90㎡ 보증금 3,000만원·월 130만원(2026.08)과 이 공고 59㎡ 보증금 5,235만2,000원·월 50만7,330원 비교 시 월세 약 79만원 저렴(추정) (국토부 실거래)",
    "청약자격 요약": "모집공고일 현재 수도권 거주 성년 무주택세대구성원(1세대 1주택) · 청약통장·소득·자산·과거 당첨 무관 · 외국인 불가 · 재당첨 제한자는 신청은 되지만 계약 불가 · 인터넷·모바일만 11/25 10시~11/26 17시(현장 불가) · 당첨자 서류 11/30~12/4 등기우편 · 계약 12/30~31 · 10년 임대 후 분양전환(분양전환가 = 감정평가법인 2곳 평균), 분양전환 때까지 무주택 유지 · 계약하면 당첨자로 관리(재당첨 제한) (LH 공고문)",
    "접수 시작": "2026-11-25",
    "접수 마감": "2026-11-26",
@@ -3939,7 +3946,7 @@
    "공급유형": "임의공급(24차, 송림6구역 재개발)",
    "공급세대": "7세대(59B 2·59C 1·74 2·84B 2)",
    "분양가/임대조건": "59B 최고 3억6,800만원 · 59C 최고 3억8,500만원 · 74 최고 4억8,400만원 · 84B 최고 5억4,500만원 (청약홈 공식, 최고가), 입주 2027년 10월",
-   "예상 시세차익": "확인필요 — 시도: 국토부 실거래 API 조회가 11/17 세션 권한 문제로 막힘 (인천 송림동 59㎡ 매매로 다시 조회)",
+   "예상 시세차익": "약 4,700만원 저렴(추정), 단 편차 큼 — 근거: 같은 송림동 동인천역파크푸르지오(2023년) 전용59.87㎡ 실거래 4억1,500만원(2026.10), 59B 분양가(최고) 3억6,800만원과 비교. 같은 송림동 엘에이치브리즈힐(2021년) 59.99㎡는 3억500만원(2026.11)으로 분양가보다 낮은 거래도 있음 (국토부 실거래)",
    "청약자격 요약": "11/18~20 접수·11/25 발표·11/28 계약, 입주 2027년 10월 (청약홈 공식) / 신청자격·거주지역·재당첨·전매제한·납부 조건: 공고문 확인 (청약홈 상세 미기재, 문의 1551-5758)",
    "접수 시작": "2026-11-18",
    "접수 마감": "2026-11-20",
@@ -3949,7 +3956,10 @@
    "상태": "후보",
    "콘텐츠 점수": "52",
    "점수 근거": "돈10/문턱8/긴급12/훅6/저장8/신뢰8 — 인천 송림동 59㎡ 3억6천대 7세대지만 24차 임의공급·H열 확인필요·자격 미기재",
-   "공식 홈페이지": "https://www.리아츠더인천.com"
+   "지도 이미지": "maps/64500054c69b.png",
+   "좌표(경도,위도)": "126.6505486,37.4781368",
+   "공식 홈페이지": "https://www.리아츠더인천.com",
+   "위성사진": "photos/sat/62ed4c190dab.png"
   },
   {
    "_row": 163,
