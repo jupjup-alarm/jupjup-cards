@@ -1,0 +1,51 @@
+{
+ "slug": "2026-11-16-gyeonghuigung-efete-reel",
+ "title": "경희궁 에피트",
+ "series": "줍줍알람",
+ "style": "story",
+ "voice": "voices/45fddb84aedd/",
+ "voice_speed": 1.0,
+ "bgm": "music/beat-one.mp3",
+ "thumb": {"lines": ["서울 종로 59㎡", "4억 싸게 나왔다"]},
+ "scenes": [
+  {"type": "story", "say": "서울 종로에 옆 단지보다 4억 싼 새 아파트가 나왔대요. 59㎡ 일반은 딱 13채래요.", "word": "4억",
+   "shots": [
+    {"img": "photos/site/2026000505/birdseye-auto-1.jpg", "credit": "이미지: HL디앤아이한라 분양 홈페이지 · 실제와 다를 수 있음", "pos": "center 45%"},
+    {"img": "photos/site/2026000505/overview-auto-3.jpg", "credit": "이미지: HL디앤아이한라 분양 홈페이지 · 실제와 다를 수 있음", "pos": "35% 50%"}
+   ]},
+  {"type": "story", "say": "심지어 서울 도심 한복판이래요.", "word": "도심 한복판",
+   "shots": [
+    {"img": "photos/site/2026000505/overview-auto-1.jpg", "credit": "이미지: HL디앤아이한라 분양 홈페이지 · 실제와 다를 수 있음", "pos": "center 50%"},
+    {"img": "photos/sat/505754c05bf4-nn.jpg", "credit": "위성사진 © NAVER Corp.", "pos": "center 50%"}
+   ]},
+  {"type": "story", "say": "이게 어떻게 가능할까요?", "dim": true,
+   "shots": [
+    {"img": "photos/site/2026000505/overview-auto-1.jpg", "credit": "이미지: HL디앤아이한라 분양 홈페이지 · 실제와 다를 수 있음", "pos": "70% 40%"}
+   ]},
+  {"type": "story", "say": "사실은요 59㎡ 분양가가 최고 18억9,843만 원인데요. 옆 단지 59㎡는 23억 원에 팔렸대요.", "word": "18억9,843만",
+   "shots": [
+    {"img": "photos/site/2026000505/birdseye-auto-1.jpg", "credit": "이미지: HL디앤아이한라 분양 홈페이지 · 실제와 다를 수 있음", "pos": "25% 60%"}
+   ],
+   "proof": {"kind": "compare", "head": "59㎡ 비교 (추정)", "items": [
+     {"label": "이 단지 59㎡ 최고 분양가", "value": "18억9,843만원"},
+     {"label": "옆 경희궁자이 59㎡ 실거래", "value": "23억원"}],
+    "src": "국토부 실거래가 2026.06"}},
+  {"type": "story", "say": "근데 위치가 진짜 놀랍습니다.", "dim": true,
+   "shots": [
+    {"img": "maps/7617519033b5.png"}
+   ]},
+  {"type": "story", "say": "종로구 교남동이고 바로 옆이 경희궁자이래요.", "word": "교남동",
+   "shots": [
+    {"img": "photos/sat/505754c05bf4-nn.jpg", "credit": "위성사진 © NAVER Corp.", "pos": "center 40%"},
+    {"img": "maps/7617519033b5.png"}
+   ],
+   "proof": {"kind": "image", "img": "photos/site/2026000505/siteplan-auto-2.jpg", "credit": "이미지: HL디앤아이한라 분양 홈페이지 · 실제와 다를 수 있음"}},
+  {"type": "story", "say": "청약통장으로 넣는 분양이고, 특공은 11월 25일부터라고 하니까", "word": "11월 25일",
+   "shots": [
+    {"img": "photos/site/2026000505/overview-auto-3.jpg", "credit": "이미지: HL디앤아이한라 분양 홈페이지 · 실제와 다를 수 있음", "pos": "65% 50%"}
+   ],
+   "proof": {"kind": "image", "img": "photos/site/2026000505/siteplan-auto-1.jpg", "credit": "이미지: HL디앤아이한라 분양 홈페이지 · 실제와 다를 수 있음"}},
+  {"type": "end", "say": "단지 이름이랑 공고 정리는 댓글에 '종로'라고 남겨 주세요."}
+ ],
+ "pool": []
+}

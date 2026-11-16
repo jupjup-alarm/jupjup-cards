@@ -1,0 +1,17 @@
+{
+ "slug": "2026-11-16-gyeonghuigung-efete-reel",
+ "duration": 33.43,
+ "voiced": true,
+ "narration_s": 29.7,
+ "mean_db": -18.9,
+ "voice": "voices/45fddb84aedd/",
+ "video": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-16-gyeonghuigung-efete-reel/2026-11-16-gyeonghuigung-efete-reel.mp4",
+ "cover": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-16-gyeonghuigung-efete-reel/2026-11-16-gyeonghuigung-efete-reel_thumb.jpg",
+ "size_mb": 11.32,
+ "warnings": [
+  "호흡: 장면 4 대본에 없는 곳에서 0.47초 쉼 (③ 대본 쉼표 위치 확인)",
+  "호흡: 장면 6 대본에 없는 곳에서 0.47초 쉼 (③ 대본 쉼표 위치 확인)",
+  "호흡: 장면 8 대본에 없는 곳에서 0.31초 쉼 (③ 대본 쉼표 위치 확인)",
+  "사진: 컷 13개 · 서로 다른 사진 5장"
+ ]
+}

@@ -313,6 +313,9 @@ def check(card, th, n, total):
 </div>'''
 
 
+DEFAULT_DISC = '정보 제공 목적이며 투자 권유가 아닙니다.\n신청 전 입주자모집공고 원문을 꼭 확인하세요.'
+
+
 def closing(card, th, n, total):
     ls = "".join(f'<div class="fitw">{hl(l, card.get("highlight"), th["accent"])}</div>'
                  for l in lines(card.get("lines") or ["저장해두고", "일정 놓치지 마세요"]))
@@ -325,7 +328,7 @@ def closing(card, th, n, total):
     <div class="btn" style="background:{th['btn']}">{FOLLOW}<span>팔로우</span></div>
     <div class="btn ghost" style="border-color:{th['btn']};color:{th['btn']}">{SAVE.format(c=th['btn'])}<span>저장하기</span></div>
   </div>
-  <div class="disc">{esc(card.get('disclaimer') or '정보 제공 목적이며 투자 권유가 아닙니다.\n신청 전 입주자모집공고 원문을 꼭 확인하세요.')}</div>
+  <div class="disc">{esc(card.get('disclaimer') or DEFAULT_DISC)}</div>
 </div>'''
 
 
