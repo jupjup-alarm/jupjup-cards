@@ -153,6 +153,8 @@ def make_nearby(n):
     st_, ours, comps = d.get("stats") or {}, d.get("ours") or {}, d.get("comps") or []
     if not comps or not st_.get("n"):
         return None
+    if not ours.get("area"):   # 2026-11-16: 면적 모르고 모은 비교(평택송화 '전용 0㎡ 안팎')는 싣지 않음
+        return None
     mon = d.get("months") or []
     span = f"{mon[0][:4]}.{mon[0][4:]}~{mon[-1][:4]}.{mon[-1][4:]}" if len(mon) > 1 else ""
     area = ours.get("area") or 0
@@ -1891,7 +1893,11 @@ def main():
         # 2026-11-13 애드센스 '가치가 별로 없는 콘텐츠' 대응: ① 목록 요약 문단(숫자로 만든 이 페이지만의 정리)
         # ② 공고가 3곳 미만인 얇은 목록(지난달·먼 달·공고 적은 지역)은 검색 노출 제외(noindex·사이트맵 제외)
         summary = list_summary(all_n, live)
-        thin = len({x["key"] for x in all_n}) < 3 and url not in ("/schedule/this-week/",)
+        # ③ 2026-11-16 (구글 노출 0 점검 · 사용자 결정): 시군구 목록·월별 일정은 공고 6곳 미만이면 글 1,500자도 안 되는
+        #    얇은 페이지라 함께 검색 제외 (페이지는 그대로 열림 — 사람·내부 링크용)
+        nkeys = len({x["key"] for x in all_n})
+        small = re.fullmatch(r"/region/[^/]+/[^/]+/|/schedule/\d{4}-\d{2}/", url) is not None
+        thin = (nkeys < 3 or (small and nkeys < 6)) and url not in ("/schedule/this-week/",)
         h = list_tpl.render(h1=h1, groups=groups, intro=intro, crumb=crumb or [("홈", "/")], links=links, empty=empty,
                             page_url=url, title=title, desc=desc, og=og_hub(url, *og_t, all_n) if og_t else "/og-default.jpg",
                             items=all_n, tbl=tbl, tbl_cap=cap, sections=sections or [], h1_kw=h1_kw, summary=summary,

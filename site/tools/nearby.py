@@ -65,6 +65,8 @@ def our_terms(r):
         dep = re.search(r"보증금\s*([\d억만천,]+원)", g)
         mon = re.search(r"월\s*(?:임대료\s*)?([\d만천,]+원)", g)
         area = re.search(r"전용\s*(\d{2,3}(?:\.\d+)?)", g + " " + str(r.get("공급세대", "")))
+        # 2026-11-16: '36형 70명'처럼 '전용'이 없는 표기 — 못 읽으면 면적 없이 시 전체(84㎡까지)를 모아 엉뚱하게 비교했음
+        area = area or re.search(r"(?<![\d.])(\d{2,3}(?:\.\d+)?)\s*(?:㎡|형)", g + " " + str(r.get("공급세대", "")))
         return {"rental": True, "deposit": won(dep.group(1)) if dep else None,
                 "monthly": won(mon.group(1)) if mon else None, "area": float(area.group(1)) if area else None}
     # 면적·가격 위치를 따로 찾아, 가격마다 바로 앞 면적에 붙인다 — "59A 3억8,643만~4억1,110만원",
@@ -189,7 +191,7 @@ def main():
                 continue
         ours = our_terms(r)
         lawd = lawd_name(str(r.get("지역", "")), codes)
-        if not ours or not lawd or (not ours.get("area") and not ours["rental"]):
+        if not ours or not lawd or not ours.get("area"):   # 임대도 면적을 모르면 건너뜀 (2026-11-16)
             log.append(f"{name[:20]}: 건너뜀(주소·면적·가격 못 읽음)")
             continue
         dong = dong_of(str(r.get("지역", "")), lawd)
