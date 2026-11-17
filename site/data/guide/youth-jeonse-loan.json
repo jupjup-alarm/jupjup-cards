@@ -276,12 +276,7 @@
    "effective": "2026.10 확인"
   }
  ],
- "related": [
-  "newborn-loan",
-  "didimdol-bogeumjari",
-  "jeonse-guarantee-insurance",
-  "youth-rental"
- ],
+ "related": ["newborn-loan", "move-in-report", "didimdol-bogeumjari", "jeonse-guarantee-insurance", "youth-rental"],
  "notice_kinds": [
   "rental"
  ]

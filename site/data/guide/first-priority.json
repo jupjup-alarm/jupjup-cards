@@ -310,11 +310,7 @@
    "effective": "현행"
   }
  ],
- "related": [
-  "cheongyak-gajeom",
-  "homeless-criteria",
-  "mujeonwi"
- ],
+ "related": ["cheongyak-gajeom", "cheongyak-account", "homeless-criteria", "mujeonwi"],
  "notice_kinds": [
   "private",
   "public"
