@@ -36,9 +36,9 @@
    "checked_by": "정기 작업"
   },
   {
-   "cat": "siteplan",
+   "cat": "community",
    "kind": "커뮤니티",
-   "label": "단지 배치도",
+   "label": "커뮤니티 평면(단지명 표기)",
    "file": "photos/site/2026940256/community.jpg",
    "src": "https://the-h-newbanpoestella.co.kr/assets/images/sub/community.jpg",
    "crop": "",
@@ -48,14 +48,14 @@
    "photo": false,
    "checked": "2026-11-17",
    "ok": true,
-   "name_shown": false,
+   "name_shown": true,
    "full": false,
    "checked_by": "정기 작업"
   },
   {
-   "cat": "dongho",
+   "cat": "siteplan",
    "kind": "단지배치도",
-   "label": "동호수 배치도",
+   "label": "단지 배치도",
    "file": "photos/site/2026940256/siteplan.jpg",
    "src": "https://the-h-newbanpoestella.co.kr/assets/images/sub/place.jpg",
    "crop": "",
@@ -70,9 +70,9 @@
    "checked_by": "정기 작업"
   },
   {
-   "cat": "plan",
+   "cat": "dongho",
    "kind": "동호배치도",
-   "label": "84 평면도",
+   "label": "동호수 배치도",
    "file": "photos/site/2026940256/dongho-101-102.jpg",
    "src": "https://the-h-newbanpoestella.co.kr/assets/images/sub/architecture.jpg",
    "crop": "",
@@ -87,9 +87,9 @@
    "checked_by": "정기 작업"
   },
   {
-   "cat": "community",
+   "cat": "plan",
    "kind": "평면도",
-   "label": "커뮤니티 평면(단지명 표기)",
+   "label": "84 평면도",
    "file": "photos/site/2026940256/plan-84.jpg",
    "src": "https://the-h-newbanpoestella.co.kr/assets/images/sub/unit.jpg",
    "crop": "",
@@ -99,7 +99,7 @@
    "photo": false,
    "checked": "2026-11-17",
    "ok": true,
-   "name_shown": true,
+   "name_shown": false,
    "full": false,
    "checked_by": "정기 작업"
   }
