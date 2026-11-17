@@ -22,6 +22,21 @@
    "checked_by": "정기 작업"
   },
   {
+   "cat": "aerial",
+   "kind": "위성사진",
+   "label": "위성사진",
+   "file": "photos/sat/af3e25420b7f.png",
+   "src": "NAVER 위성 지도",
+   "w": 1080,
+   "h": 1920,
+   "photo": true,
+   "full": true,
+   "ok": true,
+   "checked": true,
+   "from": "satellite",
+   "credit": "위성사진 © NAVER Corp."
+  },
+  {
    "cat": "notice",
    "kind": "공고문",
    "label": "공고문 공급금액 (p.2)",
@@ -65,28 +80,13 @@
    "full": false,
    "page": 1,
    "marked": []
-  },
-  {
-   "cat": "aerial",
-   "kind": "위성사진",
-   "label": "위성사진",
-   "file": "photos/sat/af3e25420b7f.png",
-   "src": "NAVER 위성 지도",
-   "w": 1080,
-   "h": 1920,
-   "photo": true,
-   "full": true,
-   "ok": true,
-   "checked": true,
-   "from": "satellite",
-   "credit": "위성사진 © NAVER Corp."
   }
  ],
  "links": [],
  "owner": "LH",
  "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
- "updated": "2026-11-17 06:53",
+ "updated": "2026-11-18 07:02",
  "name": "안산군자13 영구임대주택 예비입주자 모집(117호)",
  "row": 158,
- "lh_checked": "2026-11-17"
+ "lh_checked": "2026-11-18"
 }

@@ -1,0 +1,203 @@
+{
+ "key": "2026940260",
+ "images": [
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "location",
+   "file": "photos/site/2026940260/location-auto-1.jpg",
+   "src": "https://xn--ok1btg31l29f3zeimw42h.kr/resources/img/main/vision01.webp",
+   "w": 1920,
+   "h": 1080,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "the sharp premium",
+   "file": "photos/site/2026940260/location-auto-2.jpg",
+   "src": "https://xn--ok1btg31l29f3zeimw42h.kr/resources/img/main/vision04.webp",
+   "w": 1920,
+   "h": 1080,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "location",
+   "file": "photos/site/2026940260/location-auto-3.jpg",
+   "src": "https://xn--ok1btg31l29f3zeimw42h.kr/resources/img/sub/platform1.jpg",
+   "w": 1100,
+   "h": 450,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "community",
+   "kind": "community",
+   "label": "community",
+   "file": "photos/site/2026940260/community-auto-1.jpg",
+   "src": "https://xn--ok1btg31l29f3zeimw42h.kr/resources/img/main/community01_01.png",
+   "w": 504,
+   "h": 538,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "community",
+   "kind": "community",
+   "label": "community",
+   "file": "photos/site/2026940260/community-auto-2.jpg",
+   "src": "https://xn--ok1btg31l29f3zeimw42h.kr/resources/img/main/community01_04.png",
+   "w": 504,
+   "h": 538,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "community",
+   "kind": "community",
+   "label": "community",
+   "file": "photos/site/2026940260/community-auto-3.jpg",
+   "src": "https://xn--ok1btg31l29f3zeimw42h.kr/resources/img/main/community02_01.png",
+   "w": 504,
+   "h": 538,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "community",
+   "kind": "community",
+   "label": "community",
+   "file": "photos/site/2026940260/community-auto-4.jpg",
+   "src": "https://xn--ok1btg31l29f3zeimw42h.kr/resources/img/main/community02_04.png",
+   "w": 504,
+   "h": 538,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "community",
+   "kind": "community",
+   "label": "community",
+   "file": "photos/site/2026940260/community-auto-5.jpg",
+   "src": "https://xn--ok1btg31l29f3zeimw42h.kr/resources/img/sub/community.jpg",
+   "w": 1036,
+   "h": 2400,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "community",
+   "kind": "community",
+   "label": "community",
+   "file": "photos/site/2026940260/community-auto-6.jpg",
+   "src": "https://xn--ok1btg31l29f3zeimw42h.kr/resources/img/sub/m_community.jpg",
+   "w": 272,
+   "h": 2400,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "siteplan",
+   "kind": "siteplan",
+   "label": "siteplan",
+   "file": "photos/site/2026940260/siteplan-auto-1.jpg",
+   "src": "https://xn--ok1btg31l29f3zeimw42h.kr/resources/img/main/landscape03.png",
+   "w": 504,
+   "h": 538,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "siteplan",
+   "kind": "siteplan",
+   "label": "siteplan",
+   "file": "photos/site/2026940260/siteplan-auto-2.jpg",
+   "src": "https://xn--ok1btg31l29f3zeimw42h.kr/resources/img/main/landscape01.webp",
+   "w": 1548,
+   "h": 1164,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "분당센트로 78㎡ N 평면도",
+   "file": "photos/site/2026940260/plan-auto-1.jpg",
+   "src": "https://xn--ok1btg31l29f3zeimw42h.kr/resources/img/main/showroom02_02.png",
+   "w": 944,
+   "h": 803,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "분당센트로 84㎡ N 평면도",
+   "file": "photos/site/2026940260/plan-auto-2.jpg",
+   "src": "https://xn--ok1btg31l29f3zeimw42h.kr/resources/img/main/showroom03_01.png",
+   "w": 1317,
+   "h": 864,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "분당센트로 84㎡ N",
+   "file": "photos/site/2026940260/plan-auto-3.jpg",
+   "src": "https://xn--ok1btg31l29f3zeimw42h.kr/resources/img/main/showroom03_02.png",
+   "w": 897,
+   "h": 764,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "plan",
+   "file": "photos/site/2026940260/plan-auto-4.jpg",
+   "src": "https://xn--ok1btg31l29f3zeimw42h.kr/resources/img/sub/unit1.jpg",
+   "w": 1100,
+   "h": 1130,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "plan",
+   "file": "photos/site/2026940260/plan-auto-5.jpg",
+   "src": "https://xn--ok1btg31l29f3zeimw42h.kr/resources/img/sub/m_unit1.jpg",
+   "w": 618,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "plan",
+   "file": "photos/site/2026940260/plan-auto-6.jpg",
+   "src": "https://xn--ok1btg31l29f3zeimw42h.kr/resources/img/sub/unit2.jpg",
+   "w": 1100,
+   "h": 1072,
+   "photo": false,
+   "from": "auto"
+  }
+ ],
+ "links": [],
+ "name": "더샵 분당센트로(7차) 임의공급",
+ "row": 167,
+ "homepage": "https://더샵분당센트로.kr",
+ "auto_site": {
+  "date": "2026-11-18",
+  "url": "https://더샵분당센트로.kr",
+  "tries": 1,
+  "result": "17장 (siteplan 2, plan 6, community 6, location 3)"
+ },
+ "updated": "2026-11-18 06:55"
+}

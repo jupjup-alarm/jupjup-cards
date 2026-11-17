@@ -36,6 +36,83 @@
    "checked_by": "정기 작업"
   },
   {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "조감도",
+   "file": "photos/1649ee137c64.jpg",
+   "src": "sheet:사진 파일",
+   "w": 1920,
+   "h": 1000,
+   "photo": true,
+   "from": "sheet"
+  },
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "브랜드 안내",
+   "file": "photos/site/2026940256/overview-auto-1.jpg",
+   "src": "https://the-h-newbanpoestella.co.kr/assets/images/sub/brand.jpg",
+   "w": 1200,
+   "h": 2238,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "시스템 안내",
+   "file": "photos/site/2026940256/overview-auto-2.jpg",
+   "src": "https://the-h-newbanpoestella.co.kr/assets/images/sub/system.jpg",
+   "w": 1200,
+   "h": 1740,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "구내용이동통신설비 안내",
+   "file": "photos/site/2026940256/overview-auto-3.jpg",
+   "src": "https://the-h-newbanpoestella.co.kr/assets/images/sub/telecom.jpg",
+   "w": 1200,
+   "h": 1698,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "location",
+   "file": "photos/site/2026940256/location-auto-1.jpg",
+   "src": "https://the-h-newbanpoestella.co.kr/assets/images/main/premium-img01.jpg",
+   "w": 732,
+   "h": 1000,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "location",
+   "file": "photos/site/2026940256/location-auto-2.jpg",
+   "src": "https://the-h-newbanpoestella.co.kr/assets/images/main/premium-img02.jpg",
+   "w": 732,
+   "h": 1000,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "location",
+   "file": "photos/site/2026940256/location-auto-3.jpg",
+   "src": "https://the-h-newbanpoestella.co.kr/assets/images/main/premium-img03.jpg",
+   "w": 732,
+   "h": 1000,
+   "photo": true,
+   "from": "auto"
+  },
+  {
    "cat": "community",
    "kind": "커뮤니티",
    "label": "커뮤니티 평면(단지명 표기)",
@@ -51,6 +128,17 @@
    "name_shown": true,
    "full": false,
    "checked_by": "정기 작업"
+  },
+  {
+   "cat": "interior",
+   "kind": "interior",
+   "label": "마감재리스트 안내",
+   "file": "photos/site/2026940256/interior-auto-1.jpg",
+   "src": "https://the-h-newbanpoestella.co.kr/assets/images/sub/element.jpg",
+   "w": 312,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
   },
   {
    "cat": "siteplan",
@@ -70,6 +158,17 @@
    "checked_by": "정기 작업"
   },
   {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "단지 배치도",
+   "file": "photos/layout-39a34dbde114.jpg",
+   "src": "sheet:배치도 파일",
+   "w": 1200,
+   "h": 1000,
+   "photo": false,
+   "from": "sheet"
+  },
+  {
    "cat": "dongho",
    "kind": "동호배치도",
    "label": "동호수 배치도",
@@ -87,6 +186,17 @@
    "checked_by": "정기 작업"
   },
   {
+   "cat": "dongho",
+   "kind": "동호배치도",
+   "label": "동호배치도",
+   "file": "photos/dongho-fb1db60e121a.jpg",
+   "src": "sheet:동호배치도 파일",
+   "w": 1200,
+   "h": 920,
+   "photo": false,
+   "from": "sheet"
+  },
+  {
    "cat": "plan",
    "kind": "평면도",
    "label": "84 평면도",
@@ -102,6 +212,17 @@
    "name_shown": false,
    "full": false,
    "checked_by": "정기 작업"
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "84",
+   "file": "photos/plan-796420d9d69b.jpg",
+   "src": "sheet:평면도 파일",
+   "w": 1200,
+   "h": 2171,
+   "photo": false,
+   "from": "sheet"
   }
  ],
  "links": [
@@ -114,8 +235,14 @@
  ],
  "homepage": "https://the-h-newbanpoestella.co.kr/",
  "owner": "신반포22차 재건축조합·현대엔지니어링",
- "updated": "2026-11-17 06:53",
+ "updated": "2026-11-18 07:02",
  "name": "디에이치 신반포에스테라 임의공급(잔여 5세대)",
  "row": 160,
- "ai_hash": "ee772be70c966fef8d51f75aff620061"
+ "ai_hash": "ee772be70c966fef8d51f75aff620061",
+ "auto_site": {
+  "date": "2026-11-18",
+  "url": "https://the-h-newbanpoestella.co.kr/",
+  "tries": 1,
+  "result": "7장 (overview 3, interior 1, location 3)"
+ }
 }
