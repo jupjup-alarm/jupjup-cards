@@ -4,7 +4,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "블록1 평면도 39.8500",
+   "label": "26.37㎡ 평면도",
    "file": "photos/site/lh2015122300021068/plan-b1-39-8500.jpg",
    "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=30008402",
    "crop": "",
@@ -14,7 +14,12 @@
    "block": "블록1",
    "lh_tab": "평면도",
    "desc": "세대평면도",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-17",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "notice",
