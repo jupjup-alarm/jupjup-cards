@@ -1,0 +1,15 @@
+{
+ "slug": "2026-11-17-sinbanpo-estella-reel",
+ "duration": 31.04,
+ "voiced": true,
+ "narration_s": 27.3,
+ "mean_db": -18.2,
+ "voice": "voices/7394b11b26e8/",
+ "video": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-17-sinbanpo-estella-reel/2026-11-17-sinbanpo-estella-reel.mp4",
+ "cover": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-17-sinbanpo-estella-reel/2026-11-17-sinbanpo-estella-reel_thumb.jpg",
+ "size_mb": 9.53,
+ "warnings": [
+  "호흡: 장면 4 대본에 없는 곳에서 0.30초 쉼 (③ 대본 쉼표 위치 확인)",
+  "사진: 컷 14개 · 서로 다른 사진 8장"
+ ]
+}

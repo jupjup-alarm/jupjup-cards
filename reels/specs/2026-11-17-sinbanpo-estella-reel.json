@@ -1,0 +1,157 @@
+{
+ "slug": "2026-11-17-sinbanpo-estella-reel",
+ "title": "디에이치 신반포에스테라 임의공급(잔여 5세대)",
+ "series": "강남로또",
+ "style": "story",
+ "voice": "voices/7394b11b26e8/",
+ "voice_speed": 1.0,
+ "bgm": "music/beat-one.mp3",
+ "thumb": {
+  "lines": [
+   "잠원동 남은 5채",
+   "84㎡ 4억 싸게"
+  ]
+ },
+ "scenes": [
+  {
+   "type": "story",
+   "say": "서초 잠원동에 옆 단지보다 4억 싼 새 아파트가 나왔대요. 딱 5채래요.",
+   "word": "4억",
+   "shots": [
+    {
+     "img": "photos/site/pre-the-h-newbanpo-estella/birdseye-2.jpg",
+     "credit": "이미지: 신반포22차 재건축조합·현대엔지니어링 분양 홈페이지 · 실제와 다를 수 있음",
+     "pos": "70% 50%"
+    },
+    {
+     "img": "photos/site/pre-the-h-newbanpo-estella/birdseye.jpg",
+     "credit": "이미지: 신반포22차 재건축조합·현대엔지니어링 분양 홈페이지 · 실제와 다를 수 있음",
+     "pos": "center 85%"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "심지어 고속터미널역 근처래요.",
+   "word": "고속터미널역",
+   "shots": [
+    {
+     "img": "maps/968b5136d0b9.png"
+    },
+    {
+     "img": "photos/sat/8af9b89d7ca2-nn.jpg",
+     "credit": "위성사진 © NAVER Corp.",
+     "pos": "center 60%"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "이게 어떻게 가능할까요?",
+   "dim": true,
+   "shots": [
+    {
+     "img": "photos/site/2026940256/birdseye.jpg",
+     "credit": "이미지: 신반포22차 재건축조합·현대엔지니어링 분양 홈페이지 · 실제와 다를 수 있음",
+     "pos": "30% 85%"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "사실은요 재건축하고 남은 5채인데요. 41억5,800만 원부터인데 옆 단지는 48억 원에 팔렸대요.",
+   "word": "41억5,800만",
+   "shots": [
+    {
+     "img": "photos/site/pre-the-h-newbanpo-estella/siteplan.jpg",
+     "credit": "이미지: 신반포22차 재건축조합·현대엔지니어링 분양 홈페이지 · 실제와 다를 수 있음",
+     "pos": "20% 45%"
+    },
+    {
+     "img": "photos/site/pre-the-h-newbanpo-estella/birdseye.jpg",
+     "credit": "이미지: 신반포22차 재건축조합·현대엔지니어링 분양 홈페이지 · 실제와 다를 수 있음",
+     "pos": "40% 85%"
+    }
+   ],
+   "proof": {
+    "kind": "compare",
+    "head": "84㎡ 비교 (추정)",
+    "items": [
+     {
+      "label": "이 단지 84㎡ 공급금액(3·4층)",
+      "value": "41억5,800만원"
+     },
+     {
+      "label": "옆 반포센트럴자이 84㎡ 실거래",
+      "value": "48억원"
+     }
+    ],
+    "src": "국토부 실거래가 2026.09"
+   }
+  },
+  {
+   "type": "story",
+   "say": "근데 진짜 놀라운 건 자격이에요.",
+   "dim": true,
+   "shots": [
+    {
+     "img": "photos/sat/8af9b89d7ca2-nn.jpg",
+     "credit": "위성사진 © NAVER Corp.",
+     "pos": "center 30%"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "집이 있어도 되고 통장도 안 본대요. 전매제한도 없대요.",
+   "word": "전매제한",
+   "shots": [
+    {
+     "img": "photos/site/pre-the-h-newbanpo-estella/birdseye-2.jpg",
+     "credit": "이미지: 신반포22차 재건축조합·현대엔지니어링 분양 홈페이지 · 실제와 다를 수 있음",
+     "pos": "20% 60%"
+    }
+   ],
+   "proof": {
+    "kind": "image",
+    "img": "photos/site/pre-the-h-newbanpo-estella/plan-84.jpg",
+    "credit": "이미지: 신반포22차 재건축조합·현대엔지니어링 분양 홈페이지 · 실제와 다를 수 있음"
+   }
+  },
+  {
+   "type": "story",
+   "say": "국내 사는 만 19세 이상이면 되고, 접수는 11월 18일부터 이틀이라고 하니까",
+   "word": "11월 18일",
+   "shots": [
+    {
+     "img": "photos/site/2026940256/birdseye.jpg",
+     "credit": "이미지: 신반포22차 재건축조합·현대엔지니어링 분양 홈페이지 · 실제와 다를 수 있음",
+     "pos": "70% 85%"
+    },
+    {
+     "img": "photos/site/pre-the-h-newbanpo-estella/siteplan.jpg",
+     "credit": "이미지: 신반포22차 재건축조합·현대엔지니어링 분양 홈페이지 · 실제와 다를 수 있음",
+     "pos": "30% 60%"
+    }
+   ],
+   "proof": {
+    "kind": "image",
+    "img": "photos/site/pre-the-h-newbanpo-estella/dongho-101-102.jpg",
+    "credit": "이미지: 신반포22차 재건축조합·현대엔지니어링 분양 홈페이지 · 실제와 다를 수 있음"
+   }
+  },
+  {
+   "type": "end",
+   "say": "단지 이름이랑 공고 정리는 댓글에 '잠원'이라고 남겨 주세요."
+  }
+ ],
+ "pool": [
+  {
+   "img": "photos/1649ee137c64.jpg",
+   "credit": "이미지: 신반포22차 재건축조합·현대엔지니어링 분양 홈페이지 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "maps/3bdebc558ada.png"
+  }
+ ]
+}
