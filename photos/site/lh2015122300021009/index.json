@@ -4,7 +4,7 @@
   {
    "cat": "siteplan",
    "kind": "단지배치도",
-   "label": "광교40 더포레스트 단지배치도",
+   "label": "광교40 단지배치도",
    "file": "photos/site/lh2015122300021009/siteplan-b1.jpg",
    "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=24547966",
    "crop": "",
@@ -14,12 +14,17 @@
    "block": "광교40 더포레스트",
    "lh_tab": "단지배치도",
    "desc": "단지배치도",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-17",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "siteplan",
    "kind": "단지배치도",
-   "label": "광교45 더힐 단지배치도",
+   "label": "광교45 단지배치도",
    "file": "photos/site/lh2015122300021009/siteplan-b2.jpg",
    "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=24548499",
    "crop": "",
@@ -29,7 +34,12 @@
    "block": "광교45 더힐",
    "lh_tab": "단지배치도",
    "desc": "광교A27BL 단지배치도",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-17",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "notice",
@@ -83,5 +93,6 @@
  "updated": "2026-11-17 06:53",
  "name": "경기남부권(수원·용인 광교) 공가세대 일반매각(무순위, 유주택자 가능)",
  "row": 91,
- "lh_checked": "2026-11-17"
+ "lh_checked": "2026-11-17",
+ "commons_checked": "광교마을45단지"
 }

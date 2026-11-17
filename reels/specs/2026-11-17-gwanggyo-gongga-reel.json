@@ -1,0 +1,152 @@
+{
+ "slug": "2026-11-17-gwanggyo-gongga-reel",
+ "title": "경기남부권(수원·용인 광교) 공가세대 일반매각",
+ "series": "줍줍알람",
+ "style": "story",
+ "voice": "voices/022e865d1373/",
+ "voice_speed": 1.0,
+ "bgm": "music/backbeat.mp3",
+ "thumb": {
+  "lines": [
+   "광교 남은 3채",
+   "101㎡ 6천 싸게"
+  ]
+ },
+ "scenes": [
+  {
+   "type": "story",
+   "say": "광교 101㎡가 같은 단지보다 6천만 원 싸게 나왔대요. 이번엔 딱 3채래요.",
+   "word": "6천만",
+   "shots": [
+    {
+     "img": "photos/site/lh2015122300021009/siteplan-b1.jpg",
+     "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+     "pos": "30% 50%"
+    },
+    {
+     "img": "photos/site/lh2015122300021009/siteplan-b1.jpg",
+     "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+     "pos": "70% 40%"
+    }
+   ],
+   "proof": {
+    "kind": "compare",
+    "head": "101㎡ 비교 (추정)",
+    "items": [
+     {
+      "label": "광교 101㎡ 공급가",
+      "value": "9억1,100만원"
+     },
+     {
+      "label": "같은 단지 101㎡ 실거래",
+      "value": "9억8,000만원"
+     }
+    ],
+    "src": "국토부 실거래가 2026.09"
+   }
+  },
+  {
+   "type": "story",
+   "say": "심지어 이미 다 지어진 단지래요.",
+   "word": "다 지어진",
+   "shots": [
+    {
+     "img": "photos/site/lh2015122300021009/siteplan-b2.jpg",
+     "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+     "pos": "center 45%"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "이게 어떻게 가능할까요?",
+   "dim": true,
+   "shots": [
+    {
+     "img": "photos/site/lh2015122300021009/boundary-yeongtong.jpg",
+     "credit": "지도: 통계청 SGIS 2018 행정구역 경계 (공공누리 1유형)"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "사실은요 LH가 비게 된 집을 파는 건데요. 9억1,100만 원인데 같은 단지는 9억8,000만 원에 팔렸대요.",
+   "word": "9억1,100만",
+   "shots": [
+    {
+     "img": "photos/site/lh2015122300021009/siteplan-b2.jpg",
+     "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+     "pos": "40% 60%"
+    }
+   ],
+   "proof": {
+    "kind": "image",
+    "img": "photos/site/lh2015122300021009/notice-mark.jpg",
+    "credit": "자료: LH 공가세대 일반매각 공고(2026.11.05)"
+   }
+  },
+  {
+   "type": "story",
+   "say": "근데 진짜 놀라운 건 자격이에요.",
+   "dim": true,
+   "shots": [
+    {
+     "img": "photos/site/lh2015122300021009/siteplan-b1.jpg",
+     "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+     "pos": "50% 30%"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "집이 있어도 되고 통장도 순위도 안 본대요.",
+   "word": "집이 있어도",
+   "shots": [
+    {
+     "img": "photos/site/lh2015122300021009/boundary-yeongtong.jpg",
+     "credit": "지도: 통계청 SGIS 2018 행정구역 경계 (공공누리 1유형)",
+     "pos": "center 40%"
+    }
+   ],
+   "proof": {
+    "kind": "doc",
+    "head": "광교 101㎡",
+    "lines": [
+     "수도권(서울·인천·경기) 거주 성년자",
+     "85㎡ 초과 — 유주택자도 신청",
+     "청약통장·순위 없이 무작위 추첨"
+    ],
+    "mark": 1,
+    "src": "출처: LH 공가세대 일반매각 공고(2026.11.05)"
+   }
+  },
+  {
+   "type": "story",
+   "say": "수도권 사는 만 19세 이상이면 되고, 접수는 11월 23일부터 이틀이라고 하니까",
+   "word": "11월 23일",
+   "shots": [
+    {
+     "img": "photos/site/lh2015122300021009/siteplan-b2.jpg",
+     "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+     "pos": "60% 35%"
+    }
+   ],
+   "proof": {
+    "kind": "doc",
+    "head": "신청 일정",
+    "lines": [
+     "11/23(월)~11/24(화) 10:00~17:00",
+     "LH청약플러스 인터넷 신청",
+     "현장접수 불가"
+    ],
+    "mark": 0,
+    "src": "출처: LH 공가세대 일반매각 공고(2026.11.05)"
+   }
+  },
+  {
+   "type": "end",
+   "say": "단지 이름이랑 공고 정리는 댓글에 '광교'라고 남겨 주세요."
+  }
+ ],
+ "pool": []
+}

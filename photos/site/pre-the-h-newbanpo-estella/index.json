@@ -4,14 +4,19 @@
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "낮 전경",
+   "label": "단지 낮 조감도",
    "file": "photos/site/pre-the-h-newbanpo-estella/birdseye.jpg",
    "src": "https://the-h-newbanpoestella.co.kr/assets/images/sub/summary.jpg",
    "crop": "0,0,1,0.54",
    "w": 1200,
    "h": 745,
    "md5": "478cc54fcd701cbcaaeed875caf1ba95",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-17",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "birdseye",
@@ -23,55 +28,80 @@
    "w": 1600,
    "h": 833,
    "md5": "bb20aaf0e714b353d50c074f8a20e4da",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-17",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "siteplan",
    "kind": "단지배치도",
-   "label": "",
+   "label": "단지 배치도",
    "file": "photos/site/pre-the-h-newbanpo-estella/siteplan.jpg",
    "src": "https://the-h-newbanpoestella.co.kr/assets/images/sub/place.jpg",
    "crop": "",
    "w": 1200,
    "h": 1000,
    "md5": "5b52a8f0f8e96829bc2e7838edae42ef",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-17",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "dongho",
    "kind": "동호배치도",
-   "label": "101·102동",
+   "label": "동호수 배치도",
    "file": "photos/site/pre-the-h-newbanpo-estella/dongho-101-102.jpg",
    "src": "https://the-h-newbanpoestella.co.kr/assets/images/sub/architecture.jpg",
    "crop": "",
    "w": 1200,
    "h": 920,
    "md5": "8f44079494edc7e6310d2ec4c01de464",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-17",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "84",
+   "label": "84 평면도",
    "file": "photos/site/pre-the-h-newbanpo-estella/plan-84.jpg",
    "src": "https://the-h-newbanpoestella.co.kr/assets/images/sub/unit.jpg",
    "crop": "",
    "w": 1105,
    "h": 2000,
    "md5": "2b5ca8ab66ec8b60a884d026281bb06e",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-17",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "community",
    "kind": "커뮤니티",
-   "label": "평면",
+   "label": "커뮤니티 평면(단지명 표기)",
    "file": "photos/site/pre-the-h-newbanpo-estella/community.jpg",
    "src": "https://the-h-newbanpoestella.co.kr/assets/images/sub/community.jpg",
    "crop": "",
    "w": 908,
    "h": 1600,
    "md5": "a9870a4c97aa5806cda6f64ae618eada",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-17",
+   "ok": true,
+   "name_shown": true,
+   "full": false,
+   "checked_by": "정기 작업"
   }
  ],
  "links": [

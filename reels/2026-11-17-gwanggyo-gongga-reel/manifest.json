@@ -1,0 +1,18 @@
+{
+ "slug": "2026-11-17-gwanggyo-gongga-reel",
+ "duration": 33.03,
+ "voiced": true,
+ "narration_s": 29.3,
+ "mean_db": -18.2,
+ "voice": "voices/022e865d1373/",
+ "video": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-17-gwanggyo-gongga-reel/2026-11-17-gwanggyo-gongga-reel.mp4",
+ "cover": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-17-gwanggyo-gongga-reel/2026-11-17-gwanggyo-gongga-reel_thumb.jpg",
+ "size_mb": 16.52,
+ "warnings": [
+  "호흡: 장면 4 대본에 없는 곳에서 0.31초 쉼 (③ 대본 쉼표 위치 확인)",
+  "사진: 컷 12개 · 서로 다른 사진 3장",
+  "사진 반복: siteplan-b2.jpg 4번 — 단지 그림을 shots·pool에 더 넣을 것",
+  "사진 반복: siteplan-b1.jpg 4번 — 단지 그림을 shots·pool에 더 넣을 것",
+  "사진 반복: boundary-yeongtong.jpg 4번 — 단지 그림을 shots·pool에 더 넣을 것"
+ ]
+}
