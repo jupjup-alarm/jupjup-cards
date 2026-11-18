@@ -441,7 +441,7 @@
    "effective": "2026.11 미확인"
   }
  ],
- "related": ["youth-jeonse-loan", "move-in-report", "maeip-rental", "youth-rent-support"],
+ "related": ["youth-jeonse-loan", "move-in-report", "lease-renewal", "maeip-rental", "youth-rent-support"],
  "notice_kinds": [
   "rental"
  ]
