@@ -38,79 +38,114 @@
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "조감도",
+   "label": "단지 한강 조망 투시도",
    "file": "photos/1649ee137c64.jpg",
    "src": "sheet:사진 파일",
    "w": 1920,
    "h": 1000,
    "photo": true,
-   "from": "sheet"
+   "from": "sheet",
+   "checked": "2026-11-18",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "overview",
    "kind": "overview",
-   "label": "브랜드 안내",
+   "label": "브랜드 소개",
    "file": "photos/site/2026940256/overview-auto-1.jpg",
    "src": "https://the-h-newbanpoestella.co.kr/assets/images/sub/brand.jpg",
    "w": 1200,
    "h": 2238,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-18",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "overview",
    "kind": "overview",
-   "label": "시스템 안내",
+   "label": "기술 아이콘 표",
    "file": "photos/site/2026940256/overview-auto-2.jpg",
    "src": "https://the-h-newbanpoestella.co.kr/assets/images/sub/system.jpg",
    "w": 1200,
    "h": 1740,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-18",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "overview",
    "kind": "overview",
-   "label": "구내용이동통신설비 안내",
+   "label": "문서",
    "file": "photos/site/2026940256/overview-auto-3.jpg",
    "src": "https://the-h-newbanpoestella.co.kr/assets/images/sub/telecom.jpg",
    "w": 1200,
    "h": 1698,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-18",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "location",
    "kind": "location",
-   "label": "location",
+   "label": "한강 야경 스톡",
    "file": "photos/site/2026940256/location-auto-1.jpg",
    "src": "https://the-h-newbanpoestella.co.kr/assets/images/main/premium-img01.jpg",
    "w": 732,
    "h": 1000,
    "photo": true,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-18",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "location",
    "kind": "location",
-   "label": "location",
+   "label": "인물 스톡",
    "file": "photos/site/2026940256/location-auto-2.jpg",
    "src": "https://the-h-newbanpoestella.co.kr/assets/images/main/premium-img02.jpg",
    "w": 732,
    "h": 1000,
    "photo": true,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-18",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "location",
    "kind": "location",
-   "label": "location",
+   "label": "거리 풍경 스톡",
    "file": "photos/site/2026940256/location-auto-3.jpg",
    "src": "https://the-h-newbanpoestella.co.kr/assets/images/main/premium-img03.jpg",
    "w": 732,
    "h": 1000,
    "photo": true,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-18",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "community",
@@ -132,13 +167,18 @@
   {
    "cat": "interior",
    "kind": "interior",
-   "label": "마감재리스트 안내",
+   "label": "빈 세로 띠",
    "file": "photos/site/2026940256/interior-auto-1.jpg",
    "src": "https://the-h-newbanpoestella.co.kr/assets/images/sub/element.jpg",
    "w": 312,
    "h": 2400,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-18",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "siteplan",
@@ -166,7 +206,12 @@
    "w": 1200,
    "h": 1000,
    "photo": false,
-   "from": "sheet"
+   "from": "sheet",
+   "checked": "2026-11-18",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "dongho",
@@ -188,13 +233,18 @@
   {
    "cat": "dongho",
    "kind": "동호배치도",
-   "label": "동호배치도",
+   "label": "동호수 배치도",
    "file": "photos/dongho-fb1db60e121a.jpg",
    "src": "sheet:동호배치도 파일",
    "w": 1200,
    "h": 920,
    "photo": false,
-   "from": "sheet"
+   "from": "sheet",
+   "checked": "2026-11-18",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
@@ -216,13 +266,18 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "84",
+   "label": "84 평면",
    "file": "photos/plan-796420d9d69b.jpg",
    "src": "sheet:평면도 파일",
    "w": 1200,
    "h": 2171,
    "photo": false,
-   "from": "sheet"
+   "from": "sheet",
+   "checked": "2026-11-18",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   }
  ],
  "links": [

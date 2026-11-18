@@ -2,40 +2,40 @@
  "how": "ego lite: need에 notice가 있으면 url(청약홈)에서 '모집공고문' PDF → ~/줍줍알람/공고문/<save_as>, pamphlet이 있으면 청약홈·homepage(분양 홈페이지)에서 팸플릿·카탈로그 PDF → ~/줍줍알람/공고문/<pamphlet_as>(여러 개면 -pamphlet2.pdf…), 어디에도 없으면 notice_import.py --no-pamphlet <key>. site가 있으면 homepage에서 평면도·단지배치도·동호배치도·조감도·커뮤니티·단지 둘러보기 그림의 원본 주소(가장 큰 것)를 AI열 형식으로 ~/줍줍알람/공고문/<site_as>에 적고 notice_import.py --site로 받음(그림이 없으면 --no-site <key>). 캡차·차단 화면이면 멈추고 건너뜀(우회 금지).",
  "items": [
   {
-   "key": "2026940256",
-   "title": "디에이치 신반포에스테라 임의공급 (잔여 5세대·84㎡)",
+   "key": "2026940260",
+   "title": "더샵 분당센트로 7차 임의공급 (78·84㎡ 6세대)",
    "rcpt": [
-    "2026-11-18",
-    "2026-11-19"
+    "2026-11-20",
+    "2026-11-24"
    ],
-   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940256&pblancNo=2026940256",
-   "homepage": "https://the-h-newbanpoestella.co.kr/",
+   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940260&pblancNo=2026940260",
+   "homepage": "https://더샵분당센트로.kr",
    "need": [
     "notice",
     "pamphlet"
    ],
-   "save_as": "2026940256.pdf",
-   "pamphlet_as": "2026940256-pamphlet.pdf",
-   "site_as": "2026940256-site.txt",
-   "owner": "신반포22차아파트주택재건축정비사업조합"
+   "save_as": "2026940260.pdf",
+   "pamphlet_as": "2026940260-pamphlet.pdf",
+   "site_as": "2026940260-site.txt",
+   "owner": "무지개마을4단지리모델링주택조합"
   },
   {
-   "key": "2026940262",
-   "title": "리아츠 더 인천 24차 임의공급 (7세대·59~84㎡)",
+   "key": "2026930045",
+   "title": "잠실 래미안아이파크 무순위 (불법행위 재공급 3세대)",
    "rcpt": [
-    "2026-11-18",
-    "2026-11-20"
+    "2026-11-23",
+    "2026-11-24"
    ],
-   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940262&pblancNo=2026940262",
-   "homepage": "https://www.리아츠더인천.com",
+   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026930045&pblancNo=2026930045",
+   "homepage": "https://www.raemian.co.kr/sales/s/jamsiljinju",
    "need": [
     "notice",
     "pamphlet"
    ],
-   "save_as": "2026940262.pdf",
-   "pamphlet_as": "2026940262-pamphlet.pdf",
-   "site_as": "2026940262-site.txt",
-   "owner": "송림6구역재개발정비사업조합"
+   "save_as": "2026930045.pdf",
+   "pamphlet_as": "2026930045-pamphlet.pdf",
+   "site_as": "2026930045-site.txt",
+   "owner": "잠실진주아파트주택재건축정비사업조합"
   }
  ]
 }

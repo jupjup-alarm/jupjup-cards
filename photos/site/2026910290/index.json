@@ -229,35 +229,50 @@
   {
    "cat": "pamphlet",
    "kind": "팸플릿",
-   "label": "팸플릿 cand-01",
+   "label": "사업계획 문서",
    "file": "pamphlets/2026910290/notice/cand-01.jpg",
    "src": "pamphlet:notice/cand-01.jpg",
    "w": 1082,
    "h": 1600,
    "photo": false,
-   "from": "pamphlet"
+   "from": "pamphlet",
+   "checked": "2026-11-18",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "pamphlet",
    "kind": "팸플릿",
-   "label": "팸플릿 cand-02",
+   "label": "설계변경 문서",
    "file": "pamphlets/2026910290/notice/cand-02.jpg",
    "src": "pamphlet:notice/cand-02.jpg",
    "w": 1270,
    "h": 1600,
    "photo": false,
-   "from": "pamphlet"
+   "from": "pamphlet",
+   "checked": "2026-11-18",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "pamphlet",
    "kind": "팸플릿",
-   "label": "팸플릿 cand-03",
+   "label": "설계변경 문서",
    "file": "pamphlets/2026910290/notice/cand-03.jpg",
    "src": "pamphlet:notice/cand-03.jpg",
    "w": 1091,
    "h": 1600,
    "photo": false,
-   "from": "pamphlet"
+   "from": "pamphlet",
+   "checked": "2026-11-18",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   }
  ],
  "links": [],
