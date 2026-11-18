@@ -1,0 +1,20 @@
+{
+ "slug": "2026-11-18-riarts-incheon-reel",
+ "duration": 30.61,
+ "voiced": true,
+ "narration_s": 26.9,
+ "mean_db": -18.1,
+ "voice": "voices/45e7777d940d/",
+ "video": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-18-riarts-incheon-reel/2026-11-18-riarts-incheon-reel.mp4",
+ "cover": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-18-riarts-incheon-reel/2026-11-18-riarts-incheon-reel_thumb.jpg",
+ "size_mb": 9.35,
+ "warnings": [
+  "full.mp3 장면 경계가 장면별 음성과 어긋남(장면 [2, 3, 4, 5, 6]) → 장면별 파일 사용",
+  "호흡: 장면 1 대본에 없는 곳에서 0.29초 쉼 (③ 대본 쉼표 위치 확인)",
+  "호흡: 장면 2 대본에 없는 곳에서 0.25초 쉼 (③ 대본 쉼표 위치 확인)",
+  "호흡: 장면 4 대본에 없는 곳에서 0.29초 쉼 (③ 대본 쉼표 위치 확인)",
+  "사진: 컷 13개 · 서로 다른 사진 4장",
+  "사진 반복: birdseye-crop.jpg 5번 — 단지 그림을 shots·pool에 더 넣을 것",
+  "사진 반복: siteplan-crop.jpg 4번 — 단지 그림을 shots·pool에 더 넣을 것"
+ ]
+}

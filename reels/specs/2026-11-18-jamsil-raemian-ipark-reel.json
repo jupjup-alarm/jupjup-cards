@@ -1,0 +1,172 @@
+{
+ "slug": "2026-11-18-jamsil-raemian-ipark-reel",
+ "title": "잠실 래미안아이파크 무순위(불법행위재공급 3세대)",
+ "series": "줍줍알람",
+ "style": "story",
+ "voice": "voices/a85522c1b310/",
+ "voice_speed": 1.0,
+ "bgm": "music/beat-one.mp3",
+ "thumb": {
+  "lines": [
+   "잠실 남은 3채",
+   "59㎡ 11억 싸게"
+  ]
+ },
+ "pool": [
+  {
+   "img": "photos/site/2026930045/community-auto-8-c.jpg",
+   "credit": "이미지: 래미안 홈페이지(raemian.co.kr) · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/2026930045/birdseye-auto-1-crop.jpg",
+   "credit": "이미지: 래미안 홈페이지(raemian.co.kr) · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/sat/f6a90ebc042d.png",
+   "credit": "위성사진 © NAVER Corp."
+  }
+ ],
+ "scenes": [
+  {
+   "type": "story",
+   "say": "잠실에 옆 단지보다 11억 싼 59㎡ 새 아파트가 나왔대요. 딱 3채래요.",
+   "word": "11억",
+   "shots": [
+    {
+     "img": "photos/site/2026930045/birdseye-user-1.jpg",
+     "credit": "사진: 단지 실사 (사용자 제공)"
+    },
+    {
+     "img": "photos/site/2026930045/community-auto-1-c.jpg",
+     "credit": "이미지: 래미안 홈페이지(raemian.co.kr) · 실제와 다를 수 있음"
+    }
+   ],
+   "proof": {
+    "kind": "compare",
+    "head": "59㎡ 비교 (추정)",
+    "items": [
+     {
+      "label": "잠실 59㎡ 공급금액",
+      "value": "15억7,939만원"
+     },
+     {
+      "label": "옆 파크리오 59㎡ 실거래",
+      "value": "27억원"
+     }
+    ],
+    "src": "국토부 실거래가 2026.09 · 추정"
+   }
+  },
+  {
+   "type": "story",
+   "say": "심지어 내년 1월에 바로 입주하는 새 아파트래요.",
+   "word": "내년 1월",
+   "shots": [
+    {
+     "img": "photos/site/2026930045/birdseye-user-2.jpg",
+     "credit": "이미지: 래미안 홈페이지(raemian.co.kr) · 실제와 다를 수 있음",
+     "pos": "center 60%"
+    },
+    {
+     "img": "photos/site/2026930045/community-auto-2-c.jpg",
+     "credit": "이미지: 래미안 홈페이지(raemian.co.kr) · 실제와 다를 수 있음"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "이게 어떻게 가능할까요?",
+   "dim": true,
+   "shots": [
+    {
+     "img": "photos/site/2026930045/community-user-3.jpg",
+     "credit": "사진: 단지 실사 (사용자 제공)"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "사실은요 불법 행위로 취소된 집을 다시 파는 건데요. 15억7,939만 원인데 옆 단지는 27억 원이래요.",
+   "word": "15억7,939만",
+   "shots": [
+    {
+     "img": "photos/site/2026930045/community-auto-3-c.jpg",
+     "credit": "이미지: 래미안 홈페이지(raemian.co.kr) · 실제와 다를 수 있음"
+    },
+    {
+     "img": "photos/site/2026930045/community-auto-6-c.jpg",
+     "credit": "이미지: 래미안 홈페이지(raemian.co.kr) · 실제와 다를 수 있음"
+    }
+   ],
+   "proof": {
+    "kind": "image",
+    "img": "photos/site/2026930045/plan-59a-crop.jpg",
+    "credit": "이미지: 래미안 홈페이지(raemian.co.kr) · 실제와 다를 수 있음"
+   }
+  },
+  {
+   "type": "story",
+   "say": "근데 진짜 놀라운 건 자격이에요.",
+   "dim": true,
+   "shots": [
+    {
+     "img": "maps/1e3aaa854734.png"
+    },
+    {
+     "img": "photos/sat/f6a90ebc042d.png",
+     "credit": "위성사진 © NAVER Corp.",
+     "pos": "center 45%"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "청약통장도 가점도 안 보고 추첨으로 뽑는대요.",
+   "word": "추첨",
+   "shots": [
+    {
+     "img": "photos/site/2026930045/community-user-4.jpg",
+     "credit": "사진: 단지 실사 (사용자 제공)"
+    },
+    {
+     "img": "photos/site/2026930045/community-auto-5-c.jpg",
+     "credit": "이미지: 래미안 홈페이지(raemian.co.kr) · 실제와 다를 수 있음"
+    },
+    {
+     "img": "photos/site/2026930045/community-auto-7-c.jpg",
+     "credit": "이미지: 래미안 홈페이지(raemian.co.kr) · 실제와 다를 수 있음"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "서울 사는 무주택 세대주면 되고, 일반 접수는 11월 24일 하루라고 하니까",
+   "word": "11월 24일",
+   "shots": [
+    {
+     "img": "photos/site/2026930045/community-user-5.jpg",
+     "credit": "사진: 단지 실사 (사용자 제공)"
+    },
+    {
+     "img": "photos/site/2026930045/community-auto-4-c.jpg",
+     "credit": "이미지: 래미안 홈페이지(raemian.co.kr) · 실제와 다를 수 있음"
+    }
+   ],
+   "proof": {
+    "kind": "doc",
+    "head": "잠실 무순위 3세대",
+    "lines": [
+     "특공 11/23 · 일반 11/24",
+     "서울 무주택 세대주 · 추첨",
+     "발표 11/27 · 계약 12/4"
+    ],
+    "mark": 0,
+    "src": "출처: 입주자모집공고(2026.11.17)"
+   }
+  },
+  {
+   "type": "end",
+   "say": "단지 이름이랑 공고 정리는 댓글에 '잠실'이라고 남겨 주세요."
+  }
+ ]
+}

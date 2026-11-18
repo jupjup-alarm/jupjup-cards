@@ -1,0 +1,16 @@
+{
+ "slug": "2026-11-18-jamsil-raemian-ipark-reel",
+ "duration": 31.8,
+ "voiced": true,
+ "narration_s": 28.1,
+ "mean_db": -18.2,
+ "voice": "voices/a85522c1b310/",
+ "video": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-18-jamsil-raemian-ipark-reel/2026-11-18-jamsil-raemian-ipark-reel.mp4",
+ "cover": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-18-jamsil-raemian-ipark-reel/2026-11-18-jamsil-raemian-ipark-reel_thumb.jpg",
+ "size_mb": 8.68,
+ "warnings": [
+  "호흡: 장면 4 대본에 없는 곳에서 0.44초 쉼 (③ 대본 쉼표 위치 확인)",
+  "호흡: 장면 8 대본에 없는 곳에서 0.29초 쉼 (③ 대본 쉼표 위치 확인)",
+  "사진: 컷 13개 · 서로 다른 사진 12장"
+ ]
+}

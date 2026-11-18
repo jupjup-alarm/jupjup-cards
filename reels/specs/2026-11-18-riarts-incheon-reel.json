@@ -1,0 +1,178 @@
+{
+ "slug": "2026-11-18-riarts-incheon-reel",
+ "title": "리아츠 더 인천(24차) 임의공급",
+ "series": "줍줍알람",
+ "style": "story",
+ "voice": "voices/45e7777d940d/",
+ "voice_speed": 1.0,
+ "bgm": "music/beat-one.mp3",
+ "thumb": {
+  "lines": [
+   "인천 59㎡ 3억대",
+   "7채 남았다"
+  ]
+ },
+ "pool": [
+  {
+   "img": "photos/sat/62ed4c190dab.png",
+   "credit": "위성사진 © NAVER Corp."
+  },
+  {
+   "img": "maps/64500054c69b.png"
+  }
+ ],
+ "scenes": [
+  {
+   "type": "story",
+   "say": "인천에 59㎡ 새 아파트가 3억대에 나왔대요. 딱 7채래요.",
+   "word": "3억대",
+   "shots": [
+    {
+     "img": "photos/site/2026940262/birdseye-crop.jpg",
+     "credit": "이미지: 분양 홈페이지 · 실제와 다를 수 있음",
+     "pos": "center 40%"
+    },
+    {
+     "img": "photos/site/2026940262/birdseye-crop.jpg",
+     "credit": "이미지: 분양 홈페이지 · 실제와 다를 수 있음",
+     "pos": "25% 50%"
+    }
+   ],
+   "proof": {
+    "kind": "doc",
+    "head": "인천 송림동 임의공급",
+    "lines": [
+     "59㎡ 최고 3억6,800만원",
+     "남은 집 7세대",
+     "접수 11/18~20"
+    ],
+    "mark": 0,
+    "src": "출처: 청약홈 임의공급 공고"
+   }
+  },
+  {
+   "type": "story",
+   "say": "심지어 2027년 10월에 입주하는 새 아파트래요.",
+   "word": "2027년 10월",
+   "shots": [
+    {
+     "img": "photos/site/2026940262/siteplan-crop.jpg",
+     "credit": "이미지: 분양 홈페이지 · 실제와 다를 수 있음",
+     "pos": "60% 50%"
+    },
+    {
+     "img": "photos/sat/62ed4c190dab.png",
+     "credit": "위성사진 © NAVER Corp.",
+     "pos": "center 40%"
+    }
+   ],
+   "proof": {
+    "kind": "image",
+    "img": "photos/site/2026940262/plan-auto-2.jpg",
+    "credit": "이미지: 분양 홈페이지 · 실제와 다를 수 있음"
+   }
+  },
+  {
+   "type": "story",
+   "say": "이게 어떻게 가능할까요?",
+   "dim": true,
+   "shots": [
+    {
+     "img": "photos/site/2026940262/birdseye-crop.jpg",
+     "credit": "이미지: 분양 홈페이지 · 실제와 다를 수 있음",
+     "pos": "70% 50%"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "사실은요 재개발 단지에 남은 집인데요. 3억6,800만 원인데 옆 새 아파트는 4억1,500만 원이래요.",
+   "word": "3억6,800만",
+   "shots": [
+    {
+     "img": "photos/site/2026940262/siteplan-crop.jpg",
+     "credit": "이미지: 분양 홈페이지 · 실제와 다를 수 있음",
+     "pos": "25% 50%"
+    },
+    {
+     "img": "photos/site/2026940262/birdseye-crop.jpg",
+     "credit": "이미지: 분양 홈페이지 · 실제와 다를 수 있음",
+     "pos": "45% 70%"
+    }
+   ],
+   "proof": {
+    "kind": "compare",
+    "head": "59㎡ 비교 (추정)",
+    "items": [
+     {
+      "label": "인천 59B 공급금액",
+      "value": "3억6,800만원"
+     },
+     {
+      "label": "옆 동인천역 새 아파트 59㎡ 실거래",
+      "value": "4억1,500만원"
+     }
+    ],
+    "src": "국토부 실거래가 2026.10 · 추정"
+   }
+  },
+  {
+   "type": "story",
+   "say": "근데 진짜 놀라운 건 자격이에요.",
+   "dim": true,
+   "shots": [
+    {
+     "img": "maps/64500054c69b.png"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "집이 있어도 되고 청약통장도 안 본대요.",
+   "word": "청약통장",
+   "shots": [
+    {
+     "img": "photos/sat/62ed4c190dab.png",
+     "credit": "위성사진 © NAVER Corp.",
+     "pos": "center 60%"
+    },
+    {
+     "img": "photos/site/2026940262/siteplan-crop.jpg",
+     "credit": "이미지: 분양 홈페이지 · 실제와 다를 수 있음",
+     "pos": "80% 50%"
+    }
+   ],
+   "proof": {
+    "kind": "image",
+    "img": "photos/site/2026940262/interior-living.jpg",
+    "credit": "이미지: 분양 홈페이지 · 실제와 다를 수 있음"
+   }
+  },
+  {
+   "type": "story",
+   "say": "국내 사는 만 19세 이상이면 되고, 접수는 11월 20일까지라고 하니까",
+   "word": "11월 20일",
+   "shots": [
+    {
+     "img": "photos/site/2026940262/birdseye-crop.jpg",
+     "credit": "이미지: 분양 홈페이지 · 실제와 다를 수 있음",
+     "pos": "center 55%"
+    },
+    {
+     "img": "photos/site/2026940262/siteplan-crop.jpg",
+     "credit": "이미지: 분양 홈페이지 · 실제와 다를 수 있음",
+     "pos": "45% 40%"
+    }
+   ],
+   "proof": {
+    "kind": "image",
+    "img": "photos/site/2026940262/interior-dining.jpg",
+    "credit": "이미지: 분양 홈페이지 · 실제와 다를 수 있음"
+   }
+  },
+  {
+   "type": "end",
+   "say": "단지 이름이랑 공고 정리는 댓글에 '송림'이라고 남겨 주세요."
+  }
+ ]
+}
