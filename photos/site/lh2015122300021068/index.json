@@ -2,6 +2,48 @@
  "key": "lh2015122300021068",
  "images": [
   {
+   "cat": "birdseye",
+   "kind": "외관",
+   "label": "1302동 외관 (홈플러스 옆)",
+   "file": "photos/site/lh2015122300021068/exterior-1.jpg",
+   "src": "사용자 제공 (2026-11-19)",
+   "crop": "",
+   "w": 2000,
+   "h": 1689,
+   "md5": "893e1c10ea0277b3dc292aa00b9155c9",
+   "photo": true,
+   "owner": "user",
+   "desc": "사용자가 직접 제공한 단지 외관 사진 — 사용자 결정 2026-11-19"
+  },
+  {
+   "cat": "birdseye",
+   "kind": "외관",
+   "label": "1301동 올려다본 외관",
+   "file": "photos/site/lh2015122300021068/exterior-2.jpg",
+   "src": "사용자 제공 (2026-11-19)",
+   "crop": "",
+   "w": 2000,
+   "h": 1835,
+   "md5": "482f6c57b26ea5d59e2ae87502e3ca3e",
+   "photo": true,
+   "owner": "user",
+   "desc": "사용자가 직접 제공한 단지 외관 사진 — 사용자 결정 2026-11-19"
+  },
+  {
+   "cat": "birdseye",
+   "kind": "외관",
+   "label": "1301동 입구",
+   "file": "photos/site/lh2015122300021068/exterior-3.jpg",
+   "src": "사용자 제공 (2026-11-19)",
+   "crop": "",
+   "w": 2000,
+   "h": 1828,
+   "md5": "c4073f4c3dfcfd9967da18f75d797278",
+   "photo": true,
+   "owner": "user",
+   "desc": "사용자가 직접 제공한 단지 외관 사진 — 사용자 결정 2026-11-19"
+  },
+  {
    "cat": "plan",
    "kind": "평면도",
    "label": "26.37㎡ 평면도",
