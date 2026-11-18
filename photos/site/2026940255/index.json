@@ -1,0 +1,82 @@
+{
+ "key": "2026940255",
+ "images": [
+  {
+   "cat": "community",
+   "kind": "community",
+   "label": "골프연습장 전경",
+   "file": "photos/site/2026940255/community-auto-1.jpg",
+   "src": "https://xn--hc0bz5m11b1ue95n2zf6zxvzd.com/resources/img/main/community_img_01.jpg",
+   "w": 1920,
+   "h": 1080,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "community",
+   "kind": "community",
+   "label": "GX룸 전경",
+   "file": "photos/site/2026940255/community-auto-2.jpg",
+   "src": "https://xn--hc0bz5m11b1ue95n2zf6zxvzd.com/resources/img/main/community_img_02.jpg",
+   "w": 1920,
+   "h": 1080,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "community",
+   "kind": "community",
+   "label": "피트니스센터 전경",
+   "file": "photos/site/2026940255/community-auto-3.jpg",
+   "src": "https://xn--hc0bz5m11b1ue95n2zf6zxvzd.com/resources/img/main/community_img_03.jpg",
+   "w": 1920,
+   "h": 1080,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "community",
+   "kind": "community",
+   "label": "작은도서관 전경",
+   "file": "photos/site/2026940255/community-auto-4.jpg",
+   "src": "https://xn--hc0bz5m11b1ue95n2zf6zxvzd.com/resources/img/main/community_img_04.jpg",
+   "w": 1920,
+   "h": 1080,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "community",
+   "kind": "community",
+   "label": "독서실 전경",
+   "file": "photos/site/2026940255/community-auto-5.jpg",
+   "src": "https://xn--hc0bz5m11b1ue95n2zf6zxvzd.com/resources/img/main/community_img_05.jpg",
+   "w": 1920,
+   "h": 1080,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "plan",
+   "file": "photos/site/2026940255/plan-auto-1.jpg",
+   "src": "https://xn--hc0bz5m11b1ue95n2zf6zxvzd.com/resources/img/main/unit_bg.jpg",
+   "w": 1920,
+   "h": 1080,
+   "photo": false,
+   "from": "auto"
+  }
+ ],
+ "links": [],
+ "name": "광명 시티프라디움 에듀하임 임의공급(30세대)",
+ "row": 171,
+ "homepage": "https://광명시티프라디움.com",
+ "auto_site": {
+  "date": "2026-11-19",
+  "url": "https://광명시티프라디움.com",
+  "tries": 1,
+  "result": "6장 (plan 1, community 5)"
+ },
+ "updated": "2026-11-19 06:59"
+}

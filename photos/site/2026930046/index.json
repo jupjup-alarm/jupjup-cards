@@ -1,0 +1,38 @@
+{
+ "key": "2026930046",
+ "images": [
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "overview",
+   "file": "photos/site/2026930046/overview-auto-1.jpg",
+   "src": "https://www.s-class.co.kr/img/main2.jpg",
+   "w": 1920,
+   "h": 850,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "overview",
+   "file": "photos/site/2026930046/overview-auto-2.jpg",
+   "src": "https://www.s-class.co.kr/img/main1.jpg",
+   "w": 1920,
+   "h": 850,
+   "photo": false,
+   "from": "auto"
+  }
+ ],
+ "links": [],
+ "name": "광주 송정 중흥S-클래스 파크뷰 무순위",
+ "row": 172,
+ "homepage": "https://www.s-class.co.kr/",
+ "auto_site": {
+  "date": "2026-11-19",
+  "url": "https://www.s-class.co.kr/",
+  "tries": 1,
+  "result": "2장 (overview 2)"
+ },
+ "updated": "2026-11-19 06:59"
+}

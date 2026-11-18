@@ -1,0 +1,42 @@
+{
+ "key": "lh2015122300021108",
+ "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300021108&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=10&mi=1026",
+ "checked": "2026-11-19 06:57",
+ "files": [
+  {
+   "fileid": "69482021",
+   "name": "수원당수1,2단지행복주택입주자격완화동호지정입주자모집공고문.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69482022",
+   "name": "수원당수1,2단지행복주택입주자격완화동호지정입주자모집공고문.pdf",
+   "kind": "notice",
+   "got": "ok",
+   "md5": "175e2f2bd19fe44add0b5a44efded507",
+   "pages": 25,
+   "bytes": 583299
+  },
+  {
+   "fileid": "69475598",
+   "name": "(별첨1)수원당수1,2단지행복주택모집주택목록..xlsx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69475599",
+   "name": "(별첨2)단지별특성(수원당수).hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69475600",
+   "name": "(붙임1~4)신청자모두필수제출.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69475601",
+   "name": "(붙임5~7)해당자만제출.hwpx",
+   "kind": "other"
+  }
+ ],
+ "changed": true
+}

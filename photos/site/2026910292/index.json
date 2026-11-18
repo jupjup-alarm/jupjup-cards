@@ -1,0 +1,280 @@
+{
+ "key": "2026910292",
+ "images": [
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "overview",
+   "file": "photos/site/2026910292/overview-auto-1.jpg",
+   "src": "https://www.prugio.com/hb/2026/pravenue/assets/images/sub/overview_01.jpg",
+   "w": 1200,
+   "h": 708,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "overview",
+   "file": "photos/site/2026910292/overview-auto-2.jpg",
+   "src": "https://www.prugio.com/hb/2026/pravenue/assets/images/sub/overview_02.jpg",
+   "w": 1200,
+   "h": 708,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "overview",
+   "file": "photos/site/2026910292/overview-auto-3.jpg",
+   "src": "https://www.prugio.com/hb/2026/pravenue/assets/images/sub/overview_03.jpg",
+   "w": 1200,
+   "h": 708,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "location",
+   "file": "photos/site/2026910292/location-auto-1.jpg",
+   "src": "https://www.prugio.com/hb/2026/pravenue/assets/images/sub/location.jpg",
+   "w": 1408,
+   "h": 1047,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "location",
+   "file": "photos/site/2026910292/location-auto-2.jpg",
+   "src": "https://www.prugio.com/hb/2026/pravenue/m/assets/images/sub/m_location.jpg",
+   "w": 750,
+   "h": 1115,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "location",
+   "file": "photos/site/2026910292/location-auto-3.jpg",
+   "src": "https://www.prugio.com/hb/2026/pravenue/assets/images/sub/premium.jpg",
+   "w": 1408,
+   "h": 2369,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "community",
+   "kind": "community",
+   "label": "community",
+   "file": "photos/site/2026910292/community-auto-1.jpg",
+   "src": "https://www.prugio.com/hb/2026/pravenue/assets/images/sub/community.jpg",
+   "w": 1408,
+   "h": 2002,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "community",
+   "kind": "community",
+   "label": "community",
+   "file": "photos/site/2026910292/community-auto-2.jpg",
+   "src": "https://www.prugio.com/hb/2026/pravenue/m/assets/images/sub/m_community.jpg",
+   "w": 573,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "interior",
+   "kind": "interior",
+   "label": "interior",
+   "file": "photos/site/2026910292/interior-auto-1.jpg",
+   "src": "https://www.prugio.com/hb/2026/pravenue/assets/images/sub/interior_01.jpg",
+   "w": 943,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "interior",
+   "kind": "interior",
+   "label": "interior",
+   "file": "photos/site/2026910292/interior-auto-2.jpg",
+   "src": "https://www.prugio.com/hb/2026/pravenue/m/assets/images/sub/m_interior_01.jpg",
+   "w": 410,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "interior",
+   "kind": "interior",
+   "label": "interior",
+   "file": "photos/site/2026910292/interior-auto-3.jpg",
+   "src": "https://www.prugio.com/hb/2026/pravenue/assets/images/sub/interior_02.jpg",
+   "w": 872,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "interior",
+   "kind": "interior",
+   "label": "interior",
+   "file": "photos/site/2026910292/interior-auto-4.jpg",
+   "src": "https://www.prugio.com/hb/2026/pravenue/m/assets/images/sub/m_interior_02.jpg",
+   "w": 399,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "interior",
+   "kind": "interior",
+   "label": "interior",
+   "file": "photos/site/2026910292/interior-auto-5.jpg",
+   "src": "https://www.prugio.com/hb/2026/pravenue/assets/images/sub/interior_03.jpg",
+   "w": 729,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "interior",
+   "kind": "interior",
+   "label": "interior",
+   "file": "photos/site/2026910292/interior-auto-6.jpg",
+   "src": "https://www.prugio.com/hb/2026/pravenue/m/assets/images/sub/m_interior_03.jpg",
+   "w": 439,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "siteplan",
+   "kind": "siteplan",
+   "label": "siteplan",
+   "file": "photos/site/2026910292/siteplan-auto-1.jpg",
+   "src": "https://www.prugio.com/hb/2026/pravenue/assets/images/sub/complex.jpg",
+   "w": 1408,
+   "h": 1652,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "siteplan",
+   "kind": "siteplan",
+   "label": "siteplan",
+   "file": "photos/site/2026910292/siteplan-auto-2.jpg",
+   "src": "https://www.prugio.com/hb/2026/pravenue/m/assets/images/sub/m_complex.jpg",
+   "w": 750,
+   "h": 1805,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "dongho",
+   "kind": "dongho",
+   "label": "dongho",
+   "file": "photos/site/2026910292/dongho-auto-1.jpg",
+   "src": "https://www.prugio.com/hb/2026/pravenue/assets/images/sub/draw.jpg",
+   "w": 1408,
+   "h": 1954,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "dongho",
+   "kind": "dongho",
+   "label": "dongho",
+   "file": "photos/site/2026910292/dongho-auto-2.jpg",
+   "src": "https://www.prugio.com/hb/2026/pravenue/assets/images/sub/architecture.jpg",
+   "w": 1408,
+   "h": 1708,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "plan",
+   "file": "photos/site/2026910292/plan-auto-1.jpg",
+   "src": "https://www.prugio.com/hb/2026/pravenue/assets/images/sub/unit_60a.jpg",
+   "w": 1116,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "plan",
+   "file": "photos/site/2026910292/plan-auto-2.jpg",
+   "src": "https://www.prugio.com/hb/2026/pravenue/m/assets/images/sub/m_unit_60a.jpg",
+   "w": 739,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "plan",
+   "file": "photos/site/2026910292/plan-auto-3.jpg",
+   "src": "https://www.prugio.com/hb/2026/pravenue/assets/images/sub/unit_60b.jpg",
+   "w": 1116,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "plan",
+   "file": "photos/site/2026910292/plan-auto-4.jpg",
+   "src": "https://www.prugio.com/hb/2026/pravenue/m/assets/images/sub/m_unit_60b.jpg",
+   "w": 739,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "plan",
+   "file": "photos/site/2026910292/plan-auto-5.jpg",
+   "src": "https://www.prugio.com/hb/2026/pravenue/assets/images/sub/unit_60c.jpg",
+   "w": 1021,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "plan",
+   "file": "photos/site/2026910292/plan-auto-6.jpg",
+   "src": "https://www.prugio.com/hb/2026/pravenue/m/assets/images/sub/m_unit_60c.jpg",
+   "w": 670,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  }
+ ],
+ "links": [],
+ "name": "검암역 푸르지오 프라베뉴(B-1BL) 공공분양주택 무순위(사후)",
+ "row": 170,
+ "homepage": "https://www.prugio.com/hb/2026/pravenue",
+ "auto_site": {
+  "date": "2026-11-19",
+  "url": "https://www.prugio.com/hb/2026/pravenue",
+  "tries": 1,
+  "result": "24장 (overview 3, siteplan 2, dongho 2, plan 6, community 2, interior 6, location 3)"
+ },
+ "updated": "2026-11-19 07:01"
+}

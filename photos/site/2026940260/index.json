@@ -2,22 +2,6 @@
  "key": "2026940260",
  "images": [
   {
-   "cat": "location",
-   "kind": "location",
-   "label": "야경 도시 풍경(스톡)",
-   "file": "photos/site/2026940260/location-auto-1.jpg",
-   "src": "https://xn--ok1btg31l29f3zeimw42h.kr/resources/img/main/vision01.webp",
-   "w": 1920,
-   "h": 1080,
-   "photo": false,
-   "from": "auto",
-   "checked": "2026-11-18",
-   "ok": false,
-   "name_shown": false,
-   "full": false,
-   "checked_by": "정기 작업"
-  },
-  {
    "cat": "birdseye",
    "kind": "location",
    "label": "단지 정문 투시도",
@@ -31,6 +15,22 @@
    "ok": true,
    "name_shown": false,
    "full": true,
+   "checked_by": "정기 작업"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "야경 도시 풍경(스톡)",
+   "file": "photos/site/2026940260/location-auto-1.jpg",
+   "src": "https://xn--ok1btg31l29f3zeimw42h.kr/resources/img/main/vision01.webp",
+   "w": 1920,
+   "h": 1080,
+   "photo": false,
+   "from": "auto",
+   "checked": "2026-11-18",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
    "checked_by": "정기 작업"
   },
   {
@@ -146,22 +146,6 @@
    "checked_by": "정기 작업"
   },
   {
-   "cat": "siteplan",
-   "kind": "siteplan",
-   "label": "나비 장식",
-   "file": "photos/site/2026940260/siteplan-auto-1.jpg",
-   "src": "https://xn--ok1btg31l29f3zeimw42h.kr/resources/img/main/landscape03.png",
-   "w": 504,
-   "h": 538,
-   "photo": true,
-   "from": "auto",
-   "checked": "2026-11-18",
-   "ok": false,
-   "name_shown": false,
-   "full": false,
-   "checked_by": "정기 작업"
-  },
-  {
    "cat": "community",
    "kind": "siteplan",
    "label": "단지 조경 투시도",
@@ -175,6 +159,38 @@
    "ok": true,
    "name_shown": false,
    "full": true,
+   "checked_by": "정기 작업"
+  },
+  {
+   "cat": "interior",
+   "kind": "plan",
+   "label": "거실 인테리어 투시도",
+   "file": "photos/site/2026940260/plan-auto-3.jpg",
+   "src": "https://xn--ok1btg31l29f3zeimw42h.kr/resources/img/main/showroom03_02.png",
+   "w": 897,
+   "h": 764,
+   "photo": false,
+   "from": "auto",
+   "checked": "2026-11-18",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
+  },
+  {
+   "cat": "siteplan",
+   "kind": "siteplan",
+   "label": "나비 장식",
+   "file": "photos/site/2026940260/siteplan-auto-1.jpg",
+   "src": "https://xn--ok1btg31l29f3zeimw42h.kr/resources/img/main/landscape03.png",
+   "w": 504,
+   "h": 538,
+   "photo": true,
+   "from": "auto",
+   "checked": "2026-11-18",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
    "checked_by": "정기 작업"
   },
   {
@@ -201,22 +217,6 @@
    "src": "https://xn--ok1btg31l29f3zeimw42h.kr/resources/img/main/showroom03_01.png",
    "w": 1317,
    "h": 864,
-   "photo": false,
-   "from": "auto",
-   "checked": "2026-11-18",
-   "ok": true,
-   "name_shown": false,
-   "full": false,
-   "checked_by": "정기 작업"
-  },
-  {
-   "cat": "interior",
-   "kind": "plan",
-   "label": "거실 인테리어 투시도",
-   "file": "photos/site/2026940260/plan-auto-3.jpg",
-   "src": "https://xn--ok1btg31l29f3zeimw42h.kr/resources/img/main/showroom03_02.png",
-   "w": 897,
-   "h": 764,
    "photo": false,
    "from": "auto",
    "checked": "2026-11-18",
@@ -272,6 +272,17 @@
    "name_shown": false,
    "full": false,
    "checked_by": "정기 작업"
+  },
+  {
+   "cat": "pamphlet",
+   "kind": "팸플릿",
+   "label": "팸플릿 cand-01",
+   "file": "pamphlets/2026940260/notice/cand-01.jpg",
+   "src": "pamphlet:notice/cand-01.jpg",
+   "w": 1287,
+   "h": 1600,
+   "photo": false,
+   "from": "pamphlet"
   }
  ],
  "links": [],
@@ -284,5 +295,5 @@
   "tries": 1,
   "result": "17장 (siteplan 2, plan 6, community 6, location 3)"
  },
- "updated": "2026-11-18 06:55"
+ "updated": "2026-11-19 07:01"
 }
