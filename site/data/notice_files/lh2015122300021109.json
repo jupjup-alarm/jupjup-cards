@@ -1,0 +1,27 @@
+{
+ "key": "lh2015122300021109",
+ "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300021109&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=09&mi=1026",
+ "checked": "2026-11-20 06:57",
+ "files": [
+  {
+   "fileid": "69480871",
+   "name": "2026년서울시영구임대주택예비입주자모집공고문(LH).hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69480894",
+   "name": "2026년서울시영구임대주택예비입주자모집공고문(LH).pdf",
+   "kind": "notice",
+   "got": "ok",
+   "md5": "8bb0a1a19eb9eaa5a516bc6c4e5da80b",
+   "pages": 19,
+   "bytes": 372954
+  },
+  {
+   "fileid": "69481476",
+   "name": "2026년서울시영구임대주택예비입주자모집신청양식(LH).hwpx",
+   "kind": "other"
+  }
+ ],
+ "changed": true
+}

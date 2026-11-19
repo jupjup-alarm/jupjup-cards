@@ -96,6 +96,21 @@
   {
    "cat": "notice",
    "kind": "공고문",
+   "label": "공고문 소득·자산 기준 (p.4)",
+   "file": "photos/site/lh2015122300021068/notice-income.jpg",
+   "src": "69411857.pdf#p4",
+   "crop": "0.04,0.13,0.96,0.66",
+   "w": 1141,
+   "h": 929,
+   "md5": "45441829fd9b6a37b3eca30914dcbb1c",
+   "photo": false,
+   "full": false,
+   "page": 4,
+   "marked": []
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
    "label": "공고문 공급금액 (p.2)",
    "file": "photos/site/lh2015122300021068/notice-price.jpg",
    "src": "69411857.pdf#p2",
@@ -137,28 +152,13 @@
    "full": false,
    "page": 1,
    "marked": []
-  },
-  {
-   "cat": "notice",
-   "kind": "공고문",
-   "label": "공고문 소득·자산 기준 (p.4)",
-   "file": "photos/site/lh2015122300021068/notice-income.jpg",
-   "src": "69411857.pdf#p4",
-   "crop": "0.04,0.13,0.96,0.66",
-   "w": 1141,
-   "h": 929,
-   "md5": "45441829fd9b6a37b3eca30914dcbb1c",
-   "photo": false,
-   "full": false,
-   "page": 4,
-   "marked": []
   }
  ],
  "links": [],
  "owner": "LH",
  "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
- "updated": "2026-11-18 22:27",
+ "updated": "2026-11-20 07:01",
  "name": "안산군자13 영구임대주택 예비입주자 모집(117호)",
  "row": 158,
- "lh_checked": "2026-11-19"
+ "lh_checked": "2026-11-20"
 }

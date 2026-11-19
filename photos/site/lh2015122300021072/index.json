@@ -1,0 +1,57 @@
+{
+ "key": "lh2015122300021072",
+ "images": [
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 공급금액 (p.2)",
+   "file": "photos/site/lh2015122300021072/notice-price.jpg",
+   "src": "69481261.pdf#p2",
+   "crop": "",
+   "w": 1132,
+   "h": 701,
+   "md5": "294d8422739f3bda943637fd66fbe0b2",
+   "photo": false,
+   "full": false,
+   "page": 2,
+   "marked": []
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 신청일정 (p.2)",
+   "file": "photos/site/lh2015122300021072/notice-schedule.jpg",
+   "src": "69481261.pdf#p2",
+   "crop": "",
+   "w": 1132,
+   "h": 701,
+   "md5": "70bd911de39a5680f5d7d64ca111b3fb",
+   "photo": false,
+   "full": false,
+   "page": 2,
+   "marked": []
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 신청자격 (p.1)",
+   "file": "photos/site/lh2015122300021072/notice-qual.jpg",
+   "src": "69481261.pdf#p1",
+   "crop": "",
+   "w": 1091,
+   "h": 702,
+   "md5": "01ea265699236b80441a5eb6eb6cc1f5",
+   "photo": false,
+   "full": false,
+   "page": 1,
+   "marked": []
+  }
+ ],
+ "links": [],
+ "owner": "LH",
+ "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
+ "updated": "2026-11-20 06:57",
+ "name": "[경기북부] 신혼·신생아 매입임대Ⅰ 예비입주자 167호 (파주·고양 풍동 등 8개 시군)",
+ "row": 184,
+ "lh_checked": "2026-11-20"
+}

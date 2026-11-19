@@ -1,0 +1,115 @@
+{
+ "key": "2026000585",
+ "images": [
+  {
+   "cat": "birdseye",
+   "kind": "birdseye",
+   "label": "고양 한신더휴 퍼스트원 조감도",
+   "file": "photos/site/2026000585/birdseye-auto-1.jpg",
+   "src": "https://gy-thehue.com/img/sub/summary.jpg",
+   "w": 1100,
+   "h": 687,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "birdseye",
+   "kind": "birdseye",
+   "label": "고양 한신더휴 퍼스트원 단지 배치 약도와 조감 CG - 한신더휴 2차(예",
+   "file": "photos/site/2026000585/birdseye-auto-2.jpg",
+   "src": "https://gy-thehue.com/img/sub/location_area_bg8_2440_n2.png?v=2",
+   "w": 2400,
+   "h": 1328,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "birdseye",
+   "kind": "birdseye",
+   "label": "고양 한신더휴 퍼스트원 조감도",
+   "file": "photos/site/2026000585/birdseye-auto-3.jpg",
+   "src": "https://gy-thehue.com/img/sub/notice_photo.jpg",
+   "w": 2200,
+   "h": 1090,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "overview",
+   "file": "photos/site/2026000585/overview-auto-1.jpg",
+   "src": "https://gy-thehue.com/img/main04.jpg",
+   "w": 1920,
+   "h": 960,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "overview",
+   "file": "photos/site/2026000585/overview-auto-2.jpg",
+   "src": "https://gy-thehue.com/img/main02.jpg",
+   "w": 1976,
+   "h": 1981,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "overview",
+   "file": "photos/site/2026000585/overview-auto-3.jpg",
+   "src": "https://gy-thehue.com/img/main03_map.jpg?v=2",
+   "w": 1920,
+   "h": 960,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "고양 한신더휴 퍼스트원 입지 지역도 - 광역 교통망과 주변 개발",
+   "file": "photos/site/2026000585/location-auto-1.jpg",
+   "src": "https://gy-thehue.com/img/sub/location_map_zoom.jpg?v=4",
+   "w": 2400,
+   "h": 1405,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "경의중앙선·고양은평선(예정) 노선도 - 대곡·능곡·행신·강매역, 화정·행",
+   "file": "photos/site/2026000585/location-auto-2.jpg",
+   "src": "https://gy-thehue.com/img/sub/location_line7_2440.png?v=1",
+   "w": 2400,
+   "h": 1169,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "고양 한신더휴 퍼스트원 입지환경 - 광역 지도, 쾌속교통, 안심학군, 미",
+   "file": "photos/site/2026000585/location-auto-3.jpg",
+   "src": "https://gy-thehue.com/img/sub/location_info6_2440.jpg?v=1",
+   "w": 2222,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  }
+ ],
+ "links": [],
+ "name": "고양 한신더휴 퍼스트원",
+ "row": 180,
+ "homepage": "https://gy-thehue.com",
+ "auto_site": {
+  "date": "2026-11-20",
+  "url": "https://gy-thehue.com",
+  "tries": 1,
+  "result": "9장 (birdseye 3, overview 3, location 3)"
+ },
+ "updated": "2026-11-20 06:58"
+}

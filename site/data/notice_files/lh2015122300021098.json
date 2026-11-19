@@ -1,0 +1,59 @@
+{
+ "key": "lh2015122300021098",
+ "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300021098&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=10&mi=1026",
+ "checked": "2026-11-20 06:57",
+ "files": [
+  {
+   "fileid": "69490108",
+   "name": "★서울삼전,강동천호,LH수서1,LH수서2,행복주택예비입주자모집공고(2026.11.19).hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69490179",
+   "name": "★서울삼전,강동천호,LH수서1,LH수서2,행복주택예비입주자모집공고(2026.11.19).pdf",
+   "kind": "notice",
+   "got": "ok",
+   "md5": "7cf61bdb660d008eeb459237bfb6535f",
+   "pages": 35,
+   "bytes": 46168755
+  },
+  {
+   "fileid": "69445650",
+   "name": "LH수서1(수서역세권A1BL)행복주택팸플릿.pdf",
+   "kind": "pamphlet",
+   "got": "ok",
+   "md5": "b7f7dae41ff7e2fe90cb628d46ad23db",
+   "pages": 14,
+   "bytes": 20046694
+  },
+  {
+   "fileid": "69445655",
+   "name": "LH수서2(수서역세권A2BL)행복주택팸플릿.pdf",
+   "kind": "pamphlet",
+   "got": "ok",
+   "md5": "ad84f0d262d2962233221e4a26618a8d",
+   "pages": 15,
+   "bytes": 4910193
+  },
+  {
+   "fileid": "69445671",
+   "name": "강동천호행복주택팸플릿.pdf",
+   "kind": "pamphlet",
+   "got": "ok",
+   "md5": "79e61904b3b1dfcc7841197993921522",
+   "pages": 12,
+   "bytes": 14755032
+  },
+  {
+   "fileid": "69445673",
+   "name": "서울삼전행복주택_조감도및평면도.pdf",
+   "kind": "other"
+  },
+  {
+   "fileid": "69445929",
+   "name": "행복주택제출서류.zip",
+   "kind": "other"
+  }
+ ],
+ "changed": true
+}

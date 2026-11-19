@@ -1,0 +1,79 @@
+{
+ "key": "lh2015122300021099",
+ "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300021099&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=10&mi=1026",
+ "checked": "2026-11-20 06:56",
+ "files": [
+  {
+   "fileid": "69446669",
+   "name": "26.11.19인천남동구행복주택예비입주자모집(자격완화).hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69446670",
+   "name": "26.11.19인천남동구행복주택예비입주자모집(자격완화).pdf",
+   "kind": "notice",
+   "got": "ok",
+   "md5": "b297c8eaecbbc11b30bbae6b8a7344c7",
+   "pages": 34,
+   "bytes": 745385
+  },
+  {
+   "fileid": "69446692",
+   "name": "논현15팸플릿.pdf",
+   "kind": "pamphlet",
+   "got": "ok",
+   "md5": "b7768e952d98c995141b76eaf599c3b2",
+   "pages": 22,
+   "bytes": 4959209
+  },
+  {
+   "fileid": "69446691",
+   "name": "논현4팸플릿.pdf",
+   "kind": "pamphlet",
+   "got": "ok",
+   "md5": "9ff3e6d6f967d3bfe5fd9659e39115e8",
+   "pages": 13,
+   "bytes": 4864240
+  },
+  {
+   "fileid": "69446694",
+   "name": "서창14팸플릿.pdf",
+   "kind": "pamphlet",
+   "got": "ok",
+   "md5": "610a79a009f17b6efb9462fa56c36f1d",
+   "pages": 13,
+   "bytes": 8972652
+  },
+  {
+   "fileid": "69446727",
+   "name": "[★양식1~4]필수제출서류.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69446730",
+   "name": "[양식5]위임장(대리인신청시).hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69446734",
+   "name": "[양식6]각서(대학생계층복학예정자).hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69446744",
+   "name": "[양식7]예비신혼부부신청,세대구성확인서.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69447001",
+   "name": "마이마이서비스고객매뉴얼(V6).hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69447035",
+   "name": "마이마이서비스고객매뉴얼(V6).pdf",
+   "kind": "form"
+  }
+ ],
+ "changed": true
+}

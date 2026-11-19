@@ -1,0 +1,126 @@
+{
+ "key": "2026910300",
+ "images": [
+  {
+   "cat": "birdseye",
+   "kind": "birdseye",
+   "label": "조감도 CG",
+   "file": "photos/site/2026910300/birdseye-auto-1.jpg",
+   "src": "https://www.xi.co.kr/Files/cmsPage/20261008_100016_669001.jpg",
+   "w": 1100,
+   "h": 618,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "overview",
+   "file": "photos/site/2026910300/overview-auto-1.jpg",
+   "src": "https://www.xi.co.kr/Content/static/images/intro/main_bg.png",
+   "w": 1920,
+   "h": 1000,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "상세",
+   "file": "photos/site/2026910300/location-auto-1.jpg",
+   "src": "https://www.xi.co.kr/Files/cmsPage/20261008_100037_098001.jpg",
+   "w": 867,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "상세",
+   "file": "photos/site/2026910300/location-auto-2.jpg",
+   "src": "https://www.xi.co.kr/Files/cmsPage/20261008_100037_257002.jpg",
+   "w": 460,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "community",
+   "kind": "community",
+   "label": "상세",
+   "file": "photos/site/2026910300/community-auto-1.jpg",
+   "src": "https://www.xi.co.kr/Files/cmsPage/20261007_211451_984001.jpg",
+   "w": 707,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "community",
+   "kind": "community",
+   "label": "상세",
+   "file": "photos/site/2026910300/community-auto-2.jpg",
+   "src": "https://www.xi.co.kr/Files/cmsPage/20261007_211452_169002.jpg",
+   "w": 256,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "siteplan",
+   "kind": "siteplan",
+   "label": "siteplan",
+   "file": "photos/site/2026910300/siteplan-auto-1.jpg",
+   "src": "https://www.xi.co.kr/Content/static/images/sub/construct/administrative_bg/ex_ad_00.png",
+   "w": 580,
+   "h": 768,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "siteplan",
+   "kind": "siteplan",
+   "label": "상세",
+   "file": "photos/site/2026910300/siteplan-auto-2.jpg",
+   "src": "https://www.xi.co.kr/Files/cmsPage/20261007_211343_137001.jpg",
+   "w": 869,
+   "h": 2400,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "dongho",
+   "kind": "dongho",
+   "label": "상세",
+   "file": "photos/site/2026910300/dongho-auto-1.jpg",
+   "src": "https://www.xi.co.kr/Files/cmsPage/20261025_152616_599001.jpg",
+   "w": 849,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "상세",
+   "file": "photos/site/2026910300/plan-auto-1.jpg",
+   "src": "https://www.xi.co.kr/Files/cmsPage/20261007_211620_221001.jpg",
+   "w": 1100,
+   "h": 1083,
+   "photo": false,
+   "from": "auto"
+  }
+ ],
+ "links": [],
+ "name": "산곡역자이힐스테이트앤하늘채 무순위(잔여 550세대)",
+ "row": 178,
+ "homepage": "https://www.xi.co.kr/sangokxi",
+ "auto_site": {
+  "date": "2026-11-20",
+  "url": "https://www.xi.co.kr/sangokxi",
+  "tries": 1,
+  "result": "10장 (birdseye 1, overview 1, siteplan 2, dongho 1, plan 1, community 2, location 2)"
+ },
+ "updated": "2026-11-20 07:00"
+}

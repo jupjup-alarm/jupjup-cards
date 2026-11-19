@@ -1,0 +1,145 @@
+{
+ "key": "2026940257",
+ "images": [
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "낮 전경",
+   "file": "photos/site/2026940257/birdseye.jpg",
+   "src": "https://detre-hangang.co.kr/common/files/banner/1794377828.jpg",
+   "crop": "0.596,0.062,0.983,0.300",
+   "w": 465,
+   "h": 326,
+   "md5": "634384700f11315c3794aef31a263bf4",
+   "photo": true
+  },
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "낮 전경 2",
+   "file": "photos/site/2026940257/birdseye-2.jpg",
+   "src": "https://detre-hangang.co.kr/common/files/banner/1794377828.jpg",
+   "crop": "0.013,0.320,0.486,0.559",
+   "w": 567,
+   "h": 327,
+   "md5": "634384700f11315c3794aef31a263bf4",
+   "photo": true
+  },
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "낮 전경 3",
+   "file": "photos/site/2026940257/birdseye-3.jpg",
+   "src": "https://detre-hangang.co.kr/common/files/banner/1794377828.jpg",
+   "crop": "0.013,0.579,0.398,0.816",
+   "w": 462,
+   "h": 324,
+   "md5": "634384700f11315c3794aef31a263bf4",
+   "photo": true
+  },
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "출입구·조경",
+   "file": "photos/site/2026940257/birdseye-4.jpg",
+   "src": "https://detre-hangang.co.kr/common/files/banner/1794377828.jpg",
+   "crop": "0.513,0.320,0.983,0.559",
+   "w": 564,
+   "h": 327,
+   "md5": "634384700f11315c3794aef31a263bf4",
+   "photo": true
+  },
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "전경(사업개요 위)",
+   "file": "photos/site/2026940257/birdseye-5.jpg",
+   "src": "https://detre-hangang.co.kr/common/files/editor/43868_1794794019.jpg",
+   "crop": "0,0,1,0.36",
+   "w": 1200,
+   "h": 480,
+   "md5": "2697d5e890f11fd51940744470c60092",
+   "photo": true
+  },
+  {
+   "cat": "community",
+   "kind": "커뮤니티",
+   "label": "지하 출입 로비",
+   "file": "photos/site/2026940257/community.jpg",
+   "src": "https://detre-hangang.co.kr/common/files/banner/1794377828.jpg",
+   "crop": "0.427,0.579,0.900,0.816",
+   "w": 568,
+   "h": 324,
+   "md5": "634384700f11315c3794aef31a263bf4",
+   "photo": true
+  },
+  {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "",
+   "file": "photos/site/2026940257/siteplan.jpg",
+   "src": "https://detre-hangang.co.kr/common/files/banner/1794371728.jpg",
+   "crop": "0,0,0.40,1",
+   "w": 480,
+   "h": 696,
+   "md5": "e56e564879a458e5a2d92f6ff7781dec",
+   "photo": true
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "59B",
+   "file": "photos/site/2026940257/plan-59b.jpg",
+   "src": "https://detre-hangang.co.kr/common/files/banner/1794371728.jpg",
+   "crop": "0.42,0,1,1",
+   "w": 696,
+   "h": 696,
+   "md5": "e56e564879a458e5a2d92f6ff7781dec",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "79A",
+   "file": "photos/site/2026940257/plan-79a.jpg",
+   "src": "https://detre-hangang.co.kr/common/files/banner/1794371739.jpg",
+   "crop": "0.42,0,1,1",
+   "w": 696,
+   "h": 692,
+   "md5": "6c741f9e3e9ac3872359d0201cfdb07c",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "80A",
+   "file": "photos/site/2026940257/plan-80a.jpg",
+   "src": "https://detre-hangang.co.kr/common/files/banner/1794371751.jpg",
+   "crop": "0.42,0,1,1",
+   "w": 696,
+   "h": 692,
+   "md5": "c4ec80f120c7750cd1ce92cc1091e500",
+   "photo": false
+  }
+ ],
+ "links": [
+  {
+   "kind": "emodel",
+   "label": "e모델하우스",
+   "name": "E모델하우스",
+   "url": "https://detre-hangang.co.kr/modules/page/index.php?page_code=06"
+  },
+  {
+   "kind": "vr",
+   "label": "항공VR",
+   "name": "VR",
+   "url": "https://detre-hangang.co.kr/modules/page/index.php?page_code=04"
+  }
+ ],
+ "homepage": "https://detre-hangang.co.kr",
+ "owner": "대명아파트가로주택정비사업조합(대방건설)",
+ "updated": "2026-11-20 06:58",
+ "name": "강동한강 디에트르 임의공급(13세대)",
+ "row": 179,
+ "ai_hash": "1d7699363228c9107a010ec39208ed23"
+}

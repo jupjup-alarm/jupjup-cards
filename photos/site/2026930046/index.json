@@ -32,6 +32,66 @@
    "name_shown": false,
    "full": false,
    "checked_by": "정기 작업"
+  },
+  {
+   "cat": "commons",
+   "kind": "실사",
+   "label": "20250425 광주 오월루 야경 사진.1.jpg",
+   "file": "photos/site/2026930046/commons-1.jpg",
+   "src": "https://commons.wikimedia.org/wiki/File:20250425_%EA%B4%91%EC%A3%BC_%EC%98%A4%EC%9B%94%EB%A3%A8_%EC%95%BC%EA%B2%BD_%EC%82%AC%EC%A7%84.1.jpg",
+   "w": 1920,
+   "h": 3412,
+   "photo": true,
+   "full": true,
+   "from": "commons",
+   "license": "CC0",
+   "credit": "사진: 레이저마인드 · CC0 (위키미디어 커먼즈)",
+   "md5": "c81874c875a027ba33cdd67d0b5c8632"
+  },
+  {
+   "cat": "commons",
+   "kind": "실사",
+   "label": "20250425 광주 오월루 야경 사진.2.jpg",
+   "file": "photos/site/2026930046/commons-2.jpg",
+   "src": "https://commons.wikimedia.org/wiki/File:20250425_%EA%B4%91%EC%A3%BC_%EC%98%A4%EC%9B%94%EB%A3%A8_%EC%95%BC%EA%B2%BD_%EC%82%AC%EC%A7%84.2.jpg",
+   "w": 1280,
+   "h": 2276,
+   "photo": true,
+   "full": true,
+   "from": "commons",
+   "license": "CC0",
+   "credit": "사진: 레이저마인드 · CC0 (위키미디어 커먼즈)",
+   "md5": "8832b478cf3adffd3c0cdb6074fafd86"
+  },
+  {
+   "cat": "commons",
+   "kind": "실사",
+   "label": "Gwangju city - view2.jpg",
+   "file": "photos/site/2026930046/commons-3.jpg",
+   "src": "https://commons.wikimedia.org/wiki/File:Gwangju_city_-_view2.jpg",
+   "w": 1600,
+   "h": 1200,
+   "photo": true,
+   "full": true,
+   "from": "commons",
+   "license": "CC BY-SA 3.0",
+   "credit": "사진: No machine-readable author provided. Nes · CC BY-SA 3.0 (위키미디어 커먼즈)",
+   "md5": "922864a1d76b74ae4f2979f60f681308"
+  },
+  {
+   "cat": "commons",
+   "kind": "실사",
+   "label": "Gwangju city - view apts.jpg",
+   "file": "photos/site/2026930046/commons-4.jpg",
+   "src": "https://commons.wikimedia.org/wiki/File:Gwangju_city_-_view_apts.jpg",
+   "w": 1600,
+   "h": 1200,
+   "photo": true,
+   "full": true,
+   "from": "commons",
+   "license": "CC BY-SA 3.0",
+   "credit": "사진: No machine-readable author provided. Nes · CC BY-SA 3.0 (위키미디어 커먼즈)",
+   "md5": "56aa6f432022cedb32f7e81a67897411"
   }
  ],
  "links": [],
@@ -39,10 +99,11 @@
  "row": 172,
  "homepage": "https://www.s-class.co.kr/",
  "auto_site": {
-  "date": "2026-11-19",
+  "date": "2026-11-20",
   "url": "https://www.s-class.co.kr/",
-  "tries": 1,
-  "result": "2장 (overview 2)"
+  "tries": 2,
+  "result": "0장 ()"
  },
- "updated": "2026-11-19 06:59"
+ "updated": "2026-11-20 07:01",
+ "commons_checked": "광주 송정 중흥S-클래스 파크뷰 무순위"
 }
