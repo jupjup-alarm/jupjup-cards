@@ -44,13 +44,18 @@
   {
    "cat": "pamphlet",
    "kind": "팸플릿",
-   "label": "팸플릿 cand-01",
+   "label": "공동주택성능등급 인증서",
    "file": "pamphlets/2026000457/notice/cand-01.jpg",
    "src": "pamphlet:notice/cand-01.jpg",
    "w": 709,
    "h": 1021,
    "photo": false,
-   "from": "pamphlet"
+   "from": "pamphlet",
+   "checked": "2026-11-19",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   }
  ],
  "links": [],

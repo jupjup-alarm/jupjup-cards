@@ -4,7 +4,7 @@
   {
    "cat": "birdseye",
    "kind": "외관",
-   "label": "1302동 외관 (홈플러스 옆)",
+   "label": "1302동 외관",
    "file": "photos/site/lh2015122300021068/exterior-1.jpg",
    "src": "사용자 제공 (2026-11-19)",
    "crop": "",
@@ -13,7 +13,12 @@
    "md5": "893e1c10ea0277b3dc292aa00b9155c9",
    "photo": true,
    "owner": "user",
-   "desc": "사용자가 직접 제공한 단지 외관 사진 — 사용자 결정 2026-11-19"
+   "desc": "사용자가 직접 제공한 단지 외관 사진 — 사용자 결정 2026-11-19",
+   "checked": "2026-11-19",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "birdseye",
@@ -27,7 +32,12 @@
    "md5": "482f6c57b26ea5d59e2ae87502e3ca3e",
    "photo": true,
    "owner": "user",
-   "desc": "사용자가 직접 제공한 단지 외관 사진 — 사용자 결정 2026-11-19"
+   "desc": "사용자가 직접 제공한 단지 외관 사진 — 사용자 결정 2026-11-19",
+   "checked": "2026-11-19",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "birdseye",
@@ -41,7 +51,12 @@
    "md5": "c4073f4c3dfcfd9967da18f75d797278",
    "photo": true,
    "owner": "user",
-   "desc": "사용자가 직접 제공한 단지 외관 사진 — 사용자 결정 2026-11-19"
+   "desc": "사용자가 직접 제공한 단지 외관 사진 — 사용자 결정 2026-11-19",
+   "checked": "2026-11-19",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",

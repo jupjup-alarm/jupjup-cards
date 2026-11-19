@@ -59,7 +59,12 @@
    "block": "A20BL",
    "lh_tab": "첨부",
    "desc": "",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-19",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
@@ -74,7 +79,12 @@
    "block": "A20BL",
    "lh_tab": "첨부",
    "desc": "",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-19",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
@@ -89,7 +99,12 @@
    "block": "A20BL",
    "lh_tab": "첨부",
    "desc": "",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-19",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
@@ -104,7 +119,12 @@
    "block": "A20BL",
    "lh_tab": "첨부",
    "desc": "",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-19",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
@@ -119,7 +139,12 @@
    "block": "A20BL",
    "lh_tab": "첨부",
    "desc": "",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-19",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
@@ -134,7 +159,12 @@
    "block": "A20BL",
    "lh_tab": "첨부",
    "desc": "",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-19",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
@@ -149,7 +179,12 @@
    "block": "A20BL",
    "lh_tab": "첨부",
    "desc": "",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-19",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
@@ -164,7 +199,12 @@
    "block": "A20BL",
    "lh_tab": "첨부",
    "desc": "",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-19",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "siteplan",
@@ -179,7 +219,12 @@
    "block": "A20BL",
    "lh_tab": "첨부",
    "desc": "",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-19",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   }
  ],
  "links": [],

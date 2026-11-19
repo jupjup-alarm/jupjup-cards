@@ -1,0 +1,164 @@
+{
+ "slug": "2026-11-19-ansan-gunja13-rental-reel",
+ "title": "안산군자13 영구임대주택 예비입주자 모집(117호)",
+ "series": "임대알람",
+ "style": "story",
+ "voice": "voices/10552fc4d0cc/",
+ "voice_speed": 1.0,
+ "bgm": "music/backbeat.mp3",
+ "thumb": {
+  "lines": [
+   "안산 월 5만원대부터",
+   "주변보다 46만원 싸게"
+  ]
+ },
+ "pool": [
+  {
+   "img": "photos/site/lh2015122300021068/exterior-1.jpg"
+  },
+  {
+   "img": "photos/site/lh2015122300021068/exterior-2.jpg"
+  },
+  {
+   "img": "photos/site/lh2015122300021068/exterior-3.jpg"
+  },
+  {
+   "img": "maps/27c33714368f.png"
+  }
+ ],
+ "scenes": [
+  {
+   "type": "story",
+   "say": "안산에 월세 5만 원대부터인 아파트가 나왔대요. 딱 117호만 뽑는대요.",
+   "word": "5만 원대부터",
+   "shots": [
+    {
+     "img": "photos/site/lh2015122300021068/exterior-1.jpg",
+     "pos": "center 45%"
+    },
+    {
+     "img": "photos/site/lh2015122300021068/exterior-2.jpg",
+     "pos": "center 50%"
+    }
+   ],
+   "proof": {
+    "kind": "doc",
+    "head": "안산 영구임대 공고 요약",
+    "lines": [
+     "26㎡ 월 8만7,890원 (일반)",
+     "수급자 등은 월 5만4,660원",
+     "예비입주자 117호"
+    ],
+    "mark": 0,
+    "src": "출처: LH 입주자모집공고(2026.11.16)"
+   }
+  },
+  {
+   "type": "story",
+   "say": "심지어, 주변 원룸보다 월세가 46만 원이나 싸대요.",
+   "word": "46만",
+   "shots": [
+    {
+     "img": "photos/site/lh2015122300021068/exterior-3.jpg",
+     "pos": "center 50%"
+    },
+    {
+     "img": "maps/27c33714368f.png",
+     "pos": "center 35%"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "이게 어떻게 가능할까요?",
+   "dim": true,
+   "shots": [
+    {
+     "img": "maps/27c33714368f.png",
+     "pos": "center 45%"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "LH 영구임대인데요. 일반 가구 월세가 8만 7,890원인데, 옆 오피스텔은 55만 원이래요.",
+   "word": "8만 7,890원",
+   "shots": [
+    {
+     "img": "photos/site/lh2015122300021068/exterior-1.jpg",
+     "pos": "30% 50%"
+    },
+    {
+     "img": "photos/sat/af3e25420b7f.png",
+     "credit": "위성사진 © NAVER Corp.",
+     "pos": "center 65%"
+    }
+   ],
+   "proof": {
+    "kind": "compare",
+    "head": "26㎡ 월세 비교 (추정)",
+    "items": [
+     {
+      "label": "이 공고 26㎡ 월세 (일반)",
+      "value": "월 8만7,890원"
+     },
+     {
+      "label": "옆 오피스텔 28.25㎡ 월세 실거래",
+      "value": "월 55만원"
+     }
+    ],
+    "src": "국토부 실거래 2026.11 · 추정"
+   }
+  },
+  {
+   "type": "story",
+   "say": "근데 신청 방법이 좀 특별해요.",
+   "dim": true,
+   "shots": [
+    {
+     "img": "photos/site/lh2015122300021068/exterior-2.jpg",
+     "pos": "center 35%"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "인터넷 말고 동 행정복지센터에서 바로 신청한대요.",
+   "word": "행정복지센터",
+   "shots": [
+    {
+     "img": "maps/27c33714368f.png",
+     "pos": "center 55%"
+    },
+    {
+     "img": "photos/site/lh2015122300021068/exterior-3.jpg",
+     "pos": "center 70%"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "안산 사는 무주택이면 통장 없어도 되고요. 1순위 접수는 11월 23일부터 사흘이래요.",
+   "word": "11월 23일",
+   "shots": [
+    {
+     "img": "photos/site/lh2015122300021068/exterior-2.jpg",
+     "pos": "center 60%"
+    },
+    {
+     "img": "photos/site/lh2015122300021068/exterior-1.jpg",
+     "pos": "70% 50%"
+    }
+   ],
+   "proof": {
+    "kind": "image",
+    "img": "photos/site/lh2015122300021068/notice-schedule.jpg",
+    "credit": "자료: LH 입주자모집공고(2026.11.16)"
+   }
+  },
+  {
+   "type": "end",
+   "say": "단지 이름이랑 공고 정리는, 댓글에 '안산'이라고 남겨 주세요."
+  }
+ ]
+}

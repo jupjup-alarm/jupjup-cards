@@ -2,92 +2,132 @@
  "key": "2026940249",
  "images": [
   {
-   "cat": "overview",
+   "cat": "birdseye",
    "kind": "overview",
-   "label": "화성시 비봉면 구포리 614-18번지 일원",
+   "label": "조감도 개요 페이지",
    "file": "photos/site/2026940249/overview-auto-1.jpg",
    "src": "https://www.xn--2i0bs4kloch9d4zkhlca439cd3a150f0iqomae.com/img/sub/business_n4.png",
    "w": 1200,
    "h": 1263,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-19",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "overview",
    "kind": "overview",
-   "label": "overview",
+   "label": "빈 무늬",
    "file": "photos/site/2026940249/overview-auto-2.jpg",
    "src": "https://www.xn--2i0bs4kloch9d4zkhlca439cd3a150f0iqomae.com/img/sub/parallax_bg.jpg",
    "w": 1920,
    "h": 540,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-19",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "location",
    "kind": "location",
-   "label": "location",
+   "label": "입지 페이지",
    "file": "photos/site/2026940249/location-auto-1.jpg",
    "src": "https://www.xn--2i0bs4kloch9d4zkhlca439cd3a150f0iqomae.com/img/sub/premium_n4.png",
    "w": 1143,
    "h": 2400,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-19",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "location",
    "kind": "location",
-   "label": "location",
+   "label": "견본주택 약도",
    "file": "photos/site/2026940249/location-auto-2.jpg",
    "src": "https://www.xn--2i0bs4kloch9d4zkhlca439cd3a150f0iqomae.com/img/sub/location_n4.png",
    "w": 1200,
    "h": 569,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-19",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
-   "cat": "interior",
+   "cat": "birdseye",
    "kind": "interior",
-   "label": "interior",
+   "label": "마감재 리스트 외관",
    "file": "photos/site/2026940249/interior-auto-1.jpg",
    "src": "https://www.xn--2i0bs4kloch9d4zkhlca439cd3a150f0iqomae.com/img/sub/interior.png",
    "w": 1200,
    "h": 1090,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-19",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "interior",
    "kind": "interior",
-   "label": "interior",
+   "label": "글자 표",
    "file": "photos/site/2026940249/interior-auto-2.jpg",
    "src": "https://www.xn--2i0bs4kloch9d4zkhlca439cd3a150f0iqomae.com/img/sub/option_n2.png",
    "w": 803,
    "h": 2400,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-19",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "siteplan",
    "kind": "siteplan",
-   "label": "siteplan",
+   "label": "단지배치 조경",
    "file": "photos/site/2026940249/siteplan-auto-1.jpg",
    "src": "https://www.xn--2i0bs4kloch9d4zkhlca439cd3a150f0iqomae.com/img/sub/cpx_layout_n3.png",
    "w": 1202,
    "h": 1593,
    "photo": true,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-19",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
-   "cat": "siteplan",
+   "cat": "dongho",
    "kind": "siteplan",
-   "label": "siteplan",
+   "label": "동호배치표",
    "file": "photos/site/2026940249/siteplan-auto-2.jpg",
    "src": "https://www.xn--2i0bs4kloch9d4zkhlca439cd3a150f0iqomae.com/img/sub/no_layout_n.png",
    "w": 1199,
    "h": 1652,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-19",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
@@ -98,7 +138,12 @@
    "w": 1200,
    "h": 1000,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-19",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
@@ -109,7 +154,12 @@
    "w": 1200,
    "h": 1000,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-19",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
@@ -120,7 +170,12 @@
    "w": 1200,
    "h": 1000,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-19",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
@@ -131,7 +186,12 @@
    "w": 1200,
    "h": 1000,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-19",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
@@ -142,7 +202,12 @@
    "w": 1200,
    "h": 1000,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-19",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   }
  ],
  "links": [],

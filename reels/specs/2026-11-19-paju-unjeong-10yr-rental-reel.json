@@ -1,0 +1,221 @@
+{
+ "slug": "2026-11-19-paju-unjeong-10yr-rental-reel",
+ "title": "파주운정 10년 공공임대(리츠) 예비입주자 무순위",
+ "series": "임대알람",
+ "style": "story",
+ "voice": "voices/863d53cfb8d5/",
+ "voice_speed": 1.0,
+ "bgm": "music/natural-vibes.mp3",
+ "thumb": {
+  "lines": [
+   "운정 새 아파트",
+   "월세 60만원 싸게"
+  ]
+ },
+ "pool": [
+  {
+   "img": "photos/site/lh0000061212/pam-birdseye-1.jpg",
+   "credit": "이미지: LH 공고 단지정보·팸플릿 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/lh0000061212/pam-birdseye-2.jpg",
+   "credit": "이미지: LH 공고 단지정보·팸플릿 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/lh0000061212/pam-location-1.jpg",
+   "credit": "이미지: LH 공고 단지정보·팸플릿 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/lh0000061212/pam-location-2.jpg",
+   "credit": "이미지: LH 공고 단지정보·팸플릿 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/lh0000061212/pam-interior-1.jpg",
+   "credit": "이미지: LH 공고 단지정보·팸플릿 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/lh0000061212/pam-interior-3.jpg",
+   "credit": "이미지: LH 공고 단지정보·팸플릿 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/lh0000061212/pam-interior-5.jpg",
+   "credit": "이미지: LH 공고 단지정보·팸플릿 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/lh0000061212/pam-interior-7.jpg",
+   "credit": "이미지: LH 공고 단지정보·팸플릿 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/lh0000061212/pam-interior-2.jpg",
+   "credit": "이미지: LH 공고 단지정보·팸플릿 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/lh0000061212/pam-interior-4.jpg",
+   "credit": "이미지: LH 공고 단지정보·팸플릿 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/lh0000061212/pam-interior-6.jpg",
+   "credit": "이미지: LH 공고 단지정보·팸플릿 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/lh0000061212/siteplan-b1.jpg",
+   "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음"
+  }
+ ],
+ "scenes": [
+  {
+   "type": "story",
+   "say": "파주 운정에 월세가 60만 원 싼 새 아파트가 나왔대요. 딱 168명만 뽑는대요.",
+   "word": "60만",
+   "shots": [
+    {
+     "img": "photos/site/lh0000061212/pam-birdseye-1.jpg",
+     "credit": "이미지: LH 공고 단지정보·팸플릿 · 실제와 다를 수 있음",
+     "pos": "center 45%"
+    },
+    {
+     "img": "photos/site/lh0000061212/pam-birdseye-1.jpg",
+     "credit": "이미지: LH 공고 단지정보·팸플릿 · 실제와 다를 수 있음",
+     "pos": "30% 50%"
+    }
+   ],
+   "proof": {
+    "kind": "compare",
+    "head": "59㎡ 월세 비교 (추정)",
+    "items": [
+     {
+      "label": "이 단지 59㎡ 월세 (보증금 7,545만6,000원)",
+      "value": "월 39만9,470원"
+     },
+     {
+      "label": "옆 단지 59㎡ 월세 실거래 (보증금 3,000만원)",
+      "value": "월 100만원"
+     }
+    ],
+    "src": "국토부 실거래 2026.11 · 추정"
+   }
+  },
+  {
+   "type": "story",
+   "say": "심지어, 10년 살고 나면 분양전환까지 된대요.",
+   "word": "10년",
+   "shots": [
+    {
+     "img": "photos/site/lh0000061212/pam-birdseye-2.jpg",
+     "credit": "이미지: LH 공고 단지정보·팸플릿 · 실제와 다를 수 있음",
+     "pos": "center 50%"
+    },
+    {
+     "img": "photos/site/lh0000061212/pam-interior-1.jpg",
+     "credit": "이미지: LH 공고 단지정보·팸플릿 · 실제와 다를 수 있음",
+     "pos": "center 50%"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "이게 어떻게 가능할까요?",
+   "dim": true,
+   "shots": [
+    {
+     "img": "photos/site/lh0000061212/pam-location-1.jpg",
+     "credit": "이미지: LH 공고 단지정보·팸플릿 · 실제와 다를 수 있음",
+     "pos": "center 50%"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "LH 10년 공공임대인데요. 59㎡ 월세가 39만 9,470원인데, 옆 단지는 100만 원이래요.",
+   "word": "39만 9,470원",
+   "shots": [
+    {
+     "img": "photos/site/lh0000061212/pam-interior-3.jpg",
+     "credit": "이미지: LH 공고 단지정보·팸플릿 · 실제와 다를 수 있음",
+     "pos": "center 50%"
+    },
+    {
+     "img": "photos/site/lh0000061212/pam-interior-5.jpg",
+     "credit": "이미지: LH 공고 단지정보·팸플릿 · 실제와 다를 수 있음",
+     "pos": "center 50%"
+    }
+   ],
+   "proof": {
+    "kind": "image",
+    "img": "photos/site/lh0000061210/plan3d-59a.jpg",
+    "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음"
+   }
+  },
+  {
+   "type": "story",
+   "say": "근데 단지가 두 곳이에요.",
+   "word": "두 곳",
+   "dim": true,
+   "shots": [
+    {
+     "img": "photos/site/lh0000061212/pam-location-2.jpg",
+     "credit": "이미지: LH 공고 단지정보·팸플릿 · 실제와 다를 수 있음",
+     "pos": "center 50%"
+    },
+    {
+     "img": "photos/site/lh0000061212/siteplan-b1.jpg",
+     "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+     "pos": "center 50%"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "51㎡부터 84㎡까지 크기도 고를 수 있대요.",
+   "word": "84㎡까지",
+   "shots": [
+    {
+     "img": "photos/site/lh0000061212/pam-interior-7.jpg",
+     "credit": "이미지: LH 공고 단지정보·팸플릿 · 실제와 다를 수 있음",
+     "pos": "center 50%"
+    },
+    {
+     "img": "photos/site/lh0000061212/pam-interior-2.jpg",
+     "credit": "이미지: LH 공고 단지정보·팸플릿 · 실제와 다를 수 있음",
+     "pos": "center 50%"
+    }
+   ],
+   "proof": {
+    "kind": "image",
+    "img": "photos/site/lh0000061210/plan3d-84a.jpg",
+    "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음"
+   }
+  },
+  {
+   "type": "story",
+   "say": "수도권 무주택이면 통장도 소득도 안 본대요. 접수는 11월 25일부터 이틀뿐이래요.",
+   "word": "11월 25일",
+   "shots": [
+    {
+     "img": "photos/site/lh0000061212/pam-interior-4.jpg",
+     "credit": "이미지: LH 공고 단지정보·팸플릿 · 실제와 다를 수 있음",
+     "pos": "center 50%"
+    },
+    {
+     "img": "photos/site/lh0000061212/pam-interior-6.jpg",
+     "credit": "이미지: LH 공고 단지정보·팸플릿 · 실제와 다를 수 있음",
+     "pos": "center 50%"
+    },
+    {
+     "img": "photos/site/lh0000061212/pam-birdseye-1.jpg",
+     "credit": "이미지: LH 공고 단지정보·팸플릿 · 실제와 다를 수 있음",
+     "pos": "70% 50%"
+    }
+   ],
+   "proof": {
+    "kind": "image",
+    "img": "photos/site/lh0000061210/notice-schedule.jpg",
+    "credit": "자료: LH 입주자모집공고(2026.11.16)"
+   }
+  },
+  {
+   "type": "end",
+   "say": "단지 이름이랑 공고 정리는, 댓글에 '운정'이라고 남겨 주세요."
+  }
+ ]
+}

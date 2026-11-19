@@ -4,24 +4,34 @@
   {
    "cat": "overview",
    "kind": "overview",
-   "label": "overview",
+   "label": "스톡 고층빌딩",
    "file": "photos/site/2026930046/overview-auto-1.jpg",
    "src": "https://www.s-class.co.kr/img/main2.jpg",
    "w": 1920,
    "h": 850,
    "photo": true,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-19",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "overview",
    "kind": "overview",
-   "label": "overview",
+   "label": "스톡 가족 사진",
    "file": "photos/site/2026930046/overview-auto-2.jpg",
    "src": "https://www.s-class.co.kr/img/main1.jpg",
    "w": 1920,
    "h": 850,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-19",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   }
  ],
  "links": [],

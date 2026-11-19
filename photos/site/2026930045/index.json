@@ -80,13 +80,18 @@
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "조감도",
+   "label": "조감도(단지 이름 글자)",
    "file": "photos/f5c3747dc90e.jpg",
    "src": "sheet:사진 파일",
    "w": 1920,
    "h": 800,
    "photo": true,
-   "from": "sheet"
+   "from": "sheet",
+   "checked": "2026-11-19",
+   "ok": true,
+   "name_shown": true,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "overview",

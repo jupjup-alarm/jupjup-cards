@@ -1,0 +1,18 @@
+{
+ "slug": "2026-11-19-ansan-gunja13-rental-reel",
+ "duration": 34.84,
+ "voiced": true,
+ "narration_s": 31.1,
+ "mean_db": -18.8,
+ "voice": "voices/10552fc4d0cc/",
+ "video": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-19-ansan-gunja13-rental-reel/2026-11-19-ansan-gunja13-rental-reel.mp4",
+ "cover": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-19-ansan-gunja13-rental-reel/2026-11-19-ansan-gunja13-rental-reel_thumb.jpg",
+ "size_mb": 9.74,
+ "warnings": [
+  "full.mp3 장면 경계가 장면별 음성과 어긋남(장면 [3]) → 장면별 파일 사용",
+  "호흡: 장면 6 대본에 없는 곳에서 0.33초 쉼 (③ 대본 쉼표 위치 확인)",
+  "호흡: 장면 7 대본에 없는 곳에서 0.27초 쉼 (③ 대본 쉼표 위치 확인)",
+  "사진: 컷 14개 · 서로 다른 사진 5장",
+  "사진 반복: exterior-2.jpg 4번 — 단지 그림을 shots·pool에 더 넣을 것"
+ ]
+}
