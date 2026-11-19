@@ -1,6 +1,6 @@
 {
  "tab": "청약조사",
- "dumped_at": "2026-11-20 06:56",
+ "dumped_at": "2026-11-20 08:00",
  "rows": [
   {
    "_row": 2,
@@ -4312,7 +4312,12 @@
    "당첨자 발표": "2026-11-27",
    "출처 URL": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910300&pblancNo=2026910300",
    "상태": "후보",
-   "공식 홈페이지": "https://www.xi.co.kr/sangokxi"
+   "콘텐츠 점수": "58",
+   "점수 근거": "돈6/문턱10/긴급15/훅10/저장10/신뢰7 — 550세대 대량 무순위, 차익 기대 낮음(부평 신축보다 비쌈), 자격 미확인",
+   "지도 이미지": "maps/5fc87851d467.png",
+   "좌표(경도,위도)": "126.7014659,37.510324",
+   "공식 홈페이지": "https://www.xi.co.kr/sangokxi",
+   "위성사진": "photos/sat/9dd31f6a787c.png"
   },
   {
    "_row": 179,
@@ -4330,10 +4335,16 @@
    "당첨자 발표": "2026-11-30",
    "출처 URL": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940257&pblancNo=2026940257",
    "상태": "후보",
+   "콘텐츠 점수": "88",
+   "점수 근거": "돈25/문턱20/긴급13/훅15/저장10/신뢰5 — 강동 59㎡ 옆 단지보다 3억6천+ 저렴(추정), 국내 거주 19세 통장·주택 무관, 전매·거주의무 없음(홈페이지 공고문)",
    "단지 사진 후보": "없음 (홈페이지 조감도는 여러 캷이 붙은 이미지라 AI열 crop으로만)",
    "사진 출처·이용조건": "출처: 대명아파트가로주택정비사업조합(대방건설) / 이용조건: 사업주체 홍보 조감도, 출처 표기·실제와 다를 수 있음",
+   "지도 이미지": "maps/ac7d8fcf5b86.png",
+   "좌표(경도,위도)": "127.135783,37.5552586",
+   "사진 파일": "없음",
    "공식 홈페이지": "https://detre-hangang.co.kr",
-   "홈페이지 자료": "key: 2026940257\n홈페이지: https://detre-hangang.co.kr\n출처: 대명아파트가로주택정비사업조합(대방건설)\n조감도 | 낮 전경 | https://detre-hangang.co.kr/common/files/banner/1794377828.jpg | crop=0.596,0.062,0.983,0.300\n조감도 | 낮 전경 2 | https://detre-hangang.co.kr/common/files/banner/1794377828.jpg | crop=0.013,0.320,0.486,0.559\n조감도 | 낮 전경 3 | https://detre-hangang.co.kr/common/files/banner/1794377828.jpg | crop=0.013,0.579,0.398,0.816\n조감도 | 출입구·조경 | https://detre-hangang.co.kr/common/files/banner/1794377828.jpg | crop=0.513,0.320,0.983,0.559\n조감도 | 전경(사업개요 위) | https://detre-hangang.co.kr/common/files/editor/43868_1794794019.jpg | crop=0,0,1,0.36\n커뮤니티 | 지하 출입 로비 | https://detre-hangang.co.kr/common/files/banner/1794377828.jpg | crop=0.427,0.579,0.900,0.816\n단지배치도 | | https://detre-hangang.co.kr/common/files/banner/1794371728.jpg | crop=0,0,0.40,1\n평면도 | 59B | https://detre-hangang.co.kr/common/files/banner/1794371728.jpg | crop=0.42,0,1,1\n평면도 | 79A | https://detre-hangang.co.kr/common/files/banner/1794371739.jpg | crop=0.42,0,1,1\n평면도 | 80A | https://detre-hangang.co.kr/common/files/banner/1794371751.jpg | crop=0.42,0,1,1\nE모델하우스 | e모델하우스 | https://detre-hangang.co.kr/modules/page/index.php?page_code=06\nVR | 항공VR | https://detre-hangang.co.kr/modules/page/index.php?page_code=04"
+   "홈페이지 자료": "key: 2026940257\n홈페이지: https://detre-hangang.co.kr\n출처: 대명아파트가로주택정비사업조합(대방건설)\n조감도 | 낮 전경 | https://detre-hangang.co.kr/common/files/banner/1794377828.jpg | crop=0.596,0.062,0.983,0.300\n조감도 | 낮 전경 2 | https://detre-hangang.co.kr/common/files/banner/1794377828.jpg | crop=0.013,0.320,0.486,0.559\n조감도 | 낮 전경 3 | https://detre-hangang.co.kr/common/files/banner/1794377828.jpg | crop=0.013,0.579,0.398,0.816\n조감도 | 출입구·조경 | https://detre-hangang.co.kr/common/files/banner/1794377828.jpg | crop=0.513,0.320,0.983,0.559\n조감도 | 전경(사업개요 위) | https://detre-hangang.co.kr/common/files/editor/43868_1794794019.jpg | crop=0,0,1,0.36\n커뮤니티 | 지하 출입 로비 | https://detre-hangang.co.kr/common/files/banner/1794377828.jpg | crop=0.427,0.579,0.900,0.816\n단지배치도 | | https://detre-hangang.co.kr/common/files/banner/1794371728.jpg | crop=0,0,0.40,1\n평면도 | 59B | https://detre-hangang.co.kr/common/files/banner/1794371728.jpg | crop=0.42,0,1,1\n평면도 | 79A | https://detre-hangang.co.kr/common/files/banner/1794371739.jpg | crop=0.42,0,1,1\n평면도 | 80A | https://detre-hangang.co.kr/common/files/banner/1794371751.jpg | crop=0.42,0,1,1\nE모델하우스 | e모델하우스 | https://detre-hangang.co.kr/modules/page/index.php?page_code=06\nVR | 항공VR | https://detre-hangang.co.kr/modules/page/index.php?page_code=04",
+   "위성사진": "photos/sat/a655f8cbfb21.png"
   },
   {
    "_row": 180,
@@ -4351,7 +4362,12 @@
    "당첨자 발표": "2026-12-09",
    "출처 URL": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000585&pblancNo=2026000585",
    "상태": "후보",
-   "공식 홈페이지": "https://gy-thehue.com"
+   "콘텐츠 점수": "44",
+   "점수 근거": "돈6/문턱8/긴급10/훅6/저장8/신뢰6 — 고양 행신 84㎡ 8억4천, 차익 기대 낮음, 1순위 통장 필요",
+   "지도 이미지": "maps/5c6d9c6bef44.png",
+   "좌표(경도,위도)": "126.8445268,37.6204914",
+   "공식 홈페이지": "https://gy-thehue.com",
+   "위성사진": "photos/sat/f6159f85d03a.png"
   },
   {
    "_row": 181,
@@ -4368,7 +4384,12 @@
    "접수 마감": "2026-11-23",
    "당첨자 발표": "2026-11-27",
    "출처 URL": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940261&pblancNo=2026940261",
-   "상태": "후보"
+   "상태": "후보",
+   "콘텐츠 점수": "56",
+   "점수 근거": "돈14/문턱8/긴급13/훅8/저장5/신뢰8 — 파주 탄현 84㎡ 4억3천, 운정 신축보다 1억1천(추정·참고), 자격 미확인",
+   "지도 이미지": "maps/6a528bc09534.png",
+   "좌표(경도,위도)": "126.7143092,37.8065454",
+   "위성사진": "photos/sat/fb5e815e2516.png"
   },
   {
    "_row": 182,
@@ -4386,6 +4407,8 @@
    "당첨자 발표": "2027-03-25",
    "출처 URL": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300021109&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=09&mi=1026",
    "상태": "후보",
+   "콘텐츠 점수": "64",
+   "점수 근거": "돈12/문턱10/긴급10/훅10/저장12/신뢰10 — 서울 영구임대 보증금 280만·월 5만원대, 영구임대 자격(저소득) 필요",
    "지도 이미지": "여러 곳"
   },
   {
@@ -4404,6 +4427,8 @@
    "당첨자 발표": "2027-03-26",
    "출처 URL": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300021098&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=10&mi=1026",
    "상태": "후보",
+   "콘텐츠 점수": "72",
+   "점수 근거": "돈16/문턱12/긴급10/훅14/저장12/신뢰8 — 강남 수서 행복 14㎡ 월 17만원대, 주변 오피 월 56만 대비 39만 저렴(추정), 청년·신혼 등 계층",
    "지도 이미지": "여러 곳"
   },
   {
@@ -4422,6 +4447,8 @@
    "당첨자 발표": "2027-02-26",
    "출처 URL": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300021072&ccrCnntSysDsCd=03&uppAisTpCd=13&aisTpCd=26&mi=1026",
    "상태": "후보",
+   "콘텐츠 점수": "60",
+   "점수 근거": "돈12/문턱10/긴급10/훅8/저장12/신뢰8 — 경기북부 신혼 매입임대 167호 시세 30~40%(공고), 호별 금액 미열람",
    "지도 이미지": "여러 곳"
   },
   {
@@ -4440,6 +4467,8 @@
    "당첨자 발표": "2027-03-11",
    "출처 URL": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300021099&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=10&mi=1026",
    "상태": "후보",
+   "콘텐츠 점수": "52",
+   "점수 근거": "돈8/문턱12/긴급10/훅6/저장8/신뢰8 — 인천 남동 행복 60호 완화, 주변 월세와 비슷(추정)",
    "지도 이미지": "여러 곳"
   },
   {
@@ -4458,6 +4487,8 @@
    "당첨자 발표": "확인필요",
    "출처 URL": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000497&pblancNo=2026000497",
    "상태": "후보",
+   "콘텐츠 점수": "스레드용",
+   "점수 근거": "서울 중랑 신축 소형 극단값(45㎡ 65.5대 1) + 126T 미달 대비",
    "지도 이미지": "해당없음"
   },
   {
@@ -4476,6 +4507,8 @@
    "당첨자 발표": "해당없음",
    "출처 URL": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300021109&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=09&mi=1026",
    "상태": "후보",
+   "콘텐츠 점수": "스레드용",
+   "점수 근거": "서울 영구임대 글과 연결되는 상식",
    "지도 이미지": "해당없음"
   },
   {
@@ -4494,6 +4527,8 @@
    "당첨자 발표": "해당없음",
    "출처 URL": "https://www.korea.kr/news/policyNewsView.do?newsId=148975687",
    "상태": "후보",
+   "콘텐츠 점수": "스레드용",
+   "점수 근거": "정부 합동 브리핑 공식 입주 물량, 무주택 전월세 수요자 영향",
    "지도 이미지": "해당없음"
   }
  ]
