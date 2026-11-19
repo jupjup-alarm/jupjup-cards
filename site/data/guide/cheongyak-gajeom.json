@@ -260,7 +260,13 @@
    "effective": "현행"
   }
  ],
- "related": ["first-priority", "cheongyak-account", "homeless-criteria", "mujeonwi"],
+ "related": [
+  "first-priority",
+  "multichild-elderly-special",
+  "cheongyak-account",
+  "homeless-criteria",
+  "mujeonwi"
+ ],
  "notice_kinds": [
   "private",
   "public"
