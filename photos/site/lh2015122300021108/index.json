@@ -4,7 +4,7 @@
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "수원당수 A-1블록 행복주택 단지조감도",
+   "label": "A-1블록 단지조감도",
    "file": "photos/site/lh2015122300021108/birdseye-a-1.jpg",
    "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=50981189",
    "crop": "",
@@ -14,12 +14,17 @@
    "block": "수원당수 A-1블록 행복주택",
    "lh_tab": "단지조감도",
    "desc": "※ 단지조감도 및 이미지는 입주자의 이해를 돕기 위한 개략도이므로 실제와 차이가 있을 수 있습니다.",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-19",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "수원당수 A-2블록 행복주택 단지조감도",
+   "label": "A-2블록 단지조감도",
    "file": "photos/site/lh2015122300021108/birdseye-a-2.jpg",
    "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=51126233",
    "crop": "",
@@ -29,12 +34,17 @@
    "block": "수원당수 A-2블록 행복주택",
    "lh_tab": "단지조감도",
    "desc": "",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-19",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "location",
    "kind": "입지",
-   "label": "수원당수 A-1블록 행복주택 지역조감도",
+   "label": "A-1블록 지역조감도",
    "file": "photos/site/lh2015122300021108/location-a-1.jpg",
    "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=46463051",
    "crop": "",
@@ -44,12 +54,17 @@
    "block": "수원당수 A-1블록 행복주택",
    "lh_tab": "지역조감도",
    "desc": "※ 지역조감도는 입주자의 이해를 돕기 위한 개략도이므로 실제와 차이가 있을 수 있습니다.",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-19",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "location",
    "kind": "입지",
-   "label": "수원당수 A-1블록 행복주택 지구조감도",
+   "label": "A-1블록 지구조감도",
    "file": "photos/site/lh2015122300021108/location-a-1-2.jpg",
    "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=46463052",
    "crop": "",
@@ -59,12 +74,17 @@
    "block": "수원당수 A-1블록 행복주택",
    "lh_tab": "지구조감도",
    "desc": "※ 지구조감도는 입주자의 이해를 돕기 위한 개략도이므로 실제와 차이가 있을 수 있습니다.",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-19",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "location",
    "kind": "입지",
-   "label": "수원당수 A-2블록 행복주택 지역조감도",
+   "label": "A-2블록 지역조감도",
    "file": "photos/site/lh2015122300021108/location-a-2.jpg",
    "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=51126231",
    "crop": "",
@@ -74,12 +94,17 @@
    "block": "수원당수 A-2블록 행복주택",
    "lh_tab": "지역조감도",
    "desc": "",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-19",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "location",
    "kind": "입지",
-   "label": "수원당수 A-2블록 행복주택 지구조감도",
+   "label": "A-2블록 지구조감도",
    "file": "photos/site/lh2015122300021108/location-a-2-2.jpg",
    "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=51126232",
    "crop": "",
@@ -89,12 +114,17 @@
    "block": "수원당수 A-2블록 행복주택",
    "lh_tab": "지구조감도",
    "desc": "",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-19",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "interior",
    "kind": "인테리어",
-   "label": "수원당수 A-1블록 행복주택 투시도 14A(대학생,청년)",
+   "label": "14A 투시도",
    "file": "photos/site/lh2015122300021108/interior-a-1-14a.jpg",
    "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=46462986",
    "crop": "",
@@ -104,12 +134,17 @@
    "block": "수원당수 A-1블록 행복주택",
    "lh_tab": "투시도",
    "desc": "",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-19",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "interior",
    "kind": "인테리어",
-   "label": "수원당수 A-1블록 행복주택 투시도 26D(대학생,청년, 주거급여수급자)",
+   "label": "26D 투시도",
    "file": "photos/site/lh2015122300021108/interior-a-1-26d.jpg",
    "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=46462990",
    "crop": "",
@@ -119,12 +154,17 @@
    "block": "수원당수 A-1블록 행복주택",
    "lh_tab": "투시도",
    "desc": "",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-19",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "interior",
    "kind": "인테리어",
-   "label": "수원당수 A-2블록 행복주택 투시도 14(대학생,청년)",
+   "label": "A-2 14 투시도",
    "file": "photos/site/lh2015122300021108/interior-a-2-14.jpg",
    "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=51125989",
    "crop": "",
@@ -134,12 +174,17 @@
    "block": "수원당수 A-2블록 행복주택",
    "lh_tab": "투시도",
    "desc": "",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-19",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "interior",
    "kind": "인테리어",
-   "label": "수원당수 A-2블록 행복주택 투시도 26B",
+   "label": "A-2 26B 투시도",
    "file": "photos/site/lh2015122300021108/interior-a-2-26b.jpg",
    "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=51125991",
    "crop": "",
@@ -149,12 +194,17 @@
    "block": "수원당수 A-2블록 행복주택",
    "lh_tab": "투시도",
    "desc": "",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-19",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "siteplan",
    "kind": "단지배치도",
-   "label": "수원당수 A-1블록 행복주택 단지배치도",
+   "label": "A-1 단지배치도",
    "file": "photos/site/lh2015122300021108/siteplan-a-1.jpg",
    "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=50981190",
    "crop": "",
@@ -164,12 +214,17 @@
    "block": "수원당수 A-1블록 행복주택",
    "lh_tab": "단지배치도",
    "desc": "※ 단지배치도, 단지특화도는 입주자의 이해를 돕기 위한 개략도이므로 실제와 차이가 있을 수 있습니다.",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-19",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "siteplan",
    "kind": "단지배치도",
-   "label": "수원당수 A-2블록 행복주택 단지배치도",
+   "label": "A-2 단지배치도",
    "file": "photos/site/lh2015122300021108/siteplan-a-2.jpg",
    "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=51126234",
    "crop": "",
@@ -179,12 +234,17 @@
    "block": "수원당수 A-2블록 행복주택",
    "lh_tab": "단지배치도",
    "desc": "",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-19",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "dongho",
    "kind": "동호배치도",
-   "label": "수원당수 A-2블록 행복주택 동호배치도",
+   "label": "A-2 동호배치도",
    "file": "photos/site/lh2015122300021108/dongho-a-2.jpg",
    "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=51126235",
    "crop": "",
@@ -194,12 +254,17 @@
    "block": "수원당수 A-2블록 행복주택",
    "lh_tab": "동호배치도",
    "desc": "",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-19",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "수원당수 A-1블록 행복주택 평면도 14A(대학생,청년)",
+   "label": "14A 평면도",
    "file": "photos/site/lh2015122300021108/plan-a-1-14a.jpg",
    "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=46462985",
    "crop": "",
@@ -209,12 +274,17 @@
    "block": "수원당수 A-1블록 행복주택",
    "lh_tab": "평면도",
    "desc": "",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-19",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "수원당수 A-1블록 행복주택 평면도 26D(대학생,청년, 주거급여수급자)",
+   "label": "26D 평면도",
    "file": "photos/site/lh2015122300021108/plan-a-1-26d.jpg",
    "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=46462989",
    "crop": "",
@@ -224,12 +294,17 @@
    "block": "수원당수 A-1블록 행복주택",
    "lh_tab": "평면도",
    "desc": "",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-19",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "수원당수 A-2블록 행복주택 평면도 14(대학생,청년)",
+   "label": "A-2 14 평면도",
    "file": "photos/site/lh2015122300021108/plan-a-2-14.jpg",
    "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=51125980",
    "crop": "",
@@ -239,12 +314,17 @@
    "block": "수원당수 A-2블록 행복주택",
    "lh_tab": "평면도",
    "desc": "",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-19",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "수원당수 A-2블록 행복주택 평면도 26B",
+   "label": "A-2 26B 평면도",
    "file": "photos/site/lh2015122300021108/plan-a-2-26b.jpg",
    "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=51125982",
    "crop": "",
@@ -254,7 +334,12 @@
    "block": "수원당수 A-2블록 행복주택",
    "lh_tab": "평면도",
    "desc": "",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-19",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "notice",
