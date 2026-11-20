@@ -1607,3 +1607,10 @@ footer .biz{font-style:normal;line-height:1.6;opacity:.85}   /* 사업자 정보
 .pl-s{margin:0;font-size:13px;color:var(--ink-sub);line-height:1.5}
 .rp .ntbl th[scope=row] small{display:block;font-size:12px;color:var(--ink-sub);font-weight:500}
 @media (max-width:640px){.rp .ntbl table.keep2 thead th:nth-child(2){display:table-cell}}
+/* 2026-11-20 모바일: 가이드 링크 상자 — 긴 안내 문구가 오른쪽 글자를 세로로 밀어내던 것 */
+.guide-link{flex-wrap:wrap}
+@media (max-width:640px){
+  .guide-link{flex-direction:column;align-items:flex-start;gap:3px}
+  .guide-link b{flex:initial}
+}
+.guide-link span{min-width:0}

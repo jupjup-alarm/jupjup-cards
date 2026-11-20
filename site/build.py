@@ -669,8 +669,8 @@ def brand_h2(n, h2):
     h2.setdefault("dz", f"{nm} 한눈에 보기")
     h2.setdefault("take", "넣을 만할까? 줍줍알람 한마디")
     h2.setdefault("gap", f"{nm} {'임대료' if n['is_rental'] else '분양가'} vs 주변 시세")
-    h2.setdefault("odds", "경쟁률 예상 — 얼마나 몰릴까요?")
-    h2.setdefault("trap", "청약 전 주의점 — 이건 알고 넣으세요")
+    h2.setdefault("odds", "경쟁률 예상, 얼마나 몰릴까")
+    h2.setdefault("trap", "청약 전 주의점")
     if n["kind"] == "mujeonwi":
         h2.setdefault("elig", "무순위(줍줍) 신청 자격")
     h2.setdefault("loc", "위치·교통")
