@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% from "macros.html" import crumbs, cp_ad with context %}
+{# 정보 허브 (/info/, 2026-11-20 사용자 결정) — 하단 탭 '가이드' 자리를 '정보'로. 순서: 가이드(맨 위) → 계산기 → 청약 결과 → 공고 찾기 #}
+{% block main %}
+<main class="wrap" id="main">
+  <div class="lwrap inf">
+    <div class="lhead">
+      {{ crumbs(crumb) }}
+      <h1>청약 정보</h1>
+      <p>공고를 보기 전에 읽어 둘 가이드, 바로 따져 볼 계산기, 지난 청약 결과를 한곳에 모았어요.</p>
+    </div>
+
+    <section class="lsec" id="guide" aria-labelledby="h-g">
+      <div class="inf-h"><h2 id="h-g">가이드 <small>{{ n_guides }}편</small></h2><a href="/guide/">전체 보기 ›</a></div>
+      <div class="inf-g">{% for g in guides %}
+        <a href="{{ g.url }}"><span>{{ g.category }}</span><b>{{ g.h1 }}</b></a>{% endfor %}
+      </div>
+      <nav class="gcats inf-cats" aria-label="가이드 주제">{% for c, slug, k in gcats %}<a href="/guide/#{{ slug }}">{{ c }} <span class="num">{{ k }}</span></a>{% endfor %}</nav>
+    </section>
+
+    <section class="lsec" id="tools" aria-labelledby="h-t">
+      <div class="inf-h"><h2 id="h-t">계산기 <small>{{ tools|length }}종</small></h2><a href="/tools/">전체 보기 ›</a></div>
+      <div class="inf-t">{% for t in tools %}
+        <a href="/tools/{{ t.slug }}/"><b>{{ t.name|replace(' 계산기', '')|replace('(복비)', '') }}</b><span>{{ t.group }}</span></a>{% endfor %}
+      </div>
+    </section>
+
+    {{ cp_ad('home_mo', 'ad-home') }}
+
+    <section class="lsec" id="results" aria-labelledby="h-r">
+      <div class="inf-h"><h2 id="h-r">청약 결과</h2></div>
+      <div class="t-grid">
+        <a class="t-card" href="/competition/"><b>청약 경쟁률·당첨 가점</b><span>최근 접수가 끝난 공고의 청약홈 공식 경쟁률과 당첨 가점</span><i aria-hidden="true">보기 ›</i></a>
+        {% for r in reports[:2] %}<a class="t-card" href="{{ r.url }}"><b>{{ r.y }}년 {{ r.m }}월 청약 결산{% if r.ongoing %} · 집계 중{% endif %}</b><span>공고 {{ r.n }}곳, 경쟁률 공개 {{ r.ncomp }}곳 중 미달 {{ r.under }}곳</span><i aria-hidden="true">보기 ›</i></a>{% endfor %}
+      </div>
+    </section>
+
+    <section class="lsec" id="find" aria-labelledby="h-f">
+      <div class="inf-h"><h2 id="h-f">공고 찾기</h2></div>
+      <div class="inf-t">
+        <a href="/schedule/this-week/"><b>이번 주 일정</b><span>달력</span></a>
+        <a href="/region/"><b>지역별</b><span>시·도·시군구</span></a>
+        <a href="/type/"><b>유형별</b><span>줍줍·분양·임대</span></a>
+        <a href="/lotto/"><b>로또 청약</b><span>시세보다 싼 곳</span></a>
+        <a href="/search/"><b>단지 검색</b><span>이름으로 찾기</span></a>
+        <a href="/about/"><b>줍줍알람 소개</b><span>판정 기준</span></a>
+      </div>
+    </section>
+  </div>
+</main>
+{% endblock %}

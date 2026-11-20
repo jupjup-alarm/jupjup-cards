@@ -2310,13 +2310,27 @@ def main():
         write("/competition/", h, title, desc, "list", max(r["n"]["modified"] for r in crow))
 
     # 월간 청약 결산 (2026-11-20 사용자 요청)
-    REPORT.build(E, notices, write, common, BASE, TODAY, won, KINDS, d)
+    REPORTS = REPORT.build(E, notices, write, common, BASE, TODAY, won, KINDS, d)
 
     # 가이드 칼럼
     GUIDES.build(E, notices, write, common, PUB, BASE, TODAY, problems)
 
     # 도구 (/tools/) — 2026-11-20 사용자 요청 (realty.daangn.com/tools 참고)
     TOOLS_PAGES.build(E, notices, write, common, PUB, BASE, TODAY, problems)
+
+    # 정보 허브 (/info/) — 2026-11-20 사용자 결정: 하단 탭 '가이드' → '정보', 가이드를 맨 위에
+    gl_ = sorted(GUIDES.load(), key=lambda g: g.get("slug", ""))
+    gl_.sort(key=lambda g: g.get("published") or "", reverse=True)
+    for g in gl_:
+        g["url"] = f"/guide/{g['slug']}/"
+    gcats_ = [(c, GUIDES.CAT_SLUG[c], len([g for g in gl_ if g.get("category") == c])) for c in GUIDES.CATS]
+    gcats_ = [x for x in gcats_ if x[2]]
+    t_ = "청약 정보 | 가이드·계산기·경쟁률·월간 결산 모음 · 줍줍알람"
+    ds_ = (f"청약 가이드 {len(gl_)}편, 청약 가점·특공 소득·취득세·주담대 한도 등 계산기 {len(TOOLS_PAGES.TOOLS)}종, "
+           "청약홈 공식 경쟁률·당첨 가점, 월간 청약 결산을 한곳에 모았어요.")
+    h = E.get_template("info.html").render(guides=gl_[:6], n_guides=len(gl_), gcats=gcats_, tools=TOOLS_PAGES.TOOLS, reports=REPORTS or [],
+                                           page_url="/info/", title=t_, desc=ds_, og="/og-default.jpg", crumb=[("홈", "/"), ("청약 정보", "")], nav="info", **common)
+    write("/info/", h, t_, ds_, "list", max(n["modified"] for n in notices))
 
     # 기본 페이지
     pg = E.get_template("page.html")
