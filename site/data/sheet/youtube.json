@@ -1,6 +1,6 @@
 {
  "tab": "유튜브",
- "dumped_at": "2026-11-20 18:05",
+ "dumped_at": "2026-11-20 23:35",
  "rows": [
   {
    "_row": 2,
@@ -542,9 +542,14 @@
    "고정 댓글": "광교 101㎡ 9억1,100만원, 유주택자인데 넣어볼 거예요? (예/아니오)\n공고별 자격·일정 정리는 jupjupalarm.com",
    "영상 파일": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-17-gwanggyo-gongga-reel/2026-11-17-gwanggyo-gongga-reel.mp4",
    "표지(썸네일)": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-17-gwanggyo-gongga-reel/2026-11-17-gwanggyo-gongga-reel_thumb.jpg",
-   "상태": "대기",
+   "상태": "게시됨",
+   "유튜브 링크": "https://www.youtube.com/shorts/dGt0XXUlqV0",
    "길이": "33초",
+   "조회수(7일)": "0",
    "훅 유형": "[훅:차익]",
+   "좋아요": "0",
+   "댓글": "0",
+   "수치 기준일": "2026-11-20 (공개 수치)",
    "접수 마감": "2026-11-24",
    "목표 검색어 3개": "광교 공가세대 일반매각 / 광교40단지 더포레스트 매각 / LH 공가 유주택자"
   },
@@ -650,9 +655,14 @@
    "고정 댓글": "4억1천대 경기 광주 신축 59㎡, 넣는다 vs 안 넣는다?\n공고별 자격·일정 정리는 jupjupalarm.com",
    "영상 파일": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-20-gwangju-songjeong-reel/2026-11-20-gwangju-songjeong-reel.mp4",
    "표지(썸네일)": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-20-gwangju-songjeong-reel/2026-11-20-gwangju-songjeong-reel_thumb.jpg",
-   "상태": "대기",
+   "상태": "게시됨",
+   "유튜브 링크": "https://www.youtube.com/shorts/lfHP09T5xJg",
    "길이": "20초",
+   "조회수(7일)": "0",
    "훅 유형": "[훅:차익]",
+   "좋아요": "0",
+   "댓글": "0",
+   "수치 기준일": "2026-11-20 (공개 수치)",
    "접수 마감": "2026-11-23",
    "목표 검색어 3개": "광주 송정 중흥S클래스 파크뷰 분양가 / 경기 광주 무순위 청약 / 경기 광주 줍줍"
   },
