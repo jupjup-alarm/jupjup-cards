@@ -1,0 +1,188 @@
+{
+ "slug": "2026-11-21-mullae-84-reel",
+ "title": "해링턴 플레이스 문래",
+ "series": "줍줍알람",
+ "style": "story",
+ "voice": "voices/83272ee97f99/",
+ "voice_speed": 1.0,
+ "bgm": "music/beat-one.mp3",
+ "thumb": {
+  "lines": [
+   "문래 새 아파트 84㎡",
+   "옆 단지보다 1억 싸게"
+  ]
+ },
+ "pool": [
+  {
+   "img": "photos/site/2026000560/birdseye-2.jpg",
+   "credit": "이미지: 분양 홈페이지 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/2026000560/birdseye-1.jpg",
+   "credit": "이미지: 분양 홈페이지 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/2026000560/birdseye-3.jpg",
+   "credit": "이미지: 분양 홈페이지 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/2026000560/exterior-1.jpg",
+   "credit": "이미지: 분양 홈페이지 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/2026000560/exterior-2.jpg",
+   "credit": "이미지: 분양 홈페이지 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/2026000560/exterior-3.jpg",
+   "credit": "이미지: 분양 홈페이지 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/2026000560/exterior-4.jpg",
+   "credit": "이미지: 분양 홈페이지 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/2026000560/landscape-1.jpg",
+   "credit": "이미지: 분양 홈페이지 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/2026000560/community-1.jpg",
+   "credit": "이미지: 분양 홈페이지 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/2026000560/community-2.jpg",
+   "credit": "이미지: 분양 홈페이지 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/2026000560/community-3.jpg",
+   "credit": "이미지: 분양 홈페이지 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "maps/96a42d910782.png",
+   "pos": "center 35%"
+  }
+ ],
+ "scenes": [
+  {
+   "type": "story",
+   "say": "서울 문래에 옆 단지보다 1억 싼 아파트가 나왔대요. 특공 접수는 11월 23일부터래요.",
+   "word": "1억",
+   "shots": [
+    {
+     "img": "photos/site/2026000560/birdseye-2.jpg",
+     "credit": "이미지: 분양 홈페이지 · 실제와 다를 수 있음"
+    },
+    {
+     "img": "photos/site/2026000560/birdseye-1.jpg",
+     "credit": "이미지: 분양 홈페이지 · 실제와 다를 수 있음"
+    }
+   ],
+   "proof": {
+    "kind": "compare",
+    "head": "84㎡ 비교 (추정)",
+    "items": [
+     {
+      "label": "이 단지 84A 최고",
+      "value": "18억2,700만원"
+     },
+     {
+      "label": "옆 문래자이 84㎡ 실거래",
+      "value": "19억5,000만원"
+     }
+    ],
+    "src": "국토부 실거래 2026.10 · 추정"
+   }
+  },
+  {
+   "type": "story",
+   "say": "심지어, 일반공급만 101세대래요.",
+   "word": "101세대",
+   "shots": [
+    {
+     "img": "photos/site/2026000560/exterior-1.jpg",
+     "credit": "이미지: 분양 홈페이지 · 실제와 다를 수 있음"
+    },
+    {
+     "img": "photos/site/2026000560/birdseye-3.jpg",
+     "credit": "이미지: 분양 홈페이지 · 실제와 다를 수 있음"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "이게 어떻게 가능할까요?",
+   "dim": true,
+   "shots": [
+    {
+     "img": "photos/site/2026000560/exterior-2.jpg",
+     "credit": "이미지: 분양 홈페이지 · 실제와 다를 수 있음"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "사실은요 84㎡가 18억 2,700만 원인데, 옆 문래자이는 19억 5천만 원에 거래됐대요.",
+   "word": "18억 2,700만 원",
+   "shots": [
+    {
+     "img": "photos/site/2026000560/exterior-4.jpg",
+     "credit": "이미지: 분양 홈페이지 · 실제와 다를 수 있음"
+    },
+    {
+     "img": "photos/site/2026000560/exterior-3.jpg",
+     "credit": "이미지: 분양 홈페이지 · 실제와 다를 수 있음"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "근데 여기서 중요한 건 크기예요.",
+   "dim": true,
+   "shots": [
+    {
+     "img": "photos/site/2026000560/community-3.jpg",
+     "credit": "이미지: 분양 홈페이지 · 실제와 다를 수 있음"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "218세대 전부 84㎡라고 합니다.",
+   "word": "전부 84㎡",
+   "shots": [
+    {
+     "img": "photos/site/2026000560/community-1.jpg",
+     "credit": "이미지: 분양 홈페이지 · 실제와 다를 수 있음"
+    },
+    {
+     "img": "photos/site/2026000560/landscape-1.jpg",
+     "credit": "이미지: 분양 홈페이지 · 실제와 다를 수 있음"
+    },
+    {
+     "img": "photos/site/2026000560/community-2.jpg",
+     "credit": "이미지: 분양 홈페이지 · 실제와 다를 수 있음"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "통장 1순위 조건이면 되고, 서울 1순위는 11월 24일이래요.",
+   "word": "11월 24일",
+   "shots": [
+    {
+     "img": "maps/96a42d910782.png",
+     "pos": "center 35%"
+    },
+    {
+     "img": "photos/site/2026000560/birdseye-1.jpg",
+     "credit": "이미지: 분양 홈페이지 · 실제와 다를 수 있음",
+     "pos": "center 40%"
+    }
+   ]
+  },
+  {
+   "type": "end",
+   "say": "자세한 공고 정리는 프로필에서 링크를 확인해주세요."
+  }
+ ]
+}

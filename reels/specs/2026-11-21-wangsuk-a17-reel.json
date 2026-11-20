@@ -1,0 +1,183 @@
+{
+ "slug": "2026-11-21-wangsuk-a17-reel",
+ "title": "왕숙 한신더휴 센텀(남양주 왕숙 A-17BL) 공공분양주택",
+ "series": "줍줍알람",
+ "style": "story",
+ "voice": "voices/49079a429aaa/",
+ "voice_speed": 1.0,
+ "bgm": "music/beat-one.mp3",
+ "thumb": {
+  "lines": [
+   "남양주 59㎡ 6억대",
+   "옆보다 2억 싸게"
+  ]
+ },
+ "pool": [
+  {
+   "img": "photos/site/2026000575/birdseye-2.jpg",
+   "credit": "이미지: 한신공영(주) 분양 홈페이지 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/2026000575/birdseye-3.jpg",
+   "credit": "이미지: 한신공영(주) 분양 홈페이지 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/2026000575/birdseye.jpg",
+   "credit": "이미지: 한신공영(주) 분양 홈페이지 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/2026000575/front-dusk-crop.jpg",
+   "credit": "이미지: 한신공영(주) 분양 홈페이지 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/2026000575/community-main.jpg",
+   "credit": "이미지: 한신공영(주) 분양 홈페이지 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/2026000575/siteplan-auto-1.jpg",
+   "credit": "이미지: 한신공영(주) 분양 홈페이지 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/2026000575/entrance-crop.jpg",
+   "credit": "이미지: 한신공영(주) 분양 홈페이지 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/2026000575/garden-crop.jpg",
+   "credit": "이미지: 한신공영(주) 분양 홈페이지 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/2026000575/playground-crop.jpg",
+   "credit": "이미지: 한신공영(주) 분양 홈페이지 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/2026000575/siteplan.jpg",
+   "credit": "이미지: 한신공영(주) 분양 홈페이지 · 실제와 다를 수 있음"
+  }
+ ],
+ "scenes": [
+  {
+   "type": "story",
+   "say": "남양주에 옆 단지보다 2억 싼 아파트가 나왔대요. 접수는 11월 30일부터래요.",
+   "word": "2억",
+   "shots": [
+    {
+     "img": "photos/site/2026000575/birdseye-2.jpg",
+     "credit": "이미지: 한신공영(주) 분양 홈페이지 · 실제와 다를 수 있음"
+    },
+    {
+     "img": "photos/site/2026000575/birdseye-3.jpg",
+     "credit": "이미지: 한신공영(주) 분양 홈페이지 · 실제와 다를 수 있음"
+    }
+   ],
+   "proof": {
+    "kind": "compare",
+    "head": "59㎡ 비교 (추정)",
+    "items": [
+     {
+      "label": "이 단지 59A 최고",
+      "value": "6억750만원"
+     },
+     {
+      "label": "옆 다산푸르지오 59㎡ 실거래",
+      "value": "8억7,000만원"
+     }
+    ],
+    "src": "국토부 실거래 2026.11 · 추정"
+   }
+  },
+  {
+   "type": "story",
+   "say": "심지어, 3기 신도시 새 아파트래요.",
+   "word": "3기 신도시",
+   "shots": [
+    {
+     "img": "photos/site/2026000575/siteplan-auto-1.jpg",
+     "credit": "이미지: 한신공영(주) 분양 홈페이지 · 실제와 다를 수 있음"
+    },
+    {
+     "img": "photos/site/2026000575/community-main.jpg",
+     "credit": "이미지: 한신공영(주) 분양 홈페이지 · 실제와 다를 수 있음"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "이게 어떻게 가능할까요?",
+   "dim": true,
+   "shots": [
+    {
+     "img": "photos/site/2026000575/front-dusk-crop.jpg",
+     "credit": "이미지: 한신공영(주) 분양 홈페이지 · 실제와 다를 수 있음"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "사실은요 여긴 공공분양인데요. 59㎡가 6억 750만 원인데, 옆 다산은 8억 7천만 원에 거래됐대요.",
+   "word": "6억 750만 원",
+   "shots": [
+    {
+     "img": "photos/site/2026000575/birdseye.jpg",
+     "credit": "이미지: 한신공영(주) 분양 홈페이지 · 실제와 다를 수 있음",
+     "pos": "center 70%"
+    },
+    {
+     "img": "photos/site/2026000575/entrance-crop.jpg",
+     "credit": "이미지: 한신공영(주) 분양 홈페이지 · 실제와 다를 수 있음"
+    }
+   ],
+   "proof": {
+    "kind": "image",
+    "img": "photos/site/2026000575/plan-59a.jpg",
+    "credit": "이미지: 한신공영(주) 분양 홈페이지 · 실제와 다를 수 있음"
+   }
+  },
+  {
+   "type": "story",
+   "say": "근데 여기서 중요한 건 조건이에요.",
+   "dim": true,
+   "shots": [
+    {
+     "img": "photos/site/2026000575/garden-crop.jpg",
+     "credit": "이미지: 한신공영(주) 분양 홈페이지 · 실제와 다를 수 있음"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "379세대 전부 59㎡이고, 거주의무도 없다고 합니다.",
+   "word": "거주의무",
+   "shots": [
+    {
+     "img": "photos/site/2026000575/siteplan.jpg",
+     "credit": "이미지: 한신공영(주) 분양 홈페이지 · 실제와 다를 수 있음"
+    },
+    {
+     "img": "photos/site/2026000575/playground-crop.jpg",
+     "credit": "이미지: 한신공영(주) 분양 홈페이지 · 실제와 다를 수 있음"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "수도권 무주택이면 되고, 통장 1순위가 필요하대요.",
+   "word": "수도권 무주택",
+   "shots": [
+    {
+     "img": "photos/site/2026000575/birdseye-3.jpg",
+     "credit": "이미지: 한신공영(주) 분양 홈페이지 · 실제와 다를 수 있음",
+     "pos": "30% 50%"
+    },
+    {
+     "img": "photos/site/2026000575/community-main.jpg",
+     "credit": "이미지: 한신공영(주) 분양 홈페이지 · 실제와 다를 수 있음",
+     "pos": "center 30%"
+    }
+   ]
+  },
+  {
+   "type": "end",
+   "say": "자세한 공고 정리는 프로필에서 링크를 확인해주세요."
+  }
+ ]
+}
