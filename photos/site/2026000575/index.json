@@ -1,0 +1,136 @@
+{
+ "key": "2026000575",
+ "images": [
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "낮 전경",
+   "file": "photos/site/2026000575/birdseye.jpg",
+   "src": "https://ws-thehue.com/home/design/images/new/main_brand_bg.jpg",
+   "crop": "",
+   "w": 971,
+   "h": 1000,
+   "md5": "99bb5e2c4432666117d2f10fdb1f357f",
+   "photo": true
+  },
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "단지 전경",
+   "file": "photos/site/2026000575/birdseye-2.jpg",
+   "src": "https://ws-thehue.com/home/design/images/new/complex02_bg.jpg",
+   "crop": "",
+   "w": 970,
+   "h": 925,
+   "md5": "1aa41e96f47c22148a7145cf11756880",
+   "photo": true
+  },
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "노을 전경",
+   "file": "photos/site/2026000575/birdseye-3.jpg",
+   "src": "https://ws-thehue.com/home/design/images/new/main01_bg.jpg",
+   "crop": "",
+   "w": 1920,
+   "h": 925,
+   "md5": "3a61ac9c5efaf7eaaac6202694165643",
+   "photo": true
+  },
+  {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "",
+   "file": "photos/site/2026000575/siteplan.jpg",
+   "src": "https://ws-thehue.com/home/design/images/new/dangi.jpg",
+   "crop": "0,0.12,1,0.63",
+   "w": 1100,
+   "h": 642,
+   "md5": "97bcf14d3ac669aacba3dbfd2ca957cb",
+   "photo": true
+  },
+  {
+   "cat": "dongho",
+   "kind": "동호배치도",
+   "label": "1701~1704동",
+   "file": "photos/site/2026000575/dongho-1701-1704.jpg",
+   "src": "https://ws-thehue.com/home/design/images/new/dong.jpg",
+   "crop": "0,0,1,0.72",
+   "w": 1100,
+   "h": 604,
+   "md5": "1d82d389186e3eef1f4ed2844b535b0f",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "59A",
+   "file": "photos/site/2026000575/plan-59a.jpg",
+   "src": "https://ws-thehue.com/home/design/images/new/info_01.jpg",
+   "crop": "0,0.12,1,0.285",
+   "w": 1100,
+   "h": 738,
+   "md5": "3538d429e8fe7e3313b5d5b4c1ae501e",
+   "photo": true
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "59B",
+   "file": "photos/site/2026000575/plan-59b.jpg",
+   "src": "https://ws-thehue.com/home/design/images/new/info_02.jpg",
+   "crop": "0,0.12,1,0.285",
+   "w": 1100,
+   "h": 738,
+   "md5": "5bd8c21f808561bebb0dd24afc758031",
+   "photo": true
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "59C",
+   "file": "photos/site/2026000575/plan-59c.jpg",
+   "src": "https://ws-thehue.com/home/design/images/new/info_03.jpg",
+   "crop": "0,0.12,1,0.285",
+   "w": 1100,
+   "h": 738,
+   "md5": "85d5e7d0a30bfa1a33592f60a6bcc98d",
+   "photo": true
+  },
+  {
+   "cat": "community",
+   "kind": "조경",
+   "label": "파크라이프",
+   "file": "photos/site/2026000575/community.jpg",
+   "src": "https://ws-thehue.com/home/design/images/new/plan.jpg",
+   "crop": "0,0.12,1,0.67",
+   "w": 1100,
+   "h": 792,
+   "md5": "f8378bd2f30b9eed02e201ec1947dd2d",
+   "photo": true
+  },
+  {
+   "cat": "community",
+   "kind": "커뮤니티",
+   "label": "클럽더휴",
+   "file": "photos/site/2026000575/community-2.jpg",
+   "src": "https://ws-thehue.com/home/design/images/new/community.jpg",
+   "crop": "0,0.05,1,0.6",
+   "w": 1100,
+   "h": 1004,
+   "md5": "06715f78d6956dde75395fc691155b0b",
+   "photo": false
+  }
+ ],
+ "links": [
+  {
+   "kind": "emodel",
+   "label": "전체",
+   "name": "E모델하우스",
+   "url": "https://ws-thehue.com/home/vr.html"
+  }
+ ],
+ "homepage": "https://ws-thehue.com",
+ "owner": "한신공영(주)",
+ "updated": "2026-11-20 19:12"
+}

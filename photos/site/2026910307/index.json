@@ -1,0 +1,172 @@
+{
+ "key": "2026910307",
+ "images": [
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "낮 전경",
+   "file": "photos/site/2026910307/birdseye.jpg",
+   "src": "https://www.gd3-hoban.co.kr/final/assets/images/main/img_visual_si1.png",
+   "crop": "",
+   "w": 1920,
+   "h": 950,
+   "md5": "cd7386ef68e3c97ac91f037c66dd712b",
+   "photo": true
+  },
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "사업개요",
+   "file": "photos/site/2026910307/birdseye-2.jpg",
+   "src": "https://www.gd3-hoban.co.kr/final/assets/images/sub/img_summary.png",
+   "crop": "0.05,0.06,0.95,0.38",
+   "w": 1080,
+   "h": 503,
+   "md5": "f918413ee7d20308fe949fa7f9a2c985",
+   "photo": true
+  },
+  {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "",
+   "file": "photos/site/2026910307/siteplan.jpg",
+   "src": "https://www.gd3-hoban.co.kr/final/assets/images/sub/img_chart1.png",
+   "crop": "0,0.02,1,0.37",
+   "w": 1200,
+   "h": 779,
+   "md5": "90bd6c311cc5ad9f88e1ec271cb92f11",
+   "photo": true
+  },
+  {
+   "cat": "dongho",
+   "kind": "동호배치도",
+   "label": "전체 동",
+   "file": "photos/site/2026910307/dongho.jpg",
+   "src": "https://www.gd3-hoban.co.kr/final/assets/images/sub/img_chart1.png",
+   "crop": "0,0.38,1,0.93",
+   "w": 1200,
+   "h": 1225,
+   "md5": "90bd6c311cc5ad9f88e1ec271cb92f11",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "84A",
+   "file": "photos/site/2026910307/plan-84a.jpg",
+   "src": "https://www.gd3-hoban.co.kr/final/assets/images/sub/img_unit_01.png",
+   "crop": "0,0.32,1,0.84",
+   "w": 1200,
+   "h": 1039,
+   "md5": "72c6bf157c26b408bbea31e18b72d38b",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "84B",
+   "file": "photos/site/2026910307/plan-84b.jpg",
+   "src": "https://www.gd3-hoban.co.kr/final/assets/images/sub/img_unit_02.png",
+   "crop": "0,0.32,1,0.84",
+   "w": 1200,
+   "h": 1039,
+   "md5": "49a04a829062096b7ff402713a161c59",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "84C",
+   "file": "photos/site/2026910307/plan-84c.jpg",
+   "src": "https://www.gd3-hoban.co.kr/final/assets/images/sub/img_unit_03.png",
+   "crop": "0,0.32,1,0.84",
+   "w": 1200,
+   "h": 1039,
+   "md5": "6238d728a83be39b87a44b0fba198500",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "84D",
+   "file": "photos/site/2026910307/plan-84d.jpg",
+   "src": "https://www.gd3-hoban.co.kr/final/assets/images/sub/img_unit_04.png",
+   "crop": "0,0.32,1,0.84",
+   "w": 1200,
+   "h": 1039,
+   "md5": "16dd4000c16e9ef26a5cb22328243797",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "97",
+   "file": "photos/site/2026910307/plan-97.jpg",
+   "src": "https://www.gd3-hoban.co.kr/final/assets/images/sub/img_unit_05.png",
+   "crop": "0,0.32,1,0.84",
+   "w": 1200,
+   "h": 1039,
+   "md5": "6e4bf3ed0242164f61bdae7dcaa697aa",
+   "photo": false
+  },
+  {
+   "cat": "plan",
+   "kind": "평면도",
+   "label": "97P",
+   "file": "photos/site/2026910307/plan-97p.jpg",
+   "src": "https://www.gd3-hoban.co.kr/final/assets/images/sub/img_unit_06.png",
+   "crop": "0,0.32,1,0.84",
+   "w": 1200,
+   "h": 1039,
+   "md5": "2938177f3baa4cd5c9ef79ecae1be0cc",
+   "photo": false
+  },
+  {
+   "cat": "community",
+   "kind": "조경",
+   "label": "단지 전경",
+   "file": "photos/site/2026910307/community.jpg",
+   "src": "https://www.gd3-hoban.co.kr/final/assets/images/sub/img_plan.png",
+   "crop": "0.12,0.16,0.88,0.56",
+   "w": 1428,
+   "h": 832,
+   "md5": "1565ea6be666553498aa7cc1a65a2a4d",
+   "photo": true
+  },
+  {
+   "cat": "community",
+   "kind": "조경",
+   "label": "조경 시설",
+   "file": "photos/site/2026910307/community-2.jpg",
+   "src": "https://www.gd3-hoban.co.kr/final/assets/images/sub/img_landscape.png",
+   "crop": "0.15,0.07,0.85,0.5",
+   "w": 1316,
+   "h": 1140,
+   "md5": "5007e04a120670bbf06407c341fe5f53",
+   "photo": true
+  },
+  {
+   "cat": "community",
+   "kind": "커뮤니티",
+   "label": "커뮤니티 시설",
+   "file": "photos/site/2026910307/community-3.jpg",
+   "src": "https://www.gd3-hoban.co.kr/final/assets/images/sub/img_community.png",
+   "crop": "0,0.08,1,0.55",
+   "w": 1880,
+   "h": 1047,
+   "md5": "31f3d2c5ddfdfa394418afe5f425331c",
+   "photo": false
+  }
+ ],
+ "links": [
+  {
+   "kind": "emodel",
+   "label": "전체",
+   "name": "E모델하우스",
+   "url": "https://www.gd3-hoban.co.kr/final/sub/emodelhouse.php"
+  }
+ ],
+ "homepage": "https://www.gd3-hoban.co.kr/",
+ "owner": "티에스리빙 주식회사(호반건설)",
+ "updated": "2026-11-20 19:12"
+}
