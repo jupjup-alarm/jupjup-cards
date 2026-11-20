@@ -295,6 +295,23 @@
   </section>
   {% endif %}
 
+  {% if n.scores %}
+  <section class="sec" aria-labelledby="h-score">
+    <h2 id="h-score">당첨 가점 결과</h2>
+    {% if n.score_min %}<p class="comp-sum num">해당지역 최저 당첨 가점 {{ n.score_min[0]|round|int }}{% if n.score_min[1] != n.score_min[0] %}~{{ n.score_min[1]|round|int }}{% endif %}점 (주택형별). <a href="/tools/subscription-score/">내 가점 계산해 보기 →</a></p>{% endif %}
+    <div class="tbl">
+      <table class="num fit">
+        <caption>청약홈 공식 당첨 가점 (가점제 당첨자 기준, 추첨·미달 주택형은 빠짐)</caption>
+        <thead><tr><th scope="col" style="text-align:left">주택형</th><th scope="col" style="text-align:left">거주 구분</th><th scope="col">최저</th><th scope="col">평균</th><th scope="col">최고</th></tr></thead>
+        <tbody>
+        {% for g in n.scores %}{% for r in g.rows %}<tr><th scope="row">{{ g.type if loop.first else '' }}</th><td class="l">{{ r.area or '—' }}</td><td class="max">{{ r.min|round(2) if r.min else '—' }}</td><td>{{ r.avg|round(2) if r.avg else '—' }}</td><td>{{ r.max|round(2) if r.max else '—' }}</td></tr>
+        {% endfor %}{% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+  {% endif %}
+
   {% if n.is_pre %}
   <section class="sec" aria-labelledby="h-price">
     <h2 id="h-price">{% if n.h2.price %}<span class="k">{{ n.h2.price }}</span> <span class="t">예상 분양가·공급 규모</span>{% else %}예상 분양가·공급 규모{% endif %}</h2>

@@ -1536,3 +1536,39 @@ footer .biz{font-style:normal;line-height:1.6;opacity:.85}   /* 사업자 정보
 .g-tools-box a{font-size:14px;font-weight:700;border:1px solid var(--line);border-radius:999px;padding:7px 12px;text-decoration:none;color:var(--ink)}
 .t-sub{margin:-2px 0 10px;font-size:19px;font-weight:700;line-height:1.45;color:var(--ink);letter-spacing:-.02em}
 @media (max-width:640px){.t-sub{font-size:16.5px}}
+.t-sp td.t-mid{text-align:right;white-space:nowrap}
+.t-sp td.t-mid small{display:block}
+.t-sp td.t-ok,.t-sp td.t-no{text-align:right}
+.t-sp td.t-ok b{color:#067647}.t-sp td.t-no b{color:#B42318}
+.t-sp th[scope=row]{width:auto}
+.t-sp th[scope=row]{width:auto;font-weight:600}
+.t-sp th small{display:block;margin:2px 0 0 1.4em;font-weight:500}
+.t-sp td{vertical-align:top;font-size:13.5px;color:var(--ink-sub)}
+.t-sp .t-y{color:#067647}.t-sp .t-n{color:#B42318}.t-sp .t-q{color:var(--ink-sub)}
+.t-sp b{display:inline-block;width:1.2em}
+.t-cap{caption-side:top;text-align:left;font-weight:800;font-size:14.5px;color:var(--ink);padding:6px 0;border:0}
+
+/* 월간 청약 결산 (2026-11-20) */
+.rp .lhead .t-sub{margin:0}
+.rp-kpi{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:14px}
+@media (min-width:640px){.rp-kpi{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.rp-kpi div{background:var(--card, #fff);border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:grid;gap:2px}
+.rp-kpi span{font-size:12.5px;color:var(--ink-sub);font-weight:700}.rp-kpi b{font-size:20px}
+.rp-two{display:grid;gap:14px}
+@media (min-width:640px){.rp-two{grid-template-columns:1fr 1fr}}
+.rp-bars{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.rp-bars li{display:grid;grid-template-columns:6.5em minmax(0,1fr) 2.5em;align-items:center;gap:8px;font-size:14px}
+.rp-bars i{display:block;height:10px;border-radius:999px;background:var(--coral, #FF5233);min-width:4px}
+.rp-bars b{text-align:right}
+.rp-note{font-size:14px;line-height:1.65;color:var(--ink-sub);margin:6px 0}
+.rp-note a,.rp-nav a{color:var(--coral-strong, var(--coral));font-weight:700}
+.rp-list{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:6px}
+.rp-list li{display:grid;gap:2px;border-bottom:1px solid var(--line);padding:8px 0;font-size:14.5px}
+.rp-list span{font-size:13px;color:var(--ink-sub)}
+.rp-nav{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:14px;margin:8px 0 0}
+@media (max-width:640px){
+  .rp .ntbl table{min-width:0}
+  .rp .ntbl th[scope=row]{white-space:normal;min-width:9em}
+  .rp .ntbl td.l,.rp .ntbl thead th:nth-child(2){display:none}
+  .rp .ntbl th,.rp .ntbl td{padding:9px 8px}
+}

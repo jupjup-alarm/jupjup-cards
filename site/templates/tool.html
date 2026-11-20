@@ -13,7 +13,7 @@
       <p class="g-meta"><b>줍줍알람 편집팀</b><span>{{ checked|replace('-', '.') }} 기준 법령·공식 안내 확인</span><span>입력값은 저장하지 않아요</span></p>
     </header>
 
-    <div class="g-tool t-tool" data-tool="{{ t.slug }}"{% if picks %} data-picks='{{ picks }}'{% endif %} data-rate="{{ base_rate }}">
+    <div class="g-tool t-tool" data-tool="{{ t.slug }}"{% if picks %} data-picks='{{ picks }}'{% endif %}{% if recent %} data-recent='{{ recent }}'{% endif %} data-rate="{{ base_rate }}">
       <noscript><p>계산기는 자바스크립트를 켜야 동작해요. 계산 방법은 아래에 정리했어요.</p></noscript>
     </div>
 

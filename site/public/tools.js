@@ -76,7 +76,43 @@
       el.querySelector('[data-d]').textContent='/ 84점 · 무주택 '+A+' + 부양가족 '+B+' + 통장 '+C+(add?' (배우자 +'+(C-c0)+')':'');
       el.querySelector('[data-a]').style.width=(A/84*100)+'%'; el.querySelector('[data-b]').style.width=(B/84*100)+'%'; el.querySelector('[data-c]').style.width=(C/84*100)+'%';
       var tip = t>=65?'서울 인기 단지에서도 해볼 만한 점수예요.':(t>=50?'수도권 대부분 단지의 커트라인 근처예요. 공고 페이지의 지난 당첨 가점과 비교해 보세요.':(t>=35?'가점제보다 추첨 물량(85㎡ 초과·비규제지역)이나 무순위를 노리는 편이 현실적이에요.':'가점으로는 어려워요. 무순위(줍줍)·추첨제·특별공급을 먼저 보세요.'));
-      a.out('[data-o]','<p class="t-say">'+tip+' <a href="/lotto/">통장 없이 넣는 줍줍 공고 보기 →</a></p>');
+      var rc=[]; try{ rc=JSON.parse(el.getAttribute('data-recent')||'[]'); }catch(e){}
+      var cmp = rc.length ? '<table class="t-out t-sp"><caption class="t-cap">최근 당첨 가점(해당지역 최저)과 비교</caption><tbody>'+rc.map(function(r){ var ok=t>=r.lo, all=t>=r.hi;
+          return '<tr><th scope="row"><b class="'+(ok?'t-y':'t-n')+'">'+(all?'✓':(ok?'△':'✗'))+'</b> <a href="'+r.u+'">'+esc(r.t)+'</a><small>'+esc(r.s)+'</small></th><td>'+r.lo+(r.hi!==r.lo?'~'+r.hi:'')+'점</td></tr>'; }).join('')+'</tbody></table><p class="g-toolnote">✓ 모든 주택형 최저 가점 이상 · △ 일부 주택형 · ✗ 모두 아래. 청약홈 공식 당첨 가점이에요.</p>' : '';
+      a.out('[data-o]','<p class="t-say">'+tip+' <a href="/lotto/">통장 없이 넣는 줍줍 공고 보기 →</a></p>'+cmp);
+    });
+  };
+
+  /* ── 특별공급 소득 기준 ─────────────────── */
+  // 2026년 적용 도시근로자 가구원수별 월평균소득 100% (원) — 경기주택도시공사 표(2025년 귀속). tools.py 글과 같게
+  var INC={1:3813363,2:5866270,3:8168429,4:8802202,5:9326985,6:9906263,7:10485541};
+  var SP={
+    private:[['신혼부부 우선공급',100,120],['신혼부부 일반공급',140,160],['신혼부부 추첨',null,null,'소득을 넘어도 부동산 가액 기준을 맞추면 신청'],
+             ['생애최초 우선공급',130,130],['생애최초 일반공급',160,160],['생애최초 추첨',null,null,'소득을 넘어도 부동산 가액 기준을 맞추면 신청'],
+             ['다자녀 특별공급',0,0,'민영주택은 소득 기준 없음'],['노부모부양 특별공급',0,0,'민영주택은 소득 기준 없음']],
+    public:[['신혼부부 우선',100,120],['신혼부부 일반',130,140],['신혼부부 추첨',130,200],
+            ['생애최초 우선',100,120],['생애최초 일반',130,140],['생애최초 추첨',130,200],
+            ['신생아 우선',100,120],['신생아 일반',140,150],['신생아 추첨',140,200],
+            ['다자녀 우선',120,130],['다자녀 추첨',120,200],['노부모부양 우선',120,130],['노부모부양 추첨',120,200],
+            ['일반공급(공공) 우선',100,140],['일반공급(공공) 추첨',100,200]]
+  };
+  T['special-supply-income']=function(el){
+    el.innerHTML='<h2 class="t-h">내 소득으로 넣을 수 있는 특공</h2>'+
+      seg('넣을 주택','kind',[['private','민영주택'],['public','공공분양(LH·SH 등)']],'private')+
+      seg('가구원 수 (태아 포함)','n',[['1','1인'],['2','2인'],['3','3인'],['4','4인'],['5','5인'],['6','6인'],['7','7인 이상']],'2')+
+      inp('세대 월평균 소득 (세전, 세대원 합산)','inc',700,'만원')+chk('맞벌이 (본인·배우자 모두 소득 있음)','dual',false)+
+      '<div data-o></div>'+note('2026년 적용 도시근로자 월평균소득표 기준이에요. 분양주택 특공은 3인 이하를 3인 금액으로 봐요. 공공분양은 총자산·자동차 가액 기준이 따로 있고, 공고마다 새 기준표가 적용될 수 있으니 최종 판단은 모집공고문 소득 기준표로 하세요.');
+    wire(el,function(a){
+      var n=+a.s('n'), kind=a.s('kind'), dual=a.v('dual'), inc=a.v('inc')*10000;
+      var base=INC[Math.max(3,Math.min(7,n))], p=inc/base*100;
+      var L=SP[kind].map(function(r){
+        if(r[1]===null) return ['<b class="t-q">?</b> '+r[0]+'<small>'+r[3]+'</small>','추첨'];
+        if(r[1]===0) return ['<b class="t-y">✓</b> '+r[0]+'<small>'+r[3]+'</small>','기준 없음'];
+        var lim=dual?r[2]:r[1], ok=p<=lim+1e-9;
+        return ['<b class="'+(ok?'t-y':'t-n')+'">'+(ok?'✓':'✗')+'</b> '+r[0]+'<small>'+(ok?'기준 '+man(base*lim/100/10000)+' 이하':man((inc-base*lim/100)/10000)+' 넘음')+'</small>', lim+'% 이하'];
+      });
+      a.out('[data-o]','<div class="g-res"><b>'+pct(p,1)+'</b><span>'+(n<=3?'3인 이하':n+(n===7?'인 이상':'인'))+' 기준액 '+man(base/10000)+' 대비</span></div>'+
+        '<table class="t-out t-sp"><tbody>'+L.map(function(x){ return '<tr><th scope="row">'+x[0]+'</th><td>'+x[1]+'</td></tr>'; }).join('')+'</tbody></table>');
     });
   };
 

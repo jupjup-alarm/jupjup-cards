@@ -1,0 +1,36 @@
+# 청약홈 당첨 가점 받기 (2026-11-20) — site/tools/scores.py → site/data/scores.json
+# 저장소 비밀 DATA_GO_KR_KEY(공공데이터포털 키, '청약접수 경쟁률 및 특별공급 신청현황 조회 서비스' 활용신청 필요)가 있어야 동작.
+# 사이트 빌드는 하지 않는다 — 다음 ⑦ 빌드 때 공고 페이지·경쟁률·결산·가점 계산기에 반영됨.
+name: scores
+on:
+  schedule:
+    - cron: "7 22 * * *"   # 매일 07:07 KST (⑦ 08:20 전)
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: scores
+  cancel-in-progress: false
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            site/data/applyhome.json
+            site/data/scores.json
+            site/tools/scores.py
+      - name: fetch scores
+        env:
+          DATA_GO_KR_KEY: ${{ secrets.DATA_GO_KR_KEY }}
+        run: python3 site/tools/scores.py
+      - name: commit
+        run: |
+          git config user.name "jupjup-bot"
+          git config user.email "bot@jupjupalarm.com"
+          git add site/data/scores.json 2>/dev/null || exit 0
+          git diff --cached --quiet && exit 0
+          git commit -m "data: 청약홈 당첨 가점"
+          for i in 1 2 3; do git pull --rebase origin main && git push origin HEAD:main && exit 0; sleep 10; done
+          exit 1

@@ -75,6 +75,32 @@ TOOLS = [
         "related": ["subscription-score", "payment-plan"], "kinds": ["private", "public"],
     },
     {
+        "slug": "special-supply-income", "group": "청약", "name": "특별공급 소득 기준 계산기",
+        "short": "내 소득이 도시근로자 월평균소득의 몇 %인지, 넣을 수 있는 특공",
+        "h1": "특별공급 소득 기준 계산기", "sub": "신혼부부·생애최초·다자녀·신생아 특공, 내 소득으로 되는지",
+        "dek": "가구원 수와 세대 월평균 소득을 넣으면 2026년 적용 도시근로자 월평균소득의 몇 %인지 계산하고, 민영주택·공공분양 특별공급 유형별로 우선·일반·추첨 중 어디에 넣을 수 있는지 표시해요.",
+        "desc": "특별공급 소득 기준 계산기 (2026년 적용 도시근로자 월평균소득). 신혼부부·생애최초·다자녀·노부모·신생아 특공의 우선·일반·추첨 소득 기준과 맞벌이 기준을 민영주택·공공분양별로 확인합니다.",
+        "how": [
+            ["기준은 '전년도 도시근로자 가구당 월평균소득'",
+             "<p>특별공급 소득 기준은 통계청 가계동향조사로 정하는 <b>도시근로자 가구원수별 월평균소득</b>의 몇 %로 정해요. 2026년 적용 금액(100%)은 1인 381만3,363원, 2인 586만6,270원, 3인 816만8,429원, 4인 880만2,202원, 5인 932만6,985원, 6인 990만6,263원, 7인 1,048만5,541원이에요. 분양주택 특별공급 표는 보통 <b>3인 이하를 한 칸</b>으로 묶어서 3인 금액을 써요.</p>"
+             "<p>새 통계가 나오면 그 뒤 모집공고부터 금액이 바뀌어서, 같은 해라도 공고마다 기준액이 다를 수 있어요. 최종 기준은 넣으려는 공고문의 소득 기준표예요.</p>"],
+            ["내 소득은 이렇게 셉니다",
+             "<p>세대주와 배우자, 성년인 세대원 전원의 <b>전년도 소득을 합쳐 일한 달 수로 나눈 세전 월평균</b>이에요. 근로소득은 원천징수영수증의 총급여, 사업소득은 종합소득세 신고 소득금액을 써요. 배우자가 따로 살아도 배우자 소득은 합쳐요. 태아도 가구원 수에 들어가요.</p>"],
+            ["민영주택: 우선 → 일반 → 추첨",
+             "<p>민영주택 신혼부부 특공은 소득 <b>100% 이하(맞벌이 120%)</b>에 우선공급, <b>140% 이하(맞벌이 160%)</b>에 일반공급을 하고, 남은 물량은 소득을 넘더라도 부동산 가액 기준을 맞추면 추첨으로 넣을 수 있어요. 생애최초 특공은 <b>130% 이하</b> 우선, <b>160% 이하</b> 일반, 그다음 추첨이에요. 다자녀·노부모부양 특공은 민영주택에서 소득 기준이 없어요.</p>"],
+            ["공공분양은 기준이 따로예요",
+             "<p>LH·SH 공공분양(뉴:홈 포함)은 신혼부부·생애최초 우선 <b>100%(맞벌이 120%)</b>, 일반 <b>130%(맞벌이 140%)</b>, 추첨 <b>130%(맞벌이 200%)</b>이고, 다자녀·노부모부양은 120%(맞벌이 130%, 추첨 200%), 신생아는 우선 100%(맞벌이 120%)·일반 140%(맞벌이 150%)·추첨 140%(맞벌이 200%)예요. 공공분양은 소득과 함께 <b>총자산·자동차 가액 기준</b>도 봐요.</p>"],
+        ],
+        "example": "맞벌이 신혼부부 2인 가구, 세대 월평균 소득 900만원이면 3인 이하 기준액(816만8,429원)의 약 110%예요. 민영 신혼부부 특공 우선공급(맞벌이 120%)과 생애최초 일반공급(160%)에 넣을 수 있고, 공공분양 신혼부부는 우선(맞벌이 120%)이 돼요.",
+        "faq": [
+            ["1·2인 가구는 어떤 금액을 쓰나요?", "분양주택 특별공급 소득표는 대부분 '3인 이하'를 한 칸으로 묶어 3인 금액을 적용해요. 공공임대(행복주택 등)는 1인·2인 금액을 따로 쓰니 이 계산기의 '임대' 줄은 참고만 하세요."],
+            ["맞벌이 기준은 언제 적용되나요?", "본인과 배우자 모두 근로소득 또는 사업소득이 있을 때예요. 한 사람이라도 소득이 없으면 외벌이 기준을 적용해요."],
+            ["민영주택 신생아 특공은요?", "2026년 6월 15일 시행된 주택공급에 관한 규칙 개정으로 민영주택에도 신생아 특별공급이 생겼어요. 세부 소득 기준은 공고마다 확인이 필요해서 이 계산기에는 넣지 않았어요."],
+        ],
+        "sources": [["경기주택도시공사 도시근로자 가구원수별 월평균소득표 (2026년 적용)", "https://housing.gg.go.kr/html/24101.do"], ["LH청약플러스 특별공급 소득기준 (공공분양)", "https://apply.lh.or.kr"], ["주택공급에 관한 규칙, 신혼부부·생애최초 주택 특별공급 운용지침", "https://www.law.go.kr/법령/주택공급에관한규칙"]],
+        "related": ["subscription-score", "subscription-priority"], "kinds": ["private", "public"],
+    },
+    {
         "slug": "payment-plan", "group": "청약", "name": "분양 대금 일정 계산기",
         "short": "계약금·중도금·잔금, 중도금 대출 이자까지 언제 얼마",
         "h1": "분양 대금 일정 계산기", "sub": "계약금·중도금·잔금을 언제 얼마 내야 하는지",
@@ -294,6 +320,9 @@ SEO = {
     "subscription-priority": {"title": "청약 1순위 조건 계산기 | 지역별 기간·예치금·납입 인정",
         "kw": ["청약 1순위 조건", "청약통장 1순위", "청약 예치금", "청약통장 납입 인정 금액", "청약통장 25만원", "투기과열지구 1순위", "국민주택 1순위"],
         "guides": ["first-priority", "cheongyak-account"]},
+    "special-supply-income": {"title": "특별공급 소득 기준 계산기 2026 | 신혼부부·생애최초 월평균소득",
+        "kw": ["특별공급 소득기준", "신혼부부 특공 소득기준", "생애최초 특공 소득기준", "도시근로자 월평균소득 2026", "맞벌이 특공 소득", "신생아 특공 소득기준", "공공분양 소득기준"],
+        "guides": ["newlywed", "multichild-elderly-special"]},
     "payment-plan": {"title": "분양 대금 계산기 | 계약금·중도금·잔금 언제 얼마",
         "kw": ["분양 대금 계산기", "계약금 중도금 잔금 계산", "중도금 대출 이자 후불제", "분양가 납부 일정", "아파트 잔금 계산"],
         "guides": ["after-winning-money", "move-in-report"]},
@@ -428,25 +457,30 @@ def build(E, notices, write, common, pub, base, today, problems):
         except Exception as e:
             problems.append((t["slug"], f"경고 — 도구 공유 이미지 실패: {e}"))
             og = "/og-default.jpg"
+        recent = ""
+        if t["slug"] == "subscription-score":
+            sc = sorted([n for n in notices if n.get("score_min")], key=lambda n: n.get("announce") or "", reverse=True)[:12]
+            recent = json.dumps([{"t": n.get("complex") or n["title"], "u": n["url"], "s": f"{n['sido']} {n.get('sigungu') or ''}".strip(),
+                                  "lo": round(n["score_min"][0]), "hi": round(n["score_min"][1])} for n in sc], ensure_ascii=False) if sc else ""
         h = tpl.render(t=t, notices=lst, rel=rel, glinks=gl, faq_ld=faq_ld, checked=CHECKED, js_url=js_url,
-                       picks=json.dumps(picks, ensure_ascii=False) if t.get("picker") else "", base_rate=BASE_RATE,
+                       picks=json.dumps(picks, ensure_ascii=False) if t.get("picker") else "", recent=recent, base_rate=BASE_RATE,
                        keywords=", ".join(t.get("kw", [])), og_alt=f"{t['name']}, {t['short']}",
                        **common, page_url=url, title=title, desc=t["desc"], og=og, crumb=crumb, nav="tools")
         write(url, h, title, t["desc"], "page", CHECKED)
     groups = [(g, i, [dict(t, url=f"/tools/{t['slug']}/") for t in TOOLS if t["group"] == g]) for i, g in enumerate(GROUPS)]
-    title = "청약·부동산 계산기 10종 | 청약 가점·취득세·주담대 한도·복비 · 줍줍알람"
-    desc = ("청약 가점 계산기, 청약 1순위 조건, 분양 대금(계약금·중도금·잔금), 평수 계산기, 평당가, 전월세 전환, 대출 이자, "
-            "주택담보대출 한도, 취득세, 중개수수료(복비) 계산기 10종. 2026년 법령·대출 규제 기준, 무료·저장 안 함.")
+    title = "청약·부동산 계산기 11종 | 청약 가점·취득세·주담대 한도·복비 · 줍줍알람"
+    desc = ("청약 가점 계산기, 특별공급 소득 기준, 청약 1순위 조건, 분양 대금(계약금·중도금·잔금), 평수 계산기, 평당가, 전월세 전환, 대출 이자, "
+            "주택담보대출 한도, 취득세, 중개수수료(복비) 계산기 11종. 2026년 법령·대출 규제 기준, 무료·저장 안 함.")
     kw = "청약 계산기, 부동산 계산기, 청약 가점 계산기, 취득세 계산기, 주택담보대출 한도 계산기, 중개수수료 계산기, 평수 계산기, 전월세 전환 계산기"
     d = pub / "tools"
     d.mkdir(parents=True, exist_ok=True)
     try:
-        og_image({"group": "청약·부동산", "name": "계산기 10종", "short": "청약 가점 · 1순위 · 분양 대금 · 취득세 · 주담대 한도 · 복비"}, d / "og.jpg")
+        og_image({"group": "청약·부동산", "name": "계산기 11종", "short": "청약 가점 · 1순위 · 분양 대금 · 취득세 · 주담대 한도 · 복비"}, d / "og.jpg")
         og = "/tools/og.jpg"
     except Exception:
         og = "/og-default.jpg"
     h = E.get_template("tools_index.html").render(groups=groups, n_tools=len(TOOLS), checked=CHECKED, **common, page_url="/tools/",
-                                                  title=title, desc=desc, og=og, keywords=kw, og_alt="줍줍알람 청약·부동산 계산기 10종",
+                                                  title=title, desc=desc, og=og, keywords=kw, og_alt="줍줍알람 청약·부동산 계산기 11종",
                                                   crumb=[("홈", "/"), ("계산기", "")], nav="tools",
                                                   tools_ld=[{"@type": "ListItem", "position": i, "url": base + f"/tools/{t['slug']}/", "name": t["name"]} for i, t in enumerate(TOOLS, 1)])
     write("/tools/", h, title, desc, "page", CHECKED)

@@ -21,6 +21,7 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import guides as GUIDES
 import tools as TOOLS_PAGES   # 도구 (/tools/) — 2026-11-20
+import report as REPORT       # 월간 청약 결산 (/report/) — 2026-11-20
 from markupsafe import Markup
 
 SITE = Path(__file__).resolve().parent
@@ -1677,6 +1678,18 @@ def main():
         if n:
             notices.append(n)
     byk = {n["key"]: n for n in notices}
+    # 당첨 가점 (2026-11-20) — site/tools/scores.py 가 받은 site/data/scores.json. 없으면 아무것도 안 나옴
+    sp_ = DATA / "scores.json"
+    SCORES = json.loads(sp_.read_text()) if sp_.exists() else {}
+    for n in notices:
+        rows_ = (SCORES.get(n["key"]) or {}).get("rows") or []
+        if rows_:
+            by_t = {}
+            for r in rows_:
+                by_t.setdefault(r.get("type") or "-", []).append(r)
+            n["scores"] = [{"type": t, "rows": v} for t, v in by_t.items()]
+            loc = [r["min"] for r in rows_ if r.get("min") and "기타" not in (r.get("area") or "")] or [r["min"] for r in rows_ if r.get("min")]
+            n["score_min"] = (min(loc), max(loc)) if loc else None
     # 공고 전 페이지에 공고가 나오면: 페이지는 그대로 두고(검색 순위 유지) 새 공고로 안내 + 예상 vs 실제 비교
     for n in notices:
         t = byk.get(n.get("moved_to") or "")
@@ -2288,12 +2301,16 @@ def main():
         crumb = [("홈", "/"), ("청약 경쟁률", None)]
         h = E.get_template("competition.html").render(
             h1=h1, rows=crow, crumb=crumb, page_url="/competition/", title=title, desc=desc,
+            score_rows=sorted([x for x in notices if x.get("score_min")], key=lambda x: x.get("announce") or "", reverse=True)[:20],
             intro=comp_intro(crow, best),
             faq=COMP_FAQ, faq_ld={"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in COMP_FAQ]},
             tbl_cap=f"청약홈 공식 경쟁률 {len(crow)}곳 — {d(TODAY.isoformat())} 기준 · 접수 마감이 최근인 순서",
             og=og_hub("/competition/", "청약 경쟁률", "청약 경쟁률", "한눈에 보기", "청약홈 공식 경쟁률 — 무순위(줍줍) · 아파트 분양", [r["n"] for r in crow]),
             **common)
         write("/competition/", h, title, desc, "list", max(r["n"]["modified"] for r in crow))
+
+    # 월간 청약 결산 (2026-11-20 사용자 요청)
+    REPORT.build(E, notices, write, common, BASE, TODAY, won, KINDS, d)
 
     # 가이드 칼럼
     GUIDES.build(E, notices, write, common, PUB, BASE, TODAY, problems)
