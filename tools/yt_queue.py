@@ -26,6 +26,7 @@ import json
 import re
 import subprocess
 import sys
+import urllib.parse
 import urllib.request
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
@@ -40,6 +41,7 @@ PER_SLOT = 1
 RESULT_DAYS = 3               # 청약 결과 편은 원래 날짜에서 3일까지만
 CHANNEL_ID = "UCbIKC-joj_M279Tii7sLSiA"   # 줍줍알람 (@jupjup_alarm) — 투키즈노트 등 다른 채널에 올라가면 안 됨
 CHANNEL_NAME = "줍줍알람"
+CHANNEL_HANDLE = "@jupjup_alarm"
 MIN_DB = -32.0                # 이보다 조용하면 무음 편 — 올리지 않음 (11/4·11/5 무음 릴스)
 
 
@@ -296,7 +298,19 @@ def channel_of(url):
         return None, None
     cid = re.search(r'"(?:externalChannelId|channelId)":"(UC[\w-]{22})"', html)
     name = re.search(r'"ownerChannelName":"([^"]+)"', html)
-    return (cid.group(1) if cid else None), (name.group(1) if name else None)
+    if cid:
+        return cid.group(1), (name.group(1) if name else None)
+    # 페이지가 로그인 확인으로 막히면 oEmbed(공개 영상만 응답)로 채널 핸들 확인
+    try:
+        o = json.loads(urllib.request.urlopen(urllib.request.Request(
+            "https://www.youtube.com/oembed?format=json&url=" + urllib.parse.quote(url, safe=""),
+            headers={"User-Agent": "Mozilla/5.0"}), timeout=20).read().decode("utf-8"))
+    except Exception:
+        return None, None
+    au = (o.get("author_url") or "").rstrip("/").lower()
+    if au.endswith("/" + CHANNEL_HANDLE.lower()) or au.endswith("/channel/" + CHANNEL_ID.lower()):
+        return CHANNEL_ID, o.get("author_name")
+    return (au or "다른 채널"), o.get("author_name")
 
 
 def cmd_verify(a):
