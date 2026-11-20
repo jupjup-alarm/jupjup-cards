@@ -1614,3 +1614,10 @@ footer .biz{font-style:normal;line-height:1.6;opacity:.85}   /* 사업자 정보
   .guide-link b{flex:initial}
 }
 .guide-link span{min-width:0}
+/* 2026-11-20 사용자 요청: 모바일에서 아래로 스크롤하면 머리글 숨김 (위로 올리면 다시) — 바로가기 메뉴는 맨 위로 붙음 */
+@media (max-width:1023px){
+  .top{transition:transform .22s ease}
+  html.hdr-off .top{transform:translateY(-100%)}
+  .chipnav,.hm-kinds,.gcats{transition:top .22s ease}
+  html.hdr-off .chipnav,html.hdr-off .hm-kinds,html.hdr-off .gcats{top:0}
+}

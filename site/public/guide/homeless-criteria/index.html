@@ -24,7 +24,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="alternate" type="application/rss+xml" title="줍줍알람" href="/rss.xml">
 <link rel="stylesheet" href="/fonts/pretendard/pretendard.css">
-<link rel="stylesheet" href="/style.af6500f1.css">
+<link rel="stylesheet" href="/style.b33f5b21.css">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6103BRQ0LP"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-6103BRQ0LP');</script><script>window.jjEv=function(n,p){try{if(window.gtag)gtag('event',n,p||{});}catch(e){}};</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1196853150959268" crossorigin="anonymous"></script></head>
@@ -378,10 +378,16 @@
     tabs.forEach(function(b,i){b.addEventListener('click',function(){sel(b)});
       b.addEventListener('keydown',function(e){var k=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;if(k){var n=tabs[(i+k+tabs.length)%tabs.length];sel(n);n.focus();}});});
     tl.hidden=false;sel(tabs[0]);}
-  // 아래 CTA 바 (2026-11-20): 첫 화면(요약 티켓이 보이는 동안)·푸터 근처·입력 중엔 숨김,
-  // 본문에서는 아래로 내리는 동안 숨기고 위로 올리거나 0.5초 멈추면 다시 보임
+  // 모바일 머리글 (2026-11-20 사용자 요청): 아래로 내리면 숨기고 위로 올리면 다시 보임. 맨 위 근처에선 항상 보임
+  (function(){var root=document.documentElement,mq=window.matchMedia('(max-width:1023px)'),y0=scrollY,tk=false;
+    function f(){var y=scrollY,d=y-y0;if(!mq.matches||y<80){root.classList.remove('hdr-off');}else if(d>8){root.classList.add('hdr-off');}else if(d<-8){root.classList.remove('hdr-off');}
+      if(Math.abs(d)>8)y0=y;tk=false;}
+    addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(f);}},{passive:true});
+    document.addEventListener('focusin',function(e){if(e.target.closest&&e.target.closest('.top'))root.classList.remove('hdr-off');});})();
+  // 아래 CTA 바 (2026-11-20 사용자 요청 "위로 스크롤하면 나오게"): 처음엔 숨김, 위로 올릴 때만 보이고 아래로 내리면 숨김.
+  // 첫 화면(요약 티켓이 보이는 동안)·푸터 근처·입력 중엔 숨김
   var bar=document.querySelector('.bar');
-  if(bar){var lastY=window.scrollY,ticking=false,down=false,idle=null,typing=false,
+  if(bar){var lastY=window.scrollY,ticking=false,down=true,idle=null,typing=false,
       tk=document.querySelector('.ticket'),ft=document.querySelector('footer');
     function zone(){var vh=innerHeight;
       if(tk&&tk.getBoundingClientRect().bottom>vh*0.35)return false;      // 첫 화면: 티켓이 아직 화면 위쪽에 보임
@@ -389,8 +395,7 @@
       if(ft&&ft.getBoundingClientRect().top<vh-40)return false;          // 사업자 정보가 보이기 시작하면
       return true;}
     function apply(){bar.classList.toggle('hide',typing||!zone()||down);}
-    function onScroll(){var y=scrollY,d=y-lastY;if(d>6)down=true;else if(d<-6)down=false;if(Math.abs(d)>6)lastY=y;apply();ticking=false;
-      clearTimeout(idle);idle=setTimeout(function(){down=false;apply();},500);}
+    function onScroll(){var y=scrollY,d=y-lastY;if(d>6)down=true;else if(d<-6)down=false;if(Math.abs(d)>6)lastY=y;apply();ticking=false;}
     addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(onScroll);}},{passive:true});
     addEventListener('resize',apply,{passive:true});
     document.addEventListener('focusin',function(e){if(e.target.matches('input,textarea,select')&&!bar.contains(e.target)){typing=true;apply();}});
