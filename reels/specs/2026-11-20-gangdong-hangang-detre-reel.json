@@ -1,0 +1,177 @@
+{
+ "slug": "2026-11-20-gangdong-hangang-detre-reel",
+ "title": "강동한강 디에트르 임의공급(13세대)",
+ "series": "줍줍알람",
+ "style": "story",
+ "voice": "voices/f29d6bc7418d/",
+ "voice_speed": 1.0,
+ "bgm": "music/beat-one.mp3",
+ "thumb": {
+  "lines": [
+   "강동 남은 13채",
+   "59㎡ 3억 싸게"
+  ]
+ },
+ "pool": [
+  {
+   "img": "photos/site/2026940257/v-birdseye-1.jpg",
+   "credit": "이미지: 대명아파트가로주택정비사업조합(대방건설) 분양 홈페이지 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/2026940257/v-birdseye-2.jpg",
+   "credit": "이미지: 대명아파트가로주택정비사업조합(대방건설) 분양 홈페이지 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/2026940257/v-birdseye-3.jpg",
+   "credit": "이미지: 대명아파트가로주택정비사업조합(대방건설) 분양 홈페이지 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/2026940257/v-birdseye-4.jpg",
+   "credit": "이미지: 대명아파트가로주택정비사업조합(대방건설) 분양 홈페이지 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/2026940257/v-birdseye-5.jpg",
+   "credit": "이미지: 대명아파트가로주택정비사업조합(대방건설) 분양 홈페이지 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/2026940257/v-community.jpg",
+   "credit": "이미지: 대명아파트가로주택정비사업조합(대방건설) 분양 홈페이지 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/sat/a655f8cbfb21.png",
+   "credit": "위성사진 © NAVER Corp."
+  },
+  {
+   "img": "maps/ac7d8fcf5b86.png"
+  }
+ ],
+ "scenes": [
+  {
+   "type": "story",
+   "say": "강동에 옆 단지보다 3억 싼 아파트가 남았대요. 딱 13채라 금방 끝난대요.",
+   "word": "3억",
+   "shots": [
+    {
+     "img": "photos/site/2026940257/v-birdseye-1.jpg",
+     "credit": "이미지: 대명아파트가로주택정비사업조합(대방건설) 분양 홈페이지 · 실제와 다를 수 있음"
+    },
+    {
+     "img": "photos/site/2026940257/v-birdseye-5.jpg",
+     "credit": "이미지: 대명아파트가로주택정비사업조합(대방건설) 분양 홈페이지 · 실제와 다를 수 있음"
+    }
+   ],
+   "proof": {
+    "kind": "compare",
+    "head": "59㎡ 비교 (추정)",
+    "items": [
+     {
+      "label": "이 단지 59B 최고",
+      "value": "11억3,500만원"
+     },
+     {
+      "label": "옆 선사현대 59㎡ 실거래",
+      "value": "14억9,500만원"
+     }
+    ],
+    "src": "국토부 실거래 2026.11 · 추정"
+   }
+  },
+  {
+   "type": "story",
+   "say": "심지어, 내년 4월 입주하는 새 아파트래요.",
+   "word": "내년 4월",
+   "shots": [
+    {
+     "img": "photos/site/2026940257/v-birdseye-2.jpg",
+     "credit": "이미지: 대명아파트가로주택정비사업조합(대방건설) 분양 홈페이지 · 실제와 다를 수 있음"
+    },
+    {
+     "img": "photos/site/2026940257/v-birdseye-3.jpg",
+     "credit": "이미지: 대명아파트가로주택정비사업조합(대방건설) 분양 홈페이지 · 실제와 다를 수 있음"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "이게 어떻게 가능할까요?",
+   "dim": true,
+   "shots": [
+    {
+     "img": "photos/site/2026940257/v-birdseye-4.jpg",
+     "credit": "이미지: 대명아파트가로주택정비사업조합(대방건설) 분양 홈페이지 · 실제와 다를 수 있음"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "사실은요 여긴 한 동짜리 94세대 단지인데요. 59㎡가 11억 300만 원부터라고 합니다.",
+   "word": "11억 300만 원",
+   "shots": [
+    {
+     "img": "photos/sat/a655f8cbfb21.png",
+     "credit": "위성사진 © NAVER Corp.",
+     "pos": "center 50%"
+    },
+    {
+     "img": "photos/site/2026940257/v-birdseye-5.jpg",
+     "credit": "이미지: 대명아파트가로주택정비사업조합(대방건설) 분양 홈페이지 · 실제와 다를 수 있음"
+    }
+   ],
+   "proof": {
+    "kind": "image",
+    "img": "photos/site/2026940257/plan-59b.jpg",
+    "credit": "이미지: 대명아파트가로주택정비사업조합(대방건설) 분양 홈페이지 · 실제와 다를 수 있음"
+   }
+  },
+  {
+   "type": "story",
+   "say": "근데 여기서 중요한 건 조건이에요.",
+   "dim": true,
+   "shots": [
+    {
+     "img": "photos/site/2026940257/v-community.jpg",
+     "credit": "이미지: 대명아파트가로주택정비사업조합(대방건설) 분양 홈페이지 · 실제와 다를 수 있음"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "전매제한도 없고, 실거주 의무도 없다고 합니다.",
+   "word": "전매제한",
+   "shots": [
+    {
+     "img": "photos/site/2026940257/v-birdseye-3.jpg",
+     "credit": "이미지: 대명아파트가로주택정비사업조합(대방건설) 분양 홈페이지 · 실제와 다를 수 있음"
+    },
+    {
+     "img": "photos/site/2026940257/v-birdseye-1.jpg",
+     "credit": "이미지: 대명아파트가로주택정비사업조합(대방건설) 분양 홈페이지 · 실제와 다를 수 있음"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "국내 사는 19세 이상이면 되고, 통장도 집도 안 본대요. 접수는 11월 24일부터 이틀뿐이래요.",
+   "word": "11월 24일",
+   "shots": [
+    {
+     "img": "maps/ac7d8fcf5b86.png",
+     "pos": "center 35%"
+    },
+    {
+     "img": "photos/site/2026940257/v-birdseye-2.jpg",
+     "credit": "이미지: 대명아파트가로주택정비사업조합(대방건설) 분양 홈페이지 · 실제와 다를 수 있음"
+    },
+    {
+     "img": "photos/sat/a655f8cbfb21.png",
+     "credit": "위성사진 © NAVER Corp.",
+     "pos": "center 40%"
+    }
+   ]
+  },
+  {
+   "type": "end",
+   "say": "단지 이름이랑 공고 정리는, 댓글에 '강동'이라고 남겨 주세요."
+  }
+ ]
+}

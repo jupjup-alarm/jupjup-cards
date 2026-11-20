@@ -1,0 +1,121 @@
+{
+ "slug": "2026-11-20-gwangju-songjeong-reel",
+ "title": "광주 송정 중흥S-클래스 파크뷰 무순위",
+ "series": "줍줍알람",
+ "style": "story",
+ "voice": "voices/d714eb6dd612/",
+ "voice_speed": 1.0,
+ "bgm": "music/beat-one.mp3",
+ "thumb": {
+  "badge": "11/23 하루",
+  "lines": [
+   "광주 남은 2채",
+   "59㎡ 8천 싸게"
+  ]
+ },
+ "pool": [
+  {
+   "img": "photos/site/2026930046/aerial-1.jpg",
+   "credit": "위성사진 © NAVER Corp."
+  },
+  {
+   "img": "photos/site/2026930046/map-1.jpg",
+   "credit": "© NAVER Corp."
+  }
+ ],
+ "scenes": [
+  {
+   "type": "story",
+   "say": "경기 광주에 8천만 원 싼 새 아파트가 남았대요. 딱 2채라 금방 끝난대요.",
+   "word": "8천만 원",
+   "shots": [
+    {
+     "img": "photos/site/2026930046/aerial-1.jpg",
+     "credit": "위성사진 © NAVER Corp.",
+     "pos": "center 25%"
+    },
+    {
+     "img": "photos/site/2026930046/map-1.jpg",
+     "credit": "© NAVER Corp.",
+     "pos": "center 45%"
+    }
+   ],
+   "proof": {
+    "kind": "compare",
+    "head": "59㎡ 비교 (추정)",
+    "items": [
+     {
+      "label": "이 단지 59A 최고",
+      "value": "4억1,668만원"
+     },
+     {
+      "label": "옆 두산위브광주센트럴파크 59㎡ 실거래",
+      "value": "5억500만원"
+     }
+    ],
+    "src": "국토부 실거래 2026.11 · 추정"
+   }
+  },
+  {
+   "type": "story",
+   "say": "옆 단지는 5억 500만 원인데, 여긴 4억 1,668만 원이래요.",
+   "word": "4억 1,668만 원",
+   "shots": [
+    {
+     "img": "photos/site/2026930046/aerial-1.jpg",
+     "credit": "위성사진 © NAVER Corp.",
+     "pos": "center 80%"
+    },
+    {
+     "img": "photos/site/2026930046/map-1.jpg",
+     "credit": "© NAVER Corp.",
+     "pos": "30% 50%"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "이게 어떻게 가능할까요?",
+   "dim": true,
+   "shots": [
+    {
+     "img": "photos/site/2026930046/map-1.jpg",
+     "credit": "© NAVER Corp.",
+     "pos": "center 50%"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "다음 달 입주하는 새 아파트에 남은 2채인데요. 11월 23일 하루만 받는대요.",
+   "word": "11월 23일 하루",
+   "shots": [
+    {
+     "img": "photos/site/2026930046/aerial-1.jpg",
+     "credit": "위성사진 © NAVER Corp.",
+     "pos": "center 15%"
+    },
+    {
+     "img": "photos/site/2026930046/aerial-1.jpg",
+     "credit": "위성사진 © NAVER Corp.",
+     "pos": "center 60%"
+    }
+   ],
+   "proof": {
+    "kind": "doc",
+    "head": "무순위 공고 요약",
+    "lines": [
+     "59A 1세대 · 59C 1세대",
+     "접수 11월 23일(월) 하루",
+     "발표 11/26 · 계약 12/3"
+    ],
+    "mark": 1,
+    "src": "출처: 무순위 입주자모집공고(2026.11.18)"
+   }
+  },
+  {
+   "type": "end",
+   "say": "단지 이름은, 댓글에 '광주'라고 남겨 주세요."
+  }
+ ]
+}
