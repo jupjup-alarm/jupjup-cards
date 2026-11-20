@@ -85,7 +85,7 @@
   {% endif %}
     </div>
   </div>
-  <p class="trust"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>{{ n.source_name or '청약홈' }} {{ '모집공고' if not n.is_rental else '모집공고' }}{% if n.notice_date %}({{ n.notice_date|d }}){% endif %} 원문 대조 · 최종 수정 <time datetime="{{ n.modified[:10] }}">{{ n.modified|d }}</time></p>
+  <p class="trust"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>{{ n.source_name or '청약홈' }} {{ '모집공고' if not n.is_rental else '모집공고' }}{% if n.notice_date %}({{ n.notice_date|d }}){% endif %} 원문 대조 · 줍줍알람 편집 (<a href="/about/#criteria">판정 기준</a>) · 최종 수정 <time datetime="{{ n.modified[:10] }}">{{ n.modified|d }}</time></p>
   </div>
 {% endif %}
 <!--CHIPNAV-->
@@ -431,7 +431,7 @@
     <h2 id="h-an">{{ an.h or "이 공고, 숫자로 보면" }}</h2>
     {% for p in an.paras %}<p>{{ p }}</p>{% endfor %}
     {% if an.points %}<ul class="an-pts">{% for pt in an.points %}<li><b>{{ pt[0] }}</b> {{ pt[1] }}</li>{% endfor %}</ul>{% endif %}
-    <p class="note">{% if an.basis %}근거: {{ an.basis|join(' · ') }}. {% endif %}숫자 비교는 공개 자료로 계산한 추정이며 투자 권유가 아니에요{% if an.made %} ({{ an.made|replace('-', '.') }} 작성){% endif %}.</p>
+    <p class="note">{% if an.basis %}근거: {{ an.basis|join(' · ') }}. {% endif %}숫자 비교는 공개 자료로 계산한 추정이에요{% if an.made %} ({{ an.made|replace('-', '.') }} 작성){% endif %}.</p>
   </section>
   {% endif %}
 
@@ -459,7 +459,7 @@
               <div><dt>{{ '타입 전체' if p.total else '이번 공급' }}</dt><dd>{% if p.total %}{{ p.total }}세대{% if mm %}<small>{{ '무순위' if n.kind == 'mujeonwi' else '이번 공급' }} {{ mm[0].general + mm[0].special }}세대</small>{% endif %}{% elif mm %}{{ mm[0].general + mm[0].special }}세대{% else %}—{% endif %}</dd></div>
             </dl>
             {% endif %}
-            <figcaption><span>이미지: {{ n.image_credit_owner }} 제공 평면도 · 실제와 다를 수 있음</span><a href="{{ p.src }}" target="_blank" rel="noopener">크게 보기</a></figcaption>
+            <figcaption><span>이미지: {{ n.image_credit_owner }} 제공 평면도</span><a href="{{ p.src }}" target="_blank" rel="noopener">크게 보기</a></figcaption>
           </div>
         </figure>
       {% endfor %}
@@ -501,7 +501,7 @@
     {% for p in n.imgs.layouts %}
       <figure class="fig">
         <img src="{{ p.src }}" width="{{ p.w }}" height="{{ p.h }}" alt="{{ p.alt }}" loading="lazy">
-        <figcaption style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap"><span>{{ p.kind }} · 이미지: {{ n.image_credit_owner }} 제공 · 실제와 다를 수 있음</span><a href="{{ p.src }}" target="_blank" rel="noopener" style="color:var(--blue);font-weight:600;text-decoration:none">크게 보기</a></figcaption>
+        <figcaption style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap"><span>{{ p.kind }} · 이미지: {{ n.image_credit_owner }} 제공</span><a href="{{ p.src }}" target="_blank" rel="noopener" style="color:var(--blue);font-weight:600;text-decoration:none">크게 보기</a></figcaption>
       </figure>
     {% endfor %}
     </div>
@@ -517,7 +517,7 @@
     {% for p in n.imgs.gallery %}
       <figure class="fig{{ '' if p.photo else ' fit' }}">
         <a href="{{ p.src }}" target="_blank" rel="noopener"><img src="{{ p.src }}" width="{{ p.w }}" height="{{ p.h }}" alt="{{ p.alt }}" loading="lazy"></a>
-        <figcaption><b>{{ p.kind }}{% if p.label != p.kind %} · {{ p.label }}{% endif %}</b> · 이미지: {{ n.image_credit_owner }} · 실제와 다를 수 있음</figcaption>
+        <figcaption><b>{{ p.kind }}{% if p.label != p.kind %} · {{ p.label }}{% endif %}</b> · 이미지: {{ n.image_credit_owner }}</figcaption>
       </figure>
     {% endfor %}
     </div>
@@ -594,6 +594,7 @@
     {% endif %}
   </section>
 
+  {% if n.faq %}
   <section class="sec" aria-labelledby="h-faq">
     <h2 id="h-faq">자주 묻는 질문</h2>
     <div class="faq">
@@ -601,6 +602,7 @@
     {% endfor %}
     </div>
   </section>
+  {% endif %}
   {% if n.guides %}
   <section class="sec" aria-labelledby="h-guide">
     <h2 id="h-guide">신청 전에 읽어볼 가이드</h2>
@@ -626,7 +628,7 @@
     {% if n.pre_page %}<p>공고 전 전망과 비교: <a href="{{ n.pre_page.url }}">{{ n.pre_page.title }} 예상 vs 실제</a></p>{% endif %}
     {% if n.imgs.map %}<p>지도 © NAVER Corp.</p>{% elif n.imgs.locmap %}<p>지도: 통계청 SGIS 2018 행정구역 경계 (공공누리 제1유형)</p>{% endif %}
     <p>최종 수정 <time datetime="{{ n.modified[:10] }}">{{ n.modified|d }}</time> · 내용이 다르면 <a href="/contact/">오류 알려주기</a></p>
-    <p>정보 제공 목적이며 투자 권유가 아니에요. 신청 전 모집공고 원문을 꼭 확인하세요.</p>
+    {% if n.imgs.plans or n.imgs.layouts or n.imgs.gallery %}<p>평면도·배치도·단지 사진은 사업주체 제공 이미지라 실제와 다를 수 있어요.</p>{% endif %}
   </section>
 </main>
 {% endblock %}

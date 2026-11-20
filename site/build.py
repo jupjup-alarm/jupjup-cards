@@ -78,6 +78,10 @@ RENTAL_EXPLAIN = {
     "다자녀 매입임대": "LH가 사들인 기존 주택을 다자녀 가구에 시중 시세보다 낮은 임대료로 빌려주는 공공임대예요.",
     "든든전세": "LH가 사들인 주택을 시세보다 낮은 전세로 빌려주는 매입임대예요. 월세 없이 보증금만 내요.",
 }
+# 2026-11-20 사용자 결정(애드센스 대비): 본문 섹션(자격·분양가·임대 조건·일정)을 다시 말하는 질문은 페이지에 싣지 않음.
+# 본문에 없는 질문(실거주 의무·홍보관 위치 등)만 남고, 다 빠지면 '자주 묻는 질문' 섹션을 숨김. data/apt의 faq 원본은 그대로.
+FAQ_DUP = re.compile(r"(자격은|분양가는|임대료는|보증금[^?]*월세는|보증금은|청약 일정은|일정은|언제[^?]*\?\s*$|집이 있어도|청약통장)")
+
 COMP_FAQ = [   # 청약 경쟁률 허브 자주 묻는 질문 (2026-11-04) — 이 사이트 계산 방식과 일반 원칙만, 공고별 수치 없음
     ("평균 경쟁률과 최고 경쟁률은 어떻게 달라요?",
      "평균 경쟁률은 그 공고의 전체 접수 건수를 전체 공급 세대로 나눈 값이에요. 최고 경쟁률은 타입·순위별로 따로 낸 경쟁률 중 가장 높은 값이라, 인기 타입 하나에 몰리면 평균보다 훨씬 높게 나와요."),
@@ -574,9 +578,9 @@ def build_notice(e, row, regions, problems):
     for f in ("take", "who", "receipt_note", "plan_note", "rent_note", "pre_note"):
         if n.get(f):
             n[f] = fill(n[f])
-    n["faq"] = [[q, fill(a)] for q, a in e["faq"]]
+    n["faq"] = [[q, fill(a)] for q, a in e["faq"] if not FAQ_DUP.search(q)]
     # 본문 '자주 묻는 질문'과 같은 내용을 FAQPage 구조화 데이터로 (2026-11-02 SEO 기획안)
-    n["faq_ld"] = {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {
+    n["faq_ld"] = None if not n["faq"] else {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {
         "@type": "Answer", "text": re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", str(a))).strip()}} for q, a in n["faq"]]}
     if n.get("gap"):
         n["gap"] = dict(n["gap"], text=fill(n["gap"]["text"]))
