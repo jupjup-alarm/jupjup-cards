@@ -1,0 +1,27 @@
+{
+ "key": "lh2015122300020998",
+ "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300020998&ccrCnntSysDsCd=03&uppAisTpCd=13&aisTpCd=26&mi=1026",
+ "checked": "2026-11-20 23:38",
+ "files": [
+  {
+   "fileid": "69245912",
+   "name": "부산수영구고령자매입임대입주자모집공고문.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69245920",
+   "name": "부산수영구고령자매입임대입주자모집공고문.pdf",
+   "kind": "notice",
+   "got": "ok",
+   "md5": "fc7fb0e97e7d9d3eeed31c00abbe3ac9",
+   "pages": 12,
+   "bytes": 749595
+  },
+  {
+   "fileid": "69245921",
+   "name": "공급대상주택목록(수영구고령자형).xlsx",
+   "kind": "other"
+  }
+ ],
+ "changed": true
+}
