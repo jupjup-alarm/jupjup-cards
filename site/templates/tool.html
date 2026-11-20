@@ -6,7 +6,7 @@
   <article class="g-art">
     {{ crumbs(crumb) }}
     <header class="g-head">
-      <span class="g-eyebrow"><i></i>{{ t.group }} 도구</span>
+      <span class="g-eyebrow"><i></i>{{ t.group }} 계산기</span>
       <h1 class="g-h1">{{ t.h1 }}</h1>
       <p class="g-dek">{{ t.dek }}</p>
       <p class="g-meta"><b>줍줍알람 편집팀</b><span>{{ checked|replace('-', '.') }} 기준 법령·공식 안내 확인</span><span>입력값은 저장하지 않아요</span></p>
@@ -33,6 +33,13 @@
       {% for q, a in t.faq %}<details{% if loop.first %} open{% endif %}><summary>{{ q }}</summary><p>{{ a|safe }}</p></details>
       {% endfor %}
     </section>
+
+    {% if glinks %}
+    <section class="g-rel" aria-labelledby="g-gd">
+      <h2 id="g-gd">계산 전에 읽어 볼 가이드</h2>
+      <div class="g-rel-list">{% for g in glinks %}<a href="{{ g.url }}"><span>{{ g.category }} 가이드</span><b>{{ g.h1 }}</b></a>{% endfor %}</div>
+    </section>
+    {% endif %}
 
     {% if notices %}
     <section class="g-now" aria-labelledby="g-now">
@@ -67,6 +74,8 @@
 <script type="application/ld+json">
 {{ {"@context": "https://schema.org", "@graph": [
   crumb_ld(crumb, t.name, page_url),
+  {"@type": "WebPage", "name": title, "url": BASE ~ page_url, "description": desc, "inLanguage": "ko", "dateModified": checked, "keywords": keywords,
+   "isPartOf": {"@type": "WebSite", "name": "줍줍알람", "url": BASE ~ "/"}, "primaryImageOfPage": BASE ~ og},
   {"@type": "WebApplication", "name": t.name, "url": BASE ~ page_url, "description": desc, "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "inLanguage": "ko",
    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "KRW"},
    "author": {"@type": "Organization", "name": "줍줍알람 편집팀", "url": BASE ~ "/about/"}},

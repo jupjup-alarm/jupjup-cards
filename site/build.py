@@ -1529,7 +1529,7 @@ def env():
         return out if len(out) >= 2 else []
     def days_to(iso):
         return (dt.date.fromisoformat(iso) - TODAY).days if iso else None
-    e.globals.update(steps4=steps4, days_to=days_to, HAS_GUIDES=bool(GUIDES.load()), RENTAL_EXPLAIN=RENTAL_EXPLAIN, BASE=BASE, IG=IG, THREADS=THREADS, KAKAO=KAKAO, BLOG=BLOG, YOUTUBE=YOUTUBE, COUPANG=COUPANG, COUPANG_NOTE=COUPANG_NOTE, ADSENSE=ADSENSE, GA=GA, STATUS=STATUS, KINDS=KINDS, crumb_ld=crumb_ld, items_ld=items_ld,
+    e.globals.update(steps4=steps4, days_to=days_to, HAS_GUIDES=bool(GUIDES.load()), RENTAL_EXPLAIN=RENTAL_EXPLAIN, BASE=BASE, IG=IG, THREADS=THREADS, KAKAO=KAKAO, BLOG=BLOG, YOUTUBE=YOUTUBE, COUPANG=COUPANG, COUPANG_NOTE=COUPANG_NOTE, ADSENSE=ADSENSE, GA=GA, STATUS=STATUS, KINDS=KINDS, crumb_ld=crumb_ld, items_ld=items_ld, GUIDE_TOOLS=TOOLS_PAGES.guide_tools(),
                      logo=Markup((SITE / "static/favicon.svg").read_text().replace('<svg xmlns="http://www.w3.org/2000/svg" ', '<svg class="mark" aria-hidden="true" focusable="false" ')))
     return e
 

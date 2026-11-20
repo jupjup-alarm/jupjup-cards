@@ -44,9 +44,9 @@ TOOLS = [
         "related": ["subscription-priority", "payment-plan"], "kinds": ["private", "public"],
     },
     {
-        "slug": "subscription-priority", "group": "청약", "name": "청약통장 1순위 확인",
+        "slug": "subscription-priority", "group": "청약", "name": "청약 1순위 조건 확인",
         "short": "지역·주택 종류별 1순위 요건과 납입 인정 금액 확인",
-        "h1": "청약통장 1순위 확인 — 지역·주택 종류별 요건과 납입 인정 금액",
+        "h1": "청약 1순위 조건 확인 — 지역별 가입 기간·예치금·납입 인정 금액",
         "dek": "넣으려는 공고가 어느 지역인지, 국민주택인지 민영주택인지 고르고 내 통장 기간·납입 회차·예치금을 넣으면 1순위인지 바로 알려 드려요.",
         "desc": "청약통장 1순위 계산기. 투기과열·청약과열 2년 24회, 수도권 1년 12회, 수도권 외 6개월 6회 요건과 민영주택 지역·면적별 예치금, 월 25만원 납입 인정까지 한 번에 확인합니다.",
         "how": [
@@ -100,9 +100,9 @@ TOOLS = [
     },
     # ── 면적·가격 ─────────────────────────────────────────
     {
-        "slug": "area-converter", "group": "면적·가격", "name": "평·㎡ 환산",
+        "slug": "area-converter", "group": "면적·가격", "name": "평수 계산기",
         "short": "평과 ㎡를 바로 바꾸고, 전용·공급면적 차이까지",
-        "h1": "평·㎡ 환산 — 84㎡는 몇 평? 전용·공급면적까지",
+        "h1": "평수 계산기 — 평·㎡ 환산, 84㎡는 몇 평일까",
         "dek": "숫자 하나만 넣으면 평과 ㎡를 바꿔 드려요. 아파트 공고의 '전용 84㎡'가 왜 '34평형'으로 불리는지도 함께 정리했어요.",
         "desc": "평 ㎡ 환산 계산기. 1평 = 3.3058㎡ 기준으로 평과 제곱미터를 바꾸고, 59·74·84㎡ 전용면적이 공급면적으로 몇 평형인지 설명합니다.",
         "how": [
@@ -250,9 +250,9 @@ TOOLS = [
         "related": ["payment-plan", "brokerage-fee", "loan-limit"], "kinds": ["private", "mujeonwi"], "picker": True,
     },
     {
-        "slug": "brokerage-fee", "group": "세금·비용", "name": "중개보수(복비) 계산기",
+        "slug": "brokerage-fee", "group": "세금·비용", "name": "중개수수료(복비) 계산기",
         "short": "매매·전세·월세 상한요율과 부가세까지",
-        "h1": "중개보수(복비) 계산기 — 매매·전세·월세 상한 금액",
+        "h1": "중개수수료(복비) 계산기 — 매매·전세·월세 상한 금액",
         "dek": "거래 종류와 금액만 넣으면 법정 상한요율로 받을 수 있는 최대 중개보수와 부가세를 계산해요. 월세는 보증금 + 월세 × 100으로 환산해요.",
         "desc": "부동산 중개보수(복비) 계산기. 주택 매매·전세·월세 상한요율(0.4~0.7%, 0.3~0.6%)과 한도액, 오피스텔 요율, 월세 환산(보증금+월세×100), 부가세 10%를 계산합니다.",
         "how": [
@@ -282,6 +282,84 @@ TOOLS = [
         "related": ["acquisition-tax", "jeonse-monthly"], "kinds": [],
     },
 ]
+
+
+# 검색 노출용 (2026-11-20 사용자 요청 "툴 페이지마다 메타태그 잘 넣어서 검색 노출")
+#  title: 사람들이 실제로 치는 검색어를 맨 앞에 (네이버·구글 제목은 한글 약 30자 안쪽이 다 보임)
+#  kw: 메타 keywords·본문 '이렇게도 찾아요'에 쓰는 검색어 / guides: 관련 가이드(양방향 링크)
+SEO = {
+    "subscription-score": {"title": "청약 가점 계산기 2026 — 84점 만점 내 점수 바로 계산",
+        "kw": ["청약 가점 계산기", "청약 가점 계산", "청약 가점표", "무주택 기간 점수", "부양가족 점수", "청약통장 가입기간 점수", "배우자 통장 가점"],
+        "guides": ["cheongyak-gajeom", "homeless-criteria"]},
+    "subscription-priority": {"title": "청약 1순위 조건 계산기 — 지역별 기간·예치금·납입 인정",
+        "kw": ["청약 1순위 조건", "청약통장 1순위", "청약 예치금", "청약통장 납입 인정 금액", "청약통장 25만원", "투기과열지구 1순위", "국민주택 1순위"],
+        "guides": ["first-priority", "cheongyak-account"]},
+    "payment-plan": {"title": "분양 대금 계산기 — 계약금·중도금·잔금 언제 얼마",
+        "kw": ["분양 대금 계산기", "계약금 중도금 잔금 계산", "중도금 대출 이자 후불제", "분양가 납부 일정", "아파트 잔금 계산"],
+        "guides": ["after-winning-money", "move-in-report"]},
+    "area-converter": {"title": "평수 계산기 — 평 ㎡ 환산, 84㎡는 몇 평?",
+        "kw": ["평수 계산기", "평 제곱미터 환산", "㎡ 평 변환", "84제곱미터 몇평", "59제곱미터 몇평", "전용면적 공급면적 차이"],
+        "guides": ["applyhome-guide"]},
+    "price-per-pyeong": {"title": "평당가 계산기 — 분양가 3.3㎡당 가격·평단가 계산",
+        "kw": ["평당가 계산기", "평단가 계산", "3.3㎡당 분양가", "㎡당 가격", "분양가 평당가 비교"],
+        "guides": ["mujeonwi", "applyhome-guide"]},
+    "jeonse-monthly": {"title": f"전월세 전환 계산기 2026 — 법정 전환율 {BASE_RATE + 2:.1f}% 월세 계산",
+        "kw": ["전월세 전환 계산기", "전월세 전환율", "전세 월세 전환", "보증금 월세 계산", "법정 전환율 상한", "월세 전환율 2026"],
+        "guides": ["lease-renewal", "jeonse-guarantee-insurance"]},
+    "loan-interest": {"title": "대출 이자 계산기 — 원리금균등·원금균등·만기일시 비교",
+        "kw": ["대출 이자 계산기", "원리금균등 계산기", "원금균등 상환", "만기일시상환 이자", "주택담보대출 이자 계산", "거치기간 계산"],
+        "guides": ["dsr-ltv-dti", "didimdol-bogeumjari"]},
+    "loan-limit": {"title": "주택담보대출 한도 계산기 2026 — LTV·DSR·스트레스 DSR",
+        "kw": ["주택담보대출 한도 계산기", "주담대 한도", "DSR 계산기", "LTV 계산기", "스트레스 DSR", "10.15 대출규제 한도", "규제지역 LTV 40%"],
+        "guides": ["dsr-ltv-dti", "didimdol-bogeumjari", "newborn-loan"]},
+    "acquisition-tax": {"title": "취득세 계산기 2026 — 아파트 1~3%·다주택 중과·생애최초 감면",
+        "kw": ["취득세 계산기", "아파트 취득세", "주택 취득세율 2026", "취득세 중과", "생애최초 취득세 감면", "분양권 취득세", "지방교육세 농어촌특별세"],
+        "guides": ["acquisition-tax", "one-house-capital-gains"]},
+    "brokerage-fee": {"title": "중개수수료 계산기 — 복비 요율표 매매·전세·월세",
+        "kw": ["중개수수료 계산기", "복비 계산기", "부동산 중개보수 요율표", "월세 복비", "전세 복비", "오피스텔 중개수수료"],
+        "guides": ["lease-renewal"]},
+}
+for _t in TOOLS:
+    _t.update(SEO.get(_t["slug"], {}))
+
+
+def guide_tools():
+    """가이드 slug → 관련 도구 [(이름, 주소)] (가이드 페이지 '함께 쓰는 계산기' 상자용)."""
+    out = {}
+    for t in TOOLS:
+        for g in t.get("guides", []):
+            out.setdefault(g, []).append((t["name"], f"/tools/{t['slug']}/"))
+    return out
+
+
+def og_image(t, out_path):
+    """1200×630 공유 이미지: 남색 바탕 + '계산기' + 이름 + 한 줄 설명."""
+    from pathlib import Path
+    from PIL import Image, ImageDraw, ImageFont
+    fonts = Path(__file__).resolve().parent.parent / "fonts"
+    im = Image.new("RGB", (1200, 630), (15, 30, 61))
+    dr = ImageDraw.Draw(im)
+    big = ImageFont.truetype(str(fonts / "Pretendard-Black.otf"), 92)
+    mid = ImageFont.truetype(str(fonts / "Pretendard-Bold.otf"), 38)
+    sm = ImageFont.truetype(str(fonts / "Pretendard-Bold.otf"), 32)
+    dr.rounded_rectangle((80, 86, 102, 108), 11, fill=(255, 82, 51))
+    dr.text((118, 74), f"{t['group']} 계산기 · {CHECKED[:4]}년 기준", font=mid, fill=(255, 241, 236))
+    dr.text((80, 190), t["name"], font=big, fill=(255, 255, 255))
+    words, lines, cur = t["short"].split(" "), [], ""
+    for w in words:
+        x = (cur + " " + w).strip()
+        if dr.textlength(x, font=mid) > 1040 and cur:
+            lines.append(cur)
+            cur = w
+        else:
+            cur = x
+    lines.append(cur)
+    y = 330
+    for ln in lines[:2]:
+        dr.text((80, y), ln, font=mid, fill=(214, 222, 235))
+        y += 56
+    dr.text((80, 540), "줍줍알람 · jupjupalarm.com/tools", font=sm, fill=(154, 163, 178))
+    im.save(out_path, quality=88)
 
 BY = {t["slug"]: t for t in TOOLS}
 
@@ -326,24 +404,49 @@ def build(E, notices, write, common, pub, base, today, problems):
     js_url = f"/tools.js?v={v}"
     picks = picker_items(notices)
     live = [n for n in notices if n["status"] in ("open", "upcoming")]
+    gby = {}
+    try:
+        import guides as G
+        gby = {g["slug"]: g for g in G.load()}
+    except Exception:
+        pass
     tpl = E.get_template("tool.html")
     for t in TOOLS:
         url = f"/tools/{t['slug']}/"
         kinds = set(t.get("kinds") or [])
         lst = sorted([n for n in live if n["kind"] in kinds], key=lambda n: (n["rcpt"][1] or n["rcpt"][0]))[:4] if kinds else []
         rel = [dict(BY[s], url=f"/tools/{s}/") for s in t.get("related", []) if s in BY]
+        gl = [{"url": f"/guide/{s}/", "h1": gby[s]["h1"], "category": gby[s].get("category", "")} for s in t.get("guides", []) if s in gby]
         faq_ld = [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": re.sub(r"<[^>]+>", "", a)}} for q, a in t["faq"]]
-        title = f"{t['name']} — {t['short']} · 줍줍알람"
-        crumb = [("홈", "/"), ("도구", "/tools/"), (t["group"], f"/tools/#{GROUPS.index(t['group'])}")]
-        h = tpl.render(t=t, notices=lst, rel=rel, faq_ld=faq_ld, checked=CHECKED, js_url=js_url,
+        title = f"{t.get('title') or t['name']} · 줍줍알람"
+        crumb = [("홈", "/"), ("계산기", "/tools/"), (t["group"], f"/tools/#{GROUPS.index(t['group'])}")]
+        d = pub / "tools" / t["slug"]
+        d.mkdir(parents=True, exist_ok=True)
+        try:
+            og_image(t, d / "og.jpg")
+            og = f"{url}og.jpg"
+        except Exception as e:
+            problems.append((t["slug"], f"경고 — 도구 공유 이미지 실패: {e}"))
+            og = "/og-default.jpg"
+        h = tpl.render(t=t, notices=lst, rel=rel, glinks=gl, faq_ld=faq_ld, checked=CHECKED, js_url=js_url,
                        picks=json.dumps(picks, ensure_ascii=False) if t.get("picker") else "", base_rate=BASE_RATE,
-                       **common, page_url=url, title=title, desc=t["desc"], og="/og-default.jpg", crumb=crumb, nav="tools")
+                       keywords=", ".join(t.get("kw", [])), og_alt=f"{t['name']} — {t['short']}",
+                       **common, page_url=url, title=title, desc=t["desc"], og=og, crumb=crumb, nav="tools")
         write(url, h, title, t["desc"], "page", CHECKED)
     groups = [(g, i, [dict(t, url=f"/tools/{t['slug']}/") for t in TOOLS if t["group"] == g]) for i, g in enumerate(GROUPS)]
-    title = "청약·부동산 계산기 모음 — 가점·1순위·분양 대금·취득세·복비 · 줍줍알람"
-    desc = ("청약 가점, 청약통장 1순위, 분양 대금 일정(계약금·중도금·잔금), 평·㎡ 환산, 평당가, 전월세 전환, 대출 이자, "
-            "주담대 한도, 취득세, 중개보수까지 청약·내 집 마련에 필요한 계산기 10가지. 2026년 규정 기준.")
+    title = "청약·부동산 계산기 10종 — 청약 가점·취득세·주담대 한도·복비 · 줍줍알람"
+    desc = ("청약 가점 계산기, 청약 1순위 조건, 분양 대금(계약금·중도금·잔금), 평수 계산기, 평당가, 전월세 전환, 대출 이자, "
+            "주택담보대출 한도, 취득세, 중개수수료(복비) 계산기 10종. 2026년 법령·대출 규제 기준, 무료·저장 안 함.")
+    kw = "청약 계산기, 부동산 계산기, 청약 가점 계산기, 취득세 계산기, 주택담보대출 한도 계산기, 중개수수료 계산기, 평수 계산기, 전월세 전환 계산기"
+    d = pub / "tools"
+    d.mkdir(parents=True, exist_ok=True)
+    try:
+        og_image({"group": "청약·부동산", "name": "계산기 10종", "short": "청약 가점 · 1순위 · 분양 대금 · 취득세 · 주담대 한도 · 복비"}, d / "og.jpg")
+        og = "/tools/og.jpg"
+    except Exception:
+        og = "/og-default.jpg"
     h = E.get_template("tools_index.html").render(groups=groups, n_tools=len(TOOLS), checked=CHECKED, **common, page_url="/tools/",
-                                                  title=title, desc=desc, og="/og-default.jpg", crumb=[("홈", "/"), ("도구", "")], nav="tools",
+                                                  title=title, desc=desc, og=og, keywords=kw, og_alt="줍줍알람 청약·부동산 계산기 10종",
+                                                  crumb=[("홈", "/"), ("계산기", "")], nav="tools",
                                                   tools_ld=[{"@type": "ListItem", "position": i, "url": base + f"/tools/{t['slug']}/", "name": t["name"]} for i, t in enumerate(TOOLS, 1)])
     write("/tools/", h, title, desc, "page", CHECKED)

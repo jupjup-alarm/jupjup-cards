@@ -287,5 +287,18 @@
     });
   };
 
-  document.querySelectorAll('[data-tool]').forEach(function(el){ var f=T[el.getAttribute('data-tool')]; if(f){ el.innerHTML=''; f(el); } });
+  document.querySelectorAll('[data-tool]').forEach(function(el){ var f=T[el.getAttribute('data-tool')]; if(f){ el.innerHTML=''; f(el); jump(el); } });
+
+  /* 모바일: 입력하는 동안 결과가 화면 밖이면 아래에 '결과 보기' 띠 (2026-11-20) */
+  function jump(el){
+    var res=el.querySelector('[data-o]')||el.querySelector('.g-res'); if(!res||!('IntersectionObserver' in window)) return;
+    var bar=document.createElement('button'); bar.type='button'; bar.className='t-jump'; bar.hidden=true;
+    bar.innerHTML='<span>결과</span><b></b><span>보기 ↓</span>'; document.body.appendChild(bar);
+    var inTool=false, resVis=false;
+    function upd(){ var b=el.querySelector('.g-res b')||el.querySelector('.t-cards b'); bar.querySelector('b').textContent=b?b.textContent:''; bar.hidden=!(inTool&&!resVis&&b&&b.textContent); }
+    new IntersectionObserver(function(es){ inTool=es[0].isIntersecting; upd(); },{rootMargin:'0px 0px -35% 0px'}).observe(el);
+    new IntersectionObserver(function(es){ resVis=es[0].isIntersecting; upd(); }).observe(res);
+    el.addEventListener('input',function(){ setTimeout(upd,0); }); el.addEventListener('click',function(){ setTimeout(upd,0); });
+    bar.addEventListener('click',function(){ res.scrollIntoView({behavior:'smooth',block:'center'}); });
+  }
 })();

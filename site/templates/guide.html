@@ -29,6 +29,14 @@
       {{ g.html_b }}{% endif %}
     </div>
 
+    {% set gt = GUIDE_TOOLS.get(g.slug) if GUIDE_TOOLS is defined else None %}
+    {% if gt %}
+    <aside class="g-tools-box" aria-label="함께 쓰는 계산기">
+      <p>이 글과 함께 쓰는 계산기</p>
+      <div>{% for name, url in gt %}<a href="{{ url }}">{{ name }} ›</a>{% endfor %}</div>
+    </aside>
+    {% endif %}
+
     {% if g.faq %}
     <section class="g-faq" aria-labelledby="g-faq">
       <h2 id="g-faq">자주 묻는 질문</h2>

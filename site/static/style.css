@@ -1496,3 +1496,41 @@ footer .biz{font-style:normal;line-height:1.6;opacity:.85}   /* 사업자 정보
 .t-out,.t-page .g-body table{min-width:0}
 .t-page .g-body table th,.t-page .g-body table td{white-space:normal;padding:8px 6px;text-align:left}
 .t-out thead th{background:none}
+
+/* 도구 모바일 정리 (2026-11-20 사용자 요청 "모바일에서 UI 깨짐") — 입력은 한 줄(라벨 왼쪽·칸 오른쪽), 결과 바로가기 띠 */
+@media (max-width:640px){
+  .t-page .g-h1{font-size:24px;line-height:1.35}
+  .t-page .g-dek{font-size:15.5px}
+  .t-tool{padding:14px;margin-inline:-4px;gap:10px}
+  .t-tool .g-row{grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;padding-bottom:8px;font-size:14.5px}
+  .t-tool .g-row.t-segrow,.t-tool .g-row.t-pick{grid-template-columns:minmax(0,1fr);gap:6px}
+  .t-tool .g-in input{width:6.6em;font-size:16px;padding:7px 8px}
+  .t-tool .g-in em{min-width:1.8em;font-size:12.5px}
+  .t-tool select{width:100%;font-size:15px}
+  .t-tool .t-hint{grid-column:2;justify-self:end;margin-top:0}
+  .t-tool .t-seg{justify-content:flex-start;gap:5px}
+  .t-tool .t-seg button{font-size:13px;min-height:34px;padding:0 11px}
+  .t-tool .g-res{gap:2px 8px}
+  .t-tool .g-res b{font-size:28px}
+  .t-tool .g-res span{font-size:13px}
+  .t-cards{grid-template-columns:minmax(0,1fr)}
+  .t-cards div{grid-template-columns:minmax(0,1fr) auto;align-items:baseline}
+  .t-cards small{grid-column:1/-1}
+  .t-cards b{font-size:16px}
+  .t-out{font-size:14px}
+  .t-page .g-body table{font-size:13px}
+  .t-page .g-body table th,.t-page .g-body table td{padding:7px 4px}
+}
+.t-jump{position:fixed;left:12px;right:12px;bottom:calc(var(--tab-h, 60px) + var(--safe-b, 0px) + 10px);z-index:39;display:flex;align-items:center;justify-content:space-between;gap:10px;
+  background:var(--navy);color:#fff;border:0;border-radius:14px;padding:11px 14px;font:inherit;font-size:14px;box-shadow:0 6px 20px rgba(15,30,61,.25);cursor:pointer;transition:transform .2s,opacity .2s}
+.t-jump[hidden]{display:flex;opacity:0;transform:translateY(12px);pointer-events:none}
+.t-jump b{font-size:17px;font-variant-numeric:tabular-nums}
+.t-jump span{opacity:.8;font-size:12.5px}
+@media (min-width:1024px){.t-jump{display:none!important}}
+.t-guides{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.t-guides a{display:block;border:1px solid var(--line);border-radius:12px;padding:10px 14px;text-decoration:none;color:inherit}
+.t-guides a span{display:block;font-size:12px;color:var(--coral-strong);font-weight:700}
+.g-tools-box{margin:28px 0;border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:grid;gap:8px;background:var(--card, #fff)}
+.g-tools-box p{margin:0;font-weight:800;font-size:15px}
+.g-tools-box div{display:flex;flex-wrap:wrap;gap:8px}
+.g-tools-box a{font-size:14px;font-weight:700;border:1px solid var(--line);border-radius:999px;padding:7px 12px;text-decoration:none;color:var(--ink)}
