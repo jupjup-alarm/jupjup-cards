@@ -6,7 +6,7 @@
     <div class="lhead">
       {{ crumbs(crumb) }}
       <h1>청약·내 집 마련 계산기 {{ n_tools }}가지</h1>
-      <p>청약 가점과 1순위부터 분양 대금, 대출, 취득세, 중개보수까지 — 공고를 보면서 바로 따져 볼 수 있게 줍줍알람이 직접 만든 계산기예요. 모두 {{ checked|replace('-', '.') }} 기준 법령·공식 안내로 숫자를 확인했고, 페이지마다 계산 방법과 근거를 함께 적었어요.</p>
+      <p>청약 가점과 1순위부터 분양 대금, 대출, 취득세, 중개보수까지, 공고를 보면서 바로 따져 볼 수 있게 줍줍알람이 직접 만든 계산기예요. 모두 {{ checked|replace('-', '.') }} 기준 법령·공식 안내로 숫자를 확인했고, 페이지마다 계산 방법과 근거를 함께 적었어요.</p>
     </div>
     <nav class="gcats" aria-label="분류">{% for g, i, lst in groups %}<a href="#{{ i }}">{{ g }} <span class="num">{{ lst|length }}</span></a>{% endfor %}</nav>
     {% for g, i, lst in groups %}

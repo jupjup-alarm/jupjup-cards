@@ -8,6 +8,7 @@
     <header class="g-head">
       <span class="g-eyebrow"><i></i>{{ t.group }} 계산기</span>
       <h1 class="g-h1">{{ t.h1 }}</h1>
+      {% if t.sub %}<p class="t-sub">{{ t.sub }}</p>{% endif %}
       <p class="g-dek">{{ t.dek }}</p>
       <p class="g-meta"><b>줍줍알람 편집팀</b><span>{{ checked|replace('-', '.') }} 기준 법령·공식 안내 확인</span><span>입력값은 저장하지 않아요</span></p>
     </header>
@@ -43,7 +44,7 @@
 
     {% if notices %}
     <section class="g-now" aria-labelledby="g-now">
-      <h2 id="g-now">이 계산이 필요한 공고 — 지금 접수 중·예정</h2>
+      <h2 id="g-now">지금 접수 중·예정인 관련 공고</h2>
       <ul class="hm-rows">{% for n in notices %}{{ nrow(n) }}{% endfor %}</ul>
       <p class="note">공고는 매일 아침 새로 고쳐져요. <a href="/schedule/this-week/">이번 주 청약 일정 전체 보기 →</a></p>
     </section>
