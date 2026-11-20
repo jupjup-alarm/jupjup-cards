@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Edit(//tmp/claude-0/sec/**)",
+      "Bash(chmod 600 /tmp/claude-0/*)",
+      "Bash(CHEONGYAK_ENV=* python3 site/tools/keywords.py *)"
+    ]
+  }
+}
