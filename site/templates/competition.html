@@ -28,7 +28,7 @@
       <h2>최근 당첨 가점 <small>청약홈 공식 · 해당지역 최저</small></h2>
       <div class="tbl ntbl">
         <table class="num">
-          <caption>가점제 당첨자 중 해당지역 최저 가점 (주택형별 가장 낮은~가장 높은 값). <a href="/tools/subscription-score/">내 가점 계산하기</a></caption>
+          <caption>가점제 당첨자 중 해당지역 최저 가점 (주택형별 가장 낮은~가장 높은 값). <a href="/scores/">지역·면적별 커트라인</a> · <a href="/tools/subscription-score/">내 가점 계산하기</a></caption>
           <thead><tr><th scope="col" style="text-align:left">단지</th><th scope="col" style="text-align:left">지역</th><th scope="col">당첨자 발표</th><th scope="col">최저 당첨 가점</th></tr></thead>
           <tbody>
           {% for n in score_rows %}<tr><th scope="row"><a href="{{ n.url }}">{{ n.title }}</a></th><td class="l">{{ n.sido }} {{ n.sigungu or '' }}</td><td>{{ n.announce|tdate }}</td><td class="max">{{ n.score_min[0]|round|int }}{% if n.score_min[1] != n.score_min[0] %}~{{ n.score_min[1]|round|int }}{% endif %}점</td></tr>

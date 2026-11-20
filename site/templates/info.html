@@ -31,6 +31,7 @@
       <div class="inf-h"><h2 id="h-r">청약 결과</h2></div>
       <div class="t-grid">
         <a class="t-card" href="/competition/"><b>청약 경쟁률·당첨 가점</b><span>최근 접수가 끝난 공고의 청약홈 공식 경쟁률과 당첨 가점</span><i aria-hidden="true">보기 ›</i></a>
+        {% if has_scores %}<a class="t-card" href="/scores/"><b>청약 당첨 가점 커트라인</b><span>지역·면적별 최근 당첨 가점 (해당지역 최저·평균)</span><i aria-hidden="true">보기 ›</i></a>{% endif %}
         {% for r in reports[:2] %}<a class="t-card" href="{{ r.url }}"><b>{{ r.y }}년 {{ r.m }}월 청약 결산{% if r.ongoing %} · 집계 중{% endif %}</b><span>공고 {{ r.n }}곳, 경쟁률 공개 {{ r.ncomp }}곳 중 미달 {{ r.under }}곳</span><i aria-hidden="true">보기 ›</i></a>{% endfor %}
       </div>
     </section>

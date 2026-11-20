@@ -1690,7 +1690,7 @@ def main():
             by_t = {}
             for r in rows_:
                 by_t.setdefault(r.get("type") or "-", []).append(r)
-            n["scores"] = [{"type": t, "rows": v} for t, v in by_t.items()]
+            n["scores"] = [{"type": REPORT._tname(t) + "타입", "rows": v} for t, v in by_t.items()]
             loc = [r["min"] for r in rows_ if r.get("min") and "기타" not in (r.get("area") or "")] or [r["min"] for r in rows_ if r.get("min")]
             n["score_min"] = (min(loc), max(loc)) if loc else None
     # 공고 전 페이지에 공고가 나오면: 페이지는 그대로 두고(검색 순위 유지) 새 공고로 안내 + 예상 vs 실제 비교
@@ -1821,6 +1821,19 @@ def main():
         n["related_title"] = f"{n['sido']}에서 곧 접수하는 공고" if same else "함께 볼 공고"
         # 첫 문단: 검색자가 찾는 답(세대·접수·가격·발표)을 먼저 한 문장으로 (2026-11-03 리디자인 v2 — SEO 우선)
         n["lead"] = lead_of(n)
+        # '이 공고로 계산해 보기' 칩 (2026-11-20 사용자 요청) — 최고 분양가 타입의 값을 계산기 주소로 넘김
+        if n.get("max_price") and not n["is_rental"] and not n["is_pre"]:
+            ex_ = TOOLS_PAGES._excl(n.get("max_type") or "", n.get("areas"))
+            f_ = ((n.get("decide") or {}).get("funds") or {})
+            dp_ = sum(p for l, _, p in f_.get("steps", []) if "계약" in l)
+            md_ = sum(p for l, _, p in f_.get("steps", []) if "중도" in l)
+            q_ = f"price={n['max_price'] // 10000}" + (f"&area={ex_:g}" if ex_ else "")
+            qp_ = f"price={n['max_price'] // 10000}" + (f"&dep={dp_}&mid={md_}" if dp_ and dp_ + md_ <= 100 else "")
+            n["calc"] = {"type": n.get("max_type") or "", "won": won(n["max_price"]), "links": [
+                ("취득세", f"/tools/acquisition-tax/?{q_}"), ("분양 대금 일정", f"/tools/payment-plan/?{qp_}"),
+                ("주담대 한도", f"/tools/loan-limit/?price={n['max_price'] // 10000}"), ("평당가", f"/tools/price-per-pyeong/?{q_}")]}
+            if n["kind"] in ("public", "newlywed", "private"):
+                n["calc"]["links"].append(("특공 소득 기준", "/tools/special-supply-income/"))
         # 한마디: 결론 한 문장 + 나머지는 '왜 그런지 보기'로 접음 (2026-11-03 사용자 결정 — 읽기 쉬운 구조)
         tk = (n.get("take") or "").strip()
         m_ = re.search(r"(?<=[.!?])\s+", tk)
@@ -2314,6 +2327,7 @@ def main():
 
     # 월간 청약 결산 (2026-11-20 사용자 요청)
     REPORTS = REPORT.build(E, notices, write, common, BASE, TODAY, won, KINDS, d)
+    HAS_SCORES = REPORT.build_scores(E, notices, write, common, TODAY, d)   # /scores/ — 가점 데이터가 있을 때만
 
     # 가이드 칼럼
     GUIDES.build(E, notices, write, common, PUB, BASE, TODAY, problems)
@@ -2331,7 +2345,7 @@ def main():
     t_ = "청약 정보 | 가이드·계산기·경쟁률·월간 결산 모음 · 줍줍알람"
     ds_ = (f"청약 가이드 {len(gl_)}편, 청약 가점·특공 소득·취득세·주담대 한도 등 계산기 {len(TOOLS_PAGES.TOOLS)}종, "
            "청약홈 공식 경쟁률·당첨 가점, 월간 청약 결산을 한곳에 모았어요.")
-    h = E.get_template("info.html").render(guides=gl_[:6], n_guides=len(gl_), gcats=gcats_, tools=TOOLS_PAGES.TOOLS, reports=REPORTS or [],
+    h = E.get_template("info.html").render(has_scores=HAS_SCORES, guides=gl_[:6], n_guides=len(gl_), gcats=gcats_, tools=TOOLS_PAGES.TOOLS, reports=REPORTS or [],
                                            page_url="/info/", title=t_, desc=ds_, og="/og-default.jpg", crumb=[("홈", "/"), ("청약 정보", "")], nav="info", **common)
     write("/info/", h, t_, ds_, "list", max(n["modified"] for n in notices))
 
@@ -2451,7 +2465,7 @@ def main():
 
 
 BASIC = {
-    "about": ("소개·작성 원칙", "줍줍알람이 누구이고, 어떤 자료로 청약 공고를 정리하고 확인하는지, 추정 차익을 어떻게 계산하는지 설명해요."),
+    "about": ("소개·작성 원칙", "줍줍알람이 누구이고 어떤 공식 데이터로 청약 공고·경쟁률·당첨 가점을 정리하는지, 추정 차익과 좋음·보통·주의 판정, 계산기·월간 결산을 어떻게 만드는지 설명해요."),
     "sources": ("데이터 출처", "청약홈·LH·마이홈 공공데이터, 국토부 실거래가, 지도, 단지 이미지 등 줍줍알람이 쓰는 자료의 출처와 이용 조건."),
     "privacy": ("개인정보 처리방침", "줍줍알람 사이트의 개인정보 처리방침. 수집하는 정보, 쿠키, 방문 통계, 문의 방법."),
     "terms": ("이용약관", "줍줍알람 사이트 이용약관. 정보 제공 목적, 책임의 한계, 저작권."),
@@ -2562,7 +2576,10 @@ def check(notices):
         for m in re.finditer(r'href="(/[^"#]*)"', p["html"]):
             h = m.group(1)
             if "?" in h:
-                errs.append(f"주소에 ? : {url} → {h}")
+                if h.startswith("/tools/"):   # 계산기에 값 넘기기 (2026-11-20) — rel=nofollow + 계산기 canonical
+                    h = h.split("?")[0]
+                else:
+                    errs.append(f"주소에 ? : {url} → {h}")
             if h.endswith("/") and h not in exist:
                 errs.append(f"깨진 링크: {url} → {h}")
             elif not h.endswith("/") and not (PUB / h.lstrip("/")).exists() and not (PUB / url.lstrip("/") / h).exists():

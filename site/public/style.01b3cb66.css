@@ -1594,3 +1594,16 @@ footer .biz{font-style:normal;line-height:1.6;opacity:.85}   /* 사업자 정보
 .trust > span{min-width:0}
 .trust a{color:inherit;text-decoration:underline;text-underline-offset:2px}
 @media (max-width:480px){.tbl table.fit{min-width:0;font-size:13.5px}.tbl table.fit th,.tbl table.fit td{padding:10px 7px}.tbl table.fit th[scope=row]{white-space:normal;word-break:keep-all;min-width:5.8em}}
+/* 공고 '이 공고로 계산해 보기' (2026-11-20) */
+.calc-chips .cc{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.calc-chips .cc a{display:inline-flex;align-items:center;gap:4px;min-height:40px;padding:0 14px;border:1px solid var(--line);border-radius:999px;font-size:14px;font-weight:700;color:var(--ink);text-decoration:none;background:var(--card, #fff)}
+.calc-chips .cc a span{color:var(--coral-strong, var(--coral))}
+.pls{display:grid;gap:8px}
+.pl{border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:grid;gap:4px;background:var(--band)}
+.pl.ok{border-color:#067647;background:var(--card, #fff)}
+.pl-h{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.pl-h b{font-size:15.5px}.pl-h span{font-size:13px;font-weight:800}
+.pl-l{margin:0;font-size:14px}.pl-l b{font-size:18px}.pl-l small{color:var(--ink-sub)}
+.pl-s{margin:0;font-size:13px;color:var(--ink-sub);line-height:1.5}
+.rp .ntbl th[scope=row] small{display:block;font-size:12px;color:var(--ink-sub);font-weight:500}
+@media (max-width:640px){.rp .ntbl table.keep2 thead th:nth-child(2){display:table-cell}}

@@ -155,7 +155,7 @@
   /* ── 분양 대금 일정 ─────────────────────── */
   T['payment-plan']=function(el){
     el.innerHTML='<h2 class="t-h">언제 얼마가 필요할까</h2>'+picker(el)+
-      inp('분양가','price',60000,'만원',{q:1})+inp('계약금 비율','dep',10,'%')+inp('중도금 비율','mid',60,'%',{help:'잔금 비율은 나머지로 자동'})+
+      inp('분양가','price',60000,'만원',{q:1})+inp('계약금 비율','dep',10,'%',{q:1})+inp('중도금 비율','mid',60,'%',{help:'잔금 비율은 나머지로 자동',q:1})+
       seg('중도금 내는 방법','loan',[['post','대출 · 이자 후불'],['free','대출 · 무이자'],['cash','내 현금(자납)']],'post')+
       inp('중도금 대출 금리','rate',4.5,'%')+inp('계약부터 입주까지','months',30,'개월')+inp('지금 쓸 수 있는 현금 (선택)','cash',0,'만원')+
       '<div data-o></div>'+note('중도금이 공사 기간에 고르게 나간다고 보고, 평균적으로 기간의 절반 동안 빌린 것으로 후불 이자를 추정했어요. 실제 회차·금액·대출 가능 여부는 입주자모집공고문의 \'공급금액 및 납부일정\'이 기준이에요.');
@@ -250,6 +250,46 @@
         '<div><span>원금균등</span><b>첫 달 '+man(pFirst)+'</b><small>점점 줄어요 · 총이자 '+man(pTotal)+'</small></div>'+
         '<div><span>만기일시</span><b>월 '+man(P*r)+'</b><small>만기에 원금 '+man(P)+' · 총이자 '+man(bTotal)+'</small></div></div>'+
         '<table class="t-out t-yr"><thead><tr><th>원리금균등</th><th>남은 원금</th><th>낸 이자 누계</th></tr></thead><tbody>'+tb.map(function(x){ return '<tr><th scope="row">'+x[0]+'</th><td>'+x[1]+'</td><td>'+x[2]+'</td></tr>'; }).join('')+'</tbody></table>');
+    });
+  };
+
+  /* ── 정책대출 비교 ─────────────────────── */
+  T['policy-loan']=function(el){
+    el.innerHTML='<h2 class="t-h">나한테 되는 정책대출</h2>'+picker(el)+
+      inp('집값 (매매가·분양가)','price',50000,'만원',{q:1})+inp('부부 합산 연소득 (세전)','inc',7000,'만원')+inp('부부 합산 순자산','asset',30000,'만원')+
+      seg('집이 있는 곳','zone',[['cap','수도권'],['etc','수도권 밖']],'cap')+
+      chk('생애 첫 집 (본인·배우자 집 가진 적 없음)','first',true)+chk('신혼 (혼인 7년 이내)','newly',false)+chk('2년 안에 출산(입양)','baby',false)+chk('맞벌이','dual',false)+
+      seg('미성년 자녀','kids',[['0','없음'],['1','1명'],['2','2명 이상']],'0')+chk('전용 85㎡ 이하','small',true)+
+      '<div data-o></div>'+note('2026년 11월 기준 주택도시기금·한국주택금융공사 안내로 만든 참고 계산이에요. 한도는 상품 한도·LTV·DTI 60%(30년, 각 금리 범위의 가운데 값) 가운데 가장 작은 값이고, 실제 심사는 감정가·신용·기존 대출에 따라 달라요. 2025.6.27 이전 계약은 예전 한도가 적용돼요.');
+    wire(el,function(a){
+      var P=a.v('price'), I=a.v('inc'), A=a.v('asset'), cap=a.s('zone')==='cap', first=a.v('first'), newly=a.v('newly'), baby=a.v('baby'), dual=a.v('dual'), kids=+a.s('kids'), small=a.v('small');
+      function dti(rate){ var r=rate/1200,n=360; return I*0.6/(12*r/(1-Math.pow(1+r,-n))); }
+      function pay(L,rate){ var r=rate/1200,n=360; return L*r/(1-Math.pow(1+r,-n)); }
+      var ltv = first ? (cap?70:80) : 70;
+      var out=[];
+      // 디딤돌
+      (function(){ var why=[], incLim = newly?8500:((first||kids>=2)?7000:6000), pLim=(newly||kids>=2)?60000:50000;
+        if(I>incLim) why.push('소득 '+man(incLim)+' 초과'); if(P>pLim) why.push('집값 '+man(pLim)+' 초과'); if(A>51100) why.push('순자산 5억1,100만원 초과'); if(!small) why.push('85㎡ 초과');
+        var lim = cap ? ((newly||kids>=2)?32000:(first?24000:20000)) : ((newly||kids>=2)?40000:(first?30000:25000)), rate=3.5;
+        out.push({n:'디딤돌대출', ok:!why.length, why:why, cap:lim, ltv:P*ltv/100, dti:dti(rate), rate:'연 2.85~4.15%', r:rate}); })();
+      // 신생아 특례
+      (function(){ var why=[]; if(!baby) why.push('2년 내 출산 가구만'); var incLim=dual?20000:13000; if(I>incLim) why.push('소득 '+man(incLim)+' 초과'); if(P>90000) why.push('집값 9억원 초과'); if(A>51100) why.push('순자산 5억1,100만원 초과'); if(!small) why.push('85㎡ 초과');
+        out.push({n:'신생아 특례 디딤돌', ok:!why.length, why:why, cap:40000, ltv:P*ltv/100, dti:dti(3.15), rate:'연 1.8~4.5% (5년 특례)', r:3.15}); })();
+      // 보금자리론
+      (function(){ var why=[], incLim = kids>=2?10000:(kids===1?9000:(newly?8500:7000));
+        if(I>incLim) why.push('소득 '+man(incLim)+' 초과'); if(P>60000) why.push('집값 6억원 초과'); if(A>48800) why.push('순자산 4억8,800만원 초과');
+        var lim = first?42000:(kids>=2?40000:36000);
+        out.push({n:'보금자리론', ok:!why.length, why:why, cap:lim, ltv:P*ltv/100, dti:dti(4.2), rate:'연 4%대 고정 (매달 고시)', r:4.2}); })();
+      var best=null;
+      var html=out.map(function(o){
+        var L=Math.max(0,Math.min(o.cap,o.ltv,o.dti)), by=L===o.cap?'상품 한도':(L===o.ltv?'LTV '+ltv+'%':'DTI 60%');
+        if(o.ok && (!best||L>best.L)) best={n:o.n,L:L};
+        return '<div class="pl'+(o.ok?' ok':'')+'"><div class="pl-h"><b>'+o.n+'</b><span class="'+(o.ok?'t-good':'t-bad')+'">'+(o.ok?'신청 가능':'어려워요')+'</span></div>'+
+          (o.ok ? '<p class="pl-l">예상 한도 <b>'+man(L)+'</b> <small>'+by+' 기준</small></p><p class="pl-s">'+o.rate+' · 30년 월 약 '+man(pay(L,o.r))+'</p>'
+                : '<p class="pl-s">'+o.why.join(' · ')+'</p>')+'</div>';
+      }).join('');
+      a.out('[data-o]',(best?'<div class="g-res"><b>'+man(best.L)+'</b><span>가장 많이 빌릴 수 있는 상품: '+best.n+'</span></div>':'<div class="g-res"><b class="t-bad">해당 없음</b><span>은행 주담대를 알아보세요</span></div>')+
+        '<div class="pls">'+html+'</div><p class="t-next"><a href="/tools/loan-limit/?price='+Math.round(P)+'">은행 주담대 한도와 비교 →</a></p>');
     });
   };
 

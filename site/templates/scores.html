@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% from "macros.html" import crumbs, cp_ad with context %}
+{# 당첨 가점 커트라인 (2026-11-20) — site/report.py build_scores #}
+{% block main %}
+<main class="wrap" id="main">
+  <div class="lwrap rp">
+    <div class="lhead">
+      {{ crumbs(crumb) }}
+      <h1>청약 당첨 가점 커트라인</h1>
+      <p class="t-sub">지역·면적별 최근 당첨 가점 · 청약홈 공식</p>
+      <p>{{ lead }}</p>
+      <p class="rp-nav"><a href="/tools/subscription-score/">내 가점 계산하고 비교하기 →</a><a href="/competition/">청약 경쟁률</a></p>
+    </div>
+
+    <section class="lsec">
+      <h2>지역별 <small>해당지역 최저 당첨 가점</small></h2>
+      <div class="tbl ntbl"><table class="num keep2">
+        <thead><tr><th scope="col" style="text-align:left">시·도</th><th scope="col">표본</th><th scope="col">최저</th><th scope="col">가운데</th><th scope="col">최고</th></tr></thead>
+        <tbody>{% for k, c, lo, md, hi in sido %}<tr><th scope="row">{{ k }}</th><td>{{ c }}개</td><td>{{ lo|round|int }}점</td><td class="max">{{ '%g'|format((md*10)|round/10) }}점</td><td>{{ hi|round|int }}점</td></tr>{% endfor %}</tbody>
+      </table></div>
+    </section>
+
+    <section class="lsec">
+      <h2>면적별 <small>전용면적 기준</small></h2>
+      <div class="tbl ntbl"><table class="num keep2">
+        <thead><tr><th scope="col" style="text-align:left">전용면적</th><th scope="col">표본</th><th scope="col">최저</th><th scope="col">가운데</th><th scope="col">최고</th></tr></thead>
+        <tbody>{% for k, c, lo, md, hi in band %}<tr><th scope="row">{{ k }}</th><td>{{ c }}개</td><td>{{ lo|round|int }}점</td><td class="max">{{ '%g'|format((md*10)|round/10) }}점</td><td>{{ hi|round|int }}점</td></tr>{% endfor %}</tbody>
+      </table></div>
+      <p class="rp-note">전용 85㎡ 이하는 규제지역에서 가점제 비율이 높아 커트라인이 더 중요해요. 85㎡ 초과는 추첨 물량이 많아 가점 표본이 적을 수 있어요.</p>
+    </section>
+
+    {{ cp_ad('home_mo', 'ad-home') }}
+
+    <section class="lsec">
+      <h2>단지·주택형별 <small>{{ rows|length }}개 · 발표 최근 순</small></h2>
+      <div class="tbl ntbl"><table class="num">
+        <caption>해당지역·기타지역 최저 당첨 가점. 평균은 해당지역 기준</caption>
+        <thead><tr><th scope="col" style="text-align:left">단지 · 주택형</th><th scope="col" style="text-align:left">지역</th><th scope="col">해당 최저</th><th scope="col">해당 평균</th><th scope="col">기타 최저</th></tr></thead>
+        <tbody>{% for r in rows %}<tr><th scope="row"><a href="{{ r.n.url }}">{{ r.n.complex or r.n.title }}</a><small>{{ r.type }}타입 · {{ r.band }}</small></th><td class="l">{{ r.n.sido }} {{ r.n.sigungu or '' }}</td><td class="max">{{ (r.lmin|round|int ~ '점') if r.lmin else '—' }}</td><td>{{ ('%g'|format((r.lavg*100)|round/100) ~ '점') if r.lavg else '—' }}</td><td>{{ (r.omin|round|int ~ '점') if r.omin else '—' }}</td></tr>{% endfor %}</tbody>
+      </table></div>
+    </section>
+
+    <section class="lsec lbox">
+      <h2>이렇게 모았어요</h2>
+      <p class="rp-note">한국부동산원 청약홈 API(청약접수 경쟁률 및 특별공급 신청현황 조회 서비스)의 주택형별 당첨 가점을 당첨자 발표 뒤 매일 받아요. '해당지역'은 그 지역 거주자 우선 물량, '기타'는 기타경기·기타지역 물량이에요. 가점제 당첨자가 없는 주택형(추첨·미달)은 빠지고, 새 공고가 발표되면 자동으로 늘어나요.</p>
+      <p class="rp-nav"><a href="/report/">월간 청약 결산</a><a href="/guide/cheongyak-gajeom/">청약 가점 가이드</a></p>
+    </section>
+  </div>
+</main>
+{% endblock %}
+{% block after %}
+<script type="application/ld+json">
+{{ {"@context": "https://schema.org", "@graph": [crumb_ld(crumb, "청약 당첨 가점 커트라인", page_url),
+  {"@type": "Dataset", "name": "청약 당첨 가점 커트라인", "description": desc, "inLanguage": "ko", "dateModified": today.isoformat(), "url": BASE ~ page_url,
+   "creator": {"@type": "Organization", "name": "줍줍알람", "url": BASE ~ "/about/"}, "isBasedOn": "한국부동산원 청약홈 청약접수 경쟁률 및 특별공급 신청현황 조회 서비스"}]}|jsonld }}
+</script>
+{% endblock %}

@@ -230,6 +230,14 @@
   {% endif %}
   {% endif %}
 
+  {% if n.calc %}
+  <section class="sec calc-chips" aria-labelledby="h-calc">
+    <h2 id="h-calc">이 공고로 계산해 보기</h2>
+    <p class="lead2">{% if n.calc.type %}{{ n.calc.type }}타입 {% endif %}최고 분양가 {{ n.calc.won }}을 넣어 둔 채로 계산기가 열려요.</p>
+    <div class="cc">{% for name, url in n.calc.links %}<a href="{{ url }}" rel="nofollow">{{ name }} <span aria-hidden="true">›</span></a>{% endfor %}</div>
+  </section>
+  {% endif %}
+
   {% if n.dz %}{% set z = n.dz %}
   {% if z.rent and z.rent.opts %}
   <section class="sec" aria-labelledby="h-rent" data-rent data-d0="{{ z.rent.opts[0][1] }}" data-m0="{{ z.rent.opts[0][2] }}"{% if z.rent.conv %} data-up="{{ z.rent.conv.up }}" data-down="{{ z.rent.conv.down }}" data-unit="{{ z.rent.conv.unit }}"{% endif %}>

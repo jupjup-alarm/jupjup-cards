@@ -125,3 +125,53 @@ def build(E, notices, write, common, base, today, won, kinds, d):
                                                    crumb=[("홈", "/"), ("월간 결산", "")], nav="competition")
     write("/report/", h, title, desc, "list", max(n["modified"] for n in notices))
     return out
+
+
+def _tname(t):
+    """'084.9443A' → '84A' (청약홈 주택형 표기를 사람들이 부르는 이름으로)."""
+    m = re.match(r"\s*0*(\d{2,3})(?:\.\d+)?\s*([A-Za-z가-힣]*)", str(t))
+    return f"{m.group(1)}{m.group(2)}" if m else str(t)
+
+
+def _band(t):
+    e = _excl(t)
+    if e is None:
+        return "기타"
+    return "60㎡ 이하" if e <= 60 else ("60~85㎡" if e <= 85 else "85㎡ 초과")
+
+
+def build_scores(E, notices, write, common, today, d):
+    """당첨 가점 커트라인 (/scores/, 2026-11-20 사용자 요청) — 청약홈 공식 당첨 가점을 지역·면적대별로."""
+    ns = [n for n in notices if n.get("scores")]
+    rows = []
+    for n in ns:
+        for g in n["scores"]:
+            loc = [r for r in g["rows"] if "기타" not in (r.get("area") or "")]
+            oth = [r for r in g["rows"] if "기타" in (r.get("area") or "")]
+            rows.append({"n": n, "type": g["type"].replace("타입", ""), "band": _band(g["type"]),
+                         "lmin": min((r["min"] for r in loc if r.get("min")), default=None),
+                         "lavg": loc[0].get("avg") if loc else None,
+                         "omin": min((r["min"] for r in oth if r.get("min")), default=None)})
+    if not rows:
+        return None
+    rows.sort(key=lambda r: (r["n"].get("announce") or "", r["lmin"] or 0), reverse=True)
+    by_sido = {}
+    for r in rows:
+        if r["lmin"]:
+            by_sido.setdefault(r["n"]["sido"], []).append(r["lmin"])
+    sido = sorted(((k, len(v), min(v), st.median(v), max(v)) for k, v in by_sido.items()), key=lambda x: -x[1])
+    by_band = {}
+    for r in rows:
+        if r["lmin"]:
+            by_band.setdefault(r["band"], []).append(r["lmin"])
+    band = [(b, len(by_band[b]), min(by_band[b]), st.median(by_band[b]), max(by_band[b])) for b in ("60㎡ 이하", "60~85㎡", "85㎡ 초과", "기타") if b in by_band]
+    allv = [r["lmin"] for r in rows if r["lmin"]]
+    lead = (f"최근 당첨자를 발표한 공고 {len(ns)}곳, 주택형 {len(rows)}개의 청약홈 공식 당첨 가점이에요. "
+            + (f"해당지역 최저 당첨 가점은 {int(min(allv))}점부터 {int(max(allv))}점까지, 가운데값은 {_f(round(st.median(allv), 1))}점이에요. " if allv else "")
+            + "가점제로 뽑은 주택형만 나오고, 추첨·미달 주택형은 빠져요.")
+    title = "청약 당첨 가점 커트라인 | 지역·면적별 최근 당첨 가점 · 줍줍알람"
+    desc = lead[:155]
+    h = E.get_template("scores.html").render(rows=rows, sido=sido, band=band, n_notices=len(ns), lead=lead, **common, page_url="/scores/",
+                                             title=title, desc=desc, og="/og-default.jpg", crumb=[("홈", "/"), ("당첨 가점", "")], nav="competition")
+    write("/scores/", h, title, desc, "list", max(n["modified"] for n in ns))
+    return len(ns)
