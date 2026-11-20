@@ -1,0 +1,148 @@
+{
+ "key": "2026940258",
+ "images": [
+  {
+   "cat": "birdseye",
+   "kind": "birdseye",
+   "label": "원종동 성락아파트 재건축공사 조감도",
+   "file": "photos/site/2026940258/birdseye-auto-1.jpg",
+   "src": "https://www.xn--2e5bqkuw2tw6b5xac3xm4o.com/img/sub/business_n2.png",
+   "w": 1100,
+   "h": 651,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "birdseye",
+   "kind": "birdseye",
+   "label": "원종동 성락아파트 재건축공사 조감도",
+   "file": "photos/site/2026940258/birdseye-auto-2.jpg",
+   "src": "https://www.xn--2e5bqkuw2tw6b5xac3xm4o.com/img/m/m_business_n2.png",
+   "w": 750,
+   "h": 454,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "overview",
+   "file": "photos/site/2026940258/overview-auto-1.jpg",
+   "src": "https://www.xn--2e5bqkuw2tw6b5xac3xm4o.com/img/sub/parallax_bg.png",
+   "w": 1920,
+   "h": 511,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "overview",
+   "file": "photos/site/2026940258/overview-auto-2.jpg",
+   "src": "https://www.xn--2e5bqkuw2tw6b5xac3xm4o.com/img/sub/apply01.jpg",
+   "w": 1100,
+   "h": 1557,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "overview",
+   "file": "photos/site/2026940258/overview-auto-3.jpg",
+   "src": "https://www.xn--2e5bqkuw2tw6b5xac3xm4o.com/img/sub/apply02.jpg",
+   "w": 1100,
+   "h": 1554,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "location",
+   "file": "photos/site/2026940258/location-auto-1.jpg",
+   "src": "https://www.xn--2e5bqkuw2tw6b5xac3xm4o.com/img/main/premium_slide01.jpg",
+   "w": 960,
+   "h": 900,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "location",
+   "file": "photos/site/2026940258/location-auto-2.jpg",
+   "src": "https://www.xn--2e5bqkuw2tw6b5xac3xm4o.com/img/main/premium_slide02.jpg",
+   "w": 960,
+   "h": 900,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "location",
+   "file": "photos/site/2026940258/location-auto-3.jpg",
+   "src": "https://www.xn--2e5bqkuw2tw6b5xac3xm4o.com/img/main/premium_slide03.jpg",
+   "w": 960,
+   "h": 900,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "interior",
+   "kind": "interior",
+   "label": "마감재 리스트",
+   "file": "photos/site/2026940258/interior-auto-1.jpg",
+   "src": "https://www.xn--2e5bqkuw2tw6b5xac3xm4o.com/img/sub/list_01.png",
+   "w": 1100,
+   "h": 475,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "siteplan",
+   "kind": "siteplan",
+   "label": "siteplan",
+   "file": "photos/site/2026940258/siteplan-auto-1.jpg",
+   "src": "https://www.xn--2e5bqkuw2tw6b5xac3xm4o.com/img/sub/no_layout2_n.png",
+   "w": 1100,
+   "h": 1540,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "siteplan",
+   "kind": "siteplan",
+   "label": "siteplan",
+   "file": "photos/site/2026940258/siteplan-auto-2.jpg",
+   "src": "https://www.xn--2e5bqkuw2tw6b5xac3xm4o.com/img/sub/no_layout.png",
+   "w": 1100,
+   "h": 1046,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "69A",
+   "file": "photos/site/2026940258/plan-auto-1.jpg",
+   "src": "https://www.xn--2e5bqkuw2tw6b5xac3xm4o.com/img/sub/unitplan_69a.png",
+   "w": 1100,
+   "h": 2387,
+   "photo": false,
+   "from": "auto"
+  }
+ ],
+ "links": [],
+ "name": "중앙하이츠 원종역(4차) 임의공급(10세대)",
+ "row": 192,
+ "homepage": "https://www.중앙하이츠원종역.com",
+ "auto_site": {
+  "date": "2026-11-21",
+  "url": "https://www.중앙하이츠원종역.com",
+  "tries": 1,
+  "result": "12장 (birdseye 2, overview 3, siteplan 2, plan 1, interior 1, location 3)"
+ },
+ "updated": "2026-11-21 06:50"
+}

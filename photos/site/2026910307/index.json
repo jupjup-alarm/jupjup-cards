@@ -26,6 +26,42 @@
    "photo": true
   },
   {
+   "cat": "community",
+   "kind": "조경",
+   "label": "단지 전경",
+   "file": "photos/site/2026910307/community.jpg",
+   "src": "https://www.gd3-hoban.co.kr/final/assets/images/sub/img_plan.png",
+   "crop": "0.12,0.16,0.88,0.56",
+   "w": 1428,
+   "h": 832,
+   "md5": "1565ea6be666553498aa7cc1a65a2a4d",
+   "photo": true
+  },
+  {
+   "cat": "community",
+   "kind": "조경",
+   "label": "조경 시설",
+   "file": "photos/site/2026910307/community-2.jpg",
+   "src": "https://www.gd3-hoban.co.kr/final/assets/images/sub/img_landscape.png",
+   "crop": "0.15,0.07,0.85,0.5",
+   "w": 1316,
+   "h": 1140,
+   "md5": "5007e04a120670bbf06407c341fe5f53",
+   "photo": true
+  },
+  {
+   "cat": "community",
+   "kind": "커뮤니티",
+   "label": "커뮤니티 시설",
+   "file": "photos/site/2026910307/community-3.jpg",
+   "src": "https://www.gd3-hoban.co.kr/final/assets/images/sub/img_community.png",
+   "crop": "0,0.08,1,0.55",
+   "w": 1880,
+   "h": 1047,
+   "md5": "31f3d2c5ddfdfa394418afe5f425331c",
+   "photo": false
+  },
+  {
    "cat": "siteplan",
    "kind": "단지배치도",
    "label": "",
@@ -120,42 +156,6 @@
    "h": 1039,
    "md5": "2938177f3baa4cd5c9ef79ecae1be0cc",
    "photo": false
-  },
-  {
-   "cat": "community",
-   "kind": "조경",
-   "label": "단지 전경",
-   "file": "photos/site/2026910307/community.jpg",
-   "src": "https://www.gd3-hoban.co.kr/final/assets/images/sub/img_plan.png",
-   "crop": "0.12,0.16,0.88,0.56",
-   "w": 1428,
-   "h": 832,
-   "md5": "1565ea6be666553498aa7cc1a65a2a4d",
-   "photo": true
-  },
-  {
-   "cat": "community",
-   "kind": "조경",
-   "label": "조경 시설",
-   "file": "photos/site/2026910307/community-2.jpg",
-   "src": "https://www.gd3-hoban.co.kr/final/assets/images/sub/img_landscape.png",
-   "crop": "0.15,0.07,0.85,0.5",
-   "w": 1316,
-   "h": 1140,
-   "md5": "5007e04a120670bbf06407c341fe5f53",
-   "photo": true
-  },
-  {
-   "cat": "community",
-   "kind": "커뮤니티",
-   "label": "커뮤니티 시설",
-   "file": "photos/site/2026910307/community-3.jpg",
-   "src": "https://www.gd3-hoban.co.kr/final/assets/images/sub/img_community.png",
-   "crop": "0,0.08,1,0.55",
-   "w": 1880,
-   "h": 1047,
-   "md5": "31f3d2c5ddfdfa394418afe5f425331c",
-   "photo": false
   }
  ],
  "links": [
@@ -168,5 +168,13 @@
  ],
  "homepage": "https://www.gd3-hoban.co.kr/",
  "owner": "티에스리빙 주식회사(호반건설)",
- "updated": "2026-11-20 19:12"
+ "updated": "2026-11-21 06:54",
+ "name": "인천 검단신도시 AB13블록 호반써밋Ⅲ 무순위(사후 1세대)",
+ "row": 190,
+ "auto_site": {
+  "date": "2026-11-21",
+  "url": "https://www.gd3-hoban.co.kr/",
+  "tries": 1,
+  "result": "0장 ()"
+ }
 }

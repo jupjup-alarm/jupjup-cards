@@ -1,0 +1,57 @@
+{
+ "key": "lh2015122300021074",
+ "images": [
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 공급금액 (p.2)",
+   "file": "photos/site/lh2015122300021074/notice-price.jpg",
+   "src": "69481317.pdf#p2",
+   "crop": "",
+   "w": 1129,
+   "h": 701,
+   "md5": "08a02cee26f8149427412bfcbb8c5189",
+   "photo": false,
+   "full": false,
+   "page": 2,
+   "marked": []
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 신청일정 (p.2)",
+   "file": "photos/site/lh2015122300021074/notice-schedule.jpg",
+   "src": "69481317.pdf#p2",
+   "crop": "",
+   "w": 1129,
+   "h": 701,
+   "md5": "8153786c2c1f2ace469a47dd5a89202f",
+   "photo": false,
+   "full": false,
+   "page": 2,
+   "marked": []
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 신청자격 (p.1)",
+   "file": "photos/site/lh2015122300021074/notice-qual.jpg",
+   "src": "69481317.pdf#p1",
+   "crop": "",
+   "w": 1090,
+   "h": 701,
+   "md5": "806b4941e788d4861a4950e04e3ded6b",
+   "photo": false,
+   "full": false,
+   "page": 1,
+   "marked": []
+  }
+ ],
+ "links": [],
+ "owner": "LH",
+ "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
+ "updated": "2026-11-21 06:48",
+ "name": "[경기북부] 신혼·신생아 매입임대Ⅱ(전세형) 예비입주자 62호 (김포·고양·구리·파주·남양주·의정부)",
+ "row": 193,
+ "lh_checked": "2026-11-21"
+}

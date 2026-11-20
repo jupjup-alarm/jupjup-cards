@@ -38,6 +38,118 @@
    "photo": true
   },
   {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "overview",
+   "file": "photos/site/2026000575/overview-auto-1.jpg",
+   "src": "https://ws-thehue.com/home/design/images/new/main_location_bg2.jpg?ver=4",
+   "w": 1920,
+   "h": 1350,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "overview",
+   "file": "photos/site/2026000575/overview-auto-2.jpg",
+   "src": "https://ws-thehue.com/home/design/images/new/main_contact_map.jpg",
+   "w": 604,
+   "h": 477,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "overview",
+   "file": "photos/site/2026000575/overview-auto-3.jpg",
+   "src": "https://ws-thehue.com/home/design/images/new/main_contact_bg.jpg",
+   "w": 1920,
+   "h": 1000,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "location",
+   "file": "photos/site/2026000575/location-auto-1.jpg",
+   "src": "https://ws-thehue.com/home/design/images/new/location.jpg",
+   "w": 920,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "location",
+   "file": "photos/site/2026000575/location-auto-2.jpg",
+   "src": "https://ws-thehue.com/home/design/images/new/m_location.jpg",
+   "w": 1100,
+   "h": 2273,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "community",
+   "kind": "조경",
+   "label": "파크라이프",
+   "file": "photos/site/2026000575/community.jpg",
+   "src": "https://ws-thehue.com/home/design/images/new/plan.jpg",
+   "crop": "0,0.12,1,0.67",
+   "w": 1100,
+   "h": 792,
+   "md5": "f8378bd2f30b9eed02e201ec1947dd2d",
+   "photo": true
+  },
+  {
+   "cat": "community",
+   "kind": "커뮤니티",
+   "label": "클럽더휴",
+   "file": "photos/site/2026000575/community-2.jpg",
+   "src": "https://ws-thehue.com/home/design/images/new/community.jpg",
+   "crop": "0,0.05,1,0.6",
+   "w": 1100,
+   "h": 1004,
+   "md5": "06715f78d6956dde75395fc691155b0b",
+   "photo": false
+  },
+  {
+   "cat": "community",
+   "kind": "community",
+   "label": "community",
+   "file": "photos/site/2026000575/community-auto-1.jpg",
+   "src": "https://ws-thehue.com/home/design/images/new/m_community.jpg",
+   "w": 1100,
+   "h": 1823,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "interior",
+   "kind": "interior",
+   "label": "interior",
+   "file": "photos/site/2026000575/interior-auto-1.jpg",
+   "src": "https://ws-thehue.com/home/design/images/new/material.jpg",
+   "w": 1100,
+   "h": 1030,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "interior",
+   "kind": "interior",
+   "label": "interior",
+   "file": "photos/site/2026000575/interior-auto-2.jpg",
+   "src": "https://ws-thehue.com/home/design/images/new/m_material.jpg",
+   "w": 1100,
+   "h": 1030,
+   "photo": false,
+   "from": "auto"
+  },
+  {
    "cat": "siteplan",
    "kind": "단지배치도",
    "label": "",
@@ -48,6 +160,17 @@
    "h": 642,
    "md5": "97bcf14d3ac669aacba3dbfd2ca957cb",
    "photo": true
+  },
+  {
+   "cat": "siteplan",
+   "kind": "siteplan",
+   "label": "siteplan",
+   "file": "photos/site/2026000575/siteplan-auto-1.jpg",
+   "src": "https://ws-thehue.com/home/design/images/new/complex01_bg2.jpg",
+   "w": 1920,
+   "h": 1000,
+   "photo": true,
+   "from": "auto"
   },
   {
    "cat": "dongho",
@@ -98,28 +221,70 @@
    "photo": true
   },
   {
-   "cat": "community",
-   "kind": "조경",
-   "label": "파크라이프",
-   "file": "photos/site/2026000575/community.jpg",
-   "src": "https://ws-thehue.com/home/design/images/new/plan.jpg",
-   "crop": "0,0.12,1,0.67",
-   "w": 1100,
-   "h": 792,
-   "md5": "f8378bd2f30b9eed02e201ec1947dd2d",
-   "photo": true
+   "cat": "plan",
+   "kind": "plan",
+   "label": "plan",
+   "file": "photos/site/2026000575/plan-auto-1.jpg",
+   "src": "https://ws-thehue.com/home/design/images/new/unit_bg.jpg",
+   "w": 1920,
+   "h": 1000,
+   "photo": false,
+   "from": "auto"
   },
   {
-   "cat": "community",
-   "kind": "커뮤니티",
-   "label": "클럽더휴",
-   "file": "photos/site/2026000575/community-2.jpg",
-   "src": "https://ws-thehue.com/home/design/images/new/community.jpg",
-   "crop": "0,0.05,1,0.6",
+   "cat": "plan",
+   "kind": "plan",
+   "label": "plan",
+   "file": "photos/site/2026000575/plan-auto-2.jpg",
+   "src": "https://ws-thehue.com/home/design/images/new/introduce.jpg",
    "w": 1100,
-   "h": 1004,
-   "md5": "06715f78d6956dde75395fc691155b0b",
-   "photo": false
+   "h": 1048,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "plan",
+   "file": "photos/site/2026000575/plan-auto-3.jpg",
+   "src": "https://ws-thehue.com/home/design/images/new/m_introduce.jpg",
+   "w": 1100,
+   "h": 864,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "plan",
+   "file": "photos/site/2026000575/plan-auto-4.jpg",
+   "src": "https://ws-thehue.com/home/design/images/new/brand.jpg",
+   "w": 1100,
+   "h": 1593,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "plan",
+   "file": "photos/site/2026000575/plan-auto-5.jpg",
+   "src": "https://ws-thehue.com/home/design/images/new/m_brand.jpg",
+   "w": 1100,
+   "h": 1593,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "plan",
+   "file": "photos/site/2026000575/plan-auto-6.jpg",
+   "src": "https://ws-thehue.com/home/design/images/new/m_plan.jpg",
+   "w": 1100,
+   "h": 1583,
+   "photo": false,
+   "from": "auto"
   }
  ],
  "links": [
@@ -132,5 +297,13 @@
  ],
  "homepage": "https://ws-thehue.com",
  "owner": "한신공영(주)",
- "updated": "2026-11-20 19:12"
+ "updated": "2026-11-21 06:58",
+ "name": "왕숙 한신더휴 센텀(남양주 왕숙 A-17BL) 공공분양주택",
+ "row": 189,
+ "auto_site": {
+  "date": "2026-11-21",
+  "url": "https://ws-thehue.com",
+  "tries": 1,
+  "result": "15장 (overview 3, siteplan 1, plan 6, community 1, interior 2, location 2)"
+ }
 }
