@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% from "macros.html" import crumbs, cp_ad, ads_slot, nrow with context %}
+{# 도구 페이지 (2026-11-20) — 계산기(static/tools.js) + 계산 방법·예시·FAQ·근거. 글은 site/tools.py #}
+{% block main %}
+<main class="wrap g-page t-page" id="main">
+  <article class="g-art">
+    {{ crumbs(crumb) }}
+    <header class="g-head">
+      <span class="g-eyebrow"><i></i>{{ t.group }} 도구</span>
+      <h1 class="g-h1">{{ t.h1 }}</h1>
+      <p class="g-dek">{{ t.dek }}</p>
+      <p class="g-meta"><b>줍줍알람 편집팀</b><span>{{ checked|replace('-', '.') }} 기준 법령·공식 안내 확인</span><span>입력값은 저장하지 않아요</span></p>
+    </header>
+
+    <div class="g-tool t-tool" data-tool="{{ t.slug }}"{% if picks %} data-picks='{{ picks }}'{% endif %} data-rate="{{ base_rate }}">
+      <noscript><p>계산기는 자바스크립트를 켜야 동작해요. 계산 방법은 아래에 정리했어요.</p></noscript>
+    </div>
+
+    <div class="g-body">
+      {% for h, body in t.how %}
+      <h2 id="s{{ loop.index }}"><span class="n">{{ '%02d'|format(loop.index) }}</span>{{ h }}</h2>
+      {{ body|safe }}
+      {% if loop.index == 2 %}{{ ads_slot('guide_mid', 'ad-guide') }}{% endif %}
+      {% endfor %}
+      {% if t.example %}
+      <h2 id="ex"><span class="n">예시</span>숫자로 한 번 보면</h2>
+      <p class="t-ex">{{ t.example }}</p>
+      {% endif %}
+    </div>
+
+    <section class="g-faq" aria-labelledby="g-faq">
+      <h2 id="g-faq">자주 묻는 질문</h2>
+      {% for q, a in t.faq %}<details{% if loop.first %} open{% endif %}><summary>{{ q }}</summary><p>{{ a|safe }}</p></details>
+      {% endfor %}
+    </section>
+
+    {% if notices %}
+    <section class="g-now" aria-labelledby="g-now">
+      <h2 id="g-now">이 계산이 필요한 공고 — 지금 접수 중·예정</h2>
+      <ul class="hm-rows">{% for n in notices %}{{ nrow(n) }}{% endfor %}</ul>
+      <p class="note">공고는 매일 아침 새로 고쳐져요. <a href="/schedule/this-week/">이번 주 청약 일정 전체 보기 →</a></p>
+    </section>
+    {% endif %}
+
+    {{ cp_ad('home_mo', 'ad-home') }}
+    {% if rel %}
+    <section class="g-rel" aria-labelledby="g-rel">
+      <h2 id="g-rel">함께 쓰는 도구</h2>
+      <div class="g-rel-list">{% for r in rel %}<a href="{{ r.url }}"><span>{{ r.group }}</span><b>{{ r.name }}</b></a>{% endfor %}<a href="/tools/"><span>전체</span><b>도구 모음 보기</b></a></div>
+    </section>
+    {% endif %}
+
+    <section class="g-src" aria-labelledby="g-src">
+      <h2 id="g-src">근거</h2>
+      <ul>{% for name, url in t.sources %}<li>{% if url %}<a href="{{ url }}"{% if url.startswith('http') %} target="_blank" rel="noopener nofollow"{% endif %}>{{ name }}</a>{% else %}{{ name }}{% endif %}</li>{% endfor %}</ul>
+      <p class="note">{{ checked|replace('-', '.') }} 기준으로 법령·공식 안내를 확인해 만든 참고용 계산이에요. 실제 금액은 공고문·은행·관할 관청 안내가 기준이고, 제도가 바뀌면 고쳐요. 틀린 곳은 <a href="/contact/">문의</a>로 알려 주세요.</p>
+    </section>
+  </article>
+  <aside class="g-toc" aria-label="목차">
+    <p>이 페이지의 순서</p>
+    <ol>{% for h, body in t.how %}<li><a href="#s{{ loop.index }}">{{ '%02d'|format(loop.index) }} {{ h }}</a></li>{% endfor %}<li><a href="#g-faq">자주 묻는 질문</a></li></ol>
+    {{ cp_ad('pc', 'ad-pc') }}
+  </aside>
+</main>
+{% endblock %}
+{% block after %}
+<script type="application/ld+json">
+{{ {"@context": "https://schema.org", "@graph": [
+  crumb_ld(crumb, t.name, page_url),
+  {"@type": "WebApplication", "name": t.name, "url": BASE ~ page_url, "description": desc, "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "inLanguage": "ko",
+   "offers": {"@type": "Offer", "price": "0", "priceCurrency": "KRW"},
+   "author": {"@type": "Organization", "name": "줍줍알람 편집팀", "url": BASE ~ "/about/"}},
+  {"@type": "FAQPage", "mainEntity": faq_ld}]}|jsonld }}
+</script>
+<script src="{{ js_url }}" defer></script>
+{% endblock %}

@@ -20,6 +20,7 @@ from xml.sax.saxutils import escape as xesc
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import guides as GUIDES
+import tools as TOOLS_PAGES   # 도구 (/tools/) — 2026-11-20
 from markupsafe import Markup
 
 SITE = Path(__file__).resolve().parent
@@ -2296,6 +2297,9 @@ def main():
 
     # 가이드 칼럼
     GUIDES.build(E, notices, write, common, PUB, BASE, TODAY, problems)
+
+    # 도구 (/tools/) — 2026-11-20 사용자 요청 (realty.daangn.com/tools 참고)
+    TOOLS_PAGES.build(E, notices, write, common, PUB, BASE, TODAY, problems)
 
     # 기본 페이지
     pg = E.get_template("page.html")

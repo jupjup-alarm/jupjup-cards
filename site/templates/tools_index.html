@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% from "macros.html" import crumbs, cp_ad with context %}
+{% block main %}
+<main class="wrap" id="main">
+  <div class="lwrap">
+    <div class="lhead">
+      {{ crumbs(crumb) }}
+      <h1>청약·내 집 마련 계산기 {{ n_tools }}가지</h1>
+      <p>청약 가점과 1순위부터 분양 대금, 대출, 취득세, 중개보수까지 — 공고를 보면서 바로 따져 볼 수 있게 줍줍알람이 직접 만든 계산기예요. 모두 {{ checked|replace('-', '.') }} 기준 법령·공식 안내로 숫자를 확인했고, 페이지마다 계산 방법과 근거를 함께 적었어요.</p>
+    </div>
+    <nav class="gcats" aria-label="분류">{% for g, i, lst in groups %}<a href="#{{ i }}">{{ g }} <span class="num">{{ lst|length }}</span></a>{% endfor %}</nav>
+    {% for g, i, lst in groups %}
+    <section class="lsec" id="{{ i }}">
+      <h2>{{ g }} <small>{{ lst|length }}개</small></h2>
+      <div class="t-grid">{% for t in lst %}
+        <a class="t-card" href="{{ t.url }}"><b>{{ t.name }}</b><span>{{ t.short }}</span><i aria-hidden="true">계산하기 ›</i></a>{% endfor %}
+      </div>
+    </section>
+    {% if loop.first %}{{ cp_ad('home_mo', 'ad-home') }}{% endif %}
+    {% endfor %}
+    <section class="lsec">
+      <h2>계산 전에 함께 읽어 보세요</h2>
+      <div class="t-grid">
+        <a class="t-card" href="/guide/"><b>청약·임대·대출 가이드</b><span>계산기에 넣을 기준(무주택 기간, 1순위, 대출 규제)을 칼럼으로 정리했어요</span><i aria-hidden="true">가이드 보기 ›</i></a>
+        <a class="t-card" href="/schedule/this-week/"><b>이번 주 청약 일정</b><span>지금 접수 중인 공고의 분양가·자격을 확인하고 계산기에 불러오세요</span><i aria-hidden="true">일정 보기 ›</i></a>
+      </div>
+    </section>
+  </div>
+</main>
+{% endblock %}
+{% block after %}
+<script type="application/ld+json">
+{{ {"@context": "https://schema.org", "@graph": [crumb_ld(crumb, "도구", page_url), {"@type": "ItemList", "name": "청약·부동산 계산기", "itemListElement": tools_ld}]}|jsonld }}
+</script>
+{% endblock %}

@@ -38,9 +38,9 @@
 <body>
 <a class="skip" href="#main">본문 바로가기</a>
 {# 2026-11-04 리디자인 1단계(공통 틀): 모바일은 흰 머리글 + 하단 5칸 탭, 데스크톱(1024px~)은 남색 머리글 + 메뉴 5개 #}
-{% set tab = 'home' if page_url == '/' else ('schedule' if page_url.startswith('/schedule') else ('region' if page_url.startswith('/region') else ('type' if page_url.startswith('/type') else ('lotto' if page_url.startswith('/lotto') else ('guide' if page_url.startswith('/guide') else ('competition' if page_url.startswith('/competition') else nav)))))) %}
-{% set sub = page_url.startswith('/apt/') or (page_url.startswith('/guide/') and page_url != '/guide/') %}{% set gart = sub and page_url.startswith('/guide/') %}
-{% set back = '/guide/' if gart else ((n.crumb|selectattr(1)|list)[-1][1] if (n is defined and n.crumb and (n.crumb|selectattr(1)|list)) else '/') if sub else '/' %}
+{% set tab = 'home' if page_url == '/' else ('schedule' if page_url.startswith('/schedule') else ('region' if page_url.startswith('/region') else ('type' if page_url.startswith('/type') else ('lotto' if page_url.startswith('/lotto') else ('guide' if page_url.startswith('/guide') else ('competition' if page_url.startswith('/competition') else ('tools' if page_url.startswith('/tools') else nav))))))) %}
+{% set sub = page_url.startswith('/apt/') or (page_url.startswith('/guide/') and page_url != '/guide/') or (page_url.startswith('/tools/') and page_url != '/tools/') %}{% set gart = sub and page_url.startswith('/guide/') %}
+{% set back = '/guide/' if gart else ('/tools/' if page_url.startswith('/tools/') else ((n.crumb|selectattr(1)|list)[-1][1] if (n is defined and n.crumb and (n.crumb|selectattr(1)|list)) else '/')) if sub else '/' %}
 <header class="top{{ ' sub' if sub }}">
   <div class="wrap">
     {% if sub %}<a class="hdr-back" href="{{ back }}" aria-label="목록으로" data-back><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7"/></svg></a>{% endif %}
@@ -51,6 +51,7 @@
       <a href="/type/"{% if tab == 'type' %} aria-current="page"{% endif %}>유형</a>
       <a href="/competition/"{% if tab == 'competition' %} aria-current="page"{% endif %}>청약 경쟁률</a>{% if HAS_GUIDES %}
       <a href="/guide/"{% if tab == 'guide' %} aria-current="page"{% endif %}>가이드</a>{% endif %}
+      <a href="/tools/"{% if tab == 'tools' %} aria-current="page"{% endif %}>계산기</a>
     </nav>
     {% if sub %}<button class="hdr-ic hdr-share" type="button" data-share aria-label="공유하기"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span aria-hidden="true">공유</span></button>{% else %}
     <a class="hdr-ic hdr-search" href="/search/" aria-label="단지 이름으로 찾기"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span>단지 이름으로 찾기</span></a>
@@ -62,7 +63,7 @@
 <footer>
   <div class="wrap">
     <span>줍줍알람 · 청약 공고를 공식 데이터로 정리해요 · 정보 제공 목적이며 투자 권유가 아니에요</span>
-    <nav aria-label="사이트 정보"><a href="/about/">소개</a><a href="/sources/">데이터 출처</a><a href="/privacy/">개인정보 처리방침</a><a href="/terms/">이용약관</a><a href="/contact/">문의</a><a href="/advertise/">광고 문의</a><a href="{{ IG }}" rel="noopener">인스타그램</a></nav>
+    <nav aria-label="사이트 정보"><a href="/tools/">청약·부동산 계산기</a><a href="/about/">소개</a><a href="/sources/">데이터 출처</a><a href="/privacy/">개인정보 처리방침</a><a href="/terms/">이용약관</a><a href="/contact/">문의</a><a href="/advertise/">광고 문의</a><a href="{{ IG }}" rel="noopener">인스타그램</a></nav>
     <span>{{ COUPANG_NOTE }}</span>
     <address class="biz">상호 98컴퍼니 · 대표자 최수빈 · 사업자등록번호 440-22-01650<br>서울시 서초구 사임당로8길 13, 4층 402-732A호 (우편번호 06640)<br>연락처 010-7377-0380 · 이메일 <a href="mailto:contact@jupjupalarm.com">contact@jupjupalarm.com</a></address>
   </div>
