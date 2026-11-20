@@ -2044,7 +2044,17 @@ def main():
     hg.sort(key=lambda g: g["slug"])
     hg.sort(key=lambda g: g.get("published") or "", reverse=True)   # 최신순 (2026-11-14 사용자 요청)
     home_guides, n_guides = hg[:6], len(hg)
-    h = home_tpl.render(tiles=tiles, home_guides=home_guides, n_guides=n_guides, groups=home_groups, page_url="/", title=title, desc=desc, og=home_og, due=due, home_week=home_week, n_week=n_week,
+    # 홈 '이번 주 줍줍알람 한마디' (2026-11-20 사용자 결정 — 애드센스: 첫 화면에 직접 쓴 판단 글이 먼저 보이게)
+    #  이번 주(없으면 다음 주까지) 접수 중·접수 시작 공고 중 한마디가 있는 것 3곳.
+    #  순서: 주변 시세보다 싸다(추정) → 접수 중 → 마감·시작 빠른 순. 한마디 원문을 그대로 보여 줌.
+    def _pick(lim):
+        c = [x for x in live if (x.get("take") or "").strip() and x["rcpt"][0] and x["rcpt"][0] <= lim]
+        return sorted(c, key=lambda x: (not (x.get("gap") or {}).get("verdict", "").endswith("저렴(추정)"),
+                                        x["status"] != "open", x["rcpt"][1] or x["rcpt"][0], x["title"]))
+    home_takes = _pick(week_end.isoformat())[:3]
+    if len(home_takes) < 3:
+        home_takes += [x for x in _pick(nxt_end.isoformat()) if x not in home_takes][:3 - len(home_takes)]
+    h = home_tpl.render(tiles=tiles, home_takes=home_takes, home_guides=home_guides, n_guides=n_guides, groups=home_groups, page_url="/", title=title, desc=desc, og=home_og, due=due, home_week=home_week, n_week=n_week,
                         week_label=f"{d(wk0.isoformat())} ~ {d(week_end.isoformat())}", t1=t1,
                         regions_used=regions_used, region_slug=regions["sido"], sido_map=sido_map, hub_quick=hub_quick, n_open=n_open, n_up=n_up,
                         tbl=home_tbl, tbl_cap=f"청약 공고 접수 중·예정 {n_open + n_up}곳 중 {len(home_tbl)}곳 — {d(TODAY.isoformat())} 기준 · 청약홈·LH·마이홈 공식 데이터", **common)

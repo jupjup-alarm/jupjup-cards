@@ -18,6 +18,21 @@
       </div>
     </section>
 
+    {% if home_takes %}
+    <section class="hm-takes" aria-labelledby="h-tk">
+      <div class="hm-gh"><h2 id="h-tk">이번 주 줍줍알람 한마디</h2><a href="/about/#criteria">판정 기준 ›</a></div>
+      <p class="hm-gl">이번 주 접수하는 공고 중 {{ home_takes|length }}곳을 골라, 공고문과 주변 실거래를 직접 보고 쓴 판단을 그대로 옮겼어요.</p>
+      <div class="hm-tks">{% for n in home_takes %}
+        <a class="hm-tk" href="{{ n.url }}">
+          <span class="hm-gk">{{ n.kind_label }} · {{ n.sigungu or n.sido }} · {% if n.status == 'open' %}{{ (n.rcpt[1] or n.rcpt[0])|d }} 마감{% else %}{{ n.rcpt[0]|d }} 접수 시작{% endif %}</span>
+          <b>{{ n.title }}</b>
+          <span class="hm-tkq">{{ n.take }}</span>
+          <span class="hm-tkm">자세히 보기 ›</span>
+        </a>{% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
     {% if home_guides %}
     <section class="hm-guides" aria-labelledby="h-hg">
       <div class="hm-gh"><h2 id="h-hg">새로 올라온 가이드</h2><a href="/guide/">가이드 {{ n_guides }}편 전체 ›</a></div>
