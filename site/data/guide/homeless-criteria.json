@@ -320,7 +320,8 @@
   "cheongyak-gajeom",
   "mujeonwi",
   "acquisition-tax",
-  "first-priority"
+  "first-priority",
+  "cheongyak-ineligible"
  ],
  "notice_kinds": [
   "mujeonwi",
