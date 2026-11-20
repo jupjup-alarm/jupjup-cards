@@ -7,8 +7,9 @@
  "voice": "voices/f29d6bc7418d/",
  "video": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-20-gangdong-hangang-detre-reel/2026-11-20-gangdong-hangang-detre-reel.mp4",
  "cover": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-20-gangdong-hangang-detre-reel/2026-11-20-gangdong-hangang-detre-reel_thumb.jpg",
- "size_mb": 8.67,
+ "size_mb": 9.18,
  "warnings": [
+  "확대(Real-ESRGAN x4): 6장 — birdseye.jpg, birdseye-2.jpg, birdseye-3.jpg, birdseye-4.jpg, birdseye-5.jpg, community.jpg",
   "full.mp3 장면 경계가 장면별 음성과 어긋남(장면 [1, 3, 4, 5, 7]) → 장면별 파일 사용",
   "호흡: 장면 4 대본에 없는 곳에서 0.25초 쉼 (③ 대본 쉼표 위치 확인)",
   "호흡: 장면 7 대본에 없는 곳에서 0.28초 쉼 (③ 대본 쉼표 위치 확인)",

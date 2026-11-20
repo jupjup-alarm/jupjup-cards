@@ -1176,10 +1176,64 @@ def require_voice(spec):
         sys.exit(f"내레이션 어긋남: 장면 {n}개 ≠ 음성 조각 {len(parts)}개 ({v}) — 장면을 Z열 대본 블록 수에 맞추세요")
 
 
+def upscale_spec(spec):
+    """저해상도 풀화면 그림 → Real-ESRGAN x4plus 확대본으로 바꿔 끼움 (2026-11-20 사용자 결정, tools/upscale.py).
+    대상: story shots·원고 pool·hook photo·beat bg·원고 맨 위 bg 중 짧은 변 1080px 미만 (지도·위성사진·proof 카드 제외).
+    확대본 <이름>-x4.jpg 는 원본 옆에 저장(있으면 재사용) — photos 와 함께 커밋. torch가 없거나 실패하면 원본 그대로 + warnings."""
+    if os.environ.get("REEL_NO_UPSCALE") == "1":
+        return
+    sys.path.insert(0, str(ROOT / "tools"))
+    try:
+        import upscale
+    except Exception as e:
+        WARN.append(f"확대 못 함: tools/upscale.py 불러오기 실패 ({e})")
+        return
+    cache, done, fail = {}, [], []
+
+    def fix(v):
+        if not isinstance(v, str) or not v or v == "none":
+            return v
+        if v not in cache:
+            try:
+                if not upscale.needs(v):
+                    cache[v] = v
+                elif not upscale.available():
+                    cache[v] = v
+                    fail.append(f"{Path(v).name}(torch 없음)")
+                else:
+                    cache[v] = upscale.upscale(v)
+                    done.append(Path(v).name)
+            except Exception as e:
+                cache[v] = v
+                fail.append(f"{Path(v).name}({str(e)[:60]})")
+        return cache[v]
+
+    def fix_shot(x):
+        if isinstance(x, dict):
+            x["img"] = fix(x.get("img"))
+            return x
+        return fix(x)
+
+    spec["pool"] = [fix_shot(x) for x in (spec.get("pool") or [])]
+    if "bg" in spec:
+        spec["bg"] = fix(spec["bg"])
+    for sc in spec.get("scenes", []):
+        if sc.get("shots"):
+            sc["shots"] = [fix_shot(x) for x in sc["shots"]]
+        for k in ("photo", "bg"):
+            if k in sc:
+                sc[k] = fix(sc[k])
+    if done:
+        WARN.append(f"확대(Real-ESRGAN x4): {len(done)}장 — {', '.join(done[:8])}{' …' if len(done) > 8 else ''}")
+    if fail:
+        WARN.append(f"확대 못 함: {', '.join(fail[:6])}")
+
+
 def main(path):
     spec = json.loads(Path(path).read_text())
     slug = spec["slug"]
     require_voice(spec)
+    upscale_spec(spec)
     out = ROOT / "reels" / slug
     frames = out / "_frames"
     if frames.exists():
