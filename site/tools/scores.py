@@ -10,8 +10,8 @@ API: 한국부동산원_청약홈 청약접수 경쟁률 및 특별공급 신청
        python3 site/tools/scores.py --show NO   # 공고 하나의 원본 응답 보기 (필드 이름 확인용)
 GitHub Actions: .github/workflows/scores.yml (저장소 비밀 DATA_GO_KR_KEY 필요)
 
-응답 필드 이름은 공식 문서로 확정하지 못해서, 이름에 LWET/MIN(최저)·AVRG/AVG(평균)·TOP/MAX(최고)·RESIDE…NM(지역)·HOUSE_TY(주택형)
-이 들어간 칸을 찾아 쓴다. 처음 받을 때 --show 로 한 번 확인할 것. 추첨·미달 칸은 0 → 저장하지 않음.
+응답 필드 (2026-11-20 첫 실행으로 확인): HOUSE_MANAGE_NO·PBLANC_NO·MODEL_NO·HOUSE_TY·RESIDE_SECD·RESIDE_SENM(해당지역·기타경기·기타지역)·LWET_SCORE(최저)·AVRG_SCORE(평균)·TOP_SCORE(최고).
+아래 pick()은 이름이 바뀌어도 찾도록 남겨 둔 것. 추첨·미달 칸은 0 → 저장하지 않음.
 """
 import datetime as dt
 import json
