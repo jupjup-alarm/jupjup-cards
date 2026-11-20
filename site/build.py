@@ -51,6 +51,9 @@ COUPANG = {
     # 2026-11-03 사용자 결정: 요약 카드 바로 아래(한마디 위)에 띠 배너 하나 더 — apt_top_mo. 애드센스는 그 위 3초 판단 카드 아래로 올림)
     "apt_top_mo": {"mq": "(max-width:1023px)", "height": 120,
                    "opts": {"id": 1044447, "template": "carousel", "trackingCode": "AF3230467", "subId": "jupjupalarm", "width": "100%", "height": "120", "tsource": ""}},
+    # 2026-11-20 사용자 요청: 공고 상세 '일정·30초 체크' 메뉴 바로 위 띠 배너 (모바일)
+    "apt_nav_mo": {"mq": "(max-width:1023px)", "height": 120,
+                   "opts": {"id": 1044447, "template": "carousel", "trackingCode": "AF3230467", "subId": "jupjupalarm", "width": "100%", "height": "120", "tsource": ""}},
     "apt_mo": {"mq": "(max-width:1023px)", "height": 120,
                "opts": {"id": 1044447, "template": "carousel", "trackingCode": "AF3230467", "subId": "jupjupalarm", "width": "100%", "height": "120", "tsource": ""}},
     # /cp/ 쿠팡 배너 전용 페이지 (2026-11-09) — 1:1 큰 다이나믹 배너, 크기는 화면 폭에 맞춰 브라우저가 정함(data-sq)

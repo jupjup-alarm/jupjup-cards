@@ -85,9 +85,11 @@
   {% endif %}
     </div>
   </div>
-  <p class="trust"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>{{ n.source_name or '청약홈' }} {{ '모집공고' if not n.is_rental else '모집공고' }}{% if n.notice_date %}({{ n.notice_date|d }}){% endif %} 원문 대조 · 줍줍알람 편집 (<a href="/about/#criteria">판정 기준</a>) · 최종 수정 <time datetime="{{ n.modified[:10] }}">{{ n.modified|d }}</time></p>
+  <p class="trust"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>{{ n.source_name or '청약홈' }} {{ '모집공고' if not n.is_rental else '모집공고' }}{% if n.notice_date %}({{ n.notice_date|d }}){% endif %} 원문 대조 · 줍줍알람 편집 (<a href="/about/#criteria">판정 기준</a>) · 최종 수정 <time datetime="{{ n.modified[:10] }}">{{ n.modified|d }}</time></span></p>
   </div>
 {% endif %}
+{# 2026-11-20 사용자 요청: 일정·30초 체크 메뉴 위에 쿠팡 띠 배너 (모바일) #}
+  {{ cp_ad('apt_nav_mo', 'ad-apt ad-top ad-nav') }}
 <!--CHIPNAV-->
 
 
@@ -366,7 +368,7 @@
         <caption>{{ n.rent_caption or '보증금·월세는 공고문 기준. ‘공고문 참조’는 타입·계층별로 금액이 달라 공고문 표를 확인하세요.' }}</caption>
         <thead><tr><th scope="col" style="text-align:left">타입</th><th scope="col">대상</th><th scope="col">공급</th><th scope="col">보증금 · 월세</th></tr></thead>
         <tbody>
-        {% for m in n.rent_models %}<tr><th scope="row">{{ m.type }}</th><td style="white-space:normal;text-align:left">{{ m.target or '—' }}</td><td>{% if m.units %}{{ m.units }}세대{% elif n.units %}<small>합계 {{ n.units }}{{ n.unit_word or '세대' }}</small>{% else %}<small>예비 모집</small>{% endif %}</td><td class="max">{% if m.deposit %}{{ m.deposit|money }}<small>월 {{ m.monthly|money }}</small>{% else %}공고문 참조{% endif %}</td></tr>
+        {% for m in n.rent_models %}<tr><th scope="row">{{ m.type }}</th><td style="white-space:normal;text-align:left;min-width:5em">{{ m.target or '—' }}</td><td>{% if m.units %}{{ m.units }}세대{% elif n.units %}<small>합계 {{ n.units }}{{ n.unit_word or '세대' }}</small>{% else %}<small>예비 모집</small>{% endif %}</td><td class="max">{% if m.deposit %}{{ m.deposit|money }}<small>월 {{ m.monthly|money }}</small>{% else %}공고문 참조{% endif %}</td></tr>
         {% endfor %}
         </tbody>
       </table>
