@@ -175,3 +175,71 @@ def build_scores(E, notices, write, common, today, d):
                                              title=title, desc=desc, og="/og-default.jpg", crumb=[("홈", "/"), ("당첨 가점", "")], nav="competition")
     write("/scores/", h, title, desc, "list", max(n["modified"] for n in ns))
     return len(ns)
+
+
+def build_weeks(E, notices, write, common, today, d):
+    """주간 청약 정리 (/week/YYYY-wNN/, 2026-11-20 사용자 요청) — 그 주 접수·당첨자 발표·결과를 숫자로만."""
+    import datetime as dt
+    def wk(iso):
+        y, w, _ = dt.date.fromisoformat(iso).isocalendar()
+        return f"{y}-w{w:02d}"
+    live = [n for n in notices if not n.get("is_pre") and n["rcpt"][0]]
+    weeks = {}
+    for n in live:
+        weeks.setdefault(wk(n["rcpt"][0]), {"start": [], "ann": [], "res": []})["start"].append(n)
+        if n.get("announce"):
+            weeks.setdefault(wk(n["announce"]), {"start": [], "ann": [], "res": []})["ann"].append(n)
+        if n.get("comp") and n["comp"]["rows"] and (n["rcpt"][1] or n["rcpt"][0]):
+            weeks.setdefault(wk(n["rcpt"][1] or n["rcpt"][0]), {"start": [], "ann": [], "res": []})["res"].append(n)
+    cur = wk(today.isoformat())
+    keys = sorted(k for k, v in weeks.items() if len(v["start"]) + len(v["ann"]) + len(v["res"]) >= 5 and k <= cur)
+    if not keys:
+        return []
+    tpl = E.get_template("week.html")
+    out = []
+    for i, k in enumerate(keys):
+        y, w = int(k[:4]), int(k[6:])
+        mon = dt.date.fromisocalendar(y, w, 1)
+        sun = mon + dt.timedelta(days=6)
+        v = weeks[k]
+        start = sorted(v["start"], key=lambda n: (n["rcpt"][0], n["title"]))
+        ann = sorted(v["ann"], key=lambda n: (n["announce"], n["title"]))
+        res = sorted(v["res"], key=lambda n: -(_avg(n) or 0))
+        ongoing = k == cur
+        label = f"{mon.month}월 {mon.day}일~{sun.month}월 {sun.day}일"
+        kc = {}
+        for n in start:
+            kc[kinds_label(n)] = kc.get(kinds_label(n), 0) + 1
+        lead = [f"{label}에 접수를 시작한 청약 공고는 {len(start)}곳이에요" + (f" ({d(today.isoformat())}까지 집계)" if ongoing else "") + "."]
+        if kc:
+            lead.append("유형별로는 " + ", ".join(f"{a} {b}곳" for a, b in sorted(kc.items(), key=lambda x: -x[1])) + "이에요.")
+        if ann:
+            lead.append(f"당첨자 발표는 {len(ann)}곳이에요.")
+        ra = [(n, _avg(n)) for n in res if _avg(n) is not None]
+        if ra:
+            t0 = ra[0]
+            nm0 = t0[0].get("complex") or t0[0]["title"]
+            lead.append(("이번 주" if ongoing else "이 주에") + f" 접수를 마친 곳 가운데 경쟁률이 가장 높았던 곳은 {nm0}{_ro(nm0)} 평균 {_f(t0[1])}대 1이고, "
+                        f"평균 1대 1에 못 미친 곳은 {sum(1 for _, a in ra if a < 1)}곳이에요.")
+        nxt = sorted([n for n in live if wk(n["rcpt"][0]) > k and (dt.date.fromisoformat(n["rcpt"][0]) - sun).days <= 7], key=lambda n: n["rcpt"][0])
+        url = f"/week/{k}/"
+        title = f"{y}년 {label} 청약 정리 | 접수 {len(start)}곳·발표 {len(ann)}곳·경쟁률 · 줍줍알람"
+        desc = " ".join(lead)[:155]
+        prev_ = (f"/week/{keys[i - 1]}/", "지난주") if i > 0 else None
+        next_ = (f"/week/{keys[i + 1]}/", "다음 주") if i < len(keys) - 1 else None
+        h = tpl.render(k=k, y=y, label=label, ongoing=ongoing, start=start, ann=ann, res=res, ra=ra, nxt=nxt[:8], lead=lead, prev_=prev_, next_=next_,
+                       **common, page_url=url, title=title, desc=desc, og="/og-default.jpg",
+                       crumb=[("홈", "/"), ("주간 정리", "/week/"), (label, "")], nav="schedule")
+        write(url, h, title, desc, "list", max(n["modified"] for n in start + ann + res))
+        out.append({"k": k, "url": url, "label": label, "y": y, "n": len(start), "ann": len(ann), "res": len(res), "ongoing": ongoing, "lead": lead[0]})
+    out.reverse()
+    title = "주간 청약 정리 | 주마다 접수·당첨자 발표·경쟁률 모음 · 줍줍알람"
+    desc = "주마다 접수를 시작한 청약 공고, 당첨자 발표, 접수를 마친 곳의 청약홈 공식 경쟁률을 자동으로 정리해요."
+    h = E.get_template("week_index.html").render(weeks=out, **common, page_url="/week/", title=title, desc=desc, og="/og-default.jpg",
+                                                 crumb=[("홈", "/"), ("주간 정리", "")], nav="schedule")
+    write("/week/", h, title, desc, "list", max(n["modified"] for n in notices))
+    return out
+
+
+def kinds_label(n):
+    return {"mujeonwi": "무순위·줍줍", "private": "민간분양", "public": "공공분양", "newlywed": "신혼희망타운", "rental": "공공임대"}.get(n["kind"], "기타")

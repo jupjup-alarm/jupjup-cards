@@ -88,7 +88,21 @@
   <p class="trust"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>{{ n.source_name or '청약홈' }} {{ '모집공고' if not n.is_rental else '모집공고' }}{% if n.notice_date %}({{ n.notice_date|d }}){% endif %} 원문 대조 · 줍줍알람 편집 (<a href="/about/#criteria">판정 기준</a>) · 최종 수정 <time datetime="{{ n.modified[:10] }}">{{ n.modified|d }}</time></span></p>
   </div>
 {% endif %}
-{# 2026-11-20 사용자 요청: 일정·30초 체크 메뉴 위에 쿠팡 띠 배너 (모바일) #}
+{% if n.result %}
+  <section class="res-card" aria-labelledby="h-res">
+    <h2 id="h-res">청약 결과</h2>
+    <div class="res-kpi">
+      {% if n.result.avg is not none %}<div><span>평균 경쟁률</span><b class="num">{{ '{:,.2f}'.format(n.result.avg).rstrip('0').rstrip('.') }}대 1</b></div>{% endif %}
+      {% if n.result.top %}<div><span>최고 주택형</span><b class="num">{{ '{:,.2f}'.format(n.result.top).rstrip('0').rstrip('.') }}대 1</b></div>{% endif %}
+      {% if n.result.score %}<div><span>최저 당첨 가점</span><b class="num">{{ n.result.score[0]|round|int }}{% if n.result.score[1]|round != n.result.score[0]|round %}~{{ n.result.score[1]|round|int }}{% endif %}점</b></div>{% endif %}
+      {% if n.result.avg is not none %}<div><span>미달 칸</span><b class="num">{{ n.result.under }}개</b></div>{% endif %}
+    </div>
+    {% if n.result.text %}<p>{{ n.result.text }}</p>{% endif %}
+    {% for x in n.result.later %}<a class="res-next" href="{{ x.url }}"><b>이 단지 무순위가 다시 나왔어요</b><span>{{ x.title }} · {{ x.rcpt[0]|d }} 접수 ›</span></a>{% endfor %}
+    <p class="note">청약홈 공식 1순위 경쟁률·당첨 가점 기준 · <a href="/competition/">다른 단지 결과</a> · <a href="/scores/">당첨 가점 커트라인</a></p>
+  </section>
+  {% endif %}
+  {# 2026-11-20 사용자 요청: 일정·30초 체크 메뉴 위에 쿠팡 띠 배너 (모바일) #}
   {{ cp_ad('apt_nav_mo', 'ad-apt ad-top ad-nav') }}
 <!--CHIPNAV-->
 

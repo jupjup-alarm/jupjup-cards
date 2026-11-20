@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% from "macros.html" import crumbs, cp_ad, nrow with context %}
+{# 주간 청약 정리 (2026-11-20) — site/report.py build_weeks #}
+{% block main %}
+<main class="wrap" id="main">
+  <div class="lwrap rp">
+    <div class="lhead">
+      {{ crumbs(crumb) }}
+      <h1>{{ label }} 청약 정리</h1>
+      <p class="t-sub">접수 {{ start|length }}곳 · 당첨자 발표 {{ ann|length }}곳 · 경쟁률 {{ ra|length }}곳{% if ongoing %} · 이번 주, 매일 갱신{% endif %}</p>
+      <p>{{ lead|join(' ') }}</p>
+      <p class="rp-nav">{% if prev_ %}<a href="{{ prev_[0] }}">← {{ prev_[1] }}</a>{% endif %}<a href="/week/">주간 정리 모아 보기</a>{% if next_ %}<a href="{{ next_[0] }}">{{ next_[1] }} →</a>{% endif %}</p>
+    </div>
+
+    {% if start %}
+    <section class="lsec">
+      <h2>이 주에 접수 시작 <small>{{ start|length }}곳</small></h2>
+      <ul class="hm-rows">{% for n in start %}{{ nrow(n) }}{% endfor %}</ul>
+    </section>
+    {% endif %}
+
+    {% if ra %}
+    <section class="lsec">
+      <h2>접수 마친 곳 경쟁률 <small>청약홈 공식</small></h2>
+      <div class="tbl ntbl"><table class="num">
+        <thead><tr><th scope="col" style="text-align:left">단지</th><th scope="col" style="text-align:left">지역</th><th scope="col">평균</th><th scope="col">최저 가점</th></tr></thead>
+        <tbody>{% for n, a in ra %}<tr><th scope="row"><a href="{{ n.url }}">{{ n.title }}</a></th><td class="l">{{ n.sido }} {{ n.sigungu or '' }}</td><td class="max">{{ '{:,.2f}'.format(a).rstrip('0').rstrip('.') }}대 1</td><td>{% if n.score_min %}{{ n.score_min[0]|round|int }}점{% else %}—{% endif %}</td></tr>{% endfor %}</tbody>
+      </table></div>
+    </section>
+    {% endif %}
+
+    {{ cp_ad('home_mo', 'ad-home') }}
+
+    {% if ann %}
+    <section class="lsec">
+      <h2>당첨자 발표 <small>{{ ann|length }}곳</small></h2>
+      <ul class="rp-list">{% for n in ann %}<li><a href="{{ n.url }}">{{ n.title }}</a><span>{{ n.announce|d }} 발표 · {{ n.sido }} {{ n.sigungu or '' }}</span></li>{% endfor %}</ul>
+    </section>
+    {% endif %}
+
+    {% if nxt and ongoing %}
+    <section class="lsec">
+      <h2>다음 주 접수 예정 <small>{{ nxt|length }}곳</small></h2>
+      <ul class="hm-rows">{% for n in nxt %}{{ nrow(n) }}{% endfor %}</ul>
+    </section>
+    {% endif %}
+
+    <section class="lsec lbox">
+      <h2>이렇게 정리했어요</h2>
+      <p class="rp-note">접수 시작일·당첨자 발표일·접수 마감일이 이 주(월~일)에 든 공고를 모았어요. 경쟁률·당첨 가점은 청약홈 공식 값이고, 숫자를 사람이 손으로 바꾸지 않아요. 지금 접수 중인 공고는 <a href="/schedule/this-week/">이번 주 청약 일정</a>에서 매일 보세요.</p>
+    </section>
+  </div>
+</main>
+{% endblock %}

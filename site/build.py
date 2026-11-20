@@ -1811,6 +1811,35 @@ def main():
             out.append({"url": f"/guide/{s}/", "h1": g["h1"], "category": g.get("category", ""), "read_min": GUIDES.read_min(g)})
         return out[:4]
 
+    # 마감 공고 '청약 결과' 요약 (2026-11-20 사용자 요청 — 마감 뒤에도 쓸모 있는 페이지로). 숫자로만 쓴다
+    by_cx = {}
+    for x in notices:
+        if x.get("complex"):
+            by_cx.setdefault(re.sub(r"\s+", "", x["complex"]), []).append(x)
+    for n in notices:
+        if n["status"] not in ("waiting", "announced") or n.get("is_pre"):
+            continue
+        av = REPORT._avg(n) if n.get("comp") else None
+        rt = REPORT._rates(n) if n.get("comp") else []
+        ud = REPORT._under(n) if n.get("comp") else 0
+        later = [x for x in by_cx.get(re.sub(r"\s+", "", n.get("complex") or "-"), [])
+                 if x is not n and x["kind"] == "mujeonwi" and (x["rcpt"][0] or "") > (n["rcpt"][1] or n["rcpt"][0] or "")]
+        if av is None and not n.get("score_min") and not later:
+            continue
+        sent = []
+        if av is not None:
+            sm = re.search(r"([\d,]+)세대에\s*([\d,]+)", (n["comp"] or {}).get("short") or "")
+            sent.append((f"공급 {sm.group(1)}세대에 {sm.group(2)}건이 접수돼 " if sm else "") + f"평균 {REPORT._f(av)}대 1이었어요.")
+            if rt and max(rt) != av:
+                sent.append(f"가장 높은 주택형은 {REPORT._f(max(rt))}대 1이에요.")
+            if ud:
+                sent.append(f"미달 난 주택형 칸이 {ud}개 있어요.")
+        if n.get("score_min"):
+            lo, hi = n["score_min"]
+            sent.append(f"해당지역 최저 당첨 가점은 {int(round(lo))}" + (f"~{int(round(hi))}" if round(hi) != round(lo) else "") + "점이에요.")
+        n["result"] = {"text": " ".join(sent), "avg": av, "top": max(rt) if rt else None, "under": ud,
+                       "score": n.get("score_min"), "later": sorted(later, key=lambda x: x["rcpt"][0])[:3]}
+
     for n in notices:
         n["imgs"] = notice_images(n)
         same = [x for x in notices if x is not n and x["sido"] == n["sido"] and x["status"] in ("open", "upcoming")]
@@ -2327,6 +2356,7 @@ def main():
 
     # 월간 청약 결산 (2026-11-20 사용자 요청)
     REPORTS = REPORT.build(E, notices, write, common, BASE, TODAY, won, KINDS, d)
+    WEEKS = REPORT.build_weeks(E, notices, write, common, TODAY, d)        # /week/ — 주간 정리
     HAS_SCORES = REPORT.build_scores(E, notices, write, common, TODAY, d)   # /scores/ — 가점 데이터가 있을 때만
 
     # 가이드 칼럼
@@ -2345,7 +2375,7 @@ def main():
     t_ = "청약 정보 | 가이드·계산기·경쟁률·월간 결산 모음 · 줍줍알람"
     ds_ = (f"청약 가이드 {len(gl_)}편, 청약 가점·특공 소득·취득세·주담대 한도 등 계산기 {len(TOOLS_PAGES.TOOLS)}종, "
            "청약홈 공식 경쟁률·당첨 가점, 월간 청약 결산을 한곳에 모았어요.")
-    h = E.get_template("info.html").render(has_scores=HAS_SCORES, guides=gl_[:6], n_guides=len(gl_), gcats=gcats_, tools=TOOLS_PAGES.TOOLS, reports=REPORTS or [],
+    h = E.get_template("info.html").render(weeks=WEEKS or [], has_scores=HAS_SCORES, guides=gl_[:6], n_guides=len(gl_), gcats=gcats_, tools=TOOLS_PAGES.TOOLS, reports=REPORTS or [],
                                            page_url="/info/", title=t_, desc=ds_, og="/og-default.jpg", crumb=[("홈", "/"), ("청약 정보", "")], nav="info", **common)
     write("/info/", h, t_, ds_, "list", max(n["modified"] for n in notices))
 

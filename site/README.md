@@ -16,6 +16,7 @@
    - 한마디·FAQ는 공고마다 새로 쓴다(템플릿 문장 돌려쓰기 금지). 차익은 근거 단지가 있을 때만 '약 O억 저렴(추정)'.
 4. 시·군·구가 `site/data/regions.json`에 없으면 로마자 슬러그를 추가 (한 번 정하면 안 바꿈).
 5. `python3 site/build.py` — 종료 코드 1이면 푸시하지 말고 `site/build-report.json`의 errors를 보고.
+5-1. **FAQ 보강 (2026-11-20 사용자 결정 — 질 높은 콘텐츠를 적은 비용으로)**: `python3 site/tools/faq_todo.py` → `site/data/faq_todo.json`(사람들이 검색하는데 공고 페이지가 아직 답하지 않는 주제, 검색량 큰 순). 그날 처리하는 공고와 겹치는 것 + 맨 위 3개까지만, **공고문(notice_text)·청약홈 공고에서 확인된 사실로만** `data/apt/{key}.json`의 `faq`에 질문·답 하나씩 더한다(예: "○○ 모델하우스는 어디예요?" → 주소·운영 시간·예약 여부). 공고문에 없으면 건너뛴다(추측 금지). 구글 서치콘솔 '검색어' CSV를 `site/data/gsc/queries.csv`로 두면 노출 많고 클릭 적은 검색어도 함께 잡는다. 더한 뒤 build를 다시 돌린다.
 6. `git add site && git commit -m "site: 새 N · 고침 N" && git push origin HEAD:main`
    - **충돌 표시를 올리지 않기 (2026-11-03 사고)**: 7d357d1이 `git stash pop` 충돌로 생긴 `<<<<<<< Updated upstream` 표시 83곳을 site/public·build-report.json에 담은 채 푸시됐고, 다음 커밋(8acb802)이 다시 빌드해 덮었어요. site/public·build-report.json은 생성 파일이라 충돌을 손으로 풀지 말고 `git checkout --theirs`든 뭐든 받은 뒤 **빌드를 다시 돌려 덮는다**. 커밋 직전 `git grep -nE '^(<<<<<<<|=======|>>>>>>>)( |$)' -- site`가 아무것도 안 나와야 푸시한다.
    - **배포 확인**: 푸시 뒤 라이브 확인은 GitHub 커밋의 'Cloudflare Pages' 체크(`gh api repos/jupjup-alarm/jupjup-cards/commits/<커밋>/check-runs`)가 success가 된 뒤에 한다. 2026-11-03에는 이 체크가 푸시 14분 뒤에야 끝났다(평소 1분 안팎). 체크가 30분 넘게 안 끝나면 그때 Cloudflare Pages 배포 기록을 사용자에게 확인 요청.

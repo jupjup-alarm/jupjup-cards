@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% from "macros.html" import crumbs with context %}
+{% block main %}
+<main class="wrap" id="main">
+  <div class="lwrap">
+    <div class="lhead">
+      {{ crumbs(crumb) }}
+      <h1>주간 청약 정리</h1>
+      <p>주마다 접수를 시작한 공고, 당첨자 발표, 접수를 마친 곳의 경쟁률을 정리해요. 이번 주 정리는 매일 새로 집계돼요.</p>
+    </div>
+    <div class="t-grid">{% for w in weeks %}
+      <a class="t-card" href="{{ w.url }}"><b>{{ w.y }}년 {{ w.label }}{% if w.ongoing %} · 이번 주{% endif %}</b><span>접수 {{ w.n }}곳 · 발표 {{ w.ann }}곳 · 경쟁률 {{ w.res }}곳</span><i aria-hidden="true">보기 ›</i></a>{% endfor %}
+    </div>
+    <p class="rp-nav" style="margin-top:16px"><a href="/report/">월간 청약 결산</a><a href="/schedule/this-week/">이번 주 청약 일정</a></p>
+  </div>
+</main>
+{% endblock %}
