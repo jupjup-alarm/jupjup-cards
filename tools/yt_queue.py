@@ -18,6 +18,8 @@
   python3 tools/yt_queue.py comment-due          # 게시 시각이 지났는데 고정 댓글을 안 단 것
   python3 tools/yt_queue.py commented <편ID> [--push]
   python3 tools/yt_queue.py status               # 한눈에 보기
+  python3 tools/yt_queue.py channel              # 줍줍알람 채널 ID·Studio 주소
+  python3 tools/yt_queue.py verify [--push]      # 게시된 편이 줍줍알람 채널에 있는지 (다른 채널이면 대기열로 되돌림)
 """
 import argparse
 import json
@@ -36,6 +38,8 @@ LEAD_MIN = 40                 # 지금부터 이 분 뒤보다 이른 시각엔 
 SLOTS = ["08:30", "12:00", "19:30", "21:30"]   # 밀린 편을 올릴 빈 시각 (인스타 13:00·17:00과 안 겹치게)
 PER_SLOT = 1
 RESULT_DAYS = 3               # 청약 결과 편은 원래 날짜에서 3일까지만
+CHANNEL_ID = "UCbIKC-joj_M279Tii7sLSiA"   # 줍줍알람 (@jupjup_alarm) — 투키즈노트 등 다른 채널에 올라가면 안 됨
+CHANNEL_NAME = "줍줍알람"
 MIN_DB = -32.0                # 이보다 조용하면 무음 편 — 올리지 않음 (11/4·11/5 무음 릴스)
 
 
@@ -283,6 +287,46 @@ def cmd_commented(a):
     set_state(a, status=("게시됨" if d["status"] == "예약됨" else d["status"]), commented=now().strftime("%Y-%m-%d %H:%M"))
 
 
+def channel_of(url):
+    """공개된 쇼츠 주소 → (채널 ID, 채널 이름). 예약 중(비공개)이면 (None, None)."""
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0", "Accept-Language": "ko"})
+    try:
+        html = urllib.request.urlopen(req, timeout=20).read().decode("utf-8", "ignore")
+    except Exception:
+        return None, None
+    cid = re.search(r'"(?:externalChannelId|channelId)":"(UC[\w-]{22})"', html)
+    name = re.search(r'"ownerChannelName":"([^"]+)"', html)
+    return (cid.group(1) if cid else None), (name.group(1) if name else None)
+
+
+def cmd_verify(a):
+    """게시된 편이 줍줍알람 채널에 올라갔는지 (게시 시각 지난 편만 확인 가능)."""
+    bad = 0
+    for d in items():
+        if a.slug and d["slug"] != a.slug:
+            continue
+        if d["status"] not in ("예약됨", "게시됨") or not d.get("url") or d.get("channel_ok"):
+            continue
+        if datetime.fromisoformat(d.get("publish_at", "2100-01-01T00:00+09:00")) > now():
+            continue
+        cid, name = channel_of(d["url"])
+        if cid is None:
+            print(f"{d['slug']}: 아직 확인 못 함(비공개·처리 중)")
+            continue
+        if cid == CHANNEL_ID:
+            d["channel_ok"] = True
+            save(d)
+            print(f"{d['slug']}: 채널 맞음 ({name})")
+        else:
+            bad += 1
+            d.update({"status": "대기", "why": f"다른 채널에 올라감: {name} ({cid}) {d['url']} — 그 영상은 비공개로 바꾸고 줍줍알람에 다시", "wrong": d["url"]})
+            d.pop("url", None); d.pop("publish_at", None)
+            save(d)
+            print(f"⚠ {d['slug']}: 다른 채널({name})에 올라감 → 대기열로 되돌림")
+    if bad and getattr(a, "push", False):
+        push("youtube: 다른 채널 업로드 되돌림")
+
+
 def cmd_status(a):
     rows = items()
     by = {}
@@ -305,9 +349,12 @@ def main():
     sp.add_parser("comment-due")
     p = sp.add_parser("commented"); p.add_argument("slug"); p.add_argument("--push", action="store_true")
     sp.add_parser("status")
+    p = sp.add_parser("verify"); p.add_argument("slug", nargs="?"); p.add_argument("--push", action="store_true")
+    sp.add_parser("channel")
     a = ap.parse_args()
     {"sync": cmd_sync, "next": cmd_next, "fetch": cmd_fetch, "done": cmd_done, "fail": cmd_fail,
-     "comment-due": cmd_comment_due, "commented": cmd_commented, "status": cmd_status}[a.cmd](a)
+     "comment-due": cmd_comment_due, "commented": cmd_commented, "status": cmd_status, "verify": cmd_verify,
+     "channel": lambda a: print(f"{CHANNEL_NAME} {CHANNEL_ID}\nhttps://studio.youtube.com/channel/{CHANNEL_ID}")}[a.cmd](a)
 
 
 if __name__ == "__main__":
