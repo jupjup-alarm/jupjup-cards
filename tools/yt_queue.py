@@ -2,7 +2,7 @@
 
 흐름
   ① ④ 디자인이 '유튜브' 탭에 행을 쓴다 (제목·설명·태그·고정 댓글·영상·표지·시각·접수 마감).
-  ② 실행기 assets.yml(모델 없음)이 그 탭을 site/data/sheet/youtube.json 으로 내려 둔다 (07:20·10:40·11:50·22:40 KST).
+  ② 실행기 assets.yml(모델 없음)이 그 탭을 site/data/sheet/youtube.json 으로 내려 둔다 (07:20·10:40·11:50·22:40 KST — Mac 업로드는 하루 한 번 12:00).
   ③ 사용자 Mac의 예약 작업(ego lite)이 이 도구로 대기열을 맞추고(sync) → 올릴 것을 고르고(next) → 파일을 받고(fetch)
      → YouTube Studio에서 '예약'으로 올린 뒤 → done 으로 기록하고 저장소에 올린다. 순서는 docs/youtube_ego.md.
   ④ 게시 시각이 지나면 고정 댓글을 단다(comment-due → commented).
@@ -11,7 +11,7 @@
 대기열 파일: youtube/queue/<편ID>.json  (status: 대기 → 예약됨 → 게시됨 / 건너뜀 / 실패)
 
   python3 tools/yt_queue.py sync                 # youtube.json → 대기열 (새 행 추가·게시된 것 표시·무음/마감 지남 건너뜀)
-  python3 tools/yt_queue.py next [--n 4]         # 지금 올릴 것: 예약 시각을 정해 저장하고 목록 출력 (JSON은 --json)
+  python3 tools/yt_queue.py next                 # 지금 올릴 것 전부: 예약 시각을 정해 저장하고 목록 출력 (JSON은 --json)
   python3 tools/yt_queue.py fetch <편ID> [--dir ~/줍줍알람/유튜브]   # 영상·표지 받기 + 붙여 넣을 글 파일
   python3 tools/yt_queue.py done <편ID> --url <유튜브 주소> [--push]
   python3 tools/yt_queue.py fail <편ID> --why "<원인>" [--push]
@@ -342,7 +342,7 @@ def main():
     ap = argparse.ArgumentParser()
     sp = ap.add_subparsers(dest="cmd", required=True)
     sp.add_parser("sync")
-    p = sp.add_parser("next"); p.add_argument("--n", type=int, default=4); p.add_argument("--json", action="store_true")
+    p = sp.add_parser("next"); p.add_argument("--n", type=int, default=30); p.add_argument("--json", action="store_true")
     p = sp.add_parser("fetch"); p.add_argument("slug"); p.add_argument("--dir", default="~/줍줍알람/유튜브")
     p = sp.add_parser("done"); p.add_argument("slug"); p.add_argument("--url", required=True); p.add_argument("--push", action="store_true")
     p = sp.add_parser("fail"); p.add_argument("slug"); p.add_argument("--why", required=True); p.add_argument("--push", action="store_true")
