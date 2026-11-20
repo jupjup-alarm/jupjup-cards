@@ -67,7 +67,8 @@
     <address class="biz">상호 98컴퍼니 · 대표자 최수빈 · 사업자등록번호 440-22-01650<br>서울시 서초구 사임당로8길 13, 4층 402-732A호 (우편번호 06640)<br>연락처 010-7377-0380 · 이메일 <a href="mailto:contact@jupjupalarm.com">contact@jupjupalarm.com</a></address>
   </div>
 </footer>
-{% if not page_url.startswith('/apt/') and page_url != '/404.html' %}
+{# 2026-11-20 사용자 결정: 공고 상세에도 하단 탭 고정 (CTA 바는 탭 위에 뜨고 스크롤에 따라 보임/숨김) #}
+{% if page_url != '/404.html' %}
 <nav class="tabbar" aria-label="하단 메뉴">
   <a href="/"{% if tab == 'home' %} aria-current="page"{% endif %}><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>홈</a>
   <a href="/schedule/this-week/"{% if tab == 'schedule' %} aria-current="page"{% endif %}><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 5h16v15H4zM4 10h16M9 3v4M15 3v4"/></svg>일정</a>
@@ -108,11 +109,25 @@
     tabs.forEach(function(b,i){b.addEventListener('click',function(){sel(b)});
       b.addEventListener('keydown',function(e){var k=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;if(k){var n=tabs[(i+k+tabs.length)%tabs.length];sel(n);n.focus();}});});
     tl.hidden=false;sel(tabs[0]);}
+  // 아래 CTA 바 (2026-11-20): 첫 화면(요약 티켓이 보이는 동안)·푸터 근처·입력 중엔 숨김,
+  // 본문에서는 아래로 내리는 동안 숨기고 위로 올리거나 0.5초 멈추면 다시 보임
   var bar=document.querySelector('.bar');
-  if(bar){var lastY=window.scrollY,ticking=false;
-    function onScroll(){var y=window.scrollY,d=y-lastY;if(y<80)bar.classList.remove('hide');else if(d>6)bar.classList.add('hide');else if(d<-6)bar.classList.remove('hide');if(Math.abs(d)>6)lastY=y;ticking=false;}
-    window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(onScroll);}},{passive:true});
-    bar.addEventListener('focusin',function(){bar.classList.remove('hide')});}
+  if(bar){var lastY=window.scrollY,ticking=false,down=false,idle=null,typing=false,
+      tk=document.querySelector('.ticket'),ft=document.querySelector('footer');
+    function zone(){var vh=innerHeight;
+      if(tk&&tk.getBoundingClientRect().bottom>vh*0.35)return false;      // 첫 화면: 티켓이 아직 화면 위쪽에 보임
+      if(!tk&&scrollY<vh*0.6)return false;
+      if(ft&&ft.getBoundingClientRect().top<vh-40)return false;          // 사업자 정보가 보이기 시작하면
+      return true;}
+    function apply(){bar.classList.toggle('hide',typing||!zone()||down);}
+    function onScroll(){var y=scrollY,d=y-lastY;if(d>6)down=true;else if(d<-6)down=false;if(Math.abs(d)>6)lastY=y;apply();ticking=false;
+      clearTimeout(idle);idle=setTimeout(function(){down=false;apply();},500);}
+    addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(onScroll);}},{passive:true});
+    addEventListener('resize',apply,{passive:true});
+    document.addEventListener('focusin',function(e){if(e.target.matches('input,textarea,select')&&!bar.contains(e.target)){typing=true;apply();}});
+    document.addEventListener('focusout',function(e){if(e.target.matches('input,textarea,select')){typing=false;apply();}});
+    bar.addEventListener('focusin',function(){bar.classList.remove('hide')});
+    apply();}
 
   var hf=document.querySelector('[data-hfilter]');
   if(hf){var hbs=[].slice.call(hf.querySelectorAll('button')),hli=[].slice.call(document.querySelectorAll('.hlist li')),hm=document.querySelector('[data-hmore]'),LIM=10,open=false;
