@@ -1,0 +1,18 @@
+{
+ "slug": "2026-11-21-mullae-84-reel",
+ "duration": 30.97,
+ "voiced": true,
+ "narration_s": 27.2,
+ "mean_db": -18.8,
+ "voice": "voices/83272ee97f99/",
+ "video": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-21-mullae-84-reel/2026-11-21-mullae-84-reel.mp4",
+ "cover": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-21-mullae-84-reel/2026-11-21-mullae-84-reel_thumb.jpg",
+ "size_mb": 8.95,
+ "warnings": [
+  "확대(Real-ESRGAN x4): 5장 — birdseye-2.jpg, exterior-2.jpg, exterior-3.jpg, exterior-4.jpg, landscape-1.jpg",
+  "호흡: 장면 4 대본에 없는 곳에서 0.32초 쉼 (③ 대본 쉼표 위치 확인)",
+  "호흡: 장면 7 대본에 없는 곳에서 0.26초 쉼 (③ 대본 쉼표 위치 확인)",
+  "호흡: 장면 8 대본에 없는 곳에서 0.29초 쉼 (③ 대본 쉼표 위치 확인)",
+  "사진: 컷 12개 · 서로 다른 사진 10장"
+ ]
+}
