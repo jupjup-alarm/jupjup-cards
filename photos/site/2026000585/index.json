@@ -10,7 +10,12 @@
    "w": 1100,
    "h": 687,
    "photo": true,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-20",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "birdseye",
@@ -21,7 +26,12 @@
    "w": 2400,
    "h": 1328,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-20",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "birdseye",
@@ -32,7 +42,12 @@
    "w": 2200,
    "h": 1090,
    "photo": true,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-20",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "overview",
@@ -43,7 +58,12 @@
    "w": 1920,
    "h": 960,
    "photo": true,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-20",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "overview",
@@ -54,7 +74,12 @@
    "w": 1976,
    "h": 1981,
    "photo": true,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-20",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "overview",
@@ -65,7 +90,12 @@
    "w": 1920,
    "h": 960,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-20",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "location",
@@ -76,7 +106,12 @@
    "w": 2400,
    "h": 1405,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-20",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "location",
@@ -87,7 +122,12 @@
    "w": 2400,
    "h": 1169,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-20",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "location",
@@ -98,7 +138,12 @@
    "w": 2222,
    "h": 2400,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-20",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   }
  ],
  "links": [],

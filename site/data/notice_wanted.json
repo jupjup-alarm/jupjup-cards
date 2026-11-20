@@ -2,76 +2,114 @@
  "how": "ego lite: need에 notice가 있으면 url(청약홈)에서 '모집공고문' PDF → ~/줍줍알람/공고문/<save_as>, pamphlet이 있으면 청약홈·homepage(분양 홈페이지)에서 팸플릿·카탈로그 PDF → ~/줍줍알람/공고문/<pamphlet_as>(여러 개면 -pamphlet2.pdf…), 어디에도 없으면 notice_import.py --no-pamphlet <key>. site가 있으면 homepage에서 평면도·단지배치도·동호배치도·조감도·커뮤니티·단지 둘러보기 그림의 원본 주소(가장 큰 것)를 AI열 형식으로 ~/줍줍알람/공고문/<site_as>에 적고 notice_import.py --site로 받음(그림이 없으면 --no-site <key>). 캡차·차단 화면이면 멈추고 건너뜀(우회 금지).",
  "items": [
   {
-   "key": "2026940263",
-   "title": "이천역 예미지 센트럴파크 4차 임의공급 (84㎡ 15세대)",
-   "rcpt": [
-    "2026-11-20",
-    "2026-11-20"
-   ],
-   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940263&pblancNo=2026940263",
-   "homepage": "https://ic-yemizi.com/",
-   "need": [
-    "notice",
-    "pamphlet"
-   ],
-   "save_as": "2026940263.pdf",
-   "pamphlet_as": "2026940263-pamphlet.pdf",
-   "site_as": "2026940263-site.txt",
-   "owner": "(주)금성백조주택"
-  },
-  {
-   "key": "2026910292",
-   "title": "검암역 푸르지오 프라베뉴 B-1블록 공공분양 무순위 (84㎡ 9세대)",
+   "key": "2026940261",
+   "title": "e편한세상 헤이리 임의공급 (84㎡ 15세대)",
    "rcpt": [
     "2026-11-23",
     "2026-11-23"
    ],
-   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910292&pblancNo=2026910292",
-   "homepage": "https://www.prugio.com/hb/2026/pravenue",
+   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940261&pblancNo=2026940261",
+   "homepage": "",
    "need": [
     "notice",
     "pamphlet"
    ],
-   "save_as": "2026910292.pdf",
-   "pamphlet_as": "2026910292-pamphlet.pdf",
-   "site_as": "2026910292-site.txt",
-   "owner": "인천도시공사"
+   "save_as": "2026940261.pdf",
+   "pamphlet_as": "2026940261-pamphlet.pdf",
+   "site_as": "2026940261-site.txt",
+   "owner": "신한자산신탁(주)"
   },
   {
-   "key": "2026930046",
-   "title": "광주 송정 중흥S-클래스 파크뷰 무순위 (59㎡ 2세대)",
+   "key": "2026910300",
+   "title": "산곡역자이힐스테이트앤하늘채 무순위 (550세대)",
    "rcpt": [
-    "2026-11-23",
-    "2026-11-23"
+    "2026-11-24",
+    "2026-11-24"
    ],
-   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026930046&pblancNo=2026930046",
-   "homepage": "https://www.s-class.co.kr/",
+   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910300&pblancNo=2026910300",
+   "homepage": "https://www.xi.co.kr/sangokxi",
    "need": [
     "notice",
     "pamphlet"
    ],
-   "save_as": "2026930046.pdf",
-   "pamphlet_as": "2026930046-pamphlet.pdf",
-   "site_as": "2026930046-site.txt",
-   "owner": "송정파크 주식회사"
+   "save_as": "2026910300.pdf",
+   "pamphlet_as": "2026910300-pamphlet.pdf",
+   "site_as": "2026910300-site.txt",
+   "owner": "산곡6주택재개발정비사업조합"
   },
   {
-   "key": "2026940255",
-   "title": "광명 시티프라디움 에듀하임 임의공급 (84㎡ 30세대)",
+   "key": "2026910307",
+   "title": "인천 검단신도시 AB13블록 호반써밋Ⅲ 무순위 (97㎡ 1세대)",
    "rcpt": [
-    "2026-11-23",
-    "2026-11-23"
+    "2026-11-24",
+    "2026-11-24"
    ],
-   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940255&pblancNo=2026940255",
-   "homepage": "https://광명시티프라디움.com",
+   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910307&pblancNo=2026910307",
+   "homepage": "https://www.gd3-hoban.co.kr/",
+   "need": [
+    "notice",
+    "pamphlet",
+    "site"
+   ],
+   "save_as": "2026910307.pdf",
+   "pamphlet_as": "2026910307-pamphlet.pdf",
+   "site_as": "2026910307-site.txt",
+   "owner": "티에스리빙 주식회사"
+  },
+  {
+   "key": "2026940257",
+   "title": "강동한강 디에트르 임의공급 (59㎡ 등 13세대)",
+   "rcpt": [
+    "2026-11-24",
+    "2026-11-25"
+   ],
+   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940257&pblancNo=2026940257",
+   "homepage": "https://detre-hangang.co.kr",
    "need": [
     "notice",
     "pamphlet"
    ],
-   "save_as": "2026940255.pdf",
-   "pamphlet_as": "2026940255-pamphlet.pdf",
-   "site_as": "2026940255-site.txt",
-   "owner": "(주)시티글로벌"
+   "save_as": "2026940257.pdf",
+   "pamphlet_as": "2026940257-pamphlet.pdf",
+   "site_as": "2026940257-site.txt",
+   "owner": "대명아파트가로주택정비사업조합"
+  },
+  {
+   "key": "2026000575",
+   "title": "왕숙 한신더휴 센텀 A-17블록 공공분양",
+   "rcpt": [
+    "2026-11-30",
+    "2026-12-02"
+   ],
+   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000575&pblancNo=2026000575",
+   "homepage": "https://ws-thehue.com",
+   "need": [
+    "notice",
+    "pamphlet",
+    "site"
+   ],
+   "save_as": "2026000575.pdf",
+   "pamphlet_as": "2026000575-pamphlet.pdf",
+   "site_as": "2026000575-site.txt",
+   "owner": "한신공영(주)"
+  },
+  {
+   "key": "2026000585",
+   "title": "고양 한신더휴 퍼스트원",
+   "rcpt": [
+    "2026-11-30",
+    "2026-12-02"
+   ],
+   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000585&pblancNo=2026000585",
+   "homepage": "https://gy-thehue.com",
+   "need": [
+    "notice",
+    "pamphlet"
+   ],
+   "save_as": "2026000585.pdf",
+   "pamphlet_as": "2026000585-pamphlet.pdf",
+   "site_as": "2026000585-site.txt",
+   "owner": "행신2의1구역재건축정비사업조합"
   }
  ]
 }

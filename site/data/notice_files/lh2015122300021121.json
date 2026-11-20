@@ -1,0 +1,85 @@
+{
+ "key": "lh2015122300021121",
+ "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300021121&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=10&mi=1026",
+ "checked": "2026-11-20 00:31",
+ "files": [
+  {
+   "fileid": "69503289",
+   "name": "[공고문]인천논현LH16단지(인천논현41블록)창업지원주택입주자모집(`26.11.19.공고).hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69503290",
+   "name": "[공고문]인천논현LH16단지(인천논현41블록)창업지원주택입주자모집(`26.11.19.공고).pdf",
+   "kind": "notice",
+   "got": "ok",
+   "md5": "2f9d4126610001d265b5b185cd4fe311",
+   "pages": 26,
+   "bytes": 739332
+  },
+  {
+   "fileid": "69503297",
+   "name": "[동호배치도]인천논현LH16단지창업지원주택(`26.11.19.공고).pdf",
+   "kind": "notice",
+   "got": "ok",
+   "md5": "df60505ff0af910a74a1313a46147739",
+   "pages": 2,
+   "bytes": 1637477
+  },
+  {
+   "fileid": "69503854",
+   "name": "[팜플렛]인천논현LH16단지창업지원주택.pdf",
+   "kind": "pamphlet",
+   "got": "ok",
+   "md5": "ca2c9a2d3fa7411521c4eadcd054db0a",
+   "pages": 11,
+   "bytes": 140130317
+  },
+  {
+   "fileid": "69503838",
+   "name": "[양식1-1]입주추천신청서.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69503839",
+   "name": "[양식1-2]개인정보수집·이용및제3자제공동의서(남동구양식).hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69503840",
+   "name": "[양식1-3]사업계획서(예비창업인).hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69503841",
+   "name": "[양식2-1]선계약후검증확약서.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69503842",
+   "name": "[양식2-2]공급신청서및신청자격자가검증체크리스트.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69503843",
+   "name": "[양식2-3]개인정보수집이용및제3자제공동의서(LH양식).hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69503844",
+   "name": "[양식2-4]금융정보등(금융,신용,보험정보)제공동의서.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69503845",
+   "name": "[양식2-5]자산보유사실확인서.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69503846",
+   "name": "[양식3]위임장양식(대리인신청용).hwpx",
+   "kind": "other"
+  }
+ ],
+ "changed": true
+}

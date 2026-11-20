@@ -10,7 +10,12 @@
    "w": 1100,
    "h": 618,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-20",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "overview",
@@ -21,7 +26,12 @@
    "w": 1920,
    "h": 1000,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-20",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "location",
@@ -32,7 +42,12 @@
    "w": 867,
    "h": 2400,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-20",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "location",
@@ -43,7 +58,12 @@
    "w": 460,
    "h": 2400,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-20",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "community",
@@ -54,7 +74,12 @@
    "w": 707,
    "h": 2400,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-20",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "community",
@@ -65,7 +90,12 @@
    "w": 256,
    "h": 2400,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-20",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "siteplan",
@@ -76,7 +106,12 @@
    "w": 580,
    "h": 768,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-20",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "siteplan",
@@ -87,7 +122,12 @@
    "w": 869,
    "h": 2400,
    "photo": true,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-20",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "dongho",
@@ -98,7 +138,12 @@
    "w": 849,
    "h": 2400,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-20",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
@@ -109,7 +154,12 @@
    "w": 1100,
    "h": 1083,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-20",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   }
  ],
  "links": [],

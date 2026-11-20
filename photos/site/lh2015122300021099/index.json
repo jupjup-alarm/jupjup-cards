@@ -14,7 +14,12 @@
    "block": "인천논현 4BL 행복주택",
    "lh_tab": "단지조감도",
    "desc": "단지조감도",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-20",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "birdseye",
@@ -29,7 +34,12 @@
    "block": "인천논현 15BL 행복주택",
    "lh_tab": "단지조감도",
    "desc": "",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-20",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "birdseye",
@@ -44,7 +54,12 @@
    "block": "인천서창 14BL 행복주택",
    "lh_tab": "단지조감도",
    "desc": "",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-20",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "location",
@@ -59,7 +74,12 @@
    "block": "인천논현 4BL 행복주택",
    "lh_tab": "지역조감도",
    "desc": "지역조감도",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-20",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "location",
@@ -74,7 +94,12 @@
    "block": "인천논현 4BL 행복주택",
    "lh_tab": "위치도",
    "desc": "교통망도",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-20",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "location",
@@ -89,7 +114,12 @@
    "block": "인천논현 15BL 행복주택",
    "lh_tab": "지역조감도",
    "desc": "",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-20",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "location",
@@ -104,7 +134,12 @@
    "block": "인천논현 15BL 행복주택",
    "lh_tab": "위치도",
    "desc": "",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-20",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "location",
@@ -119,7 +154,12 @@
    "block": "인천서창 14BL 행복주택",
    "lh_tab": "위치도",
    "desc": "",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-20",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "interior",
@@ -134,7 +174,12 @@
    "block": "인천논현 4BL 행복주택",
    "lh_tab": "투시도",
    "desc": "16B평면",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-20",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "interior",
@@ -149,7 +194,12 @@
    "block": "인천논현 4BL 행복주택",
    "lh_tab": "투시도",
    "desc": "26A 평면",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-20",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "interior",
@@ -164,7 +214,12 @@
    "block": "인천논현 15BL 행복주택",
    "lh_tab": "투시도",
    "desc": "",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-20",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "siteplan",
@@ -179,7 +234,12 @@
    "block": "인천논현 4BL 행복주택",
    "lh_tab": "단지배치도",
    "desc": "단지배치도",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-20",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "siteplan",
@@ -194,7 +254,12 @@
    "block": "인천논현 15BL 행복주택",
    "lh_tab": "단지배치도",
    "desc": "",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-20",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "siteplan",
@@ -209,7 +274,12 @@
    "block": "인천서창 14BL 행복주택",
    "lh_tab": "단지배치도",
    "desc": "",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-20",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "dongho",
@@ -224,7 +294,12 @@
    "block": "인천논현 4BL 행복주택",
    "lh_tab": "동호배치도",
    "desc": "동호배치도",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-20",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "dongho",
@@ -239,7 +314,12 @@
    "block": "인천논현 15BL 행복주택",
    "lh_tab": "동호배치도",
    "desc": "",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-20",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "dongho",
@@ -254,7 +334,12 @@
    "block": "인천서창 14BL 행복주택",
    "lh_tab": "동호배치도",
    "desc": "",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-20",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
@@ -269,7 +354,12 @@
    "block": "인천논현 4BL 행복주택",
    "lh_tab": "평면도",
    "desc": "16B평면",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-20",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
@@ -284,7 +374,12 @@
    "block": "인천논현 4BL 행복주택",
    "lh_tab": "평면도",
    "desc": "26A 평면",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-20",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
@@ -299,7 +394,12 @@
    "block": "인천논현 15BL 행복주택",
    "lh_tab": "평면도",
    "desc": "",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-20",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "notice",

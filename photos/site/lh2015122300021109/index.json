@@ -14,7 +14,12 @@
    "block": "서울양원 S1BL 영구임대",
    "lh_tab": "단지조감도",
    "desc": "",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-20",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "siteplan",
@@ -29,7 +34,12 @@
    "block": "서울양원 S1BL 영구임대",
    "lh_tab": "단지배치도",
    "desc": "",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-20",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "dongho",
@@ -44,7 +54,12 @@
    "block": "서울양원 S1BL 영구임대",
    "lh_tab": "동호배치도",
    "desc": "",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-20",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "notice",

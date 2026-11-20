@@ -1,0 +1,32 @@
+{
+ "key": "lh2015122300021074",
+ "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300021074&ccrCnntSysDsCd=03&uppAisTpCd=13&aisTpCd=26&mi=1026",
+ "checked": "2026-11-20 00:31",
+ "files": [
+  {
+   "fileid": "69481315",
+   "name": "(261119)경기북부신혼·신생아매입임대Ⅱ(전세형)예비입주자모집공고문.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69481317",
+   "name": "(261119)경기북부신혼·신생아매입임대Ⅱ(전세형)예비입주자모집공고문.pdf",
+   "kind": "notice",
+   "got": "ok",
+   "md5": "43bf97fd83cf6d3a6aedabbf8bdf44a9",
+   "pages": 29,
+   "bytes": 891542
+  },
+  {
+   "fileid": "69481318",
+   "name": "(261119)경기북부신혼·신생아Ⅱ(전세형)공급대상주택목록.xlsx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69481369",
+   "name": "신혼신생아매입임대Ⅱ(전세형)_QnA.hwpx",
+   "kind": "other"
+  }
+ ],
+ "changed": true
+}
