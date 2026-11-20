@@ -24,7 +24,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="alternate" type="application/rss+xml" title="줍줍알람" href="/rss.xml">
 <link rel="stylesheet" href="/fonts/pretendard/pretendard.css">
-<link rel="stylesheet" href="/style.e38ae942.css">
+<link rel="stylesheet" href="/style.2e8e66ab.css">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6103BRQ0LP"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-6103BRQ0LP');</script><script>window.jjEv=function(n,p){try{if(window.gtag)gtag('event',n,p||{});}catch(e){}};</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1196853150959268" crossorigin="anonymous"></script></head>
@@ -83,15 +83,15 @@
       <h2>오늘 마감 <b>3</b><small>11.20(금)</small></h2>
       <div class="hm-feat">
         <a class="hm-fc" href="/apt/2026940262/">
-<span class="hm-fc-top og"><img src="/apt/2026940262/og.jpg?v=25e0baaa" alt="리아츠 더 인천 24차 임의공급 (7세대·59~84㎡) 공고 요약 이미지" width="1200" height="630" decoding="async"></span>
+<span class="hm-fc-top og"><img src="/apt/2026940262/og.jpg?v=e4d75d2b" alt="리아츠 더 인천 24차 임의공급 (7세대·59~84㎡) 공고 요약 이미지" width="1200" height="630" decoding="async"></span>
           <span class="hm-fc-b"><b>리아츠 더 인천 24차 임의공급 (7세대·59~84㎡)</b><span class="num">제물포구 · 7세대 · 청약통장 필요없음</span></span>
         </a>
         <a class="hm-fc" href="/apt/2026940263/">
-<span class="hm-fc-top og"><img src="/apt/2026940263/og.jpg?v=db46529b" alt="이천역 예미지 센트럴파크 4차 임의공급 (84㎡ 15세대) 공고 요약 이미지" width="1200" height="630" decoding="async"></span>
+<span class="hm-fc-top og"><img src="/apt/2026940263/og.jpg?v=e8978e41" alt="이천역 예미지 센트럴파크 4차 임의공급 (84㎡ 15세대) 공고 요약 이미지" width="1200" height="630" decoding="async"></span>
           <span class="hm-fc-b"><b>이천역 예미지 센트럴파크 4차 임의공급 (84㎡ 15세대)</b><span class="num">이천시 · 15세대 · 84㎡ 5억대</span></span>
         </a>
         <a class="hm-fc" href="/apt/lh2015122300021026/">
-<span class="hm-fc-top og"><img src="/apt/lh2015122300021026/og.jpg?v=c6701e72" alt="인천논현2단지 국민임대 예비입주자 공고 요약 이미지" width="1200" height="630" loading="lazy" decoding="async"></span>
+<span class="hm-fc-top og"><img src="/apt/lh2015122300021026/og.jpg?v=0494dd31" alt="인천논현2단지 국민임대 예비입주자 공고 요약 이미지" width="1200" height="630" loading="lazy" decoding="async"></span>
           <span class="hm-fc-b"><b>인천논현2단지 국민임대 예비입주자</b><span class="num">남동구 · 100세대 · 통장 24회면 1순위</span></span>
         </a>
       </div>
@@ -498,11 +498,25 @@ document.querySelectorAll('[data-more]').forEach(function(sec){var b=sec.querySe
     tabs.forEach(function(b,i){b.addEventListener('click',function(){sel(b)});
       b.addEventListener('keydown',function(e){var k=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;if(k){var n=tabs[(i+k+tabs.length)%tabs.length];sel(n);n.focus();}});});
     tl.hidden=false;sel(tabs[0]);}
+  // 아래 CTA 바 (2026-11-20): 첫 화면(요약 티켓이 보이는 동안)·푸터 근처·입력 중엔 숨김,
+  // 본문에서는 아래로 내리는 동안 숨기고 위로 올리거나 0.5초 멈추면 다시 보임
   var bar=document.querySelector('.bar');
-  if(bar){var lastY=window.scrollY,ticking=false;
-    function onScroll(){var y=window.scrollY,d=y-lastY;if(y<80)bar.classList.remove('hide');else if(d>6)bar.classList.add('hide');else if(d<-6)bar.classList.remove('hide');if(Math.abs(d)>6)lastY=y;ticking=false;}
-    window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(onScroll);}},{passive:true});
-    bar.addEventListener('focusin',function(){bar.classList.remove('hide')});}
+  if(bar){var lastY=window.scrollY,ticking=false,down=false,idle=null,typing=false,
+      tk=document.querySelector('.ticket'),ft=document.querySelector('footer');
+    function zone(){var vh=innerHeight;
+      if(tk&&tk.getBoundingClientRect().bottom>vh*0.35)return false;      // 첫 화면: 티켓이 아직 화면 위쪽에 보임
+      if(!tk&&scrollY<vh*0.6)return false;
+      if(ft&&ft.getBoundingClientRect().top<vh-40)return false;          // 사업자 정보가 보이기 시작하면
+      return true;}
+    function apply(){bar.classList.toggle('hide',typing||!zone()||down);}
+    function onScroll(){var y=scrollY,d=y-lastY;if(d>6)down=true;else if(d<-6)down=false;if(Math.abs(d)>6)lastY=y;apply();ticking=false;
+      clearTimeout(idle);idle=setTimeout(function(){down=false;apply();},500);}
+    addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(onScroll);}},{passive:true});
+    addEventListener('resize',apply,{passive:true});
+    document.addEventListener('focusin',function(e){if(e.target.matches('input,textarea,select')&&!bar.contains(e.target)){typing=true;apply();}});
+    document.addEventListener('focusout',function(e){if(e.target.matches('input,textarea,select')){typing=false;apply();}});
+    bar.addEventListener('focusin',function(){bar.classList.remove('hide')});
+    apply();}
 
   var hf=document.querySelector('[data-hfilter]');
   if(hf){var hbs=[].slice.call(hf.querySelectorAll('button')),hli=[].slice.call(document.querySelectorAll('.hlist li')),hm=document.querySelector('[data-hmore]'),LIM=10,open=false;

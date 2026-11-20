@@ -1415,3 +1415,11 @@ footer .biz{font-style:normal;line-height:1.6;opacity:.85}   /* 사업자 정보
 .an-pts b{color:var(--ink)}
 .an-k{margin:0 0 6px;font-size:13px;font-weight:700;letter-spacing:.02em;color:var(--coral-strong, var(--coral))}
 .an h2{margin-top:0}
+
+/* 2026-11-20 사용자 결정: 공고 상세에도 하단 탭 고정 → CTA 바는 탭 바로 위에 뜸. 숨길 땐 탭 뒤로 내려가며 사라짐 */
+@media (max-width:1023px){
+  body:has(.tabbar) .bar{bottom:calc(var(--tab-h) + var(--safe-b));padding-bottom:10px;box-shadow:0 -4px 16px rgba(15,23,42,.06)}
+  body:has(.tabbar) .bar.bar2{padding-bottom:10px}
+  .bar{transition:transform .22s ease,opacity .22s ease,visibility 0s linear 0s}
+  .bar.hide{opacity:0;visibility:hidden;pointer-events:none;transition:transform .22s ease,opacity .22s ease,visibility 0s linear .22s}
+}
