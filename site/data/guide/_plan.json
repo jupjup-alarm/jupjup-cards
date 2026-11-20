@@ -496,6 +496,34 @@
    "published": "2026-11-19",
    "checked": "2026-11-19",
    "reviewed": "독립 검수 못 함(Agent 도구 없음) — 집필자가 같은 항목으로 직접 검수"
+  },
+  {
+   "day": 16,
+   "slug": "jeonse-fraud-victim",
+   "category": "전세",
+   "topic": "전세사기 피해자 지원 — 피해자 결정 요건·신청 방법, LH 피해주택 매입·경매 우선매수권, 최소보장제, 저리 대출·주거 지원",
+   "keywords": "전세사기 피해자 지원 · 전세사기 피해자 결정 · 전세사기 특별법 · 전세사기 최소보장제",
+   "tool": "selfcheck",
+   "notice_kinds": [
+    "rental"
+   ],
+   "note": "2026-11-20 추가: todo 소진. 검색 결과에 피해자 결정 요건·신청 방법 해설 수요가 크고(누적 피해자 3만6천 명 보도), 기존 jeonse-guarantee-insurance는 예방(보증보험)만 다뤄 겹치지 않음 — 서로 related. 전세사기피해자 지원 및 주거안정에 관한 특별법(국가법령정보센터)·국토교통부 보도자료·전세사기피해자 지원관리시스템으로 현재 기준 확인.",
+   "status": "writing"
+  },
+  {
+   "day": 17,
+   "slug": "rewin-resale-residence",
+   "category": "세금·규제",
+   "topic": "재당첨 제한·전매제한·실거주(거주) 의무 — 당첨 후 묶이는 3가지, 지역·주택별 기간과 예외",
+   "keywords": "재당첨 제한 · 전매제한 · 실거주 의무 · 분양권 전매",
+   "tool": "selfcheck",
+   "notice_kinds": [
+    "private",
+    "public",
+    "mujeonwi"
+   ],
+   "note": "2026-11-20 추가: todo 소진. 당첨 후 제한 기간을 묻는 검색이 꾸준하고, 기존 mujeonwi는 무순위 관점 표 하나만 있어 세 제한 자체를 깊게 다루는 글이 없음. 주택공급에 관한 규칙 제54조, 주택법 제57조의2·제64조, 시행령 별표 3·제73조(국가법령정보센터)로 확인. 같은 문장 금지, mujeonwi와 related.",
+   "status": "writing"
   }
  ]
 }
