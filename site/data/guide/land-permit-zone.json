@@ -382,7 +382,8 @@
   "acquisition-tax",
   "one-house-capital-gains",
   "dsr-ltv-dti",
-  "lease-renewal"
+  "lease-renewal",
+  "rewin-resale-residence"
  ],
  "notice_kinds": [
   "private",
