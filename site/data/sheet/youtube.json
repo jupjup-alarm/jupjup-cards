@@ -1,6 +1,6 @@
 {
  "tab": "유튜브",
- "dumped_at": "2026-11-21 11:30",
+ "dumped_at": "2026-11-21 12:34",
  "rows": [
   {
    "_row": 2,
@@ -434,9 +434,14 @@
    "고정 댓글": "수원 영구임대, 동 행정복지센터 현장 접수만 받는 거 알고 계셨나요? (O/X)\n공고별 자격·일정 정리는 jupjupalarm.com",
    "영상 파일": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-13-suwon-umaan3-rental-reel/2026-11-13-suwon-umaan3-rental-reel.mp4",
    "표지(썸네일)": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-13-suwon-umaan3-rental-reel/2026-11-13-suwon-umaan3-rental-reel_thumb.jpg",
-   "상태": "대기",
+   "상태": "게시됨",
+   "유튜브 링크": "https://www.youtube.com/shorts/szsGZ6rPSr4",
    "길이": "30초",
+   "조회수(7일)": "0",
    "훅 유형": "[훅:차익]",
+   "좋아요": "0",
+   "댓글": "0",
+   "수치 기준일": "2026-11-21 (공개 수치)",
    "접수 마감": "2026-11-25",
    "목표 검색어 3개": "수원 영구임대 / 수원 우만3단지 영구임대 / LH 영구임대 예비입주자"
   },
