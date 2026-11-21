@@ -200,6 +200,8 @@
     <div class="g-tool g-self" data-tool="selfcheck"><ol>{% for q in z.check["items"] %}<li><span>{{ q }}</span><span class="g-yn" role="group"><button type="button" data-v="1" aria-pressed="false">예</button><button type="button" data-v="0" aria-pressed="false">아니오</button></span></li>{% endfor %}</ol>
     <p class="g-selfres" aria-live="polite"><b data-yes>0</b> / {{ z.check["items"]|length }}개 '예'</p><p class="g-toolnote">{{ z.check.result }}</p></div>
   </section>
+  {# 2026-11-21 사용자 요청: 30초 체크 바로 아래 아정당 파트너스 롤링 배너 (모바일만) #}
+  {% include 'ajd_banner.html' %}
   {% endif %}
   {% endif %}
 

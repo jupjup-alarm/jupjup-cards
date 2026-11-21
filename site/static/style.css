@@ -1632,3 +1632,30 @@ footer .biz{font-style:normal;line-height:1.6;opacity:.85}   /* 사업자 정보
 .res-next{display:grid;gap:2px;border-radius:12px;padding:10px 12px;background:var(--coral-tint, #FFF1EC);text-decoration:none;color:inherit}
 .res-next b{color:var(--coral-strong, var(--coral));font-size:13.5px}.res-next span{font-size:14px;font-weight:600}
 .res-card .note a{color:inherit}
+
+/* 2026-11-21 아정당 파트너스 롤링 배너 (공고 상세 30초 체크 아래, 모바일만) — templates/ajd_banner.html */
+.jj-roll-wrap{box-sizing:border-box;background:#f2f4f6;border-radius:20px;padding:14px 18px 12px;margin:20px 0;position:relative;overflow:hidden}
+.jj-roll-wrap *,.jj-roll-wrap *::before,.jj-roll-wrap *::after{box-sizing:border-box}
+@media(min-width:1024px){.jj-roll-wrap{display:none}}
+.jj-roll-disclosure{margin:0 0 10px;font-size:11px;line-height:1.45;color:#8b95a1}
+.jj-roll-disclosure b{display:inline-block;margin-right:4px;padding:0 5px;border:1px solid #c5ccd3;border-radius:4px;font-size:10px;font-weight:700;color:#6b7684;line-height:16px}
+.jj-roll-viewport{overflow:hidden;width:100%}
+.jj-roll-track{display:flex;transition:transform .5s cubic-bezier(.22,1,.36,1);will-change:transform}
+.jj-roll-slide{flex:0 0 100%;width:100%;display:flex;flex-direction:column;align-items:stretch;gap:12px;text-decoration:none;color:inherit}
+.jj-roll-left{min-width:0;display:block}
+.jj-roll-eyebrow{display:block;font-size:12.5px;font-weight:700;color:#3182f6;margin-bottom:5px;letter-spacing:-.01em}
+.jj-roll-title{display:block;margin:0 0 4px;font-size:18px;font-weight:700;line-height:1.38;letter-spacing:-.025em;color:#191f28}
+.jj-roll-desc{display:block;margin:0;font-size:14px;line-height:1.48;color:#4e5968}
+.jj-roll-cta{position:relative;overflow:hidden;display:flex;justify-content:center;align-items:center;gap:6px;width:100%;background:#fff;color:#3182f6;font-size:14.5px;font-weight:700;padding:13px 18px;border-radius:14px;box-shadow:0 2px 8px rgba(49,130,246,.08);transition:background .15s ease,transform .15s ease;white-space:nowrap}
+.jj-roll-cta::after{content:"";position:absolute;top:0;left:-120%;width:60%;height:100%;background:linear-gradient(90deg,rgba(255,255,255,0) 0%,rgba(49,130,246,.14) 50%,rgba(255,255,255,0) 100%);transform:skewX(-20deg);animation:jjShimmer 2.8s ease-in-out infinite}
+.jj-roll-cta-arrow{display:inline-block;animation:jjNudge 2.8s ease-in-out infinite}
+.jj-roll-slide:active .jj-roll-cta{background:#e8f3ff;transform:translateY(-1px)}
+.jj-roll-dots{display:flex;justify-content:center;align-items:center;gap:6px;margin-top:12px}
+.jj-roll-dot{position:relative;overflow:hidden;width:6px;height:6px;border-radius:999px;border:0;padding:0;background:#d1d6db;cursor:pointer;transition:width .25s ease}
+.jj-roll-dot.is-active{width:24px}
+.jj-roll-dot.is-active::after{content:"";position:absolute;inset:0;background:#3182f6;transform-origin:left center;animation:jjProgress 2.5s linear forwards}
+.jj-roll-wrap.is-paused .jj-roll-dot.is-active::after{animation-play-state:paused}
+@keyframes jjShimmer{0%,55%{left:-120%}100%{left:160%}}
+@keyframes jjNudge{0%,60%,100%{transform:translateX(0)}75%{transform:translateX(3px)}90%{transform:translateX(0)}}
+@keyframes jjProgress{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media(prefers-reduced-motion:reduce){.jj-roll-track{transition:none}.jj-roll-cta::after,.jj-roll-cta-arrow,.jj-roll-dot.is-active::after{animation:none}.jj-roll-dot.is-active{background:#3182f6}}
