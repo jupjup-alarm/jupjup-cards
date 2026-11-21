@@ -1,6 +1,6 @@
 {
  "slug": "2026-11-21-mullae-84-reel",
- "status": "대기",
+ "status": "예약됨",
  "created": "2026-11-21 12:22",
  "row": 37,
  "date": "2026-11-21",
@@ -20,5 +20,8 @@
  "thumb": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-21-mullae-84-reel/2026-11-21-mullae-84-reel_thumb.jpg",
  "deadline": "",
  "keywords": "2026-11-25",
- "publish_at": "2026-11-23T08:30+09:00"
+ "publish_at": "2026-11-23T08:30+09:00",
+ "url": "https://www.youtube.com/shorts/rEntysg6LCs",
+ "video_id": "rEntysg6LCs",
+ "updated": "2026-11-21 12:27"
 }
