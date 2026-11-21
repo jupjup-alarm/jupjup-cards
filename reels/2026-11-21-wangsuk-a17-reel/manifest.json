@@ -1,0 +1,16 @@
+{
+ "slug": "2026-11-21-wangsuk-a17-reel",
+ "duration": 31.63,
+ "voiced": true,
+ "narration_s": 27.9,
+ "mean_db": -18.1,
+ "voice": "voices/49079a429aaa/",
+ "video": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-21-wangsuk-a17-reel/2026-11-21-wangsuk-a17-reel.mp4",
+ "cover": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-21-wangsuk-a17-reel/2026-11-21-wangsuk-a17-reel_thumb.jpg",
+ "size_mb": 14.24,
+ "warnings": [
+  "확대(Real-ESRGAN x4): 10장 — birdseye-2.jpg, birdseye-3.jpg, birdseye.jpg, front-dusk-crop.jpg, community-main.jpg, siteplan-auto-1.jpg, entrance-crop.jpg, garden-crop.jpg …",
+  "full.mp3 장면 경계가 장면별 음성과 어긋남(장면 [3]) → 장면별 파일 사용",
+  "사진: 컷 13개 · 서로 다른 사진 10장"
+ ]
+}
