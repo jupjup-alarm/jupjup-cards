@@ -577,12 +577,15 @@
     "public"
    ],
    "note": "2026-11-22 추가: todo 소진. 생애최초 특공은 공고마다 가장 많이 묻는 특별공급인데 기존 newlywed·multichild-elderly만 있음. 주택공급에 관한 규칙 제43·47조(국가법령정보센터)·청약홈 안내로 확인.",
-   "status": "writing"
+   "status": "done",
+   "published": "2026-11-22",
+   "checked": "2026-11-22",
+   "reviewed": "독립 검수(에이전트): 틀림 0 · 고친 곳 1(근거 약한 문장 삭제)"
   },
   {
    "day": 19,
    "slug": "interim-payment-loan",
-   "category": "대출·자금",
+   "category": "대출",
    "topic": "중도금 대출 — 집단대출 구조, 보증(HUG·HF) 한도·건수, 무이자·이자후불제 차이, 거절되는 경우와 잔금 대출 전환",
    "keywords": "중도금 대출 · 중도금 무이자 · 이자후불제 · 중도금 집단대출 조건",
    "tool": "",
@@ -592,7 +595,10 @@
     "mujeonwi"
    ],
    "note": "2026-11-22 추가: todo 소진. 분양 공고 페이지마다 '중도금 대출 알선 제한' 문구가 있고 검색 수요가 큼. dsr-ltv-dti·after-winning-money는 한 줄만 다룸. HUG·HF 보증 안내·금융위 보도자료로 확인.",
-   "status": "writing"
+   "status": "done",
+   "published": "2026-11-22",
+   "checked": "2026-11-22",
+   "reviewed": "독립 검수(에이전트): 틀림 1 고침(예시 가구 2 규제지역 서민·실수요자 LTV 60% 반영)"
   }
  ]
 }
