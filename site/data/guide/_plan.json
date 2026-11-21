@@ -564,6 +564,35 @@
    "published": "2026-11-21",
    "checked": "2026-11-21",
    "reviewed": "독립 검수 못 함(Agent 도구 없음) — 집필자가 1차 출처 재확인·390px 편집 검수로 직접 검수"
+  },
+  {
+   "day": 19,
+   "slug": "first-life-special",
+   "category": "청약 자격",
+   "topic": "생애최초 특별공급 — 자격(소득·자산·5년 소득세 납부·혼인/자녀 요건 변경), 민영·공공 차이, 추첨 방식과 물량 비율",
+   "keywords": "생애최초 특별공급 · 생애최초 특공 자격 · 생애최초 소득기준 · 생애최초 1인가구",
+   "tool": "selfcheck",
+   "notice_kinds": [
+    "private",
+    "public"
+   ],
+   "note": "2026-11-22 추가: todo 소진. 생애최초 특공은 공고마다 가장 많이 묻는 특별공급인데 기존 newlywed·multichild-elderly만 있음. 주택공급에 관한 규칙 제43·47조(국가법령정보센터)·청약홈 안내로 확인.",
+   "status": "writing"
+  },
+  {
+   "day": 19,
+   "slug": "interim-payment-loan",
+   "category": "대출·자금",
+   "topic": "중도금 대출 — 집단대출 구조, 보증(HUG·HF) 한도·건수, 무이자·이자후불제 차이, 거절되는 경우와 잔금 대출 전환",
+   "keywords": "중도금 대출 · 중도금 무이자 · 이자후불제 · 중도금 집단대출 조건",
+   "tool": "",
+   "notice_kinds": [
+    "private",
+    "public",
+    "mujeonwi"
+   ],
+   "note": "2026-11-22 추가: todo 소진. 분양 공고 페이지마다 '중도금 대출 알선 제한' 문구가 있고 검색 수요가 큼. dsr-ltv-dti·after-winning-money는 한 줄만 다룸. HUG·HF 보증 안내·금융위 보도자료로 확인.",
+   "status": "writing"
   }
  ]
 }
