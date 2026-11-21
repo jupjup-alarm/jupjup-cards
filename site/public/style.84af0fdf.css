@@ -1637,7 +1637,7 @@ footer .biz{font-style:normal;line-height:1.6;opacity:.85}   /* 사업자 정보
 .jj-roll-wrap{box-sizing:border-box;background:#f2f4f6;border-radius:20px;padding:14px 18px 12px;margin:20px 0;position:relative;overflow:hidden}
 .jj-roll-wrap *,.jj-roll-wrap *::before,.jj-roll-wrap *::after{box-sizing:border-box}
 @media(min-width:1024px){.jj-roll-wrap{display:none}}
-.jj-roll-disclosure{margin:0 0 10px;font-size:11px;line-height:1.45;color:#8b95a1}
+.jj-roll-disclosure{margin:10px 0 0;font-size:11px;line-height:1.45;color:#8b95a1}
 .jj-roll-disclosure b{display:inline-block;margin-right:4px;padding:0 5px;border:1px solid #c5ccd3;border-radius:4px;font-size:10px;font-weight:700;color:#6b7684;line-height:16px}
 .jj-roll-viewport{overflow:hidden;width:100%}
 .jj-roll-track{display:flex;transition:transform .5s cubic-bezier(.22,1,.36,1);will-change:transform}
@@ -1651,6 +1651,7 @@ footer .biz{font-style:normal;line-height:1.6;opacity:.85}   /* 사업자 정보
 .jj-roll-cta-arrow{display:inline-block;animation:jjNudge 2.8s ease-in-out infinite}
 .jj-roll-slide:active .jj-roll-cta{background:#e8f3ff;transform:translateY(-1px)}
 .jj-roll-dots{display:flex;justify-content:center;align-items:center;gap:6px;margin-top:12px}
+.jj-roll-dots+.jj-roll-disclosure{padding-top:10px;border-top:1px solid rgba(0,0,0,.05)}
 .jj-roll-dot{position:relative;overflow:hidden;width:6px;height:6px;border-radius:999px;border:0;padding:0;background:#d1d6db;cursor:pointer;transition:width .25s ease}
 .jj-roll-dot.is-active{width:24px}
 .jj-roll-dot.is-active::after{content:"";position:absolute;inset:0;background:#3182f6;transform-origin:left center;animation:jjProgress 2.5s linear forwards}
