@@ -1,0 +1,19 @@
+{
+ "key": "2026000591",
+ "source": "ego lite (사용자 브라우저)",
+ "files": [
+  {
+   "name": "2026000591.pdf",
+   "kind": "notice",
+   "md5": "8b961e9cc6c808caab47bf50ab3ad8f6",
+   "bytes": 862406,
+   "got": "ok",
+   "text_by": "pypdf",
+   "cands": 0
+  }
+ ],
+ "pamphlet_none": "2026-11-21",
+ "checked": "2026-11-21 19:11",
+ "site_none": "2026-11-21",
+ "changed": true
+}

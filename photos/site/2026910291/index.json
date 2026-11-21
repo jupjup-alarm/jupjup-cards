@@ -89,7 +89,7 @@
   {
    "cat": "siteplan",
    "kind": "단지배치도",
-   "label": "단지배치도",
+   "label": "",
    "file": "photos/site/2026910291/siteplan.jpg",
    "src": "https://xi.co.kr/Files/cmsPage/20211105_085127_751001.jpg",
    "crop": "",
@@ -106,7 +106,7 @@
   {
    "cat": "dongho",
    "kind": "동호배치도",
-   "label": "동호배치도",
+   "label": "전체",
    "file": "photos/site/2026910291/dongho.jpg",
    "src": "https://xi.co.kr/Files/cmsPage/20211105_085253_696001.jpg",
    "crop": "",
@@ -123,7 +123,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "평면도",
+   "label": "84㎡A1",
    "file": "photos/site/2026910291/plan-84-a1.jpg",
    "src": "https://xi.co.kr/Files/apt_area_kind/20241113_144949_201001.jpg",
    "crop": "",
@@ -140,7 +140,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "평면도",
+   "label": "84㎡A2",
    "file": "photos/site/2026910291/plan-84-a2.jpg",
    "src": "https://xi.co.kr/Files/apt_area_kind/20241113_144958_639001.jpg",
    "crop": "",
@@ -157,7 +157,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "평면도",
+   "label": "84㎡B",
    "file": "photos/site/2026910291/plan-84-b.jpg",
    "src": "https://xi.co.kr/Files/apt_area_kind/20241113_145005_765001.jpg",
    "crop": "",
@@ -174,7 +174,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "평면도",
+   "label": "84㎡C",
    "file": "photos/site/2026910291/plan-84-c.jpg",
    "src": "https://xi.co.kr/Files/apt_area_kind/20241113_145017_392001.jpg",
    "crop": "",
@@ -191,7 +191,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "평면도",
+   "label": "84㎡D",
    "file": "photos/site/2026910291/plan-84-d.jpg",
    "src": "https://xi.co.kr/Files/apt_area_kind/20241113_145029_988001.jpg",
    "crop": "",
@@ -208,7 +208,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "평면도",
+   "label": "97㎡Tb3",
    "file": "photos/site/2026910291/plan-97-tb3.jpg",
    "src": "https://xi.co.kr/Files/apt_area_kind/20241113_145041_711001.jpg",
    "crop": "",
@@ -225,7 +225,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "평면도",
+   "label": "99㎡A",
    "file": "photos/site/2026910291/plan-99-a.jpg",
    "src": "https://xi.co.kr/Files/apt_area_kind/20241113_145049_633001.jpg",
    "crop": "",
@@ -242,7 +242,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "평면도",
+   "label": "99㎡B",
    "file": "photos/site/2026910291/plan-99-b.jpg",
    "src": "https://xi.co.kr/Files/apt_area_kind/20241113_145056_925001.jpg",
    "crop": "",
@@ -259,7 +259,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "평면도",
+   "label": "99㎡C",
    "file": "photos/site/2026910291/plan-99-c.jpg",
    "src": "https://xi.co.kr/Files/apt_area_kind/20241113_145110_550001.jpg",
    "crop": "",
@@ -276,7 +276,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "평면도",
+   "label": "99㎡T1",
    "file": "photos/site/2026910291/plan-99-t1.jpg",
    "src": "https://xi.co.kr/Files/apt_area_kind/20241113_145118_628001.jpg",
    "crop": "",
@@ -293,7 +293,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "평면도",
+   "label": "99㎡T2",
    "file": "photos/site/2026910291/plan-99-t2.jpg",
    "src": "https://xi.co.kr/Files/apt_area_kind/20241113_145132_419001.jpg",
    "crop": "",
@@ -310,7 +310,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "평면도",
+   "label": "99㎡T3",
    "file": "photos/site/2026910291/plan-99-t3.jpg",
    "src": "https://xi.co.kr/Files/apt_area_kind/20241113_145140_291001.jpg",
    "crop": "",
@@ -327,7 +327,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "평면도",
+   "label": "103㎡Tb1",
    "file": "photos/site/2026910291/plan-103-tb1.jpg",
    "src": "https://xi.co.kr/Files/apt_area_kind/20241113_145152_060001.jpg",
    "crop": "",
@@ -344,7 +344,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "평면도",
+   "label": "104㎡Ta3",
    "file": "photos/site/2026910291/plan-104-ta3.jpg",
    "src": "https://xi.co.kr/Files/apt_area_kind/20241113_145202_628001.jpg",
    "crop": "",
@@ -361,7 +361,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "평면도",
+   "label": "105㎡Tb2",
    "file": "photos/site/2026910291/plan-105-tb2.jpg",
    "src": "https://xi.co.kr/Files/apt_area_kind/20241113_145215_259001.jpg",
    "crop": "",
@@ -378,7 +378,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "평면도",
+   "label": "107㎡T1",
    "file": "photos/site/2026910291/plan-107-t1.jpg",
    "src": "https://xi.co.kr/Files/apt_area_kind/20241113_145223_842001.jpg",
    "crop": "",
@@ -395,7 +395,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "평면도",
+   "label": "107㎡T2",
    "file": "photos/site/2026910291/plan-107-t2.jpg",
    "src": "https://xi.co.kr/Files/apt_area_kind/20241113_145237_274001.jpg",
    "crop": "",
@@ -412,7 +412,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "평면도",
+   "label": "111㎡TC1",
    "file": "photos/site/2026910291/plan-111-tc1.jpg",
    "src": "https://xi.co.kr/Files/apt_area_kind/20241113_145249_626001.jpg",
    "crop": "",
@@ -429,7 +429,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "평면도",
+   "label": "112㎡Ta2",
    "file": "photos/site/2026910291/plan-112-ta2.jpg",
    "src": "https://xi.co.kr/Files/apt_area_kind/20241113_145306_163001.jpg",
    "crop": "",
@@ -446,7 +446,7 @@
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "평면도",
+   "label": "118㎡T3",
    "file": "photos/site/2026910291/plan-118-t3.jpg",
    "src": "https://xi.co.kr/Files/apt_area_kind/20241113_145314_728001.jpg",
    "crop": "",
@@ -463,7 +463,7 @@
   {
    "cat": "community",
    "kind": "커뮤니티",
-   "label": "CLUB XIAN 커뮤니티",
+   "label": "CLUB XIAN",
    "file": "photos/site/2026910291/community-club-xian.jpg",
    "src": "https://xi.co.kr/Files/cmsPage/20231221_153227_583001.jpg",
    "crop": "",
@@ -480,7 +480,7 @@
   {
    "cat": "community",
    "kind": "커뮤니티",
-   "label": "CLUB CLOUD 커뮤니티",
+   "label": "CLUB CLOUD",
    "file": "photos/site/2026910291/community-club-cloud.jpg",
    "src": "https://xi.co.kr/Files/cmsPage/20211105_181152_773001.jpg",
    "crop": "",
@@ -497,7 +497,7 @@
   {
    "cat": "community",
    "kind": "단지둘러보기",
-   "label": "단지설계 긴 페이지",
+   "label": "단지설계",
    "file": "photos/site/2026910291/community.jpg",
    "src": "https://xi.co.kr/Files/cmsPage/20211115_175102_563001.jpg",
    "crop": "",
@@ -515,5 +515,5 @@
  "links": [],
  "homepage": "https://xi.co.kr/sd2",
  "owner": "주식회사 무궁화신탁",
- "updated": "2026-11-19 07:26"
+ "updated": "2026-11-21 19:10"
 }
