@@ -416,10 +416,10 @@
  "해링턴 플레이스 문래": {
   "key": "2026000560",
   "row": 147,
-  "count": 9,
-  "usable": 2,
-  "photos": 0,
-  "checked": 9
+  "count": 20,
+  "usable": 13,
+  "photos": 11,
+  "checked": 20
  },
  "의정부우정 A-1블록 공공분양주택 잔여세대(순번추첨 동호지정)": {
   "key": "lh0000061211",
@@ -595,17 +595,17 @@
   "key": "2026940258",
   "row": 192,
   "count": 12,
-  "usable": 12,
+  "usable": 4,
   "photos": 5,
-  "checked": 0
+  "checked": 12
  },
  "용인 고림 동문 디 이스트 임의공급(23세대)": {
   "key": "2026940264",
   "row": 191,
   "count": 8,
-  "usable": 8,
+  "usable": 3,
   "photos": 2,
-  "checked": 0
+  "checked": 8
  },
  "인천 검단신도시 AB13블록 호반써밋Ⅲ 무순위(사후 1세대)": {
   "key": "2026910307",
@@ -613,14 +613,23 @@
   "count": 13,
   "usable": 13,
   "photos": 5,
-  "checked": 0
+  "checked": 13
  },
  "왕숙 한신더휴 센텀(남양주 왕숙 A-17BL) 공공분양주택": {
   "key": "2026000575",
   "row": 189,
-  "count": 25,
-  "usable": 25,
-  "photos": 9,
-  "checked": 0
+  "count": 30,
+  "usable": 17,
+  "photos": 14,
+  "checked": 30
+ },
+ "소사 휴먼빌": {
+  "key": "2026000591",
+  "row": 197,
+  "count": 0,
+  "usable": 0,
+  "photos": 0,
+  "checked": 0,
+  "why": "0장 ()"
  }
 }
