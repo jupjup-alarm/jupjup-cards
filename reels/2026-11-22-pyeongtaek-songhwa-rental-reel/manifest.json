@@ -1,0 +1,17 @@
+{
+ "slug": "2026-11-22-pyeongtaek-songhwa-rental-reel",
+ "duration": 22.72,
+ "voiced": true,
+ "narration_s": 20.1,
+ "mean_db": -18.2,
+ "voice": "voices/a198b431725f/",
+ "video": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-22-pyeongtaek-songhwa-rental-reel/2026-11-22-pyeongtaek-songhwa-rental-reel.mp4",
+ "cover": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-22-pyeongtaek-songhwa-rental-reel/2026-11-22-pyeongtaek-songhwa-rental-reel_thumb.jpg",
+ "size_mb": 8.17,
+ "warnings": [
+  "확대(Real-ESRGAN x4): 1장 — birdseye-b1.jpg",
+  "full.mp3 장면 경계가 장면별 음성과 어긋남(장면 [3]) → 장면별 파일 사용",
+  "호흡: 장면 5 대본에 없는 곳에서 0.36초 쉼 (③ 대본 쉼표 위치 확인)",
+  "사진: 컷 8개 · 서로 다른 사진 3장"
+ ]
+}

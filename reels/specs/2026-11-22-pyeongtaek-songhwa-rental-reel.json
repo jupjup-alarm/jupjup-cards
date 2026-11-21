@@ -1,0 +1,54 @@
+{
+ "slug": "2026-11-22-pyeongtaek-songhwa-rental-reel",
+ "title": "평택송화 국민임대 예비입주자",
+ "series": "임대알람",
+ "style": "story",
+ "voice": "voices/a198b431725f/",
+ "voice_speed": 1.0,
+ "bgm": "music/beat-one.mp3",
+ "thumb": {"lines": ["평택 월세 16만원대", "주변보다 33만원 싸게"]},
+ "pool": [
+  {"img": "photos/site/lh2015122300020973/birdseye-b1.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음"},
+  {"img": "photos/sat/6cf8144e0838.png", "credit": "위성사진 © NAVER Corp."},
+  {"img": "maps/c15024a5446f.png"}
+ ],
+ "scenes": [
+  {"type": "story",
+   "say": "평택에 월세 16만 원대부터인 아파트가 나왔대요. 동네 월세보다 33만 원 싸대요.",
+   "word": "16만 원대",
+   "shots": [
+    {"img": "photos/site/lh2015122300020973/birdseye-b1.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음", "pos": "center 45%"}
+   ],
+   "proof": {"kind": "compare", "head": "월세 비교 (추정)",
+    "items": [{"label": "이 단지 국민임대 36형", "value": "월 16만6,640원"},
+              {"label": "같은 송화리 영동 55㎡ 월세 실거래", "value": "월 50만원"}],
+    "src": "국토부 실거래 2026.08 · 추정"}
+  },
+  {"type": "story",
+   "say": "같은 동네 55㎡ 집은 월세가 50만 원이래요.",
+   "word": "50만 원",
+   "shots": [
+    {"img": "maps/c15024a5446f.png"},
+    {"img": "photos/sat/6cf8144e0838.png", "credit": "위성사진 © NAVER Corp."}
+   ]
+  },
+  {"type": "story",
+   "say": "이게 어떻게 가능할까요?",
+   "dim": true,
+   "shots": [
+    {"img": "photos/site/lh2015122300020973/birdseye-b1.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음", "pos": "75% 40%"}
+   ]
+  },
+  {"type": "story",
+   "say": "LH 국민임대 140호거든요. 무주택이면 되고, 접수는 11월 25일부터래요.",
+   "word": "140호",
+   "shots": [
+    {"img": "photos/sat/6cf8144e0838.png", "credit": "위성사진 © NAVER Corp.", "pos": "center 60%"},
+    {"img": "photos/site/lh2015122300020973/birdseye-b1.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음", "pos": "25% 60%"}
+   ],
+   "proof": {"kind": "image", "img": "photos/site/lh2015122300020973/notice-schedule.jpg", "credit": "자료: LH 입주자모집공고(2026.11.05)"}
+  },
+  {"type": "end",
+   "say": "그래서 16만 원대가 가능해요. 자세한 공고 정리는 프로필에서 링크를 확인해주세요."}
+ ]
+}

@@ -4,18 +4,23 @@
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "조감도",
+   "label": "단지 조감도",
    "file": "photos/32f488c55711.jpg",
    "src": "sheet:사진 파일",
    "w": 1000,
    "h": 718,
    "photo": true,
-   "from": "sheet"
+   "from": "sheet",
+   "checked": "2026-11-22",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "블록1 단지조감도",
+   "label": "블록1 단지조감도 (1번과 같은 그림)",
    "file": "photos/site/lh2015122300020973/birdseye-b1.jpg",
    "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=24545611",
    "crop": "",
@@ -25,7 +30,12 @@
    "block": "블록1",
    "lh_tab": "단지조감도",
    "desc": "단지조감도",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-22",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "siteplan",
@@ -36,12 +46,17 @@
    "w": 1653,
    "h": 2338,
    "photo": false,
-   "from": "sheet"
+   "from": "sheet",
+   "checked": "2026-11-22",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "siteplan",
    "kind": "단지배치도",
-   "label": "블록1 단지배치도",
+   "label": "블록1 단지배치도 (3번과 같은 그림)",
    "file": "photos/site/lh2015122300020973/siteplan-b1.jpg",
    "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=24545615",
    "crop": "",
@@ -51,7 +66,12 @@
    "block": "블록1",
    "lh_tab": "단지배치도",
    "desc": "단지배치도",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-22",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "aerial",
