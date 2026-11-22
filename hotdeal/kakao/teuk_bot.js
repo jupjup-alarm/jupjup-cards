@@ -12,6 +12,8 @@ var POLL_MS = 5 * 60 * 1000;
 var MAX_PER_ROUND = 2;
 var MAX_AGE_MIN = 120;
 var worker = null;
+var savedReplier = null;
+function norm(t) { return String(t || "").replace(/\s+/g, ""); };
 
 function log(s) {
   var line = new Date().toLocaleString() + " " + s;
@@ -58,11 +60,14 @@ function round() {
   for (var i = 0; i < items.length && n < MAX_PER_ROUND; i++) {
     var it = items[i];
     if (sent[it.id]) { continue; }
-    if (it.room !== ROOM) { continue; }
+    if (norm(it.room) !== norm(ROOM)) { continue; }
     if ((Date.now() - parseKst(it.created)) / 60000 > MAX_AGE_MIN) { sent[it.id] = Date.now(); log("지남, 건너뜀 " + it.id); continue; }
     if (n > 0) { java.lang.Thread.sleep(10000 + Math.floor(Math.random() * 10000)); }
     var ok = false;
-    try { ok = Api.replyRoom(ROOM, it.message); } catch (e) { log("보내기 오류 " + it.id + ": " + e); }
+    try {
+      if (savedReplier) { savedReplier.reply(it.message); ok = true; }
+      else { ok = Api.replyRoom(ROOM, it.message); }
+    } catch (e) { log("보내기 오류 " + it.id + ": " + e); ok = false; }
     if (!ok) { log("보내기 실패(방 알림 세션 없음?) " + it.id + " - 방장 계정으로 방에 글 하나 올려 주세요"); break; }
     sent[it.id] = Date.now();
     saveSent(sent);
@@ -92,9 +97,17 @@ function onStartCompile() {
   if (worker) { worker.interrupt(); worker = null; }
 };
 
-/* 알림이 올 때 호출된다. 이 방 알림을 받아야 보내기 세션이 생긴다. 방에는 아무 답도 하지 않는다. */
+/* 알림이 올 때 호출된다. 이 방(공백 빼고 같은 이름) 알림의 답장 객체를 기억해 두고 그걸로 보낸다. 방에는 아무 답도 하지 않는다. */
 function response(room, msg, sender, isGroupChat, replier, imageDB, packageName) {
-  if (room === ROOM) { log("방 알림 받음 - 보내기 세션 준비됨"); }
+  log("알림: 방=[" + room + "] 앱=" + packageName);
+  if (norm(room) === norm(ROOM)) {
+    var first = (savedReplier === null);
+    savedReplier = replier;
+    log("방 알림 받음 - 보내기 세션 준비됨");
+    if (first) {
+      new java.lang.Thread(new java.lang.Runnable({ run: function () { try { java.lang.Thread.sleep(3000); round(); } catch (e) { log("바로 회차 오류: " + e); } } })).start();
+    }
+  }
 };
 
 start();
