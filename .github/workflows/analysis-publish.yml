@@ -23,6 +23,8 @@ jobs:
         with:
           sparse-checkout: |
             site
+            data
+            mapgen.py
             fonts
             photos
             maps
