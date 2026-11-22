@@ -708,7 +708,7 @@ def home(stays):
              f'<span>{icon("wallet")}넷이서 실제 가격</span></div></section>')
     extra = ('<div id="extra">'
              + rail("r-reel", "릴스로 먼저 보기", "투키즈노트 인스타그램에 올린 영상이에요", reels[:10], reels=True)
-             + rail("r-near", "강동구에서 1박 다녀오기 좋은 곳", "직선 150km 안쪽, 가까운 순", near[:10])
+             + rail("r-near", "서울에서 1박 다녀오기 좋은 곳", "서울 강동구에서 직선 150km 안쪽, 가까운 순", near[:10])
              + rail("r-cheap", "넷이서 실제 1박이 가벼운 곳", "추가 인원·필수 현장결제까지 더한 가격 순", cheap[:10])
              + rail("r-water", "겨울에도 아이 둘이 물에 들어가는 곳", "실내 수영장·온수풀·온천", water[:10], skip="water")
              + "</div>")
