@@ -383,7 +383,15 @@ h1,h2,h3{text-wrap:balance;margin:0}
 .st-h .sub b{color:var(--ink);font-weight:600}
 .gal{position:relative;display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:8px;height:min(56vw,480px);margin-top:24px;border-radius:var(--r);overflow:hidden}
 .gal a{position:relative;overflow:hidden;background:var(--soft)}.gal a:first-child{grid-row:span 2}
-.gal img{width:100%;height:100%;object-fit:cover;transition:filter .3s var(--ease)}.gal a:hover img{filter:brightness(.9)}
+.gal img{width:100%;height:100%;object-fit:cover;transition:filter .3s var(--ease)}
+.gal>.gv{grid-row:span 2}
+.gv{position:relative;overflow:hidden;background:#111}
+.gv .bg{position:absolute;inset:-24px;width:calc(100% + 48px);height:calc(100% + 48px);max-width:none;object-fit:cover;filter:blur(24px) brightness(.55);transform:scale(1.05)}
+.gv video{position:relative;width:100%;height:100%;object-fit:contain;cursor:pointer}
+.gv .tag{position:absolute;left:12px;top:12px;display:flex;align-items:center;gap:4px;background:rgba(0,0,0,.55);color:#fff;font-size:12px;line-height:16px;font-weight:600;padding:4px 8px;border-radius:6px}
+.gv .tag .i{width:14px;height:14px}
+.snd{position:absolute;right:12px;bottom:12px;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:rgba(0,0,0,.55);color:#fff;transition:transform .3s var(--ease)}
+.snd:active{transform:scale(.96)}.snd .i{width:20px;height:20px}.snd .on{display:none}.snd[aria-pressed=true] .on{display:block}.snd[aria-pressed=true] .off{display:none}.gal a:hover img{filter:brightness(.9)}
 .gal.n1{grid-template-columns:1fr}.gal.n1 a:first-child{grid-row:span 2}
 .gal.n2,.gal.n3{grid-template-columns:2fr 1fr}
 .gal.n4{grid-template-columns:2fr 1fr 1fr}.gal.n4 a:nth-child(4){grid-column:span 2}
@@ -392,8 +400,8 @@ h1,h2,h3{text-wrap:balance;margin:0}
 .mgal{display:none}
 @media (max-width:743px){.gal{display:none}
 .mgal{display:block;position:relative;margin:16px -16px 0}.mgal .strip{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}.mgal .strip::-webkit-scrollbar{display:none}
-.mgal img{flex:none;width:100%;aspect-ratio:4/3;object-fit:cover;scroll-snap-align:center}
-.mgal .n{position:absolute;right:12px;bottom:12px;background:rgba(0,0,0,.6);color:#fff;font-size:12px;line-height:16px;font-weight:600;padding:4px 8px;border-radius:6px}}
+.mgal img{flex:none;width:100%;aspect-ratio:4/5;object-fit:cover;scroll-snap-align:center}.mgal .gv{flex:none;width:100%;aspect-ratio:4/5;scroll-snap-align:center}.mgal .gv .bg{aspect-ratio:auto}
+.mgal .n{position:absolute;right:12px;top:12px;background:rgba(0,0,0,.6);color:#fff;font-size:12px;line-height:16px;font-weight:600;padding:4px 8px;border-radius:6px}}
 .credit{font-size:12px;line-height:16px;color:var(--sub);margin-top:8px}
 .lay{display:grid;grid-template-columns:minmax(0,1fr) 372px;gap:80px;margin-top:32px}
 @media (max-width:1127px){.lay{grid-template-columns:minmax(0,1fr) 320px;gap:48px}}
@@ -409,16 +417,10 @@ h1,h2,h3{text-wrap:balance;margin:0}
 .fit .ok .i{color:#2F7D4F}.fit .ng .i{color:var(--acc)}
 @media (max-width:743px){.fit{grid-template-columns:1fr}}
 dl.kv{display:grid;grid-template-columns:minmax(96px,30%) 1fr;gap:12px 24px;margin:0}dl.kv dt{color:var(--sub)}dl.kv dd{margin:0;white-space:pre-line}
-.reelbox{display:grid;grid-template-columns:240px 1fr;gap:24px;align-items:start}
-.reelbox .rv{position:relative;aspect-ratio:9/16;border-radius:var(--r);overflow:hidden;background:#111}
-.reelbox video{width:100%;height:100%;object-fit:cover;cursor:pointer}
-.reelbox .snd{position:absolute;right:8px;bottom:8px;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:rgba(0,0,0,.55);color:#fff}.reelbox .snd .i{width:18px;height:18px}
-.reelbox .snd .on{display:none}.reelbox .snd[aria-pressed=true] .on{display:block}.reelbox .snd[aria-pressed=true] .off{display:none}
-.reelbox q{display:block;font-size:18px;line-height:28px;font-weight:700;quotes:none;text-wrap:balance}
-.reelbox .when{color:var(--sub);font-size:14px;line-height:20px;margin-top:8px}
+.reelnote q{display:block;font-size:18px;line-height:28px;font-weight:700;quotes:none;text-wrap:balance}
+.reelnote .when{color:var(--sub);font-size:14px;line-height:20px;margin-top:8px}
 .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.links a{display:flex;align-items:center;gap:8px;font-size:14px;line-height:20px;font-weight:600;padding:8px 12px;border:1px solid var(--line);border-radius:8px;transition:background .3s var(--ease)}
 .links a:hover{background:var(--soft)}.links .i{width:18px;height:18px}
-@media (max-width:743px){.reelbox{grid-template-columns:1fr}.reelbox .rv{max-width:280px}}
 .faq{display:grid;grid-template-columns:1fr 1fr;gap:24px 32px}.faq h3{font-size:16px;line-height:24px;font-weight:700}.faq p{margin:4px 0 0;color:var(--sub);text-wrap:pretty}
 @media (max-width:743px){.faq{grid-template-columns:1fr}}
 .src{font-size:13px;line-height:20px;color:var(--sub)}.src a{text-decoration:underline}
@@ -471,7 +473,7 @@ document.querySelectorAll('[data-rail]').forEach(b=>b.addEventListener('click',(
 const vids=[...document.querySelectorAll('video[data-auto]')];
 if(vids.length&&'IntersectionObserver' in window&&!rm){const io=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;
  if(e.isIntersecting&&e.intersectionRatio>.6){if(!v.src&&v.dataset.src){v.src=v.dataset.src}v.play().then(()=>v.classList.add('on')).catch(()=>{})}else{v.pause()}}),{threshold:[0,.6]});vids.forEach(v=>io.observe(v))}
-document.querySelectorAll('.reelbox video').forEach(v=>v.addEventListener('click',()=>{if(!v.src)v.src=v.dataset.src;v.paused?v.play():v.pause()}));
+document.querySelectorAll('.gv video').forEach(v=>v.addEventListener('click',()=>{if(!v.src)v.src=v.dataset.src;v.paused?v.play():v.pause()}));
 document.querySelectorAll('.snd').forEach(b=>b.addEventListener('click',()=>{const v=b.parentElement.querySelector('video');if(!v.src)v.src=v.dataset.src;v.muted=!v.muted;
  b.setAttribute('aria-pressed',String(!v.muted));b.setAttribute('aria-label',v.muted?'소리 켜기':'소리 끄기');if(v.paused)v.play()}));
 // 등장
@@ -555,7 +557,7 @@ def stay_card(st, lazy=True, rail=False, skip=None):
 
 def reel_card(st):
     r = st["media"]["reel"]
-    return (f'<a class="rc" href="/stay/{st["slug"]}/#reel" aria-label="{e(st["name"])} 릴스 보기">'
+    return (f'<a class="rc" href="/stay/{st["slug"]}/" aria-label="{e(st["name"])} 릴스 보기">'
             f'<img src="{murl(st, r["poster"])}" alt="" loading="lazy" decoding="async">'
             f'<video muted playsinline loop preload="none" data-auto data-src="{murl(st, r["src"])}"></video>'
             f'<span class="play">{icon("play")}</span>'
@@ -600,18 +602,27 @@ def stay_page(st, all_stays):
             f'<span>{e(st["type"])}</span><span>{e(dist_label(st))}</span>'
             f'{"<span>가격 " + e(st["price_date"]) + " 확인</span>" if st.get("price_date") else ""}</div></div>')
     gal = mgal = ""
-    if photos:
-        show = photos[:5]
-        n = len(show)
-        cells = "".join(f'<a href="{murl(st, p["src"])}" aria-label="사진 {i + 1} 크게 보기"><img src="{murl(st, p["src"] if i == 0 else p["small"])}" '
-                        f'alt="{e(st["name"])} 사진 {i + 1}"{"" if i == 0 else " loading=lazy"} decoding="async"></a>' for i, p in enumerate(show))
-        reel_btn = f'<a class="all" href="#reel">{icon("play")}릴스로 보기</a>' if m["reel"] else ""
-        gal = f'<div class="gal n{min(n, 5)}">{cells}{reel_btn}</div>'
-        mgal = (f'<div class="mgal"><div class="strip">' + "".join(
-            f'<img src="{murl(st, p["src"])}" alt="{e(st["name"])} 사진 {i + 1}"{"" if i == 0 else " loading=lazy"} decoding="async">'
-            for i, p in enumerate(photos)) + f'</div><span class="n">1 / {len(photos)}</span></div>')
+    r = m["reel"]
+    hero = ""
+    if r:
+        hero = (f'<div class="gv"><img class="bg" src="{murl(st, r["poster"])}" alt="" aria-hidden="true">'
+                f'<video muted playsinline loop preload="none" poster="{murl(st, r["poster"])}" data-auto data-src="{murl(st, r["src"])}" '
+                f'aria-label="{e(st["name"])} 릴스 영상"></video>'
+                f'<span class="tag">{icon("play")}투키즈노트 릴스</span>'
+                f'<button class="snd" type="button" aria-pressed="false" aria-label="소리 켜기">'
+                f'<span class="off">{icon("speaker-slash")}</span><span class="on">{icon("speaker-high")}</span></button></div>')
+    if photos or hero:
+        show = photos[:4] if hero else photos[:5]
+        cells = ([hero] if hero else []) + [
+            f'<a href="{murl(st, p["src"])}" aria-label="사진 {i + 1} 크게 보기"><img src="{murl(st, p["src"] if (i == 0 and not hero) else p["small"])}" '
+            f'alt="{e(st["name"])} 사진 {i + 1}"{"" if (i == 0 and not hero) else " loading=lazy"} decoding="async"></a>' for i, p in enumerate(show)]
+        gal = f'<div class="gal n{min(len(cells), 5)}">{"".join(cells)}</div>'
+        slides = ([hero] if hero else []) + [
+            f'<img src="{murl(st, p["src"])}" alt="{e(st["name"])} 사진 {i + 1}"{"" if (i == 0 and not hero) else " loading=lazy"} decoding="async">'
+            for i, p in enumerate(photos)]
+        mgal = f'<div class="mgal"><div class="strip">{"".join(slides)}</div><span class="n">1 / {len(slides)}</span></div>'
         creds = sorted({p["credit"] for p in photos})
-        gal += mgal + f'<p class="credit">사진: {e(" · ".join(creds))} · 실제와 다를 수 있어요</p>'
+        gal += mgal + (f'<p class="credit">{"영상: 투키즈노트 릴스 · " if hero else ""}사진: {e(" · ".join(creds))} · 실제와 다를 수 있어요</p>' if creds else "")
     # 예약 카드
     if st["total4"] is not None:
         rows = "".join(f"<dt>{e(a)}</dt><dd>{e(b)}</dd>" for a, b in st["total4_lines"])
@@ -640,11 +651,8 @@ def stay_page(st, all_stays):
         if r.get("youtube"):
             links += f'<a href="{e(r["youtube"])}" rel="noopener">{icon("youtube-logo")}유튜브 쇼츠</a>'
         when = f'{e(r["published"])} 투키즈노트 채널에 올린 영상 · {r["seconds"]:.0f}초' if r.get("published") else f'투키즈노트 릴스 · {r["seconds"]:.0f}초'
-        reel = (f'<section class="blk" id="reel"><h2>릴스로 보기</h2><div class="reelbox"><div class="rv">'
-                f'<video muted playsinline loop preload="none" poster="{murl(st, r["poster"])}" data-auto data-src="{murl(st, r["src"])}"></video>'
-                f'<button class="snd" type="button" aria-pressed="false" aria-label="소리 켜기">'
-                f'<span class="off">{icon("speaker-slash")}</span><span class="on">{icon("speaker-high")}</span></button></div>'
-                f'<div><q>{e(r["hook"])}</q><p class="when">{when}</p><div class="links">{links}</div></div></div></section>')
+        reel = (f'<section class="blk" id="reel"><h2>우리 채널 영상</h2><div class="reelnote">'
+                f'<q>{e(r["hook"])}</q><p class="when">{when}</p><div class="links">{links}</div></div></section>')
     sections = [
         f'<section class="blk"><p class="one">{e(st["one"])}</p></section>',
         mtotal,
