@@ -38,7 +38,7 @@
     {# 2026-11-04 사용자 결정: 로또 청약 — 차익 순위 카드 + 칩 (표는 맨 아래 '한눈에 보기') #}
     <section class="lsec lotto" aria-labelledby="lt-h">
       <h2 id="lt-h">시세보다 얼마나 싼가요 <small>{{ lotto_sum.n }}곳</small></h2>
-      <p class="lt-sum num">{{ lotto_sum.n }}곳 중 접수 중·예정 <b>{{ lotto_sum.live }}곳</b> · 최대 <b>{{ lotto_sum.top.v }}</b> (추정, {{ lotto_sum.top.n.complex or lotto_sum.top.n.title }})</p>
+      <p class="lt-sum num">{{ lotto_sum.n }}곳 중 접수 중·예정 <b>{{ lotto_sum.live }}곳</b> · 최대 <b>{{ lotto_sum.top.v }}</b> ({{ lotto_sum.top.n.complex or lotto_sum.top.n.title }})</p>
       <div class="lt-chips" role="group" aria-label="정렬·거르기">
         <button type="button" data-sort="gap" aria-pressed="true">차익 큰 순</button>
         <button type="button" data-sort="end" aria-pressed="false">마감 임박 순</button>
@@ -55,7 +55,7 @@
           <span class="lt-b">
             <span class="lt-t"><b>{{ n.title }}</b>{{ pill(n) }}</span>
             <span class="lt-m num">{{ n.sido }} {{ n.sigungu or '' }} · {{ n.kind_label }}{% if n.status in ('open', 'upcoming') or n.is_pre %} · {{ n.rcpt[0]|trange(n.rcpt[1]) }} 접수{% if n.is_pre %} 예정{% endif %}{% endif %}</span>
-            <b class="lt-v num">{{ c.v }} <small>(추정)</small></b>
+            <b class="lt-v num">{{ c.v }}</b>
             {% if c.pct %}<span class="lt-bar" aria-hidden="true"><i style="width:{{ c.pct }}%"></i></span><span class="lt-p num">분양가가 주변 시세의 <b>{{ c.pct }}%</b></span>{% endif %}
             {% if c.mk %}<span class="lt-k num"><em>비교</em>{{ c.mk[0] }} <b>{{ c.mk[1] }}</b></span>{% endif %}
             {% if c.pr %}<span class="lt-k num"><em>이 단지</em>{{ c.pr[0]|replace('이 단지 ', '', 1) }} <b>{{ c.pr[1] }}</b></span>{% endif %}
@@ -63,7 +63,7 @@
         </a></li>{% endfor %}
       </ol>
       <p class="lt-empty" hidden>조건에 맞는 공고가 없어요. 칩을 다시 골라 보세요.</p>
-      <p class="note">비교 단지의 최근 실거래가와 분양가로 계산한 추정이에요. 차익이 클수록 경쟁이 몰리고 거주의무·전매 제한이 붙는 경우가 많아요.</p>
+      <p class="note">비교 단지의 최근 실거래가와 분양가로 계산했어요. 차익이 클수록 경쟁이 몰리고 거주의무·전매 제한이 붙는 경우가 많아요.</p>
     </section>
     {{ cp_ad('home', 'ad-home') }}
     {% endif %}

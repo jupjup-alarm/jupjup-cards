@@ -1692,3 +1692,117 @@ footer .biz{font-style:normal;line-height:1.6;opacity:.85}   /* 사업자 정보
 .wt-tbl th small,.wt-tbl td small{display:block;color:var(--ink-sub);font-weight:500;font-size:12px}
 .ntbl td.tl{text-align:left;white-space:normal;min-width:7em}
 .ntbl td.tl small{display:block;color:var(--ink-sub);font-weight:500;font-size:12px}
+
+/* ===== 리디자인 v4 (2026-11-22 사용자 결정 — 접수 중·예정 공고 첫 화면) =====
+   제목 → 쿠팡 띠 → 바로가기 4칸 → 3초 판단(큰 숫자 + 2×2) → 버튼 2개 → 광고 */
+.v4 .hero2 img{max-height:200px}
+@media (min-width:1024px){.v4 .hero2 img{max-height:300px}}
+.v4 .chipnav.cn4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;padding-right:max(16px, env(safe-area-inset-left, 0px));-webkit-mask-image:none;mask-image:none}
+.v4 .chipnav.cn4 a{text-align:center;justify-content:center;display:flex;align-items:center;white-space:nowrap;font-size:14.5px}
+.v4 .dz-card h2{margin-bottom:12px}
+.dz-hero{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md, 14px);padding:16px 16px 12px;margin:0 0 10px}
+.dz-hk{margin:0;font-size:14px;font-weight:700;color:var(--ink-sub)}
+.dz-hv{margin:2px 0 0;font-size:20px;font-weight:800;letter-spacing:-.03em;line-height:1.2}
+.dz-hv b{font-size:34px;font-weight:900;color:var(--coral-strong);letter-spacing:-.045em}
+.dz-hero .vbar{margin:12px 0 8px;gap:8px}
+.dz-hero .vl{font-size:12.5px}
+.dz-hero .vt{height:10px}
+.dz-hs{margin:0;font-size:12.5px;color:var(--ink-sub);line-height:1.5}
+.dz-hs a{font-weight:700;white-space:nowrap}
+.v4 .dz-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px}
+@media (min-width:720px){.v4 .dz-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important}}
+.v4 .dz-c{display:flex!important;flex-direction:column;gap:6px;padding:14px;min-height:0!important}
+.v4 .dz-c .dz-k{font-size:13px}
+.v4 .dz-c .dz-v b{font-size:16.5px;line-height:1.35}
+.v4 .dz-c .dz-v small{font-size:12.5px;line-height:1.45;color:var(--ink-sub)}
+.v4 .dz-c .dz-m{margin-top:auto;font-size:12.5px;display:flex;align-items:center;gap:6px;justify-items:start}
+.v4 .dz-when{background:var(--ground)}
+.v4 .dz-card > .note{font-size:12px;margin-top:10px}
+.v4 .tk-wrap{padding-top:0}
+.v4 .ticket{margin-top:0;box-shadow:none;border:0;background:none}
+.v4 .ticket .tb{padding:0}
+.v4 .ticket .nx-row{grid-template-columns:repeat(2,minmax(0,1fr))}
+.v4 .ticket .nx-b{justify-content:center;text-align:center;font-size:15px;min-height:52px;padding:0 10px}
+.v4 .ticket .nx-b small{display:none}
+.v4 .tprog{margin:0 0 12px}
+@media (max-width:1023px){
+  .v4 > .dz-card{padding-bottom:14px}
+  .v4 > .tk-wrap{margin-top:0;padding:0 var(--pad) 18px}
+}
+@media (prefers-color-scheme:dark){
+  .dz-hero{background:var(--card)}
+  .v4 .ticket{background:none;box-shadow:none}
+}
+.v4 .dz-c,.v4 .dz-c .dz-v{text-align:left;align-items:stretch;justify-items:start}
+.v4 .dz-c .dz-k{justify-content:flex-start;align-self:flex-start}
+.v4 .dz-c .dz-m{align-self:flex-start;justify-content:flex-start}
+
+/* ===== 홈 리디자인 v4 (2026-11-22) — 숫자 칸 3개 · 7일 띠 · 날짜별 카드 ===== */
+.hm-tiles.v4 a{border-radius:16px;padding:14px 12px;gap:4px;min-height:0}
+.hm-tiles.v4 span{font-size:13px}
+.hm-tiles.v4 b{font-size:30px;letter-spacing:-.03em}
+.hm-tiles.v4 small{font-size:12px;font-weight:600;color:var(--ink-sub);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hm-tiles.v4 .t-o{background:#E8F5EE;color:#137A43}
+.hm-tiles.v4 .t-s{background:var(--blue-tint);color:var(--blue)}
+.hm-tiles.v4 .t-a{background:var(--ground);color:var(--ink)}
+.hm-tiles.v4 .t-a span{color:var(--ink-sub)}.hm-tiles.v4 .t-a small{color:var(--blue);font-weight:700}
+.hm-dates{order:2;background:var(--card);margin-inline:var(--bleed);padding:4px max(20px, env(safe-area-inset-left, 0px)) 18px}
+.hm-dt-h{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.hm-dl{margin:6px 0 8px;font-size:13px;color:var(--ink-sub)}
+.hm-strip{list-style:none;margin:0 -8px 6px;padding:0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:2px}
+.hm-strip a{display:flex;flex-direction:column;align-items:center;gap:1px;padding:8px 0 7px;border-radius:12px;text-decoration:none;color:var(--ink);min-height:var(--tap)}
+.hm-strip span{font-size:12px;font-weight:600;color:var(--ink-sub)}
+.hm-strip b{font-size:17px;font-weight:800}
+.hm-strip em{font-style:normal;font-size:12px;font-weight:700;color:var(--blue)}
+.hm-strip .z a{color:#9AA3B2}.hm-strip .z em{color:#9AA3B2}
+.hm-strip .pa a{color:#B9C0CC}
+.hm-strip .td a,.hm-strip li:first-child:not(.pa) a{background:var(--navy);color:#fff}
+.hm-strip .td span,.hm-strip li:first-child:not(.pa) span{color:#C9D0DD}
+.hm-strip .td em,.hm-strip li:first-child:not(.pa) em{color:#FF8A70}
+.hm-dg{padding-top:14px;scroll-margin-top:calc(var(--hdr, 56px) + 12px)}
+.hm-dg h3{margin:0;display:flex;justify-content:space-between;align-items:baseline;font-size:19px;font-weight:800;letter-spacing:-.03em}
+.hm-dg h3 small{font-size:13px;font-weight:600;color:var(--ink-sub);letter-spacing:0}
+.hm-dc{list-style:none;margin:4px 0 0;padding:0}
+.hm-dc li{border-bottom:1px solid var(--line)}
+.hm-dc a{display:flex;gap:12px;align-items:center;padding:13px 0;text-decoration:none;color:var(--ink)}
+.hm-dc-b{display:flex;flex-direction:column;gap:3px;min-width:0;flex:1}
+.hm-dc-b em{font-style:normal;font-size:13px;font-weight:700;display:flex;align-items:center;gap:6px}
+.hm-dc-b em::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor;flex:none}
+.hm-dc-b em.o{color:var(--coral-strong)}.hm-dc-b em.s{color:var(--blue)}
+.hm-dc-b b{font-size:16.5px;font-weight:800;letter-spacing:-.02em;line-height:1.35}
+.hm-dc-b > span{font-size:13px;color:var(--ink-sub);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hm-dc-p{display:flex;flex-direction:column;align-items:flex-end;flex:none}
+.hm-dc-p small{font-size:12px;color:var(--ink-sub)}
+.hm-dc-p b{font-size:19px;font-weight:900;letter-spacing:-.03em}
+.hm-dc-more{display:flex;align-items:center;min-height:var(--tap);font-size:14.5px;font-weight:700;color:var(--blue);text-decoration:none}
+@media (max-width:1023px){.home2 .hm-week{display:none}.home2 .hm-hero{padding-bottom:12px}}
+@media (min-width:1024px){.hm-dates{margin:16px 0 0;border-radius:var(--r-lg, 18px);padding:8px 28px 20px}.hm-strip{margin-inline:0}}
+.hm-main > .hm-dates{max-width:none}
+
+/* ===== 가점 조회 리디자인 v4 (2026-11-22) ===== */
+.sc-big{display:flex!important;flex-direction:column;gap:8px;align-items:stretch!important}
+.sc-big > span:first-child{font-size:14px;font-weight:600;color:var(--ink-sub)}
+.sc-box{display:flex;align-items:center;border:2px solid var(--ink);border-radius:16px;padding:0 18px;background:var(--card)}
+.sc-box input{flex:1;min-width:0;border:0!important;outline:0;background:none;font:inherit;font-size:34px!important;font-weight:900;letter-spacing:-.03em;color:var(--ink);height:64px;padding:0!important;box-shadow:none!important}
+.sc-box i{font-style:normal;font-size:17px;font-weight:700;color:var(--ink-sub)}
+.sc-box:focus-within{box-shadow:0 0 0 3px var(--blue-tint)}
+.sc-calc{display:inline-flex;align-items:center;min-height:var(--tap, 44px);font-size:14.5px;font-weight:700;color:var(--blue);text-decoration:none}
+.sc-res{display:flex;flex-direction:column;gap:6px;margin:4px 0 14px}
+.sc-sum{background:var(--ground);border-radius:16px;padding:16px}
+.sc-s1{margin:0;font-size:15px;font-weight:700}
+.sc-s2{margin:2px 0 10px;font-size:17px;font-weight:800}
+.sc-s2 b{font-size:32px;font-weight:900;color:var(--coral-strong);letter-spacing:-.04em}
+.sc-bar{display:block;height:10px;border-radius:10px;background:var(--line);overflow:hidden}
+.sc-bar i{display:block;height:100%;background:var(--coral);border-radius:10px}
+.sc-fine{margin:10px 0 0;font-size:12px;line-height:1.5;color:var(--ink-sub)}
+.sc-cards{list-style:none;margin:0;padding:0}
+.sc-cards li{border-bottom:1px solid var(--line)}
+.sc-cards a,.sc-near{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;text-decoration:none;color:var(--ink)}
+.sc-cards a > span,.sc-near > span{display:flex;flex-direction:column;gap:2px;min-width:0}
+.sc-cards b,.sc-near b{font-size:15.5px;font-weight:800;letter-spacing:-.02em}
+.sc-cards small,.sc-near small{font-size:12.5px;color:var(--ink-sub);font-weight:500}
+.sc-cards em,.sc-near em{font-style:normal;display:flex;flex-direction:column;align-items:flex-end;font-size:17px;font-weight:900;flex:none}
+.sc-near{margin-top:6px;border:1.5px dashed var(--line);border-radius:14px;padding:12px 14px}
+.sc-near > span small{color:var(--blue);font-weight:700}
+.sc-near em{color:var(--blue)}
+.sc-sum{background:var(--card);border:1px solid var(--line)}

@@ -15,8 +15,16 @@
     {# 2026-11-22 사용자 결정 "내 가점이면 붙었을 단지" — 실제 청약홈 최저 당첨 가점 기준 #}
     <section class="lsec sc-me" aria-labelledby="sc-me-h">
       <h2 id="sc-me-h">내 가점이면 붙었을까? <small>최근 {{ n_lmin }}개 주택형 기준</small></h2>
-      <label class="sc-in"><span>내 청약 가점</span><input type="number" inputmode="numeric" min="0" max="84" step="1" placeholder="예: 52" data-score><span>점</span></label>
-      <p class="sc-out" aria-live="polite" data-out>가점을 넣으면, 아래 단지·주택형 표에서 해당지역 최저 당첨 가점이 내 점수 이하였던 곳만 남겨요. <a href="/tools/subscription-score/">가점을 모르면 계산하기 →</a></p>
+      {# 2026-11-22 리디자인 v4: 큰 입력 칸 → 결과 한 문장(큰 숫자·막대) → 붙었을 주택형 3곳 → '조금만 더 있으면' 1곳 #}
+      <label class="sc-in sc-big"><span>내 청약 가점 (0~84점)</span><span class="sc-box"><input type="number" inputmode="numeric" min="0" max="84" step="1" placeholder="예: 52" data-score><i>점</i></span></label>
+      <a class="sc-calc" href="/tools/subscription-score/">가점을 모르면 → 3가지만 답하고 계산하기</a>
+      <p class="sc-out" aria-live="polite" data-out>가점을 넣으면, 아래 단지·주택형 표에서 해당지역 최저 당첨 가점이 내 점수 이하였던 곳만 남겨요.</p>
+      <div class="sc-res" data-res hidden>
+        <div class="sc-sum"><p class="sc-s1" data-s1></p><p class="sc-s2"><b class="num" data-s2></b>는 커트라인 안이었어요</p><span class="sc-bar"><i data-bar></i></span>
+          <p class="sc-fine">해당지역 최저 당첨 가점 기준 · 청약홈 공식 당첨 결과. 동점·추첨·거주지역에 따라 실제 결과는 다를 수 있어요.</p></div>
+        <ul class="sc-cards" data-cards></ul>
+        <a class="sc-near" data-near hidden></a>
+      </div>
       <div class="tbl ntbl"><table class="num keep2">
         <caption>점수마다 해당지역 최저 당첨 가점이 그 점수 이하였던 주택형 (청약홈 공식 · 실제 당첨 결과)</caption>
         <thead><tr><th scope="col" style="text-align:left">내 가점</th><th scope="col">해당지역</th><th scope="col">기타지역</th><th scope="col" style="text-align:left">많았던 지역</th></tr></thead>
@@ -65,10 +73,18 @@
 {% block after %}
 <script>
 (function(){var i=document.querySelector('[data-score]'),o=document.querySelector('[data-out]'),tb=document.querySelector('[data-rows]');if(!i||!tb)return;
-var base=o.innerHTML,rs=[].slice.call(tb.querySelectorAll('tr'));
-function run(){var v=parseInt(i.value,10);if(isNaN(v)||v<0||v>84){rs.forEach(function(r){r.hidden=false});o.innerHTML=base;return;}
+var base=o.innerHTML,rs=[].slice.call(tb.querySelectorAll('tr')),res=document.querySelector('[data-res]'),cards=document.querySelector('[data-cards]'),near=document.querySelector('[data-near]');
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function info(r){var a=r.querySelector('th a'),sm=r.querySelector('th small');return{u:a?a.getAttribute('href'):'#',t:(a?a.textContent:'')+' '+(sm?sm.textContent.split(' · ')[0]:''),g:(r.querySelector('td.l')||{}).textContent||'',l:parseFloat(r.getAttribute('data-l'))}}
+function run(){var v=parseInt(i.value,10);if(isNaN(v)||v<0||v>84){rs.forEach(function(r){r.hidden=false});o.innerHTML=base;o.hidden=false;res.hidden=true;return;}
 var n=0,m=0,t=0;rs.forEach(function(r){var l=parseFloat(r.getAttribute('data-l')),ot=parseFloat(r.getAttribute('data-o'));var ok=(!isNaN(l)&&l<=v)||(!isNaN(ot)&&ot<=v);if(!isNaN(l)){t++;if(l<=v)n++;}if(!isNaN(ot)&&ot<=v&&!(l<=v))m++;r.hidden=!ok;});
 o.innerHTML='<b>'+v+'점</b>이면 최근 '+t+'개 주택형 중 <b>'+n+'개</b>에서 해당지역 최저 당첨 가점 이상이었어요'+(m?' (기타지역 물량까지 보면 '+m+'개 더)':'')+'. 아래 표에 그 주택형만 남겼어요.';
+o.hidden=true;res.hidden=false;
+document.querySelector('[data-s1]').textContent=v+'점이면 최근 '+t+'개 주택형 중';document.querySelector('[data-s2]').textContent=n+'개';
+document.querySelector('[data-bar]').style.width=(t?Math.round(n*100/t):0)+'%';
+var all=rs.map(info).filter(function(x){return!isNaN(x.l)}),inn=all.filter(function(x){return x.l<=v}).sort(function(a,b){return b.l-a.l}).slice(0,3),out=all.filter(function(x){return x.l>v}).sort(function(a,b){return a.l-b.l})[0];
+cards.innerHTML=inn.map(function(x){return'<li><a href="'+esc(x.u)+'"><span><b>'+esc(x.t)+'</b><small>'+esc(x.g)+'</small></span><em class="num"><small>최저</small>'+Math.round(x.l)+'점</em></a></li>'}).join('');
+if(out){near.hidden=false;near.href=out.u;near.innerHTML='<span><small>조금만 더 있으면</small><b>'+esc(out.t)+'</b></span><em class="num"><small>최저 '+Math.round(out.l)+'점</small>+'+(Math.round(out.l)-v)+'점</em>';}else near.hidden=true;
 try{history.replaceState(null,'','?score='+v)}catch(e){}}
 i.addEventListener('input',run);var q=/[?&]score=(\d+)/.exec(location.search);if(q){i.value=q[1];run();}})();
 </script>

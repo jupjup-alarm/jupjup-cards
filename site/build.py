@@ -355,6 +355,16 @@ def chipnav(h, n):
     lab = dict(CHIPS)
     if n.get("is_rental"):
         lab["h-price"] = "임대 조건"
+    if 'class="wrap page v4"' in h:
+        # 2026-11-22 리디자인 v4: 바로가기는 4칸 고정 (판단 · 돈·일정 · 단지 · 자격·질문) — 칸마다 먼저 있는 h2로
+        allids = set(re.findall(r'<h2 id="([\w-]+)"', h))
+        tabs = [("판단", ["h-dz"]), ("돈·일정", ["h-sch", "h-fund", "h-rent", "h-price"]),
+                ("단지", ["h-plan", "h-tour", "h-layout", "h-loc", "h-price"]), ("자격·질문", ["h-elig", "h-faq"])]
+        got = [(t, next((i for i in c if i in allids), None)) for t, c in tabs]
+        got = [(t, i) for t, i in got if i]
+        if len(got) >= 3:
+            nav = '<nav class="chipnav cn4" aria-label="이 페이지 바로가기">' + "".join(f'<a href="#{i}">{t}</a>' for t, i in got) + "</nav>"
+            return h.replace("<!--CHIPNAV-->", nav)
     nav = '<nav class="chipnav" aria-label="이 페이지 바로가기">' + "".join(f'<a href="#{i}">{lab[i]}</a>' for i in ids) + "</nav>"
     return h.replace("<!--CHIPNAV-->", nav)
 
@@ -916,7 +926,9 @@ def make_decide(n, notices):
         pct = round(pr * 100 / mk)
         sig = "g" if pct <= 70 else ("y" if pct <= 90 else "r")
         base = re.sub(r"\s*\(.*?\)\s*$", "", rows[0][0])
-        cards.append({"k": "시세 차이", "sig": sig, "head": "시세보다 " + gap["verdict"][:-4].strip(), "sub": f"주변 시세의 {pct}% 가격 · {base} 대비 (추정)"})
+        amt = re.sub(r"\s*저렴$", "", gap["verdict"][:-4].strip())      # '약 3억6천만원' — 리디자인 v4 첫 화면 큰 숫자
+        cards.append({"k": "시세 차이", "sig": sig, "head": "시세보다 " + gap["verdict"][:-4].strip(), "sub": f"주변 시세의 {pct}% 가격 · {base} 대비 (추정)",
+                      "amt": amt, "base": base})
         bars = {"mk": rows[0], "pr": rows[1], "pct": pct}
     elif gap.get("verdict"):
         cards.append({"k": "시세 차이", "sig": "r", "head": gap["verdict"], "sub": "근거는 아래 '시세와 비교하면'"})
@@ -994,7 +1006,7 @@ def gap_hook(n):
         big = "시세보다 " + v[:-4].strip()
     else:
         return None
-    return big, f"(추정) {base} 대비"
+    return big, f"{base} 대비"
 
 
 def og_lines(n):
@@ -1608,7 +1620,7 @@ FIXED_META = {
     "/region/gyeonggi/dongtan/": ("동탄 청약 일정 — 아파트 분양·임대", "화성 동탄 일대 아파트 분양과 행복주택 공고의 접수일, 분양가, 보증금과 자격을 정리해요."),
     "/competition/": ("청약 경쟁률 — 청약홈 공식 경쟁률 모음", "최근 접수가 끝난 아파트 분양·무순위(줍줍) 단지의 청약홈 공식 경쟁률을 공급·접수 건수와 함께 정리해요."),
     "/mujeonwi-watch/": ("줍줍 나올 수 있는 단지 — 1순위 미달 주택형 모음", "청약홈 공식 경쟁률에서 1순위 미달이 난 최근 단지와 주택형, 계약 일정, 다시 올라온 무순위 공고를 모았어요."),
-    "/lotto/": ("로또 청약 — 시세보다 싸게 나온 공고", "주변 실거래보다 분양가가 낮게 나온 청약 공고를 비교 단지, 거래 시점과 함께 모았어요. 금액은 추정이에요."),
+    "/lotto/": ("로또 청약 — 시세보다 싸게 나온 공고", "주변 실거래보다 분양가가 낮게 나온 청약 공고를 비교 단지, 거래 시점과 함께 모았어요."),
     "/schedule/this-week/": ("이번 주 청약 일정 — 아파트 분양·줍줍", "이번 주와 다음 주에 접수하는 아파트 분양, 줍줍(무순위), 공공분양, 임대 공고를 날짜순으로 정리해요."),
 }
 
@@ -1647,7 +1659,26 @@ def _set_meta(h, title, desc):
     return h
 
 
+# '(추정)' 꼬리표는 화면에 쓰지 않는다 (2026-11-22 사용자 결정 "(추정) 이런건 앞으로 뺌").
+# 공고 JSON의 gap.verdict '…저렴(추정)'은 코드가 차익 문장을 알아보는 표지라 그대로 두고, 화면으로 나갈 때만 지운다.
+_EST = [
+    (re.compile(r"\s*<small>\s*\((?:줍줍알람\s*)?추정\)\s*</small>"), ""),
+    (re.compile(r"\s*<small>\s*줍줍알람 추정\s*</small>"), ""),
+    (re.compile(r"\((?:줍줍알람\s*)?추정,\s*"), "("),
+    (re.compile(r"\s?\((?:줍줍알람\s*)?추정\)"), ""),
+    (re.compile(r"\s?\(추정[ ·]?(?:비교|가정)\)"), ""),
+    (re.compile(r"추정 비교\)"), "참고 비교)"),
+]
+
+
+def no_estimate(s):
+    for rx, rep in _EST:
+        s = rx.sub(rep, s)
+    return s
+
+
 def write(url, html_text, title, desc, kind, lastmod=None, index=True):
+    html_text, title, desc = no_estimate(html_text), no_estimate(title), no_estimate(desc)
     fm = fixed_meta(url, html_text) if kind == "list" or url == "/" else None
     if fm:
         title, desc = fm
@@ -2064,7 +2095,7 @@ def main():
             out.append(f"분양 공고의 최고 분양가는 {won(ps[0])}부터 {won(ps[-1])}까지예요.")
         lots = [x for x in live if (x.get("gap") or {}).get("verdict", "").endswith("저렴(추정)")]
         if lots:
-            out.append(f"주변 실거래보다 싸게 나온 곳(추정)은 {len(lots)}곳이에요.")
+            out.append(f"주변 실거래보다 싸게 나온 곳은 {len(lots)}곳이에요.")
         return " ".join(out)
 
     def tsort(lst):
@@ -2188,7 +2219,45 @@ def main():
     home_takes = _pick(week_end.isoformat())[:3]
     if len(home_takes) < 3:
         home_takes += [x for x in _pick(nxt_end.isoformat()) if x not in home_takes][:3 - len(home_takes)]
-    h = home_tpl.render(tiles=tiles, home_takes=home_takes, home_guides=home_guides, n_guides=n_guides, groups=home_groups, page_url="/", title=title, desc=desc, og=home_og, due=due, home_week=home_week, n_week=n_week,
+    # 홈 리디자인 v4 (2026-11-22 사용자 결정 — 시안 '공고 앱' 홈): 숫자 칸 3개(접수 중·이번 주 시작·발표 대기)
+    #  → 7일 띠(그날 접수 시작 수, 주말이면 다음 주) → 날짜별 카드(마감·시작, 가격은 '5.8억'). 아래 목록·표는 그대로.
+    v_w0 = wk0 + dt.timedelta(days=7) if TODAY.weekday() >= 5 else wk0
+    v_days = [(v_w0 + dt.timedelta(days=i)).isoformat() for i in range(7)]
+    n_vstart = len([x for x in live_s if v_days[0] <= x["rcpt"][0] <= v_days[-1] and x["rcpt"][0] >= t0])
+    n_wait = len([x for x in s if x["status"] == "waiting"])
+    tiles = [("t-o", "지금 접수 중", n_open, "#open" if n_open else "/schedule/this-week/", f"내일 마감 {n_t1}곳" if n_t1 else (f"오늘 마감 {n_t0}곳" if n_t0 else "마감 빠른 순")),
+             ("t-s", "다음 주 시작" if v_w0 != wk0 else "이번 주 시작", n_vstart, "#dates", f"{d(v_days[0])[:-3]}~{d(v_days[-1])[:-3]}"),
+             ("t-a", "발표 대기", n_wait, "/competition/", "경쟁률 보기 ›")]
+    def eok(v):
+        if not v:
+            return ""
+        e = v / 100_000_000
+        return (f"{e:.1f}".rstrip("0").rstrip(".") + "억") if e >= 1 else f"{v // 10000:,}만"
+    v_dates = []
+    for di in sorted({x["rcpt"][0] for x in live_s if x["rcpt"][0] >= t0} | {(x["rcpt"][1] or x["rcpt"][0]) for x in live_s if (x["rcpt"][1] or x["rcpt"][0]) >= t0}):
+        ends = [x for x in live_s if (x["rcpt"][1] or x["rcpt"][0]) == di and x["rcpt"][0] != di]
+        starts = [x for x in live_s if x["rcpt"][0] == di]
+        rows = []
+        for x in ends + starts:
+            one = (x["rcpt"][1] or x["rcpt"][0]) == x["rcpt"][0]
+            if x in ends:
+                st, cl = ("접수 중 · " + ("오늘 마감" if di == t0 else "내일 마감" if di == t1 else "마감"), "o")
+            else:
+                st, cl = ("접수 시작" + (" · 하루만" if one else ""), "s")
+            meta = " · ".join(v for v in [x["kind_label"], " ".join(v for v in [x["sido"], (x.get("sigungu") or "").split(" ")[0]] if v),
+                                          (f"{x['units']:,}{x.get('unit_word') or '세대'}" if x.get("units") else "")] if v)
+            rows.append({"n": x, "st": st, "cl": cl, "meta": meta, "pr": "" if x["is_rental"] else eok(x.get("max_price"))})
+        lab = ("오늘 · " if di == t0 else "내일 · " if di == t1 else "") + d(di)
+        v_dates.append({"iso": di, "label": lab, "ne": len(ends), "ns": len(starts), "rows": rows})
+        if len(v_dates) == 3:
+            break
+    have = {g["iso"] for g in v_dates}
+    v_week = []
+    for di in v_days:
+        c = len([x for x in live_s if x["rcpt"][0] == di])
+        v_week.append({"iso": di, "dow": "월화수목금토일"[dt.date.fromisoformat(di).weekday()], "day": int(di[8:]), "n": c,
+                       "past": di < t0, "today": di == t0, "href": f"#d-{di}" if di in have else "/schedule/this-week/"})
+    h = home_tpl.render(tiles=tiles, v_dates=v_dates, v_week=v_week, home_takes=home_takes, home_guides=home_guides, n_guides=n_guides, groups=home_groups, page_url="/", title=title, desc=desc, og=home_og, due=due, home_week=home_week, n_week=n_week,
                         week_label=f"{d(wk0.isoformat())} ~ {d(week_end.isoformat())}", t1=t1,
                         regions_used=regions_used, region_slug=regions["sido"], sido_map=sido_map, hub_quick=hub_quick, n_open=n_open, n_up=n_up,
                         tbl=home_tbl, tbl_cap=f"청약 공고 접수 중·예정 {n_open + n_up}곳 중 {len(home_tbl)}곳 — {d(TODAY.isoformat())} 기준 · 청약홈·LH·마이홈 공식 데이터", **common)
@@ -2443,7 +2512,7 @@ def main():
             g = x["gap"]
             base = " · ".join(f"{k} {v}" for k, v in (g.get("rows") or [])[:1])
             rows_.append([alink(x), f"{x['sido']} {x['sigungu'] or ''}", STATUS[x["status"]][0], g["verdict"], base or "—"])
-        tbl_ = mk_table(f"주변 실거래보다 분양가가 낮은 공고 {len(lot)}곳 — 비교 단지 실거래 기준 추정 · {d(TODAY.isoformat())}",
+        tbl_ = mk_table(f"주변 실거래보다 분양가가 낮은 공고 {len(lot)}곳 — 비교 단지 실거래 기준 · {d(TODAY.isoformat())}",
                         ["단지", "지역", "상태", "시세 대비", "비교 기준 (실거래)"], rows_, left=5, txt=True)
         top_ = live_[0] if live_ else lot[0]
         # 2026-11-04 사용자 결정(2번): 모바일에서 표 대신 차익 순위 카드 + 정렬·지역·'지금 넣을 수 있는 것만' 칩, 표는 맨 아래 '한눈에 보기'로
@@ -2466,7 +2535,7 @@ def main():
                   f"{d(TODAY.isoformat())} 기준 주변 실거래보다 분양가가 낮은 청약 공고 {len(lot)}곳(접수 중·예정 {len(live_)}곳). "
                   f"{top_.get('complex') or top_['title']} {top_['gap']['verdict']} 등. 비교 단지와 실거래 시점을 함께 정리.",
                   grouped(lot),
-                  "같은 생활권·비슷한 면적 아파트의 최근 실거래가보다 분양가가 낮게 나온 공고만 모았어요. 비교 단지와 거래 시점을 표에 함께 적었고, 금액은 모두 추정이에요. "
+                  "같은 생활권·비슷한 면적 아파트의 최근 실거래가보다 분양가가 낮게 나온 공고만 모았어요. 비교 단지와 거래 시점을 표에 함께 적었어요. "
                   "차익이 클수록 경쟁이 몰리고, 실거주 의무·전매 제한·재당첨 제한이 붙는 경우가 많으니 공고별 '주의점'을 꼭 확인하세요.",
                   [("홈", "/"), ("로또 청약", None)],
                   [("줍줍 공고", "/type/mujeonwi/"), ("청약 경쟁률", "/competition/"), ("서울 줍줍", "/region/seoul/mujeonwi/")],
@@ -2644,7 +2713,7 @@ def main():
 
 
 BASIC = {
-    "about": ("소개·작성 원칙", "줍줍알람이 누구이고 어떤 공식 데이터로 청약 공고·경쟁률·당첨 가점을 정리하는지, 추정 차익과 좋음·보통·주의 판정, 계산기·월간 결산을 어떻게 만드는지 설명해요."),
+    "about": ("소개·작성 원칙", "줍줍알람이 누구이고 어떤 공식 데이터로 청약 공고·경쟁률·당첨 가점을 정리하는지, 시세 차이와 좋음·보통·주의 판정, 계산기·월간 결산을 어떻게 만드는지 설명해요."),
     "sources": ("데이터 출처", "청약홈·LH·마이홈 공공데이터, 국토부 실거래가, 지도, 단지 이미지 등 줍줍알람이 쓰는 자료의 출처와 이용 조건."),
     "privacy": ("개인정보 처리방침", "줍줍알람 사이트의 개인정보 처리방침. 수집하는 정보, 쿠키, 방문 통계, 문의 방법."),
     "terms": ("이용약관", "줍줍알람 사이트 이용약관. 정보 제공 목적, 책임의 한계, 저작권."),
