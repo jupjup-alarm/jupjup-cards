@@ -42,6 +42,7 @@ function hotdealCheck() {
     out.push('스레드 계정: @' + me.username);
   } catch (e) { out.push('스레드 연결 실패: ' + e.message); }
   try { out.push('발행 잔량: ' + hdQuotaText_()); } catch (e) { out.push('발행 잔량 확인 실패: ' + e.message); }
+  try { const id = hdChatPostId_(); out.push('채팅방 글(2/3 인용): ' + (id ? '찾음 ' + id : '꺼짐')); } catch (e) { out.push('채팅방 글 못 찾음: ' + e.message); }
   try {
     const sh = hdSheet_();
     const head = sh.getRange(1, 1, 1, HD.note).getDisplayValues()[0];
@@ -191,7 +192,10 @@ function hdOne_(sh, row, v, recover, dry) {
   const post = hdCompose_(v, conv.pairs.map(p => p.to));
   const checks = hdCheck_(post);
   lines.push('── 본문 (' + post.main.length + '자) ──\n' + post.main);
-  lines.push('── 첫 댓글 (' + post.reply.length + '자) ──\n' + post.reply);
+  let chatId = '';
+  try { chatId = hdChatPostId_(); } catch (e) { notes.push('채팅방 글 못 찾음'); console.log('채팅방 글: ' + e.message); }
+  lines.push('── 2/3 댓글 ──\n' + (chatId ? post.quote + '  [인용: 글 ' + chatId + ']' : '(채팅방 글 없음 — 건너뜀)'));
+  lines.push('── 3/3 댓글 (' + post.reply.length + '자) ──\n' + post.reply);
   lines.push(checks.map(c => (c.ok ? 'PASS ' : 'FAIL ') + c.name).join(' · '));
   const bad = checks.filter(c => !c.ok);
   if (bad.length) return hdFail_(sh, row, dry, lines, bad[0].name, notes);
@@ -212,7 +216,12 @@ function hdOne_(sh, row, v, recover, dry) {
 
   // 5) 첫 댓글
   try {
-    const rep = hdPostText_(post.reply, main.id);
+    let parent = main.id;
+    if (chatId) {
+      try { parent = hdPostText_(post.quote, main.id, { quote_post_id: chatId }).id; lines.push('2/3 인용 댓글 발행'); }
+      catch (e) { notes.push('인용 댓글 실패'); console.error('행 ' + row + ' 인용 댓글 실패: ' + e.message); }
+    }
+    const rep = hdPostText_(post.reply, parent);
     lines.push('첫 댓글: ' + rep.id);
     hdWrite_(sh, row, { status: '발행완료', note: hdShort_(notes.join(' · ')) });
   } catch (e) {
@@ -398,8 +407,62 @@ function hdHash_(s) {
   return Utilities.computeDigest(Utilities.DigestAlgorithm.MD5, s).map(b => ('0' + (b & 0xff).toString(16)).slice(-2)).join('');
 }
 
-/* ───────── 글 만들기 ───────── */
+/* ───────── 글 만들기 ─────────
+   2026-11-22 사용자 결정 (참고: 반말 핫딜 채널 형식) — 3단 글타래
+   1/3 본문: 초성 퀴즈 + 짧은 반말 3줄 (링크 없음)
+   2/3 댓글: "실시간 알림은 요기로!!!" + 채팅방 링크가 있는 내 글 인용 (HD_CHAT_POST)
+   3/3 댓글: 상품명·가격·기준 시각 + 쿠팡 링크 + 대가성 문구 */
 function hdCompose_(v, links) {
+  const d = hdFacts_(v);
+  const l1 = (d.cho ? d.cho + ' ' : '') + '가격 이상한데??';
+  const l2 = d.qty > 1 ? '지금 빨리 쟁여!!!!' : '지금 빨리 담아!!!!';
+  let l3;
+  if (d.per && d.per < 1000) l3 = d.unit + '당 ' + d.per.toLocaleString('ko-KR') + '원꼴!!!';
+  else if (d.off && Number(d.off) >= 20) l3 = d.off + '% 빠졌어!!!';
+  else if (d.priceTxt) l3 = d.priceTxt + (d.ship ? ' ' + d.ship : '') + '!!!';
+  else l3 = '품절 전에 달려!!!';
+  const tag = String(hdCfg_('HD_AD_TAG', '(광고)'));
+  const main = [l1, l2, l3].join('\n') + (tag && tag.toLowerCase() !== 'off' ? '\n' + tag : '');
+
+  const at = hdParse_(v[HD.at - 1]);
+  const when = at ? '(' + Utilities.formatDate(at, TZ, 'M/d HH:mm') + ' 기준 · 가격은 수시로 바뀌어요)' : '(가격은 수시로 바뀌어요)';
+  const priceLine = [d.priceTxt, d.per ? '· ' + d.unit + '당 ' + d.per.toLocaleString('ko-KR') + '원' : '', d.ship ? '· ' + d.ship : ''].filter(Boolean).join(' ');
+  const reply = [HD_DISCLOSURE, '', d.name, priceLine, when, links.slice(0, 5).join('\n')].filter(x => x !== undefined && x !== null).join('\n');
+  return { main: main, quote: '실시간 알림은 요기로!!!', reply: reply };
+}
+
+function hdFacts_(v) {
+  const title = String(v[HD.title - 1]);
+  const name = hdName_(title);
+  const price = String(v[HD.price - 1]).replace(/[^\d]/g, '');
+  const q = name.match(/(\d+)\s*(개|봉|팩|입|병|캔|매|롤|켤레|박스)(?!.*\d+\s*(개|봉|팩|입|병|캔|매|롤|켤레|박스))/);
+  const qty = q ? Number(q[1]) : 0;
+  return {
+    name: name, qty: qty, unit: q ? q[2] : '',
+    priceTxt: price ? Number(price).toLocaleString('ko-KR') + '원' : '',
+    per: price && qty > 1 ? Math.round(Number(price) / qty) : 0,
+    off: (String(v[HD.kw - 1]).match(/할인\s*(\d+)%/) || [])[1],
+    ship: hdShip_(title),
+    cho: hdCho_(name)
+  };
+}
+
+// 상품 종류 단어의 초성 (예: 제로콜라 → ㅈㄹㅋㄹ). 숫자가 나오기 전 마지막 한글 단어(2~5자)를 쓴다.
+function hdCho_(name) {
+  const words = String(name).split(/\s+/);
+  let pick = '';
+  for (let i = 0; i < words.length; i++) {
+    const h = (words[i].match(/^[가-힣]+/) || [''])[0];
+    if (h.length >= 2) pick = h;
+    if (/\d/.test(words[i])) break;
+  }
+  if (!pick) return '';
+  const CHO = 'ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ';
+  return pick.slice(0, 5).split('').map(c => CHO[Math.floor((c.charCodeAt(0) - 0xAC00) / 588)]).join('');
+}
+
+// 예전 2단 형식 (참고용 — 지금은 쓰지 않음)
+function hdComposeOld_(v, links) {
   const title = String(v[HD.title - 1]);
   const name = hdName_(title);
   const price = String(v[HD.price - 1]).replace(/[^\d]/g, '');
@@ -439,8 +502,49 @@ function hdCheck_(post) {
   ];
 }
 
+/* ───────── 채팅방 안내 글 (2/3에서 인용) ─────────
+   스크립트 속성 HD_CHAT_POST 에 그 글 주소(threads.com/@…/post/… 또는 share 링크) 또는 글 ID.
+   찾은 ID는 HD_CHAT_POST_ID 에 저장해 다시 찾지 않는다. 비우면 2/3 없이 올린다. */
+const HD_CHAT_POST_DEFAULT = 'https://www.threads.com/share/GrUChWmKR';
+
+function hdChatPostId_() {
+  const raw = hdCfg_('HD_CHAT_POST', HD_CHAT_POST_DEFAULT).trim();
+  if (!raw || raw.toLowerCase() === 'off') return '';
+  if (/^\d+$/.test(raw)) return raw;
+  const cached = hdProp_('HD_CHAT_POST_ID');
+  if (cached && hdProp_('HD_CHAT_POST_SRC') === raw) return cached;
+  let url = raw;
+  if (/\/share\//.test(url)) {   // share 링크 → 실제 글 주소
+    for (let i = 0; i < 4; i++) {
+      const r = UrlFetchApp.fetch(url, { followRedirects: false, muteHttpExceptions: true });
+      const h = r.getAllHeaders();
+      const k = Object.keys(h).filter(x => x.toLowerCase() === 'location')[0];
+      if (!k) break;
+      url = Array.isArray(h[k]) ? h[k][0] : h[k];
+      if (/\/post\//.test(url)) break;
+    }
+  }
+  const code = (String(url).match(/\/post\/([A-Za-z0-9_-]+)/) || [])[1];
+  if (!code) throw new Error('채팅방 글 주소에서 글 코드를 못 찾음: ' + String(url).slice(0, 80));
+  let after = '';
+  for (let page = 0; page < 6; page++) {   // 내 글 최대 600개에서 찾기
+    const p = { fields: 'id,permalink', limit: 100, access_token: prop_('TH_TOKEN') };
+    if (after) p.after = after;
+    const res = api_('get', TH + '/me/threads', p);
+    const hit = (res.data || []).filter(x => String(x.permalink || '').indexOf('/post/' + code) >= 0)[0];
+    if (hit) {
+      const pr = PropertiesService.getScriptProperties();
+      pr.setProperty('HD_CHAT_POST_ID', hit.id); pr.setProperty('HD_CHAT_POST_SRC', raw);
+      return hit.id;
+    }
+    after = res.paging && res.paging.cursors && res.paging.cursors.after;
+    if (!after) break;
+  }
+  throw new Error('채팅방 글(' + code + ')이 @' + (hdProp_('TH_USERNAME') || '내 계정') + ' 글 목록에 없음');
+}
+
 /* ───────── 스레드 ───────── */
-function hdPostText_(text, replyTo) {
+function hdPostText_(text, replyTo, extra) {
   const t = prop_('TH_TOKEN');
   if (!replyTo) {   // 같은 글이 최근에 이미 올라가 있으면 그걸 쓴다 (중복 발행 방지)
     const dup = hdRecentSame_(text, t);
@@ -448,6 +552,7 @@ function hdPostText_(text, replyTo) {
   }
   const params = { media_type: 'TEXT', text: text, access_token: t };
   if (replyTo) params.reply_to_id = replyTo;
+  Object.keys(extra || {}).forEach(k => { params[k] = extra[k]; });
   const c = api_('post', TH + '/me/threads', params).id;
   Utilities.sleep(replyTo ? 4000 : 3000);
   const id = api_('post', TH + '/me/threads_publish', { creation_id: c, access_token: t }).id;
@@ -458,8 +563,9 @@ function hdPostText_(text, replyTo) {
 
 function hdRecentSame_(text, t) {
   try {
-    const d = api_('get', TH + '/me/threads', { fields: 'id,text,permalink', limit: 15, access_token: t }).data || [];
-    const hit = d.filter(x => String(x.text || '').trim() === text.trim())[0];
+    // 본문이 짧아 다른 딜과 같을 수 있으니 30분 안에 올라간 같은 글만 같은 글로 본다
+    const d = api_('get', TH + '/me/threads', { fields: 'id,text,permalink,timestamp', limit: 15, access_token: t }).data || [];
+    const hit = d.filter(x => String(x.text || '').trim() === text.trim() && (Date.now() - new Date(x.timestamp).getTime()) < 30 * 60000)[0];
     return hit ? { id: hit.id, link: hit.permalink || '' } : null;
   } catch (e) { return null; }
 }
