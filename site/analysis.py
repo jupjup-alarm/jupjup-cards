@@ -5,11 +5,13 @@
    sections:[{h, paras:[...], table?:{cap, head:[...], rows:[[...]]}, bars?:[{label, value, text}]}],
    method:[...], caveat, related:[{t,u}]}
 '뉴스·기자' 표기는 쓰지 않는다(인터넷신문 미등록) — '줍줍 분석'·'줍줍알람 편집팀'.
+한번 발행한 글은 고치지 않는다(사용자 결정 2026-11-22) — 업데이트는 새 slug의 새 글로. lock.json 해시와 다르면 빌드에 ERROR.
 """
-import json
+import hashlib, json
 from pathlib import Path
 
 DIR = Path(__file__).resolve().parent / "data" / "analysis" / "posts"
+LOCK = DIR.parent / "lock.json"   # 발행본 해시 — 새 글은 처음 빌드 때 자동으로 잠김
 
 
 def load():
@@ -26,6 +28,16 @@ def load():
                     b["pct"] = round(b["value"] / mx * 100)
         out.append(g)
     out.sort(key=lambda g: (g["published"], g.get("order", 0)), reverse=True)
+    lock = json.loads(LOCK.read_text()) if LOCK.exists() else {}
+    changed = False
+    for p in sorted(DIR.glob("*.json")) if DIR.exists() else []:
+        h = hashlib.sha256(p.read_bytes()).hexdigest()[:16]
+        if p.stem not in lock:
+            lock[p.stem] = h; changed = True
+        elif lock[p.stem] != h:
+            print(f"  ERROR 발행한 분석 글이 바뀜: {p.name} — 고치지 말고 새 글로 (README '줍줍 분석 칼럼')")
+    if changed:
+        LOCK.write_text(json.dumps(lock, ensure_ascii=False, indent=1))
     return out
 
 
