@@ -13,7 +13,7 @@
 <meta property="og:title" content="시흥하중 A1블록 신혼희망타운 추가모집 경쟁률·당첨자 발표">
 <meta property="og:description" content="접수 11.2(월) ~ 11.3(화) · 55A 최고 분양가 4억2,374만원 · 175세대 · 신혼희망타운. 일정·분양가·자격과 공식 공고 링크를 한 번에.">
 <meta property="og:url" content="https://jupjupalarm.com/apt/2026820012/">
-<meta property="og:image" content="https://jupjupalarm.com/apt/2026820012/og.jpg?v=14ce1246">
+<meta property="og:image" content="https://jupjupalarm.com/apt/2026820012/og.jpg?v=4af07e65">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -174,8 +174,10 @@ function go(k){i=(k+n)%n;tr.style.transform='translateX(-'+i*100+'%)';ds.forEach
 function stop(){if(t)clearInterval(t);t=null;w.classList.add('is-paused');}
 function start(){stop();if(rm||(mo&&!mo.matches))return;w.classList.remove('is-paused');t=setInterval(function(){go(i+1);},2500);}
 ds.forEach(function(d){d.addEventListener('click',function(){go(+d.getAttribute('data-slide'));start();});});
-sl.forEach(function(s){s.addEventListener('click',function(){if(window.jjEv)jjEv('ajd_click',{product:s.getAttribute('data-ajd'),from_page:location.pathname,transport_type:'beacon'});});});
-w.addEventListener('mouseenter',stop);w.addEventListener('mouseleave',start);w.addEventListener('focusin',stop);w.addEventListener('focusout',start);
+sl.forEach(function(s){s.addEventListener('click',function(){if(window.jjEv)jjEv('ajd_click',{product:s.getAttribute('data-ajd'),from_page:location.pathname,transport_type:'beacon'});setTimeout(function(){s.blur();start();},0);});});
+w.addEventListener('pointerenter',function(e){if(e.pointerType==='mouse')stop();});w.addEventListener('pointerleave',function(e){if(e.pointerType==='mouse')start();});
+w.addEventListener('focusin',function(e){try{if(e.target.matches(':focus-visible'))stop();}catch(_){}});w.addEventListener('focusout',function(){if(!w.matches(':hover'))start();});
+window.addEventListener('pageshow',start);
 document.addEventListener('visibilitychange',function(){document.hidden?stop():start();});
 start();})();
 </script>
@@ -353,7 +355,7 @@ start();})();
 
   <section class="sec src" aria-labelledby="h-src">
     <h2 id="h-src">출처</h2>
-<p>청약홈 모집공고 (모집공고일 10.23(금)) · 청약홈 공공데이터 2026.11.22 11:13 기준</p><p>자격 요약: LH청약플러스 공고</p><p>조감도·공급면적: LH 사이버 견본주택</p><p>시세 비교 실거래: 국토교통부 실거래가 공개시스템 기준</p><p>지도 © NAVER Corp.</p>    <p>최종 수정 <time datetime="2026-11-20">11.20(금)</time> · 내용이 다르면 <a href="/contact/">오류 알려주기</a></p>
+<p>청약홈 모집공고 (모집공고일 10.23(금)) · 청약홈 공공데이터 2026.11.22 12:13 기준</p><p>자격 요약: LH청약플러스 공고</p><p>조감도·공급면적: LH 사이버 견본주택</p><p>시세 비교 실거래: 국토교통부 실거래가 공개시스템 기준</p><p>지도 © NAVER Corp.</p>    <p>최종 수정 <time datetime="2026-11-20">11.20(금)</time> · 내용이 다르면 <a href="/contact/">오류 알려주기</a></p>
   </section>
 </main>
 <footer>
@@ -427,7 +429,7 @@ document.querySelectorAll('[data-nx-to]').forEach(function(a){a.addEventListener
 })();
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","name":"홈","item":"https://jupjupalarm.com/","position":1},{"@type":"ListItem","name":"경기","item":"https://jupjupalarm.com/region/gyeonggi/","position":2},{"@type":"ListItem","name":"시흥시","item":"https://jupjupalarm.com/region/gyeonggi/siheung/","position":3},{"@type":"ListItem","name":"시흥하중 A1블록 신혼희망타운 추가모집","position":4}]},{"@type":"RealEstateListing","@id":"https://jupjupalarm.com/apt/2026820012/#listing","name":"시흥하중 A1블록 신혼희망타운 추가모집 경쟁률·당첨자 발표","url":"https://jupjupalarm.com/apt/2026820012/","description":"접수 11.2(월) ~ 11.3(화) · 55A 최고 분양가 4억2,374만원 · 175세대 · 신혼희망타운. 일정·분양가·자격과 공식 공고 링크를 한 번에.","image":["https://jupjupalarm.com/apt/2026820012/og.jpg?v=14ce1246"],"datePosted":"2026-10-23","about":{"@id":"https://jupjupalarm.com/apt/2026820012/#complex"},"validThrough":"2026-11-03","offers":{"@type":"AggregateOffer","priceCurrency":"KRW","highPrice":423740000,"offerCount":175,"availabilityStarts":"2026-11-02","availabilityEnds":"2026-11-03"}},{"@type":"ApartmentComplex","@id":"https://jupjupalarm.com/apt/2026820012/#complex","name":"시흥하중 A1블록 신혼희망타운","numberOfAccommodationUnits":175,"address":{"@type":"PostalAddress","addressCountry":"KR","addressRegion":"경기","addressLocality":"시흥시","streetAddress":"경기도 시흥시 하중동 일원 시흥하중 공공주택지구 내 A1블록"},"geo":{"@type":"GeoCoordinates","latitude":37.398715,"longitude":126.804843}},{"@type":"Article","headline":"시흥하중 A1블록 신혼희망타운 추가모집","description":"접수 11.2(월) ~ 11.3(화) · 55A 최고 분양가 4억2,374만원 · 175세대 · 신혼희망타운. 일정·분양가·자격과 공식 공고 링크를 한 번에.","datePublished":"2026-10-28T21:03:02+09:00","dateModified":"2026-11-20T12:46:27+09:00","image":["https://jupjupalarm.com/apt/2026820012/og.jpg?v=14ce1246"],"mainEntityOfPage":"https://jupjupalarm.com/apt/2026820012/","about":{"@id":"https://jupjupalarm.com/apt/2026820012/#listing"},"author":{"@type":"Organization","name":"줍줍알람","url":"https://jupjupalarm.com/"},"publisher":{"@type":"Organization","name":"줍줍알람","url":"https://jupjupalarm.com/","logo":{"@type":"ImageObject","url":"https://jupjupalarm.com/icon-512.png"}}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"신혼부부가 아니어도 넣을 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"이번 175세대는 모두 특별공급이라 예비신혼부부·신혼부부·한부모가족만 신청할 수 있어요."}}]}]}
+{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","name":"홈","item":"https://jupjupalarm.com/","position":1},{"@type":"ListItem","name":"경기","item":"https://jupjupalarm.com/region/gyeonggi/","position":2},{"@type":"ListItem","name":"시흥시","item":"https://jupjupalarm.com/region/gyeonggi/siheung/","position":3},{"@type":"ListItem","name":"시흥하중 A1블록 신혼희망타운 추가모집","position":4}]},{"@type":"RealEstateListing","@id":"https://jupjupalarm.com/apt/2026820012/#listing","name":"시흥하중 A1블록 신혼희망타운 추가모집 경쟁률·당첨자 발표","url":"https://jupjupalarm.com/apt/2026820012/","description":"접수 11.2(월) ~ 11.3(화) · 55A 최고 분양가 4억2,374만원 · 175세대 · 신혼희망타운. 일정·분양가·자격과 공식 공고 링크를 한 번에.","image":["https://jupjupalarm.com/apt/2026820012/og.jpg?v=4af07e65"],"datePosted":"2026-10-23","about":{"@id":"https://jupjupalarm.com/apt/2026820012/#complex"},"validThrough":"2026-11-03","offers":{"@type":"AggregateOffer","priceCurrency":"KRW","highPrice":423740000,"offerCount":175,"availabilityStarts":"2026-11-02","availabilityEnds":"2026-11-03"}},{"@type":"ApartmentComplex","@id":"https://jupjupalarm.com/apt/2026820012/#complex","name":"시흥하중 A1블록 신혼희망타운","numberOfAccommodationUnits":175,"address":{"@type":"PostalAddress","addressCountry":"KR","addressRegion":"경기","addressLocality":"시흥시","streetAddress":"경기도 시흥시 하중동 일원 시흥하중 공공주택지구 내 A1블록"},"geo":{"@type":"GeoCoordinates","latitude":37.398715,"longitude":126.804843}},{"@type":"Article","headline":"시흥하중 A1블록 신혼희망타운 추가모집","description":"접수 11.2(월) ~ 11.3(화) · 55A 최고 분양가 4억2,374만원 · 175세대 · 신혼희망타운. 일정·분양가·자격과 공식 공고 링크를 한 번에.","datePublished":"2026-10-28T21:03:02+09:00","dateModified":"2026-11-20T12:46:27+09:00","image":["https://jupjupalarm.com/apt/2026820012/og.jpg?v=4af07e65"],"mainEntityOfPage":"https://jupjupalarm.com/apt/2026820012/","about":{"@id":"https://jupjupalarm.com/apt/2026820012/#listing"},"author":{"@type":"Organization","name":"줍줍알람","url":"https://jupjupalarm.com/"},"publisher":{"@type":"Organization","name":"줍줍알람","url":"https://jupjupalarm.com/","logo":{"@type":"ImageObject","url":"https://jupjupalarm.com/icon-512.png"}}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"신혼부부가 아니어도 넣을 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"이번 175세대는 모두 특별공급이라 예비신혼부부·신혼부부·한부모가족만 신청할 수 있어요."}}]}]}
 </script>
 <script>
 (function(){

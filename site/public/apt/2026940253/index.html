@@ -197,8 +197,10 @@ function go(k){i=(k+n)%n;tr.style.transform='translateX(-'+i*100+'%)';ds.forEach
 function stop(){if(t)clearInterval(t);t=null;w.classList.add('is-paused');}
 function start(){stop();if(rm||(mo&&!mo.matches))return;w.classList.remove('is-paused');t=setInterval(function(){go(i+1);},2500);}
 ds.forEach(function(d){d.addEventListener('click',function(){go(+d.getAttribute('data-slide'));start();});});
-sl.forEach(function(s){s.addEventListener('click',function(){if(window.jjEv)jjEv('ajd_click',{product:s.getAttribute('data-ajd'),from_page:location.pathname,transport_type:'beacon'});});});
-w.addEventListener('mouseenter',stop);w.addEventListener('mouseleave',start);w.addEventListener('focusin',stop);w.addEventListener('focusout',start);
+sl.forEach(function(s){s.addEventListener('click',function(){if(window.jjEv)jjEv('ajd_click',{product:s.getAttribute('data-ajd'),from_page:location.pathname,transport_type:'beacon'});setTimeout(function(){s.blur();start();},0);});});
+w.addEventListener('pointerenter',function(e){if(e.pointerType==='mouse')stop();});w.addEventListener('pointerleave',function(e){if(e.pointerType==='mouse')start();});
+w.addEventListener('focusin',function(e){try{if(e.target.matches(':focus-visible'))stop();}catch(_){}});w.addEventListener('focusout',function(){if(!w.matches(':hover'))start();});
+window.addEventListener('pageshow',start);
 document.addEventListener('visibilitychange',function(){document.hidden?stop():start();});
 start();})();
 </script>
@@ -376,7 +378,7 @@ start();})();
 
   <section class="sec src" aria-labelledby="h-src">
     <h2 id="h-src">출처</h2>
-<p>청약홈 모집공고 (모집공고일 11.11(수)) · 청약홈 공공데이터 2026.11.22 11:13 기준</p><p>공급 정보: 청약홈 공식 공고 기준</p><p>지도: 통계청 SGIS 2018 행정구역 경계 (공공누리 제1유형)</p>    <p>최종 수정 <time datetime="2026-11-20">11.20(금)</time> · 내용이 다르면 <a href="/contact/">오류 알려주기</a></p>
+<p>청약홈 모집공고 (모집공고일 11.11(수)) · 청약홈 공공데이터 2026.11.22 12:13 기준</p><p>공급 정보: 청약홈 공식 공고 기준</p><p>지도: 통계청 SGIS 2018 행정구역 경계 (공공누리 제1유형)</p>    <p>최종 수정 <time datetime="2026-11-20">11.20(금)</time> · 내용이 다르면 <a href="/contact/">오류 알려주기</a></p>
   </section>
 </main>
 <footer>

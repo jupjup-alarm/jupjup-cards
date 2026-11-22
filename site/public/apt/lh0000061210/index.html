@@ -167,8 +167,10 @@ function go(k){i=(k+n)%n;tr.style.transform='translateX(-'+i*100+'%)';ds.forEach
 function stop(){if(t)clearInterval(t);t=null;w.classList.add('is-paused');}
 function start(){stop();if(rm||(mo&&!mo.matches))return;w.classList.remove('is-paused');t=setInterval(function(){go(i+1);},2500);}
 ds.forEach(function(d){d.addEventListener('click',function(){go(+d.getAttribute('data-slide'));start();});});
-sl.forEach(function(s){s.addEventListener('click',function(){if(window.jjEv)jjEv('ajd_click',{product:s.getAttribute('data-ajd'),from_page:location.pathname,transport_type:'beacon'});});});
-w.addEventListener('mouseenter',stop);w.addEventListener('mouseleave',start);w.addEventListener('focusin',stop);w.addEventListener('focusout',start);
+sl.forEach(function(s){s.addEventListener('click',function(){if(window.jjEv)jjEv('ajd_click',{product:s.getAttribute('data-ajd'),from_page:location.pathname,transport_type:'beacon'});setTimeout(function(){s.blur();start();},0);});});
+w.addEventListener('pointerenter',function(e){if(e.pointerType==='mouse')stop();});w.addEventListener('pointerleave',function(e){if(e.pointerType==='mouse')start();});
+w.addEventListener('focusin',function(e){try{if(e.target.matches(':focus-visible'))stop();}catch(_){}});w.addEventListener('focusout',function(){if(!w.matches(':hover'))start();});
+window.addEventListener('pageshow',start);
 document.addEventListener('visibilitychange',function(){document.hidden?stop():start();});
 start();})();
 </script>

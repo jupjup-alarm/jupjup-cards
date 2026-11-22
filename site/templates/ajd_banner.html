@@ -1,7 +1,8 @@
 {# 2026-11-21 사용자 요청: 아정당 파트너스(인터넷·가전렌탈) 2.5초 롤링 배너 — 공고 상세 '30초 체크' 바로 아래, 모바일(1023px 이하)만.
    문구는 사용자 원안 (2026-11-21 사용자 결정). 금액·표현 근거는 파트너 랜딩 페이지: 인터넷 '파트너 추천 시 최대 51만원'(지원금 49만원 + 파트너 전용 2만원),
    렌탈 '최대 31만원'·'66종'·'최저가'. 제목에 '아정당' 금지 · 렌탈은 브랜드명(코웨이·SK매직·쿠쿠·청호나이스·LG)과 지원금 표현을 같이 쓰지 않음.
-   파트너스 활동 문구는 배너 아래 (2026-11-21 사용자 요청 — 처음엔 맨 위였음). 클릭은 GA 이벤트 ajd_click(product). #}
+   파트너스 활동 문구는 배너 아래 (2026-11-21 사용자 요청 — 처음엔 맨 위였음). 클릭은 GA 이벤트 ajd_click(product).
+   2026-11-22 버그 수정: 모바일에서 한 번 누르면 터치가 mouseenter·focusin으로 잡혀 롤링이 멈춘 채 남던 것 → 마우스 올림·키보드 초점일 때만 멈춤, 누른 뒤·페이지로 돌아오면 다시 돌림. #}
 <section class="jj-roll-wrap" aria-label="이사·입주 제휴 혜택 (광고)">
   <div class="jj-roll-viewport">
     <div class="jj-roll-track">
@@ -37,8 +38,10 @@ function go(k){i=(k+n)%n;tr.style.transform='translateX(-'+i*100+'%)';ds.forEach
 function stop(){if(t)clearInterval(t);t=null;w.classList.add('is-paused');}
 function start(){stop();if(rm||(mo&&!mo.matches))return;w.classList.remove('is-paused');t=setInterval(function(){go(i+1);},2500);}
 ds.forEach(function(d){d.addEventListener('click',function(){go(+d.getAttribute('data-slide'));start();});});
-sl.forEach(function(s){s.addEventListener('click',function(){if(window.jjEv)jjEv('ajd_click',{product:s.getAttribute('data-ajd'),from_page:location.pathname,transport_type:'beacon'});});});
-w.addEventListener('mouseenter',stop);w.addEventListener('mouseleave',start);w.addEventListener('focusin',stop);w.addEventListener('focusout',start);
+sl.forEach(function(s){s.addEventListener('click',function(){if(window.jjEv)jjEv('ajd_click',{product:s.getAttribute('data-ajd'),from_page:location.pathname,transport_type:'beacon'});setTimeout(function(){s.blur();start();},0);});});
+w.addEventListener('pointerenter',function(e){if(e.pointerType==='mouse')stop();});w.addEventListener('pointerleave',function(e){if(e.pointerType==='mouse')start();});
+w.addEventListener('focusin',function(e){try{if(e.target.matches(':focus-visible'))stop();}catch(_){}});w.addEventListener('focusout',function(){if(!w.matches(':hover'))start();});
+window.addEventListener('pageshow',start);
 document.addEventListener('visibilitychange',function(){document.hidden?stop():start();});
 start();})();
 </script>
