@@ -20,7 +20,7 @@
  *
  * 설정 (프로젝트 설정 → 스크립트 속성, 없으면 기본값):
  *   HD_DAILY_MAX 3 · HD_GAP_MIN 90 · HD_HOURS 8-23 · HD_MAX_AGE_H 12 · HD_SUB_ID threads01
- *   HD_CHAT_POST 채팅방 안내 글 주소 (기본: 사용자가 준 share 링크) · HD_AD_TAG (광고) (off면 뺌)
+ *   HD_CHAT_POST 채팅방 안내 글 주소 (기본: 사용자가 준 share 링크) · HD_AD_TAG 기본 off (본문 끝에 붙일 글자, 예: (광고))
  *   HD_MODE qty (Q열 '수량비교'에 수량 역전이 있는 딜만 올림 · all 이면 모든 딜) · HD_MIN_CHEAPER 30 (개당 몇 % 이상 싸야 하는지)
  *   HD_WAIT_CAPTURE_MIN 20 (all 모드에서 P열 캡처를 기다리는 시간, 0이면 안 기다림)
  *   HD_HOOK_SOURCES 지금할인  (제목이 상품명이 아니라 홍보 문구인 출처 — 본문전체(K)가 없으면 보류)
@@ -442,7 +442,7 @@ function hdCompose_(v) {
   else if (d.off && Number(d.off) >= 20) l3 = d.off + '% 빠졌어!!!';
   else if (d.priceTxt) l3 = d.priceTxt + (d.ship ? ' ' + d.ship : '') + '!!!';
   else l3 = '품절 전에 달려!!!';
-  const tag = String(hdCfg_('HD_AD_TAG', '(광고)'));
+  const tag = String(hdCfg_('HD_AD_TAG', 'off'));   // 2026-11-22 사용자 결정: 광고 안내는 채팅방에서 — 본문엔 안 붙임
   const main = [l1, l2, l3].join('\n') + (tag && tag.toLowerCase() !== 'off' ? '\n' + tag : '');
   return { main: main, quote: '실시간 알림은 요기로!!!' };
 }
