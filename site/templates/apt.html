@@ -98,7 +98,7 @@
       {% if n.result.avg is not none %}<div><span>미달 칸</span><b class="num">{{ n.result.under }}개</b></div>{% endif %}
     </div>
     {% if n.result.text %}<p>{{ n.result.text }}</p>{% endif %}
-    {% if n.result.under_types %}<p>미달 난 주택형은 <b>{{ n.result.under_types|join(', ') }}</b>이에요. 미달 물량은 보통 무순위(줍줍)·임의공급으로 다시 나와요.</p>{% endif %}
+    {% if n.result.under_types %}<p>미달 난 주택형은 <b>{{ n.result.under_types|join(', ') }}</b>이에요. 미달 물량은 보통 무순위(줍줍)·임의공급으로 다시 나와요. <a href="/mujeonwi-watch/">줍줍 나올 수 있는 단지 모두 보기 →</a></p>{% endif %}
     {% if n.result.peer_text %}<p>{{ n.result.peer_text }}</p>{% endif %}
     {% if n.result.before %}
     <div class="res-before">

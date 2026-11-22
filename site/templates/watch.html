@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% from "macros.html" import crumbs, cp_ad with context %}
+{# 줍줍 나올 수 있는 단지 (2026-11-22) — site/report.py build_watch. 예측 없이 청약홈 공식 미달(△)·계약 일정·실제 다시 나온 공고만 #}
+{% set nav = 'type' %}
+{% block main %}
+<main class="wrap" id="main">
+  <div class="lwrap rp">
+    <div class="lhead">
+      {{ crumbs(crumb) }}
+      <h1>줍줍 나올 수 있는 단지 <span class="h1-kw">1순위 미달 주택형 모음</span></h1>
+      {% for p in lead %}<p>{{ p }}</p>{% endfor %}
+      <p class="rp-nav"><a href="/type/mujeonwi/">지금 접수 중인 줍줍 공고 →</a><a href="/competition/">청약 경쟁률</a><a href="/guide/mujeonwi/">무순위 자격</a></p>
+    </div>
+
+    {% if waiting %}
+    <section class="lsec">
+      <h2>아직 무순위 공고가 없는 단지 <small>{{ waiting|length }}곳 · 접수 마감 최근 순</small></h2>
+      <div class="tbl ntbl"><table class="num wt-tbl">
+        <caption>청약홈 공식 1순위 경쟁률에서 미달(△)이 나온 주택형 · {{ today.isoformat()|d }} 기준</caption>
+        <thead><tr><th scope="col" style="text-align:left">단지</th><th scope="col" style="text-align:left">지역</th><th scope="col">1순위 마감</th><th scope="col" style="text-align:left">미달 주택형</th><th scope="col">평균 경쟁률</th><th scope="col">계약</th></tr></thead>
+        <tbody>{% for r in waiting %}<tr>
+          <th scope="row"><a href="{{ r.n.url }}">{{ r.n.complex or r.n.title }}</a><small>{{ r.n.kind_label }}</small></th>
+          <td class="l">{{ r.n.sido }} {{ r.n.sigungu or '' }}</td><td>{{ r.end|tdate }}</td>
+          <td class="tl"><b>{{ r.und|join(', ') }}</b><small>{{ r.tot }}개 중 {{ r.und|length }}개</small></td>
+          <td>{{ ('%g'|format((r.avg*100)|round/100) ~ '대 1') if r.avg is not none else '—' }}</td>
+          <td>{% if r.contract[0] %}{{ r.contract[0]|trange(r.contract[1]) }}{% if r.after %}<small>계약 끝남</small>{% endif %}{% else %}—{% endif %}</td></tr>{% endfor %}
+        </tbody>
+      </table></div>
+      <p class="rp-note">'계약 끝남'인 단지는 남은 세대가 정해졌을 때라, 무순위 공고가 나온다면 이때부터예요. 공식 공고가 나오면 줍줍알람 줍줍 목록에 바로 올라와요.</p>
+    </section>
+    {% endif %}
+
+    {{ cp_ad('home_mo', 'ad-home') }}
+
+    {% if came %}
+    <section class="lsec">
+      <h2>미달 뒤 무순위가 다시 나온 단지 <small>{{ came|length }}곳</small></h2>
+      <div class="tbl ntbl"><table class="num wt-tbl keep2">
+        <caption>1순위 미달 → 실제로 올라온 무순위·임의공급 공고</caption>
+        <thead><tr><th scope="col" style="text-align:left">단지</th><th scope="col" style="text-align:left">미달 주택형</th><th scope="col">1순위 마감</th><th scope="col" style="text-align:left">다시 나온 공고</th></tr></thead>
+        <tbody>{% for r in came %}<tr>
+          <th scope="row"><a href="{{ r.n.url }}">{{ r.n.complex or r.n.title }}</a><small>{{ r.n.sido }} {{ r.n.sigungu or '' }}</small></th>
+          <td class="tl"><b>{{ r.und|join(', ') }}</b></td><td>{{ r.end|tdate }}</td>
+          <td class="tl">{% for x in r.later %}<a href="{{ x.url }}">{{ x.rcpt[0]|tdate }} 접수</a>{% if not loop.last %} · {% endif %}{% endfor %}</td></tr>{% endfor %}
+        </tbody>
+      </table></div>
+    </section>
+    {% endif %}
+
+    <section class="lsec lbox">
+      <h2>자주 묻는 질문</h2>
+      <div class="faq">{% for q, a in faq %}<details{% if loop.first %} open{% endif %}><summary>{{ q }}</summary><p>{{ a }}</p></details>{% endfor %}</div>
+      <p class="rp-note">한국부동산원 청약홈 API의 주택형별 1순위 경쟁률(해당·기타지역)에서 미달 표시(△)가 있는 주택형을 매일 다시 모아요. 최근 150일 안에 접수가 끝난 공고만 보여요.</p>
+    </section>
+  </div>
+</main>
+{% endblock %}
+{% block after %}
+<script type="application/ld+json">
+{{ {"@context": "https://schema.org", "@graph": [crumb_ld(crumb, "줍줍 나올 수 있는 단지", page_url),
+  {"@type": "ItemList", "name": "줍줍 나올 수 있는 단지", "itemListElement": items_ld(rows|map(attribute='n')|list)},
+  faq_ld]}|jsonld }}
+</script>
+{% endblock %}
