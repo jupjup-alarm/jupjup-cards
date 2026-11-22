@@ -510,6 +510,7 @@ def page(title, desc, path, body, index=True, jsonld=None, og_image=None, search
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>{e(title)}</title><meta name="description" content="{e(desc)}">
 <meta name="robots" content="{robots}"><link rel="canonical" href="{SITE}{path}">
+<meta name="naver-site-verification" content="8f8fde939251d53fb11118459680bb57c95145b4">
 <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#181818" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preload" href="/fonts/p700.woff2" as="font" type="font/woff2" crossorigin>
