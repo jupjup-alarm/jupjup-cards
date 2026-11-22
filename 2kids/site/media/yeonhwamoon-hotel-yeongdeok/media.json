@@ -1,0 +1,20 @@
+{
+ "photos": [
+  {
+   "src": "p1.webp",
+   "small": "p1s.webp",
+   "w": 1080,
+   "h": 1080,
+   "credit": "공식 홈페이지"
+  }
+ ],
+ "reel": {
+  "src": "reel.mp4",
+  "poster": "poster.webp",
+  "seconds": 20.4,
+  "hook": "여기 1박 13만원대인데 모든 방에 히노끼탕이 있는 바다 앞 호텔이에요",
+  "published": "2026-11-13",
+  "instagram": "https://www.instagram.com/reel/Dfq1yuwlOsl/",
+  "youtube": ""
+ }
+}
