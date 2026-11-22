@@ -186,7 +186,7 @@
   "count": 8,
   "usable": 8,
   "photos": 3,
-  "checked": 1
+  "checked": 5
  },
  "연천전곡1단지 국민임대 예비입주자": {
   "key": "lh2015122300020996",
@@ -626,10 +626,9 @@
  "소사 휴먼빌": {
   "key": "2026000591",
   "row": 197,
-  "count": 0,
-  "usable": 0,
-  "photos": 0,
-  "checked": 0,
-  "why": "0장 ()"
+  "count": 4,
+  "usable": 4,
+  "photos": 3,
+  "checked": 4
  }
 }

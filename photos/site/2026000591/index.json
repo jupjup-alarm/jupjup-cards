@@ -67,5 +67,15 @@
    "full": false,
    "checked_by": "정기 작업(사용자 제공)"
   }
- ]
+ ],
+ "name": "소사 휴먼빌",
+ "row": 197,
+ "homepage": "https://www.소사휴먼빌.com",
+ "auto_site": {
+  "date": "2026-11-23",
+  "url": "https://www.소사휴먼빌.com",
+  "tries": 1,
+  "result": "0장 ()"
+ },
+ "updated": "2026-11-23 06:56"
 }
