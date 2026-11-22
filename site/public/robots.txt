@@ -1,6 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /data/
-Disallow: /drafts/
-
-Sitemap: https://jupjupalarm.com/sitemap.xml
