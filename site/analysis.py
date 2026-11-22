@@ -26,6 +26,7 @@ def load():
                 mx = max(b["value"] for b in s["bars"]) or 1
                 for b in s["bars"]:
                     b["pct"] = round(b["value"] / mx * 100)
+        g["faq_ld"] = [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in g.get("faq", [])]
         out.append(g)
     out.sort(key=lambda g: (g["published"], g.get("order", 0)), reverse=True)
     lock = json.loads(LOCK.read_text()) if LOCK.exists() else {}

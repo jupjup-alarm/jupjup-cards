@@ -44,7 +44,7 @@ def norm(s):
     return re.sub(r"[\s·,.-]", "", s)
 
 
-def main():
+def compute():
     d = json.loads(RAW.read_text())
     apt = {a["HOUSE_MANAGE_NO"]: a for a in d["apt"]}
     res = []
@@ -130,7 +130,11 @@ def main():
                    "bottom": [[r["name"], r["sido"] + " " + r["sgg"], r["rate1"], r["sup"], r["req1"], r["date"], r["no"]] for r in rr[::-1][:10]],
                    "median": rr[len(rr)//2]["rate1"], "over10": sum(r["rate1"] >= 10 for r in rr), "below1": sum(r["rate1"] < 1 for r in rr),
                    "by_sido_median": {k: sorted(r["rate1"] for r in rr if r["sido"] == k)[len([1 for r in rr if r["sido"] == k])//2] for k in by_sido}}
-    print(json.dumps(out, ensure_ascii=False, indent=1))
+    return out, res, sc, later, d
+
+
+def main():
+    print(json.dumps(compute()[0], ensure_ascii=False, indent=1))
 
 
 if __name__ == "__main__":

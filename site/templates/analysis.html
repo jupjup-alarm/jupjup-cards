@@ -15,14 +15,19 @@
     {% if g.answer %}
     <section class="g-answer" aria-labelledby="g-ans"><h2 id="g-ans">핵심만 먼저</h2><ol>{% for a in g.answer %}<li>{{ a }}</li>{% endfor %}</ol></section>
     {% endif %}
+    {% if g.sections|length >= 4 %}<nav class="an-toc" aria-label="목차"><b>목차</b><ol>{% for s in g.sections %}<li><a href="#s{{ loop.index }}">{{ s.h }}</a></li>{% endfor %}{% if g.tips %}<li><a href="#tips">{{ g.tips.h }}</a></li>{% endif %}{% if g.faq %}<li><a href="#faq">자주 묻는 질문</a></li>{% endif %}</ol></nav>{% endif %}
     <div class="g-body">
       {% for s in g.sections %}
       <h2 id="s{{ loop.index }}">{{ s.h }}</h2>
       {% for p in s.paras %}<p>{{ p }}</p>{% endfor %}
       {% if s.bars %}<ul class="rp-bars an-bars">{% for b in s.bars %}<li><span>{{ b.label }}</span><i style="width:{{ b.pct }}%"></i><b class="num">{{ b.text }}</b></li>{% endfor %}</ul>{% endif %}
-      {% if s.table %}<div class="tbl"><table class="fit"><caption>{{ s.table.cap }}</caption><thead><tr>{% for c in s.table.head %}<th scope="col">{{ c }}</th>{% endfor %}</tr></thead><tbody>{% for r in s.table.rows %}<tr>{% for c in r %}<td{% if not loop.first %} class="num"{% endif %}>{% if c is mapping %}{% if c.u %}<a href="{{ c.u }}">{{ c.t }}</a>{% else %}{{ c.t }}{% endif %}{% if c.sub %}<small class="an-sub">{{ c.sub }}</small>{% endif %}{% else %}{{ c }}{% endif %}</td>{% endfor %}</tr>{% endfor %}</tbody></table></div>{% endif %}
+      {% if s.table %}<div class="tbl"><table class="fit"><caption>{{ s.table.cap }}</caption><thead><tr>{% for c in s.table.head %}<th scope="col">{{ c }}</th>{% endfor %}</tr></thead><tbody>{% for r in s.table.rows %}<tr>{% for c in r %}<td{% if not loop.first and not (c is mapping and c.txt) %} class="num"{% endif %}>{% if c is mapping %}{% if c.u %}<a href="{{ c.u }}">{{ c.t }}</a>{% else %}{{ c.t }}{% endif %}{% if c.sub %}<small class="an-sub">{{ c.sub }}</small>{% endif %}{% else %}{{ c }}{% endif %}</td>{% endfor %}</tr>{% endfor %}</tbody></table></div>{% endif %}
+      {% for p in s.after or [] %}<p>{{ p }}</p>{% endfor %}
+      {% if s.note %}<p class="an-note">{{ s.note }}</p>{% endif %}
       {% if loop.index == 2 %}{{ ads_slot('guide_mid', 'ad-guide') }}{% endif %}
       {% endfor %}
+      {% if g.tips %}<section class="an-tips" id="tips"><h2>{{ g.tips.h }}</h2><ol>{% for t in g.tips["items"] %}<li><b>{{ t[0] }}</b>{{ t[1] }}</li>{% endfor %}</ol></section>{% endif %}
+      {% if g.faq %}<h2 id="faq">자주 묻는 질문</h2><div class="an-faq">{% for q in g.faq %}<details{% if loop.first %} open{% endif %}><summary>{{ q[0] }}</summary><p>{{ q[1] }}</p></details>{% endfor %}</div>{% endif %}
       <h2>이렇게 집계했어요</h2>
       <ul class="an-method">{% for m in g.method %}<li>{{ m }}</li>{% endfor %}</ul>
       {% if g.caveat %}<p class="an-caveat">{{ g.caveat }}</p>{% endif %}
@@ -39,6 +44,7 @@
   {"@type": "Article", "headline": g.title, "description": desc, "inLanguage": "ko", "datePublished": g.published, "dateModified": g.updated or g.published,
    "image": BASE ~ og, "mainEntityOfPage": BASE ~ page_url,
    "author": {"@type": "Organization", "name": "줍줍알람 편집팀", "url": BASE ~ "/about/"},
-   "publisher": {"@type": "Organization", "name": "줍줍알람", "logo": {"@type": "ImageObject", "url": BASE ~ "/icon-512.png"}}}]}|jsonld }}
+   "publisher": {"@type": "Organization", "name": "줍줍알람", "logo": {"@type": "ImageObject", "url": BASE ~ "/icon-512.png"}}}]
+  + ([{"@type": "FAQPage", "mainEntity": g.faq_ld}] if g.faq else [])}|jsonld }}
 </script>
 {% endblock %}
