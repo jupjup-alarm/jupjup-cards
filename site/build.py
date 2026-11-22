@@ -22,6 +22,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import guides as GUIDES
 import tools as TOOLS_PAGES   # 도구 (/tools/) — 2026-11-20
 import report as REPORT       # 월간 청약 결산 (/report/) — 2026-11-20
+import analysis as ANALYSIS   # 줍줍 분석 (/analysis/) — 2026-11-22
 from markupsafe import Markup
 
 SITE = Path(__file__).resolve().parent
@@ -2586,6 +2587,7 @@ def main():
     # 월간 청약 결산 (2026-11-20 사용자 요청)
     REPORTS = REPORT.build(E, notices, write, common, BASE, TODAY, won, KINDS, d)
     WEEKS = REPORT.build_weeks(E, notices, write, common, TODAY, d)        # /week/ — 주간 정리
+    ANALYSES = ANALYSIS.build(E, write, common, TODAY)                     # /analysis/ — 줍줍 분석 글 (2026-11-22)
     HAS_SCORES = REPORT.build_scores(E, notices, write, common, TODAY, d)   # /scores/ — 가점 데이터가 있을 때만
     HAS_WATCH = REPORT.build_watch(E, notices, write, common, TODAY, d, won)   # /mujeonwi-watch/ — 1순위 미달 단지 (2026-11-22)
 

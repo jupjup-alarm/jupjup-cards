@@ -52,7 +52,8 @@
       <a href="/schedule/this-week/"{% if tab == 'schedule' %} aria-current="page"{% endif %}>청약 일정</a>
       <a href="/region/"{% if tab == 'region' %} aria-current="page"{% endif %}>지역</a>
       <a href="/type/"{% if tab == 'type' %} aria-current="page"{% endif %}>유형</a>
-      <a href="/competition/"{% if tab == 'competition' %} aria-current="page"{% endif %}>청약 경쟁률</a>{% if HAS_GUIDES %}
+      <a href="/competition/"{% if tab == 'competition' %} aria-current="page"{% endif %}>청약 경쟁률</a>
+      <a href="/analysis/"{% if tab == 'analysis' %} aria-current="page"{% endif %}>분석</a>{% if HAS_GUIDES %}
       <a href="/guide/"{% if tab == 'guide' %} aria-current="page"{% endif %}>가이드</a>{% endif %}
       <a href="/tools/"{% if tab == 'tools' %} aria-current="page"{% endif %}>계산기</a>
     </nav>
@@ -75,7 +76,8 @@
 {% if page_url != '/404.html' %}
 <nav class="tabbar" aria-label="하단 메뉴">
   <a href="/"{% if tab == 'home' %} aria-current="page"{% endif %}><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>홈</a>
-  <a href="/schedule/this-week/"{% if tab == 'schedule' %} aria-current="page"{% endif %}><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 5h16v15H4zM4 10h16M9 3v4M15 3v4"/></svg>일정</a>
+  {# 2026-11-22 사용자 결정: 모바일 하단 탭 '일정' → '분석'(/analysis/ 줍줍 분석). 일정은 위 헤더 메뉴·홈에 남음 #}
+  <a href="/analysis/"{% if tab == 'analysis' %} aria-current="page"{% endif %}><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>분석</a>
   <a href="/lotto/"{% if tab == 'lotto' %} aria-current="page"{% endif %}><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg>줍줍</a>
   {# 2026-11-20 사용자 결정: 하단 탭 '가이드' → '정보'(/info/ — 가이드 맨 위 + 계산기 + 청약 결과 + 공고 찾기) #}
   <a href="/info/"{% if tab in ('info', 'guide', 'tools', 'report') %} aria-current="page"{% endif %}><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5"/></svg>정보</a>

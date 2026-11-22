@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% from "macros.html" import crumbs, ads_slot with context %}
+{# 줍줍 분석 글 (2026-11-22) — site/analysis.py #}
+{% block main %}
+<main class="wrap g-page" id="main">
+  <article class="g-art an-art">
+    {{ crumbs(crumb) }}
+    <header class="g-head">
+      <span class="g-eyebrow"><i></i>줍줍 분석 · {{ g.tag }}</span>
+      <h1 class="g-h1">{{ g.title }}</h1>
+      <p class="g-dek">{{ g.dek }}</p>
+      <p class="g-meta"><b>줍줍알람 편집팀</b><span><time datetime="{{ g.published }}">{{ g.published|replace('-', '.') }} 발행</time></span><span>{{ g.basis }}</span></p>
+    </header>
+    <div class="an-big"><b class="num">{{ g.stat.big }}</b><span>{{ g.stat.label }}</span></div>
+    {% if g.answer %}
+    <section class="g-answer" aria-labelledby="g-ans"><h2 id="g-ans">핵심만 먼저</h2><ol>{% for a in g.answer %}<li>{{ a }}</li>{% endfor %}</ol></section>
+    {% endif %}
+    <div class="g-body">
+      {% for s in g.sections %}
+      <h2 id="s{{ loop.index }}">{{ s.h }}</h2>
+      {% for p in s.paras %}<p>{{ p }}</p>{% endfor %}
+      {% if s.bars %}<ul class="rp-bars an-bars">{% for b in s.bars %}<li><span>{{ b.label }}</span><i style="width:{{ b.pct }}%"></i><b class="num">{{ b.text }}</b></li>{% endfor %}</ul>{% endif %}
+      {% if s.table %}<div class="tbl"><table class="fit"><caption>{{ s.table.cap }}</caption><thead><tr>{% for c in s.table.head %}<th scope="col">{{ c }}</th>{% endfor %}</tr></thead><tbody>{% for r in s.table.rows %}<tr>{% for c in r %}<td{% if not loop.first %} class="num"{% endif %}>{% if c is mapping %}{% if c.u %}<a href="{{ c.u }}">{{ c.t }}</a>{% else %}{{ c.t }}{% endif %}{% if c.sub %}<small class="an-sub">{{ c.sub }}</small>{% endif %}{% else %}{{ c }}{% endif %}</td>{% endfor %}</tr>{% endfor %}</tbody></table></div>{% endif %}
+      {% if loop.index == 2 %}{{ ads_slot('guide_mid', 'ad-guide') }}{% endif %}
+      {% endfor %}
+      <h2>이렇게 집계했어요</h2>
+      <ul class="an-method">{% for m in g.method %}<li>{{ m }}</li>{% endfor %}</ul>
+      {% if g.caveat %}<p class="an-caveat">{{ g.caveat }}</p>{% endif %}
+    </div>
+    {% if g.related %}<nav class="an-rel" aria-label="관련 페이지"><h2>같이 보면 좋아요</h2><ul>{% for r in g.related %}<li><a href="{{ r.u }}">{{ r.t }} ›</a></li>{% endfor %}</ul></nav>{% endif %}
+    {% if more %}<section class="an-more"><h2>다른 분석</h2><ul class="an-list">{% for p in more %}<li><a href="{{ p.url }}"><span class="an-mini"><b class="num">{{ p.stat.big }}</b><small>{{ p.stat.short or p.stat.label }}</small></span><span class="an-txt"><span class="an-tag">{{ p.tag }}</span><strong>{{ p.title }}</strong></span></a></li>{% endfor %}</ul></section>{% endif %}
+  </article>
+</main>
+{% endblock %}
+{% block after %}
+<script type="application/ld+json">
+{{ {"@context": "https://schema.org", "@graph": [
+  crumb_ld(crumb, g.title, page_url),
+  {"@type": "Article", "headline": g.title, "description": desc, "inLanguage": "ko", "datePublished": g.published, "dateModified": g.updated or g.published,
+   "image": BASE ~ og, "mainEntityOfPage": BASE ~ page_url,
+   "author": {"@type": "Organization", "name": "줍줍알람 편집팀", "url": BASE ~ "/about/"},
+   "publisher": {"@type": "Organization", "name": "줍줍알람", "logo": {"@type": "ImageObject", "url": BASE ~ "/icon-512.png"}}}]}|jsonld }}
+</script>
+{% endblock %}

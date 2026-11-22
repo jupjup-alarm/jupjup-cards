@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% from "macros.html" import crumbs with context %}
+{# 줍줍 분석 목록 (2026-11-22) — site/analysis.py · 블로그형: 맨 위 최신 글 크게, 아래 목록 #}
+{% block main %}
+<main class="wrap" id="main">
+  <div class="lwrap an">
+    <div class="lhead">
+      {{ crumbs(crumb) }}
+      <h1>줍줍 분석</h1>
+      <p>청약홈 공식 자료를 줍줍알람이 직접 집계해 정리해요. 숫자 하나하나 어디서 왔는지 글 끝에 적어 둬요.</p>
+    </div>
+    {% set f = posts[0] %}
+    <a class="an-hero" href="{{ f.url }}">
+      <span class="an-tag">{{ f.tag }}</span>
+      <span class="an-stat"><b class="num">{{ f.stat.big }}</b><small>{{ f.stat.label }}</small></span>
+      <strong>{{ f.title }}</strong>
+      <span class="an-dek">{{ f.dek }}</span>
+      <span class="an-meta"><time datetime="{{ f.published }}">{{ f.published|replace('-', '.') }}</time> · {{ f.basis }}</span>
+    </a>
+    {% if posts|length > 1 %}
+    <ul class="an-list">{% for p in posts[1:] %}
+      <li><a href="{{ p.url }}">
+        <span class="an-mini"><b class="num">{{ p.stat.big }}</b><small>{{ p.stat.short or p.stat.label }}</small></span>
+        <span class="an-txt"><span class="an-tag">{{ p.tag }}</span><strong>{{ p.title }}</strong><span class="an-meta"><time datetime="{{ p.published }}">{{ p.published|replace('-', '.') }}</time></span></span>
+      </a></li>{% endfor %}
+    </ul>
+    {% endif %}
+    <p class="rp-nav" style="margin-top:18px"><a href="/report/">월간 청약 결산</a><a href="/competition/">청약 경쟁률</a><a href="/lotto/">줍줍 공고</a></p>
+  </div>
+</main>
+{% endblock %}
+{% block after %}
+<script type="application/ld+json">
+{{ {"@context": "https://schema.org", "@graph": [crumb_ld(crumb, "줍줍 분석", page_url),
+  {"@type": "Blog", "name": "줍줍 분석", "url": BASE ~ page_url, "inLanguage": "ko",
+   "blogPost": blog_ld}]}|jsonld }}
+</script>
+{% endblock %}
