@@ -166,12 +166,23 @@ def build_scores(E, notices, write, common, today, d):
             by_band.setdefault(r["band"], []).append(r["lmin"])
     band = [(b, len(by_band[b]), min(by_band[b]), st.median(by_band[b]), max(by_band[b])) for b in ("60㎡ 이하", "60~85㎡", "85㎡ 초과", "기타") if b in by_band]
     allv = [r["lmin"] for r in rows if r["lmin"]]
+    # 2026-11-22 사용자 결정 "내 가점이면 붙었을 단지": 점수 구간마다 최저 당첨 가점이 그 점수 이하였던 주택형 수 (실제 청약홈 가점)
+    pts = []
+    for th in (30, 40, 50, 60, 70):
+        ok = [r for r in rows if r["lmin"] and r["lmin"] <= th]
+        oko = [r for r in rows if (r["omin"] or 0) and r["omin"] <= th]
+        sd = {}
+        for r in ok:
+            sd[r["n"]["sido"]] = sd.get(r["n"]["sido"], 0) + 1
+        ex = sorted(ok, key=lambda r: -(r["lmin"] or 0))[:3]
+        pts.append({"th": th, "n": len(ok), "no": len(oko), "cx": len({r["n"]["key"] for r in ok}),
+                    "sido": sorted(sd.items(), key=lambda kv: -kv[1])[:3], "ex": ex})
     lead = (f"최근 당첨자를 발표한 공고 {len(ns)}곳, 주택형 {len(rows)}개의 청약홈 공식 당첨 가점이에요. "
             + (f"해당지역 최저 당첨 가점은 {int(min(allv))}점부터 {int(max(allv))}점까지, 가운데값은 {_f(round(st.median(allv), 1))}점이에요. " if allv else "")
             + "가점제로 뽑은 주택형만 나오고, 추첨·미달 주택형은 빠져요.")
     title = "청약 당첨 가점 커트라인 | 지역·면적별 최근 당첨 가점 · 줍줍알람"
     desc = lead[:155]
-    h = E.get_template("scores.html").render(rows=rows, sido=sido, band=band, n_notices=len(ns), lead=lead, **common, page_url="/scores/",
+    h = E.get_template("scores.html").render(rows=rows, sido=sido, band=band, pts=pts, n_lmin=len(allv), n_notices=len(ns), lead=lead, **common, page_url="/scores/",
                                              title=title, desc=desc, og="/og-default.jpg", crumb=[("홈", "/"), ("당첨 가점", "")], nav="competition")
     write("/scores/", h, title, desc, "list", max(n["modified"] for n in ns))
     return len(ns)
@@ -243,3 +254,55 @@ def build_weeks(E, notices, write, common, today, d):
 
 def kinds_label(n):
     return {"mujeonwi": "무순위·줍줍", "private": "민간분양", "public": "공공분양", "newlywed": "신혼희망타운", "rental": "공공임대"}.get(n["kind"], "기타")
+
+
+def build_watch(E, notices, write, common, today, d, won):
+    """줍줍 나올 수 있는 단지 (/mujeonwi-watch/, 2026-11-22 사용자 결정) — 1순위에서 미달 난 주택형이 있는 최근 공고.
+    예측하지 않는다: 청약홈 공식 경쟁률에서 '미달(△)'로 나온 주택형과 계약 일정, 그 뒤 실제로 올라온 무순위 공고만 적는다."""
+    import datetime as dt
+    lim = (today - dt.timedelta(days=150)).isoformat()
+    rows = []
+    for n in notices:
+        if n.get("is_pre") or n["status"] not in ("waiting", "announced") or not n.get("comp"):
+            continue
+        end = n["rcpt"][1] or n["rcpt"][0] or ""
+        if end < lim:
+            continue
+        crows = n["comp"].get("rows") or []
+        und = list(dict.fromkeys(_tname(r["name"].split()[0]) for r in crows if "△" in r["rate"]))
+        if not und:
+            continue
+        tot = list(dict.fromkeys(_tname(r["name"].split()[0]) for r in crows))
+        later = (n.get("result") or {}).get("later") or []
+        ct = n.get("contract") or [None, None]
+        rows.append({"n": n, "und": und, "tot": len(tot), "avg": _avg(n), "end": end, "later": later,
+                     "contract": ct, "after": bool(ct[1] and ct[1] < today.isoformat())})
+    if not rows:
+        return None
+    rows = sorted(rows, key=lambda r: r["end"], reverse=True)
+    waiting = [r for r in rows if not r["later"]]
+    came = [r for r in rows if r["later"]]
+    sd = {}
+    for r in rows:
+        sd[r["n"]["sido"]] = sd.get(r["n"]["sido"], 0) + 1
+    nu = sum(len(r["und"]) for r in rows)
+    lead = [f"최근 150일 안에 접수가 끝난 공고 중 청약홈 공식 1순위 경쟁률에서 미달(△)이 나온 단지는 {len(rows)}곳, 미달 주택형은 모두 {nu}개예요"
+            + " (" + ", ".join(f"{k} {v}곳" for k, v in sorted(sd.items(), key=lambda kv: -kv[1])) + ")."]
+    if came:
+        lead.append(f"이 가운데 {len(came)}곳은 이미 무순위·임의공급 공고가 다시 올라왔고, {len(waiting)}곳은 아직 줍줍알람에 새 공고가 없어요.")
+    hi = max((r for r in rows if r["avg"] is not None), key=lambda r: (len(r["und"]) / max(r["tot"], 1), len(r["und"])), default=None)
+    if hi:
+        nm = hi["n"].get("complex") or hi["n"]["title"]
+        lead.append(f"주택형 대비 미달이 가장 많았던 곳은 {nm}{_ro(nm)} {hi['tot']}개 주택형 중 {len(hi['und'])}개가 미달이었어요.")
+    lead.append("미달 물량과 당첨자가 계약하지 않은 물량은 보통 계약 기간이 끝난 뒤 무순위(사후)·임의공급으로 다시 나와요. 다만 2순위나 예비입주자에서 채워지면 나오지 않을 수 있어서, 이 목록은 예측이 아니라 '나올 수 있는 후보'예요.")
+    title = "줍줍 나올 수 있는 단지 — 1순위 미달 주택형 모음 · 줍줍알람"
+    desc = "청약홈 공식 경쟁률에서 1순위 미달이 난 최근 단지와 주택형, 계약 일정, 다시 올라온 무순위 공고를 모았어요."
+    faq = [["줍줍(무순위)은 언제 나오나요?", "정해진 날짜는 없어요. 보통 당첨자 계약 기간이 끝나고 남은 세대(미달·미계약·부적격)가 확정된 뒤 사업주체가 모집공고를 다시 내요. 이 목록의 '계약' 칸이 지난 단지부터 살펴보면 돼요."],
+           ["미달이면 꼭 무순위가 나오나요?", "아니요. 1순위 미달 물량은 2순위나 예비입주자에게서 채워질 수 있어요. 끝까지 남은 물량만 무순위·임의공급으로 나오니, 공식 공고가 나오기 전까지는 후보로만 보세요."],
+           ["무순위 공고가 나오면 어떻게 알 수 있나요?", "줍줍알람이 매일 아침 청약홈·LH 공고를 받아 이 페이지와 줍줍 공고 목록에 바로 올려요. 이 목록에서 '다시 나옴'으로 바뀐 단지를 누르면 새 공고로 이어져요."]]
+    h = E.get_template("watch.html").render(rows=rows, waiting=waiting, came=came, lead=lead, faq=faq,
+                                            faq_ld={"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]}, **common, page_url="/mujeonwi-watch/",
+                                            title=title, desc=desc, og="/og-default.jpg", crumb=[("홈", "/"), ("줍줍", "/type/mujeonwi/"), ("줍줍 나올 수 있는 단지", "")],
+                                            nav="type")
+    write("/mujeonwi-watch/", h, title, desc, "list", max(r["n"]["modified"] for r in rows))
+    return len(rows)

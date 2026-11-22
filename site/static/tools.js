@@ -79,7 +79,7 @@
       var rc=[]; try{ rc=JSON.parse(el.getAttribute('data-recent')||'[]'); }catch(e){}
       var cmp = rc.length ? '<table class="t-out t-sp"><caption class="t-cap">최근 당첨 가점(해당지역 최저)과 비교</caption><tbody>'+rc.map(function(r){ var ok=t>=r.lo, all=t>=r.hi;
           return '<tr><th scope="row"><b class="'+(ok?'t-y':'t-n')+'">'+(all?'✓':(ok?'△':'✗'))+'</b> <a href="'+r.u+'">'+esc(r.t)+'</a><small>'+esc(r.s)+'</small></th><td>'+r.lo+(r.hi!==r.lo?'~'+r.hi:'')+'점</td></tr>'; }).join('')+'</tbody></table><p class="g-toolnote">✓ 모든 주택형 최저 가점 이상 · △ 일부 주택형 · ✗ 모두 아래. 청약홈 공식 당첨 가점이에요.</p>' : '';
-      a.out('[data-o]','<p class="t-say">'+tip+' <a href="/lotto/">통장 없이 넣는 줍줍 공고 보기 →</a></p>'+cmp);
+      a.out('[data-o]','<p class="t-say">'+tip+' <a href="/scores/?score='+t+'">이 점수로 붙었을 단지 보기 →</a> <a href="/lotto/">통장 없이 넣는 줍줍 공고 보기 →</a></p>'+cmp);
     });
   };
 

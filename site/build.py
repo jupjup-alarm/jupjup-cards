@@ -1607,6 +1607,7 @@ FIXED_META = {
     "/region/seoul/mujeonwi/": ("서울 줍줍·무순위 청약 — 공고 모음", "서울 무순위(줍줍)·임의공급 공고의 접수일, 분양가, 자격과 청약홈 공식 경쟁률을 한 페이지에 모았어요."),
     "/region/gyeonggi/dongtan/": ("동탄 청약 일정 — 아파트 분양·임대", "화성 동탄 일대 아파트 분양과 행복주택 공고의 접수일, 분양가, 보증금과 자격을 정리해요."),
     "/competition/": ("청약 경쟁률 — 청약홈 공식 경쟁률 모음", "최근 접수가 끝난 아파트 분양·무순위(줍줍) 단지의 청약홈 공식 경쟁률을 공급·접수 건수와 함께 정리해요."),
+    "/mujeonwi-watch/": ("줍줍 나올 수 있는 단지 — 1순위 미달 주택형 모음", "청약홈 공식 경쟁률에서 1순위 미달이 난 최근 단지와 주택형, 계약 일정, 다시 올라온 무순위 공고를 모았어요."),
     "/lotto/": ("로또 청약 — 시세보다 싸게 나온 공고", "주변 실거래보다 분양가가 낮게 나온 청약 공고를 비교 단지, 거래 시점과 함께 모았어요. 금액은 추정이에요."),
     "/schedule/this-week/": ("이번 주 청약 일정 — 아파트 분양·줍줍", "이번 주와 다음 주에 접수하는 아파트 분양, 줍줍(무순위), 공공분양, 임대 공고를 날짜순으로 정리해요."),
 }
@@ -2383,7 +2384,7 @@ def main():
             links_ = [(lb, u) for lb, u in (("행복주택 자격·소득 기준", "/guide/happy-house/"), ("청년 임대주택 종류 비교", "/guide/youth-rental/"),
                                             ("LH 임대주택 유형", "/guide/lh-rental-types/")) if u.split("/")[2] in gby]
         if k == "mujeonwi":
-            links_ = [("서울 줍줍·무순위", "/region/seoul/mujeonwi/"), ("로또 청약 (시세보다 싼 공고)", "/lotto/"),
+            links_ = [("줍줍 나올 수 있는 단지", "/mujeonwi-watch/"), ("서울 줍줍·무순위", "/region/seoul/mujeonwi/"), ("로또 청약 (시세보다 싼 공고)", "/lotto/"),
                       ("무순위 자격 총정리", "/guide/mujeonwi/"), ("청약 경쟁률", "/competition/")]
             secs_ = mu_sections([r for r in crow if r["n"]["kind"] == "mujeonwi"])
             h1_kw_ = cnt if (o_ or u_) else None
@@ -2505,6 +2506,7 @@ def main():
     REPORTS = REPORT.build(E, notices, write, common, BASE, TODAY, won, KINDS, d)
     WEEKS = REPORT.build_weeks(E, notices, write, common, TODAY, d)        # /week/ — 주간 정리
     HAS_SCORES = REPORT.build_scores(E, notices, write, common, TODAY, d)   # /scores/ — 가점 데이터가 있을 때만
+    HAS_WATCH = REPORT.build_watch(E, notices, write, common, TODAY, d, won)   # /mujeonwi-watch/ — 1순위 미달 단지 (2026-11-22)
 
     # 가이드 칼럼
     GUIDES.build(E, notices, write, common, PUB, BASE, TODAY, problems)

@@ -12,6 +12,20 @@
       <p class="rp-nav"><a href="/tools/subscription-score/">내 가점 계산하고 비교하기 →</a><a href="/competition/">청약 경쟁률</a></p>
     </div>
 
+    {# 2026-11-22 사용자 결정 "내 가점이면 붙었을 단지" — 실제 청약홈 최저 당첨 가점 기준 #}
+    <section class="lsec sc-me" aria-labelledby="sc-me-h">
+      <h2 id="sc-me-h">내 가점이면 붙었을까? <small>최근 {{ n_lmin }}개 주택형 기준</small></h2>
+      <label class="sc-in"><span>내 청약 가점</span><input type="number" inputmode="numeric" min="0" max="84" step="1" placeholder="예: 52" data-score><span>점</span></label>
+      <p class="sc-out" aria-live="polite" data-out>가점을 넣으면, 아래 단지·주택형 표에서 해당지역 최저 당첨 가점이 내 점수 이하였던 곳만 남겨요. <a href="/tools/subscription-score/">가점을 모르면 계산하기 →</a></p>
+      <div class="tbl ntbl"><table class="num keep2">
+        <caption>점수마다 해당지역 최저 당첨 가점이 그 점수 이하였던 주택형 (청약홈 공식 · 실제 당첨 결과)</caption>
+        <thead><tr><th scope="col" style="text-align:left">내 가점</th><th scope="col">해당지역</th><th scope="col">기타지역</th><th scope="col" style="text-align:left">많았던 지역</th></tr></thead>
+        <tbody>{% for p in pts %}<tr><th scope="row">{{ p.th }}점</th><td class="max">{{ p.n }}개 <small>/ {{ n_lmin }}</small></td><td>{{ p.no }}개</td><td class="tl">{% for k, v in p.sido %}{{ k }} {{ v }}{% if not loop.last %} · {% endif %}{% else %}—{% endfor %}</td></tr>{% endfor %}</tbody>
+      </table></div>
+      {% for p in pts if p.ex %}{% if loop.first %}<ul class="sc-ex">{% endif %}<li><b>{{ p.th }}점</b>이면 {% for r in p.ex %}<a href="{{ r.n.url }}">{{ r.n.complex or r.n.title }} {{ r.type }}</a>({{ r.lmin|round|int }}점){% if not loop.last %}, {% endif %}{% endfor %} 같은 곳까지 해당지역 최저 가점 이상이었어요.</li>{% if loop.last %}</ul>{% endif %}{% endfor %}
+      <p class="rp-note">최저 당첨 가점은 그 주택형에서 가점제로 당첨된 사람 중 가장 낮은 점수예요. 같은 점수여도 추첨·동점자 처리·예비 순번에 따라 결과가 달라질 수 있고, 지난 결과가 다음 공고 당첨을 뜻하지는 않아요.</p>
+    </section>
+
     <section class="lsec">
       <h2>지역별 <small>해당지역 최저 당첨 가점</small></h2>
       <div class="tbl ntbl"><table class="num keep2">
@@ -36,7 +50,7 @@
       <div class="tbl ntbl"><table class="num">
         <caption>해당지역·기타지역 최저 당첨 가점. 평균은 해당지역 기준</caption>
         <thead><tr><th scope="col" style="text-align:left">단지 · 주택형</th><th scope="col" style="text-align:left">지역</th><th scope="col">해당 최저</th><th scope="col">해당 평균</th><th scope="col">기타 최저</th></tr></thead>
-        <tbody>{% for r in rows %}<tr><th scope="row"><a href="{{ r.n.url }}">{{ r.n.complex or r.n.title }}</a><small>{{ r.type }}타입 · {{ r.band }}</small></th><td class="l">{{ r.n.sido }} {{ r.n.sigungu or '' }}</td><td class="max">{{ (r.lmin|round|int ~ '점') if r.lmin else '—' }}</td><td>{{ ('%g'|format((r.lavg*100)|round/100) ~ '점') if r.lavg else '—' }}</td><td>{{ (r.omin|round|int ~ '점') if r.omin else '—' }}</td></tr>{% endfor %}</tbody>
+        <tbody data-rows>{% for r in rows %}<tr data-l="{{ r.lmin or '' }}" data-o="{{ r.omin or '' }}"><th scope="row"><a href="{{ r.n.url }}">{{ r.n.complex or r.n.title }}</a><small>{{ r.type }}타입 · {{ r.band }}</small></th><td class="l">{{ r.n.sido }} {{ r.n.sigungu or '' }}</td><td class="max">{{ (r.lmin|round|int ~ '점') if r.lmin else '—' }}</td><td>{{ ('%g'|format((r.lavg*100)|round/100) ~ '점') if r.lavg else '—' }}</td><td>{{ (r.omin|round|int ~ '점') if r.omin else '—' }}</td></tr>{% endfor %}</tbody>
       </table></div>
     </section>
 
@@ -49,6 +63,15 @@
 </main>
 {% endblock %}
 {% block after %}
+<script>
+(function(){var i=document.querySelector('[data-score]'),o=document.querySelector('[data-out]'),tb=document.querySelector('[data-rows]');if(!i||!tb)return;
+var base=o.innerHTML,rs=[].slice.call(tb.querySelectorAll('tr'));
+function run(){var v=parseInt(i.value,10);if(isNaN(v)||v<0||v>84){rs.forEach(function(r){r.hidden=false});o.innerHTML=base;return;}
+var n=0,m=0,t=0;rs.forEach(function(r){var l=parseFloat(r.getAttribute('data-l')),ot=parseFloat(r.getAttribute('data-o'));var ok=(!isNaN(l)&&l<=v)||(!isNaN(ot)&&ot<=v);if(!isNaN(l)){t++;if(l<=v)n++;}if(!isNaN(ot)&&ot<=v&&!(l<=v))m++;r.hidden=!ok;});
+o.innerHTML='<b>'+v+'점</b>이면 최근 '+t+'개 주택형 중 <b>'+n+'개</b>에서 해당지역 최저 당첨 가점 이상이었어요'+(m?' (기타지역 물량까지 보면 '+m+'개 더)':'')+'. 아래 표에 그 주택형만 남겼어요.';
+try{history.replaceState(null,'','?score='+v)}catch(e){}}
+i.addEventListener('input',run);var q=/[?&]score=(\d+)/.exec(location.search);if(q){i.value=q[1];run();}})();
+</script>
 <script type="application/ld+json">
 {{ {"@context": "https://schema.org", "@graph": [crumb_ld(crumb, "청약 당첨 가점 커트라인", page_url),
   {"@type": "Dataset", "name": "청약 당첨 가점 커트라인", "description": desc, "inLanguage": "ko", "dateModified": today.isoformat(), "url": BASE ~ page_url,
