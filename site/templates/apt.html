@@ -98,8 +98,33 @@
       {% if n.result.avg is not none %}<div><span>미달 칸</span><b class="num">{{ n.result.under }}개</b></div>{% endif %}
     </div>
     {% if n.result.text %}<p>{{ n.result.text }}</p>{% endif %}
+    {% if n.result.under_types %}<p>미달 난 주택형은 <b>{{ n.result.under_types|join(', ') }}</b>이에요. 미달 물량은 보통 무순위(줍줍)·임의공급으로 다시 나와요.</p>{% endif %}
+    {% if n.result.peer_text %}<p>{{ n.result.peer_text }}</p>{% endif %}
+    {% if n.result.before %}
+    <div class="res-before">
+      <h3>접수 전 줍줍알람 판단</h3>
+      <ul>{% for c in n.result.before %}<li><span class="sig s-{{ c.sig }}">{{ c.w }}</span><b>{{ c.k }}</b> {{ c.head }}</li>{% endfor %}</ul>
+      {% if n.take_head %}<p class="res-take">“{{ n.take_head }}”</p>{% endif %}
+      <p class="note">접수 전에 쓴 판단을 고치지 않고 그대로 남겨요. 위 결과와 견줘 보세요 · <a href="/about/#criteria">판정 기준</a></p>
+    </div>
+    {% endif %}
     {% for x in n.result.later %}<a class="res-next" href="{{ x.url }}"><b>이 단지 무순위가 다시 나왔어요</b><span>{{ x.title }} · {{ x.rcpt[0]|d }} 접수 ›</span></a>{% endfor %}
     <p class="note">청약홈 공식 1순위 경쟁률·당첨 가점 기준 · <a href="/competition/">다른 단지 결과</a> · <a href="/scores/">당첨 가점 커트라인</a></p>
+  </section>
+  {% endif %}
+  {% if n.history %}
+  <section class="hist-card" aria-labelledby="h-hist">
+    <h2 id="h-hist">{{ n.complex or n.title }} 공고 이력</h2>
+    <p>{{ n.history.text }}</p>
+    <div class="tbl"><table class="hist-tbl num">
+      <caption>{{ n.complex or n.title }} 공고 차수별 접수일·공급·최고 분양가·평균 경쟁률 (청약홈 공식 데이터)</caption>
+      <thead><tr><th scope="col">접수</th><th scope="col">공고</th><th scope="col">공급</th><th scope="col">최고 분양가</th><th scope="col">평균 경쟁률</th></tr></thead>
+      <tbody>{% for r in n.history.rows %}
+        <tr{% if r.cur %} class="cur"{% endif %}><td class="num">{% if r.when %}{{ r.when|trange(r.when2) }}{% endif %}</td>
+          <td>{% if r.cur %}<b>{{ r.label }}</b> <small>이 페이지</small>{% else %}<a href="{{ r.n.url }}">{{ r.label }}</a>{% endif %}</td>
+          <td class="num">{{ r.units }}</td><td class="num">{{ r.price }}</td><td class="num{% if r.under %} under{% endif %}">{{ r.avg or '—' }}{% if r.under %} <small>미달</small>{% endif %}</td></tr>{% endfor %}
+      </tbody>
+    </table></div>
   </section>
   {% endif %}
   {# 2026-11-20 사용자 요청: 일정·30초 체크 메뉴 위에 쿠팡 띠 배너 (모바일) #}
