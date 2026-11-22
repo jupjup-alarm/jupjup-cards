@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://kids.jupjupalarm.com/sitemap.xml
