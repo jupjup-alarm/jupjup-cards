@@ -1660,3 +1660,25 @@ footer .biz{font-style:normal;line-height:1.6;opacity:.85}   /* 사업자 정보
 @keyframes jjNudge{0%,60%,100%{transform:translateX(0)}75%{transform:translateX(3px)}90%{transform:translateX(0)}}
 @keyframes jjProgress{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 @media(prefers-reduced-motion:reduce){.jj-roll-track{transition:none}.jj-roll-cta::after,.jj-roll-cta-arrow,.jj-roll-dot.is-active::after{animation:none}.jj-roll-dot.is-active{background:#3182f6}}
+/* 2026-11-22 청약 결과 보강 · 공고 이력 · 지역 청약 리포트 */
+.res-before{border-top:1px dashed var(--line);padding-top:10px;display:grid;gap:8px}
+.res-before h3{margin:0;font-size:15px}
+.res-before ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.res-before li{font-size:14px;line-height:1.5;display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+.res-before .sig{font-size:12px;font-weight:700;border-radius:6px;padding:1px 7px;color:var(--ink)}
+.res-before .sig.s-n{background:var(--band)}
+.res-take{font-size:14px;color:var(--ink-sub)}
+.hist-card{margin:16px 0 0;display:grid;gap:10px}
+.hist-card h2{margin:0;font-size:18px}
+.hist-card p{margin:0;font-size:14.5px;line-height:1.6}
+.hist-tbl td:nth-child(2){text-align:left;white-space:nowrap}
+.hist-tbl{min-width:520px}
+.hist-tbl tr.cur td{background:var(--band)}
+.hist-tbl small{color:var(--ink-sub);font-weight:600}
+.hist-tbl td.under{color:var(--coral-strong, var(--coral))}
+.rr-kpi{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:0 0 10px}
+@media (min-width:640px){.rr-kpi{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.rr-kpi div{background:var(--band);border-radius:10px;padding:8px 10px;display:grid;gap:2px}
+.rr-kpi span{font-size:12px;color:var(--ink-sub);font-weight:700}.rr-kpi b{font-size:17px}
+.rr-text p{margin:0 0 8px;font-size:14.5px;line-height:1.65}
+.rr-src{font-size:12.5px;color:var(--ink-sub);margin:6px 0 0}
