@@ -319,6 +319,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .hd nav{display:flex;gap:4px}.hd nav a{font-size:14px;line-height:20px;font-weight:600;padding:8px 12px;border-radius:999px;transition:background .3s var(--ease)}
 .hd nav a:hover{background:var(--soft)}
 @media (max-width:743px){.hd .row{height:auto;flex-wrap:wrap;padding:12px 0;gap:12px}.search{order:3;flex-basis:100%;max-width:none}.hd nav a.hide-m{display:none}}
+@media (max-width:743px){.hd.min .logo,.hd.min nav{display:none}.hd.min .row{padding-top:10px}}
 /* 카테고리 */
 .cats{display:flex;gap:32px;overflow-x:auto;scrollbar-width:none;padding:12px 0 0}.cats::-webkit-scrollbar{display:none}
 .cat{display:flex;flex-direction:column;align-items:center;gap:8px;padding:4px 0 12px;font-size:12px;line-height:16px;font-weight:600;color:var(--sub);white-space:nowrap;border-bottom:2px solid transparent;opacity:.78;transition:opacity .3s var(--ease),border-color .3s var(--ease),color .3s var(--ease)}
@@ -460,6 +461,7 @@ FAVICON = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect wi
            '<path d="M7 25c1.3-2.8 3.3-4 5-4s3.6 1.1 4 2.4c.4-1.3 2.3-2.4 4-2.4s3.7 1.2 5 4" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>')
 
 JS = r"""
+(()=>{const h=document.querySelector('.hd');if(!h||!document.getElementById('qf'))return;const mq=matchMedia('(max-width:743px)');let on=false;const f=()=>{const y=scrollY;const want=mq.matches&&(on?y>8:y>96);if(want!==on){const a=h.offsetHeight;on=want;h.classList.toggle('min',on);if(on)scrollBy(0,h.offsetHeight-a)}};addEventListener('scroll',f,{passive:true});mq.addEventListener('change',f);f()})();
 (()=>{const rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
 // 카드 사진 점
 document.querySelectorAll('.ph .strip').forEach(s=>{const d=s.parentElement.querySelectorAll('.dots i');if(!d.length)return;
