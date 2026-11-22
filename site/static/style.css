@@ -1778,3 +1778,31 @@ footer .biz{font-style:normal;line-height:1.6;opacity:.85}   /* 사업자 정보
 @media (max-width:1023px){.home2 .hm-week{display:none}.home2 .hm-hero{padding-bottom:12px}}
 @media (min-width:1024px){.hm-dates{margin:16px 0 0;border-radius:var(--r-lg, 18px);padding:8px 28px 20px}.hm-strip{margin-inline:0}}
 .hm-main > .hm-dates{max-width:none}
+
+/* ===== 가점 조회 리디자인 v4 (2026-11-22) ===== */
+.sc-big{display:flex!important;flex-direction:column;gap:8px;align-items:stretch!important}
+.sc-big > span:first-child{font-size:14px;font-weight:600;color:var(--ink-sub)}
+.sc-box{display:flex;align-items:center;border:2px solid var(--ink);border-radius:16px;padding:0 18px;background:var(--card)}
+.sc-box input{flex:1;min-width:0;border:0!important;outline:0;background:none;font:inherit;font-size:34px!important;font-weight:900;letter-spacing:-.03em;color:var(--ink);height:64px;padding:0!important;box-shadow:none!important}
+.sc-box i{font-style:normal;font-size:17px;font-weight:700;color:var(--ink-sub)}
+.sc-box:focus-within{box-shadow:0 0 0 3px var(--blue-tint)}
+.sc-calc{display:inline-flex;align-items:center;min-height:var(--tap, 44px);font-size:14.5px;font-weight:700;color:var(--blue);text-decoration:none}
+.sc-res{display:flex;flex-direction:column;gap:6px;margin:4px 0 14px}
+.sc-sum{background:var(--ground);border-radius:16px;padding:16px}
+.sc-s1{margin:0;font-size:15px;font-weight:700}
+.sc-s2{margin:2px 0 10px;font-size:17px;font-weight:800}
+.sc-s2 b{font-size:32px;font-weight:900;color:var(--coral-strong);letter-spacing:-.04em}
+.sc-bar{display:block;height:10px;border-radius:10px;background:var(--line);overflow:hidden}
+.sc-bar i{display:block;height:100%;background:var(--coral);border-radius:10px}
+.sc-fine{margin:10px 0 0;font-size:12px;line-height:1.5;color:var(--ink-sub)}
+.sc-cards{list-style:none;margin:0;padding:0}
+.sc-cards li{border-bottom:1px solid var(--line)}
+.sc-cards a,.sc-near{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;text-decoration:none;color:var(--ink)}
+.sc-cards a > span,.sc-near > span{display:flex;flex-direction:column;gap:2px;min-width:0}
+.sc-cards b,.sc-near b{font-size:15.5px;font-weight:800;letter-spacing:-.02em}
+.sc-cards small,.sc-near small{font-size:12.5px;color:var(--ink-sub);font-weight:500}
+.sc-cards em,.sc-near em{font-style:normal;display:flex;flex-direction:column;align-items:flex-end;font-size:17px;font-weight:900;flex:none}
+.sc-near{margin-top:6px;border:1.5px dashed var(--line);border-radius:14px;padding:12px 14px}
+.sc-near > span small{color:var(--blue);font-weight:700}
+.sc-near em{color:var(--blue)}
+.sc-sum{background:var(--card);border:1px solid var(--line)}
