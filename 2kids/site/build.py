@@ -319,6 +319,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .hd nav{display:flex;gap:4px}.hd nav a{font-size:14px;line-height:20px;font-weight:600;padding:8px 12px;border-radius:999px;transition:background .3s var(--ease)}
 .hd nav a:hover{background:var(--soft)}
 @media (max-width:743px){.hd .row{height:auto;flex-wrap:wrap;padding:12px 0;gap:12px}.search{order:3;flex-basis:100%;max-width:none}.hd nav a.hide-m{display:none}}
+@media (max-width:743px){.hd.min .logo,.hd.min nav{display:none}.hd.min .row{padding-top:10px}}
 /* 카테고리 */
 .cats{display:flex;gap:32px;overflow-x:auto;scrollbar-width:none;padding:12px 0 0}.cats::-webkit-scrollbar{display:none}
 .cat{display:flex;flex-direction:column;align-items:center;gap:8px;padding:4px 0 12px;font-size:12px;line-height:16px;font-weight:600;color:var(--sub);white-space:nowrap;border-bottom:2px solid transparent;opacity:.78;transition:opacity .3s var(--ease),border-color .3s var(--ease),color .3s var(--ease)}
@@ -339,16 +340,14 @@ h1,h2,h3{text-wrap:balance;margin:0}
 .rail::-webkit-scrollbar{display:none}.rail>*{scroll-snap-align:start}
 .rail.reels{grid-auto-columns:calc((100% - 96px)/5)}
 @media (max-width:1127px){.rail{grid-auto-columns:calc((100% - 48px)/3)}.rail.reels{grid-auto-columns:calc((100% - 48px)/3.4)}}
-@media (max-width:743px){.rail{grid-auto-columns:72%;gap:16px;margin:0 -16px;padding:0 16px;scroll-padding:0 16px}.rail.reels{grid-auto-columns:44%}}
+@media (max-width:743px){.rail{grid-auto-columns:calc((100% - 44px)/2.1);gap:12px;margin:0 -16px;padding:0 16px;scroll-padding:0 16px}.rail.reels{grid-auto-columns:44%}}
 /* 카드 */
 .grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:40px 24px}
 @media (max-width:1127px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media (max-width:743px){.grid{grid-template-columns:minmax(0,1fr);gap:32px}}
-@media (min-width:560px) and (max-width:743px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 16px}}
+@media (max-width:743px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 12px}}
 .card{position:relative;display:block;min-width:0}
 .ph{position:relative;aspect-ratio:1/1;border-radius:var(--r);overflow:hidden;background:var(--soft)}
-.ph .strip{display:flex;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}.ph .strip::-webkit-scrollbar{display:none}
-.ph img{flex:none;width:100%;height:100%;object-fit:cover;scroll-snap-align:center;transition:transform .5s var(--ease)}
+.ph img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
 .card:hover .ph img{transform:scale(1.03)}
 .dots{position:absolute;left:0;right:0;bottom:8px;display:flex;justify-content:center;gap:4px;pointer-events:none}
 .dots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.6)}.dots i.on{background:#fff}
@@ -360,6 +359,7 @@ h1,h2,h3{text-wrap:balance;margin:0}
 .meta .t .reel{flex:none;display:flex;align-items:center;gap:2px;font-weight:600;font-size:13px;color:var(--sub)}.meta .t .reel .i{width:14px;height:14px}
 .meta .l{color:var(--sub);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .meta .p{margin-top:4px;font-variant-numeric:tabular-nums}.meta .p b{font-weight:700}.meta .p span{color:var(--sub)}
+@media (max-width:743px){.ph{border-radius:12px}.badge{left:8px;top:8px;font-size:11px;padding:3px 6px}.meta{margin-top:8px;font-size:13px;line-height:18px}.meta .t .reel{font-size:12px}.meta .t .reel .i{width:12px;height:12px}.meta .p{margin-top:2px}}
 /* 릴스 카드 */
 .rc{position:relative;display:block;aspect-ratio:9/16;border-radius:var(--r);overflow:hidden;background:#111}
 .rc img,.rc video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
@@ -460,10 +460,9 @@ FAVICON = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect wi
            '<path d="M7 25c1.3-2.8 3.3-4 5-4s3.6 1.1 4 2.4c.4-1.3 2.3-2.4 4-2.4s3.7 1.2 5 4" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>')
 
 JS = r"""
+(()=>{const h=document.querySelector('.hd');if(!h||!document.getElementById('qf'))return;const mq=matchMedia('(max-width:743px)');let on=false;const f=()=>{const y=scrollY;const want=mq.matches&&(on?y>8:y>96);if(want!==on){const a=h.offsetHeight;on=want;h.classList.toggle('min',on);if(on)scrollBy(0,h.offsetHeight-a)}};addEventListener('scroll',f,{passive:true});mq.addEventListener('change',f);f()})();
 (()=>{const rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
 // 카드 사진 점
-document.querySelectorAll('.ph .strip').forEach(s=>{const d=s.parentElement.querySelectorAll('.dots i');if(!d.length)return;
- s.addEventListener('scroll',()=>{const k=Math.round(s.scrollLeft/s.clientWidth);d.forEach((x,j)=>x.classList.toggle('on',j===k))},{passive:true})});
 document.querySelectorAll('.mgal .strip').forEach(s=>{const n=s.parentElement.querySelector('.n'),t=s.children.length;
  s.addEventListener('scroll',()=>{n.textContent=(Math.round(s.scrollLeft/s.clientWidth)+1)+' / '+t},{passive:true})});
 // 레일 화살표
@@ -538,18 +537,16 @@ BADGES = [("villa", "독채 풀빌라"), ("kids", "키즈룸·놀이"), ("onsen"
 
 
 def stay_card(st, lazy=True, rail=False, skip=None):
-    ph = st["media"]["photos"][:5]
-    imgs = "".join(
-        f'<img src="{murl(st, p["small"])}" alt="{e(st["name"])} 사진 {i + 1}" width="{min(640, p["w"])}" height="{round(min(640, p["w"]) * p["h"] / p["w"])}"'
-        f'{" loading=lazy decoding=async" if (lazy or i) else ""}>' for i, p in enumerate(ph))
-    dots = f'<div class="dots">{"".join("<i class=on></i>" if i == 0 else "<i></i>" for i in range(len(ph)))}</div>' if len(ph) > 1 else ""
+    p = st["media"]["photos"][0] if st["media"]["photos"] else None
+    imgs = (f'<img src="{murl(st, p["small"])}" alt="{e(st["name"])} 사진" width="{min(640, p["w"])}" height="{round(min(640, p["w"]) * p["h"] / p["w"])}"'
+            f'{" loading=lazy decoding=async" if lazy else ""}>') if p else ""
     t = st["tags"]
     badge_txt = next((lab for key, lab in BADGES if key in t and key != skip), "")
     badge = f'<span class="badge">{e(badge_txt)}</span>' if badge_txt else ""
     reel = f'<span class="reel">{icon("play")}릴스</span>' if st["media"]["reel"] else ""
     find = " ".join([st["name"], st["region"], st["type"], st["theme"], st["one"]]).lower()
     return (f'<a class="card" href="/stay/{st["slug"]}/" data-tags="{" ".join(sorted(t))}" data-find="{e(find)}">'
-            f'<div class="ph"><div class="strip">{imgs}</div>{dots}{badge}</div>'
+            f'<div class="ph">{imgs}{badge}</div>'
             f'<div class="meta"><div class="t"><span>{e(st["name"])}</span>{reel}</div>'
             f'<div class="l">{e(place_label(st))} · {e(dist_label(st))}</div>'
             f'<div class="l">{e(st["one"])}</div><div class="p">{price_html(st)}</div></div></a>')
