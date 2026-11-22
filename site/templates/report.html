@@ -75,9 +75,9 @@
 
     {% if cheap %}
     <section class="lsec">
-      <h2>주변 시세보다 싸게 나온 공고 <small>줍줍알람 추정</small></h2>
+      <h2>주변 시세보다 싸게 나온 공고</h2>
       <ul class="rp-list">{% for n in cheap[:8] %}<li><a href="{{ n.url }}">{{ n.title }}</a><span>{{ n.gap.verdict }}</span></li>{% endfor %}</ul>
-      <p class="rp-note">같은 생활권·비슷한 면적 단지의 최근 실거래와 비교한 추정이에요. 비교 기준은 공고 페이지에 있어요.</p>
+      <p class="rp-note">같은 생활권·비슷한 면적 단지의 최근 실거래와 비교했어요. 비교 기준은 공고 페이지에 있어요.</p>
     </section>
     {% endif %}
 

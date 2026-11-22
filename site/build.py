@@ -994,7 +994,7 @@ def gap_hook(n):
         big = "시세보다 " + v[:-4].strip()
     else:
         return None
-    return big, f"(추정) {base} 대비"
+    return big, f"{base} 대비"
 
 
 def og_lines(n):
@@ -1608,7 +1608,7 @@ FIXED_META = {
     "/region/gyeonggi/dongtan/": ("동탄 청약 일정 — 아파트 분양·임대", "화성 동탄 일대 아파트 분양과 행복주택 공고의 접수일, 분양가, 보증금과 자격을 정리해요."),
     "/competition/": ("청약 경쟁률 — 청약홈 공식 경쟁률 모음", "최근 접수가 끝난 아파트 분양·무순위(줍줍) 단지의 청약홈 공식 경쟁률을 공급·접수 건수와 함께 정리해요."),
     "/mujeonwi-watch/": ("줍줍 나올 수 있는 단지 — 1순위 미달 주택형 모음", "청약홈 공식 경쟁률에서 1순위 미달이 난 최근 단지와 주택형, 계약 일정, 다시 올라온 무순위 공고를 모았어요."),
-    "/lotto/": ("로또 청약 — 시세보다 싸게 나온 공고", "주변 실거래보다 분양가가 낮게 나온 청약 공고를 비교 단지, 거래 시점과 함께 모았어요. 금액은 추정이에요."),
+    "/lotto/": ("로또 청약 — 시세보다 싸게 나온 공고", "주변 실거래보다 분양가가 낮게 나온 청약 공고를 비교 단지, 거래 시점과 함께 모았어요."),
     "/schedule/this-week/": ("이번 주 청약 일정 — 아파트 분양·줍줍", "이번 주와 다음 주에 접수하는 아파트 분양, 줍줍(무순위), 공공분양, 임대 공고를 날짜순으로 정리해요."),
 }
 
@@ -1647,7 +1647,26 @@ def _set_meta(h, title, desc):
     return h
 
 
+# '(추정)' 꼬리표는 화면에 쓰지 않는다 (2026-11-22 사용자 결정 "(추정) 이런건 앞으로 뺌").
+# 공고 JSON의 gap.verdict '…저렴(추정)'은 코드가 차익 문장을 알아보는 표지라 그대로 두고, 화면으로 나갈 때만 지운다.
+_EST = [
+    (re.compile(r"\s*<small>\s*\((?:줍줍알람\s*)?추정\)\s*</small>"), ""),
+    (re.compile(r"\s*<small>\s*줍줍알람 추정\s*</small>"), ""),
+    (re.compile(r"\((?:줍줍알람\s*)?추정,\s*"), "("),
+    (re.compile(r"\s?\((?:줍줍알람\s*)?추정\)"), ""),
+    (re.compile(r"\s?\(추정[ ·]?(?:비교|가정)\)"), ""),
+    (re.compile(r"추정 비교\)"), "참고 비교)"),
+]
+
+
+def no_estimate(s):
+    for rx, rep in _EST:
+        s = rx.sub(rep, s)
+    return s
+
+
 def write(url, html_text, title, desc, kind, lastmod=None, index=True):
+    html_text, title, desc = no_estimate(html_text), no_estimate(title), no_estimate(desc)
     fm = fixed_meta(url, html_text) if kind == "list" or url == "/" else None
     if fm:
         title, desc = fm
@@ -2064,7 +2083,7 @@ def main():
             out.append(f"분양 공고의 최고 분양가는 {won(ps[0])}부터 {won(ps[-1])}까지예요.")
         lots = [x for x in live if (x.get("gap") or {}).get("verdict", "").endswith("저렴(추정)")]
         if lots:
-            out.append(f"주변 실거래보다 싸게 나온 곳(추정)은 {len(lots)}곳이에요.")
+            out.append(f"주변 실거래보다 싸게 나온 곳은 {len(lots)}곳이에요.")
         return " ".join(out)
 
     def tsort(lst):
@@ -2443,7 +2462,7 @@ def main():
             g = x["gap"]
             base = " · ".join(f"{k} {v}" for k, v in (g.get("rows") or [])[:1])
             rows_.append([alink(x), f"{x['sido']} {x['sigungu'] or ''}", STATUS[x["status"]][0], g["verdict"], base or "—"])
-        tbl_ = mk_table(f"주변 실거래보다 분양가가 낮은 공고 {len(lot)}곳 — 비교 단지 실거래 기준 추정 · {d(TODAY.isoformat())}",
+        tbl_ = mk_table(f"주변 실거래보다 분양가가 낮은 공고 {len(lot)}곳 — 비교 단지 실거래 기준 · {d(TODAY.isoformat())}",
                         ["단지", "지역", "상태", "시세 대비", "비교 기준 (실거래)"], rows_, left=5, txt=True)
         top_ = live_[0] if live_ else lot[0]
         # 2026-11-04 사용자 결정(2번): 모바일에서 표 대신 차익 순위 카드 + 정렬·지역·'지금 넣을 수 있는 것만' 칩, 표는 맨 아래 '한눈에 보기'로
@@ -2466,7 +2485,7 @@ def main():
                   f"{d(TODAY.isoformat())} 기준 주변 실거래보다 분양가가 낮은 청약 공고 {len(lot)}곳(접수 중·예정 {len(live_)}곳). "
                   f"{top_.get('complex') or top_['title']} {top_['gap']['verdict']} 등. 비교 단지와 실거래 시점을 함께 정리.",
                   grouped(lot),
-                  "같은 생활권·비슷한 면적 아파트의 최근 실거래가보다 분양가가 낮게 나온 공고만 모았어요. 비교 단지와 거래 시점을 표에 함께 적었고, 금액은 모두 추정이에요. "
+                  "같은 생활권·비슷한 면적 아파트의 최근 실거래가보다 분양가가 낮게 나온 공고만 모았어요. 비교 단지와 거래 시점을 표에 함께 적었어요. "
                   "차익이 클수록 경쟁이 몰리고, 실거주 의무·전매 제한·재당첨 제한이 붙는 경우가 많으니 공고별 '주의점'을 꼭 확인하세요.",
                   [("홈", "/"), ("로또 청약", None)],
                   [("줍줍 공고", "/type/mujeonwi/"), ("청약 경쟁률", "/competition/"), ("서울 줍줍", "/region/seoul/mujeonwi/")],
@@ -2644,7 +2663,7 @@ def main():
 
 
 BASIC = {
-    "about": ("소개·작성 원칙", "줍줍알람이 누구이고 어떤 공식 데이터로 청약 공고·경쟁률·당첨 가점을 정리하는지, 추정 차익과 좋음·보통·주의 판정, 계산기·월간 결산을 어떻게 만드는지 설명해요."),
+    "about": ("소개·작성 원칙", "줍줍알람이 누구이고 어떤 공식 데이터로 청약 공고·경쟁률·당첨 가점을 정리하는지, 시세 차이와 좋음·보통·주의 판정, 계산기·월간 결산을 어떻게 만드는지 설명해요."),
     "sources": ("데이터 출처", "청약홈·LH·마이홈 공공데이터, 국토부 실거래가, 지도, 단지 이미지 등 줍줍알람이 쓰는 자료의 출처와 이용 조건."),
     "privacy": ("개인정보 처리방침", "줍줍알람 사이트의 개인정보 처리방침. 수집하는 정보, 쿠키, 방문 통계, 문의 방법."),
     "terms": ("이용약관", "줍줍알람 사이트 이용약관. 정보 제공 목적, 책임의 한계, 저작권."),

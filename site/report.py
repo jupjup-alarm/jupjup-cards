@@ -106,7 +106,7 @@ def build(E, notices, write, common, base, today, won, kinds, d):
             lead.append(f"전용 84㎡ 최고 분양가는 {won(p84[0][0])}({p84[0][1]['sido']} {p84[0][1].get('sigungu') or ''})부터 "
                         f"{won(p84[-1][0])}({p84[-1][1]['sido']} {p84[-1][1].get('sigungu') or ''})까지 나왔어요.")
         if cheap:
-            lead.append(f"주변 실거래보다 분양가가 낮게 나온 공고(줍줍알람 추정)는 {len(cheap)}곳이에요.")
+            lead.append(f"주변 실거래보다 분양가가 낮게 나온 공고는 {len(cheap)}곳이에요.")
         url = f"/report/{mk}/"
         prev_ = (f"/report/{months[i - 1]}/", f"{int(months[i - 1][5:])}월 결산") if i > 0 else None
         next_ = (f"/report/{months[i + 1]}/", f"{int(months[i + 1][5:])}월 결산") if i < len(months) - 1 else None
