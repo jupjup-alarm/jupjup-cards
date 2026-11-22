@@ -95,7 +95,12 @@
    "w": 796,
    "h": 2400,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-23",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "community",
@@ -191,7 +196,12 @@
    "w": 551,
    "h": 2400,
    "photo": false,
-   "from": "auto"
+   "from": "auto",
+   "checked": "2026-11-23",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   }
  ],
  "links": [

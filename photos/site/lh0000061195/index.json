@@ -10,7 +10,12 @@
    "w": 2361,
    "h": 2397,
    "photo": true,
-   "from": "sheet"
+   "from": "sheet",
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "birdseye",
@@ -25,7 +30,12 @@
    "block": "블록1",
    "lh_tab": "단지조감도",
    "desc": "",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "location",
@@ -40,7 +50,12 @@
    "block": "블록1",
    "lh_tab": "지역위치도",
    "desc": "",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "siteplan",
@@ -51,7 +66,12 @@
    "w": 2356,
    "h": 2284,
    "photo": false,
-   "from": "sheet"
+   "from": "sheet",
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "siteplan",
@@ -66,7 +86,12 @@
    "block": "블록1",
    "lh_tab": "단지배치도",
    "desc": "",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "notice",

@@ -11,7 +11,12 @@
    "w": 1581,
    "h": 1446,
    "md5": "d668205e2103c5229349e35d28c7e474",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "birdseye",
@@ -22,7 +27,12 @@
    "w": 1890,
    "h": 1262,
    "md5": "4bfad1f4909af4d22774f62850b700bf",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "birdseye",
@@ -33,7 +43,12 @@
    "w": 4967,
    "h": 3508,
    "photo": true,
-   "from": "sheet"
+   "from": "sheet",
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "interior",
@@ -44,7 +59,12 @@
    "w": 1019,
    "h": 868,
    "md5": "d27b4eeaa1577fe798c94fea38237f9e",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "siteplan",
@@ -55,7 +75,12 @@
    "w": 1888,
    "h": 1334,
    "md5": "909a2cced2c55777af7c1a4ec49f939b",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "siteplan",
@@ -66,7 +91,12 @@
    "w": 8651,
    "h": 7308,
    "photo": false,
-   "from": "sheet"
+   "from": "sheet",
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "dongho",
@@ -77,7 +107,12 @@
    "w": 1890,
    "h": 1260,
    "md5": "96debfec46700515eec523fe017fae16",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "dongho",
@@ -88,7 +123,12 @@
    "w": 2598,
    "h": 3425,
    "photo": false,
-   "from": "sheet"
+   "from": "sheet",
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
@@ -99,7 +139,12 @@
    "w": 1289,
    "h": 904,
    "md5": "bcf3d5b0eebce41445d6f6d57ecf1ce6",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
@@ -110,7 +155,12 @@
    "w": 1083,
    "h": 1033,
    "md5": "ade0b340d9d98706f3fad01d968581fb",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
@@ -121,7 +171,12 @@
    "w": 1289,
    "h": 904,
    "md5": "3526dcd5119c84ccd392afb5dc82ce89",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   }
  ],
  "links": [

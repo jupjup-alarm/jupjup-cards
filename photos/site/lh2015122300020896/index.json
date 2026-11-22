@@ -14,7 +14,12 @@
    "block": "블록1",
    "lh_tab": "단지조감도",
    "desc": "",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "birdseye",
@@ -29,7 +34,12 @@
    "block": "블록1",
    "lh_tab": "전경사진",
    "desc": "",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "birdseye",
@@ -40,7 +50,12 @@
    "w": 1191,
    "h": 842,
    "photo": true,
-   "from": "sheet"
+   "from": "sheet",
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "location",
@@ -55,7 +70,12 @@
    "block": "블록1",
    "lh_tab": "지역조감도",
    "desc": "",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "location",
@@ -70,7 +90,12 @@
    "block": "블록1",
    "lh_tab": "위치도",
    "desc": "",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "interior",
@@ -85,7 +110,12 @@
    "block": "블록1",
    "lh_tab": "투시도",
    "desc": "",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "interior",
@@ -100,7 +130,12 @@
    "block": "블록1",
    "lh_tab": "투시도",
    "desc": "",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "siteplan",
@@ -115,7 +150,12 @@
    "block": "블록1",
    "lh_tab": "단지배치도",
    "desc": "",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
@@ -130,7 +170,12 @@
    "block": "블록1",
    "lh_tab": "평면도",
    "desc": "",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
@@ -145,7 +190,12 @@
    "block": "블록1",
    "lh_tab": "평면도",
    "desc": "",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "aerial",

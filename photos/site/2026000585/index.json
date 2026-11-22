@@ -154,7 +154,12 @@
    "w": 795,
    "h": 1157,
    "photo": false,
-   "from": "pamphlet"
+   "from": "pamphlet",
+   "checked": "2026-11-23",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "pamphlet",
@@ -165,7 +170,12 @@
    "w": 793,
    "h": 1192,
    "photo": false,
-   "from": "pamphlet"
+   "from": "pamphlet",
+   "checked": "2026-11-23",
+   "ok": false,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   }
  ],
  "links": [],
