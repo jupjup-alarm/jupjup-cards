@@ -200,6 +200,8 @@ function hdPick_(rows, now) {
     const at = hdParse_(r[HD.at - 1]);
     if (at && (now - at) / 3600000 > maxAge) return;   // 수집기도 새 행을 '대기'로 쓰므로(2026-11-22 확인) '대기'도 나이 제한
     // PC 캡처기가 P열을 채울 때까지 잠깐 기다림 (P열이 비어 있고 들어온 지 HD_WAIT_CAPTURE_MIN 분 안이면 다음 차례로)
+    // 토스 딜은 스레드에 올리지 않는다 (2026-11-22 사용자 결정: 토스는 카톡방에만). 쿠팡 링크가 없는 행은 건너뜀
+    if (!String(r[HD.urls - 1]).split('\n').some(u => /coupang\.com/.test(u))) return;
     if (hdCfg_('HD_MODE', 'qty') === 'qty') {
       // 수량 역전 딜만 (2026-11-22 사용자 결정): Q열에 'A개 X원 → B개 Y원'이 있는 행만 올린다
       if (!hdPair_(r)) return;
@@ -349,7 +351,7 @@ function hdShip_(title) {
 /* ───────── 링크 변환 ───────── */
 function hdConvert_(v) {
   const title = hdProduct_(v);
-  const raw = String(v[HD.urls - 1]).split('\n').map(s => s.trim()).filter(Boolean);
+  const raw = String(v[HD.urls - 1]).split('\n').map(s => s.trim()).filter(u => /coupang\.com/.test(u));   // 토스 링크는 맥이 V열에서 따로
   const seen = {}, srcs = [];
   raw.forEach(u => { if (!seen[u]) { seen[u] = 1; srcs.push(u); } });
   const notes = [];
