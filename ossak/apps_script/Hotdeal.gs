@@ -21,7 +21,8 @@
  * 설정 (프로젝트 설정 → 스크립트 속성, 없으면 기본값):
  *   HD_DAILY_MAX 3 · HD_GAP_MIN 90 · HD_HOURS 8-23 · HD_MAX_AGE_H 12 · HD_SUB_ID threads01
  *   HD_CHAT_POST 채팅방 안내 글 주소 (기본: 사용자가 준 share 링크) · HD_AD_TAG (광고) (off면 뺌)
- *   HD_WAIT_CAPTURE_MIN 20 (P열 캡처를 기다리는 시간, 0이면 안 기다림)
+ *   HD_MODE qty (Q열 '수량비교'에 수량 역전이 있는 딜만 올림 · all 이면 모든 딜) · HD_MIN_CHEAPER 30 (개당 몇 % 이상 싸야 하는지)
+ *   HD_WAIT_CAPTURE_MIN 20 (all 모드에서 P열 캡처를 기다리는 시간, 0이면 안 기다림)
  *   HD_HOOK_SOURCES 지금할인  (제목이 상품명이 아니라 홍보 문구인 출처 — 본문전체(K)가 없으면 보류)
  *
  * 주의: 기존 메뉴 '자동 실행 켜기'(installTriggers)는 모든 트리거를 지우고 다시 만든다.
@@ -31,8 +32,8 @@
 const HD_SHEET_ID = '13-ecoze8qCHs0rcBNWfer9feg7CU-cfVYDEUzA9t5d0';
 const HD_TAB = '필터통과';
 const HD = { at: 1, src: 2, title: 3, price: 4, kw: 5, score: 6, urls: 7, orig: 8, draft: 9, status: 10, body: 11,
-  link: 12, thread: 13, postedAt: 14, note: 15, cap: 16 };
-const HD_HEAD = ['변환링크', '스레드URL', '발행시각', '비고(에러)', '캡처'];   // P열 '캡처'는 PC의 ego lite 캡처기가 채움
+  link: 12, thread: 13, postedAt: 14, note: 15, cap: 16, cmp: 17 };
+const HD_HEAD = ['변환링크', '스레드URL', '발행시각', '비고(에러)', '캡처', '수량비교'];   // P·Q열은 맥북의 ego lite 캡처기가 채움
 const HD_DISCLOSURE = '이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.';
 const HD_CACHE_DAYS = 7;
 const HD_STALE_MIN = 10;
@@ -49,7 +50,7 @@ function hotdealCheck() {
   try { const id = hdChatPostId_(); out.push('채팅방 글(2/3 인용): ' + (id ? '찾음 ' + id : '꺼짐')); } catch (e) { out.push('채팅방 글 못 찾음: ' + e.message); }
   try {
     const sh = hdSheet_();
-    const head = sh.getRange(1, 1, 1, HD.cap).getDisplayValues()[0];
+    const head = sh.getRange(1, 1, 1, HD.cmp).getDisplayValues()[0];
     out.push('시트: ' + HD_TAB + ' ' + (sh.getLastRow() - 1) + '행, A~K 헤더 ' + (head[HD.urls - 1] === '쿠팡URL(전체)' && head[HD.status - 1] === '상태' ? '정상' : '다름!'));
     out.push('L~O 헤더: ' + (head.slice(HD.link - 1).join('') ? head.slice(HD.link - 1).join(' / ') : '비어 있음 (첫 발행 때 채움)'));
     const counts = {};
@@ -88,7 +89,7 @@ function hdRun_(o) {
     const sh = hdSheet_();
     const last = sh.getLastRow();
     if (last < 2) { hdLog_('필터통과 탭이 비어 있음'); return; }
-    const rows = sh.getRange(2, 1, last - 1, HD.cap).getDisplayValues();
+    const rows = sh.getRange(2, 1, last - 1, HD.cmp).getDisplayValues();
     const now = new Date();
     const today = Utilities.formatDate(now, TZ, 'yyyy-MM-dd');
 
@@ -170,8 +171,13 @@ function hdPick_(rows, now) {
     const at = hdParse_(r[HD.at - 1]);
     if (st !== '대기' && at && (now - at) / 3600000 > maxAge) return;   // 사람이 '대기'로 돌린 건 나이 무시
     // PC 캡처기가 P열을 채울 때까지 잠깐 기다림 (P열이 비어 있고 들어온 지 HD_WAIT_CAPTURE_MIN 분 안이면 다음 차례로)
-    const wait = hdNum_('HD_WAIT_CAPTURE_MIN', 20);
-    if (wait > 0 && !String(r[HD.cap - 1]).trim() && at && (now - at) / 60000 < wait) return;
+    if (hdCfg_('HD_MODE', 'qty') === 'qty') {
+      // 수량 역전 딜만 (2026-11-22 사용자 결정): Q열에 'A개 X원 → B개 Y원'이 있는 행만 올린다
+      if (!hdPair_(r)) return;
+    } else {
+      const wait = hdNum_('HD_WAIT_CAPTURE_MIN', 20);
+      if (wait > 0 && !String(r[HD.cap - 1]).trim() && at && (now - at) / 60000 < wait) return;
+    }
     c.push({ row: i + 2, v: r, recover: recover, score: Number(r[HD.score - 1]) || 0, at: at ? at.getTime() : 0 });
   });
   c.sort((a, b) => b.score - a.score || b.at - a.at);
@@ -428,9 +434,11 @@ function hdHash_(s) {
 function hdCompose_(v) {
   const d = hdFacts_(v);
   const l1 = (d.cho ? d.cho + ' ' : '') + '가격 이상한데??';
-  const l2 = d.qty > 1 ? '지금 빨리 쟁여!!!!' : '지금 빨리 담아!!!!';
+  const l2 = (d.qty > 1 || hdPair_(v)) ? '지금 빨리 쟁여!!!!' : '지금 빨리 담아!!!!';
   let l3;
-  if (d.per && d.per < 1000) l3 = d.unit + '당 ' + d.per.toLocaleString('ko-KR') + '원꼴!!!';
+  const pr = hdPair_(v);
+  if (pr) l3 = pr.a.q + pr.a.u + ' 말고 ' + pr.b.q + pr.b.u + '짜리로 달려!!!';
+  else if (d.per && d.per < 1000) l3 = d.unit + '당 ' + d.per.toLocaleString('ko-KR') + '원꼴!!!';
   else if (d.off && Number(d.off) >= 20) l3 = d.off + '% 빠졌어!!!';
   else if (d.priceTxt) l3 = d.priceTxt + (d.ship ? ' ' + d.ship : '') + '!!!';
   else l3 = '품절 전에 달려!!!';
@@ -559,6 +567,21 @@ function hdCard_(v, row) {
   const ln = sl.insertLine(SlidesApp.LineCategory.STRAIGHT, 56, 88, W - 56, 88);
   ln.getLineFill().setSolidFill(HD_C.line); ln.setWeight(1.5);
 
+  const pr = hdPair_(v);
+  if (pr) hdCardCmp_(sl, pr, W, H);
+  else hdCardOne_(sl, d, W, H);
+
+  // 맨 아래: 기준 시각
+  const at = hdParse_(v[HD.at - 1]);
+  hdT_(sl, (at ? Utilities.formatDate(at, TZ, 'M/d HH:mm') + ' 기준 · ' : '') + '가격은 수시로 바뀌어요', 56, H - 62, W - 112, 28, 13, HD_C.gray, false);
+
+  const slideId = sl.getObjectId(), deckId = deck.getId();
+  deck.saveAndClose();
+  return { url: hdThumb_(deckId, slideId), deck: deckId, slide: slideId };
+}
+
+// 한 줄 카드: 수량 + 할인율 · 가격 · 개당
+function hdCardOne_(sl, d, W, H) {
   // 오른쪽 줄들(할인율 빨강 · 가격 크게+배송 · 개당 초록)을 카드 가운데(구분선~아랫줄 사이)에 세로로 모은다
   const items = [];
   if (d.off) items.push({ h: 38, draw: y => hdT_(sl, d.off + '% 할인', x, y, w, 38, 22, HD_C.red, true) });
@@ -577,14 +600,40 @@ function hdCard_(v, row) {
   // 왼쪽: 고른 표시 + 수량 (가운데 높이)
   hdDot_(sl, 92, mid, 46, HD_C.blue); hdDot_(sl, 92, mid, 28, '#FFFFFF'); hdDot_(sl, 92, mid, 14, HD_C.blue);
   hdT_(sl, d.qty ? d.qty + d.unit : '특가', 126, mid - 34, 160, 68, d.qty >= 100 ? 32 : 40, HD_C.blue, true);
+}
 
-  // 맨 아래: 기준 시각
-  const at = hdParse_(v[HD.at - 1]);
-  hdT_(sl, (at ? Utilities.formatDate(at, TZ, 'M/d HH:mm') + ' 기준 · ' : '') + '가격은 수시로 바뀌어요', 56, H - 76, W - 112, 30, 14, HD_C.gray, false);
+// 두 줄 비교 카드 (예시 형식): 위 = 적은 수량(회색), 아래 = 많은 수량(파랑, 고른 표시)
+function hdCardCmp_(sl, pr, W, H) {
+  const rows = [
+    { o: pr.a, c: 150, on: false },
+    { o: pr.b, c: 276, on: true }
+  ];
+  const mid = sl.insertLine(SlidesApp.LineCategory.STRAIGHT, 56, 213, W - 56, 213);
+  mid.getLineFill().setSolidFill(HD_C.line); mid.setWeight(1.5);
+  rows.forEach(r => {
+    if (r.on) { hdDot_(sl, 92, r.c, 44, HD_C.blue); hdDot_(sl, 92, r.c, 26, '#FFFFFF'); hdDot_(sl, 92, r.c, 13, HD_C.blue); }
+    else { hdDot_(sl, 92, r.c, 44, '#CFD3D8'); hdDot_(sl, 92, r.c, 38, '#FFFFFF'); }
+    const qtxt = r.o.q + r.o.u;
+    hdT_(sl, qtxt, 128, r.c - 30, 150, 60, qtxt.length > 4 ? 30 : 38, r.on ? HD_C.blue : HD_C.sub, r.on);
+    hdT_(sl, r.o.p.toLocaleString('ko-KR') + '원', 290, r.c - 44, W - 340, 54, 40, HD_C.ink, true);
+    const per = Math.round(r.o.p / r.o.q);
+    let sub = r.o.u + '당 ' + per.toLocaleString('ko-KR') + '원';
+    if (r.on && pr.cheaper > 0) sub += ' · ' + pr.cheaper + '% 더 싸요';
+    hdT_(sl, sub, 290, r.c + 8, W - 340, 34, 20, r.on ? HD_C.green : HD_C.gray, r.on);
+  });
+}
 
-  const slideId = sl.getObjectId(), deckId = deck.getId();
-  deck.saveAndClose();
-  return { url: hdThumb_(deckId, slideId), deck: deckId, slide: slideId };
+// Q열 '수량비교' → { a: 적은 수량, b: 많은 수량, cheaper: 개당 몇 % 싼지 }
+// 형식: "12개 11,840원 → 24개 13,530원" (맥북 캡처기가 쿠팡 옵션에서 읽어 적음). 역전 조건을 여기서 다시 확인한다.
+function hdPair_(v) {
+  const m = String(v[HD.cmp - 1] || '').match(/(\d+)\s*([가-힣A-Za-z]+)\s+([\d,]+)\s*원\s*(?:→|->)\s*(\d+)\s*([가-힣A-Za-z]+)\s+([\d,]+)\s*원/);
+  if (!m) return null;
+  const a = { q: +m[1], u: m[2], p: +m[3].replace(/,/g, '') }, b = { q: +m[4], u: m[5], p: +m[6].replace(/,/g, '') };
+  if (!(b.q > a.q) || !a.p || !b.p) return null;
+  const cheaper = Math.round((1 - (b.p / b.q) / (a.p / a.q)) * 100);
+  // 많이 사는 쪽이 더 싸거나(역전), 개당 HD_MIN_CHEAPER % 이상 싸야 '가격 이상한' 딜
+  if (!(b.p <= a.p || cheaper >= hdNum_('HD_MIN_CHEAPER', 30))) return null;
+  return { a: a, b: b, cheaper: cheaper };
 }
 
 function hdThumb_(deckId, slideId) {
@@ -619,7 +668,7 @@ function hdDot_(sl, cx, cy, size, color) {
 // 가격 카드만 시험 — 신규 첫 행으로 그려 주소를 로그에 (30분 동안 열림)
 function hotdealTestCard() {
   const sh = hdSheet_();
-  const rows = sh.getRange(2, 1, sh.getLastRow() - 1, HD.cap).getDisplayValues();
+  const rows = sh.getRange(2, 1, sh.getLastRow() - 1, HD.cmp).getDisplayValues();
   const i = rows.findIndex(r => !hdHoldReason_(r));
   const c = hdCard_(rows[i], i + 2);
   console.log('행 ' + (i + 2) + ' 가격 카드: ' + c.url);
