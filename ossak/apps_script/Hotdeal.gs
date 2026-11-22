@@ -16,11 +16,12 @@
  *   hotdealTestCard   가격 카드 그림만 한 장 그려 주소를 로그에 (30분 동안 열림)
  *   hotdealPreview    미리보기: 링크 변환 + 글·카드 만들기까지만. 발행·시트 쓰기 없음.
  *   hotdealPublishOne 지금 1건 실제 발행 (시간대·하루 한도·간격 검사는 건너뜀)
- *   hotdealAutoOn     30분마다 자동 발행 켜기 (하루 한도·간격·시간대 지킴) / hotdealAutoOff 끄기
+ *   hotdealAutoOn     10분마다 자동 발행 켜기 (하루 한도·간격·시간대 지킴) / hotdealAutoOff 끄기
  *
  * 설정 (프로젝트 설정 → 스크립트 속성, 없으면 기본값):
  *   HD_DAILY_MAX 3 · HD_GAP_MIN 90 · HD_HOURS 8-23 · HD_MAX_AGE_H 12 · HD_SUB_ID threads01
  *   HD_CHAT_POST 채팅방 안내 글 주소 (기본: 사용자가 준 share 링크) · HD_AD_TAG 기본 off (본문 끝에 붙일 글자, 예: (광고))
+ *   HD_SEARCH_PER_RUN 1 · HD_SEARCH_PRICE_PCT 15 (검색 링크 딜의 상품 찾기: 한 번에 몇 건, 가격 허용 차이 %)
  *   HD_MODE qty (Q열 '수량비교'에 수량 역전이 있는 딜만 올림 · all 이면 모든 딜) · HD_MIN_CHEAPER 30 (개당 몇 % 이상 싸야 하는지)
  *   HD_WAIT_CAPTURE_MIN 20 (all 모드에서 P열 캡처를 기다리는 시간, 0이면 안 기다림)
  *   HD_HOOK_SOURCES 지금할인  (제목이 상품명이 아니라 홍보 문구인 출처 — 본문전체(K)가 없으면 보류)
@@ -32,8 +33,8 @@
 const HD_SHEET_ID = '13-ecoze8qCHs0rcBNWfer9feg7CU-cfVYDEUzA9t5d0';
 const HD_TAB = '필터통과';
 const HD = { at: 1, src: 2, title: 3, price: 4, kw: 5, score: 6, urls: 7, orig: 8, draft: 9, status: 10, body: 11,
-  link: 12, thread: 13, postedAt: 14, note: 15, cap: 16, cmp: 17 };
-const HD_HEAD = ['변환링크', '스레드URL', '발행시각', '비고(에러)', '캡처', '수량비교'];   // P·Q열은 맥북의 ego lite 캡처기가 채움
+  link: 12, thread: 13, postedAt: 14, note: 15, cap: 16, cmp: 17, prod: 18 };
+const HD_HEAD = ['변환링크', '스레드URL', '발행시각', '비고(에러)', '캡처', '수량비교', '상품주소'];   // P·Q열은 맥북 캡처기, R열은 맥북(단축 링크 풀기)·발행기(파트너스 검색)
 const HD_DISCLOSURE = '이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.';
 const HD_CACHE_DAYS = 7;
 const HD_STALE_MIN = 10;
@@ -50,7 +51,7 @@ function hotdealCheck() {
   try { const id = hdChatPostId_(); out.push('채팅방 글(2/3 인용): ' + (id ? '찾음 ' + id : '꺼짐')); } catch (e) { out.push('채팅방 글 못 찾음: ' + e.message); }
   try {
     const sh = hdSheet_();
-    const head = sh.getRange(1, 1, 1, HD.cmp).getDisplayValues()[0];
+    const head = sh.getRange(1, 1, 1, HD.prod).getDisplayValues()[0];
     out.push('시트: ' + HD_TAB + ' ' + (sh.getLastRow() - 1) + '행, A~K 헤더 ' + (head[HD.urls - 1] === '쿠팡URL(전체)' && head[HD.status - 1] === '상태' ? '정상' : '다름!'));
     out.push('L~O 헤더: ' + (head.slice(HD.link - 1).join('') ? head.slice(HD.link - 1).join(' / ') : '비어 있음 (첫 발행 때 채움)'));
     const counts = {};
@@ -72,8 +73,8 @@ function hotdealJob() { return hdRun_({ dry: false, limit: 1 }); }
 
 function hotdealAutoOn() {
   ScriptApp.getProjectTriggers().filter(t => t.getHandlerFunction() === 'hotdealJob').forEach(t => ScriptApp.deleteTrigger(t));
-  ScriptApp.newTrigger('hotdealJob').timeBased().everyMinutes(30).create();
-  hdLog_('핫딜 자동 발행 켬: 30분마다 확인, 하루 ' + hdNum_('HD_DAILY_MAX', 3) + '건, 간격 ' + hdNum_('HD_GAP_MIN', 90) + '분, ' + hdCfg_('HD_HOURS', '8-23') + '시');
+  ScriptApp.newTrigger('hotdealJob').timeBased().everyMinutes(10).create();
+  hdLog_('핫딜 자동 발행 켬: 10분마다 확인 (검색 링크 딜 상품 찾기 포함), 하루 ' + hdNum_('HD_DAILY_MAX', 3) + '건, 간격 ' + hdNum_('HD_GAP_MIN', 90) + '분, ' + hdCfg_('HD_HOURS', '8-23') + '시');
 }
 
 function hotdealAutoOff() {
@@ -89,9 +90,15 @@ function hdRun_(o) {
     const sh = hdSheet_();
     const last = sh.getLastRow();
     if (last < 2) { hdLog_('필터통과 탭이 비어 있음'); return; }
-    const rows = sh.getRange(2, 1, last - 1, HD.cmp).getDisplayValues();
+    const rows = sh.getRange(2, 1, last - 1, HD.prod).getDisplayValues();
     const now = new Date();
     const today = Utilities.formatDate(now, TZ, 'yyyy-MM-dd');
+
+    // 검색 링크뿐인 딜은 파트너스 상품 검색으로 상품 주소를 찾아 R열에 (맥북 캡처기가 그 주소로 연다) — 발행 문턱과 상관없이
+    if (!o.dry && !o.manual) {
+      hdEnsureHeader_(sh);
+      try { hdFindProducts_(sh, rows, now); } catch (e) { console.log('상품 찾기 오류: ' + e.message); }
+    }
 
     if (!o.dry) {
       if (!o.manual) {
@@ -309,7 +316,9 @@ function hdConvert_(v) {
   const seen = {}, srcs = [];
   raw.forEach(u => { if (!seen[u]) { seen[u] = 1; srcs.push(u); } });
   const notes = [];
-  const targets = srcs.map(u => {
+  // R열에 상품 주소가 있으면(맥북이 단축 링크를 풀었거나 파트너스 검색으로 찾음) 그걸로 변환
+  const prod = hdCleanProduct_(String(v[HD.prod - 1] || ''));
+  const targets = prod ? [{ from: srcs[0] || prod, target: prod }] : srcs.map(u => {
     if (/link\.coupang\.com\//.test(u)) {
       const fin = hdResolve_(u);
       const clean = fin && hdCleanProduct_(fin);
@@ -326,6 +335,57 @@ function hdConvert_(v) {
   if (!r.ok) notes.push(r.err);
   const pairs = targets.map(t => ({ from: t.from, to: (r.map && r.map[t.target]) || t.target }));
   return { pairs: pairs, notes: hdUniq_(notes), rateLimited: r.code === 429 };
+}
+
+/* ───────── 검색 링크 딜 → 상품 주소 (파트너스 상품 검색 API) ─────────
+   10초핫딜·딜바다처럼 쿠팡 '검색 링크'만 있는 딜은 맥북 캡처기가 상품 페이지를 열 수 없다.
+   제목으로 파트너스 상품 검색을 해서, 가격이 시트 가격과 ±HD_SEARCH_PRICE_PCT % 안이고 이름이 충분히 겹치는 상품을 R열에 적는다.
+   검색 API는 시간당 호출 수가 적고 운영시트의 상품 탭 채우기(syncProducts_)와 같이 쓰므로 한 번에 HD_SEARCH_PER_RUN(기본 1)건만. */
+function hdFindProducts_(sh, rows, now) {
+  if (!hdProp_('CP_ACCESS')) return;
+  const per = hdNum_('HD_SEARCH_PER_RUN', 1);
+  let n = 0;
+  for (let i = 0; i < rows.length && n < per; i++) {
+    const r = rows[i];
+    if (String(r[HD.prod - 1]).trim() || String(r[HD.cmp - 1]).trim()) continue;
+    if (r[HD.status - 1] !== '신규' && r[HD.status - 1] !== '대기') continue;
+    const at = hdParse_(r[HD.at - 1]);
+    if (!at || (now - at) / 3600000 > 6) continue;
+    const urls = String(r[HD.urls - 1]).split('\n').filter(u => /coupang\.com/.test(u));
+    if (!urls.length || urls.some(u => /link\.coupang\.com|\/vp\/products\//.test(u))) continue;   // 검색 링크뿐인 행만
+    if (hdHoldReason_(r)) continue;
+    n++;
+    let res;
+    try { res = hdSearchMatch_(r); }
+    catch (e) {
+      if (e.code === 429) { console.log('파트너스 검색 한도 — 다음 차례에'); return; }
+      res = { note: '없음: 검색 오류 ' + (e.code || '') };
+    }
+    sh.getRange(i + 2, HD.prod).setNumberFormat('@').setValue(res.url || res.note);
+    console.log('상품 찾기 행 ' + (i + 2) + ': ' + (res.url ? res.url + ' (' + res.why + ')' : res.note));
+  }
+}
+
+function hdSearchMatch_(r) {
+  const name = hdName_(r[HD.title - 1]);
+  const price = Number(String(r[HD.price - 1]).replace(/[^\d]/g, '')) || 0;
+  const list = coupangSearch_(name.slice(0, 50));
+  if (!list.length) return { note: '없음: 검색 결과 없음' };
+  const words = name.toLowerCase().split(/[\s,()\[\]\/·+]+/).filter(w => w.length >= 2);
+  const pct = hdNum_('HD_SEARCH_PRICE_PCT', 15);
+  let best = null;
+  list.forEach(p => {
+    const pn = String(p.productName || '').toLowerCase().replace(/\s+/g, '');
+    const hit = words.filter(w => pn.indexOf(w.replace(/\s+/g, '')) >= 0).length / Math.max(words.length, 1);
+    const pp = Number(p.productPrice) || 0;
+    const diff = price && pp ? Math.abs(pp - price) / price * 100 : 999;
+    if (hit < 0.6 || diff > pct) return;
+    const score = hit * 100 - diff;
+    if (!best || score > best.score) best = { score: score, p: p, hit: hit, diff: diff };
+  });
+  if (!best) return { note: '없음: 가격·이름 맞는 상품 없음' };
+  return { url: 'https://www.coupang.com/vp/products/' + best.p.productId,
+    why: '이름 ' + Math.round(best.hit * 100) + '% · 가격차 ' + Math.round(best.diff) + '% · ' + String(best.p.productName).slice(0, 30) };
 }
 
 // 남이 만든 단축 링크를 풀어 최종 주소만 얻는다 (본문은 읽지 않음)
@@ -668,7 +728,7 @@ function hdDot_(sl, cx, cy, size, color) {
 // 가격 카드만 시험 — 신규 첫 행으로 그려 주소를 로그에 (30분 동안 열림)
 function hotdealTestCard() {
   const sh = hdSheet_();
-  const rows = sh.getRange(2, 1, sh.getLastRow() - 1, HD.cmp).getDisplayValues();
+  const rows = sh.getRange(2, 1, sh.getLastRow() - 1, HD.prod).getDisplayValues();
   const i = rows.findIndex(r => !hdHoldReason_(r));
   const c = hdCard_(rows[i], i + 2);
   console.log('행 ' + (i + 2) + ' 가격 카드: ' + c.url);
