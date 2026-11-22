@@ -81,8 +81,8 @@
   <a href="/lotto/"{% if tab == 'lotto' %} aria-current="page"{% endif %}><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg>줍줍</a>
   {# 2026-11-20 사용자 결정: 하단 탭 '가이드' → '정보'(/info/ — 가이드 맨 위 + 계산기 + 청약 결과 + 공고 찾기) #}
   <a href="/info/"{% if tab in ('info', 'guide', 'tools', 'report') %} aria-current="page"{% endif %}><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5"/></svg>정보</a>
-  {# 2026-11-17 사용자 결정: 하단 탭 '유형' → '핫딜'. 2026-11-20: 투키즈노트 페이지의 핫딜 탭(쿠팡 골드박스)으로 바로. 2026-11-22: 핫딜 카톡 오픈채팅방으로, 이름 '핫딜방' #}
-  <a class="kk" href="https://open.kakao.com/o/glKTzcYi" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 4C7 4 3 7.1 3 11c0 2.5 1.7 4.7 4.2 6l-.9 3.3 3.8-2.3c.6.1 1.3.2 1.9.2 5 0 9-3.1 9-7s-4-7-9-7z"/></svg>핫딜방</a>
+  {# 2026-11-17 사용자 결정: 하단 탭 '유형' → '핫딜'. 2026-11-20: 투키즈노트 페이지의 핫딜 탭(쿠팡 골드박스)으로 바로. 2026-11-22: 핫딜 카톡 오픈채팅방으로, 이름 '핫딜방'. 같은 날: 바로 카톡 말고 입장 페이지(autodm…/room, 당근 스타일 시안)를 먼저 #}
+  <a class="kk" href="https://autodm.jupjupalarm.com/room?from=jj"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 4C7 4 3 7.1 3 11c0 2.5 1.7 4.7 4.2 6l-.9 3.3 3.8-2.3c.6.1 1.3.2 1.9.2 5 0 9-3.1 9-7s-4-7-9-7z"/></svg>핫딜방</a>
   {# 2026-11-22 사용자 결정: 핫딜방 위 툴팁(카카오 노랑) — 처음 한 번만, ✕나 탭을 누르면 다음부터 숨김 #}
   <div class="kktip" id="kktip" hidden>💬 카톡으로 초특가 알려드려요<button type="button" aria-label="안내 닫기">×</button></div>
 </nav>
