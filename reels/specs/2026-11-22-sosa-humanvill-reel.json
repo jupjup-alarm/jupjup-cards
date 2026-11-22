@@ -3,7 +3,7 @@
  "title": "소사 휴먼빌",
  "series": "줍줍알람",
  "style": "story",
- "voice": "VOICE",
+ "voice": "voices/0d06be6852a6/",
  "voice_speed": 1.0,
  "bgm": "music/beat-one.mp3",
  "thumb": {
