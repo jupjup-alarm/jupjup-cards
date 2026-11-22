@@ -1,16 +1,71 @@
 {
  "key": "2026000591",
- "images": [],
- "links": [],
- "name": "소사 휴먼빌",
- "row": 197,
- "homepage": "https://www.소사휴먼빌.com",
- "auto_site": {
-  "date": "2026-11-22",
-  "url": "https://www.소사휴먼빌.com",
-  "tries": 1,
-  "result": "0장 ()"
- },
- "updated": "2026-11-22 06:47",
- "commons_checked": "소사 휴먼빌"
+ "credit": "이미지: 사업주체(소사본동277의30번지일원가로주택정비사업조합) 제공 조감도 · 실제와 다를 수 있음",
+ "source": "사용자 제공 (2026-11-22)",
+ "images": [
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "단지 조감도 (낮, 세로)",
+   "file": "photos/site/2026000591/birdseye-1.jpg",
+   "src": "user-upload 2026-11-22",
+   "w": 700,
+   "h": 991,
+   "md5": "9632a25bdb0f9626f58017268dc09ad6",
+   "photo": true,
+   "checked": "2026-11-22",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업(사용자 제공)"
+  },
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "단지 조감도 (정원 쪽)",
+   "file": "photos/site/2026000591/birdseye-2.jpg",
+   "src": "user-upload 2026-11-22",
+   "w": 700,
+   "h": 495,
+   "md5": "ce39830fafdb8b1dcd800871333f5e69",
+   "photo": true,
+   "checked": "2026-11-22",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업(사용자 제공)"
+  },
+  {
+   "cat": "birdseye",
+   "kind": "조감도",
+   "label": "단지 조감도 (위에서)",
+   "file": "photos/site/2026000591/birdseye-3.jpg",
+   "src": "user-upload 2026-11-22",
+   "w": 700,
+   "h": 495,
+   "md5": "974b0d13fe9925a9e19761b300fad5d5",
+   "photo": true,
+   "checked": "2026-11-22",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업(사용자 제공)"
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 단지 주요정보·일정 (단지명 제외)",
+   "file": "photos/site/2026000591/notice-summary.jpg",
+   "src": "user-upload 입주자모집공고 PDF p.1",
+   "w": 1175,
+   "h": 283,
+   "md5": "837d8ed842c5c381144c93b7190b1029",
+   "photo": false,
+   "checked": "2026-11-22",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업(사용자 제공)"
+  }
+ ]
 }
