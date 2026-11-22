@@ -6,6 +6,10 @@ on:
   schedule:
     - cron: "5 15 * * *"
   workflow_dispatch:
+    inputs:
+      force:
+        description: 공개할 글이 없어도 빌드 (점검용)
+        default: "0"
 permissions:
   contents: write
 concurrency:
@@ -27,7 +31,7 @@ jobs:
         id: chk
         run: |
           T=$(TZ=Asia/Seoul date +%F)
-          if grep -l "\"published\": \"$T\"" site/data/analysis/posts/*.json; then echo "go=1" >> $GITHUB_OUTPUT; else echo "오늘 공개할 글 없음"; fi
+          if grep -l "\"published\": \"$T\"" site/data/analysis/posts/*.json; then echo "go=1" >> $GITHUB_OUTPUT; elif [ "${{ github.event.inputs.force }}" = "1" ]; then echo "go=1" >> $GITHUB_OUTPUT; else echo "오늘 공개할 글 없음"; fi
       - if: steps.chk.outputs.go == '1'
         run: pip install -q jinja2 pillow markdown
       - if: steps.chk.outputs.go == '1'
