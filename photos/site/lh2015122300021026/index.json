@@ -10,7 +10,12 @@
    "w": 640,
    "h": 480,
    "photo": true,
-   "from": "sheet"
+   "from": "sheet",
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "birdseye",
@@ -25,7 +30,12 @@
    "block": "블록1",
    "lh_tab": "단지조감도",
    "desc": "단지조감도",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "siteplan",
@@ -40,7 +50,12 @@
    "block": "블록1",
    "lh_tab": "단지배치도",
    "desc": "단지배치도",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "aerial",

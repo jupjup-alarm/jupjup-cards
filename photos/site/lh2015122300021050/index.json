@@ -14,7 +14,12 @@
    "block": "블록1",
    "lh_tab": "평면도",
    "desc": "",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
@@ -29,7 +34,12 @@
    "block": "블록1",
    "lh_tab": "평면도",
    "desc": "평면도",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "notice",

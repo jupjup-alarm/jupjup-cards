@@ -14,7 +14,12 @@
    "block": "블록1",
    "lh_tab": "단지조감도",
    "desc": "인천산곡 A1블록 단지조감도입니다.",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "location",
@@ -29,7 +34,12 @@
    "block": "블록1",
    "lh_tab": "위치도",
    "desc": "인천산곡 A1블록 교통망도입니다.",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "interior",
@@ -44,7 +54,12 @@
    "block": "블록1",
    "lh_tab": "투시도",
    "desc": "인천산곡 A1 44형 평면",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "siteplan",
@@ -59,7 +74,12 @@
    "block": "블록1",
    "lh_tab": "단지배치도",
    "desc": "인천산곡 A1블록 단지배치도입니다.",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "dongho",
@@ -74,7 +94,12 @@
    "block": "블록1",
    "lh_tab": "동호배치도",
    "desc": "인천산곡 A1블록 동호배치도입니다.",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
@@ -89,7 +114,12 @@
    "block": "블록1",
    "lh_tab": "평면도",
    "desc": "인천산곡 A1 44형 평면",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "aerial",
