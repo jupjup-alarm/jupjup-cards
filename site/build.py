@@ -198,6 +198,7 @@ def make_nearby(n):
         head = ["단지 (준공)", "면적", "최근 거래가", "㎡당 (중앙값)", "거래", "6개월 거래"]
     # 2026-11-13 사용자 "UI가 중요": 판정 한 줄 + 막대 비교 + 숫자 칸 3개, 표는 접어 둠
     bars, verdict, tone, facts = [], "", "n", []
+    cmp = None   # 2026-11-22 지역 청약 리포트용 — 이 공고가 비교 기준의 몇 % 수준인지
     if d["kind"] == "rent":
         # 보증금이 서로 달라 월세만 비교하면 틀린다 → 보증금을 연 4.5%로 월세에 더한 '환산 월세'로 비교 (2026-11-13, 추정·가정 표기)
         R = 0.045 / 12
@@ -213,6 +214,7 @@ def make_nearby(n):
             pct = round(mine * 100 / med_eq)
             verdict = f"보증금까지 합쳐 보면 주변의 약 {pct}%" + (f" · 매달 약 {money(round(med_eq - mine, -3))} 아끼는 셈" if med_eq - mine >= 10000 else "")
             tone = "g" if pct <= 60 else ("y" if pct <= 85 else "r")
+            cmp = {"pct": pct, "kind": "rent"}
             lead.append(f"보증금이 단지마다 달라서, 보증금을 연 4.5%로 월세에 더해(보증금 1,000만원 = 월 3만7,500원) 비교했어요. "
                         f"이 공고는 환산 월 {money(round(mine, -3))}, 주변 비교 단지 중앙값은 환산 월 {money(round(med_eq, -3))}이에요(추정).")
         fmt, unit, med = (lambda v: money(v)), "월세", mm
@@ -233,6 +235,7 @@ def make_nearby(n):
                 diff = int(round(base * area - ours["price"], -6))
                 verdict = f"{label}의 {pct}%" + (f" · {area:g}㎡ 기준 약 {won(diff)} 싸게" if diff >= 10**7 else (f" · 약 {won(-diff)} 비싸게" if diff <= -10**7 else " · 주변과 비슷"))
                 tone = "g" if pct <= 70 else ("y" if pct <= 90 else "r")
+                cmp = {"pct": pct, "kind": "sale", "new": bool(newp)}
                 if newp:
                     lead.append(f"비교가 공정하도록 10년 이내에 지은 주변 단지 {len(newp)}곳의 ㎡당 중앙값 {won(base)}과도 견줘 봤어요 — 이 공고는 그 {pct}% 수준이에요(추정).")
             elif old_only:
@@ -248,7 +251,8 @@ def make_nearby(n):
         bars.append({"name": name_, "yr": f"'{str(yr)[2:]}" if yr else "", "w": round(v * 100 / mx, 1), "val": fmt(v), "sub": sub, "ours": name_ == "이 공고"})
     return {"lead": lead, "head": head, "rows": rows, "where": where, "made": str(d.get("made", ""))[:10],
             "bars": bars, "med_pos": round(med * 100 / mx, 1) if med else None, "med_txt": fmt(med) if med else "",
-            "unit": unit, "verdict": verdict, "tone": tone, "facts": facts, "span": span, "area": area}
+            "unit": unit, "verdict": verdict, "tone": tone, "facts": facts, "span": span, "area": area,
+            "cmp": cmp, "built_med": st_.get("built_med")}
 
 
 def won(n):
@@ -1839,6 +1843,70 @@ def main():
             sent.append(f"해당지역 최저 당첨 가점은 {int(round(lo))}" + (f"~{int(round(hi))}" if round(hi) != round(lo) else "") + "점이에요.")
         n["result"] = {"text": " ".join(sent), "avg": av, "top": max(rt) if rt else None, "under": ud,
                        "score": n.get("score_min"), "later": sorted(later, key=lambda x: x["rcpt"][0])[:3]}
+        # 2026-11-22 애드센스 '독창적인 콘텐츠 부족' 대응 (사용자 결정): 결과를 우리 데이터와 견줘 마감 페이지만의 내용으로
+        r_ = n["result"]
+        # ① 미달 난 주택형 — 이 타입이 무순위로 다시 나올 수 있다
+        r_["under_types"] = list(dict.fromkeys(REPORT._tname(row["name"].split()[0]) for row in (n.get("comp") or {}).get("rows", []) if "△" in row["rate"]))
+        # ② 같은 시·도에서 비슷한 때(접수 마감 앞뒤 120일) 결과가 나온 공고와 견주기
+        r_["peers"] = None
+        if av is not None:
+            end_ = dt.date.fromisoformat(n["rcpt"][1] or n["rcpt"][0])
+            peers = []
+            for x in notices:
+                if x.get("is_pre") or not x.get("comp") or x["sido"] != n["sido"] or not (x["rcpt"][1] or x["rcpt"][0]):
+                    continue
+                xa = REPORT._avg(x)
+                if xa is None or abs((dt.date.fromisoformat(x["rcpt"][1] or x["rcpt"][0]) - end_).days) > 120:
+                    continue
+                peers.append((xa, x))
+            if len(peers) >= 4:
+                vals = sorted(v for v, _ in peers)
+                med = vals[len(vals) // 2] if len(vals) % 2 else (vals[len(vals) // 2 - 1] + vals[len(vals) // 2]) / 2
+                rank = 1 + sum(1 for v, _ in peers if v > av)
+                under_n = sum(1 for v, _ in peers if v < 1)
+                same_k = sorted(v for v, x in peers if x["kind"] == n["kind"])
+                r_["peers"] = {"n": len(peers), "med": med, "rank": rank, "under": under_n}
+                ps = (f"같은 기간 {n['sido']}에서 경쟁률이 나온 공고 {len(peers)}곳의 평균 경쟁률 가운데값은 {REPORT._f(round(med, 1))}대 1이고, "
+                      f"이 공고는 그중 {rank}번째로 높았어요.")
+                if under_n:
+                    ps += f" {len(peers)}곳 가운데 {under_n}곳은 미달이었어요."
+                if len(same_k) >= 3 and len(same_k) < len(peers):
+                    km = same_k[len(same_k) // 2]
+                    ps += f" {n['kind_label']}만 보면 {len(same_k)}곳 가운데값이 {REPORT._f(round(km, 1))}대 1이에요."
+                r_["peer_text"] = ps
+        # ③ 접수 전 줍줍알람 판단 (3초 판단 카드) — 결과와 나란히. 판단은 바꾸지 않고 그대로 남긴다
+        sig_w = {"g": "좋음", "y": "보통", "r": "주의"}
+        r_["before"] = [{"k": c["k"], "sig": c["sig"], "w": sig_w.get(c["sig"], "확인 중"), "head": c["head"]}
+                        for c in (n.get("dz") or {}).get("cards", []) if c.get("head")]
+
+    # 단지 공고 이력 (2026-11-22 사용자 결정 — 1순위 → 무순위 n차 → 임의공급까지 한 단지의 공고를 한 표로. 다른 데서 못 보는 우리 데이터)
+    for cx, grp in by_cx.items():
+        if len(grp) < 2:
+            continue
+        grp = sorted(grp, key=lambda x: (x["rcpt"][0] or x.get("announce") or "9", x["title"]))
+        rows_ = []
+        for x in grp:
+            m_ = re.search(r"(\d+)\s*차", x["title"])
+            lab = "공고 전 (보도)" if x.get("is_pre") else (x["kind_label"] + (f" {m_.group(1)}차" if m_ else ""))
+            xa = REPORT._avg(x) if x.get("comp") else None
+            rows_.append({"n": x, "label": lab, "when": x["rcpt"][0], "when2": x["rcpt"][1],
+                          "units": f"{x['units']:,}{x.get('unit_word') or '세대'}" if x.get("units") else "",
+                          "price": (won(x["max_price"]) if x.get("max_price") and not x.get("is_pre") else (x.get("price_text") or "") if x.get("is_pre") else ""),
+                          "avg": (REPORT._f(xa) + "대 1") if xa is not None else ("" if x["status"] in ("open", "upcoming", "pre") or x.get("is_pre") else "청약홈 경쟁률 없음"),
+                          "under": xa is not None and xa < 1})
+        real = [r for r in rows_ if not r["n"].get("is_pre") and r["n"].get("max_price")]
+        sent = [f"이 단지는 줍줍알람에 공고가 {len(rows_)}번 올라왔어요."]
+        if len(real) >= 2 and real[0]["n"]["max_price"] != real[-1]["n"]["max_price"]:
+            a_, b_ = real[0]["n"], real[-1]["n"]
+            dlt = b_["max_price"] - a_["max_price"]
+            if abs(dlt) >= 10**6:
+                sent.append(f"공고에 나온 최고 분양가는 {d(a_['rcpt'][0])} {won(a_['max_price'])}에서 {d(b_['rcpt'][0])} {won(b_['max_price'])}으로 "
+                            f"{won(abs(dlt))} {'올랐' if dlt > 0 else '내렸'}어요(공고마다 나온 주택형이 달라 최고가 타입이 다를 수 있어요).")
+        und = [r for r in rows_ if r["under"]]
+        if und:
+            sent.append(f"{', '.join(r['label'] for r in und)} 때 평균 경쟁률이 1대 1에 못 미쳤어요 — 남은 물량은 보통 무순위·임의공급으로 다시 나와요.")
+        for x in grp:
+            x["history"] = {"rows": [dict(r, cur=r["n"] is x) for r in rows_], "text": " ".join(sent)}
 
     for n in notices:
         n["imgs"] = notice_images(n)
@@ -1923,9 +1991,15 @@ def main():
         n["guide_link"] = gl[0] if gl else guide_for(n)
         n["guides"] = gl[1:4]
         n["crumb"] = crumb_for(n)
-        h = apt_tpl.render(n=n, **common, page_url=n["url"], title=title, desc=desc, og=n["imgs"]["og"])
+        # 2026-11-22 (서치콘솔 '크롤링됨 - 현재 색인 생성되지 않음' 153곳 · 사용자 결정): 당첨자 발표까지 끝났는데 결과·분석·공고 이력이
+        #   하나도 없는 공고는 청약홈 요약만 남은 얇은 페이지 → 검색 제외(noindex·사이트맵 제외). 페이지는 그대로 열림.
+        #   결과(경쟁률·가점)가 들어오면 다음 빌드에서 자동으로 다시 색인 대상.
+        thin_apt = (n["status"] == "announced" and not n.get("is_pre") and not n.get("moved")
+                    and not n.get("result") and not n.get("analysis") and not n.get("history"))
+        n["noindex"] = thin_apt
+        h = apt_tpl.render(n=n, **common, page_url=n["url"], title=title, desc=desc, og=n["imgs"]["og"], noindex=thin_apt)
         h = chipnav(h, n)
-        write(n["url"], h, title, desc, "apt", n["modified"])
+        write(n["url"], h, title, desc, "apt", n["modified"], index=not thin_apt)
 
     # ── 목록 공통
     list_tpl = E.get_template("list.html")
@@ -2163,6 +2237,78 @@ def main():
               [("홈", "/"), ("청약 일정", None)], links, empty="이번 주에 접수를 시작하는 공고가 없어요.", tbl_label="이번 주·다음 주",
               og_t=("청약 일정", "이번 주", "청약 일정", "접수일 · 분양가 · 자격 한눈에"))
 
+    # 지역 청약 리포트 (2026-11-22 사용자 결정 — 애드센스 '독창적인 콘텐츠 부족': 지역 목록을 그 지역 숫자로 만든 분석 페이지로).
+    #   문장은 숫자로만 만든다(모델 없음). 데이터가 둘 이상 갈래로 모이지 않으면 만들지 않는다.
+    def region_report(lst, place):
+        lst = [x for x in {x["key"]: x for x in lst}.values() if not x.get("is_pre")]
+        if len(lst) < 3:
+            return None
+        med_ = lambda v: (sorted(v)[len(v) // 2] if len(v) % 2 else (sorted(v)[len(v) // 2 - 1] + sorted(v)[len(v) // 2]) / 2) if v else None
+        nm_ = lambda x: x.get("complex") or x["title"]
+        comp = [(REPORT._avg(x), x) for x in lst if x.get("comp")]
+        comp = [(v, x) for v, x in comp if v is not None]
+        p84 = sorted(((md["max"], x) for x in lst if not x.get("is_rental") for md in (x.get("models") or [])
+                      if md.get("max") and REPORT._excl(md["type"]) in (84, 85)), key=lambda t: t[0])
+        sale = [(x["nearby"]["cmp"]["pct"], x) for x in lst if (x.get("nearby") or {}).get("cmp") and x["nearby"]["cmp"]["kind"] == "sale"]
+        rent = [(x["nearby"]["cmp"]["pct"], x) for x in lst if (x.get("nearby") or {}).get("cmp") and x["nearby"]["cmp"]["kind"] == "rent"]
+        scored = [x for x in lst if x.get("score_min")]
+        if sum(1 for c in (len(comp) >= 2, len(p84) >= 2, len(sale) + len(rent) >= 2, len(scored) >= 2) if c) < 2:
+            return None
+        kc = {}
+        for x in lst:
+            kc[x["kind_label"]] = kc.get(x["kind_label"], 0) + 1
+        paras = [f"{place}에서 줍줍알람이 정리한 청약 공고는 {len(lst)}곳이에요. 유형별로는 "
+                 + ", ".join(f"{k} {v}곳" for k, v in sorted(kc.items(), key=lambda kv: -kv[1])) + "이에요."]
+        kpi = [("정리한 공고", f"{len(lst)}곳")]
+        if len(comp) >= 2:
+            vals = [v for v, _ in comp]
+            hi, lo = max(comp, key=lambda t: t[0]), min(comp, key=lambda t: t[0])
+            und = [x for v, x in comp if v < 1]
+            hn, ln = nm_(hi[1]), nm_(lo[1])
+            if hn == ln:   # 같은 단지의 차수 공고끼리면 공고 이름으로 구분
+                hn, ln = hi[1]["title"], lo[1]["title"]
+            t = (f"청약홈 공식 경쟁률이 나온 {len(comp)}곳의 평균 경쟁률 가운데값은 {REPORT._f(round(med_(vals), 1))}대 1이에요. "
+                 f"가장 높았던 곳은 {hn}{REPORT._ro(hn)} {REPORT._f(hi[0])}대 1, 가장 낮았던 곳은 {ln} {REPORT._f(lo[0])}대 1이에요.")
+            t += (f" 평균 1대 1에 못 미친 미달 공고는 {len(und)}곳({', '.join(nm_(x) for x in und[:3])}{' 등' if len(und) > 3 else ''})이에요."
+                  if und else " 평균 1대 1에 못 미친 미달 공고는 없었어요.")
+            mu = [v for v, x in comp if x["kind"] == "mujeonwi"]
+            ot = [v for v, x in comp if x["kind"] != "mujeonwi"]
+            if len(mu) >= 2 and len(ot) >= 2:
+                t += f" 무순위(줍줍) {len(mu)}곳은 가운데값 {REPORT._f(round(med_(mu), 1))}대 1, 일반 청약 {len(ot)}곳은 {REPORT._f(round(med_(ot), 1))}대 1로 갈렸어요."
+            paras.append(t)
+            kpi += [("경쟁률 가운데값", f"{REPORT._f(round(med_(vals), 1))}대 1"), ("미달 공고", f"{len(und)}곳 / {len(comp)}곳")]
+        if len(p84) >= 2:
+            lo_, hi_ = p84[0], p84[-1]
+            if lo_[1] is hi_[1]:
+                paras.append(f"전용 84㎡ 최고 분양가는 {nm_(lo_[1])} 한 곳에서 {won(lo_[0])}~{won(hi_[0])}이에요.")
+            else:
+                paras.append(f"전용 84㎡ 최고 분양가는 {nm_(lo_[1])} {won(lo_[0])}부터 {nm_(hi_[1])} {won(hi_[0])}까지 나왔어요"
+                             f" (공고 {len({x['key'] for _, x in p84})}곳 · 주택형 {len(p84)}개).")
+        if len(sale) >= 2:
+            pv = [v for v, _ in sale]
+            cheap = [x for v, x in sale if v < 95]
+            blt = med_([int(x["nearby"]["built_med"]) for _, x in sale if str(x["nearby"].get("built_med") or "").isdigit()])
+            paras.append(f"국토교통부 실거래가로 주변 아파트와 견줘 본 분양 공고 {len(sale)}곳에서, 분양가(㎡당)는 비교 기준의 가운데값 약 {round(med_(pv))}% 수준이었어요(추정)."
+                         f" 주변보다 5% 넘게 싸게 나온 곳은 {len(cheap)}곳이에요."
+                         + (f" 비교한 주변 단지는 대개 {int(blt)}년 전후에 지어진 곳이라, 새 아파트 가격과 그대로 견주기는 어려워요." if blt else ""))
+            kpi.append(("분양가 / 주변 시세", f"약 {round(med_(pv))}%"))
+        if len(rent) >= 2:
+            rv = [v for v, _ in rent]
+            paras.append(f"임대 공고 {len(rent)}곳은 보증금을 월세로 환산해 주변 전월세와 견주면 가운데값 약 {round(med_(rv))}% 수준이었어요(추정)."
+                         f" 가장 낮은 곳은 {nm_(min(rent, key=lambda t: t[0])[1])} 약 {min(rv)}%예요.")
+            if len(sale) < 2:
+                kpi.append(("임대료 / 주변 시세", f"약 {round(med_(rv))}%"))
+        if len(scored) >= 2:
+            lo_s = min(scored, key=lambda x: x["score_min"][0])
+            hi_s = max(scored, key=lambda x: x["score_min"][1])
+            paras.append(f"당첨 가점이 공개된 {len(scored)}곳의 해당지역 최저 당첨 가점은 {nm_(lo_s)} {int(round(lo_s['score_min'][0]))}점부터 "
+                         f"{nm_(hi_s)} {int(round(hi_s['score_min'][1]))}점까지였어요.")
+        h_ = '<div class="rr-kpi num">' + "".join(f"<div><span>{html.escape(k)}</span><b>{html.escape(v)}</b></div>" for k, v in kpi[:4]) + "</div>"
+        h_ += '<div class="rr-text">' + "".join(f"<p>{html.escape(t)}</p>" for t in paras) + "</div>"
+        h_ += ('<p class="rr-src">청약홈 공식 경쟁률·당첨 가점, 국토교통부 실거래가(최근 6개월, 공고별 같은 동·비슷한 면적), 각 입주자모집공고 기준 · '
+               '줍줍알람이 매일 다시 계산해요 · <a href="/about/#criteria">계산 방법</a></p>')
+        return {"top": True, "h2": f"{place} 청약 리포트", "small": f"{d(TODAY.isoformat())} 기준", "html": Markup(h_)}
+
     # 지역
     for sido, lst in sido_map.items():
         slug = regions["sido"][sido]
@@ -2177,7 +2323,7 @@ def main():
         list_page(f"/region/{slug}/", f"{sido} 청약 일정·분양 공고",
                   f"{sido} 청약 일정 — 아파트 분양·줍줍 접수 중·예정 {len(open_n)}곳 · 줍줍알람",
                   f"{sido} 청약 일정과 {sido} 아파트 분양 공고 {len(lst)}곳 중 접수 중·예정 {len(open_n)}곳." + (f" 다음 접수 시작 {d(nearest)}." if nearest else "") + " 줍줍(무순위)·민간분양·공공분양·신혼희망타운 분양가와 자격.",
-                  grouped(lst), intro, [("홈", "/"), ("지역", "/region/")], tbl_label=f"{sido} 청약 공고", og_t=(sido, f"{sido} 청약 공고", "한눈에 보기", "아파트 분양 · 줍줍 · 임대 — 접수일 · 분양가 · 자격"), links=
+                  grouped(lst), intro, [("홈", "/"), ("지역", "/region/")], tbl_label=f"{sido} 청약 공고", sections=[r_ for r_ in [region_report(lst, sido)] if r_], og_t=(sido, f"{sido} 청약 공고", "한눈에 보기", "아파트 분양 · 줍줍 · 임대 — 접수일 · 분양가 · 자격"), links=
                   [(f"{a} 공고", f"/region/{slug}/{b}/") for a, b in sub] + HUB_LINKS.get(f"/region/{slug}/", []))
     for (sido, sgg), lst in sgg_pages.items():
         slug, sslug = regions["sido"][sido], regions["sigungu"][sido][sgg]
@@ -2186,6 +2332,7 @@ def main():
                   f"{sido} {sgg} 청약 일정·분양가 — 접수 중·예정 {len(open_n)}곳 · 줍줍알람",
                   f"{sido} {sgg} 청약 공고 {len(lst)}곳의 접수일·분양가·자격.", grouped(lst),
                   None, [("홈", "/"), ("지역", "/region/"), (sido, f"/region/{slug}/")], links=HUB_LINKS.get(f"/region/{slug}/{sslug}/"),
+                  sections=[r_ for r_ in [region_report(lst, f"{sido} {sgg}")] if r_],
                   og_t=(sido, f"{sgg} 청약 공고", "한눈에 보기", "아파트 분양 · 줍줍 · 임대 — 접수일 · 분양가 · 자격"))
     # 지역 목록
     h = E.get_template("index_list.html").render(
