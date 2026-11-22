@@ -11,7 +11,12 @@
    "w": 1890,
    "h": 795,
    "md5": "833795365d28cbaef11b1785467b8b0b",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "birdseye",
@@ -22,7 +27,12 @@
    "w": 1064,
    "h": 922,
    "md5": "136069bdcb23cb390292fd49624cba81",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "birdseye",
@@ -37,7 +47,12 @@
    "block": "블록1",
    "lh_tab": "단지조감도",
    "desc": "과천지식정보타운 S12블록 행복주택 단지조감도 입니다.",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "birdseye",
@@ -48,7 +63,12 @@
    "w": 1811,
    "h": 1279,
    "photo": true,
-   "from": "sheet"
+   "from": "sheet",
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "location",
@@ -63,7 +83,12 @@
    "block": "블록1",
    "lh_tab": "위치도",
    "desc": "과천지식정보타운 S12블록 행복주택 위치도(교통망도) 입니다.",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "interior",
@@ -78,7 +103,12 @@
    "block": "블록1",
    "lh_tab": "투시도",
    "desc": "16A형 평면도 입니다.",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "siteplan",
@@ -89,7 +119,12 @@
    "w": 987,
    "h": 922,
    "md5": "1f26c213f3d25430a590ae0eaa42ed63",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "siteplan",
@@ -104,7 +139,12 @@
    "block": "블록1",
    "lh_tab": "단지배치도",
    "desc": "과천지식정보타운 S12블록 행복주택 단지배치도 입니다.",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "dongho",
@@ -115,7 +155,12 @@
    "w": 1890,
    "h": 1161,
    "md5": "81be0cba4806951232895c16c1ba7afd",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "dongho",
@@ -130,7 +175,12 @@
    "block": "블록1",
    "lh_tab": "동호배치도",
    "desc": "과천지식정보타운 S12블록 행복주택 동호배치도 입니다.",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
@@ -141,7 +191,12 @@
    "w": 590,
    "h": 870,
    "md5": "dac006447d3e094b46d31639c9bf24ad",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
@@ -152,7 +207,12 @@
    "w": 590,
    "h": 870,
    "md5": "76ad4d7610050c3eec5ab233b63f9d72",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
@@ -163,7 +223,12 @@
    "w": 590,
    "h": 870,
    "md5": "3d859da09f490f24b3e9d8aaaf386c95",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
@@ -174,7 +239,12 @@
    "w": 590,
    "h": 870,
    "md5": "340c843495405ae5f6f317d14470f039",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
@@ -185,7 +255,12 @@
    "w": 590,
    "h": 870,
    "md5": "526f51101ee21b9c390f0998ea64eb4c",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
@@ -196,7 +271,12 @@
    "w": 590,
    "h": 870,
    "md5": "26b8cab707b45af9e9ad6f4d5aa6ebc4",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
@@ -207,7 +287,12 @@
    "w": 590,
    "h": 870,
    "md5": "02d8d22b2cccb5786e9da20323d0d652",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
@@ -222,7 +307,12 @@
    "block": "블록1",
    "lh_tab": "평면도",
    "desc": "16A형 평면도 입니다.",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-23",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   }
  ],
  "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
