@@ -1,0 +1,148 @@
+{
+ "slug": "2026-11-22-sosa-humanvill-reel",
+ "title": "소사 휴먼빌",
+ "series": "줍줍알람",
+ "style": "story",
+ "voice": "VOICE",
+ "voice_speed": 1.0,
+ "bgm": "music/beat-one.mp3",
+ "thumb": {
+  "lines": [
+   "부천 84㎡ 새 아파트",
+   "옆 신축보다 2억 싸게"
+  ]
+ },
+ "pool": [
+  {
+   "img": "photos/site/2026000591/birdseye-1.jpg",
+   "credit": "이미지: 사업주체 제공 조감도 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/2026000591/birdseye-2.jpg",
+   "credit": "이미지: 사업주체 제공 조감도 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/2026000591/birdseye-3.jpg",
+   "credit": "이미지: 사업주체 제공 조감도 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "maps/54f2932648ea.png"
+  }
+ ],
+ "scenes": [
+  {
+   "type": "story",
+   "say": "부천에 옆 신축보다 2억 싼 84㎡ 아파트가 나왔대요. 딱 45세대래요.",
+   "word": "2억 싸게",
+   "shots": [
+    {
+     "img": "photos/site/2026000591/birdseye-1.jpg",
+     "credit": "이미지: 사업주체 제공 조감도 · 실제와 다를 수 있음",
+     "pos": "center 40%"
+    }
+   ],
+   "proof": {
+    "kind": "compare",
+    "head": "84㎡ 비교 (추정)",
+    "items": [
+     {
+      "label": "이 단지 84B 최고",
+      "value": "7억8,307만원"
+     },
+     {
+      "label": "옆 힐스테이트소사역 84㎡ 실거래",
+      "value": "10억1,000만원"
+     }
+    ],
+    "src": "국토부 실거래 2026.11 · 추정"
+   }
+  },
+  {
+   "type": "story",
+   "say": "심지어, 20층짜리 새 아파트래요.",
+   "word": "20층",
+   "shots": [
+    {
+     "img": "photos/site/2026000591/birdseye-3.jpg",
+     "credit": "이미지: 사업주체 제공 조감도 · 실제와 다를 수 있음",
+     "pos": "center 40%"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "이게 어떻게 가능할까요?",
+   "dim": true,
+   "shots": [
+    {
+     "img": "maps/54f2932648ea.png"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "84㎡가 7억 8,307만 원인데, 옆 신축 84㎡는 10억 1,000만 원에 팔렸대요.",
+   "word": "7억 8,307만 원",
+   "shots": [
+    {
+     "img": "photos/site/2026000591/birdseye-2.jpg",
+     "credit": "이미지: 사업주체 제공 조감도 · 실제와 다를 수 있음",
+     "pos": "center 50%"
+    },
+    {
+     "img": "photos/site/2026000591/birdseye-1.jpg",
+     "credit": "이미지: 사업주체 제공 조감도 · 실제와 다를 수 있음",
+     "pos": "center 70%"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "근데 조건이 진짜 놀랍습니다.",
+   "dim": true,
+   "shots": [
+    {
+     "img": "photos/site/2026000591/birdseye-3.jpg",
+     "credit": "이미지: 사업주체 제공 조감도 · 실제와 다를 수 있음",
+     "pos": "30% 60%"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "재당첨 제한도 거주의무도 없대요.",
+   "word": "재당첨 제한 없음",
+   "shots": [
+    {
+     "img": "photos/site/2026000591/birdseye-2.jpg",
+     "credit": "이미지: 사업주체 제공 조감도 · 실제와 다를 수 있음",
+     "pos": "70% 40%"
+    }
+   ],
+   "proof": {
+    "kind": "image",
+    "img": "photos/site/2026000591/notice-summary.jpg",
+    "credit": "자료: 입주자모집공고(2026.11.20)"
+   }
+  },
+  {
+   "type": "story",
+   "say": "수도권 19세 이상이면 통장으로 넣을 수 있고, 특공은 11월 30일이래요.",
+   "word": "11월 30일",
+   "shots": [
+    {
+     "img": "photos/site/2026000591/birdseye-1.jpg",
+     "credit": "이미지: 사업주체 제공 조감도 · 실제와 다를 수 있음",
+     "pos": "center 25%"
+    },
+    {
+     "img": "maps/54f2932648ea.png"
+    }
+   ]
+  },
+  {
+   "type": "end",
+   "say": "2억 싼 84㎡, 저장해 두세요. 자세한 공고 정리는, 프로필에서 링크를 확인해주세요."
+  }
+ ]
+}
