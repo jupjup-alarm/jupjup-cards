@@ -1,0 +1,48 @@
+{
+ "photos": [
+  {
+   "src": "p1.webp",
+   "small": "p1s.webp",
+   "w": 1024,
+   "h": 1280,
+   "credit": "공식 홈페이지"
+  },
+  {
+   "src": "p2.webp",
+   "small": "p2s.webp",
+   "w": 1024,
+   "h": 1280,
+   "credit": "공식 홈페이지"
+  },
+  {
+   "src": "p3.webp",
+   "small": "p3s.webp",
+   "w": 1024,
+   "h": 1280,
+   "credit": "공식 홈페이지"
+  },
+  {
+   "src": "p4.webp",
+   "small": "p4s.webp",
+   "w": 1024,
+   "h": 1280,
+   "credit": "공식 홈페이지"
+  },
+  {
+   "src": "p5.webp",
+   "small": "p5s.webp",
+   "w": 1024,
+   "h": 1280,
+   "credit": "공식 홈페이지"
+  }
+ ],
+ "reel": {
+  "src": "reel.mp4",
+  "poster": "poster.webp",
+  "seconds": 17.8,
+  "hook": "눈 덮인 정원 앞 호텔인데, 자동차 침대 키즈룸이 1박 13만원대예요",
+  "published": "2026-11-18",
+  "instagram": "https://www.instagram.com/reel/Df4CTx6DCZP/",
+  "youtube": "https://youtube.com/shorts/Q8_4hW3-p-I"
+ }
+}

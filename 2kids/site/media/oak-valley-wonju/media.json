@@ -1,0 +1,48 @@
+{
+ "photos": [
+  {
+   "src": "p1.webp",
+   "small": "p1s.webp",
+   "w": 1024,
+   "h": 1280,
+   "credit": "공식 홈페이지"
+  },
+  {
+   "src": "p2.webp",
+   "small": "p2s.webp",
+   "w": 1024,
+   "h": 1280,
+   "credit": "공식 홈페이지"
+  },
+  {
+   "src": "p3.webp",
+   "small": "p3s.webp",
+   "w": 1024,
+   "h": 1280,
+   "credit": "공식 홈페이지"
+  },
+  {
+   "src": "p4.webp",
+   "small": "p4s.webp",
+   "w": 1024,
+   "h": 1280,
+   "credit": "공식 홈페이지"
+  },
+  {
+   "src": "p5.webp",
+   "small": "p5s.webp",
+   "w": 1024,
+   "h": 1280,
+   "credit": "공식 홈페이지"
+  }
+ ],
+ "reel": {
+  "src": "reel.mp4",
+  "poster": "poster.webp",
+  "seconds": 21.1,
+  "hook": "수도권에서 1시간 내외, 1박 9만원대인 스키장 리조트예요",
+  "published": "2026-11-16",
+  "instagram": "https://www.instagram.com/reel/DfyPjRGiQ8j/",
+  "youtube": ""
+ }
+}

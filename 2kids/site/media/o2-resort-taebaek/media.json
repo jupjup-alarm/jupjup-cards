@@ -1,0 +1,41 @@
+{
+ "photos": [
+  {
+   "src": "p1.webp",
+   "small": "p1s.webp",
+   "w": 1024,
+   "h": 1280,
+   "credit": "쿠팡 트래블 상세"
+  },
+  {
+   "src": "p2.webp",
+   "small": "p2s.webp",
+   "w": 1024,
+   "h": 1280,
+   "credit": "쿠팡 트래블 상세"
+  },
+  {
+   "src": "p3.webp",
+   "small": "p3s.webp",
+   "w": 1024,
+   "h": 1280,
+   "credit": "쿠팡 트래블 상세"
+  },
+  {
+   "src": "p4.webp",
+   "small": "p4s.webp",
+   "w": 1024,
+   "h": 1280,
+   "credit": "쿠팡 트래블 상세"
+  }
+ ],
+ "reel": {
+  "src": "reel.mp4",
+  "poster": "poster.webp",
+  "seconds": 15.2,
+  "hook": "여기는 1박 12만원대로, 해발 1,100미터 눈 덮인 스키 리조트인데요",
+  "published": "2026-11-17",
+  "instagram": "https://www.instagram.com/reel/Df1dnKvjWA6/",
+  "youtube": ""
+ }
+}

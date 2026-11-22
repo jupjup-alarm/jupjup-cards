@@ -1,0 +1,48 @@
+{
+ "photos": [
+  {
+   "src": "p1.webp",
+   "small": "p1s.webp",
+   "w": 1024,
+   "h": 1280,
+   "credit": "공식 홈페이지"
+  },
+  {
+   "src": "p2.webp",
+   "small": "p2s.webp",
+   "w": 1024,
+   "h": 1280,
+   "credit": "공식 홈페이지"
+  },
+  {
+   "src": "p3.webp",
+   "small": "p3s.webp",
+   "w": 1024,
+   "h": 1280,
+   "credit": "공식 홈페이지"
+  },
+  {
+   "src": "p4.webp",
+   "small": "p4s.webp",
+   "w": 1024,
+   "h": 1280,
+   "credit": "공식 홈페이지"
+  },
+  {
+   "src": "p5.webp",
+   "small": "p5s.webp",
+   "w": 1024,
+   "h": 1280,
+   "credit": "공식 홈페이지"
+  }
+ ],
+ "reel": {
+  "src": "reel.mp4",
+  "poster": "poster.webp",
+  "seconds": 19.9,
+  "hook": "노을 바다 보며 노천탕 하고 싶다면 이번 겨울엔 여기예요",
+  "published": "2026-11-19",
+  "instagram": "https://www.instagram.com/reel/Df6SgQUCanc/",
+  "youtube": "https://youtube.com/shorts/bUdX9kqhZ_M"
+ }
+}

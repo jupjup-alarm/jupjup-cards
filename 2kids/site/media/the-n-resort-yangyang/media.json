@@ -1,0 +1,48 @@
+{
+ "photos": [
+  {
+   "src": "p1.webp",
+   "small": "p1s.webp",
+   "w": 1024,
+   "h": 1280,
+   "credit": "공식 홈페이지"
+  },
+  {
+   "src": "p2.webp",
+   "small": "p2s.webp",
+   "w": 1024,
+   "h": 1280,
+   "credit": "공식 홈페이지"
+  },
+  {
+   "src": "p3.webp",
+   "small": "p3s.webp",
+   "w": 1024,
+   "h": 1280,
+   "credit": "공식 홈페이지"
+  },
+  {
+   "src": "p4.webp",
+   "small": "p4s.webp",
+   "w": 1024,
+   "h": 1280,
+   "credit": "공식 홈페이지"
+  },
+  {
+   "src": "p5.webp",
+   "small": "p5s.webp",
+   "w": 1024,
+   "h": 1280,
+   "credit": "공식 홈페이지"
+  }
+ ],
+ "reel": {
+  "src": "reel.mp4",
+  "poster": "poster.webp",
+  "seconds": 19.1,
+  "hook": "여기 1박 9만원대인데 객실 수도꼭지에서 온천수가 나와요",
+  "published": "2026-11-21",
+  "instagram": "https://www.instagram.com/reel/Df_Hf4ADmm-/",
+  "youtube": "https://youtube.com/shorts/AVIX34XcUp0"
+ }
+}

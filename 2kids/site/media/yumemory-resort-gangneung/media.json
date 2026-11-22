@@ -1,0 +1,55 @@
+{
+ "photos": [
+  {
+   "src": "p1.webp",
+   "small": "p1s.webp",
+   "w": 1080,
+   "h": 1080,
+   "credit": "공식 홈페이지"
+  },
+  {
+   "src": "p2.webp",
+   "small": "p2s.webp",
+   "w": 1080,
+   "h": 1080,
+   "credit": "공식 홈페이지"
+  },
+  {
+   "src": "p3.webp",
+   "small": "p3s.webp",
+   "w": 1080,
+   "h": 1080,
+   "credit": "공식 홈페이지"
+  },
+  {
+   "src": "p4.webp",
+   "small": "p4s.webp",
+   "w": 1080,
+   "h": 1080,
+   "credit": "공식 홈페이지"
+  },
+  {
+   "src": "p5.webp",
+   "small": "p5s.webp",
+   "w": 1080,
+   "h": 1080,
+   "credit": "공식 홈페이지"
+  },
+  {
+   "src": "p6.webp",
+   "small": "p6s.webp",
+   "w": 1080,
+   "h": 1080,
+   "credit": "공식 홈페이지"
+  }
+ ],
+ "reel": {
+  "src": "reel.mp4",
+  "poster": "poster.webp",
+  "seconds": 21.5,
+  "hook": "일본 아니고 강릉이에요, 눈 덮인 숲속 료칸 리조트인데요",
+  "published": "2026-11-13",
+  "instagram": "https://www.instagram.com/reel/DfrKVq4E0uj/",
+  "youtube": ""
+ }
+}
