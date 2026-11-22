@@ -1,0 +1,17 @@
+{
+ "slug": "2026-11-23-suseo-happyhouse-reel",
+ "duration": 26.49,
+ "voiced": true,
+ "narration_s": 23.9,
+ "mean_db": -18.6,
+ "voice": "voices/11e5bab44ddd/",
+ "video": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-23-suseo-happyhouse-reel/2026-11-23-suseo-happyhouse-reel.mp4",
+ "cover": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-23-suseo-happyhouse-reel/2026-11-23-suseo-happyhouse-reel_thumb.jpg",
+ "size_mb": 11.03,
+ "warnings": [
+  "확대(Real-ESRGAN x4): 3장 — birdseye-a2-2.jpg, birdseye-a1.jpg, birdseye-b1.jpg",
+  "호흡: 장면 2 대본에 없는 곳에서 0.36초 쉼 (③ 대본 쉼표 위치 확인)",
+  "호흡: 장면 4 대본에 없는 곳에서 0.31초 쉼 (③ 대본 쉼표 위치 확인)",
+  "사진: 컷 10개 · 서로 다른 사진 5장"
+ ]
+}
