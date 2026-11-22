@@ -1850,3 +1850,18 @@ footer .biz{font-style:normal;line-height:1.6;opacity:.85}   /* 사업자 정보
 .an-art .tbl table.fit{min-width:0}.an-art .tbl table.fit th,.an-art .tbl table.fit td{white-space:normal;word-break:keep-all;vertical-align:top}
 @media(max-width:480px){.an-art .tbl table.fit{font-size:13px}.an-art .tbl table.fit th,.an-art .tbl table.fit td{padding:9px 6px}.an-art .tbl table.fit td:first-child{min-width:7.5em}}
 .an-art .tbl table.fit td.num{white-space:nowrap}.an-sub{display:block;font-size:12px;color:var(--ink-sub);margin-top:2px}
+
+.an-toc{margin:18px 0 6px;padding:14px 16px;border:1px solid var(--line,#e7e3dc);border-radius:12px;background:#fff}
+.an-toc b{font-size:13px;color:var(--ink-sub)}
+.an-toc ol{margin:6px 0 0;padding-left:20px;font-size:14.5px;line-height:1.75}
+.an-toc a{color:inherit;text-decoration:none}
+.an-toc a:hover{text-decoration:underline}
+.an-note{font-size:13.5px;color:var(--ink-sub);margin-top:-4px}
+.an-tips{margin:28px 0;padding:18px 18px 8px;border-radius:14px;background:#fff8e6}
+.an-tips h2{margin-top:0}
+.an-tips ol{padding-left:20px}
+.an-tips li{margin-bottom:12px;line-height:1.65}
+.an-tips li b{display:block}
+.an-faq details{border-bottom:1px solid var(--line,#e7e3dc);padding:12px 0}
+.an-faq summary{font-weight:700;cursor:pointer;line-height:1.5}
+.an-faq details p{margin:8px 0 0}
