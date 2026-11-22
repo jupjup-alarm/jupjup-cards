@@ -344,5 +344,10 @@
  "notice_kinds": [
   "public",
   "newlywed"
+ ],
+ "notice_match": [
+  "공공분양",
+  "신혼희망타운",
+  "지분적립"
  ]
 }
