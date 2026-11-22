@@ -19,7 +19,7 @@
  *   hotdealAutoOn     5분마다 자동 발행 켜기 (맥 캡처기가 웹 앱 주소로 부르면 즉시) (하루 한도·간격·시간대 지킴) / hotdealAutoOff 끄기
  *
  * 설정 (프로젝트 설정 → 스크립트 속성, 없으면 기본값):
- *   HD_DAILY_MAX 3 · HD_GAP_MIN 60 · HD_HOURS 8-23 · HD_MAX_AGE_H 12 · HD_SUB_ID threads01
+ *   HD_DAILY_MAX 10 · HD_GAP_MIN 60 · HD_HOURS 8-23 · HD_MAX_AGE_H 12 · HD_SUB_ID threads01
  *   HD_CHAT_POST 채팅방 안내 글 주소 (기본: 사용자가 준 share 링크) · HD_AD_TAG 기본 off (본문 끝에 붙일 글자, 예: (광고))
  *   HD_SEARCH_PER_RUN 1 · HD_SEARCH_PRICE_PCT 15 (검색 링크 딜의 상품 찾기: 한 번에 몇 건, 가격 허용 차이 %)
  *   HD_MODE qty (Q열 '수량비교'에 수량 역전이 있는 딜만 올림 · all 이면 모든 딜) · HD_MIN_CHEAPER 30 (개당 몇 % 이상 싸야 하는지)
@@ -74,7 +74,7 @@ function hotdealJob() { return hdRun_({ dry: false, limit: 1 }); }
 function hotdealAutoOn() {
   ScriptApp.getProjectTriggers().filter(t => t.getHandlerFunction() === 'hotdealJob').forEach(t => ScriptApp.deleteTrigger(t));
   ScriptApp.newTrigger('hotdealJob').timeBased().everyMinutes(5).create();   // 예비 주기 — 평소엔 맥 캡처기가 doPost로 바로 부름
-  hdLog_('핫딜 자동 발행 켬: 5분마다 확인 + 맥 캡처기 신호 즉시 (검색 링크 딜 상품 찾기 포함), 하루 ' + hdNum_('HD_DAILY_MAX', 3) + '건, 간격 ' + hdNum_('HD_GAP_MIN', 60) + '분, ' + hdCfg_('HD_HOURS', '8-23') + '시');
+  hdLog_('핫딜 자동 발행 켬: 5분마다 확인 + 맥 캡처기 신호 즉시 (검색 링크 딜 상품 찾기 포함), 하루 ' + hdNum_('HD_DAILY_MAX', 10) + '건, 간격 ' + hdNum_('HD_GAP_MIN', 60) + '분, ' + hdCfg_('HD_HOURS', '8-23') + '시');
 }
 
 function hotdealAutoOff() {
@@ -179,7 +179,7 @@ function hdGate_(rows, now, today) {
     const d = hdParse_(at);
     if (d && (!lastAt || d > lastAt)) lastAt = d;
   });
-  if (n >= hdNum_('HD_DAILY_MAX', 3)) return '오늘 ' + n + '건 발행함 (하루 한도 ' + hdNum_('HD_DAILY_MAX', 3) + ')';
+  if (n >= hdNum_('HD_DAILY_MAX', 10)) return '오늘 ' + n + '건 발행함 (하루 한도 ' + hdNum_('HD_DAILY_MAX', 10) + ')';
   if (lastAt && (now - lastAt) / 60000 < hdNum_('HD_GAP_MIN', 60)) return '마지막 발행 후 ' + Math.round((now - lastAt) / 60000) + '분 (간격 ' + hdNum_('HD_GAP_MIN', 60) + '분)';
   return '';
 }
