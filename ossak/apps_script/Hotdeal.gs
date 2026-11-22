@@ -301,21 +301,35 @@ function hdConvert_(v) {
 }
 
 // 남이 만든 단축 링크를 풀어 최종 주소만 얻는다 (본문은 읽지 않음)
-function hdResolve_(url) {
+function hdResolve_(url, debug) {
   let u = url;
   for (let i = 0; i < 5; i++) {
     let r;
-    try { r = UrlFetchApp.fetch(u, { followRedirects: false, muteHttpExceptions: true }); }
-    catch (e) { return ''; }
+    try {
+      r = UrlFetchApp.fetch(u, { followRedirects: false, muteHttpExceptions: true,
+        headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36',
+          'Accept': 'text/html', 'Accept-Language': 'ko-KR,ko;q=0.9' } });
+    } catch (e) { console.log('단축 링크 풀기 실패: ' + u + ' — ' + e.message); return ''; }
     const code = r.getResponseCode();
-    if (code < 300 || code >= 400) return u === url ? '' : u;
     const h = r.getAllHeaders();
-    const loc = h.Location || h.location;
-    if (!loc) return '';
-    u = Array.isArray(loc) ? loc[0] : loc;
+    const key = Object.keys(h).filter(k => k.toLowerCase() === 'location')[0];
+    const loc = key ? (Array.isArray(h[key]) ? h[key][0] : h[key]) : '';
+    if (debug) console.log('[' + i + '] ' + code + ' ' + u.slice(0, 80) + '\n    헤더: ' + Object.keys(h).join(', ') + '\n    location: ' + String(loc).slice(0, 120));
+    // 본문 안의 이동 주소(자바스크립트·meta refresh)도 확인
+    const bodyLoc = !loc && code < 300 ? (r.getContentText().match(/https?:\/\/www\.coupang\.com\/vp\/products\/\d+[^"'\s<>]*/) || [])[0] : '';
+    if (bodyLoc) return bodyLoc.replace(/&amp;/g, '&');
+    if (!loc) { console.log('단축 링크 풀기 실패: ' + u + ' — HTTP ' + code + ', 이동 주소 없음'); return u === url ? '' : u; }
+    u = loc;
     if (/www\.coupang\.com\/vp\/products\//.test(u)) return u;
   }
   return u;
+}
+
+// 단축 링크 풀기 시험 — 실행 로그에 단계별 응답이 찍힌다
+function hotdealTestResolve() {
+  const url = 'https://link.coupang.com/a/iSEdlDjtx6';
+  const fin = hdResolve_(url, true);
+  console.log('최종: ' + (fin || '(못 풀었음)') + '\n정리: ' + (hdCleanProduct_(fin) || '(상품 주소 아님)'));
 }
 
 // 상품 주소에서 상품 번호·옵션만 남기고 남의 제휴 표시(lptag·subid·traceid…)는 모두 버린다
