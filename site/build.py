@@ -2219,7 +2219,45 @@ def main():
     home_takes = _pick(week_end.isoformat())[:3]
     if len(home_takes) < 3:
         home_takes += [x for x in _pick(nxt_end.isoformat()) if x not in home_takes][:3 - len(home_takes)]
-    h = home_tpl.render(tiles=tiles, home_takes=home_takes, home_guides=home_guides, n_guides=n_guides, groups=home_groups, page_url="/", title=title, desc=desc, og=home_og, due=due, home_week=home_week, n_week=n_week,
+    # 홈 리디자인 v4 (2026-11-22 사용자 결정 — 시안 '공고 앱' 홈): 숫자 칸 3개(접수 중·이번 주 시작·발표 대기)
+    #  → 7일 띠(그날 접수 시작 수, 주말이면 다음 주) → 날짜별 카드(마감·시작, 가격은 '5.8억'). 아래 목록·표는 그대로.
+    v_w0 = wk0 + dt.timedelta(days=7) if TODAY.weekday() >= 5 else wk0
+    v_days = [(v_w0 + dt.timedelta(days=i)).isoformat() for i in range(7)]
+    n_vstart = len([x for x in live_s if v_days[0] <= x["rcpt"][0] <= v_days[-1] and x["rcpt"][0] >= t0])
+    n_wait = len([x for x in s if x["status"] == "waiting"])
+    tiles = [("t-o", "지금 접수 중", n_open, "#open" if n_open else "/schedule/this-week/", f"내일 마감 {n_t1}곳" if n_t1 else (f"오늘 마감 {n_t0}곳" if n_t0 else "마감 빠른 순")),
+             ("t-s", "다음 주 시작" if v_w0 != wk0 else "이번 주 시작", n_vstart, "#dates", f"{d(v_days[0])[:-3]}~{d(v_days[-1])[:-3]}"),
+             ("t-a", "발표 대기", n_wait, "/competition/", "경쟁률 보기 ›")]
+    def eok(v):
+        if not v:
+            return ""
+        e = v / 100_000_000
+        return (f"{e:.1f}".rstrip("0").rstrip(".") + "억") if e >= 1 else f"{v // 10000:,}만"
+    v_dates = []
+    for di in sorted({x["rcpt"][0] for x in live_s if x["rcpt"][0] >= t0} | {(x["rcpt"][1] or x["rcpt"][0]) for x in live_s if (x["rcpt"][1] or x["rcpt"][0]) >= t0}):
+        ends = [x for x in live_s if (x["rcpt"][1] or x["rcpt"][0]) == di and x["rcpt"][0] != di]
+        starts = [x for x in live_s if x["rcpt"][0] == di]
+        rows = []
+        for x in ends + starts:
+            one = (x["rcpt"][1] or x["rcpt"][0]) == x["rcpt"][0]
+            if x in ends:
+                st, cl = ("접수 중 · " + ("오늘 마감" if di == t0 else "내일 마감" if di == t1 else "마감"), "o")
+            else:
+                st, cl = ("접수 시작" + (" · 하루만" if one else ""), "s")
+            meta = " · ".join(v for v in [x["kind_label"], " ".join(v for v in [x["sido"], (x.get("sigungu") or "").split(" ")[0]] if v),
+                                          (f"{x['units']:,}{x.get('unit_word') or '세대'}" if x.get("units") else "")] if v)
+            rows.append({"n": x, "st": st, "cl": cl, "meta": meta, "pr": "" if x["is_rental"] else eok(x.get("max_price"))})
+        lab = ("오늘 · " if di == t0 else "내일 · " if di == t1 else "") + d(di)
+        v_dates.append({"iso": di, "label": lab, "ne": len(ends), "ns": len(starts), "rows": rows})
+        if len(v_dates) == 3:
+            break
+    have = {g["iso"] for g in v_dates}
+    v_week = []
+    for di in v_days:
+        c = len([x for x in live_s if x["rcpt"][0] == di])
+        v_week.append({"iso": di, "dow": "월화수목금토일"[dt.date.fromisoformat(di).weekday()], "day": int(di[8:]), "n": c,
+                       "past": di < t0, "today": di == t0, "href": f"#d-{di}" if di in have else "/schedule/this-week/"})
+    h = home_tpl.render(tiles=tiles, v_dates=v_dates, v_week=v_week, home_takes=home_takes, home_guides=home_guides, n_guides=n_guides, groups=home_groups, page_url="/", title=title, desc=desc, og=home_og, due=due, home_week=home_week, n_week=n_week,
                         week_label=f"{d(wk0.isoformat())} ~ {d(week_end.isoformat())}", t1=t1,
                         regions_used=regions_used, region_slug=regions["sido"], sido_map=sido_map, hub_quick=hub_quick, n_open=n_open, n_up=n_up,
                         tbl=home_tbl, tbl_cap=f"청약 공고 접수 중·예정 {n_open + n_up}곳 중 {len(home_tbl)}곳 — {d(TODAY.isoformat())} 기준 · 청약홈·LH·마이홈 공식 데이터", **common)

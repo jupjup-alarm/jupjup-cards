@@ -1736,3 +1736,45 @@ footer .biz{font-style:normal;line-height:1.6;opacity:.85}   /* 사업자 정보
 .v4 .dz-c,.v4 .dz-c .dz-v{text-align:left;align-items:stretch;justify-items:start}
 .v4 .dz-c .dz-k{justify-content:flex-start;align-self:flex-start}
 .v4 .dz-c .dz-m{align-self:flex-start;justify-content:flex-start}
+
+/* ===== 홈 리디자인 v4 (2026-11-22) — 숫자 칸 3개 · 7일 띠 · 날짜별 카드 ===== */
+.hm-tiles.v4 a{border-radius:16px;padding:14px 12px;gap:4px;min-height:0}
+.hm-tiles.v4 span{font-size:13px}
+.hm-tiles.v4 b{font-size:30px;letter-spacing:-.03em}
+.hm-tiles.v4 small{font-size:12px;font-weight:600;color:var(--ink-sub);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hm-tiles.v4 .t-o{background:#E8F5EE;color:#137A43}
+.hm-tiles.v4 .t-s{background:var(--blue-tint);color:var(--blue)}
+.hm-tiles.v4 .t-a{background:var(--ground);color:var(--ink)}
+.hm-tiles.v4 .t-a span{color:var(--ink-sub)}.hm-tiles.v4 .t-a small{color:var(--blue);font-weight:700}
+.hm-dates{order:2;background:var(--card);margin-inline:var(--bleed);padding:4px max(20px, env(safe-area-inset-left, 0px)) 18px}
+.hm-dt-h{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.hm-dl{margin:6px 0 8px;font-size:13px;color:var(--ink-sub)}
+.hm-strip{list-style:none;margin:0 -8px 6px;padding:0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:2px}
+.hm-strip a{display:flex;flex-direction:column;align-items:center;gap:1px;padding:8px 0 7px;border-radius:12px;text-decoration:none;color:var(--ink);min-height:var(--tap)}
+.hm-strip span{font-size:12px;font-weight:600;color:var(--ink-sub)}
+.hm-strip b{font-size:17px;font-weight:800}
+.hm-strip em{font-style:normal;font-size:12px;font-weight:700;color:var(--blue)}
+.hm-strip .z a{color:#9AA3B2}.hm-strip .z em{color:#9AA3B2}
+.hm-strip .pa a{color:#B9C0CC}
+.hm-strip .td a,.hm-strip li:first-child:not(.pa) a{background:var(--navy);color:#fff}
+.hm-strip .td span,.hm-strip li:first-child:not(.pa) span{color:#C9D0DD}
+.hm-strip .td em,.hm-strip li:first-child:not(.pa) em{color:#FF8A70}
+.hm-dg{padding-top:14px;scroll-margin-top:calc(var(--hdr, 56px) + 12px)}
+.hm-dg h3{margin:0;display:flex;justify-content:space-between;align-items:baseline;font-size:19px;font-weight:800;letter-spacing:-.03em}
+.hm-dg h3 small{font-size:13px;font-weight:600;color:var(--ink-sub);letter-spacing:0}
+.hm-dc{list-style:none;margin:4px 0 0;padding:0}
+.hm-dc li{border-bottom:1px solid var(--line)}
+.hm-dc a{display:flex;gap:12px;align-items:center;padding:13px 0;text-decoration:none;color:var(--ink)}
+.hm-dc-b{display:flex;flex-direction:column;gap:3px;min-width:0;flex:1}
+.hm-dc-b em{font-style:normal;font-size:13px;font-weight:700;display:flex;align-items:center;gap:6px}
+.hm-dc-b em::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor;flex:none}
+.hm-dc-b em.o{color:var(--coral-strong)}.hm-dc-b em.s{color:var(--blue)}
+.hm-dc-b b{font-size:16.5px;font-weight:800;letter-spacing:-.02em;line-height:1.35}
+.hm-dc-b > span{font-size:13px;color:var(--ink-sub);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hm-dc-p{display:flex;flex-direction:column;align-items:flex-end;flex:none}
+.hm-dc-p small{font-size:12px;color:var(--ink-sub)}
+.hm-dc-p b{font-size:19px;font-weight:900;letter-spacing:-.03em}
+.hm-dc-more{display:flex;align-items:center;min-height:var(--tap);font-size:14.5px;font-weight:700;color:var(--blue);text-decoration:none}
+@media (max-width:1023px){.home2 .hm-week{display:none}.home2 .hm-hero{padding-bottom:12px}}
+@media (min-width:1024px){.hm-dates{margin:16px 0 0;border-radius:var(--r-lg, 18px);padding:8px 28px 20px}.hm-strip{margin-inline:0}}
+.hm-main > .hm-dates{max-width:none}
