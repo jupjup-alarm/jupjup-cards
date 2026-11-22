@@ -3,7 +3,7 @@
  *
  * '쿠팡 가격오류·핫딜 수집기' 시트의 '필터통과' 탭에서 신규 딜을 골라
  *   쿠팡 링크를 내 파트너스 링크로 바꿔 L열에 적고 (카톡방에 올릴 때 쓰기)
- *   → 스레드에 본문(초성 후킹 3줄 + 가격 카드 그림) + 댓글("실시간 알림은 요기로!!!" + 채팅방 안내 글 인용)
+ *   → 스레드에 본문(초성 후킹 3줄 + 그림: P열 쿠팡 캡처가 있으면 그것, 없으면 가격 카드) + 댓글("실시간 알림은 요기로!!!" + 채팅방 안내 글 인용)
  *   → 결과를 같은 행 J(상태)·L(변환링크)·M(스레드URL)·N(발행시각)·O(비고)에 적는다.
  *   쿠팡 링크는 스레드에 올리지 않는다 — 카톡방으로만 유도 (사용자 결정 2026-11-22).
  *
@@ -21,6 +21,7 @@
  * 설정 (프로젝트 설정 → 스크립트 속성, 없으면 기본값):
  *   HD_DAILY_MAX 3 · HD_GAP_MIN 90 · HD_HOURS 8-23 · HD_MAX_AGE_H 12 · HD_SUB_ID threads01
  *   HD_CHAT_POST 채팅방 안내 글 주소 (기본: 사용자가 준 share 링크) · HD_AD_TAG (광고) (off면 뺌)
+ *   HD_WAIT_CAPTURE_MIN 20 (P열 캡처를 기다리는 시간, 0이면 안 기다림)
  *   HD_HOOK_SOURCES 지금할인  (제목이 상품명이 아니라 홍보 문구인 출처 — 본문전체(K)가 없으면 보류)
  *
  * 주의: 기존 메뉴 '자동 실행 켜기'(installTriggers)는 모든 트리거를 지우고 다시 만든다.
@@ -30,8 +31,8 @@
 const HD_SHEET_ID = '13-ecoze8qCHs0rcBNWfer9feg7CU-cfVYDEUzA9t5d0';
 const HD_TAB = '필터통과';
 const HD = { at: 1, src: 2, title: 3, price: 4, kw: 5, score: 6, urls: 7, orig: 8, draft: 9, status: 10, body: 11,
-  link: 12, thread: 13, postedAt: 14, note: 15 };
-const HD_HEAD = ['변환링크', '스레드URL', '발행시각', '비고(에러)'];
+  link: 12, thread: 13, postedAt: 14, note: 15, cap: 16 };
+const HD_HEAD = ['변환링크', '스레드URL', '발행시각', '비고(에러)', '캡처'];   // P열 '캡처'는 PC의 ego lite 캡처기가 채움
 const HD_DISCLOSURE = '이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.';
 const HD_CACHE_DAYS = 7;
 const HD_STALE_MIN = 10;
@@ -48,7 +49,7 @@ function hotdealCheck() {
   try { const id = hdChatPostId_(); out.push('채팅방 글(2/3 인용): ' + (id ? '찾음 ' + id : '꺼짐')); } catch (e) { out.push('채팅방 글 못 찾음: ' + e.message); }
   try {
     const sh = hdSheet_();
-    const head = sh.getRange(1, 1, 1, HD.note).getDisplayValues()[0];
+    const head = sh.getRange(1, 1, 1, HD.cap).getDisplayValues()[0];
     out.push('시트: ' + HD_TAB + ' ' + (sh.getLastRow() - 1) + '행, A~K 헤더 ' + (head[HD.urls - 1] === '쿠팡URL(전체)' && head[HD.status - 1] === '상태' ? '정상' : '다름!'));
     out.push('L~O 헤더: ' + (head.slice(HD.link - 1).join('') ? head.slice(HD.link - 1).join(' / ') : '비어 있음 (첫 발행 때 채움)'));
     const counts = {};
@@ -87,7 +88,7 @@ function hdRun_(o) {
     const sh = hdSheet_();
     const last = sh.getLastRow();
     if (last < 2) { hdLog_('필터통과 탭이 비어 있음'); return; }
-    const rows = sh.getRange(2, 1, last - 1, HD.note).getDisplayValues();
+    const rows = sh.getRange(2, 1, last - 1, HD.cap).getDisplayValues();
     const now = new Date();
     const today = Utilities.formatDate(now, TZ, 'yyyy-MM-dd');
 
@@ -168,6 +169,9 @@ function hdPick_(rows, now) {
     } else if (st !== '신규' && st !== '대기') return;
     const at = hdParse_(r[HD.at - 1]);
     if (st !== '대기' && at && (now - at) / 3600000 > maxAge) return;   // 사람이 '대기'로 돌린 건 나이 무시
+    // PC 캡처기가 P열을 채울 때까지 잠깐 기다림 (P열이 비어 있고 들어온 지 HD_WAIT_CAPTURE_MIN 분 안이면 다음 차례로)
+    const wait = hdNum_('HD_WAIT_CAPTURE_MIN', 20);
+    if (wait > 0 && !String(r[HD.cap - 1]).trim() && at && (now - at) / 60000 < wait) return;
     c.push({ row: i + 2, v: r, recover: recover, score: Number(r[HD.score - 1]) || 0, at: at ? at.getTime() : 0 });
   });
   c.sort((a, b) => b.score - a.score || b.at - a.at);
@@ -201,7 +205,9 @@ function hdOne_(sh, row, v, recover, dry) {
 
   // 4) 가격 카드 그림
   let card = null;
-  try { card = hdCard_(v, row); lines.push('가격 카드: ' + card.url + (dry ? '\n  (30분 동안 열어볼 수 있음)' : '')); }
+  const cap = String(v[HD.cap - 1] || '').trim();
+  if (/^https:\/\/\S+\.(png|jpe?g)(\?\S*)?$/i.test(cap)) { card = { url: cap, external: true }; lines.push('쿠팡 캡처: ' + cap); }
+  else try { card = hdCard_(v, row); lines.push('가격 카드: ' + card.url + (dry ? '\n  (30분 동안 열어볼 수 있음)' : '') + (cap ? '  [캡처 없음: ' + cap + ']' : '')); }
   catch (e) { notes.push('카드 실패'); lines.push('가격 카드 실패: ' + e.message + ' → 글만 올림'); console.error('카드 실패: ' + e.stack); }
 
   lines.push(checks.map(c => (c.ok ? 'PASS ' : 'FAIL ') + c.name).join(' · '));
@@ -592,6 +598,7 @@ function hdThumb_(deckId, slideId) {
 }
 
 function hdCardDrop_(card) {
+  if (card.external) return;
   try { const s = SlidesApp.openById(card.deck).getSlideById(card.slide); if (s) s.remove(); } catch (e) {}
 }
 
@@ -612,7 +619,7 @@ function hdDot_(sl, cx, cy, size, color) {
 // 가격 카드만 시험 — 신규 첫 행으로 그려 주소를 로그에 (30분 동안 열림)
 function hotdealTestCard() {
   const sh = hdSheet_();
-  const rows = sh.getRange(2, 1, sh.getLastRow() - 1, HD.note).getDisplayValues();
+  const rows = sh.getRange(2, 1, sh.getLastRow() - 1, HD.cap).getDisplayValues();
   const i = rows.findIndex(r => !hdHoldReason_(r));
   const c = hdCard_(rows[i], i + 2);
   console.log('행 ' + (i + 2) + ' 가격 카드: ' + c.url);
@@ -672,7 +679,8 @@ function hdSheet_() {
 
 function hdEnsureHeader_(sh) {
   const r = sh.getRange(1, HD.link, 1, HD_HEAD.length);
-  if (!r.getDisplayValues()[0].join('')) r.setValues([HD_HEAD]);
+  const cur = r.getDisplayValues()[0];
+  if (cur.some((x, i) => !x && HD_HEAD[i])) r.setValues([cur.map((x, i) => x || HD_HEAD[i])]);
 }
 
 // A~K는 수집기 것 — 상태(J)와 L~O만 쓴다. 날짜는 시트가 바꾸지 않게 글자로.
