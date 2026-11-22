@@ -14,11 +14,12 @@ DIR = Path(__file__).resolve().parent / "data" / "analysis" / "posts"
 LOCK = DIR.parent / "lock.json"   # 발행본 해시 — 새 글은 처음 빌드 때 자동으로 잠김
 
 
-def load():
+def load(today=None):
+    """published가 오늘보다 뒤면 아직 숨김 (예약 공개 — 2026-11-22 사용자 결정 '하루 2개씩 공개')."""
     out = []
     for p in sorted(DIR.glob("*.json")) if DIR.exists() else []:
         g = json.loads(p.read_text())
-        if g.get("draft"):
+        if g.get("draft") or (today and g["published"] > str(today)):
             continue
         g["url"] = f"/analysis/{g['slug']}/"
         for s in g.get("sections", []):
@@ -32,6 +33,8 @@ def load():
     lock = json.loads(LOCK.read_text()) if LOCK.exists() else {}
     changed = False
     for p in sorted(DIR.glob("*.json")) if DIR.exists() else []:
+        if today and json.loads(p.read_text()).get("published", "") > str(today):
+            continue   # 예약 글은 공개되는 날 잠금
         h = hashlib.sha256(p.read_bytes()).hexdigest()[:16]
         if p.stem not in lock:
             lock[p.stem] = h; changed = True
@@ -43,7 +46,7 @@ def load():
 
 
 def build(E, write, common, today):
-    posts = load()
+    posts = load(today)
     if not posts:
         return []
     tpl = E.get_template("analysis.html")

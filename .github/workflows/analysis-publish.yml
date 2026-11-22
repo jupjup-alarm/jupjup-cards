@@ -1,0 +1,45 @@
+# 줍줍 분석 글 예약 공개 (2026-11-22 사용자 결정 "내일부터 하루에 2개씩 공개")
+# site/data/analysis/posts/*.json 의 published 가 오늘(KST)인 글이 있을 때만 00:05 KST에 사이트를 다시 빌드해 올린다.
+# ⑦(08:20) 전이라 겹치지 않음. 글이 없는 날은 아무것도 하지 않는다.
+name: analysis-publish
+on:
+  schedule:
+    - cron: "5 15 * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: site-build
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            site
+            fonts
+            photos
+            maps
+            pamphlets
+      - name: today?
+        id: chk
+        run: |
+          T=$(TZ=Asia/Seoul date +%F)
+          if grep -l "\"published\": \"$T\"" site/data/analysis/posts/*.json; then echo "go=1" >> $GITHUB_OUTPUT; else echo "오늘 공개할 글 없음"; fi
+      - if: steps.chk.outputs.go == '1'
+        run: pip install -q jinja2 pillow markdown
+      - if: steps.chk.outputs.go == '1'
+        name: build
+        run: TZ=Asia/Seoul python3 site/build.py --today $(TZ=Asia/Seoul date +%F) | tail -3
+      - if: steps.chk.outputs.go == '1'
+        name: commit
+        run: |
+          git config user.name "jupjup-bot"
+          git config user.email "bot@jupjupalarm.com"
+          git add site/public site/build-report.json site/data/analysis/lock.json
+          git diff --cached --quiet && exit 0
+          git commit -m "site: 줍줍 분석 예약 공개 $(TZ=Asia/Seoul date +%F)"
+          for i in 1 2 3; do git pull --rebase origin main && git push origin HEAD:main && exit 0; sleep 15; done
+          exit 1
