@@ -1,0 +1,58 @@
+{
+ "slug": "2026-11-23-suseo-happyhouse-reel",
+ "title": "서울 수서·삼전·천호 행복주택 예비입주자 390호",
+ "series": "임대알람",
+ "style": "story",
+ "voice": "voices/11e5bab44ddd/",
+ "voice_speed": 1.0,
+ "bgm": "music/beat-one.mp3",
+ "thumb": {"lines": ["주변보다 39만원 싸게", "강남 월 17만원대부터"]},
+ "pool": [
+  {"img": "photos/site/lh2015122300021098/birdseye-a2.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음"},
+  {"img": "photos/site/lh2015122300021098/birdseye-a2-2.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음"},
+  {"img": "photos/site/lh2015122300021098/birdseye-a1.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음"},
+  {"img": "photos/site/lh2015122300021098/birdseye-b1.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음"},
+  {"img": "photos/site/lh2015122300021098/birdseye-b1-2.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음"}
+ ],
+ "scenes": [
+  {"type": "story",
+   "say": "강남 수서에 월세 39만 원 싼 집이 나왔대요. 무려 390호래요.",
+   "word": "39만 원",
+   "shots": [
+    {"img": "photos/site/lh2015122300021098/birdseye-a2.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음", "pos": "center 45%"},
+    {"img": "photos/site/lh2015122300021098/birdseye-a2-2.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음", "pos": "center 50%"}
+   ],
+   "proof": {"kind": "compare", "head": "월세 비교 (추정)",
+    "items": [{"label": "이 단지 14A 대학생", "value": "월 17만2,550원"},
+              {"label": "옆 강남 푸르지오시티2차 오피스텔 22.44㎡ 월세 실거래", "value": "월 56만원"}],
+    "src": "국토부 실거래 2026.11 · 추정"}
+  },
+  {"type": "story",
+   "say": "심지어, 월세가 17만 원대부터래요. 옆 오피스텔은 월 56만 원이고요.",
+   "word": "17만 원대",
+   "shots": [
+    {"img": "photos/site/lh2015122300021098/birdseye-b1-2.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음", "pos": "center 40%"},
+    {"img": "photos/site/lh2015122300021098/birdseye-a1.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음", "pos": "center 45%"}
+   ],
+   "proof": {"kind": "image", "img": "photos/site/lh2015122300021098/interior-a1-14a.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음"}
+  },
+  {"type": "story",
+   "say": "이게 어떻게 가능할까요?",
+   "dim": true,
+   "shots": [
+    {"img": "photos/site/lh2015122300021098/birdseye-b1.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음", "pos": "center 40%"}
+   ]
+  },
+  {"type": "story",
+   "say": "LH 행복주택 예비입주자 모집이거든요. 대학생이랑 청년, 신혼부부면 넣을 수 있고, 접수는 11월 30일부터래요.",
+   "word": "11월 30일",
+   "shots": [
+    {"img": "photos/site/lh2015122300021098/birdseye-a2.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음", "pos": "25% 55%"},
+    {"img": "photos/site/lh2015122300021098/birdseye-a1.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음", "pos": "70% 40%"}
+   ],
+   "proof": {"kind": "image", "img": "photos/site/lh2015122300021098/notice-schedule.jpg", "credit": "자료: LH 입주자모집공고(2026.11.19)"}
+  },
+  {"type": "end",
+   "say": "그래서 주변보다 39만 원 싼 거예요. 자세한 공고 정리는, 프로필에서 링크를 확인해주세요."}
+ ]
+}
