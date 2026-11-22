@@ -496,10 +496,14 @@ const h=location.hash.slice(1);if(cats.some(c=>c.dataset.cat===h)){cur=h}apply(f
 """
 
 
-def page(title, desc, path, body, index=True, jsonld=None, og_image=None, search=False):
+def page(title, desc, path, body, index=True, jsonld=None, og_image=None, search=False, og_title=None, og_alt=None):
     robots = "index,follow" if index else "noindex,follow"
     ld = "".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>' for x in (jsonld or []))
-    og = f'<meta property="og:image" content="{SITE}{og_image}"><meta name="twitter:card" content="summary_large_image">' if og_image else ""
+    ot = og_title or title
+    # 2026-11-22: 공유 썸네일 크기·대체 글·트위터(X)·카카오톡 미리보기용 태그 보강
+    og = (f'<meta property="og:image" content="{SITE}{og_image}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">'
+          f'<meta property="og:image:alt" content="{e(og_alt or ot)}"><meta name="twitter:card" content="summary_large_image">'
+          f'<meta name="twitter:title" content="{e(ot)}"><meta name="twitter:description" content="{e(desc)}"><meta name="twitter:image" content="{SITE}{og_image}">') if og_image else ""
     sbox = ('<form class="search" id="qf" role="search"><input id="q" type="search" placeholder="숙소 이름·지역 찾기 (예: 가평, 온천)" '
             f'aria-label="숙소 찾기" autocomplete="off"><button class="go" aria-label="찾기">{icon("magnifying-glass")}</button></form>') if search else '<div style="flex:1"></div>'
     return f"""<!doctype html><html lang="ko"><head><meta charset="utf-8">
@@ -507,10 +511,10 @@ def page(title, desc, path, body, index=True, jsonld=None, og_image=None, search
 <title>{e(title)}</title><meta name="description" content="{e(desc)}">
 <meta name="robots" content="{robots}"><link rel="canonical" href="{SITE}{path}">
 <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#181818" media="(prefers-color-scheme: dark)">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preload" href="/fonts/p700.woff2" as="font" type="font/woff2" crossorigin>
 <meta property="og:type" content="website"><meta property="og:site_name" content="투키즈노트"><meta property="og:locale" content="ko_KR">
-<meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}"><meta property="og:url" content="{SITE}{path}">{og}
+<meta property="og:title" content="{e(ot)}"><meta property="og:description" content="{e(desc)}"><meta property="og:url" content="{SITE}{path}">{og}
 <style>{CSS}</style>{ld}</head><body>
 <a class="skip" href="#main">본문으로 건너뛰기</a>
 <div class="ad">네이버 여행 커넥트·쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</div>
@@ -762,6 +766,55 @@ def og_image(st):
     im.crop((l, t, l + W, t + H)).save(dst, "JPEG", quality=82, optimize=True)
 
 
+HOME_OG_PICK = ["icoco-kids-family-poolvilla-yangpyeong", "deokgu-onsen-resort-uljin", "armond-kids-hotel-gimhae", "jw-marriott-jeju"]  # 공유 썸네일 2×2 (물놀이·온천·키즈룸·제주) — 없으면 앞에서부터 채움
+
+
+def home_og(stays, n):
+    """홈 공유 썸네일 1200×630 (2026-11-22 사용자 요청): 왼쪽 로고·제목·숙소 수, 오른쪽 숙소 사진 2×2. 매 빌드 다시 만듦."""
+    from PIL import Image, ImageDraw, ImageFont
+    W, H = 1200, 630
+    FONTS = HERE.parent.parent / "fonts"
+    f = lambda name, size: ImageFont.truetype(str(FONTS / name), size)
+    im = Image.new("RGB", (W, H), "#F7F6F3")
+    d = ImageDraw.Draw(im)
+    by = {s["slug"]: s for s in stays if s["media"]["photos"]}
+    pick = [by[x] for x in HOME_OG_PICK if x in by]
+    pick += [s for s in stays if s["media"]["photos"] and s not in pick][:4 - len(pick)]
+    x0, y0, cw, ch, g = 600, 36, 280, 272, 14
+    for i, st in enumerate(pick[:4]):
+        ph = Image.open(MEDIA / st["slug"] / st["media"]["photos"][0]["src"]).convert("RGB")
+        sc = max(cw / ph.width, ch / ph.height)
+        ph = ph.resize((round(ph.width * sc), round(ph.height * sc)), Image.LANCZOS)
+        l, t = (ph.width - cw) // 2, (ph.height - ch) // 2
+        ph = ph.crop((l, t, l + cw, t + ch))
+        m = Image.new("L", (cw, ch), 0)
+        ImageDraw.Draw(m).rounded_rectangle((0, 0, cw - 1, ch - 1), 22, fill=255)
+        im.paste(ph, (x0 + (i % 2) * (cw + g), y0 + (i // 2) * (ch + g)), m)
+    # 로고 (파비콘 모양) + 이름
+    d.rounded_rectangle((64, 64, 120, 120), 14, fill="#D4512F")
+    d.ellipse((76, 79, 94, 97), fill="#FFFFFF"); d.ellipse((90, 79, 108, 97), fill="#F2B8A6")
+    d.arc((73, 98, 95, 118), 200, 340, fill="#FFFFFF", width=4); d.arc((89, 98, 111, 118), 200, 340, fill="#FFFFFF", width=4)
+    d.text((136, 92), "투키즈노트", font=f("Pretendard-Bold.otf", 36), fill="#222222", anchor="lm")
+    d.text((64, 246), "아이랑 숙소,", font=f("Pretendard-Black.otf", 66), fill="#222222", anchor="ls")
+    d.text((64, 330), "넷이서 1박 가격까지", font=f("Pretendard-Black.otf", 66), fill="#D4512F", anchor="ls")
+    d.text((64, 400), "키즈풀빌라 · 키즈룸 · 온천 · 눈썰매", font=f("Pretendard-SemiBold.otf", 28), fill="#6A6A6A", anchor="ls")
+    d.text((64, 442), "만 5세 쌍둥이 4인 가족 기준으로 정리", font=f("Pretendard-SemiBold.otf", 28), fill="#6A6A6A", anchor="ls")
+    d.rounded_rectangle((64, 506, 64 + 250, 566), 30, fill="#222222")
+    d.text((64 + 125, 536), f"숙소 {n}곳 보기", font=f("Pretendard-Bold.otf", 28), fill="#FFFFFF", anchor="mm")
+    im.save(OUT / "og.jpg", "JPEG", quality=86, optimize=True)
+
+
+def touch_icon():
+    """홈 화면 추가·카톡 링크용 180×180 PNG (파비콘과 같은 모양)."""
+    from PIL import Image, ImageDraw
+    k = 4; S = 180 * k
+    im = Image.new("RGB", (S, S), "#D4512F"); d = ImageDraw.Draw(im)
+    u = S / 32
+    d.ellipse((7 * u, 9 * u, 17 * u, 19 * u), fill="#FFFFFF"); d.ellipse((15 * u, 9 * u, 25 * u, 19 * u), fill="#F2B8A6")
+    d.arc((5 * u, 20 * u, 19 * u, 30 * u), 200, 340, fill="#FFFFFF", width=round(2 * u)); d.arc((13 * u, 20 * u, 27 * u, 30 * u), 200, 340, fill="#FFFFFF", width=round(2 * u))
+    im.resize((180, 180), Image.LANCZOS).save(OUT / "apple-touch-icon.png")
+
+
 def main():
     import shutil
     stays, errors = load()
@@ -803,10 +856,12 @@ def main():
     ld = [{"@context": "https://schema.org", "@type": "WebSite", "name": "투키즈노트", "url": SITE + "/"},
           {"@context": "https://schema.org", "@type": "ItemList", "itemListElement": [
               {"@type": "ListItem", "position": i + 1, "url": f"{SITE}/stay/{s['slug']}/"} for i, s in enumerate(indexed)]}]
-    first = next((s for s in stays if s["media"]["photos"]), None)
-    write("/", page("투키즈노트 | 쌍둥이 엄마가 정리한 아이랑 숙소",
-                    "만 5세 쌍둥이 4인 가족 기준으로 정리한 아이랑 숙소. 넷이서 실제 1박 가격·물놀이·키즈룸·온천 테마별로.",
-                    "/", home(stays), True, ld, og_image=murl(first, "og.jpg") if first else None, search=True).replace("{cats}", cats_bar()))
+    home_og(stays, len(stays))   # 2026-11-22 사용자 요청: 홈 공유 썸네일 (숙소 한 곳 사진 대신 브랜드 + 사진 4장)
+    write("/", page("아이랑 숙소 추천 · 키즈풀빌라·키즈룸·온천 | 투키즈노트",
+                    f"아이랑 가기 좋은 숙소 {len(stays)}곳을 만 5세 쌍둥이 4인 가족 기준으로 정리했어요. 넷이서 실제 1박 가격과 물놀이·키즈룸·온천·눈썰매 테마별로 골라 보세요.",
+                    "/", home(stays), True, ld, og_image="/og.jpg", search=True,
+                    og_title="투키즈노트 | 쌍둥이 엄마가 정리한 아이랑 숙소",
+                    og_alt=f"투키즈노트 — 아이랑 숙소 {len(stays)}곳, 넷이서 1박 가격까지").replace("{cats}", cats_bar()))
     write("/about/", page("투키즈노트가 숙소를 고르고 정리하는 기준", "누가 어떤 기준으로 숙소를 고르고 가격을 확인하는지.", "/about/",
                           ABOUT).replace("{cats}", ""))
     write("/404.html", page("페이지를 찾을 수 없어요 | 투키즈노트", "주소가 바뀌었거나 없는 페이지예요.", "/404.html",
@@ -817,6 +872,7 @@ def main():
     if warn:
         warns.append(warn)
     (OUT / "favicon.svg").write_text(FAVICON)
+    touch_icon()
     (OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n")
     urls = [("/", TODAY.isoformat()), ("/about/", TODAY.isoformat())] + [(f"/stay/{s['slug']}/", s["price_date"]) for s in indexed]
     (OUT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
