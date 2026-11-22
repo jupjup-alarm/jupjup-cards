@@ -75,7 +75,7 @@
 {% endmacro %}
 
 {# 2026-11-22 사용자 결정: 공고 중간 쿠팡 다이나믹 배너(아무 상품) 대신 공고 종류에 맞는 '입주 준비물' 상품 카드.
-   상품은 투키즈노트 서버(GOODS_API)가 쿠팡 파트너스 검색으로 하루 한 번 고른 것(subId jupjupGoods). 불러오지 못하면 카드째 숨김.
+   상품은 투키즈노트 서버(GOODS_API)가 쿠팡 파트너스 검색으로 하루 한 번 고른 것(subId jupjupHome). 불러오지 못하면 카드째 숨김.
    클릭은 GA cp_goods_click(kw, product_id, kind). #}
 {% macro goods_card(n) %}{% set k = 'rent' if n.is_rental else 'sale' %}
 <section class="sec goods" data-goods="{{ k }}" data-api="{{ GOODS_API }}" aria-labelledby="h-goods" hidden>

@@ -63,9 +63,10 @@ COUPANG = {
 }
 # 2026-11-22 사용자 결정: ① 쿠팡 배너 자리마다 subId를 따로(쿠팡 리포트에서 자리별 성과 구분, 영문·숫자만)
 # ② 공고 상세 모바일 위쪽 쿠팡 띠 2곳(apt_nav_mo·apt_top_mo)은 빼고 그 자리에 비즈보드형 아정당 배너(macros.bizboard)
-# ③ 공고 중간(apt_mo)은 다이나믹 배너 대신 '입주 준비물' 상품 카드(macros.goods_card — subId jupjupGoods, 투키즈노트 서버 /jj/goods.json)
-# subId(쿠팡 채널 아이디) 규칙: 영문 대소문자·숫자만 8~20자 (2026-11-22 사용자 확인)
-CP_SUBID = {"pc": "jupjupPc", "home": "jupjupHome", "home_mo": "jupjupHomeMo", "home_end_mo": "jupjupHomeEnd", "apt_mo": "jupjupAptMid", "apt_end_mo": "jupjupAptEnd", "cp_square": "jupjupCpPage"}
+# ③ 공고 중간(apt_mo)은 다이나믹 배너 대신 '입주 준비물' 상품 카드(macros.goods_card — subId jupjupHome, 투키즈노트 서버 /jj/goods.json)
+# subId(쿠팡 채널 아이디) 규칙: 영문 대소문자·숫자만 8~20자, 쿠팡 파트너스에서 먼저 만든 채널만 (2026-11-22 사용자 확인)
+CP_SUBID = {"pc": "jupjupPc", "home": "jupjupPc", "cp_square": "jupjupPc", "home_mo": "jjhomemo", "home_end_mo": "jjhomeend", "apt_end_mo": "jjaptend", "apt_mo": "jjaptend"}
+# 쿠팡 채널은 계정당 최대 10개라 쿠팡 파트너스에 이미 만든 것만 씀 (2026-11-22): PC·홈 PC·/cp/ = jupjupPc, 입주 준비물 카드 = jupjupHome(투키즈노트 서버 /jj/goods.json)
 assert all(re.fullmatch(r"[A-Za-z0-9]{8,20}", v) for v in CP_SUBID.values())
 for _k in ("apt_nav_mo", "apt_top_mo"):
     COUPANG.pop(_k, None)
