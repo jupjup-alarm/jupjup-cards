@@ -1,0 +1,18 @@
+{
+ "slug": "2026-11-22-sosa-humanvill-reel",
+ "duration": 33.05,
+ "voiced": true,
+ "narration_s": 29.3,
+ "mean_db": -18.3,
+ "voice": "voices/0d06be6852a6/",
+ "video": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-22-sosa-humanvill-reel/2026-11-22-sosa-humanvill-reel.mp4",
+ "cover": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-22-sosa-humanvill-reel/2026-11-22-sosa-humanvill-reel_thumb.jpg",
+ "size_mb": 11.11,
+ "warnings": [
+  "확대(Real-ESRGAN x4): 3장 — birdseye-1.jpg, birdseye-2.jpg, birdseye-3.jpg",
+  "호흡: 장면 4 대본에 없는 곳에서 0.27초 쉼 (③ 대본 쉼표 위치 확인)",
+  "사진: 컷 14개 · 서로 다른 사진 4장",
+  "사진 반복: birdseye-2-x4.jpg 4번 — 단지 그림을 shots·pool에 더 넣을 것",
+  "사진 반복: birdseye-1-x4.jpg 4번 — 단지 그림을 shots·pool에 더 넣을 것"
+ ]
+}
