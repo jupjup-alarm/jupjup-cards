@@ -2,22 +2,25 @@
  * 특가반장 핫딜 발행기 (2026-11-22)
  *
  * '쿠팡 가격오류·핫딜 수집기' 시트의 '필터통과' 탭에서 신규 딜을 골라
- *   쿠팡 링크를 내 파트너스 링크로 바꾸고 → 스레드에 본문 + 첫 댓글(링크·대가성 문구)로 올리고
+ *   쿠팡 링크를 내 파트너스 링크로 바꿔 L열에 적고 (카톡방에 올릴 때 쓰기)
+ *   → 스레드에 본문(초성 후킹 3줄 + 가격 카드 그림) + 댓글("실시간 알림은 요기로!!!" + 채팅방 안내 글 인용)
  *   → 결과를 같은 행 J(상태)·L(변환링크)·M(스레드URL)·N(발행시각)·O(비고)에 적는다.
+ *   쿠팡 링크는 스레드에 올리지 않는다 — 카톡방으로만 유도 (사용자 결정 2026-11-22).
  *
- * 설치: 오싹알람(=특가반장) 운영시트의 Apps Script 프로젝트에 '파일 +' → 스크립트 → 이름 Hotdeal → 이 내용 붙여넣기 → 저장.
- *   쿠팡 키(CP_ACCESS·CP_SECRET)와 스레드 토큰(TH_TOKEN)은 이 프로젝트에 이미 있는 것을 그대로 쓴다.
- *   토큰 갱신도 기존 매주 월요일 refreshTokens 가 맡는다.
+ * 설치: 운영시트(구 오싹알람)의 Apps Script 프로젝트에 '파일 +' → 스크립트 → 이름 Hotdeal → 이 내용 붙여넣기 → 저장.
+ *   왼쪽 '서비스 +' → Google Slides API(식별자 Slides) 추가 (가격 카드 그림용).
+ *   쿠팡 키(CP_ACCESS·CP_SECRET)와 스레드 토큰(TH_TOKEN)은 이 프로젝트에 이미 있는 것을 쓴다. 토큰 갱신은 기존 refreshTokens.
  *
  * 실행 (Apps Script 편집기 위쪽 함수 선택 → 실행):
- *   hotdealCheck      연결 점검 (키·토큰·시트·발행 잔량) — 처음 한 번
- *   hotdealPreview    미리보기: 링크 변환 + 글 만들기까지만. 발행·시트 쓰기 없음. 결과는 실행 로그에.
+ *   hotdealCheck      연결 점검 (키·토큰·시트·발행 잔량·채팅방 글) — 처음 한 번
+ *   hotdealTestCard   가격 카드 그림만 한 장 그려 주소를 로그에 (30분 동안 열림)
+ *   hotdealPreview    미리보기: 링크 변환 + 글·카드 만들기까지만. 발행·시트 쓰기 없음.
  *   hotdealPublishOne 지금 1건 실제 발행 (시간대·하루 한도·간격 검사는 건너뜀)
- *   hotdealAutoOn     30분마다 자동 발행 켜기 (하루 한도·간격·시간대 지킴)
- *   hotdealAutoOff    자동 발행 끄기
+ *   hotdealAutoOn     30분마다 자동 발행 켜기 (하루 한도·간격·시간대 지킴) / hotdealAutoOff 끄기
  *
  * 설정 (프로젝트 설정 → 스크립트 속성, 없으면 기본값):
  *   HD_DAILY_MAX 3 · HD_GAP_MIN 90 · HD_HOURS 8-23 · HD_MAX_AGE_H 12 · HD_SUB_ID threads01
+ *   HD_CHAT_POST 채팅방 안내 글 주소 (기본: 사용자가 준 share 링크) · HD_AD_TAG (광고) (off면 뺌)
  *   HD_HOOK_SOURCES 지금할인  (제목이 상품명이 아니라 홍보 문구인 출처 — 본문전체(K)가 없으면 보류)
  *
  * 주의: 기존 메뉴 '자동 실행 켜기'(installTriggers)는 모든 트리거를 지우고 다시 만든다.
@@ -188,23 +191,33 @@ function hdOne_(sh, row, v, recover, dry) {
   if (!conv.pairs.length) return hdFail_(sh, row, dry, lines, '쿠팡 링크 없음', notes);
   if (conv.rateLimited) return hdFail_(sh, row, dry, lines, '쿠팡 API 429', notes);
 
-  // 3) 글 만들기 + 검사
-  const post = hdCompose_(v, conv.pairs.map(p => p.to));
-  const checks = hdCheck_(post);
-  lines.push('── 본문 (' + post.main.length + '자) ──\n' + post.main);
+  // 3) 글 만들기 + 검사 (2026-11-22: 쿠팡 링크는 스레드에 올리지 않음 — 카톡방으로만 유도. 변환 링크는 L열에)
+  const post = hdCompose_(v);
   let chatId = '';
   try { chatId = hdChatPostId_(); } catch (e) { notes.push('채팅방 글 못 찾음'); console.log('채팅방 글: ' + e.message); }
-  lines.push('── 2/3 댓글 ──\n' + (chatId ? post.quote + '  [인용: 글 ' + chatId + ']' : '(채팅방 글 없음 — 건너뜀)'));
-  lines.push('── 3/3 댓글 (' + post.reply.length + '자) ──\n' + post.reply);
+  const checks = hdCheck_(post).concat([{ name: '채팅방 글 찾음', ok: !!chatId }]);
+  lines.push('── 1/2 본문 (' + post.main.length + '자) ──\n' + post.main);
+  lines.push('── 2/2 댓글 ──\n' + post.quote + (chatId ? '  [인용: 글 ' + chatId + ']' : ''));
+
+  // 4) 가격 카드 그림
+  let card = null;
+  try { card = hdCard_(v, row); lines.push('가격 카드: ' + card.url + (dry ? '\n  (30분 동안 열어볼 수 있음)' : '')); }
+  catch (e) { notes.push('카드 실패'); lines.push('가격 카드 실패: ' + e.message + ' → 글만 올림'); console.error('카드 실패: ' + e.stack); }
+
   lines.push(checks.map(c => (c.ok ? 'PASS ' : 'FAIL ') + c.name).join(' · '));
   const bad = checks.filter(c => !c.ok);
-  if (bad.length) return hdFail_(sh, row, dry, lines, bad[0].name, notes);
+  if (bad.length) { if (card) hdCardDrop_(card); return hdFail_(sh, row, dry, lines, bad[0].name, notes); }
   if (dry) { lines.push('(미리보기 — 발행 안 함)' + (notes.length ? ' 비고: ' + notes.join(' · ') : '')); return lines.join('\n'); }
 
-  // 4) 발행 — 본문
+  // 5) 발행 — 본문(+카드)
   let main;
-  try { main = hdPostText_(post.main, null); }
-  catch (e) { console.error('행 ' + row + ' 본문 발행 실패: ' + e.message); return hdFail_(sh, row, dry, lines, '본문 발행 실패', notes.concat([e.message])); }
+  try { main = hdPostText_(post.main, null, card ? { media_type: 'IMAGE', image_url: card.url } : null); }
+  catch (e) {
+    if (!card) { console.error('행 ' + row + ' 본문 발행 실패: ' + e.message); return hdFail_(sh, row, dry, lines, '본문 발행 실패', notes.concat([e.message])); }
+    console.error('카드 붙여 올리기 실패 → 글만: ' + e.message); notes.push('카드 업로드 실패');
+    try { main = hdPostText_(post.main, null); }
+    catch (e2) { return hdFail_(sh, row, dry, lines, '본문 발행 실패', notes.concat([e2.message])); }
+  } finally { if (card) hdCardDrop_(card); }
   const at = hdStamp_(new Date());
   try { hdWrite_(sh, row, { thread: main.link || main.id, postedAt: at }); }
   catch (e) {   // 올라갔는데 시트에 못 적음 → 절대 재발행하지 않게 크게 남김
@@ -214,32 +227,26 @@ function hdOne_(sh, row, v, recover, dry) {
   }
   lines.push('본문 발행: ' + (main.link || main.id));
 
-  // 5) 첫 댓글
+  // 6) 댓글 — 채팅방 글 인용
   try {
-    let parent = main.id;
-    if (chatId) {
-      try { parent = hdPostText_(post.quote, main.id, { quote_post_id: chatId }).id; lines.push('2/3 인용 댓글 발행'); }
-      catch (e) { notes.push('인용 댓글 실패'); console.error('행 ' + row + ' 인용 댓글 실패: ' + e.message); }
-    }
-    const rep = hdPostText_(post.reply, parent);
-    lines.push('첫 댓글: ' + rep.id);
+    const rep = hdPostText_(post.quote, main.id, { quote_post_id: chatId });
+    lines.push('인용 댓글: ' + rep.id);
     hdWrite_(sh, row, { status: '발행완료', note: hdShort_(notes.join(' · ')) });
   } catch (e) {
     console.error('행 ' + row + ' 댓글 실패: ' + e.message);
     hdWrite_(sh, row, { status: '실패: 댓글 발행 실패', note: hdShort_('본문만 발행됨 · ' + e.message) });
-    lines.push('첫 댓글 실패: ' + e.message + ' (다음 실행 때 댓글만 다시)');
+    lines.push('댓글 실패: ' + e.message + ' (다음 실행 때 댓글만 다시)');
   }
   return lines.join('\n');
 }
 
 function hdRetryReply_(sh, row, v) {
-  const pairs = String(v[HD.link - 1]).split('\n').map(s => s.split(' → ')[1]).filter(Boolean);
-  const post = hdCompose_(v, pairs);
+  const post = hdCompose_(v);
   const id = String(v[HD.thread - 1]).split('/').pop();
   const real = /^\d+$/.test(id) ? id : hdFindPostId_(v[HD.thread - 1]);
   if (!real) { hdWrite_(sh, row, { status: '실패: 댓글 재시도 불가', note: '글 ID를 못 찾음 — 손으로 댓글' }); return; }
   try {
-    hdPostText_(post.reply, real);
+    hdPostText_(post.quote, real, { quote_post_id: hdChatPostId_() });
     hdWrite_(sh, row, { status: '발행완료', note: '댓글 재시도 성공' });
     hdLog_('행 ' + row + ' 댓글만 다시 달음');
   } catch (e) {
@@ -408,11 +415,11 @@ function hdHash_(s) {
 }
 
 /* ───────── 글 만들기 ─────────
-   2026-11-22 사용자 결정 (참고: 반말 핫딜 채널 형식) — 3단 글타래
-   1/3 본문: 초성 퀴즈 + 짧은 반말 3줄 (링크 없음)
-   2/3 댓글: "실시간 알림은 요기로!!!" + 채팅방 링크가 있는 내 글 인용 (HD_CHAT_POST)
-   3/3 댓글: 상품명·가격·기준 시각 + 쿠팡 링크 + 대가성 문구 */
-function hdCompose_(v, links) {
+   2026-11-22 사용자 결정 (참고: 반말 핫딜 채널 형식)
+   1/2 본문: 초성 퀴즈 + 짧은 반말 3줄 (링크 없음) + 가격 카드 그림
+   2/2 댓글: "실시간 알림은 요기로!!!" + 채팅방 링크가 있는 내 글 인용 (HD_CHAT_POST)
+   → 같은 날 수정: 3/3(쿠팡 링크)는 뺌 — 카톡방으로만 유도. 본문에 가격 카드 그림(hdCard_). */
+function hdCompose_(v) {
   const d = hdFacts_(v);
   const l1 = (d.cho ? d.cho + ' ' : '') + '가격 이상한데??';
   const l2 = d.qty > 1 ? '지금 빨리 쟁여!!!!' : '지금 빨리 담아!!!!';
@@ -423,12 +430,7 @@ function hdCompose_(v, links) {
   else l3 = '품절 전에 달려!!!';
   const tag = String(hdCfg_('HD_AD_TAG', '(광고)'));
   const main = [l1, l2, l3].join('\n') + (tag && tag.toLowerCase() !== 'off' ? '\n' + tag : '');
-
-  const at = hdParse_(v[HD.at - 1]);
-  const when = at ? '(' + Utilities.formatDate(at, TZ, 'M/d HH:mm') + ' 기준 · 가격은 수시로 바뀌어요)' : '(가격은 수시로 바뀌어요)';
-  const priceLine = [d.priceTxt, d.per ? '· ' + d.unit + '당 ' + d.per.toLocaleString('ko-KR') + '원' : '', d.ship ? '· ' + d.ship : ''].filter(Boolean).join(' ');
-  const reply = [HD_DISCLOSURE, '', d.name, priceLine, when, links.slice(0, 5).join('\n')].filter(x => x !== undefined && x !== null).join('\n');
-  return { main: main, quote: '실시간 알림은 요기로!!!', reply: reply };
+  return { main: main, quote: '실시간 알림은 요기로!!!' };
 }
 
 function hdFacts_(v) {
@@ -461,44 +463,10 @@ function hdCho_(name) {
   return pick.slice(0, 5).split('').map(c => CHO[Math.floor((c.charCodeAt(0) - 0xAC00) / 588)]).join('');
 }
 
-// 예전 2단 형식 (참고용 — 지금은 쓰지 않음)
-function hdComposeOld_(v, links) {
-  const title = String(v[HD.title - 1]);
-  const name = hdName_(title);
-  const price = String(v[HD.price - 1]).replace(/[^\d]/g, '');
-  const priceTxt = price ? Number(price).toLocaleString('ko-KR') + '원' : '';
-  const off = (String(v[HD.kw - 1]).match(/할인\s*(\d+)%/) || [])[1];
-  const ship = hdShip_(title);
-  const q = name.match(/(\d+)\s*(개|봉|팩|입|병|캔|매|롤|켤레|박스)(?!.*\d+\s*(개|봉|팩|입|병|캔|매|롤|켤레|박스))/);
-  const qty = q ? Number(q[1]) : 0;
-  const unit = q ? q[2] : '';
-  const per = price && qty > 1 ? Math.round(Number(price) / qty) : 0;
-  // 후킹 — 가장 센 숫자 하나를 앞에 (상품명은 다음 줄에 있으니 되풀이하지 않음)
-  let hook;
-  if (off && Number(off) >= 30) hook = off + '% 할인 떴어요';
-  else if (per && per < 1000) hook = unit + '당 ' + per.toLocaleString('ko-KR') + '원 꼴이에요';
-  else if (priceTxt) hook = priceTxt + (ship ? ', ' + ship : '') + ' 특가';
-  else hook = '쿠팡 특가 떴어요';
-
-  const info = [name];
-  const priceLine = [priceTxt, per ? '(' + unit + '당 ' + per.toLocaleString('ko-KR') + '원)' : '', ship ? '· ' + ship : ''].filter(Boolean).join(' ');
-  if (priceLine) info.push(priceLine);
-
-  const main = [hook, '', info.join('\n'), '', '가격은 수시로 바뀌어요. 링크는 첫 댓글에 (광고)'].join('\n');
-
-  const at = hdParse_(v[HD.at - 1]);
-  const when = at ? Utilities.formatDate(at, TZ, 'M/d HH:mm') + ' 기준 가격이에요' : '가격은 수시로 바뀌어요';
-  const reply = [when, links.slice(0, 5).join('\n'), '', HD_DISCLOSURE].join('\n');
-  return { main: main, reply: reply };
-}
-
 function hdCheck_(post) {
   return [
     { name: '본문 500자 이하', ok: post.main.length <= 500 },
-    { name: '본문 링크 0개', ok: !/https?:\/\//i.test(post.main) },
-    { name: '댓글 500자 이하', ok: post.reply.length <= 500 },
-    { name: '댓글 링크 1~5개', ok: (post.reply.match(/https?:\/\//g) || []).length >= 1 && (post.reply.match(/https?:\/\//g) || []).length <= 5 },
-    { name: '대가성 문구 포함', ok: post.reply.indexOf(HD_DISCLOSURE) >= 0 }
+    { name: '본문 링크 0개', ok: !/https?:\/\//i.test(post.main) }
   ];
 }
 
@@ -543,6 +511,113 @@ function hdChatPostId_() {
   throw new Error('채팅방 글(' + code + ')이 @' + (hdProp_('TH_USERNAME') || '내 계정') + ' 글 목록에 없음');
 }
 
+/* ───────── 가격 카드 그림 (2026-11-22) ─────────
+   구글 슬라이드에 카드 한 장을 그려 PNG 썸네일 주소(30분 동안 공개)로 스레드에 붙인다.
+   쿠팡 화면 캡처가 아니라 시트의 숫자(가격·수량·개당·할인율·배송)로 직접 그린 그림.
+   슬라이드 파일은 처음 한 번 만들고(HD_CARD_DECK) 쓴 장은 지운다.
+   Apps Script 왼쪽 '서비스 +'에서 Google Slides API(식별자 Slides)를 추가해 두면 가장 확실하다. */
+const HD_C = { blue: '#2F6BFF', red: '#E0352B', green: '#1E9E4A', ink: '#111111', sub: '#444444', gray: '#8A8F98',
+  line: '#E3E5E8', bg: '#F4F5F7', font: 'Noto Sans KR' };
+let hdDeckClean = false;
+
+function hdDeck_() {
+  const id = hdProp_('HD_CARD_DECK');
+  let deck = null;
+  if (id) { try { deck = SlidesApp.openById(id); } catch (e) { deck = null; } }
+  if (!deck) {
+    deck = SlidesApp.create('특가반장 가격카드 (자동 생성 — 지우지 마세요)');
+    PropertiesService.getScriptProperties().setProperty('HD_CARD_DECK', deck.getId());
+  }
+  if (!hdDeckClean) {   // 지난 실행에서 남은 장 정리 (첫 장은 남김)
+    deck.getSlides().slice(1).forEach(x => x.remove());
+    hdDeckClean = true;
+  }
+  return deck;
+}
+
+function hdCard_(v, row) {
+  const d = hdFacts_(v);
+  const deck = hdDeck_();
+  const W = deck.getPageWidth(), H = deck.getPageHeight();   // 기본 720 x 405 pt
+  const sl = deck.appendSlide(SlidesApp.PredefinedLayout.BLANK);
+  sl.getBackground().setSolidFill(HD_C.bg);
+
+  const box = sl.insertShape(SlidesApp.ShapeType.ROUND_RECTANGLE, 24, 24, W - 48, H - 48);
+  box.getFill().setSolidFill('#FFFFFF');
+  box.getBorder().getLineFill().setSolidFill(HD_C.line);
+  box.getBorder().setWeight(1.5);
+
+  // 맨 위: 상품명
+  const nm = d.name.length > 30 ? d.name.slice(0, 30).replace(/\s+\S*$/, '') + '…' : d.name;
+  hdT_(sl, nm, 56, 40, W - 112, 40, 18, HD_C.gray, false);
+  const ln = sl.insertLine(SlidesApp.LineCategory.STRAIGHT, 56, 88, W - 56, 88);
+  ln.getLineFill().setSolidFill(HD_C.line); ln.setWeight(1.5);
+
+  // 오른쪽 줄들(할인율 빨강 · 가격 크게+배송 · 개당 초록)을 카드 가운데(구분선~아랫줄 사이)에 세로로 모은다
+  const items = [];
+  if (d.off) items.push({ h: 38, draw: y => hdT_(sl, d.off + '% 할인', x, y, w, 38, 22, HD_C.red, true) });
+  items.push({ h: 78, draw: y => {
+    const pb = hdT_(sl, d.priceTxt + (d.ship ? '  ' + d.ship : ''), x, y, w, 78, 50, HD_C.ink, true);
+    if (d.ship) pb.getText().getRange(d.priceTxt.length, d.priceTxt.length + 2 + d.ship.length).getTextStyle()
+      .setFontSize(20).setBold(false).setForegroundColor(HD_C.sub);
+  } });
+  if (d.per) items.push({ h: 46, draw: y => hdT_(sl, d.unit + '당 ' + d.per.toLocaleString('ko-KR') + '원', x, y, w, 46, 26, HD_C.green, true) });
+  const x = 290, w = W - x - 50;
+  const top = 88, bottom = H - 76, mid = (top + bottom) / 2;
+  const total = items.reduce((t, it) => t + it.h, 0);
+  let y = mid - total / 2;
+  items.forEach(it => { it.draw(y); y += it.h; });
+
+  // 왼쪽: 고른 표시 + 수량 (가운데 높이)
+  hdDot_(sl, 92, mid, 46, HD_C.blue); hdDot_(sl, 92, mid, 28, '#FFFFFF'); hdDot_(sl, 92, mid, 14, HD_C.blue);
+  hdT_(sl, d.qty ? d.qty + d.unit : '특가', 126, mid - 34, 160, 68, d.qty >= 100 ? 32 : 40, HD_C.blue, true);
+
+  // 맨 아래: 기준 시각
+  const at = hdParse_(v[HD.at - 1]);
+  hdT_(sl, (at ? Utilities.formatDate(at, TZ, 'M/d HH:mm') + ' 기준 · ' : '') + '가격은 수시로 바뀌어요', 56, H - 76, W - 112, 30, 14, HD_C.gray, false);
+
+  const slideId = sl.getObjectId(), deckId = deck.getId();
+  deck.saveAndClose();
+  return { url: hdThumb_(deckId, slideId), deck: deckId, slide: slideId };
+}
+
+function hdThumb_(deckId, slideId) {
+  const opt = { 'thumbnailProperties.mimeType': 'PNG', 'thumbnailProperties.thumbnailSize': 'LARGE' };
+  if (typeof Slides !== 'undefined') return Slides.Presentations.Pages.getThumbnail(deckId, slideId, opt).contentUrl;
+  const url = 'https://slides.googleapis.com/v1/presentations/' + deckId + '/pages/' + slideId + '/thumbnail?' +
+    Object.keys(opt).map(k => k + '=' + opt[k]).join('&');
+  const r = UrlFetchApp.fetch(url, { headers: { Authorization: 'Bearer ' + ScriptApp.getOAuthToken() }, muteHttpExceptions: true });
+  if (r.getResponseCode() !== 200) throw new Error('썸네일 ' + r.getResponseCode() + ' — 서비스 +에서 Google Slides API 추가 필요할 수 있음: ' + r.getContentText().slice(0, 120));
+  return JSON.parse(r.getContentText()).contentUrl;
+}
+
+function hdCardDrop_(card) {
+  try { const s = SlidesApp.openById(card.deck).getSlideById(card.slide); if (s) s.remove(); } catch (e) {}
+}
+
+function hdT_(sl, txt, x, y, w, h, size, color, bold) {
+  const t = sl.insertTextBox(txt, x, y, w, h);
+  t.getText().getTextStyle().setFontFamily(HD_C.font).setFontSize(size).setForegroundColor(color).setBold(!!bold);
+  t.setContentAlignment(SlidesApp.ContentAlignment.MIDDLE);
+  return t;
+}
+
+function hdDot_(sl, cx, cy, size, color) {
+  const e = sl.insertShape(SlidesApp.ShapeType.ELLIPSE, cx - size / 2, cy - size / 2, size, size);
+  e.getFill().setSolidFill(color);
+  e.getBorder().setTransparent();
+  return e;
+}
+
+// 가격 카드만 시험 — 신규 첫 행으로 그려 주소를 로그에 (30분 동안 열림)
+function hotdealTestCard() {
+  const sh = hdSheet_();
+  const rows = sh.getRange(2, 1, sh.getLastRow() - 1, HD.note).getDisplayValues();
+  const i = rows.findIndex(r => !hdHoldReason_(r));
+  const c = hdCard_(rows[i], i + 2);
+  console.log('행 ' + (i + 2) + ' 가격 카드: ' + c.url);
+}
+
 /* ───────── 스레드 ───────── */
 function hdPostText_(text, replyTo, extra) {
   const t = prop_('TH_TOKEN');
@@ -554,7 +629,7 @@ function hdPostText_(text, replyTo, extra) {
   if (replyTo) params.reply_to_id = replyTo;
   Object.keys(extra || {}).forEach(k => { params[k] = extra[k]; });
   const c = api_('post', TH + '/me/threads', params).id;
-  Utilities.sleep(replyTo ? 4000 : 3000);
+  Utilities.sleep(params.media_type === 'IMAGE' ? 10000 : replyTo ? 4000 : 3000);
   const id = api_('post', TH + '/me/threads_publish', { creation_id: c, access_token: t }).id;
   let link = '';
   try { link = api_('get', TH + '/' + id, { fields: 'permalink', access_token: t }).permalink; } catch (e) {}
