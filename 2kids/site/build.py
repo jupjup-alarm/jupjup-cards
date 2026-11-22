@@ -769,7 +769,7 @@ def og_image(st):
 HOME_OG_PICK = ["icoco-kids-family-poolvilla-yangpyeong", "deokgu-onsen-resort-uljin", "armond-kids-hotel-gimhae", "jw-marriott-jeju"]  # 공유 썸네일 2×2 (물놀이·온천·키즈룸·제주) — 없으면 앞에서부터 채움
 
 
-def home_og(stays, n):
+def home_og(stays, n=None):
     """홈 공유 썸네일 1200×630 (2026-11-22 사용자 요청): 왼쪽 로고·제목·숙소 수, 오른쪽 숙소 사진 2×2. 매 빌드 다시 만듦."""
     from PIL import Image, ImageDraw, ImageFont
     W, H = 1200, 630
@@ -799,8 +799,8 @@ def home_og(stays, n):
     d.text((64, 330), "넷이서 1박 가격까지", font=f("Pretendard-Black.otf", 66), fill="#D4512F", anchor="ls")
     d.text((64, 400), "키즈풀빌라 · 키즈룸 · 온천 · 눈썰매", font=f("Pretendard-SemiBold.otf", 28), fill="#6A6A6A", anchor="ls")
     d.text((64, 442), "만 5세 쌍둥이 4인 가족 기준으로 정리", font=f("Pretendard-SemiBold.otf", 28), fill="#6A6A6A", anchor="ls")
-    d.rounded_rectangle((64, 506, 64 + 250, 566), 30, fill="#222222")
-    d.text((64 + 125, 536), f"숙소 {n}곳 보기", font=f("Pretendard-Bold.otf", 28), fill="#FFFFFF", anchor="mm")
+    d.rounded_rectangle((64, 506, 64 + 290, 566), 30, fill="#222222")   # 2026-11-22 사용자: 숫자 없이 범용 문구 (카톡 등은 썸네일을 오래 저장해 둠)
+    d.text((64 + 145, 536), "아이랑 숙소 보러 가기", font=f("Pretendard-Bold.otf", 28), fill="#FFFFFF", anchor="mm")
     im.save(OUT / "og.jpg", "JPEG", quality=86, optimize=True)
 
 
@@ -858,10 +858,10 @@ def main():
               {"@type": "ListItem", "position": i + 1, "url": f"{SITE}/stay/{s['slug']}/"} for i, s in enumerate(indexed)]}]
     home_og(stays, len(stays))   # 2026-11-22 사용자 요청: 홈 공유 썸네일 (숙소 한 곳 사진 대신 브랜드 + 사진 4장)
     write("/", page("아이랑 숙소 추천 · 키즈풀빌라·키즈룸·온천 | 투키즈노트",
-                    f"아이랑 가기 좋은 숙소 {len(stays)}곳을 만 5세 쌍둥이 4인 가족 기준으로 정리했어요. 넷이서 실제 1박 가격과 물놀이·키즈룸·온천·눈썰매 테마별로 골라 보세요.",
+                    "아이랑 가기 좋은 숙소를 만 5세 쌍둥이 4인 가족 기준으로 정리했어요. 넷이서 실제 1박 가격과 물놀이·키즈룸·온천·눈썰매 테마별로 골라 보세요.",
                     "/", home(stays), True, ld, og_image="/og.jpg", search=True,
                     og_title="투키즈노트 | 쌍둥이 엄마가 정리한 아이랑 숙소",
-                    og_alt=f"투키즈노트 — 아이랑 숙소 {len(stays)}곳, 넷이서 1박 가격까지").replace("{cats}", cats_bar()))
+                    og_alt="투키즈노트 — 아이랑 숙소, 넷이서 1박 가격까지").replace("{cats}", cats_bar()))
     write("/about/", page("투키즈노트가 숙소를 고르고 정리하는 기준", "누가 어떤 기준으로 숙소를 고르고 가격을 확인하는지.", "/about/",
                           ABOUT).replace("{cats}", ""))
     write("/404.html", page("페이지를 찾을 수 없어요 | 투키즈노트", "주소가 바뀌었거나 없는 페이지예요.", "/404.html",
