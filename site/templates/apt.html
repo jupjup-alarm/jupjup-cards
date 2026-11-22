@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "macros.html" import badges, card, crumbs, ig_icon, cp_ad, ads_slot with context %}
+{% from "macros.html" import badges, card, crumbs, ig_icon, cp_ad, ads_slot, bizboard, goods_card with context %}
 {% set og_type = 'article' %}
 {% block head %}
 {% if n.imgs.hero %}<link rel="preload" as="image" href="hero.webp" fetchpriority="high">{% endif %}
@@ -161,7 +161,7 @@
 {% endset %}
 {% if v4 %}
 {# 2026-11-22 리디자인 v4 (사용자 결정 — 시안 https://claude.ai/artifact/Hgwb7RDPJM34k4Czxjvc8Y): 바로가기 탭 → 3초 판단(큰 숫자 + 4칸) → 버튼 → 광고 #}
-  {{ cp_ad('apt_nav_mo', 'ad-apt ad-top ad-nav') }}
+  {{ bizboard('internet', 'nav') }}{# 2026-11-22: 쿠팡 띠 → 비즈보드형 아정당 #}
 <!--CHIPNAV-->
 {{ dz_html }}
 {{ ticket_html }}
@@ -172,7 +172,7 @@
 {{ ticket_html }}
 {{ result_html }}
   {# 2026-11-20 사용자 요청: 일정·30초 체크 메뉴 위에 쿠팡 띠 배너 (모바일) #}
-  {{ cp_ad('apt_nav_mo', 'ad-apt ad-top ad-nav') }}
+  {{ bizboard('internet', 'nav') }}{# 2026-11-22: 쿠팡 띠 → 비즈보드형 아정당 #}
 <!--CHIPNAV-->
 {{ dz_html }}
   {# 2026-11-03 사용자 결정: 애드센스는 3초 판단 카드 바로 아래(요약 카드 위)로 올림 #}
@@ -208,7 +208,7 @@
     {{ cp_ad('pc', 'ad-pc') }}
   </aside>
   {# 2026-11-03 사용자 결정 시안 A: 모바일 쿠팡 띠 배너를 요약 카드 바로 아래(한마디 위)에 하나 더 #}
-  {{ cp_ad('apt_top_mo', 'ad-apt ad-top') }}
+  {{ bizboard('rental', 'top') }}{# 2026-11-22: 쿠팡 띠 → 비즈보드형 아정당 #}
 
   {% if n.moved %}
   {% set m = n.moved %}
@@ -659,7 +659,7 @@
     </dl>
   {% if n.guide_link %}<a class="guide-link" href="{{ n.guide_link.url }}"><b>처음이라면</b><span>{{ n.guide_link.h1 }} →</span></a>{% endif %}
   </section>
-  {{ cp_ad('apt_mo', 'ad-apt') }}
+  {{ goods_card(n) }}{# 2026-11-22: 쿠팡 다이나믹 배너 → 입주 준비물 카드 #}
 
   {% if n.dz %}{% set z = n.dz %}
   {% if z.fit %}

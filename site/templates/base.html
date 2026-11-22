@@ -35,6 +35,7 @@
 {% if GA.id %}<script async src="https://www.googletagmanager.com/gtag/js?id={{ GA.id }}"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','{{ GA.id }}');</script>{% endif %}
 <script>window.jjEv=function(n,p){try{if(window.gtag)gtag('event',n,p||{});}catch(e){}};</script>
+<script>document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a.bzb');if(a)jjEv('ajd_click',{product:a.getAttribute('data-ajd'),slot:'bizboard_'+a.getAttribute('data-slot'),from_page:location.pathname,transport_type:'beacon'});});</script>{# 2026-11-22 비즈보드형 아정당 배너 클릭 #}
 {% if ADSENSE.client %}<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ ADSENSE.client }}" crossorigin="anonymous"></script>{% endif %}
 </head>
 <body>

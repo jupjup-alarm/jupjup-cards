@@ -61,6 +61,15 @@ COUPANG = {
     "apt_end_mo": {"mq": "(max-width:1023px)", "height": 300,
                    "opts": {"id": 1044447, "template": "carousel", "trackingCode": "AF3230467", "subId": "jupjupalarm", "width": "100%", "height": "300", "tsource": ""}},
 }
+# 2026-11-22 사용자 결정: ① 쿠팡 배너 자리마다 subId를 따로(쿠팡 리포트에서 자리별 성과 구분, 영문·숫자만)
+# ② 공고 상세 모바일 위쪽 쿠팡 띠 2곳(apt_nav_mo·apt_top_mo)은 빼고 그 자리에 비즈보드형 아정당 배너(macros.bizboard)
+# ③ 공고 중간(apt_mo)은 다이나믹 배너 대신 '입주 준비물' 상품 카드(macros.goods_card — subId jjgoods, 투키즈노트 서버 /jj/goods.json)
+CP_SUBID = {"pc": "jjpc", "home": "jjhome", "home_mo": "jjhomemo", "home_end_mo": "jjhomeend", "apt_mo": "jjaptmid", "apt_end_mo": "jjaptend", "cp_square": "jjcp"}
+for _k in ("apt_nav_mo", "apt_top_mo"):
+    COUPANG.pop(_k, None)
+for _k, _v in COUPANG.items():
+    _v["opts"]["subId"] = CP_SUBID.get(_k, "jupjupalarm")
+GOODS_API = "https://autodm.jupjupalarm.com/jj/goods.json"
 # 애드센스 (승인 전이라 비어 있음 — client에 ca-pub-…, slots에 광고 단위 ID를 넣으면 그 자리에 나옴)
 ADSENSE = {"client": "ca-pub-1196853150959268", "slots": {"apt_top": "5439503161", "guide_mid": "5439503161"}}  # 2026-11-03 사이트 연결 + 광고 단위 '사각형_반응형' (공고 3초 판단 카드 아래 — 11/3 한마디 아래에서 올림 · 가이드 본문 중간)
 # 구글 애널리틱스 4 — 측정 ID(G-XXXXXXXXXX)를 넣으면 모든 페이지에 붙음 (사용자 요청 2026-10-29). 비우면 아무것도 안 붙음
@@ -1549,7 +1558,7 @@ def env():
         return out if len(out) >= 2 else []
     def days_to(iso):
         return (dt.date.fromisoformat(iso) - TODAY).days if iso else None
-    e.globals.update(steps4=steps4, days_to=days_to, HAS_GUIDES=bool(GUIDES.load()), RENTAL_EXPLAIN=RENTAL_EXPLAIN, BASE=BASE, IG=IG, THREADS=THREADS, KAKAO=KAKAO, BLOG=BLOG, YOUTUBE=YOUTUBE, COUPANG=COUPANG, COUPANG_NOTE=COUPANG_NOTE, ADSENSE=ADSENSE, GA=GA, STATUS=STATUS, KINDS=KINDS, crumb_ld=crumb_ld, items_ld=items_ld, GUIDE_TOOLS=TOOLS_PAGES.guide_tools(),
+    e.globals.update(steps4=steps4, days_to=days_to, HAS_GUIDES=bool(GUIDES.load()), RENTAL_EXPLAIN=RENTAL_EXPLAIN, BASE=BASE, IG=IG, THREADS=THREADS, KAKAO=KAKAO, BLOG=BLOG, YOUTUBE=YOUTUBE, COUPANG=COUPANG, COUPANG_NOTE=COUPANG_NOTE, GOODS_API=GOODS_API, ADSENSE=ADSENSE, GA=GA, STATUS=STATUS, KINDS=KINDS, crumb_ld=crumb_ld, items_ld=items_ld, GUIDE_TOOLS=TOOLS_PAGES.guide_tools(),
                      logo=Markup((SITE / "static/favicon.svg").read_text().replace('<svg xmlns="http://www.w3.org/2000/svg" ', '<svg class="mark" aria-hidden="true" focusable="false" ')))
     return e
 

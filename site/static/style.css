@@ -1806,3 +1806,25 @@ footer .biz{font-style:normal;line-height:1.6;opacity:.85}   /* 사업자 정보
 .sc-near > span small{color:var(--blue);font-weight:700}
 .sc-near em{color:var(--blue)}
 .sc-sum{background:var(--card);border:1px solid var(--line)}
+
+/* 2026-11-22 비즈보드형 아정당 배너 (공고 상세 위쪽, 모바일만) — macros.bizboard. 카카오 비즈보드 960×300 비율, 회색 상자·왼쪽 오브젝트·AD 표시·꺾쇠 */
+.bzb{position:relative;display:flex;align-items:center;gap:12px;margin:16px 0 0;padding:10px 34px 10px 10px;min-height:104px;background:#f3f3f3;border-radius:16px;text-decoration:none;color:#191919;-webkit-tap-highlight-color:transparent}
+.bzb:active{background:#ebebeb}
+@media(min-width:1024px){.bzb{display:none}}
+.bzb-obj{flex:0 0 84px;width:84px;height:84px;display:block}.bzb-obj svg{width:100%;height:100%;display:block}
+.bzb-tx{min-width:0;display:flex;flex-direction:column;gap:2px}
+.bzb-tx b{font-size:16px;font-weight:700;line-height:1.35;letter-spacing:-.03em;color:#191919;word-break:keep-all}
+.bzb-tx>span{font-size:13.5px;line-height:1.4;color:#696969;letter-spacing:-.02em}
+.bzb-tx small{font-size:10.5px;line-height:1.35;color:#949494;margin-top:2px}
+.bzb-ad{position:absolute;top:8px;right:8px;font-size:9px;font-weight:700;line-height:14px;padding:0 4px;border-radius:4px;background:rgba(0,0,0,.08);color:#7a7a7a}
+.bzb-go{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:22px;line-height:1;color:#b3b3b3}
+
+/* 2026-11-22 입주 준비물 상품 카드 (공고 중간, 쿠팡 다이나믹 배너 대신) — macros.goods_card */
+.goods-g{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media(min-width:768px){.goods-g{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.goods-i{display:flex;flex-direction:column;gap:3px;text-decoration:none;color:inherit;border:1px solid var(--line, #e5e8eb);border-radius:14px;padding:8px 8px 10px;background:#fff}
+.goods-im{display:block;aspect-ratio:1/1;border-radius:10px;overflow:hidden;background:#f4f5f7}.goods-im img{width:100%;height:100%;object-fit:cover;display:block}
+.goods-kw{font-size:12px;font-weight:700;color:var(--coral-strong, #e8590c);margin-top:4px}
+.goods-t{font-size:13px;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.goods-p{font-size:13.5px;font-weight:700}
+.goods-note{margin:10px 0 0;font-size:11px;color:#8b95a1}
