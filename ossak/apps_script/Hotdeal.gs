@@ -16,7 +16,7 @@
  *   hotdealTestCard   가격 카드 그림만 한 장 그려 주소를 로그에 (30분 동안 열림)
  *   hotdealPreview    미리보기: 링크 변환 + 글·카드 만들기까지만. 발행·시트 쓰기 없음.
  *   hotdealPublishOne 지금 1건 실제 발행 (시간대·하루 한도·간격 검사는 건너뜀)
- *   hotdealAutoOn     10분마다 자동 발행 켜기 (하루 한도·간격·시간대 지킴) / hotdealAutoOff 끄기
+ *   hotdealAutoOn     5분마다 자동 발행 켜기 (맥 캡처기가 웹 앱 주소로 부르면 즉시) (하루 한도·간격·시간대 지킴) / hotdealAutoOff 끄기
  *
  * 설정 (프로젝트 설정 → 스크립트 속성, 없으면 기본값):
  *   HD_DAILY_MAX 3 · HD_GAP_MIN 90 · HD_HOURS 8-23 · HD_MAX_AGE_H 12 · HD_SUB_ID threads01
@@ -73,13 +73,35 @@ function hotdealJob() { return hdRun_({ dry: false, limit: 1 }); }
 
 function hotdealAutoOn() {
   ScriptApp.getProjectTriggers().filter(t => t.getHandlerFunction() === 'hotdealJob').forEach(t => ScriptApp.deleteTrigger(t));
-  ScriptApp.newTrigger('hotdealJob').timeBased().everyMinutes(10).create();
-  hdLog_('핫딜 자동 발행 켬: 10분마다 확인 (검색 링크 딜 상품 찾기 포함), 하루 ' + hdNum_('HD_DAILY_MAX', 3) + '건, 간격 ' + hdNum_('HD_GAP_MIN', 90) + '분, ' + hdCfg_('HD_HOURS', '8-23') + '시');
+  ScriptApp.newTrigger('hotdealJob').timeBased().everyMinutes(5).create();   // 예비 주기 — 평소엔 맥 캡처기가 doPost로 바로 부름
+  hdLog_('핫딜 자동 발행 켬: 5분마다 확인 + 맥 캡처기 신호 즉시 (검색 링크 딜 상품 찾기 포함), 하루 ' + hdNum_('HD_DAILY_MAX', 3) + '건, 간격 ' + hdNum_('HD_GAP_MIN', 90) + '분, ' + hdCfg_('HD_HOURS', '8-23') + '시');
 }
 
 function hotdealAutoOff() {
   ScriptApp.getProjectTriggers().filter(t => t.getHandlerFunction() === 'hotdealJob').forEach(t => ScriptApp.deleteTrigger(t));
   hdLog_('핫딜 자동 발행 끔');
+}
+
+/* ───────── 맥 캡처기 신호 → 즉시 발행 (2026-11-22) ─────────
+   맥 캡처기가 Q열(수량비교)을 쓴 직후 이 웹 앱 주소로 POST {"key": "<HD_HOOK_KEY>"} 를 보내면
+   5분 주기를 기다리지 않고 바로 발행 확인을 한다 (하루 한도·간격·시간대는 그대로 지킴).
+   설치: hotdealHookKey 실행 → 로그의 키를 맥 .env 에 → 배포 → 새 배포 → 웹 앱 (실행: 나, 액세스: 모든 사용자) → 주소를 맥 .env 에. */
+function doPost(e) {
+  let body = {};
+  try { body = JSON.parse(e.postData.contents); } catch (x) {}
+  const key = hdProp_('HD_HOOK_KEY');
+  if (!key || body.key !== key) return ContentService.createTextOutput('forbidden');
+  const out = hdRun_({ dry: false, limit: 1 });
+  return ContentService.createTextOutput('ok ' + String(out || '').slice(0, 300));
+}
+
+function hotdealHookKey() {
+  let key = hdProp_('HD_HOOK_KEY');
+  if (!key) {
+    key = Utilities.getUuid().replace(/-/g, '');
+    PropertiesService.getScriptProperties().setProperty('HD_HOOK_KEY', key);
+  }
+  console.log('맥 .env 에 넣을 값\nHOTDEAL_HOOK_KEY=' + key + '\n(웹 앱 주소는 배포 후 HOTDEAL_HOOK_URL 로)');
 }
 
 /* ───────── 본체 ───────── */
