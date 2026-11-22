@@ -355,6 +355,16 @@ def chipnav(h, n):
     lab = dict(CHIPS)
     if n.get("is_rental"):
         lab["h-price"] = "임대 조건"
+    if 'class="wrap page v4"' in h:
+        # 2026-11-22 리디자인 v4: 바로가기는 4칸 고정 (판단 · 돈·일정 · 단지 · 자격·질문) — 칸마다 먼저 있는 h2로
+        allids = set(re.findall(r'<h2 id="([\w-]+)"', h))
+        tabs = [("판단", ["h-dz"]), ("돈·일정", ["h-sch", "h-fund", "h-rent", "h-price"]),
+                ("단지", ["h-plan", "h-tour", "h-layout", "h-loc", "h-price"]), ("자격·질문", ["h-elig", "h-faq"])]
+        got = [(t, next((i for i in c if i in allids), None)) for t, c in tabs]
+        got = [(t, i) for t, i in got if i]
+        if len(got) >= 3:
+            nav = '<nav class="chipnav cn4" aria-label="이 페이지 바로가기">' + "".join(f'<a href="#{i}">{t}</a>' for t, i in got) + "</nav>"
+            return h.replace("<!--CHIPNAV-->", nav)
     nav = '<nav class="chipnav" aria-label="이 페이지 바로가기">' + "".join(f'<a href="#{i}">{lab[i]}</a>' for i in ids) + "</nav>"
     return h.replace("<!--CHIPNAV-->", nav)
 
@@ -916,7 +926,9 @@ def make_decide(n, notices):
         pct = round(pr * 100 / mk)
         sig = "g" if pct <= 70 else ("y" if pct <= 90 else "r")
         base = re.sub(r"\s*\(.*?\)\s*$", "", rows[0][0])
-        cards.append({"k": "시세 차이", "sig": sig, "head": "시세보다 " + gap["verdict"][:-4].strip(), "sub": f"주변 시세의 {pct}% 가격 · {base} 대비 (추정)"})
+        amt = re.sub(r"\s*저렴$", "", gap["verdict"][:-4].strip())      # '약 3억6천만원' — 리디자인 v4 첫 화면 큰 숫자
+        cards.append({"k": "시세 차이", "sig": sig, "head": "시세보다 " + gap["verdict"][:-4].strip(), "sub": f"주변 시세의 {pct}% 가격 · {base} 대비 (추정)",
+                      "amt": amt, "base": base})
         bars = {"mk": rows[0], "pr": rows[1], "pct": pct}
     elif gap.get("verdict"):
         cards.append({"k": "시세 차이", "sig": "r", "head": gap["verdict"], "sub": "근거는 아래 '시세와 비교하면'"})

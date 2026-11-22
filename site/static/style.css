@@ -1692,3 +1692,47 @@ footer .biz{font-style:normal;line-height:1.6;opacity:.85}   /* 사업자 정보
 .wt-tbl th small,.wt-tbl td small{display:block;color:var(--ink-sub);font-weight:500;font-size:12px}
 .ntbl td.tl{text-align:left;white-space:normal;min-width:7em}
 .ntbl td.tl small{display:block;color:var(--ink-sub);font-weight:500;font-size:12px}
+
+/* ===== 리디자인 v4 (2026-11-22 사용자 결정 — 접수 중·예정 공고 첫 화면) =====
+   제목 → 쿠팡 띠 → 바로가기 4칸 → 3초 판단(큰 숫자 + 2×2) → 버튼 2개 → 광고 */
+.v4 .hero2 img{max-height:200px}
+@media (min-width:1024px){.v4 .hero2 img{max-height:300px}}
+.v4 .chipnav.cn4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;padding-right:max(16px, env(safe-area-inset-left, 0px));-webkit-mask-image:none;mask-image:none}
+.v4 .chipnav.cn4 a{text-align:center;justify-content:center;display:flex;align-items:center;white-space:nowrap;font-size:14.5px}
+.v4 .dz-card h2{margin-bottom:12px}
+.dz-hero{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md, 14px);padding:16px 16px 12px;margin:0 0 10px}
+.dz-hk{margin:0;font-size:14px;font-weight:700;color:var(--ink-sub)}
+.dz-hv{margin:2px 0 0;font-size:20px;font-weight:800;letter-spacing:-.03em;line-height:1.2}
+.dz-hv b{font-size:34px;font-weight:900;color:var(--coral-strong);letter-spacing:-.045em}
+.dz-hero .vbar{margin:12px 0 8px;gap:8px}
+.dz-hero .vl{font-size:12.5px}
+.dz-hero .vt{height:10px}
+.dz-hs{margin:0;font-size:12.5px;color:var(--ink-sub);line-height:1.5}
+.dz-hs a{font-weight:700;white-space:nowrap}
+.v4 .dz-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px}
+@media (min-width:720px){.v4 .dz-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important}}
+.v4 .dz-c{display:flex!important;flex-direction:column;gap:6px;padding:14px;min-height:0!important}
+.v4 .dz-c .dz-k{font-size:13px}
+.v4 .dz-c .dz-v b{font-size:16.5px;line-height:1.35}
+.v4 .dz-c .dz-v small{font-size:12.5px;line-height:1.45;color:var(--ink-sub)}
+.v4 .dz-c .dz-m{margin-top:auto;font-size:12.5px;display:flex;align-items:center;gap:6px;justify-items:start}
+.v4 .dz-when{background:var(--ground)}
+.v4 .dz-card > .note{font-size:12px;margin-top:10px}
+.v4 .tk-wrap{padding-top:0}
+.v4 .ticket{margin-top:0;box-shadow:none;border:0;background:none}
+.v4 .ticket .tb{padding:0}
+.v4 .ticket .nx-row{grid-template-columns:repeat(2,minmax(0,1fr))}
+.v4 .ticket .nx-b{justify-content:center;text-align:center;font-size:15px;min-height:52px;padding:0 10px}
+.v4 .ticket .nx-b small{display:none}
+.v4 .tprog{margin:0 0 12px}
+@media (max-width:1023px){
+  .v4 > .dz-card{padding-bottom:14px}
+  .v4 > .tk-wrap{margin-top:0;padding:0 var(--pad) 18px}
+}
+@media (prefers-color-scheme:dark){
+  .dz-hero{background:var(--card)}
+  .v4 .ticket{background:none;box-shadow:none}
+}
+.v4 .dz-c,.v4 .dz-c .dz-v{text-align:left;align-items:stretch;justify-items:start}
+.v4 .dz-c .dz-k{justify-content:flex-start;align-self:flex-start}
+.v4 .dz-c .dz-m{align-self:flex-start;justify-content:flex-start}
