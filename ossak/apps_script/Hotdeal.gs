@@ -176,7 +176,7 @@ function hdPick_(rows, now) {
       recover = true;
     } else if (st !== '신규' && st !== '대기') return;
     const at = hdParse_(r[HD.at - 1]);
-    if (st !== '대기' && at && (now - at) / 3600000 > maxAge) return;   // 사람이 '대기'로 돌린 건 나이 무시
+    if (at && (now - at) / 3600000 > maxAge) return;   // 수집기도 새 행을 '대기'로 쓰므로(2026-11-22 확인) '대기'도 나이 제한
     // PC 캡처기가 P열을 채울 때까지 잠깐 기다림 (P열이 비어 있고 들어온 지 HD_WAIT_CAPTURE_MIN 분 안이면 다음 차례로)
     if (hdCfg_('HD_MODE', 'qty') === 'qty') {
       // 수량 역전 딜만 (2026-11-22 사용자 결정): Q열에 'A개 X원 → B개 Y원'이 있는 행만 올린다
@@ -288,14 +288,29 @@ function hdHoldReason_(v) {
   if (/TOP\s*\d/i.test(title)) return '여러 상품 묶음 글 — 상품명·가격 짝을 확인할 수 없음';
   const hookSrc = String(hdCfg_('HD_HOOK_SOURCES', '지금할인')).split(',').map(s => s.trim()).filter(Boolean);
   if (!hasBody && hookSrc.some(s => src.indexOf(s) >= 0)) return '제목이 홍보 문구라 상품명을 모름 (본문전체 없음)';
-  if (!hdName_(title)) return '제목에서 상품명을 못 뽑음';
+  if (!hdProduct_(v)) return '제목·본문에서 상품명을 못 뽑음';
+  return '';
+}
+
+// 행 → 상품명. 제목이 '🔥 무지성 7,400원 (64.0% 할인) 🔥'처럼 홍보 문구면 본문전체(K)에서 상품명 줄을 찾는다.
+function hdProduct_(v) {
+  const t = hdName_(v[HD.title - 1]);
+  const core = t.replace(/무지성|선구매후고민|특가|핫딜|역대가|초특가|할인|알림|[\d.,%()]+|원/g, '').trim();
+  if (!/무지성|선구매/.test(t) && /[가-힣A-Za-z]{2,}/.test(core)) return t;
+  const lines = String(v[HD.body - 1] || '').split('\n').map(x => x.trim()).filter(Boolean);
+  for (let i = 1; i < lines.length; i++) {
+    const l = lines[i];
+    if (/https?:|%|\d원|정상가|할인|바로\s*가기|포스팅|선구매|가격 현황/.test(l)) continue;
+    const n = hdName_(l);
+    if (n.length >= 4 && /[가-힣A-Za-z]{2,}/.test(n)) return n;
+  }
   return '';
 }
 
 // 제목 → 상품명 (쇼핑몰 표시·가격·배송 괄호·원산지 꼬리표 제거)
 function hdName_(title) {
   return String(title)
-    .replace(/\[[^\]]*(쿠팡|원산지)[^\]]*\]/g, ' ')
+    .replace(/\[[^\]]*(쿠팡|원산지|로켓|와우|특가)[^\]]*\]/g, ' ')
     .replace(/\([^)]*(원|무료|무배|와우|배송|쿠폰|카드)[^)]*\)/g, ' ')
     .replace(/\d{1,3}(,\d{3})+\s*원/g, ' ')
     .replace(/[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE0F}]/gu, '')
@@ -311,7 +326,7 @@ function hdShip_(title) {
 
 /* ───────── 링크 변환 ───────── */
 function hdConvert_(v) {
-  const title = hdName_(v[HD.title - 1]);
+  const title = hdProduct_(v);
   const raw = String(v[HD.urls - 1]).split('\n').map(s => s.trim()).filter(Boolean);
   const seen = {}, srcs = [];
   raw.forEach(u => { if (!seen[u]) { seen[u] = 1; srcs.push(u); } });
@@ -367,7 +382,7 @@ function hdFindProducts_(sh, rows, now) {
 }
 
 function hdSearchMatch_(r) {
-  const name = hdName_(r[HD.title - 1]);
+  const name = hdProduct_(r);
   const price = Number(String(r[HD.price - 1]).replace(/[^\d]/g, '')) || 0;
   const list = coupangSearch_(name.slice(0, 50));
   if (!list.length) return { note: '없음: 검색 결과 없음' };
@@ -509,7 +524,7 @@ function hdCompose_(v) {
 
 function hdFacts_(v) {
   const title = String(v[HD.title - 1]);
-  const name = hdName_(title);
+  const name = hdProduct_(v);
   const price = String(v[HD.price - 1]).replace(/[^\d]/g, '');
   const q = name.match(/(\d+)\s*(개|봉|팩|입|병|캔|매|롤|켤레|박스)(?!.*\d+\s*(개|봉|팩|입|병|캔|매|롤|켤레|박스))/);
   const qty = q ? Number(q[1]) : 0;
@@ -529,7 +544,7 @@ function hdCho_(name) {
   let pick = '';
   for (let i = 0; i < words.length; i++) {
     const h = (words[i].match(/^[가-힣]+/) || [''])[0];
-    if (h.length >= 2) pick = h;
+    if (h.length >= (/\d/.test(words[i]) ? 3 : 2)) pick = h;   // '동시4대충전'처럼 숫자가 붙은 짧은 말은 건너뜀
     if (/\d/.test(words[i])) break;
   }
   if (!pick) return '';
