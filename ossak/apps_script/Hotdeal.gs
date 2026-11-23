@@ -156,7 +156,7 @@ function hdTopItems_(rows, from, to) {
     if (!nm) return;
     if (pr) {
       // 2026-11-23 사용자 결정: '개당 N% 쌈' 대신 실제 금액 두 개를 나란히 (계산 없이 바로 이상하다고 느끼게)
-      items.push({ s: 100 + pr.cheaper, line: nm + '\n' + pr.a.q + pr.a.u + ' ' + pr.a.p.toLocaleString('ko-KR') + '원 👉 ' +
+      items.push({ s: 100 + pr.cheaper, line: nm + (pr.size && nm.indexOf(pr.size) < 0 ? ' ' + pr.size : '') + '\n' + pr.a.q + pr.a.u + ' ' + pr.a.p.toLocaleString('ko-KR') + '원 👉 ' +
         pr.b.q + pr.b.u + ' ' + pr.b.p.toLocaleString('ko-KR') + '원' });
     } else if (d.off) {
       items.push({ s: Number(d.off), line: nm + '\n' + d.off + '% 할인 👉 ' + d.priceTxt });
@@ -714,7 +714,7 @@ function hdCompose_(v, rowNo) {
   const lines = [];
   if (pr) {
     const per = (o) => Math.round(o.p / o.q).toLocaleString('ko-KR');
-    lines.push(nm + ' 가격 이상한데??');
+    lines.push(nm + (pr.size && nm.indexOf(pr.size) < 0 ? ' ' + pr.size : '') + ' 가격 이상한데??');
     const diff = pr.b.p - pr.a.p, ratio = pr.b.q / pr.a.q;
     const more = Number.isInteger(ratio) ? ratio + '배' : (pr.b.q - pr.a.q) + pr.a.u + ' 더';
     lines.push(pr.a.q + pr.a.u + ' ' + pr.a.p.toLocaleString('ko-KR') + '원인데 ' + pr.b.q + pr.b.u + '가 ' + pr.b.p.toLocaleString('ko-KR') + '원' +
@@ -995,10 +995,12 @@ function hdPair_(v) {
   if (!m) return null;
   const a = { q: +m[1], u: m[2], p: +m[3].replace(/,/g, '') }, b = { q: +m[4], u: m[5], p: +m[6].replace(/,/g, '') };
   if (!(b.q > a.q) || !a.p || !b.p) return null;
+  // 2026-11-23: 용량 탭이 있는 상품(예: 코카콜라 300ml/1.5L)은 캡처기가 끝에 '(1.5L)'처럼 용량을 붙인다
+  const size = (String(v[HD.cmp - 1]).match(/\(([^)]+)\)\s*$/) || [])[1] || '';
   const cheaper = Math.round((1 - (b.p / b.q) / (a.p / a.q)) * 100);
   // 많이 사는 쪽이 더 싸거나(역전), 개당 HD_MIN_CHEAPER % 이상 싸야 '가격 이상한' 딜
   if (!(b.p <= a.p || cheaper >= hdNum_('HD_MIN_CHEAPER', 30))) return null;
-  return { a: a, b: b, cheaper: cheaper };
+  return { a: a, b: b, cheaper: cheaper, size: size };
 }
 
 function hdThumb_(deckId, slideId) {
