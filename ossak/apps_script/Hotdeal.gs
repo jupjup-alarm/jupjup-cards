@@ -19,10 +19,10 @@
  *   hotdealAutoOn     5분마다 자동 발행 켜기 (맥 캡처기가 웹 앱 주소로 부르면 즉시) (하루 한도·간격·시간대 지킴) / hotdealAutoOff 끄기
  *
  * 설정 (프로젝트 설정 → 스크립트 속성, 없으면 기본값):
- *   HD_DAILY_MAX 15 · HD_GAP_MIN 60 · HD_HOURS 8-23 · HD_MAX_AGE_H 12 · HD_SUB_ID threads01
+ *   HD_DAILY_MAX 10 · HD_GAP_MIN 60 · HD_HOURS 8-23 · HD_MAX_AGE_H 12 · HD_SUB_ID threads01
  *   HD_CHAT_POST 채팅방 안내 글 주소 (기본: 사용자가 준 share 링크) · HD_AD_TAG 기본 off (본문 끝에 붙일 글자, 예: (광고))
  *   HD_SEARCH_PER_RUN 1 · HD_SEARCH_PRICE_PCT 15 (검색 링크 딜의 상품 찾기: 한 번에 몇 건, 가격 허용 차이 %)
- *   HD_MODE qty (Q열 '수량비교'에 수량 역전이 있는 딜만 올림 · all 이면 모든 딜) · HD_MIN_CHEAPER 30 (개당 몇 % 이상 싸야 하는지)
+ *   HD_MODE mix (역전 딜 + 할인 HD_GENERAL_MIN_OFF(50)% 이상 일반 딜, 역전 먼저 · qty 면 역전만 · all 이면 모든 딜) · HD_MIN_CHEAPER 30 (개당 몇 % 이상 싸야 하는지)
  *   HD_WAIT_CAPTURE_MIN 20 (all 모드에서 P열 캡처를 기다리는 시간, 0이면 안 기다림)
  *   HD_HOOK_SOURCES 지금할인  (제목이 상품명이 아니라 홍보 문구인 출처 — 본문전체(K)가 없으면 보류)
  *
@@ -33,7 +33,7 @@
 const HD_SHEET_ID = '13-ecoze8qCHs0rcBNWfer9feg7CU-cfVYDEUzA9t5d0';
 const HD_TAB = '필터통과';
 const HD = { at: 1, src: 2, title: 3, price: 4, kw: 5, score: 6, urls: 7, orig: 8, draft: 9, status: 10, body: 11,
-  link: 12, thread: 13, postedAt: 14, note: 15, cap: 16, cmp: 17, prod: 18 };
+  link: 12, thread: 13, postedAt: 14, note: 15, cap: 16, cmp: 17, prod: 18, inf: 23, page: 24 };
 const HD_HEAD = ['변환링크', '스레드URL', '발행시각', '비고(에러)', '캡처', '수량비교', '상품주소'];   // P·Q열은 맥북 캡처기, R열은 맥북(단축 링크 풀기)·발행기(파트너스 검색)
 const HD_DISCLOSURE = '이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.';
 const HD_CACHE_DAYS = 7;
@@ -51,7 +51,7 @@ function hotdealCheck() {
   try { const id = hdChatPostId_(); out.push('채팅방 글(2/3 인용): ' + (id ? '찾음 ' + id : '꺼짐')); } catch (e) { out.push('채팅방 글 못 찾음: ' + e.message); }
   try {
     const sh = hdSheet_();
-    const head = sh.getRange(1, 1, 1, HD.prod).getDisplayValues()[0];
+    const head = sh.getRange(1, 1, 1, HD.page).getDisplayValues()[0];
     out.push('시트: ' + HD_TAB + ' ' + (sh.getLastRow() - 1) + '행, A~K 헤더 ' + (head[HD.urls - 1] === '쿠팡URL(전체)' && head[HD.status - 1] === '상태' ? '정상' : '다름!'));
     out.push('L~O 헤더: ' + (head.slice(HD.link - 1).join('') ? head.slice(HD.link - 1).join(' / ') : '비어 있음 (첫 발행 때 채움)'));
     const counts = {};
@@ -74,11 +74,60 @@ function hotdealJob() { return hdRun_({ dry: false, limit: 1 }); }
 function hotdealAutoOn() {
   ScriptApp.getProjectTriggers().filter(t => t.getHandlerFunction() === 'hotdealJob').forEach(t => ScriptApp.deleteTrigger(t));
   ScriptApp.newTrigger('hotdealJob').timeBased().everyMinutes(5).create();   // 예비 주기 — 평소엔 맥 캡처기가 doPost로 바로 부름
-  hdLog_('핫딜 자동 발행 켬: 5분마다 확인 + 맥 캡처기 신호 즉시 (검색 링크 딜 상품 찾기 포함), 하루 ' + hdNum_('HD_DAILY_MAX', 15) + '건, 간격 ' + hdNum_('HD_GAP_MIN', 60) + '분, ' + hdCfg_('HD_HOURS', '8-23') + '시');
+  ScriptApp.getProjectTriggers().filter(t => t.getHandlerFunction() === 'hotdealWeekly').forEach(t => ScriptApp.deleteTrigger(t));
+  ScriptApp.newTrigger('hotdealWeekly').timeBased().onWeekDay(ScriptApp.WeekDay.SUNDAY).atHour(21).inTimezone(TZ).create();   // 주간 총정리
+  hdLog_('핫딜 자동 발행 켬: 5분마다 확인 + 맥 캡처기 신호 즉시 (검색 링크 딜 상품 찾기 포함), 하루 ' + hdNum_('HD_DAILY_MAX', 10) + '건, 간격 ' + hdNum_('HD_GAP_MIN', 60) + '분, ' + hdCfg_('HD_HOURS', '8-23') + '시');
+}
+
+/* ───────── 주간 총정리 (2026-11-23) ─────────
+   매주 일요일 21시: 지난 7일 스레드에 올린 딜 중 센 것 7개를 한 글로. 링크 없음, 답글로 알림방 글 인용. */
+function hotdealWeeklyPreview() { return hdWeekly_(true); }
+function hotdealWeekly() { return hdWeekly_(false); }
+
+function hdWeekly_(dry) {
+  const sh = hdSheet_();
+  const rows = sh.getRange(2, 1, sh.getLastRow() - 1, HD.page).getDisplayValues();
+  const now = new Date();
+  const items = [];
+  rows.forEach((r, i) => {
+    if (r[HD.status - 1] !== '발행완료') return;
+    const t = hdParse_(r[HD.postedAt - 1]);
+    if (!t || (now - t) / 86400000 > 7) return;
+    const d = hdFacts_(r), pr = hdPair_(r);
+    const nm = hdShortName_(d.name) || d.cat;
+    if (!nm) return;
+    if (pr) {
+      const diff = pr.b.p - pr.a.p;
+      items.push({ s: 100 + pr.cheaper, line: nm + ' — ' + pr.a.q + pr.a.u + '보다 ' + pr.b.q + pr.b.u + '가 ' +
+        (diff <= 0 ? '더 쌈' : '개당 ' + pr.cheaper + '% 쌈') });
+    } else if (d.off) {
+      items.push({ s: Number(d.off), line: nm + ' — ' + d.off + '% 할인 ' + d.priceTxt });
+    }
+  });
+  items.sort((a, b) => b.s - a.s);
+  const top = items.slice(0, 7);
+  if (top.length < 3) { hdLog_('주간 총정리: 이번 주 딜이 ' + top.length + '건뿐이라 건너뜀'); return; }
+  const nums = ['①', '②', '③', '④', '⑤', '⑥', '⑦'];
+  let text = '';
+  for (let n = top.length; n >= 3; n--) {
+    text = ['이번 주 가격 이상했던 것 TOP ' + n + ' 🧾', '']
+      .concat(top.slice(0, n).map((x, i) => nums[i] + ' ' + x.line))
+      .concat(['', '지금은 가격이 돌아간 것도 있어요. 저장해두고 다음에 비교해 봐', '이번 주 제일 잘 산 거 하나만 말해줘 👀']).join('\n');
+    if (text.length <= 480) break;
+  }
+  let chatId = '';
+  try { chatId = hdChatPostId_(); } catch (e) {}
+  const reply = '다음 주에도 이런 거 뜨면 알림방에 제일 먼저 올려요 👇';
+  hdLog_('── 주간 총정리 (' + text.length + '자) ──\n' + text + '\n── 답글 ──\n' + reply + (chatId ? ' [인용]' : ''));
+  if (dry) return text;
+  const main = hdPostText_(text, null);
+  if (chatId) { try { hdPostText_(reply, main.id, { quote_post_id: chatId }); } catch (e) { console.error('주간 총정리 답글 실패: ' + e.message); } }
+  hdLog_('주간 총정리 발행: ' + (main.link || main.id));
+  return main.link;
 }
 
 function hotdealAutoOff() {
-  ScriptApp.getProjectTriggers().filter(t => t.getHandlerFunction() === 'hotdealJob').forEach(t => ScriptApp.deleteTrigger(t));
+  ScriptApp.getProjectTriggers().filter(t => ['hotdealJob', 'hotdealWeekly'].indexOf(t.getHandlerFunction()) >= 0).forEach(t => ScriptApp.deleteTrigger(t));
   hdLog_('핫딜 자동 발행 끔');
 }
 
@@ -112,7 +161,7 @@ function hdRun_(o) {
     const sh = hdSheet_();
     const last = sh.getLastRow();
     if (last < 2) { hdLog_('필터통과 탭이 비어 있음'); return; }
-    const rows = sh.getRange(2, 1, last - 1, HD.prod).getDisplayValues();
+    const rows = sh.getRange(2, 1, last - 1, HD.page).getDisplayValues();
     const now = new Date();
     const today = Utilities.formatDate(now, TZ, 'yyyy-MM-dd');
 
@@ -179,7 +228,7 @@ function hdGate_(rows, now, today) {
     const d = hdParse_(at);
     if (d && (!lastAt || d > lastAt)) lastAt = d;
   });
-  if (n >= hdNum_('HD_DAILY_MAX', 15)) return '오늘 ' + n + '건 발행함 (하루 한도 ' + hdNum_('HD_DAILY_MAX', 15) + ')';
+  if (n >= hdNum_('HD_DAILY_MAX', 10)) return '오늘 ' + n + '건 발행함 (하루 한도 ' + hdNum_('HD_DAILY_MAX', 10) + ')';
   if (lastAt && (now - lastAt) / 60000 < hdNum_('HD_GAP_MIN', 60)) return '마지막 발행 후 ' + Math.round((now - lastAt) / 60000) + '분 (간격 ' + hdNum_('HD_GAP_MIN', 60) + '분)';
   return '';
 }
@@ -202,16 +251,21 @@ function hdPick_(rows, now) {
     // PC 캡처기가 P열을 채울 때까지 잠깐 기다림 (P열이 비어 있고 들어온 지 HD_WAIT_CAPTURE_MIN 분 안이면 다음 차례로)
     // 토스 딜은 스레드에 올리지 않는다 (2026-11-22 사용자 결정: 토스는 카톡방에만). 쿠팡 링크가 없는 행은 건너뜀
     if (!String(r[HD.urls - 1]).split('\n').some(u => /coupang\.com/.test(u))) return;
-    if (hdCfg_('HD_MODE', 'qty') === 'qty') {
+    const mode = hdCfg_('HD_MODE', 'mix');
+    const pair = hdPair_(r);
+    if (mode === 'qty') {
       // 수량 역전 딜만 (2026-11-22 사용자 결정): Q열에 'A개 X원 → B개 Y원'이 있는 행만 올린다
-      if (!hdPair_(r)) return;
+      if (!pair) return;
+    } else if (mode === 'mix') {
+      // 2026-11-23 사용자 결정: 역전 딜 + 할인율 50% 이상 일반 쿠팡 딜 (하루 총 HD_DAILY_MAX 안에서, 역전 먼저)
+      if (!pair && !hdGeneralOk_(r, now, at)) return;
     } else {
       const wait = hdNum_('HD_WAIT_CAPTURE_MIN', 20);
       if (wait > 0 && !String(r[HD.cap - 1]).trim() && at && (now - at) / 60000 < wait) return;
     }
-    c.push({ row: i + 2, v: r, recover: recover, score: Number(r[HD.score - 1]) || 0, at: at ? at.getTime() : 0 });
+    c.push({ row: i + 2, v: r, recover: recover, pair: hdPair_(r) ? 1 : 0, score: Number(r[HD.score - 1]) || 0, at: at ? at.getTime() : 0 });
   });
-  c.sort((a, b) => b.score - a.score || b.at - a.at);
+  c.sort((a, b) => b.pair - a.pair || b.score - a.score || b.at - a.at);
   return c;
 }
 
@@ -233,12 +287,13 @@ function hdOne_(sh, row, v, recover, dry) {
   if (conv.rateLimited) return hdFail_(sh, row, dry, lines, '쿠팡 API 429', notes);
 
   // 3) 글 만들기 + 검사 (2026-11-22: 쿠팡 링크는 스레드에 올리지 않음 — 카톡방으로만 유도. 변환 링크는 L열에)
-  const post = hdCompose_(v);
+  const post = hdCompose_(v, row);
   let chatId = '';
   try { chatId = hdChatPostId_(); } catch (e) { notes.push('채팅방 글 못 찾음'); console.log('채팅방 글: ' + e.message); }
   const checks = hdCheck_(post).concat([{ name: '채팅방 글 찾음', ok: !!chatId }]);
   lines.push('── 1/2 본문 (' + post.main.length + '자) ──\n' + post.main);
-  lines.push('── 2/2 댓글 ──\n' + post.quote + (chatId ? '  [인용: 글 ' + chatId + ']' : ''));
+  if (post.link) lines.push('── 답글 1 (링크) ──\n' + post.link);
+  lines.push('── 답글 ' + (post.link ? 2 : 1) + ' ──\n' + post.quote + (chatId ? '  [인용: 글 ' + chatId + ']' : ''));
 
   // 4) 가격 카드 그림
   let card = null;
@@ -270,9 +325,14 @@ function hdOne_(sh, row, v, recover, dry) {
   }
   lines.push('본문 발행: ' + (main.link || main.id));
 
-  // 6) 댓글 — 채팅방 글 인용
+  // 6) 댓글 — (역전 딜이면 링크 답글 먼저) → 채팅방 글 인용
   try {
-    const rep = hdPostText_(post.quote, main.id, { quote_post_id: chatId });
+    let parent = main.id;
+    if (post.link) {
+      try { parent = hdPostText_(post.link, main.id).id; lines.push('링크 답글 발행'); }
+      catch (e) { notes.push('링크 답글 실패'); console.error('행 ' + row + ' 링크 답글 실패: ' + e.message); }
+    }
+    const rep = hdPostText_(post.quote, parent, { quote_post_id: chatId });
     lines.push('인용 댓글: ' + rep.id);
     hdWrite_(sh, row, { status: '발행완료', note: hdShort_(notes.join(' · ')) });
   } catch (e) {
@@ -284,7 +344,7 @@ function hdOne_(sh, row, v, recover, dry) {
 }
 
 function hdRetryReply_(sh, row, v) {
-  const post = hdCompose_(v);
+  const post = hdCompose_(v, row);
   const id = String(v[HD.thread - 1]).split('/').pop();
   const real = /^\d+$/.test(id) ? id : hdFindPostId_(v[HD.thread - 1]);
   if (!real) { hdWrite_(sh, row, { status: '실패: 댓글 재시도 불가', note: '글 ID를 못 찾음 — 손으로 댓글' }); return; }
@@ -302,6 +362,18 @@ function hdFail_(sh, row, dry, lines, reason, notes) {
   lines.push('실패: ' + reason + (notes.length ? ' · ' + notes.join(' · ') : ''));
   if (!dry) hdWrite_(sh, row, { status: '실패: ' + reason, note: hdShort_(notes.join(' · ')) });
   return lines.join('\n');
+}
+
+/* ───────── 일반 딜 (역전 아님) 스레드 조건 — 2026-11-23 ───────── */
+const HD_HEALTH = /영양제|루테인|유산균|비타민|오메가|홍삼|프로바이오틱|콜라겐|밀크씨슬|부항|혈압계|혈당|의료기기|다이어트/;
+function hdGeneralOk_(r, now, at) {
+  const off = Number((String(r[HD.kw - 1]).match(/할인\s*(\d+)%/) || [])[1] || 0);
+  if (off < hdNum_('HD_GENERAL_MIN_OFF', 50)) return false;
+  const q = String(r[HD.cmp - 1] || '').trim();
+  if (/품절|가격 바뀜|다른 상품/.test(q)) return false;                        // 끝났거나 판단이 틀린 딜
+  if (!q && at && (now - at) / 60000 < 15) return false;                     // 캡처기가 역전인지 보는 중 — 잠깐 기다림
+  if (HD_HEALTH.test(hdProduct_(r))) return false;                           // 건강기능식품·의료기기 제외
+  return true;
 }
 
 /* ───────── 상품 판단 ───────── */
@@ -530,21 +602,75 @@ function hdHash_(s) {
    1/2 본문: 초성 퀴즈 + 짧은 반말 3줄 (링크 없음) + 가격 카드 그림
    2/2 댓글: "실시간 알림은 요기로!!!" + 채팅방 링크가 있는 내 글 인용 (HD_CHAT_POST)
    → 같은 날 수정: 3/3(쿠팡 링크)는 뺌 — 카톡방으로만 유도. 본문에 가격 카드 그림(hdCard_). */
-function hdCompose_(v) {
+function hdCompose_(v, rowNo) {
+  // 2026-11-23 사용자 결정(운영 전략 문서): 첫 줄에 브랜드+용량, 둘째 줄에 숫자(수량 함정·단가), 셋째 줄에 판단, 마지막에 질문 한 줄
   const d = hdFacts_(v);
-  // 2026-11-22 사용자 결정: 초성 퀴즈 대신 상품군 힌트 (팔로워가 없어 무슨 상품인지 바로 알아야 멈춤). 브랜드는 숨김.
-  const l1 = (d.cat || '이거') + ' 가격 이상한데??';
-  const l2 = (d.qty > 1 || hdPair_(v)) ? '지금 빨리 쟁여!!!!' : '지금 빨리 담아!!!!';
-  let l3;
   const pr = hdPair_(v);
-  if (pr) l3 = pr.a.q + pr.a.u + ' 말고 ' + pr.b.q + pr.b.u + '짜리로 달려!!!';
-  else if (d.per && d.per < 1000) l3 = d.unit + '당 ' + d.per.toLocaleString('ko-KR') + '원꼴!!!';
-  else if (d.off && Number(d.off) >= 20) l3 = d.off + '% 빠졌어!!!';
-  else if (d.priceTxt) l3 = d.priceTxt + (d.ship ? ' ' + d.ship : '') + '!!!';
-  else l3 = '품절 전에 달려!!!';
-  const tag = String(hdCfg_('HD_AD_TAG', 'off'));   // 2026-11-22 사용자 결정: 광고 안내는 채팅방에서 — 본문엔 안 붙임
-  const main = [l1, l2, l3].join('\n') + (tag && tag.toLowerCase() !== 'off' ? '\n' + tag : '');
-  return { main: main, quote: '실시간 알림은 요기로!!!' };
+  const nm = hdShortName_(d.name) || d.cat || '이거';
+  const k = Number(rowNo) || 0;
+  const lines = [];
+  if (pr) {
+    const per = (o) => Math.round(o.p / o.q).toLocaleString('ko-KR');
+    lines.push(nm + ' 가격 이상한데??');
+    const diff = pr.b.p - pr.a.p, ratio = pr.b.q / pr.a.q;
+    const more = Number.isInteger(ratio) ? ratio + '배' : (pr.b.q - pr.a.q) + pr.a.u + ' 더';
+    lines.push(pr.a.q + pr.a.u + ' ' + pr.a.p.toLocaleString('ko-KR') + '원인데 ' + pr.b.q + pr.b.u + '가 ' + pr.b.p.toLocaleString('ko-KR') + '원' +
+      (diff <= 0 ? ' (더 많은데 더 쌈)' : ' (' + diff.toLocaleString('ko-KR') + '원 더 내면 ' + more + ')'));
+    lines.push(pr.a.u + '당 ' + per(pr.a) + '원 → ' + per(pr.b) + '원, ' + pr.cheaper + '% 싸짐. ' + pr.a.q + pr.a.u + ' 말고 ' + pr.b.q + pr.b.u + '짜리로 달려!!!');
+  } else {
+    lines.push(nm + ' ' + (d.off ? d.off + '% 빠졌어!!' : '특가 떴어!!'));
+    lines.push(d.priceTxt + (d.per ? ' · ' + d.unit + '당 ' + d.per.toLocaleString('ko-KR') + '원' : '') + (d.ship ? ' · ' + d.ship : ''));
+  }
+  const at = hdParse_(v[HD.at - 1]);
+  lines.push('(' + (at ? Utilities.formatDate(at, TZ, 'M/d HH:mm') + ' 기준, ' : '') + '가격은 금방 바뀌어요)');
+  lines.push(hdQuestion_(d.cat, k));
+  const tag = String(hdCfg_('HD_AD_TAG', 'off'));
+  const main = lines.join('\n') + (tag && tag.toLowerCase() !== 'off' ? '\n' + tag : '');
+
+  // 답글 1 (역전 딜만): 딜 페이지 링크 + 대가성 문구. X열(맥이 만든 autodm 딜 페이지)이 있을 때만.
+  let linkReply = '';
+  const page = String(v[HD.page - 1] || '').trim();
+  if (pr && /^https:\/\/autodm\.jupjupalarm\.com\/d\//.test(page)) {
+    const inf = /^https?:\/\//.test(String(v[HD.inf - 1] || '').trim());
+    linkReply = '가격·옵션 다시 확인 👉 ' + page + '\n\n' + (inf ? HD_DISCLOSURE_INF : HD_DISCLOSURE);
+  }
+  // 답글 2: 같은 문장 반복 대신 이유가 있는 안내 (돌려 씀) + 채팅방 글 인용
+  return { main: main, link: linkReply, quote: HD_FOMO[k % HD_FOMO.length] };
+}
+
+const HD_DISCLOSURE_INF = '이 포스팅은 쿠팡 인플루언서 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.';
+const HD_FOMO = [
+  '이런 딜은 몇 분 만에 품절되거나 가격이 돌아가요. 뜨는 순간 알림 받는 방 켜두면 편해요 👇',
+  '스레드엔 다 못 올려요. 오늘 뜬 건 알림방에 먼저 올려요 👇',
+  '어제 올린 것도 몇 시간 만에 가격 돌아갔어요. 알림방에서 바로 받아보세요 👇',
+  '1개보다 n개가 싼 것만 골라서 알림방에 바로 올려요 👇',
+  '가격 이상한 거 뜨면 알림방이 제일 빨라요. 알림 켜두고 대기 👇'
+];
+const HD_Q = {
+  '생수': ['생수 한 달에 몇 박스 써?', '생수 브랜드 정해놓고 사? 그때그때 싼 거?'],
+  '휴지': ['휴지는 브랜드 정해놓고 써, 그때그때 싼 거 사?', '휴지 한 달에 몇 롤 써?'],
+  '라면': ['라면 한 번에 몇 봉씩 쟁여?', '이 라면 최애인 사람?'],
+  '세제': ['세제 떨어지면 바로 사, 미리 쟁여놔?'],
+  '탄산수': ['탄산수 한 달에 몇 캔 마셔?'],
+  '커피': ['캡슐 하루에 몇 개 써?'],
+  '즉석밥': ['즉석밥 집에 몇 개 쟁여둬?'],
+  '': ['이 가격이면 몇 개 쟁여?', '평소에 이거 얼마에 샀어?', '이거 써본 사람 후기 좀!', '이거 쟁여두는 편이야?']
+};
+function hdQuestion_(cat, k) {
+  const list = HD_Q[cat] || HD_Q[''];
+  return list[k % list.length];
+}
+
+// 짧은 상품명 = 브랜드 + 상품 + 용량 (쉼표 앞 본 이름 + 첫 용량), 수량 표기는 둘째 줄에 있으니 뺀다. 26자 안쪽.
+function hdShortName_(name) {
+  const parts = String(name).split(',').map(x => x.trim()).filter(Boolean);
+  let main = (parts[0] || '').replace(/\(.*?\)/g, ' ');
+  const size = (String(name).match(/\d+(?:\.\d+)?\s*(?:ml|mL|L|l|g|kg|KG|매|m|구|인분)(?![가-힣A-Za-z])/) || [])[0] || '';
+  main = main.replace(/\s*\d+\s*(개|봉|팩|입|병|캔|롤|박스|세트|개입)\b.*$/, '').trim();
+  if (size && main.indexOf(size.replace(/\s+/g, '')) < 0 && main.indexOf(size) < 0) main += ' ' + size.replace(/\s+/g, '');
+  main = main.replace(/\s+/g, ' ').trim();
+  if (main.length > 26) main = main.slice(0, 26).replace(/\s+\S*$/, '');
+  return main;
 }
 
 function hdFacts_(v) {
@@ -569,7 +695,7 @@ const HD_CAT = [
   [/생수|삼다수|백산수|아이시스|제주수|스파클/, '생수'], [/탄산수|씨그램|트레비|라임.*무라벨/, '탄산수'],
   [/콜라|사이다|에이드|이온음료|포카리|게토레이/, '음료'], [/두유/, '두유'], [/우유|요거트|요구르트/, '우유'],
   [/커피|캡슐|아메리카노|콜드브루/, '커피'], [/컵라면|라면|짜파게티|불닭/, '라면'], [/햇반|즉석밥|컵밥/, '즉석밥'],
-  [/만두/, '만두'], [/화장지|휴지|키친타올/, '휴지'], [/물티슈/, '물티슈'], [/섬유유연제/, '섬유유연제'],
+  [/만두/, '만두'], [/화장지|휴지|키친타올|크리넥스|깨끗한나라|잘풀리는집|모나리자|코디 /, '휴지'], [/물티슈/, '물티슈'], [/섬유유연제/, '섬유유연제'],
   [/세제/, '세제'], [/샴푸|린스|트리트먼트|헤어/, '헤어케어'], [/치약|칫솔/, '치약'], [/기저귀/, '기저귀'],
   [/충전기|보조배터리|케이블/, '충전기'], [/이어폰|버즈|에어팟|헤드폰/, '이어폰'],
   [/도가니탕|설렁탕|곰탕|갈비탕|해장국|국밥|순대국|내장탕|김치찌개|찌개/, ''],
@@ -613,7 +739,8 @@ function hdCho_(name) {
 function hdCheck_(post) {
   return [
     { name: '본문 500자 이하', ok: post.main.length <= 500 },
-    { name: '본문 링크 0개', ok: !/https?:\/\//i.test(post.main) }
+    { name: '본문 링크 0개', ok: !/https?:\/\//i.test(post.main) },
+    { name: '링크 답글엔 대가성 문구', ok: !post.link || post.link.indexOf('수수료를 제공받습니다') >= 0 }
   ];
 }
 
@@ -801,7 +928,7 @@ function hdDot_(sl, cx, cy, size, color) {
 // 가격 카드만 시험 — 신규 첫 행으로 그려 주소를 로그에 (30분 동안 열림)
 function hotdealTestCard() {
   const sh = hdSheet_();
-  const rows = sh.getRange(2, 1, sh.getLastRow() - 1, HD.prod).getDisplayValues();
+  const rows = sh.getRange(2, 1, sh.getLastRow() - 1, HD.page).getDisplayValues();
   const i = rows.findIndex(r => !hdHoldReason_(r));
   const c = hdCard_(rows[i], i + 2);
   console.log('행 ' + (i + 2) + ' 가격 카드: ' + c.url);
