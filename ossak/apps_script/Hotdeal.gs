@@ -34,8 +34,8 @@
 const HD_SHEET_ID = '13-ecoze8qCHs0rcBNWfer9feg7CU-cfVYDEUzA9t5d0';
 const HD_TAB = '필터통과';
 const HD = { at: 1, src: 2, title: 3, price: 4, kw: 5, score: 6, urls: 7, orig: 8, draft: 9, status: 10, body: 11,
-  link: 12, thread: 13, postedAt: 14, note: 15, cap: 16, cmp: 17, prod: 18, inf: 23, page: 24 };
-const HD_HEAD = ['변환링크', '스레드URL', '발행시각', '비고(에러)', '캡처', '수량비교', '상품주소'];   // P·Q열은 맥북 캡처기, R열은 맥북(단축 링크 풀기)·발행기(파트너스 검색)
+  link: 12, thread: 13, postedAt: 14, note: 15, cap: 16, cmp: 17, prod: 18, inf: 23, page: 24, pname: 25 };
+const HD_HEAD = ['변환링크', '스레드URL', '발행시각', '비고(에러)', '캡처', '수량비교', '상품주소'];   // S~U 카톡, V 토스링크, W 인플링크, X 딜페이지, Y 상품명 (맥이 씀)   // P·Q열은 맥북 캡처기, R열은 맥북(단축 링크 풀기)·발행기(파트너스 검색)
 const HD_DISCLOSURE = '이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.';
 const HD_CACHE_DAYS = 7;
 const HD_STALE_MIN = 10;
@@ -52,7 +52,7 @@ function hotdealCheck() {
   try { const id = hdChatPostId_(); out.push('채팅방 글(2/3 인용): ' + (id ? '찾음 ' + id : '꺼짐')); } catch (e) { out.push('채팅방 글 못 찾음: ' + e.message); }
   try {
     const sh = hdSheet_();
-    const head = sh.getRange(1, 1, 1, HD.page).getDisplayValues()[0];
+    const head = sh.getRange(1, 1, 1, HD.pname).getDisplayValues()[0];
     out.push('시트: ' + HD_TAB + ' ' + (sh.getLastRow() - 1) + '행, A~K 헤더 ' + (head[HD.urls - 1] === '쿠팡URL(전체)' && head[HD.status - 1] === '상태' ? '정상' : '다름!'));
     out.push('L~O 헤더: ' + (head.slice(HD.link - 1).join('') ? head.slice(HD.link - 1).join(' / ') : '비어 있음 (첫 발행 때 채움)'));
     const counts = {};
@@ -168,7 +168,7 @@ function hdTopItems_(rows, from, to) {
 
 function hdWeekly_(dry) {
   const sh = hdSheet_();
-  const rows = sh.getRange(2, 1, sh.getLastRow() - 1, HD.page).getDisplayValues();
+  const rows = sh.getRange(2, 1, sh.getLastRow() - 1, HD.pname).getDisplayValues();
   const now = new Date();
   const top = hdTopItems_(rows, new Date(now - 7 * 86400000), now).slice(0, 7);
   if (top.length < 3) { hdLog_('주간 총정리: 이번 주 딜이 ' + top.length + '건뿐이라 건너뜀'); return; }
@@ -199,7 +199,7 @@ function hotdealDaily() { return hdDaily_(false); }
 
 function hdDaily_(dry) {
   const sh = hdSheet_();
-  const rows = sh.getRange(2, 1, sh.getLastRow() - 1, HD.page).getDisplayValues();
+  const rows = sh.getRange(2, 1, sh.getLastRow() - 1, HD.pname).getDisplayValues();
   const now = new Date();
   const today = hdParse_(Utilities.formatDate(now, TZ, 'yyyy-MM-dd') + ' 00:00');
   const yest = new Date(today.getTime() - 86400000);
@@ -256,7 +256,7 @@ function hdRun_(o) {
     const sh = hdSheet_();
     const last = sh.getLastRow();
     if (last < 2) { hdLog_('필터통과 탭이 비어 있음'); return; }
-    const rows = sh.getRange(2, 1, last - 1, HD.page).getDisplayValues();
+    const rows = sh.getRange(2, 1, last - 1, HD.pname).getDisplayValues();
     const now = new Date();
     const today = Utilities.formatDate(now, TZ, 'yyyy-MM-dd');
 
@@ -486,20 +486,31 @@ function hdHoldReason_(v) {
   const hasBody = String(v[HD.body - 1]).trim().length > 0;
   if (/TOP\s*\d/i.test(title)) return '여러 상품 묶음 글 — 상품명·가격 짝을 확인할 수 없음';
   const hookSrc = String(hdCfg_('HD_HOOK_SOURCES', '지금할인')).split(',').map(s => s.trim()).filter(Boolean);
-  if (!hasBody && hookSrc.some(s => src.indexOf(s) >= 0)) return '제목이 홍보 문구라 상품명을 모름 (본문전체 없음)';
+  const hasName = String(v[HD.pname - 1] || '').trim().length > 0;   // 맥이 Y열에 진짜 상품명을 적었으면 보류 안 함
+  if (!hasBody && !hasName && hookSrc.some(s => src.indexOf(s) >= 0)) return '제목이 홍보 문구라 상품명을 모름 (본문전체 없음)';
   if (!hdProduct_(v)) return '제목·본문에서 상품명을 못 뽑음';
   return '';
 }
 
 // 행 → 상품명. 제목이 '🔥 무지성 7,400원 (64.0% 할인) 🔥'처럼 홍보 문구면 본문전체(K)에서 상품명 줄을 찾는다.
 function hdProduct_(v) {
-  const t = hdName_(v[HD.title - 1]);
-  const core = t.replace(/무지성|선구매후고민|특가|핫딜|역대가|초특가|할인|알림|[\d.,%()]+|원/g, '').trim();
+  // 2026-11-23 맥 요청: 캡처기가 Y열 '상품명'(쿠팡 페이지 제목)을 적으면 그걸 최우선으로 쓴다
+  const y = String(v[HD.pname - 1] || '').trim();
+  if (y) return hdName_(y.replace(/,\s*1개$/, ''));
+  const t0 = hdName_(v[HD.title - 1]);
+  // 제목이 홍보 문장('…7천원도 안 해 🍋', '…딱 걸렸다')이면 제목을 상품명으로 쓰지 않고 K열에서 찾는다
+  const hookSrc = String(hdCfg_('HD_HOOK_SOURCES', '지금할인')).split(',').map(x => x.trim()).filter(Boolean);
+  const sentence = /[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/u.test(String(v[HD.title - 1])) ||
+    /(안 해|안 돼|떴어|떴다|걸렸다|이거|해요|어요|다$|야$|\?|!)/.test(t0) || hookSrc.some(x => String(v[HD.src - 1]).indexOf(x) >= 0);
+  const t = sentence ? '무지성' : t0;   // '무지성'이면 아래에서 K열로 넘어간다
+  const HYPE = /무지성|선구매후고민|선구매|역대급|최저가|가격오류|오류|특가|핫딜|역대가|초특가|할인|알림|대박|[\d.,%()☆★~]+|원/g;
+  const core = t.replace(HYPE, '').trim();
   if (!/무지성|선구매/.test(t) && /[가-힣A-Za-z]{2,}/.test(core)) return t;
   const lines = String(v[HD.body - 1] || '').split('\n').map(x => x.trim()).filter(Boolean);
   for (let i = 1; i < lines.length; i++) {
     const l = lines[i];
     if (/https?:|%|\d원|정상가|할인|바로\s*가기|포스팅|선구매|가격 현황/.test(l)) continue;
+    if (!hdName_(l).replace(HYPE, '').trim()) continue;   // '역대급최저가'처럼 홍보 단어뿐인 줄
     const n = hdName_(l);
     if (n.length >= 4 && /[가-힣A-Za-z]{2,}/.test(n)) return n;
   }
@@ -721,7 +732,7 @@ function hdCompose_(v, rowNo) {
       (diff <= 0 ? ' (더 많은데 더 쌈)' : ' (' + diff.toLocaleString('ko-KR') + '원 더 내면 ' + more + ')'));
     lines.push(pr.a.u + '당 ' + per(pr.a) + '원 → ' + per(pr.b) + '원, ' + pr.cheaper + '% 싸짐. ' + pr.a.q + pr.a.u + ' 말고 ' + pr.b.q + pr.b.u + '짜리로 달려!!!');
   } else {
-    lines.push(nm + ' ' + (d.off ? d.off + '% 빠졌어!!' : '특가 떴어!!'));
+    lines.push(nm === '이거' ? (d.off ? d.off + '% 빠진 특가 떴어!!' : '특가 떴어!!') : nm + ' ' + (d.off ? d.off + '% 빠졌어!!' : '특가 떴어!!'));
     lines.push(d.priceTxt + (d.per ? ' · ' + d.unit + '당 ' + d.per.toLocaleString('ko-KR') + '원' : '') + (d.ship ? ' · ' + d.ship : ''));
   }
   const at = hdParse_(v[HD.at - 1]);
@@ -771,10 +782,12 @@ function hdShortName_(name) {
   const parts = String(name).split(',').map(x => x.trim()).filter(Boolean);
   let main = (parts[0] || '').replace(/\(.*?\)/g, ' ');
   const size = (String(name).match(/\d+(?:\.\d+)?\s*(?:ml|mL|L|l|g|kg|KG|매|m|구|인분)(?![가-힣A-Za-z])/) || [])[0] || '';
-  main = main.replace(/\s*\d+\s*(개|봉|팩|입|병|캔|롤|박스|세트|개입)\b.*$/, '').trim();
+  main = main.replace(/\s*\d+\s*(개입|개|봉|팩|입|병|캔|롤|박스|세트)(?![가-힣A-Za-z]).*$/, '').trim();
   if (size && main.indexOf(size.replace(/\s+/g, '')) < 0 && main.indexOf(size) < 0) main += ' ' + size.replace(/\s+/g, '');
   main = main.replace(/\s+/g, ' ').trim();
-  if (main.length > 26) main = main.slice(0, 26).replace(/\s+\S*$/, '');
+  if (main.length > 26) {   // 문장 중간에서 끊기지 않게: 26자 안의 단어까지, 끝의 조사·숫자 꼬리 제거
+    main = main.slice(0, 26).replace(/\s+\S*$/, '').replace(/\s+(\S*\d\S*|두|세|네|한)$/, '').replace(/(도|는|은|이|가|을|를|에|의|만)$/, '');
+  }
   return main;
 }
 
@@ -1035,7 +1048,7 @@ function hdDot_(sl, cx, cy, size, color) {
 // 가격 카드만 시험 — 신규 첫 행으로 그려 주소를 로그에 (30분 동안 열림)
 function hotdealTestCard() {
   const sh = hdSheet_();
-  const rows = sh.getRange(2, 1, sh.getLastRow() - 1, HD.page).getDisplayValues();
+  const rows = sh.getRange(2, 1, sh.getLastRow() - 1, HD.pname).getDisplayValues();
   const i = rows.findIndex(r => !hdHoldReason_(r));
   const c = hdCard_(rows[i], i + 2);
   console.log('행 ' + (i + 2) + ' 가격 카드: ' + c.url);
