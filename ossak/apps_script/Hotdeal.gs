@@ -101,7 +101,7 @@ function hotdealGoldboxTest() {
    골드박스엔 할인율이 없으므로 '수량 역전 후보'로 넣는다: 맥 캡처기가 상품 페이지를 열어 Q열을 판단한다.
    하루 2번(08·14시) 받아 생필품·식품 위주로 상위 HD_GB_MAX(8)건, 48시간 안에 넣은 상품은 다시 넣지 않는다.
    행은 B열 출처 '쿠팡 골드박스', E열 '쿠팡,골드박스', J열 '대기', G열 상품 주소(남의 링크 아님). 수집기 행과 같은 형식. */
-const HD_GB_SKIP = /가전|디지털|컴퓨터|노트북|휴대폰|패션|의류|신발|잡화|가구|인테리어|여행|캐리어|스포츠|자동차|도서|완구|명품|쥬얼리/;
+const HD_GB_SKIP = /가전|디지털|컴퓨터|노트북|휴대폰|패션|의류|신발|잡화|가구|인테리어|여행|투어|숙박|호텔|리조트|펜션|티켓|항공|렌터카|캐리어|스포츠|자동차|도서|완구|명품|쥬얼리/;
 function hotdealGoldboxPreview() { return hdGoldboxSync_(true); }
 function hotdealGoldboxSync() { return hdGoldboxSync_(false); }
 
