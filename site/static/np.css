@@ -662,3 +662,11 @@ html:has(body.np){scroll-padding-top:72px}
 .np .an-tag{border-radius:0!important;background:transparent!important;padding:0!important;color:var(--np-acc)!important}
 .np .an-tips,.np .an-method,.np .an-caveat,.np .an-note{background:transparent!important;border:0!important;border-left:3px solid var(--np-acc)!important;border-radius:0!important;padding:4px 0 4px 18px!important}
 .np .np-sh h2{font:inherit;margin:0;letter-spacing:inherit}
+
+/* 줄바꿈 다듬기 (2026-11-23 점검: 모바일 소제목 끝 '보기'·'체크'만 다음 줄로 떨어지던 61곳) */
+.np h1,.np h2,.np h3{text-wrap:balance}
+.np main p,.np main li,.np main dd{text-wrap:pretty}
+/* 표: 칸이 4.5글자 폭 아래로 줄어 글자가 세로로 꺾이지 않게 — 넓어지면 표 상자 안에서 옆으로 밀어 봄 */
+.np main table th,.np main table td{min-width:4.5em}
+.np main table th:first-child,.np main table td:first-child{min-width:5.5em}
+.np .tbl,.np .table-wrap,.np .g-body .tbl{overflow-x:auto;-webkit-overflow-scrolling:touch}
