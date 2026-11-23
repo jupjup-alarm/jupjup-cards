@@ -25,6 +25,7 @@
  *   HD_MODE mix (역전 딜 + 할인 HD_GENERAL_MIN_OFF(50)% 이상 일반 딜, 역전 먼저 · qty 면 역전만 · all 이면 모든 딜) · HD_MIN_CHEAPER 30 (개당 몇 % 이상 싸야 하는지)
  *   HD_WAIT_CAPTURE_MIN 20 (all 모드에서 P열 캡처를 기다리는 시간, 0이면 안 기다림)
  *   HD_TOSS on (토스 딜도 스레드에 — 일반 딜 조건 · off면 토스 제외) · HD_TOSS_TAG off (on이면 토스 글 첫 줄에 토스 대가성 문구)
+ *   HD_NAVER on (Z열 '네이버링크'가 있는 네이버 딜도 스레드에 — 일반 딜 조건 · off면 제외)
  *   HD_HOOK_SOURCES 지금할인  (제목이 상품명이 아니라 홍보 문구인 출처 — 본문전체(K)가 없으면 보류)
  *
  * 주의: 기존 메뉴 '자동 실행 켜기'(installTriggers)는 모든 트리거를 지우고 다시 만든다.
@@ -34,7 +35,7 @@
 const HD_SHEET_ID = '13-ecoze8qCHs0rcBNWfer9feg7CU-cfVYDEUzA9t5d0';
 const HD_TAB = '필터통과';
 const HD = { at: 1, src: 2, title: 3, price: 4, kw: 5, score: 6, urls: 7, orig: 8, draft: 9, status: 10, body: 11,
-  link: 12, thread: 13, postedAt: 14, note: 15, cap: 16, cmp: 17, prod: 18, inf: 23, page: 24, pname: 25 };
+  link: 12, thread: 13, postedAt: 14, note: 15, cap: 16, cmp: 17, prod: 18, inf: 23, page: 24, pname: 25, nlink: 26 };
 const HD_HEAD = ['변환링크', '스레드URL', '발행시각', '비고(에러)', '캡처', '수량비교', '상품주소'];   // S~U 카톡, V 토스링크, W 인플링크, X 딜페이지, Y 상품명 (맥이 씀)   // P·Q열은 맥북 캡처기, R열은 맥북(단축 링크 풀기)·발행기(파트너스 검색)
 const HD_DISCLOSURE = '이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.';
 const HD_CACHE_DAYS = 7;
@@ -52,7 +53,7 @@ function hotdealCheck() {
   try { const id = hdChatPostId_(); out.push('채팅방 글(2/3 인용): ' + (id ? '찾음 ' + id : '꺼짐')); } catch (e) { out.push('채팅방 글 못 찾음: ' + e.message); }
   try {
     const sh = hdSheet_();
-    const head = sh.getRange(1, 1, 1, HD.pname).getDisplayValues()[0];
+    const head = sh.getRange(1, 1, 1, HD.nlink).getDisplayValues()[0];
     out.push('시트: ' + HD_TAB + ' ' + (sh.getLastRow() - 1) + '행, A~K 헤더 ' + (head[HD.urls - 1] === '쿠팡URL(전체)' && head[HD.status - 1] === '상태' ? '정상' : '다름!'));
     out.push('L~O 헤더: ' + (head.slice(HD.link - 1).join('') ? head.slice(HD.link - 1).join(' / ') : '비어 있음 (첫 발행 때 채움)'));
     const counts = {};
@@ -168,7 +169,7 @@ function hdTopItems_(rows, from, to) {
 
 function hdWeekly_(dry) {
   const sh = hdSheet_();
-  const rows = sh.getRange(2, 1, sh.getLastRow() - 1, HD.pname).getDisplayValues();
+  const rows = sh.getRange(2, 1, sh.getLastRow() - 1, HD.nlink).getDisplayValues();
   const now = new Date();
   const top = hdTopItems_(rows, new Date(now - 7 * 86400000), now).slice(0, 7);
   if (top.length < 3) { hdLog_('주간 총정리: 이번 주 딜이 ' + top.length + '건뿐이라 건너뜀'); return; }
@@ -199,7 +200,7 @@ function hotdealDaily() { return hdDaily_(false); }
 
 function hdDaily_(dry) {
   const sh = hdSheet_();
-  const rows = sh.getRange(2, 1, sh.getLastRow() - 1, HD.pname).getDisplayValues();
+  const rows = sh.getRange(2, 1, sh.getLastRow() - 1, HD.nlink).getDisplayValues();
   const now = new Date();
   const today = hdParse_(Utilities.formatDate(now, TZ, 'yyyy-MM-dd') + ' 00:00');
   const yest = new Date(today.getTime() - 86400000);
@@ -256,7 +257,7 @@ function hdRun_(o) {
     const sh = hdSheet_();
     const last = sh.getLastRow();
     if (last < 2) { hdLog_('필터통과 탭이 비어 있음'); return; }
-    const rows = sh.getRange(2, 1, last - 1, HD.pname).getDisplayValues();
+    const rows = sh.getRange(2, 1, last - 1, HD.nlink).getDisplayValues();
     const now = new Date();
     const today = Utilities.formatDate(now, TZ, 'yyyy-MM-dd');
 
@@ -345,11 +346,14 @@ function hdPick_(rows, now) {
     if (at && (now - at) / 3600000 > maxAge) return;   // 수집기도 새 행을 '대기'로 쓰므로(2026-11-22 확인) '대기'도 나이 제한
     // PC 캡처기가 P열을 채울 때까지 잠깐 기다림 (P열이 비어 있고 들어온 지 HD_WAIT_CAPTURE_MIN 분 안이면 다음 차례로)
     // 2026-11-23 사용자 결정: 토스 딜도 스레드에 (일반 딜 조건만, 첫 줄에 토스 대가성 문구). 쿠팡·토스 링크가 둘 다 없으면 건너뜀
-    // 2026-11-23 맥 요청: 네이버 딜(E열에 '네이버')은 쿠팡처럼 다루지 않는다 — 스레드 발행 대상 아님 (수집기가 G열에 쿠팡 검색 링크를 채워도)
-    if (hdIsNaver_(r)) return;
-    const toss = hdIsToss_(r);
+    // 네이버 딜(E열 '네이버')은 쿠팡처럼 다루지 않는다 (2026-11-23 맥 요청).
+    // 단, 맥이 브랜드 커넥트로 쇼핑 커넥트 링크를 발급해 Z열에 적은 행은 토스 딜처럼 일반 딜 조건으로 스레드에 올린다 (카톡방에 그 딜이 있으므로).
+    if (hdIsNaver_(r)) {
+      if (!/^https?:\/\//.test(String(r[HD.nlink - 1] || '').trim()) || hdCfg_('HD_NAVER', 'on') === 'off' || !hdGeneralOk_(r, now, null)) return;
+    }
+    const toss = hdIsToss_(r) || hdIsNaver_(r);   // 쿠팡 링크 변환을 하지 않는 외부몰 딜
     if (!toss && !String(r[HD.urls - 1]).split('\n').some(u => /coupang\.com/.test(u))) return;
-    if (toss && (hdCfg_('HD_TOSS', 'on') === 'off' || !hdGeneralOk_(r, now, null))) return;
+    if (hdIsToss_(r) && (hdCfg_('HD_TOSS', 'on') === 'off' || !hdGeneralOk_(r, now, null))) return;
     const mode = hdCfg_('HD_MODE', 'mix');
     const pair = hdPair_(r);
     if (mode === 'qty') {
@@ -377,11 +381,12 @@ function hdOne_(sh, row, v, recover, dry) {
   if (!dry) hdWrite_(sh, row, { status: '처리중', note: '처리중 시작 ' + hdStamp_(new Date()) + (recover ? ' · 복구' : '') });
 
   // 2) 링크 변환 (토스 딜은 스레드에 링크를 안 올리므로 변환하지 않음 — 쉐어링크는 맥이 V열에)
-  const conv = hdIsToss_(v) ? { pairs: [{ from: '토스', to: '(스레드엔 링크 없음)' }], notes: [], rateLimited: false } : hdConvert_(v);
+  const ext = hdIsToss_(v) ? '토스' : hdIsNaver_(v) ? '네이버' : '';
+  const conv = ext ? { pairs: [{ from: ext, to: '(스레드엔 링크 없음)' }], notes: [], rateLimited: false } : hdConvert_(v);
   notes.push.apply(notes, conv.notes);
   lines.push('링크 ' + conv.pairs.length + '개');
   conv.pairs.forEach(p => lines.push('  ' + p.from + '\n   → ' + p.to));
-  if (!dry && !hdIsToss_(v)) hdWrite_(sh, row, { link: conv.pairs.map(p => p.from + ' → ' + p.to).join('\n') });
+  if (!dry && !ext) hdWrite_(sh, row, { link: conv.pairs.map(p => p.from + ' → ' + p.to).join('\n') });
   if (!conv.pairs.length) return hdFail_(sh, row, dry, lines, '쿠팡 링크 없음', notes);
   if (conv.rateLimited) return hdFail_(sh, row, dry, lines, '쿠팡 API 429', notes);
 
@@ -1053,7 +1058,7 @@ function hdDot_(sl, cx, cy, size, color) {
 // 가격 카드만 시험 — 신규 첫 행으로 그려 주소를 로그에 (30분 동안 열림)
 function hotdealTestCard() {
   const sh = hdSheet_();
-  const rows = sh.getRange(2, 1, sh.getLastRow() - 1, HD.pname).getDisplayValues();
+  const rows = sh.getRange(2, 1, sh.getLastRow() - 1, HD.nlink).getDisplayValues();
   const i = rows.findIndex(r => !hdHoldReason_(r));
   const c = hdCard_(rows[i], i + 2);
   console.log('행 ' + (i + 2) + ' 가격 카드: ' + c.url);
