@@ -108,7 +108,7 @@ if(g.children.length>=2)s.hidden=false;}).catch(function(){});})();</script>
   <p class="np-native-d">이 콘텐츠는 아정당 파트너스 활동의 일환으로, 링크를 통해 구매가 발생할 경우 파트너와 구매 고객 모두에게 일정 리워드가 제공됩니다.</p>
 </aside>
 {% elif kind == 'ajd_board' %}{{ bizboard('rental', slot) }}
-{% elif kind in ('cp', 'cp_end') %}{{ cp_ad('home', 'np-cp-pc') }}{{ cp_ad('home_end_mo' if kind == 'cp_end' else 'home_mo', 'np-cp-mo') }}<p class="np-ad-n">{{ COUPANG_NOTE }}</p>
+{% elif kind.startswith('cp:') %}{% set cpp = kind.split(':') %}{% if cpp[1] %}{{ cp_ad(cpp[1], 'np-cp-pc' if cpp[2] else 'np-cp-all') }}{% endif %}{% if cpp[2] %}{{ cp_ad(cpp[2], 'np-cp-mo' if cpp[1] else 'np-cp-all') }}{% endif %}<p class="np-ad-n">{{ COUPANG_NOTE }}</p>
 {% elif kind == 'adsense' and ADSENSE.client and ADSENSE.slots.get(slot) %}<div class="np-ad-s"><ins class="adsbygoogle np-ins" style="display:inline-block" data-ad-client="{{ ADSENSE.client }}" data-ad-slot="{{ ADSENSE.slots.get(slot) }}"></ins></div>
 {% endif %}</div>{% endif %}{% endmacro %}
 
