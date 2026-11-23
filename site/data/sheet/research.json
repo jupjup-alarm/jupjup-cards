@@ -1,6 +1,6 @@
 {
  "tab": "청약조사",
- "dumped_at": "2026-11-24 06:59",
+ "dumped_at": "2026-11-24 08:07",
  "rows": [
   {
    "_row": 2,
@@ -4876,7 +4876,8 @@
    "접수 마감": "2026-12-04",
    "당첨자 발표": "2026-12-22",
    "출처 URL": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300021130&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=10&mi=1026 (LH 수원시지역 호매실21단지·고등2단지 행복주택 공고, 2026-11-23 · 호매실21 일정 기준, 고등2 일정은 공고문 확인필요)",
-   "상태": "후보"
+   "상태": "후보",
+   "지도 이미지": "여러 곳"
   },
   {
    "_row": 204,
@@ -4894,7 +4895,10 @@
    "당첨자 발표": "2026-12-03",
    "출처 URL": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910304&pblancNo=2026910304",
    "상태": "후보",
-   "공식 홈페이지": "https://더샵분당하이스트.kr"
+   "지도 이미지": "maps/e90e4ce3566d.png",
+   "좌표(경도,위도)": "127.1135606,37.367358",
+   "공식 홈페이지": "https://더샵분당하이스트.kr",
+   "위성사진": "photos/sat/947a32ba1aa0.png"
   },
   {
    "_row": 205,
@@ -4912,7 +4916,10 @@
    "당첨자 발표": "2026-12-03",
    "출처 URL": "https://www.applyhome.co.kr/ai/aia/selectPRMOLttotPblancDetailView.do?houseManageNo=2026850057&pblancNo=2026850057&houseSecd=03",
    "상태": "후보",
-   "공식 홈페이지": "https://백운밸리리젠시빌란트.com"
+   "지도 이미지": "maps/01fa5485bb2e.png",
+   "좌표(경도,위도)": "126.968279,37.344887",
+   "공식 홈페이지": "https://백운밸리리젠시빌란트.com",
+   "위성사진": "photos/sat/b0c6a26fbb9e.png"
   },
   {
    "_row": 206,
@@ -4930,7 +4937,10 @@
    "당첨자 발표": "2026-12-04",
    "출처 URL": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910301&pblancNo=2026910301",
    "상태": "후보",
-   "공식 홈페이지": "http://www.이천서희스타힐스스카이.com"
+   "지도 이미지": "maps/f3a3ec84d86e.png",
+   "좌표(경도,위도)": "127.4557288,37.2762909",
+   "공식 홈페이지": "http://www.이천서희스타힐스스카이.com",
+   "위성사진": "photos/sat/2bf1f5969f8b.png"
   },
   {
    "_row": 207,
@@ -4947,7 +4957,10 @@
    "접수 마감": "2026-12-01",
    "당첨자 발표": "2026-12-04",
    "출처 URL": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910302&pblancNo=2026910302",
-   "상태": "후보"
+   "상태": "후보",
+   "지도 이미지": "maps/defef621d1f8.png",
+   "좌표(경도,위도)": "127.0637106,37.2649402",
+   "위성사진": "photos/sat/dd9fd5c03acb.png"
   },
   {
    "_row": 208,
@@ -4964,7 +4977,10 @@
    "접수 마감": "2026-11-30",
    "당첨자 발표": "2026-12-03",
    "출처 URL": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910303&pblancNo=2026910303 · https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026930048&pblancNo=2026930048",
-   "상태": "후보"
+   "상태": "후보",
+   "지도 이미지": "maps/d0978c68fe18.png",
+   "좌표(경도,위도)": "127.1421075,37.1743225",
+   "위성사진": "photos/sat/f8624e7fd229.png"
   },
   {
    "_row": 209,
