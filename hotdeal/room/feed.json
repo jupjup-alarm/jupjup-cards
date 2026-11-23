@@ -1,7 +1,28 @@
 {
- "updated": "2026-11-23 13:13:09",
+ "updated": "2026-11-23 14:40:09",
  "date": "2026-11-23",
  "items": [
+  {
+   "id": "r118",
+   "row": 118,
+   "at": "2026-11-23 14:40",
+   "name": "나랑드사이다 제로, 500ml, 24개",
+   "price": 11950,
+   "disc": null,
+   "link": "https://link.coupang.com/a/iUfFmDjtZs",
+   "tier": "역전",
+   "pid": "8180059688",
+   "pair": "4개 5,450원 → 24개 11,950원",
+   "pct": 63,
+   "unit": "개당 498원",
+   "ua": "개",
+   "per_a": 1362,
+   "per_b": 498,
+   "grade": "초특가",
+   "list_price": 18600,
+   "list_pct": 36,
+   "img": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/hotdeal/room/img/8180059688.jpg"
+  },
   {
    "id": "r99",
    "row": 99,
