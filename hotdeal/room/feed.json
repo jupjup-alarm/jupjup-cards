@@ -1,7 +1,28 @@
 {
- "updated": "2026-11-23 14:40:09",
+ "updated": "2026-11-23 16:55:33",
  "date": "2026-11-23",
  "items": [
+  {
+   "id": "r131",
+   "row": 131,
+   "at": "2026-11-23 16:55",
+   "name": "코카콜라 제로",
+   "price": 16000,
+   "disc": null,
+   "link": "https://link.coupang.com/a/iUpovS4RyK",
+   "tier": "역전",
+   "pid": "71444050",
+   "pair": "4개 14,550원 → 8개 16,000원",
+   "pct": 45,
+   "unit": "개당 2,000원",
+   "ua": "개",
+   "per_a": 3638,
+   "per_b": 2000,
+   "grade": "초특가",
+   "list_price": 26300,
+   "list_pct": 39,
+   "img": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/hotdeal/room/img/71444050.jpg"
+  },
   {
    "id": "r118",
    "row": 118,
