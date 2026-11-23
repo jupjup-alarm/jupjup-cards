@@ -31,15 +31,42 @@
 <link rel="alternate" type="application/rss+xml" title="줍줍알람" href="/rss.xml">
 <link rel="stylesheet" href="/fonts/pretendard/pretendard.css">
 <link rel="stylesheet" href="{{ css }}">
-{% block head %}{% endblock %}
+{% if np and css_np %}<link rel="stylesheet" href="{{ css_np }}">
+{% endif %}{% block head %}{% endblock %}
 {% if GA.id %}<script async src="https://www.googletagmanager.com/gtag/js?id={{ GA.id }}"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','{{ GA.id }}');</script>{% endif %}
 <script>window.jjEv=function(n,p){try{if(window.gtag)gtag('event',n,p||{});}catch(e){}};</script>
-<script>document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a.bzb');if(a)jjEv('ajd_click',{product:a.getAttribute('data-ajd'),slot:'bizboard_'+a.getAttribute('data-slot'),from_page:location.pathname,transport_type:'beacon'});});</script>{# 2026-11-22 비즈보드형 아정당 배너 클릭 #}
+<script>document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a.bzb,.np-native a');if(a)jjEv('ajd_click',{product:a.getAttribute('data-ajd'),slot:(a.classList.contains('bzb')?'bizboard_':'native_')+a.getAttribute('data-slot'),from_page:location.pathname,transport_type:'beacon'});});</script>{# 2026-11-22 비즈보드형 아정당 배너 클릭 #}
 {% if ADSENSE.client %}<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ ADSENSE.client }}" crossorigin="anonymous"></script>{% endif %}
 </head>
-<body>
+<body{% if np %} class="np"{% endif %}>
 <a class="skip" href="#main">본문 바로가기</a>
+{% if np %}
+{# 2026-11-23 신문형 리디자인 (칼럼·공고 상세): 날짜 줄 + 가운데 제호 + 두 줄 선 섹션 메뉴. 스크롤하면 얇은 상단바.
+   모바일 하단 탭(2026-11-20 사용자 결정)은 그대로 둔다. 제호는 h1이 아님 — 페이지 h1은 글 제목 하나 #}
+{% set np_links = [('청약 일정', '/schedule/this-week/', '/schedule/'), ('줍줍·무순위', '/type/mujeonwi/', '/type/mujeonwi/'), ('공공분양', '/type/public/', '/type/public/'), ('임대', '/type/rental/', '/type/rental/'), ('지역', '/region/', '/region/'), ('경쟁률', '/competition/', '/competition/'), ('분석', '/analysis/', '/analysis/'), ('가이드', '/guide/', '/guide/'), ('계산기', '/tools/', '/tools/')] %}
+<div class="np-bar" id="npbar" aria-hidden="true">
+  <div class="np-bar-in">
+    <a class="np-wm-s" href="/" tabindex="-1">줍줍알람<span class="np-dot">.</span></a>
+    <div class="np-bar-t">{% if np_kicker %}<span>{{ np_kicker }}</span>{% endif %}{{ np_title }}</div>
+    <a class="np-btn" href="{{ np_bar_href|default(IG) }}" tabindex="-1"{% if not np_bar_href %} rel="noopener"{% endif %}>{{ np_bar_label|default('새 공고 알림') }}</a>
+  </div>
+  {% if np_progress %}<i class="np-prog" id="npprog"></i>{% endif %}
+</div>
+<header class="np-top">
+  <div class="np-util">
+    <span class="np-date">{{ np_date }}{% if np_open %} · 지금 접수 중 {{ np_open }}건{% endif %}</span>
+    <span class="np-util-r"><a href="/search/">검색</a><a class="np-btn" href="{{ IG }}" rel="noopener">새 공고 알림 받기</a></span>
+  </div>
+  <div class="np-mast">
+    <a href="/" aria-label="줍줍알람 홈"><span class="np-wm">줍줍알람<span class="np-dot">.</span></span></a>
+    <p class="np-tagline">놓치기 쉬운 청약 공고를 공식 데이터로 읽어 드려요</p>
+  </div>
+  <nav class="np-sec" aria-label="주 메뉴">
+    <ul>{% for label, url, pre in np_links %}<li><a href="{{ url }}"{% if (np_sec|default('')) == pre or (not np_sec and page_url.startswith(pre)) %} aria-current="page"{% endif %}>{{ label }}</a></li>{% endfor %}</ul>
+  </nav>
+</header>
+{% else %}
 {# 2026-11-04 리디자인 1단계(공통 틀): 모바일은 흰 머리글 + 하단 5칸 탭, 데스크톱(1024px~)은 남색 머리글 + 메뉴 5개 #}
 {% set tab = 'home' if page_url == '/' else ('schedule' if page_url.startswith('/schedule') else ('region' if page_url.startswith('/region') else ('type' if page_url.startswith('/type') else ('lotto' if page_url.startswith('/lotto') else ('guide' if page_url.startswith('/guide') else ('competition' if page_url.startswith('/competition') else ('tools' if page_url.startswith('/tools') else ('report' if page_url.startswith('/report') or page_url.startswith('/week') or page_url.startswith('/scores') else ('info' if page_url.startswith('/info') else nav))))))))) %}
 {% set sub = page_url.startswith('/apt/') or (page_url.startswith('/guide/') and page_url != '/guide/') or (page_url.startswith('/tools/') and page_url != '/tools/') %}{% set gart = sub and page_url.startswith('/guide/') %}
@@ -63,6 +90,7 @@
     {% if gart %}<i class="rprog" aria-hidden="true"></i>{% endif %}
   </div>
 </header>
+{% endif %}
 {% block main %}{% endblock %}
 <footer>
   <div class="wrap">
@@ -102,8 +130,15 @@
     if(d>0)el.textContent='D-'+d;else if(d===0)el.textContent='오늘';else el.textContent='마감';
   });
   function flash(b,msg){if(b.querySelector('svg')){b.classList.add('done');b.setAttribute('title',msg);setTimeout(function(){b.classList.remove('done');b.removeAttribute('title')},1500);return;}var o=b.textContent;b.textContent=msg;setTimeout(function(){b.textContent=o},1500);}
+  var nb=document.getElementById('npbar'),nh=document.querySelector('h1');
+  if(nb&&nh&&'IntersectionObserver' in window){new IntersectionObserver(function(es){var e=es[0];var on=!e.isIntersecting&&e.boundingClientRect.top<0;nb.classList.toggle('on',on);nb.setAttribute('aria-hidden',on?'false':'true');nb.querySelectorAll('a').forEach(function(a){a.tabIndex=on?0:-1});}).observe(nh);
+    var npp=document.getElementById('npprog');if(npp){var art=document.querySelector('[data-np-art]')||document.body,pk=false;function npu(){var r=art.getBoundingClientRect(),t=r.height-innerHeight;npp.style.transform='scaleX('+(t>0?Math.max(0,Math.min(1,-r.top/t)):0)+')';pk=false;}addEventListener('scroll',function(){if(!pk){pk=true;requestAnimationFrame(npu);}},{passive:true});npu();}}
+  // 2026-11-23 신문형: 안 채워진 애드센스 자리는 아직 화면 아래에 있을 때만 접음 (보고 있는 화면이 밀리지 않게)
+  if(window.MutationObserver)document.querySelectorAll('[data-np-ad]').forEach(function(w){var ins=w.querySelector('ins');if(!ins)return;
+    function chk(){if(ins.getAttribute('data-ad-status')==='unfilled'&&w.getBoundingClientRect().top>innerHeight)w.classList.add('gone');}
+    new MutationObserver(chk).observe(ins,{attributes:true,attributeFilter:['data-ad-status']});chk();});
   var rp=document.querySelector('.rprog');if(rp){var rt=false;function rpu(){var h=document.documentElement.scrollHeight-innerHeight;rp.style.transform='scaleX('+(h>0?Math.min(1,scrollY/h):0)+')';rt=false;}addEventListener('scroll',function(){if(!rt){rt=true;requestAnimationFrame(rpu);}},{passive:true});rpu();}
-  document.querySelectorAll('.tabbar a,.top .nav a').forEach(function(a){a.addEventListener('click',function(){jjEv('tab_click',{tab:a.textContent.trim(),tab_place:a.closest('.tabbar')?'bottom':'header',from_page:location.pathname,link_url:a.getAttribute('href')});});});
+  document.querySelectorAll('.tabbar a,.top .nav a,.np-sec a').forEach(function(a){a.addEventListener('click',function(){jjEv('tab_click',{tab:a.textContent.trim(),tab_place:a.closest('.tabbar')?'bottom':'header',from_page:location.pathname,link_url:a.getAttribute('href')});});});
   document.querySelectorAll('[data-back]').forEach(function(a){a.addEventListener('click',function(e){try{if(document.referrer&&new URL(document.referrer).host===location.host&&history.length>1){e.preventDefault();history.back();}}catch(x){}});});
   function copy(text,b){if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(function(){flash(b,'복사됨')},function(){flash(b,'복사 안 됨')});}}
   document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(){copy(b.getAttribute('data-copy'),b)})});

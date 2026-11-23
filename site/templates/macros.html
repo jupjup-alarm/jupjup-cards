@@ -92,3 +92,31 @@ var p=document.createElement('span');p.className='goods-p';p.textContent=(x.pric
 a.appendChild(im);a.appendChild(kw);a.appendChild(t);a.appendChild(p);a.addEventListener('click',function(){if(window.jjEv)jjEv('cp_goods_click',{kw:x.kw||'',product_id:x.id||'',kind:k,from_page:location.pathname,transport_type:'beacon'});});g.appendChild(a);});
 if(g.children.length>=2)s.hidden=false;}).catch(function(){});})();</script>
 {% endmacro %}
+
+{# 2026-11-23 신문형 리디자인: 본문 광고 자리 — 무엇으로 채울지는 build.py NP_ADS. '광고' 표시 + 높이를 미리 잡아(np.css) 광고가 늦게 떠도 글이 밀리지 않게.
+   쿠팡 배너는 원래 스크립트가 뜬 뒤에야 보였는데(.ad.on) 신문형 페이지에선 처음부터 자리를 잡아 둔다.
+   애드센스는 크기 고정 336×280(좁은 화면 300×250) — 반응형(auto)은 모바일에서 375×375까지 커져 글이 밀렸음.
+   안 채워진 애드센스 자리는 아직 화면 아래에 있을 때만 접는다(base.html) #}
+{% macro np_ad(slot, cls='') %}{% set kind = NP_ADS.get(slot) %}{% if kind %}
+<div class="np-ad np-ad-{{ kind }} {{ cls }}" data-np-ad="{{ slot }}">{% if kind != 'ajd' %}<div class="np-ad-l">광고</div>{% endif %}
+{% if kind == 'ajd' %}<aside class="np-native" aria-label="제휴 광고">
+  <div class="np-native-l">광고 · 이사·입주 준비</div>
+  <div class="np-native-i">
+    <a href="https://partners.ajl.to/lead/internet?partnerId=AC1YOZD0" target="_blank" rel="noopener noreferrer sponsored" data-ajd="internet" data-slot="{{ slot }}"><span class="t">인터넷 그대로 두면 최대 51만원 손해</span><span class="s">SK·KT·LG 요금 비교하고 설치 당일 지원금 받기</span><span class="go">내 지원금 조회하기 ›</span></a>
+    <a href="https://partners.ajl.to/lead/rental?partnerId=AC1YOZD0" target="_blank" rel="noopener noreferrer sponsored" data-ajd="rental" data-slot="{{ slot }}"><span class="t">새 집 가전, 목돈 대신 렌탈로</span><span class="s">정수기부터 TV까지 66종 최저가 비교</span><span class="go">렌탈 최저가 비교하기 ›</span></a>
+  </div>
+  <p class="np-native-d">이 콘텐츠는 아정당 파트너스 활동의 일환으로, 링크를 통해 구매가 발생할 경우 파트너와 구매 고객 모두에게 일정 리워드가 제공됩니다.</p>
+</aside>
+{% elif kind == 'ajd_board' %}{{ bizboard('rental', slot) }}
+{% elif kind in ('cp', 'cp_end') %}{{ cp_ad('home', 'np-cp-pc') }}{{ cp_ad('home_end_mo' if kind == 'cp_end' else 'home_mo', 'np-cp-mo') }}<p class="np-ad-n">{{ COUPANG_NOTE }}</p>
+{% elif kind == 'adsense' and ADSENSE.client and ADSENSE.slots.get(slot) %}<div class="np-ad-s"><ins class="adsbygoogle np-ins" style="display:inline-block" data-ad-client="{{ ADSENSE.client }}" data-ad-slot="{{ ADSENSE.slots.get(slot) }}"></ins></div>
+{% endif %}</div>{% endif %}{% endmacro %}
+
+{# 2026-11-23 신문형 리디자인: 글 아래 '지금 접수 중인 공고' 카드 (칼럼·공고 상세 공용) #}
+{% macro np_card(n) %}{% set pl = n.comp.short if (n.status in ('waiting', 'announced') and n.comp and n.comp.short) else (nprice(n)|trim) %}
+<li><a href="{{ n.url }}">
+  <span class="r1"><span>{{ n.kind_label }}</span>{% if n.status == 'open' %}{% set dl = days_to(n.rcpt[1] or n.rcpt[0]) %}<span class="dd">{% if dl == 0 %}오늘 마감{% else %}<span data-dend="{{ n.rcpt[1] or n.rcpt[0] }}">D-{{ dl }}</span> 마감{% endif %}</span>{% elif n.status == 'upcoming' %}<span class="dd up"><span data-dday="{{ n.rcpt[0] }}">D-{{ n.dday }}</span> 접수</span>{% endif %}</span>
+  <span class="nm">{{ n.title }}</span>
+  <span class="info num">{{ n.sido }} {{ n.sigungu or '' }}{% if n.units %} · {{ '{:,}'.format(n.units) }}{{ n.unit_word or '세대' }}{% endif %}{% if n.status in ('open', 'upcoming') %} · {{ n.rcpt[0]|trange(n.rcpt[1]) }} 접수{% endif %}</span>
+  {% if pl %}<span class="pr num">{{ pl }}</span>{% endif %}
+</a></li>{% endmacro %}

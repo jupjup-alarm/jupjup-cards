@@ -74,6 +74,10 @@ for _k in ("apt_nav_mo", "apt_top_mo"):
 for _k, _v in COUPANG.items():
     _v["opts"]["subId"] = CP_SUBID.get(_k, "jupjupalarm")
 GOODS_API = "https://autodm.jupjupalarm.com/jj/goods.json"
+# 2026-11-23 신문형 리디자인(칼럼·공고 상세) 본문 광고 자리 → 무엇을 채울지. 애드센스는 아직 광고가 안 나와서(사용자 2026-11-23) 쿠팡·아정당으로 채움.
+#   ajd = 아정당 제휴 2칸(인터넷·렌탈, 모든 폭) · ajd_board = 아정당 비즈보드(렌탈) · cp = 쿠팡 다이나믹 배너(PC home / 모바일 home_mo)
+#   cp_end = 쿠팡(PC home / 모바일 큰 home_end_mo) · adsense = 애드센스 336×280 고정 (승인 뒤 바꿀 때 ADSENSE slots에 같은 이름으로 광고 단위 ID 추가)
+NP_ADS = {"guide_mid": "ajd", "guide_mid2": "cp", "guide_mid3": "ajd_board", "guide_end": "cp_end"}
 # 애드센스 (승인 전이라 비어 있음 — client에 ca-pub-…, slots에 광고 단위 ID를 넣으면 그 자리에 나옴)
 ADSENSE = {"client": "ca-pub-1196853150959268", "slots": {"apt_top": "5439503161", "guide_mid": "5439503161"}}  # 2026-11-03 사이트 연결 + 광고 단위 '사각형_반응형' (공고 3초 판단 카드 아래 — 11/3 한마디 아래에서 올림 · 가이드 본문 중간)
 # 구글 애널리틱스 4 — 측정 ID(G-XXXXXXXXXX)를 넣으면 모든 페이지에 붙음 (사용자 요청 2026-10-29). 비우면 아무것도 안 붙음
@@ -1562,7 +1566,7 @@ def env():
         return out if len(out) >= 2 else []
     def days_to(iso):
         return (dt.date.fromisoformat(iso) - TODAY).days if iso else None
-    e.globals.update(steps4=steps4, days_to=days_to, HAS_GUIDES=bool(GUIDES.load()), RENTAL_EXPLAIN=RENTAL_EXPLAIN, BASE=BASE, IG=IG, THREADS=THREADS, KAKAO=KAKAO, BLOG=BLOG, YOUTUBE=YOUTUBE, COUPANG=COUPANG, COUPANG_NOTE=COUPANG_NOTE, GOODS_API=GOODS_API, ADSENSE=ADSENSE, GA=GA, STATUS=STATUS, KINDS=KINDS, crumb_ld=crumb_ld, items_ld=items_ld, GUIDE_TOOLS=TOOLS_PAGES.guide_tools(),
+    e.globals.update(NP_ADS=NP_ADS, steps4=steps4, days_to=days_to, HAS_GUIDES=bool(GUIDES.load()), RENTAL_EXPLAIN=RENTAL_EXPLAIN, BASE=BASE, IG=IG, THREADS=THREADS, KAKAO=KAKAO, BLOG=BLOG, YOUTUBE=YOUTUBE, COUPANG=COUPANG, COUPANG_NOTE=COUPANG_NOTE, GOODS_API=GOODS_API, ADSENSE=ADSENSE, GA=GA, STATUS=STATUS, KINDS=KINDS, crumb_ld=crumb_ld, items_ld=items_ld, GUIDE_TOOLS=TOOLS_PAGES.guide_tools(),
                      logo=Markup((SITE / "static/favicon.svg").read_text().replace('<svg xmlns="http://www.w3.org/2000/svg" ', '<svg class="mark" aria-hidden="true" focusable="false" ')))
     return e
 
@@ -1773,7 +1777,7 @@ def main():
         if p.name == "apt":
             continue
         shutil.rmtree(p) if p.is_dir() else p.unlink()
-    css_hash = None
+    css_hash = np_hash = None
     for f in (SITE / "static").iterdir():
         if f.is_dir():
             shutil.copytree(f, PUB / f.name)
@@ -1781,6 +1785,9 @@ def main():
         if f.name == "style.css":
             css_hash = hashlib.sha1(f.read_bytes()).hexdigest()[:8]
             shutil.copy2(f, PUB / f"style.{css_hash}.css")
+        elif f.name == "np.css":   # 2026-11-23 신문형 리디자인 (칼럼·공고 상세만 — style.css 뒤에 얹음)
+            np_hash = hashlib.sha1(f.read_bytes()).hexdigest()[:8]
+            shutil.copy2(f, PUB / f"np.{np_hash}.css")
         else:
             shutil.copy2(f, PUB / f.name)
     og_default(PUB / "og-default.jpg")
@@ -1804,7 +1811,9 @@ def main():
         ann.sort(key=lambda n: n["announce"], reverse=True)
         return [n for n in lst if n["status"] != "announced"] + ann
 
-    common = dict(today=TODAY, built=now, css=f"/style.{css_hash}.css", kinds_used=sorted({n["kind"] for n in notices}, key=list(KINDS).index))
+    common = dict(today=TODAY, built=now, css=f"/style.{css_hash}.css", css_np=f"/np.{np_hash}.css" if np_hash else None,
+                  np_date=f"{TODAY.year}년 {TODAY.month}월 {TODAY.day}일 {DOW[TODAY.weekday()]}요일",
+                  np_open=sum(1 for n in notices if n["status"] == "open"), kinds_used=sorted({n["kind"] for n in notices}, key=list(KINDS).index))
 
     # 지역 목록 구성
     sido_map = {}
@@ -2741,6 +2750,8 @@ HEADERS = """/*
   X-Frame-Options: SAMEORIGIN
   Permissions-Policy: interest-cohort=()
 /style.*.css
+  Cache-Control: public, max-age=31536000, immutable
+/np.*.css
   Cache-Control: public, max-age=31536000, immutable
 /apt/*/*.webp
   Cache-Control: public, max-age=604800
