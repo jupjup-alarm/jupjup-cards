@@ -1,5 +1,55 @@
 {
- "updated": "2026-11-24 07:32:29",
+ "updated": "2026-11-24 08:00:54",
  "date": "2026-11-24",
- "items": []
+ "items": [
+  {
+   "id": "gb7869554357",
+   "row": 0,
+   "at": "2026-11-24 07:53",
+   "name": "동원샘물 무라벨 2L 30개",
+   "price": 16400,
+   "disc": 34,
+   "link": "https://link.coupang.com/a/iVrunDE8QL",
+   "tier": "골드박스",
+   "pid": "7869554357",
+   "grade": ""
+  },
+  {
+   "id": "gb7596180022",
+   "row": 0,
+   "at": "2026-11-24 07:53",
+   "name": "센소다인 멀티케어 EX 치약 100g×10개",
+   "price": 38470,
+   "disc": 37,
+   "link": "https://link.coupang.com/a/iVqzcuOS7g",
+   "tier": "골드박스",
+   "pid": "7596180022",
+   "grade": "",
+   "img": "https://ads-partners.coupang.com/image1/asx2irYj5kqLublKaj7lxe3hhlyQneBxd3_S4Z5orOXTjw8K7chdbPakBRJn2e_MTta0aR7FKoF4zNv51lhN_o_rchVAuVVfcDZzyqrsC3wjq8u0WBtzK9Awhnf2_tORTJ34vrtfhX3ZuWmA7koDkMKS6xXiAD4rcPa5tevMMn9-h4936KasLpBE3cyeSca-YBg8znJV9uQyAdR-TpZjrLzx2qWCKAlydM2IIO3P_5_OQ35BfdUeEBcBvkjBEXImZzMvJgwrymx0sJV6ei7IVNs1PybSLx5I3-fF6AzhNmGjgc1d9gn6Wa6amNOQ_1WFOURMeSLFpAx1SEPHrogoF85t7awfivoU2zEBhzM1iyqBfBB6US2R09xDNi26_PCJHxUFKXF3cmE0RE8UKVfateP8KciTL1irbin5Y8abc40rlKiJSU8iFPcXjlLwWS5hJAWEHSSRDS-5rBCZvyw16K0vigDcRQwBLmo-yX1e3Ssd2ojsHRvbT_wp6aUfZ1to00RsjtZPK5MdPh5duG_pz2_cjqiSyocglMz8QhLU75RUn4xJ3r331g0eEHBXBgncM2l_7NDO5Ec8v0smmk5Irxwx5Irc5a_WhH3kpc0FaRSmLlsxIV0yjTOj73mwz1A="
+  },
+  {
+   "id": "gb8174473713",
+   "row": 0,
+   "at": "2026-11-24 07:53",
+   "name": "코카콜라 제로 490ml 24개",
+   "price": 23650,
+   "disc": 36,
+   "link": "https://link.coupang.com/a/iVrum8IRFI",
+   "tier": "골드박스",
+   "pid": "8174473713",
+   "grade": ""
+  },
+  {
+   "id": "gb261192458",
+   "row": 0,
+   "at": "2026-11-24 07:53",
+   "name": "코멧 순백 3겹 롤화장지 30m, 30롤×2",
+   "price": 21990,
+   "disc": 45,
+   "link": "https://link.coupang.com/a/iVrumwdqVw",
+   "tier": "골드박스",
+   "pid": "261192458",
+   "grade": ""
+  }
+ ]
 }
