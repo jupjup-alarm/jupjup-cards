@@ -1,0 +1,105 @@
+{
+ "slug": "2026-11-23-anseong-gongga-reel",
+ "title": "경기남부권(안성 동인힐타운) 다세대 공가세대 일반매각",
+ "series": "줍줍알람",
+ "style": "story",
+ "voice": "voices/0e8c8b244e61/",
+ "voice_speed": 1.0,
+ "bgm": "music/beat-one.mp3",
+ "thumb": {
+  "lines": [
+   "안성 59㎡ 방 3개",
+   "1억1천만원대"
+  ]
+ },
+ "pool": [
+  {
+   "img": "photos/sat/b3e4dc4e409d.png",
+   "credit": "위성사진 © NAVER Corp."
+  },
+  {
+   "img": "photos/site/lh2015122300021015/notice-price.jpg",
+   "credit": "자료: LH 일반매각 공고(2026.11.05)"
+  },
+  {
+   "img": "photos/site/lh2015122300021015/notice-schedule.jpg",
+   "credit": "자료: LH 일반매각 공고(2026.11.05)"
+  },
+  {
+   "img": "photos/site/lh2015122300021015/notice-qual.jpg",
+   "credit": "자료: LH 일반매각 공고(2026.11.05)"
+  }
+ ],
+ "scenes": [
+  {
+   "type": "story",
+   "say": "경기 안성에 방 세 개 집이 1억 1천만 원대래요. 딱 14세대래요.",
+   "word": "1억1천만원대",
+   "shots": [
+    {
+     "img": "photos/sat/b3e4dc4e409d.png",
+     "credit": "위성사진 © NAVER Corp.",
+     "pos": "center 50%"
+    },
+    {
+     "img": "photos/site/lh2015122300021015/notice-price.jpg",
+     "credit": "자료: LH 일반매각 공고(2026.11.05)"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "심지어, 2013년에 입주한 59㎡에 화장실도 두 개래요.",
+   "word": "2013년",
+   "shots": [
+    {
+     "img": "photos/sat/b3e4dc4e409d.png",
+     "credit": "위성사진 © NAVER Corp.",
+     "pos": "30% 40%"
+    }
+   ],
+   "proof": {
+    "kind": "image",
+    "img": "photos/site/lh2015122300021015/notice-price.jpg",
+    "credit": "자료: LH 일반매각 공고(2026.11.05)"
+   }
+  },
+  {
+   "type": "story",
+   "say": "이게 어떻게 가능할까요?",
+   "dim": true,
+   "shots": [
+    {
+     "img": "photos/sat/b3e4dc4e409d.png",
+     "credit": "위성사진 © NAVER Corp.",
+     "pos": "70% 60%"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "LH가 비어 있던 집을 파는 공가 매각이거든요. 수도권 사는 19세 이상 무주택이면, 통장 없이 추첨이래요.",
+   "word": "통장 없이",
+   "shots": [
+    {
+     "img": "photos/sat/b3e4dc4e409d.png",
+     "credit": "위성사진 © NAVER Corp.",
+     "pos": "center 30%"
+    },
+    {
+     "img": "photos/site/lh2015122300021015/notice-schedule.jpg",
+     "credit": "자료: LH 일반매각 공고(2026.11.05)"
+    }
+   ],
+   "proof": {
+    "kind": "image",
+    "img": "photos/site/lh2015122300021015/notice-qual.jpg",
+    "credit": "자료: LH 일반매각 공고(2026.11.05)"
+   }
+  },
+  {
+   "type": "end",
+   "say": "접수는 내일 11월 24일까지래요. 단지 이름이랑 공고 정리는, 댓글에 '안성'이라고 남겨 주세요."
+  }
+ ]
+}

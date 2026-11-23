@@ -1,0 +1,17 @@
+{
+ "slug": "2026-11-23-anseong-gongga-reel",
+ "duration": 24.68,
+ "voiced": true,
+ "narration_s": 22.1,
+ "mean_db": -18.2,
+ "voice": "voices/0e8c8b244e61/",
+ "video": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-23-anseong-gongga-reel/2026-11-23-anseong-gongga-reel.mp4",
+ "cover": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-23-anseong-gongga-reel/2026-11-23-anseong-gongga-reel_thumb.jpg",
+ "size_mb": 8.63,
+ "warnings": [
+  "확대 못 함: notice-price.jpg(torch 없음), notice-schedule.jpg(torch 없음), notice-qual.jpg(torch 없음)",
+  "호흡: 장면 5 대본에 없는 곳에서 0.28초 쉼 (③ 대본 쉼표 위치 확인)",
+  "사진: 컷 10개 · 서로 다른 사진 4장",
+  "사진 반복: b3e4dc4e409d.png 4번 — 단지 그림을 shots·pool에 더 넣을 것"
+ ]
+}
