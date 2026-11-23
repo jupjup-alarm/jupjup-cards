@@ -1,0 +1,126 @@
+{
+ "key": "2026850057",
+ "images": [
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "location",
+   "file": "photos/site/2026850057/location-auto-1.jpg",
+   "src": "https://xn--si2b54ba29w9a08xu7k22hymd781b.com/images/premium_img01.jpg",
+   "w": 450,
+   "h": 563,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "location",
+   "file": "photos/site/2026850057/location-auto-2.jpg",
+   "src": "https://xn--si2b54ba29w9a08xu7k22hymd781b.com/images/premium_img02.jpg",
+   "w": 450,
+   "h": 563,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "location",
+   "file": "photos/site/2026850057/location-auto-3.jpg",
+   "src": "https://xn--si2b54ba29w9a08xu7k22hymd781b.com/images/premium_img03.jpg",
+   "w": 450,
+   "h": 563,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "community",
+   "kind": "community",
+   "label": "community",
+   "file": "photos/site/2026850057/community-auto-1.jpg",
+   "src": "https://xn--si2b54ba29w9a08xu7k22hymd781b.com/images/sub23.jpg",
+   "w": 1200,
+   "h": 961,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "siteplan",
+   "kind": "siteplan",
+   "label": "siteplan",
+   "file": "photos/site/2026850057/siteplan-auto-1.jpg",
+   "src": "https://xn--si2b54ba29w9a08xu7k22hymd781b.com/images/sub21.jpg",
+   "w": 1200,
+   "h": 766,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "dongho",
+   "kind": "dongho",
+   "label": "dongho",
+   "file": "photos/site/2026850057/dongho-auto-1.jpg",
+   "src": "https://xn--si2b54ba29w9a08xu7k22hymd781b.com/images/sub22.jpg?v=3",
+   "w": 1200,
+   "h": 698,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "plan",
+   "file": "photos/site/2026850057/plan-auto-1.jpg",
+   "src": "https://xn--si2b54ba29w9a08xu7k22hymd781b.com/images/sub31-1.jpg?ver=1",
+   "w": 1200,
+   "h": 749,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "plan",
+   "file": "photos/site/2026850057/plan-auto-2.jpg",
+   "src": "https://xn--si2b54ba29w9a08xu7k22hymd781b.com/images/sub31-2.jpg?ver=1",
+   "w": 1200,
+   "h": 749,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "plan",
+   "file": "photos/site/2026850057/plan-auto-3.jpg",
+   "src": "https://xn--si2b54ba29w9a08xu7k22hymd781b.com/images/sub31-3.jpg?ver=1",
+   "w": 1200,
+   "h": 804,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "plan",
+   "file": "photos/site/2026850057/plan-auto-4.jpg",
+   "src": "https://xn--si2b54ba29w9a08xu7k22hymd781b.com/images/sub31-4.jpg?ver=1",
+   "w": 1200,
+   "h": 768,
+   "photo": false,
+   "from": "auto"
+  }
+ ],
+ "links": [],
+ "name": "의왕 백운밸리 리젠시빌 란트 130세대 (공공지원민간임대, 공급금액 기재)",
+ "row": 205,
+ "homepage": "https://백운밸리리젠시빌란트.com",
+ "auto_site": {
+  "date": "2026-11-24",
+  "url": "https://백운밸리리젠시빌란트.com",
+  "tries": 1,
+  "result": "10장 (siteplan 1, dongho 1, plan 4, community 1, location 3)"
+ },
+ "updated": "2026-11-24 07:01"
+}
