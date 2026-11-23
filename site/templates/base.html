@@ -58,7 +58,7 @@
 <header class="np-top">
   <div class="np-util">
     <span class="np-date">{{ np_date }}{% if np_open %} · 지금 접수 중 {{ np_open }}건{% endif %}</span>
-    <span class="np-util-r"><a href="/search/">검색</a><a class="np-u-kk" href="{{ KAKAO }}" target="_blank" rel="noopener">카톡 알림방</a><a class="np-u-hd" href="https://autodm.jupjupalarm.com/room?from=jj">핫딜방</a><a class="np-u-ig" href="{{ IG }}" target="_blank" rel="noopener">인스타그램</a><a class="np-btn" href="{{ KAKAO }}" target="_blank" rel="noopener">새 공고 알림 받기</a></span>
+    {# 2026-11-23 사용자 결정: 제호 위 링크(검색·카톡·핫딜방·인스타·알림 버튼)는 뺌 — 채널은 푸터·하단 탭, 검색은 푸터 #}
   </div>
   <div class="np-mast">
     <a href="/" aria-label="줍줍알람 홈"><span class="np-wm">줍줍알람<span class="np-dot">.</span></span></a>
@@ -100,7 +100,7 @@
   <div class="np-foot-in">
     <a class="np-foot-wm" href="/">줍줍알람<span class="np-dot">.</span></a>
     <p class="np-foot-tag">청약 공고를 공식 데이터로 정리해요 · 정보 제공 목적이며 투자 권유가 아니에요</p>
-    <nav aria-label="사이트 정보"><a href="/info/">청약 정보</a><a href="/tools/">청약·부동산 계산기</a><a href="/week/">주간 청약 정리</a><a href="/report/">월간 청약 결산</a><a href="/about/">소개</a><a href="/sources/">데이터 출처</a><a href="/privacy/">개인정보 처리방침</a><a href="/terms/">이용약관</a><a href="/contact/">문의·정정 요청</a><a href="/advertise/">광고 문의</a></nav>
+    <nav aria-label="사이트 정보"><a href="/search/">단지 검색</a><a href="/info/">청약 정보</a><a href="/tools/">청약·부동산 계산기</a><a href="/week/">주간 청약 정리</a><a href="/report/">월간 청약 결산</a><a href="/about/">소개</a><a href="/sources/">데이터 출처</a><a href="/privacy/">개인정보 처리방침</a><a href="/terms/">이용약관</a><a href="/contact/">문의·정정 요청</a><a href="/advertise/">광고 문의</a></nav>
     <p class="np-foot-ch"><a href="{{ KAKAO }}" target="_blank" rel="noopener">카톡 알림방</a><a href="https://autodm.jupjupalarm.com/room?from=jj">핫딜방</a><a href="{{ IG }}" target="_blank" rel="noopener">인스타그램</a>{% if THREADS %}<a href="{{ THREADS }}" target="_blank" rel="noopener">스레드</a>{% endif %}{% if BLOG %}<a href="{{ BLOG }}" target="_blank" rel="noopener">청약노트 블로그</a>{% endif %}{% if YOUTUBE %}<a href="{{ YOUTUBE }}" target="_blank" rel="noopener">유튜브</a>{% endif %}</p>
     <address class="np-foot-biz">상호 98컴퍼니 · 대표자 최수빈 · 사업자등록번호 440-22-01650<br>서울시 서초구 사임당로8길 13, 4층 402-732A호 (우편번호 06640)<br>이메일 <a href="mailto:contact@jupjupalarm.com">contact@jupjupalarm.com</a></address>
   </div>

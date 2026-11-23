@@ -718,3 +718,6 @@ html:has(body.np){scroll-padding-top:72px}
 .np .kv > div{grid-template-columns:minmax(7em,40%) minmax(0,1fr)}
 .np .kv dd{min-width:0;overflow-wrap:anywhere}
 @media (max-width:420px){.np .kv.wide > div{grid-template-columns:minmax(0,1fr)}.np .kv.wide dd{text-align:left}}
+/* 제호 위 줄: 링크를 뺐으니 PC는 날짜만, 모바일은 줄 자체를 숨김 */
+@media (max-width:720px){.np .np-util{display:none}.np .np-mast{padding-top:14px}}
+.np .page .hero2,.np .page .hero2 img,.np .page .hero-img{border-radius:0!important}
