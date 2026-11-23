@@ -633,6 +633,62 @@
    "published": "2026-11-23",
    "checked": "2026-11-23",
    "reviewed": "독립 검수(에이전트): 틀림 4 고침"
+  },
+  {
+   "day": 21,
+   "slug": "permanent-rental",
+   "category": "임대",
+   "topic": "영구임대주택, 누가 신청하고 얼마나 기다리나요?",
+   "keywords": "영구임대주택 자격 · 영구임대 예비입주자 · 영구임대 신청방법 · 영구임대 보증금 · 영구임대 1순위 · 영구임대 가군 나군",
+   "tool": "",
+   "notice_kinds": [
+    "rental"
+   ],
+   "note": "2026-11-23 비축(요금제 변경 전 20편): 조사·작성·독립 검수 반영 끝. 공개 때 guide_release.py가 recheck 숫자 목록을 냄.",
+   "status": "ready",
+   "reviewed": "독립 검수(에이전트): 틀림 0 · 고칠 곳 반영(모바일 세로 그림·표 분할·출처)"
+  },
+  {
+   "day": 21,
+   "slug": "lh-jeonse-rental",
+   "category": "임대",
+   "topic": "LH 전세임대, 얼마까지 지원되고 집은 어떻게 구하나요?",
+   "keywords": "LH 전세임대 · 청년 전세임대 한도 · 신혼부부 전세임대 · 전세임대 집 구하기 · 다자녀 전세임대 · 전세임대 월 임대료",
+   "tool": "",
+   "notice_kinds": [
+    "rental"
+   ],
+   "note": "2026-11-23 비축(요금제 변경 전 20편): 조사·작성·독립 검수 반영 끝. 공개 때 guide_release.py가 recheck 숫자 목록을 냄.",
+   "status": "ready",
+   "reviewed": "독립 검수(에이전트): 틀림 0 · 고칠 곳 반영(모바일 세로 그림·표 분할·출처)"
+  },
+  {
+   "day": 22,
+   "slug": "public-rental-10yr",
+   "category": "임대",
+   "topic": "10년 공공임대, 분양전환 가격은 어떻게 정해지나요?",
+   "keywords": "10년 공공임대 분양전환 · 공공임대 분양전환 가격 · 10년 임대 자격 · 공공임대 리츠 · 우선 분양전환 · 5년 공공임대",
+   "tool": "",
+   "notice_kinds": [
+    "rental"
+   ],
+   "note": "2026-11-23 비축(요금제 변경 전 20편): 조사·작성·독립 검수 반영 끝. 공개 때 guide_release.py가 recheck 숫자 목록을 냄.",
+   "status": "ready",
+   "reviewed": "독립 검수(에이전트): 틀림 0 · 고칠 곳 반영(모바일 세로 그림·표 분할·출처)"
+  },
+  {
+   "day": 22,
+   "slug": "lh-gongga-sale",
+   "category": "임대",
+   "topic": "LH 공가세대 매각, 누가 사고 무엇을 감수해야 하나요?",
+   "keywords": "LH 공가 매각 · LH 공가세대 일반매각 · LH 미분양 매각 · 공가 매각 자격 · LH 빈집 매각 · 안성 동인힐타운",
+   "tool": "",
+   "notice_kinds": [
+    "public"
+   ],
+   "note": "2026-11-23 비축(요금제 변경 전 20편): 조사·작성·독립 검수 반영 끝. 공개 때 guide_release.py가 recheck 숫자 목록을 냄.",
+   "status": "ready",
+   "reviewed": "독립 검수(에이전트): 틀림 0 · 고칠 곳 반영(모바일 세로 그림·표 분할·출처)"
   }
  ]
 }
