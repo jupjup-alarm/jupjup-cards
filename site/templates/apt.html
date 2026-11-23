@@ -3,8 +3,8 @@
 {% set og_type = 'article' %}
 {# 2026-11-23 신문형 리디자인 (시안 apt-template.html): 제호 머리 + 상태 줄·4칸 요약·5단계 타임라인 + 종이 톤. 섹션·소제목·id는 그대로 #}
 {% set np = true %}{% set np_kicker = STATUS[n.status][0] %}{% set np_title = n.title %}{% set np_sec = '/type/' ~ n.kind ~ '/' %}
-{% set np_apply = n.status in ('open', 'upcoming') and n.source_url and not n.is_pre and not n.moved %}
-{% if np_apply and n.status == 'open' %}{% set np_bar_href = n.source_url %}{% set np_bar_label = (n.source_name or '청약홈') ~ '에서 신청' %}{% endif %}
+{# 2026-11-23 사용자 결정: 청약홈 신청 버튼은 두지 않고(11/3·11/4 결정 유지) 카톡 알림방 입장을 유도 — 상단바 버튼도 카톡 #}
+{% set np_bar_href = KAKAO %}{% set np_bar_label = '카톡 알림방 입장' %}
 {% block head %}
 {% if n.imgs.hero %}<link rel="preload" as="image" href="hero.webp" fetchpriority="high">{% endif %}
 {% endblock %}
@@ -214,12 +214,11 @@
       {% if n.chips %}<div class="chips">{% for c in n.chips %}<span class="chip{{ ' key' if c[1] }}">{{ c[0] }}</span>{% endfor %}</div>{% endif %}
       <p class="who">{{ n.who }}</p>
       <div class="cta">
-        {% if np_apply %}<a class="btn np-apply" href="{{ n.source_url }}" target="_blank" rel="noopener" data-nx-to="rail_apply">{{ n.source_name or '청약홈' }}에서 {{ '신청하기' if n.status == 'open' else '공고 보기' }}</a>{% endif %}
         <a class="btn primary" href="{{ IG }}" target="_blank" rel="noopener">{{ ig_icon() }}인스타 팔로우 · 새 공고 알림</a>
         <button class="btn ghost" type="button" data-share>공유하기</button>
       </div>
     </div>
-    {{ cp_ad('pc', 'ad-pc') }}
+    {{ cp_ad('pc', 'ad-pc') }}<p class="np-rail-n">{{ COUPANG_NOTE }}</p>
   </aside>
   {# 2026-11-03 사용자 결정 시안 A: 모바일 쿠팡 띠 배너를 요약 카드 바로 아래(한마디 위)에 하나 더 #}
   {{ bizboard('rental', 'top') }}{# 2026-11-22: 쿠팡 띠 → 비즈보드형 아정당 #}
@@ -765,12 +764,7 @@ as.forEach(function(a){var h=document.getElementById(a.getAttribute('href').slic
 {% set dl = days_to(n.rcpt[1] or n.rcpt[0]) if n.status == 'open' else n.dday %}
 <div class="bar bar2">
   <p class="bar-d {{ 'o' if n.status == 'open' else 'u' }}"><span>{{ '마감까지' if n.status == 'open' else '접수까지' }}</span><b class="num" {% if n.status == 'open' %}data-dend="{{ n.rcpt[1] or n.rcpt[0] }}"{% else %}data-dday="{{ n.rcpt[0] }}"{% endif %}>{{ '오늘' if dl == 0 else 'D-' ~ dl }}</b></p>
-  {% if n.status == 'open' and n.source_url %}{# 2026-11-23 신문형 시안: 접수 중엔 신청 버튼 고정, 카톡 알림은 작은 아이콘으로 #}
-  <a class="btn np-apply" href="{{ n.source_url }}" target="_blank" rel="noopener" data-nx-to="bar_apply">{{ n.source_name or '청약홈' }}에서 신청</a>
-  <a class="btn np-kk" href="{{ KAKAO }}" target="_blank" rel="noopener" data-nx-to="bar_kakao" aria-label="카톡으로 청약 알림 받기"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 4C7 4 3 7.1 3 11c0 2.5 1.7 4.7 4.2 5.9L6.5 20l3.6-2.4c.6.1 1.2.1 1.9.1 5 0 9-3.1 9-7s-4-6.7-9-6.7z" fill="currentColor"/></svg></a>
-  {% else %}
   <a class="btn primary kakao" href="{{ KAKAO }}" target="_blank" rel="noopener" data-nx-to="bar_kakao"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 4C7 4 3 7.1 3 11c0 2.5 1.7 4.7 4.2 5.9L6.5 20l3.6-2.4c.6.1 1.2.1 1.9.1 5 0 9-3.1 9-7s-4-6.7-9-6.7z" fill="currentColor"/></svg>카톡으로 청약 알림 받기</a>
-  {% endif %}
 </div>
 {% else %}
 <div class="bar">
