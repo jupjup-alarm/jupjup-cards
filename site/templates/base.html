@@ -1,4 +1,6 @@
 <!doctype html>
+{# 2026-11-23 사용자 결정: 모든 페이지 신문형 (칼럼·공고 상세에 이어 전체). 끄려면 자식 템플릿에서 {% set np = false %} #}
+{% set np = np if np is defined else true %}
 <html lang="ko">
 <head>
 <meta charset="utf-8">
@@ -48,7 +50,7 @@
 <div class="np-bar" id="npbar" aria-hidden="true">
   <div class="np-bar-in">
     <a class="np-wm-s" href="/" tabindex="-1">줍줍알람<span class="np-dot">.</span></a>
-    <div class="np-bar-t">{% if np_kicker %}<span>{{ np_kicker }}</span>{% endif %}{{ np_title }}</div>
+    <div class="np-bar-t">{% if np_kicker %}<span>{{ np_kicker }}</span>{% endif %}{{ np_title if np_title is defined else title|replace(' · 줍줍알람', '') }}</div>
     <a class="np-btn" href="{{ np_bar_href|default(IG) }}" tabindex="-1"{% if not np_bar_href %} rel="noopener"{% endif %}>{{ np_bar_label|default('새 공고 알림') }}</a>
   </div>
   {% if np_progress %}<i class="np-prog" id="npprog"></i>{% endif %}
@@ -56,7 +58,7 @@
 <header class="np-top">
   <div class="np-util">
     <span class="np-date">{{ np_date }}{% if np_open %} · 지금 접수 중 {{ np_open }}건{% endif %}</span>
-    <span class="np-util-r"><a href="/search/">검색</a><a class="np-btn" href="{{ IG }}" rel="noopener">새 공고 알림 받기</a></span>
+    <span class="np-util-r"><a href="/search/">검색</a><a class="np-u-kk" href="{{ KAKAO }}" target="_blank" rel="noopener">카톡 알림방</a><a class="np-u-hd" href="https://autodm.jupjupalarm.com/room?from=jj">핫딜방</a><a class="np-u-ig" href="{{ IG }}" target="_blank" rel="noopener">인스타그램</a><a class="np-btn" href="{{ KAKAO }}" target="_blank" rel="noopener">새 공고 알림 받기</a></span>
   </div>
   <div class="np-mast">
     <a href="/" aria-label="줍줍알람 홈"><span class="np-wm">줍줍알람<span class="np-dot">.</span></span></a>
@@ -98,7 +100,8 @@
   <div class="np-foot-in">
     <a class="np-foot-wm" href="/">줍줍알람<span class="np-dot">.</span></a>
     <p class="np-foot-tag">청약 공고를 공식 데이터로 정리해요 · 정보 제공 목적이며 투자 권유가 아니에요</p>
-    <nav aria-label="사이트 정보"><a href="/info/">청약 정보</a><a href="/tools/">청약·부동산 계산기</a><a href="/week/">주간 청약 정리</a><a href="/report/">월간 청약 결산</a><a href="/about/">소개</a><a href="/sources/">데이터 출처</a><a href="/privacy/">개인정보 처리방침</a><a href="/terms/">이용약관</a><a href="/contact/">문의·정정 요청</a><a href="/advertise/">광고 문의</a><a href="{{ IG }}" rel="noopener">인스타그램</a></nav>
+    <nav aria-label="사이트 정보"><a href="/info/">청약 정보</a><a href="/tools/">청약·부동산 계산기</a><a href="/week/">주간 청약 정리</a><a href="/report/">월간 청약 결산</a><a href="/about/">소개</a><a href="/sources/">데이터 출처</a><a href="/privacy/">개인정보 처리방침</a><a href="/terms/">이용약관</a><a href="/contact/">문의·정정 요청</a><a href="/advertise/">광고 문의</a></nav>
+    <p class="np-foot-ch"><a href="{{ KAKAO }}" target="_blank" rel="noopener">카톡 알림방</a><a href="https://autodm.jupjupalarm.com/room?from=jj">핫딜방</a><a href="{{ IG }}" target="_blank" rel="noopener">인스타그램</a>{% if THREADS %}<a href="{{ THREADS }}" target="_blank" rel="noopener">스레드</a>{% endif %}{% if BLOG %}<a href="{{ BLOG }}" target="_blank" rel="noopener">청약노트 블로그</a>{% endif %}{% if YOUTUBE %}<a href="{{ YOUTUBE }}" target="_blank" rel="noopener">유튜브</a>{% endif %}</p>
     <address class="np-foot-biz">상호 98컴퍼니 · 대표자 최수빈 · 사업자등록번호 440-22-01650<br>서울시 서초구 사임당로8길 13, 4층 402-732A호 (우편번호 06640)<br>이메일 <a href="mailto:contact@jupjupalarm.com">contact@jupjupalarm.com</a></address>
   </div>
 </footer>

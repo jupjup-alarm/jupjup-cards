@@ -98,7 +98,7 @@ if(g.children.length>=2)s.hidden=false;}).catch(function(){});})();</script>
    애드센스는 크기 고정 336×280(좁은 화면 300×250) — 반응형(auto)은 모바일에서 375×375까지 커져 글이 밀렸음.
    안 채워진 애드센스 자리는 아직 화면 아래에 있을 때만 접는다(base.html) #}
 {% macro np_ad(slot, cls='') %}{% set kind = NP_ADS.get(slot) %}{% if kind %}
-<div class="np-ad np-ad-{{ kind }} {{ cls }}" data-np-ad="{{ slot }}">{% if kind != 'ajd' %}<div class="np-ad-l">광고</div>{% endif %}
+<div class="np-ad np-ad-{{ kind.split(':')[0] }} {{ cls }}{{ ' np-pc-only' if kind.startswith('cp:') and not kind.split(':')[2] }}{{ ' np-mo-only' if kind.startswith('cp:') and not kind.split(':')[1] }}" data-np-ad="{{ slot }}">{% if kind != 'ajd' %}<div class="np-ad-l">광고</div>{% endif %}
 {% if kind == 'ajd' %}<aside class="np-native" aria-label="제휴 광고">
   <div class="np-native-l">광고 · 이사·입주 준비</div>
   <div class="np-native-i">

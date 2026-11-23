@@ -77,7 +77,8 @@ GOODS_API = "https://autodm.jupjupalarm.com/jj/goods.json"
 # 2026-11-23 신문형 리디자인(칼럼·공고 상세) 본문 광고 자리 → 무엇을 채울지. 애드센스는 아직 광고가 안 나와서(사용자 2026-11-23) 쿠팡·아정당으로 채움.
 #   ajd = 아정당 제휴 2칸(인터넷·렌탈, 모든 폭) · ajd_board = 아정당 비즈보드(렌탈)
 #   cp:<PC 자리>:<모바일 자리> = 쿠팡 다이나믹 배너(COUPANG 자리 이름, 비우면 그 폭엔 없음) · adsense = 애드센스 336×280 고정 (승인 뒤 바꿀 때 ADSENSE slots에 같은 이름으로 광고 단위 ID 추가)
-NP_ADS = {"guide_mid": "ajd", "guide_mid2": "cp:home:home_mo", "guide_mid3": "ajd_board", "guide_end": "cp:home:home_end_mo",
+NP_ADS = {"home_top": "cp:home:home_mo", "home_ajd": "ajd", "home_end": "cp::home_end_mo",
+          "guide_mid": "ajd", "guide_mid2": "cp:home:home_mo", "guide_mid3": "ajd_board", "guide_end": "cp:home:home_end_mo",
           # 공고 상세: 모바일은 기존 아정당 비즈보드·롤링 배너·입주 준비물 카드를 그대로 두고, PC에 아정당 2칸·쿠팡을 더함. apt_top(애드센스 자리)은 승인 뒤 "adsense"로
           "apt_ajd": "ajd", "apt_mid": "cp:home:", "apt_end": "cp:home:apt_end_mo"}
 # 애드센스 (승인 전이라 비어 있음 — client에 ca-pub-…, slots에 광고 단위 ID를 넣으면 그 자리에 나옴)
@@ -2336,7 +2337,7 @@ def main():
         c = len([x for x in live_s if x["rcpt"][0] == di])
         v_week.append({"iso": di, "dow": "월화수목금토일"[dt.date.fromisoformat(di).weekday()], "day": int(di[8:]), "n": c,
                        "past": di < t0, "today": di == t0, "href": f"#d-{di}" if di in have else "/schedule/this-week/"})
-    h = home_tpl.render(tiles=tiles, v_dates=v_dates, v_week=v_week, home_takes=home_takes, home_guides=home_guides, n_guides=n_guides, groups=home_groups, page_url="/", title=title, desc=desc, og=home_og, due=due, home_week=home_week, n_week=n_week,
+    h = home_tpl.render(home_an=ANALYSIS.load(TODAY)[:4], tiles=tiles, v_dates=v_dates, v_week=v_week, home_takes=home_takes, home_guides=home_guides, n_guides=n_guides, groups=home_groups, page_url="/", title=title, desc=desc, og=home_og, due=due, home_week=home_week, n_week=n_week,
                         week_label=f"{d(wk0.isoformat())} ~ {d(week_end.isoformat())}", t1=t1,
                         regions_used=regions_used, region_slug=regions["sido"], sido_map=sido_map, hub_quick=hub_quick, n_open=n_open, n_up=n_up,
                         tbl=home_tbl, tbl_cap=f"청약 공고 접수 중·예정 {n_open + n_up}곳 중 {len(home_tbl)}곳 — {d(TODAY.isoformat())} 기준 · 청약홈·LH·마이홈 공식 데이터", **common)
