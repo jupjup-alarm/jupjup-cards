@@ -77,6 +77,9 @@ function hotdealAutoOn() {
   ScriptApp.newTrigger('hotdealJob').timeBased().everyMinutes(5).create();   // 예비 주기 — 평소엔 맥 캡처기가 doPost로 바로 부름
   ScriptApp.getProjectTriggers().filter(t => t.getHandlerFunction() === 'hotdealWeekly').forEach(t => ScriptApp.deleteTrigger(t));
   ScriptApp.newTrigger('hotdealWeekly').timeBased().onWeekDay(ScriptApp.WeekDay.SUNDAY).atHour(21).inTimezone(TZ).create();   // 주간 총정리
+  ScriptApp.getProjectTriggers().filter(t => t.getHandlerFunction() === 'hotdealGoldboxSync').forEach(t => ScriptApp.deleteTrigger(t));
+  ScriptApp.newTrigger('hotdealGoldboxSync').timeBased().atHour(8).everyDays(1).inTimezone(TZ).create();    // 골드박스 08시
+  ScriptApp.newTrigger('hotdealGoldboxSync').timeBased().atHour(14).everyDays(1).inTimezone(TZ).create();   // 골드박스 14시
   ScriptApp.getProjectTriggers().filter(t => t.getHandlerFunction() === 'hotdealDaily').forEach(t => ScriptApp.deleteTrigger(t));
   ScriptApp.newTrigger('hotdealDaily').timeBased().atHour(7).everyDays(1).inTimezone(TZ).create();   // 아침 '오늘의 특가'
   hdLog_('핫딜 자동 발행 켬: 5분마다 확인 + 맥 캡처기 신호 즉시 (검색 링크 딜 상품 찾기 포함), 하루 ' + hdNum_('HD_DAILY_MAX', 10) + '건, 간격 ' + hdNum_('HD_GAP_MIN', 60) + '분, ' + hdCfg_('HD_HOURS', '8-23') + '시');
@@ -92,6 +95,49 @@ function hotdealGoldboxTest() {
   hdLog_('골드박스 ' + list.length + '건\n필드: ' + (list[0] ? Object.keys(list[0]).join(', ') : '(없음)') + '\n' +
     list.slice(0, 10).map((p, i) => (i + 1) + '. ' + String(p.productName || '').slice(0, 40) + ' · ' + Number(p.productPrice || 0).toLocaleString('ko-KR') + '원' +
       (p.discountRate !== undefined ? ' · ' + p.discountRate + '%' : '') + (p.isRocket ? ' · 로켓' : '')).join('\n'));
+}
+
+/* ───────── 골드박스 → 필터통과 (2026-11-23 사용자 결정) ─────────
+   골드박스엔 할인율이 없으므로 '수량 역전 후보'로 넣는다: 맥 캡처기가 상품 페이지를 열어 Q열을 판단한다.
+   하루 2번(08·14시) 받아 생필품·식품 위주로 상위 HD_GB_MAX(8)건, 48시간 안에 넣은 상품은 다시 넣지 않는다.
+   행은 B열 출처 '쿠팡 골드박스', E열 '쿠팡,골드박스', J열 '대기', G열 상품 주소(남의 링크 아님). 수집기 행과 같은 형식. */
+const HD_GB_SKIP = /가전|디지털|컴퓨터|노트북|휴대폰|패션|의류|신발|잡화|가구|인테리어|여행|캐리어|스포츠|자동차|도서|완구|명품|쥬얼리/;
+function hotdealGoldboxPreview() { return hdGoldboxSync_(true); }
+function hotdealGoldboxSync() { return hdGoldboxSync_(false); }
+
+function hdGoldboxSync_(dry) {
+  if (!hdProp_('CP_ACCESS')) return;
+  let d;
+  try { d = coupang_('GET', CP_BASE + '/v1/products/goldbox', 'subId=' + encodeURIComponent(hdCfg_('HD_SUB_ID', 'threads01'))); }
+  catch (e) { hdLog_('골드박스 받기 실패: ' + e.message); return; }
+  const list = (Array.isArray(d) ? d : (d && (d.productData || d.data)) || [])
+    .filter(p => p.productId && !HD_GB_SKIP.test(String(p.categoryName || '') + ' ' + String(p.productName || '')))
+    .sort((a, b) => (a.rank || 99) - (b.rank || 99))
+    .slice(0, hdNum_('HD_GB_MAX', 8));
+  const sh = hdSheet_();
+  const last = sh.getLastRow();
+  const now = new Date();
+  const recent = {};
+  if (last >= 2) {
+    sh.getRange(2, 1, last - 1, HD.urls).getDisplayValues().forEach(r => {
+      const t = hdParse_(r[HD.at - 1]);
+      if (!t || (now - t) / 3600000 > 48) return;
+      (String(r[HD.urls - 1]).match(/vp\/products\/(\d+)/g) || []).forEach(m => { recent[m.replace(/\D/g, '')] = 1; });
+    });
+  }
+  const stamp = Utilities.formatDate(now, TZ, 'yyyy-MM-dd HH:mm:ss');
+  const add = list.filter(p => !recent[String(p.productId)]);
+  const out = add.map(p => {
+    const price = Number(p.productPrice || 0).toLocaleString('ko-KR');
+    const url = 'https://www.coupang.com/vp/products/' + p.productId;
+    return ["'" + stamp, '쿠팡 골드박스', String(p.productName), "'" + price, '쿠팡,골드박스' + (p.isRocket ? ',로켓' : ''), 7, url, '',
+      '[쿠팡 골드박스] ' + p.productName + '\n' + price + '원 · ' + (p.categoryName || ''), '대기', ''];
+  });
+  hdLog_('골드박스 ' + list.length + '건 중 새로 넣을 것 ' + out.length + '건' + (dry ? ' (미리보기 — 시트에 안 씀)' : '') + '\n' +
+    add.map(p => '· ' + String(p.productName).slice(0, 40) + ' · ' + Number(p.productPrice || 0).toLocaleString('ko-KR') + '원 · ' + (p.categoryName || '')).join('\n'));
+  if (dry || !out.length) return out.length;
+  out.forEach(row => sh.appendRow(row));   // appendRow: 수집기 쓰기와 겹쳐도 행이 덮이지 않음
+  return out.length;
 }
 
 /* ───────── 주간 총정리 (2026-11-23) ─────────
@@ -176,7 +222,7 @@ function hdDaily_(dry) {
 }
 
 function hotdealAutoOff() {
-  ScriptApp.getProjectTriggers().filter(t => ['hotdealJob', 'hotdealWeekly', 'hotdealDaily'].indexOf(t.getHandlerFunction()) >= 0).forEach(t => ScriptApp.deleteTrigger(t));
+  ScriptApp.getProjectTriggers().filter(t => ['hotdealJob', 'hotdealWeekly', 'hotdealDaily', 'hotdealGoldboxSync'].indexOf(t.getHandlerFunction()) >= 0).forEach(t => ScriptApp.deleteTrigger(t));
   hdLog_('핫딜 자동 발행 끔');
 }
 
