@@ -54,7 +54,7 @@
       <div class="np-sh"><h2 id="h-an">줍줍 분석</h2><a href="/analysis/">전체 →</a></div>
       {% for a in home_an %}<div class="np-col{{ ' big' if loop.first }}"><p class="m num">{{ a.published|replace('-', '.') }}{% if a.tag %} · {{ a.tag }}{% endif %}</p><h3><a href="{{ a.url }}">{{ a.title }}</a></h3>{% if loop.first and a.dek %}<p>{{ a.dek|truncate(110) }}</p>{% endif %}</div>{% endfor %}
       {% endif %}
-      <div class="np-f-ad">{{ cp_ad('pc', 'ad-pc') }}<p class="np-rail-n">{{ COUPANG_NOTE }}</p></div>
+      <div class="np-f-ad">{{ cp_ad('pc', 'ad-pc') }}</div>
     </aside>
   </div>
 

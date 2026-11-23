@@ -82,7 +82,7 @@
         <p>이 글의 순서</p>
         <ol>{% for id, t in g.toc %}<li><a href="#{{ id }}"><span class="n">{{ '%02d'|format(loop.index) }}</span>{{ t }}</a></li>{% endfor %}{% if g.faq %}<li><a href="#g-faq"><span class="n">Q</span>자주 묻는 질문</a></li>{% endif %}</ol>
       </nav>
-      <div>{{ cp_ad('pc', 'ad-pc') }}<p class="np-rail-n">{{ COUPANG_NOTE }}</p></div>
+      <div>{{ cp_ad('pc', 'ad-pc') }}</div>
     </div>
   </aside>
   {% endif %}

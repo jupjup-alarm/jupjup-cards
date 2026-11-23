@@ -81,7 +81,7 @@
 <section class="sec goods" data-goods="{{ k }}" data-api="{{ GOODS_API }}" aria-labelledby="h-goods" hidden>
   <h2 id="h-goods">{{ '입주하면 바로 필요한 것' if k == 'rent' else '입주 준비, 미리 챙겨 두세요' }}</h2>
   <div class="goods-g"></div>
-  <p class="goods-note">이 글은 쿠팡 파트너스 활동으로, 이에 따른 일정액의 수수료를 받습니다.</p>{# 2026-11-22 사용자 문구 (이 카드만 — 다른 쿠팡 배너는 COUPANG_NOTE 그대로) #}
+  <p class="goods-note">이 글은 쿠팡 파트너스 활동으로, 이에 따른 일정액의 수수료를 받습니다.</p>{# 2026-11-22 사용자 문구 (상품 카드만 — 다이나믹 배너는 고지 불필요, 2026-11-23 쿠팡 공식 답변) #}
 </section>
 <script>(function(){var s=document.currentScript&&document.currentScript.previousElementSibling;if(!s||!window.fetch)return;var g=s.querySelector('.goods-g'),k=s.getAttribute('data-goods');
 fetch(s.getAttribute('data-api')+'?k='+k).then(function(r){return r.json();}).then(function(d){var it=(d&&d.items||[]).slice(0,4);if(it.length<2)return;
@@ -108,7 +108,7 @@ if(g.children.length>=2)s.hidden=false;}).catch(function(){});})();</script>
   <p class="np-native-d">이 콘텐츠는 아정당 파트너스 활동의 일환으로, 링크를 통해 구매가 발생할 경우 파트너와 구매 고객 모두에게 일정 리워드가 제공됩니다.</p>
 </aside>
 {% elif kind == 'ajd_board' %}{{ bizboard('rental', slot) }}
-{% elif kind.startswith('cp:') %}{% set cpp = kind.split(':') %}{% if cpp[1] %}{{ cp_ad(cpp[1], 'np-cp-pc' if cpp[2] else 'np-cp-all') }}{% endif %}{% if cpp[2] %}{{ cp_ad(cpp[2], 'np-cp-mo' if cpp[1] else 'np-cp-all') }}{% endif %}<p class="np-ad-n">{{ COUPANG_NOTE }}</p>
+{% elif kind.startswith('cp:') %}{% set cpp = kind.split(':') %}{% if cpp[1] %}{{ cp_ad(cpp[1], 'np-cp-pc' if cpp[2] else 'np-cp-all') }}{% endif %}{% if cpp[2] %}{{ cp_ad(cpp[2], 'np-cp-mo' if cpp[1] else 'np-cp-all') }}{% endif %}
 {% elif kind == 'adsense' and ADSENSE.client and ADSENSE.slots.get(slot) %}<div class="np-ad-s"><ins class="adsbygoogle np-ins" style="display:inline-block" data-ad-client="{{ ADSENSE.client }}" data-ad-slot="{{ ADSENSE.slots.get(slot) }}"></ins></div>
 {% endif %}</div>{% endif %}{% endmacro %}
 
