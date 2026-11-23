@@ -76,6 +76,8 @@ function hotdealAutoOn() {
   ScriptApp.newTrigger('hotdealJob').timeBased().everyMinutes(5).create();   // 예비 주기 — 평소엔 맥 캡처기가 doPost로 바로 부름
   ScriptApp.getProjectTriggers().filter(t => t.getHandlerFunction() === 'hotdealWeekly').forEach(t => ScriptApp.deleteTrigger(t));
   ScriptApp.newTrigger('hotdealWeekly').timeBased().onWeekDay(ScriptApp.WeekDay.SUNDAY).atHour(21).inTimezone(TZ).create();   // 주간 총정리
+  ScriptApp.getProjectTriggers().filter(t => t.getHandlerFunction() === 'hotdealDaily').forEach(t => ScriptApp.deleteTrigger(t));
+  ScriptApp.newTrigger('hotdealDaily').timeBased().atHour(7).everyDays(1).inTimezone(TZ).create();   // 아침 '오늘의 특가'
   hdLog_('핫딜 자동 발행 켬: 5분마다 확인 + 맥 캡처기 신호 즉시 (검색 링크 딜 상품 찾기 포함), 하루 ' + hdNum_('HD_DAILY_MAX', 10) + '건, 간격 ' + hdNum_('HD_GAP_MIN', 60) + '분, ' + hdCfg_('HD_HOURS', '8-23') + '시');
 }
 
@@ -84,15 +86,12 @@ function hotdealAutoOn() {
 function hotdealWeeklyPreview() { return hdWeekly_(true); }
 function hotdealWeekly() { return hdWeekly_(false); }
 
-function hdWeekly_(dry) {
-  const sh = hdSheet_();
-  const rows = sh.getRange(2, 1, sh.getLastRow() - 1, HD.page).getDisplayValues();
-  const now = new Date();
+function hdTopItems_(rows, from, to) {
   const items = [];
   rows.forEach((r, i) => {
     if (r[HD.status - 1] !== '발행완료') return;
     const t = hdParse_(r[HD.postedAt - 1]);
-    if (!t || (now - t) / 86400000 > 7) return;
+    if (!t || t < from || t >= to) return;
     const d = hdFacts_(r), pr = hdPair_(r);
     const nm = hdShortName_(d.name) || d.cat;
     if (!nm) return;
@@ -105,7 +104,14 @@ function hdWeekly_(dry) {
     }
   });
   items.sort((a, b) => b.s - a.s);
-  const top = items.slice(0, 7);
+  return items;
+}
+
+function hdWeekly_(dry) {
+  const sh = hdSheet_();
+  const rows = sh.getRange(2, 1, sh.getLastRow() - 1, HD.page).getDisplayValues();
+  const now = new Date();
+  const top = hdTopItems_(rows, new Date(now - 7 * 86400000), now).slice(0, 7);
   if (top.length < 3) { hdLog_('주간 총정리: 이번 주 딜이 ' + top.length + '건뿐이라 건너뜀'); return; }
   const nums = ['①', '②', '③', '④', '⑤', '⑥', '⑦'];
   let text = '';
@@ -126,8 +132,38 @@ function hdWeekly_(dry) {
   return main.link;
 }
 
+/* ───────── 아침 '오늘의 특가' 새 글 (2026-11-23 사용자 결정) ─────────
+   매일 07시: 어제 스레드에 올린 딜 중 센 것 3개를 새 글로. 링크 없음, 답글로 알림방 글 인용.
+   하루 발행 한도(HD_DAILY_MAX)에는 세지 않는다 (시트 행이 아니므로). 어제 올린 딜이 2건 미만이면 건너뜀. */
+function hotdealDailyPreview() { return hdDaily_(true); }
+function hotdealDaily() { return hdDaily_(false); }
+
+function hdDaily_(dry) {
+  const sh = hdSheet_();
+  const rows = sh.getRange(2, 1, sh.getLastRow() - 1, HD.page).getDisplayValues();
+  const now = new Date();
+  const today = hdParse_(Utilities.formatDate(now, TZ, 'yyyy-MM-dd') + ' 00:00');
+  const yest = new Date(today.getTime() - 86400000);
+  const top = hdTopItems_(rows, yest, today).slice(0, 3);
+  if (top.length < 2) { hdLog_('아침 정리: 어제 올린 딜이 ' + top.length + '건뿐이라 건너뜀'); return; }
+  const dow = ['일', '월', '화', '수', '목', '금', '토'][Number(Utilities.formatDate(now, TZ, 'u')) % 7];
+  const nums = ['①', '②', '③'];
+  const text = [Utilities.formatDate(now, TZ, 'M/d') + '(' + dow + ') 오늘의 특가 ☀️', '어제 가격 이상했던 것 ' + top.length + '개', '']
+    .concat(top.map((x, i) => nums[i] + ' ' + x.line))
+    .concat(['', '지금은 가격이 돌아간 것도 있어요. 오늘 뜨는 건 알림방에 먼저 올려요']).join('\n');
+  let chatId = '';
+  try { chatId = hdChatPostId_(); } catch (e) {}
+  const reply = '오늘 뜨는 딜은 여기서 제일 먼저 받아보세요 👇';
+  hdLog_('── 아침 정리 (' + text.length + '자) ──\n' + text + '\n── 답글 ──\n' + reply + (chatId ? ' [인용]' : ''));
+  if (dry) return text;
+  const main = hdPostText_(text, null);
+  if (chatId) { try { hdPostText_(reply, main.id, { quote_post_id: chatId }); } catch (e) { console.error('아침 정리 답글 실패: ' + e.message); } }
+  hdLog_('아침 정리 발행: ' + (main.link || main.id));
+  return main.link;
+}
+
 function hotdealAutoOff() {
-  ScriptApp.getProjectTriggers().filter(t => ['hotdealJob', 'hotdealWeekly'].indexOf(t.getHandlerFunction()) >= 0).forEach(t => ScriptApp.deleteTrigger(t));
+  ScriptApp.getProjectTriggers().filter(t => ['hotdealJob', 'hotdealWeekly', 'hotdealDaily'].indexOf(t.getHandlerFunction()) >= 0).forEach(t => ScriptApp.deleteTrigger(t));
   hdLog_('핫딜 자동 발행 끔');
 }
 
