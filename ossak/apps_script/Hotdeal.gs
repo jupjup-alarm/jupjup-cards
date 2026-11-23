@@ -24,6 +24,7 @@
  *   HD_SEARCH_PER_RUN 1 · HD_SEARCH_PRICE_PCT 15 (검색 링크 딜의 상품 찾기: 한 번에 몇 건, 가격 허용 차이 %)
  *   HD_MODE mix (역전 딜 + 할인 HD_GENERAL_MIN_OFF(50)% 이상 일반 딜, 역전 먼저 · qty 면 역전만 · all 이면 모든 딜) · HD_MIN_CHEAPER 30 (개당 몇 % 이상 싸야 하는지)
  *   HD_WAIT_CAPTURE_MIN 20 (all 모드에서 P열 캡처를 기다리는 시간, 0이면 안 기다림)
+ *   HD_TOSS on (토스 딜도 스레드에 — 일반 딜 조건, 첫 줄 토스 대가성 문구 · off면 토스 제외)
  *   HD_HOOK_SOURCES 지금할인  (제목이 상품명이 아니라 홍보 문구인 출처 — 본문전체(K)가 없으면 보류)
  *
  * 주의: 기존 메뉴 '자동 실행 켜기'(installTriggers)는 모든 트리거를 지우고 다시 만든다.
@@ -79,6 +80,18 @@ function hotdealAutoOn() {
   ScriptApp.getProjectTriggers().filter(t => t.getHandlerFunction() === 'hotdealDaily').forEach(t => ScriptApp.deleteTrigger(t));
   ScriptApp.newTrigger('hotdealDaily').timeBased().atHour(7).everyDays(1).inTimezone(TZ).create();   // 아침 '오늘의 특가'
   hdLog_('핫딜 자동 발행 켬: 5분마다 확인 + 맥 캡처기 신호 즉시 (검색 링크 딜 상품 찾기 포함), 하루 ' + hdNum_('HD_DAILY_MAX', 10) + '건, 간격 ' + hdNum_('HD_GAP_MIN', 60) + '분, ' + hdCfg_('HD_HOURS', '8-23') + '시');
+}
+
+/* ───────── 쿠팡 골드박스 시험 (2026-11-23) ─────────
+   파트너스 API 골드박스(오늘의 초특가 목록)를 받아 몇 건·어떤 정보가 오는지 실행 로그에 찍는다. 시트·스레드는 건드리지 않음. */
+function hotdealGoldboxTest() {
+  let d;
+  try { d = coupang_('GET', CP_BASE + '/v1/products/goldbox', 'subId=' + encodeURIComponent(hdCfg_('HD_SUB_ID', 'threads01'))); }
+  catch (e) { hdLog_('골드박스 호출 실패: ' + e.message + (e.code === 404 ? ' (이 키로는 골드박스 API가 없거나 주소가 다름)' : '')); return; }
+  const list = Array.isArray(d) ? d : (d && (d.productData || d.data)) || [];
+  hdLog_('골드박스 ' + list.length + '건\n필드: ' + (list[0] ? Object.keys(list[0]).join(', ') : '(없음)') + '\n' +
+    list.slice(0, 10).map((p, i) => (i + 1) + '. ' + String(p.productName || '').slice(0, 40) + ' · ' + Number(p.productPrice || 0).toLocaleString('ko-KR') + '원' +
+      (p.discountRate !== undefined ? ' · ' + p.discountRate + '%' : '') + (p.isRocket ? ' · 로켓' : '')).join('\n'));
 }
 
 /* ───────── 주간 총정리 (2026-11-23) ─────────
@@ -285,8 +298,10 @@ function hdPick_(rows, now) {
     const at = hdParse_(r[HD.at - 1]);
     if (at && (now - at) / 3600000 > maxAge) return;   // 수집기도 새 행을 '대기'로 쓰므로(2026-11-22 확인) '대기'도 나이 제한
     // PC 캡처기가 P열을 채울 때까지 잠깐 기다림 (P열이 비어 있고 들어온 지 HD_WAIT_CAPTURE_MIN 분 안이면 다음 차례로)
-    // 토스 딜은 스레드에 올리지 않는다 (2026-11-22 사용자 결정: 토스는 카톡방에만). 쿠팡 링크가 없는 행은 건너뜀
-    if (!String(r[HD.urls - 1]).split('\n').some(u => /coupang\.com/.test(u))) return;
+    // 2026-11-23 사용자 결정: 토스 딜도 스레드에 (일반 딜 조건만, 첫 줄에 토스 대가성 문구). 쿠팡·토스 링크가 둘 다 없으면 건너뜀
+    const toss = hdIsToss_(r);
+    if (!toss && !String(r[HD.urls - 1]).split('\n').some(u => /coupang\.com/.test(u))) return;
+    if (toss && (hdCfg_('HD_TOSS', 'on') === 'off' || !hdGeneralOk_(r, now, null))) return;
     const mode = hdCfg_('HD_MODE', 'mix');
     const pair = hdPair_(r);
     if (mode === 'qty') {
@@ -313,12 +328,12 @@ function hdOne_(sh, row, v, recover, dry) {
   // 1) 잠그기
   if (!dry) hdWrite_(sh, row, { status: '처리중', note: '처리중 시작 ' + hdStamp_(new Date()) + (recover ? ' · 복구' : '') });
 
-  // 2) 링크 변환
-  const conv = hdConvert_(v);
+  // 2) 링크 변환 (토스 딜은 스레드에 링크를 안 올리므로 변환하지 않음 — 쉐어링크는 맥이 V열에)
+  const conv = hdIsToss_(v) ? { pairs: [{ from: '토스', to: '(스레드엔 링크 없음)' }], notes: [], rateLimited: false } : hdConvert_(v);
   notes.push.apply(notes, conv.notes);
   lines.push('링크 ' + conv.pairs.length + '개');
   conv.pairs.forEach(p => lines.push('  ' + p.from + '\n   → ' + p.to));
-  if (!dry) hdWrite_(sh, row, { link: conv.pairs.map(p => p.from + ' → ' + p.to).join('\n') });
+  if (!dry && !hdIsToss_(v)) hdWrite_(sh, row, { link: conv.pairs.map(p => p.from + ' → ' + p.to).join('\n') });
   if (!conv.pairs.length) return hdFail_(sh, row, dry, lines, '쿠팡 링크 없음', notes);
   if (conv.rateLimited) return hdFail_(sh, row, dry, lines, '쿠팡 API 429', notes);
 
@@ -402,6 +417,12 @@ function hdFail_(sh, row, dry, lines, reason, notes) {
 
 /* ───────── 일반 딜 (역전 아님) 스레드 조건 — 2026-11-23 ───────── */
 const HD_HEALTH = /영양제|루테인|유산균|비타민|오메가|홍삼|프로바이오틱|콜라겐|밀크씨슬|부항|혈압계|혈당|의료기기|다이어트/;
+const HD_DISCLOSURE_TOSS = '[광고] 토스쇼핑 쉐어링크 활동으로, 링크 구매 시 수수료를 지급받습니다.';
+function hdIsToss_(r) {
+  const u = String(r[HD.urls - 1]);
+  return /toss\.(shopping|im)\//.test(u) && !/coupang\.com/.test(u);
+}
+
 function hdGeneralOk_(r, now, at) {
   const off = Number((String(r[HD.kw - 1]).match(/할인\s*(\d+)%/) || [])[1] || 0);
   if (off < hdNum_('HD_GENERAL_MIN_OFF', 50)) return false;
@@ -661,7 +682,8 @@ function hdCompose_(v, rowNo) {
   lines.push('(' + (at ? Utilities.formatDate(at, TZ, 'M/d HH:mm') + ' 기준, ' : '') + '가격은 금방 바뀌어요)');
   lines.push(hdQuestion_(d.cat, k));
   const tag = String(hdCfg_('HD_AD_TAG', 'off'));
-  const main = lines.join('\n') + (tag && tag.toLowerCase() !== 'off' ? '\n' + tag : '');
+  if (hdIsToss_(v)) lines.unshift(HD_DISCLOSURE_TOSS);   // 토스는 첫 화면에 수수료 문구 필수 (쉐어링크 가이드)
+  const main = lines.join('\n') + (tag && tag.toLowerCase() !== 'off' && !hdIsToss_(v) ? '\n' + tag : '');
 
   // 답글 1 (역전 딜만): 딜 페이지 링크 + 대가성 문구. X열(맥이 만든 autodm 딜 페이지)이 있을 때만.
   let linkReply = '';
