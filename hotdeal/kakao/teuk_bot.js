@@ -1,4 +1,4 @@
-/* 특가반장 공기계 봇 v8 (메신저봇R, 레거시 API) */
+/* 특가반장 공기계 봇 v9 (메신저봇R, 레거시 API) — v9: 웨이크락으로 절전 중에도 1분 확인·두 번째 말풍선이 늦지 않게 */
 /* 맥이 올린 보낼 목록을 1분마다 읽어, 아직 안 보낸 메시지를 오픈채팅방에 보낸다. 본문 뒤 3~6초 후 두 번째 말풍선(followup)도 보낸다. */
 /* 목록 받기: 평소는 raw 주소(?t=시각). GitHub API(raw 헤더)는 두 경우만 - 방 알림이 와서 바로 확인할 때, raw 목록이 5분 넘게 그대로일 때(5분에 한 번까지). API가 403·429면 raw로 돌아간다. */
 /* 방 알림마다 3초 뒤 확인한다(30초 안에 확인했으면 건너뜀). 회차마다 목록 건수를 로그에 남긴다. */
@@ -27,6 +27,23 @@ var lastRawBody = "";
 var lastRawChange = Date.now();
 var lastApi = 0;
 var roundLock = new java.util.concurrent.locks.ReentrantLock();
+var wakeLock = null;
+
+/* v9: 화면은 꺼 둔 채 CPU만 깨어 있게 (공기계가 절전에 들어가면 3~6초 쉬기가 1~2분, 1분 확인이 6~8분으로 늘어났다 - 2026-11-23 로그) */
+function holdWake() {
+  try {
+    if (wakeLock && wakeLock.isHeld()) { return; }
+    var pm = Api.getContext().getSystemService(android.content.Context.POWER_SERVICE);
+    wakeLock = pm.newWakeLock(android.os.PowerManager.PARTIAL_WAKE_LOCK, "teukbot:poll");
+    wakeLock.setReferenceCounted(false);
+    wakeLock.acquire();
+    log("웨이크락 켬");
+  } catch (e) { log("웨이크락 오류: " + e); }
+};
+function dropWake() {
+  try { if (wakeLock && wakeLock.isHeld()) { wakeLock.release(); } } catch (e) { }
+  wakeLock = null;
+};
 
 function norm(t) { return String(t || "").replace(/\s+/g, ""); };
 function isOurRoom(name) { for (var i = 0; i < ROOM_NAMES.length; i++) { if (norm(name) === norm(ROOM_NAMES[i])) { return true; } } return false; };
@@ -152,12 +169,13 @@ function round(why) {
       if (!ok) { log("보내기 실패(방 알림 세션 없음?) " + it.id + " - 방장 계정으로 방에 글 하나 올려 주세요"); break; }
       sent[it.id] = Date.now();
       saveSent(sent);
+      var tMain = Date.now();
       log("보냄 " + it.id);
       if (it.followup) {
         try {
           java.lang.Thread.sleep(3000 + Math.floor(Math.random() * 3000));
           savedReplier.reply(it.followup);
-          log("두 번째 말풍선 보냄 " + it.id);
+          log("두 번째 말풍선 보냄 " + it.id + " (본문 뒤 " + Math.round((Date.now() - tMain) / 1000) + "초)");
         } catch (e) { log("두 번째 말풍선 오류 " + it.id + ": " + e); }
       }
       putReceipt(it.id, "sent");
@@ -172,8 +190,10 @@ function start() {
   if (worker) { return; }
   worker = new java.lang.Thread(new java.lang.Runnable({
     run: function () {
-      log("봇 시작 v8 (" + ROOM + ")" + (token() ? "" : " - 토큰 없음: 영수증을 못 올림"));
+      holdWake();
+      log("봇 시작 v9 (" + ROOM + ")" + (token() ? "" : " - 토큰 없음: 영수증을 못 올림"));
       while (!java.lang.Thread.currentThread().isInterrupted()) {
+        holdWake();
         try { round("주기"); } catch (e) { log("회차 오류: " + e); }
         try { java.lang.Thread.sleep(POLL_MS); } catch (e) { break; }
       }
@@ -186,6 +206,7 @@ function start() {
 /* 다시 컴파일하거나 봇을 끌 때 이전 스레드를 멈춘다 (중복 전송 방지) */
 function onStartCompile() {
   if (worker) { worker.interrupt(); worker = null; }
+  dropWake();
 };
 
 /* 이 방 알림이 올 때마다 답장 객체를 기억하고, 3초 뒤 API로 한 번 확인한다(30초 안에 확인했으면 건너뜀). 방에는 아무 답도 하지 않는다. */
