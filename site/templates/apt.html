@@ -111,7 +111,7 @@
       <b>이 공고는 접수가 끝났어요</b>
       {% if n.status == 'waiting' %}<p>당첨자 발표 {{ n.announce|tdate }} · 결과가 나오면 이 페이지에 경쟁률을 올려요</p>
       {% else %}<p>당첨자 발표까지 끝났어요{% if n.comp and n.comp.rows %} · <a href="#h-comp" data-nx-to="comp">경쟁률 결과 보기 ↓</a>{% endif %}</p>{% endif %}
-      {% for a in n.next_alts %}<a class="nx-alt" href="{{ a.url }}" data-nx-to="alt">{{ a.title }}<span>{{ a.tag }}</span></a>{% endfor %}
+      {% for a in n.next_alts %}<a class="nx-alt" href="{{ a.url }}" data-nx-to="alt"><span class="nx-at">{{ a.title }}</span><span>{{ a.tag }}</span></a>{% endfor %}
       <a class="nx-more" href="/schedule/this-week/" data-nx-to="list">지금 넣을 수 있는 공고 전체 보기 →</a>
     </div>
   {% endif %}

@@ -1759,7 +1759,52 @@ def write(url, html_text, title, desc, kind, lastmod=None, index=True):
     PAGES[url] = {"title": title, "desc": desc, "kind": kind, "lastmod": lastmod, "index": index, "html": html_text}
     p = PUB / url.lstrip("/") / "index.html" if url.endswith("/") else PUB / url.lstrip("/")
     p.parent.mkdir(parents=True, exist_ok=True)
-    p.write_text(html_text)
+    p.write_text(nowrap_units(html_text))
+
+
+# 2026-11-23 아이폰 점검: '84' / '㎡', '9,050' / '만원', '11.' / '23(월)'처럼 숫자와 단위·날짜가 줄 끝에서 갈라지던 것 →
+# 본문 글자에서만 <span class="nw">(white-space:nowrap)로 묶음. head·script·style·svg·select·textarea 안과 태그 속성은 건드리지 않음
+_NW_SKIP = re.compile(r"(<head\b.*?</head>|<script\b.*?</script>|<style\b.*?</style>|<svg\b.*?</svg>|<select\b.*?</select>|<textarea\b.*?</textarea>|<[^>]+>)", re.S | re.I)
+_NW_TOKEN = re.compile(r"\d{4}\.\d{1,2}\.\d{1,2}\([월화수목금토일]\)|\d{1,2}\.\d{1,2}\([월화수목금토일]\)"
+                       r"|\d[\d,.]*억(?:\s?\d[\d,]*만)?원?|\d[\d,.]*\s?(?:천만원|만원|원|㎡|%|세대|곳|건|호|명|점|평|년|개월|대 1)")
+
+
+_NW_OK = {"p", "td", "th", "dd", "small", "b", "strong", "em", "i", "li", "span", "figcaption", "caption", "address", "summary"}
+_NW_BAD_CLS = ("hm-tile", "hm-pill", "gfeat-k", "an-tag", "badge", "chip", "dz-k")
+_VOID = {"br", "img", "input", "meta", "link", "hr", "source", "wbr", "col", "area", "base", "embed", "param", "track"}
+
+
+def nowrap_units(html_text):
+    """바로 바깥 태그가 글이 흐르는 칸(문단·표 칸·목록 항목·강조 글자·class 없는 span 등)일 때만 묶음.
+    제목(h1~h6)·링크(a)·div·dt·button처럼 가로 배치(flex·grid)로 짜일 수 있는 칸 안은 건드리지 않음 — 묶음이 따로 놓여 칸이 넘쳤음(2026-11-23)."""
+    parts = _NW_SKIP.split(html_text)
+    stack = []
+    for i, part in enumerate(parts):
+        if i % 2 == 1:   # 태그 또는 건너뛸 덩어리
+            m = re.match(r"<(/?)([a-zA-Z][a-zA-Z0-9]*)([^>]*)>$", part)
+            if not m:
+                continue
+            close, tag, attrs = m.group(1), m.group(2).lower(), m.group(3)
+            if tag in _VOID or attrs.rstrip().endswith("/"):
+                continue
+            if close:
+                while stack and stack.pop()[0] != tag:
+                    pass
+            else:
+                cm = re.search(r'class="([^"]*)"', attrs)
+                stack.append((tag, cm.group(1) if cm else ""))
+            continue
+        if not part or not any(ch.isdigit() for ch in part) or not stack:
+            continue
+        tag, cls = stack[-1]
+        up = stack[-2][0] if len(stack) > 1 else ""
+        ok = (tag in _NW_OK and not any(b in cls for b in _NW_BAD_CLS)) \
+            or (tag in ("h1", "h3") and not cls) \
+            or (tag == "a" and not cls and up in ("h1", "h3", "th", "td", "dd", "b", "strong"))   # 표 칸·제목 속 일반 링크 (목록·문단 속 링크는 flex로 짜인 곳이 있어 제외)
+        if not ok:
+            continue
+        parts[i] = _NW_TOKEN.sub(lambda mm: f'<span class="nw">{mm.group(0)}</span>' if len(mm.group(0)) > 2 else mm.group(0), part)
+    return "".join(parts)
 
 
 def content_hash(n):
