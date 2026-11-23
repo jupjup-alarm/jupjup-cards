@@ -1,4 +1,4 @@
-/* 특가반장 공기계 봇 v9 (메신저봇R, 레거시 API) — v9: 두 번째 말풍선을 방 이름 보내기로 */
+/* 특가반장 공기계 봇 v8 (메신저봇R, 레거시 API) */
 /* 맥이 올린 보낼 목록을 1분마다 읽어, 아직 안 보낸 메시지를 오픈채팅방에 보낸다. 본문 뒤 3~6초 후 두 번째 말풍선(followup)도 보낸다. */
 /* 목록 받기: 평소는 raw 주소(?t=시각). GitHub API(raw 헤더)는 두 경우만 - 방 알림이 와서 바로 확인할 때, raw 목록이 5분 넘게 그대로일 때(5분에 한 번까지). API가 403·429면 raw로 돌아간다. */
 /* 방 알림마다 3초 뒤 확인한다(30초 안에 확인했으면 건너뜀). 회차마다 목록 건수를 로그에 남긴다. */
@@ -121,17 +121,6 @@ function putReceipt(id, status) {
   } catch (e) { log("영수증 오류 " + id + ": " + e); }
 };
 
-/* 두 번째 말풍선 (v9, 2026-11-23): 알림 답장은 한 번 쓰면 끊길 수 있어 방 이름 보내기(Api.replyRoom)를 먼저, 안 되면 답장으로 한 번 더. 결과를 로그에 남긴다. */
-function sendFollowup(it) {
-  var ok = false, how = "";
-  try { ok = Api.replyRoom(ROOM, it.followup, true) === true; how = "replyRoom"; } catch (e) { how = "replyRoom 오류 " + e; }
-  if (!ok) {
-    try { java.lang.Thread.sleep(1500); savedReplier.reply(it.followup); ok = true; how += " → reply"; } catch (e) { how += " → reply 오류 " + e; }
-  }
-  log((ok ? "두 번째 말풍선 보냄 " : "두 번째 말풍선 실패 ") + it.id + " (" + how + ")");
-  return ok;
-};
-
 function round(why) {
   if (inQuiet()) { return; }
   if (!roundLock.tryLock()) { return; }
@@ -165,8 +154,11 @@ function round(why) {
       saveSent(sent);
       log("보냄 " + it.id);
       if (it.followup) {
-        java.lang.Thread.sleep(3000 + Math.floor(Math.random() * 3000));
-        sendFollowup(it);
+        try {
+          java.lang.Thread.sleep(3000 + Math.floor(Math.random() * 3000));
+          savedReplier.reply(it.followup);
+          log("두 번째 말풍선 보냄 " + it.id);
+        } catch (e) { log("두 번째 말풍선 오류 " + it.id + ": " + e); }
       }
       putReceipt(it.id, "sent");
       n++;
@@ -180,7 +172,7 @@ function start() {
   if (worker) { return; }
   worker = new java.lang.Thread(new java.lang.Runnable({
     run: function () {
-      log("봇 시작 v9 (" + ROOM + ")" + (token() ? "" : " - 토큰 없음: 영수증을 못 올림"));
+      log("봇 시작 v8 (" + ROOM + ")" + (token() ? "" : " - 토큰 없음: 영수증을 못 올림"));
       while (!java.lang.Thread.currentThread().isInterrupted()) {
         try { round("주기"); } catch (e) { log("회차 오류: " + e); }
         try { java.lang.Thread.sleep(POLL_MS); } catch (e) { break; }
