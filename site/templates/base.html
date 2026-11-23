@@ -92,6 +92,18 @@
 </header>
 {% endif %}
 {% block main %}{% endblock %}
+{% if np %}
+{# 2026-11-23 신문형 푸터: 제호 + 사이트 링크 + 사업자 정보 (사용자 결정 — 연락처(전화)는 빼고 이메일만) #}
+<footer class="np-foot">
+  <div class="np-foot-in">
+    <a class="np-foot-wm" href="/">줍줍알람<span class="np-dot">.</span></a>
+    <p class="np-foot-tag">청약 공고를 공식 데이터로 정리해요 · 정보 제공 목적이며 투자 권유가 아니에요</p>
+    <nav aria-label="사이트 정보"><a href="/info/">청약 정보</a><a href="/tools/">청약·부동산 계산기</a><a href="/week/">주간 청약 정리</a><a href="/report/">월간 청약 결산</a><a href="/about/">소개</a><a href="/sources/">데이터 출처</a><a href="/privacy/">개인정보 처리방침</a><a href="/terms/">이용약관</a><a href="/contact/">문의·정정 요청</a><a href="/advertise/">광고 문의</a><a href="{{ IG }}" rel="noopener">인스타그램</a></nav>
+    <p class="np-foot-note">{{ COUPANG_NOTE }}</p>
+    <address class="np-foot-biz">상호 98컴퍼니 · 대표자 최수빈 · 사업자등록번호 440-22-01650<br>서울시 서초구 사임당로8길 13, 4층 402-732A호 (우편번호 06640)<br>이메일 <a href="mailto:contact@jupjupalarm.com">contact@jupjupalarm.com</a></address>
+  </div>
+</footer>
+{% else %}
 <footer>
   <div class="wrap">
     <span>줍줍알람 · 청약 공고를 공식 데이터로 정리해요 · 정보 제공 목적이며 투자 권유가 아니에요</span>
@@ -100,6 +112,7 @@
     <address class="biz">상호 98컴퍼니 · 대표자 최수빈 · 사업자등록번호 440-22-01650<br>서울시 서초구 사임당로8길 13, 4층 402-732A호 (우편번호 06640)<br>연락처 010-7377-0380 · 이메일 <a href="mailto:contact@jupjupalarm.com">contact@jupjupalarm.com</a></address>
   </div>
 </footer>
+{% endif %}
 {# 2026-11-20 사용자 결정: 공고 상세에도 하단 탭 고정 (CTA 바는 탭 위에 뜨고 스크롤에 따라 보임/숨김) #}
 {% if page_url != '/404.html' %}
 <nav class="tabbar" aria-label="하단 메뉴">

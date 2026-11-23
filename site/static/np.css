@@ -240,7 +240,6 @@ html:has(body.np){scroll-padding-top:72px}
 .np .np-more .ds{font-size:14px;line-height:1.65;color:var(--np-sub)}
 .np .np-more a:hover .tt{text-decoration:underline;text-underline-offset:4px}
 .np .np-below .ad{margin-top:24px}
-.np footer{margin-top:80px;border-top:1px solid var(--np-strong);background:transparent}
 
 /* ───── 모바일 ───── */
 @media (max-width:720px){
@@ -437,3 +436,18 @@ html:has(body.np){scroll-padding-top:72px}
 @media (max-width:1023px){.np .bar.bar2:has(.np-apply){display:flex;flex-wrap:nowrap;align-items:center;gap:8px;grid-template-columns:none}}
 .np .bar.bar2:has(.np-apply) .bar-d{flex:none;margin:0}
 .np .bar.bar2:has(.np-apply) .btn{margin:0;min-height:48px}
+
+/* 푸터: 가운데 제호 + 링크 + 사업자 정보 (연락처 전화는 넣지 않음) */
+.np footer.np-foot{margin-top:80px;border-top:1px solid var(--np-strong);background:transparent;position:relative;padding:0}
+.np footer.np-foot::before{content:"";position:absolute;left:0;right:0;top:2px;border-top:1px solid var(--np-strong)}
+.np .np-foot-in{max-width:1080px;margin:0 auto;padding:32px 24px 48px;text-align:center;font-size:13px;line-height:1.8;color:var(--np-sub)}
+.np .np-foot-wm{display:inline-block;font-weight:800;font-size:26px;letter-spacing:-.05em;color:var(--np-navy);text-decoration:none}
+.np .np-foot-tag{margin:6px 0 0}
+.np .np-foot-in nav{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 18px;margin:16px 0 0;padding:14px 0;border-top:1px solid var(--np-rule);border-bottom:1px solid var(--np-rule)}
+.np .np-foot-in nav a{text-decoration:none;color:var(--np-ink2);font-weight:500;white-space:nowrap}
+.np .np-foot-in nav a:hover{color:var(--np-ink);text-decoration:underline;text-underline-offset:4px}
+.np .np-foot-note{margin:14px 0 0;font-size:12px}
+.np .np-foot-biz{margin-top:8px;font-style:normal;font-size:12.5px;line-height:1.75}
+.np .np-foot-biz a{color:var(--np-ink2)}
+@media (max-width:1023px){.np footer.np-foot .np-foot-in{padding-bottom:calc(var(--tab-h, 64px) + env(safe-area-inset-bottom, 0px) + 40px)}}
+@media (max-width:720px){.np .np-foot-in{padding-left:16px;padding-right:16px}.np .np-foot-in nav{gap:4px 14px}}
