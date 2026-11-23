@@ -24,7 +24,7 @@
  *   HD_SEARCH_PER_RUN 1 · HD_SEARCH_PRICE_PCT 15 (검색 링크 딜의 상품 찾기: 한 번에 몇 건, 가격 허용 차이 %)
  *   HD_MODE mix (역전 딜 + 할인 HD_GENERAL_MIN_OFF(50)% 이상 일반 딜, 역전 먼저 · qty 면 역전만 · all 이면 모든 딜) · HD_MIN_CHEAPER 30 (개당 몇 % 이상 싸야 하는지)
  *   HD_WAIT_CAPTURE_MIN 20 (all 모드에서 P열 캡처를 기다리는 시간, 0이면 안 기다림)
- *   HD_TOSS on (토스 딜도 스레드에 — 일반 딜 조건, 첫 줄 토스 대가성 문구 · off면 토스 제외)
+ *   HD_TOSS on (토스 딜도 스레드에 — 일반 딜 조건 · off면 토스 제외) · HD_TOSS_TAG off (on이면 토스 글 첫 줄에 토스 대가성 문구)
  *   HD_HOOK_SOURCES 지금할인  (제목이 상품명이 아니라 홍보 문구인 출처 — 본문전체(K)가 없으면 보류)
  *
  * 주의: 기존 메뉴 '자동 실행 켜기'(installTriggers)는 모든 트리거를 지우고 다시 만든다.
@@ -682,7 +682,8 @@ function hdCompose_(v, rowNo) {
   lines.push('(' + (at ? Utilities.formatDate(at, TZ, 'M/d HH:mm') + ' 기준, ' : '') + '가격은 금방 바뀌어요)');
   lines.push(hdQuestion_(d.cat, k));
   const tag = String(hdCfg_('HD_AD_TAG', 'off'));
-  if (hdIsToss_(v)) lines.unshift(HD_DISCLOSURE_TOSS);   // 토스는 첫 화면에 수수료 문구 필수 (쉐어링크 가이드)
+  // 2026-11-23 사용자 결정: 토스 딜도 카톡방에서 안내하므로 스레드 본문엔 토스 문구를 넣지 않음 (HD_TOSS_TAG=on 이면 첫 줄에 넣음)
+  if (hdIsToss_(v) && hdCfg_('HD_TOSS_TAG', 'off') === 'on') lines.unshift(HD_DISCLOSURE_TOSS);
   const main = lines.join('\n') + (tag && tag.toLowerCase() !== 'off' && !hdIsToss_(v) ? '\n' + tag : '');
 
   // 답글 1 (역전 딜만): 딜 페이지 링크 + 대가성 문구. X열(맥이 만든 autodm 딜 페이지)이 있을 때만.
