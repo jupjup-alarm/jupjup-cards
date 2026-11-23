@@ -194,6 +194,17 @@ def build(E, notices, write, common, pub, base, today, problems):
             g["html_a"], g["html_b"] = Markup(str(body)[:cut]), Markup(str(body)[cut:])
         else:
             g["html_a"], g["html_b"] = body, ""
+        # 2026-11-23 신문형 리디자인: 본문 광고 최대 3곳 — 2·4·6번째 소제목 바로 앞 (소제목이 모자라면 그만큼만).
+        # parts = [(광고 자리 이름 또는 None, 본문 조각)] — 첫 조각엔 광고 없음
+        cuts = [(slot, hs[i]) for slot, i in (("guide_mid", 1), ("guide_mid2", 3), ("guide_mid3", 5)) if i < len(hs)]
+        if len(hs) < 3:
+            cuts = []
+        sb, parts, prev, pslot = str(body), [], 0, None
+        for slot, pos in cuts:
+            parts.append((pslot, Markup(sb[prev:pos])))
+            prev, pslot = pos, slot
+        parts.append((pslot, Markup(sb[prev:])))
+        g["parts"] = parts
         g["url"] = f"/guide/{g['slug']}/"
         g["read_min"] = read_min(g)
         g["cat_slug"] = CAT_SLUG.get(g.get("category"), "etc")

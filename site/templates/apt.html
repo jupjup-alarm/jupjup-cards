@@ -1,12 +1,36 @@
 {% extends "base.html" %}
-{% from "macros.html" import badges, card, crumbs, ig_icon, cp_ad, ads_slot, bizboard, goods_card with context %}
+{% from "macros.html" import badges, card, crumbs, ig_icon, cp_ad, ads_slot, bizboard, goods_card, np_ad with context %}
 {% set og_type = 'article' %}
+{# 2026-11-23 신문형 리디자인 (시안 apt-template.html): 제호 머리 + 상태 줄·4칸 요약·5단계 타임라인 + 종이 톤. 섹션·소제목·id는 그대로 #}
+{% set np = true %}{% set np_kicker = STATUS[n.status][0] %}{% set np_title = n.title %}{% set np_sec = '/type/' ~ n.kind ~ '/' %}
+{# 2026-11-23 사용자 결정: 청약홈 신청 버튼은 두지 않고(11/3·11/4 결정 유지) 카톡 알림방 입장을 유도 — 상단바 버튼도 카톡 #}
+{% set np_bar_href = KAKAO %}{% set np_bar_label = '카톡 알림방 입장' %}
 {% block head %}
 {% if n.imgs.hero %}<link rel="preload" as="image" href="hero.webp" fetchpriority="high">{% endif %}
 {% endblock %}
 {% block main %}
 {% set v4 = n.dz and not n.is_pre and not n.moved and n.status in ('open', 'upcoming') %}
-<main class="wrap page{{ ' v4' if v4 }}" id="main">
+{% set facts_dl %}
+      <dl class="facts num">
+        <div><dt>{{ ('공고 전 예상 접수' if n.moved else '접수 예정') if n.is_pre else '접수' }}</dt><dd>{% if n.rcpt[0] == n.rcpt[1] %}<span class="ln">{{ n.rcpt[0]|tdate }}</span><small>{{ n.receipt_note or '하루만 받아요' }}</small>{% else %}<span class="ln">{{ n.rcpt[0]|tdate }}</span><span class="ln">~ {{ n.rcpt[1]|tdate }}</span>{% if n.receipt_note %}<small>{{ n.receipt_note }}</small>{% endif %}{% endif %}</dd></div>
+        {% if n.is_pre %}
+        <div><dt>예상 분양가</dt><dd>{{ n.price_short or n.price_text }}<small>{{ n.price_basis or '보도 기준' }}</small></dd></div>
+        {% elif n.is_rental %}
+        <div><dt>보증금</dt><dd>{% if n.houses and n.rent_range and n.rent_range.deposit %}{{ n.rent_range.deposit[0]|money }}~<small>최고 {{ n.rent_range.deposit[1]|money }} · 집마다 달라요</small>{% elif n.rent_summary.deposit %}{{ n.rent_summary.deposit|money }}<small>{{ n.rent_summary.basis }}</small>{% else %}공고문 참조<small>타입별로 달라요</small>{% endif %}</dd></div>
+        {% else %}
+        <div><dt>{{ n.price_label }}</dt><dd>{{ n.max_price|won }}<small>{{ n.max_type }} 기준</small></dd></div>
+        {% endif %}
+        <div><dt>공급</dt><dd>{% if n.units %}{{ '{:,}'.format(n.units) }}{{ n.unit_word }}{% else %}예비 모집{% endif %}{% if n.units_note %}<small>{{ n.units_note }}</small>{% endif %}</dd></div>
+        {% if n.comp and n.comp.short and n.status in ('waiting', 'announced') %}
+        <div><dt>경쟁률</dt><dd>{{ n.comp.short.split(' · ')[-1] }}<small>{{ n.comp.short.split(' · ')[0] }}</small></dd></div>
+        {% elif n.is_rental %}
+        <div><dt>월세</dt><dd>{% if n.houses and n.rent_range and n.rent_range.monthly %}{{ n.rent_range.monthly[0]|money }}~<small>최고 {{ n.rent_range.monthly[1]|money }}</small>{% elif n.rent_summary.monthly %}{{ n.rent_summary.monthly|money }}<small>{{ n.rent_summary.basis }}</small>{% else %}공고문 참조<small>타입별로 달라요</small>{% endif %}</dd></div>
+        {% else %}
+        <div><dt>청약통장</dt><dd>{{ n.account[0] }}<small>{{ n.account[1] }}</small></dd></div>
+        {% endif %}
+      </dl>
+{% endset %}
+<main class="wrap page{{ ' v4' if v4 }}{{ ' np-has-tl' if n.np_tl }} np-st-{{ n.status }}" id="main">
   {# 2026-11-03 리디자인 v2 (SEO 우선): 사진이 있으면 사진 → 제목부, 없으면 남색 제목 띠 + 위치 지도 #}
   {% if n.is_pre and not n.moved %}<p class="pre-ban"><i aria-hidden="true"></i>아직 모집공고 전이에요 · 모든 값은 보도 기준</p>{% endif %}
   {% if n.imgs.hero %}
@@ -23,6 +47,7 @@
 {% if n.moved %}<a class="moved" href="{{ n.moved.url }}"><b>공식 공고가 나왔어요</b><span>확정 분양가·청약 일정 보기 →</span></a>{% endif %}
     {% if n.lead %}<p class="lead">{{ n.lead }}</p>{% endif %}
     <p class="addr">{{ n.address }}</p>
+    {% if not n.is_pre and not n.moved %}<div class="np-facts">{{ facts_dl }}</div>{% endif %}
     {% if not n.lead %}
     <p class="oneline num">{% if n.units %}<span>{{ '{:,}'.format(n.units) }}{{ n.unit_word }}</span>{% endif %}{% if n.is_pre %}<span>예상 {{ n.price_short or n.price_text }}</span><span>{{ '예상 접수 ' ~ (n.rcpt[0]|d) if n.moved else (n.rcpt[0]|d) ~ ' 접수 예정' }}</span>{% elif n.is_rental %}{% if n.houses and n.rent_level %}<span>{{ n.rent_level }}</span>{% elif n.rent_summary.deposit %}<span>보증금 {{ n.rent_summary.deposit|money }}</span>{% endif %}<span>{{ n.rcpt[0]|d }} 접수</span>{% else %}<span>{{ n.price_label|replace(' 분양가', '') }} {{ n.max_price|won }}</span><span>{% if n.status == 'announced' %}{{ n.announce|d }} 발표{% else %}{{ n.rcpt[0]|d }} 접수{% endif %}</span>{% endif %}</p>
     {% endif %}
@@ -33,6 +58,9 @@
     </figure>
     {% endif %}
   </div>
+  {% if n.np_tl %}
+  <ol class="np-tl num" aria-label="청약 단계">{% for x in n.np_tl %}<li class="{{ x.state }}"><span class="d">{% if x.month %}{{ x.month|tmonth }}{% else %}{{ x.start|tlwhen(x.end) }}{% endif %}</span><span class="w">{{ x.label }}{% if x.state == 'now' %} <b>{{ '오늘' if x.start == x.end else '진행 중' }}</b>{% elif x.state == 'soon' %} <b>다음</b>{% endif %}</span></li>{% endfor %}</ol>
+  {% endif %}
 {% set ticket_html %}
 {# 첫 화면 '다음 할 일' (2026-11-03 사용자 결정 시안) — 접수 중·예정은 버튼 2개, 접수 끝은 안내 + 지금 넣을 수 있는 공고 #}
 {% set chk_to = '#h-chk' if (n.dz and n.dz.check) else '#h-elig' %}
@@ -166,7 +194,7 @@
 {{ dz_html }}
 {{ ticket_html }}
   {# 2026-11-03 사용자 결정: 애드센스는 3초 판단 카드 바로 아래(요약 카드 위)로 올림 #}
-  {{ ads_slot('apt_top', 'ad-apt ad-top') }}
+  {{ np_ad('apt_top') }}
 {{ result_html }}
 {% else %}
 {{ ticket_html }}
@@ -176,28 +204,13 @@
 <!--CHIPNAV-->
 {{ dz_html }}
   {# 2026-11-03 사용자 결정: 애드센스는 3초 판단 카드 바로 아래(요약 카드 위)로 올림 #}
-  {{ ads_slot('apt_top', 'ad-apt ad-top') }}
+  {{ np_ad('apt_top') }}
 {% endif %}
   <aside aria-label="핵심 요약"{% if not n.is_pre and not n.moved %} class="has-dz"{% endif %}>
     <div class="summary">
-      <dl class="facts num">
-        <div><dt>{{ ('공고 전 예상 접수' if n.moved else '접수 예정') if n.is_pre else '접수' }}</dt><dd>{% if n.rcpt[0] == n.rcpt[1] %}<span class="ln">{{ n.rcpt[0]|tdate }}</span><small>{{ n.receipt_note or '하루만 받아요' }}</small>{% else %}<span class="ln">{{ n.rcpt[0]|tdate }}</span><span class="ln">~ {{ n.rcpt[1]|tdate }}</span>{% if n.receipt_note %}<small>{{ n.receipt_note }}</small>{% endif %}{% endif %}</dd></div>
-        {% if n.is_pre %}
-        <div><dt>예상 분양가</dt><dd>{{ n.price_short or n.price_text }}<small>{{ n.price_basis or '보도 기준' }}</small></dd></div>
-        {% elif n.is_rental %}
-        <div><dt>보증금</dt><dd>{% if n.houses and n.rent_range and n.rent_range.deposit %}{{ n.rent_range.deposit[0]|money }}~<small>최고 {{ n.rent_range.deposit[1]|money }} · 집마다 달라요</small>{% elif n.rent_summary.deposit %}{{ n.rent_summary.deposit|money }}<small>{{ n.rent_summary.basis }}</small>{% else %}공고문 참조<small>타입별로 달라요</small>{% endif %}</dd></div>
-        {% else %}
-        <div><dt>{{ n.price_label }}</dt><dd>{{ n.max_price|won }}<small>{{ n.max_type }} 기준</small></dd></div>
-        {% endif %}
-        <div><dt>공급</dt><dd>{% if n.units %}{{ '{:,}'.format(n.units) }}{{ n.unit_word }}{% else %}예비 모집{% endif %}{% if n.units_note %}<small>{{ n.units_note }}</small>{% endif %}</dd></div>
-        {% if n.comp and n.comp.short and n.status in ('waiting', 'announced') %}
-        <div><dt>경쟁률</dt><dd>{{ n.comp.short.split(' · ')[-1] }}<small>{{ n.comp.short.split(' · ')[0] }}</small></dd></div>
-        {% elif n.is_rental %}
-        <div><dt>월세</dt><dd>{% if n.houses and n.rent_range and n.rent_range.monthly %}{{ n.rent_range.monthly[0]|money }}~<small>최고 {{ n.rent_range.monthly[1]|money }}</small>{% elif n.rent_summary.monthly %}{{ n.rent_summary.monthly|money }}<small>{{ n.rent_summary.basis }}</small>{% else %}공고문 참조<small>타입별로 달라요</small>{% endif %}</dd></div>
-        {% else %}
-        <div><dt>청약통장</dt><dd>{{ n.account[0] }}<small>{{ n.account[1] }}</small></dd></div>
-        {% endif %}
-      </dl>
+      <p class="np-card-st"><span>{{ STATUS[n.status][0] }}{% if n.status == 'open' %} · {{ '오늘 마감' if n.rcpt[1] == today.isoformat() else '마감 ' ~ (n.rcpt[1]|d) }}{% endif %}</span>{% if n.status == 'open' %}{% set dl0 = days_to(n.rcpt[1] or n.rcpt[0]) %}<b class="num" data-dend="{{ n.rcpt[1] or n.rcpt[0] }}">{{ '오늘' if dl0 == 0 else 'D-' ~ dl0 }}</b>{% elif n.status == 'upcoming' %}<b class="num" data-dday="{{ n.rcpt[0] }}">D-{{ n.dday }}</b>{% endif %}</p>
+      <p class="np-card-nm">{{ n.title }}</p>
+      {{ facts_dl }}
       {% if n.chips %}<div class="chips">{% for c in n.chips %}<span class="chip{{ ' key' if c[1] }}">{{ c[0] }}</span>{% endfor %}</div>{% endif %}
       <p class="who">{{ n.who }}</p>
       <div class="cta">
@@ -261,6 +274,7 @@
   </section>
   {# 2026-11-21 사용자 요청: 30초 체크 바로 아래 아정당 파트너스 롤링 배너 (모바일만) #}
   {% include 'ajd_banner.html' %}
+  {{ np_ad('apt_ajd', 'np-pc-only') }}{# 2026-11-23: 같은 아정당 광고를 PC에도 (모바일은 위 롤링 배너) #}
   {% endif %}
   {% endif %}
 
@@ -360,6 +374,7 @@
     <h2 id="h-trap">{{ n.h2.trap }}</h2>
     <ul class="traps">{% for a, b in z.traps %}<li><b>{{ a }}</b><span>{{ b }}</span></li>{% endfor %}</ul>
   </section>
+  {{ np_ad('apt_mid') }}
   {% endif %}
   {% endif %}
 
@@ -502,6 +517,8 @@
     <h2 id="h-near">주변 단지 실거래 비교</h2>
     <p class="nb-where">{{ nb.where }} · 전용 {{ '%g'|format(nb.area) }}㎡ 안팎 · 최근 6개월({{ nb.span }})</p>
     {% if nb.verdict %}<p class="nb-verdict t-{{ nb.tone }}">{{ nb.verdict }}</p>{% endif %}
+    {% if nb.reading %}{# 2026-11-23: 신축과 비교 / 전체 거래와 비교를 섞지 않고 두 칸으로 #}
+    <div class="np-reading">{% for r in nb.reading %}<div><p class="h">{{ r.h }}</p><p class="b num">{{ r.b }}</p><p class="s">{{ r.s }}</p></div>{% endfor %}</div>{% endif %}
     <div class="nb-chart" role="img" aria-label="{{ nb.unit }} 가격 비교 막대: {% for b in nb.bars %}{{ b.name }} {{ b.val }}{% if not loop.last %}, {% endif %}{% endfor %}">
       <p class="nb-cap">{{ nb.unit }} 가격{% if nb.med_txt %} · 점선 = 주변 중앙값 {{ nb.med_txt }}{% endif %}</p>
       {% for b in nb.bars %}
@@ -712,7 +729,7 @@
     <p class="note"><a href="/guide/">청약·임대·대출 가이드 전체 보기 →</a></p>
   </section>
   {% endif %}
-  {{ cp_ad('apt_end_mo', 'ad-apt') }}
+  {{ np_ad('apt_end') }}
 
   {% if n.related %}
   <section class="sec" aria-labelledby="h-more">

@@ -74,6 +74,13 @@ for _k in ("apt_nav_mo", "apt_top_mo"):
 for _k, _v in COUPANG.items():
     _v["opts"]["subId"] = CP_SUBID.get(_k, "jupjupalarm")
 GOODS_API = "https://autodm.jupjupalarm.com/jj/goods.json"
+# 2026-11-23 신문형 리디자인(칼럼·공고 상세) 본문 광고 자리 → 무엇을 채울지. 애드센스는 아직 광고가 안 나와서(사용자 2026-11-23) 쿠팡·아정당으로 채움.
+#   ajd = 아정당 제휴 2칸(인터넷·렌탈, 모든 폭) · ajd_board = 아정당 비즈보드(렌탈)
+#   cp:<PC 자리>:<모바일 자리> = 쿠팡 다이나믹 배너(COUPANG 자리 이름, 비우면 그 폭엔 없음) · adsense = 애드센스 336×280 고정 (승인 뒤 바꿀 때 ADSENSE slots에 같은 이름으로 광고 단위 ID 추가)
+NP_ADS = {"home_top": "cp:home:home_mo", "home_ajd": "ajd", "home_end": "cp::home_end_mo",
+          "guide_mid": "ajd", "guide_mid2": "cp:home:home_mo", "guide_mid3": "ajd_board", "guide_end": "cp:home:home_end_mo",
+          # 공고 상세: 모바일은 기존 아정당 비즈보드·롤링 배너·입주 준비물 카드를 그대로 두고, PC에 아정당 2칸·쿠팡을 더함. apt_top(애드센스 자리)은 승인 뒤 "adsense"로
+          "apt_ajd": "ajd", "apt_mid": "cp:home:", "apt_end": "cp:home:apt_end_mo"}
 # 애드센스 (승인 전이라 비어 있음 — client에 ca-pub-…, slots에 광고 단위 ID를 넣으면 그 자리에 나옴)
 ADSENSE = {"client": "ca-pub-1196853150959268", "slots": {"apt_top": "5439503161", "guide_mid": "5439503161"}}  # 2026-11-03 사이트 연결 + 광고 단위 '사각형_반응형' (공고 3초 판단 카드 아래 — 11/3 한마디 아래에서 올림 · 가이드 본문 중간)
 # 구글 애널리틱스 4 — 측정 ID(G-XXXXXXXXXX)를 넣으면 모든 페이지에 붙음 (사용자 요청 2026-10-29). 비우면 아무것도 안 붙음
@@ -210,7 +217,7 @@ def make_nearby(n):
                          won(c["price"]) if c.get("price") else "", won(c["ppa"]) if c.get("ppa") else "", ym(c.get("date")), f"{c['n']}건"])
         head = ["단지 (준공)", "면적", "최근 거래가", "㎡당 (중앙값)", "거래", "6개월 거래"]
     # 2026-11-13 사용자 "UI가 중요": 판정 한 줄 + 막대 비교 + 숫자 칸 3개, 표는 접어 둠
-    bars, verdict, tone, facts = [], "", "n", []
+    bars, verdict, tone, facts, reading = [], "", "n", [], []
     cmp = None   # 2026-11-22 지역 청약 리포트용 — 이 공고가 비교 기준의 몇 % 수준인지
     if d["kind"] == "rent":
         # 보증금이 서로 달라 월세만 비교하면 틀린다 → 보증금을 연 4.5%로 월세에 더한 '환산 월세'로 비교 (2026-11-13, 추정·가정 표기)
@@ -253,6 +260,20 @@ def make_nearby(n):
                     lead.append(f"비교가 공정하도록 10년 이내에 지은 주변 단지 {len(newp)}곳의 ㎡당 중앙값 {won(base)}과도 견줘 봤어요 — 이 공고는 그 {pct}% 수준이에요(추정).")
             elif old_only:
                 verdict = f"주변은 {st_['built_med']}년 전후 구축 위주 — 새 아파트와 단순 비교는 어려워요"
+            # 2026-11-23 신문형 리디자인: '신축과 비교'와 '전체 거래와 비교'를 섞지 않고 두 칸으로 나눠 보여 줌 (화면용, verdict·cmp는 그대로)
+            reading = []
+            if newp:
+                b0 = newp[len(newp) // 2]
+                p0, d0 = round(mine * 100 / b0), int(round(b0 * area - ours["price"], -6))
+                reading.append({"h": f"10년 이내 지은 주변 단지 {len(newp)}곳과 비교", "b": f"㎡당 가격의 {p0}%",
+                                "s": (f"{area:g}㎡ 기준 약 {won(d0)} 싸요." if d0 >= 10**7 else (f"{area:g}㎡ 기준 약 {won(-d0)} 비싸요." if d0 <= -10**7 else "비슷한 수준이에요.")) + " 비교 단지와 생활권·입지가 다를 수 있어요."})
+            if ppa:
+                p1 = round(mine * 100 / ppa)
+                reading.append({"h": f"{where} {area:g}㎡ 안팎 거래 {st_['n']}건과 비교", "b": f"㎡당 중앙값의 {p1}%",
+                                "s": (f"구축까지 모두 합친 값이에요" + (f"(비교 단지 {st_['built_med']}년 전후)" if st_.get("built_med") else "") + ". ")
+                                     + ("이 기준으로는 조금 비싼 편이에요." if p1 > 100 else "이 기준으로도 싼 편이에요.")})
+            if len(reading) < 2:
+                reading = []
         fmt, unit, med = (lambda v: won(v)), "㎡당", ppa
         top = st_.get("top") or {}
         facts = [("매매 거래", f"{st_['n']}건"), ("㎡당 중앙값", won(ppa) if ppa else "-"),
@@ -265,7 +286,7 @@ def make_nearby(n):
     return {"lead": lead, "head": head, "rows": rows, "where": where, "made": str(d.get("made", ""))[:10],
             "bars": bars, "med_pos": round(med * 100 / mx, 1) if med else None, "med_txt": fmt(med) if med else "",
             "unit": unit, "verdict": verdict, "tone": tone, "facts": facts, "span": span, "area": area,
-            "cmp": cmp, "built_med": st_.get("built_med")}
+            "cmp": cmp, "built_med": st_.get("built_med"), "reading": reading}
 
 
 def won(n):
@@ -618,7 +639,46 @@ def build_notice(e, row, regions, problems):
         n["gap"] = dict(n["gap"], text=fill(n["gap"]["text"]))
     n["price_label"] = e.get("price_label", "최고 분양가")
     n["nearby"] = make_nearby(n)
+    n["np_tl"] = np_timeline(n)
     return n
+
+
+def np_timeline(n):
+    """2026-11-23 신문형 리디자인: 공고 상세 머리의 5단계 타임라인 (모집공고 → 접수 → 발표 → 계약 → 입주).
+    일정(schedule)에서 단계마다 첫 항목을 고르고, 접수는 첫 접수 시작~마지막 접수 끝으로 묶음. 3단계 미만이면 빈 목록."""
+    sch = [x for x in (n.get("schedule") or []) if x.get("start") or x.get("month")]
+    pats = [("모집공고", r"공고"), ("접수", r"접수"), ("당첨자 발표", r"발표"), ("계약", r"계약"), ("입주", r"입주")]
+    out = []
+    for label, pat in pats:
+        hit = [x for x in sch if re.search(pat, x.get("label", "")) and not (label != "입주" and x.get("month"))]
+        if label == "모집공고":
+            hit = [x for x in hit if not re.search(r"발표|접수|계약", x["label"])]
+        if not hit:
+            continue
+        if label == "접수":
+            hit = [x for x in hit if not re.search(r"서류|발표", x["label"])] or hit
+            a, b = hit[0], hit[-1]
+            out.append({"label": label, "start": a["start"], "end": b.get("end") or b["start"], "month": None})
+        else:
+            x = hit[0]
+            out.append({"label": label, "start": x.get("start"), "end": x.get("end") or x.get("start"), "month": x.get("month")})
+    if len(out) < 3:
+        return []
+    t = TODAY.isoformat()
+    seen_next = False
+    for x in out:
+        if x["month"]:
+            done = x["month"] < t[:7]
+            now = x["month"] == t[:7]
+        else:
+            done, now = x["end"] < t, x["start"] <= t <= x["end"]
+        x["state"] = "done" if done else ("now" if now else "next")
+    if not any(x["state"] == "now" for x in out):
+        for x in out:
+            if x["state"] == "next":
+                x["state"] = "soon"
+                break
+    return out
 
 
 DATA_FETCHED = ""
@@ -1562,7 +1622,7 @@ def env():
         return out if len(out) >= 2 else []
     def days_to(iso):
         return (dt.date.fromisoformat(iso) - TODAY).days if iso else None
-    e.globals.update(steps4=steps4, days_to=days_to, HAS_GUIDES=bool(GUIDES.load()), RENTAL_EXPLAIN=RENTAL_EXPLAIN, BASE=BASE, IG=IG, THREADS=THREADS, KAKAO=KAKAO, BLOG=BLOG, YOUTUBE=YOUTUBE, COUPANG=COUPANG, COUPANG_NOTE=COUPANG_NOTE, GOODS_API=GOODS_API, ADSENSE=ADSENSE, GA=GA, STATUS=STATUS, KINDS=KINDS, crumb_ld=crumb_ld, items_ld=items_ld, GUIDE_TOOLS=TOOLS_PAGES.guide_tools(),
+    e.globals.update(NP_ADS=NP_ADS, steps4=steps4, days_to=days_to, HAS_GUIDES=bool(GUIDES.load()), RENTAL_EXPLAIN=RENTAL_EXPLAIN, BASE=BASE, IG=IG, THREADS=THREADS, KAKAO=KAKAO, BLOG=BLOG, YOUTUBE=YOUTUBE, COUPANG=COUPANG, COUPANG_NOTE=COUPANG_NOTE, GOODS_API=GOODS_API, ADSENSE=ADSENSE, GA=GA, STATUS=STATUS, KINDS=KINDS, crumb_ld=crumb_ld, items_ld=items_ld, GUIDE_TOOLS=TOOLS_PAGES.guide_tools(),
                      logo=Markup((SITE / "static/favicon.svg").read_text().replace('<svg xmlns="http://www.w3.org/2000/svg" ', '<svg class="mark" aria-hidden="true" focusable="false" ')))
     return e
 
@@ -1753,7 +1813,9 @@ def main():
     for n in notices:
         n["status"] = status_of(n)
         n["dday"] = dday(n)
-        h = content_hash({k: v for k, v in n.items() if k not in ("status", "dday", "moved", "pre_page")}
+        # np_tl·nearby.reading은 화면용 파생값(2026-11-23 신문형) — 넣으면 디자인만 바꿔도 모든 공고 수정일이 바뀜
+        h = content_hash({k: v for k, v in n.items() if k not in ("status", "dday", "moved", "pre_page", "np_tl", "nearby")}
+                         | ({"nearby": {k: v for k, v in n["nearby"].items() if k != "reading"} if n["nearby"] else n["nearby"]} if "nearby" in n else {})
                          | {"_moved": (n.get("moved") or {}).get("key"), "_pre": (n.get("pre_page") or {}).get("key")})
         st = state.get(n["key"], {})
         if st.get("hash") != h:
@@ -1773,7 +1835,7 @@ def main():
         if p.name == "apt":
             continue
         shutil.rmtree(p) if p.is_dir() else p.unlink()
-    css_hash = None
+    css_hash = np_hash = None
     for f in (SITE / "static").iterdir():
         if f.is_dir():
             shutil.copytree(f, PUB / f.name)
@@ -1781,6 +1843,9 @@ def main():
         if f.name == "style.css":
             css_hash = hashlib.sha1(f.read_bytes()).hexdigest()[:8]
             shutil.copy2(f, PUB / f"style.{css_hash}.css")
+        elif f.name == "np.css":   # 2026-11-23 신문형 리디자인 (칼럼·공고 상세만 — style.css 뒤에 얹음)
+            np_hash = hashlib.sha1(f.read_bytes()).hexdigest()[:8]
+            shutil.copy2(f, PUB / f"np.{np_hash}.css")
         else:
             shutil.copy2(f, PUB / f.name)
     og_default(PUB / "og-default.jpg")
@@ -1804,7 +1869,9 @@ def main():
         ann.sort(key=lambda n: n["announce"], reverse=True)
         return [n for n in lst if n["status"] != "announced"] + ann
 
-    common = dict(today=TODAY, built=now, css=f"/style.{css_hash}.css", kinds_used=sorted({n["kind"] for n in notices}, key=list(KINDS).index))
+    common = dict(today=TODAY, built=now, css=f"/style.{css_hash}.css", css_np=f"/np.{np_hash}.css" if np_hash else None,
+                  np_date=f"{TODAY.year}년 {TODAY.month}월 {TODAY.day}일 {DOW[TODAY.weekday()]}요일",
+                  np_open=sum(1 for n in notices if n["status"] == "open"), kinds_used=sorted({n["kind"] for n in notices}, key=list(KINDS).index))
 
     # 지역 목록 구성
     sido_map = {}
@@ -2270,7 +2337,7 @@ def main():
         c = len([x for x in live_s if x["rcpt"][0] == di])
         v_week.append({"iso": di, "dow": "월화수목금토일"[dt.date.fromisoformat(di).weekday()], "day": int(di[8:]), "n": c,
                        "past": di < t0, "today": di == t0, "href": f"#d-{di}" if di in have else "/schedule/this-week/"})
-    h = home_tpl.render(tiles=tiles, v_dates=v_dates, v_week=v_week, home_takes=home_takes, home_guides=home_guides, n_guides=n_guides, groups=home_groups, page_url="/", title=title, desc=desc, og=home_og, due=due, home_week=home_week, n_week=n_week,
+    h = home_tpl.render(home_an=ANALYSIS.load(TODAY)[:4], tiles=tiles, v_dates=v_dates, v_week=v_week, home_takes=home_takes, home_guides=home_guides, n_guides=n_guides, groups=home_groups, page_url="/", title=title, desc=desc, og=home_og, due=due, home_week=home_week, n_week=n_week,
                         week_label=f"{d(wk0.isoformat())} ~ {d(week_end.isoformat())}", t1=t1,
                         regions_used=regions_used, region_slug=regions["sido"], sido_map=sido_map, hub_quick=hub_quick, n_open=n_open, n_up=n_up,
                         tbl=home_tbl, tbl_cap=f"청약 공고 접수 중·예정 {n_open + n_up}곳 중 {len(home_tbl)}곳 — {d(TODAY.isoformat())} 기준 · 청약홈·LH·마이홈 공식 데이터", **common)
@@ -2741,6 +2808,8 @@ HEADERS = """/*
   X-Frame-Options: SAMEORIGIN
   Permissions-Policy: interest-cohort=()
 /style.*.css
+  Cache-Control: public, max-age=31536000, immutable
+/np.*.css
   Cache-Control: public, max-age=31536000, immutable
 /apt/*/*.webp
   Cache-Control: public, max-age=604800
