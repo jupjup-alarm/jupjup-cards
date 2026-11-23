@@ -49,11 +49,22 @@ def main():
         return
     day = a.date or today_kst()
     out = []
+    picked = {it["slug"] for it in items[: a.n]}
+    live = {f.stem for f in GDIR.glob("*.json") if not f.name.startswith("_")} | picked
+
+    def unlink_unpublished(text):
+        # 아직 공개 안 된 칼럼으로 가는 본문 링크는 빌드 ERROR(깨진 링크) → 글자만 남김
+        def rep(m):
+            return m.group(0) if m.group(2) in live else m.group(1)
+        return re.sub(r"\[([^\]]+)\]\(/guide/([a-z0-9-]+)/?\)", rep, text or "")
+
     for it in items[: a.n]:
         src = READY / f"{it['slug']}.json"
         g = json.loads(src.read_text(encoding="utf-8"))
         g["published"] = day
         g["checked"] = day
+        g["body"] = unlink_unpublished(g.get("body"))
+        g["faq"] = [[q, unlink_unpublished(ans)] for q, ans in g.get("faq", [])]
         vol = [f"{f.get('item')}: {f.get('value')} ({f.get('source')}, {f.get('effective', '')})"
                for f in g.get("facts", []) if VOLATILE.search(f"{f.get('item')} {f.get('value')}")]
         out.append({"slug": it["slug"], "h1": g.get("h1"), "recheck": vol})
