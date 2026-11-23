@@ -1,0 +1,65 @@
+{
+ "key": "lh2015122300021130",
+ "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300021130&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=10&mi=1026",
+ "checked": "2026-11-24 07:03",
+ "files": [
+  {
+   "fileid": "69527406",
+   "name": "★261123수원시지역행복주택입주자격완화모집공고문.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69527404",
+   "name": "★261123수원시지역행복주택입주자격완화모집공고문.pdf",
+   "kind": "notice",
+   "got": "ok",
+   "md5": "87ba94a320b2cd72a35d40a43a2e6458",
+   "pages": 31,
+   "bytes": 668915
+  },
+  {
+   "fileid": "69527420",
+   "name": "팸플릿_수원고등2단지(C-1블록)행복주택.pdf",
+   "kind": "pamphlet",
+   "got": "ok",
+   "md5": "7803af593f8ffc835103b21836a7a21c",
+   "pages": 22,
+   "bytes": 29857978
+  },
+  {
+   "fileid": "69527425",
+   "name": "팸플릿_수원호매실21단지(A-7블록)행복주택.pdf",
+   "kind": "pamphlet",
+   "got": "ok",
+   "md5": "888eea126a6c58dbe12cd9d4bbae201c",
+   "pages": 20,
+   "bytes": 57414923
+  },
+  {
+   "fileid": "69527412",
+   "name": "[별첨1.공사양식](필수)개인정보수집이용및제3자제공동의서등.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69527414",
+   "name": "[별첨2.공사양식](필수)입주자격완화확약서등.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69527415",
+   "name": "[별첨3.공사양식](예비신혼부부해당)예비신혼부부신청확인서,세대구성확인서.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69527416",
+   "name": "[별첨4.공사양식](해당시)위임장(양식).hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69527418",
+   "name": "[별첨5]마이마이서비스고객메뉴얼(V7).hwpx",
+   "kind": "other"
+  }
+ ],
+ "changed": true
+}
