@@ -116,7 +116,7 @@ function hdWeekly_(dry) {
   const nums = ['①', '②', '③', '④', '⑤', '⑥', '⑦'];
   let text = '';
   for (let n = top.length; n >= 3; n--) {
-    text = ['이번 주 가격 이상했던 것 TOP ' + n + ' 🧾', '']
+    text = ['🧾 이번 주 놓쳤으면 아까운 딜 TOP ' + n, '']
       .concat(top.slice(0, n).map((x, i) => nums[i] + ' ' + x.line).join('\n\n'))
       .concat(['', '지금은 가격이 돌아간 것도 있어요. 저장해두고 다음에 비교해 봐', '이번 주 제일 잘 산 거 하나만 말해줘 👀']).join('\n');
     if (text.length <= 480) break;
@@ -148,7 +148,7 @@ function hdDaily_(dry) {
   if (top.length < 2) { hdLog_('아침 정리: 어제 올린 딜이 ' + top.length + '건뿐이라 건너뜀'); return; }
   const dow = ['일', '월', '화', '수', '목', '금', '토'][Number(Utilities.formatDate(now, TZ, 'u')) % 7];
   const nums = ['①', '②', '③'];
-  const text = [Utilities.formatDate(now, TZ, 'M/d') + '(' + dow + ') 오늘의 특가 ☀️', '어제 가격 이상했던 것 ' + top.length + '개', '']
+  const text = ['☀️ ' + Utilities.formatDate(now, TZ, 'M/d') + '(' + dow + ') 아침 특가 정리', '어제 놓쳤으면 아까운 딜 ' + top.length + '개', '']
     .concat(top.map((x, i) => nums[i] + ' ' + x.line).join('\n\n'))
     .concat(['', '지금은 가격이 돌아간 것도 있어요. 오늘 뜨는 건 알림방에 먼저 올려요']).join('\n');
   let chatId = '';
