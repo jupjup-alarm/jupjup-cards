@@ -96,11 +96,11 @@ function hdTopItems_(rows, from, to) {
     const nm = hdShortName_(d.name) || d.cat;
     if (!nm) return;
     if (pr) {
-      const diff = pr.b.p - pr.a.p;
-      items.push({ s: 100 + pr.cheaper, line: nm + ' — ' + pr.a.q + pr.a.u + '보다 ' + pr.b.q + pr.b.u + '가 ' +
-        (diff <= 0 ? '더 쌈' : '개당 ' + pr.cheaper + '% 쌈') });
+      // 2026-11-23 사용자 결정: '개당 N% 쌈' 대신 실제 금액 두 개를 나란히 (계산 없이 바로 이상하다고 느끼게)
+      items.push({ s: 100 + pr.cheaper, line: nm + '\n' + pr.a.q + pr.a.u + ' ' + pr.a.p.toLocaleString('ko-KR') + '원 👉 ' +
+        pr.b.q + pr.b.u + ' ' + pr.b.p.toLocaleString('ko-KR') + '원' });
     } else if (d.off) {
-      items.push({ s: Number(d.off), line: nm + ' — ' + d.off + '% 할인 ' + d.priceTxt });
+      items.push({ s: Number(d.off), line: nm + '\n' + d.off + '% 할인 👉 ' + d.priceTxt });
     }
   });
   items.sort((a, b) => b.s - a.s);
@@ -117,7 +117,7 @@ function hdWeekly_(dry) {
   let text = '';
   for (let n = top.length; n >= 3; n--) {
     text = ['이번 주 가격 이상했던 것 TOP ' + n + ' 🧾', '']
-      .concat(top.slice(0, n).map((x, i) => nums[i] + ' ' + x.line))
+      .concat(top.slice(0, n).map((x, i) => nums[i] + ' ' + x.line).join('\n\n'))
       .concat(['', '지금은 가격이 돌아간 것도 있어요. 저장해두고 다음에 비교해 봐', '이번 주 제일 잘 산 거 하나만 말해줘 👀']).join('\n');
     if (text.length <= 480) break;
   }
@@ -149,7 +149,7 @@ function hdDaily_(dry) {
   const dow = ['일', '월', '화', '수', '목', '금', '토'][Number(Utilities.formatDate(now, TZ, 'u')) % 7];
   const nums = ['①', '②', '③'];
   const text = [Utilities.formatDate(now, TZ, 'M/d') + '(' + dow + ') 오늘의 특가 ☀️', '어제 가격 이상했던 것 ' + top.length + '개', '']
-    .concat(top.map((x, i) => nums[i] + ' ' + x.line))
+    .concat(top.map((x, i) => nums[i] + ' ' + x.line).join('\n\n'))
     .concat(['', '지금은 가격이 돌아간 것도 있어요. 오늘 뜨는 건 알림방에 먼저 올려요']).join('\n');
   let chatId = '';
   try { chatId = hdChatPostId_(); } catch (e) {}
