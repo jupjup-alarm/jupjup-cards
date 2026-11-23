@@ -345,6 +345,8 @@ function hdPick_(rows, now) {
     if (at && (now - at) / 3600000 > maxAge) return;   // 수집기도 새 행을 '대기'로 쓰므로(2026-11-22 확인) '대기'도 나이 제한
     // PC 캡처기가 P열을 채울 때까지 잠깐 기다림 (P열이 비어 있고 들어온 지 HD_WAIT_CAPTURE_MIN 분 안이면 다음 차례로)
     // 2026-11-23 사용자 결정: 토스 딜도 스레드에 (일반 딜 조건만, 첫 줄에 토스 대가성 문구). 쿠팡·토스 링크가 둘 다 없으면 건너뜀
+    // 2026-11-23 맥 요청: 네이버 딜(E열에 '네이버')은 쿠팡처럼 다루지 않는다 — 스레드 발행 대상 아님 (수집기가 G열에 쿠팡 검색 링크를 채워도)
+    if (hdIsNaver_(r)) return;
     const toss = hdIsToss_(r);
     if (!toss && !String(r[HD.urls - 1]).split('\n').some(u => /coupang\.com/.test(u))) return;
     if (toss && (hdCfg_('HD_TOSS', 'on') === 'off' || !hdGeneralOk_(r, now, null))) return;
@@ -464,6 +466,8 @@ function hdFail_(sh, row, dry, lines, reason, notes) {
 /* ───────── 일반 딜 (역전 아님) 스레드 조건 — 2026-11-23 ───────── */
 const HD_HEALTH = /영양제|루테인|유산균|비타민|오메가|홍삼|프로바이오틱|콜라겐|밀크씨슬|부항|혈압계|혈당|의료기기|다이어트/;
 const HD_DISCLOSURE_TOSS = '[광고] 토스쇼핑 쉐어링크 활동으로, 링크 구매 시 수수료를 지급받습니다.';
+function hdIsNaver_(r) { return /네이버/.test(String(r[HD.kw - 1])); }
+
 function hdIsToss_(r) {
   const u = String(r[HD.urls - 1]);
   return /toss\.(shopping|im)\//.test(u) && !/coupang\.com/.test(u);
@@ -574,6 +578,7 @@ function hdFindProducts_(sh, rows, now) {
     const r = rows[i];
     if (String(r[HD.prod - 1]).trim() || String(r[HD.cmp - 1]).trim()) continue;
     if (r[HD.status - 1] !== '신규' && r[HD.status - 1] !== '대기') continue;
+    if (hdIsNaver_(r)) continue;   // 네이버 딜은 쿠팡 상품을 찾지 않음
     const at = hdParse_(r[HD.at - 1]);
     if (!at || (now - at) / 3600000 > 6) continue;
     const urls = String(r[HD.urls - 1]).split('\n').filter(u => /coupang\.com/.test(u));
