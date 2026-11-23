@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-23 11:45:39",
+ "updated": "2026-11-23 11:47:56",
  "date": "2026-11-23",
  "items": [
   {
@@ -29,7 +29,8 @@
    "disc": 52,
    "link": "https://link.coupang.com/a/iTU4OjWQnJ",
    "tier": "단독",
-   "pid": "6715674951"
+   "pid": "6715674951",
+   "img": "https://ads-partners.coupang.com/image1/glN6TNv8r5vnj9FBgv8_6BBzuXFj082WLO7gM503WchPRCP7Mvfmdrj9Q9-xuZV-GPZegMhLs9GwLRsu6ylcqDs65PDa_UVcfCJS6WU-AkGJuEX4VnJ2U5R487Snt58cJrKtcA882F86hH4bXieIvo-VucUDu8GZnqZU-8ejcoLmjpmI-zb9hx01TteS36qrPCQAEDT80ifgfVRUDLdfHoFXhHGo5YQsi_wTk3qDPXXg8FfPYBMGoc1NPRCJ5bu42o16S1cfO_4O6DLXcBzsOhbqASsBGOPBevfem0ADxudfUKgw563oCgsPiyt_wY5uNUzWcmqaXP1wEJ88ICVNmoeWa5rIZ3S3AtnecoOGYz0C2IMRp0w3AIa0opq5uDWr-98TY1WVu6t9-WW4N7BuoK3BrqhvcOLXFxCo_1FAy_fFuVwtvCFAoIg38QEuc9yYjSDsYhHH8P-jsgCjcy7cHmwjO2o7iQ9l0IxWWvq_RRCRn33drrH-XCj9rX7IQ7FQyByhXEsAwCsNUzqWVuLdlswsh-0AKbVZfN9F0BxknJNheN3MLiVgeZ_O0MLKQCgQ"
   },
   {
    "id": "r88",
@@ -46,7 +47,8 @@
    "unit": "개당 2,990원",
    "ua": "개",
    "per_a": 5870,
-   "per_b": 2990
+   "per_b": 2990,
+   "img": "https://ads-partners.coupang.com/image1/LD_YqxmtOWrx4fCQLNALX1034dbUpAyifku9Abx2dzvIlWBqaEeA951DVkUuoS1KyiA_koHif2TTdOk9mlVzod2DqSzqZ9A9QfuMFYmojVrQMEiT18hCAdzfrjjcxcCmu4KlcaSBQP9_6-u8dtFffD8Sh4SHeuOfGWEMjNnaMWxmUPmsBUeZYuZkLK2WylfyF5jYwVrn15XArxouxhoPYZpDB7jbABA8SweIMLRx1aBLgCoUync3jPpotnYtHhAPjA1s295U8whh4BLrQ8E-Hm00SAamyFYvUj3yRKeXKIXFivBNp_Re4T8r1EVcEoMbqdERIn9Nzp9cvNSXKrw-FQPf-00reshA9S7aR7nZP4YiWaDeVE2ctcZ4rgJvjLfrVJLHX4V9I3rM-YnHX8CptG6abEsGhVMeoBSSSlfZx98xX8RQOdewPCsmxV40I_avnNY4KjzZusT18wwdvl6XMQ_eKdZ0QGP3lIRjTrV-6LJeeyySUm7JsQQXssv_DWEJN7RNub5WZN5FFU5odbtUJjAUY_7Q5vZWn_neLbWH6W-NfMBnKPdFLiOtVbWfsNomxer3-S37NJZ12w=="
   },
   {
    "id": "r87",
@@ -63,7 +65,8 @@
    "unit": "개당 1,197원",
    "ua": "개",
    "per_a": 4489,
-   "per_b": 1197
+   "per_b": 1197,
+   "img": "https://ads-partners.coupang.com/image1/vKhCZVFPW6f8SQQ9vGUhIYRhNVO2_hOWqjBt_xa2OA8NsOd_ffLKduxHWeboqhBcRYZ0EEI1yLDBcFs2VBfWLqqA4I-tx8GcpPrRbShLc_JETUPjVhUgw8NpxD1572jngvh6oIm5R_JoTdhFLQ0NHS9_mdWDLLaB0WE7vBS7IqF9hPb7K9nfP4CldXUgS12e2xcgttfCl4bIw6jFP6Yjn3f8tBnaIBqMXASZbYiDJAgfmtAssUIx9cCq0qrtUQwdVC125yIA8UISBCGPvi1TO5NJmkjHayJ2joSax9l_nylDqLn1ynERtLyhRiXh2Ckh3EkD_2izc3IiAA4ybU9KilTfHcC16L7myhjE8v5XdDnsbU5N8XZfN1dqDNnc-hjWHjVZIZCPDcjpR4X6sf3uqaAQjXFkBjmRdeUTssWNJwckEmAgusyWnEazg6REVw6ISzFqD-qKZKmLojwHNMR-xyqOCLjj-8k7-Xy-MUxcubDhrENSawECjemnrxuF0vinNgxqeEjTeXJ0mWArvCw5vwXCjItS-VhEm45z-LzVEtIegAKM1s_w5IUmYtBhYERKlOhFBhFux8HU6coM3p97RLi_ixK_Qx1ESC2hG2fcgrRwcU2Jv3-pTNI7Qsr_Dz3h"
   },
   {
    "id": "r86",
@@ -80,74 +83,8 @@
    "unit": "개당 2,750원",
    "ua": "개",
    "per_a": 4990,
-   "per_b": 2750
-  },
-  {
-   "id": "r83",
-   "row": 83,
-   "at": "2026-11-23 08:13",
-   "name": "사미헌 갈비탕 (냉동) 1kg",
-   "price": 9630,
-   "disc": null,
-   "link": "https://link.coupang.com/a/iTN6Q2mPBs",
-   "tier": "일반",
-   "pid": "207594024",
-   "img": "https://ads-partners.coupang.com/image1/gc0H-7sx0p3JixWAgVoPRVopBYesEpmZGbQsa6bftWIP1eYZF9aOZP62S9TuBg0i-r9lzu_fnzimgljDS25D8fbP7SF0mjGPuIHJJ7iJIRCUWMSTC5oDyj7VKv65IWlhSDGb_r5CVAA-XelyUU6x1BQytO7IJMvbu6JLdEkJzycxJneRmi_vS3SRMa9aMm2uBdyVtSu4vApsv5i5BYK5xpwi48apbM1NZUe9wq7Ae5Kh2_wDsc45Z3H6pvrwFdD1CBfGo91P2he0zCw_9VhXcQysD_jxn1oziCBw7M7vQWYZWk2DF2PbNLF8YjtqAmWFODV1bX4FTZgkDW1CO_lz964XaypruqXiOtEfk_pKthUWfUt7BWYJ90ZOxdT4NL8EpXSG2O1sGojIiycIuLtcF_DCMU2yL6Cne17hgbwCn2PNjwRAFjhNkEwO62mzD2ZB2j3YJ1IGsTZNpbIJ_B9g-KsM5u4IsutjMrxAKq-Cvfkra04L_PDzNsaxAeyxgh-ru8ftWgq6I9GEXoneUsSSuJb7U6nkHpo5GWnXcxlPAS3mHtYvH0L_5p1NWeisWaP_rauffNMejneAaFS4FyAoNbKLS4vaoEW8ryAT8o8LJctLV6tsK1hvHjHJq7UDPw=="
-  },
-  {
-   "id": "r82",
-   "row": 82,
-   "at": "2026-11-23 08:03",
-   "name": "샤워메이트 바디워시 유자, 1.2kg, 2개",
-   "price": 6790,
-   "disc": null,
-   "link": "https://link.coupang.com/a/iTNn2Rz1fo",
-   "tier": "일반",
-   "pid": "94084653"
-  },
-  {
-   "id": "r76",
-   "row": 76,
-   "at": "2026-11-23 07:53",
-   "name": "오피아이 네일 락커, H007, 15ml, 1개",
-   "price": 9310,
-   "disc": null,
-   "link": "https://link.coupang.com/a/iTMFcI4W3o",
-   "tier": "일반",
-   "pid": "5141616366"
-  },
-  {
-   "id": "r80",
-   "row": 80,
-   "at": "2026-11-23 07:43",
-   "name": "명품 고운발 튜브 50g 3개",
-   "price": 9900,
-   "disc": null,
-   "link": "https://link.coupang.com/a/iTLWjhofNA",
-   "tier": "일반",
-   "pid": "9718972452"
-  },
-  {
-   "id": "r81",
-   "row": 81,
-   "at": "2026-11-23 07:43",
-   "name": "신선해어 동태포 슬라이스 (냉동), 2kg, 1개",
-   "price": 24900,
-   "disc": 44,
-   "link": "https://link.coupang.com/a/iTLV58bMVU",
-   "tier": "일반",
-   "pid": "5202761525"
-  },
-  {
-   "id": "r78",
-   "row": 78,
-   "at": "2026-11-23 07:33",
-   "name": "크라운 크림블 순크림300g, 2개",
-   "price": 5000,
-   "disc": 40,
-   "link": "https://link.coupang.com/a/iTLdk64B8S",
-   "tier": "일반",
-   "pid": "9678337194"
+   "per_b": 2750,
+   "img": "https://ads-partners.coupang.com/image1/asx2irYj5kqLublKaj7lxe3hhlyQneBxd3_S4Z5orOXTjw8K7chdbPakBRJn2e_MTta0aR7FKoF4zNv51lhN_o_rchVAuVVfcDZzyqrsC3wjq8u0WBtzK9Awhnf2_tORTJ34vrtfhX3ZuWmA7koDkMKS6xXiAD4rcPa5tevMMn9-h4936KasLpBE3cyeSca-YBg8znJV9uQyAdR-TpZjrLzx2qWCKAlydM2IIO3P_5_OQ35BfdUeEBcBvkjBEXImZzMvJgwrymx0sJV6ei7IVNs1PybSLx5I3-fF6AzhNmGjgc1d9gn6Wa6amNOQ_1WFOURMeSLFpAx1SEPHrogoF85t7awfivoU2zEBhzM1iyqBfBB6US2R09xDNi26_PCJHxUFKXF3cmE0RE8UKVfateP8KciTL1irbin5Y8abc40rlKiJSU8iFPcXjlLwWS5hJAWEHSSRDS-5rBCZvyw16K0vigDcRQwBLmo-yX1e3Ssd2ojsHRvbT_wp6aUfZ1to00RsjtZPK5MdPh5duG_pz2_cjqiSyocglMz8QhLU75RUn4xJ3r331g0eEHBXBgncM2l_7NDO5Ec8v0smmk5Irxwx5Irc5a_WhH3kpc0FaRSmLlsxIV0yjTOj73mwz1A="
   },
   {
    "id": "r77",
