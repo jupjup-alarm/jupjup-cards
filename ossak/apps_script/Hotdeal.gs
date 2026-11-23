@@ -25,7 +25,7 @@
  *   HD_MODE mix (역전 딜 + 할인 HD_GENERAL_MIN_OFF(50)% 이상 일반 딜, 역전 먼저 · qty 면 역전만 · all 이면 모든 딜) · HD_MIN_CHEAPER 30 (개당 몇 % 이상 싸야 하는지)
  *   HD_WAIT_CAPTURE_MIN 20 (all 모드에서 P열 캡처를 기다리는 시간, 0이면 안 기다림)
  *   HD_TOSS on (토스 딜도 스레드에 — 일반 딜 조건 · off면 토스 제외) · HD_TOSS_TAG off (on이면 토스 글 첫 줄에 토스 대가성 문구)
- *   HD_NAVER on (Z열 '네이버링크'가 있는 네이버 딜도 스레드에 — 일반 딜 조건 · off면 제외)
+ *   HD_NAVER on (Z열 '네이버링크'가 있는 네이버 딜도 스레드에 — 일반 딜 조건 · off면 제외) · HD_NAVER_TAG off (on이면 첫 줄에 네이버 대가성 문구)
  *   HD_HOOK_SOURCES 지금할인  (제목이 상품명이 아니라 홍보 문구인 출처 — 본문전체(K)가 없으면 보류)
  *
  * 주의: 기존 메뉴 '자동 실행 켜기'(installTriggers)는 모든 트리거를 지우고 다시 만든다.
@@ -470,6 +470,7 @@ function hdFail_(sh, row, dry, lines, reason, notes) {
 
 /* ───────── 일반 딜 (역전 아님) 스레드 조건 — 2026-11-23 ───────── */
 const HD_HEALTH = /영양제|루테인|유산균|비타민|오메가|홍삼|프로바이오틱|콜라겐|밀크씨슬|부항|혈압계|혈당|의료기기|다이어트/;
+const HD_DISCLOSURE_NAVER = '이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.';
 const HD_DISCLOSURE_TOSS = '[광고] 토스쇼핑 쉐어링크 활동으로, 링크 구매 시 수수료를 지급받습니다.';
 function hdIsNaver_(r) { return /네이버/.test(String(r[HD.kw - 1])); }
 
@@ -751,6 +752,7 @@ function hdCompose_(v, rowNo) {
   const tag = String(hdCfg_('HD_AD_TAG', 'off'));
   // 2026-11-23 사용자 결정: 토스 딜도 카톡방에서 안내하므로 스레드 본문엔 토스 문구를 넣지 않음 (HD_TOSS_TAG=on 이면 첫 줄에 넣음)
   if (hdIsToss_(v) && hdCfg_('HD_TOSS_TAG', 'off') === 'on') lines.unshift(HD_DISCLOSURE_TOSS);
+  if (hdIsNaver_(v) && hdCfg_('HD_NAVER_TAG', 'off') === 'on') lines.unshift(HD_DISCLOSURE_NAVER);   // 기본 off — 카톡방에서 안내
   const main = lines.join('\n') + (tag && tag.toLowerCase() !== 'off' && !hdIsToss_(v) ? '\n' + tag : '');
 
   // 답글 1 (역전 딜만): 딜 페이지 링크 + 대가성 문구. X열(맥이 만든 autodm 딜 페이지)이 있을 때만.
