@@ -1,6 +1,6 @@
 {
  "slug": "2026-11-22-pyeongtaek-songhwa-rental-reel",
- "status": "예약됨",
+ "status": "게시됨",
  "created": "2026-11-22 12:24",
  "row": 39,
  "date": "2026-11-22",
@@ -23,5 +23,6 @@
  "publish_at": "2026-11-22T17:00+09:00",
  "url": "https://www.youtube.com/shorts/TfyBhte2kus",
  "video_id": "TfyBhte2kus",
- "updated": "2026-11-22 12:28"
+ "updated": "2026-11-22 12:28",
+ "channel_ok": true
 }

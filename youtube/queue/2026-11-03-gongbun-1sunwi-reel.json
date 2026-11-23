@@ -1,6 +1,6 @@
 {
  "slug": "2026-11-03-gongbun-1sunwi-reel",
- "status": "예약됨",
+ "status": "게시됨",
  "created": "2026-11-20 18:05",
  "row": 14,
  "date": "2026-11-03",
@@ -23,5 +23,7 @@
  "publish_at": "2026-11-22T21:30+09:00",
  "url": "https://www.youtube.com/shorts/bsOazUbcLys",
  "video_id": "bsOazUbcLys",
- "updated": "2026-11-20 19:00"
+ "updated": "2026-11-23 10:51",
+ "channel_ok": true,
+ "commented": "2026-11-23 10:51"
 }
