@@ -1,0 +1,16 @@
+{
+ "slug": "2026-11-24-wonjong-reel",
+ "duration": 21.29,
+ "voiced": true,
+ "narration_s": 18.7,
+ "mean_db": -18.9,
+ "voice": "voices/ca7676e29434/",
+ "video": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-24-wonjong-reel/2026-11-24-wonjong-reel.mp4",
+ "cover": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-24-wonjong-reel/2026-11-24-wonjong-reel_thumb.jpg",
+ "size_mb": 8.58,
+ "warnings": [
+  "확대(Real-ESRGAN x4): 2장 — birdseye-auto-2.jpg, birdseye-auto-1.jpg",
+  "호흡: 장면 5 대본에 없는 곳에서 0.28초 쉼 (③ 대본 쉼표 위치 확인)",
+  "사진: 컷 8개 · 서로 다른 사진 5장"
+ ]
+}

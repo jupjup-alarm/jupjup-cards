@@ -1,0 +1,16 @@
+{
+ "slug": "2026-11-24-suwon-dangsu-reel",
+ "duration": 22.35,
+ "voiced": true,
+ "narration_s": 19.7,
+ "mean_db": -18.5,
+ "voice": "voices/e47bf72ad3ae/",
+ "video": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-24-suwon-dangsu-reel/2026-11-24-suwon-dangsu-reel.mp4",
+ "cover": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-24-suwon-dangsu-reel/2026-11-24-suwon-dangsu-reel_thumb.jpg",
+ "size_mb": 11.52,
+ "warnings": [
+  "확대(Real-ESRGAN x4): 5장 — birdseye-a-1.jpg, location-a-1.jpg, location-a-1-2.jpg, location-a-2.jpg, location-a-2-2.jpg",
+  "full.mp3 장면 경계가 장면별 음성과 어긋남(장면 [3]) → 장면별 파일 사용",
+  "사진: 컷 8개 · 서로 다른 사진 7장"
+ ]
+}

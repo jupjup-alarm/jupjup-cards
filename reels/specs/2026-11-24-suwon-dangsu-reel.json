@@ -1,0 +1,139 @@
+{
+ "slug": "2026-11-24-suwon-dangsu-reel",
+ "title": "수원당수 1·2단지 행복주택",
+ "series": "임대알람",
+ "style": "story",
+ "voice": "voices/e47bf72ad3ae/",
+ "voice_speed": 1.0,
+ "bgm": "music/beat-one.mp3",
+ "thumb": {
+  "lines": [
+   "수원 월 18만원대",
+   "주변보다 26만원 싸게"
+  ]
+ },
+ "pool": [
+  {
+   "img": "photos/site/lh2015122300021108/birdseye-a-1.jpg",
+   "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/lh2015122300021108/birdseye-a-2.jpg",
+   "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/lh2015122300021108/location-a-1.jpg",
+   "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/lh2015122300021108/location-a-1-2.jpg",
+   "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/lh2015122300021108/location-a-2.jpg",
+   "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/lh2015122300021108/location-a-2-2.jpg",
+   "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "maps/be8f1d4372e7.png",
+   "credit": "© NAVER Corp."
+  }
+ ],
+ "scenes": [
+  {
+   "type": "story",
+   "say": "수원에 월세 18만 원대 아파트가 나왔대요. 주변보다 26만 원 싸대요.",
+   "word": "18만 원대",
+   "shots": [
+    {
+     "img": "photos/site/lh2015122300021108/birdseye-a-2.jpg",
+     "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+     "pos": "center 45%"
+    },
+    {
+     "img": "photos/site/lh2015122300021108/birdseye-a-1.jpg",
+     "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+     "pos": "center 40%"
+    }
+   ],
+   "proof": {
+    "kind": "compare",
+    "head": "월세 비교 (추정)",
+    "items": [
+     {
+      "label": "이 단지 1단지 26D",
+      "value": "월 18만3,200원"
+     },
+     {
+      "label": "옆 금곡동 동광뷰웰 오피스텔 27.82㎡ 월세 실거래",
+      "value": "월 45만원"
+     }
+    ],
+    "src": "국토부 실거래 2026.11 · 추정"
+   }
+  },
+  {
+   "type": "story",
+   "say": "심지어, 옆 오피스텔은 월세가 45만 원이래요.",
+   "word": "45만 원",
+   "shots": [
+    {
+     "img": "photos/site/lh2015122300021108/location-a-1-2.jpg",
+     "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+     "pos": "center 50%"
+    },
+    {
+     "img": "photos/site/lh2015122300021108/location-a-1.jpg",
+     "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+     "pos": "center 50%"
+    }
+   ],
+   "proof": {
+    "kind": "image",
+    "img": "photos/site/lh2015122300021108/plan-a-2-14.jpg",
+    "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음"
+   }
+  },
+  {
+   "type": "story",
+   "say": "이게 어떻게 가능할까요?",
+   "dim": true,
+   "shots": [
+    {
+     "img": "photos/site/lh2015122300021108/location-a-2-2.jpg",
+     "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+     "pos": "center 50%"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "LH 행복주택 320호거든요. 대학생이랑 청년이면, 이번엔 소득도 자산도 안 본대요.",
+   "word": "320호",
+   "shots": [
+    {
+     "img": "photos/site/lh2015122300021108/location-a-2.jpg",
+     "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+     "pos": "center 50%"
+    },
+    {
+     "img": "photos/site/lh2015122300021108/birdseye-a-1.jpg",
+     "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+     "pos": "25% 55%"
+    }
+   ],
+   "proof": {
+    "kind": "image",
+    "img": "photos/site/lh2015122300021108/notice-price.jpg",
+    "credit": "자료: LH 입주자모집공고(2026.11.18)"
+   }
+  },
+  {
+   "type": "end",
+   "say": "접수는 11월 30일부터래요. 자세한 공고 정리는, 프로필에서 링크를 확인해주세요."
+  }
+ ]
+}

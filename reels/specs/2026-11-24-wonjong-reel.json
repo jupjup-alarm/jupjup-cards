@@ -1,0 +1,100 @@
+{
+ "slug": "2026-11-24-wonjong-reel",
+ "title": "중앙하이츠 원종역(4차) 임의공급",
+ "series": "줍줍알람",
+ "style": "story",
+ "voice": "voices/ca7676e29434/",
+ "voice_speed": 1.0,
+ "bgm": "music/beat-one.mp3",
+ "thumb": {
+  "lines": [
+   "부천 원종역 10세대",
+   "4억6천만원대"
+  ]
+ },
+ "pool": [
+  {
+   "img": "photos/sat/2d5b1c8e59dd.png",
+   "credit": "위성사진 © NAVER Corp."
+  },
+  {
+   "img": "photos/site/2026940258/birdseye-auto-2.jpg",
+   "credit": "이미지: 사업주체 분양 홈페이지 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "maps/a36e672bc5fb.png",
+   "credit": "© NAVER Corp."
+  },
+  {
+   "img": "photos/site/2026940258/siteplan-auto-1.jpg",
+   "credit": "이미지: 사업주체 분양 홈페이지 · 실제와 다를 수 있음"
+  }
+ ],
+ "scenes": [
+  {
+   "type": "story",
+   "say": "부천 원종역 근처에 4억 6천만 원대 아파트가 딱 10세대 남았대요.",
+   "word": "4억 6천만 원대",
+   "shots": [
+    {
+     "img": "photos/site/2026940258/birdseye-auto-1.jpg",
+     "credit": "이미지: 사업주체 분양 홈페이지 · 실제와 다를 수 있음",
+     "pos": "center 45%"
+    },
+    {
+     "img": "photos/sat/2d5b1c8e59dd.png",
+     "credit": "위성사진 © NAVER Corp.",
+     "pos": "center 25%"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "심지어, 2028년 3월에 입주하는 새 아파트래요.",
+   "word": "2028년",
+   "shots": [
+    {
+     "img": "photos/site/2026940258/birdseye-auto-1.jpg",
+     "credit": "이미지: 사업주체 분양 홈페이지 · 실제와 다를 수 있음",
+     "pos": "70% 50%"
+    },
+    {
+     "img": "photos/site/2026940258/siteplan-auto-1.jpg",
+     "credit": "이미지: 사업주체 분양 홈페이지 · 실제와 다를 수 있음"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "이게 어떻게 가능할까요?",
+   "dim": true,
+   "shots": [
+    {
+     "img": "maps/a36e672bc5fb.png",
+     "credit": "© NAVER Corp."
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "임의공급이거든요. 국내 사는 19세 이상이면, 청약통장 없이 추첨으로 뽑는대요.",
+   "word": "통장 없이",
+   "shots": [
+    {
+     "img": "photos/sat/2d5b1c8e59dd.png",
+     "credit": "위성사진 © NAVER Corp.",
+     "pos": "center 70%"
+    },
+    {
+     "img": "maps/a36e672bc5fb.png",
+     "credit": "© NAVER Corp.",
+     "pos": "60% 40%"
+    }
+   ]
+  },
+  {
+   "type": "end",
+   "say": "접수는 11월 26일까지래요. 자세한 공고 정리는, 프로필에서 링크를 확인해주세요."
+  }
+ ]
+}
