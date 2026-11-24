@@ -1,6 +1,6 @@
 {
  "slug": "2026-11-23-suseo-happyhouse-reel",
- "status": "예약됨",
+ "status": "게시됨",
  "created": "2026-11-23 12:05",
  "row": 41,
  "date": "2026-11-23",
@@ -23,7 +23,9 @@
  "publish_at": "2026-11-23T17:00+09:00",
  "why": "ElementResolutionError: page.click timed out after 3665ms: page.click failed: element is not visible in the viewport",
  "tries": 1,
- "updated": "2026-11-23 12:25",
+ "updated": "2026-11-24 12:05",
  "url": "https://www.youtube.com/shorts/xKMgGxNhLu0",
- "video_id": "xKMgGxNhLu0"
+ "video_id": "xKMgGxNhLu0",
+ "channel_ok": true,
+ "commented": "2026-11-24 12:05"
 }
