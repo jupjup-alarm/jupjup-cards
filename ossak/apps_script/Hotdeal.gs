@@ -366,9 +366,12 @@ function hdPick_(rows, now) {
       const wait = hdNum_('HD_WAIT_CAPTURE_MIN', 20);
       if (wait > 0 && !String(r[HD.cap - 1]).trim() && at && (now - at) / 60000 < wait) return;
     }
-    c.push({ row: i + 2, v: r, recover: recover, pair: hdPair_(r) ? 1 : 0, score: Number(r[HD.score - 1]) || 0, at: at ? at.getTime() : 0 });
+    const pr = hdPair_(r);
+    const off = Number((String(r[HD.kw - 1]).match(/할인\s*(\d+)%/) || [])[1] || 0);
+    // 2026-11-24: 역전 딜 먼저(개당 할인 폭 순), 일반 딜은 할인율 높은 순 (수집기 점수 F는 홍보 문구에 좌우돼서 쓰지 않음)
+    c.push({ row: i + 2, v: r, recover: recover, pair: pr ? 1 : 0, rank: pr ? pr.cheaper : off, at: at ? at.getTime() : 0 });
   });
-  c.sort((a, b) => b.pair - a.pair || b.score - a.score || b.at - a.at);
+  c.sort((a, b) => b.pair - a.pair || b.rank - a.rank || b.at - a.at);
   return c;
 }
 
