@@ -1,6 +1,18 @@
 {
- "updated": "2026-11-25 08:40:40",
+ "updated": "2026-11-25 08:48:50",
  "items": [
+  {
+   "id": "r606346b31",
+   "row": 606,
+   "created": "2026-11-25 08:48:49",
+   "kind": "역전",
+   "shop": "coupang",
+   "name": "비타500 제로 스파클링, 250ml, 24개",
+   "priceLine": "1개당 1,217원 → 577원 (53% 더 쌈)",
+   "pair": "6개 7,300원 → 72개 41,550원",
+   "disclosure": "이 글은 쿠팡 인플루언서 활동을 통한 구매가 발생하면 일정 수수료를 받습니다.",
+   "partners": "https://link.coupang.com/a/iXaqOjQ8ya"
+  },
   {
    "id": "cfac81f8",
    "row": 550,
