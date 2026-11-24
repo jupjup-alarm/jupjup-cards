@@ -635,17 +635,18 @@
   "key": "2026910305",
   "row": 209,
   "count": 3,
-  "usable": 3,
+  "usable": 0,
   "photos": 2,
-  "checked": 0
+  "checked": 3,
+  "why": "3장 (overview 3)"
  },
  "동탄신도시 금강펜테리움 7차 센트럴파크 무순위 5세대 (2차 4 + 불법행위재공급 1)": {
   "key": "2026910303",
   "row": 208,
   "count": 3,
-  "usable": 3,
+  "usable": 1,
   "photos": 2,
-  "checked": 0
+  "checked": 3
  },
  "한화포레나 영흥숲(4차) 무순위 2세대": {
   "key": "2026910302",
@@ -669,17 +670,17 @@
   "key": "2026850057",
   "row": 205,
   "count": 10,
-  "usable": 10,
+  "usable": 7,
   "photos": 5,
-  "checked": 0
+  "checked": 10
  },
  "더샵 분당하이스트(2차) 무순위 34세대 (느티마을4단지 리모델링)": {
   "key": "2026910304",
   "row": 204,
   "count": 18,
-  "usable": 18,
+  "usable": 8,
   "photos": 6,
-  "checked": 0
+  "checked": 18
  },
  "수원 호매실21·고등2단지 행복주택 입주자격완화 51호 (선계약 후검증)": {
   "key": "lh2015122300021130",
@@ -687,6 +688,6 @@
   "count": 15,
   "usable": 15,
   "photos": 5,
-  "checked": 0
+  "checked": 12
  }
 }

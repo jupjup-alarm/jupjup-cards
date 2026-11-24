@@ -1,6 +1,6 @@
 {
  "tab": "청약조사",
- "dumped_at": "2026-11-24 08:07",
+ "dumped_at": "2026-11-24 09:51",
  "rows": [
   {
    "_row": 2,
@@ -4997,7 +4997,10 @@
    "접수 마감": "2026-11-30",
    "당첨자 발표": "2026-12-03",
    "출처 URL": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910305&pblancNo=2026910305",
-   "상태": "후보"
+   "상태": "후보",
+   "지도 이미지": "maps/42b509e8708d.png",
+   "좌표(경도,위도)": "127.118925,37.382819",
+   "위성사진": "photos/sat/f8e91ff24815.png"
   }
  ]
 }
