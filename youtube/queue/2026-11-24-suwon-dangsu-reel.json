@@ -20,5 +20,8 @@
  "thumb": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-24-suwon-dangsu-reel/2026-11-24-suwon-dangsu-reel_thumb.jpg",
  "deadline": "11/30~12/2",
  "keywords": "수원당수 행복주택 월세 / 수원 행복주택 320호 / 대학생 청년 행복주택 소득 안 봄",
- "publish_at": "2026-11-24T17:00+09:00"
+ "publish_at": "2026-11-24T17:00+09:00",
+ "why": "    at dispatchCdpSendError (file:////[eval1]:8187:5)",
+ "tries": 1,
+ "updated": "2026-11-24 12:05"
 }
