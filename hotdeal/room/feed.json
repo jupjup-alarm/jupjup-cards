@@ -1,7 +1,19 @@
 {
- "updated": "2026-11-24 10:30:57",
+ "updated": "2026-11-24 11:04:59",
  "date": "2026-11-24",
  "items": [
+  {
+   "id": "mev5698",
+   "row": 0,
+   "at": "2026-11-24 11:00",
+   "name": "쿠팡 블랙프라이데이 행사관",
+   "price": null,
+   "disc": null,
+   "link": "https://link.coupang.com/a/iVEAVbsayq",
+   "tier": "수동",
+   "pid": null,
+   "grade": ""
+  },
   {
    "id": "m9071697816",
    "row": 0,
