@@ -24,7 +24,7 @@
  *   HD_SEARCH_PER_RUN 1 · HD_SEARCH_PRICE_PCT 15 (검색 링크 딜의 상품 찾기: 한 번에 몇 건, 가격 허용 차이 %)
  *   HD_MODE mix (역전 딜 + 할인 HD_GENERAL_MIN_OFF(50)% 이상 일반 딜, 역전 먼저 · qty 면 역전만 · all 이면 모든 딜) · HD_MIN_CHEAPER 30 (개당 몇 % 이상 싸야 하는지)
  *   HD_WAIT_CAPTURE_MIN 20 (all 모드에서 P열 캡처를 기다리는 시간, 0이면 안 기다림)
- *   HD_TOSS on (토스 딜도 스레드에 — 일반 딜 조건 · off면 토스 제외) · HD_TOSS_TAG off (on이면 토스 글 첫 줄에 토스 대가성 문구)
+ *   HD_TOSS off (2026-11-24: 토스 할인율을 믿기 어려워 카톡·스레드 모두 자동 발행 끔 · on이면 일반 딜 조건으로 스레드에) · HD_TOSS_TAG off (on이면 토스 글 첫 줄에 토스 대가성 문구)
  *   HD_NAVER on (Z열 '네이버링크'가 있는 네이버 딜도 스레드에 — 일반 딜 조건 · off면 제외) · HD_NAVER_TAG off (on이면 첫 줄에 네이버 대가성 문구)
  *   HD_HOOK_SOURCES 지금할인  (제목이 상품명이 아니라 홍보 문구인 출처 — 본문전체(K)가 없으면 보류)
  *
@@ -353,7 +353,7 @@ function hdPick_(rows, now) {
     }
     const toss = hdIsToss_(r) || hdIsNaver_(r);   // 쿠팡 링크 변환을 하지 않는 외부몰 딜
     if (!toss && !String(r[HD.urls - 1]).split('\n').some(u => /coupang\.com/.test(u))) return;
-    if (hdIsToss_(r) && (hdCfg_('HD_TOSS', 'on') === 'off' || !hdGeneralOk_(r, now, null))) return;
+    if (hdIsToss_(r) && (hdCfg_('HD_TOSS', 'off') === 'off' || !hdGeneralOk_(r, now, null))) return;
     const mode = hdCfg_('HD_MODE', 'mix');
     const pair = hdPair_(r);
     if (mode === 'qty') {
