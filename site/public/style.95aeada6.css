@@ -1873,3 +1873,5 @@ footer .biz{font-style:normal;line-height:1.6;opacity:.85}   /* 사업자 정보
 .kktip button{position:absolute;top:2px;right:4px;width:22px;height:22px;border:0;background:none;color:#191919;opacity:.55;font-size:15px;line-height:22px;padding:0;cursor:pointer}
 @keyframes kkb{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
 @media (prefers-reduced-motion:reduce){.kktip{animation:none}}
+/* 2026-11-24 사용자 요청 "툴팁과 카톡 CTA가 겹쳐 보임": 공고 상세의 아래 CTA 바가 떠 있는 동안엔 핫딜방 툴팁을 잠깐 숨김 (바가 내려가면 다시 보임) */
+@media (max-width:1023px){.kktip{transition:opacity .18s ease,visibility 0s linear 0s}body:has(.bar:not(.hide)) .kktip{opacity:0;visibility:hidden;pointer-events:none;transition:opacity .12s ease,visibility 0s linear .12s}}
