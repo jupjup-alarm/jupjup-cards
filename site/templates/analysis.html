@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "macros.html" import crumbs, ads_slot with context %}
+{% from "macros.html" import crumbs, ads_slot, cp_ad with context %}
 {# 줍줍 분석 글 (2026-11-22) — site/analysis.py #}
 {% block main %}
 <main class="wrap g-page" id="main">
@@ -35,9 +35,24 @@
     {% if g.related %}<nav class="an-rel" aria-label="관련 페이지"><h2>같이 보면 좋아요</h2><ul>{% for r in g.related %}<li><a href="{{ r.u }}">{{ r.t }} ›</a></li>{% endfor %}</ul></nav>{% endif %}
     {% if more %}<section class="an-more"><h2>다른 분석</h2><ul class="an-list">{% for p in more %}<li><a href="{{ p.url }}"><span class="an-mini"><b class="num">{{ p.stat.big }}</b><small>{{ p.stat.short or p.stat.label }}</small></span><span class="an-txt"><span class="an-tag">{{ p.tag }}</span><strong>{{ p.title }}</strong></span></a></li>{% endfor %}</ul></section>{% endif %}
   </article>
+  {# 2026-11-23 사용자 결정: PC 오른쪽이 비지 않게 — 목차(읽는 장 표시) + 쿠팡 PC 배너, 목차 없는 글은 다른 분석 3편. 본문 폭은 그대로 #}
+  <aside class="g-toc an-rail" aria-label="목차와 광고">
+    {% if g.sections|length >= 4 %}
+    <p>이 글의 순서</p>
+    <ol>{% for s in g.sections %}<li><a href="#s{{ loop.index }}"><span class="n">{{ '%02d'|format(loop.index) }}</span>{{ s.h }}</a></li>{% endfor %}{% if g.tips %}<li><a href="#tips"><span class="n">+</span>{{ g.tips.h }}</a></li>{% endif %}{% if g.faq %}<li><a href="#faq"><span class="n">Q</span>자주 묻는 질문</a></li>{% endif %}</ol>
+    {% elif more %}
+    <p>다른 분석</p>
+    <ol>{% for p in more[:3] %}<li><a href="{{ p.url }}"><span class="n num">{{ p.stat.big }}</span>{{ p.title }}</a></li>{% endfor %}</ol>
+    {% endif %}
+    <div class="an-rail-ad">{{ cp_ad('pc', 'ad-pc') }}</div>
+  </aside>
 </main>
 {% endblock %}
 {% block after %}
+<script>
+(function(){var links=[].slice.call(document.querySelectorAll('.an-rail a[href^="#"]')),secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))}).filter(Boolean);
+if(!secs.length||!('IntersectionObserver' in window))return;var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){a.parentNode.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id)});}});},{rootMargin:'0px 0px -70% 0px'});secs.forEach(function(s){io.observe(s)});})();
+</script>
 <script type="application/ld+json">
 {{ {"@context": "https://schema.org", "@graph": [
   crumb_ld(crumb, g.title, page_url),

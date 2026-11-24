@@ -721,3 +721,17 @@ html:has(body.np){scroll-padding-top:72px}
 /* 제호 위 줄: 링크를 뺐으니 PC는 날짜만, 모바일은 줄 자체를 숨김 */
 @media (max-width:720px){.np .np-util{display:none}.np .np-mast{padding-top:14px}}
 .np .page .hero2,.np .page .hero2 img,.np .page .hero-img{border-radius:0!important}
+/* 분석 글 오른쪽 레일 (2026-11-23): 목차·다른 분석 + 쿠팡 PC 배너, 본문 안 목차는 모바일만 */
+.np .an-rail{display:none}
+@media (min-width:1024px){
+  .np .g-page > .an-rail{display:block;position:sticky;top:80px;align-self:start}
+  .np .g-page .an-toc{display:none}
+}
+.np .an-rail > p{font-size:12px;font-weight:700;letter-spacing:.06em;color:var(--np-sub);margin:0;padding-bottom:10px;border-bottom:2px solid var(--np-ink)}
+.np .an-rail ol{list-style:none;margin:0;padding:0;border:0}
+.np .an-rail li a{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;padding:10px 0;border:0;border-bottom:1px solid var(--np-rule);margin:0;text-decoration:none;font-size:14px;line-height:1.5;color:var(--np-sub)}
+.np .an-rail li a .n{font-size:13px;font-weight:600;min-width:20px}
+.np .an-rail li a:hover,.np .an-rail li.on a{color:var(--np-ink)}
+.np .an-rail li.on a .n{color:var(--np-acc)}
+.np .an-rail-ad{margin-top:28px}
+.np .an-rail-ad .ad{display:block}
