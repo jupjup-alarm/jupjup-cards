@@ -4,7 +4,7 @@
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "수원호매실21(A-7블록)단지 행복주택 단지조감도",
+   "label": "호매실21 단지 조감도",
    "file": "photos/site/lh2015122300021130/birdseye-a-7.jpg",
    "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=29259400",
    "crop": "",
@@ -14,12 +14,17 @@
    "block": "수원호매실21(A-7블록)단지 행복주택",
    "lh_tab": "단지조감도",
    "desc": "",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-24",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "birdseye",
    "kind": "조감도",
-   "label": "수원고등2(C1블록) 행복주택 단지조감도",
+   "label": "고등2 단지 조감도",
    "file": "photos/site/lh2015122300021130/birdseye-c1.jpg",
    "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=38167032",
    "crop": "",
@@ -29,12 +34,17 @@
    "block": "수원고등2(C1블록) 행복주택",
    "lh_tab": "단지조감도",
    "desc": "위 단지조감도는 청약자의 이해를 돕기 위한 개략도로 실제와 차이가 있을 수 있습니다.",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-24",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "location",
    "kind": "입지",
-   "label": "수원호매실21(A-7블록)단지 행복주택 지역조감도",
+   "label": "호매실21 지역조감도",
    "file": "photos/site/lh2015122300021130/location-a-7.jpg",
    "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=29259398",
    "crop": "",
@@ -44,12 +54,17 @@
    "block": "수원호매실21(A-7블록)단지 행복주택",
    "lh_tab": "지역조감도",
    "desc": "",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-24",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "location",
    "kind": "입지",
-   "label": "수원호매실21(A-7블록)단지 행복주택 위치도",
+   "label": "호매실21 위치도",
    "file": "photos/site/lh2015122300021130/location-a-7-2.jpg",
    "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=29259399",
    "crop": "",
@@ -59,12 +74,17 @@
    "block": "수원호매실21(A-7블록)단지 행복주택",
    "lh_tab": "위치도",
    "desc": "",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-24",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "location",
    "kind": "입지",
-   "label": "수원고등2(C1블록) 행복주택 지역조감도",
+   "label": "고등2 지역조감도",
    "file": "photos/site/lh2015122300021130/location-c1.jpg",
    "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=38137786",
    "crop": "",
@@ -74,12 +94,17 @@
    "block": "수원고등2(C1블록) 행복주택",
    "lh_tab": "지역조감도",
    "desc": "위 지역조감도는 청약자의 이해를 돕기 위한 개략도로 실제와 차이가 있을 수 있습니다.",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-24",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "location",
    "kind": "입지",
-   "label": "수원고등2(C1블록) 행복주택 지구조감도",
+   "label": "고등2 지구조감도",
    "file": "photos/site/lh2015122300021130/location-c1-2.jpg",
    "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=38167031",
    "crop": "",
@@ -89,12 +114,17 @@
    "block": "수원고등2(C1블록) 행복주택",
    "lh_tab": "지구조감도",
    "desc": "위 지구조감도는 청약자의 이해를 돕기 위한 개략도로 실제와 차이가 있을 수 있습니다.",
-   "photo": true
+   "photo": true,
+   "checked": "2026-11-24",
+   "ok": true,
+   "name_shown": false,
+   "full": true,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "interior",
    "kind": "인테리어",
-   "label": "수원호매실21(A-7블록)단지 행복주택 투시도 36형(신혼부부·한부모가족 등)",
+   "label": "호매실21 36형 투시도",
    "file": "photos/site/lh2015122300021130/interior-a-7-36.jpg",
    "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=29256856",
    "crop": "",
@@ -104,12 +134,17 @@
    "block": "수원호매실21(A-7블록)단지 행복주택",
    "lh_tab": "투시도",
    "desc": "",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-24",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "interior",
    "kind": "인테리어",
-   "label": "수원고등2(C1블록) 행복주택 투시도 36A형(신혼부부·한부모가족)",
+   "label": "고등2 36A 투시도",
    "file": "photos/site/lh2015122300021130/interior-c1-36a.jpg",
    "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=38137628",
    "crop": "",
@@ -119,12 +154,17 @@
    "block": "수원고등2(C1블록) 행복주택",
    "lh_tab": "투시도",
    "desc": "",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-24",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "siteplan",
    "kind": "단지배치도",
-   "label": "수원호매실21(A-7블록)단지 행복주택 단지배치도",
+   "label": "호매실21 배치도",
    "file": "photos/site/lh2015122300021130/siteplan-a-7.jpg",
    "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=29259401",
    "crop": "",
@@ -134,12 +174,17 @@
    "block": "수원호매실21(A-7블록)단지 행복주택",
    "lh_tab": "단지배치도",
    "desc": "",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-24",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "siteplan",
    "kind": "단지배치도",
-   "label": "수원고등2(C1블록) 행복주택 단지배치도",
+   "label": "고등2 배치도",
    "file": "photos/site/lh2015122300021130/siteplan-c1.jpg",
    "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=38167033",
    "crop": "",
@@ -149,12 +194,17 @@
    "block": "수원고등2(C1블록) 행복주택",
    "lh_tab": "단지배치도",
    "desc": "위 단지배치도는 청약자의 이해를 돕기 위한 개략도로 실제와 차이가 있을 수 있습니다.",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-24",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "수원호매실21(A-7블록)단지 행복주택 평면도 36형(신혼부부·한부모가족 등)",
+   "label": "호매실21 36형 평면",
    "file": "photos/site/lh2015122300021130/plan-a-7-36.jpg",
    "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=29256850",
    "crop": "",
@@ -164,12 +214,17 @@
    "block": "수원호매실21(A-7블록)단지 행복주택",
    "lh_tab": "평면도",
    "desc": "",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-24",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "plan",
    "kind": "평면도",
-   "label": "수원고등2(C1블록) 행복주택 평면도 36A형(신혼부부·한부모가족)",
+   "label": "고등2 36A 평면",
    "file": "photos/site/lh2015122300021130/plan-c1-36a.jpg",
    "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=38137623",
    "crop": "",
@@ -179,7 +234,12 @@
    "block": "수원고등2(C1블록) 행복주택",
    "lh_tab": "평면도",
    "desc": "",
-   "photo": false
+   "photo": false,
+   "checked": "2026-11-24",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
   },
   {
    "cat": "notice",
