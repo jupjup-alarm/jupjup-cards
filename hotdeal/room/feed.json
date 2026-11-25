@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-25 14:30:50",
+ "updated": "2026-11-25 14:34:56",
  "date": "2026-11-25",
  "items": [
   {
@@ -29,6 +29,48 @@
    "img": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/hotdeal/room/img/9103440833.jpg"
   },
   {
+   "id": "kurly-blueberry-4ed51938",
+   "row": 0,
+   "at": "2026-11-25 11:44",
+   "name": "컬리N마트 냉동 칠레산 블루베리 1kg",
+   "price": 5900,
+   "disc": 58,
+   "link": "https://product.shopping.naver.com/kurlynmart/12274596222",
+   "tier": "수동",
+   "pid": null,
+   "mall": "네이버",
+   "grade": "",
+   "img": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/hotdeal/room/img/117018469574599.jpg"
+  },
+  {
+   "id": "mnv3583065645-1bbbb645",
+   "row": 0,
+   "at": "2026-11-25 09:47",
+   "name": "김보람초콜릿 밀크 생초콜릿 150g",
+   "price": 8400,
+   "disc": 40,
+   "link": "https://naver.me/GxrhcAYX",
+   "tier": "수동",
+   "pid": null,
+   "mall": "네이버",
+   "grade": "",
+   "img": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/hotdeal/room/img/32558411149416.jpg"
+  },
+  {
+   "id": "mtwosome-37a54769",
+   "row": 0,
+   "at": "2026-11-25 09:28",
+   "name": "투썸 크림탑 스초생 (카카오 선물하기)",
+   "price": 29600,
+   "disc": 30,
+   "link": "https://gift.kakao.com/product/14567751",
+   "tier": "수동",
+   "pid": null,
+   "mall": "카카오 선물하기",
+   "grade": "",
+   "img": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/hotdeal/room/img/3800785669805.jpg"
+  },
+  {
    "id": "gb8560881515",
    "row": 0,
    "at": "2026-11-25 07:21",
@@ -53,6 +95,20 @@
    "pid": "8244033639",
    "grade": "초특가",
    "img": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/hotdeal/room/img/8244033639.jpg"
+  },
+  {
+   "id": "nv13471350588",
+   "row": 0,
+   "at": "2026-11-24 20:10",
+   "name": "이모카세 제주 순살 은갈치조림 밀키트 (1팩 2인분)",
+   "price": 17360,
+   "disc": 42,
+   "link": "https://naver.me/xRgF530O",
+   "tier": "수동",
+   "pid": null,
+   "mall": "네이버",
+   "grade": "초특가",
+   "img": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/hotdeal/room/img/58086602482672.jpg"
   },
   {
    "id": "m7403444126",
