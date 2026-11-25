@@ -75,10 +75,28 @@
    "full": false,
    "page": 1,
    "marked": []
+  },
+  {
+   "cat": "aerial",
+   "kind": "위성사진",
+   "label": "위성사진",
+   "file": "photos/sat/bf636d7f265e.png",
+   "src": "NAVER 위성 지도",
+   "w": 1080,
+   "h": 1920,
+   "photo": true,
+   "full": true,
+   "ok": true,
+   "checked": true,
+   "from": "satellite",
+   "credit": "위성사진 © NAVER Corp."
   }
  ],
  "links": [],
  "owner": "LH",
  "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
- "updated": "2026-11-25 00:04"
+ "updated": "2026-11-25 13:08",
+ "name": "이천갈산3 국민임대주택 추가 모집 22세대 (선계약 후검증)",
+ "row": 211,
+ "lh_checked": "2026-11-25"
 }
