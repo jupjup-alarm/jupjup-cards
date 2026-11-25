@@ -1,0 +1,72 @@
+{
+ "key": "lh2015122300021086",
+ "images": [
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 공급금액 (p.1)",
+   "file": "photos/site/lh2015122300021086/notice-price.jpg",
+   "src": "69507232.pdf#p1",
+   "crop": "",
+   "w": 1100,
+   "h": 701,
+   "md5": "2d351d5491db273ea6d1d26789d66cca",
+   "photo": false,
+   "full": false,
+   "page": 1,
+   "marked": []
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 신청일정 (p.8)",
+   "file": "photos/site/lh2015122300021086/notice-schedule.jpg",
+   "src": "69507232.pdf#p8",
+   "crop": "",
+   "w": 1124,
+   "h": 701,
+   "md5": "8f762d0b04dc0dbd00965acd4e7991da",
+   "photo": false,
+   "full": false,
+   "page": 8,
+   "marked": []
+  },
+  {
+   "cat": "notice",
+   "kind": "공고문",
+   "label": "공고문 신청자격 (p.1)",
+   "file": "photos/site/lh2015122300021086/notice-qual.jpg",
+   "src": "69507232.pdf#p1",
+   "crop": "",
+   "w": 1092,
+   "h": 701,
+   "md5": "6fa25157b2fd528809a9391443604d4c",
+   "photo": false,
+   "full": false,
+   "page": 1,
+   "marked": []
+  },
+  {
+   "cat": "aerial",
+   "kind": "위성사진",
+   "label": "위성사진",
+   "file": "photos/sat/f35936f56b49.png",
+   "src": "NAVER 위성 지도",
+   "w": 1080,
+   "h": 1920,
+   "photo": true,
+   "full": true,
+   "ok": true,
+   "checked": true,
+   "from": "satellite",
+   "credit": "위성사진 © NAVER Corp."
+  }
+ ],
+ "links": [],
+ "owner": "LH",
+ "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
+ "updated": "2026-11-25 13:08",
+ "name": "[서울지역본부] 일반 매입임대주택 예비입주자 모집 (서울 9개 구 · 12/21~23 주민센터 접수)",
+ "row": 210,
+ "lh_checked": "2026-11-25"
+}

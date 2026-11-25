@@ -288,6 +288,105 @@
    "name_shown": false,
    "full": false,
    "checked_by": "정기 작업"
+  },
+  {
+   "cat": "pamphlet",
+   "kind": "팸플릿",
+   "label": "팸플릿 cand-01",
+   "file": "pamphlets/2026910304/notice/cand-01.jpg",
+   "src": "pamphlet:notice/cand-01.jpg",
+   "w": 1600,
+   "h": 363,
+   "photo": false,
+   "from": "pamphlet"
+  },
+  {
+   "cat": "pamphlet",
+   "kind": "팸플릿",
+   "label": "팸플릿 cand-02",
+   "file": "pamphlets/2026910304/notice/cand-02.jpg",
+   "src": "pamphlet:notice/cand-02.jpg",
+   "w": 1600,
+   "h": 363,
+   "photo": false,
+   "from": "pamphlet"
+  },
+  {
+   "cat": "pamphlet",
+   "kind": "팸플릿",
+   "label": "팸플릿 cand-03",
+   "file": "pamphlets/2026910304/notice/cand-03.jpg",
+   "src": "pamphlet:notice/cand-03.jpg",
+   "w": 1600,
+   "h": 363,
+   "photo": false,
+   "from": "pamphlet"
+  },
+  {
+   "cat": "pamphlet",
+   "kind": "팸플릿",
+   "label": "팸플릿 cand-04",
+   "file": "pamphlets/2026910304/notice/cand-04.jpg",
+   "src": "pamphlet:notice/cand-04.jpg",
+   "w": 1600,
+   "h": 363,
+   "photo": false,
+   "from": "pamphlet"
+  },
+  {
+   "cat": "pamphlet",
+   "kind": "팸플릿",
+   "label": "팸플릿 cand-05",
+   "file": "pamphlets/2026910304/notice/cand-05.jpg",
+   "src": "pamphlet:notice/cand-05.jpg",
+   "w": 1600,
+   "h": 363,
+   "photo": false,
+   "from": "pamphlet"
+  },
+  {
+   "cat": "pamphlet",
+   "kind": "팸플릿",
+   "label": "팸플릿 cand-06",
+   "file": "pamphlets/2026910304/notice/cand-06.jpg",
+   "src": "pamphlet:notice/cand-06.jpg",
+   "w": 1600,
+   "h": 363,
+   "photo": false,
+   "from": "pamphlet"
+  },
+  {
+   "cat": "pamphlet",
+   "kind": "팸플릿",
+   "label": "팸플릿 cand-07",
+   "file": "pamphlets/2026910304/notice/cand-07.jpg",
+   "src": "pamphlet:notice/cand-07.jpg",
+   "w": 1600,
+   "h": 363,
+   "photo": false,
+   "from": "pamphlet"
+  },
+  {
+   "cat": "pamphlet",
+   "kind": "팸플릿",
+   "label": "팸플릿 cand-08",
+   "file": "pamphlets/2026910304/notice/cand-08.jpg",
+   "src": "pamphlet:notice/cand-08.jpg",
+   "w": 1600,
+   "h": 363,
+   "photo": false,
+   "from": "pamphlet"
+  },
+  {
+   "cat": "pamphlet",
+   "kind": "팸플릿",
+   "label": "팸플릿 cand-09",
+   "file": "pamphlets/2026910304/notice/cand-09.jpg",
+   "src": "pamphlet:notice/cand-09.jpg",
+   "w": 1600,
+   "h": 1180,
+   "photo": false,
+   "from": "pamphlet"
   }
  ],
  "links": [],
@@ -300,5 +399,5 @@
   "tries": 1,
   "result": "18장 (overview 3, siteplan 2, dongho 2, plan 6, community 2, location 3)"
  },
- "updated": "2026-11-24 07:03"
+ "updated": "2026-11-25 13:08"
 }

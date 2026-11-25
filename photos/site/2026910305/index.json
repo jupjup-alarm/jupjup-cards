@@ -48,6 +48,28 @@
    "name_shown": false,
    "full": false,
    "checked_by": "정기 작업"
+  },
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "overview",
+   "file": "photos/site/2026910305/overview-auto-1-2.jpg",
+   "src": "https://editor-static.pstatic.net/v/basic/1.78.1/img/se-sp-viewer.ee5afa38.png",
+   "w": 932,
+   "h": 836,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "overview",
+   "file": "photos/site/2026910305/overview-auto-2-2.jpg",
+   "src": "https://ssl.pstatic.net/static/common/spi/2026/0317/sp_spi_layer.png",
+   "w": 564,
+   "h": 530,
+   "photo": true,
+   "from": "auto"
   }
  ],
  "links": [],
@@ -55,11 +77,11 @@
  "row": 209,
  "homepage": "https://blog.naver.com/kkvista",
  "auto_site": {
-  "date": "2026-11-24",
+  "date": "2026-11-25",
   "url": "https://blog.naver.com/kkvista",
-  "tries": 1,
-  "result": "3장 (overview 3)"
+  "tries": 2,
+  "result": "2장 (overview 2)"
  },
- "updated": "2026-11-24 09:52",
+ "updated": "2026-11-25 13:08",
  "commons_checked": "판교TH212(2차) 무순위 1세대"
 }
