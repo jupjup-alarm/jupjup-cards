@@ -1,0 +1,15 @@
+{
+ "slug": "2026-11-25-incheon-namdong-reel",
+ "duration": 23.78,
+ "voiced": true,
+ "narration_s": 21.1,
+ "mean_db": -18.7,
+ "voice": "voices/4fbd94a8b643/",
+ "video": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-25-incheon-namdong-reel/2026-11-25-incheon-namdong-reel.mp4",
+ "cover": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-25-incheon-namdong-reel/2026-11-25-incheon-namdong-reel_thumb.jpg",
+ "size_mb": 13.06,
+ "warnings": [
+  "확대(Real-ESRGAN x4): 6장 — birdseye-b1.jpg, birdseye-b2.jpg, birdseye-b3.jpg, siteplan-b1.jpg, siteplan-b2.jpg, siteplan-b3.jpg",
+  "사진: 컷 10개 · 서로 다른 사진 6장"
+ ]
+}

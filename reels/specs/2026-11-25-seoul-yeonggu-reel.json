@@ -1,0 +1,100 @@
+{
+ "slug": "2026-11-25-seoul-yeonggu-reel",
+ "title": "서울 영구임대 예비입주자 159호",
+ "series": "임대알람",
+ "style": "story",
+ "voice": "voices/b66634dcb155/",
+ "voice_speed": 1.0,
+ "bgm": "music/beat-one.mp3",
+ "thumb": {
+  "lines": [
+   "서울 월 5만원대부터",
+   "영구임대 159호"
+  ]
+ },
+ "pool": [
+  {
+   "img": "photos/site/lh2015122300021109/birdseye-s1.jpg",
+   "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+   "pos": "20% 40%"
+  },
+  {
+   "img": "photos/site/lh2015122300021109/siteplan-s1.jpg",
+   "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음"
+  }
+ ],
+ "scenes": [
+  {
+   "type": "story",
+   "say": "서울에 월세 5만 원대부터인 아파트가 나왔대요. 159호래요.",
+   "word": "5만 원대",
+   "shots": [
+    {
+     "img": "photos/site/lh2015122300021109/birdseye-s1.jpg",
+     "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+     "pos": "center 45%"
+    },
+    {
+     "img": "photos/site/lh2015122300021109/birdseye-s1.jpg",
+     "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+     "pos": "20% 40%"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "심지어, 보증금도 280만 원대부터래요.",
+   "word": "280만 원대",
+   "shots": [
+    {
+     "img": "photos/site/lh2015122300021109/birdseye-s1.jpg",
+     "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+     "pos": "80% 40%"
+    }
+   ],
+   "proof": {
+    "kind": "image",
+    "img": "photos/site/lh2015122300021109/notice-price.jpg",
+    "credit": "자료: LH 입주자모집공고(2026.11.19)"
+   }
+  },
+  {
+   "type": "story",
+   "say": "이게 어떻게 가능할까요?",
+   "dim": true,
+   "shots": [
+    {
+     "img": "photos/site/lh2015122300021109/birdseye-s1.jpg",
+     "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+     "pos": "center 60%"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "LH 영구임대 예비입주자 모집이거든요. 서울 사는 무주택 저소득 가구면 되고, 동 주민센터에서만 받는대요.",
+   "word": "동 주민센터",
+   "shots": [
+    {
+     "img": "photos/site/lh2015122300021109/siteplan-s1.jpg",
+     "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+     "pos": "center 50%"
+    },
+    {
+     "img": "photos/site/lh2015122300021109/birdseye-s1.jpg",
+     "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+     "pos": "center 35%"
+    }
+   ],
+   "proof": {
+    "kind": "image",
+    "img": "photos/site/lh2015122300021109/notice-qual.jpg",
+    "credit": "자료: LH 입주자모집공고(2026.11.19)"
+   }
+  },
+  {
+   "type": "end",
+   "say": "접수는 11월 30일부터 12월 4일까지래요. 단지 이름이랑 공고 정리는, 댓글에 '서울'이라고 남겨 주세요."
+  }
+ ]
+}

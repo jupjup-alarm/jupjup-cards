@@ -1,0 +1,120 @@
+{
+ "slug": "2026-11-25-incheon-namdong-reel",
+ "title": "인천 남동구 행복주택 입주자격완화",
+ "series": "임대알람",
+ "style": "story",
+ "voice": "voices/4fbd94a8b643/",
+ "voice_speed": 1.0,
+ "bgm": "music/beat-one.mp3",
+ "thumb": {
+  "lines": [
+   "인천 월 9만원대부터",
+   "소득 150%도 된다"
+  ]
+ },
+ "pool": [
+  {
+   "img": "photos/site/lh2015122300021099/birdseye-b1.jpg",
+   "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/lh2015122300021099/birdseye-b2.jpg",
+   "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/lh2015122300021099/birdseye-b3.jpg",
+   "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/lh2015122300021099/siteplan-b1.jpg",
+   "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/lh2015122300021099/siteplan-b2.jpg",
+   "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/lh2015122300021099/siteplan-b3.jpg",
+   "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/lh2015122300021099/birdseye-b1.jpg",
+   "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+   "pos": "20% 30%"
+  }
+ ],
+ "scenes": [
+  {
+   "type": "story",
+   "say": "인천에 월세 9만 원대부터인 아파트가 나왔대요. 60호래요.",
+   "word": "9만 원대",
+   "shots": [
+    {
+     "img": "photos/site/lh2015122300021099/birdseye-b1.jpg",
+     "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+     "pos": "center 45%"
+    },
+    {
+     "img": "photos/site/lh2015122300021099/birdseye-b3.jpg",
+     "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+     "pos": "center 50%"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "심지어, 보증금도 2천만 원대부터래요.",
+   "word": "2천만 원대",
+   "shots": [
+    {
+     "img": "photos/site/lh2015122300021099/birdseye-b2.jpg",
+     "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+     "pos": "center 40%"
+    },
+    {
+     "img": "photos/site/lh2015122300021099/siteplan-b1.jpg",
+     "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+     "pos": "center 50%"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "이게 어떻게 가능할까요?",
+   "dim": true,
+   "shots": [
+    {
+     "img": "photos/site/lh2015122300021099/birdseye-b3.jpg",
+     "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+     "pos": "70% 50%"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "LH 행복주택 입주자격 완화 모집이거든요. 소득이 기준의 150퍼센트여도, 3순위로 넣을 수 있대요.",
+   "word": "150퍼센트",
+   "shots": [
+    {
+     "img": "photos/site/lh2015122300021099/birdseye-b2.jpg",
+     "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+     "pos": "center 70%"
+    },
+    {
+     "img": "photos/site/lh2015122300021099/birdseye-b3.jpg",
+     "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+     "pos": "center 30%"
+    }
+   ],
+   "proof": {
+    "kind": "image",
+    "img": "photos/site/lh2015122300021099/plan-b1-26a.jpg",
+    "credit": "자료: LH 입주자모집공고(2026.11.19)"
+   }
+  },
+  {
+   "type": "end",
+   "say": "접수는 12월 1일부터래요. 단지 이름이랑 공고 정리는, 댓글에 '인천'이라고 남겨 주세요."
+  }
+ ]
+}
