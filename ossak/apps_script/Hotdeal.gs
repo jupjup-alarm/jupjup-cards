@@ -28,6 +28,7 @@
  *   ANTHROPIC_KEY (캐릭터 글용 Claude API 키 — 스크립트 속성에만) · HD_STYLE info|story|ab · HD_STORY_MODEL
  *   HD_TOPIC_TAG 핫딜 (본문 글마다 붙는 주제 태그, 비우면 안 붙임)
  *   HD_IMG_MODE ab (홀수 날짜 = 상품 사진+옵션 캡처 2장, 짝수 날짜 = 1장 · both 항상 2장 · cap 항상 1장) — 결과는 AA~AD열(조회·좋아요·답글·이미지)
+ *   HD_TARGET_STRICT off (on이면 AG열 '스레드대상'이 Y인 딜만 올림, 비어 있으면 건너뜀)
  *   HD_NAVER on (Z열 '네이버링크'가 있는 네이버 딜도 스레드에 — 일반 딜 조건 · off면 제외) · HD_NAVER_TAG off (on이면 첫 줄에 네이버 대가성 문구)
  *   HD_HOOK_SOURCES 지금할인  (제목이 상품명이 아니라 홍보 문구인 출처 — 본문전체(K)가 없으면 보류)
  *
@@ -38,7 +39,7 @@
 const HD_SHEET_ID = '13-ecoze8qCHs0rcBNWfer9feg7CU-cfVYDEUzA9t5d0';
 const HD_TAB = '필터통과';
 const HD = { at: 1, src: 2, title: 3, price: 4, kw: 5, score: 6, urls: 7, orig: 8, draft: 9, status: 10, body: 11,
-  link: 12, thread: 13, postedAt: 14, note: 15, cap: 16, cmp: 17, prod: 18, inf: 23, page: 24, pname: 25, nlink: 26, views: 27, likes: 28, replies: 29, img: 30, style: 31, story: 32 };
+  link: 12, thread: 13, postedAt: 14, note: 15, cap: 16, cmp: 17, prod: 18, inf: 23, page: 24, pname: 25, nlink: 26, views: 27, likes: 28, replies: 29, img: 30, style: 31, story: 32, target: 33 };
 const HD_HEAD = ['변환링크', '스레드URL', '발행시각', '비고(에러)', '캡처', '수량비교', '상품주소'];   // S~U 카톡, V 토스링크, W 인플링크, X 딜페이지, Y 상품명 (맥이 씀)   // P·Q열은 맥북 캡처기, R열은 맥북(단축 링크 풀기)·발행기(파트너스 검색)
 const HD_DISCLOSURE = '이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.';
 const HD_CACHE_DAYS = 7;
@@ -56,7 +57,7 @@ function hotdealCheck() {
   try { const id = hdChatPostId_(); out.push('채팅방 글(2/3 인용): ' + (id ? '찾음 ' + id : '꺼짐')); } catch (e) { out.push('채팅방 글 못 찾음: ' + e.message); }
   try {
     const sh = hdSheet_();
-    const head = sh.getRange(1, 1, 1, HD.story).getDisplayValues()[0];
+    const head = sh.getRange(1, 1, 1, HD.target).getDisplayValues()[0];
     out.push('시트: ' + HD_TAB + ' ' + (sh.getLastRow() - 1) + '행, A~K 헤더 ' + (head[HD.urls - 1] === '쿠팡URL(전체)' && head[HD.status - 1] === '상태' ? '정상' : '다름!'));
     out.push('L~O 헤더: ' + (head.slice(HD.link - 1).join('') ? head.slice(HD.link - 1).join(' / ') : '비어 있음 (첫 발행 때 채움)'));
     const counts = {};
@@ -174,7 +175,7 @@ function hdTopItems_(rows, from, to) {
 
 function hdWeekly_(dry) {
   const sh = hdSheet_();
-  const rows = sh.getRange(2, 1, sh.getLastRow() - 1, HD.story).getDisplayValues();
+  const rows = sh.getRange(2, 1, sh.getLastRow() - 1, HD.target).getDisplayValues();
   const now = new Date();
   const top = hdTopItems_(rows, new Date(now - 7 * 86400000), now).slice(0, 7);
   if (top.length < 3) { hdLog_('주간 총정리: 이번 주 딜이 ' + top.length + '건뿐이라 건너뜀'); return; }
@@ -205,7 +206,7 @@ function hotdealDaily() { return hdDaily_(false); }
 
 function hdDaily_(dry) {
   const sh = hdSheet_();
-  const rows = sh.getRange(2, 1, sh.getLastRow() - 1, HD.story).getDisplayValues();
+  const rows = sh.getRange(2, 1, sh.getLastRow() - 1, HD.target).getDisplayValues();
   const now = new Date();
   const today = hdParse_(Utilities.formatDate(now, TZ, 'yyyy-MM-dd') + ' 00:00');
   const yest = new Date(today.getTime() - 86400000);
@@ -262,7 +263,7 @@ function hdRun_(o) {
     const sh = hdSheet_();
     const last = sh.getLastRow();
     if (last < 2) { hdLog_('필터통과 탭이 비어 있음'); return; }
-    const rows = sh.getRange(2, 1, last - 1, HD.story).getDisplayValues();
+    const rows = sh.getRange(2, 1, last - 1, HD.target).getDisplayValues();
     const now = new Date();
     const today = Utilities.formatDate(now, TZ, 'yyyy-MM-dd');
 
@@ -359,9 +360,18 @@ function hdPick_(rows, now) {
     const toss = hdIsToss_(r) || hdIsNaver_(r);   // 쿠팡 링크 변환을 하지 않는 외부몰 딜
     if (!toss && !String(r[HD.urls - 1]).split('\n').some(u => /coupang\.com/.test(u))) return;
     if (hdIsToss_(r) && (hdCfg_('HD_TOSS', 'off') === 'off' || !hdGeneralOk_(r, now, null))) return;
+    // 2026-11-26 맥 요청: AG열 '스레드대상' — N이면 건너뜀(건강기능식품·업소용·할인 정보 없음·토스·상품명 이상 등), Y면 통과.
+    //   Y여도 스레드 문턱(역전·할인 HD_GENERAL_MIN_OFF%)은 그대로 적용. 출처가 '수동'인 쿠팡 딜은 문턱 없이 통과.
+    //   AG가 비어 있으면(맥이 아직 판정 전) 예전 기준으로 판단. HD_TARGET_STRICT=on 이면 Y만 올림.
+    const tg = String(r[HD.target - 1] || '').trim();
+    if (/^N/.test(tg)) return;
+    if (!tg && hdCfg_('HD_TARGET_STRICT', 'off') === 'on') return;
+    const manual = /^Y 수동/.test(tg) || /^수동/.test(String(r[HD.src - 1]));
     const mode = hdCfg_('HD_MODE', 'mix');
     const pair = hdPair_(r);
-    if (mode === 'qty') {
+    if (manual) {
+      // 수동 쿠팡 딜: 할인율·Q열 조건 없이 통과 (사람이 고른 딜)
+    } else if (mode === 'qty') {
       // 수량 역전 딜만 (2026-11-22 사용자 결정): Q열에 'A개 X원 → B개 Y원'이 있는 행만 올린다
       if (!pair) return;
     } else if (mode === 'mix') {
@@ -374,9 +384,9 @@ function hdPick_(rows, now) {
     const pr = hdPair_(r);
     const off = Number((String(r[HD.kw - 1]).match(/할인\s*(\d+)%/) || [])[1] || 0);
     // 2026-11-24: 역전 딜 먼저(개당 할인 폭 순), 일반 딜은 할인율 높은 순 (수집기 점수 F는 홍보 문구에 좌우돼서 쓰지 않음)
-    c.push({ row: i + 2, v: r, recover: recover, pair: pr ? 1 : 0, rank: pr ? pr.cheaper : off, at: at ? at.getTime() : 0 });
+    c.push({ row: i + 2, v: r, recover: recover, manual: manual ? 1 : 0, pair: pr ? 1 : 0, rank: pr ? pr.cheaper : off, at: at ? at.getTime() : 0 });
   });
-  c.sort((a, b) => b.pair - a.pair || b.rank - a.rank || b.at - a.at);
+  c.sort((a, b) => b.manual - a.manual || b.pair - a.pair || b.rank - a.rank || b.at - a.at);   // 사람이 고른 수동 딜 → 역전 → 할인율 순
   return c;
 }
 
@@ -808,7 +818,7 @@ const HD_Q = {
   '탄산수': ['탄산수 한 달에 몇 캔 마셔?'],
   '커피': ['캡슐 하루에 몇 개 써?'],
   '즉석밥': ['즉석밥 집에 몇 개 쟁여둬?'],
-  '': ['이 가격이면 몇 개 쟁여?', '평소에 이거 얼마에 샀어?', '이거 써본 사람 후기 좀!', '이거 쟁여두는 편이야?']
+  '': ['이 가격이면 몇 개 쟁여?', '평소에 이거 얼마에 샀어?', '이거 쟁여두는 편이야?']
 };
 function hdQuestion_(cat, k) {
   const list = HD_Q[cat] || HD_Q[''];
@@ -1086,7 +1096,7 @@ function hdDot_(sl, cx, cy, size, color) {
 // 가격 카드만 시험 — 신규 첫 행으로 그려 주소를 로그에 (30분 동안 열림)
 function hotdealTestCard() {
   const sh = hdSheet_();
-  const rows = sh.getRange(2, 1, sh.getLastRow() - 1, HD.story).getDisplayValues();
+  const rows = sh.getRange(2, 1, sh.getLastRow() - 1, HD.target).getDisplayValues();
   const i = rows.findIndex(r => !hdHoldReason_(r));
   const c = hdCard_(rows[i], i + 2);
   console.log('행 ' + (i + 2) + ' 가격 카드: ' + c.url);
@@ -1171,7 +1181,7 @@ function hdStoryCheck_(text, factText) {
 // 캐릭터 글 시험: 시트 맨 아래 딜 하나로 미리 만들어 본다 (발행 안 함)
 function hotdealStoryTest() {
   const sh = hdSheet_();
-  const rows = sh.getRange(2, 1, sh.getLastRow() - 1, HD.story).getDisplayValues();
+  const rows = sh.getRange(2, 1, sh.getLastRow() - 1, HD.target).getDisplayValues();
   const i = rows.map((r, n) => n).reverse().find(n => !hdHoldReason_(rows[n]) && !hdIsNaver_(rows[n]));
   const v = rows[i];
   const d = hdFacts_(v), pr = hdPair_(v), nm = hdShortName_(d.name) || d.cat || '이거';
