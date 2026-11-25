@@ -25,6 +25,7 @@
  *   HD_MODE mix (역전 딜 + 할인 HD_GENERAL_MIN_OFF(50)% 이상 일반 딜, 역전 먼저 · qty 면 역전만 · all 이면 모든 딜) · HD_MIN_CHEAPER 30 (개당 몇 % 이상 싸야 하는지)
  *   HD_WAIT_CAPTURE_MIN 20 (all 모드에서 P열 캡처를 기다리는 시간, 0이면 안 기다림)
  *   HD_TOSS off (2026-11-24: 토스 할인율을 믿기 어려워 카톡·스레드 모두 자동 발행 끔 · on이면 일반 딜 조건으로 스레드에) · HD_TOSS_TAG off (on이면 토스 글 첫 줄에 토스 대가성 문구)
+ *   HD_IMG_MODE ab (홀수 날짜 = 상품 사진+옵션 캡처 2장, 짝수 날짜 = 1장 · both 항상 2장 · cap 항상 1장) — 결과는 AA~AD열(조회·좋아요·답글·이미지)
  *   HD_NAVER on (Z열 '네이버링크'가 있는 네이버 딜도 스레드에 — 일반 딜 조건 · off면 제외) · HD_NAVER_TAG off (on이면 첫 줄에 네이버 대가성 문구)
  *   HD_HOOK_SOURCES 지금할인  (제목이 상품명이 아니라 홍보 문구인 출처 — 본문전체(K)가 없으면 보류)
  *
@@ -35,7 +36,7 @@
 const HD_SHEET_ID = '13-ecoze8qCHs0rcBNWfer9feg7CU-cfVYDEUzA9t5d0';
 const HD_TAB = '필터통과';
 const HD = { at: 1, src: 2, title: 3, price: 4, kw: 5, score: 6, urls: 7, orig: 8, draft: 9, status: 10, body: 11,
-  link: 12, thread: 13, postedAt: 14, note: 15, cap: 16, cmp: 17, prod: 18, inf: 23, page: 24, pname: 25, nlink: 26 };
+  link: 12, thread: 13, postedAt: 14, note: 15, cap: 16, cmp: 17, prod: 18, inf: 23, page: 24, pname: 25, nlink: 26, views: 27, likes: 28, replies: 29, img: 30 };
 const HD_HEAD = ['변환링크', '스레드URL', '발행시각', '비고(에러)', '캡처', '수량비교', '상품주소'];   // S~U 카톡, V 토스링크, W 인플링크, X 딜페이지, Y 상품명 (맥이 씀)   // P·Q열은 맥북 캡처기, R열은 맥북(단축 링크 풀기)·발행기(파트너스 검색)
 const HD_DISCLOSURE = '이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.';
 const HD_CACHE_DAYS = 7;
@@ -78,6 +79,8 @@ function hotdealAutoOn() {
   ScriptApp.newTrigger('hotdealJob').timeBased().everyMinutes(5).create();   // 예비 주기 — 평소엔 맥 캡처기가 doPost로 바로 부름
   ScriptApp.getProjectTriggers().filter(t => t.getHandlerFunction() === 'hotdealWeekly').forEach(t => ScriptApp.deleteTrigger(t));
   ScriptApp.newTrigger('hotdealWeekly').timeBased().onWeekDay(ScriptApp.WeekDay.SUNDAY).atHour(21).inTimezone(TZ).create();   // 주간 총정리
+  ScriptApp.getProjectTriggers().filter(t => t.getHandlerFunction() === 'hotdealViews').forEach(t => ScriptApp.deleteTrigger(t));
+  ScriptApp.newTrigger('hotdealViews').timeBased().everyHours(1).create();   // 조회수 기록
   ScriptApp.getProjectTriggers().filter(t => t.getHandlerFunction() === 'hotdealGoldboxSync').forEach(t => ScriptApp.deleteTrigger(t));
   ScriptApp.newTrigger('hotdealGoldboxSync').timeBased().atHour(8).everyDays(1).inTimezone(TZ).create();    // 골드박스 08시
   ScriptApp.newTrigger('hotdealGoldboxSync').timeBased().atHour(14).everyDays(1).inTimezone(TZ).create();   // 골드박스 14시
@@ -223,7 +226,7 @@ function hdDaily_(dry) {
 }
 
 function hotdealAutoOff() {
-  ScriptApp.getProjectTriggers().filter(t => ['hotdealJob', 'hotdealWeekly', 'hotdealDaily', 'hotdealGoldboxSync'].indexOf(t.getHandlerFunction()) >= 0).forEach(t => ScriptApp.deleteTrigger(t));
+  ScriptApp.getProjectTriggers().filter(t => ['hotdealJob', 'hotdealWeekly', 'hotdealDaily', 'hotdealGoldboxSync', 'hotdealViews'].indexOf(t.getHandlerFunction()) >= 0).forEach(t => ScriptApp.deleteTrigger(t));
   hdLog_('핫딜 자동 발행 끔');
 }
 
@@ -414,9 +417,21 @@ function hdOne_(sh, row, v, recover, dry) {
   if (bad.length) { if (card) hdCardDrop_(card); return hdFail_(sh, row, dry, lines, bad[0].name, notes); }
   if (dry) { lines.push('(미리보기 — 발행 안 함)' + (notes.length ? ' 비고: ' + notes.join(' · ') : '')); return lines.join('\n'); }
 
-  // 5) 발행 — 본문(+카드)
+  // 4-2) 상품 사진 + 옵션 캡처 2장 (2026-11-25 조회수 실험): HD_IMG_MODE both / cap / ab(기본, 홀수 날짜만 2장)
+  let variant = '1장';
+  let prodImg = '';
+  if (card && hdImgBoth_()) { try { prodImg = hdProductImage_(v); } catch (e) { console.log('상품 사진 못 찾음: ' + e.message); } }
+  if (prodImg) lines.push('상품 사진: ' + prodImg);
+
+  // 5) 발행 — 본문(+그림)
   let main;
-  try { main = hdPostText_(post.main, null, card ? { media_type: 'IMAGE', image_url: card.url } : null); }
+  try {
+    if (card && prodImg) {
+      try { main = hdPostCarousel_(post.main, [prodImg, card.url]); variant = '2장'; }
+      catch (e0) { console.error('2장 올리기 실패 → 1장: ' + e0.message); notes.push('2장 실패'); }
+    }
+    if (!main) main = hdPostText_(post.main, null, card ? { media_type: 'IMAGE', image_url: card.url } : null);
+  }
   catch (e) {
     if (!card) { console.error('행 ' + row + ' 본문 발행 실패: ' + e.message); return hdFail_(sh, row, dry, lines, '본문 발행 실패', notes.concat([e.message])); }
     console.error('카드 붙여 올리기 실패 → 글만: ' + e.message); notes.push('카드 업로드 실패');
@@ -424,7 +439,7 @@ function hdOne_(sh, row, v, recover, dry) {
     catch (e2) { return hdFail_(sh, row, dry, lines, '본문 발행 실패', notes.concat([e2.message])); }
   } finally { if (card) hdCardDrop_(card); }
   const at = hdStamp_(new Date());
-  try { hdWrite_(sh, row, { thread: main.link || main.id, postedAt: at }); }
+  try { hdWrite_(sh, row, { thread: main.link || main.id, postedAt: at }); sh.getRange(row, HD.img).setValue(variant); }
   catch (e) {   // 올라갔는데 시트에 못 적음 → 절대 재발행하지 않게 크게 남김
     const msg = '!!! 스레드에 올라갔지만 시트 기록 실패 — 재발행 금지 !!!\n행 ' + row + ' 글 ' + main.id + ' ' + main.link + '\n' + post.main;
     console.error(msg); mail_('[특가반장] 발행됨·시트 기록 실패 (행 ' + row + ')', msg);
@@ -1070,6 +1085,83 @@ function hotdealTestCard() {
 }
 
 /* ───────── 스레드 ───────── */
+/* ───────── 조회수 기록 + 이미지 2장 실험 (2026-11-25) ───────── */
+function hdImgBoth_() {
+  const m = hdCfg_('HD_IMG_MODE', 'ab');
+  if (m === 'both') return true;
+  if (m === 'cap') return false;
+  return Number(Utilities.formatDate(new Date(), TZ, 'd')) % 2 === 1;   // ab: 홀수 날짜 = 2장, 짝수 날짜 = 1장
+}
+
+// 파트너스 상품 검색으로 대표 사진 주소를 얻는다 (R열의 상품 번호가 있으면 그 상품, 없으면 이름이 가장 겹치는 것)
+function hdProductImage_(v) {
+  const pid = (String(v[HD.prod - 1] || '').match(/products\/(\d+)/) || [])[1];
+  const name = hdProduct_(v);
+  if (!name) return '';
+  const list = coupangSearch_(name.slice(0, 50));
+  let hit = pid ? list.filter(p => String(p.productId) === pid)[0] : null;
+  if (!hit) {
+    const words = name.toLowerCase().split(/\s+/).filter(w => w.length >= 2);
+    let best = 0;
+    list.forEach(p => {
+      const pn = String(p.productName || '').toLowerCase();
+      const n = words.filter(w => pn.indexOf(w) >= 0).length / Math.max(words.length, 1);
+      if (n >= 0.6 && n > best) { best = n; hit = p; }
+    });
+  }
+  const img = hit && hit.productImage ? String(hit.productImage) : '';
+  return /^https:\/\//.test(img) ? img : '';
+}
+
+function hdPostCarousel_(text, urls) {
+  const t = prop_('TH_TOKEN');
+  const dup = hdRecentSame_(text, t);
+  if (dup) return dup;
+  const kids = urls.map(u => api_('post', TH + '/me/threads', { media_type: 'IMAGE', image_url: u, is_carousel_item: 'true', access_token: t }).id);
+  Utilities.sleep(8000);
+  const c = api_('post', TH + '/me/threads', { media_type: 'CAROUSEL', children: kids.join(','), text: text, access_token: t }).id;
+  Utilities.sleep(8000);
+  const id = api_('post', TH + '/me/threads_publish', { creation_id: c, access_token: t }).id;
+  let link = '';
+  try { link = api_('get', TH + '/' + id, { fields: 'permalink', access_token: t }).permalink; } catch (e) {}
+  return { id: id, link: link };
+}
+
+// 매시간: 최근 7일 안에 올린 글의 조회·좋아요·답글을 AA~AC열에 (AD열은 이미지 방식)
+function hotdealViews() {
+  const sh = hdSheet_();
+  const last = sh.getLastRow();
+  if (last < 2) return;
+  const head = sh.getRange(1, HD.views, 1, 4);
+  if (!head.getDisplayValues()[0].join('')) head.setValues([['조회수', '좋아요', '답글', '이미지']]);
+  const rows = sh.getRange(2, 1, last - 1, HD.thread).getDisplayValues();
+  const t = prop_('TH_TOKEN');
+  const idBy = {};
+  let after = '';
+  for (let page = 0; page < 4; page++) {
+    const p = { fields: 'id,permalink', limit: 100, access_token: t };
+    if (after) p.after = after;
+    const res = api_('get', TH + '/me/threads', p);
+    (res.data || []).forEach(x => { if (x.permalink) idBy[x.permalink.split('?')[0]] = x.id; });
+    after = res.paging && res.paging.cursors && res.paging.cursors.after;
+    if (!after || !(res.paging && res.paging.next)) break;
+  }
+  const now = new Date();
+  let n = 0;
+  rows.forEach((r, i) => {
+    const url = String(r[HD.thread - 1] || '').split('?')[0];
+    const at = hdParse_(r[HD.postedAt - 1]);
+    if (!url || !at || (now - at) / 86400000 > 7 || !idBy[url]) return;
+    try {
+      const ins = api_('get', TH + '/' + idBy[url] + '/insights', { metric: 'views,likes,replies', access_token: t }).data || [];
+      const g = name => { const m = ins.filter(x => x.name === name)[0]; return m && m.values && m.values[0] ? m.values[0].value : 0; };
+      sh.getRange(i + 2, HD.views, 1, 3).setValues([[g('views'), g('likes'), g('replies')]]);
+      n++;
+    } catch (e) { console.log('조회수 실패 행 ' + (i + 2) + ': ' + e.message); }
+  });
+  hdLog_('조회수 갱신 ' + n + '건');
+}
+
 function hdPostText_(text, replyTo, extra) {
   const t = prop_('TH_TOKEN');
   if (!replyTo) {   // 같은 글이 최근에 이미 올라가 있으면 그걸 쓴다 (중복 발행 방지)
