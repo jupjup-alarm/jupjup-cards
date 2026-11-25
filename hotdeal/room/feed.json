@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-25 14:30:39",
+ "updated": "2026-11-25 14:30:50",
  "date": "2026-11-25",
  "items": [
   {
@@ -25,7 +25,8 @@
    "link": "https://link.coupang.com/a/iXoiADIHee",
    "tier": "수동",
    "pid": "9103440833",
-   "grade": "초특가"
+   "grade": "초특가",
+   "img": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/hotdeal/room/img/9103440833.jpg"
   },
   {
    "id": "gb8560881515",
