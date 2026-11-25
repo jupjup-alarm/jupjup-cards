@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-25 19:38:48",
+ "updated": "2026-11-25 20:19:21",
  "date": "2026-11-25",
  "items": [
   {
@@ -160,20 +160,6 @@
    "pid": "8244033639",
    "grade": "초특가",
    "img": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/hotdeal/room/img/8244033639.jpg"
-  },
-  {
-   "id": "nv13471350588",
-   "row": 0,
-   "at": "2026-11-24 20:10",
-   "name": "이모카세 제주 순살 은갈치조림 밀키트 (1팩 2인분)",
-   "price": 17360,
-   "disc": 42,
-   "link": "https://naver.me/xRgF530O",
-   "tier": "수동",
-   "pid": null,
-   "mall": "네이버",
-   "grade": "초특가",
-   "img": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/hotdeal/room/img/58086602482672.jpg"
   }
  ]
 }
