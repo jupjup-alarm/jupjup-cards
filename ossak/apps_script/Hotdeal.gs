@@ -25,6 +25,7 @@
  *   HD_MODE mix (역전 딜 + 할인 HD_GENERAL_MIN_OFF(50)% 이상 일반 딜, 역전 먼저 · qty 면 역전만 · all 이면 모든 딜) · HD_MIN_CHEAPER 30 (개당 몇 % 이상 싸야 하는지)
  *   HD_WAIT_CAPTURE_MIN 20 (all 모드에서 P열 캡처를 기다리는 시간, 0이면 안 기다림)
  *   HD_TOSS off (2026-11-24: 토스 할인율을 믿기 어려워 카톡·스레드 모두 자동 발행 끔 · on이면 일반 딜 조건으로 스레드에) · HD_TOSS_TAG off (on이면 토스 글 첫 줄에 토스 대가성 문구)
+ *   HD_TOPIC_TAG 핫딜 (본문 글마다 붙는 주제 태그, 비우면 안 붙임)
  *   HD_IMG_MODE ab (홀수 날짜 = 상품 사진+옵션 캡처 2장, 짝수 날짜 = 1장 · both 항상 2장 · cap 항상 1장) — 결과는 AA~AD열(조회·좋아요·답글·이미지)
  *   HD_NAVER on (Z열 '네이버링크'가 있는 네이버 딜도 스레드에 — 일반 딜 조건 · off면 제외) · HD_NAVER_TAG off (on이면 첫 줄에 네이버 대가성 문구)
  *   HD_HOOK_SOURCES 지금할인  (제목이 상품명이 아니라 홍보 문구인 출처 — 본문전체(K)가 없으면 보류)
@@ -1119,7 +1120,14 @@ function hdPostCarousel_(text, urls) {
   if (dup) return dup;
   const kids = urls.map(u => api_('post', TH + '/me/threads', { media_type: 'IMAGE', image_url: u, is_carousel_item: 'true', access_token: t }).id);
   Utilities.sleep(8000);
-  const c = api_('post', TH + '/me/threads', { media_type: 'CAROUSEL', children: kids.join(','), text: text, access_token: t }).id;
+  const cp = { media_type: 'CAROUSEL', children: kids.join(','), text: text, access_token: t };
+  const tag = hdCfg_('HD_TOPIC_TAG', '핫딜');
+  let c;
+  if (tag) {
+    try { cp.topic_tag = tag; c = api_('post', TH + '/me/threads', cp).id; }
+    catch (e) { console.log('주제 태그 실패 → 태그 없이: ' + e.message); delete cp.topic_tag; }
+  }
+  if (!c) c = api_('post', TH + '/me/threads', cp).id;
   Utilities.sleep(8000);
   const id = api_('post', TH + '/me/threads_publish', { creation_id: c, access_token: t }).id;
   let link = '';
@@ -1171,7 +1179,14 @@ function hdPostText_(text, replyTo, extra) {
   const params = { media_type: 'TEXT', text: text, access_token: t };
   if (replyTo) params.reply_to_id = replyTo;
   Object.keys(extra || {}).forEach(k => { params[k] = extra[k]; });
-  const c = api_('post', TH + '/me/threads', params).id;
+  // 2026-11-25 사용자 결정: 주제 태그는 글마다 하나, '핫딜' (본문 글만, 답글엔 안 붙음). 태그를 못 받으면 태그 없이 다시 시도.
+  const tag = replyTo ? '' : hdCfg_('HD_TOPIC_TAG', '핫딜');
+  let c;
+  if (tag) {
+    try { params.topic_tag = tag; c = api_('post', TH + '/me/threads', params).id; }
+    catch (e) { console.log('주제 태그 실패 → 태그 없이: ' + e.message); delete params.topic_tag; }
+  }
+  if (!c) c = api_('post', TH + '/me/threads', params).id;
   Utilities.sleep(params.media_type === 'IMAGE' ? 10000 : replyTo ? 4000 : 3000);
   const id = api_('post', TH + '/me/threads_publish', { creation_id: c, access_token: t }).id;
   let link = '';
