@@ -1,17 +1,17 @@
 {
- "updated": "2026-11-25 16:46:12",
+ "updated": "2026-11-25 17:36:51",
  "items": [
   {
-   "id": "m4656f42",
+   "id": "m5433f35",
    "row": 0,
-   "created": "2026-11-25 16:46:11",
+   "created": "2026-11-25 17:36:50",
    "kind": "일반",
    "shop": "coupang",
-   "name": "밀크앤허니 스위트크림 치즈케익 (냉동)",
-   "priceLine": "3주 평균 13,785원 → 8,950원 (35% 저렴)",
+   "name": "띵크유어도그티 강아지 딩고껌 소형 15P 연어 240g, 2개",
+   "priceLine": "원래 가격 14,800원 → 4,660원 (68% 할인)",
    "pair": null,
-   "disclosure": "이 글은 쿠팡 파트너스를 통한 구매가 발생하면 일정 수수료를 받습니다.",
-   "partners": "https://link.coupang.com/a/iXIuO9owbk"
+   "disclosure": "이 글은 쿠팡 인플루언서 활동을 통한 구매가 발생하면 일정 수수료를 받습니다.",
+   "partners": "https://link.coupang.com/a/iXLXXPi3Uq"
   },
   {
    "id": "r6078846d8",
@@ -60,18 +60,6 @@
    "pair": null,
    "disclosure": "이 글은 쿠팡 파트너스를 통한 구매가 발생하면 일정 수수료를 받습니다.",
    "partners": "https://link.coupang.com/a/iW5pqs6SKi"
-  },
-  {
-   "id": "r1310ef20f",
-   "row": 131,
-   "created": "2026-11-23 16:55:23",
-   "kind": "역전",
-   "shop": "coupang",
-   "name": "코카콜라 제로",
-   "priceLine": "1개당 3,638원 → 2,000원 (45% 더 쌈)",
-   "pair": "4개 14,550원 → 8개 16,000원",
-   "disclosure": "이 글은 쿠팡 인플루언서 활동을 통한 구매가 발생하면 일정 수수료를 받습니다.",
-   "partners": "https://link.coupang.com/a/iUpovS4RyK"
   }
  ]
 }
