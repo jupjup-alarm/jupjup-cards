@@ -1,0 +1,51 @@
+{
+ "key": "lh2015122300021137",
+ "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300021137&ccrCnntSysDsCd=03&uppAisTpCd=39&aisTpCd=42&mi=1026",
+ "checked": "2026-11-25 23:45",
+ "files": [
+  {
+   "fileid": "69558845",
+   "name": "의왕월암A-1,A-3블록신혼희망타운행복주택공고문.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69558849",
+   "name": "의왕월암A-1,A-3블록신혼희망타운행복주택공고문.pdf",
+   "kind": "notice",
+   "got": "ok",
+   "md5": "cf5c96c7d9c9911405d0d7829b321a1f",
+   "pages": 41,
+   "bytes": 806199
+  },
+  {
+   "fileid": "69560360",
+   "name": "의왕월암A1_A3블록신혼희망타운행복주택팸플릿.pdf",
+   "kind": "pamphlet",
+   "got": "ok",
+   "md5": "a3f858690671b8cceafacddf598dcb7d",
+   "pages": 21,
+   "bytes": 44876547
+  },
+  {
+   "fileid": "69558921",
+   "name": "별첨1.(필수)개인정보수집이용및제3자제공동의서등.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69558922",
+   "name": "별첨2.예비신혼부부신청확인서,세대구성확인서.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69558923",
+   "name": "별첨3.본인행정정보제공요구서.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69558924",
+   "name": "별첨4.위임장(양식).hwpx",
+   "kind": "other"
+  }
+ ],
+ "changed": true
+}
