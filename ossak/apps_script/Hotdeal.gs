@@ -1235,7 +1235,7 @@ function hotdealViews() {
   if (last < 2) return;
   const head = sh.getRange(1, HD.views, 1, 5);
   if (!head.getDisplayValues()[0].join('')) head.setValues([['조회수', '좋아요', '답글', '이미지', '문체']]);
-  const rows = sh.getRange(2, 1, last - 1, HD.thread).getDisplayValues();
+  const rows = sh.getRange(2, 1, last - 1, HD.postedAt).getDisplayValues();
   const t = prop_('TH_TOKEN');
   const idBy = {};
   let listed = 0, sample = '', withUrl = 0;
