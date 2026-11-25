@@ -25,6 +25,7 @@
  *   HD_MODE mix (역전 딜 + 할인 HD_GENERAL_MIN_OFF(50)% 이상 일반 딜, 역전 먼저 · qty 면 역전만 · all 이면 모든 딜) · HD_MIN_CHEAPER 30 (개당 몇 % 이상 싸야 하는지)
  *   HD_WAIT_CAPTURE_MIN 20 (all 모드에서 P열 캡처를 기다리는 시간, 0이면 안 기다림)
  *   HD_TOSS off (2026-11-24: 토스 할인율을 믿기 어려워 카톡·스레드 모두 자동 발행 끔 · on이면 일반 딜 조건으로 스레드에) · HD_TOSS_TAG off (on이면 토스 글 첫 줄에 토스 대가성 문구)
+ *   ANTHROPIC_KEY (캐릭터 글용 Claude API 키 — 스크립트 속성에만) · HD_STYLE info|story|ab · HD_STORY_MODEL
  *   HD_TOPIC_TAG 핫딜 (본문 글마다 붙는 주제 태그, 비우면 안 붙임)
  *   HD_IMG_MODE ab (홀수 날짜 = 상품 사진+옵션 캡처 2장, 짝수 날짜 = 1장 · both 항상 2장 · cap 항상 1장) — 결과는 AA~AD열(조회·좋아요·답글·이미지)
  *   HD_NAVER on (Z열 '네이버링크'가 있는 네이버 딜도 스레드에 — 일반 딜 조건 · off면 제외) · HD_NAVER_TAG off (on이면 첫 줄에 네이버 대가성 문구)
@@ -37,7 +38,7 @@
 const HD_SHEET_ID = '13-ecoze8qCHs0rcBNWfer9feg7CU-cfVYDEUzA9t5d0';
 const HD_TAB = '필터통과';
 const HD = { at: 1, src: 2, title: 3, price: 4, kw: 5, score: 6, urls: 7, orig: 8, draft: 9, status: 10, body: 11,
-  link: 12, thread: 13, postedAt: 14, note: 15, cap: 16, cmp: 17, prod: 18, inf: 23, page: 24, pname: 25, nlink: 26, views: 27, likes: 28, replies: 29, img: 30 };
+  link: 12, thread: 13, postedAt: 14, note: 15, cap: 16, cmp: 17, prod: 18, inf: 23, page: 24, pname: 25, nlink: 26, views: 27, likes: 28, replies: 29, img: 30, style: 31 };
 const HD_HEAD = ['변환링크', '스레드URL', '발행시각', '비고(에러)', '캡처', '수량비교', '상품주소'];   // S~U 카톡, V 토스링크, W 인플링크, X 딜페이지, Y 상품명 (맥이 씀)   // P·Q열은 맥북 캡처기, R열은 맥북(단축 링크 풀기)·발행기(파트너스 검색)
 const HD_DISCLOSURE = '이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.';
 const HD_CACHE_DAYS = 7;
@@ -440,7 +441,7 @@ function hdOne_(sh, row, v, recover, dry) {
     catch (e2) { return hdFail_(sh, row, dry, lines, '본문 발행 실패', notes.concat([e2.message])); }
   } finally { if (card) hdCardDrop_(card); }
   const at = hdStamp_(new Date());
-  try { hdWrite_(sh, row, { thread: main.link || main.id, postedAt: at }); sh.getRange(row, HD.img).setValue(variant); }
+  try { hdWrite_(sh, row, { thread: main.link || main.id, postedAt: at }); sh.getRange(row, HD.img).setValue(variant); sh.getRange(row, HD.style).setValue(post.style || '정보'); }
   catch (e) {   // 올라갔는데 시트에 못 적음 → 절대 재발행하지 않게 크게 남김
     const msg = '!!! 스레드에 올라갔지만 시트 기록 실패 — 재발행 금지 !!!\n행 ' + row + ' 글 ' + main.id + ' ' + main.link + '\n' + post.main;
     console.error(msg); mail_('[특가반장] 발행됨·시트 기록 실패 (행 ' + row + ')', msg);
@@ -467,7 +468,7 @@ function hdOne_(sh, row, v, recover, dry) {
 }
 
 function hdRetryReply_(sh, row, v) {
-  const post = hdCompose_(v, row);
+  const post = hdCompose_(v, row, true);
   const id = String(v[HD.thread - 1]).split('/').pop();
   const real = /^\d+$/.test(id) ? id : hdFindPostId_(v[HD.thread - 1]);
   if (!real) { hdWrite_(sh, row, { status: '실패: 댓글 재시도 불가', note: '글 ID를 못 찾음 — 손으로 댓글' }); return; }
@@ -746,7 +747,7 @@ function hdHash_(s) {
    1/2 본문: 초성 퀴즈 + 짧은 반말 3줄 (링크 없음) + 가격 카드 그림
    2/2 댓글: "실시간 알림은 요기로!!!" + 채팅방 링크가 있는 내 글 인용 (HD_CHAT_POST)
    → 같은 날 수정: 3/3(쿠팡 링크)는 뺌 — 카톡방으로만 유도. 본문에 가격 카드 그림(hdCard_). */
-function hdCompose_(v, rowNo) {
+function hdCompose_(v, rowNo, noStory) {
   // 2026-11-23 사용자 결정(운영 전략 문서): 첫 줄에 브랜드+용량, 둘째 줄에 숫자(수량 함정·단가), 셋째 줄에 판단, 마지막에 질문 한 줄
   const d = hdFacts_(v);
   const pr = hdPair_(v);
@@ -772,7 +773,13 @@ function hdCompose_(v, rowNo) {
   // 2026-11-23 사용자 결정: 토스 딜도 카톡방에서 안내하므로 스레드 본문엔 토스 문구를 넣지 않음 (HD_TOSS_TAG=on 이면 첫 줄에 넣음)
   if (hdIsToss_(v) && hdCfg_('HD_TOSS_TAG', 'off') === 'on') lines.unshift(HD_DISCLOSURE_TOSS);
   if (hdIsNaver_(v) && hdCfg_('HD_NAVER_TAG', 'off') === 'on') lines.unshift(HD_DISCLOSURE_NAVER);   // 기본 off — 카톡방에서 안내
-  const main = lines.join('\n') + (tag && tag.toLowerCase() !== 'off' && !hdIsToss_(v) ? '\n' + tag : '');
+  let main = lines.join('\n') + (tag && tag.toLowerCase() !== 'off' && !hdIsToss_(v) ? '\n' + tag : '');
+  // 2026-11-25 사용자 결정: 캐릭터 말투 글(B). 실패하면 위 정보형 글로 그대로 나간다.
+  let style = '정보';
+  if (!noStory && hdStoryOn_(k)) {
+    const st = hdStory_(v, d, pr, nm);
+    if (st) { main = st + '\n' + lines[lines.length - 2]; style = '캐릭터'; }
+  }
 
   // 답글 1 (역전 딜만): 딜 페이지 링크 + 대가성 문구. X열(맥이 만든 autodm 딜 페이지)이 있을 때만.
   let linkReply = '';
@@ -782,7 +789,7 @@ function hdCompose_(v, rowNo) {
     linkReply = '가격·옵션 다시 확인 👉 ' + page + '\n\n' + (inf ? HD_DISCLOSURE_INF : HD_DISCLOSURE);
   }
   // 답글 2: 같은 문장 반복 대신 이유가 있는 안내 (돌려 씀) + 채팅방 글 인용
-  return { main: main, link: linkReply, quote: HD_FOMO[k % HD_FOMO.length] };
+  return { main: main, link: linkReply, quote: HD_FOMO[k % HD_FOMO.length], style: style };
 }
 
 const HD_DISCLOSURE_INF = '이 포스팅은 쿠팡 인플루언서 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.';
@@ -1086,6 +1093,82 @@ function hotdealTestCard() {
 }
 
 /* ───────── 스레드 ───────── */
+/* ───────── 캐릭터 말투 글 (2026-11-25 사용자 결정) ─────────
+   '특가반장' 캐릭터가 딜을 자기 말투로 한 번 평하는 3~5줄 글. Claude API로 만든다 (스크립트 속성 ANTHROPIC_KEY 필요).
+   ★ 지켜야 할 선: 캐릭터는 '써본 경험·가족·후기'를 지어내지 않는다. 숫자와 의견만 말한다. 검사에 걸리면 정보형 글로 돌아간다.
+   HD_STYLE: info(기본 정보형만) · story(전부 캐릭터) · ab(행 번호 짝수만 캐릭터)  /  HD_STORY_MODEL  */
+const HD_PERSONA = [
+  '너는 스레드 계정 "특가반장"의 글을 쓰는 캐릭터다.',
+  '캐릭터: 가격표와 계산기만 믿는 동네 반장. 무뚝뚝하지만 정 많고 약간 허세. 반말, 짧은 문장, 가끔 "ㅋㅋ"·"ㄹㅇ" 정도만(과하지 않게). 이모지는 많아야 1개.',
+  '버릇: 숫자를 직접 계산해서 보여준다("계산해봤음"). 살지 말지 결론은 한 줄로 단호하게. 사람들을 "얘들아" 또는 "반원들"이라고 부른다.',
+  '절대 금지: ① 써봤다·먹어봤다·샀다·후기·내 경험 ② 가족(남편·애·엄마) ③ 판매량·리뷰 수·평점 ④ 입력에 없는 숫자·사실 ⑤ 링크·해시태그 ⑥ "최저가 보장"·"무조건"·"역대급" 같은 과장.',
+  '쓸 수 있는 것: 입력에 있는 가격·수량·단가·할인율의 계산과 비교, 그에 대한 반응과 의견("이 가격이면 쟁여도 됨"), 독자에게 던지는 질문.',
+  '형식: 3~5줄, 전체 220자 이내. 첫 줄에 상품명(브랜드 포함)과 핵심 숫자 하나. 마지막 줄은 독자에게 묻는 질문 한 줄. 글만 출력한다(설명·따옴표 금지).'
+].join('\n');
+
+function hdStoryOn_(k) {
+  const m = hdCfg_('HD_STYLE', 'info');
+  if (m === 'story') return true;
+  if (m === 'ab') return k % 2 === 0;
+  return false;
+}
+
+function hdStory_(v, d, pr, nm) {
+  const key = hdProp_('ANTHROPIC_KEY');
+  if (!key) return '';
+  const facts = [];
+  facts.push('상품: ' + nm + (pr && pr.size ? ' ' + pr.size : ''));
+  facts.push('가격: ' + d.priceTxt + (d.ship ? ' (' + d.ship + ')' : ''));
+  if (d.off) facts.push('할인율: ' + d.off + '%');
+  if (d.per) facts.push(d.unit + '당: ' + d.per.toLocaleString('ko-KR') + '원');
+  if (pr) {
+    const per = (o) => Math.round(o.p / o.q);
+    facts.push('옵션 비교: ' + pr.a.q + pr.a.u + ' ' + pr.a.p.toLocaleString('ko-KR') + '원 → ' + pr.b.q + pr.b.u + ' ' + pr.b.p.toLocaleString('ko-KR') + '원');
+    facts.push('개당: ' + per(pr.a).toLocaleString('ko-KR') + '원 → ' + per(pr.b).toLocaleString('ko-KR') + '원 (' + pr.cheaper + '% 쌈)');
+    facts.push('추가금: ' + (pr.b.p - pr.a.p).toLocaleString('ko-KR') + '원');
+  }
+  const factText = facts.join('\n');
+  let out = '';
+  try {
+    const r = UrlFetchApp.fetch('https://api.anthropic.com/v1/messages', {
+      method: 'post', contentType: 'application/json', muteHttpExceptions: true,
+      headers: { 'x-api-key': key, 'anthropic-version': '2023-06-01' },
+      payload: JSON.stringify({ model: hdCfg_('HD_STORY_MODEL', 'claude-sonnet-5-5'), max_tokens: 400, system: HD_PERSONA,
+        messages: [{ role: 'user', content: '이 딜로 글 하나 써줘.\n' + factText }] })
+    });
+    if (r.getResponseCode() !== 200) { console.log('캐릭터 글 API ' + r.getResponseCode() + ' ' + r.getContentText().slice(0, 120)); return ''; }
+    const j = JSON.parse(r.getContentText());
+    out = String((j.content && j.content[0] && j.content[0].text) || '').trim();
+  } catch (e) { console.log('캐릭터 글 실패: ' + e.message); return ''; }
+  const bad = hdStoryCheck_(out, factText);
+  if (bad) { console.log('캐릭터 글 반려: ' + bad + ' → ' + out.slice(0, 80)); return ''; }
+  return out;
+}
+
+// 숫자·금지어·길이 검사. 걸리면 사유를 돌려준다.
+function hdStoryCheck_(text, factText) {
+  if (!text) return '비어 있음';
+  if (text.length > 260) return '너무 김';
+  if (/https?:|#\S|www\./.test(text)) return '링크·태그';
+  if (/써봤|써보니|먹어봤|먹어보니|사봤|샀는데|샀어|후기|리뷰|평점|남편|아내|와이프|우리 ?집|애들|아이가|엄마|아빠|내 ?돈|판매량|팔렸|만개|최저가 ?보장|무조건|역대급|인생템|내돈내산/.test(text)) return '지어낸 경험·과장 표현';
+  const allowed = {};
+  (factText.match(/\d[\d,]*/g) || []).forEach(n => { allowed[n.replace(/,/g, '')] = 1; });
+  const nums = (text.match(/\d[\d,]*/g) || []).map(n => n.replace(/,/g, '')).filter(n => n.length >= 2 || Number(n) > 9);
+  for (let i = 0; i < nums.length; i++) if (!allowed[nums[i]]) return '입력에 없는 숫자 ' + nums[i];
+  return '';
+}
+
+// 캐릭터 글 시험: 시트 맨 아래 딜 하나로 미리 만들어 본다 (발행 안 함)
+function hotdealStoryTest() {
+  const sh = hdSheet_();
+  const rows = sh.getRange(2, 1, sh.getLastRow() - 1, HD.nlink).getDisplayValues();
+  const i = rows.map((r, n) => n).reverse().find(n => !hdHoldReason_(rows[n]) && !hdIsNaver_(rows[n]));
+  const v = rows[i];
+  const d = hdFacts_(v), pr = hdPair_(v), nm = hdShortName_(d.name) || d.cat || '이거';
+  const t = hdStory_(v, d, pr, nm);
+  hdLog_('행 ' + (i + 2) + ' ' + v[HD.title - 1] + '\n── 캐릭터 글 ──\n' + (t || '(만들지 못함: 로그의 사유 확인 — ANTHROPIC_KEY 있는지)'));
+}
+
 /* ───────── 조회수 기록 + 이미지 2장 실험 (2026-11-25) ───────── */
 function hdImgBoth_() {
   const m = hdCfg_('HD_IMG_MODE', 'ab');
@@ -1140,8 +1223,8 @@ function hotdealViews() {
   const sh = hdSheet_();
   const last = sh.getLastRow();
   if (last < 2) return;
-  const head = sh.getRange(1, HD.views, 1, 4);
-  if (!head.getDisplayValues()[0].join('')) head.setValues([['조회수', '좋아요', '답글', '이미지']]);
+  const head = sh.getRange(1, HD.views, 1, 5);
+  if (!head.getDisplayValues()[0].join('')) head.setValues([['조회수', '좋아요', '답글', '이미지', '문체']]);
   const rows = sh.getRange(2, 1, last - 1, HD.thread).getDisplayValues();
   const t = prop_('TH_TOKEN');
   const idBy = {};
