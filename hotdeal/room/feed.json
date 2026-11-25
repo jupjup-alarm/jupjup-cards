@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-25 18:59:00",
+ "updated": "2026-11-25 19:38:48",
  "date": "2026-11-25",
  "items": [
   {
@@ -174,19 +174,6 @@
    "mall": "네이버",
    "grade": "초특가",
    "img": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/hotdeal/room/img/58086602482672.jpg"
-  },
-  {
-   "id": "m7403444126",
-   "row": 0,
-   "at": "2026-11-24 19:27",
-   "name": "요리락 고추장 제육 불고기, 1kg",
-   "price": 10600,
-   "disc": 20,
-   "link": "https://link.coupang.com/a/iWeZ3pfsPI",
-   "tier": "수동",
-   "pid": "7403444126",
-   "grade": "",
-   "img": "https://ads-partners.coupang.com/image1/tKccFNa-3-xtXDUftEXuMltkld1sY2MF-RlbtT0YKQp2wa7etHiRIPk4VHrI9RPc6OsQ0fDKHVlcfuhXXh2Hn-wngmcMPYNzN4qJ_-Y1n7FE65N7umS7emWL-fD5u4gbBWCsAOODjMfbbKxrKT0KifONMEOPzovF0wUw6fnSMaOICSKidFCPd-WwCTEB3ttASIGx7n2Pn00CAHjon8l7jpBrtHttNveaOyClw_D6aDGh_vmP0HGmf-CWaOq9fWbykUkmZc_RrldRtbRoKn8OFuFeOx7xjhw7cQgCn__JOeYLPKWms2rzjuKWiuCt82848_Ta5jze_yzr0hShxH7EEn0QzCi_Pi7fLBEoviDa3Lh7Fdj5yHwSqXPIaBP25Hy7dd46TQ6slS4Dx16Kdsu6EPAJiy2zsKV3vZC8A1gdRuNch3kt0GR_O-jaWGOp7ioxZNWEuYjYfnejK9hWDVI9E7eZowu42yW74Scu9f0n--l8DZto-Vnw993OdxHGNo9vMJ5LldVYcq-0KXwcJT2sqpntxMix3a3rI_pglsEH2k56LKGhn8FDqv2F6A=="
   }
  ]
 }
