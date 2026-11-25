@@ -1236,29 +1236,37 @@ function hotdealViews() {
   const rows = sh.getRange(2, 1, last - 1, HD.thread).getDisplayValues();
   const t = prop_('TH_TOKEN');
   const idBy = {};
+  let listed = 0, sample = '', withUrl = 0;
   let after = '';
-  for (let page = 0; page < 4; page++) {
+  for (let page = 0; page < 6; page++) {
     const p = { fields: 'id,permalink', limit: 100, access_token: t };
     if (after) p.after = after;
     const res = api_('get', TH + '/me/threads', p);
-    (res.data || []).forEach(x => { if (x.permalink) idBy[x.permalink.split('?')[0]] = x.id; });
+    (res.data || []).forEach(x => { const c = hdPostCode_(x.permalink); if (c) { idBy[c] = x.id; listed++; if (!sample) sample = x.permalink; } });
     after = res.paging && res.paging.cursors && res.paging.cursors.after;
     if (!after || !(res.paging && res.paging.next)) break;
   }
   const now = new Date();
   let n = 0;
   rows.forEach((r, i) => {
-    const url = String(r[HD.thread - 1] || '').split('?')[0];
+    const code = hdPostCode_(r[HD.thread - 1]);   // 도메인(threads.com/.net)이 달라도 맞게 글 코드로 맞춘다
     const at = hdParse_(r[HD.postedAt - 1]);
-    if (!url || !at || (now - at) / 86400000 > 7 || !idBy[url]) return;
+    if (!code || !at || (now - at) / 86400000 > 7) return;
+    withUrl++;
+    if (!idBy[code]) return;
     try {
-      const ins = api_('get', TH + '/' + idBy[url] + '/insights', { metric: 'views,likes,replies', access_token: t }).data || [];
+      const ins = api_('get', TH + '/' + idBy[code] + '/insights', { metric: 'views,likes,replies', access_token: t }).data || [];
       const g = name => { const m = ins.filter(x => x.name === name)[0]; return m && m.values && m.values[0] ? m.values[0].value : 0; };
       sh.getRange(i + 2, HD.views, 1, 3).setValues([[g('views'), g('likes'), g('replies')]]);
       n++;
     } catch (e) { console.log('조회수 실패 행 ' + (i + 2) + ': ' + e.message); }
   });
-  hdLog_('조회수 갱신 ' + n + '건');
+  hdLog_('조회수 갱신 ' + n + '건 (스레드 글 ' + listed + '개 확인, 시트의 최근 7일 글 ' + withUrl + '개)' + (n === 0 ? '\n예시 주소: 스레드 ' + sample : ''));
+}
+
+// 글 주소 → 고유 코드 (…/post/DgKObc0m_U6 → DgKObc0m_U6)
+function hdPostCode_(link) {
+  return (String(link || '').match(/\/post\/([A-Za-z0-9_-]+)/) || [])[1] || '';
 }
 
 function hdPostText_(text, replyTo, extra) {
