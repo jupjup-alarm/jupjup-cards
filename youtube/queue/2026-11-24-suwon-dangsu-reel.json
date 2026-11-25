@@ -1,6 +1,6 @@
 {
  "slug": "2026-11-24-suwon-dangsu-reel",
- "status": "예약됨",
+ "status": "게시됨",
  "created": "2026-11-24 12:05",
  "row": 42,
  "date": "2026-11-24",
@@ -25,5 +25,6 @@
  "tries": 1,
  "updated": "2026-11-24 12:25",
  "url": "https://www.youtube.com/shorts/tnLp9tpIiiw",
- "video_id": "tnLp9tpIiiw"
+ "video_id": "tnLp9tpIiiw",
+ "channel_ok": true
 }
