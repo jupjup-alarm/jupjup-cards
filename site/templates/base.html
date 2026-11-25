@@ -131,6 +131,9 @@
 </nav>
 <script>(function(){var t=document.getElementById("kktip");if(!t)return;var dk=new Date(Date.now()+324e5).toISOString().slice(0,10);try{if(localStorage.getItem("kkTip")===dk)return}catch(e){}t.hidden=false;var a0=document.querySelector(".tabbar a.kk");function pos(){if(!a0||t.hidden)return;var n=t.parentNode.getBoundingClientRect(),r=a0.getBoundingClientRect();t.style.right=Math.max(8,n.right-r.right+4)+"px";var tr=t.getBoundingClientRect();t.style.setProperty("--ax",(r.left+r.width/2-tr.left-6)+"px")}pos();addEventListener("resize",pos);addEventListener("load",pos);try{document.fonts&&document.fonts.ready.then(pos);window.ResizeObserver&&new ResizeObserver(pos).observe(t)}catch(e){}function off(){t.hidden=true;try{localStorage.setItem("kkTip",dk)}catch(e){}}t.querySelector("button").addEventListener("click",off);var a=document.querySelector(".tabbar a.kk");a&&a.addEventListener("click",off)})()</script>
 {% endif %}
+{# 2026-11-25 사용자 제보 "인스타 DM → 인스타 앱 브라우저(아이폰)에서 공식 공고 보기 버튼이 안 눌림": 앱 안 브라우저는 새 창(target=_blank) 링크를 무시하는 일이 있어 같은 창으로 연다 (일반 브라우저는 그대로 새 탭) #}
+<script>(function(){if(!/Instagram|FBAN|FBAV|FB_IAB|Threads|Barcelona|KAKAOTALK|NAVER\(inapp|Line\/|DaumApps|everytimeApp/i.test(navigator.userAgent))return;
+document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[target="_blank"]');if(a&&/^https?:/.test(a.href))a.removeAttribute('target');},true);})();</script>
 {% block after %}{% endblock %}
 <script>
 (function(){
