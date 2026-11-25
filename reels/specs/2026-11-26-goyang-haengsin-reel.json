@@ -1,0 +1,99 @@
+{
+ "slug": "2026-11-26-goyang-haengsin-reel",
+ "title": "고양 행신 재건축 민영 59㎡",
+ "series": "줍줍알람",
+ "style": "story",
+ "voice": "voices/0de4a716bcd6/",
+ "voice_speed": 1.0,
+ "bgm": "music/beat-one.mp3",
+ "thumb": {
+  "lines": [
+   "고양 59㎡ 새 아파트",
+   "6억4천만원대"
+  ]
+ },
+ "pool": [
+  {
+   "img": "photos/site/2026000585/birdseye-auto-1.jpg",
+   "credit": "이미지: 분양 홈페이지 · 실제와 다를 수 있음",
+   "pos": "20% 50%"
+  },
+  {
+   "img": "photos/site/2026000585/birdseye-auto-3.jpg",
+   "credit": "이미지: 분양 홈페이지 · 실제와 다를 수 있음",
+   "pos": "80% 50%"
+  },
+  {
+   "img": "photos/site/2026000585/birdseye-auto-1.jpg",
+   "credit": "이미지: 분양 홈페이지 · 실제와 다를 수 있음",
+   "pos": "85% 40%"
+  }
+ ],
+ "scenes": [
+  {
+   "type": "story",
+   "say": "고양 행신동에 59㎡ 새 아파트가 6억 4천만 원대래요. 102세대래요.",
+   "word": "6억 4천만 원대",
+   "shots": [
+    {
+     "img": "photos/site/2026000585/birdseye-auto-1.jpg",
+     "credit": "이미지: 분양 홈페이지 · 실제와 다를 수 있음",
+     "pos": "center 45%"
+    },
+    {
+     "img": "photos/site/2026000585/birdseye-auto-3.jpg",
+     "credit": "이미지: 분양 홈페이지 · 실제와 다를 수 있음",
+     "pos": "center 40%"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "심지어, 2029년 5월에 입주하는 새 아파트래요.",
+   "word": "2029년 5월",
+   "shots": [
+    {
+     "img": "photos/site/2026000585/birdseye-auto-3.jpg",
+     "credit": "이미지: 분양 홈페이지 · 실제와 다를 수 있음",
+     "pos": "20% 45%"
+    },
+    {
+     "img": "photos/site/2026000585/birdseye-auto-1.jpg",
+     "credit": "이미지: 분양 홈페이지 · 실제와 다를 수 있음",
+     "pos": "70% 40%"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "이게 어떻게 가능할까요?",
+   "dim": true,
+   "shots": [
+    {
+     "img": "photos/site/2026000585/birdseye-auto-1.jpg",
+     "credit": "이미지: 분양 홈페이지 · 실제와 다를 수 있음",
+     "pos": "10% 50%"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "비규제지역 민영 아파트거든요. 고양이나 수도권 사는 사람이면 통장으로 넣을 수 있고, 재당첨 제한도 없대요.",
+   "word": "재당첨 제한",
+   "shots": [
+    {
+     "img": "maps/5c6d9c6bef44.png"
+    },
+    {
+     "img": "photos/site/2026000585/birdseye-auto-3.jpg",
+     "credit": "이미지: 분양 홈페이지 · 실제와 다를 수 있음",
+     "pos": "85% 50%"
+    }
+   ]
+  },
+  {
+   "type": "end",
+   "say": "특공은 11월 30일이래요. 단지 이름이랑 공고 정리는, 댓글에 '고양'이라고 남겨 주세요."
+  }
+ ]
+}

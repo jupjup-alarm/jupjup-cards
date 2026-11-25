@@ -1,0 +1,18 @@
+{
+ "slug": "2026-11-26-goyang-haengsin-reel",
+ "duration": 23.89,
+ "voiced": true,
+ "narration_s": 21.3,
+ "mean_db": -18.7,
+ "voice": "voices/0de4a716bcd6/",
+ "video": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-26-goyang-haengsin-reel/2026-11-26-goyang-haengsin-reel.mp4",
+ "cover": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-26-goyang-haengsin-reel/2026-11-26-goyang-haengsin-reel_thumb.jpg",
+ "size_mb": 7.81,
+ "warnings": [
+  "확대(Real-ESRGAN x4): 1장 — birdseye-auto-1.jpg",
+  "호흡: 장면 1 대본에 없는 곳에서 0.27초 쉼 (③ 대본 쉼표 위치 확인)",
+  "호흡: 장면 4 대본에 없는 곳에서 0.30초 쉼 (③ 대본 쉼표 위치 확인)",
+  "사진: 컷 10개 · 서로 다른 사진 3장",
+  "사진 반복: birdseye-auto-3.jpg 4번 — 단지 그림을 shots·pool에 더 넣을 것"
+ ]
+}
