@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-26 18:16:52",
+ "updated": "2026-11-26 18:48:00",
  "date": "2026-11-26",
  "items": [
   {
@@ -144,19 +144,6 @@
    "pid": "8289326330",
    "grade": "역대급",
    "img": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/hotdeal/room/img/8289326330.jpg"
-  },
-  {
-   "id": "mlabnosh-7264b15a",
-   "row": 0,
-   "at": "2026-11-25 18:32",
-   "name": "랩노쉬 프로틴 드링크 맥스 딸기 400ml, 18개",
-   "price": 37530,
-   "disc": 40,
-   "link": "https://link.coupang.com/a/iXP8lBijfw",
-   "tier": "수동",
-   "pid": "9500495070",
-   "grade": "역대급",
-   "img": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/hotdeal/room/img/9500495070.jpg"
   }
  ]
 }
