@@ -1,0 +1,51 @@
+{
+ "key": "lh0000061217",
+ "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061217&ccrCnntSysDsCd=02&uppAisTpCd=05&aisTpCd=05&mi=1027",
+ "checked": "2026-11-26 23:20",
+ "files": [
+  {
+   "fileid": "69618414",
+   "name": "★병점복합타운주복1블록공공분양입주자모집공고문(최종).hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69618419",
+   "name": "★병점복합타운주복1블록공공분양입주자모집공고문(최종).pdf",
+   "kind": "notice",
+   "got": "ok",
+   "md5": "1977111eb93977ade4923707c1aeb88c",
+   "pages": 48,
+   "bytes": 1541640
+  },
+  {
+   "fileid": "69618618",
+   "name": "★병점복합타운주복1블록_팸플릿(최종).pdf",
+   "kind": "pamphlet",
+   "got": "ok",
+   "md5": "5feb1cbaf6793e2655a6647339ba9ef2",
+   "pages": 30,
+   "bytes": 38915857
+  },
+  {
+   "fileid": "69618317",
+   "name": "1.위임장.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69618318",
+   "name": "2-1.개인정보수집이용및제3자제공동의서(특별공급).hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69618320",
+   "name": "2-2.개인정보수집이용및제3자제공동의서(일반공급).hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69618322",
+   "name": "3.주택취득자금조달및입주계획서.hwpx",
+   "kind": "other"
+  }
+ ],
+ "changed": true
+}
