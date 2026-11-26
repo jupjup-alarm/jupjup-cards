@@ -42,6 +42,26 @@
    "checked_by": "정기 작업"
   },
   {
+   "cat": "interior",
+   "kind": "인테리어",
+   "label": "블록1 투시도 26A",
+   "file": "photos/site/lh2015122300021055/interior-b1-26a.jpg",
+   "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=37110591",
+   "crop": "",
+   "w": 2200,
+   "h": 1553,
+   "md5": "dc26b6e243369eb3b09f23d2faf23776",
+   "block": "블록1",
+   "lh_tab": "투시도",
+   "desc": "26A 평면도",
+   "photo": false,
+   "checked": "2026-11-26",
+   "ok": true,
+   "name_shown": false,
+   "full": false,
+   "checked_by": "정기 작업"
+  },
+  {
    "cat": "siteplan",
    "kind": "단지배치도",
    "label": "블록1 단지배치도",
@@ -102,26 +122,6 @@
    "checked_by": "정기 작업"
   },
   {
-   "cat": "interior",
-   "kind": "인테리어",
-   "label": "블록1 투시도 26A",
-   "file": "photos/site/lh2015122300021055/interior-b1-26a.jpg",
-   "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=37110591",
-   "crop": "",
-   "w": 2200,
-   "h": 1553,
-   "md5": "dc26b6e243369eb3b09f23d2faf23776",
-   "block": "블록1",
-   "lh_tab": "투시도",
-   "desc": "26A 평면도",
-   "photo": false,
-   "checked": "2026-11-26",
-   "ok": true,
-   "name_shown": false,
-   "full": false,
-   "checked_by": "정기 작업"
-  },
-  {
    "cat": "notice",
    "kind": "공고문",
    "label": "공고문 공급금액 (p.1)",
@@ -145,7 +145,7 @@
    "crop": "",
    "w": 1124,
    "h": 702,
-   "md5": "620a89822b784b9a5767cd2fbfbd1b91",
+   "md5": "dd78d57d3e0fd0db6117cbb614daa3d5",
    "photo": false,
    "full": false,
    "page": 10,
@@ -165,10 +165,28 @@
    "full": false,
    "page": 2,
    "marked": []
+  },
+  {
+   "cat": "aerial",
+   "kind": "위성사진",
+   "label": "위성사진",
+   "file": "photos/sat/be641d8fcb13.png",
+   "src": "NAVER 위성 지도",
+   "w": 1080,
+   "h": 1920,
+   "photo": true,
+   "full": true,
+   "ok": true,
+   "checked": true,
+   "from": "satellite",
+   "credit": "위성사진 © NAVER Corp."
   }
  ],
  "links": [],
  "owner": "LH",
  "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
- "updated": "2026-11-25 23:45"
+ "updated": "2026-11-26 12:33",
+ "name": "옹진백령 영구임대 예비입주자 모집 (마을정비형 3호·공공실버 5호 — 백령면 현장접수 12/8~9)",
+ "row": 212,
+ "lh_checked": "2026-11-26"
 }
