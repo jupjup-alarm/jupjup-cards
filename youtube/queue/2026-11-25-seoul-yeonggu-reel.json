@@ -20,5 +20,8 @@
  "thumb": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-25-seoul-yeonggu-reel/2026-11-25-seoul-yeonggu-reel_thumb.jpg",
  "deadline": "12/4",
  "keywords": "서울 영구임대 예비입주자 / 서울 영구임대 자격 / 영구임대 159호",
- "publish_at": "2026-11-26T21:30+09:00"
+ "publish_at": "2026-11-26T21:30+09:00",
+ "why": "    at dispatchCdpSendError (file:////[eval1]:8187:5)",
+ "tries": 1,
+ "updated": "2026-11-26 12:05"
 }
