@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-26 11:18:29",
+ "updated": "2026-11-26 11:49:21",
  "date": "2026-11-26",
  "items": [
   {
@@ -144,20 +144,6 @@
    "pid": "9103440833",
    "grade": "초특가",
    "img": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/hotdeal/room/img/9103440833.jpg"
-  },
-  {
-   "id": "kurly-blueberry-4ed51938",
-   "row": 0,
-   "at": "2026-11-25 11:44",
-   "name": "컬리N마트 냉동 칠레산 블루베리 1kg",
-   "price": 5900,
-   "disc": 58,
-   "link": "https://product.shopping.naver.com/kurlynmart/12274596222",
-   "tier": "수동",
-   "pid": null,
-   "mall": "네이버",
-   "grade": "",
-   "img": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/hotdeal/room/img/117018469574599.jpg"
   }
  ]
 }
