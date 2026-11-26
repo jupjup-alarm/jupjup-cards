@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-26 15:55:42",
+ "updated": "2026-11-26 16:46:44",
  "date": "2026-11-26",
  "items": [
   {
@@ -170,19 +170,6 @@
    "pid": "9720567484",
    "grade": "특가",
    "img": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/hotdeal/room/img/9720567484.jpg"
-  },
-  {
-   "id": "mcheesecake-f8f9779f",
-   "row": 0,
-   "at": "2026-11-25 16:46",
-   "name": "밀크앤허니 스위트크림 치즈케익 (냉동)",
-   "price": 8950,
-   "disc": 35,
-   "link": "https://link.coupang.com/a/iXIuO9owbk",
-   "tier": "수동",
-   "pid": "6004352096",
-   "grade": "역대급",
-   "img": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/hotdeal/room/img/6004352096.jpg"
   }
  ]
 }
