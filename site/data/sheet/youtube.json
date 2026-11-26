@@ -1,6 +1,6 @@
 {
  "tab": "유튜브",
- "dumped_at": "2026-11-26 12:33",
+ "dumped_at": "2026-11-26 20:31",
  "rows": [
   {
    "_row": 2,
@@ -893,9 +893,14 @@
    "고정 댓글": "인천 사는 분 중에 소득이 기준을 살짝 넘어서 포기한 분 계신가요?\n공고별 자격·일정 정리는 jupjupalarm.com",
    "영상 파일": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-25-incheon-namdong-reel/2026-11-25-incheon-namdong-reel.mp4",
    "표지(썸네일)": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-25-incheon-namdong-reel/2026-11-25-incheon-namdong-reel_thumb.jpg",
-   "상태": "대기",
+   "상태": "게시됨",
+   "유튜브 링크": "https://www.youtube.com/shorts/8wiyN1raChg",
    "길이": "24초",
+   "조회수(7일)": "0",
    "훅 유형": "허락",
+   "좋아요": "0",
+   "댓글": "0",
+   "수치 기준일": "2026-11-26 (공개 수치)",
    "접수 마감": "12/3",
    "목표 검색어 3개": "인천 행복주택 입주자격완화 / 인천 남동구 행복주택 소득 / 행복주택 소득 150%"
   },
