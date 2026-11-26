@@ -5,7 +5,7 @@
  *   쿠팡 링크를 내 파트너스 링크로 바꿔 L열에 적고 (카톡방에 올릴 때 쓰기)
  *   → 스레드에 본문(초성 후킹 3줄 + 그림: P열 쿠팡 캡처가 있으면 그것, 없으면 가격 카드) + 댓글("실시간 알림은 요기로!!!" + 채팅방 안내 글 인용)
  *   → 결과를 같은 행 J(상태)·L(변환링크)·M(스레드URL)·N(발행시각)·O(비고)에 적는다.
- *   쿠팡 링크는 스레드에 올리지 않는다 — 카톡방으로만 유도 (사용자 결정 2026-11-22).
+ *   (2026-11-26 변경) 맥이 AF(본문)·AH(첫 댓글: 파트너스 링크+고지)·AI(사진)를 채우면 그대로 올린다. 비어 있으면 링크 없이 본문+채팅방 안내.
  *
  * 설치: 운영시트(구 오싹알람)의 Apps Script 프로젝트에 '파일 +' → 스크립트 → 이름 Hotdeal → 이 내용 붙여넣기 → 저장.
  *   왼쪽 '서비스 +' → Google Slides API(식별자 Slides) 추가 (가격 카드 그림용).
@@ -39,7 +39,7 @@
 const HD_SHEET_ID = '13-ecoze8qCHs0rcBNWfer9feg7CU-cfVYDEUzA9t5d0';
 const HD_TAB = '필터통과';
 const HD = { at: 1, src: 2, title: 3, price: 4, kw: 5, score: 6, urls: 7, orig: 8, draft: 9, status: 10, body: 11,
-  link: 12, thread: 13, postedAt: 14, note: 15, cap: 16, cmp: 17, prod: 18, inf: 23, page: 24, pname: 25, nlink: 26, views: 27, likes: 28, replies: 29, img: 30, style: 31, story: 32, target: 33 };
+  link: 12, thread: 13, postedAt: 14, note: 15, cap: 16, cmp: 17, prod: 18, inf: 23, page: 24, pname: 25, nlink: 26, views: 27, likes: 28, replies: 29, img: 30, style: 31, story: 32, target: 33, scomment: 34, sphoto: 35 };
 const HD_HEAD = ['변환링크', '스레드URL', '발행시각', '비고(에러)', '캡처', '수량비교', '상품주소'];   // S~U 카톡, V 토스링크, W 인플링크, X 딜페이지, Y 상품명 (맥이 씀)   // P·Q열은 맥북 캡처기, R열은 맥북(단축 링크 풀기)·발행기(파트너스 검색)
 const HD_DISCLOSURE = '이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.';
 const HD_CACHE_DAYS = 7;
@@ -57,7 +57,7 @@ function hotdealCheck() {
   try { const id = hdChatPostId_(); out.push('채팅방 글(2/3 인용): ' + (id ? '찾음 ' + id : '꺼짐')); } catch (e) { out.push('채팅방 글 못 찾음: ' + e.message); }
   try {
     const sh = hdSheet_();
-    const head = sh.getRange(1, 1, 1, HD.target).getDisplayValues()[0];
+    const head = sh.getRange(1, 1, 1, HD.sphoto).getDisplayValues()[0];
     out.push('시트: ' + HD_TAB + ' ' + (sh.getLastRow() - 1) + '행, A~K 헤더 ' + (head[HD.urls - 1] === '쿠팡URL(전체)' && head[HD.status - 1] === '상태' ? '정상' : '다름!'));
     out.push('L~O 헤더: ' + (head.slice(HD.link - 1).join('') ? head.slice(HD.link - 1).join(' / ') : '비어 있음 (첫 발행 때 채움)'));
     const counts = {};
@@ -175,7 +175,7 @@ function hdTopItems_(rows, from, to) {
 
 function hdWeekly_(dry) {
   const sh = hdSheet_();
-  const rows = sh.getRange(2, 1, sh.getLastRow() - 1, HD.target).getDisplayValues();
+  const rows = sh.getRange(2, 1, sh.getLastRow() - 1, HD.sphoto).getDisplayValues();
   const now = new Date();
   const top = hdTopItems_(rows, new Date(now - 7 * 86400000), now).slice(0, 7);
   if (top.length < 3) { hdLog_('주간 총정리: 이번 주 딜이 ' + top.length + '건뿐이라 건너뜀'); return; }
@@ -206,7 +206,7 @@ function hotdealDaily() { return hdDaily_(false); }
 
 function hdDaily_(dry) {
   const sh = hdSheet_();
-  const rows = sh.getRange(2, 1, sh.getLastRow() - 1, HD.target).getDisplayValues();
+  const rows = sh.getRange(2, 1, sh.getLastRow() - 1, HD.sphoto).getDisplayValues();
   const now = new Date();
   const today = hdParse_(Utilities.formatDate(now, TZ, 'yyyy-MM-dd') + ' 00:00');
   const yest = new Date(today.getTime() - 86400000);
@@ -263,7 +263,7 @@ function hdRun_(o) {
     const sh = hdSheet_();
     const last = sh.getLastRow();
     if (last < 2) { hdLog_('필터통과 탭이 비어 있음'); return; }
-    const rows = sh.getRange(2, 1, last - 1, HD.target).getDisplayValues();
+    const rows = sh.getRange(2, 1, last - 1, HD.sphoto).getDisplayValues();
     const now = new Date();
     const today = Utilities.formatDate(now, TZ, 'yyyy-MM-dd');
 
@@ -420,7 +420,9 @@ function hdOne_(sh, row, v, recover, dry) {
   // 4) 가격 카드 그림
   let card = null;
   const cap = String(v[HD.cap - 1] || '').trim();
-  if (/^https:\/\/\S+\.(png|jpe?g)(\?\S*)?$/i.test(cap)) { card = { url: cap, external: true }; lines.push('쿠팡 캡처: ' + cap); }
+  const sphoto = String(v[HD.sphoto - 1] || '').trim();   // 2026-11-26: 맥이 정한 본문 사진 (있으면 캡처·가격 카드 대신)
+  if (/^https:\/\/\S+$/i.test(sphoto)) { card = { url: sphoto, external: true, own: true }; lines.push('스레드사진(AI열): ' + sphoto); }
+  else if (/^https:\/\/\S+\.(png|jpe?g)(\?\S*)?$/i.test(cap)) { card = { url: cap, external: true }; lines.push('쿠팡 캡처: ' + cap); }
   else try { card = hdCard_(v, row); lines.push('가격 카드: ' + card.url + (dry ? '\n  (30분 동안 열어볼 수 있음)' : '') + (cap ? '  [캡처 없음: ' + cap + ']' : '')); }
   catch (e) { notes.push('카드 실패'); lines.push('가격 카드 실패: ' + e.message + ' → 글만 올림'); console.error('카드 실패: ' + e.stack); }
 
@@ -432,7 +434,7 @@ function hdOne_(sh, row, v, recover, dry) {
   // 4-2) 상품 사진 + 옵션 캡처 2장 (2026-11-25 조회수 실험): HD_IMG_MODE both / cap / ab(기본, 홀수 날짜만 2장)
   let variant = '1장';
   let prodImg = '';
-  if (card && hdImgBoth_()) { try { prodImg = hdProductImage_(v); } catch (e) { console.log('상품 사진 못 찾음: ' + e.message); } }
+  if (card && !card.own && hdImgBoth_()) { try { prodImg = hdProductImage_(v); } catch (e) { console.log('상품 사진 못 찾음: ' + e.message); } }
   if (prodImg) lines.push('상품 사진: ' + prodImg);
 
   // 5) 발행 — 본문(+그림)
@@ -451,6 +453,7 @@ function hdOne_(sh, row, v, recover, dry) {
     catch (e2) { return hdFail_(sh, row, dry, lines, '본문 발행 실패', notes.concat([e2.message])); }
   } finally { if (card) hdCardDrop_(card); }
   const at = hdStamp_(new Date());
+  if (card && card.own) variant = '사진';
   try { hdWrite_(sh, row, { thread: main.link || main.id, postedAt: at }); sh.getRange(row, HD.img).setValue(variant); sh.getRange(row, HD.style).setValue(post.style || '정보'); }
   catch (e) {   // 올라갔는데 시트에 못 적음 → 절대 재발행하지 않게 크게 남김
     const msg = '!!! 스레드에 올라갔지만 시트 기록 실패 — 재발행 금지 !!!\n행 ' + row + ' 글 ' + main.id + ' ' + main.link + '\n' + post.main;
@@ -791,6 +794,19 @@ function hdCompose_(v, rowNo, noStory) {
     if (st) { main = st + '\n' + lines[lines.length - 2]; style = '캐릭터'; }
   }
 
+  // 2026-11-26 운영자 결정: 맥이 카톡방 문구를 가공해 AF(본문)·AH(첫 댓글, 파트너스 링크+고지)·AI(사진)에 써 둔다.
+  //   AF·AH가 둘 다 있고 안전 확인을 통과하면 그대로 올린다 (캐릭터 글용 검사는 걸지 않음, HD_STYLE과 무관).
+  let kakaoMode = false, kakaoComment = '';
+  if (!noStory) {
+    const af = String(v[HD.story - 1] || '').trim();
+    const ah = String(v[HD.scomment - 1] || '').trim();
+    if (af && ah && hdKakaoOk_(af, ah)) { main = af; kakaoComment = ah; kakaoMode = true; style = '카톡문구'; }
+  }
+  if (noStory) {
+    const ah2 = String(v[HD.scomment - 1] || '').trim();
+    if (ah2 && hdKakaoOk_(String(v[HD.story - 1] || '').trim(), ah2)) { kakaoComment = ah2; kakaoMode = true; }
+  }
+
   // 답글 1 (역전 딜만): 딜 페이지 링크 + 대가성 문구. X열(맥이 만든 autodm 딜 페이지)이 있을 때만.
   let linkReply = '';
   const page = String(v[HD.page - 1] || '').trim();
@@ -798,8 +814,9 @@ function hdCompose_(v, rowNo, noStory) {
     const inf = /^https?:\/\//.test(String(v[HD.inf - 1] || '').trim());
     linkReply = '가격·옵션 다시 확인 👉 ' + page + '\n\n' + (inf ? HD_DISCLOSURE_INF : HD_DISCLOSURE);
   }
+  if (kakaoMode) linkReply = kakaoComment;   // AH가 첫 댓글 — 딜 페이지 링크 답글 대신 (링크가 둘 달리지 않게)
   // 답글 2: 같은 문장 반복 대신 이유가 있는 안내 (돌려 씀) + 채팅방 글 인용
-  return { main: main, link: linkReply, quote: HD_FOMO[k % HD_FOMO.length], style: style };
+  return { main: main, link: linkReply, quote: HD_FOMO[k % HD_FOMO.length], style: style, kakao: kakaoMode };
 }
 
 const HD_DISCLOSURE_INF = '이 포스팅은 쿠팡 인플루언서 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.';
@@ -902,11 +919,24 @@ function hdCho_(name) {
   return pick.slice(0, 5).split('').map(c => CHO[Math.floor((c.charCodeAt(0) - 0xAC00) / 588)]).join('');
 }
 
+// 맥이 가공한 본문(AF)·댓글(AH) 안전 확인: 길이, 본문에 링크 없음, 댓글에 쿠팡 링크와 수수료 고지, 지어낸 개인 경험 표현 없음.
+// (질문 끝맺음·숫자 대조 같은 캐릭터 글용 검사는 걸지 않는다 — 운영자 결정)
+function hdKakaoOk_(af, ah) {
+  if (!af || !ah) return false;
+  if (af.length > 500 || ah.length > 500) return false;
+  if (/https?:\/\//i.test(af)) return false;
+  const urls = ah.match(/https?:\/\/[^\s)]+/g) || [];
+  if (!urls.length || urls.some(u => !/^https?:\/\/([a-z0-9-]+\.)?(coupang\.com|coupa\.ng)\b/i.test(u))) return false;
+  if (!/수수료/.test(ah) || !/(파트너스|인플루언서)/.test(ah)) return false;
+  if (/써봤|써보니|먹어봤|먹어보니|내돈내산|남편|와이프|판매량|만개 ?(팔|넘)/.test(af)) return false;
+  return true;
+}
+
 function hdCheck_(post) {
   return [
     { name: '본문 500자 이하', ok: post.main.length <= 500 },
     { name: '본문 링크 0개', ok: !/https?:\/\//i.test(post.main) },
-    { name: '링크 답글엔 대가성 문구', ok: !post.link || post.link.indexOf('수수료를 제공받습니다') >= 0 }
+    { name: '링크 답글엔 대가성 문구', ok: !post.link || /수수료/.test(post.link) }
   ];
 }
 
@@ -1096,7 +1126,7 @@ function hdDot_(sl, cx, cy, size, color) {
 // 가격 카드만 시험 — 신규 첫 행으로 그려 주소를 로그에 (30분 동안 열림)
 function hotdealTestCard() {
   const sh = hdSheet_();
-  const rows = sh.getRange(2, 1, sh.getLastRow() - 1, HD.target).getDisplayValues();
+  const rows = sh.getRange(2, 1, sh.getLastRow() - 1, HD.sphoto).getDisplayValues();
   const i = rows.findIndex(r => !hdHoldReason_(r));
   const c = hdCard_(rows[i], i + 2);
   console.log('행 ' + (i + 2) + ' 가격 카드: ' + c.url);
@@ -1181,7 +1211,7 @@ function hdStoryCheck_(text, factText) {
 // 캐릭터 글 시험: 시트 맨 아래 딜 하나로 미리 만들어 본다 (발행 안 함)
 function hotdealStoryTest() {
   const sh = hdSheet_();
-  const rows = sh.getRange(2, 1, sh.getLastRow() - 1, HD.target).getDisplayValues();
+  const rows = sh.getRange(2, 1, sh.getLastRow() - 1, HD.sphoto).getDisplayValues();
   const i = rows.map((r, n) => n).reverse().find(n => !hdHoldReason_(rows[n]) && !hdIsNaver_(rows[n]));
   const v = rows[i];
   const d = hdFacts_(v), pr = hdPair_(v), nm = hdShortName_(d.name) || d.cat || '이거';
