@@ -1,17 +1,29 @@
 {
- "updated": "2026-11-25 12:59:14",
+ "updated": "2026-11-26 10:02:17",
  "items": [
   {
-   "id": "m0d31be8",
+   "id": "mc82ff07",
+   "row": 841986705,
+   "created": "2026-11-26 10:02:16",
+   "kind": "역전",
+   "shop": "coupang",
+   "name": "모리나가 솔티드 캐러멜, 3개, 83g",
+   "priceLine": "1개당 3,450원 → 2,347원 (32% 더 쌈)",
+   "pair": "2개 6,900원 → 3개 7,040원",
+   "disclosure": "이 글은 쿠팡 인플루언서 활동을 통한 구매가 발생하면 일정 수수료를 받습니다.",
+   "partners": "https://link.coupang.com/a/iYUzKCc4lg"
+  },
+  {
+   "id": "m28edaf9",
    "row": 0,
-   "created": "2026-11-25 12:59:13",
+   "created": "2026-11-25 18:58:50",
    "kind": "일반",
    "shop": "coupang",
-   "name": "팔도 도시락 컵라면 86g 12개",
-   "priceLine": "원래 가격 12,000원 → 8,940원 (25% 할인)",
+   "name": "첵스초코 오곡으로 만든 스노우초코볼 시리얼 420g, 2개",
+   "priceLine": "원래 가격 14,360원 → 6,780원 (52% 할인)",
    "pair": null,
    "disclosure": "이 글은 쿠팡 인플루언서 활동을 통한 구매가 발생하면 일정 수수료를 받습니다.",
-   "partners": "https://link.coupang.com/a/iXskfb4dB6"
+   "partners": "https://link.coupang.com/a/iXR1w2Cs2K"
   },
   {
    "id": "r6078846d8",
@@ -60,30 +72,6 @@
    "pair": null,
    "disclosure": "이 글은 쿠팡 파트너스를 통한 구매가 발생하면 일정 수수료를 받습니다.",
    "partners": "https://link.coupang.com/a/iW5pqs6SKi"
-  },
-  {
-   "id": "r1310ef20f",
-   "row": 131,
-   "created": "2026-11-23 16:55:23",
-   "kind": "역전",
-   "shop": "coupang",
-   "name": "코카콜라 제로",
-   "priceLine": "1개당 3,638원 → 2,000원 (45% 더 쌈)",
-   "pair": "4개 14,550원 → 8개 16,000원",
-   "disclosure": "이 글은 쿠팡 인플루언서 활동을 통한 구매가 발생하면 일정 수수료를 받습니다.",
-   "partners": "https://link.coupang.com/a/iUpovS4RyK"
-  },
-  {
-   "id": "r118f24026",
-   "row": 118,
-   "created": "2026-11-23 14:40:01",
-   "kind": "역전",
-   "shop": "coupang",
-   "name": "나랑드사이다 제로, 500ml, 24개",
-   "priceLine": "1개당 1,362원 → 498원 (63% 더 쌈)",
-   "pair": "4개 5,450원 → 24개 11,950원",
-   "disclosure": "이 글은 쿠팡 인플루언서 활동을 통한 구매가 발생하면 일정 수수료를 받습니다.",
-   "partners": "https://link.coupang.com/a/iUfFmDjtZs"
   }
  ]
 }

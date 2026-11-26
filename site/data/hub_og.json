@@ -99,6 +99,11 @@
   "image": "photos/site/2026000553/birdseye.jpg",
   "pos": "center 55%"
  },
+ "/region/gyeonggi/uiwang/": {
+  "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+  "image": "photos/site/lh2015122300021137/birdseye-a-1.jpg",
+  "pos": "center 50%"
+ },
  "/region/gyeonggi/yongin/": {
   "credit": "이미지: 양지지구 2블럭 지역주택조합 분양 홈페이지 · 실제와 다를 수 있음",
   "image": "photos/site/2026910299/overview-auto-2.jpg",

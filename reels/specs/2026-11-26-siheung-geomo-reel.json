@@ -1,0 +1,113 @@
+{
+ "slug": "2026-11-26-siheung-geomo-reel",
+ "title": "시흥 거모 A-6 신혼희망타운",
+ "series": "내집마련",
+ "style": "story",
+ "voice": "voices/d8201e29eaf7/",
+ "voice_speed": 1.0,
+ "bgm": "music/beat-one.mp3",
+ "thumb": {
+  "lines": [
+   "신혼이면",
+   "시흥 55㎡ 4억3천만원대"
+  ]
+ },
+ "pool": [
+  {
+   "img": "photos/site/lh0000061204/birdseye-b1-nm.jpg",
+   "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+   "pos": "20% 50%"
+  },
+  {
+   "img": "photos/site/lh0000061204/birdseye-b1-nm.jpg",
+   "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+   "pos": "80% 50%"
+  },
+  {
+   "img": "photos/site/lh0000061204/siteplan-b1.jpg",
+   "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음"
+  },
+  {
+   "img": "photos/site/lh0000061204/birdseye-b1-nm.jpg",
+   "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+   "pos": "50% 40%"
+  }
+ ],
+ "scenes": [
+  {
+   "type": "story",
+   "say": "시흥에 신혼부부용 55㎡ 아파트가 4억 3천만 원대래요. 480세대래요.",
+   "word": "4억 3천만 원대",
+   "shots": [
+    {
+     "img": "photos/site/lh0000061204/birdseye-b1-nm.jpg",
+     "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+     "pos": "center 45%"
+    },
+    {
+     "img": "photos/site/lh0000061204/birdseye-b1-nm.jpg",
+     "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+     "pos": "15% 50%"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "심지어, 2029년 9월에 입주하는 새 아파트래요.",
+   "word": "2029년 9월",
+   "shots": [
+    {
+     "img": "photos/site/lh0000061204/birdseye-b1-nm.jpg",
+     "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+     "pos": "85% 50%"
+    },
+    {
+     "img": "maps/b3c31be6ff4a.png"
+    }
+   ],
+   "proof": {
+    "kind": "image",
+    "img": "photos/site/lh0000061204/siteplan-b1.jpg",
+    "credit": "자료: LH 공고 단지정보 · 실제와 다를 수 있음"
+   }
+  },
+  {
+   "type": "story",
+   "say": "이게 어떻게 가능할까요?",
+   "dim": true,
+   "shots": [
+    {
+     "img": "photos/site/lh0000061204/birdseye-b1-nm.jpg",
+     "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+     "pos": "60% 45%"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "LH 신혼희망타운 공공분양이거든요. 신혼부부랑 예비신혼부부, 한부모가족이면 넣을 수 있대요.",
+   "word": "신혼희망타운",
+   "shots": [
+    {
+     "img": "photos/site/lh0000061204/birdseye-b1-nm.jpg",
+     "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+     "pos": "center 55%"
+    },
+    {
+     "img": "photos/site/lh0000061204/birdseye-b1-nm.jpg",
+     "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+     "pos": "30% 40%"
+    }
+   ],
+   "proof": {
+    "kind": "image",
+    "img": "photos/site/lh0000061204/notice-qual.jpg",
+    "credit": "자료: LH 입주자모집공고"
+   }
+  },
+  {
+   "type": "end",
+   "say": "접수는 11월 26일부터 이틀이래요. 단지 이름이랑 공고 정리는, 댓글에 '시흥'이라고 남겨 주세요."
+  }
+ ]
+}

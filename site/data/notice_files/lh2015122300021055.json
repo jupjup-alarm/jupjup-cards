@@ -1,0 +1,57 @@
+{
+ "key": "lh2015122300021055",
+ "source_url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300021055&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=09&mi=1026",
+ "checked": "2026-11-26 12:33",
+ "files": [
+  {
+   "fileid": "69386325",
+   "name": "옹진백령영구임대(마을정비형)예비입주자모집공고문.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69386326",
+   "name": "옹진백령영구임대(마을정비형)예비입주자모집공고문.pdf",
+   "kind": "notice",
+   "got": "ok",
+   "md5": "2667f50af04e8e4317cc70bfb3858e5e",
+   "pages": 36,
+   "bytes": 835883
+  },
+  {
+   "fileid": "69386318",
+   "name": "별표1영구임대주택공급신청서(마을정비형).hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69386319",
+   "name": "별표2개인정보수집이용및제3자제공동의서.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69386320",
+   "name": "별표3금융정보등(금융,신용,보험정보)제공동의서.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69386321",
+   "name": "별표4예비입주자중복선정불가사항확인서.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69386322",
+   "name": "별표5자산보유사실확인서.hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69386323",
+   "name": "별표6위임장양식(대리인신청용).hwpx",
+   "kind": "other"
+  },
+  {
+   "fileid": "69386324",
+   "name": "별표7예비신혼부부신청확인서및세대구성확인서.hwpx",
+   "kind": "other"
+  }
+ ],
+ "changed": false
+}

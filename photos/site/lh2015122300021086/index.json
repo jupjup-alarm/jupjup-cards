@@ -2,6 +2,21 @@
  "key": "lh2015122300021086",
  "images": [
   {
+   "cat": "aerial",
+   "kind": "위성사진",
+   "label": "위성사진",
+   "file": "photos/sat/f35936f56b49.png",
+   "src": "NAVER 위성 지도",
+   "w": 1080,
+   "h": 1920,
+   "photo": true,
+   "full": true,
+   "ok": true,
+   "checked": true,
+   "from": "satellite",
+   "credit": "위성사진 © NAVER Corp."
+  },
+  {
    "cat": "notice",
    "kind": "공고문",
    "label": "공고문 공급금액 (p.1)",
@@ -45,28 +60,13 @@
    "full": false,
    "page": 1,
    "marked": []
-  },
-  {
-   "cat": "aerial",
-   "kind": "위성사진",
-   "label": "위성사진",
-   "file": "photos/sat/f35936f56b49.png",
-   "src": "NAVER 위성 지도",
-   "w": 1080,
-   "h": 1920,
-   "photo": true,
-   "full": true,
-   "ok": true,
-   "checked": true,
-   "from": "satellite",
-   "credit": "위성사진 © NAVER Corp."
   }
  ],
  "links": [],
  "owner": "LH",
  "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
- "updated": "2026-11-25 13:08",
+ "updated": "2026-11-26 12:33",
  "name": "[서울지역본부] 일반 매입임대주택 예비입주자 모집 (서울 9개 구 · 12/21~23 주민센터 접수)",
  "row": 210,
- "lh_checked": "2026-11-25"
+ "lh_checked": "2026-11-26"
 }
