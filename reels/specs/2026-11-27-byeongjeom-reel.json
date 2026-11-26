@@ -1,0 +1,29 @@
+{
+ "slug": "2026-11-27-byeongjeom-reel",
+ "title": "화성 병점 공공분양 726세대",
+ "series": "내집마련",
+ "style": "story",
+ "voice": "voices/84a90d4b9914/",
+ "voice_speed": 1.0,
+ "bgm": "music/beat-one.mp3",
+ "thumb": {"lines": ["화성 새 아파트", "4억9천만원대부터"]},
+ "pool": [
+  {"img": "photos/site/lh0000061217/birdseye-b1.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음", "pos": "20% 50%"},
+  {"img": "photos/site/lh0000061217/birdseye-b1.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음", "pos": "80% 45%"}
+ ],
+ "scenes": [
+  {"type": "story", "say": "화성 병점에 새 아파트가 4억 9천만 원대부터 나왔대요. 726세대래요.", "word": "4억 9천만 원대",
+   "shots": [
+    {"img": "photos/site/lh0000061217/birdseye-b1.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음", "pos": "center 45%"},
+    {"img": "photos/site/lh0000061217/birdseye-b1.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음", "pos": "15% 50%"}]},
+  {"type": "story", "say": "심지어, 84㎡도 6억 7천만 원대래요.", "word": "6억 7천만 원대",
+   "shots": [{"img": "photos/site/lh0000061217/birdseye-b1.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음", "pos": "85% 50%"}],
+   "proof": {"kind": "image", "img": "photos/site/lh0000061217/notice-price.jpg", "credit": "자료: LH 입주자모집공고(2026.11.26)"}},
+  {"type": "story", "say": "이게 어떻게 가능할까요?", "dim": true,
+   "shots": [{"img": "photos/site/lh0000061217/birdseye-b1.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음", "pos": "60% 45%"}]},
+  {"type": "story", "say": "LH 공공분양이거든요. 분양가가 공고에 딱 정해져 있고, 12월 7일부터 인터넷으로 받는대요.", "word": "12월 7일",
+   "shots": [{"img": "photos/site/lh0000061217/birdseye-b1.jpg", "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음", "pos": "center 55%"}],
+   "proof": {"kind": "image", "img": "photos/site/lh0000061217/notice-schedule.jpg", "credit": "자료: LH 입주자모집공고(2026.11.26)"}},
+  {"type": "end", "say": "단지 이름이랑 공고 정리는, 댓글에 '병점'이라고 남겨 주세요."}
+ ]
+}

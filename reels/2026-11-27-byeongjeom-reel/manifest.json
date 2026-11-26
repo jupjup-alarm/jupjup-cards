@@ -1,0 +1,18 @@
+{
+ "slug": "2026-11-27-byeongjeom-reel",
+ "duration": 21.94,
+ "voiced": true,
+ "narration_s": 19.3,
+ "mean_db": -18.8,
+ "voice": "voices/84a90d4b9914/",
+ "video": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-27-byeongjeom-reel/2026-11-27-byeongjeom-reel.mp4",
+ "cover": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-27-byeongjeom-reel/2026-11-27-byeongjeom-reel_thumb.jpg",
+ "size_mb": 9.3,
+ "warnings": [
+  "확대(Real-ESRGAN x4): 1장 — birdseye-b1.jpg",
+  "full.mp3 장면 경계가 장면별 음성과 어긋남(장면 [1, 2, 3, 4, 5]) → 장면별 파일 사용",
+  "호흡: 장면 2 대본에 없는 곳에서 0.32초 쉼 (③ 대본 쉼표 위치 확인)",
+  "사진: 컷 9개 · 서로 다른 사진 1장",
+  "사진 반복: birdseye-b1-x4.jpg 9번 — 단지 그림을 shots·pool에 더 넣을 것"
+ ]
+}
