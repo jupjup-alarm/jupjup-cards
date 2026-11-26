@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-26 09:16:16",
+ "updated": "2026-11-26 09:46:47",
  "date": "2026-11-26",
  "items": [
   {
@@ -14,6 +14,18 @@
    "pid": "6239512369",
    "grade": "역대급",
    "img": "https://ads-partners.coupang.com/image1/nDCJAE3HZh9cdljNnHHwND_wpU5QHjbl-_oKFJajuYfJEYrqLECg8c-RUffNrV4THzVRJ4ottshQ1uYJHWbyJVtFdnYGSKRY4Vsjhc-UUxyTMMiXTZ-_1tmL6INmZH8QBEMMApkeKqvyDAZ-NOzEjuUFyaTDuGFZr68ZPeUqcQ1z7UdjkLUYpwwx9iMzNVVWMvY3PET4y71NxDxVvP_IijWVCBRw0zdyaAkyuU55ZaVuKaBF8ZUV3EjdXAnYs7GBxxZJhFXsZWOM_q3RVC6Z2yqhoLhjnGF0Tzdys4ZQmlkCrCAsIxdhWgBRXfLrqXoUc2AnI3IzPybveJKC0S2c6gJWk0f24mgf09l9WoCp1qZJfYvJ64rLUWe7AYe_FDmaAZfrX4L7PKNVvxv-xzWcM-8pEe3sVHZZxpRmUqyBEqxl9lMa4LrBmVZCo2NCO4zOgx_LhWiqoGeYlJjaOWEugQ4l4HUFtJHd-d2UlyRQBL66peKfddFffFaeCdMN4cDmFo-NeVBdyP-TGVcapz2zrVRC5mxQEhzRUC9Ts4aqGfLNlHnYrdfYEFx2DxU6W0w2iiGGKxknMQz72066eZkzqUIETExASzmLJsinOd-X_v9cQGGuCWs-IyUskBsIffUnuw=="
+  },
+  {
+   "id": "r894",
+   "row": 894,
+   "at": "2026-11-25 21:01",
+   "name": "해피콜 몬드 IH 궁중팬, 30cm, 1개",
+   "price": 28680,
+   "disc": 56,
+   "link": "https://link.coupang.com/a/iXRdTUUv8u",
+   "tier": "TOP3",
+   "pid": "9628183961",
+   "grade": "초특가"
   },
   {
    "id": "mchex-e83017a6",
@@ -133,20 +145,6 @@
    "mall": "네이버",
    "grade": "",
    "img": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/hotdeal/room/img/32558411149416.jpg"
-  },
-  {
-   "id": "mtwosome-37a54769",
-   "row": 0,
-   "at": "2026-11-25 09:28",
-   "name": "투썸 크림탑 스초생 (카카오 선물하기)",
-   "price": 29600,
-   "disc": 30,
-   "link": "https://gift.kakao.com/product/14567751",
-   "tier": "수동",
-   "pid": null,
-   "mall": "카카오 선물하기",
-   "grade": "",
-   "img": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/hotdeal/room/img/3800785669805.jpg"
   }
  ]
 }
