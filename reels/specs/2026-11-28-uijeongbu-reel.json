@@ -1,0 +1,131 @@
+{
+ "slug": "2026-11-28-uijeongbu-reel",
+ "title": "의정부 공공분양 잔여 433세대",
+ "series": "내집마련",
+ "style": "story",
+ "voice": "voices/64cf1ea7ce99/",
+ "voice_speed": 1.0,
+ "bgm": "music/beat-one.mp3",
+ "thumb": {
+  "lines": [
+   "의정부 새 아파트",
+   "3억대 433채 남았다"
+  ]
+ },
+ "pool": [
+  {
+   "img": "photos/site/lh0000061211/location-b1-nn.jpg",
+   "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+   "pos": "30% 50%"
+  },
+  {
+   "img": "photos/site/lh0000061211/location-b1-nn.jpg",
+   "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+   "pos": "70% 70%"
+  },
+  {
+   "img": "photos/site/lh0000061211/siteplan-b1.jpg",
+   "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+   "pos": "center 30%"
+  },
+  {
+   "img": "photos/site/lh0000061211/siteplan-b1.jpg",
+   "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+   "pos": "center 75%"
+  },
+  {
+   "img": "photos/site/lh0000061211/siteplan-b1.jpg",
+   "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+   "pos": "25% 50%"
+  },
+  {
+   "img": "photos/site/lh0000061211/siteplan-b1.jpg",
+   "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+   "pos": "75% 50%"
+  }
+ ],
+ "scenes": [
+  {
+   "type": "story",
+   "say": "의정부에 3억대 새 아파트가 433채나 남았대요. 접수는 12월 7일부터 나흘 동안이라고 합니다.",
+   "word": "433채",
+   "shots": [
+    {
+     "img": "photos/site/lh0000061211/siteplan-b1.jpg",
+     "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+     "pos": "center 40%"
+    },
+    {
+     "img": "photos/site/lh0000061211/location-b1-nn.jpg",
+     "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+     "pos": "center 50%"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "전부 59㎡이고, 계약금 1,000만 원에 중도금은 없다고 합니다.",
+   "word": "59㎡",
+   "shots": [
+    {
+     "img": "photos/site/lh0000061211/siteplan-b1.jpg",
+     "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+     "pos": "80% 30%"
+    },
+    {
+     "img": "photos/site/lh0000061211/siteplan-b1.jpg",
+     "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+     "pos": "20% 70%"
+    }
+   ],
+   "proof": {
+    "kind": "image",
+    "img": "photos/site/lh0000061211/dongho-b1.jpg",
+    "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음"
+   }
+  },
+  {
+   "type": "story",
+   "say": "분양가는 3억 6,218만 원부터 3억 9,075만 원까지래요.",
+   "word": "3억 6,218만 원",
+   "shots": [
+    {
+     "img": "photos/site/lh0000061211/location-b1-nn.jpg",
+     "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+     "pos": "25% 55%"
+    }
+   ],
+   "proof": {
+    "kind": "image",
+    "img": "photos/site/lh0000061211/notice-price.jpg",
+    "credit": "자료: LH 입주자모집공고(2026.11.13)"
+   }
+  },
+  {
+   "type": "story",
+   "say": "국내에 사는 만 19세 이상이면 되고, 집이 있어도 통장이 없어도 소득을 안 봐도 된대요.",
+   "word": "만 19세",
+   "shots": [
+    {
+     "img": "photos/site/lh0000061211/siteplan-b1.jpg",
+     "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+     "pos": "center 65%"
+    },
+    {
+     "img": "photos/site/lh0000061211/siteplan-b1.jpg",
+     "credit": "이미지: LH 공고 단지정보 · 실제와 다를 수 있음",
+     "pos": "60% 50%"
+    }
+   ],
+   "proof": {
+    "kind": "image",
+    "img": "photos/site/lh0000061211/notice-qual.jpg",
+    "credit": "자료: LH 입주자모집공고(2026.11.13)"
+   }
+  },
+  {
+   "type": "end",
+   "say": "단지 이름이랑 공고 정리는, 댓글에 '의정부'라고 남겨 주세요."
+  }
+ ]
+}

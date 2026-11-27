@@ -1,0 +1,16 @@
+{
+ "slug": "2026-11-28-uijeongbu-reel",
+ "duration": 25.86,
+ "voiced": true,
+ "narration_s": 23.2,
+ "mean_db": -18.1,
+ "voice": "voices/64cf1ea7ce99/",
+ "video": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-28-uijeongbu-reel/2026-11-28-uijeongbu-reel.mp4",
+ "cover": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-28-uijeongbu-reel/2026-11-28-uijeongbu-reel_thumb.jpg",
+ "size_mb": 20.37,
+ "warnings": [
+  "full.mp3 장면 경계가 장면별 음성과 어긋남(장면 [1, 3, 4, 5]) → 장면별 파일 사용",
+  "사진: 컷 10개 · 서로 다른 사진 2장",
+  "사진 반복: siteplan-b1.jpg 7번 — 단지 그림을 shots·pool에 더 넣을 것"
+ ]
+}
