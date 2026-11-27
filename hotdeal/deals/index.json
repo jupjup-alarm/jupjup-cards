@@ -1,6 +1,18 @@
 {
- "updated": "2026-11-27 12:28:41",
+ "updated": "2026-11-28 07:21:36",
  "items": [
+  {
+   "id": "g57abf3d",
+   "row": 0,
+   "created": "2026-11-28 07:21:35",
+   "kind": "일반",
+   "shop": "coupang",
+   "name": "쿠팡 골드박스 오늘 하루 특가",
+   "priceLine": "생필품·먹거리 등 인기상품 특가 모음",
+   "pair": null,
+   "disclosure": "*쿠팡 파트너스를 통해 수수료를 받습니다.",
+   "partners": null
+  },
   {
    "id": "n23af47f",
    "row": 1706,
@@ -36,18 +48,6 @@
    "pair": "6개 14,650원 → 12개 14,590원",
    "disclosure": "*쿠팡 파트너스를 통해 수수료를 받습니다.",
    "partners": "https://link.coupang.com/a/i0vAsCu5vM"
-  },
-  {
-   "id": "ga9eda11",
-   "row": 0,
-   "created": "2026-11-27 07:20:39",
-   "kind": "일반",
-   "shop": "coupang",
-   "name": "쿠팡 골드박스 오늘 하루 특가",
-   "priceLine": "생필품·먹거리 등 인기상품 특가 모음",
-   "pair": null,
-   "disclosure": "*쿠팡 파트너스를 통해 수수료를 받습니다.",
-   "partners": null
   },
   {
    "id": "mc82ff07",
