@@ -1,6 +1,6 @@
 {
  "slug": "2026-11-26-siheung-geomo-reel",
- "status": "대기",
+ "status": "예약됨",
  "created": "2026-11-27 12:05",
  "row": 46,
  "date": "2026-11-26",
@@ -23,5 +23,7 @@
  "publish_at": "2026-11-27T21:30+09:00",
  "why": "    at dispatchCdpSendError (file:////[eval1]:8187:5)",
  "tries": 1,
- "updated": "2026-11-27 12:05"
+ "updated": "2026-11-27 12:26",
+ "url": "https://www.youtube.com/shorts/PXxBxGIrh0Y",
+ "video_id": "PXxBxGIrh0Y"
 }
