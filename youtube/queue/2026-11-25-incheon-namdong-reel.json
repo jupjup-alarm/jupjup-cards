@@ -23,7 +23,9 @@
  "publish_at": "2026-11-26T19:30+09:00",
  "why": "    at dispatchCdpSendError (file:////[eval1]:8187:5)",
  "tries": 1,
- "updated": "2026-11-26 12:26",
+ "updated": "2026-11-27 12:05",
  "url": "https://www.youtube.com/shorts/8wiyN1raChg",
- "video_id": "8wiyN1raChg"
+ "video_id": "8wiyN1raChg",
+ "channel_ok": true,
+ "commented": "2026-11-27 12:05"
 }
