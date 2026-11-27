@@ -1,7 +1,28 @@
 {
- "updated": "2026-11-27 07:52:49",
+ "updated": "2026-11-27 09:09:44",
  "date": "2026-11-27",
  "items": [
+  {
+   "id": "r1639",
+   "row": 1639,
+   "at": "2026-11-27 09:09",
+   "name": "일본 펩시 빅 제로 생 콜라, 600ml, 24개",
+   "price": 34670,
+   "disc": null,
+   "link": "https://link.coupang.com/a/i0urH26QWi",
+   "tier": "역전",
+   "pid": "7365909164",
+   "pair": "6개 16,100원 → 24개 34,670원",
+   "pct": 46,
+   "unit": "개당 1,445원",
+   "ua": "개",
+   "per_a": 2683,
+   "per_b": 1445,
+   "grade": "초특가",
+   "list_price": 39860,
+   "list_pct": 13,
+   "img": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/hotdeal/room/img/7365909164.jpg"
+  },
   {
    "id": "mchick-e04c13a8",
    "row": 0,
