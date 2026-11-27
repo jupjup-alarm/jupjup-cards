@@ -1,0 +1,17 @@
+{
+ "slug": "2026-11-27-dongtan-pentereum-reel",
+ "duration": 27.4,
+ "voiced": true,
+ "narration_s": 24.8,
+ "mean_db": -18.7,
+ "voice": "voices/980607b1168c/",
+ "video": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-27-dongtan-pentereum-reel/2026-11-27-dongtan-pentereum-reel.mp4",
+ "cover": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-27-dongtan-pentereum-reel/2026-11-27-dongtan-pentereum-reel_thumb.jpg",
+ "size_mb": 13.4,
+ "warnings": [
+  "확대(Real-ESRGAN x4): 1장 — overview-auto-1.jpg",
+  "호흡: 장면 4 대본에 없는 곳에서 0.29초 쉼 (③ 대본 쉼표 위치 확인)",
+  "사진: 컷 12개 · 서로 다른 사진 1장",
+  "사진 반복: overview-auto-1-x4.jpg 12번 — 단지 그림을 shots·pool에 더 넣을 것"
+ ]
+}

@@ -1,0 +1,106 @@
+{
+ "slug": "2026-11-27-dongtan-pentereum-reel",
+ "title": "동탄 무순위 5세대",
+ "series": "줍줍알람",
+ "style": "story",
+ "voice": "voices/980607b1168c/",
+ "voice_speed": 1.0,
+ "bgm": "music/beat-one.mp3",
+ "thumb": {
+  "lines": [
+   "동탄 새 아파트",
+   "5억대 딱 5채"
+  ]
+ },
+ "pool": [
+  {
+   "img": "photos/site/2026910303/overview-auto-1.jpg",
+   "credit": "이미지: 금강펜테리움 분양 홈페이지 · 실제와 다를 수 있음",
+   "pos": "20% 50%"
+  },
+  {
+   "img": "photos/site/2026910303/overview-auto-1.jpg",
+   "credit": "이미지: 금강펜테리움 분양 홈페이지 · 실제와 다를 수 있음",
+   "pos": "80% 40%"
+  }
+ ],
+ "scenes": [
+  {
+   "type": "story",
+   "say": "동탄에 84㎡ 아파트가 딱 5채 남았는데, 옆 단지보다 3억 넘게 싸대요. 추정이에요.",
+   "word": "딱 5채",
+   "shots": [
+    {
+     "img": "photos/site/2026910303/overview-auto-1.jpg",
+     "credit": "이미지: 금강펜테리움 분양 홈페이지 · 실제와 다를 수 있음",
+     "pos": "center 45%"
+    },
+    {
+     "img": "photos/site/2026910303/overview-auto-1.jpg",
+     "credit": "이미지: 금강펜테리움 분양 홈페이지 · 실제와 다를 수 있음",
+     "pos": "15% 50%"
+    }
+   ],
+   "proof": {
+    "kind": "compare",
+    "head": "84㎡ 비교 (추정)",
+    "items": [
+     {
+      "label": "이 단지 84A 최고 분양가",
+      "value": "5억5,320만원"
+     },
+     {
+      "label": "옆 동탄역 더 힐 84㎡ 실거래",
+      "value": "9억원"
+     }
+    ],
+    "src": "국토부 실거래 2026.11"
+   }
+  },
+  {
+   "type": "story",
+   "say": "심지어, 이 단지 분양가는 5억 5천만 원대래요.",
+   "word": "5억 5천만 원대",
+   "shots": [
+    {
+     "img": "photos/site/2026910303/overview-auto-1.jpg",
+     "credit": "이미지: 금강펜테리움 분양 홈페이지 · 실제와 다를 수 있음",
+     "pos": "85% 50%"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "이게 어떻게 가능할까요?",
+   "dim": true,
+   "shots": [
+    {
+     "img": "photos/site/2026910303/overview-auto-1.jpg",
+     "credit": "이미지: 금강펜테리움 분양 홈페이지 · 실제와 다를 수 있음",
+     "pos": "60% 45%"
+    }
+   ]
+  },
+  {
+   "type": "story",
+   "say": "무순위 잔여 세대거든요. 옆 동탄역 더 힐 84㎡는 실거래가 9억 원인데, 이 집은 최고 분양가가 5억 5천만 원대래요. 접수는 11월 30일 하루뿐이래요.",
+   "word": "11월 30일",
+   "shots": [
+    {
+     "img": "photos/site/2026910303/overview-auto-1.jpg",
+     "credit": "이미지: 금강펜테리움 분양 홈페이지 · 실제와 다를 수 있음",
+     "pos": "center 55%"
+    },
+    {
+     "img": "photos/site/2026910303/overview-auto-1.jpg",
+     "credit": "이미지: 금강펜테리움 분양 홈페이지 · 실제와 다를 수 있음",
+     "pos": "30% 40%"
+    }
+   ]
+  },
+  {
+   "type": "end",
+   "say": "단지 이름이랑 공고 정리는, 댓글에 '동탄'이라고 남겨 주세요."
+  }
+ ]
+}
