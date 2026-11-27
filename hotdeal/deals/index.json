@@ -1,6 +1,18 @@
 {
- "updated": "2026-11-27 07:20:40",
+ "updated": "2026-11-27 09:09:24",
  "items": [
+  {
+   "id": "r164437a106",
+   "row": 1644,
+   "created": "2026-11-27 09:09:23",
+   "kind": "역전",
+   "shop": "coupang",
+   "name": "믈레코비타 아이러브밀크 저지방 멸균우유, 1L, 12개",
+   "priceLine": "1개당 2,442원 → 1,216원 (50% 더 쌈)",
+   "pair": "6개 14,650원 → 12개 14,590원",
+   "disclosure": "*쿠팡 파트너스를 통해 수수료를 받습니다.",
+   "partners": "https://link.coupang.com/a/i0vAsCu5vM"
+  },
   {
    "id": "ga9eda11",
    "row": 0,
@@ -24,54 +36,6 @@
    "pair": "2개 6,900원 → 3개 7,040원",
    "disclosure": "이 글은 쿠팡 인플루언서 활동을 통한 구매가 발생하면 일정 수수료를 받습니다.",
    "partners": "https://link.coupang.com/a/iYUzKCc4lg"
-  },
-  {
-   "id": "r6078846d8",
-   "row": 607,
-   "created": "2026-11-25 08:48:56",
-   "kind": "역전",
-   "shop": "coupang",
-   "name": "광동진한헛개차 무라벨 그린, 1.5L, 12개",
-   "priceLine": "1개당 2,003원 → 1,291원 (36% 더 쌈)",
-   "pair": "6개 12,020원 → 48개 61,960원",
-   "disclosure": "이 글은 쿠팡 인플루언서 활동을 통한 구매가 발생하면 일정 수수료를 받습니다.",
-   "partners": "https://link.coupang.com/a/iXarh90AmG"
-  },
-  {
-   "id": "r606346b31",
-   "row": 606,
-   "created": "2026-11-25 08:48:49",
-   "kind": "역전",
-   "shop": "coupang",
-   "name": "비타500 제로 스파클링, 250ml, 24개",
-   "priceLine": "1개당 1,217원 → 577원 (53% 더 쌈)",
-   "pair": "6개 7,300원 → 72개 41,550원",
-   "disclosure": "이 글은 쿠팡 인플루언서 활동을 통한 구매가 발생하면 일정 수수료를 받습니다.",
-   "partners": "https://link.coupang.com/a/iXaqOjQ8ya"
-  },
-  {
-   "id": "cfac81f8",
-   "row": 550,
-   "created": "2026-11-25 08:40:39",
-   "kind": "일반",
-   "shop": "coupang",
-   "name": "커버낫키즈 주니어용 홀패턴 어센틱 로고 베스트 쪼끼",
-   "priceLine": "17,230원",
-   "pair": null,
-   "disclosure": "이 글은 쿠팡 파트너스를 통한 구매가 발생하면 일정 수수료를 받습니다.",
-   "partners": "https://link.coupang.com/a/iW9Qynj5VY"
-  },
-  {
-   "id": "c191e8ac",
-   "row": 561,
-   "created": "2026-11-25 07:38:33",
-   "kind": "일반",
-   "shop": "coupang",
-   "name": "pp내열 사각 반죽용기 300ml, 50개입, 1개",
-   "priceLine": "9,180원",
-   "pair": null,
-   "disclosure": "이 글은 쿠팡 파트너스를 통한 구매가 발생하면 일정 수수료를 받습니다.",
-   "partners": "https://link.coupang.com/a/iW5pqs6SKi"
   }
  ]
 }
