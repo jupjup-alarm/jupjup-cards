@@ -1,6 +1,6 @@
 {
  "tab": "유튜브",
- "dumped_at": "2026-11-27 12:40",
+ "dumped_at": "2026-11-27 20:27",
  "rows": [
   {
    "_row": 2,
@@ -956,8 +956,13 @@
    "고정 댓글": "고양 59㎡ 6억4천만원대, 넣을래 말래? 댓글로 알려주세요.\n공고별 자격·일정 정리는 jupjupalarm.com",
    "영상 파일": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-26-goyang-haengsin-reel/2026-11-26-goyang-haengsin-reel.mp4",
    "표지(썸네일)": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/reels/2026-11-26-goyang-haengsin-reel/2026-11-26-goyang-haengsin-reel_thumb.jpg",
-   "상태": "대기",
+   "상태": "게시됨",
+   "유튜브 링크": "https://www.youtube.com/shorts/mIRToog0EPY",
    "길이": "24초",
+   "조회수(7일)": "0",
+   "좋아요": "0",
+   "댓글": "0",
+   "수치 기준일": "2026-11-27 (공개 수치)",
    "접수 마감": "12/2",
    "목표 검색어 3개": "고양 행신 청약 분양가 / 고양 59㎡ 새 아파트 청약 일정 / 고양 한신더휴 퍼스트원"
   },
