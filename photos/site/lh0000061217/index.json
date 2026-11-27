@@ -17,21 +17,6 @@
    "photo": true
   },
   {
-   "cat": "siteplan",
-   "kind": "단지배치도",
-   "label": "블록1 단지배치도",
-   "file": "photos/site/lh0000061217/siteplan-b1.jpg",
-   "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=69555466",
-   "crop": "",
-   "w": 2436,
-   "h": 2291,
-   "md5": "96cd42ce77cb2131630c49bc18f3f3d4",
-   "block": "블록1",
-   "lh_tab": "단지배치도",
-   "desc": "",
-   "photo": false
-  },
-  {
    "cat": "location",
    "kind": "입지",
    "label": "블록1 지역위치도",
@@ -45,6 +30,21 @@
    "lh_tab": "지역위치도",
    "desc": "",
    "photo": true
+  },
+  {
+   "cat": "siteplan",
+   "kind": "단지배치도",
+   "label": "블록1 단지배치도",
+   "file": "photos/site/lh0000061217/siteplan-b1.jpg",
+   "src": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=69555466",
+   "crop": "",
+   "w": 2436,
+   "h": 2291,
+   "md5": "96cd42ce77cb2131630c49bc18f3f3d4",
+   "block": "블록1",
+   "lh_tab": "단지배치도",
+   "desc": "",
+   "photo": false
   },
   {
    "cat": "notice",
@@ -95,5 +95,8 @@
  "links": [],
  "owner": "LH",
  "source": "LH청약플러스 공고 상세 '단지 관련 이미지 정보'·평면도 탭",
- "updated": "2026-11-26 23:20"
+ "updated": "2026-11-27 12:40",
+ "name": "병점복합타운 주복1블록 공공분양주택 726세대 (12/7~10 접수)",
+ "row": 213,
+ "lh_checked": "2026-11-27"
 }
