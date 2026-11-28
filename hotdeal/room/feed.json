@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-28 08:38:52",
+ "updated": "2026-11-28 09:09:10",
  "date": "2026-11-28",
  "items": [
   {
@@ -110,8 +110,6 @@
    "per_a": 2683,
    "per_b": 1445,
    "grade": "초특가",
-   "list_price": 39860,
-   "list_pct": 13,
    "img": "https://raw.githubusercontent.com/jupjup-alarm/jupjup-cards/main/hotdeal/room/img/7365909164.jpg"
   }
  ]
