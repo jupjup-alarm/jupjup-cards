@@ -1,0 +1,269 @@
+{
+ "key": "2026910311",
+ "images": [
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "overview",
+   "file": "photos/site/2026910311/overview-auto-1.jpg",
+   "src": "https://xn--q20b245acmc65au2puno.com/img/main.jpg",
+   "w": 1920,
+   "h": 1000,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "overview",
+   "file": "photos/site/2026910311/overview-auto-2.jpg",
+   "src": "https://xn--q20b245acmc65au2puno.com/sub/system/main01.jpg",
+   "w": 1317,
+   "h": 880,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "overview",
+   "file": "photos/site/2026910311/overview-auto-3.jpg",
+   "src": "https://xn--q20b245acmc65au2puno.com/sub/system/main02.jpg",
+   "w": 664,
+   "h": 880,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "location",
+   "file": "photos/site/2026910311/location-auto-1.jpg",
+   "src": "https://xn--q20b245acmc65au2puno.com/img/location_img.jpg",
+   "w": 1920,
+   "h": 1000,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "location",
+   "file": "photos/site/2026910311/location-auto-2.jpg",
+   "src": "https://xn--q20b245acmc65au2puno.com/img/location_bg.png",
+   "w": 1920,
+   "h": 1000,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "location",
+   "file": "photos/site/2026910311/location-auto-3.jpg",
+   "src": "https://xn--q20b245acmc65au2puno.com/sub/location.jpg",
+   "w": 889,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "community",
+   "kind": "community",
+   "label": "community",
+   "file": "photos/site/2026910311/community-auto-1.jpg",
+   "src": "https://xn--q20b245acmc65au2puno.com/sub/community.jpg",
+   "w": 597,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "community",
+   "kind": "community",
+   "label": "community",
+   "file": "photos/site/2026910311/community-auto-2.jpg",
+   "src": "https://xn--q20b245acmc65au2puno.com/sub/m/community.jpg",
+   "w": 474,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "interior",
+   "kind": "interior",
+   "label": "interior",
+   "file": "photos/site/2026910311/interior-auto-1.jpg",
+   "src": "https://xn--q20b245acmc65au2puno.com/sub/magam01.jpg",
+   "w": 107,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "interior",
+   "kind": "interior",
+   "label": "interior",
+   "file": "photos/site/2026910311/interior-auto-2.jpg",
+   "src": "https://xn--q20b245acmc65au2puno.com/sub/magam02.jpg",
+   "w": 104,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "interior",
+   "kind": "interior",
+   "label": "interior",
+   "file": "photos/site/2026910311/interior-auto-3.jpg",
+   "src": "https://xn--q20b245acmc65au2puno.com/sub/magam03.jpg",
+   "w": 99,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "interior",
+   "kind": "interior",
+   "label": "interior",
+   "file": "photos/site/2026910311/interior-auto-4.jpg",
+   "src": "https://xn--q20b245acmc65au2puno.com/sub/magam04.jpg",
+   "w": 97,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "interior",
+   "kind": "interior",
+   "label": "interior",
+   "file": "photos/site/2026910311/interior-auto-5.jpg",
+   "src": "https://xn--q20b245acmc65au2puno.com/sub/magam05.jpg",
+   "w": 103,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "interior",
+   "kind": "interior",
+   "label": "interior",
+   "file": "photos/site/2026910311/interior-auto-6.jpg",
+   "src": "https://xn--q20b245acmc65au2puno.com/sub/magam06.jpg",
+   "w": 104,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "siteplan",
+   "kind": "siteplan",
+   "label": "siteplan",
+   "file": "photos/site/2026910311/siteplan-auto-1.jpg",
+   "src": "https://xn--q20b245acmc65au2puno.com/img/complex_img01.jpg",
+   "w": 1920,
+   "h": 1000,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "siteplan",
+   "kind": "siteplan",
+   "label": "siteplan",
+   "file": "photos/site/2026910311/siteplan-auto-2.jpg",
+   "src": "https://xn--q20b245acmc65au2puno.com/img/complex_bg.png",
+   "w": 1920,
+   "h": 1000,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "dongho",
+   "kind": "dongho",
+   "label": "잔여세대 동·호 지정 계약 안내",
+   "file": "photos/site/2026910311/dongho-auto-1.jpg",
+   "src": "https://xn--q20b245acmc65au2puno.com/sub/jy_nt_1106.jpg",
+   "w": 1587,
+   "h": 2245,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "plan",
+   "file": "photos/site/2026910311/plan-auto-1.jpg",
+   "src": "https://xn--q20b245acmc65au2puno.com/sub/unit01.jpg",
+   "w": 1100,
+   "h": 1467,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "plan",
+   "file": "photos/site/2026910311/plan-auto-2.jpg",
+   "src": "https://xn--q20b245acmc65au2puno.com/sub/unit02.jpg",
+   "w": 1100,
+   "h": 1467,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "plan",
+   "file": "photos/site/2026910311/plan-auto-3.jpg",
+   "src": "https://xn--q20b245acmc65au2puno.com/sub/unit03.jpg",
+   "w": 1100,
+   "h": 1467,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "plan",
+   "file": "photos/site/2026910311/plan-auto-4.jpg",
+   "src": "https://xn--q20b245acmc65au2puno.com/sub/unit04.jpg",
+   "w": 1100,
+   "h": 1467,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "plan",
+   "file": "photos/site/2026910311/plan-auto-5.jpg",
+   "src": "https://xn--q20b245acmc65au2puno.com/sub/unit05.jpg",
+   "w": 1100,
+   "h": 1467,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "plan",
+   "file": "photos/site/2026910311/plan-auto-6.jpg",
+   "src": "https://xn--q20b245acmc65au2puno.com/sub/unit06.jpg",
+   "w": 1100,
+   "h": 1467,
+   "photo": false,
+   "from": "auto"
+  }
+ ],
+ "links": [],
+ "name": "향남역 그로브 스위첸 무순위 2세대",
+ "row": 215,
+ "homepage": "https://향남역스위첸.com",
+ "auto_site": {
+  "date": "2026-11-28",
+  "url": "https://향남역스위첸.com",
+  "tries": 1,
+  "result": "23장 (overview 3, siteplan 2, dongho 1, plan 6, community 2, interior 6, location 3)"
+ },
+ "updated": "2026-11-28 12:19"
+}

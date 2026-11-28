@@ -1,6 +1,6 @@
 {
  "tab": "청약조사",
- "dumped_at": "2026-11-28 07:20",
+ "dumped_at": "2026-11-28 12:15",
  "rows": [
   {
    "_row": 2,
@@ -5101,7 +5101,8 @@
    "출처 URL": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026930047&pblancNo=2026930047",
    "상태": "후보",
    "지도 이미지": "maps/5c60805b558d.png",
-   "좌표(경도,위도)": "127.0444551,37.5870922"
+   "좌표(경도,위도)": "127.0444551,37.5870922",
+   "위성사진": "photos/sat/1477abc9317d.png"
   },
   {
    "_row": 215,
@@ -5156,7 +5157,8 @@
    "출처 URL": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000574&pblancNo=2026000574",
    "상태": "후보",
    "지도 이미지": "maps/7af0599518ae.png",
-   "좌표(경도,위도)": "126.6843371,37.3765363"
+   "좌표(경도,위도)": "126.6843371,37.3765363",
+   "위성사진": "photos/sat/593ca90c8b98.png"
   }
  ]
 }

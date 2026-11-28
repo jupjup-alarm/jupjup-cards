@@ -1,0 +1,71 @@
+{
+ "key": "2026000612",
+ "images": [
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "overview",
+   "file": "photos/site/2026000612/overview-auto-1.jpg",
+   "src": "http://xn--2-4t8e5xo4oepdg2df2uppb8a4b330cqnwuzheli.com/web/img/main_img.jpg",
+   "w": 1920,
+   "h": 1000,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "overview",
+   "file": "photos/site/2026000612/overview-auto-2.jpg",
+   "src": "http://xn--2-4t8e5xo4oepdg2df2uppb8a4b330cqnwuzheli.com/web/img/main_img.png",
+   "w": 1920,
+   "h": 1000,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "overview",
+   "file": "photos/site/2026000612/overview-auto-3.jpg",
+   "src": "http://xn--2-4t8e5xo4oepdg2df2uppb8a4b330cqnwuzheli.com/web/img/main_1250.png",
+   "w": 1107,
+   "h": 404,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "location",
+   "file": "photos/site/2026000612/location-auto-1.jpg",
+   "src": "http://xn--2-4t8e5xo4oepdg2df2uppb8a4b330cqnwuzheli.com/web/img/location_map_261117.png?ver=261117a",
+   "w": 2376,
+   "h": 1844,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "용인 반도체클러스터 1·2단지 주변 확대 지도",
+   "file": "photos/site/2026000612/location-auto-2.jpg",
+   "src": "http://xn--2-4t8e5xo4oepdg2df2uppb8a4b330cqnwuzheli.com/web/img/location_inset_261117.png?ver=261117a",
+   "w": 1245,
+   "h": 1245,
+   "photo": false,
+   "from": "auto"
+  }
+ ],
+ "links": [],
+ "name": "용인반도체클러스터 동일하이빌 파크밸리 2단지(D1-2블록)",
+ "row": 216,
+ "homepage": "https://용인동일하이빌파크밸리2단지.com",
+ "auto_site": {
+  "date": "2026-11-28",
+  "url": "https://용인동일하이빌파크밸리2단지.com",
+  "tries": 1,
+  "result": "5장 (overview 3, location 2)"
+ },
+ "updated": "2026-11-28 12:18"
+}

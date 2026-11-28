@@ -1,0 +1,203 @@
+{
+ "key": "2026000574",
+ "images": [
+  {
+   "cat": "birdseye",
+   "kind": "birdseye",
+   "label": "송도 대광로제비앙 모아엘가 투시도",
+   "file": "photos/site/2026000574/birdseye-auto-1.jpg",
+   "src": "https://www.xn--o39a6tm6lnwac2o2wd1qixohu5i7fw5cz4o.com/final/assets/images/sub/txt/summary_photo.jpg?v=20261126p",
+   "w": 1200,
+   "h": 650,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "overview",
+   "file": "photos/site/2026000574/overview-auto-1.jpg",
+   "src": "https://www.xn--o39a6tm6lnwac2o2wd1qixohu5i7fw5cz4o.com/final/assets/images/main/img_visual_si7.webp?v=20261126v",
+   "w": 1920,
+   "h": 980,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "overview",
+   "file": "photos/site/2026000574/overview-auto-2.jpg",
+   "src": "https://www.xn--o39a6tm6lnwac2o2wd1qixohu5i7fw5cz4o.com/final/assets/images/main/img_visual_si8.webp?v=20261126v",
+   "w": 1920,
+   "h": 980,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "overview",
+   "file": "photos/site/2026000574/overview-auto-3.jpg",
+   "src": "https://www.xn--o39a6tm6lnwac2o2wd1qixohu5i7fw5cz4o.com/final/assets/images/main/img_visual_si6.webp",
+   "w": 1920,
+   "h": 980,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "location",
+   "file": "photos/site/2026000574/location-auto-1.jpg",
+   "src": "https://www.xn--o39a6tm6lnwac2o2wd1qixohu5i7fw5cz4o.com/final/assets/images/sub/txt/premium_bg.jpg",
+   "w": 1200,
+   "h": 568,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "송도 대광로제비앙 모아엘가 입지 지도 - GTX-B(예정), 인천1호선,",
+   "file": "photos/site/2026000574/location-auto-2.jpg",
+   "src": "https://www.xn--o39a6tm6lnwac2o2wd1qixohu5i7fw5cz4o.com/final/assets/images/sub/location/loc_map.jpg?v=20261126e",
+   "w": 2001,
+   "h": 1633,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "송도 트램 이미지",
+   "file": "photos/site/2026000574/location-auto-3.jpg",
+   "src": "https://www.xn--o39a6tm6lnwac2o2wd1qixohu5i7fw5cz4o.com/final/assets/images/sub/location/m_tram_banner.jpg",
+   "w": 680,
+   "h": 462,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "community",
+   "kind": "community",
+   "label": "커뮤니티 시설 배치 - 휘트니스센터, G·X룸, 스크린 골프연습장, 실내",
+   "file": "photos/site/2026000574/community-auto-1.jpg",
+   "src": "https://www.xn--o39a6tm6lnwac2o2wd1qixohu5i7fw5cz4o.com/final/assets/images/final/community_iso.webp?v=20261126",
+   "w": 2052,
+   "h": 1393,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "interior",
+   "kind": "interior",
+   "label": "interior",
+   "file": "photos/site/2026000574/interior-auto-1.jpg",
+   "src": "https://www.xn--o39a6tm6lnwac2o2wd1qixohu5i7fw5cz4o.com/final/assets/images/sub/img_top_33.webp?v=20261126t",
+   "w": 1920,
+   "h": 600,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "dongho",
+   "kind": "dongho",
+   "label": "dongho",
+   "file": "photos/site/2026000574/dongho-auto-1.jpg",
+   "src": "https://www.xn--o39a6tm6lnwac2o2wd1qixohu5i7fw5cz4o.com/final/assets/images/sub/img_top_53.webp?v=20261126t",
+   "w": 1920,
+   "h": 600,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "dongho",
+   "kind": "dongho",
+   "label": "송도 대광로제비앙 모아엘가 동·호배치도 - 101동~107동 타입별 동호",
+   "file": "photos/site/2026000574/dongho-auto-2.jpg",
+   "src": "https://www.xn--o39a6tm6lnwac2o2wd1qixohu5i7fw5cz4o.com/final/assets/images/final/dongho.webp?v=20261126",
+   "w": 2400,
+   "h": 1588,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "송도 대광로제비앙 모아엘가 단지배치도 - 101동~107동, 84㎡A 1",
+   "file": "photos/site/2026000574/plan-auto-1.jpg",
+   "src": "https://www.xn--o39a6tm6lnwac2o2wd1qixohu5i7fw5cz4o.com/final/assets/images/final/siteplan.webp?v=20261126",
+   "w": 2200,
+   "h": 1461,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "84㎡A 타입 위치도",
+   "file": "photos/site/2026000574/plan-auto-2.jpg",
+   "src": "https://www.xn--o39a6tm6lnwac2o2wd1qixohu5i7fw5cz4o.com/final/assets/images/final/keyg_84a.webp?v=20261126t",
+   "w": 614,
+   "h": 485,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "84㎡A 평면도",
+   "file": "photos/site/2026000574/plan-auto-3.jpg",
+   "src": "https://www.xn--o39a6tm6lnwac2o2wd1qixohu5i7fw5cz4o.com/final/assets/images/final/unit_84a.webp?v=20261126",
+   "w": 1436,
+   "h": 1003,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "84㎡A-1 타입 위치도",
+   "file": "photos/site/2026000574/plan-auto-4.jpg",
+   "src": "https://www.xn--o39a6tm6lnwac2o2wd1qixohu5i7fw5cz4o.com/final/assets/images/final/keyg_84a1.webp?v=20261126t",
+   "w": 614,
+   "h": 485,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "84㎡A-1 평면도",
+   "file": "photos/site/2026000574/plan-auto-5.jpg",
+   "src": "https://www.xn--o39a6tm6lnwac2o2wd1qixohu5i7fw5cz4o.com/final/assets/images/final/unit_84a1.webp?v=20261126",
+   "w": 1458,
+   "h": 1003,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "84㎡B 타입 위치도",
+   "file": "photos/site/2026000574/plan-auto-6.jpg",
+   "src": "https://www.xn--o39a6tm6lnwac2o2wd1qixohu5i7fw5cz4o.com/final/assets/images/final/keyg_84b.webp?v=20261126t",
+   "w": 615,
+   "h": 486,
+   "photo": false,
+   "from": "auto"
+  }
+ ],
+ "links": [],
+ "name": "송도 대광로제비앙 모아엘가",
+ "row": 217,
+ "homepage": "https://www.송도대광로제비앙모아엘가.com",
+ "auto_site": {
+  "date": "2026-11-28",
+  "url": "https://www.송도대광로제비앙모아엘가.com",
+  "tries": 1,
+  "result": "17장 (birdseye 1, overview 3, dongho 2, plan 6, community 1, interior 1, location 3)"
+ },
+ "updated": "2026-11-28 12:17"
+}

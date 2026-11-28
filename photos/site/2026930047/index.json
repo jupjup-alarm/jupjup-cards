@@ -1,0 +1,203 @@
+{
+ "key": "2026930047",
+ "images": [
+  {
+   "cat": "birdseye",
+   "kind": "birdseye",
+   "label": "조감도",
+   "file": "photos/site/2026930047/birdseye-auto-1.jpg",
+   "src": "https://www.lottecastle.co.kr/files/etc/2023/6/202306280327473510.jpg",
+   "w": 1160,
+   "h": 640,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "birdseye",
+   "kind": "birdseye",
+   "label": "투시도",
+   "file": "photos/site/2026930047/birdseye-auto-2.jpg",
+   "src": "https://www.lottecastle.co.kr/files/etc/2023/6/202306280327473831.jpg",
+   "w": 1160,
+   "h": 640,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "birdseye",
+   "kind": "birdseye",
+   "label": "투시도",
+   "file": "photos/site/2026930047/birdseye-auto-3.jpg",
+   "src": "https://www.lottecastle.co.kr/files/etc/2023/6/202306280327473832.jpg",
+   "w": 1160,
+   "h": 640,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "birdseye",
+   "kind": "birdseye",
+   "label": "투시도",
+   "file": "photos/site/2026930047/birdseye-auto-4.jpg",
+   "src": "https://www.lottecastle.co.kr/files/etc/2023/6/202306280327473983.jpg",
+   "w": 1160,
+   "h": 640,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "birdseye",
+   "kind": "birdseye",
+   "label": "광역조감도",
+   "file": "photos/site/2026930047/birdseye-auto-5.jpg",
+   "src": "https://www.lottecastle.co.kr/files/etc/2023/6/202306280327473984.jpg",
+   "w": 1160,
+   "h": 640,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "overview",
+   "file": "photos/site/2026930047/overview-auto-1.jpg",
+   "src": "https://www.lottecastle.co.kr/files/etc/2023/6/202306230214426300.jpg",
+   "w": 1920,
+   "h": 1080,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "overview",
+   "file": "photos/site/2026930047/overview-auto-2.jpg",
+   "src": "https://www.lottecastle.co.kr/common/images/brand-story-img1.jpg",
+   "w": 1920,
+   "h": 1080,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "overview",
+   "kind": "overview",
+   "label": "overview",
+   "file": "photos/site/2026930047/overview-auto-3.jpg",
+   "src": "https://www.lottecastle.co.kr/common/images/brand-story-img3.jpg",
+   "w": 1920,
+   "h": 1080,
+   "photo": true,
+   "from": "auto"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "location",
+   "file": "photos/site/2026930047/location-auto-1.jpg",
+   "src": "https://www.lottecastle.co.kr/files/upload/2023/5/202305230427166720.jpg",
+   "w": 2308,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "location",
+   "kind": "location",
+   "label": "location",
+   "file": "photos/site/2026930047/location-auto-2.jpg",
+   "src": "https://www.lottecastle.co.kr/files/upload/2023/5/202305230422098860.jpg",
+   "w": 1500,
+   "h": 1340,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "community",
+   "kind": "community",
+   "label": "community",
+   "file": "photos/site/2026930047/community-auto-1.jpg",
+   "src": "https://www.lottecastle.co.kr/files/upload/2023/6/202306290346060130.jpg",
+   "w": 1500,
+   "h": 983,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "interior",
+   "kind": "interior",
+   "label": "interior",
+   "file": "photos/site/2026930047/interior-auto-1.jpg",
+   "src": "https://www.lottecastle.co.kr/files/upload/2023/7/202307070952001960.jpg",
+   "w": 91,
+   "h": 2400,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "interior",
+   "kind": "interior",
+   "label": "interior",
+   "file": "photos/site/2026930047/interior-auto-2.jpg",
+   "src": "https://www.lottecastle.co.kr/files/upload/2023/8/202308100430115150.jpg",
+   "w": 1500,
+   "h": 2121,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "interior",
+   "kind": "interior",
+   "label": "interior",
+   "file": "photos/site/2026930047/interior-auto-3.jpg",
+   "src": "https://www.lottecastle.co.kr/files/upload/2023/8/202308100430327790.jpg",
+   "w": 1500,
+   "h": 2121,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "siteplan",
+   "kind": "siteplan",
+   "label": "siteplan",
+   "file": "photos/site/2026930047/siteplan-auto-1.jpg",
+   "src": "https://www.lottecastle.co.kr/common/images/complex-info-bg.jpg",
+   "w": 1920,
+   "h": 656,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "plan",
+   "file": "photos/site/2026930047/plan-auto-1.jpg",
+   "src": "https://www.lottecastle.co.kr/files/etc/2023/6/202306290213024150.jpg",
+   "w": 1160,
+   "h": 640,
+   "photo": false,
+   "from": "auto"
+  },
+  {
+   "cat": "plan",
+   "kind": "plan",
+   "label": "plan",
+   "file": "photos/site/2026930047/plan-auto-2.jpg",
+   "src": "https://www.lottecastle.co.kr/files/etc/2023/6/202306290213031020.jpg",
+   "w": 760,
+   "h": 700,
+   "photo": false,
+   "from": "auto"
+  }
+ ],
+ "links": [],
+ "name": "청량리 롯데캐슬 하이루체 무순위 1세대",
+ "row": 214,
+ "homepage": "https://www.lottecastle.co.kr/APT/AT00395/main/index.do",
+ "auto_site": {
+  "date": "2026-11-28",
+  "url": "https://www.lottecastle.co.kr/APT/AT00395/main/index.do",
+  "tries": 1,
+  "result": "17장 (birdseye 5, overview 3, siteplan 1, plan 2, community 1, interior 3, location 2)"
+ },
+ "updated": "2026-11-28 12:24"
+}
