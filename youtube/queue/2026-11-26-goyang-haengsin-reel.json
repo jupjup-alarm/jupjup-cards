@@ -23,7 +23,9 @@
  "publish_at": "2026-11-27T19:30+09:00",
  "why": "    at dispatchCdpSendError (file:////[eval1]:8187:5)",
  "tries": 1,
- "updated": "2026-11-27 12:24",
+ "updated": "2026-11-28 12:06",
  "url": "https://www.youtube.com/shorts/mIRToog0EPY",
- "video_id": "mIRToog0EPY"
+ "video_id": "mIRToog0EPY",
+ "channel_ok": true,
+ "commented": "2026-11-28 12:06"
 }
