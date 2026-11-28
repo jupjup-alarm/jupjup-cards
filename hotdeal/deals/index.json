@@ -1,6 +1,18 @@
 {
- "updated": "2026-11-28 07:21:36",
+ "updated": "2026-11-28 16:38:51",
  "items": [
+  {
+   "id": "n15c34c9",
+   "row": 2224,
+   "created": "2026-11-28 16:38:50",
+   "kind": "일반",
+   "shop": "naver",
+   "name": "필립스 3000 시리즈 드립 커피메이커 1.25L",
+   "priceLine": "원래 가격 79,000원 → 34,900원",
+   "pair": null,
+   "disclosure": "*네이버 쇼핑 커넥트 활동으로 수수료를 제공받습니다.",
+   "partners": null
+  },
   {
    "id": "g57abf3d",
    "row": 0,
@@ -48,18 +60,6 @@
    "pair": "6개 14,650원 → 12개 14,590원",
    "disclosure": "*쿠팡 파트너스를 통해 수수료를 받습니다.",
    "partners": "https://link.coupang.com/a/i0vAsCu5vM"
-  },
-  {
-   "id": "mc82ff07",
-   "row": 841986705,
-   "created": "2026-11-26 10:02:16",
-   "kind": "역전",
-   "shop": "coupang",
-   "name": "모리나가 솔티드 캐러멜, 3개, 83g",
-   "priceLine": "1개당 3,450원 → 2,347원 (32% 더 쌈)",
-   "pair": "2개 6,900원 → 3개 7,040원",
-   "disclosure": "이 글은 쿠팡 인플루언서 활동을 통한 구매가 발생하면 일정 수수료를 받습니다.",
-   "partners": "https://link.coupang.com/a/iYUzKCc4lg"
   }
  ]
 }
