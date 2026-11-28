@@ -1,6 +1,6 @@
 {
  "slug": "2026-11-27-byeongjeom-reel",
- "status": "대기",
+ "status": "예약됨",
  "created": "2026-11-28 12:05",
  "row": 48,
  "date": "2026-11-27",
@@ -22,5 +22,7 @@
  "publish_at": "2026-11-28T19:30+09:00",
  "why": "    at dispatchCdpSendError (file:////[eval1]:8187:5)",
  "tries": 1,
- "updated": "2026-11-28 12:05"
+ "updated": "2026-11-28 12:25",
+ "url": "https://www.youtube.com/shorts/WOOTxDJsmKA",
+ "video_id": "WOOTxDJsmKA"
 }
